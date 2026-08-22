@@ -37,8 +37,7 @@
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
   <!-- Sticky Glass Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top"
-    style="z-index:1030;top:0">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
         <img src="assets/brand/budu-icon.svg" alt="budu Framework" height="32" loading="lazy">
@@ -73,7 +72,7 @@
   <main id="main">
     <!-- Hero Section -->
     <header class="landing-hero text-center">
-      <div class="container" style="max-width:880px">
+      <div class="container hero-container">
         <div class="hero-badge-wrap">
           <span class="hero-pill-badge">
             <span class="dot"></span>
@@ -108,9 +107,9 @@
           <div class="terminal text-start">
             <div class="terminal-header">
               <div class="terminal-dots">
-                <span class="terminal-dot" style="background:#ff5f56"></span>
-                <span class="terminal-dot" style="background:#ffbd2e"></span>
-                <span class="terminal-dot" style="background:#27c93f"></span>
+                <span class="terminal-dot terminal-dot-red"></span>
+                <span class="terminal-dot terminal-dot-yellow"></span>
+                <span class="terminal-dot terminal-dot-green"></span>
               </div>
               <div class="terminal-tabs">
                 <button class="terminal-tab-btn active" data-tab="npm">npm</button>
@@ -127,9 +126,9 @@
                 <span>Copy</span>
               </button>
             </div>
-            <pre><code id="terminalCode"><span style="color:#7ee787">$</span> npm install budu
-<span style="color:#7ee787">$</span> sass scss/budu.scss css/budu.css
-<span style="color:#79c0ff">✔ Bundled 296 kB → budu.min.css</span>   <span style="color:#8b949e"># 12 components · 100+ utilities</span></code></pre>
+            <pre><code id="terminalCode"><span class="terminal-prompt">$</span> npm install budu
+<span class="terminal-prompt">$</span> sass scss/budu.scss css/budu.css
+<span class="terminal-success">✔ Bundled 296 kB → budu.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
           </div>
         </div>
 
@@ -173,7 +172,7 @@
         <div class="text-center mb-5">
           <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Why budu?</span>
           <h2 class="fw-bold h2">Engineered for modern web applications</h2>
-          <p class="text-muted mx-auto" style="max-width:580px">Combine flexbox responsive layout power with rich UI
+          <p class="text-muted mx-auto hero-desc-sm">Combine flexbox responsive layout power with rich UI
             components and accessible touch interactions.</p>
         </div>
         <div class="row g-4">
@@ -227,7 +226,7 @@
         <div class="text-center mb-5">
           <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Interactive Showcase</span>
           <h2 class="fw-bold">Everything you need, ready to drop in</h2>
-          <p class="text-muted mx-auto" style="max-width:600px">Explore production-ready components: cards, buttons,
+          <p class="text-muted mx-auto showcase-desc-sm">Explore production-ready components: cards, buttons,
             switches, toasts, modals, badges, and flex utility classes.</p>
         </div>
 
@@ -360,11 +359,11 @@
 
     <!-- Installation -->
     <section id="installation" class="py-5 position-relative">
-      <div class="container py-4" style="max-width:860px">
+      <div class="container py-4 install-container">
         <div class="text-center mb-4">
           <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Quick Start</span>
           <h2 class="fw-bold mb-2">Get up and running in 60 seconds</h2>
-          <p class="text-muted mx-auto" style="max-width:560px">Choose your preferred workflow — drop in via high-speed
+          <p class="text-muted mx-auto install-desc-sm">Choose your preferred workflow — drop in via high-speed
             CDN or compile source tokens with your favorite package manager.</p>
         </div>
 
@@ -373,9 +372,9 @@
             <div class="terminal-header">
               <div class="d-flex align-items-center gap-3">
                 <div class="terminal-dots">
-                  <span class="terminal-dot" style="background:#ff5f56"></span>
-                  <span class="terminal-dot" style="background:#ffbd2e"></span>
-                  <span class="terminal-dot" style="background:#27c93f"></span>
+                  <span class="terminal-dot terminal-dot-red"></span>
+                  <span class="terminal-dot terminal-dot-yellow"></span>
+                  <span class="terminal-dot terminal-dot-green"></span>
                 </div>
                 <div class="terminal-tabs" id="installTabs">
                   <button type="button" class="terminal-tab-btn active" data-install-tab="cdn">CDN (HTML)</button>
@@ -393,9 +392,9 @@
                 <span>Copy snippet</span>
               </button>
             </div>
-            <pre><code id="installSnippet"><span style="color:#8b949e">&lt;!-- Drop CSS &amp; JS directly in your &lt;head&gt; --&gt;</span>
-<span style="color:#7ee787">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>
-<span style="color:#7ee787">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span></code></pre>
+            <pre><code id="installSnippet"><span class="terminal-comment">&lt;!-- Drop CSS &amp; JS directly in your &lt;head&gt; --&gt;</span>
+<span class="terminal-prompt">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>
+<span class="terminal-prompt">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span></code></pre>
           </div>
 
           <div class="install-footer-hints mt-3 d-flex flex-wrap align-items-center justify-content-between gap-2 px-1">
@@ -420,7 +419,7 @@
       <div class="container text-center py-4">
         <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Four Pillars</span>
         <h2 class="fw-bold mb-2">Four great design systems, one cohesive toolkit</h2>
-        <p class="text-muted mb-5 mx-auto" style="max-width:620px">budu synthesizes the best ideas from top frameworks
+        <p class="text-muted mb-5 mx-auto pillars-desc-sm">budu synthesizes the best ideas from top frameworks
           into a single lightweight library.</p>
 
         <div class="row g-4">
@@ -470,12 +469,11 @@
 
     <!-- Call to action -->
     <section class="bg-brand py-5 text-white">
-      <div class="container text-center py-4 position-relative" style="z-index:2">
-        <h2 class="h1 fw-extrabold mb-3 text-gradient"
-          style="background:linear-gradient(135deg,#ffffff 0%,#ffd1e8 100%);-webkit-background-clip:text;background-clip:text;color:transparent">
+      <div class="container text-center py-4 position-relative z-2">
+        <h2 class="h1 fw-extrabold mb-3 text-gradient cta-title-gradient">
           Ready to build something extraordinary?
         </h2>
-        <p class="mb-4 mx-auto" style="color:rgba(255,255,255,.9);max-width:580px;font-size:1.1rem">
+        <p class="mb-4 mx-auto cta-desc-sm">
           budu is 100% free and open source under the MIT license. Explore the documentation and craft your next web app
           today.
         </p>
@@ -517,10 +515,9 @@
         <div class="modal-body py-4">
           <p class="text-muted mb-3">budu is released under the permissive <a href="docs/about/license.html">MIT
               License</a>. Feel free to use it in commercial, personal, or open-source projects.</p>
-          <div class="progress rounded-pill" style="height:1.2rem" role="progressbar" aria-label="Modal example"
+          <div class="progress rounded-pill demo-progress-h" role="progressbar" aria-label="Modal example"
             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated rounded-pill"
-              style="width:100%">100% Free &amp; Open Source</div>
+            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated rounded-pill w-100">100% Free &amp; Open Source</div>
           </div>
         </div>
         <div class="modal-footer border-top-0 pt-0">
@@ -531,7 +528,7 @@
     </div>
   </div>
 
-  <div class="toast-container bottom-0 end-0 p-3" id="landingToasts" style="z-index:1090"></div>
+  <div class="toast-container bottom-0 end-0 p-3 z-50" id="landingToasts"></div>
 
   <!-- Scripts -->
   <script src="dist/js/budu.js"></script>
@@ -561,10 +558,10 @@
     // Terminal Tabs handler
     (function () {
       const codeSnippets = {
-        npm: '<span style="color:#7ee787">$</span> npm install budu\n<span style="color:#7ee787">$</span> sass scss/budu.scss css/budu.css\n<span style="color:#79c0ff">✔ Bundled 296 kB → budu.min.css</span>   <span style="color:#8b949e"># 12 components · 100+ utilities</span>',
-        pnpm: '<span style="color:#7ee787">$</span> pnpm add budu\n<span style="color:#7ee787">$</span> pnpm exec sass scss/budu.scss css/budu.css\n<span style="color:#79c0ff">✔ Bundled 296 kB → budu.min.css</span>',
-        yarn: '<span style="color:#7ee787">$</span> yarn add budu\n<span style="color:#7ee787">$</span> yarn sass scss/budu.scss css/budu.css\n<span style="color:#79c0ff">✔ Bundled 296 kB → budu.min.css</span>',
-        cdn: '<span style="color:#8b949e">&lt;!-- Drop CDN link into head --&gt;</span>\n<span style="color:#7ee787">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>\n<span style="color:#7ee787">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span>'
+        npm: '<span class="terminal-prompt">$</span> npm install budu\n<span class="terminal-prompt">$</span> sass scss/budu.scss css/budu.css\n<span class="terminal-success">✔ Bundled 296 kB → budu.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
+        pnpm: '<span class="terminal-prompt">$</span> pnpm add budu\n<span class="terminal-prompt">$</span> pnpm exec sass scss/budu.scss css/budu.css\n<span class="terminal-success">✔ Bundled 296 kB → budu.min.css</span>',
+        yarn: '<span class="terminal-prompt">$</span> yarn add budu\n<span class="terminal-prompt">$</span> yarn sass scss/budu.scss css/budu.css\n<span class="terminal-success">✔ Bundled 296 kB → budu.min.css</span>',
+        cdn: '<span class="terminal-comment">&lt;!-- Drop CDN link into head --&gt;</span>\n<span class="terminal-prompt">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>\n<span class="terminal-prompt">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span>'
       };
 
       const tabBtns = document.querySelectorAll('.terminal-tab-btn');
@@ -601,19 +598,19 @@
     (function () {
       const installSnippets = {
         cdn: {
-          code: '<span style="color:#8b949e">&lt;!-- Drop CSS &amp; JS directly in your &lt;head&gt; --&gt;</span>\n<span style="color:#7ee787">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>\n<span style="color:#7ee787">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span>',
+          code: '<span class="terminal-comment">&lt;!-- Drop CSS &amp; JS directly in your &lt;head&gt; --&gt;</span>\n<span class="terminal-prompt">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>\n<span class="terminal-prompt">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span>',
           raw: '<link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet">\n<script src="https://budu.dihadiwala.com/dist/js/budu.js"><\/script>'
         },
         npm: {
-          code: '<span style="color:#8b949e"># Install via npm package manager</span>\n<span style="color:#7ee787">$</span> npm install budu\n\n<span style="color:#8b949e">// Import SCSS source in your main style file</span>\n<span style="color:#79c0ff">@import</span> <span style="color:#a5d6ff">"node_modules/budu/scss/budu"</span>;',
+          code: '<span class="terminal-comment"># Install via npm package manager</span>\n<span class="terminal-prompt">$</span> npm install budu\n\n<span class="terminal-comment">// Import SCSS source in your main style file</span>\n<span class="terminal-keyword">@import</span> <span class="terminal-string">"node_modules/budu/scss/budu"</span>;',
           raw: 'npm install budu'
         },
         pnpm: {
-          code: '<span style="color:#8b949e"># Install via pnpm package manager</span>\n<span style="color:#7ee787">$</span> pnpm add budu\n\n<span style="color:#8b949e">// Import SCSS source</span>\n<span style="color:#79c0ff">@import</span> <span style="color:#a5d6ff">"budu/scss/budu"</span>;',
+          code: '<span class="terminal-comment"># Install via pnpm package manager</span>\n<span class="terminal-prompt">$</span> pnpm add budu\n\n<span class="terminal-comment">// Import SCSS source</span>\n<span class="terminal-keyword">@import</span> <span class="terminal-string">"budu/scss/budu"</span>;',
           raw: 'pnpm add budu'
         },
         yarn: {
-          code: '<span style="color:#8b949e"># Install via yarn package manager</span>\n<span style="color:#7ee787">$</span> yarn add budu\n\n<span style="color:#8b949e">// Import SCSS source</span>\n<span style="color:#79c0ff">@import</span> <span style="color:#a5d6ff">"budu/scss/budu"</span>;',
+          code: '<span class="terminal-comment"># Install via yarn package manager</span>\n<span class="terminal-prompt">$</span> yarn add budu\n\n<span class="terminal-comment">// Import SCSS source</span>\n<span class="terminal-keyword">@import</span> <span class="terminal-string">"budu/scss/budu"</span>;',
           raw: 'yarn add budu'
         }
       };

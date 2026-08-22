@@ -11,7 +11,7 @@ order: 1
 <p>Use the ratio helper to manage the aspect ratio of external content like <code>&lt;iframe&gt;</code>s and <code>&lt;video&gt;</code>s. The <code>.ratio</code> wrapper uses a generated <code>::before</code> pseudo-element with the ratio applied via a CSS custom property <code>--budu-aspect-ratio</code>.</p>
 
 <div class="bd-example">
-  <div class="ratio ratio-16x9" style="max-width:36rem">
+  <div class="ratio ratio-16x9 demo-card-lg">
     <iframe title="Ratio 16:9" src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
   </div>
 </div>
@@ -20,17 +20,17 @@ order: 1
 &lt;/div&gt;</code></pre></div>
 
 <h2 id="ratios">Ratios</h2>
-<p>Available ratio classes: <code>.ratio-1x1</code>, <code>.ratio-4x3</code>, <code>.ratio-16x9</code>, <code>.ratio-21x9</code>, and <code>.ratio-4x5</code>. Or set a custom value with the <code>--budu-aspect-ratio</code> variable.</p>
+<p>Available ratio classes: <code>.ratio-1x1</code>, <code>.ratio-4x3</code>, <code>.ratio-16x9</code>, <code>.ratio-21x9</code>, and <code>.ratio-4x5</code>. Or set a custom ratio with the aspect ratio utility classes.</p>
 <div class="bd-example">
-  <div class="ratio ratio-1x1" style="width:8rem"><div class="d-flex align-items-center justify-content-center text-muted">1x1</div></div>
+  <div class="ratio ratio-1x1 demo-box-square-md"><div class="d-flex align-items-center justify-content-center text-muted h-100">1x1</div></div>
 </div>
-<div class="highlight"><pre><code>&lt;!-- custom ratio -->
-&lt;div class="ratio" style="--budu-aspect-ratio: 100%;"&gt;...&lt;/div&gt;</code></pre></div>
+<div class="highlight"><pre><code>&lt;!-- ratio class -->
+&lt;div class="ratio ratio-1x1"&gt;...&lt;/div&gt;</code></pre></div>
 
 <h2 id="utilities">Ratio utilities</h2>
 <p>You can also use the <code>aspect-*</code> utilities (<code>aspect-square</code>, <code>aspect-video</code>, <code>aspect-4\/3</code>, etc.) which set the modern CSS <code>aspect-ratio</code> property for boxes:</p>
 <div class="bd-example d-flex gap-3">
-  <div class="aspect-video bg-light border rounded" style="width:12rem"></div>
-  <div class="aspect-square bg-light border rounded" style="width:6rem"></div>
+  <div class="aspect-video bg-light border rounded demo-box-w12"></div>
+  <div class="aspect-square bg-light border rounded demo-box-square-sm"></div>
 </div>
 <div class="highlight"><pre><code>&lt;div class="aspect-video bg-light rounded"&gt;&lt;/div&gt;</code></pre></div>

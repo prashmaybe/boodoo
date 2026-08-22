@@ -47,6 +47,12 @@
   border-width: 0.2em;
 }
 
+.spinner-border-lg,
+.spinner-grow-lg {
+  --budu-spinner-width: 3rem;
+  border-width: 0.3em;
+}
+
 // Text spacing helper
 .spinner-wrapper {
   display: inline-flex;
