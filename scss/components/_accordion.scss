@@ -1,0 +1,116 @@
+// BUDU ACCORDION
+// Collapsible accordion (uses collapse JS).
+
+.accordion {
+  --budu-accordion-bg: var(--budu-body-bg);
+  --budu-accordion-border-color: #{$budu-border-color};
+  --budu-accordion-border-radius: #{$budu-border-radius};
+  --budu-accordion-active-bg: #{$budu-primary-bg-subtle};
+  --budu-accordion-active-color: #{$budu-primary-text-emphasis};
+  --budu-accordion-icon-color: #{$budu-accordion-icon-color};
+  --budu-accordion-icon-active-color: #{$budu-accordion-icon-active-color};
+
+  --budu-accordion-btn-padding-y: 1rem;
+  --budu-accordion-btn-padding-x: 1.25rem;
+}
+
+.accordion-item {
+  background-color: var(--budu-accordion-bg);
+  border: 1px solid var(--budu-accordion-border-color);
+
+  &:first-of-type {
+    border-top-left-radius: var(--budu-accordion-border-radius);
+    border-top-right-radius: var(--budu-accordion-border-radius);
+  }
+
+  &:last-of-type {
+    border-bottom-right-radius: var(--budu-accordion-border-radius);
+    border-bottom-left-radius: var(--budu-accordion-border-radius);
+  }
+
+  &:not(:first-of-type) {
+    border-top: 0;
+  }
+}
+
+.accordion-header {
+  margin-bottom: 0;
+}
+
+.accordion-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--budu-accordion-btn-padding-y) var(--budu-accordion-btn-padding-x);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--budu-body-color);
+  background-color: var(--budu-accordion-bg);
+  border: 0;
+  border-radius: 0;
+  overflow-anchor: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:not(.collapsed) {
+    color: var(--budu-accordion-active-color);
+    background-color: var(--budu-accordion-active-bg);
+    box-shadow: inset 0 calc(-1 * #{$budu-border-width}) 0 var(--budu-accordion-border-color);
+  }
+
+  &:focus {
+    z-index: 3;
+    box-shadow: $budu-focus-ring-box-shadow;
+  }
+
+  // Caret icon (plus/minus)
+  &::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%235f6b8c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:not(.collapsed)::after {
+    transform: rotate(180deg);
+  }
+}
+
+// Flush
+.accordion-flush {
+  --budu-accordion-border-radius: 0;
+
+  .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+
+    &:first-child { border-top: 0; }
+    &:last-child { border-bottom: 0; }
+  }
+
+  .accordion-button {
+    &:not(.collapsed) {
+      box-shadow: none;
+    }
+  }
+}
+
+// Body
+.accordion-body {
+  padding: var(--budu-accordion-btn-padding-y) var(--budu-accordion-btn-padding-x);
+}
+
+// Always-open (no caret animation)
+.accordion-always-open {
+  .accordion-button::after {
+    display: none;
+  }
+}

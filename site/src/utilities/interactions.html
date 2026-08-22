@@ -1,0 +1,52 @@
+<!--
+title: Interactions
+description: Utilities to control interaction behavior — how elements respond to touch, pointers, and selection.
+section: utilities
+order: 6
+-->
+<h1>Interactions</h1>
+<p class="lead">Utility classes that control how elements interact (or don't) with the user — touch, pointer, selection, resize, appearance, and cursor.</p>
+
+<h2 id="text-selection">Text selection</h2>
+<p>Change the way in which the content is selected when the user interacts with it.</p>
+<div class="bd-example">
+  <p class="user-select-all">This paragraph will be entirely selected when clicked.</p>
+  <p class="user-select-auto">This paragraph has default select behavior.</p>
+  <p class="user-select-none">This paragraph will not be selectable.</p>
+</div>
+<div class="highlight"><pre><code>&lt;p class="user-select-all"&gt;Entirely selected.&lt;/p&gt;
+&lt;p class="user-select-auto"&gt;Default behavior.&lt;/p&gt;
+&lt;p class="user-select-none"&gt;Not selectable.&lt;/p&gt;</code></pre></div>
+
+<h2 id="pointer">Pointer events</h2>
+<p>Use <code>.pointer-events-none</code> to disable pointer interactions, and <code>.pointer-events-auto</code> to re-enable.</p>
+<div class="highlight"><pre><code>&lt;a href="#" class="pointer-events-none"&gt;Not clickable&lt;/a&gt;</code></pre></div>
+
+<h2 id="touch">Touch actions</h2>
+<p>Control browser touch behaviors like scrolling and pinch-zooming:</p>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.touch-auto</code></td><td>Default browser touch behavior</td></tr>
+    <tr><td><code>.touch-none</code></td><td>All touch scrolling/zooming disabled</td></tr>
+    <tr><td><code>.touch-pan-x</code></td><td>Pan horizontally only</td></tr>
+    <tr><td><code>.touch-pan-y</code></td><td>Pan vertically only</td></tr>
+    <tr><td><code>.touch-manipulation</code></td><td>Pan &amp; pinch; disables double-tap zoom (also removes 300ms click delay)</td></tr>
+  </tbody>
+</table>
+<div class="highlight"><pre><code>&lt;!-- recommended for buttons on touch -->
+&lt;button class="touch-manipulation"&gt;Tap without double-tap zoom&lt;/button&gt;</code></pre></div>
+
+<h2 id="cursor">Cursor</h2>
+<p>Set the cursor to any CSS value with <code>.cursor-{value}</code>: <code>.cursor-pointer</code>, <code>.cursor-not-allowed</code>, <code>.cursor-grab</code>, <code>.cursor-zoom-in</code>, <code>.cursor-move</code>, <code>.cursor-text</code>, etc.</p>
+<div class="bd-example">
+  <div class="d-grid gap-2" style="grid-template-columns:repeat(4,1fr)">
+    <span class="cursor-pointer border rounded p-3 text-center">pointer</span>
+    <span class="cursor-grab border rounded p-3 text-center">grab</span>
+    <span class="cursor-zoom-in border rounded p-3 text-center">zoom-in</span>
+    <span class="cursor-not-allowed border rounded p-3 text-center">not-allowed</span>
+  </div>
+</div>
+
+<h2 id="forced-colors">Appearance &amp; resize</h2>
+<p>Use <code>.appearance-none</code> to reset native form control appearance, and <code>.resize-*</code> to control resize: <code>.resize-none</code>, <code>.resize-x</code>, <code>.resize-y</code>, <code>.resize</code> (both).</p>

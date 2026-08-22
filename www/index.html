@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" data-budu-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Budu — a modular, mobile-first CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Fast, responsive, accessible, and dependency-free.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Budu">
+  <meta property="og:title" content="Budu · Build fast, responsive sites">
+  <meta property="og:description" content="A modular, mobile-first CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design.">
+  <meta property="og:image" content="assets/brand/budu-og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Budu · Build fast, responsive sites</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/budu-icon.svg">
+  <link rel="apple-touch-icon" href="assets/brand/budu-icon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/css/budu.min.css">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body class="bg-white">
+
+  <!-- Skip link -->
+  <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top" style="z-index:1030;top:0">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="assets/brand/budu-icon.svg" alt="Budu" height="34" width="34" loading="lazy">
+        <span class="fs-5 fw-semibold">Budu</span>
+        <span class="badge badge-soft-primary ms-1">v1.0</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-budu-toggle="collapse" data-budu-target="#homeNav" aria-controls="homeNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="homeNav">
+        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#inspiration">Inspiration</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-outline-primary btn-sm" href="docs/getting-started/introduction.html">Read the docs</a>
+          <a class="btn btn-primary btn-sm" href="docs/getting-started/download.html">Download</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="landing-hero text-center">
+    <div class="container" style="max-width:760px">
+      <span class="badge badge-soft-primary badge-pill mb-3 px-3 py-2">The best of Bootstrap · Foundation · Tailwind · Material</span>
+      <h1 class="mb-3">Build fast, responsive sites with <span class="text-gradient">Budu</span></h1>
+      <p class="lead text-muted mb-4">
+        A modular, mobile-first CSS design framework that fuses four design systems into one
+        dependency-free, accessible, touch-friendly toolkit. Written in Sass, shipped as CSS.
+      </p>
+      <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mb-4">
+        <a class="btn btn-primary btn-lg ripple px-4" href="docs/getting-started/introduction.html">Get started</a>
+        <a class="btn btn-outline-primary btn-lg px-4" href="docs/getting-started/usage.html">CDN installation</a>
+      </div>
+      <div class="terminal text-start mx-auto mt-4" style="max-width:640px">
+        <div class="terminal-bar">
+          <span class="terminal-dot" style="background:#ff5f57"></span>
+          <span class="terminal-dot" style="background:#febc2e"></span>
+          <span class="terminal-dot" style="background:#28c840"></span>
+        </div>
+        <pre><code><span style="color:#7ee787">$</span> npm install budu
+<span style="color:#7ee787">$</span> sass scss/budu.scss css/budu.css
+<span style="color:#79c0ff">Bundled 296 kB → budu.min.css</span>   <span style="color:#8b949e"># 12 components · 100+ utilities</span></code></pre>
+      </div>
+    </div>
+  </header>
+
+  <!-- Feature cards -->
+  <section id="features" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-hover h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <span class="badge badge-soft-primary mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" style="width:44px;height:44px;font-size:1.1rem">◆</span>
+              <h5 class="card-title h6">Mobile first</h5>
+              <p class="card-text text-muted small mb-0">A 12-column flexbox grid from 320px to 1400px+, plus a full CSS Grid utility suite for two-dimensional layouts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-hover h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <span class="badge badge-soft-success mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" style="width:44px;height:44px;font-size:1.1rem">⚡</span>
+              <h5 class="card-title h6">Fast &amp; dependency-free</h5>
+              <p class="card-text text-muted small mb-0">Vanilla JS, ~56&nbsp;KB, zero runtime deps. Tweet-sized builds with grid-only and utilities-only bundles.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-hover h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <span class="badge badge-soft-danger mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" style="width:44px;height:44px;font-size:1.1rem">◒</span>
+              <h5 class="card-title h6">Accessible &amp; touch-friendly</h5>
+              <p class="card-text text-muted small mb-0">44px targets, focus-visible, prefer-reduced-motion, ARIA wiring, and swipe support on every carousel.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-hover h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <span class="badge badge-soft-warning mb-3 d-inline-flex align-items-center justify-content-center rounded-circle" style="width:44px;height:44px;font-size:1.1rem">✦</span>
+              <h5 class="card-title h6">Source-first theming</h5>
+              <p class="card-text text-muted small mb-0">Every color, radius, and shadow is a token. Compile your own build with Sass or Less in seconds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Component preview -->
+  <section id="components" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge badge-soft-primary badge-pill px-3 mb-2">Components</span>
+        <h2 class="fw-semibold">Everything you need, ready to drop in</h2>
+        <p class="text-muted mx-auto" style="max-width:560px">Accordions, alerts, badges, cards, carousels, dropdowns, modals, navbars, offcanvas, popovers, toasts, tooltips — plus avatars, ripples and placeholders.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Cards</h6>
+              <div class="card border-0 bg-light">
+                <div class="card-body">
+                  <h6 class="card-title mb-2">Card title</h6>
+                  <p class="card-text small text-muted mb-3">Cards flex and adapt to any layout, with headers, footers, image overlays and color variants.</p>
+                  <a href="docs/components/card.html" class="btn btn-sm btn-primary btn-ripple">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Buttons &amp; badges</h6>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <button class="btn btn-primary btn-ripple ripple">Primary</button>
+                <button class="btn btn-outline-primary">Outline</button>
+                <button class="btn btn-soft-success">Soft</button>
+              </div>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge bg-primary text-white">Primary</span>
+                <span class="badge badge-soft-danger">Soft</span>
+                <span class="badge badge-outline-info">Outline</span>
+                <span class="badge badge-pill bg-warning text-white">Pill</span>
+              </div>
+              <a href="docs/components/buttons.html" class="btn btn-sm btn-outline-primary">Button docs</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Forms</h6>
+              <div class="mb-2"><label class="form-label small mb-1">Floating label</label>
+                <div class="form-floating">
+                  <input class="form-control" id="floatingDemo" placeholder="name@example.com">
+                  <label for="floatingDemo">Email address</label>
+                </div>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchDemo" checked>
+                <label class="form-check-label small" for="switchDemo">Enabled switch</label>
+              </div>
+              <a href="docs/forms/overview.html" class="btn btn-sm btn-outline-primary">Form docs</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Modals</h6>
+              <p class="card-text small text-muted mb-3">Dialogs, centered, fullscreen, scrollable — with backdrop, focus trap, and Escape handling.</p>
+              <button class="btn btn-primary btn-ripple" data-budu-toggle="modal" data-budu-target="#landingModal">See one now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Toasts</h6>
+              <p class="card-text small text-muted mb-3">Stackable, auto-dismiss notifications. One line of JS to fire one on demand.</p>
+              <button class="btn btn-outline-primary" id="landingToast">Show a toast</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title">Utility-first</h6>
+              <div class="mb-3">
+                <div class="bg-primary text-white text-center py-2 rounded w-75 mb-1">w-75</div>
+                <div class="bg-secondary text-white text-center py-2 rounded w-1/2">w-1/2</div>
+              </div>
+              <div class="d-flex gap-1 mb-3">
+                <span class="badge badge-soft-primary">d-flex</span>
+                <span class="badge badge-soft-success">gap-3</span>
+                <span class="badge badge-soft-danger">rounded-pill</span>
+              </div>
+              <a href="docs/utilities/display.html" class="btn btn-sm btn-outline-primary">Utility docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation -->
+  <section id="installation" class="py-5">
+    <div class="container" style="max-width:820px">
+      <div class="text-center mb-4">
+        <span class="badge badge-soft-primary badge-pill px-3 mb-2">Installation</span>
+        <h2 class="fw-semibold">Start in minutes</h2>
+      </div>
+      <div class="terminal text-start shadow-lg">
+        <div class="terminal-bar">
+          <span class="terminal-dot" style="background:#ff5f57"></span>
+          <span class="terminal-dot" style="background:#febc2e"></span>
+          <span class="terminal-dot" style="background:#28c840"></span>
+        </div>
+        <pre><code><span style="color:#8b949e"># Via CDN — just drop in two tags</span>
+<span style="color:#7ee787">&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</span>
+<span style="color:#7ee787">&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</span>
+
+<span style="color:#8b949e"># Or with a package manager</span>
+<span style="color:#7ee787">$</span> npm install budu
+
+<span style="color:#8b949e"># Or use the Sass / Less source</span>
+<span style="color:#79c0ff">@import "node_modules/budu/scss/budu";</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspiration -->
+  <section id="inspiration" class="py-5 bg-light">
+    <div class="container text-center">
+      <span class="badge badge-soft-primary badge-pill px-3 mb-2">Inspiration</span>
+      <h2 class="fw-semibold mb-4">Four great systems, one house</h2>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title text-primary fw-bold">Bootstrap</h6>
+              <p class="card-text small text-muted mb-0">Components, 12-col grid, modifiers, and the data-* JS API.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title text-success fw-bold">Foundation</h6>
+              <p class="card-text small text-muted mb-0">Utility breadth, clean scaffolds, and gray scales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title text-danger fw-bold">Tailwind</h6>
+              <p class="card-text small text-muted mb-0">Functional utilities, responsive variants, spacing scale.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <h6 class="card-title text-warning fw-bold">Material</h6>
+              <p class="card-text small text-muted mb-0">Elevation, motion tokens, ripple, floating labels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand py-5">
+    <div class="container text-center">
+      <h2 class="h1 mb-3 text-gradient" style="background:linear-gradient(135deg,#fff,#ffe3ef);-webkit-background-clip:text;background-clip:text;color:transparent">Ready to build something great?</h2>
+      <p class="mb-4" style="color:rgba(255,255,255,.9);max-width:560px;margin-left:auto;margin-right:auto">Budu is free and open source under the MIT license. Dive into the docs and ship your next project faster than ever.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a class="btn btn-light btn-lg px-4 ripple text-primary" href="docs/getting-started/introduction.html">Get started</a>
+        <a class="btn btn-outline-light btn-lg px-4" href="docs/about/license.html">View license</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 border-top">
+    <div class="container d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center text-muted small">
+      <span class="d-inline-flex align-items-center gap-2">
+        <img src="assets/brand/budu-icon.svg" alt="" height="24" width="24" loading="lazy">
+        © 2026 Dilshad I Hadiwala · MIT License
+      </span>
+      <span>Built with Budu · <a class="link-secondary text-decoration-underline" href="docs/getting-started/introduction.html">Docs</a></span>
+    </div>
+  </footer>
+
+  <!-- Landing modal -->
+  <div class="modal fade" id="landingModal" tabindex="-1" aria-labelledby="landingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="landingModalLabel">Open source, free forever</h5>
+          <button type="button" class="btn-close" data-budu-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Budu is released under the <a href="docs/about/license.html">MIT License</a>. Use it in personal and commercial projects, modify it, and ship it.</p>
+          <div class="progress" role="progressbar" aria-label="Modal example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">100% free</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-budu-dismiss="modal">Close</button>
+          <a class="btn btn-primary" href="docs/getting-started/download.html">Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container bottom-0 end-0" id="landingToasts"></div>
+  <script src="dist/js/budu.js"></script>
+  <script>
+    document.getElementById('landingToast')?.addEventListener('click', function () {
+      if (window.Budu) {
+        document.getElementById('landingToasts').innerHTML = '';
+        Budu.toast('Welcome to Budu! 🎉', { title: 'Hello', delay: 4000 });
+      }
+    });
+  </script>
+</body>
+</html>

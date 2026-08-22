@@ -1,0 +1,62 @@
+// BUDU SPINNERS
+// Border & growing spinners with sizes and colors.
+
+.spinner-border {
+  display: inline-block;
+  width: var(--budu-spinner-width, 2rem);
+  height: var(--budu-spinner-width, 2rem);
+  vertical-align: -0.125em;
+  border: 0.25em solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: var(--budu-spinner-animation-speed, 0.75s) linear infinite budu-spin;
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: var(--budu-spinner-width, 2rem);
+  height: var(--budu-spinner-width, 2rem);
+  vertical-align: -0.125em;
+  background-color: currentcolor;
+  border-radius: 50%;
+  opacity: 0;
+  animation: var(--budu-spinner-animation-speed, 0.75s) linear infinite budu-spinner-grow;
+}
+
+@keyframes budu-spinner-grow {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner-border,
+  .spinner-grow {
+    --budu-spinner-animation-speed: 1.5s;
+  }
+}
+
+// Sizes
+.spinner-border-sm,
+.spinner-grow-sm {
+  --budu-spinner-width: 1rem;
+  border-width: 0.2em;
+}
+
+// Text spacing helper
+.spinner-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .text-#{$name} {
+    color: $color !important;
+  }
+}

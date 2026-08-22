@@ -1,0 +1,78 @@
+<!--
+title: Carousel
+description: A slideshow component for cycling through elements—images or slides of text—like a carousel.
+section: components
+order: 8
+-->
+<h1>Carousel</h1>
+<p class="lead">A slideshow component for cycling through elements—images or slides of text—like a carousel.</p>
+
+<h2 id="how-it-works">How it works</h2>
+<ul>
+  <li>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup.</li>
+  <li>Includes support for previous/next controls, indicators, and captions.</li>
+  <li>Swipe gestures work on touch devices out of the box.</li>
+  <li>The carousel <em>pauses</em> on hover and when the user taps it.</li>
+</ul>
+
+<h2 id="slideshow">Slideshow</h2>
+<p>Add <code>data-budu-ride="carousel"</code> to auto-play, and optional <code>data-budu-interval</code> (ms) to control the timing.</p>
+<div class="bd-example">
+  <div id="carouselExample" class="carousel slide" data-budu-ride="carousel" data-budu-interval="4000">
+    <div class="carousel-inner rounded-3 overflow-hidden">
+      <div class="carousel-item active">
+        <svg class="d-block w-100" width="800" height="300" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#7c3aed"/><text x="400" y="170" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="40">First slide</text></svg>
+      </div>
+      <div class="carousel-item">
+        <svg class="d-block w-100" width="800" height="300" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f43f5e"/><text x="400" y="170" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="40">Second slide</text></svg>
+      </div>
+      <div class="carousel-item">
+        <svg class="d-block w-100" width="800" height="300" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#0ea5e9"/><text x="400" y="170" text-anchor="middle" fill="#16131f" font-family="sans-serif" font-size="40">Third slide</text></svg>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-budu-slide="prev">
+      <span class="carousel-control-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-budu-slide="next">
+      <span class="carousel-control-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <div class="carousel-indicators">
+      <button type="button" data-budu-target="#carouselExample" data-budu-slide-to="0" aria-label="Slide 1" class="active"></button>
+      <button type="button" data-budu-target="#carouselExample" data-budu-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-budu-target="#carouselExample" data-budu-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div id="carouselExample" class="carousel slide" data-budu-ride="carousel"&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;...&lt;/div&gt;
+    &lt;div class="carousel-item"&gt;...&lt;/div&gt;
+    &lt;div class="carousel-item"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="carousel-control-prev" type="button" data-budu-slide="prev"&gt;
+    &lt;span class="carousel-control-icon" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;Previous&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="carousel-control-next" type="button" data-budu-slide="next"&gt;
+    &lt;span class="carousel-control-icon" aria-hidden="true"&gt;&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;Next&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="carousel-indicators"&gt;
+    &lt;button type="button" data-budu-slide-to="0" class="active"&gt;&lt;/button&gt;
+    &lt;button type="button" data-budu-slide-to="1"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="fade">Crossfade</h2>
+<p>Add <code>.carousel-fade</code> to animate slides with a fade transition instead of a slide.</p>
+<div class="highlight"><pre><code>&lt;div id="myCarousel" class="carousel slide carousel-fade" data-budu-ride="carousel"&gt;
+  ...
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="dark">Dark variant</h2>
+<p>Add <code>.carousel-dark</code> to the control, indicators, and captions for use on light backgrounds.</p>
+
+<h2 id="touch">Touch swipe</h2>
+<p>Carousels support horizontal swipe on touch devices by default. Add <code>.carousel-touch</code> to change the cursor to a grab cursor on desktop for a clearer affordance.</p>

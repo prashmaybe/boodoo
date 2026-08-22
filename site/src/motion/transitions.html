@@ -1,0 +1,49 @@
+<!--
+title: Transitions
+description: Motion tokens and transition utilities for smooth, purposeful UI.
+section: motion
+order: 1
+-->
+<h1>Transitions</h1>
+<p class="lead">Budu ships Material-inspired motion tokens and easy transition utilities that respect <code>prefers-reduced-motion</code>.</p>
+
+<h2 id="tokens">Motion tokens</h2>
+<p>All motion is driven by tokens, exposed as CSS custom properties on <code>:root</code>:</p>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Variable</th><th>Default</th><th>Use</th></tr></thead>
+  <tbody>
+    <tr><td><code>--budu-transition-duration</code></td><td><code>150ms</code></td><td>Standard component micro-interactions</td></tr>
+    <tr><td><code>--budu-transition-timing</code></td><td><code>cubic-bezier(0.4,0,0.2,1)</code></td><td>Material standard easing</td></tr>
+    <tr><td><code>--budu-transition</code></td><td><code>color / bg / border / box-shadow 150ms</code></td><td>Buttons, links, controls</td></tr>
+    <tr><td><code>--budu-transition-fade</code></td><td><code>opacity 150ms linear</code></td><td>Fades / backdrops</td></tr>
+    <tr><td><code>--budu-transition-collapse</code></td><td><code>height 350ms ease</code></td><td>Collapse / accordion</td></tr>
+  </tbody>
+</table>
+
+<h2 id="transition-utilities">Transition utilities</h2>
+<p>Apply Prepared transition presets with <code>.transition-{none|all|colors|opacity|shadow|transform}</code>.</p>
+<div class="bd-example d-flex gap-3">
+  <div class="transition-transform border rounded p-3 bg-white" style="cursor:pointer">Hover me (transform)</div>
+  <div class="transition-colors border rounded p-3 bg-white" style="cursor:pointer">Hover me (colors)</div>
+</div>
+<div class="highlight"><pre><code>&lt;!-- a button that lifts on hover -->
+&lt;button class="transition-transform hover:translate-y-1"&gt;...&lt;/button&gt;</code></pre></div>
+
+<h2 id="duration">Duration &amp; delay</h2>
+<p>Set <code>transition-duration</code> with <code>.duration-{75..1000}</code> and delay with <code>.delay-{75..500}</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="transition-all duration-300 delay-100"&gt;...&lt;/div&gt;</code></pre></div>
+
+<h2 id="hover">Hover transforms</h2>
+<p>Budu includes Tailwind-style hover transforms you can pair with a transition:</p>
+<ul>
+  <li><code>hover:scale-105</code> → <code>.hover-scale-105:hover { transform: scale(1.05) }</code></li>
+  <li><code>rotate-*</code>, <code>translate-middle-x/y</code> utilities</li>
+</ul>
+<p class="small text-muted">Hover-transformed helpers used by <code>.card-hover</code> and <code>.btn:active</code> are already built into the components.</p>
+
+<h2 id="guidance">Guidance</h2>
+<ul>
+  <li>Keep transitions <em>fast</em> — 150–200ms for micro-interactions, up to 300ms for larger movements.</li>
+  <li>Ease out (decelerate) for entering elements, ease in (accelerate) for exiting ones.</li>
+  <li>Motion should enhance affordance, never obscure content.</li>
+</ul>

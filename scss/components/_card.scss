@@ -1,0 +1,244 @@
+// BUDU CARDS
+// Card, body, header/footer, groups, decks, image overlays.
+
+.card {
+  --budu-card-spacer-y: #{$budu-card-spacer-y};
+  --budu-card-spacer-x: #{$budu-card-spacer-x};
+  --budu-card-bg: var(--budu-body-bg);
+  --budu-card-border-color: #{$budu-card-border-color};
+  --budu-card-border-radius: #{$budu-card-border-radius};
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--budu-card-height, auto);
+  color: var(--budu-body-color);
+  word-wrap: break-word;
+  background-color: var(--budu-card-bg);
+  background-clip: border-box;
+  border: $budu-card-border-width solid var(--budu-card-border-color);
+  border-radius: var(--budu-card-border-radius);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  // Material hover elevation
+  &.card-hover,
+  &.hoverable {
+    &:hover {
+      box-shadow: map.get($budu-elevation-map, 3);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.card-flat {
+    border: 0;
+    box-shadow: none;
+  }
+
+  &.card-raised {
+    border: 0;
+    box-shadow: map.get($budu-elevation-map, 2);
+  }
+}
+
+// Interactive card (clickable)
+.card-clickable {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: map.get($budu-elevation-map, 3);
+    border-color: $budu-primary;
+  }
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: var(--budu-card-spacer-y) var(--budu-card-spacer-x);
+  color: var(--budu-card-color);
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+  margin-top: calc(-0.25rem);
+  margin-bottom: 0.5rem;
+  color: var(--budu-body-secondary-color);
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.card-link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  + .card-link {
+    margin-left: 1rem;
+  }
+}
+
+.card-header {
+  padding: var(--budu-card-cap-padding-y, 1rem) var(--budu-card-cap-padding-x, 1.25rem);
+  margin-bottom: 0;
+  background-color: rgba($budu-body-color, 0.03);
+  border-bottom: $budu-card-border-width solid var(--budu-card-border-color);
+
+  &:first-child {
+    border-radius: calc(var(--budu-card-border-radius) - 1px) calc(var(--budu-card-border-radius) - 1px) 0 0;
+  }
+}
+
+.card-footer {
+  padding: var(--budu-card-cap-padding-y, 1rem) var(--budu-card-cap-padding-x, 1.25rem);
+  background-color: rgba($budu-body-color, 0.03);
+  border-top: $budu-card-border-width solid var(--budu-card-border-color);
+
+  &:last-child {
+    border-radius: 0 0 calc(var(--budu-card-border-radius) - 1px) calc(var(--budu-card-border-radius) - 1px);
+  }
+}
+
+.card-header-tabs {
+  margin-right: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+  margin-bottom: calc(-1 * var(--budu-card-cap-padding-y, 1rem));
+  margin-left: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+  border-bottom: 0;
+}
+
+.card-header-pills {
+  margin-right: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+  margin-left: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--budu-card-spacer-y) var(--budu-card-spacer-x);
+  border-radius: calc(var(--budu-card-border-radius) - 1px);
+}
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  width: 100%;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: calc(var(--budu-card-border-radius) - 1px);
+  border-top-right-radius: calc(var(--budu-card-border-radius) - 1px);
+}
+
+.card-img,
+.card-img-bottom {
+  border-bottom-right-radius: calc(var(--budu-card-border-radius) - 1px);
+  border-bottom-left-radius: calc(var(--budu-card-border-radius) - 1px);
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .card-#{$name} {
+    --budu-card-bg: #{$color};
+    --budu-card-border-color: #{$color};
+    color: if($name == "light", $budu-dark, $budu-white);
+
+    .card-header,
+    .card-footer {
+      background-color: rgba($budu-black, 0.08);
+      border-color: rgba($budu-black, 0.1);
+    }
+  }
+}
+
+// Card group
+.card-group {
+  display: flex;
+  flex-direction: column;
+
+  > .card {
+    margin-bottom: $budu-card-spacer-y;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+
+    > .card {
+      flex: 1 0 0%;
+      margin-bottom: 0;
+
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+
+// Card columns (masonry)
+.card-columns {
+  @include media-breakpoint-up(sm) {
+    column-count: 2;
+    column-gap: 1.25rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    column-count: 3;
+  }
+
+  > .card {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+}
+
+// Horizontal card
+.card-horizontal {
+  flex-direction: row;
+
+  > .card-img,
+  > .card-img-top,
+  > .card-img-bottom {
+    width: auto;
+    border-radius: 0;
+    border-top-left-radius: calc(var(--budu-card-border-radius) - 1px);
+    border-bottom-left-radius: calc(var(--budu-card-border-radius) - 1px);
+  }
+
+  .card-body {
+    flex: 1;
+  }
+}
+
+// Card grid (modern responsive)
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,32 @@
+<!--
+title: Ripple effect
+description: A Material Design ink-ripple effect applied to interactive surfaces.
+section: components
+order: 24
+-->
+<h1>Ripple effect</h1>
+<p class="lead">Budu ships a lightweight Material Design ink-ripple effect. Add the <code>.ripple</code> class (or <code>data-budu-ripple</code>) to any element to create a circle that radiates from the point of interaction.</p>
+
+<h2 id="usage">Usage</h2>
+<p>The ripple is initialized automatically for any element with the <code>.ripple</code> class or <code>data-budu-ripple</code> attribute. It works on click/tap (pointer events) and <kbd>Enter</kbd>/<kbd>Space</kbd> for keyboard, and respects <code>prefers-reduced-motion</code>.</p>
+
+<div class="bd-example d-flex flex-wrap gap-3">
+  <button class="btn btn-primary ripple">Ripple button</button>
+  <button class="btn btn-outline-primary ripple">Outline + ripple</button>
+  <span class="badge badge-soft-primary ripple" style="padding:1rem 1.5rem">Ripple badge</span>
+  <div class="card card-hover ripple" style="width:14rem">
+    <div class="card-body"><h6 class="card-title mb-0">Card with ripple</h6></div>
+  </div>
+</div>
+
+<h2 id="how">How it works</h2>
+<div class="highlight"><pre><code>&lt;button class="btn btn-primary ripple"&gt;Ripple button&lt;/button&gt;
+
+&lt;!-- or via data attribute -->
+&lt;div class="card ripple" data-budu-ripple&gt;...&lt;/div&gt;</code></pre></div>
+<p>The ripple is a <code>span.ripple-effect</code> appended inside the element, expanding from the pointer position. The CSS animation is defined in <code>scss/components/_ripple.scss</code>, and the logic in <code>js/src/ripple.js</code>.</p>
+
+<h2 id="config">Programmatic</h2>
+<div class="highlight"><pre><code>import { initRipple } from 'budu/dist/js/budu.esm.js';
+// Re-scan for newly added ripple surfaces
+initRipple(document.getElementById('dynamicRegion'));</code></pre></div>

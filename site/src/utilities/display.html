@@ -1,0 +1,37 @@
+<!--
+title: Display
+description: Display utility classes like block, flex, grid, and responsive variants.
+section: utilities
+order: 3
+-->
+<h1>Display</h1>
+<p class="lead">Quickly and responsively toggle the display value of components and more, with our display utilities.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Change the <code>display</code> property with our responsive display utility classes. Include support for some of the more common values, as well as some extras for controlling printing.</p>
+<div class="bd-example">
+  <div class="d-inline p-2 bg-light border rounded">d-inline</div>
+  <div class="d-inline p-2 bg-light border rounded ms-1">d-inline</div>
+  <span class="d-block p-2 bg-light border rounded mt-2">d-block</span>
+  <span class="d-block p-2 bg-light border rounded mt-1">d-block</span>
+  <div class="d-flex p-3 bg-light border rounded mt-2">
+    <div class="me-3">flex item</div>
+    <div class="me-3">flex item</div>
+  </div>
+  <div class="d-grid gap-2 p-3 bg-light border rounded mt-2" style="grid-template-columns:1fr 1fr">
+    <div class="border rounded p-2">grid 1</div>
+    <div class="border rounded p-2">grid 1</div>
+  </div>
+</div>
+
+<h2 id="notation">Syntax &amp; responsive</h2>
+<p>Use a breakpoint suffix to only apply the display value from that breakpoint upward: <code>.d-sm-block</code>, <code>.d-md-flex</code>, <code>.d-lg-grid</code>, <code>.d-xl-inline-flex</code>, <code>.d-xxl-none</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="d-print-none"&gt;Hidden when printing&lt;/div&gt;
+&lt;div class="d-none d-md-block"&gt;Hidden on mobile, block at md+&lt;/div&gt;
+&lt;div class="d-lg-flex align-items-center"&gt;Flexbox at large+&lt;/div&gt;</code></pre></div>
+
+<h2 id="print">Print display</h2>
+<p>Change the <code>display</code> value of elements when printing with our print utility classes: <code>.d-print-none</code>, <code>.d-print-inline</code>, <code>.d-print-block</code>, <code>.d-print-flex</code>, and more.</p>
+
+<h2 id="values">Available values</h2>
+<p>All display values: <code>none</code>, <code>inline</code>, <code>inline-block</code>, <code>block</code>, <code>grid</code>, <code>inline-grid</code>, <code>table</code>, <code>inline-table</code>, <code>table-row</code>, <code>table-cell</code>, <code>flex</code>, <code>inline-flex</code>, and <code>flow-root</code>.</p>

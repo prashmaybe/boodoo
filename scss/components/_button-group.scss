@@ -1,0 +1,128 @@
+// BUDU BUTTON GROUP
+// Grouped buttons, toolbar, vertical group, checkbox/radio groups.
+
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.btn-group {
+  > .btn {
+    position: relative;
+    flex: 1 1 auto;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 1;
+    }
+
+    &:not(:first-child) {
+      margin-left: calc(#{$budu-input-btn-border-width} * -1);
+    }
+
+    // Corner rounding
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:first-child:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+// Nested groups (dropdown in a group)
+.btn-group > .btn-group:not(:first-child) {
+  margin-left: calc(#{$budu-input-btn-border-width} * -1);
+}
+
+.btn-group > .btn-group:first-child:not(:last-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group > .btn-group:last-child:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// Toolbar
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .input-group {
+    width: auto;
+  }
+}
+
+// Vertical
+.btn-group-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  > .btn {
+    width: 100%;
+
+    &:not(:first-child) {
+      margin-top: calc(#{$budu-input-btn-border-width} * -1);
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:first-child:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+// Sizing
+.btn-group-lg > .btn,
+.btn-group-lg > .btn-group > .btn {
+  @include button-size($budu-input-btn-padding-y-lg, $budu-input-btn-padding-x-lg, $budu-input-btn-font-size-lg, $budu-border-radius-lg);
+}
+
+.btn-group-sm > .btn,
+.btn-group-sm > .btn-group > .btn {
+  @include button-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+}
+
+// Split dropdown carets
+.btn-group .dropdown-toggle-split {
+  padding-right: $budu-input-btn-padding-x * 0.75;
+  padding-left: $budu-input-btn-padding-x * 0.75;
+
+  &::after {
+    margin-left: 0;
+  }
+}
+
+// Checkbox/radio button groups
+.btn-group > .btn-check + .btn {
+  border-radius: inherit;
+}
+
+.btn-group > .btn-check:checked + .btn,
+.btn-group > .btn-check:focus + .btn {
+  z-index: 1;
+}

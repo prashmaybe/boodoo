@@ -1,0 +1,52 @@
+<!--
+title: Breadcrumb
+description: Indicate the current page's location within a navigational hierarchy.
+section: components
+order: 4
+-->
+<h1>Breadcrumb</h1>
+<p class="lead">Indicate the current page's location within a navigational hierarchy that automatically adds separators via CSS.</p>
+
+<h2 id="example">Example</h2>
+<div class="bd-example">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+  </nav>
+</div>
+<div class="highlight"><pre><code>&lt;nav aria-label="breadcrumb"&gt;
+  &lt;ol class="breadcrumb"&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item active" aria-current="page"&gt;Data&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre></div>
+
+<h2 id="divider">Dividers</h2>
+<p>Dividers are automatically added by CSS via <code>::before</code> and <code>content</code>. Change the divider with a CSS custom property or use the icon flavor.</p>
+
+<div class="bd-example">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-icon">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+  </nav>
+</div>
+<div class="highlight"><pre><code>&lt;nav class="breadcrumb breadcrumb-icon" aria-label="breadcrumb"&gt;
+  &lt;ol class="breadcrumb" style="--budu-breadcrumb-divider: url('&gt;')"&gt;...&lt;/ol&gt;
+&lt;/nav&gt;</code></pre></div>
+
+<h2 id="background">With background</h2>
+<div class="bd-example">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-bg">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+  </nav>
+</div>

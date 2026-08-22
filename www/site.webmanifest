@@ -1,0 +1,9 @@
+{
+  "name": "Budu",
+  "short_name": "Budu",
+  "description": "A modular, mobile-first CSS design framework.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#5b2ef2"
+}

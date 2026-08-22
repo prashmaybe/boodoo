@@ -1,0 +1,65 @@
+<!--
+title: Avatar
+description: Profile images, initials, and status indicators — a modern addition to the Budu toolkit.
+section: components
+order: 2
+-->
+<h1>Avatar</h1>
+<p class="lead">Avatars are used to represent people or objects using an image, initials, or an icon. Budu's avatar component supports sizes, color variants, groups, and status dots.</p>
+
+<h2 id="basic">Basic avatar</h2>
+<div class="bd-example d-flex align-items-center gap-3">
+  <span class="avatar" aria-label="Avatar">DJ</span>
+  <span class="avatar avatar-primary" aria-label="Avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%235b2ef2'/%3E%3C/svg%3E" alt=""></span>
+  <span class="avatar avatar-success">AI</span>
+</div>
+<div class="highlight"><pre><code>&lt;span class="avatar"&gt;DJ&lt;/span&gt;
+&lt;span class="avatar avatar-primary"&gt;
+  &lt;img src="..." alt=""&gt;
+&lt;/span&gt;</code></pre></div>
+
+<h2 id="sizes">Sizes</h2>
+<div class="bd-example d-flex align-items-end gap-3">
+  <span class="avatar avatar-xs">XS</span>
+  <span class="avatar avatar-sm">SM</span>
+  <span class="avatar avatar-md">MD</span>
+  <span class="avatar avatar-lg">LG</span>
+  <span class="avatar avatar-xl">XL</span>
+  <span class="avatar avatar-xxl">2X</span>
+</div>
+
+<h2 id="shapes">Shapes</h2>
+<div class="bd-example d-flex align-items-center gap-3">
+  <span class="avatar avatar-square">SQ</span>
+  <span class="avatar avatar-rounded">RD</span>
+  <span class="avatar">CI</span>
+</div>
+
+<h2 id="group">Avatar group</h2>
+<p>Stack avatars with <code>.avatar-group</code>; the count overflow is shown with <code>.avatar-more</code>.</p>
+<div class="bd-example">
+  <div class="avatar-group">
+    <span class="avatar avatar-primary">A</span>
+    <span class="avatar avatar-success">B</span>
+    <span class="avatar avatar-danger">C</span>
+    <span class="avatar avatar-more">+8</span>
+  </div>
+</div>
+
+<h2 id="status">Status indicator</h2>
+<p>Add <code>.avatar-status</code> with a color modifier to indicate presence.</p>
+<div class="bd-example d-flex gap-4">
+  <span class="avatar avatar-primary">JD</span>
+  <span class="avatar avatar-success"><span class="avatar-status"></span>OK</span>
+  <span class="avatar avatar-danger"><span class="avatar-status avatar-status-offline"></span>OF</span>
+  <span class="avatar avatar-info"><span class="avatar-status avatar-status-busy"></span>BU</span>
+</div>
+
+<h2 id="soft">Soft variants</h2>
+<div class="bd-example d-flex gap-3">
+  <span class="avatar avatar-soft-primary">P</span>
+  <span class="avatar avatar-soft-success">S</span>
+  <span class="avatar avatar-soft-danger">D</span>
+  <span class="avatar avatar-soft-warning">W</span>
+  <span class="avatar avatar-soft-info">I</span>
+</div>

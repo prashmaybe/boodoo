@@ -1,0 +1,82 @@
+// BUDU BADGE
+// Badges & pills.
+
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1;
+  color: $budu-white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $budu-border-radius;
+  background-color: $budu-primary;
+
+  &:empty {
+    display: none;
+  }
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .badge-#{$name} {
+    background-color: $color;
+    color: if($name == "light", $budu-dark, $budu-white);
+  }
+}
+
+// Soft badges
+@each $name, $color in $budu-theme-colors {
+  .badge-soft-#{$name} {
+    background-color: tint-color($color, 88%);
+    color: $color;
+  }
+}
+
+// Outline badges
+@each $name, $color in $budu-theme-colors {
+  .badge-outline-#{$name} {
+    background-color: transparent;
+    color: $color;
+    border: 1px solid $color;
+  }
+}
+
+// Pill shape
+.badge-pill {
+  padding-right: 0.75em;
+  padding-left: 0.75em;
+  border-radius: $budu-border-radius-pill;
+}
+
+// Circle badge (count badges)
+.badge-circle {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.7em;
+}
+
+// Positioned badge (e.g. notification dot on icon button)
+.badge-positioned {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+  transform-origin: 100% 0%;
+}
+
+// Notification dot
+.badge-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-block;
+}

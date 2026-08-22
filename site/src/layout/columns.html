@@ -1,0 +1,89 @@
+<!--
+title: Columns
+description: Learn how to modify columns with a handful of options for alignment, ordering, and offsetting.
+section: layout
+order: 2
+-->
+<h1>Columns</h1>
+<p class="lead">Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system. Plus, see how to work with column classes managing widths of non-grid elements.</p>
+
+<h2 id="alignment-h">Horizontal alignment</h2>
+<div class="bd-example">
+  <div class="row justify-content-start">
+    <div class="col-4">One of two columns</div>
+    <div class="col-4">One of two columns</div>
+  </div>
+  <div class="row justify-content-center mt-2">
+    <div class="col-4">One of two columns</div>
+    <div class="col-4">One of two columns</div>
+  </div>
+  <div class="row justify-content-end mt-2">
+    <div class="col-4">One of two columns</div>
+    <div class="col-4">One of two columns</div>
+  </div>
+</div>
+
+<h2 id="vertical">Vertical alignment</h2>
+<div class="bd-example" style="min-height:200px">
+  <div class="row align-items-start">
+    <div class="col">One of three columns</div>
+    <div class="col">One of three columns</div>
+    <div class="col">One of three columns</div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col">One of three columns</div>
+    <div class="col">One of three columns</div>
+    <div class="col">One of three columns</div>
+  </div>
+</div>
+
+<h2 id="offsetting">Offsetting columns</h2>
+<p>Move columns to the right using <code>.offset-md-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+    <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  </div>
+</div>
+
+<h2 id="ordering">Ordering</h2>
+<p>Use <code>.order-*</code> classes for controlling the <strong>visual order</strong> of your content.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col order-last">First in DOM, ordered last</div>
+    <div class="col">Second in DOM, unordered</div>
+    <div class="col order-first">Third in DOM, ordered first</div>
+  </div>
+</div>
+
+<h2 id="auto-layout">Auto-layout columns</h2>
+<p>Utilize breakpoint-specific column classes for equal-width columns across any breakpoint from the smallest up to the largest.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-8">col-8</div>
+    <div class="col-4">col-4</div>
+  </div>
+</div>
+
+<h2 id="gutters">Column gutters</h2>
+<p>Gutters exist between columns as horizontal padding. Use the gutter modifier classes <code>g-*</code>, <code>gx-*</code> and <code>gy-*</code> to control the gutter widths.</p>
+<div class="bd-example">
+  <div class="row g-0">
+    <div class="col-6">.col-6</div>
+    <div class="col-6">.col-6</div>
+  </div>
+  <div class="row g-4 mt-2">
+    <div class="col-6">.col-6 .g-4</div>
+    <div class="col-6">.col-6 .g-4</div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<!--
+title: Buttons
+description: Use Budu's custom button styles for actions in forms, dialogs, and more.
+section: components
+order: 5
+-->
+<h1>Buttons</h1>
+<p class="lead">Use Budu's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+
+<h2 id="examples">Examples</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-link">Link</button>
+</div>
+
+<h2 id="outline">Outline buttons</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <button type="button" class="btn btn-outline-primary">Primary</button>
+  <button type="button" class="btn btn-outline-secondary">Secondary</button>
+  <button type="button" class="btn btn-outline-success">Success</button>
+  <button type="button" class="btn btn-outline-danger">Danger</button>
+  <button type="button" class="btn btn-outline-warning">Warning</button>
+  <button type="button" class="btn btn-outline-info">Info</button>
+  <button type="button" class="btn btn-outline-dark">Dark</button>
+</div>
+
+<h2 id="soft">Soft buttons</h2>
+<p>Material-toned subtle fills:</p>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <button type="button" class="btn btn-soft-primary">Primary</button>
+  <button type="button" class="btn btn-soft-success">Success</button>
+  <button type="button" class="btn btn-soft-danger">Danger</button>
+  <button type="button" class="btn btn-soft-warning">Warning</button>
+  <button type="button" class="btn btn-soft-info">Info</button>
+</div>
+
+<h2 id="sizes">Sizes</h2>
+<div class="bd-example d-flex flex-wrap align-items-center gap-2">
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+</div>
+
+<h2 id="states">States</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <button type="button" class="btn btn-primary active">Active button</button>
+  <button type="button" class="btn btn-primary" disabled>Disabled button</button>
+  <button type="button" class="btn btn-primary btn-loading">Processing</button>
+</div>
+<div class="highlight"><pre><code>&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-primary"&gt;Outline&lt;/button&gt;
+&lt;button type="button" class="btn btn-soft-primary"&gt;Soft&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-lg ripple"&gt;Large with ripple&lt;/button&gt;</code></pre></div>
+
+<h2 id="block">Block buttons</h2>
+<div class="bd-example">
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn btn-outline-primary" type="button">Button</button>
+  </div>
+</div>
+<p>Use <code>.d-grid</code> and a gap utility to create full-width, stacked buttons. The <code>.btn-block</code> class also works for a single full-width button.</p>
+
+<h2 id="material-ripple">Material ripple</h2>
+<p>Add the <code>.ripple</code> class (or the <code>data-budu-ripple</code> attribute) to any element to get a Material ink-ripple on click — no JS config needed.</p>
+<div class="bd-example d-flex gap-2">
+  <button type="button" class="btn btn-primary ripple">Ripple button</button>
+  <div class="rounded-3 p-4 ripple border text-center w-50" data-budu-ripple>Click me — ripple surface</div>
+</div>

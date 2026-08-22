@@ -1,0 +1,238 @@
+// BUDU BUTTONS
+// Button variants, sizes, states, groups, and loading/icon styles.
+
+.btn {
+  // Button tokens
+  --budu-btn-padding-y: #{$budu-input-btn-padding-y};
+  --budu-btn-padding-x: #{$budu-input-btn-padding-x};
+  --budu-btn-font-family: #{$budu-input-btn-font-family};
+  --budu-btn-font-size: #{$budu-input-btn-font-size};
+  --budu-btn-line-height: #{$budu-input-btn-line-height};
+  --budu-btn-border-radius: #{$budu-border-radius};
+
+  display: inline-block;
+  padding: var(--budu-btn-padding-y) var(--budu-btn-padding-x);
+  font-family: var(--budu-btn-font-family);
+  font-size: var(--budu-btn-font-size);
+  font-weight: $budu-btn-font-weight;
+  line-height: var(--budu-btn-line-height);
+  color: var(--budu-body-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $budu-input-btn-border-width solid transparent;
+  border-radius: var(--budu-btn-border-radius);
+  background-color: transparent;
+  transition: $budu-btn-transition;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: $budu-btn-focus-box-shadow;
+  }
+
+  &:active,
+  &.active {
+    box-shadow: $budu-btn-active-box-shadow;
+    transform: translateY(1px);
+  }
+
+  &:active:focus-visible {
+    box-shadow: $budu-btn-focus-box-shadow, $budu-btn-active-box-shadow;
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+    opacity: $budu-btn-disabled-opacity;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+// Variants
+@each $name, $color in $budu-theme-colors {
+  @if $name != "light" and $name != "dark" {
+    .btn-#{$name} {
+      @include button-variant(
+        $color, $color, $budu-white,
+        shift-color($color, -10%), shift-color($color, -10%),
+        shift-color($color, -15%), shift-color($color, -15%)
+      );
+    }
+  } @else {
+    .btn-#{$name} {
+      @include button-variant(
+        $color, $color,
+        if($name == "light", $budu-dark, $budu-white),
+        shade-color($color, 10%), shade-color($color, 10%),
+        shade-color($color, 15%), shade-color($color, 15%)
+      );
+    }
+  }
+}
+
+// Outline variants
+@each $name, $color in $budu-theme-colors {
+  .btn-outline-#{$name} {
+    @include button-outline-variant(
+      $color,
+      $color,
+      $color,
+      if($name == "light", $budu-dark, $budu-white)
+    );
+  }
+}
+
+// Soft variants (Material-toned subtle fills)
+@each $name, $color in $budu-theme-colors {
+  .btn-soft-#{$name} {
+    --budu-btn-bg: #{tint-color($color, 88%)};
+    --budu-btn-border: transparent;
+    --budu-btn-color: #{$color};
+    --budu-btn-hover-bg: #{tint-color($color, 80%)};
+    --budu-btn-hover-border: transparent;
+    --budu-btn-active-bg: #{tint-color($color, 72%)};
+    --budu-btn-active-border: transparent;
+
+    color: var(--budu-btn-color);
+    background-color: var(--budu-btn-bg);
+    border-color: var(--budu-btn-border);
+
+    &:hover {
+      color: var(--budu-btn-color);
+      background-color: var(--budu-btn-hover-bg);
+      border-color: var(--budu-btn-hover-border);
+    }
+
+    &:active,
+    &.active {
+      color: var(--budu-btn-color);
+      background-color: var(--budu-btn-active-bg);
+      border-color: var(--budu-btn-active-border);
+    }
+  }
+}
+
+// Link buttons
+.btn-link {
+  --budu-btn-color: #{$budu-link-color};
+  --budu-btn-bg: transparent;
+  --budu-btn-border: transparent;
+  text-decoration: underline;
+  font-weight: $budu-font-weight-normal;
+  color: var(--budu-btn-color);
+  background-color: var(--budu-btn-bg);
+  border-color: var(--budu-btn-border);
+
+  &:hover {
+    color: $budu-link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+// Sizes
+.btn-lg {
+  @include button-size($budu-input-btn-padding-y-lg, $budu-input-btn-padding-x-lg, $budu-input-btn-font-size-lg, $budu-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+}
+
+// Block buttons
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+// Loading button
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    margin: -0.5em 0 0 -0.5em;
+    border: 2px solid currentcolor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: budu-spin 0.6s linear infinite;
+    color: inherit;
+  }
+}
+
+// Icon buttons (square, Material-style)
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: $budu-border-radius;
+
+  &.btn-lg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &.btn-sm {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.btn-circle {
+    border-radius: 50%;
+  }
+}
+
+// Icon + text spacing
+.btn .bi,
+.btn svg {
+  vertical-align: -0.125em;
+}
+
+.btn-icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Ripple surface for JS ripple effect
+.btn-ripple {
+  @include ripple-surface();
+}
+
+// Active/pressed states are applied via :active above; expose .active for JS toggle.
+// Transparent base for ghost buttons
+.btn-ghost {
+  color: var(--budu-body-color);
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover {
+    background-color: rgba($budu-body-color, 0.08);
+  }
+
+  &:active,
+  &.active {
+    background-color: rgba($budu-body-color, 0.12);
+  }
+}

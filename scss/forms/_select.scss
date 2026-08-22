@@ -1,0 +1,59 @@
+// BUDU FORMS — Select
+// Native & custom select.
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: $budu-input-btn-padding-y $budu-input-btn-padding-x;
+  padding-right: $budu-input-btn-padding-x * 2.5;
+  font-family: $budu-input-btn-font-family;
+  font-size: $budu-input-btn-font-size;
+  font-weight: 400;
+  line-height: $budu-input-btn-line-height;
+  color: var(--budu-body-color);
+  background-color: $budu-form-control-bg;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%235f6b8c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right $budu-input-btn-padding-x center;
+  background-size: 16px 12px;
+  border: $budu-input-btn-border-width solid $budu-form-control-border-color;
+  border-radius: $budu-border-radius;
+  appearance: none;
+
+  &:focus {
+    border-color: $budu-form-control-focus-border;
+    outline: 0;
+    box-shadow: $budu-form-control-focus-box-shadow;
+  }
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    padding-right: $budu-input-btn-padding-x;
+    background-image: none;
+  }
+
+  &:disabled {
+    background-color: $budu-form-control-disabled-bg;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 var(--budu-body-color);
+  }
+}
+
+.form-select-sm {
+  padding-top: $budu-input-btn-padding-y-sm;
+  padding-bottom: $budu-input-btn-padding-y-sm;
+  padding-left: $budu-input-btn-padding-x-sm;
+  font-size: $budu-input-btn-font-size-sm;
+  border-radius: $budu-border-radius-sm;
+}
+
+.form-select-lg {
+  padding-top: $budu-input-btn-padding-y-lg;
+  padding-bottom: $budu-input-btn-padding-y-lg;
+  padding-left: $budu-input-btn-padding-x-lg;
+  font-size: $budu-input-btn-font-size-lg;
+  border-radius: $budu-border-radius-lg;
+}

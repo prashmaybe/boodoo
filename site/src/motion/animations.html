@@ -1,0 +1,62 @@
+<!--
+title: Animations
+description: Animation utilities and keyframes — all respecting prefers-reduced-motion.
+section: motion
+order: 0
+-->
+<h1>Animations</h1>
+<p class="lead">Budu ships a small library of purposeful animation utilities, all of which respect <code>prefers-reduced-motion</code>.</p>
+
+<h2 id="utilities">Animation utilities</h2>
+<div class="bd-example d-flex flex-wrap gap-3">
+  <span class="animate-fade-in d-inline-block border rounded p-3 bg-white">fade-in</span>
+  <span class="animate-slide-up d-inline-block border rounded p-3 bg-white">slide-up</span>
+  <span class="animate-slide-down d-inline-block border rounded p-3 bg-white">slide-down</span>
+  <span class="animate-slide-left d-inline-block border rounded p-3 bg-white">slide-left</span>
+  <span class="animate-slide-right d-inline-block border rounded p-3 bg-white">slide-right</span>
+  <span class="animate-zoom-in d-inline-block border rounded p-3 bg-white">zoom-in</span>
+  <span class="animate-pulse d-inline-block border rounded p-3 bg-white">pulse</span>
+  <span class="animate-shake d-inline-block border rounded p-3 bg-white">shake</span>
+  <span class="animate-glow d-inline-block border rounded p-3 bg-white">glow</span>
+</div>
+<div class="highlight"><pre><code>&lt;div class="animate-fade-in"&gt;Fades in over 0.4s&lt;/div&gt;
+&lt;div class="animate-slide-up"&gt;Slides up from below&lt;/div&gt;</code></pre></div>
+
+<h2 id="spinning">Spinning</h2>
+<div class="bd-example">
+  <span class="animate-spin d-inline-block" style="width:2rem;height:2rem;border:3px solid var(--budu-primary);border-right-color:transparent;border-radius:50%"></span>
+</div>
+
+<h2 id="delay-duration">Delay &amp; duration</h2>
+<p>Control timing with <code>.delay-{75|100|150|200|300|500}</code> and <code>.duration-{75|100|150|200|300|500|1000|2000|3000}</code>.</p>
+<div class="bd-example">
+  <div class="d-flex gap-2">
+    <span class="animate-fade-in delay-100 border rounded p-3">delay 100ms</span>
+    <span class="animate-fade-in delay-300 border rounded p-3">delay 300ms</span>
+    <span class="animate-fade-in delay-500 border rounded p-3">delay 500ms</span>
+  </div>
+</div>
+
+<h2 id="scroll-triggered">Scroll-triggered</h2>
+<p>For scroll-triggered animations, use the <code>budu.show.animate</code> pattern — add the animation class with JavaScript when the element enters the viewport:</p>
+<div class="highlight"><pre><code>const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-slide-up');
+      observer.unobserve(entry.target);
+    }
+  });
+});
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</code></pre></div>
+
+<h2 id="reduced">Reduced motion</h2>
+<p>All of Budu's motion shuts off when the user prefers reduced motion:</p>
+<div class="highlight"><pre><code>@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></pre></div>

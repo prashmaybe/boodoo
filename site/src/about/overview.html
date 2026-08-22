@@ -1,0 +1,32 @@
+<!--
+title: Overview
+description: Learn more about the Budu design system and the philosophies behind it.
+section: about
+order: 0
+-->
+<h1>About Budu</h1>
+<p class="lead">Budu is a modular, mobile-first CSS design framework that takes the strongest ideas from Bootstrap, Foundation, Tailwind CSS, and Material Design and weaves them into one cohesive, dependency-free toolkit.</p>
+
+<h2 id="why">Why Budu?</h2>
+<ul>
+  <li><strong>Four roadmaps, one toolkit.</strong> Get Bootstrap's battle-tested components and grid, Foundation's tidy scaffolds and helpers, Tailwind's utility classes, and Material's elevation and motion.</li>
+  <li><strong>Zero runtime dependencies.</strong> The JavaScript is vanilla, ~56&nbsp;KB, tree-shakeable, SSR-safe.</li>
+  <li><strong>Source-first.</strong> Author in Sass (primary) or Less; override a variable or a map to retheme the whole system.</li>
+  <li><strong>Modern CSS, graceful fallbacks.</strong> aspect-ratio, <code>text-wrap: balance</code>, CSS Grid utilities, backdrop-filter — all progressively enhanced.</li>
+  <li><strong>Accessible &amp; touch-friendly.</strong> 44px targets, focus-visible, reduced-motion, ARIA wiring, swipe support.</li>
+</ul>
+
+<h2 id="philosophy">Philosophy</h2>
+<p>Budu believes a design system should be a <strong>spark</strong> — a small, opinionated seed you can grow. Start from the tokens, compose with utilities, and reach for a component only when it earns its keep. Every piece is measurable, overridable, and removable.</p>
+
+<h2 id="tech">Technology</h2>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Layer</th><th>Choice</th></tr></thead>
+  <tbody>
+    <tr><td>CSS authoring</td><td>Sass (primary) + Less build</td></tr>
+    <tr><td>Grid</td><td>Mobile-first 12-col flexbox + CSS Grid utilities</td></tr>
+    <tr><td>Utils</td><td>Generated from a utility API map (Tailwind-style)</td></tr>
+    <tr><td>JS</td><td>Vanilla ES modules → UMD & ESM bundles</td></tr>
+    <tr><td>Docs</td><td>Static site built with Budu itself (dogfooding)</td></tr>
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+// BUDU IMAGES
+// Responsive image & thumbnail helpers.
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: var(--budu-body-bg);
+  border: var(--budu-border-width) solid var(--budu-border-color);
+  border-radius: $budu-border-radius;
+  max-width: 100%;
+  height: auto;
+}
+
+// Rounded image helpers
+.img-rounded {
+  border-radius: $budu-border-radius-lg;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+// Figure
+.figure {
+  display: inline-block;
+}
+
+.figure-img {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.figure-caption {
+  font-size: 0.875em;
+  color: var(--budu-body-secondary-color);
+}
+
+// Blur-up / placeholder image effect
+.img-blur-up {
+  filter: blur(8px);
+  transition: filter 0.4s ease;
+}
+
+.img-loading {
+  background: linear-gradient(90deg, $budu-gray-200 25%, $budu-gray-100 37%, $budu-gray-200 63%);
+  background-size: 400% 100%;
+  animation: budu-shine 1.4s ease infinite;
+}

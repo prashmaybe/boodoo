@@ -1,0 +1,42 @@
+<!--
+title: Usage & CDN
+description: Add Budu to your project via CSS and JS CDN links, or reference the local bundle.
+section: getting-started
+order: 3
+-->
+<h1>Usage &amp; CDN</h1>
+<p class="lead">Include Budu in your project using easy-to-use CDN links for quick prototyping, or reference the compiled bundles locally.</p>
+
+<h2 id="cdn">CSS only</h2>
+<p>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you the global styles, grid, all components, and utilities.</p>
+
+<div class="highlight"><pre><code>&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;</code></pre></div>
+
+<p>You can also load just the grid, reboot, or utilities separately for the leanest possible page:</p>
+<div class="highlight"><pre><code>&lt;!-- Grid only -->
+&lt;link href="https://budu.dihadiwala.com/dist/css/budu-grid.min.css" rel="stylesheet"&gt;
+
+&lt;!-- Utilities only -->
+&lt;link href="https://budu.dihadiwala.com/dist/css/budu-utilities.min.css" rel="stylesheet"&gt;</code></pre></div>
+
+<h2 id="js">JavaScript</h2>
+<p>Many Budu components require the JavaScript bundle to function. Add it right before the closing <code>&lt;/body&gt;</code> tag:</p>
+<div class="highlight"><pre><code>&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</code></pre></div>
+
+<p>If you only need a subset, import individual components from the ESM build:</p>
+<div class="highlight"><pre><code>&lt;script type="module"&gt;
+  import { Modal, Toast, Dropdown } from 'https://budu.dihadiwala.com/dist/js/budu.esm.js';
+  // components are auto-initialized from their data-* attributes
+&lt;/script&gt;</code></pre></div>
+
+<h2 id="bundled">Local bundle</h2>
+<p>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a href="./download.html">download</a> into a folder and reference them relatively:</p>
+<div class="highlight"><pre><code>&lt;link rel="stylesheet" href="css/budu.min.css"&gt;
+&lt;script src="js/budu.js"&gt;&lt;/script&gt;</code></pre></div>
+
+<h2 id="modules">JavaScript modules</h2>
+<p>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>Budu</code> object with every component, so you can call them programmatically:</p>
+<div class="highlight"><pre><code>&lt;script&gt;
+  Budu.toast('Hello from Budu!', { title: 'Welcome' });
+  new Budu.Modal(document.getElementById('myModal')).show();
+&lt;/script&gt;</code></pre></div>

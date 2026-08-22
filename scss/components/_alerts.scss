@@ -1,0 +1,66 @@
+// BUDU ALERTS
+// Contextual alert boxes with dismiss support.
+
+.alert {
+  --budu-alert-bg: transparent;
+  --budu-alert-border: transparent;
+  --budu-alert-color: inherit;
+  --budu-alert-padding-y: 1rem;
+  --budu-alert-padding-x: 1.25rem;
+
+  position: relative;
+  padding: var(--budu-alert-padding-y) var(--budu-alert-padding-x);
+  margin-bottom: 1rem;
+  color: var(--budu-alert-color);
+  background-color: var(--budu-alert-bg);
+  border: 1px solid var(--budu-alert-border);
+  border-radius: $budu-border-radius;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .alert-icon {
+    flex-shrink: 0;
+    font-size: 1.25em;
+    line-height: 1;
+    margin-top: 0.1em;
+  }
+}
+
+// Variants
+@each $name, $color in $budu-theme-colors {
+  .alert-#{$name} {
+    --budu-alert-color: #{map.get($budu-text-emphasis-map, $name)};
+    --budu-alert-bg: #{map.get($budu-bg-subtle-map, $name)};
+    --budu-alert-border: #{map.get($budu-border-subtle-map, $name)};
+
+    .alert-link {
+      color: map.get($budu-text-emphasis-map, $name);
+      font-weight: 600;
+    }
+  }
+}
+
+// Dismissible
+.alert-dismissible {
+  padding-right: 3rem;
+
+  .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 1.25rem 1rem;
+  }
+}
+
+// Alert link
+.alert-link {
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+}

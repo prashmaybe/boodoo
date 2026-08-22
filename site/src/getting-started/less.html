@@ -1,0 +1,39 @@
+<!--
+title: Customize with Less
+description: Budu also ships a Less build covering the design tokens, grid, core components and utilities.
+section: getting-started
+order: 6
+-->
+<h1>Customize with Less</h1>
+<p class="lead">Prefer Less over Sass? Budu ships a maintained Less build in the <code>less/</code> folder covering the design tokens, mobile-first grid, core components, and utilities.</p>
+
+<p>The Less build exposes the same public API as the Sass build — it declares the CSS custom properties (design tokens) on <code>:root</code>, then provides the grid, typography, buttons, cards, forms, and a core component set. You can import it and extend it with your own Less.</p>
+
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><code>@import "node_modules/budu/less/budu";</code></pre></div>
+
+<p>Or compile it directly with the Less CLI:</p>
+<div class="highlight"><pre><code>lessc less/budu.less css/budu.css</code></pre></div>
+
+<p>The compiled output is also available prebuilt as <code>dist/css/budu.less.css</code> if you just want the CSS.</p>
+
+<h2 id="variables">Variables</h2>
+<p>At the top of <code>less/budu.less</code> you'll find the design tokens as CSS custom properties. Override any of them to retheme the framework:</p>
+<div class="highlight"><pre><code>:root {
+  --budu-primary: #0d6efd;
+  --budu-border-radius: 0.375rem;
+}</code></pre></div>
+
+<div class="bd-callout bd-callout-warning">
+  <strong>Sass is the primary source.</strong> For the full, every-component-feature set (all CSS Grid utilities, Material elevation, extended components), use the <a href="./sass.html">Sass build</a> or the precompiled <code>dist/css</code>. The Less build is intentionally a well-rounded subset.
+</div>
+
+<h2 id="example">Example</h2>
+<div class="bd-example">
+  <div class="d-flex flex-wrap gap-3 align-items-center">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-outline-primary">Outline</button>
+    <span class="badge badge-pill">Pill</span>
+    <span class="spinner-border text-primary spinner-border-sm"></span>
+  </div>
+</div>

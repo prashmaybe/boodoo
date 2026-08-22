@@ -1,0 +1,47 @@
+<!--
+title: Popovers
+description: Documentation and examples for adding Bootstrap-like popovers with Budu.
+section: components
+order: 18
+-->
+<h1>Popovers</h1>
+<p class="lead">Documentation and examples for adding Budu popovers — small, overlay content bubbles that sit on top of their reference element.</p>
+
+<h2 id="overview">Overview</h2>
+<p>Popovers are a small content bubble that sit on top of their reference element. Add <code>data-budu-toggle="popover"</code> with a <code>data-budu-title</code>, or store the content in the <code>title</code> attribute. Clicking the trigger toggles the popover; it closes on outside tap and with <kbd>Esc</kbd>.</p>
+<p class="small text-muted">Budu ships a dependency-free positioning engine, so no Popper is required.</p>
+
+<h2 id="example">Example: enable popovers</h2>
+<div class="bd-example">
+  <button type="button" class="btn btn-lg btn-danger ripple" data-budu-toggle="popover" data-budu-title="Popover title" data-budu-content="And here's some amazing content. It's very engaging. Right?">
+    Click to toggle popover
+  </button>
+</div>
+<div class="highlight"><pre><code>&lt;button type="button"
+        data-budu-toggle="popover" data-budu-title="Popover title"
+        data-budu-content="And here's some amazing content."&gt;
+  Click to toggle popover
+&lt;/button&gt;</code></pre></div>
+
+<h2 id="placements">Placements</h2>
+<p>Four placement options are available: <code>top</code>, <code>bottom</code>, <code>start</code> (left), and <code>end</code> (right). Use <code>data-budu-placement</code>.</p>
+<div class="bd-example d-flex gap-2 flex-wrap">
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="top" data-budu-content="Top popover">Top</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="bottom" data-budu-content="Bottom popover">Bottom</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="start" data-budu-title="Start" data-budu-content="Start placement">Start</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="end" data-budu-content="End placement">End</button>
+</div>
+
+<h2 id="dismiss">Dismiss on next click</h2>
+<p>Use the <code>trigger</code> option — <code>data-budu-trigger="focus"</code> makes the popover toggle on focus and dismiss on blur (good for toggle buttons).</p>
+<div class="bd-example">
+  <a tabindex="0" class="btn btn-lg btn-outline-primary" role="button" data-budu-toggle="popover" data-budu-trigger="focus" data-budu-title="Dismissible popover" data-budu-content="And here's some amazing content. Focus-managed for accessibility.">
+    Dismissible popover
+  </a>
+</div>
+
+<h2 id="js">JavaScript</h2>
+<div class="highlight"><pre><code>// Enable all popovers on the page
+document.querySelectorAll('[data-budu-toggle="popover"]').forEach(function (el) {
+  if (!Budu.Popover.getInstance(el)) Budu.Popover.getOrCreateInstance(el);
+});</code></pre></div>

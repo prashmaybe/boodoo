@@ -1,0 +1,13 @@
+# Taste — Budu framework project
+- Draws on inspiration from established design systems (Bootstrap, Foundation, Tailwind CSS, Material UI) to blend the best ideas into a cohesive toolkit. Confidence: 0.9
+- Designs mobile-first and fully responsive, with breakpoints scaling up from the smallest viewport. Confidence: 0.9
+- Builds touch-supportive, interactive UI (touch targets, swipe gestures, touch-action handling). Confidence: 0.8
+- Embraces modern/recent CSS features (aspect-ratio, text-wrap, CSS Grid, backdrop-filter, clamp) while progressively enhancing with `@supports` for broad browser support. Confidence: 0.8
+- Prioritizes maximal browser compatibility for everything shipped. Confidence: 0.8
+- Strongly favors modular, composable architecture; pieces should be independently useful and tree-shakeable. Confidence: 0.9
+- Prefers a single framework/library to be consumable through every viable method: as an npm package, directly via CDN, and from source (Sass, Less, etc.). Confidence: 0.9
+- Authors CSS primarily in Sass and expects a parallel Less build to be provided. Confidence: 0.8
+- Values dependency-free, vanilla-JS components (no jQuery/bundler required) with a UMD/global plus an ESM build. Confidence: 0.7
+- Aligns a project to its existing official brand assets (logos, favicon, palette, OG image) and the brand-recommended font before shipping. Confidence: 0.8
+- Wants a docs website mirroring a known reference site (e.g., getbootstrap.com) with all components, examples and pages. Confidence: 0.8
+- Prefers a deployable static build that maps cleanly to a domain root (single folder to upload). Confidence: 0.7

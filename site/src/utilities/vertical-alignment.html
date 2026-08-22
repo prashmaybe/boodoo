@@ -1,0 +1,37 @@
+<!--
+title: Vertical alignment
+description: Easily change the vertical alignment of inline, inline-block, inline-table, and table cell elements.
+section: utilities
+order: 14
+-->
+<h1>Vertical alignment</h1>
+<p class="lead">Easily change the vertical alignment of inline, inline-block, inline-table, and table cell elements.</p>
+
+<h2 id="example">Example</h2>
+<p>Change the alignment of elements with the <code>align-*</code> classes.</p>
+<div class="bd-example">
+  <div class="table-responsive">
+    <table class="table align-middle" style="height:200px">
+      <thead><tr><th scope="col">Align</th><th scope="col">Example</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><code>.align-baseline</code></th><td class="align-baseline">text</td></tr>
+        <tr><th scope="row"><code>.align-top</code></th><td class="align-top">text</td></tr>
+        <tr><th scope="row"><code>.align-middle</code></th><td class="align-middle">text</td></tr>
+        <tr><th scope="row"><code>.align-bottom</code></th><td class="align-bottom">text</td></tr>
+        <tr><th scope="row"><code>.align-text-top</code></th><td class="align-text-top">text</td></tr>
+        <tr><th scope="row"><code>.align-text-bottom</code></th><td class="align-text-bottom">text</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2 id="inline">Inline vertical</h2>
+<div class="bd-example">
+  <span class="align-baseline">baseline</span>
+  <span class="align-top">top</span>
+  <span class="align-middle">middle</span>
+  <span class="align-bottom">bottom</span>
+</div>
+<div class="highlight"><pre><code>&lt;span class="align-middle"&gt;middle&lt;/span&gt;</code></pre></div>
+
+<p>With flexbox, prefer <code>.align-items-*</code> / <code>.align-self-*</code> — see <a href="./flex.html">the Flex utilities</a>.</p>

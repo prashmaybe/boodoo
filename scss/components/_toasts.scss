@@ -1,0 +1,97 @@
+// BUDU TOASTS
+// Toast notifications with stacking, positioning.
+
+.toast {
+  --budu-toast-max-width: #{$budu-toast-max-width};
+  --budu-toast-bg: #{$budu-toast-bg};
+  --budu-toast-border-color: #{$budu-toast-border-color};
+  --budu-toast-border-radius: #{$budu-toast-border-radius};
+  --budu-toast-box-shadow: #{$budu-toast-box-shadow};
+  --budu-toast-padding-y: 0.75rem;
+  --budu-toast-padding-x: 0.875rem;
+
+  width: var(--budu-toast-max-width);
+  max-width: 100%;
+  font-size: 0.875rem;
+  color: var(--budu-body-color);
+  pointer-events: auto;
+  background-color: var(--budu-toast-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--budu-toast-border-color);
+  box-shadow: var(--budu-toast-box-shadow);
+  border-radius: var(--budu-toast-border-radius);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  &.showing {
+    opacity: 0;
+  }
+
+  &.show {
+    display: block;
+    opacity: 1;
+    animation: budu-slide-up 0.3s ease;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+.toast-container {
+  --budu-toast-zindex: #{$budu-zindex-toast};
+
+  position: fixed;
+  z-index: var(--budu-toast-zindex);
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+
+  > :not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  &.top-0.start-0 { top: 1rem; left: 1rem; }
+  &.top-0.end-0 { top: 1rem; right: 1rem; }
+  &.top-50.start-50 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  &.bottom-0.end-0 { bottom: 1rem; right: 1rem; }
+  &.bottom-0.start-0 { bottom: 1rem; left: 1rem; }
+}
+
+// Header / body
+.toast-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--budu-toast-padding-y) var(--budu-toast-padding-x);
+  color: var(--budu-body-secondary-color);
+  background-color: rgba(255, 255, 255, 0.85);
+  background-clip: padding-box;
+  border-bottom: 1px solid var(--budu-toast-border-color);
+  border-top-left-radius: calc(var(--budu-toast-border-radius) - 1px);
+  border-top-right-radius: calc(var(--budu-toast-border-radius) - 1px);
+
+  .btn-close {
+    margin-left: auto;
+  }
+}
+
+.toast-body {
+  padding: var(--budu-toast-padding-y) var(--budu-toast-padding-x);
+  word-wrap: break-word;
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .toast-#{$name} {
+    --budu-toast-bg: #{$color};
+    --budu-toast-border-color: #{shift-color($color, -10%)};
+    color: if($name == "light", $budu-dark, $budu-white);
+
+    .toast-header {
+      color: inherit;
+      background-color: transparent;
+      border-bottom-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

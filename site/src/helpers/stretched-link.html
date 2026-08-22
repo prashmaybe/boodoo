@@ -1,0 +1,32 @@
+<!--
+title: Stretched link
+description: Make any HTML element or Bootstrap component clickable by "stretching" a nested link via CSS.
+section: helpers
+order: 3
+-->
+<h1>Stretched link</h1>
+<p class="lead">Make any HTML element or Budu component clickable by "stretching" a nested link via CSS.</p>
+
+<p>Add <code>.stretched-link</code> to a link to make its <em>containing block</em> clickable via a <code>::after</code> pseudo-element. In most cases, this means an element with <code>position: relative</code> that contains a link with the <code>.stretched-link</code> class is clickable.</p>
+
+<div class="bd-example">
+  <div class="card" style="max-width:24rem">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='200'%3E%3Crect width='384' height='200' fill='%23ece6fd'/%3E%3C/svg%3E" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><a href="#" class="stretched-link text-decoration-none">Card with stretched link</a></h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text"><small class="text-muted">The whole card is clickable.</small></p>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="card" style="width: 24rem;"&gt;
+  &lt;img src="..." class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;
+      &lt;a href="#" class="stretched-link"&gt;Card with stretched link&lt;/a&gt;
+    &lt;/h5&gt;
+    &lt;p class="card-text"&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<p>If you use <code>.stretched-link</code> on a block-level element that's not inside a positioned parent, make sure the element itself is <code>position: relative</code> (Budu's <code>.card</code>, <code>.modal</code>, etc. already are).</p>

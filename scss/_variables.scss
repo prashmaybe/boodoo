@@ -1,0 +1,535 @@
+// stylelint-disable scss/dollar-variable-default
+//
+// BUDU VARIABLES
+//
+// Every customizable value lives here. Override any of them in your own
+// `_custom.scss` (usually as `_variables.scss` mapped into the build via
+// `@import "variables"` preceded by your overrides) or by setting the
+// `$budu-*` variables before importing `scss/budu.scss`.
+//
+// Design language blends:
+//   * Bootstrap-style 12-column mobile-first grid & components
+//   * Foundation-style utility breadth and flex helpers
+//   * Tailwind-style functional utilities & clear scale
+//   * Material-style elevation, motion tokens & typographic rhythm
+
+@use "sass:map";
+@use "sass:math";
+
+// -----------------------------------------------------------------
+// 1. COLOR SYSTEM
+// -----------------------------------------------------------------
+
+// Contains default values so they can be overridden in a custom build in json-compatible form.
+// Brand palette from budu-brand-assets: Primary Violet #7C3AED, Secondary Indigo #5B21E6,
+// Deep Indigo #17135F, Ink #11143D, Muted #5C6280.
+$budu-primary:       #7c3aed !default;  // Primary Violet — Budu brand
+$budu-secondary:     #5b21e6 !default;  // Secondary Indigo
+$budu-success:       #1c9e50 !default;
+$budu-info:          #0ea5e9 !default;
+$budu-warning:       #f59e0b !default;
+$budu-danger:        #e11d48 !default;
+$budu-light:         #f6f5fb !default;
+$budu-dark:          #17135f !default;  // Deep Indigo
+$budu-black:         #000000 !default;
+$budu-white:         #ffffff !default;
+$budu-accent:        #f43f5e !default;
+
+// Grays (Foundation-inspired neutral scale)
+$budu-gray-100:      #f7f8fb !default;
+$budu-gray-200:      #ececf4 !default;
+$budu-gray-300:      #dedfec !default;
+$budu-gray-400:      #c2c4d8 !default;
+$budu-gray-500:      #8b8fb0 !default;
+$budu-gray-600:      #5c6280 !default;  // Brand "Muted Text"
+$budu-gray-700:      #3f4463 !default;
+$budu-gray-800:      #272c4f !default;
+$budu-gray-900:      #11143d !default;  // Brand "Ink"
+
+// Theme color map (Bootstrap-style)
+$budu-theme-colors: (
+  "primary":   $budu-primary,
+  "secondary": $budu-secondary,
+  "success":   $budu-success,
+  "info":      $budu-info,
+  "warning":   $budu-warning,
+  "danger":    $budu-danger,
+  "light":     $budu-light,
+  "dark":      $budu-dark,
+) !default;
+
+// Color grays map
+$budu-grays: (
+  "100": $budu-gray-100,
+  "200": $budu-gray-200,
+  "300": $budu-gray-300,
+  "400": $budu-gray-400,
+  "500": $budu-gray-500,
+  "600": $budu-gray-600,
+  "700": $budu-gray-700,
+  "800": $budu-gray-800,
+  "900": $budu-gray-900,
+) !default;
+
+// Brick / contextual colors (Foundation-style)
+$budu-primary-text-emphasis:   mix(#000, $budu-primary, 30%) !default;
+$budu-secondary-text-emphasis: mix(#000, $budu-secondary, 30%) !default;
+$budu-success-text-emphasis:   mix(#000, $budu-success, 30%) !default;
+$budu-info-text-emphasis:      mix(#000, $budu-info, 40%) !default;
+$budu-warning-text-emphasis:   mix(#000, $budu-warning, 40%) !default;
+$budu-danger-text-emphasis:    mix(#000, $budu-danger, 30%) !default;
+$budu-light-text-emphasis:     $budu-gray-700 !default;
+$budu-dark-text-emphasis:      $budu-gray-700 !default;
+
+$budu-primary-bg-subtle:   tint-color($budu-primary, 92%) !default;
+$budu-secondary-bg-subtle: tint-color($budu-secondary, 92%) !default;
+$budu-success-bg-subtle:   tint-color($budu-success, 92%) !default;
+$budu-info-bg-subtle:      tint-color($budu-info, 90%) !default;
+$budu-warning-bg-subtle:   tint-color($budu-warning, 88%) !default;
+$budu-danger-bg-subtle:    tint-color($budu-danger, 90%) !default;
+$budu-light-bg-subtle:     mix($budu-light, $budu-white, 50%) !default;
+$budu-dark-bg-subtle:      tint-color($budu-dark, 88%) !default;
+
+$budu-primary-border-subtle:   tint-color($budu-primary, 75%) !default;
+$budu-secondary-border-subtle: tint-color($budu-secondary, 75%) !default;
+$budu-success-border-subtle:   tint-color($budu-success, 75%) !default;
+$budu-info-border-subtle:      tint-color($budu-info, 70%) !default;
+$budu-warning-border-subtle:   tint-color($budu-warning, 65%) !default;
+$budu-danger-border-subtle:    tint-color($budu-danger, 70%) !default;
+$budu-light-border-subtle:     $budu-gray-300 !default;
+$budu-dark-border-subtle:      tint-color($budu-dark, 60%) !default;
+
+$budu-body-color:            $budu-gray-800 !default;
+$budu-body-color-rgb:        to-rgb($budu-body-color) !default;
+$budu-body-bg:               $budu-white !default;
+$budu-body-bg-rgb:           to-rgb($budu-body-bg) !default;
+$budu-body-secondary-color:  rgba($budu-body-color, 0.75) !default;
+$budu-body-secondary-bg:     $budu-gray-200 !default;
+$budu-body-tertiary-color:   rgba($budu-body-color, 0.5) !default;
+$budu-body-tertiary-bg:      $budu-gray-100 !default;
+$budu-body-emphasis-color:   $budu-gray-900 !default;
+
+$budu-link-color:            $budu-primary !default;
+$budu-link-decoration:       underline !default;
+$budu-link-hover-color:      shift-color($budu-link-color, -15%) !default;
+$budu-link-hover-decoration: underline !default;
+$budu-emphasis-color:        $budu-gray-900 !default;
+
+$budu-code-color:            #d63384 !default;
+
+$budu-highlight-color:       $budu-gray-900 !default;
+$budu-highlight-bg:          #fff3cd !default;
+
+$budu-mark-bg:               #fcf8e3 !default;
+
+$budu-focus-ring-width:          0.25rem !default;
+$budu-focus-ring-opacity:        0.25 !default;
+$budu-focus-ring-color:          rgba($budu-primary, $budu-focus-ring-opacity) !default;
+$budu-focus-ring-blur:           0 !default;
+$budu-focus-ring-box-shadow:     #{$budu-focus-ring-blur} 0 0 #{$budu-focus-ring-width} #{$budu-focus-ring-color} !default;
+
+$budu-accordion-icon-color:      $budu-body-color !default;
+$budu-accordion-icon-active-color: $budu-primary-text-emphasis !default;
+
+// -----------------------------------------------------------------
+// 2. SPACING & BASE
+// -----------------------------------------------------------------
+
+// 5-step scale (Tailwind-flavored power-of-2 base) plus a deeper map.
+// $budu-spacer: 1rem = 16px.
+$budu-spacer: 1rem !default;
+$budu-spacers: (
+  0: 0,
+  0.5: $budu-spacer,           // 0.5  → 8px
+  1: $budu-spacer * 1.25,      // 1    → 20px
+  1.5: $budu-spacer * 1.75,    // 1.5  → 28px
+  2: $budu-spacer * 2.25,      // 2    → 36px
+  2.5: $budu-spacer * 2.75,    // 2.5  → 44px
+  3: $budu-spacer * 3.25,      // 3    → 52px
+  3.5: $budu-spacer * 3.75,    // 3.5  → 60px
+  4: $budu-spacer * 4.25,      // 4    → 68px
+  4.5: $budu-spacer * 4.75,    // 4.5  → 76px
+  5: $budu-spacer * 5.25,      // 5    → 84px
+  6: $budu-spacer * 6.25,      // 6    → 100px
+  7: $budu-spacer * 7.25,      // 7    → 116px
+  8: $budu-spacer * 8.25,      // 8    → 132px
+  9: $budu-spacer * 9.25,      // 9    → 148px
+  10: $budu-spacer * 10.25,    // 10   → 164px
+) !default;
+
+// Foundation-style px-scale for precise utilities
+$budu-space: () !default;
+$budu-space: map.merge((
+  "none": 0,
+  "xs": 0.25rem,
+  "sm": 0.5rem,
+  "md": 1rem,
+  "lg": 1.5rem,
+  "xl": 2rem,
+  "xxl": 3rem,
+), $budu-space);
+
+$budu-negative-spacers: negativify-map($budu-spacers) !default;
+
+// -----------------------------------------------------------------
+// 3. TYPOGRAPHY
+// -----------------------------------------------------------------
+
+$budu-font-family-sans-serif: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$budu-font-family-serif: Georgia, "Times New Roman", serif !default;
+$budu-font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+$budu-font-family-base: var(--budu-font-sans-serif) !default;
+
+// Display sizes (Material-flavored type scale)
+$budu-font-sizes: () !default;
+$budu-font-sizes: map.merge((
+  "fluid-lg": 2.5rem,
+  "fluid-md": 2rem,
+  "fluid-sm": 1.5rem,
+  "h1": 2.5rem,
+  "h2": 2rem,
+  "h3": 1.75rem,
+  "h4": 1.5rem,
+  "h5": 1.25rem,
+  "h6": 1rem,
+  "lead": 1.25rem,
+  "display-1": 5rem,
+  "display-2": 4.5rem,
+  "display-3": 4rem,
+  "display-4": 3.5rem,
+  "display-5": 3rem,
+  "display-6": 2.5rem,
+), $budu-font-sizes);
+
+$budu-font-size-root:         null !default;
+$budu-font-size-base:         1rem !default;  // assumes the browser default, typically `16px`
+$budu-font-size-sm:           $budu-font-size-base * 0.875 !default;
+$budu-font-size-lg:           $budu-font-size-base * 1.25 !default;
+
+$budu-h1-font-size:           $budu-font-size-base * 2.5 !default;
+$budu-h2-font-size:           $budu-font-size-base * 2 !default;
+$budu-h3-font-size:           $budu-font-size-base * 1.75 !default;
+$budu-h4-font-size:           $budu-font-size-base * 1.5 !default;
+$budu-h5-font-size:           $budu-font-size-base * 1.25 !default;
+$budu-h6-font-size:           $budu-font-size-base !default;
+
+$budu-font-weight-lighter:   lighter !default;
+$budu-font-weight-light:     300 !default;
+$budu-font-weight-normal:    400 !default;
+$budu-font-weight-medium:    500 !default;
+$budu-font-weight-semibold:  600 !default;
+$budu-font-weight-bold:      700 !default;
+$budu-font-weight-bolder:    bolder !default;
+
+$budu-font-weight-base:      $budu-font-weight-normal !default;
+
+$budu-line-height-base:      1.5 !default;
+$budu-line-height-sm:        1.25 !default;
+$budu-line-height-lg:        2 !default;
+
+$budu-h1-font-weight:        $budu-font-weight-medium !default;
+$budu-h2-font-weight:        $budu-font-weight-medium !default;
+$budu-h3-font-weight:        $budu-font-weight-medium !default;
+$budu-h4-font-weight:        $budu-font-weight-medium !default;
+$budu-h5-font-weight:        $budu-font-weight-medium !default;
+$budu-h6-font-weight:        $budu-font-weight-medium !default;
+
+$budu-headings-margin-bottom:    $budu-spacer * 0.625 !default;
+$budu-headings-font-family:      null !default;
+$budu-headings-font-style:       null !default;
+$budu-headings-font-weight:      500 !default;
+$budu-headings-line-height:      1.2 !default;
+$budu-headings-color:            inherit !default;
+
+$budu-lead-font-size:            $budu-font-size-base * 1.25 !default;
+$budu-lead-font-weight:          300 !default;
+
+$budu-small-font-size:           0.875em !default;
+
+$budu-inkimeter-type-scale: (
+  "major-second"  : 1.125,
+  "major-third"   : 1.25,
+  "perfect-fourth": 1.333,
+) !default;
+$budu-type-ratio: map.get($budu-inkimeter-type-scale, "major-third") !default;
+
+// Body text / paragraph
+$budu-paragraph-margin-bottom:  1rem !default;
+$budu-text-muted:               #6c757d !default;
+
+// -----------------------------------------------------------------
+// 4. ELEVATION & SHADOWS (Material-inspired)
+// -----------------------------------------------------------------
+
+$budu-shadow-map: () !default;
+$budu-shadow-map: map.merge(
+  (
+    // Tailwind-like minimal
+    "sm":      0 1px 2px 0 rgb(0 0 0 / 0.05),
+    // Base
+    "base":    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    // md
+    "md":      0 4px 6px -1px rgb(0 0 0 / 0.1),
+    // lg
+    "lg":      0 10px 15px -3px rgb(0 0 0 / 0.1),
+    // xl
+    "xl":      0 20px 25px -5px rgb(0 0 0 / 0.1),
+    "2xl":     0 25px 50px -12px rgb(0 0 0 / 0.25),
+    "inner":   inset 0 2px 4px 0 rgb(0 0 0 / 0.05),
+    "none":    none,
+  ),
+  $budu-shadow-map
+);
+
+// Material elevation steps (dp → z-index + shadow)
+$budu-elevation-map: () !default;
+$budu-elevation-map: map.merge(
+  (
+    0:  none,
+    1:  (0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)),
+    2:  (0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)),
+    3:  (0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)),
+    4:  (0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)),
+    5:  (0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22)),
+  ),
+  $budu-elevation-map
+);
+
+$budu-box-shadow:                                  0 0.5rem 1rem rgba(0, 0, 0, 0.15) !default;
+$budu-box-shadow-sm:                               0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !default;
+$budu-box-shadow-lg:                               0 1rem 3rem rgba(0, 0, 0, 0.175) !default;
+$budu-box-shadow-inset:                            inset 0 1px 2px rgba(0, 0, 0, 0.075) !default;
+
+// -----------------------------------------------------------------
+// 5. TRANSITIONS (Motion tokens)
+// -----------------------------------------------------------------
+$budu-transition-duration:                 150ms !default;
+$budu-transition-duration-slow:            300ms !default;
+$budu-transition-timing:                   cubic-bezier(0.4, 0, 0.2, 1) !default;  // Material standard
+$budu-transition-timing-decelerate:        cubic-bezier(0, 0, 0.2, 1) !default;
+$budu-transition-timing-accelerate:        cubic-bezier(0.4, 0, 1, 1) !default;
+$budu-transition:                          color $budu-transition-duration $budu-transition-timing,
+                                           background-color $budu-transition-duration $budu-transition-timing,
+                                           border-color $budu-transition-duration $budu-transition-timing,
+                                           box-shadow $budu-transition-duration $budu-transition-timing !default;
+
+$budu-transition-base:                     all 0.2s ease-in-out !default;
+$budu-transition-fade:                     opacity 0.15s linear !default;
+$budu-transition-collapse:                 height 0.35s ease !default;
+
+// -----------------------------------------------------------------
+// 6. BORDER
+// -----------------------------------------------------------------
+$budu-border-width:                1px !default;
+$budu-border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+) !default;
+
+$budu-border-style:                solid !default;
+$budu-border-color:                $budu-gray-300 !default;
+$budu-border-color-translucent:    rgba(0, 0, 0, 0.175) !default;
+$budu-border-radius:               0.5rem !default;   // 8px — Material rounded
+$budu-border-radius-sm:            0.375rem !default;
+$budu-border-radius-lg:            0.75rem !default;
+$budu-border-radius-xl:            1rem !default;
+$budu-border-radius-xxl:           2rem !default;
+$budu-border-radius-pill:          50rem !default;
+$budu-border-radius-map: (
+  "sm": $budu-border-radius-sm,
+  null: $budu-border-radius,
+  "lg": $budu-border-radius-lg,
+  "xl": $budu-border-radius-xl,
+  "xxl": $budu-border-radius-xxl,
+  "pill": $budu-border-radius-pill,
+) !default;
+
+// -----------------------------------------------------------------
+// 7. Z-INDEX & OVERLAYS
+// -----------------------------------------------------------------
+$budu-zindex-dropdown:            1000 !default;
+$budu-zindex-sticky:              1020 !default;
+$budu-zindex-fixed:               1030 !default;
+$budu-zindex-offcanvas-backdrop:  1040 !default;
+$budu-zindex-offcanvas:           1045 !default;
+$budu-zindex-modal-backdrop:      1050 !default;
+$budu-zindex-modal:               1055 !default;
+$budu-zindex-popover:             1070 !default;
+$budu-zindex-tooltip:             1080 !default;
+$budu-zindex-toast:               1090 !default;
+
+$budu-zindex-map: (
+  "drop-down": $budu-zindex-dropdown,
+  "sticky":    $budu-zindex-sticky,
+  "fixed":     $budu-zindex-fixed,
+  "offcanvas-backdrop": $budu-zindex-offcanvas-backdrop,
+  "offcanvas": $budu-zindex-offcanvas,
+  "modal-backdrop": $budu-zindex-modal-backdrop,
+  "modal":     $budu-zindex-modal,
+  "popover":   $budu-zindex-popover,
+  "tooltip":   $budu-zindex-tooltip,
+  "toast":     $budu-zindex-toast,
+) !default;
+
+// -----------------------------------------------------------------
+// 8. BREAKPOINTS & GRID (Bootstrap 12-col mobile-first)
+// -----------------------------------------------------------------
+$budu-grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+// Breakpoints with logical down names
+$budu-breakpoints-down: (
+  xs: 0,
+  sm: 575.98px,
+  md: 767.98px,
+  lg: 991.98px,
+  xl: 1199.98px,
+  xxl: 1399.98px,
+) !default;
+
+// Container max widths per breakpoint
+$budu-container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+) !default;
+
+// Grid gutter
+$budu-grid-gutter-width:              1.5rem !default;  // 24px
+$budu-grid-gutter-width-sm:           1rem !default;
+$budu-grid-gutter-width-lg:           2rem !default;
+
+$budu-grid-row-columns:               12 !default;
+$budu-grid-columns:                   12 !default;
+$budu-grid-gutter:                    $budu-grid-gutter-width !default;
+
+// -----------------------------------------------------------------
+// 9. FORM CONTROLS
+// -----------------------------------------------------------------
+$budu-form-label-font-weight:       500 !default;
+$budu-input-btn-padding-y:          0.5rem !default;
+$budu-input-btn-padding-x:          0.875rem !default;
+$budu-input-btn-font-family:        null !default;
+$budu-input-btn-font-size:          $budu-font-size-base !default;
+$budu-input-btn-line-height:        1.5 !default;
+
+$budu-input-btn-padding-y-sm:       0.375rem !default;
+$budu-input-btn-padding-x-sm:       0.625rem !default;
+$budu-input-btn-font-size-sm:       $budu-font-size-sm !default;
+
+$budu-input-btn-padding-y-lg:       0.875rem !default;
+$budu-input-btn-padding-x-lg:       1.25rem !default;
+$budu-input-btn-font-size-lg:       $budu-font-size-lg !default;
+
+$budu-input-btn-border-width:       $budu-border-width !default;
+
+$budu-btn-font-weight:              500 !default;
+$budu-btn-box-shadow:               inset 0 1px 0 rgba($budu-white, 0.15), 0 1px 1px rgba($budu-black, 0.075) !default;
+$budu-btn-focus-width:              $budu-focus-ring-width !default;
+$budu-btn-focus-box-shadow:         $budu-focus-ring-box-shadow !default;
+$budu-btn-active-box-shadow:        inset 0 3px 5px rgba($budu-black, 0.125) !default;
+$budu-btn-disabled-opacity:         0.65 !default;
+$budu-btn-transition:               color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                                    border-color 0.15s ease-in-out, box-shadow $budu-transition-duration $budu-transition-timing,
+                                    transform 0.05s ease !default;
+
+$budu-form-control-bg:              $budu-body-bg !default;
+$budu-form-control-disabled-bg:     $budu-gray-200 !default;
+$budu-form-control-border-color:    $budu-gray-400 !default;
+$budu-form-control-focus-border:    $budu-primary !default;
+$budu-form-control-focus-box-shadow:$budu-focus-ring-box-shadow !default;
+
+// -----------------------------------------------------------------
+// 10. COMPONENTS
+// -----------------------------------------------------------------
+$budu-card-spacer-y:                1.25rem !default;
+$budu-card-spacer-x:                1.25rem !default;
+$budu-card-border-width:            $budu-border-width !default;
+$budu-card-border-color:            rgba($budu-gray-400, 0.35) !default;
+$budu-card-border-radius:           $budu-border-radius !default;
+$budu-card-cap-padding-y:           1rem !default;
+$budu-card-cap-padding-x:           1.25rem !default;
+$budu-card-bg:                      $budu-body-bg !default;
+$budu-card-color:                   null !default;
+
+$budu-navbar-padding-y:             0.75rem !default;
+$budu-navbar-padding-x:             1rem !default;
+$budu-navbar-nav-link-padding-x:    0.75rem !default;
+$budu-navbar-brand-font-size:       1.25rem !default;
+$budu-navbar-brand-font-weight:     700 !default;
+$budu-navbar-height:                auto !default;
+$budu-navbar-bg:                    rgba($budu-white, 0.95) !default;
+$budu-navbar-border-color:          $budu-gray-200 !default;
+
+$budu-dropdown-min-width:           12rem !default;
+$budu-dropdown-padding-y:           0.5rem !default;
+$budu-dropdown-spacer:              0.25rem !default;
+$budu-dropdown-bg:                  $budu-body-bg !default;
+$budu-dropdown-border-color:        $budu-gray-200 !default;
+$budu-dropdown-border-radius:       $budu-border-radius !default;
+$budu-dropdown-box-shadow:          map.get($budu-elevation-map, 2) !default;
+$budu-dropdown-link-color:          $budu-body-color !default;
+$budu-dropdown-link-hover-bg:       $budu-gray-100 !default;
+$budu-dropdown-link-active-bg:      $budu-primary !default;
+$budu-dropdown-link-active-color:   $budu-white !default;
+
+$budu-modal-backdrop-bg:            rgba($budu-black, 0.5) !default;
+$budu-modal-backdrop-opacity:       0.5 !default;
+$budu-modal-bg:                     $budu-body-bg !default;
+$budu-modal-border-radius:          $budu-border-radius-lg !default;
+$budu-modal-box-shadow:             map.get($budu-elevation-map, 5) !default;
+$budu-modal-transition:             transform 0.3s $budu-transition-timing-decelerate, opacity 0.15s linear !default;
+
+$budu-tooltip-bg:                   $budu-emphasis-color !default;
+$budu-tooltip-color:                $budu-white !default;
+$budu-tooltip-border-radius:        $budu-border-radius-sm !default;
+$budu-tooltip-opacity:              0.9 !default;
+$budu-tooltip-padding-y:            0.375rem !default;
+$budu-tooltip-padding-x:            0.625rem !default;
+
+$budu-popover-bg:                   $budu-body-bg !default;
+$budu-popover-border-color:         $budu-gray-300 !default;
+$budu-popover-border-radius:        $budu-border-radius !default;
+$budu-popover-box-shadow:           map.get($budu-elevation-map, 3) !default;
+
+$budu-toast-max-width:              350px !default;
+$budu-toast-bg:                     rgba($budu-white, 0.85) !default;
+$budu-toast-border-color:           rgba($budu-gray-400, 0.45) !default;
+$budu-toast-border-radius:          $budu-border-radius !default;
+$budu-toast-box-shadow:             map.get($budu-elevation-map, 2) !default;
+
+$budu-progress-height:              0.625rem !default;
+$budu-progress-bg:                  $budu-gray-200 !default;
+$budu-progress-bar-bg:              $budu-primary !default;
+$budu-progress-border-radius:       $budu-border-radius-pill !default;
+
+$budu-caret-width:                  0.3em !default;
+$budu-caret-vertical-align:         0.125em !default;
+
+// -----------------------------------------------------------------
+// 11. UTILITY API CONFIG (Tailwind-style generation)
+// -----------------------------------------------------------------
+// This tells the utility generator which classes to create and at which
+// breakpoints. See `scss/mixins/_utility-api.scss`.
+$budu-utility-important:          false !default;
+
+$budu-responsive-utilities: map-keys($budu-grid-breakpoints) !default;
+
+$budu-container-padding-x:        $budu-grid-gutter-width * 0.5 !default;
+$budu-gutter-x:                   $budu-grid-gutter-width !default;
+$budu-gutter-y:                   $budu-grid-gutter-width !default;

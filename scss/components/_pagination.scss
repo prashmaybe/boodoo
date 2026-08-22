@@ -1,0 +1,104 @@
+// BUDU PAGINATION
+// Pagination with sizes, disabled, active states.
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.875rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $budu-link-color;
+    text-decoration: none;
+    background-color: var(--budu-body-bg);
+    border: $budu-border-width solid var(--budu-border-color);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:hover {
+      z-index: 2;
+      color: $budu-link-hover-color;
+      background-color: var(--budu-body-tertiary-bg);
+      border-color: var(--budu-border-color);
+    }
+
+    &:focus {
+      z-index: 3;
+      color: $budu-link-hover-color;
+      background-color: var(--budu-body-tertiary-bg);
+      outline: 0;
+      box-shadow: $budu-focus-ring-box-shadow;
+    }
+  }
+
+  .page-item {
+    &:not(:first-child) .page-link {
+      margin-left: calc(#{$budu-border-width} * -1);
+    }
+
+    &:first-child .page-link {
+      border-top-left-radius: $budu-border-radius;
+      border-bottom-left-radius: $budu-border-radius;
+    }
+
+    &:last-child .page-link {
+      border-top-right-radius: $budu-border-radius;
+      border-bottom-right-radius: $budu-border-radius;
+    }
+
+    &.active .page-link {
+      z-index: 3;
+      color: $budu-white;
+      background-color: $budu-primary;
+      border-color: $budu-primary;
+    }
+
+    &.disabled .page-link {
+      color: var(--budu-body-tertiary-color);
+      pointer-events: none;
+      background-color: var(--budu-body-bg);
+      border-color: var(--budu-border-color);
+    }
+  }
+}
+
+// Sizes
+.pagination-lg .page-link {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+}
+
+.pagination-sm .page-link {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+// Rounded pill
+.pagination-pill .page-link {
+  border-radius: $budu-border-radius-pill;
+  margin: 0 0.125rem;
+}
+
+// Simple (no border)
+.pagination-simple {
+  .page-link {
+    border: 0;
+    border-radius: $budu-border-radius;
+
+    &:hover {
+      background-color: var(--budu-body-tertiary-bg);
+    }
+  }
+
+  .page-item:not(:first-child) .page-link {
+    margin-left: 0.125rem;
+  }
+
+  .page-item.active .page-link {
+    background-color: $budu-primary;
+  }
+}

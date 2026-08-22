@@ -1,0 +1,231 @@
+// BUDU MODAL
+// Modal dialog with backdrop, scrollable, centered, fullscreen variants.
+
+.modal {
+  --budu-modal-width: 500px;
+  --budu-modal-margin: 0.5rem;
+  --budu-modal-bg: var(--budu-body-bg);
+  --budu-modal-border-radius: #{$budu-modal-border-radius};
+  --budu-modal-box-shadow: #{$budu-modal-box-shadow};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $budu-zindex-modal;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+
+  &.show {
+    display: block;
+  }
+}
+
+// Backdrop
+.modal-backdrop {
+  --budu-modal-backdrop-bg: #{$budu-modal-backdrop-bg};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $budu-zindex-modal-backdrop;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--budu-modal-backdrop-bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  &.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+
+  &.show {
+    opacity: $budu-modal-backdrop-opacity;
+  }
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: var(--budu-modal-margin);
+  pointer-events: none;
+
+  &.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - var(--budu-modal-margin) * 2);
+  }
+
+  &.modal-dialog-scrollable {
+    height: calc(100% - var(--budu-modal-margin) * 2);
+
+    .modal-content {
+      max-height: 100%;
+      overflow: hidden;
+    }
+
+    .modal-body {
+      overflow-y: auto;
+    }
+  }
+
+  &.modal-dialog-slide-up {
+    .modal-content {
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.modal.fade .modal-dialog {
+  transform: translate(0, -50px);
+  transition: $budu-modal-transition;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+
+  .modal-content {
+    animation: budu-zoom-in 0.2s ease;
+  }
+}
+
+// Desktop sizing
+@include media-breakpoint-up(sm) {
+  .modal {
+    --budu-modal-margin: 1.75rem;
+  }
+
+  .modal-dialog {
+    max-width: var(--budu-modal-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .modal-sm {
+    --budu-modal-width: 300px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .modal-lg,
+  .modal-xl {
+    --budu-modal-width: 800px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-xl {
+    --budu-modal-width: 1140px;
+  }
+}
+
+// Fullscreen
+.modal-fullscreen {
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+
+  .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+@each $breakpoint in map.keys($budu-grid-breakpoints) {
+  @if $breakpoint != "xs" {
+    $infix: "-#{$breakpoint}";
+
+    @include media-breakpoint-up($breakpoint) {
+      .modal-fullscreen#{$infix}-down {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+
+        .modal-content {
+          height: 100%;
+          border: 0;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+// Content
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--budu-body-color);
+  pointer-events: auto;
+  background-color: var(--budu-modal-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--budu-border-color-translucent);
+  border-radius: var(--budu-modal-border-radius);
+  outline: 0;
+  box-shadow: var(--budu-modal-box-shadow);
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--budu-border-color);
+  border-top-left-radius: calc(var(--budu-modal-border-radius) - 1px);
+  border-top-right-radius: calc(var(--budu-modal-border-radius) - 1px);
+
+  .modal-title {
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  gap: 0.5rem;
+  border-top: 1px solid var(--budu-border-color);
+  border-bottom-right-radius: calc(var(--budu-modal-border-radius) - 1px);
+  border-bottom-left-radius: calc(var(--budu-modal-border-radius) - 1px);
+}
+
+// Static (non-dismissable) modal
+.modal-static .modal-dialog {
+  transform: scale(1.02);
+}
+
+// Scrollbar (Windows-style)
+.modal-open {
+  overflow: hidden;
+
+  .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

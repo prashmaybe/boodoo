@@ -1,0 +1,105 @@
+// BUDU PROGRESS
+// Progress bars with striped, animated, stacked variants.
+
+.progress {
+  --budu-progress-height: #{$budu-progress-height};
+  --budu-progress-bg: #{$budu-progress-bg};
+  --budu-progress-border-radius: #{$budu-progress-border-radius};
+  --budu-progress-bar-bg: #{$budu-progress-bar-bg};
+  --budu-progress-bar-color: #{$budu-white};
+  --budu-progress-bar-transition: width 0.6s ease;
+
+  display: flex;
+  height: var(--budu-progress-height);
+  overflow: hidden;
+  font-size: 0.75rem;
+  background-color: var(--budu-progress-bg);
+  border-radius: var(--budu-progress-border-radius);
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--budu-progress-bar-color);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--budu-progress-bar-bg);
+  transition: var(--budu-progress-bar-transition);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+
+// Striped
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+// Animated
+.progress-bar-animated {
+  animation: 1s linear infinite budu-progress-bar-stripes;
+}
+
+@keyframes budu-progress-bar-stripes {
+  0% {
+    background-position-x: 1rem;
+  }
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .progress-bar-#{$name} {
+    background-color: $color;
+  }
+}
+
+// Sizes
+.progress-sm {
+  --budu-progress-height: 0.375rem;
+}
+
+.progress-lg {
+  --budu-progress-height: 1rem;
+}
+
+.progress-xl {
+  --budu-progress-height: 1.5rem;
+  font-size: 0.875rem;
+}
+
+// Labeled (with text inside)
+.progress-label {
+  position: relative;
+
+  .progress-bar {
+    min-width: 2em;
+  }
+}
+
+// Stacked progress
+.progress-stacked {
+  display: flex;
+  gap: 2px;
+  background-color: transparent;
+  padding: 2px;
+  border-radius: var(--budu-progress-border-radius);
+
+  .progress-bar {
+    border-radius: calc(var(--budu-progress-border-radius) - 2px);
+  }
+}

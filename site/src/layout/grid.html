@@ -1,0 +1,104 @@
+<!--
+title: Grid system
+description: Use the powerful mobile-first flexbox grid to build layouts of all shapes and sizes.
+section: layout
+order: 1
+-->
+<h1>Grid system</h1>
+<p class="lead">Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
+
+<h2 id="how-it-works">How it works</h2>
+<p>Budu's grid system uses a series of containers, rows, and columns to layout and align content. It's built with flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
+
+<div class="bd-example">
+  <div class="container px-0">
+    <div class="row">
+      <div class="col">col</div>
+      <div class="col">col</div>
+      <div class="col">col</div>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col"&gt;col&lt;/div&gt;
+    &lt;div class="col"&gt;col&lt;/div&gt;
+    &lt;div class="col"&gt;col&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<p>The above example creates three equal-width columns across all devices and viewports using our predefined grid classes. Those columns are centered in the page with the parent <code>.container</code>.</p>
+
+<p>Breaking it down, here's how it works:</p>
+<ul>
+  <li>Containers provide a means to center and horizontally pad your site's contents.</li>
+  <li>Rows are wrappers for columns. Each column has horizontal <code>padding</code> (called a gutter) for controlling the space between them. This padding is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
+  <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
+</ul>
+
+<h2 id="grid-options">Grid options</h2>
+<p>Budu's grid system can adapt across all six default breakpoints.</p>
+<table class="table table-bordered table-sm">
+  <thead><tr><th scope="col"></th><th scope="col">xs<br>&lt;576px</th><th scope="col">sm<br>&ge;576px</th><th scope="col">md<br>&ge;768px</th><th scope="col">lg<br>&ge;992px</th><th scope="col">xl<br>&ge;1200px</th><th scope="col">xxl<br>&ge;1400px</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Max container width</th><td>None (auto)</td><td>540px</td><td>720px</td><td>960px</td><td>1140px</td><td>1320px</td></tr>
+    <tr><th scope="row">Class prefix</th><td><code>.col-</code></td><td><code>.col-sm-</code></td><td><code>.col-md-</code></td><td><code>.col-lg-</code></td><td><code>.col-xl-</code></td><td><code>.col-xxl-</code></td></tr>
+    <tr><th scope="row"># of columns</th><td colspan="6">12</td></tr>
+    <tr><th scope="row">Gutter width</th><td colspan="6">1.5rem (0.75rem each side of the column)</td></tr>
+    <tr><th scope="row">Nestable</th><td colspan="6">Yes</td></tr>
+  </tbody>
+</table>
+
+<h2 id="row-columns">Row columns</h2>
+<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content.</p>
+<div class="bd-example">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+    <div class="col"><div class="p-3 border rounded text-center">Col</div></div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="row row-cols-2 row-cols-md-3 row-cols-lg-4"&gt;
+  &lt;div class="col"&gt;...&lt;/div&gt;
+  &lt;div class="col"&gt;...&lt;/div&gt;
+  &lt;div class="col"&gt;...&lt;/div&gt;
+  &lt;div class="col"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="nesting">Nesting</h2>
+<p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column.</p>
+<div class="bd-example">
+  <div class="row">
+    <div class="col-sm-3 d-flex align-items-center justify-content-center">Level 1: .col-sm-3</div>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-8 col-sm-6">Level 2: .col-sm-6</div>
+        <div class="col-4 col-sm-6">Level 2: .col-sm-6</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="sass">Sass mixins</h2>
+<p>When using Budu's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts.</p>
+<div class="highlight"><pre><code>@use "sass:math";
+@import "node_modules/budu/scss/functions";
+@import "node_modules/budu/scss/variables";
+@import "node_modules/budu/scss/mixins";
+
+.custom-row {
+  @include make-row();
+}
+.custom-col {
+  @include media-breakpoint-up(sm) {
+    @include make-col(4);
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}</code></pre></div>

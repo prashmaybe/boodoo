@@ -1,0 +1,12 @@
+// =====================================================================
+// BUDU — Grid-only build (containers, rows, columns, gutters, CSS grid)
+// =====================================================================
+
+@use "sass:map";
+
+@import "functions";
+@import "variables";
+@import "maps";
+@import "mixins";
+@import "mixins/utility-api";
+@import "grid";

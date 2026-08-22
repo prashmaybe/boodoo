@@ -1,0 +1,110 @@
+<!--
+title: Dropdowns
+description: Toggle contextual overlays for displaying lists of links and more.
+section: components
+order: 10
+-->
+<h1>Dropdowns</h1>
+<p class="lead">Toggle contextual overlays for displaying lists of links and more with the Budu dropdown plugin.</p>
+
+<h2 id="overview">Overview</h2>
+<p>Dropdowns are toggleable, contextual overlays for displaying lists of links and actions. They're toggled by clicking (or focusing) their trigger. All dropdowns are powered by Budu's vanilla JS and initialized from <code>data-budu-toggle="dropdown"</code>.</p>
+
+<div class="bd-example d-flex gap-2 flex-wrap">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu">
+      <li><h6 class="dropdown-header">Dropdown header</h6></li>
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+
+  <div class="dropdown">
+    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-budu-toggle="dropdown" aria-expanded="false">Dropdown link</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item disabled" href="#">Disabled item</a></li>
+    </ul>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="dropdown"&gt;
+  &lt;button class="btn btn-primary dropdown-toggle" type="button"
+          data-budu-toggle="dropdown" aria-expanded="false"&gt;
+    Dropdown button
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;h6 class="dropdown-header"&gt;Dropdown header&lt;/h6&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="dropup">Dropup</h2>
+<p>By default, dropdown menus display below their trigger. Add <code>.dropup</code> to the parent to make them open upward instead.</p>
+<div class="bd-example">
+  <div class="dropup">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">Dropup</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="menu-alignment">Menu alignment</h2>
+<p>Add <code>.dropdown-menu-end</code> to align the menu to the right of the trigger.</p>
+<div class="bd-example">
+  <div class="dropdown d-inline-block">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">Right-aligned menu</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="menu-items">Dropdown menu items</h2>
+<div class="bd-example">
+  <div class="dropdown d-inline-block">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">Menu items</button>
+    <div class="dropdown-menu">
+      <button class="dropdown-item" type="button">Action</button>
+      <button class="dropdown-item" type="button">Another action</button>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item-text" href="#">Link with text</a>
+      <span class="dropdown-item-text">Plain text item</span>
+    </div>
+  </div>
+</div>
+
+<h2 id="dark">Dark dropdowns</h2>
+<p>Add <code>.dropdown-menu-dark</code> to invert the dropdown palette.</p>
+<div class="bd-example">
+  <div class="dropdown d-inline-block">
+    <button class="btn btn-dark dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">Dark menu</button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <li><a class="dropdown-item active" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="split">Split button</h2>
+<p>Create a split dropdown: the caret part triggers the menu while the first part acts as a normal button.</p>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Action</button>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-budu-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+  </ul>
+</div>

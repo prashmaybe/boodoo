@@ -1,0 +1,51 @@
+{
+  "name": "budu",
+  "version": "1.0.0",
+  "description": "Budu — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
+  "private": true,
+  "style": "dist/css/budu.css",
+  "sass": "scss/budu.scss",
+  "main": "dist/js/budu.js",
+  "module": "dist/js/budu.esm.js",
+  "files": [
+    "dist/",
+    "scss/",
+    "less/",
+    "js/",
+    "site/"
+  ],
+  "scripts": {
+    "build": "npm run css && npm run js",
+    "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim",
+    "css:main": "npx --no-install sass scss/budu.scss dist/css/budu.css && npx --no-install sass scss/budu.scss dist/css/budu.min.css --style=compressed",
+    "css:grid": "npx --no-install sass scss/budu-grid.scss dist/css/budu-grid.css && npx --no-install sass scss/budu-grid.scss dist/css/budu-grid.min.css --style=compressed",
+    "css:reboot": "npx --no-install sass scss/budu-reboot.scss dist/css/budu-reboot.css && npx --no-install sass scss/budu-reboot.scss dist/css/budu-reboot.min.css --style=compressed",
+    "css:utilities": "npx --no-install sass scss/budu-utilities.scss dist/css/budu-utilities.css && npx --no-install sass scss/budu-utilities.scss dist/css/budu-utilities.min.css --style=compressed",
+    "css:anim": "npx --no-install sass scss/budu-animations.scss dist/css/budu-animations.css && npx --no-install sass scss/budu-animations.scss dist/css/budu-animations.min.css --style=compressed",
+    "css:less": "npx -y less@4.2.0 less/budu.less dist/css/budu.less.css",
+    "js": "node build/js-bundle.mjs",
+    "site": "node build/site-build.mjs",
+    "www": "npm run build && npm run site && node build/www-build.mjs",
+    "watch": "sass --watch scss:dist/css",
+    "serve:site": "node build/serve.mjs"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "less",
+    "framework",
+    "design-system",
+    "ui",
+    "responsive",
+    "mobile-first",
+    "bootstrap",
+    "tailwind",
+    "material"
+  ],
+  "author": "Dilshad I Hadiwala",
+  "license": "MIT",
+  "devDependencies": {
+    "less": "^4.9.0",
+    "sass": "^1.77.0"
+  }
+}

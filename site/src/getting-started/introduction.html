@@ -1,0 +1,48 @@
+<!--
+title: Introduction
+description: Budu is a modular, mobile-first CSS design framework for building fast, responsive websites. Inspired by Bootstrap, Foundation, Tailwind CSS and Material Design.
+section: getting-started
+order: 0
+-->
+<h1>Budu</h1>
+<p class="lead mb-2">Quickly design and customize responsive mobile-first sites with Budu, the most popular open-source front-end toolkit built with Sass and vanilla JavaScript.</p>
+<div class="mb-3"><span class="version-chip">v1.0.0</span></div>
+
+<p>Budu blends the best of the modern CSS ecosystems into one cohesive, dependency-free toolkit:</p>
+
+<ul>
+  <li><strong>Bootstrap-style</strong> 12-column mobile-first grid, components and modifiers.</li>
+  <li><strong>Foundation-style</strong> utility breadth, flex helpers and tidy scaffolds.</li>
+  <li><strong>Tailwind-inspired</strong> functional utility classes with responsive variants.</li>
+  <li><strong>Material-inspired</strong> elevation, motion tokens and a rounded, friendly look.</li>
+</ul>
+
+<h2 id="quick-start">Quick start</h2>
+<p>Looking to quickly add Budu to your project? Use the CSS CDN. Add the following to the <code>&lt;head&gt;</code> of your HTML:</p>
+
+<div class="highlight"><pre><code>&lt;link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet"&gt;
+&lt;script src="https://budu.dihadiwala.com/dist/js/budu.js"&gt;&lt;/script&gt;</code></pre></div>
+
+<p>Then, you can start building with Budu. Here's a minimal starter:</p>
+
+<div class="bd-example">
+  <div class="p-3 border rounded bg-light text-center">
+    <h3 class="mb-2 text-primary">Hello, Budu!</h3>
+    <p class="text-muted mb-3">A mobile-first, responsive framework for everyone.</p>
+    <button class="btn btn-primary btn-ripple ripple">Get started</button>
+    <button class="btn btn-outline-primary ms-1">Read the docs</button>
+  </div>
+</div>
+<p class="text-muted small"><strong>That just worked!</strong> All of Budu's CSS and JS is loaded from a single CSS file and a single JS file. No jQuery, no build step required.</p>
+
+<h2 id="js"></h2>
+<p>Budu's JavaScript components are vanilla, dependency-free, and initialized from <code>data-*</code> attributes. Everything is tree-shakeable via the ESM build.</p>
+
+<h2 id="npm"></h2>
+<p>Install Budu as an npm package and compile its Sass yourself to customize everything:</p>
+<div class="highlight"><pre><code>npm install budu</code></pre></div>
+<p>Then import the Sass source:</p>
+<div class="highlight"><pre><code>@import "node_modules/budu/scss/budu";</code></pre></div>
+
+<h2 id="license">License</h2>
+<p>Code and documentation copyright 2026 Dilshad I Hadiwala. Code released under the <a href="./license.html">MIT License</a>.</p>

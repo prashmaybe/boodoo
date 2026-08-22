@@ -1,0 +1,83 @@
+<!--
+title: Flex
+description: Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities.
+section: utilities
+order: 4
+-->
+<h1>Flex</h1>
+<p class="lead">Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities.</p>
+
+<h2 id="enable">Enable flex behaviors</h2>
+<p>Apply <code>display: flex</code> to create a flexbox container and transform direct children into flex items.</p>
+<div class="bd-example">
+  <div class="d-flex p-2 bg-light border rounded">
+    <div class="p-2 border rounded bg-white me-2">Flex item 1</div>
+    <div class="p-2 border rounded bg-white me-2">Flex item 2</div>
+    <div class="p-2 border rounded bg-white">Flex item 3</div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="d-flex"&gt;...&lt;/div&gt;</code></pre></div>
+<p>Responsive variants: <code>d-sm-flex</code>, <code>d-md-flex</code>, <code>d-lg-flex</code>, etc. Or <code>d-inline-flex</code> for inline behavior.</p>
+
+<h2 id="direction">Direction</h2>
+<div class="bd-example">
+  <div class="d-flex flex-row bg-light border rounded p-2 mb-2"><div class="p-2 border rounded bg-white me-2">row 1</div><div class="p-2 border rounded bg-white">row 2</div></div>
+  <div class="d-flex flex-column bg-light border rounded p-2" style="max-width:14rem"><div class="p-2 border rounded bg-white mb-2">col 1</div><div class="p-2 border rounded bg-white">col 2</div></div>
+</div>
+
+<h2 id="justify">Justify content</h2>
+<div class="bd-example">
+  <div class="d-flex justify-content-start bg-light border rounded p-2 mb-2"><div class="p-2 border rounded bg-white">start</div></div>
+  <div class="d-flex justify-content-center bg-light border rounded p-2 mb-2"><div class="p-2 border rounded bg-white">center</div></div>
+  <div class="d-flex justify-content-end bg-light border rounded p-2 mb-2"><div class="p-2 border rounded bg-white">end</div></div>
+  <div class="d-flex justify-content-between bg-light border rounded p-2 mb-2"><div class="p-2 border rounded bg-white">between</div><div class="p-2 border rounded bg-white">between</div></div>
+  <div class="d-flex justify-content-around bg-light border rounded p-2"><div class="p-2 border rounded bg-white">around</div><div class="p-2 border rounded bg-white">around</div></div>
+</div>
+
+<h2 id="align">Align items</h2>
+<div class="bd-example" style="min-height:200px">
+  <div class="d-flex align-items-start bg-light border rounded p-2 mb-2" style="min-height:70px"><div class="p-2 border rounded bg-white">start</div></div>
+  <div class="d-flex align-items-center bg-light border rounded p-2 mb-2" style="min-height:70px"><div class="p-2 border rounded bg-white">center</div></div>
+  <div class="d-flex align-items-end bg-light border rounded p-2" style="min-height:70px"><div class="p-2 border rounded bg-white">end</div></div>
+</div>
+
+<h2 id="flex-fill">Fill &amp; grow</h2>
+<div class="bd-example">
+  <div class="d-flex bg-light border rounded p-2">
+    <div class="flex-fill p-2 border rounded bg-white me-2">flex-fill</div>
+    <div class="flex-fill p-2 border rounded bg-white me-2">flex-fill</div>
+    <div class="flex-fill p-2 border rounded bg-white">flex-fill</div>
+  </div>
+  <div class="d-flex bg-light border rounded p-2 mt-2">
+    <div class="flex-grow-1 p-2 border rounded bg-white me-2">flex-grow-1</div>
+    <div class="p-2 border rounded bg-white">auto</div>
+  </div>
+</div>
+
+<h2 id="order">Order</h2>
+<p>Change the visual order with <code>.order-{0..5}</code>, <code>.order-first</code>, <code>.order-last</code>, responsive as needed.</p>
+<div class="bd-example">
+  <div class="d-flex bg-light border rounded p-2">
+    <div class="order-last p-2 border rounded bg-white me-2">Ordered last</div>
+    <div class="order-first p-2 border rounded bg-white">Ordered first</div>
+  </div>
+</div>
+
+<h2 id="align-self">Align self</h2>
+<div class="bd-example" style="min-height:120px">
+  <div class="d-flex bg-light border rounded p-2" style="min-height:100px">
+    <div class="align-self-start p-2 border rounded bg-white me-2">start</div>
+    <div class="align-self-center p-2 border rounded bg-white me-2">center</div>
+    <div class="align-self-end p-2 border rounded bg-white">end</div>
+  </div>
+</div>
+
+<h2 id="gap">Gap</h2>
+<p>Use <code>.gap-{0..5}</code> (and responsive) for consistent spacing between flex or grid children:</p>
+<div class="bd-example">
+  <div class="d-flex gap-3 bg-light border rounded p-2">
+    <div class="p-2 border rounded bg-white">gap-3</div>
+    <div class="p-2 border rounded bg-white">gap-3</div>
+    <div class="p-2 border rounded bg-white">gap-3</div>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+// BUDU GRID
+// Mobile-first 12-column flexbox grid + containers + gutters.
+
+@use "sass:map";
+
+// Containers
+.container,
+.container-fluid {
+  width: 100%;
+  padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+  padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Responsive container widths
+@each $breakpoint, $container-max-width in $budu-container-max-widths {
+  $infix: if($breakpoint == "sm", "", "-#{$breakpoint}");
+
+  // Corrected: `sm` is the first breakpoint without an infix collision.
+  .container#{$infix} {
+    @extend .container-fluid;
+
+    @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+// Edge-to-edge fluid
+.container-fluid {
+  padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+  padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+}
+
+// Rows
+.row {
+  @include make-row(calc(var(--budu-gutter-x, #{$budu-gutter-x})));
+
+  > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+    padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+    margin-top: var(--budu-gutter-y, 0);
+  }
+}
+
+// Row columns (all breakpoints)
+@each $breakpoint in map.keys($budu-grid-breakpoints) {
+  $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
+
+  @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
+    @for $i from 1 through $budu-grid-row-columns {
+      .row-cols#{$infix}-#{$i} > * {
+        flex: 0 0 auto;
+        width: percentage(divide(1, $i));
+      }
+    }
+  }
+}
+
+// Columns
+@each $breakpoint in map.keys($budu-grid-breakpoints) {
+  $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
+
+  @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
+    @for $i from 1 through $budu-grid-columns {
+      .col#{$infix}-#{$i} {
+        flex: 0 0 auto;
+        width: percentage(divide($i, $budu-grid-columns));
+      }
+    }
+
+    .col#{$infix},
+    .col#{$infix}-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+
+    // Auto-layout, equal-width
+    .col#{$infix} {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+
+    // Offsets
+    @for $i from 0 through ($budu-grid-columns - 1) {
+      @if not($infix == "" and $i == 0) {
+        .offset#{$infix}-#{$i} {
+          margin-left: percentage(divide($i, $budu-grid-columns));
+        }
+      }
+    }
+  }
+}
+
+// Gutters
+.g-0, .gx-0 { --budu-gutter-x: 0; }
+.g-0, .gy-0 { --budu-gutter-y: 0; }
+.g-1, .gx-1 { --budu-gutter-x: 0.25rem; }
+.g-1, .gy-1 { --budu-gutter-y: 0.25rem; }
+.g-2, .gx-2 { --budu-gutter-x: 0.5rem; }
+.g-2, .gy-2 { --budu-gutter-y: 0.5rem; }
+.g-3, .gx-3 { --budu-gutter-x: 1rem; }
+.g-3, .gy-3 { --budu-gutter-y: 1rem; }
+.g-4, .gx-4 { --budu-gutter-x: 1.5rem; }
+.g-4, .gy-4 { --budu-gutter-y: 1.5rem; }
+.g-5, .gx-5 { --budu-gutter-x: 3rem; }
+.g-5, .gy-5 { --budu-gutter-y: 3rem; }
+
+// CSS Grid helpers (Tailwind/Foundation flavor)
+.grid {
+  display: grid;
+}
+
+@for $i from 1 through 12 {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat($i, minmax(0, 1fr));
+  }
+}
+
+.col-span-1  { grid-column: span 1 / span 1; }
+.col-span-2  { grid-column: span 2 / span 2; }
+.col-span-3  { grid-column: span 3 / span 3; }
+.col-span-4  { grid-column: span 4 / span 4; }
+.col-span-5  { grid-column: span 5 / span 5; }
+.col-span-6  { grid-column: span 6 / span 6; }
+.col-span-7  { grid-column: span 7 / span 7; }
+.col-span-8  { grid-column: span 8 / span 8; }
+.col-span-9  { grid-column: span 9 / span 9; }
+.col-span-10 { grid-column: span 10 / span 10; }
+.col-span-11 { grid-column: span 11 / span 11; }
+.col-span-12 { grid-column: span 12 / span 12; }
+.col-span-full { grid-column: 1 / -1; }
+
+@for $i from 1 through 6 {
+  .grid-rows-#{$i} {
+    grid-template-rows: repeat($i, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,139 @@
+// BUDU NAV
+// Nav, tabs, pills, underline tabs, vertical variants.
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--budu-body-color);
+    text-decoration: none;
+    border-radius: $budu-border-radius;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $budu-link-hover-color;
+    }
+
+    &.active {
+      color: $budu-primary;
+      font-weight: 500;
+    }
+
+    &.disabled {
+      color: var(--budu-body-tertiary-color);
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+
+// Pills
+.nav-pills {
+  .nav-link {
+    &.active {
+      color: $budu-white;
+      background-color: $budu-primary;
+    }
+  }
+}
+
+// Soft pills
+.nav-pills-soft {
+  .nav-link {
+    &.active {
+      color: $budu-primary;
+      background-color: $budu-primary-bg-subtle;
+    }
+  }
+}
+
+// Tabs
+.nav-tabs {
+  border-bottom: $budu-border-width solid var(--budu-border-color);
+
+  .nav-link {
+    margin-bottom: calc(-1 * #{$budu-border-width});
+    background: none;
+    border: $budu-border-width solid transparent;
+    border-top-left-radius: $budu-border-radius;
+    border-top-right-radius: $budu-border-radius;
+
+    &:hover,
+    &:focus {
+      border-color: var(--budu-body-tertiary-bg) var(--budu-body-tertiary-bg) var(--budu-border-color);
+      isolation: isolate;
+    }
+
+    &.active {
+      color: $budu-primary;
+      background-color: var(--budu-body-bg);
+      border-color: var(--budu-border-color) var(--budu-border-color) var(--budu-body-bg);
+    }
+  }
+}
+
+// Underline tabs (Material-style)
+.nav-underline {
+  .nav-link {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0;
+    color: var(--budu-body-secondary-color);
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+
+    &:hover {
+      color: $budu-body-color;
+    }
+
+    &.active {
+      color: $budu-primary;
+      font-weight: 500;
+      border-bottom-color: $budu-primary;
+    }
+  }
+}
+
+// Vertical
+.nav-vertical {
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+// Fill & justify
+.nav-fill .nav-item,
+.nav-fill > .nav-link {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.nav-justified .nav-item,
+.nav-justified > .nav-link {
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+// Nav inside pills/underline within cards
+.card-header .nav-tabs {
+  margin-bottom: -1rem;
+}
+
+// Small spacing variant
+.nav-compact {
+  .nav-link {
+    padding: 0.35rem 0.75rem;
+  }
+}

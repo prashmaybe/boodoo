@@ -1,0 +1,35 @@
+<!--
+title: Visually hidden
+description: Visually hide content for assistive technologies.
+section: helpers
+order: 2
+-->
+<h1>Visually hidden</h1>
+<p class="lead">Use these helpers to visually hide elements but keep them accessible to assistive technologies.</p>
+
+<h2 id="visually-hidden">Visually hidden</h2>
+<p>Use <code>.visually-hidden</code> to hide content that should be available only to screen readers and other assistive technologies.</p>
+<div class="bd-example">
+  <button class="btn btn-outline-primary" type="button">
+    Save changes
+    <span class="visually-hidden">(not visible to sighted users)</span>
+  </button>
+</div>
+<div class="highlight"><pre><code>&lt;button class="btn btn-primary"&gt;
+  Save changes
+  &lt;span class="visually-hidden"&gt;(not visible)&lt;/span&gt;
+&lt;/button&gt;</code></pre></div>
+
+<h2 id="focusable">Visually hidden, focusable</h2>
+<p>Use <code>.visually-hidden-focusable</code> to hide an element initially, but display it when the user focuses it (for example, a "skip to main content" link)</strong>.</p>
+<div class="bd-example">
+  <a class="visually-hidden-focusable" href="#">Skip to main content</a>
+</div>
+<div class="highlight"><pre><code>&lt;a class="visually-hidden-focusable" href="#main"&gt;Skip to main content&lt;/a&gt;</code></pre></div>
+
+<h2 id="mixin">Mixin</h2>
+<div class="highlight"><pre><code>@import "node_modules/budu/scss/mixins";
+
+.example {
+  @include visually-hidden();
+}</code></pre></div>

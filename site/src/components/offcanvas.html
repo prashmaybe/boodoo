@@ -1,0 +1,93 @@
+<!--
+title: Offcanvas
+description: Build hidden, slide-in sidebars into your project with the offcanvas component.
+section: components
+order: 15
+-->
+<h1>Offcanvas</h1>
+<p class="lead">Build hidden, slide-in sidebars into your project for navigation, shopping carts, and more with a few classes and our JavaScript plugin.</p>
+
+<h2 id="how">How it works</h2>
+<p>Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons trigger it via <code>data-budu-toggle="offcanvas"</code> and <code>data-budu-target</code>.</p>
+
+<h2 id="static">Live demo</h2>
+<div class="bd-example">
+  <button class="btn btn-primary" type="button" data-budu-toggle="offcanvas" data-budu-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Open left offcanvas</button>
+  <button class="btn btn-outline-primary" type="button" data-budu-toggle="offcanvas" data-budu-target="#offcanvasEnd" aria-controls="offcanvasEnd">Open right offcanvas</button>
+</div>
+<div class="highlight"><pre><code>&lt;button class="btn btn-primary" type="button"
+        data-budu-toggle="offcanvas" data-budu-target="#offcanvasExample"
+        aria-controls="offcanvasExample"&gt;
+  Open left offcanvas
+&lt;/button&gt;
+
+&lt;div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"&gt;
+  &lt;div class="offcanvas-header"&gt;
+    &lt;h5 class="offcanvas-title" id="offcanvasExampleLabel"&gt;Offcanvas&lt;/h5&gt;
+    &lt;button type="button" class="btn-close" data-budu-dismiss="offcanvas" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="offcanvas-body"&gt;
+    Some text to show in the offcanvas panel.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Left offcanvas</h5>
+    <button type="button" class="btn-close" data-budu-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Content for the left offcanvas.</p>
+    <div class="dropdown mt-3">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-budu-toggle="dropdown">Dropdown button</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasEndLabel">Right offcanvas</h5>
+    <button type="button" class="btn-close" data-budu-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">Switch your direction with <code>offcanvas-end</code>.</div>
+</div>
+
+<h2 id="placements">Placements</h2>
+<ul>
+  <li><code>.offcanvas-start</code> — slides in from the left (default).</li>
+  <li><code>.offcanvas-end</code> — slides in from the right.</li>
+  <li><code>.offcanvas-top</code> — slides down from the top.</li>
+  <li><code>.offcanvas-bottom</code> — slides up from the bottom.</li>
+</ul>
+<div class="bd-example d-flex gap-2 flex-wrap">
+  <button class="btn btn-outline-primary" type="button" data-budu-toggle="offcanvas" data-budu-target="#offcanvasTop">Top</button>
+  <button class="btn btn-outline-primary" type="button" data-budu-toggle="offcanvas" data-budu-target="#offcanvasBottom">Bottom</button>
+</div>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Top offcanvas</h5>
+    <button type="button" class="btn-close" data-budu-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">Content from the top.</div>
+</div>
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Bottom offcanvas</h5>
+    <button type="button" class="btn-close" data-budu-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">Content from the bottom.</div>
+</div>
+
+<h2 id="body-scroll">Body scrolling</h2>
+<p>By default, opening an offcanvas locks the body scroll (adding <code>modal-open</code> to <code>&lt;body&gt;</code>). Set <code>data-budu-scroll="true"</code> on the offcanvas to allow body scrolling while it's open.</p>
+<div class="highlight"><pre><code>&lt;div class="offcanvas offcanvas-start" data-budu-scroll="true"&gt;...&lt;/div&gt;</code></pre></div>
+
+<h2 id="static-backdrop">Static backdrop</h2>
+<p>Use <code>data-budu-backdrop="static"</code> to prevent closing when clicking the backdrop.</p>
+<div class="highlight"><pre><code>&lt;div class="offcanvas offcanvas-start" data-budu-backdrop="static"&gt;...&lt;/div&gt;</code></pre></div>

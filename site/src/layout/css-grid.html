@@ -1,0 +1,61 @@
+<!--
+title: CSS Grid
+description: Use Budu's CSS Grid utilities and Tailwind-inspired grid classes for two-dimensional layouts.
+section: layout
+order: 4
+-->
+<h1>CSS Grid</h1>
+<p class="lead">Build complex, two-dimensional layouts using Budu's modern CSS Grid utilities — a Tailwind-inspired suite of <code>grid-cols-*</code>, <code>col-span-*</code>, and <code>grid-flow-*</code> helpers layered over native CSS Grid.</p>
+
+<h2 id="basic">Basic grid</h2>
+<p>CSS Grid is powerful for flexible row + column layouts. Use the responsive <code>.grid</code> container with <code>.grid-cols-*</code> (responsive) and <code>.col-span-*</code> column spans.</p>
+
+<div class="bd-example">
+  <div class="grid grid-cols-1 grid-cols-md-3 gap-3">
+    <div class="p-3 border rounded text-center">grid-cols-1 on mobile</div>
+    <div class="p-3 border rounded text-center">grid-cols-3 on desktop</div>
+    <div class="p-3 border rounded text-center">grid-cols-3 on desktop</div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="grid grid-cols-1 grid-cols-md-3 gap-3"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="spans">Column spans</h2>
+<div class="bd-example">
+  <div class="grid grid-cols-3 gap-2">
+    <div class="col-span-2 p-3 border rounded text-center">col-span-2</div>
+    <div class="p-3 border rounded text-center">autofill</div>
+    <div class="p-3 border rounded text-center">autofill</div>
+    <div class="col-span-full p-3 border rounded text-center">col-span-full</div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="grid grid-cols-3 gap-2"&gt;
+  &lt;div class="col-span-2"&gt;col-span-2&lt;/div&gt;
+  &lt;div&gt;autofill&lt;/div&gt;
+  &lt;div&gt;autofill&lt;/div&gt;
+  &lt;div class="col-span-full"&gt;col-span-full&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="rows">Row spans &amp; template rows</h2>
+<div class="bd-example">
+  <div class="grid grid-cols-2 grid-rows-3 gap-2" style="min-height:220px">
+    <div class="row-span-2 p-3 border rounded text-center">row-span-2</div>
+    <div class="p-3 border rounded text-center">cell</div>
+    <div class="p-3 border rounded text-center">cell</div>
+    <div class="p-3 border rounded text-center">cell</div>
+  </div>
+</div>
+
+<h2 id="auto-flow">Grid auto flow</h2>
+<p>Use <code>.grid-flow-col</code> to place items in a column flow, great for horizontal strips.</p>
+<div class="highlight"><pre><code>&lt;div class="grid grid-flow-col auto-cols-max gap-4"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="vs-flex">Grid vs flex</h2>
+<p>Reach for <strong>flexbox</strong> when you have a one-dimensional row or column to align (navbars, button groups, simple lists). Reach for <strong>CSS Grid</strong> when you want to control layout in two dimensions — rows <em>and</em> columns, with true gap control and spans.</p>

@@ -1,0 +1,391 @@
+// BUDU MIXINS
+// Shared mixins used by components and utilities.
+
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+
+// ---------------------------------------------------------------------
+// Breakpoints (mobile-first, Bootstrap-compatible)
+// ---------------------------------------------------------------------
+
+// Min-width media query. `$name` may be a key in $budu-grid-breakpoints
+// or a raw length.
+@mixin media-breakpoint-up($name, $breakpoints: $budu-grid-breakpoints) {
+  $min: breakpoint($name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Max-width media query (exclusive).
+@mixin media-breakpoint-down($name, $breakpoints: $budu-grid-breakpoints) {
+  $max: breakpoint($name);
+  @if $max == 0 {
+    @content;
+  } @else {
+    @media (max-width: #{$max - 0.02px}) {
+      @content;
+    }
+  }
+}
+
+// Only (min of this, max of next).
+@mixin media-breakpoint-only($name, $breakpoints: $budu-grid-breakpoints) {
+  $min: breakpoint($name);
+  $next: map.get($breakpoints, $name);
+  $next-key: map.get(map.keys($breakpoints), list.index(map.keys($breakpoints), $name) + 1);
+  @if $min and $next-key {
+    $next: map.get($breakpoints, $next-key);
+    @media (min-width: $min) and (max-width: #{$next - 0.02px}) {
+      @content;
+    }
+  } @else if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Between two named breakpoints.
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $budu-grid-breakpoints) {
+  $min: breakpoint($lower);
+  $max: breakpoint($upper);
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: #{$max - 0.02px}) {
+      @content;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Grid
+// ---------------------------------------------------------------------
+
+// Create a gutter-x utility value (used by containers & rows).
+@function valid-gutter($gutter) {
+  @if $gutter == null {
+    @return $budu-gutter-x;
+  }
+  @return $gutter;
+}
+
+@mixin make-container($gutter-x: $budu-gutter-x) {
+  width: 100%;
+  padding-right: calc(#{$gutter-x} * 0.5);
+  padding-left: calc(#{$gutter-x} * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin make-row($gutter-x: $budu-gutter-x, $gutter-y: null) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * #{if($gutter-y != null, $gutter-y, 0)});
+  margin-right: calc(-1 * (#{$gutter-x} * 0.5));
+  margin-left: calc(-1 * (#{$gutter-x} * 0.5));
+  > * {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(#{$gutter-x} * 0.5);
+    padding-left: calc(#{$gutter-x} * 0.5);
+    margin-top: #{if($gutter-y != null, $gutter-y, 0)};
+  }
+}
+
+// Column without responsive classes (used inside custom grids)
+@mixin make-col($size, $columns: $budu-grid-columns) {
+  flex: 0 0 auto;
+  width: percentage(divide($size, $columns));
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $budu-grid-columns) {
+  margin-left: percentage(divide($size, $columns));
+}
+
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: percentage(divide(1, $count));
+  }
+}
+
+@mixin make-grid-columns($columns: $budu-grid-columns, $breakpoints: $budu-grid-breakpoints) {
+  // Common properties for all breakpoints
+  %grid-column {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc($budu-gutter-x * 0.5);
+    padding-left: calc($budu-gutter-x * 0.5);
+    margin-top: 0;
+  }
+
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Allow columns to stretch full width below their breakpoints
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @extend %grid-column;
+        }
+      }
+      .col#{$infix},
+      .col#{$infix}-auto {
+        @extend %grid-column;
+      }
+
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @include make-col($i, $columns);
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @for $i from 0 through ($columns - 1) {
+        @if not($infix == "" and $i == 0) {
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns);
+          }
+        }
+      }
+      .offset#{$infix}-0 {
+        margin-left: 0;
+      }
+
+      // Row columns
+      @for $i from 1 through $columns {
+        .row-cols#{$infix}-#{$i} > * {
+          flex: 0 0 auto;
+          width: percentage(divide(1, $i));
+        }
+      }
+
+      // Gutters
+      .g#{$infix}-0, .gx#{$infix}-0 { --budu-gutter-x: 0; }
+      .g#{$infix}-0, .gy#{$infix}-0 { --budu-gutter-y: 0; }
+      .g#{$infix}-1, .gx#{$infix}-1 { --budu-gutter-x: 0.25rem; }
+      .g#{$infix}-1, .gy#{$infix}-1 { --budu-gutter-y: 0.25rem; }
+      .g#{$infix}-2, .gx#{$infix}-2 { --budu-gutter-x: 0.5rem; }
+      .g#{$infix}-2, .gy#{$infix}-2 { --budu-gutter-y: 0.5rem; }
+      .g#{$infix}-3, .gx#{$infix}-3 { --budu-gutter-x: 1rem; }
+      .g#{$infix}-3, .gy#{$infix}-3 { --budu-gutter-y: 1rem; }
+      .g#{$infix}-4, .gx#{$infix}-4 { --budu-gutter-x: 1.5rem; }
+      .g#{$infix}-4, .gy#{$infix}-4 { --budu-gutter-y: 1.5rem; }
+      .g#{$infix}-5, .gx#{$infix}-5 { --budu-gutter-x: 3rem; }
+      .g#{$infix}-5, .gy#{$infix}-5 { --budu-gutter-y: 3rem; }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Buttons & form controls
+// ---------------------------------------------------------------------
+
+@mixin button-variant($background, $border, $color, $hover-background, $hover-border, $active-background, $active-border) {
+  --budu-btn-bg: #{$background};
+  --budu-btn-border: #{$border};
+  --budu-btn-color: #{$color};
+  --budu-btn-hover-bg: #{$hover-background};
+  --budu-btn-hover-border: #{$hover-border};
+  --budu-btn-active-bg: #{$active-background};
+  --budu-btn-active-border: #{$active-border};
+
+  color: var(--budu-btn-color);
+  background-color: var(--budu-btn-bg);
+  border-color: var(--budu-btn-border);
+
+  &:hover {
+    color: var(--budu-btn-color);
+    background-color: var(--budu-btn-hover-bg);
+    border-color: var(--budu-btn-hover-border);
+  }
+
+  &:focus-visible {
+    box-shadow: $budu-btn-focus-box-shadow;
+  }
+
+  &:active,
+  &.active {
+    color: var(--budu-btn-color);
+    background-color: var(--budu-btn-active-bg);
+    border-color: var(--budu-btn-active-border);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--budu-btn-color);
+    background-color: var(--budu-btn-bg);
+    border-color: var(--budu-btn-border);
+  }
+}
+
+@mixin button-outline-variant($color, $hover-bg, $hover-border, $hover-color) {
+  --budu-btn-color: #{$color};
+  --budu-btn-border: #{$color};
+  --budu-btn-hover-bg: #{$hover-bg};
+  --budu-btn-hover-border: #{$hover-border};
+  --budu-btn-hover-color: #{$hover-color};
+  --budu-btn-active-bg: #{$hover-bg};
+  --budu-btn-active-border: #{$hover-border};
+  --budu-btn-active-color: #{$hover-color};
+
+  color: var(--budu-btn-color);
+  border-color: var(--budu-btn-border);
+  background-color: transparent;
+
+  &:hover {
+    color: var(--budu-btn-hover-color);
+    background-color: var(--budu-btn-hover-bg);
+    border-color: var(--budu-btn-hover-border);
+  }
+
+  &:focus-visible {
+    box-shadow: $budu-btn-focus-box-shadow;
+  }
+
+  &:active,
+  &.active {
+    color: var(--budu-btn-active-color);
+    background-color: var(--budu-btn-active-bg);
+    border-color: var(--budu-btn-active-border);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--budu-btn-color);
+    background-color: transparent;
+    border-color: var(--budu-btn-border);
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  --budu-btn-padding-y: #{$padding-y};
+  --budu-btn-padding-x: #{$padding-x};
+  --budu-btn-font-size: #{$font-size};
+  --budu-btn-border-radius: #{$border-radius};
+  padding: var(--budu-btn-padding-y) var(--budu-btn-padding-x);
+  font-size: var(--budu-btn-font-size);
+  border-radius: var(--budu-btn-border-radius);
+}
+
+@mixin caret($direction: down) {
+  @if $direction == down {
+    border-top: $budu-caret-width solid;
+    border-right: $budu-caret-width solid transparent;
+    border-bottom: 0;
+    border-left: $budu-caret-width solid transparent;
+  } @else if $direction == up {
+    border-top: 0;
+    border-right: $budu-caret-width solid transparent;
+    border-bottom: $budu-caret-width solid;
+    border-left: $budu-caret-width solid transparent;
+  } @else if $direction == end {
+    border-top: $budu-caret-width solid transparent;
+    border-right: 0;
+    border-bottom: $budu-caret-width solid transparent;
+    border-left: $budu-caret-width solid;
+  } @else if $direction == start {
+    border-top: $budu-caret-width solid transparent;
+    border-right: $budu-caret-width solid;
+    border-bottom: $budu-caret-width solid transparent;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Forms
+// ---------------------------------------------------------------------
+
+@mixin form-control-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+@mixin plaintext-input() {
+  border: solid transparent;
+  border-width: $budu-input-btn-border-width 0;
+  background-color: transparent;
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Misc
+// ---------------------------------------------------------------------
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visually-hidden() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin transition($transition...) {
+  @if length($transition) == 0 {
+    transition: $budu-transition-base;
+  } @else {
+    transition: $transition;
+  }
+}
+
+@mixin gradient-bg($color: null) {
+  background-color: $color;
+  background-image: linear-gradient(180deg, rgba($budu-white, 0.15), rgba($budu-white, 0));
+}
+
+// Material ripple (implemented via JS; class hooks here)
+@mixin ripple-surface() {
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Responsive font-size using clamp()
+@mixin rfs($fs-value) {
+  font-size: $fs-value;
+}
+
+// Elevation utility: maps a 0-5 step to a Material shadow
+@mixin elevation($step) {
+  box-shadow: map.get($budu-elevation-map, $step);
+}

@@ -1,0 +1,187 @@
+// BUDU LIST GROUP
+// List group with flush, numbered, horizontal, and action variants.
+
+.list-group {
+  --budu-list-group-bg: var(--budu-body-bg);
+  --budu-list-group-color: var(--budu-body-color);
+  --budu-list-group-border-color: #{$budu-border-color};
+  --budu-list-group-border-width: #{$budu-border-width};
+  --budu-list-group-border-radius: #{$budu-border-radius};
+  --budu-list-group-active-bg: #{$budu-primary};
+  --budu-list-group-active-color: #{$budu-white};
+  --budu-list-group-hover-bg: #{$budu-gray-100};
+
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: var(--budu-list-group-border-radius);
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--budu-list-group-color);
+  text-decoration: none;
+  background-color: var(--budu-list-group-bg);
+  border: var(--budu-list-group-border-width) solid var(--budu-list-group-border-color);
+
+  &:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &:last-child {
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--budu-body-tertiary-color);
+    pointer-events: none;
+    background-color: var(--budu-list-group-bg);
+  }
+}
+
+// Actions (links/buttons)
+.list-group-item-action {
+  width: 100%;
+  color: var(--budu-list-group-color);
+  text-align: inherit;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    z-index: 1;
+    color: var(--budu-list-group-color);
+    text-decoration: none;
+    background-color: var(--budu-list-group-hover-bg);
+  }
+
+  &:active {
+    color: var(--budu-body-color);
+    background-color: var(--budu-body-tertiary-bg);
+  }
+}
+
+// Active state
+.list-group-item.active {
+  z-index: 2;
+  color: var(--budu-list-group-active-color);
+  background-color: var(--budu-list-group-active-bg);
+  border-color: var(--budu-list-group-active-bg);
+}
+
+// Color variants
+@each $name, $color in $budu-theme-colors {
+  .list-group-item-#{$name} {
+    color: map.get($budu-text-emphasis-map, $name);
+    background-color: map.get($budu-bg-subtle-map, $name);
+
+    &.list-group-item-action {
+      &:hover,
+      &:focus {
+        color: map.get($budu-text-emphasis-map, $name);
+        background-color: shade-color(map.get($budu-bg-subtle-map, $name), 8%);
+      }
+
+      &.active {
+        color: $budu-white;
+        background-color: map.get($budu-text-emphasis-map, $name);
+        border-color: map.get($budu-text-emphasis-map, $name);
+      }
+    }
+  }
+}
+
+// Numbered
+.list-group-numbered {
+  list-style: none;
+  counter-reset: section;
+
+  .list-group-item {
+    counter-increment: section;
+
+    &::before {
+      content: counters(section, ".") ". ";
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// Horizontal
+.list-group-horizontal {
+  flex-direction: row;
+
+  > .list-group-item:first-child:not(:last-child) {
+    border-bottom-left-radius: var(--budu-list-group-border-radius);
+    border-top-right-radius: 0;
+  }
+
+  > .list-group-item:last-child:not(:first-child) {
+    border-top-right-radius: var(--budu-list-group-border-radius);
+    border-bottom-left-radius: 0;
+  }
+
+  > .list-group-item + .list-group-item {
+    border-top-width: var(--budu-list-group-border-width);
+    border-left-width: 0;
+  }
+}
+
+@each $breakpoint in map.keys($budu-grid-breakpoints) {
+  @if $breakpoint != "xs" {
+    $infix: "-#{$breakpoint}";
+
+    @include media-breakpoint-up($breakpoint) {
+      .list-group-horizontal#{$infix} {
+        flex-direction: row;
+
+        > .list-group-item:first-child:not(:last-child) {
+          border-bottom-left-radius: var(--budu-list-group-border-radius);
+          border-top-right-radius: 0;
+        }
+
+        > .list-group-item:last-child:not(:first-child) {
+          border-top-right-radius: var(--budu-list-group-border-radius);
+          border-bottom-left-radius: 0;
+        }
+
+        > .list-group-item + .list-group-item {
+          border-top-width: var(--budu-list-group-border-width);
+          border-left-width: 0;
+        }
+      }
+    }
+  }
+}
+
+// Flush
+.list-group-flush {
+  border-radius: 0;
+
+  > .list-group-item {
+    border-width: 0 0 var(--budu-list-group-border-width);
+
+    &:last-child {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+// Light
+.list-group-light {
+  --budu-list-group-border-color: transparent;
+
+  .list-group-item {
+    background-color: transparent;
+  }
+
+  .list-group-item-action:hover {
+    background-color: var(--budu-list-group-hover-bg);
+    border-radius: var(--budu-list-group-border-radius);
+  }
+}

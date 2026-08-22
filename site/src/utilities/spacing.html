@@ -1,0 +1,51 @@
+<!--
+title: Spacing
+description: Assign responsive-friendly margin and padding values to an element or a subset of its sides.
+section: utilities
+order: 12
+-->
+<h1>Spacing</h1>
+<p class="lead">Assign responsive-friendly <code>margin</code> or <code>padding</code> values to an element or a subset of its sides with simple classes, based on a 5-step spacing scale.</p>
+
+<h2 id="notation">Notation</h2>
+<p>Spacing utilities that apply to all breakpoints, from <code>xs</code> to <code>xxl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not bound by a media query.</p>
+<p>The classes are named using the format <code>{property}{sides}-{size}</code>:</p>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Part</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>m</code></td><td>margin</td></tr>
+    <tr><td><code>p</code></td><td>padding</td></tr>
+    <tr><td><code>t</code> <code>e</code> <code>b</code> <code>s</code></td><td>top, end (right), bottom, start (left)</td></tr>
+    <tr><td><code>x</code></td><td>left &amp; right</td></tr>
+    <tr><td><code>y</code></td><td>top &amp; bottom</td></tr>
+    <tr><td><code>blank</code></td><td>all four sides</td></tr>
+    <tr><td><code>-{0..5}</code></td><td>the spacer step (0 = 0, 1 ≈ 20px, …, 5 ≈ 84px)</td></tr>
+  </tbody>
+</table>
+<div class="highlight"><pre><code>&lt;div class="mt-3"&gt;margin-top 1rem&lt;/div&gt;
+&lt;div class="px-2"&gt;padding-left/right&lt;/div&gt;
+&lt;div class="me-4"&gt;margin-end (right)&lt;/div&gt;
+&lt;div class="pb-5"&gt;padding-bottom&lt;/div&gt;</code></pre></div>
+
+<h2 id="negative">Negative margin</h2>
+<p>Negative margin works exactly as positive, using <code>-</code> before the size: <code>.m-n1</code>, <code>.-mt-2</code> naming (<code>mt-n2</code>, <code>mx-n3</code>, etc.). Works for <code>m</code>, <code>mx</code>, <code>my</code>, <code>mt</code>, <code>me</code>, <code>mb</code>, <code>ms</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="mt-n3"&gt;Negative top margin (12px)&lt;/div&gt;</code></pre></div>
+
+<h2 id="responsive">Responsive</h2>
+<p>Add the breakpoint suffix to apply only from that breakpoint up: <code>.mt-md-4</code>, <code>.px-lg-3</code>, <code>.py-xl-0</code>, <code>.ms-xxl-2</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="mt-2 mt-md-4 mt-lg-0"&gt;Responsive spacing&lt;/div&gt;</code></pre></div>
+
+<h2 id="scale">The scale</h2>
+<p>The <code>$budu-spacers</code> map defines a 0–5 (plus <code>0.5</code>–<code>10</code>) scale. Here are the base steps:</p>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Size</th><th>px</th><th>&nbsp;</th><th>Size</th><th>px</th></tr></thead>
+  <tbody>
+    <tr><td><code>0.5</code></td><td>8px</td><td>&nbsp;</td><td><code>3</code></td><td>52px</td></tr>
+    <tr><td><code>1</code></td><td>20px</td><td>&nbsp;</td><td><code>4</code></td><td>68px</td></tr>
+    <tr><td><code>2</code></td><td>36px</td><td>&nbsp;</td><td><code>5</code></td><td>84px</td></tr>
+  </tbody>
+</table>
+<p>Extend the <code>$budu-spacers</code> map in your Sass to add custom steps:</p>
+<div class="highlight"><pre><code>$budu-spacers: map.merge($budu-spacers, (
+  6: $budu-spacer * 6.5,
+));</code></pre></div>

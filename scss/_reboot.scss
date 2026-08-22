@@ -1,0 +1,415 @@
+// BUDU REBOOT
+// Normalize + opinionated reset (Bootstrap-inspired, modernized).
+
+@use "sass:map";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Fix "line-height" inheritance for `button`/`input` and iOS font smoothing.
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: $budu-font-family-base;
+  font-size: $budu-font-size-base;
+  font-weight: $budu-font-weight-base;
+  line-height: $budu-line-height-base;
+  color: $budu-body-color;
+  text-align: left;
+  background-color: $budu-body-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Supress focus ring on mouse users but keep for keyboard (a11y best practice).
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid $budu-primary;
+  outline-offset: 2px;
+}
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  border: 0;
+  border-top: $budu-border-width solid $budu-border-color;
+  opacity: 0.25;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: $budu-headings-margin-bottom;
+  font-family: $budu-headings-font-family;
+  font-style: $budu-headings-font-style;
+  font-weight: $budu-headings-font-weight;
+  line-height: $budu-headings-line-height;
+  color: $budu-headings-color;
+}
+
+h1 { font-size: $budu-h1-font-size; }
+h2 { font-size: $budu-h2-font-size; }
+h3 { font-size: $budu-h3-font-size; }
+h4 { font-size: $budu-h4-font-size; }
+h5 { font-size: $budu-h5-font-size; }
+h6 { font-size: $budu-h6-font-size; }
+
+p {
+  margin-top: 0;
+  margin-bottom: $budu-paragraph-margin-bottom;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: $budu-font-weight-bold;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+b,
+strong {
+  font-weight: $budu-font-weight-bolder;
+}
+
+small {
+  font-size: $budu-small-font-size;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
+
+a {
+  color: $budu-link-color;
+  text-decoration: $budu-link-decoration;
+  background-color: transparent;
+
+  &:hover {
+    color: $budu-link-hover-color;
+    text-decoration: $budu-link-hover-decoration;
+  }
+
+  &:not([href]):not([class]),
+  &:not([href]):not([class]):hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+// Abbreviations
+code,
+kbd,
+samp,
+pre {
+  font-family: $budu-font-family-monospace;
+  font-size: 1em;
+}
+
+code {
+  color: $budu-code-color;
+  word-wrap: break-word;
+}
+
+a > code {
+  color: inherit;
+}
+
+kbd {
+  padding: 0.2rem 0.4rem;
+  color: $budu-white;
+  background-color: $budu-gray-900;
+  border-radius: $budu-border-radius-sm;
+
+  kbd {
+    padding: 0;
+    font-size: 1em;
+    font-weight: $budu-font-weight-bold;
+  }
+}
+
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  font-size: 0.875em;
+
+  code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+  }
+}
+
+figure {
+  margin: 0 0 1rem;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+// Set height to `auto` for responsive images.
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+}
+
+caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: $budu-body-secondary-color;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  text-align: inherit;
+  text-align: -webkit-match-parent;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+label {
+  display: inline-block;
+}
+
+// Buttons / inputs share font
+button {
+  border-radius: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  appearance: button;
+}
+
+::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+// Correct cursor style for clickable and non-interactive elements
+[role="button"] {
+  cursor: pointer;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type="button"]:disabled,
+[type="reset"]:disabled,
+[type="submit"]:disabled {
+  cursor: default;
+}
+
+// 1. Remove the border in Firefox and Safari.
+input,
+button,
+select,
+optgroup,
+textarea {
+  border: 1px solid transparent;
+}
+
+// Remove inner border & padding in Firefox
+::-moz-focus-inner {
+  border: 0;
+}
+
+// Progress element styling fix
+progress {
+  vertical-align: baseline;
+}
+
+// Textarea overflow
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+// 1. Correct the odd appearance in Chrome and Safari.
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+// Custom search input cancel button
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// Always hide a scrollbar in Edge / IE
+::-ms-reveal {
+  display: none;
+}
+
+// Set display for HTML5 elements
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+// Contain images inside figures
+figure > img {
+  display: block;
+}
+
+// Custom scrollbar (WebKit) — subtle, theme-consistent
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($budu-gray-500, 0.4);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+
+  &:hover {
+    background-color: rgba($budu-gray-500, 0.7);
+  }
+}
+
+// Smooth scrolling (respect reduced motion)
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+// Touch-friendly tap target minimum for interactive elements
+@supports (min-height: 44px) {
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  a.btn,
+  .btn {
+    min-height: 44px;
+  }
+}
+
+// Windows high-contrast fallback
+@media (forced-colors: active) {
+  *,
+  *::before,
+  *::after {
+    border-color: CanvasText;
+  }
+}

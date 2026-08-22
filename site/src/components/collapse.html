@@ -1,0 +1,57 @@
+<!--
+title: Collapse
+description: Toggle the visibility of content across your project with the collapse component.
+section: components
+order: 9
+-->
+<h1>Collapse</h1>
+<p class="lead">Toggle the visibility of content across your project with a few classes and our JavaScript plugin.</p>
+
+<h2 id="how">How it works</h2>
+<p>The collapse plugin uses a few classes to handle the heavy lifting:</p>
+<ul>
+  <li><code>.collapse</code> hides content.</li>
+  <li><code>.collapsing</code> is applied during transitions.</li>
+  <li><code>.collapse.show</code> shows content.</li>
+  <li><code>data-budu-toggle="collapse"</code> on the trigger, with <code>data-budu-target</code> (or an <code>href</code>) pointing to the collapsible element.</li>
+</ul>
+
+<h2 id="example">Example</h2>
+<p>Click the button to toggle the collapse.</p>
+<div class="bd-example">
+  <p>
+    <a class="btn btn-primary me-1" data-budu-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Link with href</a>
+    <button class="btn btn-outline-primary" type="button" data-budu-toggle="collapse" data-budu-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Button with data-target</button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">Some placeholder content for the collapse component. This panel is hidden by default but revealed when the trigger is activated.</div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;button class="btn btn-primary" type="button"
+        data-budu-toggle="collapse" data-budu-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample"&gt;
+  Button with target
+&lt;/button&gt;
+
+&lt;div class="collapse" id="collapseExample"&gt;
+  &lt;div class="card card-body"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="horizontal">Horizontal</h2>
+<p>Add <code>.collapse-horizontal</code> to the collapsible element to animate width instead of height.</p>
+<div class="bd-example">
+  <p>
+    <button class="btn btn-primary" type="button" data-budu-toggle="collapse" data-budu-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">Toggle width</button>
+  </p>
+  <div>
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+      <div class="card card-body" style="width:280px">This is some placeholder width content.</div>
+    </div>
+  </div>
+</div>
+
+<h2 id="multiple">Multiple toggles &amp; targets</h2>
+<p>A single trigger can control multiple targets by passing a space-separated selector to <code>data-budu-target</code>, or multiple triggers can control the same target.</p>
+<div class="highlight"><pre><code>&lt;!-- single button, two targets -->
+&lt;button data-budu-toggle="collapse"
+        data-budu-target="#targetOne #targetTwo"&gt;Toggle both&lt;/button&gt;</code></pre></div>

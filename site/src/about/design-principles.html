@@ -1,0 +1,29 @@
+<!--
+title: Design principles
+description: The principles that guide Budu's design decisions.
+section: about
+order: 1
+-->
+<h1>Design principles</h1>
+<p class="lead">The following principles drive every design decision in Budu. They keep the system coherent, accessible, and enjoyable to use.</p>
+
+<h2 id="mobile-first">1 · Mobile first</h2>
+<p>We design for the smallest screen first, then scale up. Media queries are min-width based; base styles apply to everything and layer on at larger breakpoints.</p>
+
+<h2 id="accessible">2 · Accessible by default</h2>
+<p>Keyboard, screen-reader, touch, and reduced-motion support are not afterthoughts. Every component ships with correct ARIA and keyboard handling.</p>
+
+<h2 id="modular">3 · Modular &amp; composable</h2>
+<p>The framework is a set of small, independent pieces — tokens → utilities → components. Import only what you need; the build is designed to tree-shake and be lean.</p>
+
+<h2 id="tokens">4 · Tokens over magic values</h2>
+<p>Every color, radius, shadow, and timing value lives in a token. Change a token, change the whole system consistently.</p>
+
+<h2 id="progressive">5 · Progressive enhancement</h2>
+<p>Use the newest CSS only where it degrades gracefully, and always provide a solid fallback for older browsers.</p>
+
+<h2 id="semantic">6 · Both semantic &amp; utility</h2>
+<p>You get value from composite components <em>and</em> from primitive utilities. Use whichever fits the moment — and mix them freely.</p>
+
+<h2 id="timeless">7 · Delight without decoration</h2>
+<p>Motion and elevation are purposeful: they communicate state, hierarchy, and affordance, never noise.</p>

@@ -1,0 +1,84 @@
+// BUDU UTILITY API
+// Generates utility classes from the $budu-utilities map.
+// Tailwind-inspired: every utility can be responsive (breakpoint-prefixed).
+
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
+
+// Normalize a property into a list
+@function utility-properties($prop) {
+  @if meta.type-of($prop) == "list" {
+    @return $prop;
+  }
+  @return ($prop,);
+}
+
+// Build a single utility rule set.
+@mixin generate-utility($utility, $infix: "", $important: $budu-utility-important) {
+  $values: map.get($utility, "values");
+  $class: map.get($utility, "class");
+  $props: utility-properties(map.get($utility, "property"));
+  $suffixes: map.get($utility, "postfix");
+  $important-str: if($important, " !important", "");
+
+  @each $key, $value in $values {
+    // Build the class name (escape dots/slashes in numeric keys like 0.5, 1/2)
+    $key-str: if($key == null, "", "-#{$key}");
+    $key-escaped: str-replace(str-replace($key-str, "/", "\\/"), ".", "\\.");
+    $class-name: if($class == null, "", ".#{$class}#{$infix}#{$key-escaped}");
+
+    @if $class-name != "" {
+      // Custom values (CSS var fallback) allowed
+      #{$class-name} {
+        @each $prop in $props {
+          #{$prop}: #{$value}#{$important-str};
+        }
+      }
+    }
+  }
+}
+
+// Generate all utilities, optionally responsive.
+@mixin generate-utilities($utilities, $rfs: false, $important: $budu-utility-important) {
+  @each $key, $utility in $utilities {
+    $responsive: map.get($utility, "responsive");
+
+    @if $responsive {
+      // Base (no breakpoint)
+      @include generate-utility($utility, "", $important);
+
+      // Each breakpoint
+      @each $breakpoint in map.keys($budu-grid-breakpoints) {
+        @if $breakpoint != "xs" {
+          $infix: "-#{$breakpoint}";
+          @include media-breakpoint-up($breakpoint) {
+            @include generate-utility($utility, $infix, $important);
+          }
+        }
+      }
+    } @else {
+      @include generate-utility($utility, "", $important);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Helpers used by components & partial builds
+// ---------------------------------------------------------------------
+
+// Emit `.text-<color>` etc. — actually handled by utilities map above.
+@mixin text-emphasis-variant($color-name, $color-value, $important: false) {
+  $important-str: if($important, " !important", "");
+  .text-#{$color-name} {
+    color: $color-value#{$important-str};
+  }
+}
+
+@mixin bg-variant($color-name, $color-value, $important: false) {
+  $important-str: if($important, " !important", "");
+  .bg-#{$color-name} {
+    background-color: $color-value#{$important-str};
+  }
+}

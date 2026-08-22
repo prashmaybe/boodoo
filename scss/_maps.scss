@@ -1,0 +1,1388 @@
+// BUDU MAPS
+// Centralized maps for the utility API and theme generation.
+
+@use "sass:map";
+
+// The master list of color names exposed to utilities/components.
+$budu-color-map: () !default;
+$budu-color-map: map.merge(
+  (
+    "primary":   $budu-primary,
+    "secondary": $budu-secondary,
+    "success":   $budu-success,
+    "info":      $budu-info,
+    "warning":   $budu-warning,
+    "danger":    $budu-danger,
+    "light":     $budu-light,
+    "dark":      $budu-dark,
+    "white":     $budu-white,
+    "black":     $budu-black,
+    "gray-100":  $budu-gray-100,
+    "gray-200":  $budu-gray-200,
+    "gray-300":  $budu-gray-300,
+    "gray-400":  $budu-gray-400,
+    "gray-500":  $budu-gray-500,
+    "gray-600":  $budu-gray-600,
+    "gray-700":  $budu-gray-700,
+    "gray-800":  $budu-gray-800,
+    "gray-900":  $budu-gray-900,
+    "accent":    $budu-accent,
+  ),
+  $budu-color-map
+);
+
+// Text-emphasis colors per theme color.
+$budu-text-emphasis-map: () !default;
+$budu-text-emphasis-map: map.merge(
+  (
+    "primary":   $budu-primary-text-emphasis,
+    "secondary": $budu-secondary-text-emphasis,
+    "success":   $budu-success-text-emphasis,
+    "info":      $budu-info-text-emphasis,
+    "warning":   $budu-warning-text-emphasis,
+    "danger":    $budu-danger-text-emphasis,
+    "light":     $budu-light-text-emphasis,
+    "dark":      $budu-dark-text-emphasis,
+  ),
+  $budu-text-emphasis-map
+);
+
+// Subtle background map
+$budu-bg-subtle-map: () !default;
+$budu-bg-subtle-map: map.merge(
+  (
+    "primary":   $budu-primary-bg-subtle,
+    "secondary": $budu-secondary-bg-subtle,
+    "success":   $budu-success-bg-subtle,
+    "info":      $budu-info-bg-subtle,
+    "warning":   $budu-warning-bg-subtle,
+    "danger":    $budu-danger-bg-subtle,
+    "light":     $budu-light-bg-subtle,
+    "dark":      $budu-dark-bg-subtle,
+  ),
+  $budu-bg-subtle-map
+);
+
+// Subtle border map
+$budu-border-subtle-map: () !default;
+$budu-border-subtle-map: map.merge(
+  (
+    "primary":   $budu-primary-border-subtle,
+    "secondary": $budu-secondary-border-subtle,
+    "success":   $budu-success-border-subtle,
+    "info":      $budu-info-border-subtle,
+    "warning":   $budu-warning-border-subtle,
+    "danger":    $budu-danger-border-subtle,
+    "light":     $budu-light-border-subtle,
+    "dark":      $budu-dark-border-subtle,
+  ),
+  $budu-border-subtle-map
+);
+
+// Opacity scale for utilities.
+$budu-opacity-map: () !default;
+$budu-opacity-map: map.merge(
+  (
+    0: 0,
+    10: 0.1,
+    25: 0.25,
+    50: 0.5,
+    75: 0.75,
+    100: 1,
+  ),
+  $budu-opacity-map
+);
+
+// Positioning utilities
+$budu-position-values: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky,
+) !default;
+
+// Object-fit
+$budu-object-fit-values: (
+  contain: contain,
+  cover: cover,
+  fill: fill,
+  none: none,
+  "scale-down": scale-down,
+) !default;
+
+// Text alignment
+$budu-text-align-values: (
+  start: left,
+  end: right,
+  center: center,
+  justify: justify,
+) !default;
+
+// Overflow
+$budu-overflow-values: (
+  auto: auto,
+  hidden: hidden,
+  clip: clip,
+  visible: visible,
+  scroll: scroll,
+) !default;
+
+// Float
+$budu-float-values: (
+  start: left,
+  end: right,
+  none: none,
+) !default;
+
+// Font styles
+$budu-font-style-values: (
+  normal: normal,
+  italic: italic,
+  oblique: oblique,
+) !default;
+
+// Cursor
+$budu-cursor-values: (
+  auto: auto,
+  pointer: pointer,
+  "not-allowed": not-allowed,
+  grab: grab,
+  "grabbing": grabbing,
+  zoom-in: zoom-in,
+  zoom-out: zoom-out,
+  move: move,
+  text: text,
+  wait: wait,
+  help: help,
+  crosshair: crosshair,
+  copy: copy,
+  alias: alias,
+  "no-drop": no-drop,
+  progress: progress,
+  cell: cell,
+  col-resize: col-resize,
+  row-resize: row-resize,
+  e-resize: e-resize,
+  n-resize: n-resize,
+  ne-resize: ne-resize,
+  nw-resize: nw-resize,
+  s-resize: s-resize,
+  se-resize: se-resize,
+  sw-resize: sw-resize,
+  w-resize: w-resize,
+  ew-resize: ew-resize,
+  ns-resize: ns-resize,
+  nesw-resize: nesw-resize,
+  nwse-resize: nwse-resize,
+  vertical-text: vertical-text,
+  default: default,
+) !default;
+
+// Sizing scale (percentages + fixed)
+$budu-size-scale: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto,
+) !default;
+
+// Max width / min width
+$budu-min-viewport-scale: (
+  25: 25vw,
+  50: 50vw,
+  75: 75vw,
+  100: 100vw,
+) !default;
+$budu-max-viewport-scale: (
+  25: 25vw,
+  50: 50vw,
+  75: 75vw,
+  100: 100vw,
+) !default;
+
+// Viewport heights
+$budu-viewport-scale: (
+  25: 25vh,
+  50: 50vh,
+  75: 75vh,
+  100: 100vh,
+) !default;
+
+// Line-height scale
+$budu-line-height-scale: (
+  1: 1,
+  sm: $budu-line-height-sm,
+  base: $budu-line-height-base,
+  lg: $budu-line-height-lg,
+) !default;
+
+// Letter-spacing (Tailwind-ish)
+$budu-letter-spacing-scale: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0em,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em,
+) !default;
+
+// Font-weight utilities (names + numbers)
+$budu-font-weight-utilities: (
+  lighter: $budu-font-weight-lighter,
+  light: $budu-font-weight-light,
+  normal: $budu-font-weight-normal,
+  medium: $budu-font-weight-medium,
+  semibold: $budu-font-weight-semibold,
+  bold: $budu-font-weight-bold,
+  bolder: $budu-font-weight-bolder,
+  100: 100,
+  200: 200,
+  300: 300,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
+  800: 800,
+  900: 900,
+) !default;
+
+// Font sizes for utilities (Tailwind-style)
+$budu-font-size-utilities: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  "2xl": 1.5rem,
+  "3xl": 1.875rem,
+  "4xl": 2.25rem,
+  "5xl": 3rem,
+  "6xl": 3.75rem,
+) !default;
+
+// Widths (Tailwind-inspired percentages)
+$budu-width-scale: (
+  "1/2": 50%,
+  "1/3": 33.333333%,
+  "2/3": 66.666667%,
+  "1/4": 25%,
+  "2/4": 50%,
+  "3/4": 75%,
+  "1/5": 20%,
+  "2/5": 40%,
+  "3/5": 60%,
+  "4/5": 80%,
+  "1/6": 16.666667%,
+  "2/6": 33.333333%,
+  "3/6": 50%,
+  "4/6": 66.666667%,
+  "5/6": 83.333333%,
+  full: 100%,
+  screen: 100vw,
+  fit: fit-content,
+  min: min-content,
+  max: max-content,
+) !default;
+
+// Z-index utilities
+$budu-zindex-utilities: (
+  0: 0,
+  10: 10,
+  20: 20,
+  30: 30,
+  40: 40,
+  50: 50,
+  auto: auto,
+) !default;
+
+// --- THE UTILITY API ---
+// Each entry: property (can be a list), class prefix, values map, optional
+// extra postfix, responsive flag, important flag.
+// Keys match the generated class names.
+
+$budu-utilities: (
+  "background-color": (
+    property: background-color,
+    class: bg,
+    values: $budu-color-map,
+  ),
+  "background-gradient": (
+    property: background-image,
+    class: bg-gradient,
+    values: (
+      null: linear-gradient(180deg, rgba($budu-white, 0.15), rgba($budu-white, 0)),
+    ),
+  ),
+  "background-opacity": (
+    property: background-color,
+    class: bg-opacity,
+    values: (
+      10: rgba($budu-primary, 0.1),
+      25: rgba($budu-primary, 0.25),
+      50: rgba($budu-primary, 0.5),
+      75: rgba($budu-primary, 0.75),
+      100: rgba($budu-primary, 1),
+    ),
+  ),
+  "background-position": (
+    property: background-position,
+    class: bg-position,
+    values: (
+      top: top,
+      bottom: bottom,
+      center: center,
+      left: left,
+      right: right,
+    ),
+  ),
+  "background-size": (
+    property: background-size,
+    class: bg-size,
+    values: (
+      auto: auto,
+      cover: cover,
+      contain: contain,
+    ),
+  ),
+  "background-repeat": (
+    property: background-repeat,
+    class: bg-repeat,
+    values: (
+      no-repeat: no-repeat,
+      repeat: repeat,
+      repeat-x: repeat-x,
+      repeat-y: repeat-y,
+    ),
+  ),
+  "text-color": (
+    property: color,
+    class: text,
+    values: map.merge($budu-color-map, (
+      "body": $budu-body-color,
+      "muted": $budu-text-muted,
+      "emphasis": $budu-body-emphasis-color,
+      "inherit": inherit,
+    )),
+  ),
+  "text-opacity": (
+    property: color,
+    class: text-opacity,
+    values: (
+      10: rgba($budu-body-color, 0.1),
+      25: rgba($budu-body-color, 0.25),
+      50: rgba($budu-body-color, 0.5),
+      75: rgba($budu-body-color, 0.75),
+      100: rgba($budu-body-color, 1),
+    ),
+  ),
+  "text-align": (
+    property: text-align,
+    class: text,
+    values: $budu-text-align-values,
+    responsive: true,
+  ),
+  "text-decoration": (
+    property: text-decoration-line,
+    class: text-decoration,
+    values: (
+      none: none,
+      underline: underline,
+      "line-through": line-through,
+      overline: overline,
+    ),
+  ),
+  "text-transform": (
+    property: text-transform,
+    class: text,
+    values: (
+      lowercase: lowercase,
+      uppercase: uppercase,
+      capitalize: capitalize,
+      none: none,
+    ),
+  ),
+  "text-wrap": (
+    property: text-wrap,
+    class: text,
+    values: (
+      wrap: wrap,
+      nowrap: nowrap,
+      balance: balance,
+      pretty: pretty,
+    ),
+  ),
+  "font-weight": (
+    property: font-weight,
+    class: fw,
+    values: $budu-font-weight-utilities,
+  ),
+  "font-style": (
+    property: font-style,
+    class: fst,
+    values: $budu-font-style-values,
+  ),
+  "font-family": (
+    property: font-family,
+    class: font,
+    values: (
+      sans-serif: var(--budu-font-sans-serif),
+      serif: var(--budu-font-serif),
+      monospace: var(--budu-font-monospace),
+    ),
+  ),
+  "font-size": (
+    property: font-size,
+    class: fs,
+    values: $budu-font-size-utilities,
+  ),
+  "line-height": (
+    property: line-height,
+    class: lh,
+    values: $budu-line-height-scale,
+  ),
+  "letter-spacing": (
+    property: letter-spacing,
+    class: tracking,
+    values: $budu-letter-spacing-scale,
+  ),
+  "word-spacing": (
+    property: word-spacing,
+    class: ws,
+    values: (
+      1: 0.1em,
+      2: 0.2em,
+      3: 0.3em,
+      4: 0.4em,
+      5: 0.5em,
+    ),
+  ),
+  "white-space": (
+    property: white-space,
+    class: text,
+    values: (
+      normal: normal,
+      pre: pre,
+      pre-line: pre-line,
+      pre-wrap: pre-wrap,
+    ),
+  ),
+  "vertical-align": (
+    property: vertical-align,
+    class: align,
+    values: (
+      baseline: baseline,
+      top: top,
+      middle: middle,
+      bottom: bottom,
+      "text-bottom": text-bottom,
+      "text-top": text-top,
+      sub: sub,
+      super: super,
+    ),
+  ),
+  "margin": (
+    property: margin,
+    class: m,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-x": (
+    property: margin-right margin-left,
+    class: mx,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-y": (
+    property: margin-top margin-bottom,
+    class: my,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-top": (
+    property: margin-top,
+    class: mt,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-end": (
+    property: margin-right,
+    class: me,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-bottom": (
+    property: margin-bottom,
+    class: mb,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "margin-start": (
+    property: margin-left,
+    class: ms,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "negative-margin": (
+    property: margin,
+    class: m,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-x": (
+    property: margin-right margin-left,
+    class: mx,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-y": (
+    property: margin-top margin-bottom,
+    class: my,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-top": (
+    property: margin-top,
+    class: mt,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-end": (
+    property: margin-right,
+    class: me,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-bottom": (
+    property: margin-bottom,
+    class: mb,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "negative-margin-start": (
+    property: margin-left,
+    class: ms,
+    values: $budu-negative-spacers,
+    responsive: true,
+  ),
+  "padding": (
+    property: padding,
+    class: p,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-x": (
+    property: padding-right padding-left,
+    class: px,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-y": (
+    property: padding-top padding-bottom,
+    class: py,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-top": (
+    property: padding-top,
+    class: pt,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-end": (
+    property: padding-right,
+    class: pe,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-bottom": (
+    property: padding-bottom,
+    class: pb,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "padding-start": (
+    property: padding-left,
+    class: ps,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "border": (
+    property: border,
+    class: border,
+    values: (
+      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      0: 0,
+      1: 1px solid var(--budu-border-color),
+      2: 2px solid var(--budu-border-color),
+      3: 3px solid var(--budu-border-color),
+      4: 4px solid var(--budu-border-color),
+      5: 5px solid var(--budu-border-color),
+    ),
+  ),
+  "border-top": (
+    property: border-top,
+    class: border-top,
+    values: (
+      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      0: 0,
+      1: 1px solid var(--budu-border-color),
+      2: 2px solid var(--budu-border-color),
+      3: 3px solid var(--budu-border-color),
+    ),
+  ),
+  "border-end": (
+    property: border-right,
+    class: border-end,
+    values: (
+      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      0: 0,
+    ),
+  ),
+  "border-bottom": (
+    property: border-bottom,
+    class: border-bottom,
+    values: (
+      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      0: 0,
+    ),
+  ),
+  "border-start": (
+    property: border-left,
+    class: border-start,
+    values: (
+      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      0: 0,
+    ),
+  ),
+  "border-color": (
+    property: border-color,
+    class: border,
+    values: map.merge($budu-color-map, (
+      "subtle": $budu-border-color-translucent,
+    )),
+  ),
+  "border-width": (
+    property: border-width,
+    class: border,
+    values: $budu-border-widths,
+  ),
+  "border-opacity": (
+    property: border-color,
+    class: border-opacity,
+    values: (
+      10: rgba($budu-primary, 0.1),
+      25: rgba($budu-primary, 0.25),
+      50: rgba($budu-primary, 0.5),
+      75: rgba($budu-primary, 0.75),
+      100: rgba($budu-primary, 1),
+    ),
+  ),
+  "border-radius": (
+    property: border-radius,
+    class: rounded,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-top": (
+    property: border-top-left-radius border-top-right-radius,
+    class: rounded-top,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-end": (
+    property: border-top-right-radius border-bottom-right-radius,
+    class: rounded-end,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-bottom": (
+    property: border-bottom-right-radius border-bottom-left-radius,
+    class: rounded-bottom,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-start": (
+    property: border-bottom-left-radius border-top-left-radius,
+    class: rounded-start,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-top-start": (
+    property: border-top-left-radius,
+    class: rounded-top-start,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-top-end": (
+    property: border-top-right-radius,
+    class: rounded-top-end,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-bottom-end": (
+    property: border-bottom-right-radius,
+    class: rounded-bottom-end,
+    values: $budu-border-radius-map,
+  ),
+  "border-radius-bottom-start": (
+    property: border-bottom-left-radius,
+    class: rounded-bottom-start,
+    values: $budu-border-radius-map,
+  ),
+  "opacity": (
+    property: opacity,
+    class: opacity,
+    values: $budu-opacity-map,
+  ),
+  "display": (
+    property: display,
+    class: d,
+    values: (
+      none: none,
+      inline: inline,
+      inline-block: inline-block,
+      block: block,
+      grid: grid,
+      inline-grid: inline-grid,
+      table: table,
+      inline-table: inline-table,
+      table-row: table-row,
+      table-cell: table-cell,
+      flex: flex,
+      inline-flex: inline-flex,
+      flow-root: flow-root,
+    ),
+    responsive: true,
+  ),
+  "flex": (
+    property: flex,
+    class: flex,
+    values: (
+      fill: 1 1 auto,
+      "1": 1 1 0%,
+      auto: 1 1 auto,
+      initial: 0 1 auto,
+      none: none,
+      grow: 1,
+      "grow-0": 0,
+      shrink: 1,
+      "shrink-0": 0,
+    ),
+    responsive: true,
+  ),
+  "flex-direction": (
+    property: flex-direction,
+    class: flex,
+    values: (
+      row: row,
+      column: column,
+      "row-reverse": row-reverse,
+      "column-reverse": column-reverse,
+    ),
+    responsive: true,
+  ),
+  "flex-wrap": (
+    property: flex-wrap,
+    class: flex,
+    values: (
+      wrap: wrap,
+      nowrap: nowrap,
+      "wrap-reverse": wrap-reverse,
+    ),
+    responsive: true,
+  ),
+  "flex-grow": (
+    property: flex-grow,
+    class: flex,
+    values: (
+      grow: 1,
+      "grow-0": 0,
+    ),
+  ),
+  "flex-shrink": (
+    property: flex-shrink,
+    class: flex,
+    values: (
+      shrink: 1,
+      "shrink-0": 0,
+    ),
+  ),
+  "flex-basis": (
+    property: flex-basis,
+    class: basis,
+    values: (
+      0: 0%,
+      auto: auto,
+      full: 100%,
+      "1/2": 50%,
+      "1/3": 33.333333%,
+      "2/3": 66.666667%,
+      "1/4": 25%,
+      "3/4": 75%,
+    ),
+  ),
+  "justify-content": (
+    property: justify-content,
+    class: justify-content,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      normal: normal,
+    ),
+    responsive: true,
+  ),
+  "align-items": (
+    property: align-items,
+    class: align-items,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      baseline: baseline,
+      stretch: stretch,
+      normal: normal,
+    ),
+    responsive: true,
+  ),
+  "align-content": (
+    property: align-content,
+    class: align-content,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      stretch: stretch,
+      normal: normal,
+    ),
+    responsive: true,
+  ),
+  "align-self": (
+    property: align-self,
+    class: align-self,
+    values: (
+      auto: auto,
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      baseline: baseline,
+      stretch: stretch,
+    ),
+    responsive: true,
+  ),
+  "order": (
+    property: order,
+    class: order,
+    values: (
+      first: -1,
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      last: 6,
+    ),
+    responsive: true,
+  ),
+  "gap": (
+    property: gap,
+    class: gap,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "row-gap": (
+    property: row-gap,
+    class: row-gap,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "column-gap": (
+    property: column-gap,
+    class: column-gap,
+    values: $budu-spacers,
+    responsive: true,
+  ),
+  "grid-column": (
+    property: grid-column,
+    class: col-span,
+    values: (
+      1: span 1 / span 1,
+      2: span 2 / span 2,
+      3: span 3 / span 3,
+      4: span 4 / span 4,
+      5: span 5 / span 5,
+      6: span 6 / span 6,
+      7: span 7 / span 7,
+      8: span 8 / span 8,
+      9: span 9 / span 9,
+      10: span 10 / span 10,
+      11: span 11 / span 11,
+      12: span 12 / span 12,
+      full: 1 / -1,
+      auto: auto,
+    ),
+    responsive: true,
+  ),
+  "grid-column-start": (
+    property: grid-column-start,
+    class: col-start,
+    values: (
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+      9: 9,
+      10: 10,
+      11: 11,
+      12: 12,
+      13: 13,
+      auto: auto,
+    ),
+  ),
+  "grid-column-end": (
+    property: grid-column-end,
+    class: col-end,
+    values: (
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+      9: 9,
+      10: 10,
+      11: 11,
+      12: 12,
+      13: 13,
+      auto: auto,
+    ),
+  ),
+  "grid-row": (
+    property: grid-row,
+    class: row-span,
+    values: (
+      1: span 1 / span 1,
+      2: span 2 / span 2,
+      3: span 3 / span 3,
+      4: span 4 / span 4,
+      5: span 5 / span 5,
+      6: span 6 / span 6,
+      full: 1 / -1,
+      auto: auto,
+    ),
+  ),
+  "grid-template-columns": (
+    property: grid-template-columns,
+    class: grid-cols,
+    values: (
+      1: repeat(1, minmax(0, 1fr)),
+      2: repeat(2, minmax(0, 1fr)),
+      3: repeat(3, minmax(0, 1fr)),
+      4: repeat(4, minmax(0, 1fr)),
+      5: repeat(5, minmax(0, 1fr)),
+      6: repeat(6, minmax(0, 1fr)),
+      7: repeat(7, minmax(0, 1fr)),
+      8: repeat(8, minmax(0, 1fr)),
+      9: repeat(9, minmax(0, 1fr)),
+      10: repeat(10, minmax(0, 1fr)),
+      11: repeat(11, minmax(0, 1fr)),
+      12: repeat(12, minmax(0, 1fr)),
+      none: none,
+      subgrid: subgrid,
+    ),
+    responsive: true,
+  ),
+  "grid-template-rows": (
+    property: grid-template-rows,
+    class: grid-rows,
+    values: (
+      1: repeat(1, minmax(0, 1fr)),
+      2: repeat(2, minmax(0, 1fr)),
+      3: repeat(3, minmax(0, 1fr)),
+      4: repeat(4, minmax(0, 1fr)),
+      5: repeat(5, minmax(0, 1fr)),
+      6: repeat(6, minmax(0, 1fr)),
+      none: none,
+      subgrid: subgrid,
+    ),
+  ),
+  "grid-auto-flow": (
+    property: grid-auto-flow,
+    class: grid-flow,
+    values: (
+      row: row,
+      column: column,
+      dense: dense,
+      "row-dense": row dense,
+      "col-dense": column dense,
+    ),
+  ),
+  "justify-items": (
+    property: justify-items,
+    class: justify-items,
+    values: (
+      start: start,
+      end: end,
+      center: center,
+      stretch: stretch,
+      normal: normal,
+    ),
+  ),
+  "justify-self": (
+    property: justify-self,
+    class: justify-self,
+    values: (
+      auto: auto,
+      start: start,
+      end: end,
+      center: center,
+      stretch: stretch,
+    ),
+  ),
+  "align-self-2": (
+    property: align-self,
+    class: self,
+    values: (
+      auto: auto,
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      baseline: baseline,
+      stretch: stretch,
+    ),
+  ),
+  "float": (
+    property: float,
+    class: float,
+    values: $budu-float-values,
+    responsive: true,
+  ),
+  "position": (
+    property: position,
+    class: position,
+    values: $budu-position-values,
+    responsive: true,
+  ),
+  "top": (
+    property: top,
+    class: top,
+    values: (
+      0: 0,
+      50: 50%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  "end": (
+    property: right,
+    class: end,
+    values: (
+      0: 0,
+      50: 50%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  "bottom": (
+    property: bottom,
+    class: bottom,
+    values: (
+      0: 0,
+      50: 50%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  "start": (
+    property: left,
+    class: start,
+    values: (
+      0: 0,
+      50: 50%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  "translate-middle": (
+    property: transform,
+    class: translate-middle,
+    values: (
+      null: translate(-50%, -50%),
+      x: translateX(-50%),
+      y: translateY(-50%),
+    ),
+  ),
+  "width": (
+    property: width,
+    class: w,
+    values: map.merge($budu-size-scale, $budu-width-scale),
+    responsive: true,
+  ),
+  "max-width": (
+    property: max-width,
+    class: mw,
+    values: map.merge($budu-max-viewport-scale, (
+      100: 100%,
+      auto: none,
+    )),
+  ),
+  "min-width": (
+    property: min-width,
+    class: min-w,
+    values: map.merge($budu-min-viewport-scale, (
+      0: 0,
+      full: 100%,
+    )),
+  ),
+  "height": (
+    property: height,
+    class: h,
+    values: map.merge($budu-size-scale, $budu-viewport-scale),
+    responsive: true,
+  ),
+  "max-height": (
+    property: max-height,
+    class: mh,
+    values: $budu-viewport-scale,
+  ),
+  "min-height": (
+    property: min-height,
+    class: min-vh,
+    values: $budu-viewport-scale,
+  ),
+  "overflow": (
+    property: overflow,
+    class: overflow,
+    values: $budu-overflow-values,
+  ),
+  "overflow-x": (
+    property: overflow-x,
+    class: overflow-x,
+    values: $budu-overflow-values,
+  ),
+  "overflow-y": (
+    property: overflow-y,
+    class: overflow-y,
+    values: $budu-overflow-values,
+  ),
+  "visibility": (
+    property: visibility,
+    class: visible,
+    values: (
+      null: visible,
+      invisible: hidden,
+    ),
+  ),
+  "z-index": (
+    property: z-index,
+    class: z,
+    values: $budu-zindex-utilities,
+  ),
+  "box-shadow": (
+    property: box-shadow,
+    class: shadow,
+    values: $budu-shadow-map,
+    responsive: true,
+  ),
+  "elevation": (
+    property: box-shadow,
+    class: elevation,
+    values: $budu-elevation-map,
+  ),
+  "aspect-ratio": (
+    property: aspect-ratio,
+    class: aspect,
+    values: (
+      auto: auto,
+      square: 1 / 1,
+      video: 16 / 9,
+      "4/3": 4 / 3,
+      "3/4": 3 / 4,
+      "3/2": 3 / 2,
+      "2/3": 2 / 3,
+      "21/9": 21 / 9,
+    ),
+    responsive: true,
+  ),
+  "object-fit": (
+    property: object-fit,
+    class: object,
+    values: $budu-object-fit-values,
+  ),
+  "object-position": (
+    property: object-position,
+    class: object-position,
+    values: (
+      top: top,
+      bottom: bottom,
+      center: center,
+      left: left,
+      right: right,
+      "left-top": left top,
+      "right-top": right top,
+      "left-bottom": left bottom,
+      "right-bottom": right bottom,
+    ),
+  ),
+  "cursor": (
+    property: cursor,
+    class: cursor,
+    values: $budu-cursor-values,
+  ),
+  "user-select": (
+    property: user-select,
+    class: user-select,
+    values: (
+      none: none,
+      auto: auto,
+      all: all,
+      text: text,
+    ),
+  ),
+  "pointer-events": (
+    property: pointer-events,
+    class: pointer-events,
+    values: (
+      none: none,
+      auto: auto,
+    ),
+  ),
+  "appearance": (
+    property: appearance,
+    class: appearance,
+    values: (
+      none: none,
+      auto: auto,
+    ),
+  ),
+  "resize": (
+    property: resize,
+    class: resize,
+    values: (
+      none: none,
+      both: both,
+      x: horizontal,
+      y: vertical,
+    ),
+  ),
+  "blur": (
+    property: --budu-blur,
+    class: blur,
+    values: (
+      none: 0,
+      xs: 4px,
+      sm: 8px,
+      md: 12px,
+      lg: 16px,
+      xl: 24px,
+    ),
+  ),
+  "filter": (
+    property: filter,
+    class: filter,
+    values: (
+      none: none,
+      blur-sm: blur(4px),
+      blur: blur(8px),
+      blur-lg: blur(16px),
+    ),
+  ),
+  "backdrop-blur": (
+    property: backdrop-filter,
+    class: backdrop-blur,
+    values: (
+      none: none,
+      xs: blur(4px),
+      sm: blur(8px),
+      md: blur(12px),
+      lg: blur(16px),
+      xl: blur(24px),
+    ),
+  ),
+  "rotate": (
+    property: transform,
+    class: rotate,
+    values: (
+      0: rotate(0deg),
+      45: rotate(45deg),
+      90: rotate(90deg),
+      135: rotate(135deg),
+      180: rotate(180deg),
+      270: rotate(270deg),
+    ),
+  ),
+  "transition": (
+    property: transition,
+    class: transition,
+    values: (
+      none: none,
+      all: all 0.2s ease-in-out,
+      colors: (color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, fill 0.2s ease-in-out, stroke 0.2s ease-in-out),
+      opacity: opacity 0.2s ease-in-out,
+      shadow: box-shadow 0.2s ease-in-out,
+      transform: transform 0.2s ease-in-out,
+    ),
+  ),
+  "duration": (
+    property: transition-duration,
+    class: duration,
+    values: (
+      75: 75ms,
+      100: 100ms,
+      150: 150ms,
+      200: 200ms,
+      300: 300ms,
+      500: 500ms,
+      700: 700ms,
+      1000: 1000ms,
+    ),
+  ),
+  "delay": (
+    property: transition-delay,
+    class: delay,
+    values: (
+      75: 75ms,
+      100: 100ms,
+      150: 150ms,
+      200: 200ms,
+      300: 300ms,
+      500: 500ms,
+    ),
+  ),
+) !default;
+
+// Utilities excluded from the "all" build (kept in budu-utilities partial)
+$budu-utilities-all-exclude: (
+  "text-opacity",
+  "background-opacity",
+  "border-opacity",
+  "word-spacing",
+  "letter-spacing",
+  "aspect-ratio",
+  "grid-column",
+  "grid-column-start",
+  "grid-column-end",
+  "grid-row",
+  "grid-template-columns",
+  "grid-template-rows",
+  "grid-auto-flow",
+  "justify-items",
+  "justify-self",
+  "cursor",
+  "backdrop-blur",
+  "blur",
+  "filter",
+  "rotate",
+  "transition",
+  "duration",
+  "delay",
+  "elevation",
+  "basis",
+) !default;

@@ -1,0 +1,64 @@
+<!--
+title: Input group
+description: Extend form controls by adding text, buttons, or button groups.
+section: forms
+order: 5
+-->
+<h1>Input group</h1>
+<p class="lead">Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs.</p>
+
+<h2 id="basic">Basic example</h2>
+<div class="bd-example">
+  <div class="input-group mb-3 w-75">
+    <span class="input-group-text" id="basic-addon1">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group mb-3 w-75">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-text" id="basic-addon2">@example.com</span>
+  </div>
+  <div class="input-group w-75">
+    <span class="input-group-text">$</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <span class="input-group-text">.00</span>
+  </div>
+</div>
+
+<h2 id="buttons">Buttons addons</h2>
+<div class="bd-example">
+  <div class="input-group w-75 mb-3">
+    <button class="btn btn-outline-primary" type="button" id="button-addon1">Button</button>
+    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+  </div>
+  <div class="input-group w-75">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-primary" type="button" id="button-addon2">Submit</button>
+  </div>
+</div>
+
+<h2 id="sizing">Sizing</h2>
+<p>Add the relative form sizing classes to the <code>.input-group</code> itself.</p>
+<div class="bd-example">
+  <div class="input-group input-group-sm w-75 mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  </div>
+  <div class="input-group w-75 mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <div class="input-group input-group-lg w-75">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  </div>
+</div>
+
+<h2 id="flush">Flush</h2>
+<p>Use <code>.input-group-flush</code> for a borderless, inline-looking group.</p>
+<div class="bd-example">
+  <div class="input-group input-group-flush w-75">
+    <span class="input-group-text">Search</span>
+    <input type="text" class="form-control" placeholder="Type to search…" aria-label="Search">
+    <button class="btn btn-soft-primary" type="button">Go</button>
+  </div>
+</div>

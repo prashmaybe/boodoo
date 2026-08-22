@@ -1,0 +1,161 @@
+// BUDU FUNCTIONS
+// Pure Sass functions used across the framework.
+
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
+
+// ---------------------------------------------------------------------
+// Color helpers (Bootstrap-compatible)
+// ---------------------------------------------------------------------
+
+// Convert a color to an RGB triplet string usable in rgba() / rgb().
+@function to-rgb($value) {
+  @return color.red($value), color.green($value), color.blue($value);
+}
+
+// Tint: mix with white.
+@function tint-color($color, $weight) {
+  @return color.mix(white, $color, $weight);
+}
+
+// Shade: mix with black.
+@function shade-color($color, $weight) {
+  @return color.mix(black, $color, $weight);
+}
+
+// Shift: shade with positive weight, tint with negative.
+@function shift-color($color, $weight) {
+  @if $weight > 0 {
+    @return shade-color($color, $weight);
+  } @else {
+    @return tint-color($color, -$weight);
+  }
+}
+
+// ---------------------------------------------------------------------
+// Map helpers
+// ---------------------------------------------------------------------
+
+@function map-get-multiple($map, $values) {
+  $result: ();
+  @each $key, $value in $map {
+    @if (list.index($values, $key) != null) {
+      $result: map.merge($result, ($key: $value));
+    }
+  }
+  @return $result;
+}
+
+// Negate every value in a spacers map → used for negative margin utilities.
+@function negativify-map($map) {
+  $result: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $result: map.merge($result, ($key: -$value));
+    }
+  }
+  @return $result;
+}
+
+// ---------------------------------------------------------------------
+// String helpers
+// ---------------------------------------------------------------------
+
+// Strip a leading $ from a string (e.g. "$primary" → "primary").
+@function str-replace($string, $search, $replace: "") {
+  $index: string.index($string, $search);
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function str-split($string, $separator) {
+  $result: ();
+  $index: string.index($string, $separator);
+  @while $index {
+    $result: list.append($result, string.slice($string, 1, $index - 1));
+    $string: string.slice($string, $index + string.length($separator));
+    $index: string.index($string, $separator);
+  }
+  @return list.append($result, $string);
+}
+
+// ---------------------------------------------------------------------
+// Number helpers
+// ---------------------------------------------------------------------
+
+// Divide (Sass 1.x compat).
+@function divide($dividend, $divisor, $precision: 10) {
+  $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
+  $dividend: math.abs($dividend);
+  $divisor: math.abs($divisor);
+  @if $dividend == 0 {
+    @return 0;
+  }
+  @if $divisor == 0 {
+    @error "Cannot divide by 0";
+  }
+  $remainder: $dividend;
+  $result: 0;
+  $factor: 10;
+  @while ($remainder > 0 and $precision >= 0) {
+    $quotient: 0;
+    @while ($remainder >= $divisor) {
+      $remainder: $remainder - $divisor;
+      $quotient: $quotient + 1;
+    }
+    $result: $result * 10 + $quotient;
+    $factor: $factor * 0.1;
+    $remainder: $remainder * 10;
+    $precision: $precision - 1;
+    @if ($precision < 0 and $remainder >= $divisor * 5) {
+      $result: $result + 1;
+    }
+  }
+  $result: $result * $factor * $sign;
+  $decimals: math.div(1, $factor);
+  @return math.div(math.round($result * $decimals), $decimals);
+}
+
+// CSS var accessor for theme colors: var(--budu-#{$name})
+@function var-c($name, $fallback: null) {
+  @if $fallback == null {
+    @return var(--budu-#{$name});
+  }
+  @return var(--budu-#{$name}, #{$fallback});
+}
+
+// Get a color name from the theme map or return it untouched if already a color.
+@function budu-color($key) {
+  @if map.has-key($budu-theme-colors, $key) {
+    @return map.get($budu-theme-colors, $key);
+  }
+  @return $key;
+}
+
+// Spacer lookup: returns a spacing value (handles bare numbers too).
+@function spacer($key) {
+  @if map.has-key($budu-spacers, $key) {
+    @return map.get($budu-spacers, $key);
+  }
+  @return $key;
+}
+
+// Breakpoint lookup
+@function breakpoint($name) {
+  @if map.has-key($budu-grid-breakpoints, $name) {
+    @return map.get($budu-grid-breakpoints, $name);
+  }
+  @return $name;
+}
+
+// Invalid value guard
+@function valid-radius($r) {
+  @return $r;
+}

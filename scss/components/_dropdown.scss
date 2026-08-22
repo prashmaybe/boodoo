@@ -1,0 +1,219 @@
+// BUDU DROPDOWN
+// Dropdown menus with popper-style positioning support (JS-driven).
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  white-space: nowrap;
+
+  // Caret
+  &::after {
+    display: inline-block;
+    margin-left: 0.5em;
+    vertical-align: $budu-caret-vertical-align;
+    content: "";
+    @include caret(down);
+  }
+
+  &:empty::after {
+    margin-left: 0;
+  }
+}
+
+.dropdown-toggle-split {
+  &::after {
+    margin-left: 0;
+  }
+}
+
+.dropdown-menu {
+  --budu-dropdown-min-width: #{$budu-dropdown-min-width};
+  --budu-dropdown-spacer: #{$budu-dropdown-spacer};
+  --budu-dropdown-bg: #{$budu-dropdown-bg};
+  --budu-dropdown-border-color: #{$budu-dropdown-border-color};
+  --budu-dropdown-border-radius: #{$budu-dropdown-border-radius};
+  --budu-dropdown-box-shadow: #{$budu-dropdown-box-shadow};
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $budu-zindex-dropdown;
+  display: none;
+  min-width: var(--budu-dropdown-min-width);
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--budu-body-color);
+  text-align: left;
+  list-style: none;
+  background-color: var(--budu-dropdown-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--budu-dropdown-border-color);
+  border-radius: var(--budu-dropdown-border-radius);
+  box-shadow: var(--budu-dropdown-box-shadow);
+
+  &[data-budu-popper] {
+    top: 100%;
+    left: 0;
+    margin-top: var(--budu-dropdown-spacer);
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+// Animation
+.dropdown-menu.show {
+  animation: budu-fade-in 0.15s ease-out, budu-slide-down 0.15s ease-out;
+}
+
+// Alignment
+.dropdown-menu-end {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu-start {
+  right: auto;
+  left: 0;
+}
+
+.dropdown-menu-sm-end {
+  @include media-breakpoint-up(sm) {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropdown-menu-md-end {
+  @include media-breakpoint-up(md) {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropdown-menu-lg-end {
+  @include media-breakpoint-up(lg) {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropdown-menu-xl-end {
+  @include media-breakpoint-up(xl) {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropdown-menu-xxl-end {
+  @include media-breakpoint-up(xxl) {
+    right: 0;
+    left: auto;
+  }
+}
+
+// Items
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: $budu-dropdown-link-color;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: $budu-dropdown-link-color;
+    background-color: $budu-dropdown-link-hover-bg;
+  }
+
+  &.active {
+    color: $budu-dropdown-link-active-color;
+    text-decoration: none;
+    background-color: $budu-dropdown-link-active-bg;
+  }
+
+  &.disabled {
+    color: var(--budu-body-tertiary-color);
+    pointer-events: none;
+  }
+}
+
+// Header & dividers
+.dropdown-header {
+  display: block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--budu-body-secondary-color);
+  white-space: nowrap;
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid var(--budu-border-color);
+  opacity: 1;
+}
+
+.dropdown-item-text {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $budu-dropdown-link-color;
+}
+
+// Menu with icon spacing
+.dropdown-item .bi {
+  margin-right: 0.5rem;
+  vertical-align: -0.125em;
+}
+
+// Dropdown inside navbar
+.navbar .dropdown-menu {
+  position: absolute;
+}
+
+// Dark dropdown
+.dropdown-menu-dark {
+  --budu-dropdown-bg: #{$budu-gray-900};
+  --budu-dropdown-border-color: #{$budu-gray-800};
+  --budu-dropdown-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  color: $budu-white;
+
+  .dropdown-item {
+    color: rgba($budu-white, 0.75);
+
+    &:hover,
+    &:focus {
+      color: $budu-white;
+      background-color: rgba($budu-white, 0.1);
+    }
+
+    &.active {
+      color: $budu-white;
+      background-color: $budu-primary;
+    }
+  }
+
+  .dropdown-header {
+    color: rgba($budu-white, 0.5);
+  }
+
+  .dropdown-divider {
+    border-color: $budu-gray-800;
+  }
+}

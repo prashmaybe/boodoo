@@ -1,0 +1,31 @@
+// BUDU COLLAPSE
+// Expand/collapse animation classes (JS-driven).
+
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: $budu-transition-collapse;
+
+  &.collapse-horizontal {
+    width: 0;
+    height: auto;
+    transition: width 0.35s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition: none;
+  }
+}
+
+// Horizontal collapse
+.collapse-horizontal {
+  &:not(.show) {
+    display: none;
+  }
+}

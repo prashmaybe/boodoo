@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" data-budu-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Documentation and examples for adding Bootstrap-like popovers with Budu.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Budu">
+  <meta property="og:title" content="Popovers · Budu">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="../../assets/brand/budu-og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Popovers · Budu</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/budu-icon.svg">
+  <link rel="apple-touch-icon" href="../../assets/brand/budu-icon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../dist/css/budu.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    pre code[class*="language-"]{display:block;overflow-x:auto;padding:1em}
+    .docs-sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding:1.5rem 0}
+    .docs-sidebar::-webkit-scrollbar{width:8px}
+    .docs-toc{position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding-top:1.5rem}
+    .docs-main{max-width:780px}
+    .highlight{position:relative;margin-bottom:1.5rem}
+    .highlight pre{background:#16131f;color:#e5e7eb;border-radius:.5rem;padding:1.25rem;font-size:.85rem;line-height:1.6}
+    .highlight-copy{position:absolute;top:.5rem;right:.5rem;z-index:2}
+    .bd-example{border:1px solid var(--budu-gray-200);border-radius:.5rem;padding:1.5rem;margin-bottom:1rem;background:var(--budu-white)}
+    .docs-hr{border:0;border-top:1px solid var(--budu-gray-200);margin:3rem 0}
+    .docs-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--budu-gray-200)}
+    .docs-pager-item{flex:1}
+    .docs-pager-item:last-child{text-align:right}
+    .docs-pager-label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--budu-gray-500);margin-bottom:.25rem}
+    .docs-pager-link{font-weight:600;color:var(--budu-primary);text-decoration:none}
+    .docs-pager-link:hover{text-decoration:underline}
+    code{background:var(--budu-gray-100);padding:.15em .35em;border-radius:.25em;font-size:.9em}
+    pre code{background:transparent;color:inherit;padding:0;font-size:inherit}
+    .bd-callout{padding:1.25rem;margin-bottom:1.5rem;border-left:4px solid var(--budu-gray-300);border-radius:.375rem;background:var(--budu-gray-100)}
+    .bd-callout-warning{border-left-color:#ffb300;background:rgba(255,179,0,.08)}
+    .bd-callout-info{border-left-color:#0dcaf0;background:rgba(13,202,240,.07)}
+    .docs-nav-section{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--budu-gray-500);font-weight:600;margin:1.25rem 0 .4rem .5rem}
+    .docs-nav-list{list-style:none;padding:0;margin:0 0 .5rem}
+    .docs-nav-list a{display:block;padding:.3rem .6rem;color:var(--budu-gray-700);text-decoration:none;border-radius:.375rem;font-size:.9rem}
+    .docs-nav-list a:hover{background:var(--budu-gray-100);color:var(--budu-primary)}
+    .docs-nav-list a.active{background:var(--budu-primary);color:#fff;font-weight:500}
+    .docs-toc-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--budu-gray-500);font-weight:600}
+    .docs-toc ul{list-style:none;padding:0;margin:.5rem 0 0;font-size:.85rem}
+    .docs-toc a{display:block;padding:.2rem .5rem;color:var(--budu-gray-600);text-decoration:none;border-left:2px solid transparent}
+    .docs-toc a:hover{color:var(--budu-primary);border-left-color:var(--budu-primary)}
+    .docs-toc .toc-3{padding-left:1rem}
+    .navbar-docs{position:sticky;top:0;z-index:1030}
+    .docs-header-hero{padding:4rem 0 2rem}
+    @media (max-width:991.98px){.docs-sidebar{display:none}.docs-main{max-width:100%}}
+  </style>
+</head>
+<body class="bg-light">
+  <a class="visually-hidden-focusable" href="#docs-content">Skip to main content</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs">
+    <div class="container">
+      <a class="navbar-brand" href="../../index.html">
+        <img src="../../assets/brand/budu-icon.svg" alt="Budu" height="34" width="34" loading="lazy">
+        <span class="fs-5 fw-semibold">Budu</span>
+        <span class="badge badge-soft-primary ms-1 align-middle">v1.0</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-budu-toggle="collapse" data-budu-target="#docsNav" aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="docsNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../getting-started/introduction.html">Docs</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex" href="../getting-started/usage.html">CDN</a>
+          <a class="btn btn-primary btn-sm" href="../getting-started/download.html">Download</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-3">
+        <div class="docs-sidebar">
+          <nav aria-label="Docs navigation">
+<h6 class="docs-nav-section">Getting started</h6>
+<ul class="docs-nav-list">
+<li><a href="./getting-started/introduction.html">Introduction</a></li>
+<li><a href="./getting-started/download.html">Download</a></li>
+<li><a href="./getting-started/contents.html">What's included</a></li>
+<li><a href="./getting-started/usage.html">Usage & CDN</a></li>
+<li><a href="./getting-started/npm.html">Install via npm</a></li>
+<li><a href="./getting-started/sass.html">Customize with Sass</a></li>
+<li><a href="./getting-started/less.html">Customize with Less</a></li>
+<li><a href="./getting-started/starter.html">Starter template</a></li>
+<li><a href="./getting-started/browser-support.html">Browser support</a></li>
+<li><a href="./getting-started/accessibility.html">Accessibility</a></li>
+</ul>
+<h6 class="docs-nav-section">Layout</h6>
+<ul class="docs-nav-list">
+<li><a href="./layout/containers.html">Containers</a></li>
+<li><a href="./layout/grid.html">Grid system</a></li>
+<li><a href="./layout/columns.html">Columns</a></li>
+<li><a href="./layout/gutters.html">Gutters</a></li>
+<li><a href="./layout/css-grid.html">CSS Grid</a></li>
+<li><a href="./layout/breakpoints.html">Breakpoints</a></li>
+</ul>
+<h6 class="docs-nav-section">Content</h6>
+<ul class="docs-nav-list">
+<li><a href="./content/typography.html">Typography</a></li>
+<li><a href="./content/images.html">Images</a></li>
+<li><a href="./content/tables.html">Tables</a></li>
+<li><a href="./content/figures.html">Figures</a></li>
+</ul>
+<h6 class="docs-nav-section">Forms</h6>
+<ul class="docs-nav-list">
+<li><a href="./forms/overview.html">Overview</a></li>
+<li><a href="./forms/form-control.html">Form control</a></li>
+<li><a href="./forms/select.html">Select</a></li>
+<li><a href="./forms/checks.html">Checks & radios</a></li>
+<li><a href="./forms/range.html">Range</a></li>
+<li><a href="./forms/input-group.html">Input group</a></li>
+<li><a href="./forms/floating-labels.html">Floating labels</a></li>
+<li><a href="./forms/validation.html">Validation</a></li>
+</ul>
+<h6 class="docs-nav-section">Components</h6>
+<ul class="docs-nav-list">
+<li><a href="./components/accordion.html">Accordion</a></li>
+<li><a href="./components/alerts.html">Alerts</a></li>
+<li><a href="./components/avatar.html">Avatar</a></li>
+<li><a href="./components/badge.html">Badge</a></li>
+<li><a href="./components/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="./components/buttons.html">Buttons</a></li>
+<li><a href="./components/button-group.html">Button group</a></li>
+<li><a href="./components/card.html">Card</a></li>
+<li><a href="./components/carousel.html">Carousel</a></li>
+<li><a href="./components/collapse.html">Collapse</a></li>
+<li><a href="./components/dropdowns.html">Dropdowns</a></li>
+<li><a href="./components/list-group.html">List group</a></li>
+<li><a href="./components/modal.html">Modal</a></li>
+<li><a href="./components/navs.html">Navs & tabs</a></li>
+<li><a href="./components/navbar.html">Navbar</a></li>
+<li><a href="./components/offcanvas.html">Offcanvas</a></li>
+<li><a href="./components/pagination.html">Pagination</a></li>
+<li><a href="./components/placeholder.html">Placeholders</a></li>
+<li><a href="./components/popovers.html" class="active">Popovers</a></li>
+<li><a href="./components/progress.html">Progress</a></li>
+<li><a href="./components/scrollspy.html">Scrollspy</a></li>
+<li><a href="./components/spinners.html">Spinners</a></li>
+<li><a href="./components/toasts.html">Toasts</a></li>
+<li><a href="./components/tooltips.html">Tooltips</a></li>
+<li><a href="./components/ripple.html">Ripple effect</a></li>
+</ul>
+<h6 class="docs-nav-section">Helpers</h6>
+<ul class="docs-nav-list">
+<li><a href="./helpers/clearfix.html">Clearfix</a></li>
+<li><a href="./helpers/ratio.html">Ratio</a></li>
+<li><a href="./helpers/visually-hidden.html">Visually hidden</a></li>
+<li><a href="./helpers/stretched-link.html">Stretched link</a></li>
+<li><a href="./helpers/color-bg.html">Color & background</a></li>
+<li><a href="./helpers/elevation.html">Elevation (Material)</a></li>
+</ul>
+<h6 class="docs-nav-section">Utilities</h6>
+<ul class="docs-nav-list">
+<li><a href="./utilities/background.html">Background</a></li>
+<li><a href="./utilities/borders.html">Borders</a></li>
+<li><a href="./utilities/colors.html">Colors</a></li>
+<li><a href="./utilities/display.html">Display</a></li>
+<li><a href="./utilities/flex.html">Flex</a></li>
+<li><a href="./utilities/float.html">Float</a></li>
+<li><a href="./utilities/interactions.html">Interactions</a></li>
+<li><a href="./utilities/opacity.html">Opacity</a></li>
+<li><a href="./utilities/overflow.html">Overflow</a></li>
+<li><a href="./utilities/position.html">Position</a></li>
+<li><a href="./utilities/shadows.html">Shadows</a></li>
+<li><a href="./utilities/sizing.html">Sizing</a></li>
+<li><a href="./utilities/spacing.html">Spacing</a></li>
+<li><a href="./utilities/text.html">Text</a></li>
+<li><a href="./utilities/vertical-alignment.html">Vertical alignment</a></li>
+<li><a href="./utilities/z-index.html">Z-index</a></li>
+</ul>
+<h6 class="docs-nav-section">Motion</h6>
+<ul class="docs-nav-list">
+<li><a href="./motion/animations.html">Animations</a></li>
+<li><a href="./motion/transitions.html">Transitions</a></li>
+</ul>
+<h6 class="docs-nav-section">About</h6>
+<ul class="docs-nav-list">
+<li><a href="./about/overview.html">Overview</a></li>
+<li><a href="./about/design-principles.html">Design principles</a></li>
+<li><a href="./about/license.html">License</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="col-lg-9">
+        <div class="docs-main py-4">
+          
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+        <li class="breadcrumb-item">Components</li>
+        <li class="breadcrumb-item active" aria-current="page">Popovers</li>
+      </ol>
+    </nav>
+          <h1>Popovers</h1>
+<p class="lead">Documentation and examples for adding Budu popovers — small, overlay content bubbles that sit on top of their reference element.</p>
+
+<h2 id="overview">Overview</h2>
+<p>Popovers are a small content bubble that sit on top of their reference element. Add <code>data-budu-toggle="popover"</code> with a <code>data-budu-title</code>, or store the content in the <code>title</code> attribute. Clicking the trigger toggles the popover; it closes on outside tap and with <kbd>Esc</kbd>.</p>
+<p class="small text-muted">Budu ships a dependency-free positioning engine, so no Popper is required.</p>
+
+<h2 id="example">Example: enable popovers</h2>
+<div class="bd-example">
+  <button type="button" class="btn btn-lg btn-danger ripple" data-budu-toggle="popover" data-budu-title="Popover title" data-budu-content="And here's some amazing content. It's very engaging. Right?">
+    Click to toggle popover
+  </button>
+</div>
+<div class="highlight"><pre><code>&lt;button type="button"
+        data-budu-toggle="popover" data-budu-title="Popover title"
+        data-budu-content="And here's some amazing content."&gt;
+  Click to toggle popover
+&lt;/button&gt;</code></pre></div>
+
+<h2 id="placements">Placements</h2>
+<p>Four placement options are available: <code>top</code>, <code>bottom</code>, <code>start</code> (left), and <code>end</code> (right). Use <code>data-budu-placement</code>.</p>
+<div class="bd-example d-flex gap-2 flex-wrap">
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="top" data-budu-content="Top popover">Top</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="bottom" data-budu-content="Bottom popover">Bottom</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="start" data-budu-title="Start" data-budu-content="Start placement">Start</button>
+  <button type="button" class="btn btn-outline-secondary" data-budu-toggle="popover" data-budu-placement="end" data-budu-content="End placement">End</button>
+</div>
+
+<h2 id="dismiss">Dismiss on next click</h2>
+<p>Use the <code>trigger</code> option — <code>data-budu-trigger="focus"</code> makes the popover toggle on focus and dismiss on blur (good for toggle buttons).</p>
+<div class="bd-example">
+  <a tabindex="0" class="btn btn-lg btn-outline-primary" role="button" data-budu-toggle="popover" data-budu-trigger="focus" data-budu-title="Dismissible popover" data-budu-content="And here's some amazing content. Focus-managed for accessibility.">
+    Dismissible popover
+  </a>
+</div>
+
+<h2 id="js">JavaScript</h2>
+<div class="highlight"><pre><code>// Enable all popovers on the page
+document.querySelectorAll('[data-budu-toggle="popover"]').forEach(function (el) {
+  if (!Budu.Popover.getInstance(el)) Budu.Popover.getOrCreateInstance(el);
+});</code></pre></div>
+          
+  <nav class="docs-pager" aria-label="Previous and next navigation">
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">Components</span>
+      <a class="docs-pager-link" href="./components/placeholder.html">Placeholders</a>
+    </div>
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">Components</span>
+      <a class="docs-pager-link" href="./components/progress.html">Progress</a>
+    </div>
+  </nav>
+          <hr class="docs-hr">
+          <footer class="text-center text-muted small pb-5">
+            <span class="d-inline-flex align-items-center gap-2">
+              <span class="badge badge-soft-primary rounded-circle" style="width:24px;height:24px;font-size:.7rem">B</span>
+              Budu · Built with Budu · © 2026 Dilshad I Hadiwala · MIT License
+            </span>
+          </footer>
+        </div>
+      </main>
+
+      <aside class="col-lg-3">
+        
+    <div class="docs-toc d-none d-lg-block">
+      <h6 class="docs-toc-title">On this page</h6>
+      <ul><li class="toc-2"><a href="#overview">Overview</a></li>
+<li class="toc-2"><a href="#example">Example: enable popovers</a></li>
+<li class="toc-2"><a href="#placements">Placements</a></li>
+<li class="toc-2"><a href="#dismiss">Dismiss on next click</a></li>
+<li class="toc-2"><a href="#js">JavaScript</a></li></ul>
+    </div>
+      </aside>
+    </div>
+  </div>
+
+  <a class="btn btn-primary btn-sm d-none" id="back-to-top" href="#">Back to top</a>
+
+  <script src="../../dist/js/budu.js"></script>
+  <script>
+    // Copy-to-clipboard for code blocks
+    document.querySelectorAll('.highlight pre').forEach(function (pre, i) {
+      var btn = document.createElement('button');
+      btn.className = 'btn btn-sm btn-soft-primary highlight-copy';
+      btn.textContent = 'Copy';
+      btn.type = 'button';
+      pre.closest('.highlight').appendChild(btn);
+      btn.addEventListener('click', function () {
+        var text = pre.innerText;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = 'Copied!';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

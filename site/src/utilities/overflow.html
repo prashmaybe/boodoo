@@ -1,0 +1,25 @@
+<!--
+title: Overflow
+description: Configure how content overflows an element's box.
+section: utilities
+order: 8
+-->
+<h1>Overflow</h1>
+<p class="lead">Use these shorthand utilities for quickly configuring how content overflows an element.</p>
+
+<h2 id="overflow">Overflow</h2>
+<p>Use <code>.overflow-auto</code>, <code>.overflow-hidden</code>, <code>.overflow-clip</code>, <code>.overflow-visible</code>, and <code>.overflow-scroll</code> to control overflow on both axes. Use <code>.overflow-x-*</code> and <code>.overflow-y-*</code> for one axis.</p>
+<div class="bd-example d-flex gap-3">
+  <div class="overflow-auto p-2" style="max-width:16rem;max-height:6rem">
+    This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll at the block level.
+  </div>
+  <div class="overflow-hidden p-2" style="max-width:16rem;max-height:6rem">
+    This is an example of using <code>.overflow-hidden</code>. Content that overflows is clipped.
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="overflow-auto"&gt;...&lt;/div&gt;
+&lt;div class="overflow-hidden"&gt;...&lt;/div&gt;</code></pre></div>
+
+<h2 id="overscroll">Overscroll behavior</h2>
+<p>Controls what happens when you reach the boundary: <code>.overscroll-auto</code>, <code>.overscroll-contain</code>, <code>.overscroll-none</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="overscroll-contain"&gt;...&lt;/div&gt;</code></pre></div>

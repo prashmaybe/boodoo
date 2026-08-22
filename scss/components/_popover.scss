@@ -1,0 +1,171 @@
+// BUDU POPOVER
+// Popover (JS-driven, tooltip-like with more content).
+
+.popover {
+  --budu-popover-bg: #{$budu-popover-bg};
+  --budu-popover-border-color: #{$budu-popover-border-color};
+  --budu-popover-border-radius: #{$budu-popover-border-radius};
+  --budu-popover-box-shadow: #{$budu-popover-box-shadow};
+  --budu-popover-padding-y: 0.75rem;
+  --budu-popover-padding-x: 0.875rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $budu-zindex-popover;
+  display: block;
+  max-width: 276px;
+  font-family: var(--budu-font-sans-serif);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+  background-color: var(--budu-popover-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--budu-popover-border-color);
+  border-radius: var(--budu-popover-border-radius);
+  box-shadow: var(--budu-popover-box-shadow);
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+    animation: budu-zoom-in 0.15s ease;
+  }
+}
+
+.popover-header {
+  padding: var(--budu-popover-padding-y) var(--budu-popover-padding-x);
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--budu-body-color);
+  background-color: var(--budu-body-tertiary-bg);
+  border-bottom: 1px solid var(--budu-popover-border-color);
+  border-top-left-radius: calc(var(--budu-popover-border-radius) - 1px);
+  border-top-right-radius: calc(var(--budu-popover-border-radius) - 1px);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.popover-body {
+  padding: var(--budu-popover-padding-y) var(--budu-popover-padding-x);
+  color: var(--budu-body-color);
+}
+
+// Arrows
+.popover-arrow {
+  position: absolute;
+  display: block;
+  width: 1rem;
+  height: 0.5rem;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    border-color: transparent;
+    border-style: solid;
+  }
+}
+
+.bs-popover-top,
+.bs-popover-auto[data-popper-placement^="top"] {
+  margin-bottom: 0.5rem;
+
+  > .popover-arrow {
+    bottom: calc(-1 * (0.5rem) - 1px);
+
+    &::before {
+      bottom: 0;
+      border-width: 0.5rem 0.5rem 0;
+      border-top-color: var(--budu-popover-border-color);
+    }
+
+    &::after {
+      bottom: 1px;
+      border-width: 0.5rem 0.5rem 0;
+      border-top-color: var(--budu-popover-bg);
+    }
+  }
+}
+
+.bs-popover-end,
+.bs-popover-auto[data-popper-placement^="right"] {
+  margin-left: 0.5rem;
+
+  > .popover-arrow {
+    left: calc(-1 * (0.5rem) - 1px);
+    width: 0.5rem;
+    height: 1rem;
+
+    &::before {
+      left: 0;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: var(--budu-popover-border-color);
+    }
+
+    &::after {
+      left: 1px;
+      border-width: 0.5rem 0.5rem 0.5rem 0;
+      border-right-color: var(--budu-popover-bg);
+    }
+  }
+}
+
+.bs-popover-bottom,
+.bs-popover-auto[data-popper-placement^="bottom"] {
+  margin-top: 0.5rem;
+
+  > .popover-arrow {
+    top: calc(-1 * (0.5rem) - 1px);
+
+    &::before {
+      top: 0;
+      border-width: 0 0.5rem 0.5rem 0.5rem;
+      border-bottom-color: var(--budu-popover-border-color);
+    }
+
+    &::after {
+      top: 1px;
+      border-width: 0 0.5rem 0.5rem 0.5rem;
+      border-bottom-color: var(--budu-popover-bg);
+    }
+  }
+}
+
+.bs-popover-start,
+.bs-popover-auto[data-popper-placement^="left"] {
+  margin-right: 0.5rem;
+
+  > .popover-arrow {
+    right: calc(-1 * (0.5rem) - 1px);
+    width: 0.5rem;
+    height: 1rem;
+
+    &::before {
+      right: 0;
+      border-width: 0.5rem 0 0.5rem 0.5rem;
+      border-left-color: var(--budu-popover-border-color);
+    }
+
+    &::after {
+      right: 1px;
+      border-width: 0.5rem 0 0.5rem 0.5rem;
+      border-left-color: var(--budu-popover-bg);
+    }
+  }
+}

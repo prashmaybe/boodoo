@@ -1,0 +1,90 @@
+// BUDU FORMS — Range
+// Native range slider restyled.
+
+.form-range {
+  --budu-form-range-thumb-bg: #{$budu-primary};
+  --budu-form-range-track-bg: #{$budu-gray-200};
+
+  width: 100%;
+  height: 1.5rem;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 1px var(--budu-body-bg), $budu-focus-ring-box-shadow;
+    }
+    &::-moz-range-thumb {
+      box-shadow: 0 0 0 1px var(--budu-body-bg), $budu-focus-ring-box-shadow;
+    }
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &::-webkit-slider-thumb {
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.25rem;
+    background-color: var(--budu-form-range-thumb-bg);
+    border: 0;
+    border-radius: 1rem;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
+    appearance: none;
+
+    &:active {
+      background-color: tint-color($budu-primary, 20%);
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: var(--budu-form-range-track-bg);
+    border-color: transparent;
+    border-radius: 1rem;
+  }
+
+  &::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--budu-form-range-thumb-bg);
+    border: 0;
+    border-radius: 1rem;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
+    appearance: none;
+
+    &:active {
+      background-color: tint-color($budu-primary, 20%);
+    }
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: var(--budu-form-range-track-bg);
+    border-color: transparent;
+    border-radius: 1rem;
+  }
+
+  &:disabled {
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+      background-color: var(--budu-body-secondary-color);
+    }
+    &::-moz-range-thumb {
+      background-color: var(--budu-body-secondary-color);
+    }
+  }
+}

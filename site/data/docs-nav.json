@@ -1,0 +1,127 @@
+[
+  {
+    "title": "Getting started",
+    "pages": [
+      { "route": "getting-started/introduction", "title": "Introduction" },
+      { "route": "getting-started/download", "title": "Download" },
+      { "route": "getting-started/contents", "title": "What's included" },
+      { "route": "getting-started/usage", "title": "Usage & CDN" },
+      { "route": "getting-started/npm", "title": "Install via npm" },
+      { "route": "getting-started/sass", "title": "Customize with Sass" },
+      { "route": "getting-started/less", "title": "Customize with Less" },
+      { "route": "getting-started/starter", "title": "Starter template" },
+      { "route": "getting-started/browser-support", "title": "Browser support" },
+      { "route": "getting-started/accessibility", "title": "Accessibility" }
+    ]
+  },
+  {
+    "title": "Layout",
+    "pages": [
+      { "route": "layout/containers", "title": "Containers" },
+      { "route": "layout/grid", "title": "Grid system" },
+      { "route": "layout/columns", "title": "Columns" },
+      { "route": "layout/gutters", "title": "Gutters" },
+      { "route": "layout/css-grid", "title": "CSS Grid" },
+      { "route": "layout/breakpoints", "title": "Breakpoints" }
+    ]
+  },
+  {
+    "title": "Content",
+    "pages": [
+      { "route": "content/typography", "title": "Typography" },
+      { "route": "content/images", "title": "Images" },
+      { "route": "content/tables", "title": "Tables" },
+      { "route": "content/figures", "title": "Figures" }
+    ]
+  },
+  {
+    "title": "Forms",
+    "pages": [
+      { "route": "forms/overview", "title": "Overview" },
+      { "route": "forms/form-control", "title": "Form control" },
+      { "route": "forms/select", "title": "Select" },
+      { "route": "forms/checks", "title": "Checks & radios" },
+      { "route": "forms/range", "title": "Range" },
+      { "route": "forms/input-group", "title": "Input group" },
+      { "route": "forms/floating-labels", "title": "Floating labels" },
+      { "route": "forms/validation", "title": "Validation" }
+    ]
+  },
+  {
+    "title": "Components",
+    "pages": [
+      { "route": "components/accordion", "title": "Accordion" },
+      { "route": "components/alerts", "title": "Alerts" },
+      { "route": "components/avatar", "title": "Avatar" },
+      { "route": "components/badge", "title": "Badge" },
+      { "route": "components/breadcrumb", "title": "Breadcrumb" },
+      { "route": "components/buttons", "title": "Buttons" },
+      { "route": "components/button-group", "title": "Button group" },
+      { "route": "components/card", "title": "Card" },
+      { "route": "components/carousel", "title": "Carousel" },
+      { "route": "components/collapse", "title": "Collapse" },
+      { "route": "components/dropdowns", "title": "Dropdowns" },
+      { "route": "components/list-group", "title": "List group" },
+      { "route": "components/modal", "title": "Modal" },
+      { "route": "components/navs", "title": "Navs & tabs" },
+      { "route": "components/navbar", "title": "Navbar" },
+      { "route": "components/offcanvas", "title": "Offcanvas" },
+      { "route": "components/pagination", "title": "Pagination" },
+      { "route": "components/placeholder", "title": "Placeholders" },
+      { "route": "components/popovers", "title": "Popovers" },
+      { "route": "components/progress", "title": "Progress" },
+      { "route": "components/scrollspy", "title": "Scrollspy" },
+      { "route": "components/spinners", "title": "Spinners" },
+      { "route": "components/toasts", "title": "Toasts" },
+      { "route": "components/tooltips", "title": "Tooltips" },
+      { "route": "components/ripple", "title": "Ripple effect" }
+    ]
+  },
+  {
+    "title": "Helpers",
+    "pages": [
+      { "route": "helpers/clearfix", "title": "Clearfix" },
+      { "route": "helpers/ratio", "title": "Ratio" },
+      { "route": "helpers/visually-hidden", "title": "Visually hidden" },
+      { "route": "helpers/stretched-link", "title": "Stretched link" },
+      { "route": "helpers/color-bg", "title": "Color & background" },
+      { "route": "helpers/elevation", "title": "Elevation (Material)" }
+    ]
+  },
+  {
+    "title": "Utilities",
+    "pages": [
+      { "route": "utilities/background", "title": "Background" },
+      { "route": "utilities/borders", "title": "Borders" },
+      { "route": "utilities/colors", "title": "Colors" },
+      { "route": "utilities/display", "title": "Display" },
+      { "route": "utilities/flex", "title": "Flex" },
+      { "route": "utilities/float", "title": "Float" },
+      { "route": "utilities/interactions", "title": "Interactions" },
+      { "route": "utilities/opacity", "title": "Opacity" },
+      { "route": "utilities/overflow", "title": "Overflow" },
+      { "route": "utilities/position", "title": "Position" },
+      { "route": "utilities/shadows", "title": "Shadows" },
+      { "route": "utilities/sizing", "title": "Sizing" },
+      { "route": "utilities/spacing", "title": "Spacing" },
+      { "route": "utilities/text", "title": "Text" },
+      { "route": "utilities/vertical-alignment", "title": "Vertical alignment" },
+      { "route": "utilities/z-index", "title": "Z-index" }
+    ]
+  },
+  {
+    "title": "Motion",
+    "pages": [
+      { "route": "motion/animations", "title": "Animations" },
+      { "route": "motion/transitions", "title": "Transitions" }
+    ]
+  },
+  {
+    "title": "About",
+    "pages": [
+      { "route": "about/overview", "title": "Overview" },
+      { "route": "about/design-principles", "title": "Design principles" },
+      { "route": "about/license", "title": "License" }
+    ]
+  }
+]

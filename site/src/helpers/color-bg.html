@@ -1,0 +1,54 @@
+<!--
+title: Color & background
+description: Contextual color and background helpers including subtle and emphasis variants.
+section: helpers
+order: 4
+-->
+<h1>Color &amp; background</h1>
+<p class="lead">Convey meaning through color with a handful of emphasis utility classes, plus subtle background and border helpers and Material-style gradients.</p>
+
+<h2 id="text-emphasis">Text emphasis</h2>
+<div class="bd-example">
+  <p class="text-primary">.text-primary</p>
+  <p class="text-primary-emphasis">.text-primary-emphasis</p>
+  <p class="text-secondary">.text-secondary</p>
+  <p class="text-success">.text-success</p>
+  <p class="text-danger">.text-danger</p>
+  <p class="text-warning">.text-warning</p>
+  <p class="text-info">.text-info</p>
+</div>
+<div class="highlight"><pre><code>&lt;p class="text-primary-emphasis"&gt;Darker, for emphasis.&lt;/p&gt;</code></pre></div>
+
+<h2 id="subtle">Subtle backgrounds</h2>
+<p>Use <code>.bg-{color}-subtle</code> for light, tinted backgrounds.</p>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <span class="bg-primary-subtle p-3 rounded">.bg-primary-subtle</span>
+  <span class="bg-success-subtle p-3 rounded">.bg-success-subtle</span>
+  <span class="bg-danger-subtle p-3 rounded">.bg-danger-subtle</span>
+  <span class="bg-warning-subtle p-3 rounded">.bg-warning-subtle</span>
+  <span class="bg-info-subtle p-3 rounded">.bg-info-subtle</span>
+</div>
+
+<h2 id="subtle-border">Subtle borders</h2>
+<p>Use <code>.border-{color}-subtle</code> for tinted borders.</p>
+<div class="bd-example d-flex gap-2">
+  <div class="border border-primary-subtle rounded p-3">.border-primary-subtle</div>
+  <div class="border border-success-subtle rounded p-3">.border-success-subtle</div>
+</div>
+
+<h2 id="gradients">Gradients</h2>
+<p>Budu ships Material-style gradient helpers: <code>.gradient-primary</code>, <code>.gradient-success</code>, <code>.gradient-info</code>, <code>.gradient-warning</code>, <code>.gradient-danger</code>, <code>.gradient-dark</code>.</p>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <div class="gradient-primary rounded-2 p-4 text-white" style="width:10rem">.gradient-primary</div>
+  <div class="gradient-success rounded-2 p-4 text-white" style="width:10rem">.gradient-success</div>
+  <div class="gradient-info rounded-2 p-4 text-white" style="width:10rem">.gradient-info</div>
+</div>
+
+<h2 id="opacity">Opacity</h2>
+<p>Control element opacity with <code>.opacity-{0|10|25|50|75|100}</code>.</p>
+<div class="bd-example d-flex gap-2">
+  <div class="bg-primary rounded-2 p-4 text-white opacity-100">opacity-100</div>
+  <div class="bg-primary rounded-2 p-4 text-white opacity-75">opacity-75</div>
+  <div class="bg-primary rounded-2 p-4 text-white opacity-50">opacity-50</div>
+  <div class="bg-primary rounded-2 p-4 text-white opacity-25">opacity-25</div>
+</div>

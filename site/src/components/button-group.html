@@ -1,0 +1,93 @@
+<!--
+title: Button group
+description: Group a series of buttons together on a single line or stack them.
+section: components
+order: 6
+-->
+<h1>Button group</h1>
+<p class="lead">Group a series of buttons together on a single line or stack them in a vertical column.</p>
+
+<h2 id="basic">Basic example</h2>
+<p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+<div class="bd-example">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-outline-primary">Left</button>
+    <button type="button" class="btn btn-outline-primary">Middle</button>
+    <button type="button" class="btn btn-outline-primary">Right</button>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="btn-group" role="group" aria-label="Basic example"&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="mixed">Mixed styles</h2>
+<div class="bd-example">
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button type="button" class="btn btn-danger">Left</button>
+    <button type="button" class="btn btn-warning">Middle</button>
+    <button type="button" class="btn btn-success">Right</button>
+  </div>
+</div>
+
+<h2 id="toolbar">Button toolbar</h2>
+<div class="bd-example">
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group me-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-outline-primary">1</button>
+      <button type="button" class="btn btn-outline-primary">2</button>
+      <button type="button" class="btn btn-outline-primary">3</button>
+    </div>
+    <div class="btn-group me-2" role="group" aria-label="Second group">
+      <button type="button" class="btn btn-outline-primary">4</button>
+      <button type="button" class="btn btn-outline-primary">5</button>
+    </div>
+  </div>
+</div>
+
+<h2 id="sizing">Sizing</h2>
+<p>Apply <code>.btn-group-lg</code> or <code>.btn-group-sm</code> to the group.</p>
+<div class="bd-example">
+  <div class="btn-group btn-group-lg mb-2" role="group" aria-label="Large button group">
+    <button type="button" class="btn btn-outline-primary">Left</button>
+    <button type="button" class="btn btn-outline-primary">Right</button>
+  </div>
+  <br>
+  <div class="btn-group" role="group" aria-label="Default button group">
+    <button type="button" class="btn btn-outline-primary">Left</button>
+    <button type="button" class="btn btn-outline-primary">Right</button>
+  </div>
+</div>
+
+<h2 id="vertical">Vertical variation</h2>
+<div class="bd-example">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <button type="button" class="btn btn-outline-primary">Button</button>
+    <button type="button" class="btn btn-outline-primary">Button</button>
+    <button type="button" class="btn btn-outline-primary">Button</button>
+  </div>
+</div>
+
+<h2 id="checkbox">Checkbox and radio button groups</h2>
+<p>Combine button styles with <code>.btn-check</code> inputs for checkable toggles.</p>
+<div class="bd-example">
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+  </div>
+  <div class="btn-group mt-2" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+  </div>
+</div>
+
+<h2 id="toggle">Toggle (JS)</h2>
+<p>Use <code>data-budu-toggle="button"</code> to toggle the <code>.active</code> class on a button and sync its checkbox input.</p>
+<div class="bd-example">
+  <button type="button" class="btn btn-outline-primary" data-budu-toggle="button">Toggle me</button>
+</div>

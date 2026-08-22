@@ -1,0 +1,100 @@
+// BUDU AVATAR
+// Profile images, initials, sizes, group stacks, status dots.
+
+.avatar {
+  --budu-avatar-size: 2.5rem;
+  --budu-avatar-bg: #{$budu-primary};
+  --budu-avatar-color: #{$budu-white};
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--budu-avatar-size);
+  height: var(--budu-avatar-size);
+  border-radius: 50%;
+  background-color: var(--budu-avatar-bg);
+  color: var(--budu-avatar-color);
+  font-size: calc(var(--budu-avatar-size) * 0.4);
+  font-weight: 600;
+  line-height: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Sizes
+.avatar-xs { --budu-avatar-size: 1.75rem; font-size: 0.7rem; }
+.avatar-sm { --budu-avatar-size: 2rem; font-size: 0.8rem; }
+.avatar-md { --budu-avatar-size: 2.5rem; }
+.avatar-lg { --budu-avatar-size: 3.5rem; }
+.avatar-xl { --budu-avatar-size: 4.5rem; }
+.avatar-xxl { --budu-avatar-size: 6rem; }
+
+// Square
+.avatar-square {
+  border-radius: $budu-border-radius;
+}
+
+// Rounded
+.avatar-rounded {
+  border-radius: $budu-border-radius-pill;
+}
+
+// Colors
+@each $name, $color in $budu-theme-colors {
+  .avatar-#{$name} {
+    --budu-avatar-bg: #{$color};
+    --budu-avatar-color: #{if($name == "light", $budu-dark, $budu-white)};
+  }
+}
+
+.avatar-soft-primary   { --budu-avatar-bg: #{tint-color($budu-primary, 88%)}; --budu-avatar-color: #{$budu-primary}; }
+.avatar-soft-secondary { --budu-avatar-bg: #{tint-color($budu-secondary, 88%)}; --budu-avatar-color: #{$budu-secondary}; }
+.avatar-soft-success   { --budu-avatar-bg: #{tint-color($budu-success, 88%)}; --budu-avatar-color: #{$budu-success}; }
+.avatar-soft-danger    { --budu-avatar-bg: #{tint-color($budu-danger, 88%)}; --budu-avatar-color: #{$budu-danger}; }
+.avatar-soft-warning   { --budu-avatar-bg: #{tint-color($budu-warning, 88%)}; --budu-avatar-color: #{$budu-warning}; }
+.avatar-soft-info      { --budu-avatar-bg: #{tint-color($budu-info, 88%)}; --budu-avatar-color: #{$budu-info}; }
+
+// Group stack
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+
+  .avatar {
+    margin-left: -0.625rem;
+    border: 2px solid var(--budu-body-bg);
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .avatar-more {
+    background-color: $budu-gray-300;
+    color: $budu-gray-700;
+  }
+}
+
+// Status dot
+.avatar-status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 22%;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  background-color: $budu-success;
+  border: 2px solid var(--budu-body-bg);
+  border-radius: 50%;
+}
+
+.avatar-status-offline { background-color: $budu-gray-400; }
+.avatar-status-busy { background-color: $budu-danger; }
+.avatar-status-away { background-color: $budu-warning; }

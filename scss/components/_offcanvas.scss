@@ -1,0 +1,123 @@
+// BUDU OFF-CANVAS
+// Slide-in panel from any edge (uses offcanvas JS).
+
+.offcanvas {
+  --budu-offcanvas-width: 400px;
+  --budu-offcanvas-height: 30vh;
+  --budu-offcanvas-padding: 1.25rem;
+  --budu-offcanvas-bg: var(--budu-body-bg);
+
+  position: fixed;
+  bottom: 0;
+  z-index: $budu-zindex-offcanvas;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: var(--budu-body-color);
+  visibility: hidden;
+  background-color: var(--budu-offcanvas-bg);
+  background-clip: padding-box;
+  outline: 0;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  &.show:not(.hiding),
+  &.showing {
+    transform: none;
+    visibility: visible;
+  }
+
+  &.hiding {
+    visibility: visible;
+  }
+}
+
+// Start
+.offcanvas-start {
+  top: 0;
+  left: 0;
+  width: var(--budu-offcanvas-width);
+  border-right: 1px solid var(--budu-border-color-translucent);
+  transform: translateX(-100%);
+}
+
+// End
+.offcanvas-end {
+  top: 0;
+  right: 0;
+  width: var(--budu-offcanvas-width);
+  border-left: 1px solid var(--budu-border-color-translucent);
+  transform: translateX(100%);
+}
+
+// Top
+.offcanvas-top {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--budu-offcanvas-height);
+  max-height: 100%;
+  border-bottom: 1px solid var(--budu-border-color-translucent);
+  transform: translateY(-100%);
+}
+
+// Bottom
+.offcanvas-bottom {
+  right: 0;
+  left: 0;
+  height: var(--budu-offcanvas-height);
+  max-height: 100%;
+  border-top: 1px solid var(--budu-border-color-translucent);
+  transform: translateY(100%);
+}
+
+// Backdrop
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $budu-zindex-offcanvas-backdrop;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($budu-black, 0.5);
+
+  &.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+
+  &.show {
+    opacity: 0.5;
+  }
+}
+
+// Header / body / footer
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--budu-offcanvas-padding);
+
+  .offcanvas-title {
+    margin-bottom: 0;
+  }
+}
+
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: var(--budu-offcanvas-padding);
+  overflow-y: auto;
+}
+
+.offcanvas-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: var(--budu-offcanvas-padding);
+  border-top: 1px solid var(--budu-border-color);
+}

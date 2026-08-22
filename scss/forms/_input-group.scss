@@ -1,0 +1,116 @@
+// BUDU FORMS — Input Group
+// Prepended / appended input groups.
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+
+  > .form-control,
+  > .form-select,
+  > .form-floating,
+  > .form-control-plaintext {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+
+    &:focus {
+      z-index: 5;
+    }
+  }
+
+  .btn {
+    position: relative;
+    z-index: 2;
+
+    &:focus {
+      z-index: 5;
+    }
+  }
+
+  .input-group-text {
+    display: flex;
+    align-items: center;
+    padding: $budu-input-btn-padding-y $budu-input-btn-padding-x;
+    font-size: $budu-input-btn-font-size;
+    font-weight: 400;
+    line-height: $budu-input-btn-line-height;
+    color: var(--budu-body-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--budu-body-tertiary-bg);
+    border: $budu-input-btn-border-width solid $budu-form-control-border-color;
+    border-radius: $budu-border-radius;
+  }
+
+  // Sizing
+  .form-control:not(:focus):not(:disabled),
+  .form-select:not(:focus):not(:disabled) {
+    &:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    &:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  }
+
+  .input-group-text:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .input-group-text:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+// Sizing
+.input-group-lg > .form-control,
+.input-group-lg > .form-select,
+.input-group-lg > .input-group-text {
+  padding: $budu-input-btn-padding-y-lg $budu-input-btn-padding-x-lg;
+  font-size: $budu-input-btn-font-size-lg;
+  border-radius: $budu-border-radius-lg;
+}
+
+.input-group-sm > .form-control,
+.input-group-sm > .form-select,
+.input-group-sm > .input-group-text {
+  padding: $budu-input-btn-padding-y-sm $budu-input-btn-padding-x-sm;
+  font-size: $budu-input-btn-font-size-sm;
+  border-radius: $budu-border-radius-sm;
+}
+
+// Flush variant (no visual join)
+.input-group-flush {
+  > .form-control,
+  > .form-select,
+  > .input-group-text,
+  > .btn {
+    border-radius: 0;
+    border-inline: 0;
+    background: transparent;
+  }
+
+  > :first-child {
+    border-top-left-radius: $budu-border-radius;
+    border-bottom-left-radius: $budu-border-radius;
+    border-left: $budu-input-btn-border-width solid $budu-form-control-border-color;
+  }
+
+  > :last-child {
+    border-top-right-radius: $budu-border-radius;
+    border-bottom-right-radius: $budu-border-radius;
+    border-right: $budu-input-btn-border-width solid $budu-form-control-border-color;
+  }
+}

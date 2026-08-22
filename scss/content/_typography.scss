@@ -1,0 +1,128 @@
+// BUDU TYPOGRAPHY
+// Headings, display, lead, inline text, lists, blockquote.
+
+// Display headings
+@each $size, $value in (1: $budu-font-size-base * 5, 2: $budu-font-size-base * 4.5, 3: $budu-font-size-base * 4, 4: $budu-font-size-base * 3.5, 5: $budu-font-size-base * 3, 6: $budu-font-size-base * 2.5) {
+  .display-#{$size} {
+    font-size: $value;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+}
+
+// Lead
+.lead {
+  font-size: $budu-lead-font-size;
+  font-weight: $budu-lead-font-weight;
+}
+
+// Inline text elements
+.small {
+  font-size: $budu-small-font-size;
+  font-weight: 400;
+}
+
+.mark {
+  padding: 0.2em;
+  background-color: $budu-mark-bg;
+}
+
+// Initialisms & abbreviations
+.initialism {
+  font-size: 0.875em;
+  text-transform: uppercase;
+}
+
+// Blockquote
+.blockquote {
+  margin-bottom: 1rem;
+  font-size: $budu-font-size-base * 1.1;
+  border-left: 4px solid $budu-border-color;
+  padding-left: 1rem;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.blockquote-footer {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875em;
+  color: $budu-body-secondary-color;
+
+  &::before {
+    content: "\2014\00A0";  // —&nbsp;
+  }
+}
+
+// Headings with utilities for display
+.display-fluid {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+// Text utilities for headings
+.text-heading {
+  color: var(--budu-heading-color, inherit);
+}
+
+// Description list alignment (Foundation-style)
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline-item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+
+// Unstyled list
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Definition lists (Bootstrap-style)
+.dl-horizontal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+}
+
+// Hyphenation
+.text-hyphenate {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+// Text balance (new CSS feature, progressive enhancement)
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+// Fluid type scale using clamp — inclusive of modern browsers
+@for $i from 1 through 6 {
+  .fs-fluid-#{$i} {
+    font-size: clamp(1rem, calc(1rem + #{$i * 0.25}vw), #{$i * 0.75}rem);
+  }
+}
+
+// Selection color
+::selection {
+  color: $budu-white;
+  background-color: $budu-primary;
+}

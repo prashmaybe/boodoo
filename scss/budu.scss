@@ -1,0 +1,72 @@
+// =====================================================================
+// BUDU — modular, mobile-first CSS design framework
+// Inspired by Bootstrap, Foundation, Tailwind CSS & Material Design.
+//
+// Full build. Import individual partials for leaner builds.
+// =====================================================================
+
+@use "sass:map";
+
+// 1. Configuration
+@import "functions";
+@import "variables";
+@import "maps";
+@import "mixins";
+@import "mixins/utility-api";
+
+// 2. Core
+@import "root";
+@import "reboot";
+
+// 3. Layout
+@import "grid";
+
+// 4. Content
+@import "content/typography";
+@import "content/images";
+@import "content/tables";
+@import "content/figures";
+
+// 5. Forms
+@import "forms/layout";
+@import "forms/control";
+@import "forms/select";
+@import "forms/checks";
+@import "forms/range";
+@import "forms/input-group";
+@import "forms/floating-labels";
+@import "forms/validation";
+
+// 6. Components
+@import "components/accordion";
+@import "components/alerts";
+@import "components/avatar";
+@import "components/badge";
+@import "components/breadcrumb";
+@import "components/button-group";
+@import "components/buttons";
+@import "components/card";
+@import "components/carousel";
+@import "components/close";
+@import "components/collapse";
+@import "components/dropdown";
+@import "components/list-group";
+@import "components/modal";
+@import "components/nav";
+@import "components/navbar";
+@import "components/offcanvas";
+@import "components/pagination";
+@import "components/placeholder";
+@import "components/popover";
+@import "components/progress";
+@import "components/ripple";
+@import "components/spinners";
+@import "components/toasts";
+@import "components/tooltip";
+
+// 7. Helpers & utilities
+@import "helpers";
+@import "utilities";
+
+// 8. Motion
+@import "animations";

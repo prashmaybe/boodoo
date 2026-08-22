@@ -1,0 +1,267 @@
+// BUDU NAVBAR
+// Responsive navbar with collapse + optional sticky/fixed positions.
+
+.navbar {
+  --budu-navbar-padding-y: #{$budu-navbar-padding-y};
+  --budu-navbar-padding-x: #{$budu-navbar-padding-x};
+  --budu-navbar-bg: #{$budu-navbar-bg};
+  --budu-navbar-border-color: #{$budu-navbar-border-color};
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--budu-navbar-padding-y) var(--budu-navbar-padding-x);
+  background-color: var(--budu-navbar-bg);
+  border-bottom: 1px solid var(--budu-navbar-border-color);
+
+  .navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: $budu-navbar-brand-font-size;
+    font-weight: $budu-navbar-brand-font-weight;
+    color: var(--budu-body-color);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    .nav-link {
+      padding: 0.5rem 0;
+      color: var(--budu-body-secondary-color);
+
+      &:hover,
+      &:focus {
+        color: var(--budu-body-color);
+      }
+
+      &.active {
+        color: $budu-primary;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--budu-body-color);
+    background-color: transparent;
+    border: 1px solid var(--budu-border-color);
+    border-radius: $budu-border-radius;
+    transition: box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: $budu-focus-ring-box-shadow;
+      outline: 0;
+    }
+
+    .navbar-toggler-icon {
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%235f6b8c' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+    }
+  }
+
+  .navbar-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: var(--budu-body-secondary-color);
+  }
+
+  // Mobile-first: collapse is hidden until breakpoint
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+
+    &.show {
+      display: block;
+    }
+  }
+}
+
+// Expands at breakpoint
+@each $breakpoint in map.keys($budu-grid-breakpoints) {
+  @if $breakpoint != "xs" {
+    $infix: "-#{$breakpoint}";
+
+    @include media-breakpoint-up($breakpoint) {
+      .navbar-expand#{$infix} {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .nav-link {
+            padding: 0 0.75rem;
+          }
+
+          .dropdown-menu {
+            position: absolute;
+          }
+        }
+
+        .navbar-collapse {
+          display: flex !important;
+          flex-basis: auto;
+        }
+
+        .navbar-toggler {
+          display: none;
+        }
+
+        .navbar-brand {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+// Always expanded
+.navbar-expand {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+}
+
+// Variants
+.navbar-light {
+  --budu-navbar-bg: #{$budu-white};
+}
+
+.navbar-dark {
+  --budu-navbar-bg: #{$budu-gray-900};
+  --budu-navbar-border-color: #{$budu-gray-800};
+  color-scheme: dark;
+
+  .navbar-brand,
+  .navbar-text {
+    color: $budu-white;
+  }
+
+  .navbar-nav .nav-link {
+    color: rgba($budu-white, 0.7);
+
+    &:hover,
+    &:focus {
+      color: $budu-white;
+    }
+
+    &.active {
+      color: $budu-white;
+    }
+  }
+
+  .navbar-toggler {
+    color: $budu-white;
+    border-color: rgba($budu-white, 0.4);
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+}
+
+// Colored navbar
+@each $name, $color in $budu-theme-colors {
+  .navbar-#{$name} {
+    --budu-navbar-bg: #{$color};
+    --budu-navbar-border-color: #{shift-color($color, -10%)};
+
+    .navbar-brand {
+      color: if($name == "light", $budu-dark, $budu-white);
+    }
+
+    .navbar-nav .nav-link {
+      color: if($name == "light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
+
+      &:hover,
+      &:focus {
+        color: if($name == "light", $budu-dark, $budu-white);
+      }
+
+      &.active {
+        color: if($name == "light", $budu-primary, $budu-white);
+        font-weight: 600;
+      }
+    }
+
+    .navbar-toggler {
+      color: if($name == "light", $budu-dark, $budu-white);
+      border-color: if($name == "light", rgba($budu-dark, 0.3), rgba($budu-white, 0.4));
+    }
+
+    .navbar-text {
+      color: if($name == "light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
+    }
+  }
+}
+
+// Positioning
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $budu-zindex-fixed;
+}
+
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $budu-zindex-fixed;
+}
+
+.navbar-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: $budu-zindex-sticky;
+}
+
+// Transparent (over hero)
+.navbar-transparent {
+  background: transparent;
+  border-bottom: 0;
+}
+
+// Blur
+.navbar-blur {
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}

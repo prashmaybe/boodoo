@@ -1,0 +1,160 @@
+// BUDU ANIMATIONS
+// Motion utilities and keyframes (respects prefers-reduced-motion).
+
+// Keyframes
+@keyframes budu-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes budu-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes budu-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes budu-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes budu-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes budu-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes budu-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes budu-zoom-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes budu-pulse {
+  0% { box-shadow: 0 0 0 0 rgba($budu-primary, 0.4); }
+  70% { box-shadow: 0 0 0 0.75rem rgba($budu-primary, 0); }
+  100% { box-shadow: 0 0 0 0 rgba($budu-primary, 0); }
+}
+
+@keyframes budu-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes budu-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes budu-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25%); }
+}
+
+@keyframes budu-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-0.5rem); }
+  75% { transform: translateX(0.5rem); }
+}
+
+@keyframes budu-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+// Animation utility classes
+.animate-fade-in     { animation: budu-fade-in 0.4s ease both; }
+.animate-fade-out    { animation: budu-fade-out 0.4s ease both; }
+.animate-slide-up    { animation: budu-slide-up 0.5s ease both; }
+.animate-slide-down  { animation: budu-slide-down 0.5s ease both; }
+.animate-slide-left  { animation: budu-slide-left 0.5s ease both; }
+.animate-slide-right { animation: budu-slide-right 0.5s ease both; }
+.animate-zoom-in     { animation: budu-zoom-in 0.35s ease both; }
+.animate-zoom-out    { animation: budu-zoom-out 0.35s ease both; }
+.animate-pulse       { animation: budu-pulse 1.5s infinite; }
+.animate-shine       {
+  background-image: linear-gradient(90deg, transparent, rgba($budu-white, 0.6), transparent);
+  background-size: 200% 100%;
+  animation: budu-shine 2s linear infinite;
+}
+.animate-spin       { animation: budu-spin 1s linear infinite; }
+.animate-bounce     { animation: budu-bounce 1s infinite; }
+.animate-shake      { animation: budu-shake 0.6s ease both; }
+.animate-glow       { animation: budu-glow 2s ease-in-out infinite; }
+
+// Animation delay / duration utilities
+.delay-75   { animation-delay: 75ms; }
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-500  { animation-delay: 500ms; }
+
+.duration-75    { animation-duration: 75ms; }
+.duration-100   { animation-duration: 100ms; }
+.duration-150   { animation-duration: 150ms; }
+.duration-200   { animation-duration: 200ms; }
+.duration-300   { animation-duration: 300ms; }
+.duration-500   { animation-duration: 500ms; }
+.duration-1000  { animation-duration: 1000ms; }
+.duration-2000  { animation-duration: 2000ms; }
+.duration-3000  { animation-duration: 3000ms; }
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

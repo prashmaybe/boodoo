@@ -1,0 +1,141 @@
+// BUDU FORMS — Control
+// Text inputs, textarea, select, file, color.
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $budu-input-btn-padding-y $budu-input-btn-padding-x;
+  font-family: $budu-input-btn-font-family;
+  font-size: $budu-input-btn-font-size;
+  font-weight: 400;
+  line-height: $budu-input-btn-line-height;
+  color: var(--budu-body-color);
+  background-color: $budu-form-control-bg;
+  background-clip: padding-box;
+  border: $budu-input-btn-border-width solid $budu-form-control-border-color;
+  border-radius: $budu-border-radius;
+  appearance: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &[type="file"] {
+    overflow: hidden;
+
+    &:not(:disabled):not([readonly]) {
+      cursor: pointer;
+    }
+  }
+
+  &:focus {
+    color: var(--budu-body-color);
+    background-color: $budu-form-control-bg;
+    border-color: $budu-form-control-focus-border;
+    outline: 0;
+    box-shadow: $budu-form-control-focus-box-shadow;
+  }
+
+  &::-webkit-date-and-time-value {
+    min-width: 85px;
+    height: 1.5em;
+    margin: 0;
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: var(--budu-body-tertiary-color);
+    opacity: 1;
+  }
+
+  // Disabled
+  &:disabled {
+    background-color: $budu-form-control-disabled-bg;
+    opacity: 1;
+  }
+
+  // Readonly
+  &[readonly] {
+    background-color: var(--budu-body-secondary-bg);
+    opacity: 1;
+  }
+
+  // File input button
+  &::file-selector-button {
+    padding: $budu-input-btn-padding-y $budu-input-btn-padding-x;
+    margin: calc(-1 * #{$budu-input-btn-padding-y}) calc(-1 * #{$budu-input-btn-padding-x});
+    margin-inline-end: $budu-input-btn-padding-x;
+    color: var(--budu-body-color);
+    background-color: var(--budu-body-tertiary-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: $budu-input-btn-border-width;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: var(--budu-body-secondary-bg);
+  }
+}
+
+// Sizes
+.form-control-lg {
+  @include form-control-size($budu-input-btn-padding-y-lg, $budu-input-btn-padding-x-lg, $budu-input-btn-font-size-lg, $budu-border-radius-lg);
+}
+
+.form-control-sm {
+  @include form-control-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+}
+
+// Plaintext (no visible input styling)
+.form-control-plaintext {
+  display: block;
+  width: 100%;
+  padding: $budu-input-btn-padding-y 0;
+  margin-bottom: 0;
+  line-height: $budu-input-btn-line-height;
+  color: var(--budu-body-color);
+  background-color: transparent;
+  border: solid transparent;
+  border-width: $budu-input-btn-border-width 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.form-control-sm,
+  &.form-control-lg {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Datalist
+input[list] {
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+// Form control dark (on dark backgrounds)
+.form-control-dark {
+  color: $budu-white;
+  background-color: rgba($budu-white, 0.1);
+  border-color: rgba($budu-white, 0.3);
+
+  &::placeholder {
+    color: rgba($budu-white, 0.6);
+  }
+
+  &:focus {
+    color: $budu-white;
+    background-color: rgba($budu-white, 0.15);
+    border-color: $budu-white;
+    box-shadow: 0 0 0 0.25rem rgba($budu-white, 0.15);
+  }
+}

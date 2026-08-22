@@ -1,0 +1,73 @@
+<!--
+title: Form control
+description: Textual form controls — inputs, textareas — with support for all HTML5 types.
+section: forms
+order: 1
+-->
+<h1>Form control</h1>
+<p class="lead">Give textual form controls like <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> styling and focus states with <code>.form-control</code>.</p>
+
+<h2 id="example">Example</h2>
+<div class="bd-example">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="defaultInput" class="form-label">Default input</label>
+      <input type="text" class="form-control" id="defaultInput">
+    </div>
+    <div class="col-md-6">
+      <label for="placeholderInput" class="form-label">Placeholder</label>
+      <input type="text" class="form-control" id="placeholderInput" placeholder="name@example.com">
+    </div>
+    <div class="col-md-6">
+      <label for="disabledInput" class="form-label">Disabled</label>
+      <input type="text" class="form-control" id="disabledInput" disabled>
+    </div>
+    <div class="col-md-6">
+      <label for="readonlyInput" class="form-label">Readonly</label>
+      <input type="text" class="form-control" id="readonlyInput" readonly value="Readonly">
+    </div>
+    <div class="col-12">
+      <label for="exampleTextarea" class="form-label">Example textarea</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+  </div>
+</div>
+
+<h2 id="sizing">Sizing</h2>
+<p>Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
+<div class="bd-example">
+  <input class="form-control form-control-lg mb-2" type="text" placeholder=".form-control-lg">
+  <input class="form-control mb-2" type="text" placeholder="Default input">
+  <input class="form-control form-control-sm mb-2" type="text" placeholder=".form-control-sm">
+</div>
+
+<h2 id="password">Password / text buttons</h2>
+<p>Fewer CSS is needed for these; pair inputs with <code>.input-group</code> for prepended buttons (see <a href="./input-group.html">Input group</a>).</p>
+
+<h2 id="file">File input</h2>
+<p>File inputs are fully styled out of the box, with a hover state for the "select file" button.</p>
+<div class="bd-example">
+  <div class="w-50">
+    <label for="formFile" class="form-label">Default file input example</label>
+    <input class="form-control" type="file" id="formFile">
+  </div>
+</div>
+
+<h2 id="color">Color</h2>
+<div class="bd-example">
+  <div class="d-flex align-items-center gap-3">
+    <label for="formColor" class="form-label mb-0">Color picker</label>
+    <input type="color" class="form-control form-control-color" id="formColor" value="#7c3aed" title="Choose a color">
+  </div>
+</div>
+
+<h2 id="plaintext">Plain text</h2>
+<p>Use <code>.form-control-plaintext</code> to strip the input chrome while keeping the layout:</p>
+<div class="bd-example">
+  <div class="row g-2 align-items-center">
+    <label class="col-sm-3 col-form-label" for="staticEmail">Email</label>
+    <div class="col-sm-9">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!--
+title: Clearfix
+description: Easily clear floats by adding .clearfix to the parent element.
+section: helpers
+order: 0
+-->
+<h1>Clearfix</h1>
+<p class="lead">Easily clear floats by adding <code>.clearfix</code> to the parent element. Can also be used as a mixin.</p>
+
+<p>Use the <code>.clearfix</code> class to clear floats. It uses the <code>::after</code> pseudo-element to clear floats.</p>
+
+<div class="bd-example">
+  <div class="bg-light p-3 rounded">
+    <div class="clearfix">
+      <span class="float-start border rounded p-3 bg-white">Float left</span>
+      <span class="float-end border rounded p-3 bg-white">Float right</span>
+    </div>
+    <p class="mt-4 mb-0">The floats above are cleared by the <code>.clearfix</code> helper.</p>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="clearfix"&gt;
+  &lt;button class="btn btn-secondary float-start"&gt;Float left&lt;/button&gt;
+  &lt;button class="btn btn-secondary float-end"&gt;Float right&lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="mixin">Mixins</h2>
+<p>In source Sass, use the <code>clearfix()</code> mixin:</p>
+<div class="highlight"><pre><code>@import "node_modules/budu/scss/mixins";
+
+.my-component {
+  @include clearfix();
+}</code></pre></div>

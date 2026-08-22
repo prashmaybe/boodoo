@@ -1,0 +1,38 @@
+<!--
+title: Shadows
+description: Shadow utilities for visually elevating components.
+section: utilities
+order: 10
+-->
+<h1>Shadows</h1>
+<p class="lead">Add or remove shadows to elements with box-shadow utilities.</p>
+
+<h2 id="examples">Examples</h2>
+<div class="bd-example d-flex flex-wrap gap-3 align-items-center p-4">
+  <div class="shadow-sm bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow-sm</div>
+  <div class="shadow bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow</div>
+  <div class="shadow-md bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow-md</div>
+  <div class="shadow-lg bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow-lg</div>
+  <div class="shadow-xl bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow-xl</div>
+  <div class="shadow-none bg-white border rounded-2 d-flex align-items-center justify-content-center" style="width:9rem;height:6rem">.shadow-none</div>
+</div>
+
+<h2 id="values">Available values</h2>
+<table class="table table-sm table-bordered">
+  <thead><tr><th>Class</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td><code>.shadow-none</code></td><td>No shadow</td></tr>
+    <tr><td><code>.shadow-sm</code></td><td>Small `.05` alpha shadow</td></tr>
+    <tr><td><code>.shadow</code> / <code>.shadow-base</code></td><td>Base shadow</td></tr>
+    <tr><td><code>.shadow-md</code></td><td>Medium</td></tr>
+    <tr><td><code>.shadow-lg</code></td><td>Large</td></tr>
+    <tr><td><code>.shadow-xl</code> / <code>.shadow-2xl</code></td><td>Extra large</td></tr>
+    <tr><td><code>.shadow-inner</code></td><td>Inset</td></tr>
+  </tbody>
+</table>
+
+<p>Use <code>.shadow-sm</code> … <code>.shadow-xl</code> for responsive variants as well (<code>.shadow-lg</code> default, <code>.shadow-md</code> on large screens, etc.).</p>
+
+<h2 id="material">Material elevation</h2>
+<p>For Material Design depths from 0–5, use the <a href="../helpers/elevation.html">elevation helpers</a>: <code>.elevation-0</code> through <code>.elevation-5</code>.</p>
+<div class="highlight"><pre><code>&lt;div class="elevation-3"&gt;Elevated&lt;/div&gt;</code></pre></div>

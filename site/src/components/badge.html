@@ -1,0 +1,69 @@
+<!--
+title: Badge
+description: Small count and labeling components, with a soft and pill variants.
+section: components
+order: 3
+-->
+<h1>Badge</h1>
+<p class="lead">Documentation and examples for badges, our small count and labeling component.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.</p>
+<div class="bd-example">
+  <h1>Example heading <span class="badge bg-primary text-white">New</span></h1>
+  <h2>Example heading <span class="badge bg-primary text-white">New</span></h2>
+  <h3>Example heading <span class="badge bg-primary text-white">New</span></h3>
+</div>
+
+<h2 id="colors">Colors</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <span class="badge bg-primary text-white">Primary</span>
+  <span class="badge bg-secondary text-white">Secondary</span>
+  <span class="badge bg-success text-white">Success</span>
+  <span class="badge bg-danger text-white">Danger</span>
+  <span class="badge bg-warning text-white">Warning</span>
+  <span class="badge bg-info text-white">Info</span>
+  <span class="badge bg-light text-dark">Light</span>
+  <span class="badge bg-dark text-white">Dark</span>
+</div>
+
+<h2 id="soft">Soft badges</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <span class="badge badge-soft-primary">Primary</span>
+  <span class="badge badge-soft-success">Success</span>
+  <span class="badge badge-soft-danger">Danger</span>
+  <span class="badge badge-soft-warning">Warning</span>
+  <span class="badge badge-soft-info">Info</span>
+</div>
+
+<h2 id="outline">Outline badges</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <span class="badge badge-outline-primary">Primary</span>
+  <span class="badge badge-outline-success">Success</span>
+  <span class="badge badge-outline-danger">Danger</span>
+</div>
+
+<h2 id="pill">Pill badges</h2>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <span class="badge badge-pill bg-primary text-white">Primary</span>
+  <span class="badge badge-pill badge-soft-success">Success</span>
+  <span class="badge badge-pill bg-warning text-white">Warning</span>
+</div>
+
+<h2 id="positioned">Positioned badge</h2>
+<p>Use <code>.badge-positioned</code> to place a badge relative to its positioned parent (e.g. icon buttons):</p>
+<div class="bd-example d-flex gap-4 align-items-center">
+  <div class="position-relative">
+    <button class="btn btn-icon btn-outline-primary" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <span class="badge badge-pill bg-danger badge-positioned">3</span>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;button class="btn btn-icon btn-outline-primary position-relative"&gt;
+  &lt;svg ...&gt;&lt;/svg&gt;
+  &lt;span class="badge badge-pill bg-danger badge-positioned"&gt;3&lt;/span&gt;
+&lt;/button&gt;</code></pre></div>
+
+<h2 id="count"></h2>
+<p>Use <code>.badge-circle</code> and <code>.badge-dot</code> for compact count or presence indicators.</p>

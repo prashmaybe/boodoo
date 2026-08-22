@@ -1,0 +1,97 @@
+<!--
+title: List group
+description: Flexible and powerful component for displaying a series of content.
+section: components
+order: 11
+-->
+<h1>List group</h1>
+<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
+
+<h2 id="basic">Basic example</h2>
+<div class="bd-example">
+  <ul class="list-group" style="max-width:26rem">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
+  </ul>
+</div>
+<div class="highlight"><pre><code>&lt;ul class="list-group"&gt;
+  &lt;li class="list-group-item"&gt;An item&lt;/li&gt;
+  &lt;li class="list-group-item"&gt;A second item&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
+
+<h2 id="active">Active items / actions</h2>
+<div class="bd-example">
+  <div class="list-group" style="max-width:26rem">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">The current link item</a>
+    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">A disabled link item</a>
+  </div>
+</div>
+
+<h2 id="flush">Flush</h2>
+<p>Add <code>.list-group-flush</code> to remove some borders and rounded corners.</p>
+<div class="bd-example">
+  <ul class="list-group list-group-flush" style="max-width:26rem">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+</div>
+
+<h2 id="numbered">Numbered</h2>
+<p>Add <code>.list-group-numbered</code> to display numbered list items.</p>
+<div class="bd-example">
+  <ol class="list-group list-group-numbered" style="max-width:26rem">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+  </ol>
+</div>
+
+<h2 id="horizontal">Horizontal</h2>
+<p>Add <code>.list-group-horizontal</code> to change the layout of list group items from vertical to horizontal across all breakpoints, or with a breakpoint suffix like <code>.list-group-horizontal-sm</code>.</p>
+<div class="bd-example">
+  <ul class="list-group list-group-horizontal-md" style="max-width:36rem">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+</div>
+
+<h2 id="contextual">Contextual classes</h2>
+<div class="bd-example">
+  <div class="list-group" style="max-width:26rem">
+    <li class="list-group-item list-group-item-primary">A simple primary list group item</li>
+    <li class="list-group-item list-group-item-success">A simple success list group item</li>
+    <li class="list-group-item list-group-item-danger">A simple danger list group item</li>
+    <li class="list-group-item list-group-item-warning">A simple warning list group item</li>
+    <li class="list-group-item list-group-item-info">A simple info list group item</li>
+  </div>
+</div>
+
+<h2 id="custom">Custom content</h2>
+<div class="bd-example">
+  <div class="list-group" style="max-width:26rem">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">List group item heading</h5>
+        <small>3 days ago</small>
+      </div>
+      <p class="mb-1">Some placeholder content in a paragraph.</p>
+      <small>And some small print.</small>
+    </a>
+  </div>
+</div>
+
+<h2 id="light">Light variant</h2>
+<p>Use <code>.list-group-light</code> for a borderless item list with rounded hover states (handy in sidebars).</p>
+<div class="bd-example">
+  <div class="list-group list-group-light" style="max-width:18rem">
+    <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+    <a href="#" class="list-group-item list-group-item-action">Orders</a>
+    <a href="#" class="list-group-item list-group-item-action">Customers</a>
+  </div>
+</div>

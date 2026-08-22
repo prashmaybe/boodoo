@@ -1,0 +1,172 @@
+// BUDU FORMS — Checks & Radios
+// Checkbox / radio / switch. Accessibility-first (label-based).
+
+.form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.75em;
+  margin-bottom: 0.125rem;
+
+  .form-check-input {
+    float: left;
+    margin-left: -1.75em;
+  }
+}
+
+.form-check-reverse {
+  padding-right: 1.75em;
+  padding-left: 0;
+  text-align: right;
+
+  .form-check-input {
+    float: right;
+    margin-right: -1.75em;
+    margin-left: 0;
+  }
+}
+
+.form-check-input {
+  --budu-form-check-bg: var(--budu-body-bg);
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.125em;
+  vertical-align: top;
+  background-color: var(--budu-form-check-bg);
+  background-image: var(--budu-form-check-bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid $budu-form-control-border-color;
+  appearance: none;
+  print-color-adjust: exact;
+  transition: background-color 0.15s ease-in-out, background-position 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &[type="checkbox"] {
+    border-radius: 0.25em;
+  }
+
+  &[type="radio"] {
+    border-radius: 50%;
+  }
+
+  &:active {
+    filter: brightness(90%);
+  }
+
+  &:focus {
+    border-color: $budu-form-control-focus-border;
+    outline: 0;
+    box-shadow: $budu-form-control-focus-box-shadow;
+  }
+
+  &:checked {
+    background-color: $budu-primary;
+    border-color: $budu-primary;
+
+    &[type="checkbox"] {
+      --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    &[type="radio"] {
+      --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+    }
+  }
+
+  &[type="checkbox"]:indeterminate {
+    background-color: $budu-primary;
+    border-color: $budu-primary;
+    --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-width='3' d='M5 10h10'/%3e%3c/svg%3e");
+  }
+
+  &:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: 0.5;
+  }
+}
+
+.form-check-input:disabled ~ .form-check-label,
+.form-check-input[disabled] ~ .form-check-label {
+  cursor: default;
+  opacity: 0.5;
+}
+
+// Switch
+.form-switch {
+  padding-left: 2.5em;
+
+  .form-check-input {
+    --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    width: 2em;
+    margin-left: -2.5em;
+    background-image: var(--budu-form-switch-bg);
+    background-position: left center;
+    border-radius: 2em;
+    transition: background-position 0.15s ease-in-out;
+
+    &:focus {
+      --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    &:checked {
+      background-position: right center;
+      --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+  }
+}
+
+.form-switch-reverse {
+  padding-right: 2.5em;
+  padding-left: 0;
+  text-align: right;
+
+  .form-check-input {
+    margin-right: -2.5em;
+    margin-left: 0;
+  }
+}
+
+// Radio toggle buttons
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+
+  &[disabled],
+  &:disabled {
+    + .btn {
+      pointer-events: none;
+      filter: none;
+      opacity: 0.65;
+    }
+  }
+}
+
+// Inline checks
+.form-check-inline {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+// Color input
+.form-control-color {
+  width: 3rem;
+  height: auto;
+  padding: $budu-input-btn-padding-y;
+  overflow: hidden;
+
+  &:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: 0;
+    border-radius: $budu-border-radius-sm;
+  }
+}

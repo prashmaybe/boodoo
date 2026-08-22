@@ -1,0 +1,66 @@
+<!--
+title: Placeholders
+description: Loading placeholders / skeletons for cards and other content.
+section: components
+order: 17
+-->
+<h1>Placeholders</h1>
+<p class="lead">Use loading placeholders in your components or pages to indicate something may still be loading.</p>
+
+<h2 id="about">About</h2>
+<p>Placeholders can enhance the experience of your application. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JS to swap their visibility and display actual content.</p>
+
+<h2 id="example">Example</h2>
+<div class="bd-example">
+  <div class="card" style="max-width:24rem">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow"><span class="placeholder col-6"></span></h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title placeholder-glow"&gt;
+      &lt;span class="placeholder col-6"&gt;&lt;/span&gt;
+    &lt;/h5&gt;
+    &lt;p class="card-text placeholder-glow"&gt;
+      &lt;span class="placeholder col-7"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h2 id="width">Width</h2>
+<p>Use <code>col-*</code> utilities or inline styles to set widths.</p>
+<p>We use various utility classes to similarly size placeholders.</p>
+
+<h2 id="animation">Animation</h2>
+<p>Give placeholders a wave or glow effect with <code>.placeholder-wave</code> and <code>.placeholder-glow</code>.</p>
+<div class="bd-example d-flex gap-4 align-items-center">
+  <div class="placeholder placeholder-lg col-6 placeholder-glow"></div>
+  <div class="placeholder placeholder-lg col-6 placeholder-wave"></div>
+</div>
+
+<h2 id="sizes">Sizes</h2>
+<div class="bd-example d-flex flex-column gap-2">
+  <span class="placeholder col-8 placeholder-xs"></span>
+  <span class="placeholder col-8 placeholder-sm"></span>
+  <span class="placeholder col-8"></span>
+  <span class="placeholder col-8 placeholder-lg"></span>
+</div>
+
+<h2 id="skeleton">Skeleton</h2>
+<p>For a full shimmer skeleton, use <code>.skeleton</code> with size/shape helpers <code>.skeleton-circle</code>, <code>.skeleton-text</code>.</p>
+<div class="bd-example d-flex gap-3 align-items-center">
+  <span class="skeleton skeleton-circle" style="width:64px;height:64px"></span>
+  <div class="w-75">
+    <div class="skeleton skeleton-text mb-2" style="height:1rem;width:60%"></div>
+    <div class="skeleton skeleton-text mb-2" style="height:1rem;width:90%"></div>
+    <div class="skeleton skeleton-text" style="height:1rem;width:75%"></div>
+  </div>
+</div>
