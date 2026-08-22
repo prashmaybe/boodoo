@@ -149,9 +149,9 @@
 
 // Respect reduced motion
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]),
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::before,
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
