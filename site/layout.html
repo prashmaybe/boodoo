@@ -82,21 +82,6 @@
           {{content}}
           {{prevnext}}
           <hr class="docs-hr">
-          <footer class="py-4 border-top">
-            <div class="d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small">
-              <div class="d-inline-flex align-items-center gap-2">
-                <img src="{{rootPrefix}}assets/brand/budu-icon.svg" alt="Budu" height="24" width="24" loading="lazy">
-                <span>© {{year}} Pebble Benders · MIT License</span>
-              </div>
-              <div class="d-flex gap-3 align-items-center">
-                <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/getting-started/introduction.html">Documentation</a>
-                <span>·</span>
-                <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/getting-started/download.html">Download</a>
-                <span>·</span>
-                <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/about/license.html">License</a>
-              </div>
-            </div>
-          </footer>
         </div>
       </main>
 
@@ -105,6 +90,23 @@
       </aside>
     </div>
   </div>
+
+  <!-- Footer spanning the whole page -->
+  <footer class="py-4 border-top">
+    <div class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small">
+      <div class="d-inline-flex align-items-center gap-2">
+        <img src="{{rootPrefix}}assets/brand/budu-icon.svg" alt="Budu" height="24" width="24" loading="lazy">
+        <span>© {{year}} Pebble Benders · MIT License</span>
+      </div>
+      <div class="d-flex gap-3 align-items-center">
+        <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/getting-started/introduction.html">Documentation</a>
+        <span>·</span>
+        <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/getting-started/download.html">Download</a>
+        <span>·</span>
+        <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/about/license.html">License</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="{{rootPrefix}}dist/js/budu.js"></script>
   <script>
