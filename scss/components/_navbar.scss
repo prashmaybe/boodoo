@@ -28,6 +28,13 @@
     color: var(--budu-body-color);
     text-decoration: none;
     white-space: nowrap;
+
+    img,
+    svg {
+      max-height: 2.25rem;
+      width: auto;
+      object-fit: contain;
+    }
   }
 
   .navbar-nav {
