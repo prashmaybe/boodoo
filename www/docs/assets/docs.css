@@ -11,6 +11,7 @@
   --budu-card-bg: #ffffff;
   --budu-navbar-bg: rgba(255, 255, 255, 0.88);
   --budu-body-bg: #f8fafc;
+  --budu-body-alt-bg: #f1f5f9;
   --budu-text-main: #0f172a;
   --budu-text-sub: #475569;
   --budu-border-subtle: #e2e8f0;
@@ -23,10 +24,24 @@
   --budu-card-bg: #1e293b;
   --budu-navbar-bg: rgba(15, 23, 42, 0.88);
   --budu-body-bg: #090d16;
+  --budu-body-alt-bg: #0f172a;
   --budu-text-main: #f8fafc;
   --budu-text-sub: #94a3b8;
   --budu-border-subtle: #1e293b;
   --budu-shadow-glow: 0 16px 36px -8px rgba(168, 85, 247, 0.3);
+}
+
+.landing-section-alt {
+  background-color: var(--budu-body-alt-bg);
+  border-top: 1px solid var(--budu-border-subtle);
+  border-bottom: 1px solid var(--budu-border-subtle);
+}
+
+.landing-subcard {
+  background-color: var(--budu-body-alt-bg) !important;
+  color: var(--budu-text-main);
+  border: 1px solid var(--budu-border-subtle) !important;
+  border-radius: 0.75rem !important;
 }
 
 body {
