@@ -25,7 +25,8 @@
     "css:less": "npx -y less@4.2.0 less/budu.less dist/css/budu.less.css",
     "js": "node build/js-bundle.mjs",
     "site": "node build/site-build.mjs",
-    "www": "npm run build && npm run site && node build/www-build.mjs",
+    "www": "node build/www-build.mjs",
+    "deploy": "node build/www-build.mjs",
     "watch": "sass --watch scss:dist/css",
     "serve:site": "node build/serve.mjs"
   },

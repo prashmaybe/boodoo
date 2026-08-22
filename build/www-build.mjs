@@ -7,10 +7,12 @@
 //   /
 //   ├── index.html          # landing
 //   ├── docs/**             # generated documentation
-//   ├── assets/docs.css
-//   └── dist/**             # compiled framework (CDN-ready)
+//   ├── assets/**           # docs.css + brand assets
+//   ├── dist/**             # compiled framework (CSS & JS)
+//   ├── 404.html
+//   └── site.webmanifest
 //
-// Run: node build/www-build.mjs   (after `npm run build` + site-build)
+// Run: node build/www-build.mjs   (or npm run www / npm run deploy)
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,58 +23,73 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const www = path.join(root, 'www');
 
-console.log('Assembling deployable www/ …');
+console.log('📦 Assembling deployable www/ distribution folder…');
 
-// 1. Compile CSS if missing
-const cssOut = path.join(root, 'dist', 'css', 'budu.min.css');
-if (!fs.existsSync(cssOut)) {
-  console.log('Building CSS (dist missing)…');
-  execSync('npx sass --style=compressed scss/budu.scss ' + path.join(root, 'dist', 'css', 'budu.min.css'), { cwd: root, stdio: 'inherit' });
+// 1. Build framework dist assets (CSS & JS)
+console.log('⚙️  Building framework CSS & JS dist…');
+try {
+  execSync('npm run build', { cwd: root, stdio: 'inherit' });
+} catch (err) {
+  console.error('Failed to run npm run build:', err.message);
+  process.exit(1);
 }
 
-// 2. Build docs if stale/missing
-const docsOut = path.join(root, 'site', 'docs', 'index.html');
-if (!fs.existsSync(docsOut)) {
+// 2. Build documentation site pages
+console.log('📄 Generating static documentation pages…');
+try {
   execSync('node build/site-build.mjs', { cwd: root, stdio: 'inherit' });
+} catch (err) {
+  console.error('Failed to run site-build:', err.message);
+  process.exit(1);
 }
 
-// 3. Clean & copy
-fs.rmSync(www, { recursive: true, force: true });
+// 3. Clean & recreate www/ target directory
+if (fs.existsSync(www)) {
+  fs.rmSync(www, { recursive: true, force: true });
+}
 fs.mkdirSync(www, { recursive: true });
 
 const copy = (src, rel) => {
-  if (!fs.existsSync(src)) return;
+  if (!fs.existsSync(src)) {
+    console.warn(`Warning: Source path does not exist for copy: ${src}`);
+    return;
+  }
   fs.cpSync(src, path.join(www, rel), { recursive: true });
 };
 
-copy(path.join(root, 'site', 'index.html'), 'index.html');       // landing at /
-copy(path.join(root, 'site', 'docs'), 'docs');                   // docs pages
-copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css
-copy(path.join(root, 'dist'), 'dist');                           // compiled framework
-copy(path.join(root, 'site', 'data'), 'assets/data');            // (optional) nav data
+// 4. Copy static site contents to www/
+copy(path.join(root, 'site', 'index.html'), 'index.html');       // Landing page at /
+copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
+copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
+copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
+copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data
 
-// 4. Write a tiny 404 redirect to keep clean URLs
+// 5. Write 404 fallback page
 fs.writeFileSync(
   path.join(www, '404.html'),
-  '<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirecting…</title></head><body><a href="/">Going home…</a></body></html>'
+  '<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirecting…</title></head><body><a href="/">Return to home</a></body></html>'
 );
 
-// 5. Manifest / meta
+// 6. Write site webmanifest
 fs.writeFileSync(
   path.join(www, 'site.webmanifest'),
-  JSON.stringify({
-    name: 'Budu',
-    short_name: 'Budu',
-    description: 'A modular, mobile-first CSS design framework.',
-    start_url: '/',
-    display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#7c3aed',
-    icons: [
-      { src: '/assets/brand/budu-icon-192.png', sizes: '192x192', type: 'image/png' },
-      { src: '/assets/brand/budu-icon-512.png', sizes: '512x512', type: 'image/png' },
-    ],
-  }, null, 2)
+  JSON.stringify(
+    {
+      name: 'Budu Framework',
+      short_name: 'Budu',
+      description: 'A modular, mobile-first CSS design framework.',
+      start_url: '/',
+      display: 'standalone',
+      background_color: '#ffffff',
+      theme_color: '#7c3aed',
+      icons: [
+        { src: '/assets/brand/budu-icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/assets/brand/budu-icon-512.png', sizes: '512x512', type: 'image/png' },
+      ],
+    },
+    null,
+    2
+  )
 );
 
 // Count built files
@@ -84,4 +101,4 @@ let total = 0;
   }
 })(www);
 
-console.log(`Done → www/ is ready to deploy (${total} files). Upload its contents to https://budu.dihadiwala.com/`);
+console.log(`✅ Build complete! www/ is ready to deploy (${total} files). Upload contents to static host.`);
