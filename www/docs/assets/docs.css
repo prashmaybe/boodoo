@@ -39,9 +39,105 @@
 
 .landing-subcard {
   background-color: var(--budu-body-alt-bg) !important;
-  color: var(--budu-text-main);
+  color: var(--budu-text-main) !important;
   border: 1px solid var(--budu-border-subtle) !important;
   border-radius: 0.75rem !important;
+}
+
+[data-budu-theme="dark"] .landing-subcard {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.showcase-card {
+  background-color: var(--budu-card-bg) !important;
+  border: 1px solid var(--budu-border-subtle) !important;
+  border-radius: 1rem !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--budu-shadow-glow) !important;
+  border-color: rgba(124, 58, 237, 0.35) !important;
+}
+
+.showcase-card .card-title {
+  color: var(--budu-text-main);
+}
+
+.showcase-card .card-text {
+  color: var(--budu-text-sub);
+}
+
+.showcase-card .form-label {
+  color: var(--budu-text-main);
+}
+
+.showcase-card .form-check-label {
+  color: var(--budu-text-main);
+}
+
+/* Form controls in dark mode */
+[data-budu-theme="dark"] .form-control,
+[data-budu-theme="dark"] .form-select {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+[data-budu-theme="dark"] .form-control:focus,
+[data-budu-theme="dark"] .form-select:focus {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: var(--budu-primary) !important;
+  box-shadow: 0 0 0 0.25rem rgba(168, 85, 247, 0.25) !important;
+}
+
+[data-budu-theme="dark"] .form-floating > label {
+  color: #94a3b8 !important;
+}
+
+[data-budu-theme="dark"] .form-check-input {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+[data-budu-theme="dark"] .form-check-input:checked {
+  background-color: var(--budu-primary) !important;
+  border-color: var(--budu-primary) !important;
+}
+
+/* Badge outline utility */
+.badge-outline-primary {
+  background-color: transparent !important;
+  color: #7c3aed !important;
+  border: 1px solid #7c3aed !important;
+}
+.badge-outline-info {
+  background-color: transparent !important;
+  color: #0284c7 !important;
+  border: 1px solid #0284c7 !important;
+}
+[data-budu-theme="dark"] .badge-outline-info {
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+}
+.badge-outline-success {
+  background-color: transparent !important;
+  color: #059669 !important;
+  border: 1px solid #059669 !important;
+}
+.badge-outline-danger {
+  background-color: transparent !important;
+  color: #e11d48 !important;
+  border: 1px solid #e11d48 !important;
+}
+.badge-outline-warning {
+  background-color: transparent !important;
+  color: #d97706 !important;
+  border: 1px solid #d97706 !important;
 }
 
 body {
@@ -312,10 +408,37 @@ body {
 
 .terminal pre {
   margin: 0;
-  padding: 1.15rem 1.35rem;
+  padding: 1.25rem 1.45rem;
   overflow-x: auto;
   font-family: 'JetBrains Mono', SFMono-Regular, Consolas, monospace;
-  line-height: 1.7;
+  line-height: 1.75;
+}
+
+/* Enhanced Installation Container */
+.install-terminal-container {
+  position: relative;
+}
+
+.install-terminal-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.35), transparent 70%);
+  border-radius: 1rem;
+  z-index: 0;
+  filter: blur(14px);
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.install-terminal-container .terminal {
+  position: relative;
+  z-index: 1;
+}
+
+.install-footer-hints {
+  border-top: 1px dashed var(--budu-border-subtle);
+  padding-top: 0.85rem;
 }
 
 /* Quick Stats Row - Balanced 4-column Grid */
