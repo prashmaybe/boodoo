@@ -148,7 +148,10 @@
 }
 
 // Breakpoint lookup
-@function breakpoint($name) {
+@function breakpoint($name, $breakpoints: $budu-grid-breakpoints) {
+  @if map.has-key($breakpoints, $name) {
+    @return map.get($breakpoints, $name);
+  }
   @if map.has-key($budu-grid-breakpoints, $name) {
     @return map.get($budu-grid-breakpoints, $name);
   }

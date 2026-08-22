@@ -13,8 +13,8 @@
 // Min-width media query. `$name` may be a key in $budu-grid-breakpoints
 // or a raw length.
 @mixin media-breakpoint-up($name, $breakpoints: $budu-grid-breakpoints) {
-  $min: breakpoint($name);
-  @if $min {
+  $min: breakpoint($name, $breakpoints);
+  @if $min and $min > 0 {
     @media (min-width: $min) {
       @content;
     }
@@ -25,7 +25,7 @@
 
 // Max-width media query (exclusive).
 @mixin media-breakpoint-down($name, $breakpoints: $budu-grid-breakpoints) {
-  $max: breakpoint($name);
+  $max: breakpoint($name, $breakpoints);
   @if $max == 0 {
     @content;
   } @else {
@@ -37,7 +37,7 @@
 
 // Only (min of this, max of next).
 @mixin media-breakpoint-only($name, $breakpoints: $budu-grid-breakpoints) {
-  $min: breakpoint($name);
+  $min: breakpoint($name, $breakpoints);
   $next: map.get($breakpoints, $name);
   $next-key: map.get(map.keys($breakpoints), list.index(map.keys($breakpoints), $name) + 1);
   @if $min and $next-key {

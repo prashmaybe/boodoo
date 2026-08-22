@@ -434,6 +434,25 @@ body {
   opacity: 1;
 }
 
+.feature-card {
+  position: relative;
+  background: var(--budu-card-bg);
+  backdrop-filter: blur(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card .card-title {
+  color: var(--budu-text-main);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-card .card-text {
+  color: var(--budu-text-sub);
+  line-height: 1.55;
+  font-size: 0.88rem;
+}
+
 .card-icon-avatar {
   width: 48px;
   height: 48px;
@@ -441,22 +460,63 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
   transition: transform 0.25s ease;
 }
 
 .card-hover:hover .card-icon-avatar {
-  transform: scale(1.1) rotate(-4deg);
+  transform: scale(1.12) rotate(-4deg);
 }
 
-.card {
-  background-color: var(--budu-card-bg);
-  color: var(--budu-text-main);
-  border-color: var(--budu-border-subtle);
-  border-radius: 0.875rem;
-  min-width: 0;
-  box-sizing: border-box;
+.bg-soft-primary {
+  background: rgba(124, 58, 237, 0.12) !important;
+  color: #7c3aed !important;
+}
+
+.bg-soft-success {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #059669 !important;
+}
+
+.bg-soft-danger {
+  background: rgba(244, 63, 94, 0.12) !important;
+  color: #e11d48 !important;
+}
+
+.bg-soft-warning {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #d97706 !important;
+}
+
+.bg-soft-info {
+  background: rgba(14, 165, 233, 0.12) !important;
+  color: #0284c7 !important;
+}
+
+[data-budu-theme="dark"] .bg-soft-primary {
+  background: rgba(192, 132, 252, 0.15) !important;
+  color: #c084fc !important;
+}
+
+[data-budu-theme="dark"] .bg-soft-success {
+  background: rgba(52, 211, 153, 0.15) !important;
+  color: #34d399 !important;
+}
+
+[data-budu-theme="dark"] .bg-soft-danger {
+  background: rgba(251, 113, 133, 0.15) !important;
+  color: #fb7185 !important;
+}
+
+[data-budu-theme="dark"] .bg-soft-warning {
+  background: rgba(251, 191, 36, 0.15) !important;
+  color: #fbbf24 !important;
+}
+
+[data-budu-theme="dark"] .bg-soft-info {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #38bdf8 !important;
 }
 
 .card-body {
