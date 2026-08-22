@@ -148,6 +148,7 @@
 
 .btn-sm {
   @include button-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+  min-height: auto;
 }
 
 // Block buttons

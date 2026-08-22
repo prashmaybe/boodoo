@@ -280,6 +280,8 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
+  pointer-events: none;
+  z-index: 1;
   transition: opacity 0.28s ease;
 }
 
@@ -314,9 +316,28 @@ body {
   color: var(--budu-text-main);
   border-color: var(--budu-border-subtle);
   border-radius: 0.875rem;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-/* Interactive Component Tabs */
+.card-body {
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.pillar-card {
+  border-radius: 1rem;
+  background: var(--budu-card-bg);
+  border: 1px solid var(--budu-border-subtle);
+  transition: all 0.25s ease;
+  min-width: 0;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--budu-shadow-glow);
+}
 .comp-nav-tabs {
   display: flex;
   justify-content: center;
