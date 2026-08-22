@@ -9,21 +9,21 @@
   <meta property="og:site_name" content="Budu">
   <meta property="og:title" content="{{docstitle}} · Budu">
   <meta property="og:description" content="{{description}}">
-  <meta property="og:image" content="../../assets/brand/budu-og-image.png">
+  <meta property="og:image" content="{{rootPrefix}}assets/brand/budu-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>{{title}} · Budu</title>
-  <link rel="icon" type="image/svg+xml" href="../../assets/brand/budu-icon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/budu-icon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/budu-icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../../assets/brand/budu-icon-512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/budu-icon-180.png">
-  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="{{rootPrefix}}assets/brand/budu-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{rootPrefix}}assets/brand/budu-icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{rootPrefix}}assets/brand/budu-icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{rootPrefix}}assets/brand/budu-icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{rootPrefix}}assets/brand/budu-icon-180.png">
+  <link rel="manifest" href="{{rootPrefix}}site.webmanifest">
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../dist/css/budu.min.css">
-  <link rel="stylesheet" href="../../assets/docs.css">
+  <link rel="stylesheet" href="{{rootPrefix}}dist/css/budu.min.css">
+  <link rel="stylesheet" href="{{rootPrefix}}assets/docs.css">
   <style>
     pre code[class*="language-"]{display:block;overflow-x:auto;padding:1em}
     .docs-main{max-width:780px}
@@ -51,23 +51,23 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs">
     <div class="container">
-      <a class="navbar-brand" href="../../index.html">
-        <img src="../../assets/brand/budu-logo-primary.png" alt="Budu — Design Framework" height="38" loading="lazy">
+      <a class="navbar-brand" href="{{rootPrefix}}index.html">
+        <img src="{{rootPrefix}}assets/brand/budu-logo-primary.png" alt="Budu — Design Framework" height="38" loading="lazy">
       </a>
       <button class="navbar-toggler" type="button" data-budu-toggle="collapse" data-budu-target="#docsNav" aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="docsNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="../getting-started/introduction.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{{rootPrefix}}docs/getting-started/introduction.html">Docs</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
-          <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex" href="../getting-started/usage.html">CDN</a>
-          <a class="btn btn-primary btn-sm" href="../getting-started/download.html">Download</a>
+          <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex" href="{{rootPrefix}}docs/getting-started/usage.html">CDN</a>
+          <a class="btn btn-primary btn-sm" href="{{rootPrefix}}docs/getting-started/download.html">Download</a>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
     </div>
   </div>
 
-  <script src="../../dist/js/budu.js"></script>
+  <script src="{{rootPrefix}}dist/js/budu.js"></script>
   <script>
     // Theme toggle logic
     (function() {

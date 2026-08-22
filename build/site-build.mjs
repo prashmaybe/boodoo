@@ -69,6 +69,8 @@ function parseFrontmatter(content) {
 
 // Build sidebar HTML from nav tree + active section
 function renderSidebar(sections, activeRoute, titleMap) {
+  const activeDepth = activeRoute.split('/').length; // e.g., 'getting-started/introduction' -> 2
+  const prefix = '../'.repeat(activeDepth - 1);
   const parts = [];
   for (const section of sections) {
     const items = section.pages.filter((p) => titleMap[p.route]);
@@ -76,7 +78,7 @@ function renderSidebar(sections, activeRoute, titleMap) {
     parts.push(`<h6 class="docs-nav-section">${section.title}</h6>`);
     parts.push(`<ul class="docs-nav-list">`);
     for (const item of items) {
-      const href = item.route === 'index' ? '../index.html' : './' + item.route + '.html';
+      const href = item.route === 'index' ? prefix + '../index.html' : prefix + item.route + '.html';
       const active = item.route === activeRoute ? ' class="active"' : '';
       parts.push(`<li><a href="${href}"${active}>${titleMap[item.route]}</a></li>`);
     }
@@ -87,6 +89,8 @@ function renderSidebar(sections, activeRoute, titleMap) {
 
 // Render a breadcrumb from the active route
 function renderBreadcrumb(sections, activeRoute, title) {
+  const activeDepth = activeRoute.split('/').length;
+  const prefix = '../'.repeat(activeDepth);
   let sectionTitle = '';
   for (const s of sections) {
     if (s.pages.some((p) => p.route === activeRoute)) sectionTitle = s.title;
@@ -94,7 +98,7 @@ function renderBreadcrumb(sections, activeRoute, title) {
   return `
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="${prefix}index.html">Home</a></li>
         ${sectionTitle ? `<li class="breadcrumb-item">${sectionTitle}</li>` : ''}
         <li class="breadcrumb-item active" aria-current="page">${title}</li>
       </ol>
@@ -103,6 +107,8 @@ function renderBreadcrumb(sections, activeRoute, title) {
 
 // Render previous/next navigation
 function prevNext(sections, activeRoute, titleMap) {
+  const activeDepth = activeRoute.split('/').length;
+  const prefix = '../'.repeat(activeDepth - 1);
   const flat = [];
   for (const s of sections) {
     for (const p of s.pages) {
@@ -117,7 +123,7 @@ function prevNext(sections, activeRoute, titleMap) {
     item ? `
     <div class="docs-pager-item">
       <span class="docs-pager-label">${item.section}</span>
-      <a class="docs-pager-link" href="${item.route === 'index' ? '../../index.html' : './' + item.route + '.html'}">${item.title}</a>
+      <a class="docs-pager-link" href="${item.route === 'index' ? prefix + '../index.html' : prefix + item.route + '.html'}">${item.title}</a>
     </div>` : '<div></div>';
   return `
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -195,7 +201,11 @@ function buildPage(sectionDef, { route, full }) {
   const pager = prevNext(nav, route, fullTitleMap);
   const toc = renderToc(bodyWithIds);
 
+  const activeDepth = route.split('/').length;
+  const rootPrefix = '../'.repeat(activeDepth);
+
   let html = layout
+    .replace(/\{\{rootPrefix\}\}/g, rootPrefix)
     .replace('{{title}}', title)
     .replace('{{description}}', meta.description || `${title} — Budu docs`)
     .replace('{{sidebar}}', sidebar)
