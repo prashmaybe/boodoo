@@ -47,6 +47,9 @@
           <li class="nav-item"><a class="nav-link" href="#inspiration">Inspiration</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
           <a class="btn btn-outline-primary btn-sm" href="docs/getting-started/introduction.html">Read the docs</a>
           <a class="btn btn-primary btn-sm" href="docs/getting-started/download.html">Download</a>
         </div>
@@ -346,6 +349,28 @@
   <div class="toast-container bottom-0 end-0" id="landingToasts"></div>
   <script src="dist/js/budu.js"></script>
   <script>
+    // Theme toggle logic
+    (function() {
+      var storedTheme = localStorage.getItem('budu-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-budu-theme', storedTheme);
+      var toggleBtn = document.getElementById('themeToggle');
+      function updateIcon(theme) {
+        if (toggleBtn) {
+          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+      updateIcon(storedTheme);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-budu-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-budu-theme', next);
+          localStorage.setItem('budu-theme', next);
+          updateIcon(next);
+        });
+      }
+    })();
+
     document.getElementById('landingToast')?.addEventListener('click', function () {
       if (window.Budu) {
         document.getElementById('landingToasts').innerHTML = '';

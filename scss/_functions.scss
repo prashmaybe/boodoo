@@ -14,7 +14,7 @@
 
 // Convert a color to an RGB triplet string usable in rgba() / rgb().
 @function to-rgb($value) {
-  @return color.red($value), color.green($value), color.blue($value);
+  @return color.channel($value, "red", $space: rgb), color.channel($value, "green", $space: rgb), color.channel($value, "blue", $space: rgb);
 }
 
 // Tint: mix with white.

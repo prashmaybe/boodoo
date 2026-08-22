@@ -26,42 +26,27 @@
   <link rel="stylesheet" href="../../assets/docs.css">
   <style>
     pre code[class*="language-"]{display:block;overflow-x:auto;padding:1em}
-    .docs-sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding:1.5rem 0}
-    .docs-sidebar::-webkit-scrollbar{width:8px}
-    .docs-toc{position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding-top:1.5rem}
     .docs-main{max-width:780px}
     .highlight{position:relative;margin-bottom:1.5rem}
-    .highlight pre{background:#16131f;color:#e5e7eb;border-radius:.5rem;padding:1.25rem;font-size:.85rem;line-height:1.6}
+    .highlight pre{background:#0f172a;color:#e2e8f0;border-radius:.5rem;padding:1.25rem;font-size:.85rem;line-height:1.6;border:1px solid rgba(255,255,255,.1)}
     .highlight-copy{position:absolute;top:.5rem;right:.5rem;z-index:2}
-    .bd-example{border:1px solid var(--budu-gray-200);border-radius:.5rem;padding:1.5rem;margin-bottom:1rem;background:var(--budu-white)}
-    .docs-hr{border:0;border-top:1px solid var(--budu-gray-200);margin:3rem 0}
-    .docs-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--budu-gray-200)}
+    .docs-hr{border:0;border-top:1px solid var(--budu-border-subtle);margin:3rem 0}
+    .docs-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--budu-border-subtle)}
     .docs-pager-item{flex:1}
     .docs-pager-item:last-child{text-align:right}
-    .docs-pager-label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--budu-gray-500);margin-bottom:.25rem}
+    .docs-pager-label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--budu-text-sub);margin-bottom:.25rem}
     .docs-pager-link{font-weight:600;color:var(--budu-primary);text-decoration:none}
     .docs-pager-link:hover{text-decoration:underline}
-    code{background:var(--budu-gray-100);padding:.15em .35em;border-radius:.25em;font-size:.9em}
+    code{background:rgba(124,58,237,.1);color:var(--budu-primary);padding:.15em .35em;border-radius:.25em;font-size:.9em}
     pre code{background:transparent;color:inherit;padding:0;font-size:inherit}
-    .bd-callout{padding:1.25rem;margin-bottom:1.5rem;border-left:4px solid var(--budu-gray-300);border-radius:.375rem;background:var(--budu-gray-100)}
-    .bd-callout-warning{border-left-color:#ffb300;background:rgba(255,179,0,.08)}
-    .bd-callout-info{border-left-color:#0dcaf0;background:rgba(13,202,240,.07)}
-    .docs-nav-section{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--budu-gray-500);font-weight:600;margin:1.25rem 0 .4rem .5rem}
-    .docs-nav-list{list-style:none;padding:0;margin:0 0 .5rem}
-    .docs-nav-list a{display:block;padding:.3rem .6rem;color:var(--budu-gray-700);text-decoration:none;border-radius:.375rem;font-size:.9rem}
-    .docs-nav-list a:hover{background:var(--budu-gray-100);color:var(--budu-primary)}
-    .docs-nav-list a.active{background:var(--budu-primary);color:#fff;font-weight:500}
-    .docs-toc-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--budu-gray-500);font-weight:600}
-    .docs-toc ul{list-style:none;padding:0;margin:.5rem 0 0;font-size:.85rem}
-    .docs-toc a{display:block;padding:.2rem .5rem;color:var(--budu-gray-600);text-decoration:none;border-left:2px solid transparent}
-    .docs-toc a:hover{color:var(--budu-primary);border-left-color:var(--budu-primary)}
-    .docs-toc .toc-3{padding-left:1rem}
+    .bd-callout{padding:1.25rem;margin-bottom:1.5rem;border-left:4px solid var(--budu-primary);border-radius:.375rem;background:rgba(124,58,237,.06)}
+    .bd-callout-warning{border-left-color:#f59e0b;background:rgba(245,158,11,.08)}
+    .bd-callout-info{border-left-color:#0ea5e9;background:rgba(14,165,233,.08)}
     .navbar-docs{position:sticky;top:0;z-index:1030}
-    .docs-header-hero{padding:4rem 0 2rem}
     @media (max-width:991.98px){.docs-sidebar{display:none}.docs-main{max-width:100%}}
   </style>
 </head>
-<body class="bg-light">
+<body>
   <a class="visually-hidden-focusable" href="#docs-content">Skip to main content</a>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs">
@@ -78,6 +63,9 @@
           <li class="nav-item"><a class="nav-link active" href="../getting-started/introduction.html">Docs</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
           <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex" href="../getting-started/usage.html">CDN</a>
           <a class="btn btn-primary btn-sm" href="../getting-started/download.html">Download</a>
         </div>
@@ -203,7 +191,7 @@
       </aside>
 
       <main class="col-lg-6 col-xl-7">
-        <div class="docs-main py-4">
+        <div class="docs-main py-4" id="docs-content">
           
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -294,17 +282,38 @@ npm install budu</code></pre></div>
     </div>
   </div>
 
-  <a class="btn btn-primary btn-sm d-none" id="back-to-top" href="#">Back to top</a>
-
   <script src="../../dist/js/budu.js"></script>
   <script>
+    // Theme toggle logic
+    (function() {
+      var storedTheme = localStorage.getItem('budu-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-budu-theme', storedTheme);
+      var toggleBtn = document.getElementById('themeToggle');
+      function updateIcon(theme) {
+        if (toggleBtn) {
+          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+      updateIcon(storedTheme);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-budu-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-budu-theme', next);
+          localStorage.setItem('budu-theme', next);
+          updateIcon(next);
+        });
+      }
+    })();
+
     // Copy-to-clipboard for code blocks
-    document.querySelectorAll('.highlight pre').forEach(function (pre, i) {
+    document.querySelectorAll('.highlight pre').forEach(function (pre) {
       var btn = document.createElement('button');
       btn.className = 'btn btn-sm btn-soft-primary highlight-copy';
       btn.textContent = 'Copy';
       btn.type = 'button';
-      pre.closest('.highlight').appendChild(btn);
+      var container = pre.closest('.highlight') || pre.parentElement;
+      if (container) container.appendChild(btn);
       btn.addEventListener('click', function () {
         var text = pre.innerText;
         if (navigator.clipboard) {
