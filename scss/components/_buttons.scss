@@ -10,7 +10,9 @@
   --budu-btn-line-height: #{$budu-input-btn-line-height};
   --budu-btn-border-radius: #{$budu-border-radius};
 
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--budu-btn-padding-y) var(--budu-btn-padding-x);
   font-family: var(--budu-btn-font-family);
   font-size: var(--budu-btn-font-size);

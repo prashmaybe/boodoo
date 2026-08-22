@@ -111,7 +111,7 @@
 
 // Expands at breakpoint
 @each $breakpoint in map.keys($budu-grid-breakpoints) {
-  @if $breakpoint != "xs" {
+  @if $breakpoint !="xs" {
     $infix: "-#{$breakpoint}";
 
     @include media-breakpoint-up($breakpoint) {
@@ -212,30 +212,30 @@
     --budu-navbar-border-color: #{shift-color($color, -10%)};
 
     .navbar-brand {
-      color: if($name == "light", $budu-dark, $budu-white);
+      color: if($name =="light", $budu-dark, $budu-white);
     }
 
     .navbar-nav .nav-link {
-      color: if($name == "light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
+      color: if($name =="light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
 
       &:hover,
       &:focus {
-        color: if($name == "light", $budu-dark, $budu-white);
+        color: if($name =="light", $budu-dark, $budu-white);
       }
 
       &.active {
-        color: if($name == "light", $budu-primary, $budu-white);
+        color: if($name =="light", $budu-primary, $budu-white);
         font-weight: 600;
       }
     }
 
     .navbar-toggler {
-      color: if($name == "light", $budu-dark, $budu-white);
-      border-color: if($name == "light", rgba($budu-dark, 0.3), rgba($budu-white, 0.4));
+      color: if($name =="light", $budu-dark, $budu-white);
+      border-color: if($name =="light", rgba($budu-dark, 0.3), rgba($budu-white, 0.4));
     }
 
     .navbar-text {
-      color: if($name == "light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
+      color: if($name =="light", rgba($budu-dark, 0.7), rgba($budu-white, 0.75));
     }
   }
 }
