@@ -5,13 +5,17 @@ section: forms
 order: 7
 -->
 <h1>Validation</h1>
-<p class="lead">Provide valuable, actionable feedback to your users with HTML5 form validation–available in all supported browsers.</p>
+<p class="lead">Provide valuable, actionable feedback to your users with HTML5 form validation–available in all
+  supported browsers.</p>
 
 <h2 id="overview">Overview</h2>
-<p>Budu leverages the HTML5 validation API: when a form is submitted with invalid values, the valid/invalid classes can be applied and feedback shown. Nest <code>.is-valid</code>/<code>.is-invalid</code> classes or rely on the <code>was-validated</code> class on the form after a submit attempt.</p>
+<p>budu leverages the HTML5 validation API: when a form is submitted with invalid values, the valid/invalid classes can
+  be applied and feedback shown. Nest <code>.is-valid</code>/<code>.is-invalid</code> classes or rely on the
+  <code>was-validated</code> class on the form after a submit attempt.</p>
 
 <h2 id="custom">Custom styles</h2>
-<p>For custom form validation messages, you'll need to add the <code>novalidate</code> attribute to your <code>&lt;form&gt;</code> to disable browser default feedback.</p>
+<p>For custom form validation messages, you'll need to add the <code>novalidate</code> attribute to your
+  <code>&lt;form&gt;</code> to disable browser default feedback.</p>
 <div class="bd-example">
   <form class="row g-3 needs-validation" novalidate id="validationForm">
     <div class="col-md-4">
@@ -64,7 +68,8 @@ order: 7
     }, false);
   </script>
 </div>
-<div class="highlight"><pre><code>&lt;form class="row g-3 needs-validation" novalidate&gt;
+<div class="highlight">
+  <pre><code>&lt;form class="row g-3 needs-validation" novalidate&gt;
   &lt;div class="col-md-4"&gt;
     &lt;label for="fn" class="form-label"&gt;First name&lt;/label&gt;
     &lt;input type="text" class="form-control" id="fn" required&gt;
@@ -81,14 +86,19 @@ order: 7
     e.preventDefault();
     this.classList.add('was-validated');
   });
-&lt;/script&gt;</code></pre></div>
+&lt;/script&gt;</code></pre>
+</div>
 
 <h2 id="tooltips">Validated tooltips</h2>
-<p>If your form layout allows it, swap the <code>.form-text</code>-style feedback for <code>.valid-tooltip</code>/<code>.invalid-tooltip</code> positioned absolutely:</p>
-<div class="highlight"><pre><code>&lt;div class="position-relative"&gt;
+<p>If your form layout allows it, swap the <code>.form-text</code>-style feedback for
+  <code>.valid-tooltip</code>/<code>.invalid-tooltip</code> positioned absolutely:</p>
+<div class="highlight">
+  <pre><code>&lt;div class="position-relative"&gt;
   &lt;input type="text" class="form-control is-invalid"&gt;
   &lt;div class="invalid-tooltip"&gt;Invalid tooltip feedback&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="server-side">Server-side</h2>
-<p>Budu also supports server-side rendered validation by adding <code>.is-invalid</code> or <code>.is-valid</code> classes to the form controls directly (no <code>was-validated</code> needed).</p>
+<p>budu also supports server-side rendered validation by adding <code>.is-invalid</code> or <code>.is-valid</code>
+  classes to the form controls directly (no <code>was-validated</code> needed).</p>

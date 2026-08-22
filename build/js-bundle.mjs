@@ -110,10 +110,10 @@ function collect(file, fromDir) {
 collect(entry, path.dirname(entry));
 
 const banner = `/*!
-* Budu ${'1.0.0'} | (c) Pebble Benders | MIT License
+* budu ${'1.0.0'} | (c) Pebble Benders | MIT License
 * A modular, mobile-first CSS design framework
 */`;
-const footer = `window.Budu = window.Budu || Budu;`;
+const footer = `window.budu = window.budu || budu;`;
 
 const bundle = `${banner}
 (function (global, factory) {
@@ -123,12 +123,12 @@ const bundle = `${banner}
   } else {
     global = typeof globalThis !== "undefined" ? globalThis : global || self;
     const api = factory();
-    global.Budu = api;
+    global.budu = api;
   }
 })(this, (function () {
   "use strict";
 ${bundledBodies.join('\n\n')}
-  return (typeof Budu !== "undefined" ? Budu : (globalThis && globalThis.Budu) || {});
+  return (typeof budu !== "undefined" ? budu : (globalThis && globalThis.budu) || {});
 }));
 `;
 
@@ -141,7 +141,7 @@ console.log('Bundled budu.js (' + Buffer.byteLength(bundle) + ' bytes)');
 const esmBody = bundledBodies.join('\n\n');
 const esmBundle = `${banner}
 ${esmBody}
-export default Budu;
+export default budu;
 export { Alert, Button, Collapse, Dropdown, Modal, Offcanvas, Tab, Toast, Tooltip, Popover, Carousel, ScrollSpy, initRipple, initDataApi };
 `;
 fs.writeFileSync(path.join(outDir, 'budu.esm.js'), esmBundle);

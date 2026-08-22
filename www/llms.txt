@@ -1,6 +1,6 @@
-# Budu Framework — LLM Summary & Documentation Index
+# budu Framework — LLM Summary & Documentation Index
 
-> Budu is a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS, and Material Design. It ships as Sass/LESS source, compiled CSS, vanilla JS components, and an npm package with a CDN-ready build.
+> budu is a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS, and Material Design. It ships as Sass/LESS source, compiled CSS, vanilla JS components, and an npm package with a CDN-ready build.
 
 ## Project Details
 - Website: https://budu.dihadiwala.com
@@ -22,8 +22,8 @@
 - [Introduction](https://budu.dihadiwala.com/docs/getting-started/introduction.html): Overview, core philosophy, and setup basics.
 - [Download](https://budu.dihadiwala.com/docs/getting-started/download.html): Downloads for compiled assets and source packages.
 - [What's Included](https://budu.dihadiwala.com/docs/getting-started/contents.html): Directory breakdown of compiled dist and source files.
-- [Usage & CDN](https://budu.dihadiwala.com/docs/getting-started/usage.html): Including Budu via CDN scripts and links.
-- [NPM Installation](https://budu.dihadiwala.com/docs/getting-started/npm.html): Installing and referencing Budu in Node projects.
+- [Usage & CDN](https://budu.dihadiwala.com/docs/getting-started/usage.html): Including budu via CDN scripts and links.
+- [NPM Installation](https://budu.dihadiwala.com/docs/getting-started/npm.html): Installing and referencing budu in Node projects.
 - [Sass Customization](https://budu.dihadiwala.com/docs/getting-started/sass.html): Overriding Sass variables, maps, and compiling.
 - [Less Customization](https://budu.dihadiwala.com/docs/getting-started/less.html): Overriding Less variables and compiling.
 - [Starter Template](https://budu.dihadiwala.com/docs/getting-started/starter.html): Ready-to-use HTML template structure.

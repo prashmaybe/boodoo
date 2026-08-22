@@ -1,6 +1,6 @@
 <div align="center">
 
-# Budu
+# budu
 
 **A modular, mobile-first CSS design framework** inspired by **Bootstrap**, **Foundation**, **Tailwind CSS**, and **Material Design**.
 
@@ -10,7 +10,7 @@ Build fast, responsive, accessible sites — with zero runtime dependencies.
 
 ---
 
-Budu fuses four great design systems into one cohesive toolkit:
+budu fuses four great design systems into one cohesive toolkit:
 
 - **Bootstrap** — 12-column mobile-first grid, battle-tested components, `data-*` JS API
 - **Foundation** — utility breadth, tidy scaffolds, gray palette
@@ -47,7 +47,7 @@ npm install budu
 ```
 
 ```js
-import Budu from 'budu/dist/js/budu.esm.js';      // ESM, tree-shakeable
+import budu from 'budu/dist/js/budu.esm.js';      // ESM, tree-shakeable
 import 'budu/dist/css/budu.min.css';
 ```
 
@@ -124,7 +124,7 @@ Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [
 
 ## 🎨 Theming
 
-Budu is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
+budu is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
 
 ```scss
 $budu-primary: #7952b3;
@@ -184,5 +184,5 @@ MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 Pe
 ---
 
 <div align="center">
-  <sub>Built with ❤️ and Budu itself (dogfooding).</sub>
+  <sub>Built with ❤️ and budu itself (dogfooding).</sub>
 </div>

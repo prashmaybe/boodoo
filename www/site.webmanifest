@@ -1,6 +1,6 @@
 {
-  "name": "Budu Framework",
-  "short_name": "Budu",
+  "name": "budu Framework",
+  "short_name": "budu",
   "description": "A modular, mobile-first CSS design framework.",
   "start_url": "/",
   "display": "standalone",

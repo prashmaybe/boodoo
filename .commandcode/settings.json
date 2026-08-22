@@ -27,7 +27,7 @@
       "Shell(node --input-type=module -e \"import * as m from 'file:///C:/Users/prash/apps/budu/dist/js/budu.esm.js'; console.log('ESM OK', typeof m.default, typeof m.Alert, typeof m.Modal, typeof m.Collapse, typeof m.toast === 'undefined' ? 'no-toast-fn' : typeof m.default.toast);\" 2>&1)",
       "Shell(node --input-type=module -e import * as m from 'file:///C:/Users/prash/apps/budu/dist/js/budu.esm.js'; console.log('ESM OK', typeof m.default, typeof m.Alert, typeof m.Modal, typeof m.default.toast); 2 >& 1)",
       "Shell(findstr:*)",
-      "Shell(node -e global.window = global; global.document = undefined; const b = require('./dist/js/budu.js'); console.log('UMD exports:', Object.keys(b)); console.log('Budu global set:', typeof global.Budu); 2 >& 1)",
+      "Shell(node -e global.window = global; global.document = undefined; const b = require('./dist/js/budu.js'); console.log('UMD exports:', Object.keys(b)); console.log('budu global set:', typeof global.budu); 2 >& 1)",
       "Shell(npx sass --style=compressed --source-map scss/budu.scss dist/css/budu.min.css 2>nul & npx sass --style=compressed --source-map scss/budu-grid.scss dist/css/budu-grid.min.css 2>nul & npx sass --style=compressed --source-map scss/budu-reboot.scss dist/css/budu-reboot.min.css 2>nul & npx sass --style=compressed --source-map scss/budu-utilities.scss dist/css/budu-utilities.min.css 2>nul & npx sass --style=compressed --source-map scss/budu-animations.scss dist/css/budu-animations.min.css 2>nul & for %F in (dist\\css\\*.min.css) do @echo %~nxF %~zF bytes)",
       "Shell(npx lessc less/budu.less dist/css/budu.less.css 2 >& 1)",
       "Shell(distcssbudu.less.css:*)",

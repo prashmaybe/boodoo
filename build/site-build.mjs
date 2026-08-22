@@ -207,7 +207,7 @@ function buildPage(sectionDef, { route, full }) {
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
     .replaceAll('{{title}}', title)
-    .replaceAll('{{description}}', meta.description || `${title} — Budu docs`)
+    .replaceAll('{{description}}', meta.description || `${title} — budu docs`)
     .replaceAll('{{sidebar}}', sidebar)
     .replaceAll('{{breadcrumb}}', breadcrumb)
     .replaceAll('{{toc}}', toc)

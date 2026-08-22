@@ -1,16 +1,19 @@
 <!--
 title: Customize with Sass
-description: Budu is built with Sass — customize variables, maps and mixins to build your own theme.
+description: budu is built with Sass — customize variables, maps and mixins to build your own theme.
 section: getting-started
 order: 5
 -->
 <h1>Customize with Sass</h1>
-<p class="lead">Budu is developed mobile-first with a modular Sass architecture. Customization happens via variables, maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</p>
+<p class="lead">budu is developed mobile-first with a modular Sass architecture. Customization happens via variables,
+  maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</p>
 
 <h2 id="variables">Variables</h2>
-<p>Every Sass variable in Budu includes the <code>!default</code> flag, meaning you can override them by assigning your own values <em>before</em> importing Budu. Here's a typical <code>budu.scss</code>:</p>
+<p>Every Sass variable in budu includes the <code>!default</code> flag, meaning you can override them by assigning your
+  own values <em>before</em> importing budu. Here's a typical <code>budu.scss</code>:</p>
 
-<div class="highlight"><pre><code>// 1. Include functions, variables and mixins first (if importing individual parts)
+<div class="highlight">
+  <pre><code>// 1. Include functions, variables and mixins first (if importing individual parts)
 @import "node_modules/budu/scss/functions";
 @import "node_modules/budu/scss/variables";
 @import "node_modules/budu/scss/maps";
@@ -22,20 +25,27 @@ $budu-primary: #7952b3;
 $budu-danger: #e83e8c;
 $budu-border-radius: 0.375rem;
 
-// 3. Optionally include any of Budu's parts
+// 3. Optionally include any of budu's parts
 @import "node_modules/budu/scss/root";
 @import "node_modules/budu/scss/reboot";
-@import "node_modules/budu/scss/grid";</code></pre></div>
+@import "node_modules/budu/scss/grid";</code></pre>
+</div>
 
 <h2 id="maps-and-loops">Maps and loops</h2>
-<p>Budu uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button variant is generated for you:</p>
-<div class="highlight"><pre><code>$budu-theme-colors: map.merge($budu-theme-colors, (
+<p>budu uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
+  classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
+  variant is generated for you:</p>
+<div class="highlight">
+  <pre><code>$budu-theme-colors: map.merge($budu-theme-colors, (
   "turquoise": #20c997,
-));</code></pre></div>
+));</code></pre>
+</div>
 
 <h2 id="variables-custom">Customizing components</h2>
 <p>Generated button variants, badge, alert, and other components will all pick up the new color automatically.</p>
 
 <div class="bd-callout bd-callout-info">
-  <strong>Pro tip:</strong> You only need to import the config layer (<code>functions</code>, <code>variables</code>, <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use Budu's mixins and maps in your own Sass, then import the partials you actually need for the leanest output.
+  <strong>Pro tip:</strong> You only need to import the config layer (<code>functions</code>, <code>variables</code>,
+  <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use budu's mixins and maps in your
+  own Sass, then import the partials you actually need for the leanest output.
 </div>

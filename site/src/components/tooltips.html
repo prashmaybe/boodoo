@@ -1,58 +1,79 @@
 <!--
 title: Tooltips
-description: Documentation and examples for adding Bootstrap-like tooltips with Budu.
+description: Documentation and examples for adding Bootstrap-like tooltips with budu.
 section: components
 order: 23
 -->
 <h1>Tooltips</h1>
-<p class="lead">Documentation and examples for adding Budu tooltips — small, interactive popups that appear on hover or focus.</p>
+<p class="lead">Documentation and examples for adding budu tooltips — small, interactive popups that appear on hover or
+  focus.</p>
 
 <h2 id="overview">Overview</h2>
-<p>Tooltips display a small piece of information when the user hovers, focuses, or taps an element. Budu's tooltips are dependency-free (no Popper), initialized from <code>data-budu-toggle="tooltip"</code>, and support four placements plus keyboard accessibility via <code>data-budu-trigger</code>.</p>
+<p>Tooltips display a small piece of information when the user hovers, focuses, or taps an element. budu's tooltips are
+  dependency-free (no Popper), initialized from <code>data-budu-toggle="tooltip"</code>, and support four placements
+  plus keyboard accessibility via <code>data-budu-trigger</code>.</p>
 
 <div class="bd-callout bd-callout-warning">
-  <strong>Heads up:</strong> Tooltips are disabled for disabled elements. If you need tooltips on disabled buttons, wrap them in a positioned parent and the tooltip goes on the wrapper.
+  <strong>Heads up:</strong> Tooltips are disabled for disabled elements. If you need tooltips on disabled buttons, wrap
+  them in a positioned parent and the tooltip goes on the wrapper.
 </div>
 
 <h2 id="example">Example: enable tooltips everywhere</h2>
 <p>A tooltip on a button, toggled on hover:</p>
 <div class="bd-example d-flex gap-3 align-items-center">
-  <button type="button" class="btn btn-secondary ripple" data-budu-toggle="tooltip" data-budu-placement="top" data-budu-title="Tooltip on top">Tooltip on top</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="bottom" data-budu-title="Tooltip on bottom">Tooltip on bottom</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="start" data-budu-title="Tooltip on start">Tooltip on start</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="end" data-budu-title="Tooltip on end">Tooltip on end</button>
+  <button type="button" class="btn btn-secondary ripple" data-budu-toggle="tooltip" data-budu-placement="top"
+    data-budu-title="Tooltip on top">Tooltip on top</button>
+  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="bottom"
+    data-budu-title="Tooltip on bottom">Tooltip on bottom</button>
+  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="start"
+    data-budu-title="Tooltip on start">Tooltip on start</button>
+  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="end"
+    data-budu-title="Tooltip on end">Tooltip on end</button>
 </div>
-<div class="highlight"><pre><code>&lt;button type="button" class="btn btn-secondary"
+<div class="highlight">
+  <pre><code>&lt;button type="button" class="btn btn-secondary"
         data-budu-toggle="tooltip" data-budu-placement="top"
         data-budu-title="Tooltip on top"&gt;
   Tooltip on top
-&lt;/button&gt;</code></pre></div>
+&lt;/button&gt;</code></pre>
+</div>
 
 <h2 id="markup">Markup</h2>
-<p>Put the title text in <code>data-budu-title</code>, or in the native <code>title</code> attribute. Budu reads <code>data-budu-title</code> first, then <code>title</code>, and removes the native <code>title</code> so the browser's default tooltip doesn't clash.</p>
+<p>Put the title text in <code>data-budu-title</code>, or in the native <code>title</code> attribute. budu reads
+  <code>data-budu-title</code> first, then <code>title</code>, and removes the native <code>title</code> so the
+  browser's default tooltip doesn't clash.</p>
 
 <h2 id="placements">Placements</h2>
-<p>Supported: <code>top</code> (default), <code>bottom</code>, <code>start</code>, <code>end</code>, plus <code>auto</code> which picks the best fit for the viewport, and corner variants like <code>top-start</code> for fine control.</p>
+<p>Supported: <code>top</code> (default), <code>bottom</code>, <code>start</code>, <code>end</code>, plus
+  <code>auto</code> which picks the best fit for the viewport, and corner variants like <code>top-start</code> for fine
+  control.</p>
 
 <h2 id="triggers">Triggers</h2>
 <p>Use <code>data-budu-trigger</code> to choose the interaction:
-<span class="badge bg-light text-dark border">hover</span>
-<span class="badge bg-light text-dark border">focus</span>
-<span class="badge bg-light text-dark border">click</span>
-<span class="badge bg-light text-dark border">manual</span></p>
-<div class="highlight"><pre><code>&lt;!-- toggles on click -->
+  <span class="badge bg-light text-dark border">hover</span>
+  <span class="badge bg-light text-dark border">focus</span>
+  <span class="badge bg-light text-dark border">click</span>
+  <span class="badge bg-light text-dark border">manual</span>
+</p>
+<div class="highlight">
+  <pre><code>&lt;!-- toggles on click -->
 &lt;button data-budu-toggle="tooltip" data-budu-trigger="click"
-        data-budu-title="Click to show"&gt;Click&lt;/button&gt;</code></pre></div>
+        data-budu-title="Click to show"&gt;Click&lt;/button&gt;</code></pre>
+</div>
 
 <h2 id="delay">Delay</h2>
 <p>Use <code>data-budu-delay</code> (ms) for show/hide delay:</p>
-<div class="highlight"><pre><code>&lt;button data-budu-toggle="tooltip" data-budu-delay="250"
-        data-budu-title="Delayed"&gt;Delayed tooltip&lt;/button&gt;</code></pre></div>
+<div class="highlight">
+  <pre><code>&lt;button data-budu-toggle="tooltip" data-budu-delay="250"
+        data-budu-title="Delayed"&gt;Delayed tooltip&lt;/button&gt;</code></pre>
+</div>
 
 <h2 id="js">JavaScript</h2>
-<div class="highlight"><pre><code>const tip = Budu.Tooltip.getOrCreateInstance(document.getElementById('myTip'), {
+<div class="highlight">
+  <pre><code>const tip = budu.Tooltip.getOrCreateInstance(document.getElementById('myTip'), {
   placement: 'bottom',
   title: 'Custom title',
   delay: 150,
 });
-tip.show();</code></pre></div>
+tip.show();</code></pre>
+</div>

@@ -1,30 +1,35 @@
 <!--
 title: Typography
-description: Documentation and examples for Budu typography, including global settings, headings, display headings, body text, lead, and more.
+description: Documentation and examples for budu typography, including global settings, headings, display headings, body text, lead, and more.
 section: content
 order: 0
 -->
 <h1>Typography</h1>
-<p class="lead">Documentation and examples for Budu typography, including global settings, headings, display headings, body text, and more.</p>
+<p class="lead">Documentation and examples for budu typography, including global settings, headings, display headings,
+  body text, and more.</p>
 
 <h2 id="global">Global settings</h2>
-<p>Budu sets basic global display, typography, and link styles.</p>
+<p>budu sets basic global display, typography, and link styles.</p>
 <ul>
-  <li>Uses a <strong>native font stack</strong>: <code>system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif</code>.</li>
-  <li>Removes the default font-size and font-weight on <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> margin-bottom of <code>.625rem</code>.</li>
-  <li>Sets <code>$budu-font-weight-base</code> to <code>400</code>, <code>$budu-line-height-base</code> to <code>1.5</code>.</li>
+  <li>Uses a <strong>native font stack</strong>:
+    <code>system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif</code>.</li>
+  <li>Removes the default font-size and font-weight on <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> margin-bottom of
+    <code>.625rem</code>.</li>
+  <li>Sets <code>$budu-font-weight-base</code> to <code>400</code>, <code>$budu-line-height-base</code> to
+    <code>1.5</code>.</li>
   <li>Link color inherits the <code>--budu-link-color</code> token and underlines on hover.</li>
 </ul>
 
 <h2 id="headings">Headings</h2>
-<p>All HTML headings are available. Use the associated classes <code>.h1</code> through <code>.h6</code> if you want to match the font styling without the semantic element.</p>
+<p>All HTML headings are available. Use the associated classes <code>.h1</code> through <code>.h6</code> if you want to
+  match the font styling without the semantic element.</p>
 <div class="bd-example">
-  <h1 class="mb-2">h1. Budu heading</h1>
-  <h2 class="mb-2">h2. Budu heading</h2>
-  <h3 class="mb-2">h3. Budu heading</h3>
-  <h4 class="mb-2">h4. Budu heading</h4>
-  <h5 class="mb-2">h5. Budu heading</h5>
-  <h6 class="mb-2">h6. Budu heading</h6>
+  <h1 class="mb-2">h1. budu heading</h1>
+  <h2 class="mb-2">h2. budu heading</h2>
+  <h3 class="mb-2">h3. budu heading</h3>
+  <h4 class="mb-2">h4. budu heading</h4>
+  <h5 class="mb-2">h5. budu heading</h5>
+  <h6 class="mb-2">h6. budu heading</h6>
 </div>
 
 <h2 id="display">Display headings</h2>
@@ -32,10 +37,10 @@ order: 0
 <div class="bd-example">
   <h1 class="display-1">Display 1</h1>
   <h1 class="display-2">Display 2</h2>
-  <h1 class="display-3">Display 3</h3>
-  <h1 class="display-4">Display 4</h4>
-  <h1 class="display-5">Display 5</h5>
-  <h1 class="display-6">Display 6</h6>
+    <h1 class="display-3">Display 3</h3>
+      <h1 class="display-4">Display 4</h4>
+        <h1 class="display-5">Display 5</h5>
+          <h1 class="display-6">Display 6</h6>
 </div>
 
 <h2 id="lead">Lead</h2>
@@ -75,7 +80,11 @@ order: 0
 </div>
 
 <h2 id="font-family">Font families</h2>
-<p>Use <code>.font-sans-serif</code>, <code>.font-serif</code>, or <code>.font-monospace</code> to switch between Budu's font stacks.</p>
-<div class="highlight"><pre><code>&lt;p class="font-monospace"&gt;Monospace text&lt;/p&gt;</code></pre></div>
+<p>Use <code>.font-sans-serif</code>, <code>.font-serif</code>, or <code>.font-monospace</code> to switch between budu's
+  font stacks.</p>
+<div class="highlight">
+  <pre><code>&lt;p class="font-monospace"&gt;Monospace text&lt;/p&gt;</code></pre>
+</div>
 
-<p>Budu also ships fluid type helpers <code>.fs-fluid-1</code> … <code>.fs-fluid-6</code> built on <code>clamp()</code> for scales that breathe with the viewport.</p>
+<p>budu also ships fluid type helpers <code>.fs-fluid-1</code> … <code>.fs-fluid-6</code> built on <code>clamp()</code>
+  for scales that breathe with the viewport.</p>

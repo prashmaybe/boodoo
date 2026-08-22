@@ -11,27 +11,68 @@ order: 15
 <p>Set the <code>z-index</code> of an element directly:</p>
 <div class="bd-example d-flex gap-0 align-items-end position-relative">
   <div class="z-30 bg-primary text-white p-4 rounded" style="width:8rem;height:8rem;position:relative">z-30</div>
-  <div class="z-20 bg-secondary text-white p-4 rounded ms-n4" style="width:8rem;height:6rem;position:relative">z-20</div>
+  <div class="z-20 bg-secondary text-white p-4 rounded ms-n4" style="width:8rem;height:6rem;position:relative">z-20
+  </div>
   <div class="z-10 bg-info text-white p-4 rounded ms-n4" style="width:8rem;height:4rem;position:relative">z-10</div>
 </div>
-<div class="highlight"><pre><code>&lt;div class="z-30"&gt;On top&lt;/div&gt;
-&lt;div class="z-10"&gt;Beneath&lt;/div&gt;</code></pre></div>
-<p>Available: <code>.z-0</code>, <code>.z-10</code>, <code>.z-20</code>, <code>.z-30</code>, <code>.z-40</code>, <code>.z-50</code>, and <code>.z-auto</code>.</p>
+<div class="highlight">
+  <pre><code>&lt;div class="z-30"&gt;On top&lt;/div&gt;
+&lt;div class="z-10"&gt;Beneath&lt;/div&gt;</code></pre>
+</div>
+<p>Available: <code>.z-0</code>, <code>.z-10</code>, <code>.z-20</code>, <code>.z-30</code>, <code>.z-40</code>,
+  <code>.z-50</code>, and <code>.z-auto</code>.</p>
 
 <h2 id="layers">Component z-indexes</h2>
-<p>Budu's components use well-defined z-index values so that dropdowns stack under navbars, modals above everything, etc. These are exposed as CSS custom properties for tweaking:</p>
+<p>budu's components use well-defined z-index values so that dropdowns stack under navbars, modals above everything,
+  etc. These are exposed as CSS custom properties for tweaking:</p>
 <table class="table table-sm table-bordered">
-  <thead><tr><th>Component</th><th>CSS variable</th><th>Default</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>CSS variable</th>
+      <th>Default</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td>Dropdown</td><td><code>--budu-zindex-dropdown</code></td><td>1000</td></tr>
-    <tr><td>Sticky/fixed</td><td><code>--budu-zindex-sticky/fixed</code></td><td>1020 / 1030</td></tr>
-    <tr><td>Offcanvas</td><td><code>--budu-zindex-offcanvas</code></td><td>1045</td></tr>
-    <tr><td>Modal</td><td><code>--budu-zindex-modal</code></td><td>1055</td></tr>
-    <tr><td>Popover</td><td><code>--budu-zindex-popover</code></td><td>1070</td></tr>
-    <tr><td>Tooltip</td><td><code>--budu-zindex-tooltip</code></td><td>1080</td></tr>
-    <tr><td>Toast</td><td><code>--budu-zindex-toast</code></td><td>1090</td></tr>
+    <tr>
+      <td>Dropdown</td>
+      <td><code>--budu-zindex-dropdown</code></td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>Sticky/fixed</td>
+      <td><code>--budu-zindex-sticky/fixed</code></td>
+      <td>1020 / 1030</td>
+    </tr>
+    <tr>
+      <td>Offcanvas</td>
+      <td><code>--budu-zindex-offcanvas</code></td>
+      <td>1045</td>
+    </tr>
+    <tr>
+      <td>Modal</td>
+      <td><code>--budu-zindex-modal</code></td>
+      <td>1055</td>
+    </tr>
+    <tr>
+      <td>Popover</td>
+      <td><code>--budu-zindex-popover</code></td>
+      <td>1070</td>
+    </tr>
+    <tr>
+      <td>Tooltip</td>
+      <td><code>--budu-zindex-tooltip</code></td>
+      <td>1080</td>
+    </tr>
+    <tr>
+      <td>Toast</td>
+      <td><code>--budu-zindex-toast</code></td>
+      <td>1090</td>
+    </tr>
   </tbody>
 </table>
-<div class="highlight"><pre><code>.my-modal {
+<div class="highlight">
+  <pre><code>.my-modal {
   --budu-zindex-modal: 2000;  /* pushes it above the default */
-}</code></pre></div>
+}</code></pre>
+</div>

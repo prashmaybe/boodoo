@@ -25,7 +25,7 @@ enableDismissTrigger(Alert, (instance) => {
 });
 
 // Global API
-const Budu = {
+const budu = {
   Alert,
   Button,
   Collapse,
@@ -42,8 +42,8 @@ const Budu = {
   initDataApi,
 };
 
-// Set up a convenience for showing toasts from JS: Budu.toast(message, options)
-Budu.toast = function toast(message, options = {}) {
+// Set up a convenience for showing toasts from JS: budu.toast(message, options)
+budu.toast = function toast(message, options = {}) {
   const opts = {
     title: '',
     delay: 5000,
@@ -51,7 +51,7 @@ Budu.toast = function toast(message, options = {}) {
     className: options.className || '',
   };
   const container = document.querySelector(opts.container || '.toast-container.top-0.end-0') || {
-    appendChild() {},
+    appendChild() { },
   };
   const wrapper = document.createElement('div');
   wrapper.className = 'toast show';
@@ -94,7 +94,7 @@ if (typeof document === 'undefined') {
 }
 
 // Public default export
-export default Budu;
+export default budu;
 if (typeof window !== 'undefined') {
-  window.Budu = Budu;
+  window.budu = budu;
 }

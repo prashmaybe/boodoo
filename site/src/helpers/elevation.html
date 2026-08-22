@@ -5,20 +5,30 @@ section: helpers
 order: 5
 -->
 <h1>Elevation (Material)</h1>
-<p class="lead">Budu brings Material Design's elevation system to every component. Elevation controls the relative depth, or distance, between two surfaces along the z-axis.</p>
+<p class="lead">budu brings Material Design's elevation system to every component. Elevation controls the relative
+  depth, or distance, between two surfaces along the z-axis.</p>
 
 <h2 id="classes">Elevation classes</h2>
-<p>Use <code>.elevation-{0|1|2|3|4|5}</code> to layer shadows, or the Tailwind-style <code>.shadow-{sm|base|md|lg|xl|2xl|inner|none}</code> utilities.</p>
+<p>Use <code>.elevation-{0|1|2|3|4|5}</code> to layer shadows, or the Tailwind-style
+  <code>.shadow-{sm|base|md|lg|xl|2xl|inner|none}</code> utilities.</p>
 <div class="bd-example d-flex flex-wrap gap-3 align-items-end p-4">
-  <div class="elevation-0 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-0</span></div>
-  <div class="elevation-1 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-1</span></div>
-  <div class="elevation-2 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-2</span></div>
-  <div class="elevation-3 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-3</span></div>
-  <div class="elevation-4 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-4</span></div>
-  <div class="elevation-5 bg-white rounded-2 d-flex align-items-center justify-content-center" style="width:8rem;height:6rem"><span class="text-muted small">elevation-5</span></div>
+  <div class="elevation-0 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-0</span></div>
+  <div class="elevation-1 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-1</span></div>
+  <div class="elevation-2 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-2</span></div>
+  <div class="elevation-3 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-3</span></div>
+  <div class="elevation-4 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-4</span></div>
+  <div class="elevation-5 bg-white rounded-2 d-flex align-items-center justify-content-center"
+    style="width:8rem;height:6rem"><span class="text-muted small">elevation-5</span></div>
 </div>
-<div class="highlight"><pre><code>&lt;div class="elevation-3"&gt;Elevated surface&lt;/div&gt;
-&lt;div class="shadow-lg"&gt;Tailwind-style shadow&lt;/div&gt;</code></pre></div>
+<div class="highlight">
+  <pre><code>&lt;div class="elevation-3"&gt;Elevated surface&lt;/div&gt;
+&lt;div class="shadow-lg"&gt;Tailwind-style shadow&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="usage">Usage guidance</h2>
 <ul>
@@ -28,11 +38,13 @@ order: 5
 </ul>
 
 <h2 id="mixin">Mixins</h2>
-<div class="highlight"><pre><code>@import "node_modules/budu/scss/mixins";
+<div class="highlight">
+  <pre><code>@import "node_modules/budu/scss/mixins";
 
 .fab {
   @include elevation(3);
-}</code></pre></div>
+}</code></pre>
+</div>
 
 <h2 id="tokens">Shadow tokens</h2>
 <p>The elevation shadows are also exposed as CSS custom properties: <code>--budu-shadow-sm|base|md|lg|xl</code>.</p>

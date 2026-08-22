@@ -1,26 +1,35 @@
 <!--
 title: Accessibility
-description: Budu is built with accessibility in mind — skip links, focus rings, aria attributes and reduced motion support.
+description: budu is built with accessibility in mind — skip links, focus rings, aria attributes and reduced motion support.
 section: getting-started
 order: 9
 -->
 <h1>Accessibility</h1>
-<p class="lead">Budu follows common web standards, and can easily be adapted to meet the WCAG 2.1 AA requirements with the proper markup and configuration.</p>
+<p class="lead">budu follows common web standards, and can easily be adapted to meet the WCAG 2.1 AA requirements with
+  the proper markup and configuration.</p>
 
 <h2 id="summary">Summary of accessibility features</h2>
 <ul>
-  <li><strong>Focus visible:</strong> Budu suppresses the focus ring only for mouse users (<code>:focus:not(:focus-visible)</code>) and keeps it for keyboard navigation.</li>
-  <li><strong>Skip link:</strong> the docs layout ships with a <code>visually-hidden-focusable</code> "skip to main content" link.</li>
-  <li><strong>Reduced motion:</strong> all animations and transitions respect <code>prefers-reduced-motion: reduce</code>.</li>
-  <li><strong>ARIA roles &amp; states:</strong> components set <code>aria-expanded</code>, <code>aria-selected</code>, <code>aria-busy</code>, <code>aria-labelledby</code>, and use <code>role="alert"</code> / <code>role="dialog"</code> where appropriate.</li>
-  <li><strong>Keyboard:</strong> modals trap focus, dropdowns close with <kbd>Esc</kbd>, carousels support arrow keys.</li>
-  <li><strong>Color contrast:</strong> the default palette meets AA contrast on white, and subtle/emphasis variants are provided.</li>
+  <li><strong>Focus visible:</strong> budu suppresses the focus ring only for mouse users
+    (<code>:focus:not(:focus-visible)</code>) and keeps it for keyboard navigation.</li>
+  <li><strong>Skip link:</strong> the docs layout ships with a <code>visually-hidden-focusable</code> "skip to main
+    content" link.</li>
+  <li><strong>Reduced motion:</strong> all animations and transitions respect
+    <code>prefers-reduced-motion: reduce</code>.</li>
+  <li><strong>ARIA roles &amp; states:</strong> components set <code>aria-expanded</code>, <code>aria-selected</code>,
+    <code>aria-busy</code>, <code>aria-labelledby</code>, and use <code>role="alert"</code> / <code>role="dialog"</code>
+    where appropriate.</li>
+  <li><strong>Keyboard:</strong> modals trap focus, dropdowns close with <kbd>Esc</kbd>, carousels support arrow keys.
+  </li>
+  <li><strong>Color contrast:</strong> the default palette meets AA contrast on white, and subtle/emphasis variants are
+    provided.</li>
   <li><strong>Touch:</strong> 44px minimum interactive target sizes to satisfy touch accessibility guidelines.</li>
 </ul>
 
 <h2 id="reduced-motion">Reduced motion</h2>
-<p>Budu includes a media query that disables animations and transitions for users who prefer reduced motion:</p>
-<div class="highlight"><pre><code>@media (prefers-reduced-motion: reduce) {
+<p>budu includes a media query that disables animations and transitions for users who prefer reduced motion:</p>
+<div class="highlight">
+  <pre><code>@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -29,11 +38,15 @@ order: 9
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}</code></pre></div>
+}</code></pre>
+</div>
 
 <h2 id="color-contrast">Color contrast</h2>
-<p>Some combinations of colors that make up Budu's default palette may not have sufficient contrast on certain backgrounds. You can adjust these via the Sass variables, or use the <code>-subtle</code> background/border helpers and <code>-emphasis</code> text helpers to tune it per component.</p>
+<p>Some combinations of colors that make up budu's default palette may not have sufficient contrast on certain
+  backgrounds. You can adjust these via the Sass variables, or use the <code>-subtle</code> background/border helpers
+  and <code>-emphasis</code> text helpers to tune it per component.</p>
 
 <div class="bd-callout bd-callout-info">
-  <strong>Tip:</strong> use the <code>.visually-hidden</code> helper for content that should be available to assistive technologies but hidden visually.
+  <strong>Tip:</strong> use the <code>.visually-hidden</code> helper for content that should be available to assistive
+  technologies but hidden visually.
 </div>

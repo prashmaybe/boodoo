@@ -1,11 +1,12 @@
 <!--
 title: Spinners
-description: Indicate the loading state of a component or page with Budu spinners.
+description: Indicate the loading state of a component or page with budu spinners.
 section: components
 order: 21
 -->
 <h1>Spinners</h1>
-<p class="lead">Indicate the loading state of a component or page with Budu spinners, built entirely with HTML, CSS, and no JavaScript.</p>
+<p class="lead">Indicate the loading state of a component or page with budu spinners, built entirely with HTML, CSS, and
+  no JavaScript.</p>
 
 <h2 id="border">Border spinner</h2>
 <p>Use the border spinners for a lightweight loading indicator.</p>
@@ -14,9 +15,11 @@ order: 21
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-<div class="highlight"><pre><code>&lt;div class="spinner-border" role="status"&gt;
+<div class="highlight">
+  <pre><code>&lt;div class="spinner-border" role="status"&gt;
   &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="colors">Colors</h2>
 <div class="bd-example d-flex flex-wrap gap-3">
@@ -36,15 +39,18 @@ order: 21
 </div>
 
 <h2 id="size">Size</h2>
-<p>Use <code>.spinner-border-sm</code> / <code>.spinner-grow-sm</code>, or set <code>--budu-spinner-width</code> for custom sizes.</p>
+<p>Use <code>.spinner-border-sm</code> / <code>.spinner-grow-sm</code>, or set <code>--budu-spinner-width</code> for
+  custom sizes.</p>
 <div class="bd-example d-flex flex-wrap gap-3 align-items-center">
   <div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>
   <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
-  <div class="spinner-border" style="--budu-spinner-width: 3rem" role="status"><span class="visually-hidden">Loading...</span></div>
+  <div class="spinner-border" style="--budu-spinner-width: 3rem" role="status"><span
+      class="visually-hidden">Loading...</span></div>
 </div>
 
 <h2 id="buttons">Buttons</h2>
-<p>Use spinners within buttons to indicate an action is processing. The <code>.btn-loading</code> convenience class adds a spinner to any button while preserving its width.</p>
+<p>Use spinners within buttons to indicate an action is processing. The <code>.btn-loading</code> convenience class adds
+  a spinner to any button while preserving its width.</p>
 <div class="bd-example d-flex gap-2 flex-wrap">
   <button class="btn btn-primary" type="button" disabled>
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -52,10 +58,12 @@ order: 21
   </button>
   <button type="button" class="btn btn-primary btn-loading">Saving...</button>
 </div>
-<div class="highlight"><pre><code>&lt;button class="btn btn-primary" type="button" disabled&gt;
+<div class="highlight">
+  <pre><code>&lt;button class="btn btn-primary" type="button" disabled&gt;
   &lt;span class="spinner-border spinner-border-sm" aria-hidden="true"&gt;&lt;/span&gt;
   &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
 &lt;/button&gt;
 
 &lt;!-- CSS-only loading state -->
-&lt;button type="button" class="btn btn-primary btn-loading"&gt;Saving...&lt;/button&gt;</code></pre></div>
+&lt;button type="button" class="btn btn-primary btn-loading"&gt;Saving...&lt;/button&gt;</code></pre>
+</div>

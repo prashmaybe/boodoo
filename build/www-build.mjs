@@ -1,4 +1,4 @@
-// Budu deployable build.
+// budu deployable build.
 // Assembles everything needed to host at https://budu.dihadiwala.com into a
 // single `www/` folder: landing page, docs pages, assets, and compiled dist.
 // Upload the CONTENTS of `www/` to your static host (root = domain root).
@@ -78,8 +78,8 @@ fs.writeFileSync(
   path.join(www, 'site.webmanifest'),
   JSON.stringify(
     {
-      name: 'Budu Framework',
-      short_name: 'Budu',
+      name: 'budu Framework',
+      short_name: 'budu',
       description: 'A modular, mobile-first CSS design framework.',
       start_url: '/',
       display: 'standalone',

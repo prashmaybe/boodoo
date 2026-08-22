@@ -5,33 +5,70 @@ section: layout
 order: 5
 -->
 <h1>Breakpoints</h1>
-<p class="lead">Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Budu.</p>
+<p class="lead">Breakpoints are customizable widths that determine how your responsive layout behaves across device or
+  viewport sizes in budu.</p>
 
 <h2 id="core">Core concepts</h2>
 <ul>
-  <li><strong>Breakpoints are the building blocks of responsive design.</strong> Use them to control when your layout can be adapted at a particular viewport or device size.</li>
-  <li><strong>Use media queries to architect your CSS by breakpoint.</strong> Media queries are a feature of CSS that allow you to conditionally apply styles based on a set of browser and operating system parameters.</li>
-  <li><strong>Mobile first, responsive design.</strong> Budu's CSS aims to apply the fewest styles to make a layout work at the smallest breakpoint, and then layers on styles for larger devices.</li>
+  <li><strong>Breakpoints are the building blocks of responsive design.</strong> Use them to control when your layout
+    can be adapted at a particular viewport or device size.</li>
+  <li><strong>Use media queries to architect your CSS by breakpoint.</strong> Media queries are a feature of CSS that
+    allow you to conditionally apply styles based on a set of browser and operating system parameters.</li>
+  <li><strong>Mobile first, responsive design.</strong> budu's CSS aims to apply the fewest styles to make a layout work
+    at the smallest breakpoint, and then layers on styles for larger devices.</li>
 </ul>
 
 <h2 id="available">Available breakpoints</h2>
-<p>Budu includes six default breakpoints, sometimes referred to as grid tiers.</p>
+<p>budu includes six default breakpoints, sometimes referred to as grid tiers.</p>
 <table class="table table-bordered table-sm">
-  <thead><tr><th>Breakpoint</th><th>Class infix</th><th>Dimensions</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Breakpoint</th>
+      <th>Class infix</th>
+      <th>Dimensions</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td>X-Small</td><td><em>None</em></td><td>&lt;576px</td></tr>
-    <tr><td>Small</td><td><code>sm</code></td><td>&ge;576px</td></tr>
-    <tr><td>Medium</td><td><code>md</code></td><td>&ge;768px</td></tr>
-    <tr><td>Large</td><td><code>lg</code></td><td>&ge;992px</td></tr>
-    <tr><td>Extra large</td><td><code>xl</code></td><td>&ge;1200px</td></tr>
-    <tr><td>Extra extra large</td><td><code>xxl</code></td><td>&ge;1400px</td></tr>
+    <tr>
+      <td>X-Small</td>
+      <td><em>None</em></td>
+      <td>&lt;576px</td>
+    </tr>
+    <tr>
+      <td>Small</td>
+      <td><code>sm</code></td>
+      <td>&ge;576px</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td><code>md</code></td>
+      <td>&ge;768px</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td><code>lg</code></td>
+      <td>&ge;992px</td>
+    </tr>
+    <tr>
+      <td>Extra large</td>
+      <td><code>xl</code></td>
+      <td>&ge;1200px</td>
+    </tr>
+    <tr>
+      <td>Extra extra large</td>
+      <td><code>xxl</code></td>
+      <td>&ge;1400px</td>
+    </tr>
   </tbody>
 </table>
 
 <h2 id="media-queries">Media queries</h2>
-<p>Since Budu is developed to be mobile first, we use a handful of media queries to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.</p>
-<div class="highlight"><pre><code>// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Budu
+<p>Since budu is developed to be mobile first, we use a handful of media queries to create sensible breakpoints for our
+  layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up
+  elements as the viewport changes.</p>
+<div class="highlight">
+  <pre><code>// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in budu
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
@@ -46,10 +83,14 @@ order: 5
 @media (min-width: 1200px) { ... }
 
 // Extra extra large devices (large desktops, 1400px and up)
-@media (min-width: 1400px) { ... }</code></pre></div>
+@media (min-width: 1400px) { ... }</code></pre>
+</div>
 
 <h2 id="mixins">Media mixins</h2>
-<p>In your source Sass, use the <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>, and <code>media-breakpoint-only</code> mixins:</p>
-<div class="highlight"><pre><code>@include media-breakpoint-up(sm) { ... }
+<p>In your source Sass, use the <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>, and
+  <code>media-breakpoint-only</code> mixins:</p>
+<div class="highlight">
+  <pre><code>@include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-down(lg) { ... }
-@include media-breakpoint-only(md) { ... }</code></pre></div>
+@include media-breakpoint-only(md) { ... }</code></pre>
+</div>

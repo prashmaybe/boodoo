@@ -1,34 +1,41 @@
 <!--
 title: Card
-description: Budu's cards provide a flexible and extensible content container.
+description: budu's cards provide a flexible and extensible content container.
 section: components
 order: 7
 -->
 <h1>Card</h1>
-<p class="lead">Budu's cards provide a flexible and extensible content container with multiple variants and options.</p>
+<p class="lead">budu's cards provide a flexible and extensible content container with multiple variants and options.</p>
 
 <h2 id="about">About</h2>
-<p>A <strong>card</strong> is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you're familiar with Bootstrap's cards, Budu's will feel right at home.</p>
+<p>A <strong>card</strong> is a flexible and extensible content container. It includes options for headers and footers,
+  a wide variety of content, contextual background colors, and powerful display options. If you're familiar with
+  Bootstrap's cards, budu's will feel right at home.</p>
 
 <h2 id="example">Example</h2>
 <div class="bd-example" style="max-width:24rem">
   <div class="card">
-    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='200'%3E%3Crect width='384' height='200' fill='%23ece6fd'/%3E%3C/svg%3E" class="card-img-top" alt="...">
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='200'%3E%3Crect width='384' height='200' fill='%23ece6fd'/%3E%3C/svg%3E"
+      class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
 </div>
-<div class="highlight"><pre><code>&lt;div class="card" style="width: 24rem;"&gt;
+<div class="highlight">
+  <pre><code>&lt;div class="card" style="width: 24rem;"&gt;
   &lt;img src="..." class="card-img-top" alt="..."&gt;
   &lt;div class="card-body"&gt;
     &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
     &lt;p class="card-text"&gt;Some quick example text.&lt;/p&gt;
     &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="titles">Titles, text, and links</h2>
 <div class="bd-example" style="max-width:24rem">
@@ -58,10 +65,13 @@ order: 7
 <h2 id="horizontal">Horizontal</h2>
 <div class="bd-example">
   <div class="card card-horizontal">
-    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%237753fa'/%3E%3C/svg%3E" alt="..." style="max-width:200px">
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%237753fa'/%3E%3C/svg%3E"
+      alt="..." style="max-width:200px">
     <div class="card-body">
       <h5 class="card-title">Horizontal card</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+      </p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
@@ -73,41 +83,60 @@ order: 7
     <div class="col-md-4">
       <div class="card text-bg-primary mb-3 card-primary">
         <div class="card-header">Header</div>
-        <div class="card-body"><h5 class="card-title">Primary card title</h5><p class="card-text">Some quick example text.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Primary card title</h5>
+          <p class="card-text">Some quick example text.</p>
+        </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card card-success">
         <div class="card-header">Header</div>
-        <div class="card-body"><h5 class="card-title">Success card title</h5><p class="card-text">Some quick example text.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Success card title</h5>
+          <p class="card-text">Some quick example text.</p>
+        </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card card-danger">
         <div class="card-header">Header</div>
-        <div class="card-body"><h5 class="card-title">Danger card title</h5><p class="card-text">Some quick example text.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Danger card title</h5>
+          <p class="card-text">Some quick example text.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <h2 id="hover">Interaction</h2>
-<p>Add <code>.card-hover</code> (or <code>.hoverable</code>) for a Material lift-and-shadow on hover, or <code>.card-clickable</code> for an interactive card that raises and tints its border.</p>
+<p>Add <code>.card-hover</code> (or <code>.hoverable</code>) for a Material lift-and-shadow on hover, or
+  <code>.card-clickable</code> for an interactive card that raises and tints its border.</p>
 <div class="bd-example">
   <div class="row g-3">
     <div class="col-md-4">
       <div class="card card-hover">
-        <div class="card-body"><h5 class="card-title">Hover card</h5><p class="card-text mb-0">Hover me — I lift.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Hover card</h5>
+          <p class="card-text mb-0">Hover me — I lift.</p>
+        </div>
       </div>
     </div>
     <div class="col-md-4">
       <a href="#" class="card card-clickable text-decoration-none">
-        <div class="card-body"><h5 class="card-title">Clickable card</h5><p class="card-text mb-0">I'm a link card with a stretch.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Clickable card</h5>
+          <p class="card-text mb-0">I'm a link card with a stretch.</p>
+        </div>
       </a>
     </div>
     <div class="col-md-4">
       <div class="card card-raised">
-        <div class="card-body"><h5 class="card-title">Raised (elevation 2)</h5><p class="card-text mb-0">Material elevation look.</p></div>
+        <div class="card-body">
+          <h5 class="card-title">Raised (elevation 2)</h5>
+          <p class="card-text mb-0">Material elevation look.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -117,11 +146,17 @@ order: 7
 <div class="bd-example">
   <div class="card-group">
     <div class="card">
-      <div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text">With supporting text.</p></div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text.</p>
+      </div>
       <div class="card-footer"><small class="text-muted">Last updated 3 mins ago</small></div>
     </div>
     <div class="card">
-      <div class="card-body"><h5 class="card-title">Card title</h5><p class="card-text">Equal height thanks to flexbox.</p></div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Equal height thanks to flexbox.</p>
+      </div>
       <div class="card-footer"><small class="text-muted">Last updated 3 mins ago</small></div>
     </div>
   </div>
@@ -130,13 +165,17 @@ order: 7
 <h2 id="overlay">Image overlays</h2>
 <div class="bd-example" style="max-width:24rem">
   <div class="card">
-    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='300'%3E%3Crect width='384' height='300' fill='%2316131f'/%3E%3C/svg%3E" class="card-img" alt="...">
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='300'%3E%3Crect width='384' height='300' fill='%2316131f'/%3E%3C/svg%3E"
+      class="card-img" alt="...">
     <div class="card-img-overlay text-white">
       <h5 class="card-title">Card title</h5>
-      <p class="card-text mb-0">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text mb-0">This is a wider card with supporting text below as a natural lead-in to additional
+        content.</p>
     </div>
   </div>
 </div>
 
 <h2 id="layout">Card layout helpers</h2>
-<p>Use <code>.card-grid</code> for a responsive gap-based card grid, or the flexbox <code>.row-cols-*</code> helpers with cards for equal-width layouts.</p>
+<p>Use <code>.card-grid</code> for a responsive gap-based card grid, or the flexbox <code>.row-cols-*</code> helpers
+  with cards for equal-width layouts.</p>

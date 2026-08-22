@@ -5,42 +5,52 @@ section: components
 order: 22
 -->
 <h1>Toasts</h1>
-<p class="lead">Push notifications to your visitors with the toast component &mdash; lightweight, easily customizable alert messages.</p>
+<p class="lead">Push notifications to your visitors with the toast component &mdash; lightweight, easily customizable
+  alert messages.</p>
 
 <h2 id="overview">Overview</h2>
-<p>Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They're built with flexbox, so they're easy to align and position — by default they auto-hide after 5 seconds (<code>data-budu-autohide="true"</code> / <code>data-budu-delay="5000"</code>).</p>
+<p>Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile
+  and desktop operating systems. They're built with flexbox, so they're easy to align and position — by default they
+  auto-hide after 5 seconds (<code>data-budu-autohide="true"</code> / <code>data-budu-delay="5000"</code>).</p>
 
 <h2 id="basic">Basic example</h2>
 <div class="bd-example">
   <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%235b2ef2'/%3E%3C/svg%3E" class="rounded me-2" alt="" width="20" height="20">
-      <strong class="me-auto">Budu</strong>
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%235b2ef2'/%3E%3C/svg%3E"
+        class="rounded me-2" alt="" width="20" height="20">
+      <strong class="me-auto">budu</strong>
       <small>11 mins ago</small>
       <button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">Hello, world! This is a toast message.</div>
   </div>
 </div>
-<div class="highlight"><pre><code>&lt;div class="toast" role="alert" aria-live="assertive" aria-atomic="true"&gt;
+<div class="highlight">
+  <pre><code>&lt;div class="toast" role="alert" aria-live="assertive" aria-atomic="true"&gt;
   &lt;div class="toast-header"&gt;
-    &lt;strong class="me-auto"&gt;Budu&lt;/strong&gt;
+    &lt;strong class="me-auto"&gt;budu&lt;/strong&gt;
     &lt;small&gt;11 mins ago&lt;/small&gt;
     &lt;button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="toast-body"&gt;Hello, world! This is a toast message.&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="stacking">Stacking / container</h2>
-<p>Place toasts inside a <code>.toast-container</code> (positioned via the <code>top-*</code>/<code>end-*</code>/<code>bottom-*</code> utilities) to stack notifications in a corner or edge.</p>
+<p>Place toasts inside a <code>.toast-container</code> (positioned via the
+  <code>top-*</code>/<code>end-*</code>/<code>bottom-*</code> utilities) to stack notifications in a corner or edge.</p>
 <div class="bd-example position-relative" style="min-height:180px">
   <div class="toast-container top-0 end-0" style="position:absolute">
     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header"><strong class="me-auto">Notification</strong><button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"></button></div>
+      <div class="toast-header"><strong class="me-auto">Notification</strong><button type="button" class="btn-close"
+          data-budu-dismiss="toast" aria-label="Close"></button></div>
       <div class="toast-body">Some quick example text to build on the toast.</div>
     </div>
     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header"><strong class="me-auto">Second toast</strong><button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"></button></div>
+      <div class="toast-header"><strong class="me-auto">Second toast</strong><button type="button" class="btn-close"
+          data-budu-dismiss="toast" aria-label="Close"></button></div>
       <div class="toast-body">See, another stacked toast.</div>
     </div>
   </div>
@@ -60,20 +70,22 @@ order: 22
 </div>
 
 <h2 id="js">JavaScript behavior</h2>
-<div class="highlight"><pre><code>// Show all toasts in a container
-Budu.Toast.showAll(document.getElementById('toastContainer'));
+<div class="highlight">
+  <pre><code>// Show all toasts in a container
+budu.Toast.showAll(document.getElementById('toastContainer'));
 
 // Show a single toast
-const t = Budu.Toast.getOrCreateInstance(document.getElementById('myToast'), { autohide: true, delay: 3000 });
+const t = budu.Toast.getOrCreateInstance(document.getElementById('myToast'), { autohide: true, delay: 3000 });
 t.show();
 
 // Or the quick helper:
-Budu.toast('Saved successfully!', { title: 'Success', delay: 4000 });</code></pre></div>
+budu.toast('Saved successfully!', { title: 'Success', delay: 4000 });</code></pre>
+</div>
 <div class="bd-example">
   <button class="btn btn-primary" id="toastProgBtn">Show toast via JS</button>
   <script>
     document.getElementById('toastProgBtn').addEventListener('click', function () {
-      Budu.toast('Hello from Budu! This toast was created with one line of JS.', { title: 'Programmatic toast' });
+      budu.toast('Hello from budu! This toast was created with one line of JS.', { title: 'Programmatic toast' });
     });
   </script>
   <div class="toast-container top-0 end-0"></div>

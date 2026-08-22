@@ -1,7 +1,7 @@
 {
   "name": "budu",
   "version": "1.0.0",
-  "description": "Budu — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
+  "description": "budu — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "private": true,
   "style": "dist/css/budu.css",
   "sass": "scss/budu.scss",

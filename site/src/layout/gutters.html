@@ -1,14 +1,16 @@
 <!--
 title: Gutters
-description: Gutters are the padding between your columns, used to responsively space and align content in the Budu grid system.
+description: Gutters are the padding between your columns, used to responsively space and align content in the budu grid system.
 section: layout
 order: 3
 -->
 <h1>Gutters</h1>
-<p class="lead">Gutters are the padding between your columns, used to responsively space and align content in the Budu grid system.</p>
+<p class="lead">Gutters are the padding between your columns, used to responsively space and align content in the budu
+  grid system.</p>
 
 <h2 id="horizontal">Horizontal gutters</h2>
-<p><code>.gx-*</code> classes can be used to control the horizontal gutter widths. The <code>.row</code> parent needs to be paired with these classes to adjust the horizontal spacings around your columns.</p>
+<p><code>.gx-*</code> classes can be used to control the horizontal gutter widths. The <code>.row</code> parent needs to
+  be paired with these classes to adjust the horizontal spacings around your columns.</p>
 <div class="bd-example">
   <div class="row gx-5">
     <div class="col">
@@ -21,13 +23,22 @@ order: 3
 </div>
 
 <h2 id="vertical">Vertical gutters</h2>
-<p><code>.gy-*</code> classes control the vertical gutter widths. Like the horizontal gutter, vertical gutters can cause some confusion below the <code>sm</code> breakpoint due to the interplay with the <code>.row</code>.</p>
+<p><code>.gy-*</code> classes control the vertical gutter widths. Like the horizontal gutter, vertical gutters can cause
+  some confusion below the <code>sm</code> breakpoint due to the interplay with the <code>.row</code>.</p>
 <div class="bd-example">
   <div class="row gy-4">
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
   </div>
 </div>
 
@@ -35,10 +46,18 @@ order: 3
 <p>Use <code>.g-*</code> to control both.</p>
 <div class="bd-example">
   <div class="row g-3">
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
-    <div class="col-6"><div class="p-3 border rounded">Custom column padding</div></div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded">Custom column padding</div>
+    </div>
   </div>
 </div>
 
@@ -46,14 +65,19 @@ order: 3
 <p>Use <code>g-0</code> to remove all gutters.</p>
 <div class="bd-example">
   <div class="row g-0">
-    <div class="col-6"><div class="p-3 border rounded-0">No gutter</div></div>
-    <div class="col-6"><div class="p-3 border rounded-0">No gutter</div></div>
+    <div class="col-6">
+      <div class="p-3 border rounded-0">No gutter</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border rounded-0">No gutter</div>
+    </div>
   </div>
 </div>
 
 <h2 id="gutters-scss">In Sass</h2>
 <p>When using the source Sass, gutters can be defined as variables and mixins:</p>
-<div class="highlight"><pre><code>$budu-gutter-x: 1.5rem;
+<div class="highlight">
+  <pre><code>$budu-gutter-x: 1.5rem;
 $budu-gutter-y: 0;
 
 .row {
@@ -61,9 +85,13 @@ $budu-gutter-y: 0;
 }
 .col {
   @include make-col(6);
-}</code></pre></div>
+}</code></pre>
+</div>
 
-<p>Use <code>--budu-gutter-x</code> and <code>--budu-gutter-y</code> CSS custom properties to override gutter values at runtime on a per-row basis:</p>
-<div class="highlight"><pre><code>&lt;div class="row" style="--budu-gutter-x: 2.5rem;"&gt;
+<p>Use <code>--budu-gutter-x</code> and <code>--budu-gutter-y</code> CSS custom properties to override gutter values at
+  runtime on a per-row basis:</p>
+<div class="highlight">
+  <pre><code>&lt;div class="row" style="--budu-gutter-x: 2.5rem;"&gt;
   &lt;div class="col-6"&gt;Wide gutters&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
