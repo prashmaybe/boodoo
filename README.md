@@ -155,6 +155,12 @@ Each page includes live examples and copy-able code snippets.
 
 ---
 
+## 🎨 Brand
+
+Official brand assets (logo lockup, icon set, banner, OG image, color tokens) live in `budu-brand-assets/` and are mirrored into the docs site under `assets/brand/`. See the [Brand page](site/src/about/brand.html) for usage guidelines. The framework's default theme maps to the brand palette: primary `#7c3aed`, secondary `#5b21e6`, dark `#17135f`, ink `#11143d`, muted `#5c6280`.
+
+---
+
 ## ♿ Accessibility
 
 - Focus ring shown only for keyboard users (`:focus-visible`)

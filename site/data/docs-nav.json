@@ -121,6 +121,7 @@
     "pages": [
       { "route": "about/overview", "title": "Overview" },
       { "route": "about/design-principles", "title": "Design principles" },
+      { "route": "about/brand", "title": "Brand assets" },
       { "route": "about/license", "title": "License" }
     ]
   }
