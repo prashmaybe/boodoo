@@ -155,11 +155,16 @@
     --budu-body-secondary-bg: #{$budu-gray-800};
     --budu-body-tertiary-bg: #{$budu-gray-800};
     --budu-body-emphasis-color: #{$budu-white};
-    --budu-link-color: #{tint-color($budu-primary, 15%)};
-    --budu-link-hover-color: #{tint-color($budu-primary, 30%)};
+    --budu-link-color: #{tint-color($budu-primary, 25%)};
+    --budu-link-hover-color: #{tint-color($budu-primary, 40%)};
     --budu-border-color: #{$budu-gray-700};
+    --budu-border-color-translucent: #{rgba($budu-white, 0.12)};
     --budu-heading-color: #{$budu-white};
     --budu-card-bg: #{$budu-gray-800};
+    --budu-dropdown-bg: #{$budu-gray-900};
+    --budu-dropdown-border-color: #{$budu-gray-800};
+    --budu-form-control-bg: #{$budu-gray-900};
+    --budu-form-control-border-color: #{$budu-gray-700};
   }
 }
 
@@ -173,9 +178,14 @@
   --budu-body-secondary-bg: #{$budu-gray-800};
   --budu-body-tertiary-bg: #{$budu-gray-800};
   --budu-body-emphasis-color: #{$budu-white};
-  --budu-link-color: #{tint-color($budu-primary, 15%)};
-  --budu-link-hover-color: #{tint-color($budu-primary, 30%)};
+  --budu-link-color: #{tint-color($budu-primary, 25%)};
+  --budu-link-hover-color: #{tint-color($budu-primary, 40%)};
   --budu-border-color: #{$budu-gray-700};
+  --budu-border-color-translucent: #{rgba($budu-white, 0.12)};
   --budu-heading-color: #{$budu-white};
   --budu-card-bg: #{$budu-gray-800};
+  --budu-dropdown-bg: #{$budu-gray-900};
+  --budu-dropdown-border-color: #{$budu-gray-800};
+  --budu-form-control-bg: #{$budu-gray-900};
+  --budu-form-control-border-color: #{$budu-gray-700};
 }

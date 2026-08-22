@@ -140,25 +140,21 @@
     $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Allow columns to stretch full width below their breakpoints
+      .col#{$infix} {
+        @extend %grid-column;
+        flex: 1 0 0%;
+      }
+
+      .col#{$infix}-auto {
+        @extend %grid-column;
+        @include make-col-auto();
+      }
+
       @for $i from 1 through $columns {
         .col#{$infix}-#{$i} {
           @extend %grid-column;
-        }
-      }
-      .col#{$infix},
-      .col#{$infix}-auto {
-        @extend %grid-column;
-      }
-
-      @for $i from 1 through $columns {
-        .col#{$infix}-#{$i} {
           @include make-col($i, $columns);
         }
-      }
-
-      .col#{$infix}-auto {
-        @include make-col-auto();
       }
 
       @for $i from 0 through ($columns - 1) {

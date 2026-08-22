@@ -205,16 +205,16 @@ function buildPage(sectionDef, { route, full }) {
   const rootPrefix = '../'.repeat(activeDepth);
 
   let html = layout
-    .replace(/\{\{rootPrefix\}\}/g, rootPrefix)
-    .replace('{{title}}', title)
-    .replace('{{description}}', meta.description || `${title} — Budu docs`)
-    .replace('{{sidebar}}', sidebar)
-    .replace('{{breadcrumb}}', breadcrumb)
-    .replace('{{toc}}', toc)
-    .replace('{{content}}', bodyWithIds)
-    .replace('{{prevnext}}', pager)
-    .replace('{{year}}', String(YEAR))
-    .replace('{{docstitle}}', title);
+    .replaceAll('{{rootPrefix}}', rootPrefix)
+    .replaceAll('{{title}}', title)
+    .replaceAll('{{description}}', meta.description || `${title} — Budu docs`)
+    .replaceAll('{{sidebar}}', sidebar)
+    .replaceAll('{{breadcrumb}}', breadcrumb)
+    .replaceAll('{{toc}}', toc)
+    .replaceAll('{{content}}', bodyWithIds)
+    .replaceAll('{{prevnext}}', pager)
+    .replaceAll('{{year}}', String(YEAR))
+    .replaceAll('{{docstitle}}', title);
 
   return html;
 }

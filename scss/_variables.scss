@@ -110,7 +110,7 @@ $budu-body-tertiary-bg:      $budu-gray-100 !default;
 $budu-body-emphasis-color:   $budu-gray-900 !default;
 
 $budu-link-color:            $budu-primary !default;
-$budu-link-decoration:       underline !default;
+$budu-link-decoration:       none !default;
 $budu-link-hover-color:      shift-color($budu-link-color, -15%) !default;
 $budu-link-hover-decoration: underline !default;
 $budu-emphasis-color:        $budu-gray-900 !default;

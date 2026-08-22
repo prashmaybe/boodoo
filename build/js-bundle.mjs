@@ -110,7 +110,7 @@ function collect(file, fromDir) {
 collect(entry, path.dirname(entry));
 
 const banner = `/*!
-* Budu ${'1.0.0'} | (c) Dilshad I Hadiwala | MIT License
+* Budu ${'1.0.0'} | (c) Pebble Benders | MIT License
 * A modular, mobile-first CSS design framework
 */`;
 const footer = `window.Budu = window.Budu || Budu;`;

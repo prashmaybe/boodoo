@@ -5,7 +5,7 @@
 ## Project Details
 - Website: https://budu.dihadiwala.com
 - License: MIT
-- Author: Dilshad I Hadiwala
+- Author: Pebble Benders
 - Architecture: Sass/LESS modular architecture, BEM class syntax, Flexbox & CSS Grid systems, Vanilla JS components with zero external runtime dependencies.
 
 ## CDN Links

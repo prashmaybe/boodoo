@@ -179,7 +179,7 @@ Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen m
 
 ## 📄 License
 
-MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 Dilshad I Hadiwala.
+MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 Pebble Benders.
 
 ---
 

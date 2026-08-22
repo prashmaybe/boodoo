@@ -59,8 +59,8 @@
     --budu-form-range-track-bg: #{rgba($color, 0.2)};
   }
 
-  .was-validated :#{$state} ~ .#{$state}-feedback,
-  .was-validated :#{$state} ~ .#{$state}-tooltip,
+  .was-validated :is(input, select, textarea):#{$state} ~ .#{$state}-feedback,
+  .was-validated :is(input, select, textarea):#{$state} ~ .#{$state}-tooltip,
   .is-#{$state} ~ .#{$state}-feedback,
   .is-#{$state} ~ .#{$state}-tooltip {
     display: block;

@@ -7,6 +7,7 @@
 
 .dropdown-toggle {
   white-space: nowrap;
+  text-decoration: none;
 
   // Caret
   &::after {

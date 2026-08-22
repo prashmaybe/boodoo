@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-budu-theme="light">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +9,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Budu">
   <meta property="og:title" content="Navs & tabs · Budu">
-  <meta property="og:description" content="{{description}}">
+  <meta property="og:description"
+    content="Documentation and examples for how to use Budu's included navigation components.">
   <meta property="og:image" content="../../assets/brand/budu-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Navs & tabs · Budu</title>
@@ -21,31 +23,136 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../dist/css/budu.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
   <style>
-    pre code[class*="language-"]{display:block;overflow-x:auto;padding:1em}
-    .docs-main{max-width:780px}
-    .highlight{position:relative;margin-bottom:1.5rem}
-    .highlight pre{background:#0f172a;color:#e2e8f0;border-radius:.5rem;padding:1.25rem;font-size:.85rem;line-height:1.6;border:1px solid rgba(255,255,255,.1)}
-    .highlight-copy{position:absolute;top:.5rem;right:.5rem;z-index:2}
-    .docs-hr{border:0;border-top:1px solid var(--budu-border-subtle);margin:3rem 0}
-    .docs-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--budu-border-subtle)}
-    .docs-pager-item{flex:1}
-    .docs-pager-item:last-child{text-align:right}
-    .docs-pager-label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--budu-text-sub);margin-bottom:.25rem}
-    .docs-pager-link{font-weight:600;color:var(--budu-primary);text-decoration:none}
-    .docs-pager-link:hover{text-decoration:underline}
-    code{background:rgba(124,58,237,.1);color:var(--budu-primary);padding:.15em .35em;border-radius:.25em;font-size:.9em}
-    pre code{background:transparent;color:inherit;padding:0;font-size:inherit}
-    .bd-callout{padding:1.25rem;margin-bottom:1.5rem;border-left:4px solid var(--budu-primary);border-radius:.375rem;background:rgba(124,58,237,.06)}
-    .bd-callout-warning{border-left-color:#f59e0b;background:rgba(245,158,11,.08)}
-    .bd-callout-info{border-left-color:#0ea5e9;background:rgba(14,165,233,.08)}
-    .navbar-docs{position:sticky;top:0;z-index:1030}
-    @media (max-width:991.98px){.docs-sidebar{display:none}.docs-main{max-width:100%}}
+    pre code[class*="language-"] {
+      display: block;
+      overflow-x: auto;
+      padding: 1em
+    }
+
+    .docs-main {
+      max-width: 780px
+    }
+
+    .highlight {
+      position: relative;
+      margin-bottom: 1.5rem
+    }
+
+    .highlight pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: .5rem;
+      padding: 1.25rem;
+      font-size: .85rem;
+      line-height: 1.6;
+      border: 1px solid rgba(255, 255, 255, .1)
+    }
+
+    .highlight-copy {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      z-index: 2
+    }
+
+    .docs-hr {
+      border: 0;
+      border-top: 1px solid var(--budu-border-subtle);
+      margin: 3rem 0
+    }
+
+    .docs-pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--budu-border-subtle)
+    }
+
+    .docs-pager-item {
+      flex: 1
+    }
+
+    .docs-pager-item:last-child {
+      text-align: right
+    }
+
+    .docs-pager-label {
+      display: block;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--budu-text-sub);
+      margin-bottom: .25rem
+    }
+
+    .docs-pager-link {
+      font-weight: 600;
+      color: var(--budu-primary);
+      text-decoration: none
+    }
+
+    .docs-pager-link:hover {
+      text-decoration: underline
+    }
+
+    code {
+      background: rgba(124, 58, 237, .1);
+      color: var(--budu-primary);
+      padding: .15em .35em;
+      border-radius: .25em;
+      font-size: .9em
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      font-size: inherit
+    }
+
+    .bd-callout {
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--budu-primary);
+      border-radius: .375rem;
+      background: rgba(124, 58, 237, .06)
+    }
+
+    .bd-callout-warning {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, .08)
+    }
+
+    .bd-callout-info {
+      border-left-color: #0ea5e9;
+      background: rgba(14, 165, 233, .08)
+    }
+
+    .navbar-docs {
+      position: sticky;
+      top: 0;
+      z-index: 1030
+    }
+
+    @media (max-width:991.98px) {
+      .docs-sidebar {
+        display: none
+      }
+
+      .docs-main {
+        max-width: 100%
+      }
+    }
   </style>
 </head>
+
 <body>
   <a class="visually-hidden-focusable" href="#docs-content">Skip to main content</a>
 
@@ -55,19 +162,23 @@
         <img src="../../assets/brand/budu-icon.png" alt="Budu — Design Framework" height="32" loading="lazy">
         <span class="fw-bold">Budu</span>
       </a>
-      <button class="navbar-toggler" type="button" data-budu-toggle="collapse" data-budu-target="#docsNav" aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-budu-toggle="collapse" data-budu-target="#docsNav"
+        aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="docsNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="../../docs/getting-started/introduction.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../docs/getting-started/introduction.html">Docs</a>
+          </li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
+            title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
-          <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex" href="../../docs/getting-started/usage.html">CDN</a>
+          <a class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex"
+            href="../../docs/getting-started/usage.html">CDN</a>
           <a class="btn btn-primary btn-sm" href="../../docs/getting-started/download.html">Download</a>
         </div>
       </div>
@@ -79,248 +190,263 @@
       <aside class="col-lg-3 col-xl-2">
         <div class="docs-sidebar">
           <nav aria-label="Docs navigation">
-<h6 class="docs-nav-section">Getting started</h6>
-<ul class="docs-nav-list">
-<li><a href="../getting-started/introduction.html">Introduction</a></li>
-<li><a href="../getting-started/download.html">Download</a></li>
-<li><a href="../getting-started/contents.html">What's included</a></li>
-<li><a href="../getting-started/usage.html">Usage & CDN</a></li>
-<li><a href="../getting-started/npm.html">Install via npm</a></li>
-<li><a href="../getting-started/sass.html">Customize with Sass</a></li>
-<li><a href="../getting-started/less.html">Customize with Less</a></li>
-<li><a href="../getting-started/starter.html">Starter template</a></li>
-<li><a href="../getting-started/browser-support.html">Browser support</a></li>
-<li><a href="../getting-started/accessibility.html">Accessibility</a></li>
-</ul>
-<h6 class="docs-nav-section">Layout</h6>
-<ul class="docs-nav-list">
-<li><a href="../layout/containers.html">Containers</a></li>
-<li><a href="../layout/grid.html">Grid system</a></li>
-<li><a href="../layout/columns.html">Columns</a></li>
-<li><a href="../layout/gutters.html">Gutters</a></li>
-<li><a href="../layout/css-grid.html">CSS Grid</a></li>
-<li><a href="../layout/breakpoints.html">Breakpoints</a></li>
-</ul>
-<h6 class="docs-nav-section">Content</h6>
-<ul class="docs-nav-list">
-<li><a href="../content/typography.html">Typography</a></li>
-<li><a href="../content/images.html">Images</a></li>
-<li><a href="../content/tables.html">Tables</a></li>
-<li><a href="../content/figures.html">Figures</a></li>
-</ul>
-<h6 class="docs-nav-section">Forms</h6>
-<ul class="docs-nav-list">
-<li><a href="../forms/overview.html">Overview</a></li>
-<li><a href="../forms/form-control.html">Form control</a></li>
-<li><a href="../forms/select.html">Select</a></li>
-<li><a href="../forms/checks.html">Checks & radios</a></li>
-<li><a href="../forms/range.html">Range</a></li>
-<li><a href="../forms/input-group.html">Input group</a></li>
-<li><a href="../forms/floating-labels.html">Floating labels</a></li>
-<li><a href="../forms/validation.html">Validation</a></li>
-</ul>
-<h6 class="docs-nav-section">Components</h6>
-<ul class="docs-nav-list">
-<li><a href="../components/accordion.html">Accordion</a></li>
-<li><a href="../components/alerts.html">Alerts</a></li>
-<li><a href="../components/avatar.html">Avatar</a></li>
-<li><a href="../components/badge.html">Badge</a></li>
-<li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
-<li><a href="../components/buttons.html">Buttons</a></li>
-<li><a href="../components/button-group.html">Button group</a></li>
-<li><a href="../components/card.html">Card</a></li>
-<li><a href="../components/carousel.html">Carousel</a></li>
-<li><a href="../components/collapse.html">Collapse</a></li>
-<li><a href="../components/dropdowns.html">Dropdowns</a></li>
-<li><a href="../components/list-group.html">List group</a></li>
-<li><a href="../components/modal.html">Modal</a></li>
-<li><a href="../components/navs.html" class="active">Navs & tabs</a></li>
-<li><a href="../components/navbar.html">Navbar</a></li>
-<li><a href="../components/offcanvas.html">Offcanvas</a></li>
-<li><a href="../components/pagination.html">Pagination</a></li>
-<li><a href="../components/placeholder.html">Placeholders</a></li>
-<li><a href="../components/popovers.html">Popovers</a></li>
-<li><a href="../components/progress.html">Progress</a></li>
-<li><a href="../components/scrollspy.html">Scrollspy</a></li>
-<li><a href="../components/spinners.html">Spinners</a></li>
-<li><a href="../components/toasts.html">Toasts</a></li>
-<li><a href="../components/tooltips.html">Tooltips</a></li>
-<li><a href="../components/ripple.html">Ripple effect</a></li>
-</ul>
-<h6 class="docs-nav-section">Helpers</h6>
-<ul class="docs-nav-list">
-<li><a href="../helpers/clearfix.html">Clearfix</a></li>
-<li><a href="../helpers/ratio.html">Ratio</a></li>
-<li><a href="../helpers/visually-hidden.html">Visually hidden</a></li>
-<li><a href="../helpers/stretched-link.html">Stretched link</a></li>
-<li><a href="../helpers/color-bg.html">Color & background</a></li>
-<li><a href="../helpers/elevation.html">Elevation (Material)</a></li>
-</ul>
-<h6 class="docs-nav-section">Utilities</h6>
-<ul class="docs-nav-list">
-<li><a href="../utilities/background.html">Background</a></li>
-<li><a href="../utilities/borders.html">Borders</a></li>
-<li><a href="../utilities/colors.html">Colors</a></li>
-<li><a href="../utilities/display.html">Display</a></li>
-<li><a href="../utilities/flex.html">Flex</a></li>
-<li><a href="../utilities/float.html">Float</a></li>
-<li><a href="../utilities/interactions.html">Interactions</a></li>
-<li><a href="../utilities/opacity.html">Opacity</a></li>
-<li><a href="../utilities/overflow.html">Overflow</a></li>
-<li><a href="../utilities/position.html">Position</a></li>
-<li><a href="../utilities/shadows.html">Shadows</a></li>
-<li><a href="../utilities/sizing.html">Sizing</a></li>
-<li><a href="../utilities/spacing.html">Spacing</a></li>
-<li><a href="../utilities/text.html">Text</a></li>
-<li><a href="../utilities/vertical-alignment.html">Vertical alignment</a></li>
-<li><a href="../utilities/z-index.html">Z-index</a></li>
-</ul>
-<h6 class="docs-nav-section">Motion</h6>
-<ul class="docs-nav-list">
-<li><a href="../motion/animations.html">Animations</a></li>
-<li><a href="../motion/transitions.html">Transitions</a></li>
-</ul>
-<h6 class="docs-nav-section">About</h6>
-<ul class="docs-nav-list">
-<li><a href="../about/overview.html">Overview</a></li>
-<li><a href="../about/design-principles.html">Design principles</a></li>
-<li><a href="../about/brand.html">Brand assets</a></li>
-<li><a href="../about/license.html">License</a></li>
-</ul>
+            <h6 class="docs-nav-section">Getting started</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../getting-started/introduction.html">Introduction</a></li>
+              <li><a href="../getting-started/download.html">Download</a></li>
+              <li><a href="../getting-started/contents.html">What's included</a></li>
+              <li><a href="../getting-started/usage.html">Usage & CDN</a></li>
+              <li><a href="../getting-started/npm.html">Install via npm</a></li>
+              <li><a href="../getting-started/sass.html">Customize with Sass</a></li>
+              <li><a href="../getting-started/less.html">Customize with Less</a></li>
+              <li><a href="../getting-started/starter.html">Starter template</a></li>
+              <li><a href="../getting-started/browser-support.html">Browser support</a></li>
+              <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Layout</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../layout/containers.html">Containers</a></li>
+              <li><a href="../layout/grid.html">Grid system</a></li>
+              <li><a href="../layout/columns.html">Columns</a></li>
+              <li><a href="../layout/gutters.html">Gutters</a></li>
+              <li><a href="../layout/css-grid.html">CSS Grid</a></li>
+              <li><a href="../layout/breakpoints.html">Breakpoints</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Content</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../content/typography.html">Typography</a></li>
+              <li><a href="../content/images.html">Images</a></li>
+              <li><a href="../content/tables.html">Tables</a></li>
+              <li><a href="../content/figures.html">Figures</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Forms</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../forms/overview.html">Overview</a></li>
+              <li><a href="../forms/form-control.html">Form control</a></li>
+              <li><a href="../forms/select.html">Select</a></li>
+              <li><a href="../forms/checks.html">Checks & radios</a></li>
+              <li><a href="../forms/range.html">Range</a></li>
+              <li><a href="../forms/input-group.html">Input group</a></li>
+              <li><a href="../forms/floating-labels.html">Floating labels</a></li>
+              <li><a href="../forms/validation.html">Validation</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Components</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../components/accordion.html">Accordion</a></li>
+              <li><a href="../components/alerts.html">Alerts</a></li>
+              <li><a href="../components/avatar.html">Avatar</a></li>
+              <li><a href="../components/badge.html">Badge</a></li>
+              <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+              <li><a href="../components/buttons.html">Buttons</a></li>
+              <li><a href="../components/button-group.html">Button group</a></li>
+              <li><a href="../components/card.html">Card</a></li>
+              <li><a href="../components/carousel.html">Carousel</a></li>
+              <li><a href="../components/collapse.html">Collapse</a></li>
+              <li><a href="../components/dropdowns.html">Dropdowns</a></li>
+              <li><a href="../components/list-group.html">List group</a></li>
+              <li><a href="../components/modal.html">Modal</a></li>
+              <li><a href="../components/navs.html" class="active">Navs & tabs</a></li>
+              <li><a href="../components/navbar.html">Navbar</a></li>
+              <li><a href="../components/offcanvas.html">Offcanvas</a></li>
+              <li><a href="../components/pagination.html">Pagination</a></li>
+              <li><a href="../components/placeholder.html">Placeholders</a></li>
+              <li><a href="../components/popovers.html">Popovers</a></li>
+              <li><a href="../components/progress.html">Progress</a></li>
+              <li><a href="../components/scrollspy.html">Scrollspy</a></li>
+              <li><a href="../components/spinners.html">Spinners</a></li>
+              <li><a href="../components/toasts.html">Toasts</a></li>
+              <li><a href="../components/tooltips.html">Tooltips</a></li>
+              <li><a href="../components/ripple.html">Ripple effect</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Helpers</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../helpers/clearfix.html">Clearfix</a></li>
+              <li><a href="../helpers/ratio.html">Ratio</a></li>
+              <li><a href="../helpers/visually-hidden.html">Visually hidden</a></li>
+              <li><a href="../helpers/stretched-link.html">Stretched link</a></li>
+              <li><a href="../helpers/color-bg.html">Color & background</a></li>
+              <li><a href="../helpers/elevation.html">Elevation (Material)</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Utilities</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../utilities/background.html">Background</a></li>
+              <li><a href="../utilities/borders.html">Borders</a></li>
+              <li><a href="../utilities/colors.html">Colors</a></li>
+              <li><a href="../utilities/display.html">Display</a></li>
+              <li><a href="../utilities/flex.html">Flex</a></li>
+              <li><a href="../utilities/float.html">Float</a></li>
+              <li><a href="../utilities/interactions.html">Interactions</a></li>
+              <li><a href="../utilities/opacity.html">Opacity</a></li>
+              <li><a href="../utilities/overflow.html">Overflow</a></li>
+              <li><a href="../utilities/position.html">Position</a></li>
+              <li><a href="../utilities/shadows.html">Shadows</a></li>
+              <li><a href="../utilities/sizing.html">Sizing</a></li>
+              <li><a href="../utilities/spacing.html">Spacing</a></li>
+              <li><a href="../utilities/text.html">Text</a></li>
+              <li><a href="../utilities/vertical-alignment.html">Vertical alignment</a></li>
+              <li><a href="../utilities/z-index.html">Z-index</a></li>
+            </ul>
+            <h6 class="docs-nav-section">Motion</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../motion/animations.html">Animations</a></li>
+              <li><a href="../motion/transitions.html">Transitions</a></li>
+            </ul>
+            <h6 class="docs-nav-section">About</h6>
+            <ul class="docs-nav-list">
+              <li><a href="../about/overview.html">Overview</a></li>
+              <li><a href="../about/design-principles.html">Design principles</a></li>
+              <li><a href="../about/brand.html">Brand assets</a></li>
+              <li><a href="../about/license.html">License</a></li>
+            </ul>
           </nav>
         </div>
       </aside>
 
       <main class="col-lg-6 col-xl-7">
         <div class="docs-main py-4" id="docs-content">
-          
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-        <li class="breadcrumb-item">Components</li>
-        <li class="breadcrumb-item active" aria-current="page">Navs & tabs</li>
-      </ol>
-    </nav>
-          <h1>Navs &amp; tabs</h1>
-<p class="lead">Documentation and examples for how to use Budu's included navigation components.</p>
 
-<h2 id="base">Base nav</h2>
-<div class="bd-example">
-  <ul class="nav">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-    <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a></li>
-  </ul>
-</div>
-<div class="highlight"><pre><code>&lt;ul class="nav"&gt;
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+              <li class="breadcrumb-item">Components</li>
+              <li class="breadcrumb-item active" aria-current="page">Navs & tabs</li>
+            </ol>
+          </nav>
+          <h1>Navs &amp; tabs</h1>
+          <p class="lead">Documentation and examples for how to use Budu's included navigation components.</p>
+
+          <h2 id="base">Base nav</h2>
+          <div class="bd-example">
+            <ul class="nav">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+          <div class="highlight">
+            <pre><code>&lt;ul class="nav"&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Active&lt;/a&gt;&lt;/li&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link disabled" href="#"&gt;Disabled&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre></div>
+&lt;/ul&gt;</code></pre>
+          </div>
 
-<h2 id="pills">Pills</h2>
-<div class="bd-example">
-  <ul class="nav nav-pills">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-    <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-  </ul>
-</div>
+          <h2 id="pills">Pills</h2>
+          <div class="bd-example">
+            <ul class="nav nav-pills">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+            </ul>
+          </div>
 
-<h2 id="soft">Soft pills</h2>
-<div class="bd-example">
-  <ul class="nav nav-pills-soft">
-    <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-  </ul>
-</div>
+          <h2 id="soft">Soft pills</h2>
+          <div class="bd-example">
+            <ul class="nav nav-pills-soft">
+              <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
+          </div>
 
-<h2 id="tabs">Tabs</h2>
-<p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.</p>
-<div class="bd-example">
-  <ul class="nav nav-tabs">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a" data-budu-toggle="tab">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#tab-b" data-budu-toggle="tab">Link</a></li>
-    <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-  </ul>
-  <div class="pt-3">
-    <div class="tab-content fade show active" id="tab-a">Active tab content.</div>
-    <div class="tab-content fade d-none" id="tab-b">Second tab content.</div>
-  </div>
-</div>
-<div class="highlight"><pre><code>&lt;ul class="nav nav-tabs"&gt;
+          <h2 id="tabs">Tabs</h2>
+          <p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.
+          </p>
+          <div class="bd-example">
+            <ul class="nav nav-tabs">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a"
+                  data-budu-toggle="tab">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#tab-b" data-budu-toggle="tab">Link</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+            </ul>
+            <div class="pt-3">
+              <div class="tab-content fade show active" id="tab-a">Active tab content.</div>
+              <div class="tab-content fade d-none" id="tab-b">Second tab content.</div>
+            </div>
+          </div>
+          <div class="highlight">
+            <pre><code>&lt;ul class="nav nav-tabs"&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#tab-a" data-budu-toggle="tab"&gt;Active&lt;/a&gt;&lt;/li&gt;
   &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#tab-b" data-budu-toggle="tab"&gt;Link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre></div>
+&lt;/ul&gt;</code></pre>
+          </div>
 
-<h2 id="underline">Underline (Material)</h2>
-<p>Use <code>.nav-underline</code> for a Material-style tab indicator.</p>
-<div class="bd-example">
-  <ul class="nav nav-underline">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-  </ul>
-</div>
+          <h2 id="underline">Underline (Material)</h2>
+          <p>Use <code>.nav-underline</code> for a Material-style tab indicator.</p>
+          <div class="bd-example">
+            <ul class="nav nav-underline">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
+          </div>
 
-<h2 id="vertical">Vertical</h2>
-<p>Stack your navigation by changing the flex direction with <code>.nav-vertical</code> (or the <code>flex-column</code> utility).</p>
-<div class="bd-example">
-  <ul class="nav nav-vertical nav-pills flex-column" style="max-width:16rem">
-    <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-  </ul>
-</div>
+          <h2 id="vertical">Vertical</h2>
+          <p>Stack your navigation by changing the flex direction with <code>.nav-vertical</code> (or the
+            <code>flex-column</code> utility).</p>
+          <div class="bd-example">
+            <ul class="nav nav-vertical nav-pills flex-column" style="max-width:16rem">
+              <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            </ul>
+          </div>
 
-<h2 id="tabs-js">Tabs with JavaScript</h2>
-<p>To make the nav switch content, add <code>data-budu-toggle="tab"</code> (or <code>"pill"</code>) to each nav link and give the target panes ids matching the link <code>href</code>. Budu wires everything up automatically.</p>
-<div class="bd-example">
-  <div class="nav nav-pills mb-2" role="tablist">
-    <button class="nav-link active" id="pills-home-tab" data-budu-toggle="pill" data-budu-target="#pills-home" type="button" role="tab">Home</button>
-    <button class="nav-link" id="pills-profile-tab" data-budu-toggle="pill" data-budu-target="#pills-profile" type="button" role="tab">Profile</button>
-  </div>
-  <div class="tab-content pt-1">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel">Home tab content.</div>
-    <div class="tab-pane fade d-none" id="pills-profile" role="tabpanel">Profile tab content.</div>
-  </div>
-</div>
-          
-  <nav class="docs-pager" aria-label="Previous and next navigation">
-    
-    <div class="docs-pager-item">
-      <span class="docs-pager-label">Components</span>
-      <a class="docs-pager-link" href="../components/modal.html">Modal</a>
-    </div>
-    
-    <div class="docs-pager-item">
-      <span class="docs-pager-label">Components</span>
-      <a class="docs-pager-link" href="../components/navbar.html">Navbar</a>
-    </div>
-  </nav>
+          <h2 id="tabs-js">Tabs with JavaScript</h2>
+          <p>To make the nav switch content, add <code>data-budu-toggle="tab"</code> (or <code>"pill"</code>) to each
+            nav link and give the target panes ids matching the link <code>href</code>. Budu wires everything up
+            automatically.</p>
+          <div class="bd-example">
+            <div class="nav nav-pills mb-2" role="tablist">
+              <button class="nav-link active" id="pills-home-tab" data-budu-toggle="pill" data-budu-target="#pills-home"
+                type="button" role="tab">Home</button>
+              <button class="nav-link" id="pills-profile-tab" data-budu-toggle="pill" data-budu-target="#pills-profile"
+                type="button" role="tab">Profile</button>
+            </div>
+            <div class="tab-content pt-1">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel">Home tab content.</div>
+              <div class="tab-pane fade d-none" id="pills-profile" role="tabpanel">Profile tab content.</div>
+            </div>
+          </div>
+
+          <nav class="docs-pager" aria-label="Previous and next navigation">
+
+            <div class="docs-pager-item">
+              <span class="docs-pager-label">Components</span>
+              <a class="docs-pager-link" href="../components/modal.html">Modal</a>
+            </div>
+
+            <div class="docs-pager-item">
+              <span class="docs-pager-label">Components</span>
+              <a class="docs-pager-link" href="../components/navbar.html">Navbar</a>
+            </div>
+          </nav>
           <hr class="docs-hr">
           <footer class="text-center text-muted small pb-5">
             <span class="d-inline-flex align-items-center gap-2">
-              <span class="badge badge-soft-primary rounded-circle" style="width:24px;height:24px;font-size:.7rem">B</span>
-              Budu · Built with Budu · © 2026 Dilshad I Hadiwala · MIT License
+              <span class="badge badge-soft-primary rounded-circle"
+                style="width:24px;height:24px;font-size:.7rem">B</span>
+              Budu · Built with Budu · © 2026 Pebble Benders · MIT License
             </span>
           </footer>
         </div>
       </main>
 
       <aside class="col-lg-3 col-xl-3">
-        
-    <div class="docs-toc d-none d-lg-block">
-      <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#base">Base nav</a></li>
-<li class="toc-2"><a href="#pills">Pills</a></li>
-<li class="toc-2"><a href="#soft">Soft pills</a></li>
-<li class="toc-2"><a href="#tabs">Tabs</a></li>
-<li class="toc-2"><a href="#underline">Underline (Material)</a></li>
-<li class="toc-2"><a href="#vertical">Vertical</a></li>
-<li class="toc-2"><a href="#tabs-js">Tabs with JavaScript</a></li></ul>
-    </div>
+
+        <div class="docs-toc d-none d-lg-block">
+          <h6 class="docs-toc-title">On this page</h6>
+          <ul>
+            <li class="toc-2"><a href="#base">Base nav</a></li>
+            <li class="toc-2"><a href="#pills">Pills</a></li>
+            <li class="toc-2"><a href="#soft">Soft pills</a></li>
+            <li class="toc-2"><a href="#tabs">Tabs</a></li>
+            <li class="toc-2"><a href="#underline">Underline (Material)</a></li>
+            <li class="toc-2"><a href="#vertical">Vertical</a></li>
+            <li class="toc-2"><a href="#tabs-js">Tabs with JavaScript</a></li>
+          </ul>
+        </div>
       </aside>
     </div>
   </div>
@@ -328,7 +454,7 @@
   <script src="../../dist/js/budu.js"></script>
   <script>
     // Theme toggle logic
-    (function() {
+    (function () {
       var storedTheme = localStorage.getItem('budu-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-budu-theme', storedTheme);
       var toggleBtn = document.getElementById('themeToggle');
@@ -339,7 +465,7 @@
       }
       updateIcon(storedTheme);
       if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
+        toggleBtn.addEventListener('click', function () {
           var current = document.documentElement.getAttribute('data-budu-theme');
           var next = current === 'dark' ? 'light' : 'dark';
           document.documentElement.setAttribute('data-budu-theme', next);
@@ -369,4 +495,5 @@
     });
   </script>
 </body>
+
 </html>

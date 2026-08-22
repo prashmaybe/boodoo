@@ -14,16 +14,58 @@
 }
 
 // Responsive container widths
-@each $breakpoint, $container-max-width in $budu-container-max-widths {
-  $infix: if($breakpoint == "sm", "", "-#{$breakpoint}");
+.container,
+// Standard responsive containers
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  @extend .container-fluid;
+}
 
-  // Corrected: `sm` is the first breakpoint without an infix collision.
-  .container#{$infix} {
-    @extend .container-fluid;
+@include media-breakpoint-up(sm, $budu-grid-breakpoints) {
+  .container-sm,
+  .container {
+    max-width: map.get($budu-container-max-widths, sm);
+  }
+}
 
-    @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
-      max-width: $container-max-width;
-    }
+@include media-breakpoint-up(md, $budu-grid-breakpoints) {
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: map.get($budu-container-max-widths, md);
+  }
+}
+
+@include media-breakpoint-up(lg, $budu-grid-breakpoints) {
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: map.get($budu-container-max-widths, lg);
+  }
+}
+
+@include media-breakpoint-up(xl, $budu-grid-breakpoints) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: map.get($budu-container-max-widths, xl);
+  }
+}
+
+@include media-breakpoint-up(xxl, $budu-grid-breakpoints) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: map.get($budu-container-max-widths, xxl);
   }
 }
 
@@ -66,24 +108,21 @@
   $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
 
   @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
-    @for $i from 1 through $budu-grid-columns {
-      .col#{$infix}-#{$i} {
-        flex: 0 0 auto;
-        width: percentage(divide($i, $budu-grid-columns));
-      }
+    // Auto-layout, equal-width
+    .col#{$infix} {
+      flex: 1 0 0%;
     }
 
-    .col#{$infix},
     .col#{$infix}-auto {
       flex: 0 0 auto;
       width: auto;
     }
 
-    // Auto-layout, equal-width
-    .col#{$infix} {
-      flex-basis: 0;
-      flex-grow: 1;
-      max-width: 100%;
+    @for $i from 1 through $budu-grid-columns {
+      .col#{$infix}-#{$i} {
+        flex: 0 0 auto;
+        width: percentage(divide($i, $budu-grid-columns));
+      }
     }
 
     // Offsets

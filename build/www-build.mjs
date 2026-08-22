@@ -65,7 +65,6 @@ copy(path.join(root, 'dist'), 'dist');                           // Compiled fra
 copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');
-copy(path.join(root, 'site', 'llm.txt'), 'llm.txt');
 copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
 
 // 5. Write 404 fallback page

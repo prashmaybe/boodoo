@@ -43,7 +43,7 @@
     "tailwind",
     "material"
   ],
-  "author": "Dilshad I Hadiwala",
+  "author": "Pebble Benders",
   "license": "MIT",
   "devDependencies": {
     "less": "^4.9.0",
