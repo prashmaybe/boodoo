@@ -469,19 +469,32 @@
     </section>
 
     <!-- Call to action -->
-    <section class="bg-brand py-5 text-white">
+    <section class="bg-brand py-5 text-white position-relative">
+      <div class="cta-grid-pattern"></div>
       <div class="container text-center py-4 position-relative z-2">
-        <h2 class="h1 fw-extrabold mb-3 text-gradient cta-title-gradient">
+        <div class="cta-badge">
+          <span class="cta-dot"></span>
+          <span>Open Source &amp; MIT Licensed</span>
+        </div>
+        <h2 class="cta-title fw-extrabold mb-3">
           Ready to build something extraordinary?
         </h2>
-        <p class="mb-4 mx-auto cta-desc-sm">
-          budu is 100% free and open source under the MIT license. Explore the documentation and craft your next web app
-          today.
+        <p class="mb-4 mx-auto cta-desc">
+          budu is 100% free and open source. Explore our modular components, utility classes, and theme system to craft
+          your next project today.
         </p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
-          <a class="btn btn-light btn-lg rounded-pill px-4 text-primary fw-semibold shadow-sm"
-            href="docs/getting-started/introduction.html">Get Started Now</a>
-          <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="docs/about/license.html">View License</a>
+          <a class="btn btn-lg rounded-pill px-4 cta-btn-primary d-inline-flex align-items-center gap-2"
+            href="docs/getting-started/introduction.html">
+            <span>Get Started Now</span>
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a class="btn btn-lg rounded-pill px-4 cta-btn-outline d-inline-flex align-items-center gap-2"
+            href="docs/about/license.html">
+            <span>View License</span>
+          </a>
         </div>
       </div>
     </section>

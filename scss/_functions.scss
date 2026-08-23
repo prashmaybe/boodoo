@@ -55,7 +55,7 @@
   $result: ();
   @each $key, $value in $map {
     @if $key != 0 {
-      $result: map.merge($result, ($key: -$value));
+      $result: map.merge($result, ("n#{$key}": -$value));
     }
   }
   @return $result;
@@ -133,7 +133,7 @@
 
 // Get a color name from the theme map or return it untouched if already a color.
 @function budu-color($key) {
-  @if map.has-key($budu-theme-colors, $key) {
+  @if variable-exists(budu-theme-colors) and map.has-key($budu-theme-colors, $key) {
     @return map.get($budu-theme-colors, $key);
   }
   @return $key;
@@ -141,18 +141,18 @@
 
 // Spacer lookup: returns a spacing value (handles bare numbers too).
 @function spacer($key) {
-  @if map.has-key($budu-spacers, $key) {
+  @if variable-exists(budu-spacers) and map.has-key($budu-spacers, $key) {
     @return map.get($budu-spacers, $key);
   }
   @return $key;
 }
 
 // Breakpoint lookup
-@function breakpoint($name, $breakpoints: $budu-grid-breakpoints) {
-  @if map.has-key($breakpoints, $name) {
+@function breakpoint($name, $breakpoints: null) {
+  @if $breakpoints != null and map.has-key($breakpoints, $name) {
     @return map.get($breakpoints, $name);
   }
-  @if map.has-key($budu-grid-breakpoints, $name) {
+  @if variable-exists(budu-grid-breakpoints) and map.has-key($budu-grid-breakpoints, $name) {
     @return map.get($budu-grid-breakpoints, $name);
   }
   @return $name;

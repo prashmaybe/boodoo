@@ -749,7 +749,7 @@ body {
 
 /* Call To Action Banner */
 .bg-brand {
-  background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 40%, #0f172a 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #1e1b4b 100%);
   position: relative;
   overflow: hidden;
 }
@@ -757,13 +757,103 @@ body {
 .bg-brand::before {
   content: '';
   position: absolute;
-  top: -50%;
+  top: -40%;
   right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent 70%);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.35), transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.bg-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
   filter: blur(80px);
   pointer-events: none;
+}
+
+.cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.25rem;
+}
+
+.cta-badge .cta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.cta-desc {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.cta-btn-primary {
+  background: #ffffff;
+  color: #6d28d9 !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.cta-btn-primary:hover {
+  background: #f8fafc;
+  color: #5b21b6 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cta-btn-outline {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+}
+
+.cta-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff !important;
+  transform: translateY(-2px);
 }
 
 /* Soft Badges */
