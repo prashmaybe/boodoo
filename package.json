@@ -1,28 +1,37 @@
 {
-  "name": "budu",
+  "name": "boodoo",
   "version": "1.0.0",
-  "description": "budu — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
-  "private": true,
-  "style": "dist/css/budu.css",
-  "sass": "scss/budu.scss",
-  "main": "dist/js/budu.js",
-  "module": "dist/js/budu.esm.js",
+  "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashmaybe/boodoo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prashmaybe/boodoo/issues"
+  },
+  "homepage": "https://boodoo.dihadiwala.com",
+  "style": "dist/css/boodoo.css",
+  "sass": "scss/boodoo.scss",
+  "main": "dist/js/boodoo.js",
+  "module": "dist/js/boodoo.esm.js",
   "files": [
     "dist/",
     "scss/",
     "less/",
     "js/",
-    "site/"
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
     "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim",
-    "css:main": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu.scss dist/css/budu.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu.scss dist/css/budu.min.css --style=compressed",
-    "css:grid": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-grid.scss dist/css/budu-grid.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-grid.scss dist/css/budu-grid.min.css --style=compressed",
-    "css:reboot": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-reboot.scss dist/css/budu-reboot.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-reboot.scss dist/css/budu-reboot.min.css --style=compressed",
-    "css:utilities": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-utilities.scss dist/css/budu-utilities.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-utilities.scss dist/css/budu-utilities.min.css --style=compressed",
-    "css:anim": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-animations.scss dist/css/budu-animations.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/budu-animations.scss dist/css/budu-animations.min.css --style=compressed",
-    "css:less": "npx -y less@4.2.0 less/budu.less dist/css/budu.less.css",
+    "css:main": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo.scss dist/css/boodoo.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo.scss dist/css/boodoo.min.css --style=compressed",
+    "css:grid": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-grid.scss dist/css/boodoo-grid.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-grid.scss dist/css/boodoo-grid.min.css --style=compressed",
+    "css:reboot": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.min.css --style=compressed",
+    "css:utilities": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-utilities.scss dist/css/boodoo-utilities.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-utilities.scss dist/css/boodoo-utilities.min.css --style=compressed",
+    "css:anim": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-animations.scss dist/css/boodoo-animations.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-animations.scss dist/css/boodoo-animations.min.css --style=compressed",
+    "css:less": "npx -y less@4.2.0 less/boodoo.less dist/css/boodoo.less.css",
     "js": "node build/js-bundle.mjs",
     "site": "node build/site-build.mjs",
     "www": "node build/www-build.mjs",

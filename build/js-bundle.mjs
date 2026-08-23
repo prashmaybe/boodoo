@@ -1,4 +1,4 @@
-// BUDU JS bundle builder (no external deps)
+// BOODOO JS bundle builder (no external deps)
 // Concatenates ESM modules in js/src into a single UMD-ish bundle.
 // Handles named imports/exports and re-exports (no bundler installed).
 
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const srcDir = path.join(root, 'js', 'src');
-const entry = path.join(root, 'js', 'budu.js');
+const entry = path.join(root, 'js', 'boodoo.js');
 const outDir = path.join(root, 'dist', 'js');
 
 // resolve a module specifier to absolute file
@@ -97,7 +97,7 @@ function collect(file, fromDir) {
   // order: dependencies first
   imports.forEach((imp) => {
     if (imp.specifier.startsWith('.')) {
-      // The entry (js/budu.js) lists imports as if they were src siblings.
+      // The entry (js/boodoo.js) lists imports as if they were src siblings.
       // Resolve from srcDir for bare relative basenames to keep it simple.
       const fromDir = path.basename(file) === path.basename(entry) ? srcDir : path.dirname(file);
       collect(imp.specifier, fromDir);
@@ -110,10 +110,10 @@ function collect(file, fromDir) {
 collect(entry, path.dirname(entry));
 
 const banner = `/*!
-* budu ${'1.0.0'} | (c) Pebble Benders | MIT License
+* boodoo ${'1.0.0'} | (c) Pebble Benders | MIT License
 * A modular, mobile-first CSS design framework
 */`;
-const footer = `window.budu = window.budu || budu;`;
+const footer = `window.boodoo = window.boodoo || boodoo;`;
 
 const bundle = `${banner}
 (function (global, factory) {
@@ -123,26 +123,26 @@ const bundle = `${banner}
   } else {
     global = typeof globalThis !== "undefined" ? globalThis : global || self;
     const api = factory();
-    global.budu = api;
+    global.boodoo = api;
   }
 })(this, (function () {
   "use strict";
 ${bundledBodies.join('\n\n')}
-  return (typeof budu !== "undefined" ? budu : (globalThis && globalThis.budu) || {});
+  return (typeof boodoo !== "undefined" ? boodoo : (globalThis && globalThis.boodoo) || {});
 }));
 `;
 
 fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(path.join(outDir, 'budu.js'), bundle);
-fs.writeFileSync(path.join(outDir, 'budu.min.js'), bundle); // placeholder; real minification via esbuild/terser optional
-console.log('Bundled budu.js (' + Buffer.byteLength(bundle) + ' bytes)');
+fs.writeFileSync(path.join(outDir, 'boodoo.js'), bundle);
+fs.writeFileSync(path.join(outDir, 'boodoo.min.js'), bundle); // placeholder; real minification via esbuild/terser optional
+console.log('Bundled boodoo.js (' + Buffer.byteLength(bundle) + ' bytes)');
 
 // ESM build (keeps exports)
 const esmBody = bundledBodies.join('\n\n');
 const esmBundle = `${banner}
 ${esmBody}
-export default budu;
+export default boodoo;
 export { Alert, Button, Collapse, Dropdown, Modal, Offcanvas, Tab, Toast, Tooltip, Popover, Carousel, ScrollSpy, initRipple, initDataApi };
 `;
-fs.writeFileSync(path.join(outDir, 'budu.esm.js'), esmBundle);
-console.log('Bundled budu.esm.js (' + Buffer.byteLength(esmBundle) + ' bytes)');
+fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);
+console.log('Bundled boodoo.esm.js (' + Buffer.byteLength(esmBundle) + ' bytes)');

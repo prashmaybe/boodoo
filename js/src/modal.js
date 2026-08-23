@@ -1,4 +1,4 @@
-// BUDU — Modal
+// BOODOO — Modal
 // Modal dialog with backdrop, Escape/backdrop dismissal, scroll locking.
 
 import { BaseComponent } from './base-component.js';
@@ -31,7 +31,7 @@ export class Modal extends BaseComponent {
 
   show() {
     if (this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.show.modal')) return;
+    if (!triggerEvent(this._element, 'boodoo.show.modal')) return;
 
     this._isShown = true;
     this._focussedBefore = document.activeElement;
@@ -59,12 +59,12 @@ export class Modal extends BaseComponent {
     const first = focusable[0];
     if (first) first.focus();
     else el.focus();
-    triggerEvent(el, 'budu.shown.modal');
+    triggerEvent(el, 'boodoo.shown.modal');
   }
 
   hide() {
     if (!this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.hide.modal')) return;
+    if (!triggerEvent(this._element, 'boodoo.hide.modal')) return;
 
     this._element.classList.remove('show');
     const duration = getTransitionDuration(this._element);
@@ -78,7 +78,7 @@ export class Modal extends BaseComponent {
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
       if (this._focussedBefore) this._focussedBefore.focus?.();
-      triggerEvent(this._element, 'budu.hidden.modal');
+      triggerEvent(this._element, 'boodoo.hidden.modal');
     });
   }
 
@@ -159,13 +159,13 @@ const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]
 // Data API
 if (typeof document !== 'undefined') {
   document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-budu-toggle="modal"]');
+    const source = event.target.closest('[data-boodoo-toggle="modal"]');
     if (source) {
       event.preventDefault();
       Modal.toggleVia(source);
     }
-    // close bound via [data-budu-dismiss="modal"]
-    const closer = event.target.closest('[data-budu-dismiss="modal"]');
+    // close bound via [data-boodoo-dismiss="modal"]
+    const closer = event.target.closest('[data-boodoo-dismiss="modal"]');
     if (closer) {
       const modal = Modal.getInstance(closer.closest('.modal'));
       if (modal) modal.hide();

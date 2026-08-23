@@ -1,4 +1,4 @@
-// BUDU — Toast
+// BOODOO — Toast
 // Auto-dismiss toast notifications.
 
 import { BaseComponent } from './base-component.js';
@@ -12,10 +12,10 @@ export class Toast extends BaseComponent {
   constructor(target, config = {}) {
     super(target, config);
     this._config = this._getConfig(config, { delay: 5000, autohide: true });
-    if (target.hasAttribute('data-budu-delay')) {
-      this._config.delay = Number(target.getAttribute('data-budu-delay')) || 5000;
+    if (target.hasAttribute('data-boodoo-delay')) {
+      this._config.delay = Number(target.getAttribute('data-boodoo-delay')) || 5000;
     }
-    if (target.hasAttribute('data-budu-autohide') && target.getAttribute('data-budu-autohide') === 'false') {
+    if (target.hasAttribute('data-boodoo-autohide') && target.getAttribute('data-boodoo-autohide') === 'false') {
       this._config.autohide = false;
     }
     this._timeout = null;
@@ -31,13 +31,13 @@ export class Toast extends BaseComponent {
     if (this._isShown) return;
     el.classList.remove('hide');
     el.classList.add('showing');
-    triggerEvent(el, 'budu.show.toast');
+    triggerEvent(el, 'boodoo.show.toast');
 
     setTimeout(() => {
       el.classList.remove('showing');
       el.classList.add('show');
       this._isShown = true;
-      triggerEvent(el, 'budu.shown.toast');
+      triggerEvent(el, 'boodoo.shown.toast');
 
       if (this._config.autohide) {
         this._scheduleHide();
@@ -48,7 +48,7 @@ export class Toast extends BaseComponent {
   hide() {
     const el = this._element;
     if (!this._isShown) return;
-    if (!triggerEvent(el, 'budu.hide.toast')) return;
+    if (!triggerEvent(el, 'boodoo.hide.toast')) return;
     el.classList.remove('show');
     el.classList.add('hide');
     clearTimeout(this._timeout);
@@ -56,8 +56,8 @@ export class Toast extends BaseComponent {
     emulateTransitionEnd(el, duration).then(() => {
       el.classList.remove('hide');
       this._isShown = false;
-      // remove from DOM if it has [data-budu-autohide] remove behavior? keep simple: leave in DOM
-      triggerEvent(el, 'budu.hidden.toast');
+      // remove from DOM if it has [data-boodoo-autohide] remove behavior? keep simple: leave in DOM
+      triggerEvent(el, 'boodoo.hidden.toast');
     });
   }
 
@@ -72,7 +72,7 @@ export class Toast extends BaseComponent {
   }
 }
 
-// Data API: show toasts with `.toast[data-budu-autohide]` on load
+// Data API: show toasts with `.toast[data-boodoo-autohide]` on load
 if (typeof document !== 'undefined') {
   initToasts();
   document.addEventListener('DOMContentLoaded', initToasts);

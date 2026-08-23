@@ -1,4 +1,4 @@
-// budu site local static server. Run: node build/serve.mjs
+// boodoo site local static server. Run: node build/serve.mjs
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -57,5 +57,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`budu docs server running at http://localhost:${PORT}`);
+  console.log(`boodoo docs server running at http://localhost:${PORT}`);
 });

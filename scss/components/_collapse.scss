@@ -1,4 +1,4 @@
-// BUDU COLLAPSE
+// BOODOO COLLAPSE
 // Expand/collapse animation classes (JS-driven).
 
 .collapse:not(.show) {
@@ -8,7 +8,7 @@
 .collapsing {
   height: 0;
   overflow: hidden;
-  transition: $budu-transition-collapse;
+  transition: $boodoo-transition-collapse;
 
   &.collapse-horizontal {
     width: 0;

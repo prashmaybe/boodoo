@@ -1,4 +1,4 @@
-// BUDU Docs site builder
+// BOODOO Docs site builder
 // Assembles static HTML pages from a shared layout + per-page content
 // fragments + a sidebar nav tree. Run: node build/site-build.mjs
 //
@@ -207,7 +207,7 @@ function buildPage(sectionDef, { route, full }) {
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
     .replaceAll('{{title}}', title)
-    .replaceAll('{{description}}', meta.description || `${title} — budu docs`)
+    .replaceAll('{{description}}', meta.description || `${title} — boodoo docs`)
     .replaceAll('{{sidebar}}', sidebar)
     .replaceAll('{{breadcrumb}}', breadcrumb)
     .replaceAll('{{toc}}', toc)

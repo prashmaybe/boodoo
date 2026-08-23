@@ -1,4 +1,4 @@
-// BUDU IMAGES
+// BOODOO IMAGES
 // Responsive image & thumbnail helpers.
 
 .img-fluid {
@@ -8,16 +8,16 @@
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: var(--budu-body-bg);
-  border: var(--budu-border-width) solid var(--budu-border-color);
-  border-radius: $budu-border-radius;
+  background-color: var(--boodoo-body-bg);
+  border: var(--boodoo-border-width) solid var(--boodoo-border-color);
+  border-radius: $boodoo-border-radius;
   max-width: 100%;
   height: auto;
 }
 
 // Rounded image helpers
 .img-rounded {
-  border-radius: $budu-border-radius-lg;
+  border-radius: $boodoo-border-radius-lg;
 }
 
 .img-circle {
@@ -36,7 +36,7 @@
 
 .figure-caption {
   font-size: 0.875em;
-  color: var(--budu-body-secondary-color);
+  color: var(--boodoo-body-secondary-color);
 }
 
 // Blur-up / placeholder image effect
@@ -46,7 +46,7 @@
 }
 
 .img-loading {
-  background: linear-gradient(90deg, $budu-gray-200 25%, $budu-gray-100 37%, $budu-gray-200 63%);
+  background: linear-gradient(90deg, $boodoo-gray-200 25%, $boodoo-gray-100 37%, $boodoo-gray-200 63%);
   background-size: 400% 100%;
-  animation: budu-shine 1.4s ease infinite;
+  animation: boodoo-shine 1.4s ease infinite;
 }

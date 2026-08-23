@@ -1,4 +1,4 @@
-// BUDU REBOOT
+// BOODOO REBOOT
 // Normalize + opinionated reset (Bootstrap-inspired, modernized).
 
 @use "sass:map";
@@ -22,13 +22,13 @@ html {
 
 body {
   margin: 0;
-  font-family: $budu-font-family-base;
-  font-size: $budu-font-size-base;
-  font-weight: $budu-font-weight-base;
-  line-height: $budu-line-height-base;
-  color: $budu-body-color;
+  font-family: $boodoo-font-family-base;
+  font-size: $boodoo-font-size-base;
+  font-weight: $boodoo-font-weight-base;
+  line-height: $boodoo-line-height-base;
+  color: $boodoo-body-color;
   text-align: left;
-  background-color: $budu-body-bg;
+  background-color: $boodoo-body-bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -40,7 +40,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid $budu-primary;
+  outline: 2px solid $boodoo-primary;
   outline-offset: 2px;
 }
 
@@ -48,30 +48,30 @@ hr {
   margin: 1rem 0;
   color: inherit;
   border: 0;
-  border-top: $budu-border-width solid $budu-border-color;
+  border-top: $boodoo-border-width solid $boodoo-border-color;
   opacity: 0.25;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: $budu-headings-margin-bottom;
-  font-family: $budu-headings-font-family;
-  font-style: $budu-headings-font-style;
-  font-weight: $budu-headings-font-weight;
-  line-height: $budu-headings-line-height;
-  color: $budu-headings-color;
+  margin-bottom: $boodoo-headings-margin-bottom;
+  font-family: $boodoo-headings-font-family;
+  font-style: $boodoo-headings-font-style;
+  font-weight: $boodoo-headings-font-weight;
+  line-height: $boodoo-headings-line-height;
+  color: $boodoo-headings-color;
 }
 
-h1 { font-size: $budu-h1-font-size; }
-h2 { font-size: $budu-h2-font-size; }
-h3 { font-size: $budu-h3-font-size; }
-h4 { font-size: $budu-h4-font-size; }
-h5 { font-size: $budu-h5-font-size; }
-h6 { font-size: $budu-h6-font-size; }
+h1 { font-size: $boodoo-h1-font-size; }
+h2 { font-size: $boodoo-h2-font-size; }
+h3 { font-size: $boodoo-h3-font-size; }
+h4 { font-size: $boodoo-h4-font-size; }
+h5 { font-size: $boodoo-h5-font-size; }
+h6 { font-size: $boodoo-h6-font-size; }
 
 p {
   margin-top: 0;
-  margin-bottom: $budu-paragraph-margin-bottom;
+  margin-bottom: $boodoo-paragraph-margin-bottom;
 }
 
 abbr[title] {
@@ -100,7 +100,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $budu-font-weight-bold;
+  font-weight: $boodoo-font-weight-bold;
 }
 
 dd {
@@ -114,11 +114,11 @@ blockquote {
 
 b,
 strong {
-  font-weight: $budu-font-weight-bolder;
+  font-weight: $boodoo-font-weight-bolder;
 }
 
 small {
-  font-size: $budu-small-font-size;
+  font-size: $boodoo-small-font-size;
 }
 
 sub,
@@ -133,13 +133,13 @@ sub { bottom: -0.25em; }
 sup { top: -0.5em; }
 
 a {
-  color: $budu-link-color;
-  text-decoration: $budu-link-decoration;
+  color: $boodoo-link-color;
+  text-decoration: $boodoo-link-decoration;
   background-color: transparent;
 
   &:hover {
-    color: $budu-link-hover-color;
-    text-decoration: $budu-link-hover-decoration;
+    color: $boodoo-link-hover-color;
+    text-decoration: $boodoo-link-hover-decoration;
   }
 
   &:not([href]):not([class]),
@@ -154,12 +154,12 @@ code,
 kbd,
 samp,
 pre {
-  font-family: $budu-font-family-monospace;
+  font-family: $boodoo-font-family-monospace;
   font-size: 1em;
 }
 
 code {
-  color: $budu-code-color;
+  color: $boodoo-code-color;
   word-wrap: break-word;
 }
 
@@ -169,14 +169,14 @@ a > code {
 
 kbd {
   padding: 0.2rem 0.4rem;
-  color: $budu-white;
-  background-color: $budu-gray-900;
-  border-radius: $budu-border-radius-sm;
+  color: $boodoo-white;
+  background-color: $boodoo-gray-900;
+  border-radius: $boodoo-border-radius-sm;
 
   kbd {
     padding: 0;
     font-size: 1em;
-    font-weight: $budu-font-weight-bold;
+    font-weight: $boodoo-font-weight-bold;
   }
 }
 
@@ -217,7 +217,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: $budu-body-secondary-color;
+  color: $boodoo-body-secondary-color;
   text-align: left;
   caption-side: bottom;
 }
@@ -376,13 +376,13 @@ figure > img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba($budu-gray-500, 0.4);
+  background-color: rgba($boodoo-gray-500, 0.4);
   border-radius: 999px;
   border: 3px solid transparent;
   background-clip: content-box;
 
   &:hover {
-    background-color: rgba($budu-gray-500, 0.7);
+    background-color: rgba($boodoo-gray-500, 0.7);
   }
 }
 

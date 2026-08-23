@@ -1,4 +1,4 @@
-// BUDU — Carousel
+// BOODOO — Carousel
 // Sliding/fading carousel with controls, indicators, autoplay, swipe.
 
 import { BaseComponent } from './base-component.js';
@@ -7,7 +7,7 @@ import { triggerEvent, getElementFromSelector, getNextElement, getTransitionDura
 export class Carousel extends BaseComponent {
   static get NAME() { return 'carousel'; }
 
-  static get selector() { return '[data-budu-ride="carousel"]'; }
+  static get selector() { return '[data-boodoo-ride="carousel"]'; }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -31,15 +31,15 @@ export class Carousel extends BaseComponent {
     }
     const alreadyActive = this._element.querySelector('.carousel-item.active');
     if (alreadyActive) this._activeElement = alreadyActive;
-    if (this._config.interval !== false && !this._element.hasAttribute('data-budu-interval')) {
+    if (this._config.interval !== false && !this._element.hasAttribute('data-boodoo-interval')) {
       this._startAutoPlay();
     }
   }
 
   _setup() {
-    this._indicatorButtons = Array.from(this._element.querySelectorAll('.carousel-indicators [data-budu-target]'));
+    this._indicatorButtons = Array.from(this._element.querySelectorAll('.carousel-indicators [data-boodoo-target]'));
     this._container = this._element.querySelector('.carousel-inner');
-    const intervalAttr = this._element.getAttribute('data-budu-interval');
+    const intervalAttr = this._element.getAttribute('data-boodoo-interval');
     if (intervalAttr !== null) this._config.interval = Number(intervalAttr) || false;
 
     // indicators
@@ -133,7 +133,7 @@ export class Carousel extends BaseComponent {
   }
 
   _doSlide(next, order) {
-    const ev = triggerEvent(this._element, 'budu.slide.carousel', { relatedTarget: next, direction: order });
+    const ev = triggerEvent(this._element, 'boodoo.slide.carousel', { relatedTarget: next, direction: order });
     if (!ev) return;
 
     this._isSliding = true;
@@ -169,7 +169,7 @@ export class Carousel extends BaseComponent {
     this._activeElement = next;
     this._isSliding = false;
     this._setActive(next);
-    triggerEvent(this._element, 'budu.slid.carousel', { relatedTarget: next });
+    triggerEvent(this._element, 'boodoo.slid.carousel', { relatedTarget: next });
     this.cycle();
   }
 
@@ -212,7 +212,7 @@ if (typeof document !== 'undefined') {
   }, true);
 }
 
-// Auto-init carousels marked with data-budu-ride
+// Auto-init carousels marked with data-boodoo-ride
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCarousels);

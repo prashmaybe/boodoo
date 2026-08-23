@@ -11,7 +11,7 @@ order: 22
 <h2 id="overview">Overview</h2>
 <p>Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile
   and desktop operating systems. They're built with flexbox, so they're easy to align and position — by default they
-  auto-hide after 5 seconds (<code>data-budu-autohide="true"</code> / <code>data-budu-delay="5000"</code>).</p>
+  auto-hide after 5 seconds (<code>data-boodoo-autohide="true"</code> / <code>data-boodoo-delay="5000"</code>).</p>
 
 <h2 id="basic">Basic example</h2>
 <div class="bd-example">
@@ -20,9 +20,9 @@ order: 22
       <img
         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%235b2ef2'/%3E%3C/svg%3E"
         class="rounded me-2" alt="" width="20" height="20">
-      <strong class="me-auto">budu</strong>
+      <strong class="me-auto">boodoo</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">Hello, world! This is a toast message.</div>
   </div>
@@ -30,9 +30,9 @@ order: 22
 <div class="highlight">
   <pre><code>&lt;div class="toast" role="alert" aria-live="assertive" aria-atomic="true"&gt;
   &lt;div class="toast-header"&gt;
-    &lt;strong class="me-auto"&gt;budu&lt;/strong&gt;
+    &lt;strong class="me-auto"&gt;boodoo&lt;/strong&gt;
     &lt;small&gt;11 mins ago&lt;/small&gt;
-    &lt;button type="button" class="btn-close" data-budu-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="toast-body"&gt;Hello, world! This is a toast message.&lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -45,12 +45,12 @@ order: 22
   <div class="toast-container top-0 end-0 position-absolute">
     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header"><strong class="me-auto">Notification</strong><button type="button" class="btn-close"
-          data-budu-dismiss="toast" aria-label="Close"></button></div>
+          data-boodoo-dismiss="toast" aria-label="Close"></button></div>
       <div class="toast-body">Some quick example text to build on the toast.</div>
     </div>
     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header"><strong class="me-auto">Second toast</strong><button type="button" class="btn-close"
-          data-budu-dismiss="toast" aria-label="Close"></button></div>
+          data-boodoo-dismiss="toast" aria-label="Close"></button></div>
       <div class="toast-body">See, another stacked toast.</div>
     </div>
   </div>
@@ -72,20 +72,20 @@ order: 22
 <h2 id="js">JavaScript behavior</h2>
 <div class="highlight">
   <pre><code>// Show all toasts in a container
-budu.Toast.showAll(document.getElementById('toastContainer'));
+boodoo.Toast.showAll(document.getElementById('toastContainer'));
 
 // Show a single toast
-const t = budu.Toast.getOrCreateInstance(document.getElementById('myToast'), { autohide: true, delay: 3000 });
+const t = boodoo.Toast.getOrCreateInstance(document.getElementById('myToast'), { autohide: true, delay: 3000 });
 t.show();
 
 // Or the quick helper:
-budu.toast('Saved successfully!', { title: 'Success', delay: 4000 });</code></pre>
+boodoo.toast('Saved successfully!', { title: 'Success', delay: 4000 });</code></pre>
 </div>
 <div class="bd-example">
   <button class="btn btn-primary" id="toastProgBtn">Show toast via JS</button>
   <script>
     document.getElementById('toastProgBtn').addEventListener('click', function () {
-      budu.toast('Hello from budu! This toast was created with one line of JS.', { title: 'Programmatic toast' });
+      boodoo.toast('Hello from boodoo! This toast was created with one line of JS.', { title: 'Programmatic toast' });
     });
   </script>
   <div class="toast-container top-0 end-0"></div>

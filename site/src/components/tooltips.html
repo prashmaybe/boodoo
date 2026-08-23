@@ -1,17 +1,17 @@
 <!--
 title: Tooltips
-description: Documentation and examples for adding Bootstrap-like tooltips with budu.
+description: Documentation and examples for adding Bootstrap-like tooltips with boodoo.
 section: components
 order: 23
 -->
 <h1>Tooltips</h1>
-<p class="lead">Documentation and examples for adding budu tooltips — small, interactive popups that appear on hover or
+<p class="lead">Documentation and examples for adding boodoo tooltips — small, interactive popups that appear on hover or
   focus.</p>
 
 <h2 id="overview">Overview</h2>
-<p>Tooltips display a small piece of information when the user hovers, focuses, or taps an element. budu's tooltips are
-  dependency-free (no Popper), initialized from <code>data-budu-toggle="tooltip"</code>, and support four placements
-  plus keyboard accessibility via <code>data-budu-trigger</code>.</p>
+<p>Tooltips display a small piece of information when the user hovers, focuses, or taps an element. boodoo's tooltips are
+  dependency-free (no Popper), initialized from <code>data-boodoo-toggle="tooltip"</code>, and support four placements
+  plus keyboard accessibility via <code>data-boodoo-trigger</code>.</p>
 
 <div class="bd-callout bd-callout-warning">
   <strong>Heads up:</strong> Tooltips are disabled for disabled elements. If you need tooltips on disabled buttons, wrap
@@ -21,26 +21,26 @@ order: 23
 <h2 id="example">Example: enable tooltips everywhere</h2>
 <p>A tooltip on a button, toggled on hover:</p>
 <div class="bd-example d-flex gap-3">
-  <button type="button" class="btn btn-secondary ripple" data-budu-toggle="tooltip" data-budu-placement="top"
-    data-budu-title="Tooltip on top">Tooltip on top</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="bottom"
-    data-budu-title="Tooltip on bottom">Tooltip on bottom</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="start"
-    data-budu-title="Tooltip on start">Tooltip on start</button>
-  <button type="button" class="btn btn-secondary" data-budu-toggle="tooltip" data-budu-placement="end"
-    data-budu-title="Tooltip on end">Tooltip on end</button>
+  <button type="button" class="btn btn-secondary ripple" data-boodoo-toggle="tooltip" data-boodoo-placement="top"
+    data-boodoo-title="Tooltip on top">Tooltip on top</button>
+  <button type="button" class="btn btn-secondary" data-boodoo-toggle="tooltip" data-boodoo-placement="bottom"
+    data-boodoo-title="Tooltip on bottom">Tooltip on bottom</button>
+  <button type="button" class="btn btn-secondary" data-boodoo-toggle="tooltip" data-boodoo-placement="start"
+    data-boodoo-title="Tooltip on start">Tooltip on start</button>
+  <button type="button" class="btn btn-secondary" data-boodoo-toggle="tooltip" data-boodoo-placement="end"
+    data-boodoo-title="Tooltip on end">Tooltip on end</button>
 </div>
 <div class="highlight">
   <pre><code>&lt;button type="button" class="btn btn-secondary"
-        data-budu-toggle="tooltip" data-budu-placement="top"
-        data-budu-title="Tooltip on top"&gt;
+        data-boodoo-toggle="tooltip" data-boodoo-placement="top"
+        data-boodoo-title="Tooltip on top"&gt;
   Tooltip on top
 &lt;/button&gt;</code></pre>
 </div>
 
 <h2 id="markup">Markup</h2>
-<p>Put the title text in <code>data-budu-title</code>, or in the native <code>title</code> attribute. budu reads
-  <code>data-budu-title</code> first, then <code>title</code>, and removes the native <code>title</code> so the
+<p>Put the title text in <code>data-boodoo-title</code>, or in the native <code>title</code> attribute. boodoo reads
+  <code>data-boodoo-title</code> first, then <code>title</code>, and removes the native <code>title</code> so the
   browser's default tooltip doesn't clash.
 </p>
 
@@ -51,7 +51,7 @@ order: 23
 </p>
 
 <h2 id="triggers">Triggers</h2>
-<p>Use <code>data-budu-trigger</code> to choose the interaction:
+<p>Use <code>data-boodoo-trigger</code> to choose the interaction:
   <span class="badge bg-light text-dark border">hover</span>
   <span class="badge bg-light text-dark border">focus</span>
   <span class="badge bg-light text-dark border">click</span>
@@ -59,20 +59,20 @@ order: 23
 </p>
 <div class="highlight">
   <pre><code>&lt;!-- toggles on click -->
-&lt;button data-budu-toggle="tooltip" data-budu-trigger="click"
-        data-budu-title="Click to show"&gt;Click&lt;/button&gt;</code></pre>
+&lt;button data-boodoo-toggle="tooltip" data-boodoo-trigger="click"
+        data-boodoo-title="Click to show"&gt;Click&lt;/button&gt;</code></pre>
 </div>
 
 <h2 id="delay">Delay</h2>
-<p>Use <code>data-budu-delay</code> (ms) for show/hide delay:</p>
+<p>Use <code>data-boodoo-delay</code> (ms) for show/hide delay:</p>
 <div class="highlight">
-  <pre><code>&lt;button data-budu-toggle="tooltip" data-budu-delay="250"
-        data-budu-title="Delayed"&gt;Delayed tooltip&lt;/button&gt;</code></pre>
+  <pre><code>&lt;button data-boodoo-toggle="tooltip" data-boodoo-delay="250"
+        data-boodoo-title="Delayed"&gt;Delayed tooltip&lt;/button&gt;</code></pre>
 </div>
 
 <h2 id="js">JavaScript</h2>
 <div class="highlight">
-  <pre><code>const tip = budu.Tooltip.getOrCreateInstance(document.getElementById('myTip'), {
+  <pre><code>const tip = boodoo.Tooltip.getOrCreateInstance(document.getElementById('myTip'), {
   placement: 'bottom',
   title: 'Custom title',
   delay: 150,

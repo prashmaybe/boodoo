@@ -1,4 +1,4 @@
-// BUDU PLACEHOLDER
+// BOODOO PLACEHOLDER
 // Loading placeholder skeletons.
 
 .placeholder {
@@ -8,7 +8,7 @@
   cursor: wait;
   background-color: currentcolor;
   opacity: 0.5;
-  border-radius: $budu-border-radius-sm;
+  border-radius: $boodoo-border-radius-sm;
 
   &.btn::before {
     display: inline-block;
@@ -32,11 +32,11 @@
 // Glow
 .placeholder-glow {
   .placeholder {
-    animation: budu-placeholder-glow 2s ease-in-out infinite;
+    animation: boodoo-placeholder-glow 2s ease-in-out infinite;
   }
 }
 
-@keyframes budu-placeholder-glow {
+@keyframes boodoo-placeholder-glow {
   50% {
     opacity: 0.2;
   }
@@ -46,10 +46,10 @@
 .placeholder-wave {
   mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   mask-size: 200% 100%;
-  animation: budu-placeholder-wave 2s linear infinite;
+  animation: boodoo-placeholder-wave 2s linear infinite;
 }
 
-@keyframes budu-placeholder-wave {
+@keyframes boodoo-placeholder-wave {
   100% {
     mask-position: -200% 0%;
   }
@@ -59,7 +59,7 @@
 .skeleton {
   position: relative;
   overflow: hidden;
-  background-color: var(--budu-body-tertiary-bg);
+  background-color: var(--boodoo-body-tertiary-bg);
 
   &::after {
     position: absolute;
@@ -71,12 +71,12 @@
       rgba(255, 255, 255, 0.4) 50%,
       rgba(255, 255, 255, 0) 100%
     );
-    animation: budu-skeleton-shimmer 1.6s infinite;
+    animation: boodoo-skeleton-shimmer 1.6s infinite;
     content: "";
   }
 }
 
-@keyframes budu-skeleton-shimmer {
+@keyframes boodoo-skeleton-shimmer {
   100% {
     transform: translateX(100%);
   }
@@ -87,5 +87,5 @@
 }
 
 .skeleton-text {
-  border-radius: $budu-border-radius-sm;
+  border-radius: $boodoo-border-radius-sm;
 }

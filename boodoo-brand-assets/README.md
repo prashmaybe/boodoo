@@ -1,15 +1,15 @@
-# budu — Design Framework Brand Assets
+# boodoo — Design Framework Brand Assets
 
 ## Included
-- `budu-logo.svg` — primary vector logo lockup
-- `budu-icon.svg` — icon-only vector mark
-- `budu-logo-primary.png` — primary logo on white
-- `budu-logo-primary-transparent.png` — transparent primary logo
-- `budu-logo-primary-dark.png` — primary logo on dark
-- `budu-icon.png` / `budu-icon-transparent.png` / `budu-icon-dark.png` — icon variants
-- `budu-icon-16.png` through `budu-icon-512.png` — favicon/app icon sizes
-- `budu-banner.png` — 1600×400 brand banner
-- `budu-og-image.png` — 1200×630 Open Graph / social preview
+- `boodoo-logo.svg` — primary vector logo lockup
+- `boodoo-icon.svg` — icon-only vector mark
+- `boodoo-logo-primary.png` — primary logo on white
+- `boodoo-logo-primary-transparent.png` — transparent primary logo
+- `boodoo-logo-primary-dark.png` — primary logo on dark
+- `boodoo-icon.png` / `boodoo-icon-transparent.png` / `boodoo-icon-dark.png` — icon variants
+- `boodoo-icon-16.png` through `boodoo-icon-512.png` — favicon/app icon sizes
+- `boodoo-banner.png` — 1600×400 brand banner
+- `boodoo-og-image.png` — 1200×630 Open Graph / social preview
 
 ## Suggested brand colors
 - Primary Violet: #7C3AED

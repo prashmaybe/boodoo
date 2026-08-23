@@ -1,4 +1,4 @@
-// BUDU — Scrollspy
+// BOODOO — Scrollspy
 // Highlights nav links based on scroll position.
 
 import { BaseComponent } from './base-component.js';
@@ -7,7 +7,7 @@ import { getElementFromSelector, throttle } from './util.js';
 export class ScrollSpy extends BaseComponent {
   static get NAME() { return 'scrollspy'; }
 
-  static get selector() { return '[data-budu-spy="scroll"]'; }
+  static get selector() { return '[data-boodoo-spy="scroll"]'; }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -17,7 +17,7 @@ export class ScrollSpy extends BaseComponent {
     this._sections = [];
     this._active = null;
 
-    const navSelector = this._element.getAttribute('data-budu-target') || this._config.target;
+    const navSelector = this._element.getAttribute('data-boodoo-target') || this._config.target;
     if (navSelector) {
       this._nav = document.querySelector(navSelector) || getElementFromSelector(this._element);
     }

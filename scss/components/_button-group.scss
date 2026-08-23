@@ -1,4 +1,4 @@
-// BUDU BUTTON GROUP
+// BOODOO BUTTON GROUP
 // Grouped buttons, toolbar, vertical group, checkbox/radio groups.
 
 .btn-group,
@@ -21,7 +21,7 @@
     }
 
     &:not(:first-child) {
-      margin-left: calc(#{$budu-input-btn-border-width} * -1);
+      margin-left: calc(#{$boodoo-input-btn-border-width} * -1);
     }
 
     // Corner rounding
@@ -43,7 +43,7 @@
 
 // Nested groups (dropdown in a group)
 .btn-group > .btn-group:not(:first-child) {
-  margin-left: calc(#{$budu-input-btn-border-width} * -1);
+  margin-left: calc(#{$boodoo-input-btn-border-width} * -1);
 }
 
 .btn-group > .btn-group:first-child:not(:last-child) > .btn {
@@ -77,7 +77,7 @@
     width: 100%;
 
     &:not(:first-child) {
-      margin-top: calc(#{$budu-input-btn-border-width} * -1);
+      margin-top: calc(#{$boodoo-input-btn-border-width} * -1);
     }
 
     &:not(:first-child):not(:last-child) {
@@ -99,18 +99,18 @@
 // Sizing
 .btn-group-lg > .btn,
 .btn-group-lg > .btn-group > .btn {
-  @include button-size($budu-input-btn-padding-y-lg, $budu-input-btn-padding-x-lg, $budu-input-btn-font-size-lg, $budu-border-radius-lg);
+  @include button-size($boodoo-input-btn-padding-y-lg, $boodoo-input-btn-padding-x-lg, $boodoo-input-btn-font-size-lg, $boodoo-border-radius-lg);
 }
 
 .btn-group-sm > .btn,
 .btn-group-sm > .btn-group > .btn {
-  @include button-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+  @include button-size($boodoo-input-btn-padding-y-sm, $boodoo-input-btn-padding-x-sm, $boodoo-input-btn-font-size-sm, $boodoo-border-radius-sm);
 }
 
 // Split dropdown carets
 .btn-group .dropdown-toggle-split {
-  padding-right: $budu-input-btn-padding-x * 0.75;
-  padding-left: $budu-input-btn-padding-x * 0.75;
+  padding-right: $boodoo-input-btn-padding-x * 0.75;
+  padding-left: $boodoo-input-btn-padding-x * 0.75;
 
   &::after {
     margin-left: 0;

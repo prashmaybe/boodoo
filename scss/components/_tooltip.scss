@@ -1,19 +1,19 @@
-// BUDU TOOLTIP
+// BOODOO TOOLTIP
 // Tooltip (JS-driven positioning).
 
 .tooltip {
-  --budu-tooltip-bg: #{$budu-tooltip-bg};
-  --budu-tooltip-color: #{$budu-tooltip-color};
-  --budu-tooltip-border-radius: #{$budu-tooltip-border-radius};
-  --budu-tooltip-opacity: #{$budu-tooltip-opacity};
-  --budu-tooltip-padding-y: #{$budu-tooltip-padding-y};
-  --budu-tooltip-padding-x: #{$budu-tooltip-padding-x};
+  --boodoo-tooltip-bg: #{$boodoo-tooltip-bg};
+  --boodoo-tooltip-color: #{$boodoo-tooltip-color};
+  --boodoo-tooltip-border-radius: #{$boodoo-tooltip-border-radius};
+  --boodoo-tooltip-opacity: #{$boodoo-tooltip-opacity};
+  --boodoo-tooltip-padding-y: #{$boodoo-tooltip-padding-y};
+  --boodoo-tooltip-padding-x: #{$boodoo-tooltip-padding-x};
 
   position: absolute;
-  z-index: $budu-zindex-tooltip;
+  z-index: $boodoo-zindex-tooltip;
   display: block;
   margin: 0;
-  font-family: var(--budu-font-sans-serif);
+  font-family: var(--boodoo-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -32,18 +32,18 @@
   opacity: 0;
 
   &.show {
-    opacity: var(--budu-tooltip-opacity);
-    animation: budu-fade-in 0.15s ease;
+    opacity: var(--boodoo-tooltip-opacity);
+    animation: boodoo-fade-in 0.15s ease;
   }
 }
 
 .tooltip-inner {
   max-width: 200px;
-  padding: var(--budu-tooltip-padding-y) var(--budu-tooltip-padding-x);
-  color: var(--budu-tooltip-color);
+  padding: var(--boodoo-tooltip-padding-y) var(--boodoo-tooltip-padding-x);
+  color: var(--boodoo-tooltip-color);
   text-align: center;
-  background-color: var(--budu-tooltip-bg);
-  border-radius: var(--budu-tooltip-border-radius);
+  background-color: var(--boodoo-tooltip-bg);
+  border-radius: var(--boodoo-tooltip-border-radius);
 }
 
 // Arrows
@@ -71,7 +71,7 @@
     &::before {
       top: -1px;
       border-width: 0.4rem 0.4rem 0;
-      border-top-color: var(--budu-tooltip-bg);
+      border-top-color: var(--boodoo-tooltip-bg);
     }
   }
 }
@@ -88,7 +88,7 @@
     &::before {
       right: -1px;
       border-width: 0.4rem 0.4rem 0.4rem 0;
-      border-right-color: var(--budu-tooltip-bg);
+      border-right-color: var(--boodoo-tooltip-bg);
     }
   }
 }
@@ -103,7 +103,7 @@
     &::before {
       bottom: -1px;
       border-width: 0 0.4rem 0.4rem;
-      border-bottom-color: var(--budu-tooltip-bg);
+      border-bottom-color: var(--boodoo-tooltip-bg);
     }
   }
 }
@@ -120,7 +120,7 @@
     &::before {
       left: -1px;
       border-width: 0.4rem 0 0.4rem 0.4rem;
-      border-left-color: var(--budu-tooltip-bg);
+      border-left-color: var(--boodoo-tooltip-bg);
     }
   }
 }

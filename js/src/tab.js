@@ -1,4 +1,4 @@
-// BUDU — Tab
+// BOODOO — Tab
 // Tab & pill switching (nav-tabs, nav-pills, nav-underline).
 
 import { BaseComponent } from './base-component.js';
@@ -7,7 +7,7 @@ import { getElementFromSelector, triggerEvent, getNextElement } from './util.js'
 export class Tab extends BaseComponent {
   static get NAME() { return 'tab'; }
 
-  static get selector() { return '[data-budu-toggle="tab"], [data-budu-toggle="pill"]'; }
+  static get selector() { return '[data-boodoo-toggle="tab"], [data-boodoo-toggle="pill"]'; }
 
   static toggleVia(source) {
     const instance = Tab.getOrCreateInstance(source);
@@ -18,7 +18,7 @@ export class Tab extends BaseComponent {
     const tabEl = this._element;
     const isActive = tabEl.classList.contains('active');
     if (isActive) return;
-    if (!triggerEvent(tabEl, 'budu.show.tab')) return;
+    if (!triggerEvent(tabEl, 'boodoo.show.tab')) return;
 
     const targetEl = getElementFromSelector(tabEl);
     const nav = tabEl.closest('.nav');
@@ -46,7 +46,7 @@ export class Tab extends BaseComponent {
 
     // Trigger fade-in animation on content
     setTimeout(() => {
-      triggerEvent(tabEl, 'budu.shown.tab');
+      triggerEvent(tabEl, 'boodoo.shown.tab');
     }, 10);
   }
 }

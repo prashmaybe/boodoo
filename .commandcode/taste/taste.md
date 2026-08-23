@@ -1,2 +1,2 @@
-# Taste — budu framework project
-See [taste-—-budu-framework-project/taste.md](taste-—-budu-framework-project/taste.md)
+# Taste — boodoo framework project
+See [taste-—-boodoo-framework-project/taste.md](taste-—-boodoo-framework-project/taste.md)

@@ -1,20 +1,20 @@
-// BUDU ALERTS
+// BOODOO ALERTS
 // Contextual alert boxes with dismiss support.
 
 .alert {
-  --budu-alert-bg: transparent;
-  --budu-alert-border: transparent;
-  --budu-alert-color: inherit;
-  --budu-alert-padding-y: 1rem;
-  --budu-alert-padding-x: 1.25rem;
+  --boodoo-alert-bg: transparent;
+  --boodoo-alert-border: transparent;
+  --boodoo-alert-color: inherit;
+  --boodoo-alert-padding-y: 1rem;
+  --boodoo-alert-padding-x: 1.25rem;
 
   position: relative;
-  padding: var(--budu-alert-padding-y) var(--budu-alert-padding-x);
+  padding: var(--boodoo-alert-padding-y) var(--boodoo-alert-padding-x);
   margin-bottom: 1rem;
-  color: var(--budu-alert-color);
-  background-color: var(--budu-alert-bg);
-  border: 1px solid var(--budu-alert-border);
-  border-radius: $budu-border-radius;
+  color: var(--boodoo-alert-color);
+  background-color: var(--boodoo-alert-bg);
+  border: 1px solid var(--boodoo-alert-border);
+  border-radius: $boodoo-border-radius;
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -32,14 +32,14 @@
 }
 
 // Variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .alert-#{$name} {
-    --budu-alert-color: #{map.get($budu-text-emphasis-map, $name)};
-    --budu-alert-bg: #{map.get($budu-bg-subtle-map, $name)};
-    --budu-alert-border: #{map.get($budu-border-subtle-map, $name)};
+    --boodoo-alert-color: #{map.get($boodoo-text-emphasis-map, $name)};
+    --boodoo-alert-bg: #{map.get($boodoo-bg-subtle-map, $name)};
+    --boodoo-alert-border: #{map.get($boodoo-border-subtle-map, $name)};
 
     .alert-link {
-      color: map.get($budu-text-emphasis-map, $name);
+      color: map.get($boodoo-text-emphasis-map, $name);
       font-weight: 600;
     }
   }

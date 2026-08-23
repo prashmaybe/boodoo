@@ -1,4 +1,4 @@
-// BUDU — Dropdown
+// BOODOO — Dropdown
 // Toggle dropdown menus, handle outside clicks & Escape.
 
 import { BaseComponent, initDataApi } from './base-component.js';
@@ -9,7 +9,7 @@ const getParent = (el) => el.closest('.dropdown') || el.parentElement;
 export class Dropdown extends BaseComponent {
   static get NAME() { return 'dropdown'; }
 
-  static get selector() { return '[data-budu-toggle="dropdown"]'; }
+  static get selector() { return '[data-boodoo-toggle="dropdown"]'; }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -32,7 +32,7 @@ export class Dropdown extends BaseComponent {
     const toggler = this._element;
     const menu = this._menu;
     if (!menu) return;
-    if (!triggerEvent(toggler, 'budu.show.dropdown')) return;
+    if (!triggerEvent(toggler, 'boodoo.show.dropdown')) return;
 
     // Close other open dropdowns
     DocumentDropdownOpener._openDropdowns.forEach((d) => {
@@ -40,27 +40,27 @@ export class Dropdown extends BaseComponent {
     });
 
     menu.classList.add('show');
-    menu.setAttribute('data-budu-popper', '');
+    menu.setAttribute('data-boodoo-popper', '');
     toggler.setAttribute('aria-expanded', 'true');
     toggler.classList.add('active');
     this._isShown = true;
     DocumentDropdownOpener._register(this);
-    triggerEvent(toggler, 'budu.shown.dropdown');
+    triggerEvent(toggler, 'boodoo.shown.dropdown');
   }
 
   hide() {
     const toggler = this._element;
     const menu = this._menu;
     if (!this._isShown) return;
-    if (!triggerEvent(toggler, 'budu.hide.dropdown')) return;
+    if (!triggerEvent(toggler, 'boodoo.hide.dropdown')) return;
 
     menu.classList.remove('show');
     toggler.setAttribute('aria-expanded', 'false');
     toggler.classList.remove('active');
-    menu.removeAttribute('data-budu-popper');
+    menu.removeAttribute('data-boodoo-popper');
     this._isShown = false;
     DocumentDropdownOpener._unregister(this);
-    triggerEvent(toggler, 'budu.hidden.dropdown');
+    triggerEvent(toggler, 'boodoo.hidden.dropdown');
   }
 }
 

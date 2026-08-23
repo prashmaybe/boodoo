@@ -1,4 +1,4 @@
-// BUDU — Collapse
+// BOODOO — Collapse
 // Expand/collapse toggling with smooth height animation.
 
 import { BaseComponent, initDataApi } from './base-component.js';
@@ -10,7 +10,7 @@ import {
 export class Collapse extends BaseComponent {
   static get NAME() { return 'collapse'; }
 
-  static get selector() { return '[data-budu-toggle="collapse"]'; }
+  static get selector() { return '[data-boodoo-toggle="collapse"]'; }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -49,7 +49,7 @@ export class Collapse extends BaseComponent {
   show() {
     const el = this._element;
     if (this._isShown || el.classList.contains('show')) return;
-    if (!triggerEvent(el, 'budu.show.collapse')) return;
+    if (!triggerEvent(el, 'boodoo.show.collapse')) return;
 
     this._isTransitioning = true;
     el.classList.remove('collapse');
@@ -68,14 +68,14 @@ export class Collapse extends BaseComponent {
       this._isTransitioning = false;
       this._isShown = true;
       this._updateState();
-      triggerEvent(el, 'budu.shown.collapse');
+      triggerEvent(el, 'boodoo.shown.collapse');
     });
   }
 
   hide() {
     const el = this._element;
     if (!this._isShown && !el.classList.contains('show')) return;
-    if (!triggerEvent(el, 'budu.hide.collapse')) return;
+    if (!triggerEvent(el, 'boodoo.hide.collapse')) return;
 
     this._isTransitioning = true;
     el.style.height = `${el.getBoundingClientRect().height}px`;
@@ -92,12 +92,12 @@ export class Collapse extends BaseComponent {
       this._isTransitioning = false;
       this._isShown = false;
       this._updateState();
-      triggerEvent(el, 'budu.hidden.collapse');
+      triggerEvent(el, 'boodoo.hidden.collapse');
     });
   }
 
   static collapseAll(root, targetSelector, doTransition = true) {
-    const collapsibles = elements(`${root} [data-budu-toggle="collapse"]`).filter((t) => {
+    const collapsibles = elements(`${root} [data-boodoo-toggle="collapse"]`).filter((t) => {
       const target = getElementFromSelector(t);
       return target && target.matches(targetSelector);
     });

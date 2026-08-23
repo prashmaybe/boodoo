@@ -1,4 +1,4 @@
-// BUDU FORMS — Checks & Radios
+// BOODOO FORMS — Checks & Radios
 // Checkbox / radio / switch. Accessibility-first (label-based).
 
 .form-check {
@@ -26,18 +26,18 @@
 }
 
 .form-check-input {
-  --budu-form-check-bg: var(--budu-body-bg);
+  --boodoo-form-check-bg: var(--boodoo-body-bg);
   flex-shrink: 0;
   width: 1.25em;
   height: 1.25em;
   margin-top: 0.125em;
   vertical-align: top;
-  background-color: var(--budu-form-check-bg);
-  background-image: var(--budu-form-check-bg-image);
+  background-color: var(--boodoo-form-check-bg);
+  background-image: var(--boodoo-form-check-bg-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: 1px solid $budu-form-control-border-color;
+  border: 1px solid $boodoo-form-control-border-color;
   appearance: none;
   print-color-adjust: exact;
   transition: background-color 0.15s ease-in-out, background-position 0.15s ease-in-out,
@@ -56,28 +56,28 @@
   }
 
   &:focus {
-    border-color: $budu-form-control-focus-border;
+    border-color: $boodoo-form-control-focus-border;
     outline: 0;
-    box-shadow: $budu-form-control-focus-box-shadow;
+    box-shadow: $boodoo-form-control-focus-box-shadow;
   }
 
   &:checked {
-    background-color: $budu-primary;
-    border-color: $budu-primary;
+    background-color: $boodoo-primary;
+    border-color: $boodoo-primary;
 
     &[type="checkbox"] {
-      --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+      --boodoo-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
     }
 
     &[type="radio"] {
-      --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+      --boodoo-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
     }
   }
 
   &[type="checkbox"]:indeterminate {
-    background-color: $budu-primary;
-    border-color: $budu-primary;
-    --budu-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-width='3' d='M5 10h10'/%3e%3c/svg%3e");
+    background-color: $boodoo-primary;
+    border-color: $boodoo-primary;
+    --boodoo-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-width='3' d='M5 10h10'/%3e%3c/svg%3e");
   }
 
   &:disabled {
@@ -98,21 +98,21 @@
   padding-left: 2.5em;
 
   .form-check-input {
-    --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    --boodoo-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     width: 2em;
     margin-left: -2.5em;
-    background-image: var(--budu-form-switch-bg);
+    background-image: var(--boodoo-form-switch-bg);
     background-position: left center;
     border-radius: 2em;
     transition: background-position 0.15s ease-in-out;
 
     &:focus {
-      --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      --boodoo-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
 
     &:checked {
       background-position: right center;
-      --budu-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      --boodoo-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
   }
 }
@@ -154,7 +154,7 @@
 .form-control-color {
   width: 3rem;
   height: auto;
-  padding: $budu-input-btn-padding-y;
+  padding: $boodoo-input-btn-padding-y;
   overflow: hidden;
 
   &:not(:disabled):not([readonly]) {
@@ -167,6 +167,6 @@
 
   &::-webkit-color-swatch {
     border: 0;
-    border-radius: $budu-border-radius-sm;
+    border-radius: $boodoo-border-radius-sm;
   }
 }

@@ -1,29 +1,29 @@
-// BUDU SPINNERS
+// BOODOO SPINNERS
 // Border & growing spinners with sizes and colors.
 
 .spinner-border {
   display: inline-block;
-  width: var(--budu-spinner-width, 2rem);
-  height: var(--budu-spinner-width, 2rem);
+  width: var(--boodoo-spinner-width, 2rem);
+  height: var(--boodoo-spinner-width, 2rem);
   vertical-align: -0.125em;
   border: 0.25em solid currentcolor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: var(--budu-spinner-animation-speed, 0.75s) linear infinite budu-spin;
+  animation: var(--boodoo-spinner-animation-speed, 0.75s) linear infinite boodoo-spin;
 }
 
 .spinner-grow {
   display: inline-block;
-  width: var(--budu-spinner-width, 2rem);
-  height: var(--budu-spinner-width, 2rem);
+  width: var(--boodoo-spinner-width, 2rem);
+  height: var(--boodoo-spinner-width, 2rem);
   vertical-align: -0.125em;
   background-color: currentcolor;
   border-radius: 50%;
   opacity: 0;
-  animation: var(--budu-spinner-animation-speed, 0.75s) linear infinite budu-spinner-grow;
+  animation: var(--boodoo-spinner-animation-speed, 0.75s) linear infinite boodoo-spinner-grow;
 }
 
-@keyframes budu-spinner-grow {
+@keyframes boodoo-spinner-grow {
   0% {
     transform: scale(0);
   }
@@ -36,20 +36,20 @@
 @media (prefers-reduced-motion: reduce) {
   .spinner-border,
   .spinner-grow {
-    --budu-spinner-animation-speed: 1.5s;
+    --boodoo-spinner-animation-speed: 1.5s;
   }
 }
 
 // Sizes
 .spinner-border-sm,
 .spinner-grow-sm {
-  --budu-spinner-width: 1rem;
+  --boodoo-spinner-width: 1rem;
   border-width: 0.2em;
 }
 
 .spinner-border-lg,
 .spinner-grow-lg {
-  --budu-spinner-width: 3rem;
+  --boodoo-spinner-width: 3rem;
   border-width: 0.3em;
 }
 
@@ -61,7 +61,7 @@
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .text-#{$name} {
     color: $color !important;
   }

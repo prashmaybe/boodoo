@@ -1,11 +1,11 @@
 <!--
 title: Modal
-description: Use budu's JavaScript modal plugin to add dialogs to your site.
+description: Use boodoo's JavaScript modal plugin to add dialogs to your site.
 section: components
 order: 12
 -->
 <h1>Modal</h1>
-<p class="lead">Use budu's JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or
+<p class="lead">Use boodoo's JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or
   completely custom content.</p>
 
 <h2 id="how-it-works">How it works</h2>
@@ -13,14 +13,14 @@ order: 12
   <li>Modals are built with HTML, CSS, and JavaScript. They're positioned over everything else in the document and
     remove scroll from the <code>&lt;body&gt;</code>, so that modal content scrolls instead.</li>
   <li>Clicking on the modal "backdrop" will automatically close the modal.</li>
-  <li>budu only supports one modal window at a time.</li>
+  <li>boodoo only supports one modal window at a time.</li>
   <li>Modals use <code>position: fixed</code>, which can occasionally be quirky. Where possible, place your modal HTML
     in a top-level position to avoid interference from other elements.</li>
 </ul>
 
 <h2 id="example">Example</h2>
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-budu-toggle="modal" data-budu-target="#exampleModal">
+  <button type="button" class="btn btn-primary" data-boodoo-toggle="modal" data-boodoo-target="#exampleModal">
     Launch demo modal
   </button>
 </div>
@@ -30,11 +30,11 @@ order: 12
     &lt;div class="modal-content"&gt;
       &lt;div class="modal-header"&gt;
         &lt;h5 class="modal-title" id="exampleModalLabel"&gt;Modal title&lt;/h5&gt;
-        &lt;button type="button" class="btn-close" data-budu-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;
+        &lt;button type="button" class="btn-close" data-boodoo-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;
       &lt;/div&gt;
       &lt;div class="modal-body"&gt;...&lt;/div&gt;
       &lt;div class="modal-footer"&gt;
-        &lt;button type="button" class="btn btn-secondary" data-budu-dismiss="modal"&gt;Close&lt;/button&gt;
+        &lt;button type="button" class="btn btn-secondary" data-boodoo-dismiss="modal"&gt;Close&lt;/button&gt;
         &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -48,13 +48,13 @@ order: 12
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-budu-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-boodoo-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>Modal body text goes here.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-budu-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-boodoo-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -64,15 +64,15 @@ order: 12
 <h2 id="centered">Vertically centered</h2>
 <p>Add <code>.modal-dialog-centered</code> to vertically center the modal.</p>
 <div class="bd-example">
-  <button type="button" class="btn btn-outline-primary" data-budu-toggle="modal"
-    data-budu-target="#centeredModal">Vertically centered modal</button>
+  <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="modal"
+    data-boodoo-target="#centeredModal">Vertically centered modal</button>
 </div>
 <div class="modal fade" id="centeredModal" tabindex="-1" aria-labelledby="centeredModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="centeredModalLabel">Centered modal</h5><button type="button" class="btn-close"
-          data-budu-dismiss="modal" aria-label="Close"></button>
+          data-boodoo-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>Placeholder for the centered modal.</p>
@@ -85,7 +85,7 @@ order: 12
 <p>When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the
   demo.</p>
 <div class="bd-example">
-  <button type="button" class="btn btn-outline-primary" data-budu-toggle="modal" data-budu-target="#scrollModal">Launch
+  <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="modal" data-boodoo-target="#scrollModal">Launch
     scrolling modal</button>
 </div>
 <div class="modal fade" id="scrollModal" tabindex="-1" aria-labelledby="scrollModalLabel" aria-hidden="true">
@@ -93,7 +93,7 @@ order: 12
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="scrollModalLabel">Long content modal</h5><button type="button" class="btn-close"
-          data-budu-dismiss="modal" aria-label="Close"></button>
+          data-boodoo-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
@@ -102,7 +102,7 @@ order: 12
           rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna.</p>
       </div>
-      <div class="modal-footer"><button type="button" class="btn btn-secondary" data-budu-dismiss="modal">Close</button>
+      <div class="modal-footer"><button type="button" class="btn btn-secondary" data-boodoo-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -112,16 +112,16 @@ order: 12
 <p>Modals have three optional sizes, available via modifier classes placed on a <code>.modal-dialog</code>:
   <code>.modal-sm</code>, <code>.modal-lg</code>, <code>.modal-xl</code>, plus a fullscreen option.</p>
 <div class="bd-example d-flex gap-2 flex-wrap">
-  <button type="button" class="btn btn-outline-primary" data-budu-toggle="modal"
-    data-budu-target="#smallModal">Small</button>
-  <button type="button" class="btn btn-outline-primary" data-budu-toggle="modal"
-    data-budu-target="#largeModal">Large</button>
+  <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="modal"
+    data-boodoo-target="#smallModal">Small</button>
+  <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="modal"
+    data-boodoo-target="#largeModal">Large</button>
 </div>
 <div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Small modal</h5><button type="button" class="btn-close" data-budu-dismiss="modal"
+        <h5 class="modal-title">Small modal</h5><button type="button" class="btn-close" data-boodoo-dismiss="modal"
           aria-label="Close"></button>
       </div>
     </div>
@@ -131,7 +131,7 @@ order: 12
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Large modal</h5><button type="button" class="btn-close" data-budu-dismiss="modal"
+        <h5 class="modal-title">Large modal</h5><button type="button" class="btn-close" data-boodoo-dismiss="modal"
           aria-label="Close"></button>
       </div>
     </div>
@@ -142,10 +142,10 @@ order: 12
 <p>Trigger modals via JavaScript:</p>
 <div class="highlight">
   <pre><code>// Show the modal with id="exampleModal"
-const modal = budu.Modal.getOrCreateInstance(document.getElementById('exampleModal'));
+const modal = boodoo.Modal.getOrCreateInstance(document.getElementById('exampleModal'));
 modal.show();
 
 // Toggle
-const other = new budu.Modal(document.getElementById('centeredModal'));
+const other = new boodoo.Modal(document.getElementById('centeredModal'));
 other.toggle();</code></pre>
 </div>

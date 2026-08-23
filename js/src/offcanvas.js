@@ -1,4 +1,4 @@
-// BUDU — Offcanvas
+// BOODOO — Offcanvas
 // Slide-in panel (top/end/bottom/start) with backdrop.
 
 import { BaseComponent } from './base-component.js';
@@ -28,7 +28,7 @@ export class Offcanvas extends BaseComponent {
 
   show() {
     if (this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.show.offcanvas')) return;
+    if (!triggerEvent(this._element, 'boodoo.show.offcanvas')) return;
     this._isShown = true;
 
     document.body.classList.add('modal-open', 'offcanvas-open');
@@ -45,13 +45,13 @@ export class Offcanvas extends BaseComponent {
     setTimeout(() => {
       const focusable = this._element.querySelector('input, button, [tabindex]');
       if (focusable) focusable.focus();
-      triggerEvent(this._element, 'budu.shown.offcanvas');
+      triggerEvent(this._element, 'boodoo.shown.offcanvas');
     }, 120);
   }
 
   hide() {
     if (!this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.hide.offcanvas')) return;
+    if (!triggerEvent(this._element, 'boodoo.hide.offcanvas')) return;
     this._isShown = false;
 
     this._element.classList.add('hiding');
@@ -62,7 +62,7 @@ export class Offcanvas extends BaseComponent {
       this._removeBackdrop();
       document.body.classList.remove('modal-open', 'offcanvas-open');
       document.body.style.overflow = '';
-      triggerEvent(this._element, 'budu.hidden.offcanvas');
+      triggerEvent(this._element, 'boodoo.hidden.offcanvas');
     });
   }
 
@@ -90,12 +90,12 @@ export class Offcanvas extends BaseComponent {
 // Data API
 if (typeof document !== 'undefined') {
   document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-budu-toggle="offcanvas"]');
+    const source = event.target.closest('[data-boodoo-toggle="offcanvas"]');
     if (source) {
       event.preventDefault();
       Offcanvas.toggleVia(source);
     }
-    const closer = event.target.closest('[data-budu-dismiss="offcanvas"]');
+    const closer = event.target.closest('[data-boodoo-dismiss="offcanvas"]');
     if (closer) {
       const offcanvas = Offcanvas.getInstance(closer.closest('.offcanvas'));
       if (offcanvas) offcanvas.hide();

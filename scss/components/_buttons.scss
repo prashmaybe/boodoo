@@ -1,33 +1,33 @@
-// BUDU BUTTONS
+// BOODOO BUTTONS
 // Button variants, sizes, states, groups, and loading/icon styles.
 
 .btn {
   // Button tokens
-  --budu-btn-padding-y: #{$budu-input-btn-padding-y};
-  --budu-btn-padding-x: #{$budu-input-btn-padding-x};
-  --budu-btn-font-family: #{$budu-input-btn-font-family};
-  --budu-btn-font-size: #{$budu-input-btn-font-size};
-  --budu-btn-line-height: #{$budu-input-btn-line-height};
-  --budu-btn-border-radius: #{$budu-border-radius};
+  --boodoo-btn-padding-y: #{$boodoo-input-btn-padding-y};
+  --boodoo-btn-padding-x: #{$boodoo-input-btn-padding-x};
+  --boodoo-btn-font-family: #{$boodoo-input-btn-font-family};
+  --boodoo-btn-font-size: #{$boodoo-input-btn-font-size};
+  --boodoo-btn-line-height: #{$boodoo-input-btn-line-height};
+  --boodoo-btn-border-radius: #{$boodoo-border-radius};
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--budu-btn-padding-y) var(--budu-btn-padding-x);
-  font-family: var(--budu-btn-font-family);
-  font-size: var(--budu-btn-font-size);
-  font-weight: $budu-btn-font-weight;
-  line-height: var(--budu-btn-line-height);
-  color: var(--budu-body-color);
+  padding: var(--boodoo-btn-padding-y) var(--boodoo-btn-padding-x);
+  font-family: var(--boodoo-btn-font-family);
+  font-size: var(--boodoo-btn-font-size);
+  font-weight: $boodoo-btn-font-weight;
+  line-height: var(--boodoo-btn-line-height);
+  color: var(--boodoo-body-color);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: $budu-input-btn-border-width solid transparent;
-  border-radius: var(--budu-btn-border-radius);
+  border: $boodoo-input-btn-border-width solid transparent;
+  border-radius: var(--boodoo-btn-border-radius);
   background-color: transparent;
-  transition: $budu-btn-transition;
+  transition: $boodoo-btn-transition;
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
@@ -39,35 +39,35 @@
 
   &:focus-visible {
     outline: 0;
-    box-shadow: $budu-btn-focus-box-shadow;
+    box-shadow: $boodoo-btn-focus-box-shadow;
   }
 
   &:active,
   &.active {
-    box-shadow: $budu-btn-active-box-shadow;
+    box-shadow: $boodoo-btn-active-box-shadow;
     transform: translateY(1px);
   }
 
   &:active:focus-visible {
-    box-shadow: $budu-btn-focus-box-shadow, $budu-btn-active-box-shadow;
+    box-shadow: $boodoo-btn-focus-box-shadow, $boodoo-btn-active-box-shadow;
   }
 
   &:disabled,
   &.disabled,
   fieldset:disabled & {
     pointer-events: none;
-    opacity: $budu-btn-disabled-opacity;
+    opacity: $boodoo-btn-disabled-opacity;
     box-shadow: none;
     transform: none;
   }
 }
 
 // Variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   @if $name != "light" and $name != "dark" {
     .btn-#{$name} {
       @include button-variant(
-        $color, $color, $budu-white,
+        $color, $color, $boodoo-white,
         shift-color($color, -10%), shift-color($color, -10%),
         shift-color($color, -15%), shift-color($color, -15%)
       );
@@ -76,7 +76,7 @@
     .btn-#{$name} {
       @include button-variant(
         $color, $color,
-        if($name == "light", $budu-dark, $budu-white),
+        if($name == "light", $boodoo-dark, $boodoo-white),
         shade-color($color, 10%), shade-color($color, 10%),
         shade-color($color, 15%), shade-color($color, 15%)
       );
@@ -85,71 +85,71 @@
 }
 
 // Outline variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .btn-outline-#{$name} {
     @include button-outline-variant(
       $color,
       $color,
       $color,
-      if($name == "light", $budu-dark, $budu-white)
+      if($name == "light", $boodoo-dark, $boodoo-white)
     );
   }
 }
 
 // Soft variants (Material-toned subtle fills)
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .btn-soft-#{$name} {
-    --budu-btn-bg: #{tint-color($color, 88%)};
-    --budu-btn-border: transparent;
-    --budu-btn-color: #{$color};
-    --budu-btn-hover-bg: #{tint-color($color, 80%)};
-    --budu-btn-hover-border: transparent;
-    --budu-btn-active-bg: #{tint-color($color, 72%)};
-    --budu-btn-active-border: transparent;
+    --boodoo-btn-bg: #{tint-color($color, 88%)};
+    --boodoo-btn-border: transparent;
+    --boodoo-btn-color: #{$color};
+    --boodoo-btn-hover-bg: #{tint-color($color, 80%)};
+    --boodoo-btn-hover-border: transparent;
+    --boodoo-btn-active-bg: #{tint-color($color, 72%)};
+    --boodoo-btn-active-border: transparent;
 
-    color: var(--budu-btn-color);
-    background-color: var(--budu-btn-bg);
-    border-color: var(--budu-btn-border);
+    color: var(--boodoo-btn-color);
+    background-color: var(--boodoo-btn-bg);
+    border-color: var(--boodoo-btn-border);
 
     &:hover {
-      color: var(--budu-btn-color);
-      background-color: var(--budu-btn-hover-bg);
-      border-color: var(--budu-btn-hover-border);
+      color: var(--boodoo-btn-color);
+      background-color: var(--boodoo-btn-hover-bg);
+      border-color: var(--boodoo-btn-hover-border);
     }
 
     &:active,
     &.active {
-      color: var(--budu-btn-color);
-      background-color: var(--budu-btn-active-bg);
-      border-color: var(--budu-btn-active-border);
+      color: var(--boodoo-btn-color);
+      background-color: var(--boodoo-btn-active-bg);
+      border-color: var(--boodoo-btn-active-border);
     }
   }
 }
 
 // Link buttons
 .btn-link {
-  --budu-btn-color: #{$budu-link-color};
-  --budu-btn-bg: transparent;
-  --budu-btn-border: transparent;
+  --boodoo-btn-color: #{$boodoo-link-color};
+  --boodoo-btn-bg: transparent;
+  --boodoo-btn-border: transparent;
   text-decoration: underline;
-  font-weight: $budu-font-weight-normal;
-  color: var(--budu-btn-color);
-  background-color: var(--budu-btn-bg);
-  border-color: var(--budu-btn-border);
+  font-weight: $boodoo-font-weight-normal;
+  color: var(--boodoo-btn-color);
+  background-color: var(--boodoo-btn-bg);
+  border-color: var(--boodoo-btn-border);
 
   &:hover {
-    color: $budu-link-hover-color;
+    color: $boodoo-link-hover-color;
     text-decoration: underline;
   }
 }
 
 // Sizes
 .btn-lg {
-  @include button-size($budu-input-btn-padding-y-lg, $budu-input-btn-padding-x-lg, $budu-input-btn-font-size-lg, $budu-border-radius-lg);
+  @include button-size($boodoo-input-btn-padding-y-lg, $boodoo-input-btn-padding-x-lg, $boodoo-input-btn-font-size-lg, $boodoo-border-radius-lg);
 }
 
 .btn-sm {
-  @include button-size($budu-input-btn-padding-y-sm, $budu-input-btn-padding-x-sm, $budu-input-btn-font-size-sm, $budu-border-radius-sm);
+  @include button-size($boodoo-input-btn-padding-y-sm, $boodoo-input-btn-padding-x-sm, $boodoo-input-btn-font-size-sm, $boodoo-border-radius-sm);
   min-height: auto;
 }
 
@@ -176,7 +176,7 @@
     border: 2px solid currentcolor;
     border-right-color: transparent;
     border-radius: 50%;
-    animation: budu-spin 0.6s linear infinite;
+    animation: boodoo-spin 0.6s linear infinite;
     color: inherit;
   }
 }
@@ -189,7 +189,7 @@
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
-  border-radius: $budu-border-radius;
+  border-radius: $boodoo-border-radius;
 
   &.btn-lg {
     width: 3rem;
@@ -226,16 +226,16 @@
 // Active/pressed states are applied via :active above; expose .active for JS toggle.
 // Transparent base for ghost buttons
 .btn-ghost {
-  color: var(--budu-body-color);
+  color: var(--boodoo-body-color);
   background-color: transparent;
   border-color: transparent;
 
   &:hover {
-    background-color: rgba($budu-body-color, 0.08);
+    background-color: rgba($boodoo-body-color, 0.08);
   }
 
   &:active,
   &.active {
-    background-color: rgba($budu-body-color, 0.12);
+    background-color: rgba($boodoo-body-color, 0.12);
   }
 }

@@ -1,11 +1,11 @@
 <!--
 title: Navs & tabs
-description: Documentation and examples for how to use budu's included navigation components.
+description: Documentation and examples for how to use boodoo's included navigation components.
 section: components
 order: 13
 -->
 <h1>Navs &amp; tabs</h1>
-<p class="lead">Documentation and examples for how to use budu's included navigation components.</p>
+<p class="lead">Documentation and examples for how to use boodoo's included navigation components.</p>
 
 <h2 id="base">Base nav</h2>
 <div class="bd-example">
@@ -45,9 +45,9 @@ order: 13
 <p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.</p>
 <div class="bd-example">
   <ul class="nav nav-tabs">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a" data-budu-toggle="tab">Active</a>
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a" data-boodoo-toggle="tab">Active</a>
     </li>
-    <li class="nav-item"><a class="nav-link" href="#tab-b" data-budu-toggle="tab">Link</a></li>
+    <li class="nav-item"><a class="nav-link" href="#tab-b" data-boodoo-toggle="tab">Link</a></li>
     <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
   </ul>
   <div class="pt-3">
@@ -57,8 +57,8 @@ order: 13
 </div>
 <div class="highlight">
   <pre><code>&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#tab-a" data-budu-toggle="tab"&gt;Active&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#tab-b" data-budu-toggle="tab"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#tab-a" data-boodoo-toggle="tab"&gt;Active&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#tab-b" data-boodoo-toggle="tab"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 </div>
 
@@ -84,13 +84,13 @@ order: 13
 </div>
 
 <h2 id="tabs-js">Tabs with JavaScript</h2>
-<p>To make the nav switch content, add <code>data-budu-toggle="tab"</code> (or <code>"pill"</code>) to each nav link and
-  give the target panes ids matching the link <code>href</code>. budu wires everything up automatically.</p>
+<p>To make the nav switch content, add <code>data-boodoo-toggle="tab"</code> (or <code>"pill"</code>) to each nav link and
+  give the target panes ids matching the link <code>href</code>. boodoo wires everything up automatically.</p>
 <div class="bd-example">
   <div class="nav nav-pills mb-2" role="tablist">
-    <button class="nav-link active" id="pills-home-tab" data-budu-toggle="pill" data-budu-target="#pills-home"
+    <button class="nav-link active" id="pills-home-tab" data-boodoo-toggle="pill" data-boodoo-target="#pills-home"
       type="button" role="tab">Home</button>
-    <button class="nav-link" id="pills-profile-tab" data-budu-toggle="pill" data-budu-target="#pills-profile"
+    <button class="nav-link" id="pills-profile-tab" data-boodoo-toggle="pill" data-boodoo-target="#pills-profile"
       type="button" role="tab">Profile</button>
   </div>
   <div class="tab-content pt-1">

@@ -1,5 +1,5 @@
 // =====================================================================
-// BUDU — Native Platform Component Styles
+// BOODOO — Native Platform Component Styles
 // Specific design tokens & styling for Windows (Fluent Design / Acrylic / Mica),
 // macOS (Aqua / Vibrancy / SF Pro), iOS (Human Interface Guidelines),
 // iPadOS (Sidebar / Split view), Android (Material Design 3 / Dynamic Color),
@@ -49,10 +49,10 @@
 // 2. WINDOWS (Fluent Design System)
 // ---------------------------------------------------------------------
 .native-win,
-[data-budu-platform="windows"] {
+[data-boodoo-platform="windows"] {
   font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
-  color: var(--budu-win-fg, #1c1c1c);
-  background-color: var(--budu-win-bg, #f3f3f3);
+  color: var(--boodoo-win-fg, #1c1c1c);
+  background-color: var(--boodoo-win-bg, #f3f3f3);
 
   // Acrylic / Mica Background surface
   &.native-surface-mica,
@@ -86,7 +86,7 @@
     }
 
     &.native-btn-primary {
-      background: var(--budu-primary, #7c3aed);
+      background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
       border-color: transparent;
 
@@ -135,7 +135,7 @@
 // 3. macOS (Aqua & macOS Vibrancy)
 // ---------------------------------------------------------------------
 .native-mac,
-[data-budu-platform="macos"] {
+[data-boodoo-platform="macos"] {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 
   .native-titlebar {
@@ -183,7 +183,7 @@
     }
 
     &.native-btn-primary {
-      background: linear-gradient(180deg, #8b5cf6 0%, var(--budu-primary, #7c3aed) 100%);
+      background: linear-gradient(180deg, #8b5cf6 0%, var(--boodoo-primary, #7c3aed) 100%);
       color: #ffffff;
       border-color: rgba(0, 0, 0, 0.2);
     }
@@ -209,7 +209,7 @@
 
       &.active,
       &:hover {
-        background: var(--budu-primary, #7c3aed);
+        background: var(--boodoo-primary, #7c3aed);
         color: #ffffff;
       }
     }
@@ -220,7 +220,7 @@
 // 4. iOS (Human Interface Guidelines)
 // ---------------------------------------------------------------------
 .native-ios,
-[data-budu-platform="ios"] {
+[data-boodoo-platform="ios"] {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   background-color: #f2f2f7;
 
@@ -237,7 +237,7 @@
     font-weight: 600;
 
     .native-nav-link {
-      color: var(--budu-primary, #7c3aed);
+      color: var(--boodoo-primary, #7c3aed);
       font-weight: 400;
       text-decoration: none;
       font-size: 1rem;
@@ -277,10 +277,10 @@
     font-weight: 600;
     border: none;
     background: #e5e5ea;
-    color: var(--budu-primary, #7c3aed);
+    color: var(--boodoo-primary, #7c3aed);
 
     &.native-btn-primary {
-      background: var(--budu-primary, #7c3aed);
+      background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
     }
 
@@ -317,7 +317,7 @@
 // 5. iPadOS (Sidebar & Split View)
 // ---------------------------------------------------------------------
 .native-ipados,
-[data-budu-platform="ipados"] {
+[data-boodoo-platform="ipados"] {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
   background-color: #f2f2f7;
 
@@ -344,7 +344,7 @@
 // 6. ANDROID (Material Design 3 / Material You)
 // ---------------------------------------------------------------------
 .native-android,
-[data-budu-platform="android"] {
+[data-boodoo-platform="android"] {
   font-family: "Roboto", "Google Sans", sans-serif;
   background-color: #fef7ff;
 
@@ -373,11 +373,11 @@
     letter-spacing: 0.1px;
     border: 1px solid #79747e;
     background: transparent;
-    color: var(--budu-primary, #7c3aed);
+    color: var(--boodoo-primary, #7c3aed);
     transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
 
     &.native-btn-primary {
-      background: var(--budu-primary, #7c3aed);
+      background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
       border: none;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -401,7 +401,7 @@
 // 7. LINUX (GNOME Adwaita / GTK4)
 // ---------------------------------------------------------------------
 .native-linux,
-[data-budu-platform="linux"] {
+[data-boodoo-platform="linux"] {
   font-family: "Cantarell", "Inter", sans-serif;
   background-color: #fafafa;
   color: #2e3436;
@@ -437,9 +437,9 @@
     }
 
     &.native-btn-primary {
-      background: var(--budu-primary, #7c3aed);
+      background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
-      border-color: var(--budu-primary, #7c3aed);
+      border-color: var(--boodoo-primary, #7c3aed);
     }
   }
 }

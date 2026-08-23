@@ -1,5 +1,5 @@
 // =====================================================================
-// BUDU JS — Main entry (bundle)
+// BOODOO JS — Main entry (bundle)
 // =====================================================================
 import './base-component.js';
 import { Alert } from './alert.js';
@@ -18,14 +18,14 @@ import { initRipple } from './ripple.js';
 import { initDataApi } from './base-component.js';
 import { enableDismissTrigger } from './util.js';
 
-// Wire up generic data-budu-dismiss triggers
+// Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance) => {
-  const type = instance._element.getAttribute('data-budu-dismiss');
+  const type = instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'alert') instance.hide();
 });
 
 // Global API
-const budu = {
+const boodoo = {
   Alert,
   Button,
   Collapse,
@@ -42,8 +42,8 @@ const budu = {
   initDataApi,
 };
 
-// Set up a convenience for showing toasts from JS: budu.toast(message, options)
-budu.toast = function toast(message, options = {}) {
+// Set up a convenience for showing toasts from JS: boodoo.toast(message, options)
+boodoo.toast = function toast(message, options = {}) {
   const opts = {
     title: '',
     delay: 5000,
@@ -76,7 +76,7 @@ function autoInit() {
   if (typeof document === 'undefined') return;
   // Buttons
   document.addEventListener('click', (event) => {
-    const btn = event.target.closest('[data-budu-toggle="button"]');
+    const btn = event.target.closest('[data-boodoo-toggle="button"]');
     if (btn) {
       const instance = Button.getOrCreateInstance(btn);
       instance.toggle();
@@ -94,7 +94,7 @@ if (typeof document === 'undefined') {
 }
 
 // Public default export
-export default budu;
+export default boodoo;
 if (typeof window !== 'undefined') {
-  window.budu = budu;
+  window.boodoo = boodoo;
 }

@@ -1,29 +1,29 @@
-// BUDU TABLES
+// BOODOO TABLES
 // Modern, zebra-striped, bordered and hover tables.
 
 .table {
-  --budu-table-bg: transparent;
-  --budu-table-color: #{$budu-body-color};
-  --budu-table-border-color: #{$budu-border-color};
-  --budu-table-accent-bg: transparent;
-  --budu-table-striped-color: var(--budu-body-color);
-  --budu-table-striped-bg: #{rgba($budu-gray-100, 0.6)};
-  --budu-table-active-color: var(--budu-body-color);
-  --budu-table-active-bg: #{rgba($budu-primary, 0.08)};
-  --budu-table-hover-color: var(--budu-body-color);
-  --budu-table-hover-bg: #{rgba($budu-gray-100, 0.75)};
+  --boodoo-table-bg: transparent;
+  --boodoo-table-color: #{$boodoo-body-color};
+  --boodoo-table-border-color: #{$boodoo-border-color};
+  --boodoo-table-accent-bg: transparent;
+  --boodoo-table-striped-color: var(--boodoo-body-color);
+  --boodoo-table-striped-bg: #{rgba($boodoo-gray-100, 0.6)};
+  --boodoo-table-active-color: var(--boodoo-body-color);
+  --boodoo-table-active-bg: #{rgba($boodoo-primary, 0.08)};
+  --boodoo-table-hover-color: var(--boodoo-body-color);
+  --boodoo-table-hover-bg: #{rgba($boodoo-gray-100, 0.75)};
 
   width: 100%;
   margin-bottom: 1rem;
-  color: var(--budu-table-color);
+  color: var(--boodoo-table-color);
   vertical-align: top;
-  border-color: var(--budu-table-border-color);
+  border-color: var(--boodoo-table-border-color);
 
   > :not(caption) > * > * {
     padding: 0.75rem 0.75rem;
-    background-color: var(--budu-table-bg);
-    border-bottom-width: $budu-border-width;
-    box-shadow: inset 0 0 0 9999px var(--budu-table-accent-bg);
+    background-color: var(--boodoo-table-bg);
+    border-bottom-width: $boodoo-border-width;
+    box-shadow: inset 0 0 0 9999px var(--boodoo-table-accent-bg);
   }
 
   > tbody {
@@ -48,7 +48,7 @@
   > caption {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    color: var(--budu-body-secondary-color);
+    color: var(--boodoo-body-secondary-color);
     text-align: left;
   }
 }
@@ -56,37 +56,37 @@
 // Variants
 .table-striped {
   > tbody > tr:nth-of-type(odd) > * {
-    --budu-table-accent-bg: var(--budu-table-striped-bg);
-    color: var(--budu-table-striped-color);
+    --boodoo-table-accent-bg: var(--boodoo-table-striped-bg);
+    color: var(--boodoo-table-striped-color);
   }
 }
 
 .table-striped-columns {
   > :not(caption) > tr > :nth-child(even) {
-    --budu-table-accent-bg: var(--budu-table-striped-bg);
-    color: var(--budu-table-striped-color);
+    --boodoo-table-accent-bg: var(--boodoo-table-striped-bg);
+    color: var(--boodoo-table-striped-color);
   }
 }
 
 .table-active {
-  --budu-table-accent-bg: var(--budu-table-active-bg);
-  color: var(--budu-table-active-color);
+  --boodoo-table-accent-bg: var(--boodoo-table-active-bg);
+  color: var(--boodoo-table-active-color);
 }
 
 .table-hover {
   > tbody > tr:hover > * {
-    --budu-table-accent-bg: var(--budu-table-hover-bg);
-    color: var(--budu-table-hover-color);
+    --boodoo-table-accent-bg: var(--boodoo-table-hover-bg);
+    color: var(--boodoo-table-hover-color);
   }
 }
 
 // Borders
 .table-bordered {
   > :not(caption) > * {
-    border-width: $budu-border-width 0;
+    border-width: $boodoo-border-width 0;
 
     > * {
-      border-width: 0 $budu-border-width;
+      border-width: 0 $boodoo-border-width;
     }
   }
 }
@@ -110,27 +110,27 @@
 
 // Dark (forced)
 .table-dark {
-  --budu-table-color: #fff;
-  --budu-table-bg: #{$budu-gray-900};
-  --budu-table-border-color: #{$budu-gray-800};
-  --budu-table-striped-bg: rgba(255, 255, 255, 0.05);
-  --budu-table-hover-bg: rgba(255, 255, 255, 0.075);
+  --boodoo-table-color: #fff;
+  --boodoo-table-bg: #{$boodoo-gray-900};
+  --boodoo-table-border-color: #{$boodoo-gray-800};
+  --boodoo-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --boodoo-table-hover-bg: rgba(255, 255, 255, 0.075);
   color: #fff;
 
   &.table-striped {
-    --budu-table-striped-color: #fff;
+    --boodoo-table-striped-color: #fff;
   }
   &.table-hover {
-    --budu-table-hover-color: #fff;
+    --boodoo-table-hover-color: #fff;
   }
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .table-#{$name} {
-    --budu-table-color: #{map.get($budu-text-emphasis-map, $name)};
-    --budu-table-bg: #{map.get($budu-bg-subtle-map, $name)};
-    --budu-table-border-color: #{map.get($budu-border-subtle-map, $name)};
+    --boodoo-table-color: #{map.get($boodoo-text-emphasis-map, $name)};
+    --boodoo-table-bg: #{map.get($boodoo-bg-subtle-map, $name)};
+    --boodoo-table-border-color: #{map.get($boodoo-border-subtle-map, $name)};
   }
 }
 
@@ -140,7 +140,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@each $breakpoint in map.keys($budu-grid-breakpoints) {
+@each $breakpoint in map.keys($boodoo-grid-breakpoints) {
   $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
 
   @include media-breakpoint-down($breakpoint) {

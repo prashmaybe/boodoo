@@ -1,18 +1,18 @@
-// BUDU ANIMATIONS
+// BOODOO ANIMATIONS
 // Motion utilities and keyframes (respects prefers-reduced-motion).
 
 // Keyframes
-@keyframes budu-fade-in {
+@keyframes boodoo-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes budu-fade-out {
+@keyframes boodoo-fade-out {
   from { opacity: 1; }
   to   { opacity: 0; }
 }
 
-@keyframes budu-slide-up {
+@keyframes boodoo-slide-up {
   from {
     opacity: 0;
     transform: translateY(1rem);
@@ -23,7 +23,7 @@
   }
 }
 
-@keyframes budu-slide-down {
+@keyframes boodoo-slide-down {
   from {
     opacity: 0;
     transform: translateY(-1rem);
@@ -34,7 +34,7 @@
   }
 }
 
-@keyframes budu-slide-left {
+@keyframes boodoo-slide-left {
   from {
     opacity: 0;
     transform: translateX(1rem);
@@ -45,7 +45,7 @@
   }
 }
 
-@keyframes budu-slide-right {
+@keyframes boodoo-slide-right {
   from {
     opacity: 0;
     transform: translateX(-1rem);
@@ -56,7 +56,7 @@
   }
 }
 
-@keyframes budu-zoom-in {
+@keyframes boodoo-zoom-in {
   from {
     opacity: 0;
     transform: scale(0.9);
@@ -67,7 +67,7 @@
   }
 }
 
-@keyframes budu-zoom-out {
+@keyframes boodoo-zoom-out {
   from {
     opacity: 1;
     transform: scale(1);
@@ -78,56 +78,56 @@
   }
 }
 
-@keyframes budu-pulse {
-  0% { box-shadow: 0 0 0 0 rgba($budu-primary, 0.4); }
-  70% { box-shadow: 0 0 0 0.75rem rgba($budu-primary, 0); }
-  100% { box-shadow: 0 0 0 0 rgba($budu-primary, 0); }
+@keyframes boodoo-pulse {
+  0% { box-shadow: 0 0 0 0 rgba($boodoo-primary, 0.4); }
+  70% { box-shadow: 0 0 0 0.75rem rgba($boodoo-primary, 0); }
+  100% { box-shadow: 0 0 0 0 rgba($boodoo-primary, 0); }
 }
 
-@keyframes budu-shine {
+@keyframes boodoo-shine {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 
-@keyframes budu-spin {
+@keyframes boodoo-spin {
   to { transform: rotate(360deg); }
 }
 
-@keyframes budu-bounce {
+@keyframes boodoo-bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-25%); }
 }
 
-@keyframes budu-shake {
+@keyframes boodoo-shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-0.5rem); }
   75% { transform: translateX(0.5rem); }
 }
 
-@keyframes budu-glow {
+@keyframes boodoo-glow {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
 
 // Animation utility classes
-.animate-fade-in     { animation: budu-fade-in 0.4s ease both; }
-.animate-fade-out    { animation: budu-fade-out 0.4s ease both; }
-.animate-slide-up    { animation: budu-slide-up 0.5s ease both; }
-.animate-slide-down  { animation: budu-slide-down 0.5s ease both; }
-.animate-slide-left  { animation: budu-slide-left 0.5s ease both; }
-.animate-slide-right { animation: budu-slide-right 0.5s ease both; }
-.animate-zoom-in     { animation: budu-zoom-in 0.35s ease both; }
-.animate-zoom-out    { animation: budu-zoom-out 0.35s ease both; }
-.animate-pulse       { animation: budu-pulse 1.5s infinite; }
+.animate-fade-in     { animation: boodoo-fade-in 0.4s ease both; }
+.animate-fade-out    { animation: boodoo-fade-out 0.4s ease both; }
+.animate-slide-up    { animation: boodoo-slide-up 0.5s ease both; }
+.animate-slide-down  { animation: boodoo-slide-down 0.5s ease both; }
+.animate-slide-left  { animation: boodoo-slide-left 0.5s ease both; }
+.animate-slide-right { animation: boodoo-slide-right 0.5s ease both; }
+.animate-zoom-in     { animation: boodoo-zoom-in 0.35s ease both; }
+.animate-zoom-out    { animation: boodoo-zoom-out 0.35s ease both; }
+.animate-pulse       { animation: boodoo-pulse 1.5s infinite; }
 .animate-shine       {
-  background-image: linear-gradient(90deg, transparent, rgba($budu-white, 0.6), transparent);
+  background-image: linear-gradient(90deg, transparent, rgba($boodoo-white, 0.6), transparent);
   background-size: 200% 100%;
-  animation: budu-shine 2s linear infinite;
+  animation: boodoo-shine 2s linear infinite;
 }
-.animate-spin       { animation: budu-spin 1s linear infinite; }
-.animate-bounce     { animation: budu-bounce 1s infinite; }
-.animate-shake      { animation: budu-shake 0.6s ease both; }
-.animate-glow       { animation: budu-glow 2s ease-in-out infinite; }
+.animate-spin       { animation: boodoo-spin 1s linear infinite; }
+.animate-bounce     { animation: boodoo-bounce 1s infinite; }
+.animate-shake      { animation: boodoo-shake 0.6s ease both; }
+.animate-glow       { animation: boodoo-glow 2s ease-in-out infinite; }
 
 // Animation delay / duration utilities
 .delay-75   { animation-delay: 75ms; }

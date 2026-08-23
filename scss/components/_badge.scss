@@ -1,4 +1,4 @@
-// BUDU BADGE
+// BOODOO BADGE
 // Badges & pills.
 
 .badge {
@@ -7,12 +7,12 @@
   font-size: 0.75em;
   font-weight: 600;
   line-height: 1;
-  color: $budu-white;
+  color: $boodoo-white;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: $budu-border-radius;
-  background-color: $budu-primary;
+  border-radius: $boodoo-border-radius;
+  background-color: $boodoo-primary;
 
   &:empty {
     display: none;
@@ -20,15 +20,15 @@
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .badge-#{$name} {
     background-color: $color;
-    color: if($name == "light", $budu-dark, $budu-white);
+    color: if($name == "light", $boodoo-dark, $boodoo-white);
   }
 }
 
 // Soft badges
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .badge-soft-#{$name} {
     background-color: tint-color($color, 88%);
     color: $color;
@@ -36,7 +36,7 @@
 }
 
 // Outline badges
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .badge-outline-#{$name} {
     background-color: transparent;
     color: $color;
@@ -48,7 +48,7 @@
 .badge-pill {
   padding-right: 0.75em;
   padding-left: 0.75em;
-  border-radius: $budu-border-radius-pill;
+  border-radius: $boodoo-border-radius-pill;
 }
 
 // Circle badge (count badges)

@@ -1,191 +1,191 @@
-// BUDU ROOT
+// BOODOO ROOT
 // CSS custom properties (design tokens) emitted on :root.
 
 @use "sass:map";
 
 :root {
   // Colors (theme)
-  --budu-primary: #{$budu-primary};
-  --budu-secondary: #{$budu-secondary};
-  --budu-success: #{$budu-success};
-  --budu-info: #{$budu-info};
-  --budu-warning: #{$budu-warning};
-  --budu-danger: #{$budu-danger};
-  --budu-light: #{$budu-light};
-  --budu-dark: #{$budu-dark};
-  --budu-black: #{$budu-black};
-  --budu-white: #{$budu-white};
-  --budu-accent: #{$budu-accent};
+  --boodoo-primary: #{$boodoo-primary};
+  --boodoo-secondary: #{$boodoo-secondary};
+  --boodoo-success: #{$boodoo-success};
+  --boodoo-info: #{$boodoo-info};
+  --boodoo-warning: #{$boodoo-warning};
+  --boodoo-danger: #{$boodoo-danger};
+  --boodoo-light: #{$boodoo-light};
+  --boodoo-dark: #{$boodoo-dark};
+  --boodoo-black: #{$boodoo-black};
+  --boodoo-white: #{$boodoo-white};
+  --boodoo-accent: #{$boodoo-accent};
 
   // Grays
-  --budu-gray-100: #{$budu-gray-100};
-  --budu-gray-200: #{$budu-gray-200};
-  --budu-gray-300: #{$budu-gray-300};
-  --budu-gray-400: #{$budu-gray-400};
-  --budu-gray-500: #{$budu-gray-500};
-  --budu-gray-600: #{$budu-gray-600};
-  --budu-gray-700: #{$budu-gray-700};
-  --budu-gray-800: #{$budu-gray-800};
-  --budu-gray-900: #{$budu-gray-900};
+  --boodoo-gray-100: #{$boodoo-gray-100};
+  --boodoo-gray-200: #{$boodoo-gray-200};
+  --boodoo-gray-300: #{$boodoo-gray-300};
+  --boodoo-gray-400: #{$boodoo-gray-400};
+  --boodoo-gray-500: #{$boodoo-gray-500};
+  --boodoo-gray-600: #{$boodoo-gray-600};
+  --boodoo-gray-700: #{$boodoo-gray-700};
+  --boodoo-gray-800: #{$boodoo-gray-800};
+  --boodoo-gray-900: #{$boodoo-gray-900};
 
   // RGB triplets for alpha math
-  --budu-primary-rgb: #{to-rgb($budu-primary)};
-  --budu-secondary-rgb: #{to-rgb($budu-secondary)};
-  --budu-success-rgb: #{to-rgb($budu-success)};
-  --budu-info-rgb: #{to-rgb($budu-info)};
-  --budu-warning-rgb: #{to-rgb($budu-warning)};
-  --budu-danger-rgb: #{to-rgb($budu-danger)};
-  --budu-light-rgb: #{to-rgb($budu-light)};
-  --budu-dark-rgb: #{to-rgb($budu-dark)};
-  --budu-black-rgb: #{to-rgb($budu-black)};
-  --budu-white-rgb: #{to-rgb($budu-white)};
-  --budu-body-color-rgb: #{$budu-body-color-rgb};
-  --budu-body-bg-rgb: #{$budu-body-bg-rgb};
+  --boodoo-primary-rgb: #{to-rgb($boodoo-primary)};
+  --boodoo-secondary-rgb: #{to-rgb($boodoo-secondary)};
+  --boodoo-success-rgb: #{to-rgb($boodoo-success)};
+  --boodoo-info-rgb: #{to-rgb($boodoo-info)};
+  --boodoo-warning-rgb: #{to-rgb($boodoo-warning)};
+  --boodoo-danger-rgb: #{to-rgb($boodoo-danger)};
+  --boodoo-light-rgb: #{to-rgb($boodoo-light)};
+  --boodoo-dark-rgb: #{to-rgb($boodoo-dark)};
+  --boodoo-black-rgb: #{to-rgb($boodoo-black)};
+  --boodoo-white-rgb: #{to-rgb($boodoo-white)};
+  --boodoo-body-color-rgb: #{$boodoo-body-color-rgb};
+  --boodoo-body-bg-rgb: #{$boodoo-body-bg-rgb};
 
   // Body
-  --budu-body-color: #{$budu-body-color};
-  --budu-body-bg: #{$budu-body-bg};
-  --budu-body-secondary-color: #{$budu-body-secondary-color};
-  --budu-body-tertiary-color: #{$budu-body-tertiary-color};
-  --budu-body-secondary-bg: #{$budu-body-secondary-bg};
-  --budu-body-tertiary-bg: #{$budu-body-tertiary-bg};
-  --budu-body-emphasis-color: #{$budu-body-emphasis-color};
+  --boodoo-body-color: #{$boodoo-body-color};
+  --boodoo-body-bg: #{$boodoo-body-bg};
+  --boodoo-body-secondary-color: #{$boodoo-body-secondary-color};
+  --boodoo-body-tertiary-color: #{$boodoo-body-tertiary-color};
+  --boodoo-body-secondary-bg: #{$boodoo-body-secondary-bg};
+  --boodoo-body-tertiary-bg: #{$boodoo-body-tertiary-bg};
+  --boodoo-body-emphasis-color: #{$boodoo-body-emphasis-color};
 
   // Typography
-  --budu-font-sans-serif: #{$budu-font-family-sans-serif};
-  --budu-font-serif: #{$budu-font-family-serif};
-  --budu-font-monospace: #{$budu-font-family-monospace};
-  --budu-font-family-base: var(--budu-font-sans-serif);
-  --budu-font-size-base: #{$budu-font-size-base};
-  --budu-font-size-sm: #{$budu-font-size-sm};
-  --budu-font-size-lg: #{$budu-font-size-lg};
-  --budu-font-weight-normal: #{$budu-font-weight-normal};
-  --budu-font-weight-medium: #{$budu-font-weight-medium};
-  --budu-font-weight-semibold: #{$budu-font-weight-semibold};
-  --budu-font-weight-bold: #{$budu-font-weight-bold};
-  --budu-line-height-base: #{$budu-line-height-base};
-  --budu-line-height-sm: #{$budu-line-height-sm};
-  --budu-line-height-lg: #{$budu-line-height-lg};
-  --budu-heading-color: #{$budu-headings-color};
-  --budu-heading-font-weight: #{$budu-headings-font-weight};
-  --budu-link-color: #{$budu-link-color};
-  --budu-link-hover-color: #{$budu-link-hover-color};
+  --boodoo-font-sans-serif: #{$boodoo-font-family-sans-serif};
+  --boodoo-font-serif: #{$boodoo-font-family-serif};
+  --boodoo-font-monospace: #{$boodoo-font-family-monospace};
+  --boodoo-font-family-base: var(--boodoo-font-sans-serif);
+  --boodoo-font-size-base: #{$boodoo-font-size-base};
+  --boodoo-font-size-sm: #{$boodoo-font-size-sm};
+  --boodoo-font-size-lg: #{$boodoo-font-size-lg};
+  --boodoo-font-weight-normal: #{$boodoo-font-weight-normal};
+  --boodoo-font-weight-medium: #{$boodoo-font-weight-medium};
+  --boodoo-font-weight-semibold: #{$boodoo-font-weight-semibold};
+  --boodoo-font-weight-bold: #{$boodoo-font-weight-bold};
+  --boodoo-line-height-base: #{$boodoo-line-height-base};
+  --boodoo-line-height-sm: #{$boodoo-line-height-sm};
+  --boodoo-line-height-lg: #{$boodoo-line-height-lg};
+  --boodoo-heading-color: #{$boodoo-headings-color};
+  --boodoo-heading-font-weight: #{$boodoo-headings-font-weight};
+  --boodoo-link-color: #{$boodoo-link-color};
+  --boodoo-link-hover-color: #{$boodoo-link-hover-color};
 
   // Spacing
-  --budu-spacer: #{$budu-spacer};
-  --budu-spacers-0: #{map.get($budu-spacers, 0)};
-  --budu-spacers-1: #{map.get($budu-spacers, 1)};
-  --budu-spacers-2: #{map.get($budu-spacers, 2)};
-  --budu-spacers-3: #{map.get($budu-spacers, 3)};
-  --budu-spacers-4: #{map.get($budu-spacers, 4)};
-  --budu-spacers-5: #{map.get($budu-spacers, 5)};
+  --boodoo-spacer: #{$boodoo-spacer};
+  --boodoo-spacers-0: #{map.get($boodoo-spacers, 0)};
+  --boodoo-spacers-1: #{map.get($boodoo-spacers, 1)};
+  --boodoo-spacers-2: #{map.get($boodoo-spacers, 2)};
+  --boodoo-spacers-3: #{map.get($boodoo-spacers, 3)};
+  --boodoo-spacers-4: #{map.get($boodoo-spacers, 4)};
+  --boodoo-spacers-5: #{map.get($boodoo-spacers, 5)};
 
   // Border & radius
-  --budu-border-width: #{$budu-border-width};
-  --budu-border-style: #{$budu-border-style};
-  --budu-border-color: #{$budu-border-color};
-  --budu-border-color-translucent: #{$budu-border-color-translucent};
-  --budu-border-radius: #{$budu-border-radius};
-  --budu-border-radius-sm: #{$budu-border-radius-sm};
-  --budu-border-radius-lg: #{$budu-border-radius-lg};
-  --budu-border-radius-xl: #{$budu-border-radius-xl};
-  --budu-border-radius-xxl: #{$budu-border-radius-xxl};
-  --budu-border-radius-pill: #{$budu-border-radius-pill};
+  --boodoo-border-width: #{$boodoo-border-width};
+  --boodoo-border-style: #{$boodoo-border-style};
+  --boodoo-border-color: #{$boodoo-border-color};
+  --boodoo-border-color-translucent: #{$boodoo-border-color-translucent};
+  --boodoo-border-radius: #{$boodoo-border-radius};
+  --boodoo-border-radius-sm: #{$boodoo-border-radius-sm};
+  --boodoo-border-radius-lg: #{$boodoo-border-radius-lg};
+  --boodoo-border-radius-xl: #{$boodoo-border-radius-xl};
+  --boodoo-border-radius-xxl: #{$boodoo-border-radius-xxl};
+  --boodoo-border-radius-pill: #{$boodoo-border-radius-pill};
 
   // Grid
-  --budu-gutter-x: #{$budu-gutter-x};
-  --budu-gutter-y: #{$budu-gutter-y};
+  --boodoo-gutter-x: #{$boodoo-gutter-x};
+  --boodoo-gutter-y: #{$boodoo-gutter-y};
 
   // Shadows / elevation
-  --budu-box-shadow: #{$budu-box-shadow};
-  --budu-box-shadow-sm: #{$budu-box-shadow-sm};
-  --budu-box-shadow-lg: #{$budu-box-shadow-lg};
-  --budu-shadow-sm: #{map.get($budu-shadow-map, "sm")};
-  --budu-shadow-base: #{map.get($budu-shadow-map, "base")};
-  --budu-shadow-md: #{map.get($budu-shadow-map, "md")};
-  --budu-shadow-lg: #{map.get($budu-shadow-map, "lg")};
-  --budu-shadow-xl: #{map.get($budu-shadow-map, "xl")};
+  --boodoo-box-shadow: #{$boodoo-box-shadow};
+  --boodoo-box-shadow-sm: #{$boodoo-box-shadow-sm};
+  --boodoo-box-shadow-lg: #{$boodoo-box-shadow-lg};
+  --boodoo-shadow-sm: #{map.get($boodoo-shadow-map, "sm")};
+  --boodoo-shadow-base: #{map.get($boodoo-shadow-map, "base")};
+  --boodoo-shadow-md: #{map.get($boodoo-shadow-map, "md")};
+  --boodoo-shadow-lg: #{map.get($boodoo-shadow-map, "lg")};
+  --boodoo-shadow-xl: #{map.get($boodoo-shadow-map, "xl")};
 
   // Transitions / motion
-  --budu-transition-duration: #{$budu-transition-duration};
-  --budu-transition-timing: #{$budu-transition-timing};
-  --budu-transition: #{$budu-transition};
-  --budu-transition-fade: #{$budu-transition-fade};
-  --budu-transition-collapse: #{$budu-transition-collapse};
+  --boodoo-transition-duration: #{$boodoo-transition-duration};
+  --boodoo-transition-timing: #{$boodoo-transition-timing};
+  --boodoo-transition: #{$boodoo-transition};
+  --boodoo-transition-fade: #{$boodoo-transition-fade};
+  --boodoo-transition-collapse: #{$boodoo-transition-collapse};
 
   // Focus
-  --budu-focus-ring-width: #{$budu-focus-ring-width};
-  --budu-focus-ring-opacity: #{$budu-focus-ring-opacity};
-  --budu-focus-ring-color: #{$budu-focus-ring-color};
-  --budu-focus-ring-box-shadow: #{$budu-focus-ring-box-shadow};
+  --boodoo-focus-ring-width: #{$boodoo-focus-ring-width};
+  --boodoo-focus-ring-opacity: #{$boodoo-focus-ring-opacity};
+  --boodoo-focus-ring-color: #{$boodoo-focus-ring-color};
+  --boodoo-focus-ring-box-shadow: #{$boodoo-focus-ring-box-shadow};
 
   // Z-index
-  --budu-zindex-dropdown: #{$budu-zindex-dropdown};
-  --budu-zindex-sticky: #{$budu-zindex-sticky};
-  --budu-zindex-fixed: #{$budu-zindex-fixed};
-  --budu-zindex-modal-backdrop: #{$budu-zindex-modal-backdrop};
-  --budu-zindex-modal: #{$budu-zindex-modal};
-  --budu-zindex-popover: #{$budu-zindex-popover};
-  --budu-zindex-tooltip: #{$budu-zindex-tooltip};
-  --budu-zindex-toast: #{$budu-zindex-toast};
+  --boodoo-zindex-dropdown: #{$boodoo-zindex-dropdown};
+  --boodoo-zindex-sticky: #{$boodoo-zindex-sticky};
+  --boodoo-zindex-fixed: #{$boodoo-zindex-fixed};
+  --boodoo-zindex-modal-backdrop: #{$boodoo-zindex-modal-backdrop};
+  --boodoo-zindex-modal: #{$boodoo-zindex-modal};
+  --boodoo-zindex-popover: #{$boodoo-zindex-popover};
+  --boodoo-zindex-tooltip: #{$boodoo-zindex-tooltip};
+  --boodoo-zindex-toast: #{$boodoo-zindex-toast};
 
   // Components
-  --budu-btn-padding-y: #{$budu-input-btn-padding-y};
-  --budu-btn-padding-x: #{$budu-input-btn-padding-x};
-  --budu-btn-font-size: #{$budu-input-btn-font-size};
-  --budu-btn-border-radius: #{$budu-border-radius};
-  --budu-card-spacer-y: #{$budu-card-spacer-y};
-  --budu-card-spacer-x: #{$budu-card-spacer-x};
-  --budu-form-control-bg: #{$budu-form-control-bg};
-  --budu-form-control-border-color: #{$budu-form-control-border-color};
+  --boodoo-btn-padding-y: #{$boodoo-input-btn-padding-y};
+  --boodoo-btn-padding-x: #{$boodoo-input-btn-padding-x};
+  --boodoo-btn-font-size: #{$boodoo-input-btn-font-size};
+  --boodoo-btn-border-radius: #{$boodoo-border-radius};
+  --boodoo-card-spacer-y: #{$boodoo-card-spacer-y};
+  --boodoo-card-spacer-x: #{$boodoo-card-spacer-x};
+  --boodoo-form-control-bg: #{$boodoo-form-control-bg};
+  --boodoo-form-control-border-color: #{$boodoo-form-control-border-color};
 
   // Typography scale (Material)
-  --budu-typography-scale: #{$budu-type-ratio};
+  --boodoo-typography-scale: #{$boodoo-type-ratio};
 }
 
-// Dark mode via media query (pure CSS, overridable with [data-budu-theme="light"])
+// Dark mode via media query (pure CSS, overridable with [data-boodoo-theme="light"])
 @media (prefers-color-scheme: dark) {
-  :root:not([data-budu-theme="light"]) {
+  :root:not([data-boodoo-theme="light"]) {
     color-scheme: dark;
-    --budu-body-bg: #{$budu-gray-900};
-    --budu-body-bg-rgb: #{to-rgb($budu-gray-900)};
-    --budu-body-color: #{$budu-gray-200};
-    --budu-body-color-rgb: #{to-rgb($budu-gray-200)};
-    --budu-body-secondary-color: #{rgba($budu-gray-200, 0.75)};
-    --budu-body-secondary-bg: #{$budu-gray-800};
-    --budu-body-tertiary-bg: #{$budu-gray-800};
-    --budu-body-emphasis-color: #{$budu-white};
-    --budu-link-color: #{tint-color($budu-primary, 25%)};
-    --budu-link-hover-color: #{tint-color($budu-primary, 40%)};
-    --budu-border-color: #{$budu-gray-700};
-    --budu-border-color-translucent: #{rgba($budu-white, 0.12)};
-    --budu-heading-color: #{$budu-white};
-    --budu-card-bg: #{$budu-gray-800};
-    --budu-dropdown-bg: #{$budu-gray-900};
-    --budu-dropdown-border-color: #{$budu-gray-800};
-    --budu-form-control-bg: #{$budu-gray-900};
-    --budu-form-control-border-color: #{$budu-gray-700};
+    --boodoo-body-bg: #{$boodoo-gray-900};
+    --boodoo-body-bg-rgb: #{to-rgb($boodoo-gray-900)};
+    --boodoo-body-color: #{$boodoo-gray-200};
+    --boodoo-body-color-rgb: #{to-rgb($boodoo-gray-200)};
+    --boodoo-body-secondary-color: #{rgba($boodoo-gray-200, 0.75)};
+    --boodoo-body-secondary-bg: #{$boodoo-gray-800};
+    --boodoo-body-tertiary-bg: #{$boodoo-gray-800};
+    --boodoo-body-emphasis-color: #{$boodoo-white};
+    --boodoo-link-color: #{tint-color($boodoo-primary, 25%)};
+    --boodoo-link-hover-color: #{tint-color($boodoo-primary, 40%)};
+    --boodoo-border-color: #{$boodoo-gray-700};
+    --boodoo-border-color-translucent: #{rgba($boodoo-white, 0.12)};
+    --boodoo-heading-color: #{$boodoo-white};
+    --boodoo-card-bg: #{$boodoo-gray-800};
+    --boodoo-dropdown-bg: #{$boodoo-gray-900};
+    --boodoo-dropdown-border-color: #{$boodoo-gray-800};
+    --boodoo-form-control-bg: #{$boodoo-gray-900};
+    --boodoo-form-control-border-color: #{$boodoo-gray-700};
   }
 }
 
-[data-budu-theme="dark"] {
+[data-boodoo-theme="dark"] {
   color-scheme: dark;
-  --budu-body-bg: #{$budu-gray-900};
-  --budu-body-bg-rgb: #{to-rgb($budu-gray-900)};
-  --budu-body-color: #{$budu-gray-200};
-  --budu-body-color-rgb: #{to-rgb($budu-gray-200)};
-  --budu-body-secondary-color: #{rgba($budu-gray-200, 0.75)};
-  --budu-body-secondary-bg: #{$budu-gray-800};
-  --budu-body-tertiary-bg: #{$budu-gray-800};
-  --budu-body-emphasis-color: #{$budu-white};
-  --budu-link-color: #{tint-color($budu-primary, 25%)};
-  --budu-link-hover-color: #{tint-color($budu-primary, 40%)};
-  --budu-border-color: #{$budu-gray-700};
-  --budu-border-color-translucent: #{rgba($budu-white, 0.12)};
-  --budu-heading-color: #{$budu-white};
-  --budu-card-bg: #{$budu-gray-800};
-  --budu-dropdown-bg: #{$budu-gray-900};
-  --budu-dropdown-border-color: #{$budu-gray-800};
-  --budu-form-control-bg: #{$budu-gray-900};
-  --budu-form-control-border-color: #{$budu-gray-700};
+  --boodoo-body-bg: #{$boodoo-gray-900};
+  --boodoo-body-bg-rgb: #{to-rgb($boodoo-gray-900)};
+  --boodoo-body-color: #{$boodoo-gray-200};
+  --boodoo-body-color-rgb: #{to-rgb($boodoo-gray-200)};
+  --boodoo-body-secondary-color: #{rgba($boodoo-gray-200, 0.75)};
+  --boodoo-body-secondary-bg: #{$boodoo-gray-800};
+  --boodoo-body-tertiary-bg: #{$boodoo-gray-800};
+  --boodoo-body-emphasis-color: #{$boodoo-white};
+  --boodoo-link-color: #{tint-color($boodoo-primary, 25%)};
+  --boodoo-link-hover-color: #{tint-color($boodoo-primary, 40%)};
+  --boodoo-border-color: #{$boodoo-gray-700};
+  --boodoo-border-color-translucent: #{rgba($boodoo-white, 0.12)};
+  --boodoo-heading-color: #{$boodoo-white};
+  --boodoo-card-bg: #{$boodoo-gray-800};
+  --boodoo-dropdown-bg: #{$boodoo-gray-900};
+  --boodoo-dropdown-border-color: #{$boodoo-gray-800};
+  --boodoo-form-control-bg: #{$boodoo-gray-900};
+  --boodoo-form-control-border-color: #{$boodoo-gray-700};
 }

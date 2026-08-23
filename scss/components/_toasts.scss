@@ -1,25 +1,25 @@
-// BUDU TOASTS
+// BOODOO TOASTS
 // Toast notifications with stacking, positioning.
 
 .toast {
-  --budu-toast-max-width: #{$budu-toast-max-width};
-  --budu-toast-bg: #{$budu-toast-bg};
-  --budu-toast-border-color: #{$budu-toast-border-color};
-  --budu-toast-border-radius: #{$budu-toast-border-radius};
-  --budu-toast-box-shadow: #{$budu-toast-box-shadow};
-  --budu-toast-padding-y: 0.75rem;
-  --budu-toast-padding-x: 0.875rem;
+  --boodoo-toast-max-width: #{$boodoo-toast-max-width};
+  --boodoo-toast-bg: #{$boodoo-toast-bg};
+  --boodoo-toast-border-color: #{$boodoo-toast-border-color};
+  --boodoo-toast-border-radius: #{$boodoo-toast-border-radius};
+  --boodoo-toast-box-shadow: #{$boodoo-toast-box-shadow};
+  --boodoo-toast-padding-y: 0.75rem;
+  --boodoo-toast-padding-x: 0.875rem;
 
-  width: var(--budu-toast-max-width);
+  width: var(--boodoo-toast-max-width);
   max-width: 100%;
   font-size: 0.875rem;
-  color: var(--budu-body-color);
+  color: var(--boodoo-body-color);
   pointer-events: auto;
-  background-color: var(--budu-toast-bg);
+  background-color: var(--boodoo-toast-bg);
   background-clip: padding-box;
-  border: 1px solid var(--budu-toast-border-color);
-  box-shadow: var(--budu-toast-box-shadow);
-  border-radius: var(--budu-toast-border-radius);
+  border: 1px solid var(--boodoo-toast-border-color);
+  box-shadow: var(--boodoo-toast-box-shadow);
+  border-radius: var(--boodoo-toast-border-radius);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -30,7 +30,7 @@
   &.show {
     display: block;
     opacity: 1;
-    animation: budu-slide-up 0.3s ease;
+    animation: boodoo-slide-up 0.3s ease;
   }
 
   &.hide {
@@ -39,10 +39,10 @@
 }
 
 .toast-container {
-  --budu-toast-zindex: #{$budu-zindex-toast};
+  --boodoo-toast-zindex: #{$boodoo-zindex-toast};
 
   position: fixed;
-  z-index: var(--budu-toast-zindex);
+  z-index: var(--boodoo-toast-zindex);
   width: max-content;
   max-width: 100%;
   pointer-events: none;
@@ -63,13 +63,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: var(--budu-toast-padding-y) var(--budu-toast-padding-x);
-  color: var(--budu-body-secondary-color);
-  background-color: var(--budu-body-secondary-bg);
+  padding: var(--boodoo-toast-padding-y) var(--boodoo-toast-padding-x);
+  color: var(--boodoo-body-secondary-color);
+  background-color: var(--boodoo-body-secondary-bg);
   background-clip: padding-box;
-  border-bottom: 1px solid var(--budu-toast-border-color);
-  border-top-left-radius: calc(var(--budu-toast-border-radius) - 1px);
-  border-top-right-radius: calc(var(--budu-toast-border-radius) - 1px);
+  border-bottom: 1px solid var(--boodoo-toast-border-color);
+  border-top-left-radius: calc(var(--boodoo-toast-border-radius) - 1px);
+  border-top-right-radius: calc(var(--boodoo-toast-border-radius) - 1px);
 
   .btn-close {
     margin-left: auto;
@@ -77,16 +77,16 @@
 }
 
 .toast-body {
-  padding: var(--budu-toast-padding-y) var(--budu-toast-padding-x);
+  padding: var(--boodoo-toast-padding-y) var(--boodoo-toast-padding-x);
   word-wrap: break-word;
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .toast-#{$name} {
-    --budu-toast-bg: #{$color};
-    --budu-toast-border-color: #{shift-color($color, -10%)};
-    color: if($name == "light", $budu-dark, $budu-white);
+    --boodoo-toast-bg: #{$color};
+    --boodoo-toast-border-color: #{shift-color($color, -10%)};
+    color: if($name == "light", $boodoo-dark, $boodoo-white);
 
     .toast-header {
       color: inherit;

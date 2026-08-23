@@ -1,4 +1,4 @@
-// BUDU NAV
+// BOODOO NAV
 // Nav, tabs, pills, underline tabs, vertical variants.
 
 .nav {
@@ -11,24 +11,24 @@
   .nav-link {
     display: block;
     padding: 0.5rem 1rem;
-    color: var(--budu-body-color);
+    color: var(--boodoo-body-color);
     text-decoration: none;
-    border-radius: $budu-border-radius;
+    border-radius: $boodoo-border-radius;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out;
 
     &:hover,
     &:focus {
-      color: $budu-link-hover-color;
+      color: $boodoo-link-hover-color;
     }
 
     &.active {
-      color: $budu-primary;
+      color: $boodoo-primary;
       font-weight: 500;
     }
 
     &.disabled {
-      color: var(--budu-body-tertiary-color);
+      color: var(--boodoo-body-tertiary-color);
       pointer-events: none;
       cursor: default;
     }
@@ -39,8 +39,8 @@
 .nav-pills {
   .nav-link {
     &.active {
-      color: $budu-white;
-      background-color: $budu-primary;
+      color: $boodoo-white;
+      background-color: $boodoo-primary;
     }
   }
 }
@@ -49,33 +49,33 @@
 .nav-pills-soft {
   .nav-link {
     &.active {
-      color: $budu-primary;
-      background-color: $budu-primary-bg-subtle;
+      color: $boodoo-primary;
+      background-color: $boodoo-primary-bg-subtle;
     }
   }
 }
 
 // Tabs
 .nav-tabs {
-  border-bottom: $budu-border-width solid var(--budu-border-color);
+  border-bottom: $boodoo-border-width solid var(--boodoo-border-color);
 
   .nav-link {
-    margin-bottom: calc(-1 * #{$budu-border-width});
+    margin-bottom: calc(-1 * #{$boodoo-border-width});
     background: none;
-    border: $budu-border-width solid transparent;
-    border-top-left-radius: $budu-border-radius;
-    border-top-right-radius: $budu-border-radius;
+    border: $boodoo-border-width solid transparent;
+    border-top-left-radius: $boodoo-border-radius;
+    border-top-right-radius: $boodoo-border-radius;
 
     &:hover,
     &:focus {
-      border-color: var(--budu-body-tertiary-bg) var(--budu-body-tertiary-bg) var(--budu-border-color);
+      border-color: var(--boodoo-body-tertiary-bg) var(--boodoo-body-tertiary-bg) var(--boodoo-border-color);
       isolation: isolate;
     }
 
     &.active {
-      color: $budu-primary;
-      background-color: var(--budu-body-bg);
-      border-color: var(--budu-border-color) var(--budu-border-color) var(--budu-body-bg);
+      color: $boodoo-primary;
+      background-color: var(--boodoo-body-bg);
+      border-color: var(--boodoo-border-color) var(--boodoo-border-color) var(--boodoo-body-bg);
     }
   }
 }
@@ -85,18 +85,18 @@
   .nav-link {
     padding: 0.75rem 1rem;
     margin-bottom: 0;
-    color: var(--budu-body-secondary-color);
+    color: var(--boodoo-body-secondary-color);
     border-bottom: 2px solid transparent;
     border-radius: 0;
 
     &:hover {
-      color: $budu-body-color;
+      color: $boodoo-body-color;
     }
 
     &.active {
-      color: $budu-primary;
+      color: $boodoo-primary;
       font-weight: 500;
-      border-bottom-color: $budu-primary;
+      border-bottom-color: $boodoo-primary;
     }
   }
 }

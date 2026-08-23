@@ -1,4 +1,4 @@
-// BUDU FUNCTIONS
+// BOODOO FUNCTIONS
 // Pure Sass functions used across the framework.
 
 @use "sass:map";
@@ -123,26 +123,26 @@
   @return math.div(math.round($result * $decimals), $decimals);
 }
 
-// CSS var accessor for theme colors: var(--budu-#{$name})
+// CSS var accessor for theme colors: var(--boodoo-#{$name})
 @function var-c($name, $fallback: null) {
   @if $fallback == null {
-    @return var(--budu-#{$name});
+    @return var(--boodoo-#{$name});
   }
-  @return var(--budu-#{$name}, #{$fallback});
+  @return var(--boodoo-#{$name}, #{$fallback});
 }
 
 // Get a color name from the theme map or return it untouched if already a color.
-@function budu-color($key) {
-  @if variable-exists(budu-theme-colors) and map.has-key($budu-theme-colors, $key) {
-    @return map.get($budu-theme-colors, $key);
+@function boodoo-color($key) {
+  @if variable-exists(boodoo-theme-colors) and map.has-key($boodoo-theme-colors, $key) {
+    @return map.get($boodoo-theme-colors, $key);
   }
   @return $key;
 }
 
 // Spacer lookup: returns a spacing value (handles bare numbers too).
 @function spacer($key) {
-  @if variable-exists(budu-spacers) and map.has-key($budu-spacers, $key) {
-    @return map.get($budu-spacers, $key);
+  @if variable-exists(boodoo-spacers) and map.has-key($boodoo-spacers, $key) {
+    @return map.get($boodoo-spacers, $key);
   }
   @return $key;
 }
@@ -152,8 +152,8 @@
   @if $breakpoints != null and map.has-key($breakpoints, $name) {
     @return map.get($breakpoints, $name);
   }
-  @if variable-exists(budu-grid-breakpoints) and map.has-key($budu-grid-breakpoints, $name) {
-    @return map.get($budu-grid-breakpoints, $name);
+  @if variable-exists(boodoo-grid-breakpoints) and map.has-key($boodoo-grid-breakpoints, $name) {
+    @return map.get($boodoo-grid-breakpoints, $name);
   }
   @return $name;
 }

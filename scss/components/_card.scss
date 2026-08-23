@@ -1,31 +1,31 @@
-// BUDU CARDS
+// BOODOO CARDS
 // Card, body, header/footer, groups, decks, image overlays.
 
 .card {
-  --budu-card-spacer-y: #{$budu-card-spacer-y};
-  --budu-card-spacer-x: #{$budu-card-spacer-x};
-  --budu-card-bg: var(--budu-body-bg);
-  --budu-card-border-color: #{$budu-card-border-color};
-  --budu-card-border-radius: #{$budu-card-border-radius};
+  --boodoo-card-spacer-y: #{$boodoo-card-spacer-y};
+  --boodoo-card-spacer-x: #{$boodoo-card-spacer-x};
+  --boodoo-card-bg: var(--boodoo-body-bg);
+  --boodoo-card-border-color: #{$boodoo-card-border-color};
+  --boodoo-card-border-radius: #{$boodoo-card-border-radius};
 
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: var(--budu-card-height, auto);
-  color: var(--budu-body-color);
+  height: var(--boodoo-card-height, auto);
+  color: var(--boodoo-body-color);
   word-wrap: break-word;
-  background-color: var(--budu-card-bg);
+  background-color: var(--boodoo-card-bg);
   background-clip: border-box;
-  border: $budu-card-border-width solid var(--budu-card-border-color);
-  border-radius: var(--budu-card-border-radius);
+  border: $boodoo-card-border-width solid var(--boodoo-card-border-color);
+  border-radius: var(--boodoo-card-border-radius);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 
   // Material hover elevation
   &.card-hover,
   &.hoverable {
     &:hover {
-      box-shadow: map.get($budu-elevation-map, 3);
+      box-shadow: map.get($boodoo-elevation-map, 3);
       transform: translateY(-2px);
     }
   }
@@ -37,7 +37,7 @@
 
   &.card-raised {
     border: 0;
-    box-shadow: map.get($budu-elevation-map, 2);
+    box-shadow: map.get($boodoo-elevation-map, 2);
   }
 }
 
@@ -46,15 +46,15 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: map.get($budu-elevation-map, 3);
-    border-color: $budu-primary;
+    box-shadow: map.get($boodoo-elevation-map, 3);
+    border-color: $boodoo-primary;
   }
 }
 
 .card-body {
   flex: 1 1 auto;
-  padding: var(--budu-card-spacer-y) var(--budu-card-spacer-x);
-  color: var(--budu-card-color);
+  padding: var(--boodoo-card-spacer-y) var(--boodoo-card-spacer-x);
+  color: var(--boodoo-card-color);
 }
 
 .card-title {
@@ -64,7 +64,7 @@
 .card-subtitle {
   margin-top: calc(-0.25rem);
   margin-bottom: 0.5rem;
-  color: var(--budu-body-secondary-color);
+  color: var(--boodoo-body-secondary-color);
 }
 
 .card-text:last-child {
@@ -84,36 +84,36 @@
 }
 
 .card-header {
-  padding: var(--budu-card-cap-padding-y, 1rem) var(--budu-card-cap-padding-x, 1.25rem);
+  padding: var(--boodoo-card-cap-padding-y, 1rem) var(--boodoo-card-cap-padding-x, 1.25rem);
   margin-bottom: 0;
-  background-color: rgba($budu-body-color, 0.03);
-  border-bottom: $budu-card-border-width solid var(--budu-card-border-color);
+  background-color: rgba($boodoo-body-color, 0.03);
+  border-bottom: $boodoo-card-border-width solid var(--boodoo-card-border-color);
 
   &:first-child {
-    border-radius: calc(var(--budu-card-border-radius) - 1px) calc(var(--budu-card-border-radius) - 1px) 0 0;
+    border-radius: calc(var(--boodoo-card-border-radius) - 1px) calc(var(--boodoo-card-border-radius) - 1px) 0 0;
   }
 }
 
 .card-footer {
-  padding: var(--budu-card-cap-padding-y, 1rem) var(--budu-card-cap-padding-x, 1.25rem);
-  background-color: rgba($budu-body-color, 0.03);
-  border-top: $budu-card-border-width solid var(--budu-card-border-color);
+  padding: var(--boodoo-card-cap-padding-y, 1rem) var(--boodoo-card-cap-padding-x, 1.25rem);
+  background-color: rgba($boodoo-body-color, 0.03);
+  border-top: $boodoo-card-border-width solid var(--boodoo-card-border-color);
 
   &:last-child {
-    border-radius: 0 0 calc(var(--budu-card-border-radius) - 1px) calc(var(--budu-card-border-radius) - 1px);
+    border-radius: 0 0 calc(var(--boodoo-card-border-radius) - 1px) calc(var(--boodoo-card-border-radius) - 1px);
   }
 }
 
 .card-header-tabs {
-  margin-right: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
-  margin-bottom: calc(-1 * var(--budu-card-cap-padding-y, 1rem));
-  margin-left: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+  margin-right: calc(-0.5 * var(--boodoo-card-cap-padding-x, 1.25rem));
+  margin-bottom: calc(-1 * var(--boodoo-card-cap-padding-y, 1rem));
+  margin-left: calc(-0.5 * var(--boodoo-card-cap-padding-x, 1.25rem));
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
-  margin-left: calc(-0.5 * var(--budu-card-cap-padding-x, 1.25rem));
+  margin-right: calc(-0.5 * var(--boodoo-card-cap-padding-x, 1.25rem));
+  margin-left: calc(-0.5 * var(--boodoo-card-cap-padding-x, 1.25rem));
 }
 
 .card-img-overlay {
@@ -122,8 +122,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: var(--budu-card-spacer-y) var(--budu-card-spacer-x);
-  border-radius: calc(var(--budu-card-border-radius) - 1px);
+  padding: var(--boodoo-card-spacer-y) var(--boodoo-card-spacer-x);
+  border-radius: calc(var(--boodoo-card-border-radius) - 1px);
 }
 
 .card-img,
@@ -134,27 +134,27 @@
 
 .card-img,
 .card-img-top {
-  border-top-left-radius: calc(var(--budu-card-border-radius) - 1px);
-  border-top-right-radius: calc(var(--budu-card-border-radius) - 1px);
+  border-top-left-radius: calc(var(--boodoo-card-border-radius) - 1px);
+  border-top-right-radius: calc(var(--boodoo-card-border-radius) - 1px);
 }
 
 .card-img,
 .card-img-bottom {
-  border-bottom-right-radius: calc(var(--budu-card-border-radius) - 1px);
-  border-bottom-left-radius: calc(var(--budu-card-border-radius) - 1px);
+  border-bottom-right-radius: calc(var(--boodoo-card-border-radius) - 1px);
+  border-bottom-left-radius: calc(var(--boodoo-card-border-radius) - 1px);
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .card-#{$name} {
-    --budu-card-bg: #{$color};
-    --budu-card-border-color: #{$color};
-    color: if($name == "light", $budu-dark, $budu-white);
+    --boodoo-card-bg: #{$color};
+    --boodoo-card-border-color: #{$color};
+    color: if($name == "light", $boodoo-dark, $boodoo-white);
 
     .card-header,
     .card-footer {
-      background-color: rgba($budu-black, 0.08);
-      border-color: rgba($budu-black, 0.1);
+      background-color: rgba($boodoo-black, 0.08);
+      border-color: rgba($boodoo-black, 0.1);
     }
   }
 }
@@ -165,7 +165,7 @@
   flex-direction: column;
 
   > .card {
-    margin-bottom: $budu-card-spacer-y;
+    margin-bottom: $boodoo-card-spacer-y;
   }
 
   @include media-breakpoint-up(sm) {
@@ -220,8 +220,8 @@
   > .card-img-bottom {
     width: auto;
     border-radius: 0;
-    border-top-left-radius: calc(var(--budu-card-border-radius) - 1px);
-    border-bottom-left-radius: calc(var(--budu-card-border-radius) - 1px);
+    border-top-left-radius: calc(var(--boodoo-card-border-radius) - 1px);
+    border-bottom-left-radius: calc(var(--boodoo-card-border-radius) - 1px);
   }
 
   .card-body {

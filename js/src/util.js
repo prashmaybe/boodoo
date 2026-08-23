@@ -1,4 +1,4 @@
-// BUDU JS — Utilities
+// BOODOO JS — Utilities
 // Safe, dependency-free DOM/event helpers.
 
 export const element = (selector) =>
@@ -42,7 +42,7 @@ export const emulateTransitionEnd = (el, duration) =>
   });
 
 export const getElementFromSelector = (el) => {
-  const selector = el.getAttribute('data-budu-target') || el.getAttribute('href');
+  const selector = el.getAttribute('data-boodoo-target') || el.getAttribute('href');
   if (!selector || selector === '#') return null;
   if (selector.charAt(0) === '#') {
     // avoid :scope issues and getElementById side effects
@@ -85,12 +85,12 @@ export const enableDismissTrigger = (component, onToggle) => {
     else instance.hide?.();
   };
   document.addEventListener('click', (event) => {
-    const toggler = event.target.closest('[data-budu-dismiss]');
+    const toggler = event.target.closest('[data-boodoo-dismiss]');
     if (toggler) dismiss(event);
   }, true);
 };
 
-export const DATA_PREFIX = 'budu';
+export const DATA_PREFIX = 'boodoo';
 export const eventName = (suffix) => `${DATA_PREFIX}.${suffix}`;
 export const toType = (obj) =>
   ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();

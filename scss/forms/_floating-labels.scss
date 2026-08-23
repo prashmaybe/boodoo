@@ -1,4 +1,4 @@
-// BUDU FORMS — Floating Labels
+// BOODOO FORMS — Floating Labels
 // Material-inspired floating label inputs.
 
 .form-floating {
@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
-    border: $budu-input-btn-border-width solid transparent;
+    border: $boodoo-input-btn-border-width solid transparent;
     transform-origin: 0 0;
     transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
   }
@@ -59,7 +59,7 @@
   }
 
   > .form-control-plaintext {
-    border-width: $budu-input-btn-border-width 0;
+    border-width: $boodoo-input-btn-border-width 0;
   }
 }
 

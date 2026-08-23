@@ -1,4 +1,4 @@
-// BUDU MIXINS
+// BOODOO MIXINS
 // Shared mixins used by components and utilities.
 
 @use "sass:map";
@@ -10,9 +10,9 @@
 // Breakpoints (mobile-first, Bootstrap-compatible)
 // ---------------------------------------------------------------------
 
-// Min-width media query. `$name` may be a key in $budu-grid-breakpoints
+// Min-width media query. `$name` may be a key in $boodoo-grid-breakpoints
 // or a raw length.
-@mixin media-breakpoint-up($name, $breakpoints: $budu-grid-breakpoints) {
+@mixin media-breakpoint-up($name, $breakpoints: $boodoo-grid-breakpoints) {
   $min: breakpoint($name, $breakpoints);
   @if $min and $min > 0 {
     @media (min-width: $min) {
@@ -24,7 +24,7 @@
 }
 
 // Max-width media query (exclusive).
-@mixin media-breakpoint-down($name, $breakpoints: $budu-grid-breakpoints) {
+@mixin media-breakpoint-down($name, $breakpoints: $boodoo-grid-breakpoints) {
   $max: breakpoint($name, $breakpoints);
   @if $max == 0 {
     @content;
@@ -36,7 +36,7 @@
 }
 
 // Only (min of this, max of next).
-@mixin media-breakpoint-only($name, $breakpoints: $budu-grid-breakpoints) {
+@mixin media-breakpoint-only($name, $breakpoints: $boodoo-grid-breakpoints) {
   $min: breakpoint($name, $breakpoints);
   $next: map.get($breakpoints, $name);
   $next-key: map.get(map.keys($breakpoints), list.index(map.keys($breakpoints), $name) + 1);
@@ -55,7 +55,7 @@
 }
 
 // Between two named breakpoints.
-@mixin media-breakpoint-between($lower, $upper, $breakpoints: $budu-grid-breakpoints) {
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $boodoo-grid-breakpoints) {
   $min: breakpoint($lower);
   $max: breakpoint($upper);
   @if $min != null and $max != null {
@@ -72,12 +72,12 @@
 // Create a gutter-x utility value (used by containers & rows).
 @function valid-gutter($gutter) {
   @if $gutter == null {
-    @return $budu-gutter-x;
+    @return $boodoo-gutter-x;
   }
   @return $gutter;
 }
 
-@mixin make-container($gutter-x: $budu-gutter-x) {
+@mixin make-container($gutter-x: $boodoo-gutter-x) {
   width: 100%;
   padding-right: calc(#{$gutter-x} * 0.5);
   padding-left: calc(#{$gutter-x} * 0.5);
@@ -85,7 +85,7 @@
   margin-left: auto;
 }
 
-@mixin make-row($gutter-x: $budu-gutter-x, $gutter-y: null) {
+@mixin make-row($gutter-x: $boodoo-gutter-x, $gutter-y: null) {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * #{if($gutter-y != null, $gutter-y, 0)});
@@ -103,7 +103,7 @@
 }
 
 // Column without responsive classes (used inside custom grids)
-@mixin make-col($size, $columns: $budu-grid-columns) {
+@mixin make-col($size, $columns: $boodoo-grid-columns) {
   flex: 0 0 auto;
   width: percentage(divide($size, $columns));
 }
@@ -113,7 +113,7 @@
   width: auto;
 }
 
-@mixin make-col-offset($size, $columns: $budu-grid-columns) {
+@mixin make-col-offset($size, $columns: $boodoo-grid-columns) {
   margin-left: percentage(divide($size, $columns));
 }
 
@@ -124,15 +124,15 @@
   }
 }
 
-@mixin make-grid-columns($columns: $budu-grid-columns, $breakpoints: $budu-grid-breakpoints) {
+@mixin make-grid-columns($columns: $boodoo-grid-columns, $breakpoints: $boodoo-grid-breakpoints) {
   // Common properties for all breakpoints
   %grid-column {
     box-sizing: border-box;
     flex: 0 0 auto;
     width: 100%;
     max-width: 100%;
-    padding-right: calc($budu-gutter-x * 0.5);
-    padding-left: calc($budu-gutter-x * 0.5);
+    padding-right: calc($boodoo-gutter-x * 0.5);
+    padding-left: calc($boodoo-gutter-x * 0.5);
     margin-top: 0;
   }
 
@@ -177,18 +177,18 @@
       }
 
       // Gutters
-      .g#{$infix}-0, .gx#{$infix}-0 { --budu-gutter-x: 0; }
-      .g#{$infix}-0, .gy#{$infix}-0 { --budu-gutter-y: 0; }
-      .g#{$infix}-1, .gx#{$infix}-1 { --budu-gutter-x: 0.25rem; }
-      .g#{$infix}-1, .gy#{$infix}-1 { --budu-gutter-y: 0.25rem; }
-      .g#{$infix}-2, .gx#{$infix}-2 { --budu-gutter-x: 0.5rem; }
-      .g#{$infix}-2, .gy#{$infix}-2 { --budu-gutter-y: 0.5rem; }
-      .g#{$infix}-3, .gx#{$infix}-3 { --budu-gutter-x: 1rem; }
-      .g#{$infix}-3, .gy#{$infix}-3 { --budu-gutter-y: 1rem; }
-      .g#{$infix}-4, .gx#{$infix}-4 { --budu-gutter-x: 1.5rem; }
-      .g#{$infix}-4, .gy#{$infix}-4 { --budu-gutter-y: 1.5rem; }
-      .g#{$infix}-5, .gx#{$infix}-5 { --budu-gutter-x: 3rem; }
-      .g#{$infix}-5, .gy#{$infix}-5 { --budu-gutter-y: 3rem; }
+      .g#{$infix}-0, .gx#{$infix}-0 { --boodoo-gutter-x: 0; }
+      .g#{$infix}-0, .gy#{$infix}-0 { --boodoo-gutter-y: 0; }
+      .g#{$infix}-1, .gx#{$infix}-1 { --boodoo-gutter-x: 0.25rem; }
+      .g#{$infix}-1, .gy#{$infix}-1 { --boodoo-gutter-y: 0.25rem; }
+      .g#{$infix}-2, .gx#{$infix}-2 { --boodoo-gutter-x: 0.5rem; }
+      .g#{$infix}-2, .gy#{$infix}-2 { --boodoo-gutter-y: 0.5rem; }
+      .g#{$infix}-3, .gx#{$infix}-3 { --boodoo-gutter-x: 1rem; }
+      .g#{$infix}-3, .gy#{$infix}-3 { --boodoo-gutter-y: 1rem; }
+      .g#{$infix}-4, .gx#{$infix}-4 { --boodoo-gutter-x: 1.5rem; }
+      .g#{$infix}-4, .gy#{$infix}-4 { --boodoo-gutter-y: 1.5rem; }
+      .g#{$infix}-5, .gx#{$infix}-5 { --boodoo-gutter-x: 3rem; }
+      .g#{$infix}-5, .gy#{$infix}-5 { --boodoo-gutter-y: 3rem; }
     }
   }
 }
@@ -198,112 +198,112 @@
 // ---------------------------------------------------------------------
 
 @mixin button-variant($background, $border, $color, $hover-background, $hover-border, $active-background, $active-border) {
-  --budu-btn-bg: #{$background};
-  --budu-btn-border: #{$border};
-  --budu-btn-color: #{$color};
-  --budu-btn-hover-bg: #{$hover-background};
-  --budu-btn-hover-border: #{$hover-border};
-  --budu-btn-active-bg: #{$active-background};
-  --budu-btn-active-border: #{$active-border};
+  --boodoo-btn-bg: #{$background};
+  --boodoo-btn-border: #{$border};
+  --boodoo-btn-color: #{$color};
+  --boodoo-btn-hover-bg: #{$hover-background};
+  --boodoo-btn-hover-border: #{$hover-border};
+  --boodoo-btn-active-bg: #{$active-background};
+  --boodoo-btn-active-border: #{$active-border};
 
-  color: var(--budu-btn-color);
-  background-color: var(--budu-btn-bg);
-  border-color: var(--budu-btn-border);
+  color: var(--boodoo-btn-color);
+  background-color: var(--boodoo-btn-bg);
+  border-color: var(--boodoo-btn-border);
 
   &:hover {
-    color: var(--budu-btn-color);
-    background-color: var(--budu-btn-hover-bg);
-    border-color: var(--budu-btn-hover-border);
+    color: var(--boodoo-btn-color);
+    background-color: var(--boodoo-btn-hover-bg);
+    border-color: var(--boodoo-btn-hover-border);
   }
 
   &:focus-visible {
-    box-shadow: $budu-btn-focus-box-shadow;
+    box-shadow: $boodoo-btn-focus-box-shadow;
   }
 
   &:active,
   &.active {
-    color: var(--budu-btn-color);
-    background-color: var(--budu-btn-active-bg);
-    border-color: var(--budu-btn-active-border);
+    color: var(--boodoo-btn-color);
+    background-color: var(--boodoo-btn-active-bg);
+    border-color: var(--boodoo-btn-active-border);
   }
 
   &.disabled,
   &:disabled {
-    color: var(--budu-btn-color);
-    background-color: var(--budu-btn-bg);
-    border-color: var(--budu-btn-border);
+    color: var(--boodoo-btn-color);
+    background-color: var(--boodoo-btn-bg);
+    border-color: var(--boodoo-btn-border);
   }
 }
 
 @mixin button-outline-variant($color, $hover-bg, $hover-border, $hover-color) {
-  --budu-btn-color: #{$color};
-  --budu-btn-border: #{$color};
-  --budu-btn-hover-bg: #{$hover-bg};
-  --budu-btn-hover-border: #{$hover-border};
-  --budu-btn-hover-color: #{$hover-color};
-  --budu-btn-active-bg: #{$hover-bg};
-  --budu-btn-active-border: #{$hover-border};
-  --budu-btn-active-color: #{$hover-color};
+  --boodoo-btn-color: #{$color};
+  --boodoo-btn-border: #{$color};
+  --boodoo-btn-hover-bg: #{$hover-bg};
+  --boodoo-btn-hover-border: #{$hover-border};
+  --boodoo-btn-hover-color: #{$hover-color};
+  --boodoo-btn-active-bg: #{$hover-bg};
+  --boodoo-btn-active-border: #{$hover-border};
+  --boodoo-btn-active-color: #{$hover-color};
 
-  color: var(--budu-btn-color);
-  border-color: var(--budu-btn-border);
+  color: var(--boodoo-btn-color);
+  border-color: var(--boodoo-btn-border);
   background-color: transparent;
 
   &:hover {
-    color: var(--budu-btn-hover-color);
-    background-color: var(--budu-btn-hover-bg);
-    border-color: var(--budu-btn-hover-border);
+    color: var(--boodoo-btn-hover-color);
+    background-color: var(--boodoo-btn-hover-bg);
+    border-color: var(--boodoo-btn-hover-border);
   }
 
   &:focus-visible {
-    box-shadow: $budu-btn-focus-box-shadow;
+    box-shadow: $boodoo-btn-focus-box-shadow;
   }
 
   &:active,
   &.active {
-    color: var(--budu-btn-active-color);
-    background-color: var(--budu-btn-active-bg);
-    border-color: var(--budu-btn-active-border);
+    color: var(--boodoo-btn-active-color);
+    background-color: var(--boodoo-btn-active-bg);
+    border-color: var(--boodoo-btn-active-border);
   }
 
   &.disabled,
   &:disabled {
-    color: var(--budu-btn-color);
+    color: var(--boodoo-btn-color);
     background-color: transparent;
-    border-color: var(--budu-btn-border);
+    border-color: var(--boodoo-btn-border);
   }
 }
 
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --budu-btn-padding-y: #{$padding-y};
-  --budu-btn-padding-x: #{$padding-x};
-  --budu-btn-font-size: #{$font-size};
-  --budu-btn-border-radius: #{$border-radius};
-  padding: var(--budu-btn-padding-y) var(--budu-btn-padding-x);
-  font-size: var(--budu-btn-font-size);
-  border-radius: var(--budu-btn-border-radius);
+  --boodoo-btn-padding-y: #{$padding-y};
+  --boodoo-btn-padding-x: #{$padding-x};
+  --boodoo-btn-font-size: #{$font-size};
+  --boodoo-btn-border-radius: #{$border-radius};
+  padding: var(--boodoo-btn-padding-y) var(--boodoo-btn-padding-x);
+  font-size: var(--boodoo-btn-font-size);
+  border-radius: var(--boodoo-btn-border-radius);
 }
 
 @mixin caret($direction: down) {
   @if $direction == down {
-    border-top: $budu-caret-width solid;
-    border-right: $budu-caret-width solid transparent;
+    border-top: $boodoo-caret-width solid;
+    border-right: $boodoo-caret-width solid transparent;
     border-bottom: 0;
-    border-left: $budu-caret-width solid transparent;
+    border-left: $boodoo-caret-width solid transparent;
   } @else if $direction == up {
     border-top: 0;
-    border-right: $budu-caret-width solid transparent;
-    border-bottom: $budu-caret-width solid;
-    border-left: $budu-caret-width solid transparent;
+    border-right: $boodoo-caret-width solid transparent;
+    border-bottom: $boodoo-caret-width solid;
+    border-left: $boodoo-caret-width solid transparent;
   } @else if $direction == end {
-    border-top: $budu-caret-width solid transparent;
+    border-top: $boodoo-caret-width solid transparent;
     border-right: 0;
-    border-bottom: $budu-caret-width solid transparent;
-    border-left: $budu-caret-width solid;
+    border-bottom: $boodoo-caret-width solid transparent;
+    border-left: $boodoo-caret-width solid;
   } @else if $direction == start {
-    border-top: $budu-caret-width solid transparent;
-    border-right: $budu-caret-width solid;
-    border-bottom: $budu-caret-width solid transparent;
+    border-top: $boodoo-caret-width solid transparent;
+    border-right: $boodoo-caret-width solid;
+    border-bottom: $boodoo-caret-width solid transparent;
   }
 }
 
@@ -319,7 +319,7 @@
 
 @mixin plaintext-input() {
   border: solid transparent;
-  border-width: $budu-input-btn-border-width 0;
+  border-width: $boodoo-input-btn-border-width 0;
   background-color: transparent;
   &:focus {
     outline: 0;
@@ -351,7 +351,7 @@
 
 @mixin transition($transition...) {
   @if length($transition) == 0 {
-    transition: $budu-transition-base;
+    transition: $boodoo-transition-base;
   } @else {
     transition: $transition;
   }
@@ -359,7 +359,7 @@
 
 @mixin gradient-bg($color: null) {
   background-color: $color;
-  background-image: linear-gradient(180deg, rgba($budu-white, 0.15), rgba($budu-white, 0));
+  background-image: linear-gradient(180deg, rgba($boodoo-white, 0.15), rgba($boodoo-white, 0));
 }
 
 // Material ripple (implemented via JS; class hooks here)
@@ -383,5 +383,5 @@
 
 // Elevation utility: maps a 0-5 step to a Material shadow
 @mixin elevation($step) {
-  box-shadow: map.get($budu-elevation-map, $step);
+  box-shadow: map.get($boodoo-elevation-map, $step);
 }

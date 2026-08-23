@@ -1,14 +1,14 @@
-// BUDU — Accordion
+// BOODOO — Accordion
 // Pure markup pattern built on Collapse (no extra JS needed for basic use).
-// This module wires data-budu-parent to close siblings like Bootstrap.
+// This module wires data-boodoo-parent to close siblings like Bootstrap.
 
 import { Collapse } from './collapse.js';
 import { getElementFromSelector, elements } from './util.js';
 
 export function initAccordion() {
-  const parents = elements('[data-budu-accordion]');
+  const parents = elements('[data-boodoo-accordion]');
   parents.forEach((parent) => {
-    const togglers = elements(`${parent} [data-budu-toggle="collapse"]`);
+    const togglers = elements(`${parent} [data-boodoo-toggle="collapse"]`);
     togglers.forEach((toggler) => {
       toggler.addEventListener('click', () => {
         const target = getElementFromSelector(toggler);
@@ -17,7 +17,7 @@ export function initAccordion() {
           return;
         }
         // Open one, close all siblings
-        const siblings = elements(`${parent} [data-budu-toggle="collapse"]`).filter(
+        const siblings = elements(`${parent} [data-boodoo-toggle="collapse"]`).filter(
           (t) => t !== toggler
         );
         siblings.forEach((t) => {

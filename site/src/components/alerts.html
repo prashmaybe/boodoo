@@ -67,17 +67,17 @@ order: 1
 
 <h2 id="dismissing">Dismissing</h2>
 <p>Add a dismiss button and the optional <code>.alert-dismissible</code> utility class, then use
-  <code>data-budu-alert</code> + <code>data-budu-dismiss="alert"</code> to wire up the close button.</p>
+  <code>data-boodoo-alert</code> + <code>data-boodoo-dismiss="alert"</code> to wire up the close button.</p>
 <div class="bd-example">
-  <div class="alert alert-warning alert-dismissible fade show" role="alert" data-budu-alert>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" data-boodoo-alert>
     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-    <button type="button" class="btn-close" data-budu-dismiss="alert" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-boodoo-dismiss="alert" aria-label="Close"></button>
   </div>
 </div>
 <div class="highlight">
-  <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert" data-budu-alert&gt;
+  <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert" data-boodoo-alert&gt;
   &lt;strong&gt;Holy guacamole!&lt;/strong&gt; You should check in on some of those fields below.
-  &lt;button type="button" class="btn-close" data-budu-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn-close" data-boodoo-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </div>
 
@@ -85,7 +85,7 @@ order: 1
 <p>Alerts can also be dismissed programmatically:</p>
 <div class="highlight">
   <pre><code>// Close all alerts
-document.querySelectorAll('.alert[data-budu-alert]').forEach(function (el) {
-  budu.Alert.getOrCreateInstance(el).hide();
+document.querySelectorAll('.alert[data-boodoo-alert]').forEach(function (el) {
+  boodoo.Alert.getOrCreateInstance(el).hide();
 });</code></pre>
 </div>

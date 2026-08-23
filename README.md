@@ -1,6 +1,6 @@
 <div align="center">
 
-# budu
+# boodoo
 
 **A modular, mobile-first CSS design framework** inspired by **Bootstrap**, **Foundation**, **Tailwind CSS**, and **Material Design**.
 
@@ -10,7 +10,7 @@ Build fast, responsive, accessible sites — with zero runtime dependencies.
 
 ---
 
-budu fuses four great design systems into one cohesive toolkit:
+boodoo fuses four great design systems into one cohesive toolkit:
 
 - **Bootstrap** — 12-column mobile-first grid, battle-tested components, `data-*` JS API
 - **Foundation** — utility breadth, tidy scaffolds, gray palette
@@ -36,42 +36,42 @@ budu fuses four great design systems into one cohesive toolkit:
 ### CDN
 
 ```html
-<link href="https://budu.dihadiwala.com/dist/css/budu.min.css" rel="stylesheet">
-<script src="https://budu.dihadiwala.com/dist/js/budu.js"></script>
+<link href="https://boodoo.dihadiwala.com/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://boodoo.dihadiwala.com/dist/js/boodoo.js"></script>
 ```
 
 ### npm
 
 ```bash
-npm install budu
+npm install boodoo
 ```
 
 ```js
-import budu from 'budu/dist/js/budu.esm.js';      // ESM, tree-shakeable
-import 'budu/dist/css/budu.min.css';
+import boodoo from 'boodoo/dist/js/boodoo.esm.js';      // ESM, tree-shakeable
+import 'boodoo/dist/css/boodoo.min.css';
 ```
 
 ### Sass source
 
 ```scss
 // Override any token before importing
-$budu-primary: #7C3AED;
+$boodoo-primary: #7C3AED;
 
-@import "node_modules/budu/scss/budu";
+@import "node_modules/boodoo/scss/boodoo";
 ```
 
 ### Less source
 
 ```less
-@import "node_modules/budu/less/budu";
+@import "node_modules/boodoo/less/boodoo";
 ```
 
 ### Lean builds
 
 ```html
-<link href="https://budu.dihadiwala.com/dist/css/budu-grid.min.css"   rel="stylesheet">  <!-- grid only -->
-<link href="https://budu.dihadiwala.com/dist/css/budu-utilities.min.css" rel="stylesheet"> <!-- utilities only -->
-<link href="https://budu.dihadiwala.com/dist/css/budu-reboot.min.css" rel="stylesheet">  <!-- reset only -->
+<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-grid.min.css"   rel="stylesheet">  <!-- grid only -->
+<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only -->
+<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-reboot.min.css" rel="stylesheet">  <!-- reset only -->
 ```
 
 ---
@@ -79,18 +79,18 @@ $budu-primary: #7C3AED;
 ## 📦 What's included
 
 ```
-budu/
+boodoo/
 ├── dist/
 │   ├── css/
-│   │   ├── budu.css / budu.min.css          # full framework
-│   │   ├── budu-grid.css / .min.css         # grid + containers
-│   │   ├── budu-reboot.css / .min.css       # normalize + base
-│   │   ├── budu-utilities.css / .min.css    # Tailwind-style utilities
-│   │   ├── budu-animations.css / .min.css   # motion
-│   │   └── budu.less.css                    # compiled from Less
+│   │   ├── boodoo.css / boodoo.min.css          # full framework
+│   │   ├── boodoo-grid.css / .min.css         # grid + containers
+│   │   ├── boodoo-reboot.css / .min.css       # normalize + base
+│   │   ├── boodoo-utilities.css / .min.css    # Tailwind-style utilities
+│   │   ├── boodoo-animations.css / .min.css   # motion
+│   │   └── boodoo.less.css                    # compiled from Less
 │   └── js/
-│       ├── budu.js                          # UMD bundle
-│       └── budu.esm.js                      # ES module (SSR-safe)
+│       ├── boodoo.js                          # UMD bundle
+│       └── boodoo.esm.js                      # ES module (SSR-safe)
 ├── scss/                                    # Sass source
 ├── less/                                    # Less build
 ├── js/src/                                  # Vanilla JS modules
@@ -124,27 +124,27 @@ Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [
 
 ## 🎨 Theming
 
-budu is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
+boodoo is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
 
 ```scss
-$budu-primary: #7952b3;
-$budu-border-radius: 0.375rem;
+$boodoo-primary: #7952b3;
+$boodoo-border-radius: 0.375rem;
 ```
 
 ```css
 :root {
-  --budu-primary: #5b2ef2;
-  --budu-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  --boodoo-primary: #5b2ef2;
+  --boodoo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%);
 }
 ```
 
-Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with `data-budu-theme="light|dark"` on `<html>`.
+Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with `data-boodoo-theme="light|dark"` on `<html>`.
 
 ---
 
 ## 📄 Documentation
 
-The full documentation site (like getbootstrap.com) is in `site/` and deployed at **https://budu.dihadiwala.com**:
+The full documentation site (like getbootstrap.com) is in `site/` and deployed at **https://boodoo.dihadiwala.com**:
 
 - Getting started · Installation · Usage & CDN · Theming
 - Layout (containers, grid, columns, gutters, CSS grid, breakpoints)
@@ -157,7 +157,7 @@ Each page includes live examples and copy-able code snippets.
 
 ## 🎨 Brand
 
-Official brand assets (logo lockup, icon set, banner, OG image, color tokens) live in `budu-brand-assets/` and are mirrored into the docs site under `assets/brand/`. See the [Brand page](site/src/about/brand.html) for usage guidelines. The framework's default theme maps to the brand palette: primary `#7c3aed`, secondary `#5b21e6`, dark `#17135f`, ink `#11143d`, muted `#5c6280`.
+Official brand assets (logo lockup, icon set, banner, OG image, color tokens) live in `boodoo-brand-assets/` and are mirrored into the docs site under `assets/brand/`. See the [Brand page](site/src/about/brand.html) for usage guidelines. The framework's default theme maps to the brand palette: primary `#7c3aed`, secondary `#5b21e6`, dark `#17135f`, ink `#11143d`, muted `#5c6280`.
 
 ---
 
@@ -184,5 +184,5 @@ MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 Pe
 ---
 
 <div align="center">
-  <sub>Built with ❤️ and budu itself (dogfooding).</sub>
+  <sub>Built with ❤️ and boodoo itself (dogfooding).</sub>
 </div>

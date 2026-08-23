@@ -1,87 +1,87 @@
-// BUDU MAPS
+// BOODOO MAPS
 // Centralized maps for the utility API and theme generation.
 
 @use "sass:map";
 
 // The master list of color names exposed to utilities/components.
-$budu-color-map: () !default;
-$budu-color-map: map.merge(
+$boodoo-color-map: () !default;
+$boodoo-color-map: map.merge(
   (
-    "primary":   $budu-primary,
-    "secondary": $budu-secondary,
-    "success":   $budu-success,
-    "info":      $budu-info,
-    "warning":   $budu-warning,
-    "danger":    $budu-danger,
-    "light":     $budu-light,
-    "dark":      $budu-dark,
-    "white":     $budu-white,
-    "black":     $budu-black,
-    "gray-100":  $budu-gray-100,
-    "gray-200":  $budu-gray-200,
-    "gray-300":  $budu-gray-300,
-    "gray-400":  $budu-gray-400,
-    "gray-500":  $budu-gray-500,
-    "gray-600":  $budu-gray-600,
-    "gray-700":  $budu-gray-700,
-    "gray-800":  $budu-gray-800,
-    "gray-900":  $budu-gray-900,
-    "accent":    $budu-accent,
+    "primary":   $boodoo-primary,
+    "secondary": $boodoo-secondary,
+    "success":   $boodoo-success,
+    "info":      $boodoo-info,
+    "warning":   $boodoo-warning,
+    "danger":    $boodoo-danger,
+    "light":     $boodoo-light,
+    "dark":      $boodoo-dark,
+    "white":     $boodoo-white,
+    "black":     $boodoo-black,
+    "gray-100":  $boodoo-gray-100,
+    "gray-200":  $boodoo-gray-200,
+    "gray-300":  $boodoo-gray-300,
+    "gray-400":  $boodoo-gray-400,
+    "gray-500":  $boodoo-gray-500,
+    "gray-600":  $boodoo-gray-600,
+    "gray-700":  $boodoo-gray-700,
+    "gray-800":  $boodoo-gray-800,
+    "gray-900":  $boodoo-gray-900,
+    "accent":    $boodoo-accent,
   ),
-  $budu-color-map
+  $boodoo-color-map
 );
 
 // Text-emphasis colors per theme color.
-$budu-text-emphasis-map: () !default;
-$budu-text-emphasis-map: map.merge(
+$boodoo-text-emphasis-map: () !default;
+$boodoo-text-emphasis-map: map.merge(
   (
-    "primary":   $budu-primary-text-emphasis,
-    "secondary": $budu-secondary-text-emphasis,
-    "success":   $budu-success-text-emphasis,
-    "info":      $budu-info-text-emphasis,
-    "warning":   $budu-warning-text-emphasis,
-    "danger":    $budu-danger-text-emphasis,
-    "light":     $budu-light-text-emphasis,
-    "dark":      $budu-dark-text-emphasis,
+    "primary":   $boodoo-primary-text-emphasis,
+    "secondary": $boodoo-secondary-text-emphasis,
+    "success":   $boodoo-success-text-emphasis,
+    "info":      $boodoo-info-text-emphasis,
+    "warning":   $boodoo-warning-text-emphasis,
+    "danger":    $boodoo-danger-text-emphasis,
+    "light":     $boodoo-light-text-emphasis,
+    "dark":      $boodoo-dark-text-emphasis,
   ),
-  $budu-text-emphasis-map
+  $boodoo-text-emphasis-map
 );
 
 // Subtle background map
-$budu-bg-subtle-map: () !default;
-$budu-bg-subtle-map: map.merge(
+$boodoo-bg-subtle-map: () !default;
+$boodoo-bg-subtle-map: map.merge(
   (
-    "primary":   $budu-primary-bg-subtle,
-    "secondary": $budu-secondary-bg-subtle,
-    "success":   $budu-success-bg-subtle,
-    "info":      $budu-info-bg-subtle,
-    "warning":   $budu-warning-bg-subtle,
-    "danger":    $budu-danger-bg-subtle,
-    "light":     $budu-light-bg-subtle,
-    "dark":      $budu-dark-bg-subtle,
+    "primary":   $boodoo-primary-bg-subtle,
+    "secondary": $boodoo-secondary-bg-subtle,
+    "success":   $boodoo-success-bg-subtle,
+    "info":      $boodoo-info-bg-subtle,
+    "warning":   $boodoo-warning-bg-subtle,
+    "danger":    $boodoo-danger-bg-subtle,
+    "light":     $boodoo-light-bg-subtle,
+    "dark":      $boodoo-dark-bg-subtle,
   ),
-  $budu-bg-subtle-map
+  $boodoo-bg-subtle-map
 );
 
 // Subtle border map
-$budu-border-subtle-map: () !default;
-$budu-border-subtle-map: map.merge(
+$boodoo-border-subtle-map: () !default;
+$boodoo-border-subtle-map: map.merge(
   (
-    "primary":   $budu-primary-border-subtle,
-    "secondary": $budu-secondary-border-subtle,
-    "success":   $budu-success-border-subtle,
-    "info":      $budu-info-border-subtle,
-    "warning":   $budu-warning-border-subtle,
-    "danger":    $budu-danger-border-subtle,
-    "light":     $budu-light-border-subtle,
-    "dark":      $budu-dark-border-subtle,
+    "primary":   $boodoo-primary-border-subtle,
+    "secondary": $boodoo-secondary-border-subtle,
+    "success":   $boodoo-success-border-subtle,
+    "info":      $boodoo-info-border-subtle,
+    "warning":   $boodoo-warning-border-subtle,
+    "danger":    $boodoo-danger-border-subtle,
+    "light":     $boodoo-light-border-subtle,
+    "dark":      $boodoo-dark-border-subtle,
   ),
-  $budu-border-subtle-map
+  $boodoo-border-subtle-map
 );
 
 // Opacity scale for utilities.
-$budu-opacity-map: () !default;
-$budu-opacity-map: map.merge(
+$boodoo-opacity-map: () !default;
+$boodoo-opacity-map: map.merge(
   (
     0: 0,
     10: 0.1,
@@ -90,11 +90,11 @@ $budu-opacity-map: map.merge(
     75: 0.75,
     100: 1,
   ),
-  $budu-opacity-map
+  $boodoo-opacity-map
 );
 
 // Positioning utilities
-$budu-position-values: (
+$boodoo-position-values: (
   static: static,
   relative: relative,
   absolute: absolute,
@@ -103,7 +103,7 @@ $budu-position-values: (
 ) !default;
 
 // Object-fit
-$budu-object-fit-values: (
+$boodoo-object-fit-values: (
   contain: contain,
   cover: cover,
   fill: fill,
@@ -112,7 +112,7 @@ $budu-object-fit-values: (
 ) !default;
 
 // Text alignment
-$budu-text-align-values: (
+$boodoo-text-align-values: (
   start: left,
   end: right,
   center: center,
@@ -120,7 +120,7 @@ $budu-text-align-values: (
 ) !default;
 
 // Overflow
-$budu-overflow-values: (
+$boodoo-overflow-values: (
   auto: auto,
   hidden: hidden,
   clip: clip,
@@ -129,21 +129,21 @@ $budu-overflow-values: (
 ) !default;
 
 // Float
-$budu-float-values: (
+$boodoo-float-values: (
   start: left,
   end: right,
   none: none,
 ) !default;
 
 // Font styles
-$budu-font-style-values: (
+$boodoo-font-style-values: (
   normal: normal,
   italic: italic,
   oblique: oblique,
 ) !default;
 
 // Cursor
-$budu-cursor-values: (
+$boodoo-cursor-values: (
   auto: auto,
   pointer: pointer,
   "not-allowed": not-allowed,
@@ -180,7 +180,7 @@ $budu-cursor-values: (
 ) !default;
 
 // Sizing scale (percentages + fixed)
-$budu-size-scale: (
+$boodoo-size-scale: (
   25: 25%,
   50: 50%,
   75: 75%,
@@ -189,13 +189,13 @@ $budu-size-scale: (
 ) !default;
 
 // Max width / min width
-$budu-min-viewport-scale: (
+$boodoo-min-viewport-scale: (
   25: 25vw,
   50: 50vw,
   75: 75vw,
   100: 100vw,
 ) !default;
-$budu-max-viewport-scale: (
+$boodoo-max-viewport-scale: (
   25: 25vw,
   50: 50vw,
   75: 75vw,
@@ -203,7 +203,7 @@ $budu-max-viewport-scale: (
 ) !default;
 
 // Viewport heights
-$budu-viewport-scale: (
+$boodoo-viewport-scale: (
   25: 25vh,
   50: 50vh,
   75: 75vh,
@@ -211,15 +211,15 @@ $budu-viewport-scale: (
 ) !default;
 
 // Line-height scale
-$budu-line-height-scale: (
+$boodoo-line-height-scale: (
   1: 1,
-  sm: $budu-line-height-sm,
-  base: $budu-line-height-base,
-  lg: $budu-line-height-lg,
+  sm: $boodoo-line-height-sm,
+  base: $boodoo-line-height-base,
+  lg: $boodoo-line-height-lg,
 ) !default;
 
 // Letter-spacing (Tailwind-ish)
-$budu-letter-spacing-scale: (
+$boodoo-letter-spacing-scale: (
   tighter: -0.05em,
   tight: -0.025em,
   normal: 0em,
@@ -229,14 +229,14 @@ $budu-letter-spacing-scale: (
 ) !default;
 
 // Font-weight utilities (names + numbers)
-$budu-font-weight-utilities: (
-  lighter: $budu-font-weight-lighter,
-  light: $budu-font-weight-light,
-  normal: $budu-font-weight-normal,
-  medium: $budu-font-weight-medium,
-  semibold: $budu-font-weight-semibold,
-  bold: $budu-font-weight-bold,
-  bolder: $budu-font-weight-bolder,
+$boodoo-font-weight-utilities: (
+  lighter: $boodoo-font-weight-lighter,
+  light: $boodoo-font-weight-light,
+  normal: $boodoo-font-weight-normal,
+  medium: $boodoo-font-weight-medium,
+  semibold: $boodoo-font-weight-semibold,
+  bold: $boodoo-font-weight-bold,
+  bolder: $boodoo-font-weight-bolder,
   100: 100,
   200: 200,
   300: 300,
@@ -249,7 +249,7 @@ $budu-font-weight-utilities: (
 ) !default;
 
 // Font sizes for utilities (Tailwind-style)
-$budu-font-size-utilities: (
+$boodoo-font-size-utilities: (
   xs: 0.75rem,
   sm: 0.875rem,
   base: 1rem,
@@ -263,7 +263,7 @@ $budu-font-size-utilities: (
 ) !default;
 
 // Widths (Tailwind-inspired percentages)
-$budu-width-scale: (
+$boodoo-width-scale: (
   "1/2": 50%,
   "1/3": 33.333333%,
   "2/3": 66.666667%,
@@ -287,7 +287,7 @@ $budu-width-scale: (
 ) !default;
 
 // Z-index utilities
-$budu-zindex-utilities: (
+$boodoo-zindex-utilities: (
   0: 0,
   10: 10,
   20: 20,
@@ -302,28 +302,28 @@ $budu-zindex-utilities: (
 // extra postfix, responsive flag, important flag.
 // Keys match the generated class names.
 
-$budu-utilities: (
+$boodoo-utilities: (
   "background-color": (
     property: background-color,
     class: bg,
-    values: $budu-color-map,
+    values: $boodoo-color-map,
   ),
   "background-gradient": (
     property: background-image,
     class: bg-gradient,
     values: (
-      null: linear-gradient(180deg, rgba($budu-white, 0.15), rgba($budu-white, 0)),
+      null: linear-gradient(180deg, rgba($boodoo-white, 0.15), rgba($boodoo-white, 0)),
     ),
   ),
   "background-opacity": (
     property: background-color,
     class: bg-opacity,
     values: (
-      10: rgba($budu-primary, 0.1),
-      25: rgba($budu-primary, 0.25),
-      50: rgba($budu-primary, 0.5),
-      75: rgba($budu-primary, 0.75),
-      100: rgba($budu-primary, 1),
+      10: rgba($boodoo-primary, 0.1),
+      25: rgba($boodoo-primary, 0.25),
+      50: rgba($boodoo-primary, 0.5),
+      75: rgba($boodoo-primary, 0.75),
+      100: rgba($boodoo-primary, 1),
     ),
   ),
   "background-position": (
@@ -359,10 +359,10 @@ $budu-utilities: (
   "text-color": (
     property: color,
     class: text,
-    values: map.merge($budu-color-map, (
-      "body": $budu-body-color,
-      "muted": $budu-text-muted,
-      "emphasis": $budu-body-emphasis-color,
+    values: map.merge($boodoo-color-map, (
+      "body": $boodoo-body-color,
+      "muted": $boodoo-text-muted,
+      "emphasis": $boodoo-body-emphasis-color,
       "inherit": inherit,
     )),
   ),
@@ -370,17 +370,17 @@ $budu-utilities: (
     property: color,
     class: text-opacity,
     values: (
-      10: rgba($budu-body-color, 0.1),
-      25: rgba($budu-body-color, 0.25),
-      50: rgba($budu-body-color, 0.5),
-      75: rgba($budu-body-color, 0.75),
-      100: rgba($budu-body-color, 1),
+      10: rgba($boodoo-body-color, 0.1),
+      25: rgba($boodoo-body-color, 0.25),
+      50: rgba($boodoo-body-color, 0.5),
+      75: rgba($boodoo-body-color, 0.75),
+      100: rgba($boodoo-body-color, 1),
     ),
   ),
   "text-align": (
     property: text-align,
     class: text,
-    values: $budu-text-align-values,
+    values: $boodoo-text-align-values,
     responsive: true,
   ),
   "text-decoration": (
@@ -416,36 +416,36 @@ $budu-utilities: (
   "font-weight": (
     property: font-weight,
     class: fw,
-    values: $budu-font-weight-utilities,
+    values: $boodoo-font-weight-utilities,
   ),
   "font-style": (
     property: font-style,
     class: fst,
-    values: $budu-font-style-values,
+    values: $boodoo-font-style-values,
   ),
   "font-family": (
     property: font-family,
     class: font,
     values: (
-      sans-serif: var(--budu-font-sans-serif),
-      serif: var(--budu-font-serif),
-      monospace: var(--budu-font-monospace),
+      sans-serif: var(--boodoo-font-sans-serif),
+      serif: var(--boodoo-font-serif),
+      monospace: var(--boodoo-font-monospace),
     ),
   ),
   "font-size": (
     property: font-size,
     class: fs,
-    values: $budu-font-size-utilities,
+    values: $boodoo-font-size-utilities,
   ),
   "line-height": (
     property: line-height,
     class: lh,
-    values: $budu-line-height-scale,
+    values: $boodoo-line-height-scale,
   ),
   "letter-spacing": (
     property: letter-spacing,
     class: tracking,
-    values: $budu-letter-spacing-scale,
+    values: $boodoo-letter-spacing-scale,
   ),
   "word-spacing": (
     property: word-spacing,
@@ -485,158 +485,158 @@ $budu-utilities: (
   "margin": (
     property: margin,
     class: m,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-x": (
     property: margin-right margin-left,
     class: mx,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-y": (
     property: margin-top margin-bottom,
     class: my,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-top": (
     property: margin-top,
     class: mt,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-end": (
     property: margin-right,
     class: me,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-bottom": (
     property: margin-bottom,
     class: mb,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "margin-start": (
     property: margin-left,
     class: ms,
-    values: map.merge($budu-spacers, (auto: auto)),
+    values: map.merge($boodoo-spacers, (auto: auto)),
     responsive: true,
   ),
   "negative-margin": (
     property: margin,
     class: m,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-x": (
     property: margin-right margin-left,
     class: mx,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-y": (
     property: margin-top margin-bottom,
     class: my,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-top": (
     property: margin-top,
     class: mt,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-end": (
     property: margin-right,
     class: me,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-bottom": (
     property: margin-bottom,
     class: mb,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "negative-margin-start": (
     property: margin-left,
     class: ms,
-    values: $budu-negative-spacers,
+    values: $boodoo-negative-spacers,
     responsive: true,
   ),
   "padding": (
     property: padding,
     class: p,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-x": (
     property: padding-right padding-left,
     class: px,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-y": (
     property: padding-top padding-bottom,
     class: py,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-top": (
     property: padding-top,
     class: pt,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-end": (
     property: padding-right,
     class: pe,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-bottom": (
     property: padding-bottom,
     class: pb,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "padding-start": (
     property: padding-left,
     class: ps,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "border": (
     property: border,
     class: border,
     values: (
-      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      null: var(--boodoo-border-width) var(--boodoo-border-style) var(--boodoo-border-color),
       0: 0,
-      1: 1px solid var(--budu-border-color),
-      2: 2px solid var(--budu-border-color),
-      3: 3px solid var(--budu-border-color),
-      4: 4px solid var(--budu-border-color),
-      5: 5px solid var(--budu-border-color),
+      1: 1px solid var(--boodoo-border-color),
+      2: 2px solid var(--boodoo-border-color),
+      3: 3px solid var(--boodoo-border-color),
+      4: 4px solid var(--boodoo-border-color),
+      5: 5px solid var(--boodoo-border-color),
     ),
   ),
   "border-top": (
     property: border-top,
     class: border-top,
     values: (
-      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      null: var(--boodoo-border-width) var(--boodoo-border-style) var(--boodoo-border-color),
       0: 0,
-      1: 1px solid var(--budu-border-color),
-      2: 2px solid var(--budu-border-color),
-      3: 3px solid var(--budu-border-color),
+      1: 1px solid var(--boodoo-border-color),
+      2: 2px solid var(--boodoo-border-color),
+      3: 3px solid var(--boodoo-border-color),
     ),
   ),
   "border-end": (
     property: border-right,
     class: border-end,
     values: (
-      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      null: var(--boodoo-border-width) var(--boodoo-border-style) var(--boodoo-border-color),
       0: 0,
     ),
   ),
@@ -644,7 +644,7 @@ $budu-utilities: (
     property: border-bottom,
     class: border-bottom,
     values: (
-      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      null: var(--boodoo-border-width) var(--boodoo-border-style) var(--boodoo-border-color),
       0: 0,
     ),
   ),
@@ -652,82 +652,82 @@ $budu-utilities: (
     property: border-left,
     class: border-start,
     values: (
-      null: var(--budu-border-width) var(--budu-border-style) var(--budu-border-color),
+      null: var(--boodoo-border-width) var(--boodoo-border-style) var(--boodoo-border-color),
       0: 0,
     ),
   ),
   "border-color": (
     property: border-color,
     class: border,
-    values: map.merge($budu-color-map, (
-      "subtle": $budu-border-color-translucent,
+    values: map.merge($boodoo-color-map, (
+      "subtle": $boodoo-border-color-translucent,
     )),
   ),
   "border-width": (
     property: border-width,
     class: border,
-    values: $budu-border-widths,
+    values: $boodoo-border-widths,
   ),
   "border-opacity": (
     property: border-color,
     class: border-opacity,
     values: (
-      10: rgba($budu-primary, 0.1),
-      25: rgba($budu-primary, 0.25),
-      50: rgba($budu-primary, 0.5),
-      75: rgba($budu-primary, 0.75),
-      100: rgba($budu-primary, 1),
+      10: rgba($boodoo-primary, 0.1),
+      25: rgba($boodoo-primary, 0.25),
+      50: rgba($boodoo-primary, 0.5),
+      75: rgba($boodoo-primary, 0.75),
+      100: rgba($boodoo-primary, 1),
     ),
   ),
   "border-radius": (
     property: border-radius,
     class: rounded,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-top": (
     property: border-top-left-radius border-top-right-radius,
     class: rounded-top,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-end": (
     property: border-top-right-radius border-bottom-right-radius,
     class: rounded-end,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-bottom": (
     property: border-bottom-right-radius border-bottom-left-radius,
     class: rounded-bottom,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-start": (
     property: border-bottom-left-radius border-top-left-radius,
     class: rounded-start,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-top-start": (
     property: border-top-left-radius,
     class: rounded-top-start,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-top-end": (
     property: border-top-right-radius,
     class: rounded-top-end,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-bottom-end": (
     property: border-bottom-right-radius,
     class: rounded-bottom-end,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "border-radius-bottom-start": (
     property: border-bottom-left-radius,
     class: rounded-bottom-start,
-    values: $budu-border-radius-map,
+    values: $boodoo-border-radius-map,
   ),
   "opacity": (
     property: opacity,
     class: opacity,
-    values: $budu-opacity-map,
+    values: $boodoo-opacity-map,
   ),
   "display": (
     property: display,
@@ -888,19 +888,19 @@ $budu-utilities: (
   "gap": (
     property: gap,
     class: gap,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "row-gap": (
     property: row-gap,
     class: row-gap,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "column-gap": (
     property: column-gap,
     class: column-gap,
-    values: $budu-spacers,
+    values: $boodoo-spacers,
     responsive: true,
   ),
   "grid-column": (
@@ -1061,13 +1061,13 @@ $budu-utilities: (
   "float": (
     property: float,
     class: float,
-    values: $budu-float-values,
+    values: $boodoo-float-values,
     responsive: true,
   ),
   "position": (
     property: position,
     class: position,
-    values: $budu-position-values,
+    values: $boodoo-position-values,
     responsive: true,
   ),
   "top": (
@@ -1122,13 +1122,13 @@ $budu-utilities: (
   "width": (
     property: width,
     class: w,
-    values: map.merge($budu-size-scale, $budu-width-scale),
+    values: map.merge($boodoo-size-scale, $boodoo-width-scale),
     responsive: true,
   ),
   "max-width": (
     property: max-width,
     class: mw,
-    values: map.merge($budu-max-viewport-scale, (
+    values: map.merge($boodoo-max-viewport-scale, (
       100: 100%,
       auto: none,
     )),
@@ -1136,7 +1136,7 @@ $budu-utilities: (
   "min-width": (
     property: min-width,
     class: min-w,
-    values: map.merge($budu-min-viewport-scale, (
+    values: map.merge($boodoo-min-viewport-scale, (
       0: 0,
       full: 100%,
     )),
@@ -1144,33 +1144,33 @@ $budu-utilities: (
   "height": (
     property: height,
     class: h,
-    values: map.merge($budu-size-scale, $budu-viewport-scale),
+    values: map.merge($boodoo-size-scale, $boodoo-viewport-scale),
     responsive: true,
   ),
   "max-height": (
     property: max-height,
     class: mh,
-    values: $budu-viewport-scale,
+    values: $boodoo-viewport-scale,
   ),
   "min-height": (
     property: min-height,
     class: min-vh,
-    values: $budu-viewport-scale,
+    values: $boodoo-viewport-scale,
   ),
   "overflow": (
     property: overflow,
     class: overflow,
-    values: $budu-overflow-values,
+    values: $boodoo-overflow-values,
   ),
   "overflow-x": (
     property: overflow-x,
     class: overflow-x,
-    values: $budu-overflow-values,
+    values: $boodoo-overflow-values,
   ),
   "overflow-y": (
     property: overflow-y,
     class: overflow-y,
-    values: $budu-overflow-values,
+    values: $boodoo-overflow-values,
   ),
   "visibility": (
     property: visibility,
@@ -1183,18 +1183,18 @@ $budu-utilities: (
   "z-index": (
     property: z-index,
     class: z,
-    values: $budu-zindex-utilities,
+    values: $boodoo-zindex-utilities,
   ),
   "box-shadow": (
     property: box-shadow,
     class: shadow,
-    values: $budu-shadow-map,
+    values: $boodoo-shadow-map,
     responsive: true,
   ),
   "elevation": (
     property: box-shadow,
     class: elevation,
-    values: $budu-elevation-map,
+    values: $boodoo-elevation-map,
   ),
   "aspect-ratio": (
     property: aspect-ratio,
@@ -1214,7 +1214,7 @@ $budu-utilities: (
   "object-fit": (
     property: object-fit,
     class: object,
-    values: $budu-object-fit-values,
+    values: $boodoo-object-fit-values,
   ),
   "object-position": (
     property: object-position,
@@ -1234,7 +1234,7 @@ $budu-utilities: (
   "cursor": (
     property: cursor,
     class: cursor,
-    values: $budu-cursor-values,
+    values: $boodoo-cursor-values,
   ),
   "user-select": (
     property: user-select,
@@ -1273,7 +1273,7 @@ $budu-utilities: (
     ),
   ),
   "blur": (
-    property: --budu-blur,
+    property: --boodoo-blur,
     class: blur,
     values: (
       none: 0,
@@ -1358,8 +1358,8 @@ $budu-utilities: (
   ),
 ) !default;
 
-// Utilities excluded from the "all" build (kept in budu-utilities partial)
-$budu-utilities-all-exclude: (
+// Utilities excluded from the "all" build (kept in boodoo-utilities partial)
+$boodoo-utilities-all-exclude: (
   "text-opacity",
   "background-opacity",
   "border-opacity",

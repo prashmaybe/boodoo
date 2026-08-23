@@ -1,35 +1,35 @@
-// BUDU FORMS — Layout
+// BOODOO FORMS — Layout
 // Labels, form text, horizontal forms, etc.
 
 .form-label {
   margin-bottom: 0.375rem;
-  font-weight: $budu-form-label-font-weight;
+  font-weight: $boodoo-form-label-font-weight;
 }
 
 .col-form-label {
-  padding-top: calc(#{$budu-input-btn-padding-y} + #{$budu-input-btn-border-width});
-  padding-bottom: calc(#{$budu-input-btn-padding-y} + #{$budu-input-btn-border-width});
+  padding-top: calc(#{$boodoo-input-btn-padding-y} + #{$boodoo-input-btn-border-width});
+  padding-bottom: calc(#{$boodoo-input-btn-padding-y} + #{$boodoo-input-btn-border-width});
   margin-bottom: 0;
   font-size: inherit;
-  line-height: $budu-input-btn-line-height;
+  line-height: $boodoo-input-btn-line-height;
 }
 
 .col-form-label-lg {
-  padding-top: calc(#{$budu-input-btn-padding-y-lg} + #{$budu-input-btn-border-width});
-  padding-bottom: calc(#{$budu-input-btn-padding-y-lg} + #{$budu-input-btn-border-width});
-  font-size: $budu-input-btn-font-size-lg;
+  padding-top: calc(#{$boodoo-input-btn-padding-y-lg} + #{$boodoo-input-btn-border-width});
+  padding-bottom: calc(#{$boodoo-input-btn-padding-y-lg} + #{$boodoo-input-btn-border-width});
+  font-size: $boodoo-input-btn-font-size-lg;
 }
 
 .col-form-label-sm {
-  padding-top: calc(#{$budu-input-btn-padding-y-sm} + #{$budu-input-btn-border-width});
-  padding-bottom: calc(#{$budu-input-btn-padding-y-sm} + #{$budu-input-btn-border-width});
-  font-size: $budu-input-btn-font-size-sm;
+  padding-top: calc(#{$boodoo-input-btn-padding-y-sm} + #{$boodoo-input-btn-border-width});
+  padding-bottom: calc(#{$boodoo-input-btn-padding-y-sm} + #{$boodoo-input-btn-border-width});
+  font-size: $boodoo-input-btn-font-size-sm;
 }
 
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: var(--budu-body-secondary-color);
+  color: var(--boodoo-body-secondary-color);
 }
 
 // Horizontal form (Foundation-style .row + .form-group)

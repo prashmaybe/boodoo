@@ -1,42 +1,42 @@
 <!--
 title: Customize with Sass
-description: budu is built with Sass — customize variables, maps and mixins to build your own theme.
+description: boodoo is built with Sass — customize variables, maps and mixins to build your own theme.
 section: getting-started
 order: 5
 -->
 <h1>Customize with Sass</h1>
-<p class="lead">budu is developed mobile-first with a modular Sass architecture. Customization happens via variables,
+<p class="lead">boodoo is developed mobile-first with a modular Sass architecture. Customization happens via variables,
   maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</p>
 
 <h2 id="variables">Variables</h2>
-<p>Every Sass variable in budu includes the <code>!default</code> flag, meaning you can override them by assigning your
-  own values <em>before</em> importing budu. Here's a typical <code>budu.scss</code>:</p>
+<p>Every Sass variable in boodoo includes the <code>!default</code> flag, meaning you can override them by assigning your
+  own values <em>before</em> importing boodoo. Here's a typical <code>boodoo.scss</code>:</p>
 
 <div class="highlight">
   <pre><code>// 1. Include functions, variables and mixins first (if importing individual parts)
-@import "node_modules/budu/scss/functions";
-@import "node_modules/budu/scss/variables";
-@import "node_modules/budu/scss/maps";
-@import "node_modules/budu/scss/mixins";
-@import "node_modules/budu/scss/mixins/utility-api";
+@import "node_modules/boodoo/scss/functions";
+@import "node_modules/boodoo/scss/variables";
+@import "node_modules/boodoo/scss/maps";
+@import "node_modules/boodoo/scss/mixins";
+@import "node_modules/boodoo/scss/mixins/utility-api";
 
 // 2. Here add your own overrides
-$budu-primary: #7952b3;
-$budu-danger: #e83e8c;
-$budu-border-radius: 0.375rem;
+$boodoo-primary: #7952b3;
+$boodoo-danger: #e83e8c;
+$boodoo-border-radius: 0.375rem;
 
-// 3. Optionally include any of budu's parts
-@import "node_modules/budu/scss/root";
-@import "node_modules/budu/scss/reboot";
-@import "node_modules/budu/scss/grid";</code></pre>
+// 3. Optionally include any of boodoo's parts
+@import "node_modules/boodoo/scss/root";
+@import "node_modules/boodoo/scss/reboot";
+@import "node_modules/boodoo/scss/grid";</code></pre>
 </div>
 
 <h2 id="maps-and-loops">Maps and loops</h2>
-<p>budu uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
+<p>boodoo uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
   classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
   variant is generated for you:</p>
 <div class="highlight">
-  <pre><code>$budu-theme-colors: map.merge($budu-theme-colors, (
+  <pre><code>$boodoo-theme-colors: map.merge($boodoo-theme-colors, (
   "turquoise": #20c997,
 ));</code></pre>
 </div>
@@ -46,6 +46,6 @@ $budu-border-radius: 0.375rem;
 
 <div class="bd-callout bd-callout-info">
   <strong>Pro tip:</strong> You only need to import the config layer (<code>functions</code>, <code>variables</code>,
-  <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use budu's mixins and maps in your
+  <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use boodoo's mixins and maps in your
   own Sass, then import the partials you actually need for the leanest output.
 </div>

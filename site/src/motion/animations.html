@@ -5,7 +5,7 @@ section: motion
 order: 0
 -->
 <h1>Animations</h1>
-<p class="lead">budu ships a small library of purposeful animation utilities, all of which respect
+<p class="lead">boodoo ships a small library of purposeful animation utilities, all of which respect
   <code>prefers-reduced-motion</code>.</p>
 
 <h2 id="utilities">Animation utilities</h2>
@@ -42,7 +42,7 @@ order: 0
 </div>
 
 <h2 id="scroll-triggered">Scroll-triggered</h2>
-<p>For scroll-triggered animations, use the <code>budu.show.animate</code> pattern — add the animation class with
+<p>For scroll-triggered animations, use the <code>boodoo.show.animate</code> pattern — add the animation class with
   JavaScript when the element enters the viewport:</p>
 <div class="highlight">
   <pre><code>const observer = new IntersectionObserver((entries) => {
@@ -57,7 +57,7 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</cod
 </div>
 
 <h2 id="reduced">Reduced motion</h2>
-<p>All of budu's motion shuts off when the user prefers reduced motion:</p>
+<p>All of boodoo's motion shuts off when the user prefers reduced motion:</p>
 <div class="highlight">
   <pre><code>@media (prefers-reduced-motion: reduce) {
   *,

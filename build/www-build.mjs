@@ -1,5 +1,5 @@
-// budu deployable build.
-// Assembles everything needed to host at https://budu.dihadiwala.com into a
+// boodoo deployable build.
+// Assembles everything needed to host at https://boodoo.dihadiwala.com into a
 // single `www/` folder: landing page, docs pages, assets, and compiled dist.
 // Upload the CONTENTS of `www/` to your static host (root = domain root).
 //
@@ -78,16 +78,16 @@ fs.writeFileSync(
   path.join(www, 'site.webmanifest'),
   JSON.stringify(
     {
-      name: 'budu Framework',
-      short_name: 'budu',
+      name: 'boodoo Framework',
+      short_name: 'boodoo',
       description: 'A modular, mobile-first CSS design framework.',
       start_url: '/',
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#7c3aed',
       icons: [
-        { src: '/assets/brand/budu-icon-192.png', sizes: '192x192', type: 'image/png' },
-        { src: '/assets/brand/budu-icon-512.png', sizes: '512x512', type: 'image/png' },
+        { src: '/assets/brand/boodoo-icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/assets/brand/boodoo-icon-512.png', sizes: '512x512', type: 'image/png' },
       ],
     },
     null,

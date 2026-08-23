@@ -1,21 +1,21 @@
-// BUDU AVATAR
+// BOODOO AVATAR
 // Profile images, initials, sizes, group stacks, status dots.
 
 .avatar {
-  --budu-avatar-size: 2.5rem;
-  --budu-avatar-bg: #{$budu-primary};
-  --budu-avatar-color: #{$budu-white};
+  --boodoo-avatar-size: 2.5rem;
+  --boodoo-avatar-bg: #{$boodoo-primary};
+  --boodoo-avatar-color: #{$boodoo-white};
 
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--budu-avatar-size);
-  height: var(--budu-avatar-size);
+  width: var(--boodoo-avatar-size);
+  height: var(--boodoo-avatar-size);
   border-radius: 50%;
-  background-color: var(--budu-avatar-bg);
-  color: var(--budu-avatar-color);
-  font-size: calc(var(--budu-avatar-size) * 0.4);
+  background-color: var(--boodoo-avatar-bg);
+  color: var(--boodoo-avatar-color);
+  font-size: calc(var(--boodoo-avatar-size) * 0.4);
   font-weight: 600;
   line-height: 1;
   overflow: hidden;
@@ -29,37 +29,37 @@
 }
 
 // Sizes
-.avatar-xs { --budu-avatar-size: 1.75rem; font-size: 0.7rem; }
-.avatar-sm { --budu-avatar-size: 2rem; font-size: 0.8rem; }
-.avatar-md { --budu-avatar-size: 2.5rem; }
-.avatar-lg { --budu-avatar-size: 3.5rem; }
-.avatar-xl { --budu-avatar-size: 4.5rem; }
-.avatar-xxl { --budu-avatar-size: 6rem; }
+.avatar-xs { --boodoo-avatar-size: 1.75rem; font-size: 0.7rem; }
+.avatar-sm { --boodoo-avatar-size: 2rem; font-size: 0.8rem; }
+.avatar-md { --boodoo-avatar-size: 2.5rem; }
+.avatar-lg { --boodoo-avatar-size: 3.5rem; }
+.avatar-xl { --boodoo-avatar-size: 4.5rem; }
+.avatar-xxl { --boodoo-avatar-size: 6rem; }
 
 // Square
 .avatar-square {
-  border-radius: $budu-border-radius;
+  border-radius: $boodoo-border-radius;
 }
 
 // Rounded
 .avatar-rounded {
-  border-radius: $budu-border-radius-pill;
+  border-radius: $boodoo-border-radius-pill;
 }
 
 // Colors
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .avatar-#{$name} {
-    --budu-avatar-bg: #{$color};
-    --budu-avatar-color: #{if($name == "light", $budu-dark, $budu-white)};
+    --boodoo-avatar-bg: #{$color};
+    --boodoo-avatar-color: #{if($name == "light", $boodoo-dark, $boodoo-white)};
   }
 }
 
-.avatar-soft-primary   { --budu-avatar-bg: #{tint-color($budu-primary, 88%)}; --budu-avatar-color: #{$budu-primary}; }
-.avatar-soft-secondary { --budu-avatar-bg: #{tint-color($budu-secondary, 88%)}; --budu-avatar-color: #{$budu-secondary}; }
-.avatar-soft-success   { --budu-avatar-bg: #{tint-color($budu-success, 88%)}; --budu-avatar-color: #{$budu-success}; }
-.avatar-soft-danger    { --budu-avatar-bg: #{tint-color($budu-danger, 88%)}; --budu-avatar-color: #{$budu-danger}; }
-.avatar-soft-warning   { --budu-avatar-bg: #{tint-color($budu-warning, 88%)}; --budu-avatar-color: #{$budu-warning}; }
-.avatar-soft-info      { --budu-avatar-bg: #{tint-color($budu-info, 88%)}; --budu-avatar-color: #{$budu-info}; }
+.avatar-soft-primary   { --boodoo-avatar-bg: #{tint-color($boodoo-primary, 88%)}; --boodoo-avatar-color: #{$boodoo-primary}; }
+.avatar-soft-secondary { --boodoo-avatar-bg: #{tint-color($boodoo-secondary, 88%)}; --boodoo-avatar-color: #{$boodoo-secondary}; }
+.avatar-soft-success   { --boodoo-avatar-bg: #{tint-color($boodoo-success, 88%)}; --boodoo-avatar-color: #{$boodoo-success}; }
+.avatar-soft-danger    { --boodoo-avatar-bg: #{tint-color($boodoo-danger, 88%)}; --boodoo-avatar-color: #{$boodoo-danger}; }
+.avatar-soft-warning   { --boodoo-avatar-bg: #{tint-color($boodoo-warning, 88%)}; --boodoo-avatar-color: #{$boodoo-warning}; }
+.avatar-soft-info      { --boodoo-avatar-bg: #{tint-color($boodoo-info, 88%)}; --boodoo-avatar-color: #{$boodoo-info}; }
 
 // Group stack
 .avatar-group {
@@ -68,7 +68,7 @@
 
   .avatar {
     margin-left: -0.625rem;
-    border: 2px solid var(--budu-body-bg);
+    border: 2px solid var(--boodoo-body-bg);
 
     &:first-child {
       margin-left: 0;
@@ -76,8 +76,8 @@
   }
 
   .avatar-more {
-    background-color: $budu-gray-300;
-    color: $budu-gray-700;
+    background-color: $boodoo-gray-300;
+    color: $boodoo-gray-700;
   }
 }
 
@@ -90,11 +90,11 @@
   height: 22%;
   min-width: 0.5rem;
   min-height: 0.5rem;
-  background-color: $budu-success;
-  border: 2px solid var(--budu-body-bg);
+  background-color: $boodoo-success;
+  border: 2px solid var(--boodoo-body-bg);
   border-radius: 50%;
 }
 
-.avatar-status-offline { background-color: $budu-gray-400; }
-.avatar-status-busy { background-color: $budu-danger; }
-.avatar-status-away { background-color: $budu-warning; }
+.avatar-status-offline { background-color: $boodoo-gray-400; }
+.avatar-status-busy { background-color: $boodoo-danger; }
+.avatar-status-away { background-color: $boodoo-warning; }

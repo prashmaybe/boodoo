@@ -1,21 +1,21 @@
-// BUDU POPOVER
+// BOODOO POPOVER
 // Popover (JS-driven, tooltip-like with more content).
 
 .popover {
-  --budu-popover-bg: #{$budu-popover-bg};
-  --budu-popover-border-color: #{$budu-popover-border-color};
-  --budu-popover-border-radius: #{$budu-popover-border-radius};
-  --budu-popover-box-shadow: #{$budu-popover-box-shadow};
-  --budu-popover-padding-y: 0.75rem;
-  --budu-popover-padding-x: 0.875rem;
+  --boodoo-popover-bg: #{$boodoo-popover-bg};
+  --boodoo-popover-border-color: #{$boodoo-popover-border-color};
+  --boodoo-popover-border-radius: #{$boodoo-popover-border-radius};
+  --boodoo-popover-box-shadow: #{$boodoo-popover-box-shadow};
+  --boodoo-popover-padding-y: 0.75rem;
+  --boodoo-popover-padding-x: 0.875rem;
 
   position: absolute;
   top: 0;
   left: 0;
-  z-index: $budu-zindex-popover;
+  z-index: $boodoo-zindex-popover;
   display: block;
   max-width: 276px;
-  font-family: var(--budu-font-sans-serif);
+  font-family: var(--boodoo-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -31,29 +31,29 @@
   line-break: auto;
   font-size: 0.875rem;
   word-wrap: break-word;
-  background-color: var(--budu-popover-bg);
+  background-color: var(--boodoo-popover-bg);
   background-clip: padding-box;
-  border: 1px solid var(--budu-popover-border-color);
-  border-radius: var(--budu-popover-border-radius);
-  box-shadow: var(--budu-popover-box-shadow);
+  border: 1px solid var(--boodoo-popover-border-color);
+  border-radius: var(--boodoo-popover-border-radius);
+  box-shadow: var(--boodoo-popover-box-shadow);
   opacity: 0;
 
   &.show {
     opacity: 1;
-    animation: budu-zoom-in 0.15s ease;
+    animation: boodoo-zoom-in 0.15s ease;
   }
 }
 
 .popover-header {
-  padding: var(--budu-popover-padding-y) var(--budu-popover-padding-x);
+  padding: var(--boodoo-popover-padding-y) var(--boodoo-popover-padding-x);
   margin-bottom: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--budu-body-color);
-  background-color: var(--budu-body-tertiary-bg);
-  border-bottom: 1px solid var(--budu-popover-border-color);
-  border-top-left-radius: calc(var(--budu-popover-border-radius) - 1px);
-  border-top-right-radius: calc(var(--budu-popover-border-radius) - 1px);
+  color: var(--boodoo-body-color);
+  background-color: var(--boodoo-body-tertiary-bg);
+  border-bottom: 1px solid var(--boodoo-popover-border-color);
+  border-top-left-radius: calc(var(--boodoo-popover-border-radius) - 1px);
+  border-top-right-radius: calc(var(--boodoo-popover-border-radius) - 1px);
 
   &:empty {
     display: none;
@@ -61,8 +61,8 @@
 }
 
 .popover-body {
-  padding: var(--budu-popover-padding-y) var(--budu-popover-padding-x);
-  color: var(--budu-body-color);
+  padding: var(--boodoo-popover-padding-y) var(--boodoo-popover-padding-x);
+  color: var(--boodoo-body-color);
 }
 
 // Arrows
@@ -92,13 +92,13 @@
     &::before {
       bottom: 0;
       border-width: 0.5rem 0.5rem 0;
-      border-top-color: var(--budu-popover-border-color);
+      border-top-color: var(--boodoo-popover-border-color);
     }
 
     &::after {
       bottom: 1px;
       border-width: 0.5rem 0.5rem 0;
-      border-top-color: var(--budu-popover-bg);
+      border-top-color: var(--boodoo-popover-bg);
     }
   }
 }
@@ -115,13 +115,13 @@
     &::before {
       left: 0;
       border-width: 0.5rem 0.5rem 0.5rem 0;
-      border-right-color: var(--budu-popover-border-color);
+      border-right-color: var(--boodoo-popover-border-color);
     }
 
     &::after {
       left: 1px;
       border-width: 0.5rem 0.5rem 0.5rem 0;
-      border-right-color: var(--budu-popover-bg);
+      border-right-color: var(--boodoo-popover-bg);
     }
   }
 }
@@ -136,13 +136,13 @@
     &::before {
       top: 0;
       border-width: 0 0.5rem 0.5rem 0.5rem;
-      border-bottom-color: var(--budu-popover-border-color);
+      border-bottom-color: var(--boodoo-popover-border-color);
     }
 
     &::after {
       top: 1px;
       border-width: 0 0.5rem 0.5rem 0.5rem;
-      border-bottom-color: var(--budu-popover-bg);
+      border-bottom-color: var(--boodoo-popover-bg);
     }
   }
 }
@@ -159,13 +159,13 @@
     &::before {
       right: 0;
       border-width: 0.5rem 0 0.5rem 0.5rem;
-      border-left-color: var(--budu-popover-border-color);
+      border-left-color: var(--boodoo-popover-border-color);
     }
 
     &::after {
       right: 1px;
       border-width: 0.5rem 0 0.5rem 0.5rem;
-      border-left-color: var(--budu-popover-bg);
+      border-left-color: var(--boodoo-popover-bg);
     }
   }
 }

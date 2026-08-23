@@ -1,102 +1,102 @@
-# budu Framework — LLM Summary & Documentation Index
+# boodoo Framework — LLM Summary & Documentation Index
 
-> budu is a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS, and Material Design. It ships as Sass/LESS source, compiled CSS, vanilla JS components, and an npm package with a CDN-ready build.
+> boodoo is a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS, and Material Design. It ships as Sass/LESS source, compiled CSS, vanilla JS components, and an npm package with a CDN-ready build.
 
 ## Project Details
-- Website: https://budu.dihadiwala.com
+- Website: https://boodoo.dihadiwala.com
 - License: MIT
 - Author: Pebble Benders
 - Architecture: Sass/LESS modular architecture, BEM class syntax, Flexbox & CSS Grid systems, Vanilla JS components with zero external runtime dependencies.
 
 ## CDN Links
-- Combined CSS Bundle: `https://budu.dihadiwala.com/dist/css/budu.min.css`
-- JavaScript Component Library: `https://budu.dihadiwala.com/dist/js/budu.min.js`
-- Flexbox Grid Bundle: `https://budu.dihadiwala.com/dist/css/budu-grid.min.css`
-- Reboot/Reset Base CSS: `https://budu.dihadiwala.com/dist/css/budu-reboot.min.css`
-- Utility Classes CSS: `https://budu.dihadiwala.com/dist/css/budu-utilities.min.css`
-- CSS Micro-Animations: `https://budu.dihadiwala.com/dist/css/budu-animations.min.css`
+- Combined CSS Bundle: `https://boodoo.dihadiwala.com/dist/css/boodoo.min.css`
+- JavaScript Component Library: `https://boodoo.dihadiwala.com/dist/js/boodoo.min.js`
+- Flexbox Grid Bundle: `https://boodoo.dihadiwala.com/dist/css/boodoo-grid.min.css`
+- Reboot/Reset Base CSS: `https://boodoo.dihadiwala.com/dist/css/boodoo-reboot.min.css`
+- Utility Classes CSS: `https://boodoo.dihadiwala.com/dist/css/boodoo-utilities.min.css`
+- CSS Micro-Animations: `https://boodoo.dihadiwala.com/dist/css/boodoo-animations.min.css`
 
 ## Documentation Pages Index
 
 ### Getting Started
-- [Introduction](https://budu.dihadiwala.com/docs/getting-started/introduction.html): Overview, core philosophy, and setup basics.
-- [Download](https://budu.dihadiwala.com/docs/getting-started/download.html): Downloads for compiled assets and source packages.
-- [What's Included](https://budu.dihadiwala.com/docs/getting-started/contents.html): Directory breakdown of compiled dist and source files.
-- [Usage & CDN](https://budu.dihadiwala.com/docs/getting-started/usage.html): Including budu via CDN scripts and links.
-- [NPM Installation](https://budu.dihadiwala.com/docs/getting-started/npm.html): Installing and referencing budu in Node projects.
-- [Sass Customization](https://budu.dihadiwala.com/docs/getting-started/sass.html): Overriding Sass variables, maps, and compiling.
-- [Less Customization](https://budu.dihadiwala.com/docs/getting-started/less.html): Overriding Less variables and compiling.
-- [Starter Template](https://budu.dihadiwala.com/docs/getting-started/starter.html): Ready-to-use HTML template structure.
-- [Browser Support](https://budu.dihadiwala.com/docs/getting-started/browser-support.html): Supported browsers and target compatibility.
-- [Accessibility](https://budu.dihadiwala.com/docs/getting-started/accessibility.html): ARIA attributes, keyboard focus management, and WCAG compliance.
+- [Introduction](https://boodoo.dihadiwala.com/docs/getting-started/introduction.html): Overview, core philosophy, and setup basics.
+- [Download](https://boodoo.dihadiwala.com/docs/getting-started/download.html): Downloads for compiled assets and source packages.
+- [What's Included](https://boodoo.dihadiwala.com/docs/getting-started/contents.html): Directory breakdown of compiled dist and source files.
+- [Usage & CDN](https://boodoo.dihadiwala.com/docs/getting-started/usage.html): Including boodoo via CDN scripts and links.
+- [NPM Installation](https://boodoo.dihadiwala.com/docs/getting-started/npm.html): Installing and referencing boodoo in Node projects.
+- [Sass Customization](https://boodoo.dihadiwala.com/docs/getting-started/sass.html): Overriding Sass variables, maps, and compiling.
+- [Less Customization](https://boodoo.dihadiwala.com/docs/getting-started/less.html): Overriding Less variables and compiling.
+- [Starter Template](https://boodoo.dihadiwala.com/docs/getting-started/starter.html): Ready-to-use HTML template structure.
+- [Browser Support](https://boodoo.dihadiwala.com/docs/getting-started/browser-support.html): Supported browsers and target compatibility.
+- [Accessibility](https://boodoo.dihadiwala.com/docs/getting-started/accessibility.html): ARIA attributes, keyboard focus management, and WCAG compliance.
 
 ### Layout & Grid System
-- [Containers](https://budu.dihadiwala.com/docs/layout/containers.html): Fixed and responsive container wrappers (`.container`, `.container-fluid`).
-- [Grid System](https://budu.dihadiwala.com/docs/layout/grid.html): 12-column flexbox grid system (`.row`, `.col-*`).
-- [Columns](https://budu.dihadiwala.com/docs/layout/columns.html): Alignment, ordering, offsets, and nesting.
-- [Gutters](https://budu.dihadiwala.com/docs/layout/gutters.html): Horizontal and vertical spacing between columns (`.g-*`, `.gx-*`, `.gy-*`).
-- [CSS Grid](https://budu.dihadiwala.com/docs/layout/css-grid.html): Native CSS Grid layout helpers (`.grid`, `.g-col-*`).
-- [Breakpoints](https://budu.dihadiwala.com/docs/layout/breakpoints.html): Media query ranges (`sm`, `md`, `lg`, `xl`, `xxl`).
+- [Containers](https://boodoo.dihadiwala.com/docs/layout/containers.html): Fixed and responsive container wrappers (`.container`, `.container-fluid`).
+- [Grid System](https://boodoo.dihadiwala.com/docs/layout/grid.html): 12-column flexbox grid system (`.row`, `.col-*`).
+- [Columns](https://boodoo.dihadiwala.com/docs/layout/columns.html): Alignment, ordering, offsets, and nesting.
+- [Gutters](https://boodoo.dihadiwala.com/docs/layout/gutters.html): Horizontal and vertical spacing between columns (`.g-*`, `.gx-*`, `.gy-*`).
+- [CSS Grid](https://boodoo.dihadiwala.com/docs/layout/css-grid.html): Native CSS Grid layout helpers (`.grid`, `.g-col-*`).
+- [Breakpoints](https://boodoo.dihadiwala.com/docs/layout/breakpoints.html): Media query ranges (`sm`, `md`, `lg`, `xl`, `xxl`).
 
 ### Content & Typography
-- [Typography](https://budu.dihadiwala.com/docs/content/typography.html): Headings, body copy, lead text, blockquotes, inline text styles.
-- [Images](https://budu.dihadiwala.com/docs/content/images.html): Responsive images (`.img-fluid`), thumbnails, and alignment.
-- [Tables](https://budu.dihadiwala.com/docs/content/tables.html): Striped, bordered, hoverable, and responsive tables.
-- [Figures](https://budu.dihadiwala.com/docs/content/figures.html): Captioned images and media figure elements.
+- [Typography](https://boodoo.dihadiwala.com/docs/content/typography.html): Headings, body copy, lead text, blockquotes, inline text styles.
+- [Images](https://boodoo.dihadiwala.com/docs/content/images.html): Responsive images (`.img-fluid`), thumbnails, and alignment.
+- [Tables](https://boodoo.dihadiwala.com/docs/content/tables.html): Striped, bordered, hoverable, and responsive tables.
+- [Figures](https://boodoo.dihadiwala.com/docs/content/figures.html): Captioned images and media figure elements.
 
 ### Form Components
-- [Overview](https://budu.dihadiwala.com/docs/forms/overview.html): Form layout and structure principles.
-- [Form Control](https://budu.dihadiwala.com/docs/forms/form-control.html): Text inputs, textareas, file inputs, and sizing.
-- [Select](https://budu.dihadiwala.com/docs/forms/select.html): Custom styled native `<select>` controls.
-- [Checks & Radios](https://budu.dihadiwala.com/docs/forms/checks.html): Custom checkboxes, radio buttons, and toggle switches.
-- [Range](https://budu.dihadiwala.com/docs/forms/range.html): Custom range sliders.
-- [Input Group](https://budu.dihadiwala.com/docs/forms/input-group.html): Prepend and append text, buttons, or dropdowns to inputs.
-- [Floating Labels](https://budu.dihadiwala.com/docs/forms/floating-labels.html): Animated floating text labels over inputs.
-- [Validation](https://budu.dihadiwala.com/docs/forms/validation.html): Server-side and client-side form validation feedback.
+- [Overview](https://boodoo.dihadiwala.com/docs/forms/overview.html): Form layout and structure principles.
+- [Form Control](https://boodoo.dihadiwala.com/docs/forms/form-control.html): Text inputs, textareas, file inputs, and sizing.
+- [Select](https://boodoo.dihadiwala.com/docs/forms/select.html): Custom styled native `<select>` controls.
+- [Checks & Radios](https://boodoo.dihadiwala.com/docs/forms/checks.html): Custom checkboxes, radio buttons, and toggle switches.
+- [Range](https://boodoo.dihadiwala.com/docs/forms/range.html): Custom range sliders.
+- [Input Group](https://boodoo.dihadiwala.com/docs/forms/input-group.html): Prepend and append text, buttons, or dropdowns to inputs.
+- [Floating Labels](https://boodoo.dihadiwala.com/docs/forms/floating-labels.html): Animated floating text labels over inputs.
+- [Validation](https://boodoo.dihadiwala.com/docs/forms/validation.html): Server-side and client-side form validation feedback.
 
 ### UI Components
-- [Accordion](https://budu.dihadiwala.com/docs/components/accordion.html): Collapsible text panels.
-- [Alerts](https://budu.dihadiwala.com/docs/components/alerts.html): Contextual notification banners.
-- [Avatar](https://budu.dihadiwala.com/docs/components/avatar.html): User profile images and placeholder badges.
-- [Badge](https://budu.dihadiwala.com/docs/components/badge.html): Small count and labeling indicators.
-- [Breadcrumb](https://budu.dihadiwala.com/docs/components/breadcrumb.html): Hierarchy navigation trails.
-- [Buttons](https://budu.dihadiwala.com/docs/components/buttons.html): Button variants, sizes, states, and outlines.
-- [Button Group](https://budu.dihadiwala.com/docs/components/button-group.html): Grouped button toolbars.
-- [Card](https://budu.dihadiwala.com/docs/components/card.html): Flexible content containers with headers, footers, and images.
-- [Carousel](https://budu.dihadiwala.com/docs/components/carousel.html): Image and content slideshow component.
-- [Collapse](https://budu.dihadiwala.com/docs/components/collapse.html): Toggle visibility of content blocks.
-- [Dropdowns](https://budu.dihadiwala.com/docs/components/dropdowns.html): Contextual menu overlays.
-- [List Group](https://budu.dihadiwala.com/docs/components/list-group.html): Flexible list item containers.
-- [Modal](https://budu.dihadiwala.com/docs/components/modal.html): Dialog overlays and popups.
-- [Navs & Tabs](https://budu.dihadiwala.com/docs/components/navs.html): Navigation tabs, pills, and tabbed content panes.
-- [Navbar](https://budu.dihadiwala.com/docs/components/navbar.html): Responsive header navigation bars.
-- [Offcanvas](https://budu.dihadiwala.com/docs/components/offcanvas.html): Slide-over sidebars for mobile navigation and filters.
-- [Pagination](https://budu.dihadiwala.com/docs/components/pagination.html): Page navigation links.
-- [Placeholders](https://budu.dihadiwala.com/docs/components/placeholder.html): Skeleton loading indicators.
-- [Popovers](https://budu.dihadiwala.com/docs/components/popovers.html): Rich content tooltips.
-- [Progress](https://budu.dihadiwala.com/docs/components/progress.html): Progress bars and stacked progress indicators.
-- [Scrollspy](https://budu.dihadiwala.com/docs/components/scrollspy.html): Automatically update nav links based on scroll position.
-- [Spinners](https://budu.dihadiwala.com/docs/components/spinners.html): Loading spinners and dots.
-- [Toasts](https://budu.dihadiwala.com/docs/components/toasts.html): Push notification popups.
-- [Tooltips](https://budu.dihadiwala.com/docs/components/tooltips.html): Lightweight hover popups.
-- [Ripple Effect](https://budu.dihadiwala.com/docs/components/ripple.html): Material Design touch dynamic ripple effect.
+- [Accordion](https://boodoo.dihadiwala.com/docs/components/accordion.html): Collapsible text panels.
+- [Alerts](https://boodoo.dihadiwala.com/docs/components/alerts.html): Contextual notification banners.
+- [Avatar](https://boodoo.dihadiwala.com/docs/components/avatar.html): User profile images and placeholder badges.
+- [Badge](https://boodoo.dihadiwala.com/docs/components/badge.html): Small count and labeling indicators.
+- [Breadcrumb](https://boodoo.dihadiwala.com/docs/components/breadcrumb.html): Hierarchy navigation trails.
+- [Buttons](https://boodoo.dihadiwala.com/docs/components/buttons.html): Button variants, sizes, states, and outlines.
+- [Button Group](https://boodoo.dihadiwala.com/docs/components/button-group.html): Grouped button toolbars.
+- [Card](https://boodoo.dihadiwala.com/docs/components/card.html): Flexible content containers with headers, footers, and images.
+- [Carousel](https://boodoo.dihadiwala.com/docs/components/carousel.html): Image and content slideshow component.
+- [Collapse](https://boodoo.dihadiwala.com/docs/components/collapse.html): Toggle visibility of content blocks.
+- [Dropdowns](https://boodoo.dihadiwala.com/docs/components/dropdowns.html): Contextual menu overlays.
+- [List Group](https://boodoo.dihadiwala.com/docs/components/list-group.html): Flexible list item containers.
+- [Modal](https://boodoo.dihadiwala.com/docs/components/modal.html): Dialog overlays and popups.
+- [Navs & Tabs](https://boodoo.dihadiwala.com/docs/components/navs.html): Navigation tabs, pills, and tabbed content panes.
+- [Navbar](https://boodoo.dihadiwala.com/docs/components/navbar.html): Responsive header navigation bars.
+- [Offcanvas](https://boodoo.dihadiwala.com/docs/components/offcanvas.html): Slide-over sidebars for mobile navigation and filters.
+- [Pagination](https://boodoo.dihadiwala.com/docs/components/pagination.html): Page navigation links.
+- [Placeholders](https://boodoo.dihadiwala.com/docs/components/placeholder.html): Skeleton loading indicators.
+- [Popovers](https://boodoo.dihadiwala.com/docs/components/popovers.html): Rich content tooltips.
+- [Progress](https://boodoo.dihadiwala.com/docs/components/progress.html): Progress bars and stacked progress indicators.
+- [Scrollspy](https://boodoo.dihadiwala.com/docs/components/scrollspy.html): Automatically update nav links based on scroll position.
+- [Spinners](https://boodoo.dihadiwala.com/docs/components/spinners.html): Loading spinners and dots.
+- [Toasts](https://boodoo.dihadiwala.com/docs/components/toasts.html): Push notification popups.
+- [Tooltips](https://boodoo.dihadiwala.com/docs/components/tooltips.html): Lightweight hover popups.
+- [Ripple Effect](https://boodoo.dihadiwala.com/docs/components/ripple.html): Material Design touch dynamic ripple effect.
 
 ### Helpers & Utilities
-- [Clearfix](https://budu.dihadiwala.com/docs/helpers/clearfix.html): Clearing floated elements.
-- [Ratio](https://budu.dihadiwala.com/docs/helpers/ratio.html): Aspect ratio wrappers (16:9, 4:3, 1:1).
-- [Visually Hidden](https://budu.dihadiwala.com/docs/helpers/visually-hidden.html): Screen-reader accessible hidden text.
-- [Stretched Link](https://budu.dihadiwala.com/docs/helpers/stretched-link.html): Expanding link click area to containing card/box.
-- [Color & Background](https://budu.dihadiwala.com/docs/helpers/color-bg.html): Theme color helper utilities.
-- [Elevation](https://budu.dihadiwala.com/docs/helpers/elevation.html): Material design depth shadows (`.elevation-1` to `.elevation-5`).
-- [Spacing](https://budu.dihadiwala.com/docs/utilities/spacing.html): Margin and padding utilities (`.m-*`, `.p-*`).
-- [Flexbox](https://budu.dihadiwala.com/docs/utilities/flex.html): Flex container and item placement utilities.
+- [Clearfix](https://boodoo.dihadiwala.com/docs/helpers/clearfix.html): Clearing floated elements.
+- [Ratio](https://boodoo.dihadiwala.com/docs/helpers/ratio.html): Aspect ratio wrappers (16:9, 4:3, 1:1).
+- [Visually Hidden](https://boodoo.dihadiwala.com/docs/helpers/visually-hidden.html): Screen-reader accessible hidden text.
+- [Stretched Link](https://boodoo.dihadiwala.com/docs/helpers/stretched-link.html): Expanding link click area to containing card/box.
+- [Color & Background](https://boodoo.dihadiwala.com/docs/helpers/color-bg.html): Theme color helper utilities.
+- [Elevation](https://boodoo.dihadiwala.com/docs/helpers/elevation.html): Material design depth shadows (`.elevation-1` to `.elevation-5`).
+- [Spacing](https://boodoo.dihadiwala.com/docs/utilities/spacing.html): Margin and padding utilities (`.m-*`, `.p-*`).
+- [Flexbox](https://boodoo.dihadiwala.com/docs/utilities/flex.html): Flex container and item placement utilities.
 
 ### Motion & Animations
-- [Animations](https://budu.dihadiwala.com/docs/motion/animations.html): Entrance and exit micro-animations (`.anim-fade-in`, `.anim-slide-up`, `.anim-bounce`).
-- [Transitions](https://budu.dihadiwala.com/docs/motion/transitions.html): Smooth CSS property transition utilities.
+- [Animations](https://boodoo.dihadiwala.com/docs/motion/animations.html): Entrance and exit micro-animations (`.anim-fade-in`, `.anim-slide-up`, `.anim-bounce`).
+- [Transitions](https://boodoo.dihadiwala.com/docs/motion/transitions.html): Smooth CSS property transition utilities.
 
 ### About & Licensing
-- [Overview](https://budu.dihadiwala.com/docs/about/overview.html): History and goals.
-- [Design Principles](https://budu.dihadiwala.com/docs/about/design-principles.html): Core design guidelines.
-- [Brand Assets](https://budu.dihadiwala.com/docs/about/brand.html): Logos, icons, and brand guidelines.
-- [License](https://budu.dihadiwala.com/docs/about/license.html): Open-source MIT license details.
+- [Overview](https://boodoo.dihadiwala.com/docs/about/overview.html): History and goals.
+- [Design Principles](https://boodoo.dihadiwala.com/docs/about/design-principles.html): Core design guidelines.
+- [Brand Assets](https://boodoo.dihadiwala.com/docs/about/brand.html): Logos, icons, and brand guidelines.
+- [License](https://boodoo.dihadiwala.com/docs/about/license.html): Open-source MIT license details.

@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://budu.dihadiwala.com/</loc>
+    <loc>https://boodoo.dihadiwala.com/</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/llm.txt</loc>
+    <loc>https://boodoo.dihadiwala.com/llm.txt</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Getting Started -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/introduction.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/introduction.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/download.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/download.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/contents.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/contents.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/usage.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/usage.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/npm.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/npm.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/sass.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/sass.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/less.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/less.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/starter.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/starter.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/browser-support.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/browser-support.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/getting-started/accessibility.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/accessibility.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -76,37 +76,37 @@
 
   <!-- Layout -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/containers.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/containers.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/grid.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/grid.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/columns.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/columns.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/gutters.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/gutters.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/css-grid.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/css-grid.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/layout/breakpoints.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/layout/breakpoints.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -114,25 +114,25 @@
 
   <!-- Content -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/content/typography.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/content/typography.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/content/images.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/content/images.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/content/tables.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/content/tables.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/content/figures.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/content/figures.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -140,49 +140,49 @@
 
   <!-- Forms -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/overview.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/overview.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/form-control.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/form-control.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/select.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/select.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/checks.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/checks.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/range.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/range.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/input-group.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/input-group.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/floating-labels.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/floating-labels.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/forms/validation.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/validation.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -190,151 +190,151 @@
 
   <!-- Components -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/accordion.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/accordion.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/alerts.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/alerts.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/avatar.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/avatar.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/badge.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/badge.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/breadcrumb.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/breadcrumb.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/buttons.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/buttons.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/button-group.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/button-group.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/card.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/card.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/carousel.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/carousel.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/collapse.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/collapse.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/dropdowns.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/dropdowns.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/list-group.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/list-group.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/modal.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/modal.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/navs.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/navs.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/navbar.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/navbar.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/offcanvas.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/offcanvas.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/pagination.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/pagination.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/placeholder.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/placeholder.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/popovers.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/popovers.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/progress.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/progress.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/scrollspy.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/scrollspy.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/spinners.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/spinners.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/toasts.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/toasts.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/tooltips.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/tooltips.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/components/ripple.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/components/ripple.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -342,37 +342,37 @@
 
   <!-- Helpers -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/clearfix.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/clearfix.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/ratio.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/ratio.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/visually-hidden.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/visually-hidden.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/stretched-link.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/stretched-link.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/color-bg.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/color-bg.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/helpers/elevation.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/helpers/elevation.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -380,97 +380,97 @@
 
   <!-- Utilities -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/background.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/background.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/borders.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/borders.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/colors.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/colors.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/display.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/display.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/flex.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/flex.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/float.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/float.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/interactions.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/interactions.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/opacity.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/opacity.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/overflow.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/overflow.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/position.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/position.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/shadows.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/shadows.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/sizing.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/sizing.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/spacing.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/spacing.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/text.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/text.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/vertical-alignment.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/vertical-alignment.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/utilities/z-index.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/utilities/z-index.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -478,13 +478,13 @@
 
   <!-- Motion -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/motion/animations.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/motion/animations.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/motion/transitions.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/motion/transitions.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -492,25 +492,25 @@
 
   <!-- About -->
   <url>
-    <loc>https://budu.dihadiwala.com/docs/about/overview.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/about/overview.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/about/design-principles.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/about/design-principles.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/about/brand.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/about/brand.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://budu.dihadiwala.com/docs/about/license.html</loc>
+    <loc>https://boodoo.dihadiwala.com/docs/about/license.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

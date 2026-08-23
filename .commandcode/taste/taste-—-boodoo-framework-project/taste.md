@@ -1,4 +1,4 @@
-# Taste — budu framework project
+# Taste — boodoo framework project
 - Draws on inspiration from established design systems (Bootstrap, Foundation, Tailwind CSS, Material UI) to blend the best ideas into a cohesive toolkit. Confidence: 0.9
 - Designs mobile-first and fully responsive, with breakpoints scaling up from the smallest viewport. Confidence: 0.9
 - Builds touch-supportive, interactive UI (touch targets, swipe gestures, touch-action handling). Confidence: 0.8

@@ -1,5 +1,5 @@
-// BUDU UTILITY API
-// Generates utility classes from the $budu-utilities map.
+// BOODOO UTILITY API
+// Generates utility classes from the $boodoo-utilities map.
 // Tailwind-inspired: every utility can be responsive (breakpoint-prefixed).
 
 @use "sass:map";
@@ -16,7 +16,7 @@
 }
 
 // Build a single utility rule set.
-@mixin generate-utility($utility, $infix: "", $important: $budu-utility-important) {
+@mixin generate-utility($utility, $infix: "", $important: $boodoo-utility-important) {
   $values: map.get($utility, "values");
   $class: map.get($utility, "class");
   $props: utility-properties(map.get($utility, "property"));
@@ -41,7 +41,7 @@
 }
 
 // Generate all utilities, optionally responsive.
-@mixin generate-utilities($utilities, $rfs: false, $important: $budu-utility-important) {
+@mixin generate-utilities($utilities, $rfs: false, $important: $boodoo-utility-important) {
   @each $key, $utility in $utilities {
     $responsive: map.get($utility, "responsive");
 
@@ -50,7 +50,7 @@
       @include generate-utility($utility, "", $important);
 
       // Each breakpoint
-      @each $breakpoint in map.keys($budu-grid-breakpoints) {
+      @each $breakpoint in map.keys($boodoo-grid-breakpoints) {
         @if $breakpoint != "xs" {
           $infix: "-#{$breakpoint}";
           @include media-breakpoint-up($breakpoint) {

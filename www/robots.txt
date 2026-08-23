@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://budu.dihadiwala.com/sitemap.xml
+Sitemap: https://boodoo.dihadiwala.com/sitemap.xml

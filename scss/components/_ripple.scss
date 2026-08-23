@@ -1,4 +1,4 @@
-// BUDU RIPPLE
+// BOODOO RIPPLE
 // Material Design ripple effect (JS-driven; CSS surface + animation).
 
 .ripple {
@@ -12,11 +12,11 @@
   background-color: currentcolor;
   opacity: 0.2;
   transform: scale(0);
-  animation: budu-ripple 0.6s ease-out;
+  animation: boodoo-ripple 0.6s ease-out;
   pointer-events: none;
 }
 
-@keyframes budu-ripple {
+@keyframes boodoo-ripple {
   to {
     transform: scale(2.5);
     opacity: 0;

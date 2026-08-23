@@ -1,4 +1,4 @@
-// BUDU JS — Base Component
+// BOODOO JS — Base Component
 // Shared class with instance registry & get/create API (Bootstrap-like).
 
 import { element, DATA_PREFIX } from './util.js';
@@ -18,7 +18,7 @@ export class BaseComponent {
   }
 
   static get NAME() {
-    return 'budu';
+    return 'boodoo';
   }
 
   // ----- Registry -----
@@ -61,7 +61,7 @@ export class BaseComponent {
     return { ...defaults, ...(config || {}) };
   }
 
-  static _dataAttrConfig(el, prefix = 'budu') {
+  static _dataAttrConfig(el, prefix = 'boodoo') {
     const result = {};
     for (const attr of Array.from(el.attributes)) {
       if (attr.name.startsWith(`data-${prefix}-`)) {

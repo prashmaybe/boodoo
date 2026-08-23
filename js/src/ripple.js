@@ -1,11 +1,11 @@
-// BUDU — Ripple (Material Design)
-// Creates ink ripples on elements with the `.ripple` class or [data-budu-ripple].
+// BOODOO — Ripple (Material Design)
+// Creates ink ripples on elements with the `.ripple` class or [data-boodoo-ripple].
 
 export function initRipple(root = document) {
-  const surfaces = Array.from(root.querySelectorAll ? root.querySelectorAll('.ripple, [data-budu-ripple]') : []);
+  const surfaces = Array.from(root.querySelectorAll ? root.querySelectorAll('.ripple, [data-boodoo-ripple]') : []);
   surfaces.forEach((surface) => {
-    if (surface._buduRippleBound) return;
-    surface._buduRippleBound = true;
+    if (surface._boodooRippleBound) return;
+    surface._boodooRippleBound = true;
     surface.addEventListener('pointerdown', (e) => {
       createRipple(surface, e);
     });

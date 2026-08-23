@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-labelledby="title desc">
+  <title id="title">boodoo Design Framework</title>
+  <desc id="desc">boodoo logo with abstract b icon and Design Framework tagline</desc>
+  <defs>
+    <linearGradient id="boodooGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="55%" stop-color="#5B21E6"/>
+      <stop offset="100%" stop-color="#17135F"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(300 22)">
+    <path fill="url(#boodooGradient)" d="M0 24C0 10 15 0 29 7l73 44c8 5 13 14 13 23v122c0 73-48 118-119 118H39c-22 0-39-18-39-40V24z"/>
+    <path fill="url(#boodooGradient)" d="M111 105h70c69 0 119 49 119 118 0 69-49 118-119 118h-82c-18 0-33-15-33-33v-76c0-18 15-33 33-33h12V105z"/>
+    <path fill="#fff" d="M111 178h35c18 0 33 15 33 33v33c0 18-15 33-33 33h-35c-18 0-33-15-33-33v-33c0-18 15-33 33-33z"/>
+  </g>
+  <text x="400" y="350" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="8" fill="#11143D">boodoo</text>
+  <text x="400" y="398" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="8" fill="#5C6280">DESIGN FRAMEWORK</text>
+</svg>

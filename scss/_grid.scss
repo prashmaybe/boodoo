@@ -1,4 +1,4 @@
-// BUDU GRID
+// BOODOO GRID
 // Mobile-first 12-column flexbox grid + containers + gutters.
 
 @use "sass:map";
@@ -7,8 +7,8 @@
 .container,
 .container-fluid {
   width: 100%;
-  padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
-  padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+  padding-right: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
+  padding-left: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
   margin-right: auto;
   margin-left: auto;
 }
@@ -24,77 +24,77 @@
   @extend .container-fluid;
 }
 
-@include media-breakpoint-up(sm, $budu-grid-breakpoints) {
+@include media-breakpoint-up(sm, $boodoo-grid-breakpoints) {
   .container-sm,
   .container {
-    max-width: map.get($budu-container-max-widths, sm);
+    max-width: map.get($boodoo-container-max-widths, sm);
   }
 }
 
-@include media-breakpoint-up(md, $budu-grid-breakpoints) {
+@include media-breakpoint-up(md, $boodoo-grid-breakpoints) {
   .container-md,
   .container-sm,
   .container {
-    max-width: map.get($budu-container-max-widths, md);
+    max-width: map.get($boodoo-container-max-widths, md);
   }
 }
 
-@include media-breakpoint-up(lg, $budu-grid-breakpoints) {
+@include media-breakpoint-up(lg, $boodoo-grid-breakpoints) {
   .container-lg,
   .container-md,
   .container-sm,
   .container {
-    max-width: map.get($budu-container-max-widths, lg);
+    max-width: map.get($boodoo-container-max-widths, lg);
   }
 }
 
-@include media-breakpoint-up(xl, $budu-grid-breakpoints) {
+@include media-breakpoint-up(xl, $boodoo-grid-breakpoints) {
   .container-xl,
   .container-lg,
   .container-md,
   .container-sm,
   .container {
-    max-width: map.get($budu-container-max-widths, xl);
+    max-width: map.get($boodoo-container-max-widths, xl);
   }
 }
 
-@include media-breakpoint-up(xxl, $budu-grid-breakpoints) {
+@include media-breakpoint-up(xxl, $boodoo-grid-breakpoints) {
   .container-xxl,
   .container-xl,
   .container-lg,
   .container-md,
   .container-sm,
   .container {
-    max-width: map.get($budu-container-max-widths, xxl);
+    max-width: map.get($boodoo-container-max-widths, xxl);
   }
 }
 
 // Edge-to-edge fluid
 .container-fluid {
-  padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
-  padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
+  padding-right: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
+  padding-left: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
 }
 
 // Rows
 .row {
-  @include make-row(calc(var(--budu-gutter-x, #{$budu-gutter-x})));
+  @include make-row(calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x})));
 
   > * {
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding-right: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
-    padding-left: calc(var(--budu-gutter-x, #{$budu-gutter-x}) * 0.5);
-    margin-top: var(--budu-gutter-y, 0);
+    padding-right: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
+    padding-left: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}) * 0.5);
+    margin-top: var(--boodoo-gutter-y, 0);
   }
 }
 
 // Row columns (all breakpoints)
-@each $breakpoint in map.keys($budu-grid-breakpoints) {
+@each $breakpoint in map.keys($boodoo-grid-breakpoints) {
   $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
 
-  @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
-    @for $i from 1 through $budu-grid-row-columns {
+  @include media-breakpoint-up($breakpoint, $boodoo-grid-breakpoints) {
+    @for $i from 1 through $boodoo-grid-row-columns {
       .row-cols#{$infix}-#{$i} > * {
         flex: 0 0 auto;
         width: percentage(divide(1, $i));
@@ -104,10 +104,10 @@
 }
 
 // Columns
-@each $breakpoint in map.keys($budu-grid-breakpoints) {
+@each $breakpoint in map.keys($boodoo-grid-breakpoints) {
   $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
 
-  @include media-breakpoint-up($breakpoint, $budu-grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint, $boodoo-grid-breakpoints) {
     // Auto-layout, equal-width
     .col#{$infix} {
       flex: 1 0 0%;
@@ -118,18 +118,18 @@
       width: auto;
     }
 
-    @for $i from 1 through $budu-grid-columns {
+    @for $i from 1 through $boodoo-grid-columns {
       .col#{$infix}-#{$i} {
         flex: 0 0 auto;
-        width: percentage(divide($i, $budu-grid-columns));
+        width: percentage(divide($i, $boodoo-grid-columns));
       }
     }
 
     // Offsets
-    @for $i from 0 through ($budu-grid-columns - 1) {
+    @for $i from 0 through ($boodoo-grid-columns - 1) {
       @if not($infix == "" and $i == 0) {
         .offset#{$infix}-#{$i} {
-          margin-left: percentage(divide($i, $budu-grid-columns));
+          margin-left: percentage(divide($i, $boodoo-grid-columns));
         }
       }
     }
@@ -137,18 +137,18 @@
 }
 
 // Gutters
-.g-0, .gx-0 { --budu-gutter-x: 0; }
-.g-0, .gy-0 { --budu-gutter-y: 0; }
-.g-1, .gx-1 { --budu-gutter-x: 0.25rem; }
-.g-1, .gy-1 { --budu-gutter-y: 0.25rem; }
-.g-2, .gx-2 { --budu-gutter-x: 0.5rem; }
-.g-2, .gy-2 { --budu-gutter-y: 0.5rem; }
-.g-3, .gx-3 { --budu-gutter-x: 1rem; }
-.g-3, .gy-3 { --budu-gutter-y: 1rem; }
-.g-4, .gx-4 { --budu-gutter-x: 1.5rem; }
-.g-4, .gy-4 { --budu-gutter-y: 1.5rem; }
-.g-5, .gx-5 { --budu-gutter-x: 3rem; }
-.g-5, .gy-5 { --budu-gutter-y: 3rem; }
+.g-0, .gx-0 { --boodoo-gutter-x: 0; }
+.g-0, .gy-0 { --boodoo-gutter-y: 0; }
+.g-1, .gx-1 { --boodoo-gutter-x: 0.25rem; }
+.g-1, .gy-1 { --boodoo-gutter-y: 0.25rem; }
+.g-2, .gx-2 { --boodoo-gutter-x: 0.5rem; }
+.g-2, .gy-2 { --boodoo-gutter-y: 0.5rem; }
+.g-3, .gx-3 { --boodoo-gutter-x: 1rem; }
+.g-3, .gy-3 { --boodoo-gutter-y: 1rem; }
+.g-4, .gx-4 { --boodoo-gutter-x: 1.5rem; }
+.g-4, .gy-4 { --boodoo-gutter-y: 1.5rem; }
+.g-5, .gx-5 { --boodoo-gutter-x: 3rem; }
+.g-5, .gy-5 { --boodoo-gutter-y: 3rem; }
 
 // CSS Grid helpers (Tailwind/Foundation flavor)
 .grid {

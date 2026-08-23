@@ -1,50 +1,50 @@
 <!--
 title: Install via npm
-description: Install budu via npm and import the compiled CSS and JavaScript, or the Sass source.
+description: Install boodoo via npm and import the compiled CSS and JavaScript, or the Sass source.
 section: getting-started
 order: 4
 -->
 <h1>Install via npm</h1>
-<p class="lead">The official way to get budu is to install it as a package manager dependency. This lets you use the
+<p class="lead">The official way to get boodoo is to install it as a package manager dependency. This lets you use the
   precompiled CSS and JS, or compile your own customized version from source.</p>
 
 <h2 id="install">Install with npm</h2>
 <div class="highlight">
-  <pre><code>npm install budu</code></pre>
+  <pre><code>npm install boodoo</code></pre>
 </div>
-<p>budu is available as an npm package. It ships compiled CSS and JS in <code>dist/</code>, plus the Sass and Less
+<p>boodoo is available as an npm package. It ships compiled CSS and JS in <code>dist/</code>, plus the Sass and Less
   source.</p>
 
 <h2 id="es-module">ES modules</h2>
 <p>If you're using a bundler like Vite, webpack, or Rollup, import the ES module build:</p>
 <div class="highlight">
-  <pre><code>import budu from 'budu/dist/js/budu.esm.js';
+  <pre><code>import boodoo from 'boodoo/dist/js/boodoo.esm.js';
 // or
-import { Modal, Toast, Collapse } from 'budu/dist/js/budu.esm.js';</code></pre>
+import { Modal, Toast, Collapse } from 'boodoo/dist/js/boodoo.esm.js';</code></pre>
 </div>
 
 <h2 id="css">Import compiled CSS</h2>
 <div class="highlight">
-  <pre><code>import 'budu/dist/css/budu.min.css';</code></pre>
+  <pre><code>import 'boodoo/dist/css/boodoo.min.css';</code></pre>
 </div>
 
 <h2 id="sass">Compile from Sass</h2>
-<p>For full control, import the Sass entry in your own stylesheet. Override budu's variables <em>before</em> the import
+<p>For full control, import the Sass entry in your own stylesheet. Override boodoo's variables <em>before</em> the import
   to customize everything:</p>
 <div class="highlight">
   <pre><code>// Your custom overrides (optional)
-$budu-primary: #7C3AED;
-$budu-border-radius: 0.375rem;
+$boodoo-primary: #7C3AED;
+$boodoo-border-radius: 0.375rem;
 
-// Then import budu
-@import "node_modules/budu/scss/budu";</code></pre>
+// Then import boodoo
+@import "node_modules/boodoo/scss/boodoo";</code></pre>
 </div>
 
 <h2 id="package-json">Package exports</h2>
 <p>The package exposes these entry points via <code>package.json</code>:</p>
 <pre><code>{
-  "style": "dist/css/budu.css",
-  "sass": "scss/budu.scss",
-  "main": "dist/js/budu.js",
-  "module": "dist/js/budu.esm.js"
+  "style": "dist/css/boodoo.css",
+  "sass": "scss/boodoo.scss",
+  "main": "dist/js/boodoo.js",
+  "module": "dist/js/boodoo.esm.js"
 }</code></pre>

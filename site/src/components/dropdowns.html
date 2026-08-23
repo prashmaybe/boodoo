@@ -5,16 +5,16 @@ section: components
 order: 10
 -->
 <h1>Dropdowns</h1>
-<p class="lead">Toggle contextual overlays for displaying lists of links and more with the budu dropdown plugin.</p>
+<p class="lead">Toggle contextual overlays for displaying lists of links and more with the boodoo dropdown plugin.</p>
 
 <h2 id="overview">Overview</h2>
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and actions. They're toggled by clicking
-  (or focusing) their trigger. All dropdowns are powered by budu's vanilla JS and initialized from
-  <code>data-budu-toggle="dropdown"</code>.</p>
+  (or focusing) their trigger. All dropdowns are powered by boodoo's vanilla JS and initialized from
+  <code>data-boodoo-toggle="dropdown"</code>.</p>
 
 <div class="bd-example d-flex gap-2 flex-wrap">
   <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-boodoo-toggle="dropdown" aria-expanded="false">
       Dropdown button
     </button>
     <ul class="dropdown-menu">
@@ -31,7 +31,7 @@ order: 10
   </div>
 
   <div class="dropdown">
-    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-budu-toggle="dropdown"
+    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-boodoo-toggle="dropdown"
       aria-expanded="false">Dropdown link</a>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -42,7 +42,7 @@ order: 10
 <div class="highlight">
   <pre><code>&lt;div class="dropdown"&gt;
   &lt;button class="btn btn-primary dropdown-toggle" type="button"
-          data-budu-toggle="dropdown" aria-expanded="false"&gt;
+          data-boodoo-toggle="dropdown" aria-expanded="false"&gt;
     Dropdown button
   &lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
@@ -60,7 +60,7 @@ order: 10
   upward instead.</p>
 <div class="bd-example">
   <div class="dropup">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-budu-toggle="dropdown"
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-boodoo-toggle="dropdown"
       aria-expanded="false">Dropup</button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -73,7 +73,7 @@ order: 10
 <p>Add <code>.dropdown-menu-end</code> to align the menu to the right of the trigger.</p>
 <div class="bd-example">
   <div class="dropdown d-inline-block">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-budu-toggle="dropdown"
+    <button class="btn btn-primary dropdown-toggle" type="button" data-boodoo-toggle="dropdown"
       aria-expanded="false">Right-aligned menu</button>
     <ul class="dropdown-menu dropdown-menu-end">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -85,7 +85,7 @@ order: 10
 <h2 id="menu-items">Dropdown menu items</h2>
 <div class="bd-example">
   <div class="dropdown d-inline-block">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-budu-toggle="dropdown"
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-boodoo-toggle="dropdown"
       aria-expanded="false">Menu items</button>
     <div class="dropdown-menu">
       <button class="dropdown-item" type="button">Action</button>
@@ -101,7 +101,7 @@ order: 10
 <p>Add <code>.dropdown-menu-dark</code> to invert the dropdown palette.</p>
 <div class="bd-example">
   <div class="dropdown d-inline-block">
-    <button class="btn btn-dark dropdown-toggle" type="button" data-budu-toggle="dropdown" aria-expanded="false">Dark
+    <button class="btn btn-dark dropdown-toggle" type="button" data-boodoo-toggle="dropdown" aria-expanded="false">Dark
       menu</button>
     <ul class="dropdown-menu dropdown-menu-dark">
       <li><a class="dropdown-item active" href="#">Action</a></li>
@@ -114,7 +114,7 @@ order: 10
 <p>Create a split dropdown: the caret part triggers the menu while the first part acts as a normal button.</p>
 <div class="btn-group">
   <button type="button" class="btn btn-primary">Action</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-budu-toggle="dropdown"
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-boodoo-toggle="dropdown"
     aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>

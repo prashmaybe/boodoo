@@ -1,31 +1,31 @@
-// BUDU LIST GROUP
+// BOODOO LIST GROUP
 // List group with flush, numbered, horizontal, and action variants.
 
 .list-group {
-  --budu-list-group-bg: var(--budu-body-bg);
-  --budu-list-group-color: var(--budu-body-color);
-  --budu-list-group-border-color: #{$budu-border-color};
-  --budu-list-group-border-width: #{$budu-border-width};
-  --budu-list-group-border-radius: #{$budu-border-radius};
-  --budu-list-group-active-bg: #{$budu-primary};
-  --budu-list-group-active-color: #{$budu-white};
-  --budu-list-group-hover-bg: #{$budu-gray-100};
+  --boodoo-list-group-bg: var(--boodoo-body-bg);
+  --boodoo-list-group-color: var(--boodoo-body-color);
+  --boodoo-list-group-border-color: #{$boodoo-border-color};
+  --boodoo-list-group-border-width: #{$boodoo-border-width};
+  --boodoo-list-group-border-radius: #{$boodoo-border-radius};
+  --boodoo-list-group-active-bg: #{$boodoo-primary};
+  --boodoo-list-group-active-color: #{$boodoo-white};
+  --boodoo-list-group-hover-bg: #{$boodoo-gray-100};
 
   display: flex;
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
-  border-radius: var(--budu-list-group-border-radius);
+  border-radius: var(--boodoo-list-group-border-radius);
 }
 
 .list-group-item {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  color: var(--budu-list-group-color);
+  color: var(--boodoo-list-group-color);
   text-decoration: none;
-  background-color: var(--budu-list-group-bg);
-  border: var(--budu-list-group-border-width) solid var(--budu-list-group-border-color);
+  background-color: var(--boodoo-list-group-bg);
+  border: var(--boodoo-list-group-border-width) solid var(--boodoo-list-group-border-color);
 
   &:first-child {
     border-top-left-radius: inherit;
@@ -39,58 +39,58 @@
 
   &.disabled,
   &:disabled {
-    color: var(--budu-body-tertiary-color);
+    color: var(--boodoo-body-tertiary-color);
     pointer-events: none;
-    background-color: var(--budu-list-group-bg);
+    background-color: var(--boodoo-list-group-bg);
   }
 }
 
 // Actions (links/buttons)
 .list-group-item-action {
   width: 100%;
-  color: var(--budu-list-group-color);
+  color: var(--boodoo-list-group-color);
   text-align: inherit;
   cursor: pointer;
 
   &:hover,
   &:focus {
     z-index: 1;
-    color: var(--budu-list-group-color);
+    color: var(--boodoo-list-group-color);
     text-decoration: none;
-    background-color: var(--budu-list-group-hover-bg);
+    background-color: var(--boodoo-list-group-hover-bg);
   }
 
   &:active {
-    color: var(--budu-body-color);
-    background-color: var(--budu-body-tertiary-bg);
+    color: var(--boodoo-body-color);
+    background-color: var(--boodoo-body-tertiary-bg);
   }
 }
 
 // Active state
 .list-group-item.active {
   z-index: 2;
-  color: var(--budu-list-group-active-color);
-  background-color: var(--budu-list-group-active-bg);
-  border-color: var(--budu-list-group-active-bg);
+  color: var(--boodoo-list-group-active-color);
+  background-color: var(--boodoo-list-group-active-bg);
+  border-color: var(--boodoo-list-group-active-bg);
 }
 
 // Color variants
-@each $name, $color in $budu-theme-colors {
+@each $name, $color in $boodoo-theme-colors {
   .list-group-item-#{$name} {
-    color: map.get($budu-text-emphasis-map, $name);
-    background-color: map.get($budu-bg-subtle-map, $name);
+    color: map.get($boodoo-text-emphasis-map, $name);
+    background-color: map.get($boodoo-bg-subtle-map, $name);
 
     &.list-group-item-action {
       &:hover,
       &:focus {
-        color: map.get($budu-text-emphasis-map, $name);
-        background-color: shade-color(map.get($budu-bg-subtle-map, $name), 8%);
+        color: map.get($boodoo-text-emphasis-map, $name);
+        background-color: shade-color(map.get($boodoo-bg-subtle-map, $name), 8%);
       }
 
       &.active {
-        color: $budu-white;
-        background-color: map.get($budu-text-emphasis-map, $name);
-        border-color: map.get($budu-text-emphasis-map, $name);
+        color: $boodoo-white;
+        background-color: map.get($boodoo-text-emphasis-map, $name);
+        border-color: map.get($boodoo-text-emphasis-map, $name);
       }
     }
   }
@@ -117,22 +117,22 @@
   flex-direction: row;
 
   > .list-group-item:first-child:not(:last-child) {
-    border-bottom-left-radius: var(--budu-list-group-border-radius);
+    border-bottom-left-radius: var(--boodoo-list-group-border-radius);
     border-top-right-radius: 0;
   }
 
   > .list-group-item:last-child:not(:first-child) {
-    border-top-right-radius: var(--budu-list-group-border-radius);
+    border-top-right-radius: var(--boodoo-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
 
   > .list-group-item + .list-group-item {
-    border-top-width: var(--budu-list-group-border-width);
+    border-top-width: var(--boodoo-list-group-border-width);
     border-left-width: 0;
   }
 }
 
-@each $breakpoint in map.keys($budu-grid-breakpoints) {
+@each $breakpoint in map.keys($boodoo-grid-breakpoints) {
   @if $breakpoint != "xs" {
     $infix: "-#{$breakpoint}";
 
@@ -141,17 +141,17 @@
         flex-direction: row;
 
         > .list-group-item:first-child:not(:last-child) {
-          border-bottom-left-radius: var(--budu-list-group-border-radius);
+          border-bottom-left-radius: var(--boodoo-list-group-border-radius);
           border-top-right-radius: 0;
         }
 
         > .list-group-item:last-child:not(:first-child) {
-          border-top-right-radius: var(--budu-list-group-border-radius);
+          border-top-right-radius: var(--boodoo-list-group-border-radius);
           border-bottom-left-radius: 0;
         }
 
         > .list-group-item + .list-group-item {
-          border-top-width: var(--budu-list-group-border-width);
+          border-top-width: var(--boodoo-list-group-border-width);
           border-left-width: 0;
         }
       }
@@ -164,7 +164,7 @@
   border-radius: 0;
 
   > .list-group-item {
-    border-width: 0 0 var(--budu-list-group-border-width);
+    border-width: 0 0 var(--boodoo-list-group-border-width);
 
     &:last-child {
       border-bottom-width: 0;
@@ -174,14 +174,14 @@
 
 // Light
 .list-group-light {
-  --budu-list-group-border-color: transparent;
+  --boodoo-list-group-border-color: transparent;
 
   .list-group-item {
     background-color: transparent;
   }
 
   .list-group-item-action:hover {
-    background-color: var(--budu-list-group-hover-bg);
-    border-radius: var(--budu-list-group-border-radius);
+    background-color: var(--boodoo-list-group-hover-bg);
+    border-radius: var(--boodoo-list-group-border-radius);
   }
 }

@@ -1,4 +1,4 @@
-// BUDU FORMS — Input Group
+// BOODOO FORMS — Input Group
 // Prepended / appended input groups.
 
 .input-group {
@@ -34,16 +34,16 @@
   .input-group-text {
     display: flex;
     align-items: center;
-    padding: $budu-input-btn-padding-y $budu-input-btn-padding-x;
-    font-size: $budu-input-btn-font-size;
+    padding: $boodoo-input-btn-padding-y $boodoo-input-btn-padding-x;
+    font-size: $boodoo-input-btn-font-size;
     font-weight: 400;
-    line-height: $budu-input-btn-line-height;
-    color: var(--budu-body-color);
+    line-height: $boodoo-input-btn-line-height;
+    color: var(--boodoo-body-color);
     text-align: center;
     white-space: nowrap;
-    background-color: var(--budu-body-tertiary-bg);
-    border: $budu-input-btn-border-width solid $budu-form-control-border-color;
-    border-radius: $budu-border-radius;
+    background-color: var(--boodoo-body-tertiary-bg);
+    border: $boodoo-input-btn-border-width solid $boodoo-form-control-border-color;
+    border-radius: $boodoo-border-radius;
   }
 
   // Sizing
@@ -78,17 +78,17 @@
 .input-group-lg > .form-control,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text {
-  padding: $budu-input-btn-padding-y-lg $budu-input-btn-padding-x-lg;
-  font-size: $budu-input-btn-font-size-lg;
-  border-radius: $budu-border-radius-lg;
+  padding: $boodoo-input-btn-padding-y-lg $boodoo-input-btn-padding-x-lg;
+  font-size: $boodoo-input-btn-font-size-lg;
+  border-radius: $boodoo-border-radius-lg;
 }
 
 .input-group-sm > .form-control,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text {
-  padding: $budu-input-btn-padding-y-sm $budu-input-btn-padding-x-sm;
-  font-size: $budu-input-btn-font-size-sm;
-  border-radius: $budu-border-radius-sm;
+  padding: $boodoo-input-btn-padding-y-sm $boodoo-input-btn-padding-x-sm;
+  font-size: $boodoo-input-btn-font-size-sm;
+  border-radius: $boodoo-border-radius-sm;
 }
 
 // Flush variant (no visual join)
@@ -103,14 +103,14 @@
   }
 
   > :first-child {
-    border-top-left-radius: $budu-border-radius;
-    border-bottom-left-radius: $budu-border-radius;
-    border-left: $budu-input-btn-border-width solid $budu-form-control-border-color;
+    border-top-left-radius: $boodoo-border-radius;
+    border-bottom-left-radius: $boodoo-border-radius;
+    border-left: $boodoo-input-btn-border-width solid $boodoo-form-control-border-color;
   }
 
   > :last-child {
-    border-top-right-radius: $budu-border-radius;
-    border-bottom-right-radius: $budu-border-radius;
-    border-right: $budu-input-btn-border-width solid $budu-form-control-border-color;
+    border-top-right-radius: $boodoo-border-radius;
+    border-bottom-right-radius: $boodoo-border-radius;
+    border-right: $boodoo-input-btn-border-width solid $boodoo-form-control-border-color;
   }
 }

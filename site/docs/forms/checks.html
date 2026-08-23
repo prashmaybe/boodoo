@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="en" data-budu-theme="light">
+<html lang="en" data-boodoo-theme="light">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Use budu's custom checkbox and radio styles, including switches.">
+  <meta name="description" content="Use boodoo's custom checkbox and radio styles, including switches.">
   <meta name="theme-color" content="#7c3aed">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="budu">
-  <meta property="og:title" content="Checks & radios · budu">
-  <meta property="og:description" content="Use budu's custom checkbox and radio styles, including switches.">
-  <meta property="og:image" content="../../assets/brand/budu-og-image.png">
+  <meta property="og:site_name" content="boodoo">
+  <meta property="og:title" content="Checks & radios · boodoo">
+  <meta property="og:description" content="Use boodoo's custom checkbox and radio styles, including switches.">
+  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Checks & radios · budu</title>
-  <link rel="icon" type="image/svg+xml" href="../../assets/brand/budu-icon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/budu-icon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/budu-icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../../assets/brand/budu-icon-512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/budu-icon-180.png">
+  <title>Checks & radios · boodoo</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../../assets/brand/boodoo-icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/boodoo-icon-180.png">
   <link rel="manifest" href="../../site.webmanifest">
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../../dist/css/budu.min.css">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
 
@@ -36,10 +36,10 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="d-flex container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
-        <img src="../../assets/brand/budu-icon.svg" alt="budu Framework" height="32" loading="lazy">
-        <span class="fw-bold fs-5 text-gradient">budu</span>
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
-      <button class="navbar-toggler border-0" type="button" data-budu-toggle="collapse" data-budu-target="#docsNav"
+      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
         aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -196,7 +196,7 @@
       </ol>
     </nav>
           <h1>Checks &amp; radios</h1>
-<p class="lead">budu's custom checkbox and radio components are used for selecting one or several options in a list.</p>
+<p class="lead">boodoo's custom checkbox and radio components are used for selecting one or several options in a list.</p>
 
 <h2 id="checks">Checks</h2>
 <div class="bd-example">
@@ -322,7 +322,7 @@
     <div
       class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small">
       <div class="d-inline-flex gap-2">
-        <img src="../../assets/brand/budu-icon.svg" alt="budu" height="24" width="24" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
         <span>© 2026 Pebble Benders · MIT License</span>
       </div>
       <div class="d-flex gap-3">
@@ -336,12 +336,12 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/budu.js"></script>
+  <script src="../../dist/js/boodoo.js"></script>
   <script>
     // Theme toggle logic
     (function () {
-      var storedTheme = localStorage.getItem('budu-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-budu-theme', storedTheme);
+      var storedTheme = localStorage.getItem('boodoo-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-boodoo-theme', storedTheme);
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
@@ -351,10 +351,10 @@
       updateIcon(storedTheme);
       if (toggleBtn) {
         toggleBtn.addEventListener('click', function () {
-          var current = document.documentElement.getAttribute('data-budu-theme');
+          var current = document.documentElement.getAttribute('data-boodoo-theme');
           var next = current === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-budu-theme', next);
-          localStorage.setItem('budu-theme', next);
+          document.documentElement.setAttribute('data-boodoo-theme', next);
+          localStorage.setItem('boodoo-theme', next);
           updateIcon(next);
         });
       }

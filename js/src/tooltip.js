@@ -1,4 +1,4 @@
-// BUDU — Tooltip & Popover
+// BOODOO — Tooltip & Popover
 // Lightweight positioning (no Popper dependency) with arrow support.
 
 import { BaseComponent } from './base-component.js';
@@ -71,7 +71,7 @@ class AbstractTrigger extends BaseComponent {
 
   _getTitle() {
     const element = this._element;
-    const title = this._config.title || element.getAttribute('data-budu-title') || element.getAttribute('title') || '';
+    const title = this._config.title || element.getAttribute('data-boodoo-title') || element.getAttribute('title') || '';
     if (element.title === title && element.removeAttribute) element.removeAttribute('title');
     return title;
   }
@@ -90,7 +90,7 @@ class AbstractTrigger extends BaseComponent {
 
   _show() {
     if (this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.show.' + this.constructor.NAME)) return;
+    if (!triggerEvent(this._element, 'boodoo.show.' + this.constructor.NAME)) return;
     this._isTransitioning = true;
 
     this._createTip();
@@ -102,7 +102,7 @@ class AbstractTrigger extends BaseComponent {
     this._isShown = true;
     this._isTransitioning = false;
     this._updatePosition();
-    triggerEvent(this._element, 'budu.shown.' + this.constructor.NAME);
+    triggerEvent(this._element, 'boodoo.shown.' + this.constructor.NAME);
   }
 
   hide() {
@@ -114,7 +114,7 @@ class AbstractTrigger extends BaseComponent {
 
   _hide() {
     if (!this._isShown) return;
-    if (!triggerEvent(this._element, 'budu.hide.' + this.constructor.NAME)) return;
+    if (!triggerEvent(this._element, 'boodoo.hide.' + this.constructor.NAME)) return;
     window.removeEventListener('scroll', this._bound.onScroll, true);
     window.removeEventListener('resize', this._bound.onResize);
     this._tip.classList.remove('show');
@@ -124,7 +124,7 @@ class AbstractTrigger extends BaseComponent {
       this._tip = null;
       this._isShown = false;
       this._popper = null;
-      triggerEvent(this._element, 'budu.hidden.' + this.constructor.NAME);
+      triggerEvent(this._element, 'boodoo.hidden.' + this.constructor.NAME);
     });
   }
 
@@ -143,7 +143,7 @@ class AbstractTrigger extends BaseComponent {
     }
     this.setContent(this._tip);
     this._tip.classList.add('bs-popover-auto', 'bs-tooltip-auto');
-    this._tip._buduInstance = this;
+    this._tip._boodooInstance = this;
     return this._tip;
   }
 
@@ -247,13 +247,13 @@ class AbstractTrigger extends BaseComponent {
 // ---- Tooltip ----
 export class Tooltip extends AbstractTrigger {
   static get NAME() { return 'tooltip'; }
-  static get selector() { return '[data-budu-toggle="tooltip"]'; }
+  static get selector() { return '[data-boodoo-toggle="tooltip"]'; }
 }
 
 // ---- Popover ----
 export class Popover extends AbstractTrigger {
   static get NAME() { return 'popover'; }
-  static get selector() { return '[data-budu-toggle="popover"]'; }
+  static get selector() { return '[data-boodoo-toggle="popover"]'; }
 }
 
 // Data API
