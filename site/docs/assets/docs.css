@@ -49,6 +49,7 @@
 }
 
 .showcase-card {
+  height: 100%;
   background-color: var(--budu-card-bg) !important;
   border: 1px solid var(--budu-border-subtle) !important;
   border-radius: 1rem !important;
@@ -558,10 +559,13 @@ body {
 }
 
 .feature-card {
+  height: 100%;
   position: relative;
   background: var(--budu-card-bg);
   backdrop-filter: blur(8px);
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card .card-title {
@@ -649,11 +653,20 @@ body {
 }
 
 .pillar-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   border-radius: 1rem;
   background: var(--budu-card-bg);
   border: 1px solid var(--budu-border-subtle);
   transition: all 0.25s ease;
   min-width: 0;
+}
+
+.pillar-card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .pillar-card:hover {
