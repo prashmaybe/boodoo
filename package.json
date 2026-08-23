@@ -25,7 +25,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
-    "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim",
+    "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim && npm run css:less",
     "css:main": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo.scss dist/css/boodoo.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo.scss dist/css/boodoo.min.css --style=compressed",
     "css:grid": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-grid.scss dist/css/boodoo-grid.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-grid.scss dist/css/boodoo-grid.min.css --style=compressed",
     "css:reboot": "npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.css && npx --no-install sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.min.css --style=compressed",
