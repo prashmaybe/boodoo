@@ -55,7 +55,7 @@ import 'budu/dist/css/budu.min.css';
 
 ```scss
 // Override any token before importing
-$budu-primary: #0d6efd;
+$budu-primary: #7C3AED;
 
 @import "node_modules/budu/scss/budu";
 ```
