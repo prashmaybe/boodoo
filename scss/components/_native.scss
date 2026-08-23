@@ -1,0 +1,445 @@
+// =====================================================================
+// BUDU — Native Platform Component Styles
+// Specific design tokens & styling for Windows (Fluent Design / Acrylic / Mica),
+// macOS (Aqua / Vibrancy / SF Pro), iOS (Human Interface Guidelines),
+// iPadOS (Sidebar / Split view), Android (Material Design 3 / Dynamic Color),
+// and Linux (Adwaita / GTK4 / Libadwaita).
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// 1. Platform Container Contexts & Modifiers
+// ---------------------------------------------------------------------
+
+// Base Native Window / Container setup
+.native-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  font-synthesis: none;
+
+  // Window Titlebar
+  .native-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+    padding: 0 12px;
+    -webkit-app-region: drag;
+    user-select: none;
+
+    .native-titlebar-controls {
+      -webkit-app-region: no-drag;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .native-window-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+}
+
+// ---------------------------------------------------------------------
+// 2. WINDOWS (Fluent Design System)
+// ---------------------------------------------------------------------
+.native-win,
+[data-budu-platform="windows"] {
+  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  color: var(--budu-win-fg, #1c1c1c);
+  background-color: var(--budu-win-bg, #f3f3f3);
+
+  // Acrylic / Mica Background surface
+  &.native-surface-mica,
+  .native-surface-mica {
+    background: rgba(243, 243, 243, 0.85);
+    backdrop-filter: blur(30px) saturate(125%);
+  }
+
+  // Windows Fluent Button
+  .native-btn {
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: #fbfbfb;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    &:active {
+      background: #f5f5f5;
+      color: rgba(0, 0, 0, 0.6);
+      transform: scale(0.98);
+    }
+
+    &.native-btn-primary {
+      background: var(--budu-primary, #7c3aed);
+      color: #ffffff;
+      border-color: transparent;
+
+      &:hover {
+        filter: brightness(1.08);
+      }
+
+      &:active {
+        filter: brightness(0.92);
+      }
+    }
+  }
+
+  // Windows Fluent Card
+  .native-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  // Windows Titlebar Controls
+  .native-titlebar-btn {
+    width: 46px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    font-size: 10px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &.native-titlebar-close:hover {
+      background: #c42b1c;
+      color: #ffffff;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// 3. macOS (Aqua & macOS Vibrancy)
+// ---------------------------------------------------------------------
+.native-mac,
+[data-budu-platform="macos"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+
+  .native-titlebar {
+    height: 52px;
+    padding-left: 78px; // Leave room for traffic lights
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  // macOS Traffic Light Dots
+  .native-traffic-lights {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    left: 13px;
+    top: 18px;
+
+    .native-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(0, 0, 0, 0.15);
+
+      &.dot-close { background-color: #ff5f56; }
+      &.dot-minimize { background-color: #ffbd2e; }
+      &.dot-maximize { background-color: #27c93f; }
+    }
+  }
+
+  // macOS Push Button
+  .native-btn {
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 3px 12px;
+    border-radius: 5px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
+    color: #1d1d1f;
+
+    &:active {
+      background: #e5e5ea;
+    }
+
+    &.native-btn-primary {
+      background: linear-gradient(180deg, #8b5cf6 0%, var(--budu-primary, #7c3aed) 100%);
+      color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  // macOS Sidebar View
+  .native-sidebar {
+    width: 210px;
+    background: rgba(246, 246, 246, 0.75);
+    backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 8px;
+
+    .native-sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8125rem;
+      color: #1d1d1f;
+      text-decoration: none;
+
+      &.active,
+      &:hover {
+        background: var(--budu-primary, #7c3aed);
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// 4. iOS (Human Interface Guidelines)
+// ---------------------------------------------------------------------
+.native-ios,
+[data-budu-platform="ios"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  background-color: #f2f2f7;
+
+  // iOS Navigation Bar
+  .native-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    padding: 0 16px;
+    background: rgba(249, 249, 249, 0.94);
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(60, 60, 67, 0.29);
+    font-weight: 600;
+
+    .native-nav-link {
+      color: var(--budu-primary, #7c3aed);
+      font-weight: 400;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+
+  // iOS Grouped Inset List
+  .native-list-grouped {
+    margin: 16px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .native-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 16px;
+      font-size: 1rem;
+      border-bottom: 0.5px solid #c6c6c8;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // iOS Filled Button
+  .native-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    background: #e5e5ea;
+    color: var(--budu-primary, #7c3aed);
+
+    &.native-btn-primary {
+      background: var(--budu-primary, #7c3aed);
+      color: #ffffff;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  // iOS Segmented Control
+  .native-segmented-control {
+    display: flex;
+    background: #e3e3e8;
+    padding: 2px;
+    border-radius: 9px;
+
+    .native-segment {
+      flex: 1;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      border-radius: 7px;
+      cursor: pointer;
+
+      &.active {
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// 5. iPadOS (Sidebar & Split View)
+// ---------------------------------------------------------------------
+.native-ipados,
+[data-budu-platform="ipados"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background-color: #f2f2f7;
+
+  .native-split-view {
+    display: flex;
+    height: 100%;
+
+    .native-sidebar-col {
+      width: 320px;
+      background: #f2f2f7;
+      border-right: 0.5px solid rgba(60, 60, 67, 0.2);
+      padding: 16px;
+    }
+
+    .native-detail-col {
+      flex: 1;
+      background: #ffffff;
+      padding: 24px;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// 6. ANDROID (Material Design 3 / Material You)
+// ---------------------------------------------------------------------
+.native-android,
+[data-budu-platform="android"] {
+  font-family: "Roboto", "Google Sans", sans-serif;
+  background-color: #fef7ff;
+
+  // Material 3 Top App Bar
+  .native-appbar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: #f3edf7;
+    color: #1d1b20;
+    font-size: 1.375rem;
+    font-weight: 400;
+  }
+
+  // Material 3 Filled Button
+  .native-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    border: 1px solid #79747e;
+    background: transparent;
+    color: var(--budu-primary, #7c3aed);
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+
+    &.native-btn-primary {
+      background: var(--budu-primary, #7c3aed);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  // Material 3 Card
+  .native-card {
+    background: #f7f2fa;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// ---------------------------------------------------------------------
+// 7. LINUX (GNOME Adwaita / GTK4)
+// ---------------------------------------------------------------------
+.native-linux,
+[data-budu-platform="linux"] {
+  font-family: "Cantarell", "Inter", sans-serif;
+  background-color: #fafafa;
+  color: #2e3436;
+
+  // Adwaita Header Bar
+  .native-headerbar {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    background: #f6f5f4;
+    border-bottom: 1px solid #d6d6d6;
+
+    .native-header-title {
+      font-weight: bold;
+      font-size: 0.9375rem;
+    }
+  }
+
+  // Adwaita Button
+  .native-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    background: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      background: #f4f4f4;
+    }
+
+    &.native-btn-primary {
+      background: var(--budu-primary, #7c3aed);
+      color: #ffffff;
+      border-color: var(--budu-primary, #7c3aed);
+    }
+  }
+}

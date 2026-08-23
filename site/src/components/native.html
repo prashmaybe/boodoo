@@ -1,0 +1,151 @@
+<!--
+title: Native components
+description: Native platform-specific UI styles for Windows, macOS, iOS, iPadOS, Android, and Linux desktop/hybrid apps.
+section: components
+order: 26
+-->
+
+<h1 class="budu-title">Native components</h1>
+<p class="budu-lead">
+  Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or Cordova/Capacitor) using platform-native visual conventions for Windows, macOS, iOS, iPadOS, Android, and Linux.
+</p>
+
+<hr class="my-4">
+
+<h2 id="windows">Windows (Fluent Design & Mica)</h2>
+<p>Use <code>.native-win</code> or <code>[data-budu-platform="windows"]</code> to apply Windows 11 Fluent Design tokens, subtle acrylic/mica blurs, and standard titlebar controls.</p>
+
+<div class="card p-3 mb-4 native-win">
+  <div class="native-window border rounded overflow-hidden shadow-sm" style="height: 220px; background: #f3f3f3;">
+    <div class="native-titlebar bg-white border-bottom">
+      <span class="fw-semibold fs-7">Windows Hybrid App</span>
+      <div class="native-titlebar-controls">
+        <button class="native-titlebar-btn">—</button>
+        <button class="native-titlebar-btn">▢</button>
+        <button class="native-titlebar-btn native-titlebar-close">✕</button>
+      </div>
+    </div>
+    <div class="p-3">
+      <div class="native-card mb-3">
+        <h5 class="fs-6 fw-semibold mb-1">Fluent Surface Card</h5>
+        <p class="text-muted fs-7 mb-2">Native Windows 11 rounded cards with micro-elevation.</p>
+        <button class="native-btn native-btn-primary">Fluent Action</button>
+        <button class="native-btn ms-2">Secondary</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="macos">macOS (Aqua & Vibrancy)</h2>
+<p>Use <code>.native-mac</code> or <code>[data-budu-platform="macos"]</code> to render SF Pro typography, window traffic lights, translucent sidebar navigation, and gradient push buttons.</p>
+
+<div class="card p-3 mb-4 native-mac">
+  <div class="native-window border rounded overflow-hidden shadow-sm position-relative" style="height: 240px; background: #fafafa;">
+    <div class="native-traffic-lights">
+      <div class="native-dot dot-close"></div>
+      <div class="native-dot dot-minimize"></div>
+      <div class="native-dot dot-maximize"></div>
+    </div>
+    <div class="native-titlebar">
+      <span class="fw-semibold fs-7">macOS Desktop App</span>
+    </div>
+    <div class="native-window-content">
+      <div class="native-sidebar">
+        <a href="#" class="native-sidebar-item active">Dashboard</a>
+        <a href="#" class="native-sidebar-item">Projects</a>
+        <a href="#" class="native-sidebar-item">Settings</a>
+      </div>
+      <div class="p-3 flex-fill">
+        <h5 class="fs-6 fw-semibold mb-2">macOS Push Buttons</h5>
+        <button class="native-btn native-btn-primary">Primary Action</button>
+        <button class="native-btn ms-2">Standard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="ios">iOS (Human Interface Guidelines)</h2>
+<p>Use <code>.native-ios</code> or <code>[data-budu-platform="ios"]</code> to build iOS-style navigation bars, segmented controls, grouped inset lists, and 50px touch-friendly action buttons.</p>
+
+<div class="card p-3 mb-4 native-ios" style="max-width: 400px;">
+  <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #f2f2f7;">
+    <div class="native-navbar">
+      <a href="#" class="native-nav-link">Back</a>
+      <span>Settings</span>
+      <a href="#" class="native-nav-link">Done</a>
+    </div>
+    <div class="p-3">
+      <div class="native-segmented-control mb-3">
+        <div class="native-segment active">First</div>
+        <div class="native-segment">Second</div>
+        <div class="native-segment">Third</div>
+      </div>
+      <div class="native-list-grouped mb-3">
+        <div class="native-list-item">
+          <span>Notifications</span>
+          <span class="text-muted">On</span>
+        </div>
+        <div class="native-list-item">
+          <span>Privacy & Security</span>
+          <span class="text-muted">›</span>
+        </div>
+      </div>
+      <button class="native-btn native-btn-primary">iOS Primary Button</button>
+    </div>
+  </div>
+</div>
+
+<h2 id="ipados">iPadOS (Sidebar & Split View)</h2>
+<p>Use <code>.native-ipados</code> or <code>[data-budu-platform="ipados"]</code> for multi-column split view layouts optimized for tablet touch & pointer interaction.</p>
+
+<div class="card p-3 mb-4 native-ipados">
+  <div class="native-split-view border rounded-3 overflow-hidden" style="height: 180px;">
+    <div class="native-sidebar-col">
+      <h6 class="fw-bold mb-2">Library</h6>
+      <ul class="list-unstyled fs-7 mb-0">
+        <li class="py-1 text-primary fw-semibold">All Files</li>
+        <li class="py-1 text-muted">Recents</li>
+        <li class="py-1 text-muted">Favorites</li>
+      </ul>
+    </div>
+    <div class="native-detail-col">
+      <h5 class="fs-6 fw-bold">Detail View</h5>
+      <p class="text-muted fs-7">iPadOS split view pane content layout.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="android">Android (Material Design 3)</h2>
+<p>Use <code>.native-android</code> or <code>[data-budu-platform="android"]</code> for Material You 3 elevated top app bars, pills, and 20px rounded pill buttons.</p>
+
+<div class="card p-3 mb-4 native-android" style="max-width: 420px;">
+  <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #fef7ff;">
+    <div class="native-appbar">
+      <span>Android App Bar</span>
+    </div>
+    <div class="p-3">
+      <div class="native-card mb-3">
+        <h6 class="fw-bold mb-1">Material 3 Surface</h6>
+        <p class="fs-7 text-muted mb-0">Container styled after Material 3 guidelines.</p>
+      </div>
+      <button class="native-btn native-btn-primary">Material Action</button>
+      <button class="native-btn ms-2">Outlined</button>
+    </div>
+  </div>
+</div>
+
+<h2 id="linux">Linux (GNOME Adwaita / GTK4)</h2>
+<p>Use <code>.native-linux</code> or <code>[data-budu-platform="linux"]</code> for Libadwaita header bars and GTK4 rounded widget styling.</p>
+
+<div class="card p-3 mb-4 native-linux">
+  <div class="border rounded-3 overflow-hidden shadow-sm" style="background: #fafafa;">
+    <div class="native-headerbar">
+      <span class="native-header-title">Linux Application</span>
+      <button class="native-btn">Options</button>
+    </div>
+    <div class="p-3">
+      <p class="fs-7 mb-2">GTK4 / Libadwaita desktop controls.</p>
+      <button class="native-btn native-btn-primary">Adwaita Action</button>
+    </div>
+  </div>
+</div>

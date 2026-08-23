@@ -74,7 +74,8 @@
       { "route": "components/spinners", "title": "Spinners" },
       { "route": "components/toasts", "title": "Toasts" },
       { "route": "components/tooltips", "title": "Tooltips" },
-      { "route": "components/ripple", "title": "Ripple effect" }
+      { "route": "components/ripple", "title": "Ripple effect" },
+      { "route": "components/native", "title": "Native components" }
     ]
   },
   {
