@@ -1,0 +1,33 @@
+# BOODOO Web Server Configuration (.htaccess)
+
+RewriteEngine On
+
+# 1. Custom Error Pages for 4xx and 5xx status codes
+ErrorDocument 400 /404.html
+ErrorDocument 401 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 405 /404.html
+ErrorDocument 408 /404.html
+ErrorDocument 410 /404.html
+ErrorDocument 500 /404.html
+ErrorDocument 502 /404.html
+ErrorDocument 503 /404.html
+ErrorDocument 504 /404.html
+
+# 2. Redirect non-existent files or directories to custom error page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [L,R=404]
+
+# 3. Enable GZIP compression for faster loading
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# 4. Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>

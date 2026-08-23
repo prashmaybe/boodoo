@@ -66,12 +66,9 @@ copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation d
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');
 copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
-
-// 5. Write 404 fallback page
-fs.writeFileSync(
-  path.join(www, '404.html'),
-  '<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/"><title>Redirecting…</title></head><body><a href="/">Return to home</a></body></html>'
-);
+copy(path.join(root, 'site', '404.html'), '404.html');
+copy(path.join(root, 'site', '404.html'), 'error.html');
+copy(path.join(root, 'site', '.htaccess'), '.htaccess');
 
 // 6. Write site webmanifest
 fs.writeFileSync(
