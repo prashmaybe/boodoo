@@ -1340,3 +1340,189 @@ code:not(pre code) {
 .demo-progress-h { height: 1.2rem; }
 .demo-badge-pad { padding: 1rem 1.5rem; }
 .license-pre { max-height: 24rem; }
+
+/* ==========================================================================
+   Comprehensive Mobile Design & Responsive Fixes
+   ========================================================================== */
+
+/* Global Horizontal Scroll Protection */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+img, video, iframe, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile Navbar Overlay & Dropdown (< 992px) */
+@media (max-width: 991.98px) {
+  .navbar .navbar-collapse {
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background-color: var(--boodoo-card-bg);
+    border: 1px solid var(--boodoo-border-subtle);
+    border-radius: 0.75rem;
+    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.18);
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    color: var(--boodoo-text-main) !important;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link.active {
+    background-color: rgba(124, 58, 237, 0.08);
+    color: var(--boodoo-primary) !important;
+  }
+
+  .nav-actions-wrap {
+    padding-top: 0.85rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--boodoo-border-subtle);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.6rem !important;
+  }
+
+  /* Docs Page Mobile Sidebar Drawer */
+  .docs-sidebar {
+    position: static;
+    max-height: none;
+    padding-right: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--boodoo-border-subtle);
+  }
+
+  .docs-menu-toggle {
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Mobile Hero & Header Tweaks (< 768px) */
+@media (max-width: 767.98px) {
+  .landing-hero {
+    padding: 3rem 0.5rem 2.5rem;
+  }
+
+  .hero-badge-wrap {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .hero-pill-badge {
+    max-width: 100%;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.75rem;
+    line-height: 1.35;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .landing-hero h1 {
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+    padding: 0 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* Terminal responsive controls */
+  .terminal-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .terminal-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-top: 0.25rem;
+  }
+
+  .terminal pre {
+    font-size: 0.78rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .stats-banner {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Extra Small Screens & Footer Protection (< 576px) */
+@media (max-width: 575.98px) {
+  footer {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .footer-links-wrap {
+    width: 100%;
+    justify-content: center;
+    gap: 0.6rem 0.4rem !important;
+  }
+
+  .footer-dot {
+    display: inline-block;
+    opacity: 0.4;
+  }
+
+  .docs-pager {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .docs-pager-item:last-child {
+    text-align: left;
+  }
+
+  .bd-example {
+    padding: 1rem 0.75rem;
+    overflow-x: auto;
+  }
+
+  /* Prevent table content from breaking container layout on narrow phones */
+  .docs-main table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

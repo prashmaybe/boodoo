@@ -34,7 +34,7 @@
 
   <nav
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
-    <div class="d-flex container">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
         <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
@@ -53,12 +53,12 @@
           <li class="nav-item"><a class="nav-link active"
               href="../../docs/getting-started/introduction.html">Docs</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
             title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
-          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
             href="../../docs/getting-started/usage.html">CDN</a>
           <a class="btn btn-primary btn-sm rounded-pill px-3"
             href="../../docs/getting-started/download.html">Download</a>
@@ -67,10 +67,17 @@
     </div>
   </nav>
 
-  <div class="container-fluid container-xl">
+  <div class="container-fluid container-xl py-3">
     <div class="row">
       <aside class="col-lg-3 col-xl-2">
-        <div class="docs-sidebar">
+        <button class="btn btn-outline-primary btn-sm w-100 d-lg-none mb-3 d-flex align-items-center justify-content-between docs-menu-toggle" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false" aria-controls="docsSidebarCollapse">
+          <span class="d-flex align-items-center gap-2">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <span>Documentation Navigation</span>
+          </span>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
           <nav aria-label="Docs navigation">
             <h6 class="docs-nav-section">Getting started</h6>
 <ul class="docs-nav-list">
@@ -392,19 +399,19 @@
   </div>
 
   <!-- Footer spanning the whole page -->
-  <footer class="py-1 border-top">
+  <footer class="py-4 border-top">
     <div
-      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small">
-      <div class="d-inline-flex gap-2">
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
         <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
         <span>© 2026 Pebble Benders · MIT License</span>
       </div>
-      <div class="d-flex gap-3">
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-3">
         <a class="text-muted text-decoration-none"
           href="../../docs/getting-started/introduction.html">Documentation</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
       </div>
     </div>

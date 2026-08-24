@@ -39,7 +39,7 @@
   <!-- Sticky Glass Navbar -->
   <nav
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
-    <div class="d-flex container">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
         <img src="assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
@@ -56,12 +56,12 @@
           <li class="nav-item"><a class="nav-link" href="#inspiration">Inspiration</a></li>
           <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html">Docs</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode"
             title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
-          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
             href="docs/getting-started/usage.html">CDN</a>
           <a class="btn btn-primary btn-sm rounded-pill px-3" href="docs/getting-started/download.html">Download</a>
         </div>
@@ -506,18 +506,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="py-1 border-top">
+  <footer class="py-4 border-top">
     <div
-      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small">
-      <div class="d-inline-flex gap-2">
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
         <img src="assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
         <span>© 2026 Pebble Benders · MIT License</span>
       </div>
-      <div class="d-flex gap-3">
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-3">
         <a class="text-muted text-decoration-none" href="docs/getting-started/introduction.html">Documentation</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/getting-started/download.html">Download</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/about/license.html">License</a>
       </div>
     </div>
