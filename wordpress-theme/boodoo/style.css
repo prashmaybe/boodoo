@@ -1,0 +1,30 @@
+/*
+Theme Name: Boodoo
+Theme URI: https://boodoo.dihadiwala.com/docs/wordpress/overview.html
+Author: Pebble Benders
+Author URI: https://boodoo.dihadiwala.com
+Description: A modern, modular WordPress Block Theme powered by the Boodoo CSS design framework. Built with Full Site Editing (FSE), rich block patterns, responsive grid utilities, dark mode support, and performance optimizations.
+Version: 1.0.2
+Requires at least: 6.2
+Tested up to: 6.6
+Requires PHP: 7.4
+License: MIT
+License URI: https://opensource.org/licenses/MIT
+Text Domain: boodoo
+Tags: block-styles, full-site-editing, grid-layout, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-colors, custom-menu, featured-images, flexible-header, microformats, post-formats, responsive-layout, rtl-language-support, sticky-post, theme-options, translation-ready, e-commerce
+
+boodoo WordPress Theme, Copyright 2026 Pebble Benders.
+*/
+
+/* Boodoo Framework Theme Integrations */
+:root {
+  --boodoo-wp-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --boodoo-wp-mono-family: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--boodoo-wp-font-family);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
