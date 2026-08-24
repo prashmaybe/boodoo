@@ -65,6 +65,7 @@ indexContent = indexContent.replaceAll('{{version}}', pkg.version);
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
+copy(path.join(root, 'site', 'wordpress-themes'), 'wordpress-themes'); // WP Themes source files
 copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
 copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
 copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data

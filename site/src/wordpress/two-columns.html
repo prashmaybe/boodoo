@@ -1,0 +1,104 @@
+<!--
+title: Two Columns Theme
+description: Balanced 50/50 split twin-column WordPress theme built with Budu framework.
+section: wordpress
+order: 4
+-->
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <div>
+    <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill mb-2">WordPress Theme</span>
+    <h1 class="mb-0">Two Columns Theme</h1>
+  </div>
+  <a href="../wordpress/overview.html" class="btn btn-outline-primary rounded-pill btn-sm">&larr; Back to Themes</a>
+</div>
+
+<p class="lead text-secondary mb-4">
+  The <strong>Two Columns Theme</strong> splits the layout into two equal 50/50 grid columns on desktop (<code>row row-cols-1 row-cols-md-2 g-4</code>). Excellent for product showcases, feature comparisons, dual-author blogs, and landing pages.
+</p>
+
+<h2 id="live-demo">Live Layout Preview</h2>
+<div class="card border border-primary-subtle shadow-sm rounded-4 mb-5 overflow-hidden">
+  <div class="card-header bg-white border-bottom p-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <span class="dot bg-danger rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-warning rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-success rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="small text-muted ms-2 fw-medium">Two Columns Split Demo</span>
+    </div>
+    <span class="badge bg-light text-dark border">Budu v1.0.2</span>
+  </div>
+  <div class="card-body p-4 bg-light">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white">
+          <span class="badge bg-primary text-white w-auto mb-3" style="max-width: max-content;">Primary Feature Column</span>
+          <h3 class="h4 fw-bold text-dark mb-3">Modern CSS Components</h3>
+          <p class="text-secondary mb-4">
+            Budu comes out of the box with buttons, navbars, cards, badges, modal overlays, and toast notifications.
+          </p>
+          <a href="#" class="btn btn-primary rounded-pill mt-auto">Explore Components &rarr;</a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white">
+          <span class="badge bg-secondary text-white w-auto mb-3" style="max-width: max-content;">Secondary Feature Column</span>
+          <h3 class="h4 fw-bold text-dark mb-3">Gutenberg Block Alignment</h3>
+          <p class="text-secondary mb-4">
+            WordPress block styles align seamlessly with Budu tokens, providing dark mode support and responsive flex layouts.
+          </p>
+          <a href="#" class="btn btn-outline-primary rounded-pill mt-auto">View Theme Integration &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="theme-code" class="mb-3">Theme Code Files</h2>
+
+<h3 id="style-css">1. style.css</h3>
+<div class="highlight mb-4">
+  <pre><code>/*
+Theme Name: Budu Two Columns Theme
+Theme URI: https://boodoo.dihadiwala.com/docs/wordpress/two-columns.html
+Author: Budu Framework Team
+Author URI: https://boodoo.dihadiwala.com
+Description: Balanced 50/50 split twin-column WordPress theme built with Budu framework.
+Version: 1.0.2
+License: MIT
+Text Domain: budu-two-columns
+*/
+
+@import url('https://boodoo.dihadiwala.com/dist/css/boodoo.min.css');</code></pre>
+</div>
+
+<h3 id="index-php">2. index.php</h3>
+<div class="highlight mb-4">
+  <pre><code>&lt;?php
+/**
+ * Main Template File - Two Columns Theme
+ */
+get_header(); ?&gt;
+
+&lt;main class="container py-5"&gt;
+  &lt;div class="row row-cols-1 row-cols-md-2 g-4"&gt;
+    &lt;?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?&gt;
+      &lt;div class="col"&gt;
+        &lt;article id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class( 'card h-100 border-0 shadow-sm rounded-4 p-4 bg-white' ); ?&gt;&gt;
+          &lt;div class="mb-2"&gt;&lt;?php the_category( ' ' ); ?&gt;&lt;/div&gt;
+          &lt;h2 class="h4 card-title fw-bold mb-3"&gt;
+            &lt;a href="&lt;?php the_permalink(); ?&gt;" class="text-dark text-decoration-none"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;div class="card-text text-muted mb-4"&gt;
+            &lt;?php the_excerpt(); ?&gt;
+          &lt;/div&gt;
+          &lt;div class="mt-auto"&gt;
+            &lt;a href="&lt;?php the_permalink(); ?&gt;" class="btn btn-outline-primary btn-sm rounded-pill"&gt;Read More &rarr;&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+    &lt;?php endwhile; endif; ?&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;?php get_footer(); ?&gt;</code></pre>
+</div>

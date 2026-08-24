@@ -50,6 +50,7 @@
           <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}index.html#components">Components</a></li>
           <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}index.html#installation">Installation</a></li>
           <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}index.html#inspiration">Inspiration</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}docs/wordpress/overview.html">WP Themes</a></li>
           <li class="nav-item"><a class="nav-link active"
               href="{{rootPrefix}}docs/getting-started/introduction.html">Docs</a></li>
         </ul>
@@ -84,7 +85,7 @@
         </div>
       </aside>
 
-      <main class="col-lg-6 col-xl-7">
+      <main class="{{mainColClass}}">
         <div class="docs-main py-1" id="docs-content">
           {{breadcrumb}}
           {{content}}
@@ -93,9 +94,7 @@
         </div>
       </main>
 
-      <aside class="col-lg-3 col-xl-3">
-        {{toc}}
-      </aside>
+      {{tocAside}}
     </div>
   </div>
 

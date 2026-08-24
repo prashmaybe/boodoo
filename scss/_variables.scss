@@ -545,7 +545,7 @@ $boodoo-caret-vertical-align: 0.125em !default;
 // -----------------------------------------------------------------
 // This tells the utility generator which classes to create and at which
 // breakpoints. See `scss/mixins/_utility-api.scss`.
-$boodoo-utility-important: false !default;
+$boodoo-utility-important: true !default;
 
 $boodoo-responsive-utilities: map-keys($boodoo-grid-breakpoints) !default;
 

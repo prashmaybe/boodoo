@@ -200,6 +200,9 @@ function buildPage(sectionDef, { route, full }) {
   const breadcrumb = renderBreadcrumb(nav, route, title);
   const pager = prevNext(nav, route, fullTitleMap);
   const toc = renderToc(bodyWithIds);
+  const hasToc = Boolean(toc.trim());
+  const mainColClass = hasToc ? 'col-lg-6 col-xl-7' : 'col-lg-9 col-xl-10';
+  const tocAside = hasToc ? `<aside class="col-lg-3 col-xl-3">\n${toc}\n</aside>` : '';
 
   const activeDepth = route.split('/').length;
   const rootPrefix = '../'.repeat(activeDepth);
@@ -213,6 +216,8 @@ const VERSION = pkg.version;
     .replaceAll('{{description}}', meta.description || `${title} — boodoo docs`)
     .replaceAll('{{sidebar}}', sidebar)
     .replaceAll('{{breadcrumb}}', breadcrumb)
+    .replaceAll('{{mainColClass}}', mainColClass)
+    .replaceAll('{{tocAside}}', tocAside)
     .replaceAll('{{toc}}', toc)
     .replaceAll('{{content}}', bodyWithIds.replaceAll('{{version}}', VERSION))
     .replaceAll('{{prevnext}}', pager)

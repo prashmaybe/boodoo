@@ -1,0 +1,113 @@
+<!--
+title: Right Sidebar Theme
+description: Traditional blog WordPress theme with main content stream and right widget column built with Budu framework.
+section: wordpress
+order: 8
+-->
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <div>
+    <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill mb-2">WordPress Theme</span>
+    <h1 class="mb-0">Right Sidebar Theme</h1>
+  </div>
+  <a href="../wordpress/overview.html" class="btn btn-outline-primary rounded-pill btn-sm">&larr; Back to Themes</a>
+</div>
+
+<p class="lead text-secondary mb-4">
+  The <strong>Right Sidebar Theme</strong> provides the classic WordPress layout structure: primary content stream occupying 66% (8/12 columns) on the left paired with a 33% (4/12 columns) widget column on the right (<code>col-lg-8 col-md-7</code> + <code>col-lg-4 col-md-5</code>).
+</p>
+
+<h2 id="live-demo">Live Layout Preview</h2>
+<div class="card border border-primary-subtle shadow-sm rounded-4 mb-5 overflow-hidden">
+  <div class="card-header bg-white border-bottom p-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <span class="dot bg-danger rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-warning rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-success rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="small text-muted ms-2 fw-medium">Right Sidebar Classic Blog Demo</span>
+    </div>
+    <span class="badge bg-light text-dark border">Budu v1.0.2</span>
+  </div>
+  <div class="card-body p-4 bg-light">
+    <div class="row g-4">
+      <div class="col-lg-8 col-md-7">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+          <span class="badge bg-blue text-white w-auto mb-2" style="background-color:#2563eb;max-width:max-content;">Blog Article Post</span>
+          <h3 class="fw-bold text-dark mb-3">Understanding CSS Grid vs Flexbox in Budu</h3>
+          <p class="text-secondary">
+            Budu provides both a Flexbox grid (<code>boodoo-grid.css</code>) and a native CSS Grid system (<code>layout/css-grid</code>) so developers can pick the ideal layout mechanism for each page.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-5">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white mb-3">
+          <h6 class="fw-bold border-bottom pb-2 mb-3 text-uppercase text-muted small">Search & Categories</h6>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search blog...">
+            <button class="btn btn-primary" type="button">Go</button>
+          </div>
+          <ul class="list-group list-group-flush small">
+            <li class="list-group-item border-0 px-0 py-1 d-flex justify-content-between align-items-center">
+              <span>Frontend Development</span>
+              <span class="badge bg-light text-dark rounded-pill">12</span>
+            </li>
+            <li class="list-group-item border-0 px-0 py-1 d-flex justify-content-between align-items-center">
+              <span>WordPress Tutorials</span>
+              <span class="badge bg-light text-dark rounded-pill">8</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="theme-code" class="mb-3">Theme Code Files</h2>
+
+<h3 id="style-css">1. style.css</h3>
+<div class="highlight mb-4">
+  <pre><code>/*
+Theme Name: Budu Right Sidebar Theme
+Theme URI: https://boodoo.dihadiwala.com/docs/wordpress/right-sidebar.html
+Author: Budu Framework Team
+Author URI: https://boodoo.dihadiwala.com
+Description: Traditional blog WordPress theme with main content stream and right widget column built with Budu framework.
+Version: 1.0.2
+License: MIT
+Text Domain: budu-right-sidebar
+*/
+
+@import url('https://boodoo.dihadiwala.com/dist/css/boodoo.min.css');</code></pre>
+</div>
+
+<h3 id="index-php">2. index.php</h3>
+<div class="highlight mb-4">
+  <pre><code>&lt;?php
+/**
+ * Main Template File - Right Sidebar Theme
+ */
+get_header(); ?&gt;
+
+&lt;main class="container py-5"&gt;
+  &lt;div class="row g-4"&gt;
+    &lt;!-- Main Content Column --&gt;
+    &lt;section class="col-lg-8 col-md-7"&gt;
+      &lt;?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?&gt;
+        &lt;article id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class( 'card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white' ); ?&gt;&gt;
+          &lt;h2 class="h3 card-title fw-bold mb-3"&gt;
+            &lt;a href="&lt;?php the_permalink(); ?&gt;" class="text-dark text-decoration-none"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;div class="card-text text-muted mb-4"&gt;&lt;?php the_excerpt(); ?&gt;&lt;/div&gt;
+          &lt;div&gt;&lt;a href="&lt;?php the_permalink(); ?&gt;" class="btn btn-primary btn-sm rounded-pill"&gt;Read Article &rarr;&lt;/a&gt;&lt;/div&gt;
+        &lt;/article&gt;
+      &lt;?php endwhile; endif; ?&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Right Sidebar Column --&gt;
+    &lt;aside class="col-lg-4 col-md-5"&gt;
+      &lt;?php get_sidebar(); ?&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;?php get_footer(); ?&gt;</code></pre>
+</div>

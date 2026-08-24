@@ -980,6 +980,13 @@ body {
   padding-bottom: 2rem;
 }
 
+@media (min-width: 992px) {
+  .docs-sidebar.collapse,
+  .docs-sidebar.collapse:not(.show) {
+    display: block !important;
+  }
+}
+
 .docs-sidebar::-webkit-scrollbar {
   width: 5px;
 }

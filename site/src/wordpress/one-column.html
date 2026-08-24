@@ -1,0 +1,108 @@
+<!--
+title: One Column Theme
+description: Distraction-free single-column WordPress reading theme built with Budu framework.
+section: wordpress
+order: 3
+-->
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <div>
+    <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-1 rounded-pill mb-2">WordPress Theme</span>
+    <h1 class="mb-0">One Column Theme</h1>
+  </div>
+  <a href="../wordpress/overview.html" class="btn btn-outline-primary rounded-pill btn-sm">&larr; Back to Themes</a>
+</div>
+
+<p class="lead text-secondary mb-4">
+  The <strong>One Column Theme</strong> centers editorial content inside a narrow max-width container (<code>container container-narrow mx-auto</code>). Designed specifically for long-form publishing, essays, personal blogs, and documentation reading.
+</p>
+
+<h2 id="live-demo">Live Layout Preview</h2>
+<div class="card border border-primary-subtle shadow-sm rounded-4 mb-5 overflow-hidden">
+  <div class="card-header bg-white border-bottom p-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <span class="dot bg-danger rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-warning rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="dot bg-success rounded-circle" style="width:10px;height:10px;display:inline-block;"></span>
+      <span class="small text-muted ms-2 fw-medium">One Column Reader Demo</span>
+    </div>
+    <span class="badge bg-light text-dark border">Budu v1.0.2</span>
+  </div>
+  <div class="card-body p-4 bg-white">
+    <article class="mx-auto" style="max-width: 720px;">
+      <div class="text-center mb-4">
+        <span class="badge bg-primary-subtle text-primary mb-2">Long-form Essay</span>
+        <h2 class="display-6 fw-bold text-dark mb-3">The Art of Minimalist Web Engineering</h2>
+        <div class="text-muted small">Published on August 24, 2026 • By Prashant • 5 min read</div>
+      </div>
+      <div class="p-4 bg-light rounded-4 mb-4 border">
+        <p class="lead mb-0 text-dark fw-medium">
+          "Simplicity is prerequisite for reliability. When we strip away unnecessary JavaScript dependencies, our CSS layout becomes fast and robust."
+        </p>
+      </div>
+      <p class="text-secondary" style="line-height: 1.8;">
+        Building readable web applications requires focusing on content first. The Budu One Column layout enforces an optimal line length (60–75 characters per line) to maximize reader comprehension and reduce visual fatigue across all screen sizes.
+      </p>
+    </article>
+  </div>
+</div>
+
+<h2 id="theme-code" class="mb-3">Theme Code Files</h2>
+
+<h3 id="style-css">1. style.css</h3>
+<div class="highlight mb-4">
+  <pre><code>/*
+Theme Name: Budu One Column Theme
+Theme URI: https://boodoo.dihadiwala.com/docs/wordpress/one-column.html
+Author: Budu Framework Team
+Author URI: https://boodoo.dihadiwala.com
+Description: Distraction-free single-column WordPress reading theme built with Budu framework.
+Version: 1.0.2
+License: MIT
+Text Domain: budu-one-column
+*/
+
+@import url('https://boodoo.dihadiwala.com/dist/css/boodoo.min.css');
+
+.budu-one-col-container {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}</code></pre>
+</div>
+
+<h3 id="index-php">2. index.php</h3>
+<div class="highlight mb-4">
+  <pre><code>&lt;?php
+/**
+ * Main Template File - One Column Theme
+ */
+get_header(); ?&gt;
+
+&lt;main class="container py-5"&gt;
+  &lt;div class="budu-one-col-container"&gt;
+    &lt;?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?&gt;
+      &lt;article id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class( 'bg-white p-4 p-md-5 rounded-4 shadow-sm mb-5 border border-light' ); ?&gt;&gt;
+        &lt;header class="text-center mb-4"&gt;
+          &lt;div class="mb-2"&gt;&lt;?php the_category( ' ' ); ?&gt;&lt;/div&gt;
+          &lt;h1 class="display-5 fw-bold text-dark mb-3"&gt;
+            &lt;a href="&lt;?php the_permalink(); ?&gt;" class="text-dark text-decoration-none"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;
+          &lt;/h1&gt;
+          &lt;div class="text-muted small"&gt;
+            Posted on &lt;?php echo get_the_date(); ?&gt; by &lt;?php the_author(); ?&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;?php if ( has_post_thumbnail() ) : ?&gt;
+          &lt;div class="mb-4 rounded-3 overflow-hidden"&gt;
+            &lt;?php the_post_thumbnail( 'large', array( 'class' => 'img-fluid w-100' ) ); ?&gt;
+          &lt;/div&gt;
+        &lt;?php endif; ?&gt;
+        &lt;div class="entry-content text-secondary fs-5" style="line-height: 1.8;"&gt;
+          &lt;?php the_content( 'Continue reading &rarr;' ); ?&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;?php endwhile; endif; ?&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;?php get_footer(); ?&gt;</code></pre>
+</div>
