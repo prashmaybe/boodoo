@@ -3,7 +3,7 @@
  * Budu Theme Framework Functions & Definitions
  *
  * @package Budu
- * @version 1.0.2
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -50,13 +50,13 @@ add_action( 'after_setup_theme', 'budu_theme_setup' );
  */
 function budu_theme_scripts() {
 	// Budu Framework Core CSS
-	wp_enqueue_style( 'budu-core', 'https://boodoo.dihadiwala.com/dist/css/boodoo.min.css', array(), '1.0.2' );
+	wp_enqueue_style( 'budu-core', 'https://boodoo.dihadiwala.com/dist/css/boodoo.min.css', array(), '1.0.1' );
 
 	// Theme Main Stylesheet
-	wp_enqueue_style( 'budu-style', get_stylesheet_uri(), array( 'budu-core' ), '1.0.2' );
+	wp_enqueue_style( 'budu-style', get_stylesheet_uri(), array( 'budu-core' ), '1.0.1' );
 
 	// Budu Framework JS
-	wp_enqueue_script( 'budu-js', 'https://boodoo.dihadiwala.com/dist/js/boodoo.js', array(), '1.0.2', true );
+	wp_enqueue_script( 'budu-js', 'https://boodoo.dihadiwala.com/dist/js/boodoo.js', array(), '1.0.1', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
