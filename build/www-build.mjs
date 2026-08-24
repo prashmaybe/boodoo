@@ -34,10 +34,11 @@ try {
   process.exit(1);
 }
 
-// 2. Build documentation site pages
-console.log('📄 Generating static documentation pages…');
+// 2. Build documentation site pages & sitemap
+console.log('📄 Generating static documentation pages & sitemap…');
 try {
   execSync('node build/site-build.mjs', { cwd: root, stdio: 'inherit' });
+  execSync('node build/sitemap-build.mjs', { cwd: root, stdio: 'inherit' });
 } catch (err) {
   console.error('Failed to run site-build:', err.message);
   process.exit(1);

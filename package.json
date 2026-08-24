@@ -34,6 +34,7 @@
     "css:less": "npx -y less@4.2.0 less/boodoo.less dist/css/boodoo.less.css",
     "js": "node build/js-bundle.mjs",
     "site": "node build/site-build.mjs",
+    "sitemap": "node build/sitemap-build.mjs",
     "www": "node build/www-build.mjs",
     "deploy": "node build/www-build.mjs",
     "watch": "sass --watch scss:dist/css",
