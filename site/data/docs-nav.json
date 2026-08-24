@@ -123,6 +123,8 @@
       { "route": "about/overview", "title": "Overview" },
       { "route": "about/design-principles", "title": "Design principles" },
       { "route": "about/brand", "title": "Brand assets" },
+      { "route": "about/vs-bootstrap", "title": "boodoo vs Bootstrap" },
+      { "route": "about/vs-tailwind", "title": "boodoo vs Tailwind" },
       { "route": "about/license", "title": "License" }
     ]
   }

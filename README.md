@@ -2,32 +2,43 @@
 
 # boodoo
 
-**A modular, mobile-first CSS design framework** inspired by **Bootstrap**, **Foundation**, **Tailwind CSS**, and **Material Design**.
+**The simplicity of Bootstrap. The flexibility of Tailwind. The structure of Foundation. The polish of Material.**
 
-Build fast, responsive, accessible sites — with zero runtime dependencies.
+A modular, mobile-first CSS design framework — without JS framework lock-in. Built for developers who want pre-styled accessible UI components + utility-first power with zero build overhead.
 
 </div>
 
 ---
 
-boodoo fuses four great design systems into one cohesive toolkit:
+boodoo is inspired by the best ideas in modern CSS frameworks:
 
-- **Bootstrap** — 12-column mobile-first grid, battle-tested components, `data-*` JS API
-- **Foundation** — utility breadth, tidy scaffolds, gray palette
-- **Tailwind CSS** — functional utility classes with responsive variants
-- **Material Design** — elevation tokens, motion curves, ripple, floating labels
+- **Bootstrap** — 12-column mobile-first flexbox grid, battle-tested components, zero-dependency `data-*` JS API
+- **Foundation** — Tidy scaffolds, typography scales, clean layout helpers
+- **Tailwind CSS** — Functional utility classes with responsive breakpoint variants
+- **Material Design** — Elevation tokens, motion curves, touch ripple effects, floating labels
 
 ---
 
 ## ✨ Highlights
 
-- **Zero dependencies** — ~296 KB CSS + ~56 KB vanilla JS, no jQuery, no bundler required
-- **Mobile-first** — responsive grid from 320px to 1400px+, plus CSS Grid utilities
-- **Source-first** — author in **Sass** (primary) or **Less**; retheme by overriding tokens
-- **Accessible** — focus-visible, `prefers-reduced-motion`, ARIA wiring, 44px touch targets
-- **Touch-friendly** — carousel swipe, safe damping, `touch-manipulation` helpers
-- **Modern CSS** — `aspect-ratio`, `text-wrap: balance`, CSS Grid, `backdrop-filter`, all progressively enhanced
-- **Multiple delivery methods** — CDN, npm, Sass source, Less source, or precompiled CSS
+- **Zero runtime dependencies** — Vanilla JS (~56 KB minified / ~15 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
+- **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, WordPress, Node, static sites, or any web stack
+- **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
+- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens
+- **Accessible & touch-friendly** — Focus-visible rings, `prefers-reduced-motion` compliance, ARIA wiring, and 44px minimum touch targets
+- **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
+
+---
+
+## ⚡ Performance & Bundle Breakdown
+
+| Asset | Minified | Gzip | Brotli | Description |
+| :--- | :---: | :---: | :---: | :--- |
+| `boodoo.min.css` | ~296 KB | ~38 KB | ~31 KB | Full framework (all 26+ components + utilities) |
+| `boodoo-utilities.min.css` | ~110 KB | ~14 KB | ~11 KB | Tailwind-style utility classes only |
+| `boodoo-grid.min.css` | ~24 KB | ~4 KB | ~3.2 KB | Flexbox grid + CSS Grid containers only |
+| `boodoo-reboot.min.css` | ~12 KB | ~2.5 KB | ~2.1 KB | Modern CSS reset & base typography |
+| `boodoo.js` | ~56 KB | ~15 KB | ~12.5 KB | Pure vanilla JS (zero dependencies) |
 
 ---
 
