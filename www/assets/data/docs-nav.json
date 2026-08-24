@@ -121,6 +121,7 @@
     "title": "WordPress Themes",
     "pages": [
       { "route": "wordpress/overview", "title": "WP Themes Overview" },
+      { "route": "wordpress/preview", "title": "Live Theme Preview" },
       { "route": "wordpress/grid-layout", "title": "Grid layout" },
       { "route": "wordpress/one-column", "title": "One column" },
       { "route": "wordpress/two-columns", "title": "Two columns" },
