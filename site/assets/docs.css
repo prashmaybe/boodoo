@@ -317,6 +317,24 @@ body {
   box-shadow: 0 6px 18px rgba(124, 58, 237, 0.15);
 }
 
+.hero-actions .btn-outline-dark {
+  border: 1.5px solid var(--boodoo-text-main);
+  color: var(--boodoo-text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-boodoo-theme="dark"] .hero-actions .btn-outline-dark {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero-actions .btn-outline-dark:hover {
+  background: var(--boodoo-text-main);
+  color: var(--boodoo-card-bg);
+  transform: translateY(-2px);
+}
+
 /* Code Terminal */
 .hero-terminal-wrap {
   max-width: 720px;
