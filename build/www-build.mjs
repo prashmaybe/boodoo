@@ -58,8 +58,12 @@ const copy = (src, rel) => {
   fs.cpSync(src, path.join(www, rel), { recursive: true });
 };
 
-// 4. Copy static site contents to www/
-copy(path.join(root, 'site', 'index.html'), 'index.html');       // Landing page at /
+// 4. Copy static site contents to www/ & inject current package version
+const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
+indexContent = indexContent.replaceAll('{{version}}', pkg.version);
+fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
+
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
 copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
 copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist

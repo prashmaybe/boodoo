@@ -204,6 +204,9 @@ function buildPage(sectionDef, { route, full }) {
   const activeDepth = route.split('/').length;
   const rootPrefix = '../'.repeat(activeDepth);
 
+const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+const VERSION = pkg.version;
+
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
     .replaceAll('{{title}}', title)
@@ -211,9 +214,10 @@ function buildPage(sectionDef, { route, full }) {
     .replaceAll('{{sidebar}}', sidebar)
     .replaceAll('{{breadcrumb}}', breadcrumb)
     .replaceAll('{{toc}}', toc)
-    .replaceAll('{{content}}', bodyWithIds)
+    .replaceAll('{{content}}', bodyWithIds.replaceAll('{{version}}', VERSION))
     .replaceAll('{{prevnext}}', pager)
     .replaceAll('{{year}}', String(YEAR))
+    .replaceAll('{{version}}', VERSION)
     .replaceAll('{{docstitle}}', title);
 
   return html;
