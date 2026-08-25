@@ -109,6 +109,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/command-palette.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/dropdowns.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -175,6 +181,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/rating.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/ripple.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -187,7 +199,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/skeleton.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/spinners.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/stepper.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/timeline.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -200,6 +230,12 @@
   </url>
   <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/tooltips.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/tree-view.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -235,6 +271,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/dropzone.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/forms/floating-labels.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -248,6 +290,12 @@
   </url>
   <url>
     <loc>https://boodoo.dihadiwala.com/docs/forms/input-group.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/forms/otp.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -295,6 +343,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/custom-elements.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/getting-started/download.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -326,6 +380,12 @@
   </url>
   <url>
     <loc>https://boodoo.dihadiwala.com/docs/getting-started/starter.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/getting-started/theme.html</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

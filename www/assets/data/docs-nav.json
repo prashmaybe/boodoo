@@ -11,7 +11,9 @@
       { "route": "getting-started/less", "title": "Customize with Less" },
       { "route": "getting-started/starter", "title": "Starter template" },
       { "route": "getting-started/browser-support", "title": "Browser support" },
-      { "route": "getting-started/accessibility", "title": "Accessibility" }
+      { "route": "getting-started/accessibility", "title": "Accessibility" },
+      { "route": "getting-started/theme", "title": "Dark Mode & Themes" },
+      { "route": "getting-started/custom-elements", "title": "Custom Elements" }
     ]
   },
   {
@@ -44,6 +46,8 @@
       { "route": "forms/range", "title": "Range" },
       { "route": "forms/input-group", "title": "Input group" },
       { "route": "forms/floating-labels", "title": "Floating labels" },
+      { "route": "forms/otp", "title": "OTP & PIN input" },
+      { "route": "forms/dropzone", "title": "Dropzone" },
       { "route": "forms/validation", "title": "Validation" }
     ]
   },
@@ -60,6 +64,7 @@
       { "route": "components/card", "title": "Card" },
       { "route": "components/carousel", "title": "Carousel" },
       { "route": "components/collapse", "title": "Collapse" },
+      { "route": "components/command-palette", "title": "Command Palette" },
       { "route": "components/dropdowns", "title": "Dropdowns" },
       { "route": "components/list-group", "title": "List group" },
       { "route": "components/modal", "title": "Modal" },
@@ -70,14 +75,20 @@
       { "route": "components/placeholder", "title": "Placeholders" },
       { "route": "components/popovers", "title": "Popovers" },
       { "route": "components/progress", "title": "Progress" },
+      { "route": "components/rating", "title": "Rating" },
       { "route": "components/scrollspy", "title": "Scrollspy" },
+      { "route": "components/skeleton", "title": "Skeleton loaders" },
       { "route": "components/spinners", "title": "Spinners" },
+      { "route": "components/stepper", "title": "Stepper" },
+      { "route": "components/timeline", "title": "Timeline" },
       { "route": "components/toasts", "title": "Toasts" },
       { "route": "components/tooltips", "title": "Tooltips" },
+      { "route": "components/tree-view", "title": "Tree View" },
       { "route": "components/ripple", "title": "Ripple effect" },
       { "route": "components/native", "title": "Native components" }
     ]
   },
+
   {
     "title": "Helpers",
     "pages": [
