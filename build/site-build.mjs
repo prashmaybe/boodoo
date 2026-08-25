@@ -21,6 +21,33 @@ const srcDir = path.join(root, 'site', 'src');
 const layoutFile = path.join(root, 'site', 'layout.html');
 const navFile = path.join(root, 'site', 'data', 'docs-nav.json');
 const outDir = path.join(root, 'site', 'docs');
+const distDir = path.join(root, 'dist');
+
+// Helper to get formatted file sizes in KB
+export function getDistSizes() {
+  const getKb = (rel) => {
+    const file = path.join(distDir, rel);
+    if (!fs.existsSync(file)) return '0';
+    const bytes = fs.statSync(file).size;
+    return Math.round(bytes / 1024).toString();
+  };
+
+  return {
+    cssRaw: getKb('css/boodoo.css'),
+    cssMin: getKb('css/boodoo.min.css'),
+    jsRaw: getKb('js/boodoo.js'),
+    jsMin: getKb('js/boodoo.min.js'),
+    jsEsm: getKb('js/boodoo.esm.js'),
+    gridRaw: getKb('css/boodoo-grid.css'),
+    gridMin: getKb('css/boodoo-grid.min.css'),
+    rebootRaw: getKb('css/boodoo-reboot.css'),
+    rebootMin: getKb('css/boodoo-reboot.min.css'),
+    utilsRaw: getKb('css/boodoo-utilities.css'),
+    utilsMin: getKb('css/boodoo-utilities.min.css'),
+    animRaw: getKb('css/boodoo-animations.css'),
+    animMin: getKb('css/boodoo-animations.min.css'),
+  };
+}
 
 if (!fs.existsSync(layoutFile)) {
   console.error('Missing layout:', layoutFile);
@@ -209,6 +236,23 @@ function buildPage(sectionDef, { route, full }) {
 
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const VERSION = pkg.version;
+const sizes = getDistSizes();
+
+  let bodyRendered = bodyWithIds
+    .replaceAll('{{version}}', VERSION)
+    .replaceAll('{{cssRawKb}}', sizes.cssRaw)
+    .replaceAll('{{cssMinKb}}', sizes.cssMin)
+    .replaceAll('{{jsRawKb}}', sizes.jsRaw)
+    .replaceAll('{{jsMinKb}}', sizes.jsMin)
+    .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
+    .replaceAll('{{gridRawKb}}', sizes.gridRaw)
+    .replaceAll('{{gridMinKb}}', sizes.gridMin)
+    .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
+    .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
+    .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
+    .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
+    .replaceAll('{{animRawKb}}', sizes.animRaw)
+    .replaceAll('{{animMinKb}}', sizes.animMin);
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
@@ -219,10 +263,23 @@ const VERSION = pkg.version;
     .replaceAll('{{mainColClass}}', mainColClass)
     .replaceAll('{{tocAside}}', tocAside)
     .replaceAll('{{toc}}', toc)
-    .replaceAll('{{content}}', bodyWithIds.replaceAll('{{version}}', VERSION))
+    .replaceAll('{{content}}', bodyRendered)
     .replaceAll('{{prevnext}}', pager)
     .replaceAll('{{year}}', String(YEAR))
     .replaceAll('{{version}}', VERSION)
+    .replaceAll('{{cssRawKb}}', sizes.cssRaw)
+    .replaceAll('{{cssMinKb}}', sizes.cssMin)
+    .replaceAll('{{jsRawKb}}', sizes.jsRaw)
+    .replaceAll('{{jsMinKb}}', sizes.jsMin)
+    .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
+    .replaceAll('{{gridRawKb}}', sizes.gridRaw)
+    .replaceAll('{{gridMinKb}}', sizes.gridMin)
+    .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
+    .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
+    .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
+    .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
+    .replaceAll('{{animRawKb}}', sizes.animRaw)
+    .replaceAll('{{animMinKb}}', sizes.animMin)
     .replaceAll('{{docstitle}}', title);
 
   return html;

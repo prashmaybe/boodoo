@@ -58,10 +58,26 @@ const copy = (src, rel) => {
   fs.cpSync(src, path.join(www, rel), { recursive: true });
 };
 
-// 4. Copy static site contents to www/ & inject current package version
+// 4. Copy static site contents to www/ & inject current package version and bundle sizes
+import { getDistSizes } from './site-build.mjs';
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+const sizes = getDistSizes();
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
-indexContent = indexContent.replaceAll('{{version}}', pkg.version);
+indexContent = indexContent
+  .replaceAll('{{version}}', pkg.version)
+  .replaceAll('{{cssRawKb}}', sizes.cssRaw)
+  .replaceAll('{{cssMinKb}}', sizes.cssMin)
+  .replaceAll('{{jsRawKb}}', sizes.jsRaw)
+  .replaceAll('{{jsMinKb}}', sizes.jsMin)
+  .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
+  .replaceAll('{{gridRawKb}}', sizes.gridRaw)
+  .replaceAll('{{gridMinKb}}', sizes.gridMin)
+  .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
+  .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
+  .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
+  .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
+  .replaceAll('{{animRawKb}}', sizes.animRaw)
+  .replaceAll('{{animMinKb}}', sizes.animMin);
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages

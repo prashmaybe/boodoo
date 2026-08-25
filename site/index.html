@@ -135,7 +135,7 @@
             </div>
             <pre><code id="terminalCode"><span class="terminal-prompt">$</span> npm install boodoo
 <span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css
-<span class="terminal-success">✔ Bundled 296 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
+<span class="terminal-success">✔ Bundled {{cssMinKb}} kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
           </div>
         </div>
 
@@ -151,7 +151,7 @@
           <div class="stat-item">
             <div class="stat-icon">📦</div>
             <div>
-              <div class="stat-value">~56 KB Minified</div>
+              <div class="stat-value">~{{jsRawKb}} KB Minified</div>
               <div class="stat-label">Ultra lightweight</div>
             </div>
           </div>
@@ -433,7 +433,7 @@
           into a single lightweight library.</p>
 
         <div class="row g-4">
-          <div class="col-6 col-lg-3">
+          <div class="col-md-6 col-lg-3">
             <div class="card pillar-card bootstrap-pillar shadow-sm p-3">
               <div class="card-body">
                 <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3">🅱️</div>
@@ -443,7 +443,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3">
+          <div class="col-md-6 col-lg-3">
             <div class="card pillar-card foundation-pillar shadow-sm p-3">
               <div class="card-body">
                 <div class="card-icon-avatar bg-soft-success text-success mx-auto mb-3">🏛️</div>
@@ -453,7 +453,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3">
+          <div class="col-md-6 col-lg-3">
             <div class="card pillar-card tailwind-pillar shadow-sm p-3">
               <div class="card-body">
                 <div class="card-icon-avatar bg-soft-info text-info mx-auto mb-3">🌀</div>
@@ -463,7 +463,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3">
+          <div class="col-md-6 col-lg-3">
             <div class="card pillar-card material-pillar shadow-sm p-3">
               <div class="card-body">
                 <div class="card-icon-avatar bg-soft-warning text-warning mx-auto mb-3">💎</div>
@@ -583,9 +583,9 @@
     // Terminal Tabs handler
     (function () {
       const codeSnippets = {
-        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 296 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
-        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 296 kB → boodoo.min.css</span>',
-        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 296 kB → boodoo.min.css</span>',
+        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled {{cssMinKb}} kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
+        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled {{cssMinKb}} kB → boodoo.min.css</span>',
+        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled {{cssMinKb}} kB → boodoo.min.css</span>',
         cdn: '<span class="terminal-comment">&lt;!-- Drop CDN link into head --&gt;</span>\n<span class="terminal-prompt">&lt;link href="https://boodoo.dihadiwala.com/dist/css/boodoo.min.css" rel="stylesheet"&gt;</span>\n<span class="terminal-prompt">&lt;script src="https://boodoo.dihadiwala.com/dist/js/boodoo.js"&gt;&lt;/script&gt;</span>'
       };
 
