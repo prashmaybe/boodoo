@@ -239,3 +239,54 @@
   direction: rtl !important;
   text-align: right;
 }
+
+// ---------------------------------------------------------------------
+// Hover state utility helpers
+// ---------------------------------------------------------------------
+
+// Hover transforms & scales
+.hover-scale-90:hover  { transform: scale(0.9) !important; }
+.hover-scale-95:hover  { transform: scale(0.95) !important; }
+.hover-scale-100:hover { transform: scale(1) !important; }
+.hover-scale-105:hover { transform: scale(1.05) !important; }
+.hover-scale-110:hover { transform: scale(1.1) !important; }
+.hover-scale-125:hover { transform: scale(1.25) !important; }
+
+// Hover translation & lift
+.hover-translate-y-0:hover   { transform: translateY(0) !important; }
+.hover-translate-y-1:hover   { transform: translateY(0.25rem) !important; }
+.hover-translate-y-2:hover   { transform: translateY(0.5rem) !important; }
+.hover-translate-y-n1:hover  { transform: translateY(-0.25rem) !important; }
+.hover-translate-y-n2:hover  { transform: translateY(-0.5rem) !important; }
+.hover-lift:hover            { transform: translateY(-0.25rem) !important; }
+
+.hover-translate-x-1:hover   { transform: translateX(0.25rem) !important; }
+.hover-translate-x-2:hover   { transform: translateX(0.5rem) !important; }
+.hover-translate-x-n1:hover  { transform: translateX(-0.25rem) !important; }
+.hover-translate-x-n2:hover  { transform: translateX(-0.5rem) !important; }
+
+// Hover rotation
+.hover-rotate-45:hover  { transform: rotate(45deg) !important; }
+.hover-rotate-90:hover  { transform: rotate(90deg) !important; }
+.hover-rotate-180:hover { transform: rotate(180deg) !important; }
+
+// Hover opacity
+.hover-opacity-0:hover   { opacity: 0 !important; }
+.hover-opacity-25:hover  { opacity: 0.25 !important; }
+.hover-opacity-50:hover  { opacity: 0.5 !important; }
+.hover-opacity-75:hover  { opacity: 0.75 !important; }
+.hover-opacity-100:hover { opacity: 1 !important; }
+
+// Hover shadows
+.hover-shadow-none:hover { box-shadow: none !important; }
+.hover-shadow-sm:hover   { box-shadow: $boodoo-box-shadow-sm !important; }
+.hover-shadow:hover      { box-shadow: $boodoo-box-shadow !important; }
+.hover-shadow-md:hover   { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important; }
+.hover-shadow-lg:hover   { box-shadow: $boodoo-box-shadow-lg !important; }
+
+// Hover theme colors & backgrounds
+@each $name, $color in $boodoo-theme-colors {
+  .hover-bg-#{$name}:hover { background-color: $color !important; }
+  .hover-text-#{$name}:hover { color: $color !important; }
+  .hover-border-#{$name}:hover { border-color: $color !important; }
+}

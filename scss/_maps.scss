@@ -1322,6 +1322,7 @@ $boodoo-utilities: (
     property: transition,
     class: transition,
     values: (
+      null: var(--boodoo-transition),
       none: none,
       all: all 0.2s ease-in-out,
       colors: (color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, fill 0.2s ease-in-out, stroke 0.2s ease-in-out),
@@ -1354,6 +1355,16 @@ $boodoo-utilities: (
       200: 200ms,
       300: 300ms,
       500: 500ms,
+    ),
+  ),
+  "ease": (
+    property: transition-timing-function,
+    class: ease,
+    values: (
+      linear: linear,
+      in: cubic-bezier(0.4, 0, 1, 1),
+      out: cubic-bezier(0, 0, 0.2, 1),
+      in-out: cubic-bezier(0.4, 0, 0.2, 1),
     ),
   ),
 ) !default;

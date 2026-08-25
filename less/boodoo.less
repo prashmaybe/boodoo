@@ -591,6 +591,69 @@ ul, ol { margin-top: 0; margin-bottom: 1rem; }
 .form-otp-input { width: 3rem; height: 3.5rem; text-align: center; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--boodoo-border-color); border-radius: var(--boodoo-border-radius); background-color: var(--boodoo-body-bg); color: var(--boodoo-body-color); }
 .dropzone, .form-dropzone { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 1.5rem; border: 2px dashed var(--boodoo-border-color); border-radius: var(--boodoo-border-radius-lg); background-color: var(--boodoo-body-bg); cursor: pointer; text-align: center; }
 
+// Transitions & Motion Utilities
+.transition { transition: var(--boodoo-transition) !important; }
+.transition-none { transition: none !important; }
+.transition-all { transition: all 0.2s ease-in-out !important; }
+.transition-colors { transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, fill 0.2s ease-in-out, stroke 0.2s ease-in-out !important; }
+.transition-opacity { transition: opacity 0.2s ease-in-out !important; }
+.transition-shadow { transition: box-shadow 0.2s ease-in-out !important; }
+.transition-transform { transition: transform 0.2s ease-in-out !important; }
+
+.duration-75, .animate-duration-75 { transition-duration: 75ms !important; animation-duration: 75ms; }
+.duration-100, .animate-duration-100 { transition-duration: 100ms !important; animation-duration: 100ms; }
+.duration-150, .animate-duration-150 { transition-duration: 150ms !important; animation-duration: 150ms; }
+.duration-200, .animate-duration-200 { transition-duration: 200ms !important; animation-duration: 200ms; }
+.duration-300, .animate-duration-300 { transition-duration: 300ms !important; animation-duration: 300ms; }
+.duration-500, .animate-duration-500 { transition-duration: 500ms !important; animation-duration: 500ms; }
+.duration-700 { transition-duration: 700ms !important; }
+.duration-1000, .animate-duration-1000 { transition-duration: 1000ms !important; animation-duration: 1000ms; }
+.duration-2000, .animate-duration-2000 { animation-duration: 2000ms; }
+.duration-3000, .animate-duration-3000 { animation-duration: 3000ms; }
+
+.delay-75, .animate-delay-75 { transition-delay: 75ms !important; animation-delay: 75ms; }
+.delay-100, .animate-delay-100 { transition-delay: 100ms !important; animation-delay: 100ms; }
+.delay-150, .animate-delay-150 { transition-delay: 150ms !important; animation-delay: 150ms; }
+.delay-200, .animate-delay-200 { transition-delay: 200ms !important; animation-delay: 200ms; }
+.delay-300, .animate-delay-300 { transition-delay: 300ms !important; animation-delay: 300ms; }
+.delay-500, .animate-delay-500 { transition-delay: 500ms !important; animation-delay: 500ms; }
+
+.ease-linear { transition-timing-function: linear !important; }
+.ease-in { transition-timing-function: cubic-bezier(0.4, 0, 1, 1) !important; }
+.ease-out { transition-timing-function: cubic-bezier(0, 0, 0.2, 1) !important; }
+.ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important; }
+
+// Hover Utilities
+.hover-scale-90:hover  { transform: scale(0.9) !important; }
+.hover-scale-95:hover  { transform: scale(0.95) !important; }
+.hover-scale-100:hover { transform: scale(1) !important; }
+.hover-scale-105:hover { transform: scale(1.05) !important; }
+.hover-scale-110:hover { transform: scale(1.1) !important; }
+.hover-scale-125:hover { transform: scale(1.25) !important; }
+.hover-translate-y-0:hover   { transform: translateY(0) !important; }
+.hover-translate-y-1:hover   { transform: translateY(0.25rem) !important; }
+.hover-translate-y-2:hover   { transform: translateY(0.5rem) !important; }
+.hover-translate-y-n1:hover  { transform: translateY(-0.25rem) !important; }
+.hover-translate-y-n2:hover  { transform: translateY(-0.5rem) !important; }
+.hover-lift:hover            { transform: translateY(-0.25rem) !important; }
+.hover-translate-x-1:hover   { transform: translateX(0.25rem) !important; }
+.hover-translate-x-2:hover   { transform: translateX(0.5rem) !important; }
+.hover-translate-x-n1:hover  { transform: translateX(-0.25rem) !important; }
+.hover-translate-x-n2:hover  { transform: translateX(-0.5rem) !important; }
+.hover-rotate-45:hover  { transform: rotate(45deg) !important; }
+.hover-rotate-90:hover  { transform: rotate(90deg) !important; }
+.hover-rotate-180:hover { transform: rotate(180deg) !important; }
+.hover-opacity-0:hover   { opacity: 0 !important; }
+.hover-opacity-25:hover  { opacity: 0.25 !important; }
+.hover-opacity-50:hover  { opacity: 0.5 !important; }
+.hover-opacity-75:hover  { opacity: 0.75 !important; }
+.hover-opacity-100:hover { opacity: 1 !important; }
+.hover-shadow-none:hover { box-shadow: none !important; }
+.hover-shadow-sm:hover   { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+.hover-shadow:hover      { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; }
+.hover-shadow-md:hover   { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important; }
+.hover-shadow-lg:hover   { box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; }
+
 @media (prefers-reduced-motion: reduce) {
   *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]),
   *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::before,
