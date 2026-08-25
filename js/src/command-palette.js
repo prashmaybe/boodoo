@@ -4,12 +4,11 @@
 
 import { BaseComponent } from './base-component.js';
 
-const NAME = 'commandPalette';
-
 export class CommandPalette extends BaseComponent {
   static get NAME() {
-    return NAME;
+    return 'commandPalette';
   }
+
 
   constructor(element, config = {}) {
     super(element, config);

@@ -4,13 +4,11 @@
 
 import { BaseComponent } from './base-component.js';
 
-const NAME = 'otp';
-const DATA_KEY = 'boodoo.otp';
-
 export class OTP extends BaseComponent {
   static get NAME() {
-    return NAME;
+    return 'otp';
   }
+
 
   constructor(element, config = {}) {
     super(element, config);

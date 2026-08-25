@@ -4,12 +4,11 @@
 
 import { BaseComponent } from './base-component.js';
 
-const NAME = 'rating';
-
 export class Rating extends BaseComponent {
   static get NAME() {
-    return NAME;
+    return 'rating';
   }
+
 
   constructor(element, config = {}) {
     super(element, config);

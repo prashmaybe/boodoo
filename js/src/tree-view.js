@@ -4,12 +4,11 @@
 
 import { BaseComponent } from './base-component.js';
 
-const NAME = 'treeview';
-
 export class TreeView extends BaseComponent {
   static get NAME() {
-    return NAME;
+    return 'treeview';
   }
+
 
   constructor(element, config = {}) {
     super(element, config);
