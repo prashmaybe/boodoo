@@ -1,0 +1,113 @@
+// BOODOO COMPONENTS — Skeleton Loaders
+// Shimmer and pulse loading placeholders.
+
+@keyframes boodoo-skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes boodoo-skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeleton {
+  display: block;
+  background-color: var(--boodoo-gray-200);
+  border-radius: var(--boodoo-border-radius-sm);
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 0.5rem;
+
+  &.skeleton-shimmer,
+  &.skeleton-wave {
+    background: linear-gradient(
+      90deg,
+      var(--boodoo-gray-200) 25%,
+      var(--boodoo-gray-300) 37%,
+      var(--boodoo-gray-200) 63%
+    );
+    background-size: 400% 100%;
+    animation: boodoo-skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+
+  &.skeleton-pulse {
+    animation: boodoo-skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+[data-boodoo-theme="dark"] .skeleton {
+  background-color: var(--boodoo-gray-700);
+
+  &.skeleton-shimmer,
+  &.skeleton-wave {
+    background: linear-gradient(
+      90deg,
+      var(--boodoo-gray-800) 25%,
+      var(--boodoo-gray-700) 37%,
+      var(--boodoo-gray-800) 63%
+    );
+    background-size: 400% 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-boodoo-theme="light"]) .skeleton {
+    background-color: var(--boodoo-gray-700);
+
+    &.skeleton-shimmer,
+    &.skeleton-wave {
+      background: linear-gradient(
+        90deg,
+        var(--boodoo-gray-800) 25%,
+        var(--boodoo-gray-700) 37%,
+        var(--boodoo-gray-800) 63%
+      );
+      background-size: 400% 100%;
+    }
+  }
+}
+
+
+.skeleton-text {
+  height: 0.875rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--boodoo-border-radius-sm);
+
+  &:last-child {
+    width: 70%;
+  }
+}
+
+.skeleton-title {
+  height: 1.5rem;
+  width: 60%;
+  margin-bottom: 1rem;
+}
+
+.skeleton-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-button {
+  height: 2.375rem;
+  width: 6rem;
+  border-radius: var(--boodoo-border-radius);
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 12rem;
+  border-radius: var(--boodoo-border-radius);
+}

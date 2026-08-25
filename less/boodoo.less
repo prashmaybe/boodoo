@@ -555,6 +555,42 @@ ul, ol { margin-top: 0; margin-bottom: 1rem; }
 .animate-slide-up { animation: boodoo-less-slideup 0.5s ease both; }
 @keyframes boodoo-less-slideup { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
 
+// ---------------------------------------------------------------------
+// 10. Advanced Components (Stepper, Timeline, Rating, Skeletons, OTP)
+// ---------------------------------------------------------------------
+
+// Stepper
+.stepper { display: flex; list-style: none; padding: 0; margin: 0 0 1.5rem 0; justify-content: space-between; width: 100%; position: relative; }
+.step-item { position: relative; display: flex; flex-direction: column; align-items: center; flex: 1; text-align: center; }
+.step-item:not(:last-child)::after { content: ""; position: absolute; top: 1.25rem; left: 50%; width: 100%; height: 2px; background-color: var(--boodoo-border-color); z-index: 1; }
+.step-item.completed:not(:last-child)::after { background-color: var(--boodoo-primary); }
+.step-circle { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background-color: var(--boodoo-body-bg); border: 2px solid var(--boodoo-border-color); color: var(--boodoo-gray-500); font-weight: 600; font-size: 0.9375rem; }
+.step-item.active .step-circle { border-color: var(--boodoo-primary); background-color: var(--boodoo-primary); color: #fff; }
+.step-item.completed .step-circle { border-color: var(--boodoo-primary); background-color: var(--boodoo-primary); color: #fff; }
+.step-title { font-size: 0.875rem; font-weight: 500; color: var(--boodoo-body-color); margin-top: 0.5rem; }
+
+// Timeline
+.timeline { position: relative; list-style: none; padding: 0; margin: 0; }
+.timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 1.25rem; width: 2px; background-color: var(--boodoo-border-color); }
+.timeline-item { position: relative; padding-left: 3rem; padding-bottom: 2rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-badge { position: absolute; top: 0; left: 0.625rem; display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background-color: var(--boodoo-primary); color: #fff; font-size: 0.75rem; z-index: 2; }
+.timeline-content { background-color: var(--boodoo-body-bg); border: 1px solid var(--boodoo-border-color); border-radius: var(--boodoo-border-radius); padding: 1rem 1.25rem; }
+
+// Rating
+.rating { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 1.25rem; color: var(--boodoo-gray-400); cursor: pointer; }
+.rating-star.filled, .rating-star.active { color: #f59e0b; }
+
+// Skeleton
+.skeleton { display: block; background-color: var(--boodoo-gray-200); border-radius: var(--boodoo-border-radius-sm); width: 100%; height: 1rem; margin-bottom: 0.5rem; }
+.skeleton-shimmer, .skeleton-wave { background: linear-gradient(90deg, var(--boodoo-gray-200) 25%, var(--boodoo-gray-300) 37%, var(--boodoo-gray-200) 63%); background-size: 400% 100%; animation: boodoo-skeleton-shimmer 1.5s ease-in-out infinite; }
+@keyframes boodoo-skeleton-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+// OTP & Dropzone
+.form-otp { display: flex; gap: 0.5rem; align-items: center; justify-content: center; }
+.form-otp-input { width: 3rem; height: 3.5rem; text-align: center; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--boodoo-border-color); border-radius: var(--boodoo-border-radius); background-color: var(--boodoo-body-bg); color: var(--boodoo-body-color); }
+.dropzone, .form-dropzone { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 1.5rem; border: 2px dashed var(--boodoo-border-color); border-radius: var(--boodoo-border-radius-lg); background-color: var(--boodoo-body-bg); cursor: pointer; text-align: center; }
+
 @media (prefers-reduced-motion: reduce) {
   *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]),
   *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::before,

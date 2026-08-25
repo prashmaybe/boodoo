@@ -1,0 +1,24 @@
+<!--
+title: Command Palette
+description: Keyboard-driven search modal and spotlight command runner for boodoo.
+section: components
+order: 30
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Command Palette gives users rapid keyboard navigation and quick actions with <kbd>Ctrl+K</kbd> or <kbd>Cmd+K</kbd>.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Triggering from JavaScript</h2>
+  <p>You can launch a command palette programmatically or via the global keyboard listener:</p>
+  <pre><code class="language-javascript">const palette = boodoo.CommandPalette.getOrCreateInstance(document.querySelector('#my-palette'), {
+  items: [
+    { title: 'Dashboard', href: '/dashboard', icon: '📊', shortcut: 'G D' },
+    { title: 'Toggle Theme', action: () => boodoo.theme.toggle(), icon: '🌓' }
+  ]
+});
+
+palette.open();</code></pre>
+</section>

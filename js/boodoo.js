@@ -17,6 +17,13 @@ import { ScrollSpy } from './scrollspy.js';
 import { initRipple } from './ripple.js';
 import { initDataApi } from './base-component.js';
 import { enableDismissTrigger } from './util.js';
+import { theme } from './theme.js';
+import { OTP } from './otp.js';
+import { Rating } from './rating.js';
+import { TreeView } from './tree-view.js';
+import { clipboard } from './clipboard.js';
+import { CommandPalette } from './command-palette.js';
+import { registerCustomElements } from './custom-elements.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance) => {
@@ -40,6 +47,13 @@ const boodoo = {
   ScrollSpy,
   initRipple,
   initDataApi,
+  theme,
+  OTP,
+  Rating,
+  TreeView,
+  clipboard,
+  CommandPalette,
+  registerCustomElements,
 };
 
 // Set up a convenience for showing toasts from JS: boodoo.toast(message, options)
@@ -95,6 +109,8 @@ if (typeof document === 'undefined') {
 
 // Public default export
 export default boodoo;
+export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, registerCustomElements };
+
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;
 }

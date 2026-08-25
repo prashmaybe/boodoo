@@ -1,0 +1,42 @@
+// BOODOO COMPONENTS — Rating
+// Star rating inputs and read-only displays.
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.25rem;
+  color: var(--boodoo-gray-400);
+  line-height: 1;
+}
+
+.rating-star {
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.1s ease;
+  display: inline-block;
+
+  &.filled,
+  &.active {
+    color: #f59e0b; // Amber star
+  }
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.rating-readonly .rating-star {
+  cursor: default;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.rating-sm {
+  font-size: 1rem;
+}
+
+.rating-lg {
+  font-size: 1.75rem;
+}

@@ -1,0 +1,93 @@
+<!--
+title: Stepper & Wizard
+description: Step indicator and multi-step workflow components for boodoo.
+section: components
+order: 25
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Horizontal Stepper</h2>
+  <div class="docs-example p-4 border rounded">
+    <ul class="stepper">
+      <li class="step-item completed">
+        <div class="step-circle">✓</div>
+        <div class="step-content">
+          <div class="step-title">Account</div>
+          <div class="step-subtitle">Setup credentials</div>
+        </div>
+      </li>
+      <li class="step-item active">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          <div class="step-title">Profile</div>
+          <div class="step-subtitle">Personal info</div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <div class="step-title">Review</div>
+          <div class="step-subtitle">Final confirmation</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <pre><code class="language-html">&lt;ul class="stepper"&gt;
+  &lt;li class="step-item completed"&gt;
+    &lt;div class="step-circle"&gt;✓&lt;/div&gt;
+    &lt;div class="step-content"&gt;
+      &lt;div class="step-title"&gt;Account&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;Setup credentials&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="step-item active"&gt;
+    &lt;div class="step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="step-content"&gt;
+      &lt;div class="step-title"&gt;Profile&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;Personal info&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="step-item"&gt;
+    &lt;div class="step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="step-content"&gt;
+      &lt;div class="step-title"&gt;Review&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;Final confirmation&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Vertical Stepper</h2>
+  <div class="docs-example p-4 border rounded">
+    <ul class="stepper stepper-vertical">
+      <li class="step-item completed">
+        <div class="step-circle">✓</div>
+        <div class="step-content">
+          <div class="step-title">Order Placed</div>
+          <div class="step-subtitle">Oct 12, 10:30 AM</div>
+        </div>
+      </li>
+      <li class="step-item active">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          <div class="step-title">Processing</div>
+          <div class="step-subtitle">Item packed and ready</div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <div class="step-title">Delivered</div>
+          <div class="step-subtitle">Pending carrier pickup</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

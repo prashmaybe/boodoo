@@ -1,0 +1,31 @@
+<!--
+title: Dark Mode & Themes
+description: Theme switching and dark mode persistence in boodoo.
+section: getting-started
+order: 5
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">boodoo comes with built-in dark mode support, automatic system scheme detection, and the <code>boodoo.theme</code> JS module.</p>
+</section>
+
+<section class="docs-section">
+  <h2>JavaScript Theme API</h2>
+  <pre><code class="language-javascript">// Get current theme ('light' or 'dark')
+const current = boodoo.theme.get();
+
+// Set explicit theme
+boodoo.theme.set('dark');
+boodoo.theme.set('light');
+boodoo.theme.set('auto');
+
+// Toggle between light and dark
+boodoo.theme.toggle();</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>HTML Trigger Attribute</h2>
+  <p>You can toggle theme via HTML buttons without writing any JavaScript:</p>
+  <pre><code class="language-html">&lt;button class="btn btn-secondary" data-boodoo-toggle="theme"&gt;Toggle Theme&lt;/button&gt;</code></pre>
+</section>

@@ -33,8 +33,11 @@
 @import "forms/select";
 @import "forms/checks";
 @import "forms/range";
+@import "forms/range-dual";
 @import "forms/input-group";
 @import "forms/floating-labels";
+@import "forms/otp";
+@import "forms/dropzone";
 @import "forms/validation";
 
 // 6. Components
@@ -49,6 +52,7 @@
 @import "components/carousel";
 @import "components/close";
 @import "components/collapse";
+@import "components/command-palette";
 @import "components/dropdown";
 @import "components/list-group";
 @import "components/modal";
@@ -60,10 +64,15 @@
 @import "components/placeholder";
 @import "components/popover";
 @import "components/progress";
+@import "components/rating";
 @import "components/ripple";
+@import "components/skeleton";
 @import "components/spinners";
+@import "components/stepper";
+@import "components/timeline";
 @import "components/toasts";
 @import "components/tooltip";
+@import "components/tree-view";
 
 // 7. Helpers & utilities
 @import "helpers";

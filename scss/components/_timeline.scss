@@ -1,0 +1,91 @@
+// BOODOO COMPONENTS — Timeline
+// Activity streams, event history, and audit log components.
+
+.timeline {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.25rem;
+    width: 2px;
+    background-color: var(--boodoo-border-color);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 2rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.timeline-badge {
+  position: absolute;
+  top: 0;
+  left: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--boodoo-primary);
+  color: var(--boodoo-white);
+  font-size: 0.75rem;
+  z-index: 2;
+  box-shadow: 0 0 0 4px var(--boodoo-card-bg, var(--boodoo-body-bg));
+
+  &.timeline-badge-secondary { background-color: var(--boodoo-secondary); }
+  &.timeline-badge-success { background-color: var(--boodoo-success); }
+  &.timeline-badge-danger { background-color: var(--boodoo-danger); }
+  &.timeline-badge-warning { background-color: var(--boodoo-warning); }
+  &.timeline-badge-info { background-color: var(--boodoo-info); }
+}
+
+.timeline-content {
+  position: relative;
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--boodoo-shadow-sm);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.timeline-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: var(--boodoo-font-weight-semibold);
+  color: var(--boodoo-body-color);
+}
+
+.timeline-date {
+  font-size: 0.8125rem;
+  color: var(--boodoo-body-secondary-color);
+}
+
+.timeline-body {
+  font-size: 0.875rem;
+  color: var(--boodoo-body-secondary-color);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

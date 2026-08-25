@@ -1,0 +1,58 @@
+<!--
+title: Timeline
+description: Activity streams and chronological timeline components for boodoo.
+section: components
+order: 26
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Timelines display chronological feeds, event histories, and tracking milestones with badges and cards.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Basic Timeline</h2>
+  <div class="docs-example p-4 border rounded">
+    <ul class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-badge timeline-badge-success">✓</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h6 class="timeline-title">Deployment Succeeded</h6>
+            <span class="timeline-date">5 minutes ago</span>
+          </div>
+          <div class="timeline-body">
+            <p>Production cluster updated to version 1.0.2 with zero downtime.</p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-badge timeline-badge-info">ℹ</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h6 class="timeline-title">Automated Tests Passed</h6>
+            <span class="timeline-date">12 minutes ago</span>
+          </div>
+          <div class="timeline-body">
+            <p>148 unit and end-to-end test suites completed successfully.</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <pre><code class="language-html">&lt;ul class="timeline"&gt;
+  &lt;li class="timeline-item"&gt;
+    &lt;div class="timeline-badge timeline-badge-success"&gt;✓&lt;/div&gt;
+    &lt;div class="timeline-content"&gt;
+      &lt;div class="timeline-header"&gt;
+        &lt;h6 class="timeline-title"&gt;Deployment Succeeded&lt;/h6&gt;
+        &lt;span class="timeline-date"&gt;5m ago&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="timeline-body"&gt;
+        &lt;p&gt;Production cluster updated to version 1.0.2.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</section>

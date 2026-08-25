@@ -1,0 +1,41 @@
+// BOODOO FORMS — Dropzone
+// Drag-and-drop file upload containers.
+
+.dropzone,
+.form-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius-lg);
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--boodoo-transition-duration) ease;
+
+  &:hover,
+  &.dragover {
+    border-color: var(--boodoo-primary);
+    background-color: rgba(var(--boodoo-primary-rgb), 0.04);
+  }
+}
+
+.dropzone-icon {
+  font-size: 2.5rem;
+  color: var(--boodoo-primary);
+  margin-bottom: 0.75rem;
+}
+
+.dropzone-title {
+  font-size: 1rem;
+  font-weight: var(--boodoo-font-weight-semibold);
+  color: var(--boodoo-body-color);
+  margin-bottom: 0.25rem;
+}
+
+.dropzone-subtitle {
+  font-size: 0.8125rem;
+  color: var(--boodoo-body-secondary-color);
+}

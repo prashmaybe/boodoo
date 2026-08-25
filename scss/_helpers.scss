@@ -226,3 +226,16 @@
   .d-print-flex { display: flex !important; }
   .d-print-inline-flex { display: inline-flex !important; }
 }
+
+// Direction & RTL helpers
+.dir-ltr,
+[dir="ltr"] {
+  direction: ltr !important;
+  text-align: left;
+}
+
+.dir-rtl,
+[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right;
+}

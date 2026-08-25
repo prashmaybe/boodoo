@@ -1,0 +1,45 @@
+<!--
+title: Tree View
+description: Hierarchical nested list and folder explorer component for boodoo.
+section: components
+order: 29
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Tree View organizes nested hierarchies such as file directories, nested navigation, and categories.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Folder Tree View</h2>
+  <div class="docs-example p-4 border rounded">
+    <ul class="tree-view" data-boodoo="tree">
+      <li>
+        <span class="tree-toggle expanded"></span>
+        <span class="tree-item">📁 src</span>
+        <ul>
+          <li>
+            <span class="tree-toggle expanded"></span>
+            <span class="tree-item">📁 components</span>
+            <ul>
+              <li><span class="tree-item">📄 modal.js</span></li>
+              <li><span class="tree-item">📄 toast.js</span></li>
+            </ul>
+          </li>
+          <li><span class="tree-item">📄 index.js</span></li>
+        </ul>
+      </li>
+      <li><span class="tree-item">📄 package.json</span></li>
+    </ul>
+  </div>
+
+  <pre><code class="language-html">&lt;ul class="tree-view" data-boodoo="tree"&gt;
+  &lt;li&gt;
+    &lt;span class="tree-toggle expanded"&gt;&lt;/span&gt;
+    &lt;span class="tree-item"&gt;📁 src&lt;/span&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;span class="tree-item"&gt;📄 index.js&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</section>

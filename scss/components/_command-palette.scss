@@ -1,0 +1,135 @@
+// BOODOO COMPONENTS — Command Palette
+// Spotlight & Raycast inspired keyboard search modal (Ctrl+K).
+
+.command-palette-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: var(--boodoo-zindex-modal-backdrop);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.command-palette {
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius-lg);
+  box-shadow: var(--boodoo-shadow-xl);
+  width: 100%;
+  max-width: 640px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(-20px) scale(0.98);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .show > & {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.command-palette-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--boodoo-border-color);
+}
+
+.command-palette-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 1.125rem;
+  color: var(--boodoo-body-color);
+  outline: none;
+  padding-left: 0.5rem;
+
+  &::placeholder {
+    color: var(--boodoo-body-secondary-color);
+  }
+}
+
+.command-palette-results {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 380px;
+}
+
+.command-palette-group-title {
+  padding: 0.5rem 0.75rem 0.25rem;
+  font-size: 0.75rem;
+  font-weight: var(--boodoo-font-weight-semibold);
+  color: var(--boodoo-body-secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.command-palette-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--boodoo-border-radius);
+  cursor: pointer;
+  color: var(--boodoo-body-color);
+  font-size: 0.9375rem;
+  transition: background-color 0.1s ease;
+
+  &.active,
+  &:hover {
+    background-color: var(--boodoo-primary);
+    color: var(--boodoo-white);
+
+    .command-palette-item-shortcut,
+    .command-palette-item-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.command-palette-item-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.command-palette-item-shortcut {
+  font-size: 0.75rem;
+  color: var(--boodoo-body-secondary-color);
+}
+
+.command-palette-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--boodoo-border-color);
+  background-color: var(--boodoo-body-secondary-bg);
+  font-size: 0.75rem;
+  color: var(--boodoo-body-secondary-color);
+
+  kbd {
+    background: var(--boodoo-body-bg);
+    border: 1px solid var(--boodoo-border-color);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+  }
+}

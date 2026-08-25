@@ -1,0 +1,50 @@
+// BOODOO FORMS — OTP / PIN Code Input
+// Digit inputs for verification codes, SMS OTPs, and pins.
+
+.form-otp {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-otp-input {
+  width: 3rem;
+  height: 3.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: var(--boodoo-font-weight-bold);
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius);
+  background-color: var(--boodoo-form-control-bg, var(--boodoo-body-bg));
+  color: var(--boodoo-body-color);
+  transition: border-color var(--boodoo-transition-duration) ease, box-shadow var(--boodoo-transition-duration) ease;
+
+  &:focus {
+    border-color: var(--boodoo-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--boodoo-primary-rgb), 0.25);
+  }
+
+  &.is-invalid {
+    border-color: var(--boodoo-danger);
+    box-shadow: 0 0 0 3px rgba(var(--boodoo-danger-rgb), 0.25);
+  }
+
+  &.is-valid {
+    border-color: var(--boodoo-success);
+    box-shadow: 0 0 0 3px rgba(var(--boodoo-success-rgb), 0.25);
+  }
+}
+
+.form-otp-sm .form-otp-input {
+  width: 2.25rem;
+  height: 2.75rem;
+  font-size: 1.125rem;
+}
+
+.form-otp-lg .form-otp-input {
+  width: 3.75rem;
+  height: 4.25rem;
+  font-size: 1.75rem;
+}
