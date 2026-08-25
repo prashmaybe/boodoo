@@ -155,7 +155,7 @@ Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with 
 
 ## 📄 Documentation
 
-The full documentation site (like getbootstrap.com) is in `site/` and deployed at **https://boodoo.dihadiwala.com**:
+The full documentation site is in `site/` and deployed at **https://boodoo.dihadiwala.com**:
 
 - Getting started · Installation · Usage & CDN · Theming
 - Layout (containers, grid, columns, gutters, CSS grid, breakpoints)

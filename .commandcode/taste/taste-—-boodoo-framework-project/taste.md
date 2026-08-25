@@ -11,5 +11,5 @@
 - Aligns a project to its existing official brand assets (logos, favicon, palette, OG image) and the brand-recommended font before shipping; explicitly points the build at the canonical brand-asset folder so the project uses the real assets rather than placeholders. Confidence: 0.9
 - Applies brand assets completely and consistently across a project: full logo lockup in prominent contexts (navbar, hero), icon-only mark for compact contexts (favicon, footer, package/GitHub avatars), and the full icon size set wired properly (multi-size favicons, apple-touch-icon, web manifest icons + theme color). Confidence: 0.7
 - Wants brand usage to be documented and discoverable: a dedicated brand page showing the logo, icon set, color tokens, banner/OG images, usage guidelines, and an asset download table, linked from docs nav and referenced in the README. Confidence: 0.6
-- Wants a docs website mirroring a known reference site (e.g., getbootstrap.com) with all components, examples and pages. Confidence: 0.8
+- Wants a docs website mirroring a known reference site with all components, examples and pages. Confidence: 0.8
 - Prefers a deployable static build that maps cleanly to a domain root (single folder to upload). Confidence: 0.7
