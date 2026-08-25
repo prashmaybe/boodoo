@@ -22,7 +22,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 ## ✨ Highlights
 
 - **Zero runtime dependencies** — Vanilla JS (~56 KB minified / ~15 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
-- **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, WordPress, Node, static sites, or any web stack
+- **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, Node, static sites, or any web stack
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens
 - **Accessible & touch-friendly** — Focus-visible rings, `prefers-reduced-motion` compliance, ARIA wiring, and 44px minimum touch targets
