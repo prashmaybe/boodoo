@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
