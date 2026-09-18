@@ -237,6 +237,8 @@ function buildPage(sectionDef, { route, full }) {
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const VERSION = pkg.version;
 const sizes = getDistSizes();
+const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
+const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
 
   let bodyRendered = bodyWithIds
     .replaceAll('{{version}}', VERSION)
@@ -252,7 +254,15 @@ const sizes = getDistSizes();
     .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
     .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
     .replaceAll('{{animRawKb}}', sizes.animRaw)
-    .replaceAll('{{animMinKb}}', sizes.animMin);
+    .replaceAll('{{animMinKb}}', sizes.animMin)
+    .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
+    .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
+    .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
+    .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
+    .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
+    .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
+    .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
+    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '');
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
@@ -280,6 +290,14 @@ const sizes = getDistSizes();
     .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
     .replaceAll('{{animRawKb}}', sizes.animRaw)
     .replaceAll('{{animMinKb}}', sizes.animMin)
+    .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
+    .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
+    .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
+    .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
+    .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
+    .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
+    .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
+    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
     .replaceAll('{{docstitle}}', title);
 
   return html;

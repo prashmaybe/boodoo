@@ -62,6 +62,8 @@ const copy = (src, rel) => {
 import { getDistSizes } from './site-build.mjs';
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const sizes = getDistSizes();
+const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
+const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
 indexContent = indexContent
   .replaceAll('{{version}}', pkg.version)
@@ -77,7 +79,15 @@ indexContent = indexContent
   .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
   .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
   .replaceAll('{{animRawKb}}', sizes.animRaw)
-  .replaceAll('{{animMinKb}}', sizes.animMin);
+  .replaceAll('{{animMinKb}}', sizes.animMin)
+  .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
+  .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
+  .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
+  .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
+  .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
+  .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
+  .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
+  .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '');
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages

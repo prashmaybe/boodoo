@@ -9,12 +9,12 @@
 - Architecture: Sass/LESS modular architecture, BEM class syntax, Flexbox & CSS Grid systems, Vanilla JS components with zero external runtime dependencies.
 
 ## CDN Links
-- Combined CSS Bundle: `https://boodoo.dihadiwala.com/dist/css/boodoo.min.css`
-- JavaScript Component Library: `https://boodoo.dihadiwala.com/dist/js/boodoo.min.js`
-- Flexbox Grid Bundle: `https://boodoo.dihadiwala.com/dist/css/boodoo-grid.min.css`
-- Reboot/Reset Base CSS: `https://boodoo.dihadiwala.com/dist/css/boodoo-reboot.min.css`
-- Utility Classes CSS: `https://boodoo.dihadiwala.com/dist/css/boodoo-utilities.min.css`
-- CSS Micro-Animations: `https://boodoo.dihadiwala.com/dist/css/boodoo-animations.min.css`
+- Combined CSS Bundle: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-86cc87a5.css`
+- JavaScript Component Library: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-19c7b3bc.js`
+- Flexbox Grid Bundle: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-00656288.css`
+- Reboot/Reset Base CSS: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-reboot.min-bac848f1.css`
+- Utility Classes CSS: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-10ded7df.css`
+- CSS Micro-Animations: `https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-animations.min-c91f69bf.css`
 
 ## Documentation Pages Index
 

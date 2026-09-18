@@ -48,8 +48,8 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 ### CDN
 
 ```html
-<link href="https://boodoo.dihadiwala.com/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://boodoo.dihadiwala.com/dist/js/boodoo.js"></script>
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-86cc87a5.css" rel="stylesheet">
+<script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-3e0a74ee.js"></script>
 ```
 
 ### npm
@@ -81,9 +81,9 @@ $boodoo-primary: #7C3AED;
 ### Lean builds
 
 ```html
-<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-grid.min.css"   rel="stylesheet">  <!-- grid only -->
-<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only -->
-<link href="https://boodoo.dihadiwala.com/dist/css/boodoo-reboot.min.css" rel="stylesheet">  <!-- reset only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-00656288.css"   rel="stylesheet">  <!-- grid only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-10ded7df.css" rel="stylesheet"> <!-- utilities only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-reboot.min-bac848f1.css" rel="stylesheet">  <!-- reset only -->
 ```
 
 ---

@@ -26,7 +26,7 @@ export class CommandPalette extends BaseComponent {
         <div class="command-palette" role="dialog" aria-modal="true">
           <div class="command-palette-header">
             <span class="text-secondary me-2">🔍</span>
-            <input type="text" class="command-palette-input" placeholder="Type a command or search..." autofocus>
+            <input type="text" class="command-palette-input" id="commandPaletteInput" name="commandPaletteQuery" placeholder="Type a command or search..." autofocus>
           </div>
           <ul class="command-palette-results"></ul>
           <div class="command-palette-footer">

@@ -13,29 +13,29 @@ order: 3
   global styles, grid, all components, and utilities.</p>
 
 <div class="highlight">
-  <pre><code>&lt;link href="https://boodoo.dihadiwala.com/dist/css/boodoo.min.css" rel="stylesheet"&gt;</code></pre>
+  <pre><code>&lt;link href="{{cdnCssMin}}" rel="stylesheet"&gt;</code></pre>
 </div>
 
 <p>You can also load just the grid, reboot, or utilities separately for the leanest possible page:</p>
 <div class="highlight">
   <pre><code>&lt;!-- Grid only -->
-&lt;link href="https://boodoo.dihadiwala.com/dist/css/boodoo-grid.min.css" rel="stylesheet"&gt;
+&lt;link href="{{cdnGridMin}}" rel="stylesheet"&gt;
 
 &lt;!-- Utilities only -->
-&lt;link href="https://boodoo.dihadiwala.com/dist/css/boodoo-utilities.min.css" rel="stylesheet"&gt;</code></pre>
+&lt;link href="{{cdnUtilsMin}}" rel="stylesheet"&gt;</code></pre>
 </div>
 
 <h2 id="js">JavaScript</h2>
 <p>Many boodoo components require the JavaScript bundle to function. Add it right before the closing
   <code>&lt;/body&gt;</code> tag:</p>
 <div class="highlight">
-  <pre><code>&lt;script src="https://boodoo.dihadiwala.com/dist/js/boodoo.js"&gt;&lt;/script&gt;</code></pre>
+  <pre><code>&lt;script src="{{cdnJsRaw}}"&gt;&lt;/script&gt;</code></pre>
 </div>
 
 <p>If you only need a subset, import individual components from the ESM build:</p>
 <div class="highlight">
   <pre><code>&lt;script type="module"&gt;
-  import { Modal, Toast, Dropdown } from 'https://boodoo.dihadiwala.com/dist/js/boodoo.esm.js';
+  import { Modal, Toast, Dropdown } from '{{cdnJsEsm}}';
   // components are auto-initialized from their data-* attributes
 &lt;/script&gt;</code></pre>
 </div>

@@ -37,6 +37,7 @@
     "sitemap": "node build/sitemap-build.mjs",
     "www": "node build/www-build.mjs",
     "deploy": "node build/www-build.mjs",
+    "cdn:upload": "node build/cdn-upload.mjs",
     "watch": "sass --watch scss:dist/css",
     "serve:site": "node build/serve.mjs"
   },

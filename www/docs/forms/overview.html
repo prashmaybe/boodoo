@@ -277,7 +277,7 @@
     <label for="inputPassword5" class="form-label">Password</label>
     <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
     <div id="passwordHelpBlock" class="form-text">
-      Your password must be 8-20 characters long.
+      <span>Your password must be 8-20 characters long.</span>
     </div>
   </div>
 </div>
@@ -286,14 +286,14 @@
 <p>Add the <code>disabled</code> boolean attribute on an input to prevent user interactions and make it appear lighter.
 </p>
 <div class="bd-example">
-  <input class="form-control mb-2" type="text" placeholder="Disabled input" disabled>
-  <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled
+  <input class="form-control mb-2" type="text" id="disabledInputOverview" name="disabledInputOverview" placeholder="Disabled input" disabled>
+  <input class="form-control" type="text" id="disabledReadonlyInputOverview" name="disabledReadonlyInputOverview" value="Disabled readonly input" aria-label="Disabled input example" disabled
     readonly>
 </div>
 
 <h2 id="readonly">Readonly</h2>
 <div class="bd-example">
-  <input class="form-control" type="text" value="Readonly input here…" aria-label="readonly input example" readonly>
+  <input class="form-control" type="text" id="readonlyInputOverview" name="readonlyInputOverview" value="Readonly input here…" aria-label="readonly input example" readonly>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">

@@ -28,7 +28,7 @@ export function registerCustomElements() {
         const length = parseInt(this.getAttribute('length') || '4', 10);
         let inputs = '';
         for (let i = 0; i < length; i++) {
-          inputs += `<input type="text" class="form-otp-input">`;
+          inputs += `<input type="text" class="form-otp-input" id="otpInput${i + 1}" name="otpDigit${i + 1}">`;
         }
         this.className = 'form-otp';
         this.innerHTML = inputs;
