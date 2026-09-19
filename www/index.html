@@ -76,7 +76,7 @@
         <div class="hero-badge-wrap">
           <span class="hero-pill-badge">
             <span class="dot"></span>
-            boodoo v1.0.2 Stable • Bootstrap + Foundation + Tailwind + Material
+            boodoo v1.0.4 Stable • Bootstrap + Foundation + Tailwind + Material
           </span>
         </div>
         <h1 class="mb-3">
@@ -105,7 +105,7 @@
               <path
                 d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            <span>GitHub (v1.0.2)</span>
+            <span>GitHub (v1.0.4)</span>
           </a>
         </div>
 
@@ -135,7 +135,7 @@
             </div>
             <pre><code id="terminalCode"><span class="terminal-prompt">$</span> npm install boodoo
 <span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css
-<span class="terminal-success">✔ Bundled 368 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
+<span class="terminal-success">✔ Bundled 374 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
           </div>
         </div>
 
@@ -151,7 +151,7 @@
           <div class="stat-item">
             <div class="stat-icon"><span>📦</span></div>
             <div>
-              <div class="stat-value"><span>~73 KB Minified</span></div>
+              <div class="stat-value"><span>~80 KB Minified</span></div>
               <div class="stat-label"><span>Ultra lightweight</span></div>
             </div>
           </div>
@@ -588,9 +588,9 @@
     // Terminal Tabs handler
     (function () {
       const codeSnippets = {
-        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 368 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
-        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 368 kB → boodoo.min.css</span>',
-        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 368 kB → boodoo.min.css</span>',
+        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 374 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
+        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 374 kB → boodoo.min.css</span>',
+        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 374 kB → boodoo.min.css</span>',
         cdn: '<span class="terminal-comment">&lt;!-- Drop CDN link into head --&gt;</span>\n<span class="terminal-prompt">&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-86cc87a5.css" rel="stylesheet"&gt;</span>\n<span class="terminal-prompt">&lt;script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-3e0a74ee.js"&gt;&lt;/script&gt;</span>'
       };
 
@@ -673,7 +673,11 @@
     document.getElementById('landingToast')?.addEventListener('click', function () {
       if (window.boodoo) {
         document.getElementById('landingToasts').innerHTML = '';
-        boodoo.toast('Welcome to boodoo! Build fast, responsive sites 🎉', { title: 'boodoo Framework', delay: 4000 });
+        boodoo.toast('Welcome to boodoo! Build fast, responsive sites 🎉', {
+          title: 'boodoo Framework',
+          delay: 4000,
+          container: '#landingToasts'
+        });
       }
     });
   </script>

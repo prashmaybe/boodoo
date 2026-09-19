@@ -76,6 +76,31 @@ order: 5
 <p>Add the <code>.ripple</code> class (or the <code>data-boodoo-ripple</code> attribute) to any element to get a Material
   ink-ripple on click — no JS config needed.</p>
 <div class="bd-example d-flex gap-2">
-  <button type="button" class="btn btn-primary ripple">Ripple button</button>
+  <button type="button" class="btn btn-primary ripple"><span>Ripple button</span></button>
   <div class="rounded-3 p-4 ripple border text-center w-50" data-boodoo-ripple><span>Click me — ripple surface</span></div>
+</div>
+
+<h2 id="split-buttons">Split buttons</h2>
+<p>Create split action buttons by combining a primary action button with a dropdown caret toggle inside <code>.btn-split</code>.</p>
+<div class="bd-example d-flex flex-wrap gap-3">
+  <div class="btn-split">
+    <button type="button" class="btn btn-primary"><span>Publish Action</span></button>
+    <button type="button" class="btn btn-primary btn-split-toggle" data-boodoo-toggle="dropdown" aria-expanded="false" aria-label="Toggle options"></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#"><span>Save as draft</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Schedule release</span></a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-danger" href="#"><span>Unpublish</span></a></li>
+    </ul>
+  </div>
+
+  <div class="btn-split">
+    <button type="button" class="btn btn-outline-success"><span>Export Data</span></button>
+    <button type="button" class="btn btn-outline-success btn-split-toggle" data-boodoo-toggle="dropdown" aria-expanded="false" aria-label="Toggle format options"></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#"><span>Export as CSV</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Export as JSON</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Export as PDF</span></a></li>
+    </ul>
+  </div>
 </div>
