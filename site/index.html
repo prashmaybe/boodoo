@@ -673,7 +673,11 @@
     document.getElementById('landingToast')?.addEventListener('click', function () {
       if (window.boodoo) {
         document.getElementById('landingToasts').innerHTML = '';
-        boodoo.toast('Welcome to boodoo! Build fast, responsive sites 🎉', { title: 'boodoo Framework', delay: 4000 });
+        boodoo.toast('Welcome to boodoo! Build fast, responsive sites 🎉', {
+          title: 'boodoo Framework',
+          delay: 4000,
+          container: '#landingToasts'
+        });
       }
     });
   </script>

@@ -1,0 +1,53 @@
+<!--
+title: Segmented Control
+description: Apple and macOS styled pill switcher for selecting between multiple views or filter states.
+section: components
+order: 22
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p>The Segmented Control component provides an intuitive toggle bar for switching between mutually exclusive choices, views, or filter options.</p>
+
+  <div class="docs-example">
+    <div class="d-flex flex-column gap-3">
+      <div class="segmented-control" role="group" aria-label="View switch">
+        <button type="button" class="segmented-item active" aria-selected="true"><span>Day</span></button>
+        <button type="button" class="segmented-item" aria-selected="false"><span>Week</span></button>
+        <button type="button" class="segmented-item" aria-selected="false"><span>Month</span></button>
+        <button type="button" class="segmented-item" aria-selected="false"><span>Year</span></button>
+      </div>
+
+      <div class="segmented-control segmented-control-block" role="group" aria-label="Block switch">
+        <button type="button" class="segmented-item active" aria-selected="true"><span>Overview</span></button>
+        <button type="button" class="segmented-item" aria-selected="false"><span>Analytics</span></button>
+        <button type="button" class="segmented-item" aria-selected="false"><span>Settings</span></button>
+      </div>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;div class="segmented-control" role="group" aria-label="View switch"&gt;
+  &lt;button type="button" class="segmented-item active" aria-selected="true"&gt;&lt;span&gt;Day&lt;/span&gt;&lt;/button&gt;
+  &lt;button type="button" class="segmented-item" aria-selected="false"&gt;&lt;span&gt;Week&lt;/span&gt;&lt;/button&gt;
+  &lt;button type="button" class="segmented-item" aria-selected="false"&gt;&lt;span&gt;Month&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2><span>Sizes</span></h2>
+  <p>Use <code>.segmented-control-sm</code> or <code>.segmented-control-lg</code> for alternate proportions.</p>
+
+  <div class="docs-example">
+    <div class="d-flex flex-column gap-3">
+      <div class="segmented-control segmented-control-sm" role="group" aria-label="Small switch">
+        <button type="button" class="segmented-item active"><span>List</span></button>
+        <button type="button" class="segmented-item"><span>Grid</span></button>
+      </div>
+
+      <div class="segmented-control segmented-control-lg" role="group" aria-label="Large switch">
+        <button type="button" class="segmented-item active"><span>Standard</span></button>
+        <button type="button" class="segmented-item"><span>Pro Plan</span></button>
+      </div>
+    </div>
+  </div>
+</section>

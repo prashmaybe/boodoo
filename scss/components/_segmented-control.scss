@@ -1,0 +1,94 @@
+// BOODOO COMPONENTS — Segmented Control
+// Apple/macOS style interactive pill slider toggle.
+
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--boodoo-gray-200, #e2e8f0);
+  border-radius: var(--boodoo-border-radius-pill, 9999px);
+  padding: 0.25rem;
+  user-select: none;
+  border: 1px solid var(--boodoo-border-color, rgba(0, 0, 0, 0.06));
+
+  &.segmented-control-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &.segmented-control-sm {
+    padding: 0.15rem;
+    font-size: var(--boodoo-font-size-sm, 0.875rem);
+
+    .segmented-item {
+      padding: 0.25rem 0.65rem;
+    }
+  }
+
+  &.segmented-control-lg {
+    padding: 0.35rem;
+    font-size: var(--boodoo-font-size-lg, 1.125rem);
+
+    .segmented-item {
+      padding: 0.5rem 1.25rem;
+    }
+  }
+}
+
+.segmented-item {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 0;
+  text-align: center;
+  padding: 0.35rem 1rem;
+  font-size: var(--boodoo-font-size-base, 0.95rem);
+  font-weight: 500;
+  color: var(--boodoo-body-color, #475569);
+  background: transparent;
+  border: none;
+  border-radius: var(--boodoo-border-radius-pill, 9999px);
+  cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+  white-space: nowrap;
+  outline: none;
+
+  &:hover {
+    color: var(--boodoo-primary, #7c3aed);
+  }
+
+  &.active,
+  &[aria-selected="true"] {
+    background-color: var(--boodoo-card-bg, #ffffff);
+    color: var(--boodoo-primary, #7c3aed);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    font-weight: 600;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Dark mode adaptations
+[data-boodoo-theme="dark"] .segmented-control {
+  background-color: var(--boodoo-gray-800, #1e293b);
+  border-color: var(--boodoo-gray-700, #334155);
+
+  .segmented-item {
+    color: var(--boodoo-gray-300, #cbd5e1);
+
+    &:hover {
+      color: #ffffff;
+    }
+
+    &.active,
+    &[aria-selected="true"] {
+      background-color: var(--boodoo-gray-700, #334155);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+  }
+}

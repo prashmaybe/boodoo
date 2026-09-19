@@ -135,6 +135,7 @@
 <li><a href="../components/alerts.html">Alerts</a></li>
 <li><a href="../components/avatar.html">Avatar</a></li>
 <li><a href="../components/badge.html">Badge</a></li>
+<li><a href="../components/bottom-sheet.html">Bottom Sheet</a></li>
 <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
 <li><a href="../components/buttons.html" class="active">Buttons</a></li>
 <li><a href="../components/button-group.html">Button group</a></li>
@@ -143,6 +144,7 @@
 <li><a href="../components/collapse.html">Collapse</a></li>
 <li><a href="../components/command-palette.html">Command Palette</a></li>
 <li><a href="../components/dropdowns.html">Dropdowns</a></li>
+<li><a href="../components/kbd.html">Kbd</a></li>
 <li><a href="../components/list-group.html">List group</a></li>
 <li><a href="../components/modal.html">Modal</a></li>
 <li><a href="../components/navs.html">Navs & tabs</a></li>
@@ -154,6 +156,7 @@
 <li><a href="../components/progress.html">Progress</a></li>
 <li><a href="../components/rating.html">Rating</a></li>
 <li><a href="../components/scrollspy.html">Scrollspy</a></li>
+<li><a href="../components/segmented-control.html">Segmented Control</a></li>
 <li><a href="../components/skeleton.html">Skeleton loaders</a></li>
 <li><a href="../components/spinners.html">Spinners</a></li>
 <li><a href="../components/stepper.html">Stepper</a></li>
@@ -292,8 +295,33 @@
 <p>Add the <code>.ripple</code> class (or the <code>data-boodoo-ripple</code> attribute) to any element to get a Material
   ink-ripple on click — no JS config needed.</p>
 <div class="bd-example d-flex gap-2">
-  <button type="button" class="btn btn-primary ripple">Ripple button</button>
+  <button type="button" class="btn btn-primary ripple"><span>Ripple button</span></button>
   <div class="rounded-3 p-4 ripple border text-center w-50" data-boodoo-ripple><span>Click me — ripple surface</span></div>
+</div>
+
+<h2 id="split-buttons">Split buttons</h2>
+<p>Create split action buttons by combining a primary action button with a dropdown caret toggle inside <code>.btn-split</code>.</p>
+<div class="bd-example d-flex flex-wrap gap-3">
+  <div class="btn-split">
+    <button type="button" class="btn btn-primary"><span>Publish Action</span></button>
+    <button type="button" class="btn btn-primary btn-split-toggle" data-boodoo-toggle="dropdown" aria-expanded="false" aria-label="Toggle options"></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#"><span>Save as draft</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Schedule release</span></a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-danger" href="#"><span>Unpublish</span></a></li>
+    </ul>
+  </div>
+
+  <div class="btn-split">
+    <button type="button" class="btn btn-outline-success"><span>Export Data</span></button>
+    <button type="button" class="btn btn-outline-success btn-split-toggle" data-boodoo-toggle="dropdown" aria-expanded="false" aria-label="Toggle format options"></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#"><span>Export as CSV</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Export as JSON</span></a></li>
+      <li><a class="dropdown-item" href="#"><span>Export as PDF</span></a></li>
+    </ul>
+  </div>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -322,7 +350,8 @@
 <li class="toc-2"><a href="#sizes">Sizes</a></li>
 <li class="toc-2"><a href="#states">States</a></li>
 <li class="toc-2"><a href="#block">Block buttons</a></li>
-<li class="toc-2"><a href="#material-ripple">Material ripple</a></li></ul>
+<li class="toc-2"><a href="#material-ripple">Material ripple</a></li>
+<li class="toc-2"><a href="#split-buttons">Split buttons</a></li></ul>
     </div>
 </aside>
     </div>

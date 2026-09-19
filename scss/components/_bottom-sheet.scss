@@ -1,0 +1,114 @@
+// BOODOO COMPONENTS — Bottom Sheet
+// Touch-friendly mobile drawer sheet with handle, snapping, and slide-up animation.
+
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: var(--boodoo-zindex-modal-backdrop, 1040);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  max-height: 90vh;
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg, #ffffff));
+  color: var(--boodoo-body-color, #1e293b);
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15), 0 -8px 10px -6px rgba(0, 0, 0, 0.1);
+  z-index: var(--boodoo-zindex-modal, 1050);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  &.bottom-sheet-full {
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  &.bottom-sheet-half {
+    max-height: 50vh;
+  }
+}
+
+.bottom-sheet-handle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0 0.25rem;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.bottom-sheet-handle {
+  width: 38px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: var(--boodoo-gray-300, #cbd5e1);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  .bottom-sheet-handle-wrap:hover & {
+    background-color: var(--boodoo-gray-400, #94a3b8);
+    transform: scaleX(1.15);
+  }
+}
+
+.bottom-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--boodoo-border-color, #e2e8f0);
+
+  .bottom-sheet-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+}
+
+.bottom-sheet-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bottom-sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--boodoo-border-color, #e2e8f0);
+}

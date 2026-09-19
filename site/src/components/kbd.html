@@ -1,0 +1,65 @@
+<!--
+title: Kbd (Keyboard Shortcuts)
+description: Tactile keyboard keycap styles for shortcut badges, key combinations, and command palette hints.
+section: components
+order: 11
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p>The <code>.kbd</code> component renders realistic 3D keycaps for depicting keyboard combinations, shortcuts, and navigation hints.</p>
+
+  <div class="docs-example">
+    <div class="d-flex flex-column gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span>Press</span>
+        <span class="kbd-group">
+          <kbd class="kbd"><span>⌘</span></kbd>
+          <kbd class="kbd"><span>K</span></kbd>
+        </span>
+        <span>to open the command palette.</span>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <span>Save document:</span>
+        <span class="kbd-group">
+          <kbd class="kbd"><span>Ctrl</span></kbd>
+          <kbd class="kbd"><span>S</span></kbd>
+        </span>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <span>Undo / Redo:</span>
+        <span class="kbd-group">
+          <kbd class="kbd"><span>Ctrl</span></kbd>
+          <kbd class="kbd"><span>Z</span></kbd>
+        </span>
+        <span>and</span>
+        <span class="kbd-group">
+          <kbd class="kbd"><span>Ctrl</span></kbd>
+          <kbd class="kbd"><span>Shift</span></kbd>
+          <kbd class="kbd"><span>Z</span></kbd>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;span class="kbd-group"&gt;
+  &lt;kbd class="kbd"&gt;&lt;span&gt;⌘&lt;/span&gt;&lt;/kbd&gt;
+  &lt;kbd class="kbd"&gt;&lt;span&gt;K&lt;/span&gt;&lt;/kbd&gt;
+&lt;/span&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2><span>Sizes</span></h2>
+  <p>Adjust the scale of keycaps using <code>.kbd-xs</code>, <code>.kbd-sm</code>, or <code>.kbd-lg</code>.</p>
+
+  <div class="docs-example">
+    <div class="d-flex align-items-center gap-3">
+      <kbd class="kbd kbd-xs"><span>ESC</span></kbd>
+      <kbd class="kbd kbd-sm"><span>TAB</span></kbd>
+      <kbd class="kbd"><span>ENTER</span></kbd>
+      <kbd class="kbd kbd-lg"><span>SPACE</span></kbd>
+    </div>
+  </div>
+</section>

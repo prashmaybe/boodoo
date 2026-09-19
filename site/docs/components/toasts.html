@@ -135,6 +135,7 @@
 <li><a href="../components/alerts.html">Alerts</a></li>
 <li><a href="../components/avatar.html">Avatar</a></li>
 <li><a href="../components/badge.html">Badge</a></li>
+<li><a href="../components/bottom-sheet.html">Bottom Sheet</a></li>
 <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
 <li><a href="../components/buttons.html">Buttons</a></li>
 <li><a href="../components/button-group.html">Button group</a></li>
@@ -143,6 +144,7 @@
 <li><a href="../components/collapse.html">Collapse</a></li>
 <li><a href="../components/command-palette.html">Command Palette</a></li>
 <li><a href="../components/dropdowns.html">Dropdowns</a></li>
+<li><a href="../components/kbd.html">Kbd</a></li>
 <li><a href="../components/list-group.html">List group</a></li>
 <li><a href="../components/modal.html">Modal</a></li>
 <li><a href="../components/navs.html">Navs & tabs</a></li>
@@ -154,6 +156,7 @@
 <li><a href="../components/progress.html">Progress</a></li>
 <li><a href="../components/rating.html">Rating</a></li>
 <li><a href="../components/scrollspy.html">Scrollspy</a></li>
+<li><a href="../components/segmented-control.html">Segmented Control</a></li>
 <li><a href="../components/skeleton.html">Skeleton loaders</a></li>
 <li><a href="../components/spinners.html">Spinners</a></li>
 <li><a href="../components/stepper.html">Stepper</a></li>
@@ -294,17 +297,32 @@ boodoo.Toast.showAll(document.getElementById('toastContainer'));
 const t = boodoo.Toast.getOrCreateInstance(document.getElementById('myToast'), { autohide: true, delay: 3000 });
 t.show();
 
-// Or the quick helper:
-boodoo.toast('Saved successfully!', { title: 'Success', delay: 4000 });</code></pre>
+// Or the quick helper with automatic stacking:
+boodoo.toast.success('Settings saved successfully!');
+boodoo.toast.danger('Could not connect to server.');
+boodoo.toast.info('New version 1.0.3 is now ready.');</code></pre>
 </div>
 <div class="bd-example">
-  <button class="btn btn-primary" id="toastProgBtn">Show toast via JS</button>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" id="toastProgBtn" type="button"><span>Show Default Toast</span></button>
+    <button class="btn btn-success" id="toastSuccessBtn" type="button"><span>Success Toast</span></button>
+    <button class="btn btn-danger" id="toastDangerBtn" type="button"><span>Danger Toast</span></button>
+    <button class="btn btn-info text-white" id="toastInfoBtn" type="button"><span>Info Toast</span></button>
+  </div>
   <script>
     document.getElementById('toastProgBtn').addEventListener('click', function () {
-      boodoo.toast('Hello from boodoo! This toast was created with one line of JS.', { title: 'Programmatic toast' });
+      boodoo.toast('Hello from boodoo! This toast was created with one line of JS.', { title: 'Notification' });
+    });
+    document.getElementById('toastSuccessBtn').addEventListener('click', function () {
+      boodoo.toast.success('Project deployed successfully to edge CDN!');
+    });
+    document.getElementById('toastDangerBtn').addEventListener('click', function () {
+      boodoo.toast.danger('Failed to sync authentication token.');
+    });
+    document.getElementById('toastInfoBtn').addEventListener('click', function () {
+      boodoo.toast.info('A new background worker update is active.');
     });
   </script>
-  <div class="toast-container top-0 end-0"></div>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">

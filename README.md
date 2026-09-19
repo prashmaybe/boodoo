@@ -113,7 +113,8 @@ boodoo/
 
 ## 🧩 Components
 
-Accordion · Alerts · Avatar · Badge · Breadcrumb · Buttons · Button group · Card · Carousel · Collapse · Dropdowns · List group · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Scrollspy · Spinners · Toasts · Tooltips · Ripple (Material)
+Accordion · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb · Buttons · Button group · Card · Carousel · Collapse · Command Palette · Dropdowns · Kbd · List group · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Skeleton · Spinners · Stepper · Timeline · Toasts · Tooltips · Tree View
+
 
 Plus **forms** (control, select, checks/radios/switches, range, input group, floating labels, validation) and ~150 **utility classes** (spacing, flex, grid, display, position, text, borders, shadows, elevation…).
 

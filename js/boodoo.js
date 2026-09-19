@@ -23,6 +23,7 @@ import { Rating } from './rating.js';
 import { TreeView } from './tree-view.js';
 import { clipboard } from './clipboard.js';
 import { CommandPalette } from './command-palette.js';
+import { BottomSheet } from './bottom-sheet.js';
 import { registerCustomElements } from './custom-elements.js';
 
 // Wire up generic data-boodoo-dismiss triggers
@@ -31,9 +32,20 @@ enableDismissTrigger(Alert, (instance) => {
   if (type === 'alert') instance.hide();
 });
 
+enableDismissTrigger(BottomSheet, (instance) => {
+  const type = instance._element.getAttribute('data-boodoo-dismiss');
+  if (type === 'bottom-sheet') instance.hide();
+});
+
+enableDismissTrigger(Toast, (instance) => {
+  const type = instance._element.getAttribute('data-boodoo-dismiss');
+  if (type === 'toast') instance.hide();
+});
+
 // Global API
 const boodoo = {
   Alert,
+  BottomSheet,
   Button,
   Collapse,
   Dropdown,
@@ -56,34 +68,81 @@ const boodoo = {
   registerCustomElements,
 };
 
-// Set up a convenience for showing toasts from JS: boodoo.toast(message, options)
-boodoo.toast = function toast(message, options = {}) {
+// Programmatic Toast API: boodoo.toast(message, options) / boodoo.toast.show() / .success() / etc.
+function createToast(message, options = {}) {
   const opts = {
     title: '',
-    delay: 5000,
+    variant: 'default',
+    delay: 4500,
+    container: null,
     ...options,
-    className: options.className || '',
   };
-  const container = document.querySelector(opts.container || '.toast-container.top-0.end-0') || {
-    appendChild() { },
-  };
+
+  let container = opts.container ? document.querySelector(opts.container) : (document.querySelector('#landingToasts') || document.querySelector('.toast-container'));
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+    container.style.zIndex = '1090';
+    document.body.appendChild(container);
+  }
+
+  const variantClass = opts.variant && opts.variant !== 'default' ? `text-bg-${opts.variant}` : '';
   const wrapper = document.createElement('div');
-  wrapper.className = 'toast show';
+  wrapper.className = `toast align-items-center shadow-lg ${variantClass}`.trim();
   wrapper.setAttribute('role', 'alert');
   wrapper.setAttribute('aria-live', 'assertive');
   wrapper.setAttribute('aria-atomic', 'true');
-  wrapper.innerHTML = `
-    <div class="toast-header"></div>
-    <div class="toast-body"></div>
-  `;
-  if (opts.title) wrapper.querySelector('.toast-header').textContent = opts.title;
-  else wrapper.querySelector('.toast-header').remove();
-  wrapper.querySelector('.toast-body').textContent = message;
-  (container.appendChild ? container : document.body).appendChild(wrapper);
-  const instance = Toast.getOrCreateInstance(wrapper, { delay: opts.delay, autohide: true });
+
+  if (opts.title) {
+    wrapper.innerHTML = `
+      <div class="toast-header">
+        <strong class="me-auto"><span>${opts.title}</span></strong>
+        <button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body"><span>${message}</span></div>
+    `;
+  } else {
+    wrapper.innerHTML = `
+      <div class="d-flex">
+        <div class="toast-body"><span>${message}</span></div>
+        <button type="button" class="btn-close ${opts.variant && opts.variant !== 'light' ? 'btn-close-white' : ''} me-2 m-auto" data-boodoo-dismiss="toast" aria-label="Close"></button>
+      </div>
+    `;
+  }
+
+  let instance = null;
+  const closeBtn = wrapper.querySelector('.btn-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (instance) {
+        instance.hide();
+      }
+    });
+  }
+
+  container.appendChild(wrapper);
+  instance = Toast.getOrCreateInstance(wrapper, { delay: opts.delay, autohide: true });
   instance.show();
-  return wrapper;
+
+  wrapper.addEventListener('boodoo.hidden.toast', () => {
+    if (wrapper.parentNode) {
+      wrapper.parentNode.removeChild(wrapper);
+    }
+  });
+
+  return instance;
+}
+
+boodoo.toast = function toast(message, options) {
+  return createToast(message, options);
 };
+boodoo.toast.show = (message, options) => createToast(message, options);
+boodoo.toast.success = (message, options = {}) => createToast(message, { ...options, variant: 'success' });
+boodoo.toast.danger = (message, options = {}) => createToast(message, { ...options, variant: 'danger' });
+boodoo.toast.error = boodoo.toast.danger;
+boodoo.toast.warning = (message, options = {}) => createToast(message, { ...options, variant: 'warning' });
+boodoo.toast.info = (message, options = {}) => createToast(message, { ...options, variant: 'info' });
+
 
 // Auto-initialize common data-api components
 function autoInit() {
@@ -109,7 +168,7 @@ if (typeof document === 'undefined') {
 
 // Public default export
 export default boodoo;
-export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, registerCustomElements };
+export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, BottomSheet, registerCustomElements };
 
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;

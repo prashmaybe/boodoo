@@ -239,3 +239,34 @@
     background-color: rgba($boodoo-body-color, 0.12);
   }
 }
+
+// Split button group
+.btn-split {
+  display: inline-flex;
+  vertical-align: middle;
+  border-radius: var(--boodoo-btn-border-radius, #{$boodoo-border-radius});
+
+  > .btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .btn-split-toggle {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+    margin-left: -1px;
+
+    &::after {
+      display: inline-block;
+      margin-left: 0.15em;
+      vertical-align: 0.15em;
+      content: "";
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0;
+      border-left: 0.3em solid transparent;
+    }
+  }
+}
