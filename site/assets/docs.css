@@ -1744,17 +1744,19 @@ svg {
 .navbar-search-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
   background-color: var(--boodoo-body-alt-bg);
   border: 1px solid var(--boodoo-border-subtle);
   color: var(--boodoo-text-sub);
-  padding: 0.35rem 0.75rem;
+  padding: 0.25rem 0.55rem;
   border-radius: 9999px;
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  line-height: 1.25;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-search-btn:hover {
@@ -1776,16 +1778,16 @@ svg {
 .search-btn-shortcut {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
-  margin-left: 0.25rem;
+  gap: 0.15rem;
+  margin-left: 0.15rem;
 }
 
 .search-btn-shortcut kbd {
   background: var(--boodoo-card-bg);
   border: 1px solid var(--boodoo-border-subtle);
-  border-radius: 4px;
-  padding: 0.1rem 0.3rem;
-  font-size: 0.6875rem;
+  border-radius: 3px;
+  padding: 0.05rem 0.25rem;
+  font-size: 0.65rem;
   font-family: inherit;
   color: var(--boodoo-text-sub);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1810,15 +1812,25 @@ svg {
   color: #cbd5e1;
 }
 
-@media (max-width: 767.98px) {
-  .search-btn-text,
+/* Hide shortcut text when viewport is tight to preserve single line navbar */
+@media (max-width: 1199.98px) {
   .search-btn-shortcut {
     display: none !important;
   }
+}
 
-  .navbar-search-btn {
-    padding: 0.45rem;
-    border-radius: 50%;
+@media (max-width: 991.98px) {
+  .search-btn-text {
+    display: inline !important;
+  }
+  .search-btn-shortcut {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .search-btn-shortcut {
+    display: none !important;
   }
 }
 
