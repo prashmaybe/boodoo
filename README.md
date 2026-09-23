@@ -21,7 +21,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 ## ✨ Highlights
 
-- **Zero runtime dependencies** — Vanilla JS (~73 KB minified / ~16 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
+- **Zero runtime dependencies** — Vanilla JS (~80 KB / ~17.2 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
 - **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, Node, static sites, or any web stack
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens
@@ -34,12 +34,12 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~364 KB | ~50 KB | ~32 KB | Full framework (all 26+ components + utilities) |
-| `boodoo-utilities.min.css` | ~188 KB | ~21 KB | ~12 KB | Tailwind-style utility classes only |
+| `boodoo.min.css` | ~374 KB | ~51.4 KB | ~33.4 KB | Full framework (all 34+ components + utilities) |
+| `boodoo-utilities.min.css` | ~188 KB | ~21.4 KB | ~11.5 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~13 KB | ~1.7 KB | ~1.2 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~10 KB | ~3.0 KB | ~2.6 KB | Modern CSS reset & base typography |
-| `boodoo-animations.min.css` | ~3.2 KB | ~0.8 KB | ~0.7 KB | Motion utilities & keyframes |
-| `boodoo.js` | ~73 KB | ~16 KB | ~14 KB | Pure vanilla JS (zero dependencies) |
+| `boodoo-animations.min.css` | ~4 KB | ~0.9 KB | ~0.7 KB | Motion utilities & keyframes |
+| `boodoo.js` | ~80 KB | ~17.2 KB | ~14.8 KB | Pure vanilla JS (zero dependencies) |
 
 ---
 
@@ -121,14 +121,14 @@ Plus **forms** (control, select, checks/radios/switches, range, input group, flo
 ---
 
 ## 🛠 Build from source
-
+ 
 ```bash
-npm run css     # compile all Sass → dist/css
-npm run css:less # compile the Less build
-npm run js      # bundle JS → dist/js
-npm run build   # css + js
-npm run serve:site  # serve docs at http://localhost:8080
-node build/site-build.mjs  # rebuild docs pages
+npm run build       # compile all Sass, Less, and JS bundles into dist/
+npm run site        # generate static HTML documentation pages in site/docs/
+npm run sitemap     # generate dynamic sitemap.xml
+npm run www         # full deployable build into www/ (dist + docs + assets)
+npm run serve:site  # local live preview server at http://localhost:8080
+npm run watch       # watch SCSS source for live recompilation
 ```
 
 Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [Less](https://lesscss.org/).
@@ -140,13 +140,13 @@ Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [
 boodoo is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
 
 ```scss
-$boodoo-primary: #7952b3;
-$boodoo-border-radius: 0.375rem;
+$boodoo-primary: #7C3AED;
+$boodoo-border-radius: 0.5rem;
 ```
 
 ```css
 :root {
-  --boodoo-primary: #5b2ef2;
+  --boodoo-primary: #7c3aed;
   --boodoo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%);
 }
 ```
@@ -155,18 +155,17 @@ Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with 
 
 ---
 
-## 📄 Documentation
+## 📄 Documentation & Changelog
 
 The full documentation site is in `site/` and deployed at **https://boodoo.dihadiwala.com**:
 
-- Getting started · Installation · Usage & CDN · Theming
-- Layout (containers, grid, columns, gutters, CSS grid, breakpoints)
-- Content (typography, images, tables, figures)
-- Forms · Components · Helpers · Utilities · Motion
+- **Getting started** · Installation · Usage & CDN · Theming · Starter template
+- **Layout** (containers, grid, columns, gutters, CSS grid, breakpoints)
+- **Content** (typography, images, tables, figures)
+- **Forms** · **Components** · **Helpers** · **Utilities** · **Motion**
+- **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](site/src/about/changelog.html) · [License](site/src/about/license.html)
 
-Each page includes live examples and copy-able code snippets.
-
----
+Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodoo.dihadiwala.com/docs/about/changelog.html).
 
 ## 🎨 Brand
 
