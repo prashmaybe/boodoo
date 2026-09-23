@@ -55,6 +55,14 @@
               href="../../docs/getting-started/introduction.html">Docs</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2 nav-actions-wrap">
+          <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true" aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
+            <svg class="search-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="search-btn-text">Search components...</span>
+            <span class="search-btn-shortcut"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+          </button>
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
             title="Toggle theme">
             <span class="theme-icon">🌙</span>
@@ -423,6 +431,7 @@ other.toggle();</code></pre>
   </footer>
 
   <script src="../../dist/js/boodoo.js"></script>
+  <script src="../../assets/search.js"></script>
   <script>
     // Theme toggle logic
     (function () {
