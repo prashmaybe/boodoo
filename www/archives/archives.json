@@ -1,0 +1,28 @@
+{
+  "version": "1.0.3",
+  "generatedAt": "2026-09-23T08:57:34.325Z",
+  "frameworkZip": "boodoo-v1.0.3.zip",
+  "frameworkZipSizeKb": 369,
+  "frameworkZipBytes": 377457,
+  "latestZip": "boodoo-latest.zip",
+  "examplesZip": "boodoo-examples-v1.0.3.zip",
+  "examplesZipSizeKb": 36,
+  "starters": [
+    {
+      "id": "react-vite",
+      "file": "boodoo-react-vite-starter.zip"
+    },
+    {
+      "id": "vue-vite",
+      "file": "boodoo-vue-vite-starter.zip"
+    },
+    {
+      "id": "nextjs",
+      "file": "boodoo-nextjs-starter.zip"
+    },
+    {
+      "id": "html-starter",
+      "file": "boodoo-html-starter.zip"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="E-commerce checkout form template with billing address and payment validation built with boodoo.">
+  <title>boodoo · Checkout Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+</head>
+
+<body class="bg-light">
+  <div class="container max-w-960 py-5">
+    <div class="py-4 text-center">
+      <a href="../index.html" class="d-inline-block mb-3">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" width="54" height="54">
+      </a>
+      <h1 class="h2 fw-bold">Checkout Form</h1>
+      <p class="lead text-muted max-w-600 mx-auto">Complete custom checkout layout with cart summary badges, shipping and billing fields, and payment options.</p>
+    </div>
+
+    <div class="row g-5">
+      <!-- Order Summary Column -->
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary fw-bold">Your cart</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3 shadow-sm rounded-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+            <div>
+              <h6 class="my-0 fw-semibold">boodoo Pro License</h6>
+              <small class="text-muted">Single developer annual seat</small>
+            </div>
+            <span class="text-muted fw-bold">$79</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+            <div>
+              <h6 class="my-0 fw-semibold">UI Templates Pack</h6>
+              <small class="text-muted">10 responsive site scaffolds</small>
+            </div>
+            <span class="text-muted fw-bold">$29</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light p-3">
+            <div class="text-success">
+              <h6 class="my-0 fw-semibold">Promo code</h6>
+              <small>WELCOME2026</small>
+            </div>
+            <span class="text-success fw-bold">−$10</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between p-3 bg-white">
+            <span class="fw-bold">Total (USD)</span>
+            <strong class="text-primary fs-5">$98</strong>
+          </li>
+        </ul>
+
+        <form class="card p-2 shadow-sm rounded-3 border">
+          <div class="input-group">
+            <input type="text" class="form-control" id="promoCode" name="promoCode" placeholder="Promo code">
+            <button type="submit" class="btn btn-secondary">Redeem</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Billing Details Column -->
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3 fw-bold">Billing address</h4>
+        <form class="needs-validation">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Alex" required>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith" required>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="alexsmith" required>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" name="country" required>
+                <option value="">Choose...</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="IN">India</option>
+                <option value="AU">Australia</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">State / Region</label>
+              <select class="form-select" id="state" name="state" required>
+                <option value="">Choose...</option>
+                <option value="CA">California</option>
+                <option value="NY">New York</option>
+                <option value="TX">Texas</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="zip" name="zip" placeholder="94103" required>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="sameAddress" name="sameAddress" checked>
+            <label class="form-check-label" for="sameAddress">Shipping address is the same as my billing address</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="saveInfo" name="saveInfo">
+            <label class="form-check-label" for="saveInfo">Save this information for next time</label>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3 fw-bold">Payment</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="ccName" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="ccName" name="ccName" placeholder="Alex Smith" required>
+              <small class="text-muted">Full name as displayed on card</small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="ccNumber" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="ccNumber" name="ccNumber" placeholder="•••• •••• •••• ••••" required>
+            </div>
+
+            <div class="col-md-3">
+              <label for="ccExpiration" class="form-label">Expiration</label>
+              <input type="text" class="form-control" id="ccExpiration" name="ccExpiration" placeholder="MM/YY" required>
+            </div>
+
+            <div class="col-md-3">
+              <label for="ccCvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="ccCvv" name="ccCvv" placeholder="123" required>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg rounded-pill shadow-sm" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small border-top">
+      <p class="mb-1"><span>© 2026 boodoo Framework</span></p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="../index.html" class="text-decoration-none">Examples</a></li>
+        <li class="list-inline-item"><a href="../../docs/about/license.html" class="text-decoration-none">Privacy &amp; Terms</a></li>
+        <li class="list-inline-item"><a href="../../docs/getting-started/introduction.html" class="text-decoration-none">Docs</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

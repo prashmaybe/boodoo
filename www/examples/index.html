@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="boodoo Examples — Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="boodoo">
+  <meta property="og:title" content="Examples · boodoo">
+  <meta property="og:description"
+    content="Explore responsive templates, full-page examples, framework starters (React, Vue, Next.js), and download versioned source archives.">
+  <meta property="og:image" content="../assets/brand/boodoo-og-image.png">
+  <title>Examples · boodoo</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/boodoo-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../assets/docs.css">
+  <style>
+    .examples-hero {
+      background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.18) 0%, rgba(236, 72, 153, 0.08) 35%, transparent 70%);
+      padding: 4.5rem 1rem 3.5rem;
+      border-bottom: 1px solid var(--boodoo-border-subtle);
+    }
+    .example-thumb-preview {
+      height: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--boodoo-body-alt-bg);
+      border-bottom: 1px solid var(--boodoo-border-subtle);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease;
+    }
+    .example-card:hover .example-thumb-preview {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
+    }
+    .example-badge-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+    .starter-code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.825rem;
+    }
+    .filter-btn.active {
+      background-color: var(--boodoo-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--boodoo-primary) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip Link -->
+  <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
+
+  <!-- Global Sticky Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+        <img src="../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <span class="fw-bold fs-5 text-gradient">boodoo</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#navCollapse"
+        aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="../docs/getting-started/introduction.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Examples</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
+          <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true" aria-label="Search documentation" title="Search (Ctrl+K or /)">
+            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="search-btn-text">Search</span>
+            <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
+          </button>
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="../docs/getting-started/usage.html">CDN</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3" href="../archives/boodoo-v1.0.3.zip" download>Download Zip</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Header Hero -->
+    <header class="examples-hero text-center">
+      <div class="container max-w-800">
+        <span class="badge rounded-pill bg-primary-soft text-primary px-3 py-2 fw-semibold mb-3">
+          <span>Official Examples &amp; Templates</span>
+        </span>
+        <h1 class="display-4 fw-bold mb-3">
+          <span>Build anything with </span><span class="text-gradient">boodoo</span>
+        </h1>
+        <p class="lead text-muted mb-4">
+          <span>Quickly get a project started with any of our examples ranging from using parts of the framework to complete templates and modern framework starter kits.</span>
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm d-inline-flex align-items-center gap-2" href="../archives/boodoo-examples-v1.0.3.zip" download>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            <span>Download All Examples (.zip)</span>
+          </a>
+          <a class="btn btn-outline-primary btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-2" href="../archives/boodoo-v1.0.3.zip" download>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <span>Source Code (v1.0.3 .zip)</span>
+          </a>
+          <a class="btn btn-outline-dark btn-lg rounded-pill px-4" href="#starters">
+            <span>Framework Starters</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Filter Buttons Bar -->
+    <div class="container py-4">
+      <div class="d-flex flex-wrap justify-content-center gap-2" id="filterBar">
+        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn active" data-filter="all">All Examples</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="templates">Full Templates</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="starters">Framework Starters</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="components">Layout &amp; Nav</button>
+      </div>
+    </div>
+
+    <!-- Templates Section -->
+    <section class="container pb-5" id="templates-grid">
+      <div class="row g-4">
+        <!-- Dashboard Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">📊</span>
+              <span class="badge bg-primary rounded-pill example-badge-tag">ADMIN APP</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Sidebar + Metrics + Table</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Dashboard</h4>
+                <p class="card-text text-muted small mb-3">Basic admin dashboard shell with responsive collapsable sidebar navigation, financial metric counters, and transactions data table.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="dashboard/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">💳</span>
+              <span class="badge bg-success rounded-pill example-badge-tag">COMMERCE</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Three Tiers + Feature Table</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Pricing Table</h4>
+                <p class="card-text text-muted small mb-3">Clean SaaS subscription pricing cards featuring highlighted popular tier, responsive column grid, and detailed feature comparison table.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="pricing/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">🛒</span>
+              <span class="badge bg-info rounded-pill example-badge-tag">FORMS</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Billing + Order Summary</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Checkout Form</h4>
+                <p class="card-text text-muted small mb-3">Custom form controls, floating input groups, validation attributes, radio payment selectors, and sticky cart summary list.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="checkout/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Album / Gallery Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">🖼️</span>
+              <span class="badge bg-warning text-dark rounded-pill example-badge-tag">GALLERY</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Responsive Card Grid</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Album &amp; Portfolio</h4>
+                <p class="card-text text-muted small mb-3">Simple photo and project gallery template with lead hero, responsive card grid, action buttons, and slide-down collapse drawer.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="album/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Magazine Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">📰</span>
+              <span class="badge bg-secondary rounded-pill example-badge-tag">EDITORIAL</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Magazine Header + Sticky Sidebar</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Blog Magazine</h4>
+                <p class="card-text text-muted small mb-3">Editorial layout with custom header branding, category horizontal scroller, jumbo lead featured post, and sticky sidebar widget.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="blog/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sign-in Authentication Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="templates">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">🔐</span>
+              <span class="badge bg-primary-soft text-primary rounded-pill example-badge-tag">AUTH</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Centered Floating Form</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Sign-in Card</h4>
+                <p class="card-text text-muted small mb-3">Custom form layout with floating labels, remember me checkbox, brand avatar badge, and clean centered card elevation.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="sign-in/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cover Splash Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="components">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview bg-dark text-white">
+              <span class="fs-1">🌌</span>
+              <span class="badge bg-light text-dark rounded-pill example-badge-tag">MINIMAL</span>
+              <p class="small text-white-50 fw-semibold mt-2 mb-0">Fullscreen Splash Page</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Cover</h4>
+                <p class="card-text text-muted small mb-3">A one-page template for building simple and beautiful full-height splash pages with navbar header and footer.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="cover/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heroes Showcase Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="components">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">🚀</span>
+              <span class="badge bg-primary rounded-pill example-badge-tag">HEROES</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Centered, Split &amp; Elevated</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Heroes Collection</h4>
+                <p class="card-text text-muted small mb-3">Display prominent landing headers with centered banners, two-column split mockups, and dark elevated surfaces.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="heroes/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Grid Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="components">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">✨</span>
+              <span class="badge bg-success rounded-pill example-badge-tag">HIGHLIGHTS</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Feature Columns &amp; Icons</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Features Grid</h4>
+                <p class="card-text text-muted small mb-3">Showcase product capabilities with iconic columns, hanging icon blocks, and soft-colored badge markers.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="features/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fixed Navbar Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="components">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">📌</span>
+              <span class="badge bg-secondary rounded-pill example-badge-tag">NAVBAR</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Fixed Top Sticky Bar</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Fixed Navbar</h4>
+                <p class="card-text text-muted small mb-3">Demonstrating top fixed position header with mobile collapse menu, body offset padding, and search input group.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="navbar-fixed/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Starter Layout Example -->
+        <div class="col-md-6 col-lg-4 example-item" data-category="components">
+          <div class="card h-100 shadow-sm border rounded-4 overflow-hidden showcase-card example-card">
+            <div class="example-thumb-preview">
+              <span class="fs-1">🏁</span>
+              <span class="badge bg-primary rounded-pill example-badge-tag">STARTER</span>
+              <p class="small text-muted fw-semibold mt-2 mb-0">Clean Scaffold</p>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="card-title fw-bold fs-5 mb-1">Starter Template</h4>
+                <p class="card-text text-muted small mb-3">Minimal responsive starter boilerplate with container, grid cards, header, and footer ready for rapid prototyping.</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="starter/index.html" class="btn btn-sm btn-primary rounded-pill px-3">Live Preview</a>
+                <a href="../archives/boodoo-examples-v1.0.3.zip" download class="btn btn-sm btn-outline-secondary rounded-pill px-3">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Framework Starters Section -->
+    <section class="py-5 bg-light border-top border-bottom" id="starters">
+      <div class="container py-3">
+        <div class="text-center max-w-700 mx-auto mb-5">
+          <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill fw-bold mb-2">STARTER KITS</span>
+          <h2 class="display-6 fw-bold">Framework &amp; Build Tool Starters</h2>
+          <p class="lead text-muted">Ready-to-use application boilerplates configured with boodoo CSS &amp; vanilla JS for your favorite toolchains.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- React + Vite -->
+          <div class="col-md-6 col-lg-3 example-item" data-category="starters">
+            <div class="card h-100 shadow-sm border rounded-4 p-4 text-center d-flex flex-column justify-content-between bg-white">
+              <div>
+                <div class="d-inline-flex p-3 rounded-circle bg-primary-soft text-primary mb-3">
+                  <span class="fs-2">⚛️</span>
+                </div>
+                <h4 class="fw-bold mb-1">React + Vite</h4>
+                <p class="text-muted small mb-4">React 18/19 Single Page Application configured with Vite, HMR, and boodoo styles.</p>
+              </div>
+              <div>
+                <a href="../archives/boodoo-react-vite-starter.zip" download class="btn btn-primary w-100 rounded-pill mb-2 shadow-sm">
+                  <span>Download Starter .zip</span>
+                </a>
+                <span class="text-muted small">npm install &amp;&amp; npm run dev</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vue 3 + Vite -->
+          <div class="col-md-6 col-lg-3 example-item" data-category="starters">
+            <div class="card h-100 shadow-sm border rounded-4 p-4 text-center d-flex flex-column justify-content-between bg-white">
+              <div>
+                <div class="d-inline-flex p-3 rounded-circle bg-success-soft text-success mb-3">
+                  <span class="fs-2">🟢</span>
+                </div>
+                <h4 class="fw-bold mb-1">Vue 3 + Vite</h4>
+                <p class="text-muted small mb-4">Vue 3 SFC application with Vite build toolchain and boodoo component classes.</p>
+              </div>
+              <div>
+                <a href="../archives/boodoo-vue-vite-starter.zip" download class="btn btn-success w-100 rounded-pill mb-2 shadow-sm text-white">
+                  <span>Download Starter .zip</span>
+                </a>
+                <span class="text-muted small">npm install &amp;&amp; npm run dev</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next.js -->
+          <div class="col-md-6 col-lg-3 example-item" data-category="starters">
+            <div class="card h-100 shadow-sm border rounded-4 p-4 text-center d-flex flex-column justify-content-between bg-white">
+              <div>
+                <div class="d-inline-flex p-3 rounded-circle bg-dark text-white mb-3">
+                  <span class="fs-2">▲</span>
+                </div>
+                <h4 class="fw-bold mb-1">Next.js App Router</h4>
+                <p class="text-muted small mb-4">Server-rendered Next.js project with zero runtime CSS configuration.</p>
+              </div>
+              <div>
+                <a href="../archives/boodoo-nextjs-starter.zip" download class="btn btn-dark w-100 rounded-pill mb-2 shadow-sm">
+                  <span>Download Starter .zip</span>
+                </a>
+                <span class="text-muted small">npm install &amp;&amp; npm run dev</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- HTML5 Zero-Build -->
+          <div class="col-md-6 col-lg-3 example-item" data-category="starters">
+            <div class="card h-100 shadow-sm border rounded-4 p-4 text-center d-flex flex-column justify-content-between bg-white">
+              <div>
+                <div class="d-inline-flex p-3 rounded-circle bg-warning-soft text-warning mb-3">
+                  <span class="fs-2">🌐</span>
+                </div>
+                <h4 class="fw-bold mb-1">HTML5 + CDN</h4>
+                <p class="text-muted small mb-4">Zero build tools needed. Pure static HTML file loading from the fast CDN.</p>
+              </div>
+              <div>
+                <a href="../archives/boodoo-html-starter.zip" download class="btn btn-outline-dark w-100 rounded-pill mb-2">
+                  <span>Download Starter .zip</span>
+                </a>
+                <span class="text-muted small">Open index.html directly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Code Tab Preview -->
+        <div class="card p-4 rounded-4 shadow-sm border mt-5 bg-white">
+          <h4 class="fw-bold mb-2">How to install &amp; import boodoo in your project</h4>
+          <p class="text-muted small mb-3">Whether you use npm, pnpm, or CDN, getting started takes seconds:</p>
+          <div class="starter-code-block">
+            <div class="text-secondary mb-2">// 1. Install via npm</div>
+            <div class="text-warning mb-3">$ npm install boodoo</div>
+            <div class="text-secondary mb-2">// 2. Import CSS in your root file (main.jsx, main.js, or layout.jsx)</div>
+            <div class="text-info mb-3">import 'boodoo/dist/css/boodoo.min.css';</div>
+            <div class="text-secondary mb-2">// 3. Optional: Import vanilla JS components</div>
+            <div class="text-info">import 'boodoo/dist/js/boodoo.esm.js';</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Versioned Source Code Callout -->
+    <section class="container py-5 text-center">
+      <div class="p-5 bg-dark text-white rounded-5 shadow-lg max-w-900 mx-auto">
+        <span class="badge bg-primary rounded-pill px-3 py-2 fw-bold mb-3">VERSIONED SOURCE REPOSITORY</span>
+        <h2 class="display-6 fw-bold mb-3">Need the full framework source?</h2>
+        <p class="lead text-white-50 mb-4 mx-auto max-w-600">
+          Download the complete boodoo v1.0.3 distribution archive including Sass, Less, vanilla JS modules, compiled assets, and test benches.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" href="../archives/boodoo-v1.0.3.zip" download>
+            <span>Download boodoo-v1.0.3.zip</span>
+          </a>
+          <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
+            <span>Browse on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sitewide Footer -->
+  <footer class="py-4 border-top bg-light">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
+        <img src="../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
+        <span>© 2026 Pebble Benders · MIT License</span>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a class="text-muted text-decoration-none" href="../index.html">Home</a>
+        <a class="text-muted text-decoration-none" href="../docs/getting-started/introduction.html">Documentation</a>
+        <a class="text-muted text-decoration-none" href="index.html">Examples</a>
+        <a class="text-muted text-decoration-none" href="../docs/about/changelog.html">Changelog</a>
+        <a class="text-muted text-decoration-none" href="../docs/about/license.html">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../dist/js/boodoo.js"></script>
+  <script src="../assets/search.js"></script>
+  <script>
+    // Theme toggle logic
+    (function () {
+      var storedTheme = localStorage.getItem('boodoo-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-boodoo-theme', storedTheme);
+      var toggleBtn = document.getElementById('themeToggle');
+      function updateIcon(theme) {
+        if (toggleBtn) {
+          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+      updateIcon(storedTheme);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-boodoo-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-boodoo-theme', next);
+          localStorage.setItem('boodoo-theme', next);
+          updateIcon(next);
+        });
+      }
+    })();
+
+    // Filter Buttons logic
+    (function () {
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var items = document.querySelectorAll('.example-item');
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          var filter = this.getAttribute('data-filter');
+
+          items.forEach(function (item) {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

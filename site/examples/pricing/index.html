@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pricing table template with plan comparison tiers built with boodoo.">
+  <title>boodoo · Pricing Table Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    .pricing-card-highlight {
+      border: 2px solid var(--boodoo-primary) !important;
+      position: relative;
+    }
+    .pricing-badge-popular {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a href="../index.html" class="d-flex align-items-center text-dark text-decoration-none my-0 me-md-auto gap-2">
+      <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="28" width="28">
+      <span class="fs-4 fw-bold text-gradient">boodoo Pricing</span>
+    </a>
+    <nav class="my-2 my-md-0 me-md-3">
+      <a class="p-2 text-dark text-decoration-none" href="#plans">Plans</a>
+      <a class="p-2 text-dark text-decoration-none" href="#compare">Compare</a>
+      <a class="p-2 text-dark text-decoration-none" href="../index.html">All Examples</a>
+    </nav>
+    <a class="btn btn-outline-primary rounded-pill px-3" href="../../docs/getting-started/download.html">Sign up</a>
+  </header>
+
+  <main id="main" class="container py-4">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center max-w-700">
+      <h1 class="display-4 fw-bold">Simple, transparent pricing</h1>
+      <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this responsive layout example.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-5 text-center g-4" id="plans">
+      <!-- Free Tier -->
+      <div class="col">
+        <div class="card mb-4 rounded-4 shadow-sm border h-100">
+          <div class="card-header py-3 bg-light border-bottom rounded-top-4">
+            <h4 class="my-0 fw-bold">Free Starter</h4>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between p-4">
+            <div>
+              <h1 class="card-title pricing-card-title display-5 fw-bold">$0<small class="text-muted fw-light fs-5">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4 text-start">
+                <li class="py-2 border-bottom">✓ 10 projects included</li>
+                <li class="py-2 border-bottom">✓ 2 GB cloud storage</li>
+                <li class="py-2 border-bottom">✓ Email support</li>
+                <li class="py-2 text-muted">✕ Help center access</li>
+              </ul>
+            </div>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary rounded-pill">Sign up for free</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro Tier (Popular) -->
+      <div class="col">
+        <div class="card mb-4 rounded-4 shadow-sm pricing-card-highlight h-100">
+          <span class="badge bg-primary rounded-pill px-3 py-1 fw-bold pricing-badge-popular">MOST POPULAR</span>
+          <div class="card-header py-3 bg-primary text-white border-bottom rounded-top-4">
+            <h4 class="my-0 fw-bold text-white">Pro Developer</h4>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between p-4">
+            <div>
+              <h1 class="card-title pricing-card-title display-5 fw-bold">$15<small class="text-muted fw-light fs-5">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4 text-start">
+                <li class="py-2 border-bottom">✓ 50 projects included</li>
+                <li class="py-2 border-bottom">✓ 20 GB cloud storage</li>
+                <li class="py-2 border-bottom">✓ Priority phone &amp; email support</li>
+                <li class="py-2 border-bottom">✓ Help center &amp; community access</li>
+              </ul>
+            </div>
+            <button type="button" class="w-100 btn btn-lg btn-primary rounded-pill shadow-sm">Get started Pro</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enterprise Tier -->
+      <div class="col">
+        <div class="card mb-4 rounded-4 shadow-sm border h-100">
+          <div class="card-header py-3 bg-light border-bottom rounded-top-4">
+            <h4 class="my-0 fw-bold">Enterprise</h4>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between p-4">
+            <div>
+              <h1 class="card-title pricing-card-title display-5 fw-bold">$29<small class="text-muted fw-light fs-5">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4 text-start">
+                <li class="py-2 border-bottom">✓ Unlimited projects</li>
+                <li class="py-2 border-bottom">✓ 1 TB ultra storage</li>
+                <li class="py-2 border-bottom">✓ 24/7 dedicated support</li>
+                <li class="py-2 border-bottom">✓ Custom enterprise SLA</li>
+              </ul>
+            </div>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary rounded-pill">Contact sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="display-6 text-center fw-bold mb-4" id="compare">Compare plans</h2>
+    <div class="table-responsive">
+      <table class="table text-center table-bordered align-middle">
+        <thead class="table-light">
+          <tr>
+            <th class="text-start w-35">Feature</th>
+            <th class="w-20">Free</th>
+            <th class="w-20">Pro</th>
+            <th class="w-20">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="text-start">Public repositories</th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Private repositories</th>
+            <td>—</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Team members</th>
+            <td>1 user</td>
+            <td>Up to 10</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Permissions &amp; Roles</th>
+            <td>—</td>
+            <td>✓</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Analytics &amp; Auditing</th>
+            <td>—</td>
+            <td>—</td>
+            <td>✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="container text-center text-muted small">
+      <p class="mb-0"><span>Pricing template created with boodoo. © 2026 Pebble Benders.</span></p>
+    </div>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

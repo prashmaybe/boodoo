@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Editorial blog magazine layout with featured stories and sidebar built with boodoo.">
+  <title>boodoo · Blog Magazine Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+</head>
+
+<body>
+  <div class="container py-3">
+    <!-- Top Header -->
+    <header class="border-bottom lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="text-muted text-decoration-none" href="#">Subscribe</a>
+        </div>
+        <div class="col-4 text-center">
+          <a class="fs-3 fw-bold text-dark text-decoration-none" href="../index.html">The boodoo Times</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center gap-2">
+          <a class="btn btn-sm btn-outline-secondary rounded-pill px-3" href="../sign-in/index.html">Sign up</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Nav Bar Categories -->
+    <div class="nav-scroller py-2 mb-3 border-bottom overflow-auto">
+      <nav class="nav d-flex justify-content-between text-nowrap">
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">World</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">Technology</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">Design Systems</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">Front-end</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">Architecture</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">CSS &amp; Sass</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="#">Performance</a>
+        <a class="p-2 text-muted text-decoration-none fw-medium" href="../index.html">All Examples</a>
+      </nav>
+    </div>
+
+    <!-- Lead Story Hero -->
+    <div class="p-4 p-md-5 mb-4 rounded-4 text-white bg-dark shadow-sm">
+      <div class="col-md-8 px-0">
+        <span class="badge bg-primary rounded-pill mb-3 px-3 py-1">FEATURED EDITORIAL</span>
+        <h1 class="display-5 fw-bold fst-italic">Designing for Tomorrow: The Rise of Zero-Dependency Frameworks</h1>
+        <p class="lead my-3 text-muted">How boodoo combines standard CSS tokens, responsive flexbox grids, and vanilla browser primitives to unlock blistering web speeds.</p>
+        <p class="lead mb-0"><a href="#" class="text-white fw-bold text-decoration-underline">Continue reading →</a></p>
+      </div>
+    </div>
+
+    <!-- Sub featured cards -->
+    <div class="row mb-4 g-4">
+      <div class="col-md-6">
+        <div class="card h-100 border rounded-4 shadow-sm p-4 d-flex flex-column justify-content-between">
+          <div>
+            <strong class="d-inline-block mb-2 text-primary">Web Standards</strong>
+            <h3 class="mb-1 fw-bold fs-4">Native Custom Elements in 2026</h3>
+            <div class="mb-2 text-muted small">Sep 20 · 4 min read</div>
+            <p class="card-text mb-auto text-muted">Building framework-agnostic interactive widgets without virtual DOM overhead.</p>
+          </div>
+          <a href="#" class="text-primary fw-semibold text-decoration-none pt-3">Read post →</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 border rounded-4 shadow-sm p-4 d-flex flex-column justify-content-between">
+          <div>
+            <strong class="d-inline-block mb-2 text-success">Design Systems</strong>
+            <h3 class="mb-1 fw-bold fs-4">Unifying Colors &amp; Elevation</h3>
+            <div class="mb-2 text-muted small">Sep 18 · 6 min read</div>
+            <p class="card-text mb-auto text-muted">How blending Tailwind color scales with Material elevation creates sublime ergonomics.</p>
+          </div>
+          <a href="#" class="text-success fw-semibold text-decoration-none pt-3">Read post →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Stream & Sidebar -->
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3 class="pb-3 mb-4 fst-italic border-bottom fw-bold">From the Firehose</h3>
+
+        <article class="blog-post mb-5">
+          <h2 class="blog-post-title fw-bold">Modular Sass Architecture: The Clean Slate</h2>
+          <p class="blog-post-meta text-muted small">September 14, 2026 by <a href="#" class="text-decoration-none">Pebble Benders</a></p>
+          <p>Modern CSS toolchains have matured dramatically over the past several years. With CSS custom properties, native container queries, and subgrid, frameworks no longer need to generate thousands of duplicated utility classes.</p>
+          <hr>
+          <p>By compiling concise, semantic CSS and relying on CSS variables for runtime reactivity, web pages render with zero layout shifts and microscopic asset payloads.</p>
+        </article>
+
+        <article class="blog-post mb-5">
+          <h2 class="blog-post-title fw-bold">Accessible Keyboard Navigation</h2>
+          <p class="blog-post-meta text-muted small">September 8, 2026 by <a href="#" class="text-decoration-none">Alex</a></p>
+          <p>Every interactive element within boodoo includes WCAG 2.1 AA certified focus indicators, high contrast ratios, and intuitive keybindings like Escape for modals and Enter for segmented controls.</p>
+        </article>
+      </div>
+
+      <div class="col-md-4">
+        <div class="position-sticky top-0">
+          <div class="p-4 mb-3 bg-light rounded-4 border">
+            <h4 class="fst-italic fw-bold">About the Publication</h4>
+            <p class="mb-0 text-muted">A showcase of modern web engineering principles, CSS techniques, and UI craft powered by boodoo.</p>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic fw-bold">Archives</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#" class="text-decoration-none">September 2026</a></li>
+              <li><a href="#" class="text-decoration-none">August 2026</a></li>
+              <li><a href="#" class="text-decoration-none">July 2026</a></li>
+              <li><a href="#" class="text-decoration-none">June 2026</a></li>
+            </ol>
+          </div>
+
+          <div class="p-4">
+            <h4 class="fst-italic fw-bold">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/prashmaybe/boodoo" target="_blank" class="text-decoration-none">GitHub</a></li>
+              <li><a href="../index.html" class="text-decoration-none">All Examples</a></li>
+              <li><a href="../../docs/getting-started/introduction.html" class="text-decoration-none">Docs</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-5 text-center text-muted bg-light border-top">
+    <p class="mb-1"><span>Blog template built for boodoo framework.</span></p>
+    <p class="mb-0"><a href="#" class="text-primary text-decoration-none">Back to top ↑</a></p>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

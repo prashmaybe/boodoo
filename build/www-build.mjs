@@ -34,7 +34,15 @@ try {
   process.exit(1);
 }
 
-// 2. Build documentation site pages & sitemap
+// 2. Build archives, documentation site pages & sitemap
+console.log('📦 Building source code & examples zip archives…');
+try {
+  execSync('node build/zip-build.mjs', { cwd: root, stdio: 'inherit' });
+} catch (err) {
+  console.error('Failed to run zip-build:', err.message);
+  process.exit(1);
+}
+
 console.log('📄 Generating static documentation pages & sitemap…');
 try {
   execSync('node build/site-build.mjs', { cwd: root, stdio: 'inherit' });
@@ -91,8 +99,21 @@ indexContent = indexContent
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
+copy(path.join(root, 'site', 'examples'), 'examples');           // Examples & templates
+copy(path.join(root, 'site', 'archives'), 'archives');           // Downloadable zip archives
 copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
 copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
+
+// Also inject dynamic version into examples index page
+const examplesIndexFile = path.join(www, 'examples', 'index.html');
+if (fs.existsSync(examplesIndexFile)) {
+  let exContent = fs.readFileSync(examplesIndexFile, 'utf8');
+  exContent = exContent
+    .replaceAll('{{version}}', pkg.version)
+    .replaceAll('{{cssMinKb}}', sizes.cssMin)
+    .replaceAll('{{jsMinKb}}', sizes.jsMin);
+  fs.writeFileSync(examplesIndexFile, exContent, 'utf8');
+}
 copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');

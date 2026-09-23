@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Admin dashboard shell template with sidebar, analytics metrics, and data tables built with boodoo.">
+  <title>boodoo · Dashboard Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    .dashboard-sidebar {
+      min-height: calc(100vh - 48px);
+      background-color: var(--boodoo-card-bg);
+      border-right: 1px solid var(--boodoo-border-subtle);
+    }
+    .chart-placeholder {
+      height: 260px;
+      background: linear-gradient(180deg, rgba(124, 58, 237, 0.08) 0%, rgba(236, 72, 153, 0.02) 100%);
+      border: 2px dashed var(--boodoo-border-subtle);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Bar -->
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 fw-bold text-white d-flex align-items-center gap-2" href="../index.html">
+      <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="22" width="22">
+      <span>boodoo Admin</span>
+    </a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed end-0 top-0 m-2 border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="w-100 px-3 d-none d-md-block">
+      <input class="form-control form-control-dark rounded-pill px-3" type="text" id="dashboardSearch" name="dashboardSearch" placeholder="Search analytics, customers, transactions..." aria-label="Search">
+    </div>
+    <div class="navbar-nav pe-3">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3 text-white" href="../index.html">Exit</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block dashboard-sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+              <a class="nav-link active fw-bold text-primary py-2 d-flex align-items-center gap-2" aria-current="page" href="#">
+                <span>📊 Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted py-2 d-flex align-items-center gap-2" href="#">
+                <span>🛒 Orders</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted py-2 d-flex align-items-center gap-2" href="#">
+                <span>👥 Customers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted py-2 d-flex align-items-center gap-2" href="#">
+                <span>📈 Reports</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted py-2 d-flex align-items-center gap-2" href="#">
+                <span>⚙️ Settings</span>
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase fs-7">
+            <span>Saved Reports</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item"><a class="nav-link text-muted py-1" href="#">Current month</a></li>
+            <li class="nav-item"><a class="nav-link text-muted py-1" href="#">Last quarter</a></li>
+            <li class="nav-item"><a class="nav-link text-muted py-1" href="#">Year-end sale</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Panel -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <div>
+            <h1 class="h2 fw-bold mb-1">Executive Dashboard</h1>
+            <p class="text-muted mb-0">Real-time telemetry and subscription health metrics</p>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0 gap-2">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary rounded-start-pill">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary rounded-end-pill">Export</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-primary rounded-pill d-flex align-items-center gap-1">
+              <span>📅 This week</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="card p-3 shadow-sm border rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted small fw-medium">TOTAL REVENUE</span>
+                <span class="badge bg-success-soft text-success rounded-pill">+18.2%</span>
+              </div>
+              <h3 class="fw-bold mb-1">$48,295</h3>
+              <small class="text-muted">Compared to last month</small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="card p-3 shadow-sm border rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted small fw-medium">ACTIVE USERS</span>
+                <span class="badge bg-info-soft text-info rounded-pill">+8.4%</span>
+              </div>
+              <h3 class="fw-bold mb-1">12,420</h3>
+              <small class="text-muted">Over 1,200 new signups</small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="card p-3 shadow-sm border rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted small fw-medium">CONVERSION RATE</span>
+                <span class="badge bg-success-soft text-success rounded-pill">+3.1%</span>
+              </div>
+              <h3 class="fw-bold mb-1">4.62%</h3>
+              <small class="text-muted">Average checkout rate</small>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="card p-3 shadow-sm border rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted small fw-medium">CHURN RATE</span>
+                <span class="badge bg-danger-soft text-danger rounded-pill">-0.4%</span>
+              </div>
+              <h3 class="fw-bold mb-1">1.18%</h3>
+              <small class="text-muted">Industry baseline 2.5%</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Section Placeholder -->
+        <div class="card p-4 shadow-sm border rounded-4 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Revenue Velocity</h5>
+            <span class="badge bg-primary-soft text-primary">Live</span>
+          </div>
+          <div class="chart-placeholder text-muted">
+            <span>📈 Interactive Analytics Chart Area (boodoo + SVG/Canvas)</span>
+          </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <h3 class="h4 fw-bold mb-3">Recent Transactions</h3>
+        <div class="card shadow-sm border rounded-4 overflow-hidden mb-4">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col" class="ps-3">Invoice</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Date</th>
+                  <th scope="col" class="text-end pe-3">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ps-3 fw-semibold">#INV-1094</td>
+                  <td>Sarah Jenkins</td>
+                  <td><span class="badge bg-success-soft text-success rounded-pill">Paid</span></td>
+                  <td>Sep 23, 2026</td>
+                  <td class="text-end pe-3 fw-bold">$249.00</td>
+                </tr>
+                <tr>
+                  <td class="ps-3 fw-semibold">#INV-1093</td>
+                  <td>Acme Corp</td>
+                  <td><span class="badge bg-success-soft text-success rounded-pill">Paid</span></td>
+                  <td>Sep 22, 2026</td>
+                  <td class="text-end pe-3 fw-bold">$1,200.00</td>
+                </tr>
+                <tr>
+                  <td class="ps-3 fw-semibold">#INV-1092</td>
+                  <td>David Lee</td>
+                  <td><span class="badge bg-warning-soft text-warning rounded-pill">Pending</span></td>
+                  <td>Sep 22, 2026</td>
+                  <td class="text-end pe-3 fw-bold">$79.00</td>
+                </tr>
+                <tr>
+                  <td class="ps-3 fw-semibold">#INV-1091</td>
+                  <td>Elena Rostova</td>
+                  <td><span class="badge bg-success-soft text-success rounded-pill">Paid</span></td>
+                  <td>Sep 21, 2026</td>
+                  <td class="text-end pe-3 fw-bold">$499.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

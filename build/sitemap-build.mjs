@@ -34,6 +34,7 @@ const docsPages = walkHtml(srcDir);
 
 const urls = [
   { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'weekly' },
+  { loc: `${BASE_URL}/examples/index.html`, priority: '0.9', changefreq: 'weekly' },
   { loc: `${BASE_URL}/llms.txt`, priority: '0.5', changefreq: 'monthly' }
 ];
 

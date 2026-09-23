@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A collection of responsive hero header layout variations built with boodoo.">
+  <title>boodoo · Heroes Showcase Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    .hero-split-mockup {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+      border: 1px solid var(--boodoo-border-subtle);
+      border-radius: 1.5rem;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--boodoo-shadow-glow);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="p-3 border-bottom bg-white sticky-top top-0 z-30 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="26" width="26">
+        <span class="fs-5 fw-bold text-gradient">Heroes Showcase</span>
+      </a>
+      <div class="d-flex gap-2">
+        <a href="../index.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">All Examples</a>
+        <a href="../../docs/getting-started/introduction.html" class="btn btn-primary btn-sm rounded-pill px-3">Documentation</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero 1: Centered with Call-to-Action -->
+    <section class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="../../assets/brand/boodoo-icon.svg" alt="boodoo" width="72" height="72">
+      <h1 class="display-5 fw-bold">Centered Hero Banner</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4 text-muted">
+          Quickly design and customize responsive mobile-first sites with boodoo, the world’s most versatile front-end component library inspired by Bootstrap, Foundation, Tailwind and Material.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3 rounded-pill shadow-sm">Primary action</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Secondary action</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="b-example-divider my-5 border-top"></div>
+
+    <!-- Hero 2: Two-Column Split with Mockup Screen -->
+    <section class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <div class="hero-split-mockup p-5 text-center">
+            <div>
+              <span class="fs-1 d-block mb-2">⚡</span>
+              <h4 class="fw-bold">Interactive App UI</h4>
+              <p class="text-muted small mb-0">Responsive Card &amp; Component Canvas</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill fw-bold mb-3">SPLIT LAYOUT</span>
+          <h1 class="display-5 fw-bold lh-1 mb-3">Responsive Left-Aligned Hero</h1>
+          <p class="lead text-muted mb-4">
+            Place prominent copy and primary calls-to-action on the left while displaying product imagery, video illustrations, or code widgets on the right.
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 rounded-pill shadow-sm">Get started</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Watch demo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="b-example-divider my-5 border-top"></div>
+
+    <!-- Hero 3: Dark Mode Gradient Card -->
+    <section class="container my-5">
+      <div class="p-5 text-white bg-dark rounded-5 shadow-lg position-relative overflow-hidden">
+        <div class="col-md-6 p-lg-5 my-5">
+          <h1 class="display-4 fw-bold">Elevated Dark Card Hero</h1>
+          <p class="lead fw-normal text-muted my-4">
+            Combine dark surfaces, radiant gradients, and rounded border radii to deliver an immersive software experience.
+          </p>
+          <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="../index.html">Explore all templates</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 border-top text-center text-muted small bg-light">
+    <p class="mb-0"><span>Heroes template built with boodoo. © 2026 Pebble Benders.</span></p>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

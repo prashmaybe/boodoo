@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fixed navbar layout example with scrollable content built with boodoo.">
+  <title>boodoo · Fixed Navbar Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    body {
+      min-height: 120vh;
+      padding-top: 4.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Fixed Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow">
+    <div class="container-fluid container-xl">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="26" width="26">
+        <span class="fw-bold">Fixed navbar</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#section1">Section 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#section2">Section 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">All Examples</a></li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 rounded-pill px-3" type="search" id="navbarSearch" name="navbarSearch" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success rounded-pill px-3" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <div class="bg-light p-5 rounded-4 shadow-sm mb-4 border">
+      <h1 class="display-5 fw-bold text-primary">Navbar with Fixed Top</h1>
+      <p class="lead text-muted">
+        This example demonstrates how the fixed navbar remains securely anchored to the top of the viewport as the user scrolls down the page.
+      </p>
+      <p class="text-muted">A top padding is applied to the <code>body</code> element equal to or greater than the height of the fixed navbar to prevent content collision.</p>
+      <a class="btn btn-lg btn-primary rounded-pill px-4 shadow-sm" href="../index.html" role="button">View all templates &raquo;</a>
+    </div>
+
+    <div class="row g-4 mb-5" id="section1">
+      <div class="col-md-6">
+        <div class="card p-4 rounded-4 shadow-sm border h-100">
+          <h3 class="fw-bold mb-2">Sticky vs Fixed</h3>
+          <p class="text-muted mb-0">Unlike <code>position: sticky</code> which scrolls within its boundary container, <code>position: fixed</code> remains docked relative to the entire browser window regardless of document hierarchy.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 rounded-4 shadow-sm border h-100">
+          <h3 class="fw-bold mb-2">Mobile Responsiveness</h3>
+          <p class="text-muted mb-0">On smaller displays, clicking the hamburger button triggers boodoo's zero-dependency JavaScript collapse transition effortlessly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-5 bg-white border rounded-4 shadow-sm" id="section2">
+      <h3 class="fw-bold mb-3">Scroll Depth Demonstration</h3>
+      <p class="text-muted">Scroll up and down to observe how cleanly the fixed navbar sticks to the top of your screen with smooth performance and elevated box shadow.</p>
+      <div class="d-flex gap-2">
+        <a href="../../docs/components/navbar.html" class="btn btn-outline-primary rounded-pill">Navbar Documentation</a>
+        <a href="../index.html" class="btn btn-secondary rounded-pill">Back to Examples</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

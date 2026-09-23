@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Minimal starter template for boodoo framework.">
+  <title>boodoo · Starter Template Example</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    .example-hero {
+      padding: 4rem 1.5rem;
+      background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.12) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Fixed Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom position-sticky top-0 z-30">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+          <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="28" width="28">
+          <span class="fw-bold fs-5 text-gradient">boodoo</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#starterNav" aria-controls="starterNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="starterNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html">All Examples</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="../../docs/getting-started/introduction.html">Docs</a>
+            <a class="btn btn-primary btn-sm rounded-pill px-3" href="../../site/archives/boodoo-latest.zip" download>Download Zip</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="example-hero text-center border-bottom">
+      <div class="container py-4">
+        <span class="badge rounded-pill bg-primary-soft text-primary px-3 py-2 fw-semibold mb-3">Starter Template</span>
+        <h1 class="display-4 fw-bold mb-3">Quickstart with boodoo</h1>
+        <p class="lead text-muted mx-auto mb-4 max-w-600">
+          Get started quickly with a pre-configured responsive layout featuring navigation, modern cards, and interactive components.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+          <a class="btn btn-primary btn-lg rounded-pill px-4" href="../../docs/getting-started/download.html">Get Started</a>
+          <a class="btn btn-outline-dark btn-lg rounded-pill px-4" href="../index.html">Back to Examples</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-5" id="features">
+      <div class="container py-3">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border p-4 shadow-sm rounded-4">
+              <div class="d-inline-flex align-items-center justify-content-center bg-primary-soft text-primary rounded-3 p-3 mb-3 w-48-px h-48-px">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <h3 class="fs-5 fw-bold mb-2">Blazing Fast</h3>
+              <p class="text-muted mb-0">Compiled lightweight CSS without bulky runtime dependencies or heavy JavaScript frameworks.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border p-4 shadow-sm rounded-4">
+              <div class="d-inline-flex align-items-center justify-content-center bg-primary-soft text-primary rounded-3 p-3 mb-3 w-48-px h-48-px">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+              </div>
+              <h3 class="fs-5 fw-bold mb-2">12-Column Grid</h3>
+              <p class="text-muted mb-0">Flexible flexbox-powered layout grid fully responsive from mobile screens to ultrawide desktops.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border p-4 shadow-sm rounded-4">
+              <div class="d-inline-flex align-items-center justify-content-center bg-primary-soft text-primary rounded-3 p-3 mb-3 w-48-px h-48-px">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+              </div>
+              <h3 class="fs-5 fw-bold mb-2">Dark Mode Built-in</h3>
+              <p class="text-muted mb-0">First-class color scheme support using modern CSS variables and data attributes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 border-top text-center text-muted small bg-light">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <p class="mb-0"><span>© 2026 boodoo Framework. MIT Licensed.</span></p>
+      <div class="d-flex gap-3">
+        <a class="text-muted text-decoration-none" href="../index.html">Examples</a>
+        <a class="text-muted text-decoration-none" href="../../docs/getting-started/introduction.html">Docs</a>
+        <a class="text-muted text-decoration-none" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js"></script>
+</body>
+</html>

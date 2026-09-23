@@ -84,6 +84,7 @@
     // Getting Started & About
     { title: 'Introduction', category: 'Getting Started', route: 'getting-started/introduction', desc: 'Get started with boodoo — architecture, philosophy, and quick overview.', keywords: 'intro overview guide docs setup start getting started', icon: '🚀' },
     { title: 'Download & Releases', category: 'Getting Started', route: 'getting-started/download', desc: 'Download compiled CSS, JavaScript, and source Sass/Less files.', keywords: 'download zip dist release source files install', icon: '📥' },
+    { title: 'Examples & Starters', category: 'Getting Started', route: 'getting-started/examples', desc: 'Official starter templates, dashboards, full pages, React and Vue starter kits.', keywords: 'examples templates starter react vue nextjs dashboard pricing checkout showcase', icon: '🎨' },
     { title: 'Usage & CDN', category: 'Getting Started', route: 'getting-started/usage', desc: 'Include boodoo with high-speed CDN links via jsDelivr.', keywords: 'cdn link script css js head include unpkg jsdelivr', icon: '🌐' },
     { title: 'Install via npm', category: 'Getting Started', route: 'getting-started/npm', desc: 'Install boodoo into Node, Vite, Webpack, or Next.js with npm, pnpm or yarn.', keywords: 'npm package install pnpm yarn bundler node modules vite', icon: '📦' },
     { title: 'Customize with Sass', category: 'Getting Started', route: 'getting-started/sass', desc: 'Customize variables, maps, and color palettes using Sass / SCSS.', keywords: 'sass scss variables customize compile override theme', icon: '💅' },

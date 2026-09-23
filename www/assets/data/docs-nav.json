@@ -10,6 +10,7 @@
       { "route": "getting-started/sass", "title": "Customize with Sass" },
       { "route": "getting-started/less", "title": "Customize with Less" },
       { "route": "getting-started/starter", "title": "Starter template" },
+      { "route": "getting-started/examples", "title": "Examples" },
       { "route": "getting-started/browser-support", "title": "Browser support" },
       { "route": "getting-started/accessibility", "title": "Accessibility" },
       { "route": "getting-started/theme", "title": "Dark Mode & Themes" },
