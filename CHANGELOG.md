@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.4] - 2026-09-23
+
+### Fixed
+- **Floating Labels Autofill & Pre-touch State**:
+  - Added support for `:-webkit-autofill` and `:autofill` states on `.form-control` and `.form-control-plaintext` within `.form-floating`.
+  - Resolved an issue where browser-autofilled credentials or values prior to user interaction/focus would cause input text and floating labels to collide/overlap.
+  - Added `.form-floating` support to `less/boodoo.less` with parity for autofill and textarea elements.
+
 ## [1.0.3] - 2026-09-19
 
 ### Added

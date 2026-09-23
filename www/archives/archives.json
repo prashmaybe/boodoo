@@ -1,12 +1,12 @@
 {
-  "version": "1.0.3",
-  "generatedAt": "2026-09-23T08:57:34.325Z",
-  "frameworkZip": "boodoo-v1.0.3.zip",
-  "frameworkZipSizeKb": 369,
-  "frameworkZipBytes": 377457,
+  "version": "1.0.4",
+  "generatedAt": "2026-09-23T10:18:37.367Z",
+  "frameworkZip": "boodoo-v1.0.4.zip",
+  "frameworkZipSizeKb": 370,
+  "frameworkZipBytes": 378732,
   "latestZip": "boodoo-latest.zip",
-  "examplesZip": "boodoo-examples-v1.0.3.zip",
-  "examplesZipSizeKb": 36,
+  "examplesZip": "boodoo-examples-v1.0.4.zip",
+  "examplesZipSizeKb": 37,
   "starters": [
     {
       "id": "react-vite",
