@@ -20,12 +20,24 @@
       justify-content: center;
       box-shadow: var(--boodoo-shadow-glow);
     }
+
+    .hero-dark-preview {
+      background: radial-gradient(circle at 60% 40%, rgba(124, 58, 237, 0.35) 0%, rgba(15, 23, 42, 0.8) 70%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-dark-preview:hover {
+      transform: translateY(-4px);
+    }
   </style>
 </head>
 
 <body>
   <!-- Header -->
-  <header class="p-3 border-bottom bg-white sticky-top top-0 z-30 shadow-sm">
+  <header class="p-1 border-bottom bg-white sticky-top top-0 z-30 shadow-sm">
     <div class="container d-flex justify-content-between align-items-center">
       <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
         <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="26" width="26">
@@ -56,11 +68,11 @@
       </div>
     </section>
 
-    <div class="b-example-divider my-5 border-top"></div>
+    <div class="b-example-divider my-2 border-top"></div>
 
     <!-- Hero 2: Two-Column Split with Mockup Screen -->
     <section class="container col-xxl-8 px-4 py-5">
-      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5">
         <div class="col-10 col-sm-8 col-lg-6">
           <div class="hero-split-mockup p-5 text-center">
             <div>
@@ -71,14 +83,14 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill fw-bold mb-3">SPLIT LAYOUT</span>
+          <span class="badge bg-primary-soft text-white px-3 py-2 rounded-pill fw-bold mb-3">SPLIT LAYOUT</span>
           <h1 class="display-5 fw-bold lh-1 mb-3">Responsive Left-Aligned Hero</h1>
           <p class="lead text-muted mb-4">
             Place prominent copy and primary calls-to-action on the left while displaying product imagery, video
             illustrations, or code widgets on the right.
           </p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 rounded-pill shadow-sm">Get
+            <button type="button" class="btn btn-primary btn-lg px-2 me-md-2 rounded-pill shadow-sm">Get
               started</button>
             <button type="button" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Watch demo</button>
           </div>
@@ -86,18 +98,28 @@
       </div>
     </section>
 
-    <div class="b-example-divider my-5 border-top"></div>
+    <div class="b-example-divider my-2 border-top"></div>
 
     <!-- Hero 3: Dark Mode Gradient Card -->
     <section class="container my-5">
-      <div class="p-5 text-white bg-dark rounded-5 shadow-lg position-relative overflow-hidden">
-        <div class="col-md-6 p-lg-5 my-5">
-          <h1 class="display-4 fw-bold">Elevated Dark Card Hero</h1>
-          <p class="lead fw-normal text-muted my-4">
-            Combine dark surfaces, radiant gradients, and rounded border radii to deliver an immersive software
-            experience.
-          </p>
-          <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="../index.html">Explore all templates</a>
+      <div class="p-4 p-lg-5 text-white bg-dark rounded-5 shadow-lg position-relative overflow-hidden">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6 p-3 p-lg-5">
+            <h1 class="display-4 fw-bold">Elevated Dark Card Hero</h1>
+            <p class="lead fw-normal text-muted my-4">
+              Combine dark surfaces, radiant gradients, and rounded border radii to deliver an immersive software
+              experience.
+            </p>
+            <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="../index.html">Explore all templates</a>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center p-3 p-lg-5">
+            <div
+              class="hero-dark-preview p-4 w-100 d-flex flex-column align-items-center justify-content-center text-center">
+              <img src="../../assets/brand/boodoo-icon-transparent.png" alt="boodoo Framework preview" class="img-fluid"
+                style="max-height: 280px; filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));" width="280"
+                height="280">
+            </div>
+          </div>
         </div>
       </div>
     </section>
