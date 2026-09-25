@@ -1,28 +1,36 @@
 {
   "version": "1.0.4",
-  "generatedAt": "2026-09-23T10:18:37.367Z",
+  "generatedAt": "2026-09-23T11:28:01.149Z",
+  "cdnBase": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives",
   "frameworkZip": "boodoo-v1.0.4.zip",
+  "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.0.4.zip",
   "frameworkZipSizeKb": 370,
   "frameworkZipBytes": 378732,
   "latestZip": "boodoo-latest.zip",
+  "latestZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip",
   "examplesZip": "boodoo-examples-v1.0.4.zip",
+  "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.0.4.zip",
   "examplesZipSizeKb": 37,
   "starters": [
     {
       "id": "react-vite",
-      "file": "boodoo-react-vite-starter.zip"
+      "file": "boodoo-react-vite-starter.zip",
+      "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-react-vite-starter.zip"
     },
     {
       "id": "vue-vite",
-      "file": "boodoo-vue-vite-starter.zip"
+      "file": "boodoo-vue-vite-starter.zip",
+      "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-vue-vite-starter.zip"
     },
     {
       "id": "nextjs",
-      "file": "boodoo-nextjs-starter.zip"
+      "file": "boodoo-nextjs-starter.zip",
+      "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-nextjs-starter.zip"
     },
     {
       "id": "html-starter",
-      "file": "boodoo-html-starter.zip"
+      "file": "boodoo-html-starter.zip",
+      "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-html-starter.zip"
     }
   ]
 }

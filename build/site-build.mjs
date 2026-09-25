@@ -45,7 +45,20 @@ export function getDistSizes() {
     utilsRaw: getKb('css/boodoo-utilities.css'),
     utilsMin: getKb('css/boodoo-utilities.min.css'),
     animRaw: getKb('css/boodoo-animations.css'),
-    animMin: getKb('css/boodoo-animations.min.css'),
+  };
+}
+
+// Helper to provide CDN URLs for all downloadable archives
+export function getArchiveCdnUrls(version) {
+  const cdnBase = `https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives`;
+  return {
+    latestZip: `${cdnBase}/boodoo-latest.zip`,
+    frameworkZip: `${cdnBase}/boodoo-v${version}.zip`,
+    examplesZip: `${cdnBase}/boodoo-examples-v${version}.zip`,
+    starterReact: `${cdnBase}/boodoo-react-vite-starter.zip`,
+    starterVue: `${cdnBase}/boodoo-vue-vite-starter.zip`,
+    starterNext: `${cdnBase}/boodoo-nextjs-starter.zip`,
+    starterHtml: `${cdnBase}/boodoo-html-starter.zip`
   };
 }
 
@@ -239,6 +252,7 @@ const VERSION = pkg.version;
 const sizes = getDistSizes();
 const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
 const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
+const archiveUrls = getArchiveCdnUrls(VERSION);
 
   let bodyRendered = bodyWithIds
     .replaceAll('{{version}}', VERSION)
@@ -262,7 +276,14 @@ const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsF
     .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
     .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
     .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
-    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '');
+    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
+    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
+    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
+    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
+    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
+    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
+    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
+    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
@@ -298,6 +319,13 @@ const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsF
     .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
     .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
     .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
+    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
+    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
+    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
+    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
+    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
+    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
+    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
     .replaceAll('{{docstitle}}', title);
 
   return html;

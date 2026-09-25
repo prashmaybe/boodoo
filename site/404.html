@@ -28,6 +28,7 @@
       justify-content: center;
       padding: 3rem 1rem;
     }
+
     .error-card {
       max-width: 680px;
       width: 100%;
@@ -39,11 +40,13 @@
       box-shadow: 0 20px 40px -15px rgba(124, 58, 237, 0.15);
       text-align: center;
     }
+
     [data-boodoo-theme="dark"] .error-card {
       background: rgba(15, 23, 42, 0.85);
       border-color: rgba(167, 139, 250, 0.2);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
     }
+
     .error-code {
       font-size: 6rem;
       font-weight: 900;
@@ -54,6 +57,7 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
     }
+
     .error-badge {
       display: inline-flex;
       align-items: center;
@@ -66,10 +70,12 @@
       color: #7c3aed;
       margin-bottom: 1.5rem;
     }
+
     [data-boodoo-theme="dark"] .error-badge {
       background: rgba(167, 139, 250, 0.15);
       color: #c084fc;
     }
+
     .quick-links-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -77,19 +83,22 @@
       margin-top: 2rem;
       text-align: left;
     }
+
     .quick-link-item {
       padding: 0.85rem 1rem;
       border-radius: 0.75rem;
-      border: 1px solid var(--bd-border-color, rgba(0,0,0,0.08));
+      border: 1px solid var(--bd-border-color, rgba(0, 0, 0, 0.08));
       background: var(--bd-bg-card, #ffffff);
       text-decoration: none;
       color: inherit;
       transition: all 0.2s ease;
     }
+
     [data-boodoo-theme="dark"] .quick-link-item {
       background: rgba(30, 41, 59, 0.7);
       border-color: rgba(255, 255, 255, 0.08);
     }
+
     .quick-link-item:hover {
       transform: translateY(-2px);
       border-color: #7c3aed;
@@ -103,9 +112,10 @@
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
   <!-- Sticky Glass Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="d-flex container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+      <a class="navbar-brand d-flex align-items-center gap-1" href="/index.html">
         <img src="/assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
@@ -121,7 +131,8 @@
           <li class="nav-item"><a class="nav-link" href="/docs/getting-started/usage.html">CDN</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode" title="Toggle theme">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode"
+            title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
           <a class="btn btn-primary btn-sm rounded-pill px-3" href="/docs/getting-started/download.html">Download</a>
@@ -146,13 +157,17 @@
       <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
         <a class="btn btn-primary px-4 rounded-pill shadow-sm" href="/index.html">
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="me-1">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+            </path>
           </svg>
           Back to Home
         </a>
         <a class="btn btn-outline-primary px-4 rounded-pill" href="/docs/getting-started/introduction.html">
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="me-1">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+            </path>
           </svg>
           Browse Documentation
         </a>
@@ -184,7 +199,8 @@
 
   <!-- Footer -->
   <footer class="py-3 border-top">
-    <div class="container d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center text-muted small">
+    <div
+      class="container d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center text-muted small">
       <div class="d-inline-flex gap-2 align-items-center">
         <img src="/assets/brand/boodoo-icon.svg" alt="boodoo" height="20" width="20" loading="lazy">
         <span>© <span id="year">2026</span> Pebble Benders · MIT License</span>

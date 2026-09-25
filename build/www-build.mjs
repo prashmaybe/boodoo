@@ -67,11 +67,12 @@ const copy = (src, rel) => {
 };
 
 // 4. Copy static site contents to www/ & inject current package version and bundle sizes
-import { getDistSizes } from './site-build.mjs';
+import { getDistSizes, getArchiveCdnUrls } from './site-build.mjs';
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const sizes = getDistSizes();
 const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
 const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
+const archiveUrls = getArchiveCdnUrls(pkg.version);
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
 indexContent = indexContent
   .replaceAll('{{version}}', pkg.version)
@@ -95,7 +96,14 @@ indexContent = indexContent
   .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
   .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
   .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
-  .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '');
+  .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
+  .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
+  .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
+  .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
+  .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
+  .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
+  .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
+  .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
@@ -104,14 +112,21 @@ copy(path.join(root, 'site', 'archives'), 'archives');           // Downloadable
 copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
 copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
 
-// Also inject dynamic version into examples index page
+// Also inject dynamic version and archive CDN URLs into examples index page
 const examplesIndexFile = path.join(www, 'examples', 'index.html');
 if (fs.existsSync(examplesIndexFile)) {
   let exContent = fs.readFileSync(examplesIndexFile, 'utf8');
   exContent = exContent
     .replaceAll('{{version}}', pkg.version)
     .replaceAll('{{cssMinKb}}', sizes.cssMin)
-    .replaceAll('{{jsMinKb}}', sizes.jsMin);
+    .replaceAll('{{jsMinKb}}', sizes.jsMin)
+    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
+    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
+    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
+    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
+    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
+    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
+    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
   fs.writeFileSync(examplesIndexFile, exContent, 'utf8');
 }
 copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data

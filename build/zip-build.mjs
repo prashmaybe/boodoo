@@ -217,20 +217,25 @@ addDirectoryToZip(htmlZip, path.join(root, 'site', 'examples', 'starters', 'html
 fs.writeFileSync(path.join(outDir, 'boodoo-html-starter.zip'), htmlZip.toBuffer());
 
 // Archive information manifest
+const cdnBase = `https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives`;
 const archiveManifest = {
   version,
   generatedAt: new Date().toISOString(),
+  cdnBase,
   frameworkZip: `boodoo-v${version}.zip`,
+  frameworkZipCdnUrl: `${cdnBase}/boodoo-v${version}.zip`,
   frameworkZipSizeKb: Math.round(fullZipBuffer.length / 1024),
   frameworkZipBytes: fullZipBuffer.length,
   latestZip: 'boodoo-latest.zip',
+  latestZipCdnUrl: `${cdnBase}/boodoo-latest.zip`,
   examplesZip: `boodoo-examples-v${version}.zip`,
+  examplesZipCdnUrl: `${cdnBase}/boodoo-examples-v${version}.zip`,
   examplesZipSizeKb: Math.round(examplesZipBuffer.length / 1024),
   starters: [
-    { id: 'react-vite', file: 'boodoo-react-vite-starter.zip' },
-    { id: 'vue-vite', file: 'boodoo-vue-vite-starter.zip' },
-    { id: 'nextjs', file: 'boodoo-nextjs-starter.zip' },
-    { id: 'html-starter', file: 'boodoo-html-starter.zip' }
+    { id: 'react-vite', file: 'boodoo-react-vite-starter.zip', cdnUrl: `${cdnBase}/boodoo-react-vite-starter.zip` },
+    { id: 'vue-vite', file: 'boodoo-vue-vite-starter.zip', cdnUrl: `${cdnBase}/boodoo-vue-vite-starter.zip` },
+    { id: 'nextjs', file: 'boodoo-nextjs-starter.zip', cdnUrl: `${cdnBase}/boodoo-nextjs-starter.zip` },
+    { id: 'html-starter', file: 'boodoo-html-starter.zip', cdnUrl: `${cdnBase}/boodoo-html-starter.zip` }
   ]
 };
 fs.writeFileSync(path.join(outDir, 'archives.json'), JSON.stringify(archiveManifest, null, 2), 'utf8');
