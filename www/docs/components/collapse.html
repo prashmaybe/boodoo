@@ -56,7 +56,7 @@
           </li>
           <li class="nav-item"><a class="nav-link" href="../../examples/index.html">Examples</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
+        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
             <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -248,7 +248,8 @@
             <li><code>.collapsing</code> is applied during transitions.</li>
             <li><code>.collapse.show</code> shows content.</li>
             <li><code>data-boodoo-toggle="collapse"</code> on the trigger, with <code>data-boodoo-target</code> (or an
-              <code>href</code>) pointing to the collapsible element.</li>
+              <code>href</code>) pointing to the collapsible element.
+            </li>
           </ul>
 
           <h2 id="example">Example</h2>
@@ -299,7 +300,8 @@
 
           <h2 id="multiple">Multiple toggles &amp; targets</h2>
           <p>A single trigger can control multiple targets by passing a space-separated selector to
-            <code>data-boodoo-target</code>, or multiple triggers can control the same target.</p>
+            <code>data-boodoo-target</code>, or multiple triggers can control the same target.
+          </p>
           <div class="highlight">
             <pre><code>&lt;!-- single button, two targets -->
 &lt;button data-boodoo-toggle="collapse"

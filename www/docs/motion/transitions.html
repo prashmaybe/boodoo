@@ -55,7 +55,7 @@
           </li>
           <li class="nav-item"><a class="nav-link" href="../../examples/index.html">Examples</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
+        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
             <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -285,16 +285,21 @@
             or <code>.transition</code>.</p>
           <div class="bd-example d-flex flex-wrap gap-3">
             <div class="transition-transform hover-scale-105 border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Hover me (scale)</span></div>
+              <span>Hover me (scale)</span>
+            </div>
             <div class="transition-transform hover-lift border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Hover me (lift)</span></div>
+              <span>Hover me (lift)</span>
+            </div>
             <div
               class="transition-colors hover-bg-primary hover-text-white border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Hover me (colors)</span></div>
+              <span>Hover me (colors)</span>
+            </div>
             <div class="transition-shadow hover-shadow-lg border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Hover me (shadow)</span></div>
+              <span>Hover me (shadow)</span>
+            </div>
             <div class="transition-opacity hover-opacity-50 border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Hover me (opacity)</span></div>
+              <span>Hover me (opacity)</span>
+            </div>
           </div>
           <div class="highlight">
             <pre><code>&lt;!-- smooth transform / scale on hover -->
@@ -318,13 +323,16 @@
           <div class="bd-example d-flex flex-wrap gap-3">
             <div
               class="transition-transform duration-100 hover-scale-110 border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Fast (100ms)</span></div>
+              <span>Fast (100ms)</span>
+            </div>
             <div
               class="transition-transform duration-300 hover-scale-110 border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Normal (300ms)</span></div>
+              <span>Normal (300ms)</span>
+            </div>
             <div
               class="transition-transform duration-700 hover-scale-110 border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Slow (700ms)</span></div>
+              <span>Slow (700ms)</span>
+            </div>
           </div>
           <div class="highlight">
             <pre><code>&lt;div class="transition-all duration-300 delay-100"&gt;...&lt;/div&gt;</code></pre>
@@ -332,20 +340,25 @@
 
           <h2 id="easing">Easing (Timing functions)</h2>
           <p>Control the transition easing curve with <code>.ease-linear</code>, <code>.ease-in</code>,
-            <code>.ease-out</code>, or <code>.ease-in-out</code>.</p>
+            <code>.ease-out</code>, or <code>.ease-in-out</code>.
+          </p>
           <div class="bd-example d-flex flex-wrap gap-3">
             <div
               class="transition-transform duration-500 ease-linear hover-lift border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Linear</span></div>
+              <span>Linear</span>
+            </div>
             <div
               class="transition-transform duration-500 ease-in hover-lift border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Ease in</span></div>
+              <span>Ease in</span>
+            </div>
             <div
               class="transition-transform duration-500 ease-out hover-lift border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Ease out</span></div>
+              <span>Ease out</span>
+            </div>
             <div
               class="transition-transform duration-500 ease-in-out hover-lift border rounded p-3 bg-white cursor-pointer shadow-sm">
-              <span>Ease in-out</span></div>
+              <span>Ease in-out</span>
+            </div>
           </div>
           <div class="highlight">
             <pre><code>&lt;div class="transition-transform duration-500 ease-out hover-lift"&gt;...&lt;/div&gt;</code></pre>
@@ -356,7 +369,8 @@
           <ul>
             <li><code>.hover-scale-{90|95|100|105|110|125}</code> → Scale transforms on hover</li>
             <li><code>.hover-lift</code>, <code>.hover-translate-y-{0|1|2|n1|n2}</code>,
-              <code>.hover-translate-x-{1|2|n1|n2}</code> → Translations on hover</li>
+              <code>.hover-translate-x-{1|2|n1|n2}</code> → Translations on hover
+            </li>
             <li><code>.hover-rotate-{45|90|180}</code> → Rotations on hover</li>
             <li><code>.hover-shadow-{none|sm|md|lg}</code> or <code>.hover-shadow</code> → Elevation on hover</li>
             <li><code>.hover-opacity-{0|25|50|75|100}</code> → Opacity on hover</li>
@@ -365,7 +379,8 @@
           </ul>
           <p class="small text-muted">Hover-transformed helpers used by <code>.card-hover</code> and
             <code>.btn:active</code> are
-            already built into the components.</p>
+            already built into the components.
+          </p>
 
           <h2 id="guidance">Guidance</h2>
           <ul>
