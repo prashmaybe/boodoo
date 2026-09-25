@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-boodoo-theme="light">
+<html lang="en" data-boodoo-theme="dark">
 
 <head>
   <meta charset="utf-8">
@@ -7,71 +7,236 @@
   <meta name="description" content="Minimalist full page cover landing page template built with boodoo.">
   <title>boodoo · Cover Splash Example</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../dist/css/boodoo-animations.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
   <style>
+    :root {
+      --cover-glow-1: rgba(124, 58, 237, 0.35);
+      --cover-glow-2: rgba(236, 72, 153, 0.22);
+      --cover-glow-3: rgba(14, 165, 233, 0.18);
+    }
+
     body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #090d16 100%);
-      color: #ffffff;
-      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+      font-family: 'Inter', var(--boodoo-font-sans-serif);
+      background-color: #060813 !important;
+      background: radial-gradient(circle at 50% 15%, #1e1442 0%, #0d0f28 40%, #060813 100%) !important;
+      background-attachment: fixed;
+      color: #ffffff !important;
+      position: relative;
+      overflow-x: hidden;
     }
-    .cover-container {
-      max-width: 42em;
+
+    /* Ambient animated mesh backdrop */
+    .cover-ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+      background: radial-gradient(circle at 50% 35%, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
+      filter: blur(40px);
     }
+
+    .cover-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 68rem;
+    }
+
+    .cover-card {
+      background: rgba(17, 20, 61, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(124, 58, 237, 0.18);
+    }
+
     .nav-masthead .nav-link {
-      color: rgba(255, 255, 255, .65);
-      border-bottom: .25rem solid transparent;
-      padding: .25rem 0;
-      font-weight: 600;
+      color: rgba(255, 255, 255, 0.72) !important;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      display: inline-block;
     }
-    .nav-masthead .nav-link:hover,
-    .nav-masthead .nav-link:focus {
-      color: #ffffff;
-      border-bottom-color: rgba(255, 255, 255, .3);
+
+    .nav-masthead .nav-link:hover {
+      color: #ffffff !important;
+      background-color: rgba(255, 255, 255, 0.1);
     }
+
     .nav-masthead .nav-link.active {
+      color: #ffffff !important;
+      background-color: rgba(124, 58, 237, 0.35);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+    }
+
+    .cover-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(124, 58, 237, 0.18);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+    }
+
+    .cover-badge-pill .pulse-indicator {
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #a855f7;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #a855f7;
+    }
+
+    .cover-hero-title {
       color: #ffffff;
-      border-bottom-color: var(--boodoo-primary);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .cover-hero-lead {
+      color: #cbd5e1;
+      font-size: 1.2rem;
+      line-height: 1.65;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .cover-feature-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-cover-primary {
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 50%, #ec4899 100%);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.5), 0 0 20px rgba(236, 72, 153, 0.25);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-cover-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -4px rgba(124, 58, 237, 0.65), 0 0 25px rgba(236, 72, 153, 0.4);
+      color: #ffffff !important;
+    }
+
+    .btn-cover-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-cover-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+      color: #ffffff !important;
     }
   </style>
 </head>
 
-<body class="d-flex text-center p-3 mx-auto cover-container">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0 fw-bold text-white d-flex align-items-center gap-2">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="26" width="26">
-        <span>Cover</span>
-      </h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#features">Features</a>
-        <a class="nav-link" href="../index.html">Examples</a>
-        <a class="nav-link" href="../../docs/getting-started/introduction.html">Docs</a>
-      </nav>
-    </div>
-  </header>
+<body class="d-flex flex-column align-items-center justify-content-between p-3 p-md-4">
+  <div class="cover-ambient-mesh" aria-hidden="true"></div>
 
-  <main class="px-3 my-5" id="main">
-    <span class="badge bg-primary rounded-pill px-3 py-2 fw-semibold mb-3">MINIMALIST SPLASH</span>
-    <h1 class="display-3 fw-bold mb-3">Cover your page.</h1>
-    <p class="lead text-white-50 mb-4">
-      Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background image to make it your own.
-    </p>
-    <p class="lead">
-      <a href="../index.html" class="btn btn-lg btn-light fw-bold border-white bg-white text-dark rounded-pill px-4 shadow">Learn more</a>
-      <a href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip" class="btn btn-lg btn-outline-light rounded-pill px-4 ms-2" download>Download</a>
-    </p>
-  </main>
+  <div class="cover-wrapper d-flex flex-column justify-content-between">
+    <!-- Header Navbar -->
+    <header class="w-100 py-2 py-md-3">
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+        <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+          <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo logo" height="32" width="32">
+          <span class="fs-4 fw-bold text-white tracking-tight">boodoo</span>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-2 py-05 fs-xs fw-semibold">Cover</span>
+        </a>
+        <nav class="nav nav-masthead d-flex flex-wrap align-items-center justify-content-center gap-1" aria-label="Cover navigation">
+          <a class="nav-link active" aria-current="page" href="#"><span>Home</span></a>
+          <a class="nav-link" href="#features"><span>Features</span></a>
+          <a class="nav-link" href="../index.html"><span>Examples</span></a>
+          <a class="nav-link" href="../../docs/getting-started/introduction.html"><span>Docs</span></a>
+          <a class="nav-link" href="https://github.com/prashmaybe/budu" target="_blank" rel="noopener"><span>GitHub</span></a>
+        </nav>
+      </div>
+    </header>
 
-  <footer class="mt-auto text-white-50 small">
-    <p class="mb-0"><span>Cover template for <a href="../index.html" class="text-white text-decoration-none">boodoo</a>, by <a href="https://github.com/prashmaybe" target="_blank" class="text-white text-decoration-none">@pebblebenders</a>.</span></p>
-  </footer>
+    <!-- Main Hero Cover -->
+    <main class="my-auto py-5 d-flex justify-content-center" id="main">
+      <div class="cover-card rounded-xxl p-4 p-md-5 text-center max-w-700 animate-fade-in">
+        <div class="mb-3 d-inline-block">
+          <span class="cover-badge-pill rounded-pill px-3 py-1 fw-semibold fs-sm">
+            <span class="pulse-indicator animate-pulse"></span>
+            <span>MODERN FULLPAGE SPLASH</span>
+          </span>
+        </div>
+
+        <h1 class="display-4 cover-hero-title mb-3">
+          <span>Cover your page with </span><span class="text-gradient">boodoo</span>
+        </h1>
+
+        <p class="lead cover-hero-lead mb-4">
+          <span>Cover is a minimalist, responsive one-page showcase for product launches, splash introductions, and portfolio landing screens. Built entirely with boodoo utility tokens, flexbox layout, and glassmorphism.</span>
+        </p>
+
+        <!-- Feature Highlight Pills -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" id="features">
+          <span class="cover-feature-pill">
+            <span>⚡</span>
+            <span>Ultra Fast</span>
+          </span>
+          <span class="cover-feature-pill">
+            <span>🎨</span>
+            <span>Tokenized Theme</span>
+          </span>
+          <span class="cover-feature-pill">
+            <span>📱</span>
+            <span>Fully Responsive</span>
+          </span>
+          <span class="cover-feature-pill">
+            <span>💎</span>
+            <span>Zero Dependencies</span>
+          </span>
+        </div>
+
+        <!-- Call-to-action buttons -->
+        <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+          <a href="../index.html" class="btn btn-lg btn-cover-primary rounded-pill px-4 py-2 fw-semibold w-100 w-sm-auto text-decoration-none">
+            <span>Explore all templates</span>
+          </a>
+          <a href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip" class="btn btn-lg btn-cover-secondary rounded-pill px-4 py-2 fw-semibold w-100 w-sm-auto text-decoration-none" download>
+            <span>Download bundle</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-100 py-3 text-center">
+      <p class="mb-0 text-white-50 small">
+        <span>Cover template crafted for <a href="../index.html" class="text-white text-decoration-none fw-semibold">boodoo</a> · © 2026 <a href="https://github.com/prashmaybe" target="_blank" rel="noopener" class="text-white text-decoration-none fw-semibold">Pebble Benders</a>.</span>
+      </p>
+    </footer>
+  </div>
 
   <script src="../../dist/js/boodoo.js"></script>
 </body>
+
 </html>
