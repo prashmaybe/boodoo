@@ -1,0 +1,64 @@
+<!--
+title: boodoo vs Material Design
+description: Compare boodoo and Material Design (MUI / Material Components). Discover how boodoo provides Material elevation, ripples, and motion without heavy React or JS runtimes.
+section: about
+order: 8
+-->
+<h1>boodoo vs Material Design</h1>
+<p class="lead">Compare <strong>boodoo</strong> and <strong>Material Design</strong> (Material UI / MDC) to discover how boodoo integrates Google Material Design's tactile surfaces, elevation shadows, touch ripples, and motion curves into an ultra-lightweight, framework-agnostic CSS/JS toolkit.</p>
+
+<h2 id="comparison">Feature Comparison</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>boodoo</th>
+      <th>Material Design (MUI / MDC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Core Architecture</strong></td>
+      <td>Framework-agnostic HTML/CSS + vanilla JS micro-engine</td>
+      <td>Heavily coupled to React (MUI) or complex JS component lifecycles</td>
+    </tr>
+    <tr>
+      <td><strong>Elevation &amp; Depth Shadows</strong></td>
+      <td>✅ 5-level elevation system (<code>.elevation-1</code> to <code>.elevation-5</code>)</td>
+      <td>✅ 24-level elevation system</td>
+    </tr>
+    <tr>
+      <td><strong>Touch Ripple Effect</strong></td>
+      <td>✅ Lightweight native CSS/JS ripple with zero dependencies</td>
+      <td>✅ Material ripple effect included</td>
+    </tr>
+    <tr>
+      <td><strong>Floating Form Labels</strong></td>
+      <td>✅ Pure CSS floating labels (<code>.form-floating</code>)</td>
+      <td>✅ Floating outlined / filled text fields</td>
+    </tr>
+    <tr>
+      <td><strong>Runtime Dependencies</strong></td>
+      <td><strong>0 dependencies</strong> (No React, Emotion, or build tool needed)</td>
+      <td>Requires React, Emotion/styled-engine, and build pipeline</td>
+    </tr>
+    <tr>
+      <td><strong>Bundle Size Footprint</strong></td>
+      <td><strong>~{{cssMinKb}} KB</strong> CSS + <strong>~{{jsMinKb}} KB</strong> JS</td>
+      <td>~150–300+ KB minified + runtime overhead</td>
+    </tr>
+    <tr>
+      <td><strong>Design Flexibility</strong></td>
+      <td>Balanced aesthetic: clean modern UI without rigid "all-Google" look</td>
+      <td>Strictly enforces Google Material Design language across all components</td>
+    </tr>
+    <tr>
+      <td><strong>Framework Agnostic</strong></td>
+      <td>✅ Works with static HTML, Vue, React, Svelte, Laravel, Rails, Django</td>
+      <td>Primarily React ecosystem (MUI)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="why-choose-boodoo">Why developers choose boodoo over Material Design</h2>
+<p>While Google's Material Design provides exceptional tactile cues, depth elevation, and natural animations, implementing official Material libraries often forces teams into heavy React ecosystems, massive bundle sizes, and rigid visual styling. <strong>boodoo</strong> distills the best aspects of Material Design — smooth elevation shadows, dynamic touch ripples, floating form labels, and natural cubic-bezier motion — into pure CSS and lightweight vanilla JS that drops into any website or stack in seconds.</p>

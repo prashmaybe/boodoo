@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare boodoo and Material Design (MUI / Material Components). Discover how boodoo provides Material elevation, ripples, and motion without heavy React or JS runtimes.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="boodoo">
+  <meta property="og:title" content="boodoo vs Material Design · boodoo">
+  <meta property="og:description" content="Compare boodoo and Material Design (MUI / Material Components). Discover how boodoo provides Material elevation, ripples, and motion without heavy React or JS runtimes.">
+  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>boodoo vs Material Design · boodoo</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../../assets/brand/boodoo-icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/boodoo-icon-180.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <meta name="msapplication-TileColor" content="#7c3aed">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+</head>
+
+<body>
+  <a class="visually-hidden-focusable" href="#docs-content">Skip to main content</a>
+
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <span class="fw-bold fs-5 text-gradient">boodoo</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
+        aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="docsNav">
+        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
+          <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#installation">Installation</a></li>
+          <li class="nav-item"><a class="nav-link active"
+              href="../../docs/getting-started/introduction.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../examples/index.html">Examples</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
+          <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
+            aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
+            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="search-btn-text">Search</span>
+            <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
+          </button>
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
+            title="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
+            href="../../docs/getting-started/usage.html">CDN</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3"
+            href="../../docs/getting-started/download.html">Download</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid container-xl py-3">
+    <div class="row">
+      <aside class="col-lg-3 col-xl-2">
+        <button
+          class="btn btn-outline-primary btn-sm w-100 d-lg-none mb-3 d-flex align-items-center justify-content-between docs-menu-toggle"
+          type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false"
+          aria-controls="docsSidebarCollapse">
+          <span class="d-flex align-items-center gap-2">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span>Documentation Navigation</span>
+          </span>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
+          <nav aria-label="Docs navigation">
+            <h6 class="docs-nav-section">Getting started</h6>
+<ul class="docs-nav-list">
+<li><a href="../getting-started/introduction.html">Introduction</a></li>
+<li><a href="../getting-started/download.html">Download</a></li>
+<li><a href="../getting-started/contents.html">What's included</a></li>
+<li><a href="../getting-started/usage.html">Usage & CDN</a></li>
+<li><a href="../getting-started/npm.html">Install via npm</a></li>
+<li><a href="../getting-started/sass.html">Customize with Sass</a></li>
+<li><a href="../getting-started/less.html">Customize with Less</a></li>
+<li><a href="../getting-started/starter.html">Starter template</a></li>
+<li><a href="../getting-started/examples.html">Examples</a></li>
+<li><a href="../getting-started/browser-support.html">Browser support</a></li>
+<li><a href="../getting-started/accessibility.html">Accessibility</a></li>
+<li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
+<li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+</ul>
+<h6 class="docs-nav-section">Layout</h6>
+<ul class="docs-nav-list">
+<li><a href="../layout/containers.html">Containers</a></li>
+<li><a href="../layout/grid.html">Grid system</a></li>
+<li><a href="../layout/columns.html">Columns</a></li>
+<li><a href="../layout/gutters.html">Gutters</a></li>
+<li><a href="../layout/css-grid.html">CSS Grid</a></li>
+<li><a href="../layout/breakpoints.html">Breakpoints</a></li>
+</ul>
+<h6 class="docs-nav-section">Content</h6>
+<ul class="docs-nav-list">
+<li><a href="../content/typography.html">Typography</a></li>
+<li><a href="../content/images.html">Images</a></li>
+<li><a href="../content/tables.html">Tables</a></li>
+<li><a href="../content/figures.html">Figures</a></li>
+</ul>
+<h6 class="docs-nav-section">Forms</h6>
+<ul class="docs-nav-list">
+<li><a href="../forms/overview.html">Overview</a></li>
+<li><a href="../forms/form-control.html">Form control</a></li>
+<li><a href="../forms/select.html">Select</a></li>
+<li><a href="../forms/checks.html">Checks & radios</a></li>
+<li><a href="../forms/range.html">Range</a></li>
+<li><a href="../forms/input-group.html">Input group</a></li>
+<li><a href="../forms/floating-labels.html">Floating labels</a></li>
+<li><a href="../forms/otp.html">OTP & PIN input</a></li>
+<li><a href="../forms/dropzone.html">Dropzone</a></li>
+<li><a href="../forms/validation.html">Validation</a></li>
+</ul>
+<h6 class="docs-nav-section">Components</h6>
+<ul class="docs-nav-list">
+<li><a href="../components/accordion.html">Accordion</a></li>
+<li><a href="../components/alerts.html">Alerts</a></li>
+<li><a href="../components/avatar.html">Avatar</a></li>
+<li><a href="../components/badge.html">Badge</a></li>
+<li><a href="../components/bottom-sheet.html">Bottom Sheet</a></li>
+<li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../components/buttons.html">Buttons</a></li>
+<li><a href="../components/button-group.html">Button group</a></li>
+<li><a href="../components/card.html">Card</a></li>
+<li><a href="../components/carousel.html">Carousel</a></li>
+<li><a href="../components/collapse.html">Collapse</a></li>
+<li><a href="../components/command-palette.html">Command Palette</a></li>
+<li><a href="../components/dropdowns.html">Dropdowns</a></li>
+<li><a href="../components/kbd.html">Kbd</a></li>
+<li><a href="../components/list-group.html">List group</a></li>
+<li><a href="../components/modal.html">Modal</a></li>
+<li><a href="../components/navs.html">Navs & tabs</a></li>
+<li><a href="../components/navbar.html">Navbar</a></li>
+<li><a href="../components/offcanvas.html">Offcanvas</a></li>
+<li><a href="../components/pagination.html">Pagination</a></li>
+<li><a href="../components/placeholder.html">Placeholders</a></li>
+<li><a href="../components/popovers.html">Popovers</a></li>
+<li><a href="../components/progress.html">Progress</a></li>
+<li><a href="../components/rating.html">Rating</a></li>
+<li><a href="../components/scrollspy.html">Scrollspy</a></li>
+<li><a href="../components/segmented-control.html">Segmented Control</a></li>
+<li><a href="../components/skeleton.html">Skeleton loaders</a></li>
+<li><a href="../components/spinners.html">Spinners</a></li>
+<li><a href="../components/stepper.html">Stepper</a></li>
+<li><a href="../components/timeline.html">Timeline</a></li>
+<li><a href="../components/toasts.html">Toasts</a></li>
+<li><a href="../components/tooltips.html">Tooltips</a></li>
+<li><a href="../components/tree-view.html">Tree View</a></li>
+<li><a href="../components/ripple.html">Ripple effect</a></li>
+<li><a href="../components/native.html">Native components</a></li>
+</ul>
+<h6 class="docs-nav-section">Helpers</h6>
+<ul class="docs-nav-list">
+<li><a href="../helpers/clearfix.html">Clearfix</a></li>
+<li><a href="../helpers/ratio.html">Ratio</a></li>
+<li><a href="../helpers/visually-hidden.html">Visually hidden</a></li>
+<li><a href="../helpers/stretched-link.html">Stretched link</a></li>
+<li><a href="../helpers/color-bg.html">Color & background</a></li>
+<li><a href="../helpers/elevation.html">Elevation (Material)</a></li>
+</ul>
+<h6 class="docs-nav-section">Utilities</h6>
+<ul class="docs-nav-list">
+<li><a href="../utilities/background.html">Background</a></li>
+<li><a href="../utilities/borders.html">Borders</a></li>
+<li><a href="../utilities/colors.html">Colors</a></li>
+<li><a href="../utilities/display.html">Display</a></li>
+<li><a href="../utilities/flex.html">Flex</a></li>
+<li><a href="../utilities/float.html">Float</a></li>
+<li><a href="../utilities/interactions.html">Interactions</a></li>
+<li><a href="../utilities/opacity.html">Opacity</a></li>
+<li><a href="../utilities/overflow.html">Overflow</a></li>
+<li><a href="../utilities/position.html">Position</a></li>
+<li><a href="../utilities/shadows.html">Shadows</a></li>
+<li><a href="../utilities/sizing.html">Sizing</a></li>
+<li><a href="../utilities/spacing.html">Spacing</a></li>
+<li><a href="../utilities/text.html">Text</a></li>
+<li><a href="../utilities/vertical-alignment.html">Vertical alignment</a></li>
+<li><a href="../utilities/z-index.html">Z-index</a></li>
+</ul>
+<h6 class="docs-nav-section">Motion</h6>
+<ul class="docs-nav-list">
+<li><a href="../motion/animations.html">Animations</a></li>
+<li><a href="../motion/transitions.html">Transitions</a></li>
+</ul>
+<h6 class="docs-nav-section">About</h6>
+<ul class="docs-nav-list">
+<li><a href="../about/overview.html">Overview</a></li>
+<li><a href="../about/design-principles.html">Design principles</a></li>
+<li><a href="../about/brand.html">Brand assets</a></li>
+<li><a href="../about/vs-bootstrap.html">boodoo vs Bootstrap</a></li>
+<li><a href="../about/vs-foundation.html">boodoo vs Foundation</a></li>
+<li><a href="../about/vs-tailwind.html">boodoo vs Tailwind</a></li>
+<li><a href="../about/vs-material.html" class="active">boodoo vs Material</a></li>
+<li><a href="../about/changelog.html">Changelog</a></li>
+<li><a href="../about/license.html">License</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="col-lg-6 col-xl-7">
+        <div class="docs-main py-1" id="docs-content">
+          
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+        <li class="breadcrumb-item">About</li>
+        <li class="breadcrumb-item active" aria-current="page">boodoo vs Material Design</li>
+      </ol>
+    </nav>
+          <h1>boodoo vs Material Design</h1>
+<p class="lead">Compare <strong>boodoo</strong> and <strong>Material Design</strong> (Material UI / MDC) to discover how boodoo integrates Google Material Design's tactile surfaces, elevation shadows, touch ripples, and motion curves into an ultra-lightweight, framework-agnostic CSS/JS toolkit.</p>
+
+<h2 id="comparison">Feature Comparison</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>boodoo</th>
+      <th>Material Design (MUI / MDC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Core Architecture</strong></td>
+      <td>Framework-agnostic HTML/CSS + vanilla JS micro-engine</td>
+      <td>Heavily coupled to React (MUI) or complex JS component lifecycles</td>
+    </tr>
+    <tr>
+      <td><strong>Elevation &amp; Depth Shadows</strong></td>
+      <td>✅ 5-level elevation system (<code>.elevation-1</code> to <code>.elevation-5</code>)</td>
+      <td>✅ 24-level elevation system</td>
+    </tr>
+    <tr>
+      <td><strong>Touch Ripple Effect</strong></td>
+      <td>✅ Lightweight native CSS/JS ripple with zero dependencies</td>
+      <td>✅ Material ripple effect included</td>
+    </tr>
+    <tr>
+      <td><strong>Floating Form Labels</strong></td>
+      <td>✅ Pure CSS floating labels (<code>.form-floating</code>)</td>
+      <td>✅ Floating outlined / filled text fields</td>
+    </tr>
+    <tr>
+      <td><strong>Runtime Dependencies</strong></td>
+      <td><strong>0 dependencies</strong> (No React, Emotion, or build tool needed)</td>
+      <td>Requires React, Emotion/styled-engine, and build pipeline</td>
+    </tr>
+    <tr>
+      <td><strong>Bundle Size Footprint</strong></td>
+      <td><strong>~374 KB</strong> CSS + <strong>~80 KB</strong> JS</td>
+      <td>~150–300+ KB minified + runtime overhead</td>
+    </tr>
+    <tr>
+      <td><strong>Design Flexibility</strong></td>
+      <td>Balanced aesthetic: clean modern UI without rigid "all-Google" look</td>
+      <td>Strictly enforces Google Material Design language across all components</td>
+    </tr>
+    <tr>
+      <td><strong>Framework Agnostic</strong></td>
+      <td>✅ Works with static HTML, Vue, React, Svelte, Laravel, Rails, Django</td>
+      <td>Primarily React ecosystem (MUI)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="why-choose-boodoo">Why developers choose boodoo over Material Design</h2>
+<p>While Google's Material Design provides exceptional tactile cues, depth elevation, and natural animations, implementing official Material libraries often forces teams into heavy React ecosystems, massive bundle sizes, and rigid visual styling. <strong>boodoo</strong> distills the best aspects of Material Design — smooth elevation shadows, dynamic touch ripples, floating form labels, and natural cubic-bezier motion — into pure CSS and lightweight vanilla JS that drops into any website or stack in seconds.</p>
+          
+  <nav class="docs-pager" aria-label="Previous and next navigation">
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">About</span>
+      <a class="docs-pager-link" href="../about/vs-tailwind.html">boodoo vs Tailwind</a>
+    </div>
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">About</span>
+      <a class="docs-pager-link" href="../about/changelog.html">Changelog</a>
+    </div>
+  </nav>
+
+        </div>
+      </main>
+
+      <aside class="col-lg-3 col-xl-3">
+
+    <div class="docs-toc d-none d-lg-block">
+      <h6 class="docs-toc-title">On this page</h6>
+      <ul><li class="toc-2"><a href="#comparison">Feature Comparison</a></li>
+<li class="toc-2"><a href="#why-choose-boodoo">Why developers choose boodoo over Material Design</a></li></ul>
+    </div>
+</aside>
+    </div>
+  </div>
+
+  <!-- Footer spanning the whole page -->
+  <footer class="py-1 border-top">
+    <div
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
+        <span>© 2026 Pebble Benders · MIT License</span>
+      </div>
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
+        <a class="text-muted text-decoration-none"
+          href="../../docs/getting-started/introduction.html">Documentation</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../examples/index.html">Examples</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js"></script>
+  <script src="../../assets/search.js"></script>
+  <script>
+    // Theme toggle logic
+    (function () {
+      var storedTheme = localStorage.getItem('boodoo-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-boodoo-theme', storedTheme);
+      var toggleBtn = document.getElementById('themeToggle');
+      function updateIcon(theme) {
+        if (toggleBtn) {
+          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+      updateIcon(storedTheme);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-boodoo-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-boodoo-theme', next);
+          localStorage.setItem('boodoo-theme', next);
+          updateIcon(next);
+        });
+      }
+    })();
+
+    // Copy-to-clipboard for code blocks
+    document.querySelectorAll('.highlight pre').forEach(function (pre) {
+      var btn = document.createElement('button');
+      btn.className = 'btn btn-sm btn-soft-primary highlight-copy';
+      btn.textContent = 'Copy';
+      btn.type = 'button';
+      var container = pre.closest('.highlight') || pre.parentElement;
+      if (container) container.appendChild(btn);
+      btn.addEventListener('click', function () {
+        var text = pre.innerText;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = 'Copied!';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

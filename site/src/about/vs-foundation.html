@@ -1,0 +1,64 @@
+<!--
+title: boodoo vs Foundation
+description: Compare boodoo and Zurb Foundation. See differences in modern CSS architecture, bundle size, zero runtime dependencies, and active maintenance.
+section: about
+order: 6
+-->
+<h1>boodoo vs Foundation</h1>
+<p class="lead">Compare <strong>boodoo</strong> and <strong>Zurb Foundation</strong> to see how boodoo brings Foundation's clean scaffolding and flexible layout philosophy into the modern era of CSS variables, zero-dependency vanilla JS, and modern build tooling.</p>
+
+<h2 id="comparison">Feature Comparison</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>boodoo</th>
+      <th>Foundation 6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Core Philosophy</strong></td>
+      <td>Modern CSS tokens + Tailwind utilities + Material elevation + Bootstrap ease</td>
+      <td>Semantic, highly customizable HTML/CSS framework for sites &amp; emails</td>
+    </tr>
+    <tr>
+      <td><strong>Active Maintenance &amp; Standards</strong></td>
+      <td>✅ Actively maintained with modern CSS features (CSS variables, modern grid, subgrid)</td>
+      <td>⚠️ Infrequent updates, legacy Sass syntax &amp; toolchains</td>
+    </tr>
+    <tr>
+      <td><strong>Runtime Dependencies</strong></td>
+      <td><strong>0 dependencies</strong> (Vanilla JS)</td>
+      <td>Requires jQuery and external plugins (What-Input)</td>
+    </tr>
+    <tr>
+      <td><strong>JS Bundle Footprint</strong></td>
+      <td><strong>~{{jsRawKb}} KB</strong> pure vanilla JS (~16 KB gzip)</td>
+      <td>~100+ KB (Foundation JS + jQuery dependency)</td>
+    </tr>
+    <tr>
+      <td><strong>CSS Custom Properties (Variables)</strong></td>
+      <td>✅ Full CSS variable system for dynamic theming &amp; dark mode</td>
+      <td>❌ Static Sass variables compiled at build time</td>
+    </tr>
+    <tr>
+      <td><strong>Utility-First Classes</strong></td>
+      <td>✅ 150+ functional utility classes (spacing, flex, grid, colors, opacity)</td>
+      <td>Basic layout and visibility classes</td>
+    </tr>
+    <tr>
+      <td><strong>Dual Sass &amp; Less Support</strong></td>
+      <td>✅ Complete Sass and Less source code trees included</td>
+      <td>Sass only</td>
+    </tr>
+    <tr>
+      <td><strong>Zero-Build CDN Ready</strong></td>
+      <td>✅ Drop-in single link CSS + single script JS</td>
+      <td>Requires jQuery include and custom initialization script</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="why-choose-boodoo">Why developers choose boodoo over Foundation</h2>
+<p>Foundation was a pioneer in responsive web design, flexible grid systems, and semantic scaffolding. However, maintaining legacy projects that rely on jQuery and older Sass pipelines has become challenging in modern web workflows. <strong>boodoo</strong> takes the best structural ideas and subtle gray scales that made Foundation great and reimplements them from scratch: zero jQuery dependencies, full native dark mode support, and built-in modern utilities.</p>

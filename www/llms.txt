@@ -98,5 +98,9 @@
 ### About & Licensing
 - [Overview](https://boodoo.dihadiwala.com/docs/about/overview.html): History and goals.
 - [Design Principles](https://boodoo.dihadiwala.com/docs/about/design-principles.html): Core design guidelines.
+- [boodoo vs Bootstrap](https://boodoo.dihadiwala.com/docs/about/vs-bootstrap.html): Architectural and footprint comparison with Bootstrap.
+- [boodoo vs Foundation](https://boodoo.dihadiwala.com/docs/about/vs-foundation.html): Modern CSS and dependency-free comparison with Zurb Foundation.
+- [boodoo vs Tailwind CSS](https://boodoo.dihadiwala.com/docs/about/vs-tailwind.html): Zero-build drop-in components vs utility build pipeline comparison.
+- [boodoo vs Material Design](https://boodoo.dihadiwala.com/docs/about/vs-material.html): Elevation and ripple comparisons without React dependencies.
 - [Brand Assets](https://boodoo.dihadiwala.com/docs/about/brand.html): Logos, icons, and brand guidelines.
 - [License](https://boodoo.dihadiwala.com/docs/about/license.html): Open-source MIT license details.
