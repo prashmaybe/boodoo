@@ -55,6 +55,13 @@
     border-radius: 0;
   }
 
+  // Explicit reset: input sandwiched between two .input-group-text elements
+  // (e.g. $ | input | .00 pattern) — ensures middle .form-control has no radius
+  > .input-group-text ~ .form-control:not(:last-child),
+  > .input-group-text ~ .form-select:not(:last-child) {
+    border-radius: 0;
+  }
+
   // First child - strip right radius
   > .form-control:first-child:not(:last-child),
   > .form-select:first-child:not(:last-child),
