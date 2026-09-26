@@ -19,6 +19,7 @@
       position: absolute;
       top: -12px;
       right: 24px;
+      z-index: 1;
     }
   </style>
 </head>
@@ -47,7 +48,7 @@
     <div class="row row-cols-1 row-cols-md-3 mb-5 text-center g-4" id="plans">
       <!-- Free Tier -->
       <div class="col">
-        <div class="card mb-4 rounded-4 shadow-sm border h-100">
+        <div class="card mb-4 rounded-4 shadow-sm border overflow-hidden">
           <div class="card-header py-3 bg-light border-bottom rounded-top-4">
             <h4 class="my-0 fw-bold">Free Starter</h4>
           </div>
@@ -68,9 +69,10 @@
       </div>
 
       <!-- Pro Tier (Popular) -->
-      <div class="col">
-        <div class="card mb-4 rounded-4 shadow-sm pricing-card-highlight h-100">
-          <span class="badge bg-primary rounded-pill px-3 py-1 fw-bold pricing-badge-popular">MOST POPULAR</span>
+      <div class="col position-relative">
+        <span class="badge bg-white rounded-pill px-3 py-1 fw-bold pricing-badge-popular text-success">MOST
+          POPULAR</span>
+        <div class="card mb-4 rounded-4 shadow-sm pricing-card-highlight overflow-hidden">
           <div class="card-header py-3 bg-primary text-white border-bottom rounded-top-4">
             <h4 class="my-0 fw-bold text-white">Pro Developer</h4>
           </div>
@@ -92,7 +94,7 @@
 
       <!-- Enterprise Tier -->
       <div class="col">
-        <div class="card mb-4 rounded-4 shadow-sm border h-100">
+        <div class="card mb-4 rounded-4 shadow-sm border overflow-hidden">
           <div class="card-header py-3 bg-light border-bottom rounded-top-4">
             <h4 class="my-0 fw-bold">Enterprise</h4>
           </div>
@@ -161,7 +163,7 @@
     </div>
   </main>
 
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <footer class="pt-2 my-md-2 border-top">
     <div class="container text-center text-muted small">
       <p class="mb-0"><span>Pricing template created with boodoo. © 2026 Pebble Benders.</span></p>
     </div>
