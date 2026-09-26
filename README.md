@@ -21,12 +21,16 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 ## ✨ Highlights
 
-- **Zero runtime dependencies** — Vanilla JS (~94 KB / ~19.8 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
+- **Modern CSS native primitives** — Container Queries (`@container`), HTML5 `<dialog>` & `[popover]`, CSS `:has()` parent styling, and `@layer` cascade layering
+- **Dual-Engine "Class-First + Data-Attribute" styling** — Clean semantic markup without class bloat (`[data-boodoo-variant]`, `[data-size]`, zero-build variable utilities)
+- **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or React required
 - **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, Node, static sites, or any web stack
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
-- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens
+- **Rich components** — 34+ accessible components including Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
+- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens or with the Interactive Theme Builder
 - **Accessible & touch-friendly** — Focus-visible rings, `prefers-reduced-motion` compliance, ARIA wiring, and 44px minimum touch targets
 - **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
+
 
 ---
 

@@ -242,3 +242,71 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+// ---------------------------------------------------------------------
+// Container Query Responsive Card (@container)
+// Automatically reorganizes from vertical to horizontal based on parent widget width.
+// ---------------------------------------------------------------------
+.card-container {
+  container-type: inline-size;
+  container-name: boodoo-card;
+  width: 100%;
+}
+
+.card-responsive {
+  container-type: inline-size;
+  container-name: card;
+  display: flex;
+  flex-direction: column;
+
+  @container (min-width: 480px) {
+    flex-direction: row;
+    align-items: stretch;
+
+    > .card-img,
+    > .card-img-top {
+      width: 38%;
+      max-width: 240px;
+      object-fit: cover;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: calc(var(--boodoo-card-border-radius) - 1px);
+    }
+
+    > .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Modern CSS :has() Parent Selectors
+// State-based parent styling natively in CSS without JS watchers
+// ---------------------------------------------------------------------
+.card:has(.badge) {
+  border-top-width: 2px;
+}
+
+.card:has(.badge-danger) {
+  border-color: rgba(var(--boodoo-danger-rgb), 0.35);
+}
+
+.card:has(.badge-success) {
+  border-color: rgba(var(--boodoo-success-rgb), 0.35);
+}
+
+.card:has(.badge-primary) {
+  border-color: rgba(var(--boodoo-primary-rgb), 0.35);
+}
+
+.card:has(.badge-warning) {
+  border-color: rgba(var(--boodoo-warning-rgb), 0.35);
+}
+
+.card:has(input:checked) {
+  border-color: var(--boodoo-primary);
+  background-color: var(--boodoo-body-secondary-bg);
+  box-shadow: 0 0 0 1px var(--boodoo-primary);
+}

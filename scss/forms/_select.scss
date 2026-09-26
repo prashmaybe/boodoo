@@ -1,7 +1,6 @@
-// BOODOO FORMS — Select
-// Native & custom select.
-
-.form-select {
+.form-select,
+select:not([class]),
+[data-boodoo-select] {
   display: block;
   width: 100%;
   padding: $boodoo-input-btn-padding-y $boodoo-input-btn-padding-x;
@@ -43,7 +42,8 @@
   }
 }
 
-.form-select-sm {
+.form-select-sm,
+[data-size="sm"] {
   padding-top: $boodoo-input-btn-padding-y-sm;
   padding-bottom: $boodoo-input-btn-padding-y-sm;
   padding-left: $boodoo-input-btn-padding-x-sm;
@@ -51,7 +51,8 @@
   border-radius: $boodoo-border-radius-sm;
 }
 
-.form-select-lg {
+.form-select-lg,
+[data-size="lg"] {
   padding-top: $boodoo-input-btn-padding-y-lg;
   padding-bottom: $boodoo-input-btn-padding-y-lg;
   padding-left: $boodoo-input-btn-padding-x-lg;

@@ -229,3 +229,40 @@
     overflow-y: auto;
   }
 }
+
+// ---------------------------------------------------------------------
+// Modern HTML5 Native <dialog> Modal Integration
+// Zero-JS backdrop & keyboard trapping support with graceful fallbacks
+// ---------------------------------------------------------------------
+dialog.modal,
+dialog.modal-dialog {
+  border: 1px solid var(--boodoo-border-color-translucent);
+  border-radius: var(--boodoo-modal-border-radius);
+  background-color: var(--boodoo-modal-bg);
+  box-shadow: var(--boodoo-modal-box-shadow);
+  color: var(--boodoo-body-color);
+  padding: 0;
+  max-width: var(--boodoo-modal-width, 500px);
+  width: calc(100% - var(--boodoo-modal-margin, 0.5rem) * 2);
+  margin: auto;
+  outline: 0;
+
+  &::backdrop {
+    background-color: var(--boodoo-modal-backdrop-bg, rgba(0, 0, 0, 0.5));
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: boodoo-fade-in 0.2s ease-out;
+  }
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    animation: boodoo-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    width: 100%;
+  }
+}

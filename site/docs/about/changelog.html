@@ -278,7 +278,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>⚡</span></div>
       <div>
-        <div class="stat-value"><span>396 KB / 94 KB</span></div>
+        <div class="stat-value"><span>411 KB / 98 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -326,6 +326,29 @@
       </div>
 
       <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>New Features &amp; Components</span>
+        </h3>
+        <ul class="mb-3">
+          <li>
+            <strong>Modern CSS Native Primitives</strong>:
+            <span>Integrated Container Queries (<code>@container</code>, <code>@mixin container-up</code>, <code>.card-container</code>, <code>.card-responsive</code>), native HTML5 <code>&lt;dialog class="modal"&gt;</code>, native <code>[popover].popover</code> API, CSS <code>:has()</code> parent selectors for forms and cards, and <code>@layer reset, tokens, components, utilities;</code> cascade organization.</span>
+          </li>
+          <li>
+            <strong>Dual-Engine "Class-First + Data-Attribute" Styling</strong>:
+            <span>Added semantic HTML defaults for buttons, text inputs, and select elements, supported <code>[data-boodoo-variant]</code>, <code>[data-size]</code>, and zero-build CSS variable utility classes (<code>.b-var-pad</code>, <code>.b-var-gap</code>, etc.).</span>
+          </li>
+          <li>
+            <strong>High-Impact Component Additions</strong>:
+            <span>Added Floating Action Buttons (<code>.btn-fab</code>, <code>.fab-extended</code>), interactive vanilla JS <code>Stepper</code> wizard with step navigation and panel toggling, and smart toast notification countdown progress bars (<code>.toast-progress</code>).</span>
+          </li>
+          <li>
+            <strong>Interactive Documentation &amp; Theme Builder</strong>:
+            <span>Added live GUI Theme Builder to docs for real-time CSS variable customizing, plus interactive live examples and copy-to-clipboard integration.</span>
+          </li>
+        </ul>
+
         <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-2 mb-2" id="">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
@@ -339,6 +362,7 @@
       </div>
     </div>
   </li>
+
 
   <!-- Version 1.0.4 -->
   <li class="timeline-item">

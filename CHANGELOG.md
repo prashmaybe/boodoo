@@ -9,9 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2026-09-26
 
+### Added
+- **Modern CSS Native Primitives**:
+  - **Container Queries (`@container`)**: Added `@mixin container-up` and `@mixin container-down` mixins (`scss/_mixins.scss`), `.card-container`, and `.card-responsive` (`scss/components/_card.scss`) for viewport-independent component reorganization.
+  - **Native `<dialog>` & `[popover]` Integration**: Full zero-JS styling support for native HTML5 `<dialog class="modal">` with `::backdrop` and `[popover].popover` with `:popover-open` (`scss/components/_modal.scss`, `scss/components/_popover.scss`).
+  - **Modern CSS `:has()` Parent Selectors**: Native state-based parent reactivity without JS watchers, including `.form-group:has(.form-control:invalid)` / `:valid` (`scss/forms/_validation.scss`) and `.card:has(.badge-*)` / `.card:has(input:checked)` (`scss/components/_card.scss`).
+  - **CSS Cascade Layers (`@layer`)**: Added `@layer reset, tokens, components, utilities;` across the design token hierarchy in `scss/_root.scss` to eliminate specificity collisions.
+- **Dual-Engine "Class-First + Data-Attribute" Styling**:
+  - Semantic HTML defaults for `button[role="button"]`, `input[type="*"]:not([class])`, and `select:not([class])` (`scss/components/_buttons.scss`, `scss/forms/_control.scss`, `scss/forms/_select.scss`).
+  - Attribute-driven variants and sizes: `[data-boodoo-variant]`, `[data-size="lg|sm|block"]`, `[data-boodoo-button]`, `[data-boodoo-input]`, and `[data-boodoo-select]`.
+  - Zero-Build Utility Mode mapping CSS custom properties dynamically (`.b-var-pad`, `.b-var-gap`, `.b-var-bg`, `.b-var-color`, `.b-var-radius`, `.b-var-w`, `.b-var-h` in `scss/_utilities.scss`).
+- **High-Impact Component Additions & Enhancements**:
+  - **Floating Action Buttons (FAB)**: Added Material-inspired `.btn-fab`, `.fab-extended`, `.fab-sm`, and corner placement classes (`.fab-bottom-end`, `.fab-bottom-start`, `.fab-top-end`).
+  - **Interactive Stepper & Multi-step Wizard**: Added vanilla JavaScript `Stepper` component (`js/src/stepper.js`) with linear step validation, tab container activation (`data-boodoo-target`), programmatic API (`goTo`, `next`, `prev`, `reset`), and click navigation.
+  - **Smart Toast Notifications with Progress Bar**: Integrated animated countdown indicator bar (`.toast-progress`) and automatic duration binding into `Toast` component (`js/src/toast.js`, `scss/components/_toasts.scss`).
+- **Interactive Documentation & Playground**:
+  - **Interactive Theme Builder GUI**: Real-time color picker, border radius, and typography customizer with live component sandbox and instant CSS custom properties export snippet on `site/src/getting-started/theme.html`.
+  - Comprehensive documentation and interactive live examples for Container Queries, `:has()` selectors, Native `<dialog>`, Native Popover, FAB, and Stepper Wizard.
+
 ### Fixed
 - **Disabled Form Controls Cursor**:
   - Added `cursor: not-allowed;` to `:disabled` states for `.form-control` and `.form-select` in both Sass (`scss/forms/_control.scss`, `scss/forms/_select.scss`) and Less (`less/boodoo.less`).
+
 
 ## [1.0.4] - 2026-09-26
 

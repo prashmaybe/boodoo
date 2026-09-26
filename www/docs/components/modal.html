@@ -401,6 +401,41 @@ modal.show();
 const other = new boodoo.Modal(document.getElementById('centeredModal'));
 other.toggle();</code></pre>
 </div>
+
+<h2 id="native-dialog">Native HTML5 &lt;dialog&gt; API (Zero-JS)</h2>
+<p>boodoo natively styles standard HTML5 <code>&lt;dialog class="modal"&gt;</code> elements. The browser natively manages focus trapping, <kbd>Esc</kbd> dismissal, and backdrop rendering with zero JavaScript dependency overhead:</p>
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" onclick="document.getElementById('nativeDemoDialog').showModal()">
+    <span>Open Native &lt;dialog&gt;</span>
+  </button>
+  <dialog class="modal" id="nativeDemoDialog">
+    <div class="modal-header">
+      <h5 class="modal-title"><span>Native HTML5 Dialog</span></h5>
+      <button type="button" class="btn-close" onclick="document.getElementById('nativeDemoDialog').close()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <p><span>This modal uses the browser's built-in <code>&lt;dialog&gt;</code> element with native focus trapping, top-layer rendering, and styled <code>::backdrop</code>.</span></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" onclick="document.getElementById('nativeDemoDialog').close()"><span>Close</span></button>
+    </div>
+  </dialog>
+</div>
+<div class="highlight">
+  <pre><code>&lt;button type="button" class="btn btn-primary" onclick="document.getElementById('myDialog').showModal()"&gt;
+  &lt;span&gt;Open Native Modal&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;dialog class="modal" id="myDialog"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;h5 class="modal-title"&gt;&lt;span&gt;Native Dialog&lt;/span&gt;&lt;/h5&gt;
+    &lt;button type="button" class="btn-close" onclick="document.getElementById('myDialog').close()" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;
+    &lt;p&gt;&lt;span&gt;Native top-layer rendering and backdrop without JS.&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -427,7 +462,8 @@ other.toggle();</code></pre>
 <li class="toc-2"><a href="#centered">Vertically centered</a></li>
 <li class="toc-2"><a href="#scroll">Scrolling long content</a></li>
 <li class="toc-2"><a href="#sizes">Optional sizes</a></li>
-<li class="toc-2"><a href="#programmatic">Programmatic usage</a></li></ul>
+<li class="toc-2"><a href="#programmatic">Programmatic usage</a></li>
+<li class="toc-2"><a href="#native-dialog">Native HTML5 &lt;dialog&gt; API (Zero-JS)</a></li></ul>
     </div>
 </aside>
     </div>

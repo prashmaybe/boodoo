@@ -1,7 +1,13 @@
-// BOODOO FORMS — Control
-// Text inputs, textarea, select, file, color.
-
-.form-control {
+.form-control,
+input[type="text"]:not([class]),
+input[type="email"]:not([class]),
+input[type="password"]:not([class]),
+input[type="number"]:not([class]),
+input[type="tel"]:not([class]),
+input[type="url"]:not([class]),
+input[type="search"]:not([class]),
+textarea:not([class]),
+[data-boodoo-input] {
   display: block;
   width: 100%;
   padding: $boodoo-input-btn-padding-y $boodoo-input-btn-padding-x;
@@ -20,6 +26,7 @@
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
+
 
   &[type="file"] {
     overflow: hidden;
@@ -85,13 +92,16 @@
 }
 
 // Sizes
-.form-control-lg {
+.form-control-lg,
+[data-size="lg"] {
   @include form-control-size($boodoo-input-btn-padding-y-lg, $boodoo-input-btn-padding-x-lg, $boodoo-input-btn-font-size-lg, $boodoo-border-radius-lg);
 }
 
-.form-control-sm {
+.form-control-sm,
+[data-size="sm"] {
   @include form-control-size($boodoo-input-btn-padding-y-sm, $boodoo-input-btn-padding-x-sm, $boodoo-input-btn-font-size-sm, $boodoo-border-radius-sm);
 }
+
 
 // Plaintext (no visible input styling)
 .form-control-plaintext {

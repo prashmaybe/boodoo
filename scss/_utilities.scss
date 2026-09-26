@@ -256,3 +256,37 @@
   .d-print-inline-flex { display: inline-flex !important; }
   .d-print-none { display: none !important; }
 }
+
+// ---------------------------------------------------------------------
+// Zero-Build Utility Mode (Variable-driven helpers)
+// Allows inline style token manipulation without multi-megabyte stylesheets
+// ---------------------------------------------------------------------
+.b-var-pad,
+[class*="b-pad"] {
+  padding: var(--b-pad, var(--b-p, inherit));
+}
+
+.b-var-gap,
+[class*="b-gap"] {
+  gap: var(--b-gap, inherit);
+}
+
+.b-var-bg {
+  background-color: var(--b-bg, transparent);
+}
+
+.b-var-color {
+  color: var(--b-color, inherit);
+}
+
+.b-var-radius {
+  border-radius: var(--b-radius, var(--b-rounded, inherit));
+}
+
+.b-var-w {
+  width: var(--b-w, auto);
+}
+
+.b-var-h {
+  height: var(--b-h, auto);
+}

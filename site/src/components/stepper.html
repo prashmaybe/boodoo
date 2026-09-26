@@ -116,3 +116,69 @@ order: 25
 &lt;/ul&gt;</code></pre>
 </div>
 </section>
+
+<section class="docs-section">
+  <h2>Interactive Wizard with JavaScript & Buttons</h2>
+  <p>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</p>
+  <div class="docs-example p-4 border rounded">
+    <ul class="stepper" id="wizardStepper" data-boodoo-target="#wizardPanels">
+      <li class="step-item active">
+        <div class="step-circle"><span>1</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Account</span></div>
+          <div class="step-subtitle"><span>Login details</span></div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>2</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Billing</span></div>
+          <div class="step-subtitle"><span>Payment method</span></div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>3</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Confirm</span></div>
+          <div class="step-subtitle"><span>Ready to launch</span></div>
+        </div>
+      </li>
+    </ul>
+
+    <div id="wizardPanels" class="p-3 bg-light rounded border mb-3">
+      <div class="wizard-panel active">
+        <h6><span>Step 1: Enter your account email</span></h6>
+        <p class="text-muted small"><span>Set up your organization credentials.</span></p>
+      </div>
+      <div class="wizard-panel" hidden>
+        <h6><span>Step 2: Choose billing tier</span></h6>
+        <p class="text-muted small"><span>Select your plan and add invoice details.</span></p>
+      </div>
+      <div class="wizard-panel" hidden>
+        <h6><span>Step 3: Confirmation</span></h6>
+        <p class="text-muted small"><span>Review your selections and submit.</span></p>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-outline-secondary" data-boodoo-stepper="prev" data-boodoo-target="#wizardStepper">
+        <span>Previous</span>
+      </button>
+      <button type="button" class="btn btn-primary" data-boodoo-stepper="next" data-boodoo-target="#wizardStepper">
+        <span>Next Step</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code>&lt;!-- Stepper with data-boodoo-target pointing to tab panels --&gt;
+&lt;ul class="stepper" id="wizardStepper" data-boodoo-target="#wizardPanels"&gt;...&lt;/ul&gt;
+
+&lt;button type="button" class="btn btn-outline-secondary" data-boodoo-stepper="prev" data-boodoo-target="#wizardStepper"&gt;
+  &lt;span&gt;Previous&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary" data-boodoo-stepper="next" data-boodoo-target="#wizardStepper"&gt;
+  &lt;span&gt;Next Step&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+  </div>
+</section>

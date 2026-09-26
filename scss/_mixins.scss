@@ -66,6 +66,31 @@
 }
 
 // ---------------------------------------------------------------------
+// Container queries (Modern CSS @container support)
+// ---------------------------------------------------------------------
+@mixin container-up($name, $breakpoints: $boodoo-grid-breakpoints) {
+  $min: breakpoint($name, $breakpoints);
+  @if $min and $min > 0 {
+    @container (min-width: #{$min}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin container-down($name, $breakpoints: $boodoo-grid-breakpoints) {
+  $max: breakpoint($name, $breakpoints);
+  @if $max == 0 {
+    @content;
+  } @else {
+    @container (max-width: #{$max - 0.02px}) {
+      @content;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
 // Grid
 // ---------------------------------------------------------------------
 

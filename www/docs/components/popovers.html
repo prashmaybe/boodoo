@@ -317,6 +317,32 @@ document.querySelectorAll('[data-boodoo-toggle="popover"]').forEach(function (el
   if (!boodoo.Popover.getInstance(el)) boodoo.Popover.getOrCreateInstance(el);
 });</code></pre>
 </div>
+
+<h2 id="native-popover">Native HTML5 Popover API (Zero-JS)</h2>
+<p>Modern browsers natively support popups using the <code>popover</code> and <code>popovertarget</code> attributes. boodoo styles native popovers out of the box:</p>
+<div class="bd-example d-flex gap-2">
+  <button type="button" class="btn btn-outline-primary" popovertarget="nativePopoverDemo">
+    <span>Toggle Native Popover</span>
+  </button>
+  <div id="nativePopoverDemo" popover class="popover p-3 shadow-lg">
+    <div class="popover-header bg-transparent border-0 p-0 mb-1">
+      <strong><span>HTML5 Popover</span></strong>
+    </div>
+    <div class="popover-body p-0">
+      <span>Built natively using the browser Popover API without any JavaScript positioning dependencies.</span>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;button type="button" class="btn btn-outline-primary" popovertarget="myPopover"&gt;
+  &lt;span&gt;Toggle Native Popover&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;div id="myPopover" popover class="popover p-3"&gt;
+  &lt;strong&gt;&lt;span&gt;Native Popover&lt;/span&gt;&lt;/strong&gt;
+  &lt;p class="mb-0"&gt;&lt;span&gt;Zero JavaScript required.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -342,7 +368,8 @@ document.querySelectorAll('[data-boodoo-toggle="popover"]').forEach(function (el
 <li class="toc-2"><a href="#example">Example: enable popovers</a></li>
 <li class="toc-2"><a href="#placements">Placements</a></li>
 <li class="toc-2"><a href="#dismiss">Dismiss on next click</a></li>
-<li class="toc-2"><a href="#js">JavaScript</a></li></ul>
+<li class="toc-2"><a href="#js">JavaScript</a></li>
+<li class="toc-2"><a href="#native-popover">Native HTML5 Popover API (Zero-JS)</a></li></ul>
     </div>
 </aside>
     </div>

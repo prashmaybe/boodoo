@@ -302,3 +302,56 @@ order: 7
 <h2 id="layout">Card layout helpers</h2>
 <p>Use <code>.card-grid</code> for a responsive gap-based card grid, or the flexbox <code>.row-cols-*</code> helpers
   with cards for equal-width layouts.</p>
+
+<h2 id="container-queries">Container Queries (@container)</h2>
+<p>Unlike legacy frameworks that only adapt cards according to the browser viewport, boodoo features first-class CSS container queries. Wrap your card in <code>.card-container</code> and use <code>.card-responsive</code>: the card automatically reorganizes from vertical to horizontal based on its parent container's width.</p>
+<div class="bd-example">
+  <div class="card-container" style="max-width: 600px;">
+    <div class="card card-responsive">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='200'%3E%3Crect width='384' height='200' fill='%23ece6fd'/%3E%3C/svg%3E" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><span>Container-Responsive Card</span></h5>
+        <p class="card-text"><span>When parent width exceeds 480px, this card automatically shifts to a horizontal layout without viewport media queries.</span></p>
+        <div><a href="#" class="btn btn-primary btn-sm"><span>Learn more</span></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="card-container"&gt;
+  &lt;div class="card card-responsive"&gt;
+    &lt;img src="..." class="card-img-top" alt="..."&gt;
+    &lt;div class="card-body"&gt;
+      &lt;h5 class="card-title"&gt;&lt;span&gt;Container-Responsive Card&lt;/span&gt;&lt;/h5&gt;
+      &lt;p class="card-text"&gt;&lt;span&gt;Adapts to its container size.&lt;/span&gt;&lt;/p&gt;
+      &lt;a href="#" class="btn btn-primary"&gt;&lt;span&gt;Action&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="has-selectors">Modern CSS :has() Parent Styling</h2>
+<p>boodoo automatically enhances cards based on their child elements using native CSS <code>:has()</code> parent selectors without JavaScript watchers:</p>
+<div class="bd-example d-flex flex-wrap gap-3">
+  <div class="card p-3 demo-card-sm">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h6 class="mb-0"><span>Urgent Issue</span></h6>
+      <span class="badge badge-danger"><span>Alert</span></span>
+    </div>
+    <p class="card-text small"><span>Cards containing <code>.badge-danger</code> automatically tint their border red via <code>:has(.badge-danger)</code>.</span></p>
+  </div>
+  <div class="card p-3 demo-card-sm">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h6 class="mb-0"><span>Verified</span></h6>
+      <span class="badge badge-success"><span>Active</span></span>
+    </div>
+    <p class="card-text small"><span>Cards containing <code>.badge-success</code> automatically tint their border green.</span></p>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;!-- Card border tints automatically based on the badge inside --&gt;
+&lt;div class="card p-3"&gt;
+  &lt;span class="badge badge-danger"&gt;&lt;span&gt;Alert&lt;/span&gt;&lt;/span&gt;
+  &lt;p class="card-text"&gt;&lt;span&gt;Styled natively via :has(.badge-danger)&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>

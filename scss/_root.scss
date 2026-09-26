@@ -1,9 +1,14 @@
-// BOODOO ROOT
-// CSS custom properties (design tokens) emitted on :root.
-
 @use "sass:map";
 
+// ---------------------------------------------------------------------
+// CSS Cascade Layers (@layer)
+// Eliminates !important specificity battles and controls order of precedence
+// ---------------------------------------------------------------------
+@layer reset, tokens, components, utilities;
+
 :root {
+
+
   // Colors (theme)
   --boodoo-primary: #{$boodoo-primary};
   --boodoo-secondary: #{$boodoo-secondary};

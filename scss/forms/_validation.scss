@@ -115,3 +115,30 @@
 .was-validated :invalid ~ .invalid-tooltip {
   display: block;
 }
+
+// ---------------------------------------------------------------------
+// Modern CSS :has() Parent Validation Selectors
+// Parent .form-group styling natively based on input validity state without JS
+// ---------------------------------------------------------------------
+.form-group:has(.form-control:invalid:focus),
+.form-group:has(.was-validated .form-control:invalid),
+.form-group:has(.form-control.is-invalid) {
+  .form-label {
+    color: $boodoo-danger;
+  }
+}
+
+.form-group:has(.form-control:valid:focus),
+.form-group:has(.was-validated .form-control:valid),
+.form-group:has(.form-control.is-valid) {
+  .form-label {
+    color: $boodoo-success;
+  }
+}
+
+.input-group:has(.form-control:focus) {
+  .input-group-text {
+    border-color: $boodoo-form-control-focus-border;
+    color: var(--boodoo-primary);
+  }
+}

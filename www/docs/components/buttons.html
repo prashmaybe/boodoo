@@ -406,6 +406,51 @@
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
 </div>
+
+<h2 id="floating-action-buttons">Floating Action Buttons (FAB)</h2>
+<p>Inspired by Material Design, Floating Action Buttons promote primary actions on mobile and desktop web applications. Available with <code>.btn-fab</code> or extended with <code>.fab-extended</code>:</p>
+<div class="bd-example d-flex align-items-center gap-3">
+  <button type="button" class="btn btn-primary btn-fab position-static" aria-label="Add new item">
+    <span>+</span>
+  </button>
+  <button type="button" class="btn btn-success btn-fab fab-sm position-static" aria-label="Quick save">
+    <span>✓</span>
+  </button>
+  <button type="button" class="btn btn-primary btn-fab fab-extended position-static">
+    <span>✨</span>
+    <span>Compose</span>
+  </button>
+</div>
+<div class="highlight">
+  <pre><code>&lt;!-- Circular FAB pinned to viewport corner --&gt;
+&lt;button type="button" class="btn btn-primary btn-fab fab-bottom-end" aria-label="Compose"&gt;
+  &lt;span&gt;+&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Extended FAB with icon + label --&gt;
+&lt;button type="button" class="btn btn-primary btn-fab fab-extended fab-bottom-end"&gt;
+  &lt;span&gt;✨&lt;/span&gt;
+  &lt;span&gt;Compose&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>
+
+<h2 id="dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</h2>
+<p>In boodoo, you can write semantic HTML buttons with zero class spam using attributes:</p>
+<div class="bd-example d-flex flex-wrap gap-2">
+  <button role="button" data-boodoo-variant="primary" data-size="lg"><span>Semantic Primary Large</span></button>
+  <button role="button" data-boodoo-variant="outline-secondary"><span>Semantic Outline</span></button>
+  <button role="button" data-boodoo-variant="soft-danger" data-size="sm"><span>Semantic Soft Danger</span></button>
+</div>
+<div class="highlight">
+  <pre><code>&lt;!-- Pure semantic HTML styled without class spam --&gt;
+&lt;button role="button" data-boodoo-variant="primary" data-size="lg"&gt;
+  &lt;span&gt;Semantic Primary Large&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button role="button" data-boodoo-variant="outline-secondary"&gt;
+  &lt;span&gt;Semantic Outline&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -434,7 +479,9 @@
 <li class="toc-2"><a href="#states">States</a></li>
 <li class="toc-2"><a href="#block">Block buttons</a></li>
 <li class="toc-2"><a href="#material-ripple">Material ripple</a></li>
-<li class="toc-2"><a href="#split-buttons">Split buttons</a></li></ul>
+<li class="toc-2"><a href="#split-buttons">Split buttons</a></li>
+<li class="toc-2"><a href="#floating-action-buttons">Floating Action Buttons (FAB)</a></li>
+<li class="toc-2"><a href="#dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</a></li></ul>
     </div>
 </aside>
     </div>

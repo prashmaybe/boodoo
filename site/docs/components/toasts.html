@@ -390,6 +390,32 @@ boodoo.toast.info('New version 1.0.3 is now ready.');</code></pre>
   });
 &lt;/script&gt;</code></pre>
 </div>
+
+<h2 id="smart-progress">Smart Toast Progress Bar & Auto-Dismiss</h2>
+<p>boodoo toasts feature smooth CSS countdown progress bars that visually indicate remaining display duration before auto-dismissal:</p>
+<div class="bd-example">
+  <div class="toast show position-relative overflow-hidden" role="alert">
+    <div class="toast-header">
+      <strong class="me-auto"><span>System Alert</span></strong>
+      <small><span>just now</span></small>
+      <button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <span>Auto-dismissing notification with visual countdown indicator.</span>
+    </div>
+    <div class="toast-progress" style="animation-duration: 5000ms;"></div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="toast show" role="alert"&gt;
+  &lt;div class="toast-header"&gt;
+    &lt;strong class="me-auto"&gt;&lt;span&gt;System Alert&lt;/span&gt;&lt;/strong&gt;
+    &lt;button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="toast-body"&gt;&lt;span&gt;Message content&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="toast-progress"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -415,7 +441,8 @@ boodoo.toast.info('New version 1.0.3 is now ready.');</code></pre>
 <li class="toc-2"><a href="#basic">Basic example</a></li>
 <li class="toc-2"><a href="#stacking">Stacking / container</a></li>
 <li class="toc-2"><a href="#variants">Color variants</a></li>
-<li class="toc-2"><a href="#js">JavaScript behavior</a></li></ul>
+<li class="toc-2"><a href="#js">JavaScript behavior</a></li>
+<li class="toc-2"><a href="#smart-progress">Smart Toast Progress Bar & Auto-Dismiss</a></li></ul>
     </div>
 </aside>
     </div>

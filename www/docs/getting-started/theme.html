@@ -270,6 +270,109 @@ boodoo.theme.toggle();</code></pre>
     <pre><code class="language-html">&lt;button class="btn btn-secondary" data-boodoo-toggle="theme"&gt;Toggle Theme&lt;/button&gt;</code></pre>
   </div>
 </section>
+
+<section class="docs-section">
+  <h2 id="">Interactive Theme Builder</h2>
+  <p>Customize primary colors, border radiuses, and base fonts in real time. Preview live components and export your custom CSS variables snippet:</p>
+
+  <div class="card p-4 shadow-sm border mb-4" id="themeBuilderApp">
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label for="tbPrimaryColor" class="form-label"><span>Primary Accent Color</span></label>
+        <div class="d-flex align-items-center gap-2">
+          <input type="color" class="form-control form-control-color" id="tbPrimaryColor" name="primaryColor" value="#7c3aed" title="Choose primary color">
+          <span class="font-monospace small" id="tbPrimaryHex"><span>#7c3aed</span></span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="tbRadius" class="form-label"><span>Border Radius</span></label>
+        <select class="form-select" id="tbRadius" name="borderRadius">
+          <option value="0.25rem"><span>Sharp (4px)</span></option>
+          <option value="0.5rem" selected><span>Rounded (8px)</span></option>
+          <option value="0.875rem"><span>Pill / Soft (14px)</span></option>
+          <option value="1.25rem"><span>Organic (20px)</span></option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="tbFont" class="form-label"><span>Body Typography</span></label>
+        <select class="form-select" id="tbFont" name="fontFamily">
+          <option value="Inter, sans-serif" selected><span>Inter (Clean Modern)</span></option>
+          <option value="system-ui, sans-serif"><span>System UI (Native OS)</span></option>
+          <option value="'JetBrains Mono', monospace"><span>JetBrains Mono (Developer)</span></option>
+          <option value="Georgia, serif"><span>Georgia (Editorial)</span></option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Live Preview Sandbox -->
+    <div class="p-4 rounded border mb-3" id="themeSandbox" style="background-color: var(--boodoo-body-bg);">
+      <h5 class="mb-3"><span>Live Component Preview</span></h5>
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button type="button" class="btn btn-primary" id="demoPrimaryBtn"><span>Primary Button</span></button>
+        <button type="button" class="btn btn-outline-primary" id="demoOutlineBtn"><span>Outline Button</span></button>
+        <button type="button" class="btn btn-soft-primary" id="demoSoftBtn"><span>Soft Accent</span></button>
+      </div>
+      <div class="card p-3" id="demoCard" style="max-width: 320px;">
+        <h6 class="card-title"><span>Interactive Card</span></h6>
+        <p class="card-text small text-muted"><span>Theme variables immediately update typography, border radii, and accent rings.</span></p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="themeCheck" name="themeSample" checked>
+          <label class="form-check-label" for="themeCheck"><span>Styled check control</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generated CSS Output -->
+    <h6><span>Export Generated CSS Custom Properties:</span></h6>
+    <div class="highlight position-relative">
+      <pre><code id="themeCssOutput" class="language-css">:root {
+  --boodoo-primary: #7c3aed;
+  --boodoo-border-radius: 0.5rem;
+  --boodoo-font-family-base: Inter, sans-serif;
+}</code></pre>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var colorInput = document.getElementById('tbPrimaryColor');
+      var hexLabel = document.getElementById('tbPrimaryHex');
+      var radiusInput = document.getElementById('tbRadius');
+      var fontInput = document.getElementById('tbFont');
+      var sandbox = document.getElementById('themeSandbox');
+      var cssOut = document.getElementById('themeCssOutput');
+
+      function updateTheme() {
+        if (!sandbox) return;
+        var color = colorInput.value;
+        var radius = radiusInput.value;
+        var font = fontInput.value;
+
+        if (hexLabel) hexLabel.textContent = color;
+
+        sandbox.style.setProperty('--boodoo-primary', color);
+        sandbox.style.setProperty('--boodoo-border-radius', radius);
+        sandbox.style.setProperty('--boodoo-font-family-base', font);
+        sandbox.style.fontFamily = font;
+
+        var btn = document.getElementById('demoPrimaryBtn');
+        if (btn) btn.style.backgroundColor = color;
+        var outlineBtn = document.getElementById('demoOutlineBtn');
+        if (outlineBtn) {
+          outlineBtn.style.color = color;
+          outlineBtn.style.borderColor = color;
+        }
+
+        var snippet = ':root {\n  --boodoo-primary: ' + color + ';\n  --boodoo-border-radius: ' + radius + ';\n  --boodoo-font-family-base: ' + font + ';\n}';
+        if (cssOut) cssOut.textContent = snippet;
+      }
+
+      if (colorInput) colorInput.addEventListener('input', updateTheme);
+      if (radiusInput) radiusInput.addEventListener('change', updateTheme);
+      if (fontInput) fontInput.addEventListener('change', updateTheme);
+    })();
+  </script>
+</section>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     

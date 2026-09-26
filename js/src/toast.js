@@ -37,6 +37,18 @@ export class Toast extends BaseComponent {
       el.classList.remove('showing');
       el.classList.add('show');
       this._isShown = true;
+
+      // Smart progress bar
+      if (this._config.autohide && this._config.progress !== false) {
+        let bar = el.querySelector('.toast-progress');
+        if (!bar) {
+          bar = document.createElement('div');
+          bar.className = 'toast-progress';
+          el.appendChild(bar);
+        }
+        bar.style.animationDuration = `${this._config.delay}ms`;
+      }
+
       triggerEvent(el, 'boodoo.shown.toast');
 
       if (this._config.autohide) {
@@ -44,6 +56,7 @@ export class Toast extends BaseComponent {
       }
     }, 10);
   }
+
 
   hide() {
     const el = this._element;

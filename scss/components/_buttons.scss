@@ -1,7 +1,9 @@
 // BOODOO BUTTONS
 // Button variants, sizes, states, groups, and loading/icon styles.
 
-.btn {
+.btn,
+button[role="button"],
+[data-boodoo-button] {
   // Button tokens
   --boodoo-btn-padding-y: #{$boodoo-input-btn-padding-y};
   --boodoo-btn-padding-x: #{$boodoo-input-btn-padding-x};
@@ -62,10 +64,12 @@
   }
 }
 
+
 // Variants
 @each $name, $color in $boodoo-theme-colors {
   @if $name != "light" and $name != "dark" {
-    .btn-#{$name} {
+    .btn-#{$name},
+    [data-boodoo-variant="#{$name}"] {
       @include button-variant(
         $color, $color, $boodoo-white,
         shift-color($color, -10%), shift-color($color, -10%),
@@ -73,7 +77,8 @@
       );
     }
   } @else {
-    .btn-#{$name} {
+    .btn-#{$name},
+    [data-boodoo-variant="#{$name}"] {
       @include button-variant(
         $color, $color,
         if($name == "light", $boodoo-dark, $boodoo-white),
@@ -86,7 +91,8 @@
 
 // Outline variants
 @each $name, $color in $boodoo-theme-colors {
-  .btn-outline-#{$name} {
+  .btn-outline-#{$name},
+  [data-boodoo-variant="outline-#{$name}"] {
     @include button-outline-variant(
       $color,
       $color,
@@ -98,7 +104,8 @@
 
 // Soft variants (Material-toned subtle fills)
 @each $name, $color in $boodoo-theme-colors {
-  .btn-soft-#{$name} {
+  .btn-soft-#{$name},
+  [data-boodoo-variant="soft-#{$name}"] {
     --boodoo-btn-bg: #{tint-color($color, 88%)};
     --boodoo-btn-border: transparent;
     --boodoo-btn-color: #{$color};
@@ -127,7 +134,8 @@
 }
 
 // Link buttons
-.btn-link {
+.btn-link,
+[data-boodoo-variant="link"] {
   --boodoo-btn-color: #{$boodoo-link-color};
   --boodoo-btn-bg: transparent;
   --boodoo-btn-border: transparent;
@@ -144,20 +152,24 @@
 }
 
 // Sizes
-.btn-lg {
+.btn-lg,
+[data-size="lg"] {
   @include button-size($boodoo-input-btn-padding-y-lg, $boodoo-input-btn-padding-x-lg, $boodoo-input-btn-font-size-lg, $boodoo-border-radius-lg);
 }
 
-.btn-sm {
+.btn-sm,
+[data-size="sm"] {
   @include button-size($boodoo-input-btn-padding-y-sm, $boodoo-input-btn-padding-x-sm, $boodoo-input-btn-font-size-sm, $boodoo-border-radius-sm);
   min-height: auto;
 }
 
 // Block buttons
-.btn-block {
+.btn-block,
+[data-size="block"] {
   display: block;
   width: 100%;
 }
+
 
 // Loading button
 .btn-loading {
@@ -270,3 +282,63 @@
     }
   }
 }
+
+// ---------------------------------------------------------------------
+// Floating Action Buttons (FAB - Material Design inspired)
+// ---------------------------------------------------------------------
+.btn-fab {
+  position: fixed;
+  z-index: var(--boodoo-zindex-fixed, 1030);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.96);
+  }
+
+  &.fab-bottom-end,
+  &.fab-bottom-right {
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+  &.fab-bottom-start,
+  &.fab-bottom-left {
+    bottom: 2rem;
+    left: 2rem;
+  }
+
+  &.fab-top-end,
+  &.fab-top-right {
+    top: 2rem;
+    right: 2rem;
+  }
+
+  &.fab-sm {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1rem;
+  }
+
+  &.fab-extended {
+    width: auto;
+    border-radius: 9999px;
+    padding: 0 1.25rem;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: var(--boodoo-font-weight-medium, 500);
+  }
+}

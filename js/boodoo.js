@@ -29,6 +29,7 @@ import { DataTable } from './data-table.js';
 import { Sidebar } from './sidebar.js';
 import { ContextMenu } from './context-menu.js';
 import { ChipInput } from './chip-input.js';
+import { Stepper } from './stepper.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance) => {
@@ -73,8 +74,10 @@ const boodoo = {
   Sidebar,
   ContextMenu,
   ChipInput,
+  Stepper,
   registerCustomElements,
 };
+
 
 // Programmatic Toast API: boodoo.toast(message, options) / boodoo.toast.show() / .success() / etc.
 function createToast(message, options = {}) {
@@ -176,7 +179,7 @@ if (typeof document === 'undefined') {
 
 // Public default export
 export default boodoo;
-export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, BottomSheet, registerCustomElements };
+export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, BottomSheet, Stepper, registerCustomElements };
 
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;

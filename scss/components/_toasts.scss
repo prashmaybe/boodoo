@@ -95,3 +95,31 @@
     }
   }
 }
+
+// ---------------------------------------------------------------------
+// Smart Toast Progress Bar & Auto-Dismiss Indicators
+// ---------------------------------------------------------------------
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: rgba(var(--boodoo-primary-rgb), 0.7);
+  transform-origin: left;
+  animation: boodoo-toast-countdown linear forwards;
+}
+
+@keyframes boodoo-toast-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.toast {
+  position: relative;
+  overflow: hidden;
+}
