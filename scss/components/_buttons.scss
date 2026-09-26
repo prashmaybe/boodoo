@@ -55,7 +55,7 @@
   &:disabled,
   &.disabled,
   fieldset:disabled & {
-    pointer-events: none;
+    cursor: not-allowed;
     opacity: $boodoo-btn-disabled-opacity;
     box-shadow: none;
     transform: none;

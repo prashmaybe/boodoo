@@ -1,4 +1,4 @@
-// BOODOO FORMS — Input Group
+// BOODOO FORMS - Input Group
 // Prepended / appended input groups.
 
 .input-group {
@@ -46,29 +46,29 @@
     border-radius: $boodoo-border-radius;
   }
 
-  // Sizing
-  .form-control:not(:focus):not(:disabled),
-  .form-select:not(:focus):not(:disabled) {
-    &:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-    &:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  // Border-radius resets for grouped children
+  // Middle children (neither first nor last) - strip all radius
+  > .form-control:not(:first-child):not(:last-child),
+  > .form-select:not(:first-child):not(:last-child),
+  > .input-group-text:not(:first-child):not(:last-child),
+  > .btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
   }
 
-  .input-group-text:first-child {
+  // First child - strip right radius
+  > .form-control:first-child:not(:last-child),
+  > .form-select:first-child:not(:last-child),
+  > .input-group-text:first-child:not(:last-child),
+  > .btn:first-child:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .input-group-text:last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .btn:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .btn:last-child {
+  // Last child - strip left radius
+  > .form-control:last-child:not(:first-child),
+  > .form-select:last-child:not(:first-child),
+  > .input-group-text:last-child:not(:first-child),
+  > .btn:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -83,12 +83,24 @@
   border-radius: $boodoo-border-radius-lg;
 }
 
+.input-group-lg {
+  > :not(:first-child):not(:last-child) { border-radius: 0; }
+  > :first-child:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+  > :last-child:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+}
+
 .input-group-sm > .form-control,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text {
   padding: $boodoo-input-btn-padding-y-sm $boodoo-input-btn-padding-x-sm;
   font-size: $boodoo-input-btn-font-size-sm;
   border-radius: $boodoo-border-radius-sm;
+}
+
+.input-group-sm {
+  > :not(:first-child):not(:last-child) { border-radius: 0; }
+  > :first-child:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+  > :last-child:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 }
 
 // Flush variant (no visual join)

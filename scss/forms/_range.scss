@@ -78,7 +78,7 @@
   }
 
   &:disabled {
-    pointer-events: none;
+    cursor: not-allowed;
 
     &::-webkit-slider-thumb {
       background-color: var(--boodoo-body-secondary-color);

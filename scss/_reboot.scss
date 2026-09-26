@@ -296,7 +296,7 @@ button:disabled,
 [type="button"]:disabled,
 [type="reset"]:disabled,
 [type="submit"]:disabled {
-  cursor: default;
+  cursor: not-allowed;
 }
 
 // 1. Remove the border in Firefox and Safari.

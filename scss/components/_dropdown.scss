@@ -1,7 +1,11 @@
 // BOODOO DROPDOWN
 // Dropdown menus with popper-style positioning support (JS-driven).
 
-.dropdown {
+// Direction wrappers
+.dropdown,
+.dropup,
+.dropend,
+.dropstart {
   position: relative;
 }
 
@@ -9,7 +13,7 @@
   white-space: nowrap;
   text-decoration: none;
 
-  // Caret
+  // Caret (default down)
   &::after {
     display: inline-block;
     margin-left: 0.5em;
@@ -26,6 +30,100 @@
 .dropdown-toggle-split {
   &::after {
     margin-left: 0;
+  }
+}
+
+// Dropup
+.dropup {
+  .dropdown-toggle {
+    &::after {
+      @include caret(up);
+    }
+  }
+
+  .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: var(--boodoo-dropdown-spacer);
+
+    &[data-boodoo-popper] {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: var(--boodoo-dropdown-spacer);
+    }
+
+    &.show {
+      animation: boodoo-fade-in 0.15s ease-out, boodoo-slide-up 0.15s ease-out;
+    }
+  }
+}
+
+// Dropend
+.dropend {
+  .dropdown-toggle {
+    &::after {
+      vertical-align: 0;
+      @include caret(end);
+    }
+  }
+
+  .dropdown-menu {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: var(--boodoo-dropdown-spacer);
+
+    &[data-boodoo-popper] {
+      top: 0;
+      right: auto;
+      left: 100%;
+      margin-top: 0;
+      margin-left: var(--boodoo-dropdown-spacer);
+    }
+
+    &.show {
+      animation: boodoo-fade-in 0.15s ease-out, boodoo-slide-right 0.15s ease-out;
+    }
+  }
+}
+
+// Dropstart
+.dropstart {
+  .dropdown-toggle {
+    &::before {
+      display: inline-block;
+      margin-right: 0.5em;
+      vertical-align: 0;
+      content: "";
+      @include caret(start);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: var(--boodoo-dropdown-spacer);
+
+    &[data-boodoo-popper] {
+      top: 0;
+      right: 100%;
+      left: auto;
+      margin-top: 0;
+      margin-right: var(--boodoo-dropdown-spacer);
+    }
+
+    &.show {
+      animation: boodoo-fade-in 0.15s ease-out, boodoo-slide-left 0.15s ease-out;
+    }
   }
 }
 
@@ -59,6 +157,29 @@
     top: 100%;
     left: 0;
     margin-top: var(--boodoo-dropdown-spacer);
+  }
+
+  .dropup > &[data-boodoo-popper] {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: var(--boodoo-dropdown-spacer);
+  }
+
+  .dropend > &[data-boodoo-popper] {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: var(--boodoo-dropdown-spacer);
+  }
+
+  .dropstart > &[data-boodoo-popper] {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: var(--boodoo-dropdown-spacer);
   }
 
   &.show {

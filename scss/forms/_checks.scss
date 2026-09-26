@@ -81,7 +81,7 @@
   }
 
   &:disabled {
-    pointer-events: none;
+    cursor: not-allowed;
     filter: none;
     opacity: 0.5;
   }
@@ -89,7 +89,7 @@
 
 .form-check-input:disabled ~ .form-check-label,
 .form-check-input[disabled] ~ .form-check-label {
-  cursor: default;
+  cursor: not-allowed;
   opacity: 0.5;
 }
 
@@ -137,7 +137,7 @@
   &[disabled],
   &:disabled {
     + .btn {
-      pointer-events: none;
+      cursor: not-allowed;
       filter: none;
       opacity: 0.65;
     }

@@ -1,15 +1,15 @@
 {
-  "version": "1.0.4",
-  "generatedAt": "2026-09-26T04:51:52.550Z",
+  "version": "1.0.7",
+  "generatedAt": "2026-09-26T06:54:06.656Z",
   "cdnBase": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives",
-  "frameworkZip": "boodoo-v1.0.4.zip",
-  "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.0.4.zip",
-  "frameworkZipSizeKb": 401,
-  "frameworkZipBytes": 410137,
+  "frameworkZip": "boodoo-v1.0.7.zip",
+  "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.0.7.zip",
+  "frameworkZipSizeKb": 402,
+  "frameworkZipBytes": 411647,
   "latestZip": "boodoo-latest.zip",
   "latestZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip",
-  "examplesZip": "boodoo-examples-v1.0.4.zip",
-  "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.0.4.zip",
+  "examplesZip": "boodoo-examples-v1.0.7.zip",
+  "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.0.7.zip",
   "examplesZipSizeKb": 38,
   "starters": [
     {

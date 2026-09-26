@@ -51,6 +51,7 @@
 
   // Disabled
   &:disabled {
+    cursor: not-allowed;
     background-color: $boodoo-form-control-disabled-bg;
     opacity: 1;
   }
