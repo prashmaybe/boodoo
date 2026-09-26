@@ -257,7 +257,8 @@
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;!-- Trigger button --&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Trigger button --&gt;
 &lt;button type="button" class="btn btn-primary" data-boodoo-toggle="bottom-sheet" data-boodoo-target="#demoSheet"&gt;
   &lt;span&gt;Open Bottom Sheet&lt;/span&gt;
 &lt;/button&gt;
@@ -280,6 +281,7 @@
     &lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 
   <!-- Interactive Demo Sheets mounted on page -->
   <div class="bottom-sheet" id="demoSheet" tabindex="-1" aria-labelledby="demoSheetTitle">
@@ -334,12 +336,14 @@
 <section class="docs-section">
   <h2 id=""><span>JavaScript API</span></h2>
   <p>Control the bottom sheet programmatically:</p>
-  <pre><code class="language-javascript">const sheetEl = document.getElementById('demoSheet');
+  <div class="highlight">
+    <pre><code class="language-javascript">const sheetEl = document.getElementById('demoSheet');
 const sheet = boodoo.BottomSheet.getOrCreateInstance(sheetEl);
 
 sheet.show();
 sheet.hide();
 sheet.toggle();</code></pre>
+  </div>
 </section>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">

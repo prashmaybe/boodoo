@@ -40,6 +40,37 @@ order: 2
     </tbody>
   </table>
 </div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Handle&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+      &lt;td&gt;Mark&lt;/td&gt;
+      &lt;td&gt;Otto&lt;/td&gt;
+      &lt;td&gt;@mdo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+      &lt;td&gt;Jacob&lt;/td&gt;
+      &lt;td&gt;Thornton&lt;/td&gt;
+      &lt;td&gt;@fat&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;Larry the Bird&lt;/td&gt;
+      &lt;td&gt;@twitter&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
 
 <h2 id="variants">Variants</h2>
 <p>Use contextual classes to color tables, table rows, or individual cells.</p>
@@ -81,6 +112,44 @@ order: 2
     </tbody>
   </table>
 </div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;Class&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Heading&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Heading&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;Default&lt;/th&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;table-primary&quot;&gt;
+      &lt;th scope=&quot;row&quot;&gt;Primary&lt;/th&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;table-success&quot;&gt;
+      &lt;th scope=&quot;row&quot;&gt;Success&lt;/th&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;table-danger&quot;&gt;
+      &lt;th scope=&quot;row&quot;&gt;Danger&lt;/th&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;table-warning&quot;&gt;
+      &lt;th scope=&quot;row&quot;&gt;Warning&lt;/th&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+      &lt;td&gt;Cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
 
 <h2 id="striped">Striped rows</h2>
 <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
@@ -112,6 +181,34 @@ order: 2
     </tbody>
   </table>
 </div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table table-striped&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+      &lt;td&gt;Mark&lt;/td&gt;
+      &lt;td&gt;Otto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+      &lt;td&gt;Jacob&lt;/td&gt;
+      &lt;td&gt;Thornton&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+      &lt;td&gt;Larry&lt;/td&gt;
+      &lt;td&gt;the Bird&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
 
 <h2 id="hover">Hoverable rows</h2>
 <p>Add <code>.table-hover</code> to enable a hover state on table rows.</p>
@@ -142,6 +239,33 @@ order: 2
     </tbody>
   </table>
 </div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table table-hover&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+      &lt;td&gt;Mark&lt;/td&gt;
+      &lt;td&gt;Otto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+      &lt;td&gt;Jacob&lt;/td&gt;
+      &lt;td&gt;Thornton&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;Larry the Bird&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
 
 <h2 id="bordered">Bordered tables</h2>
 <div class="bd-example">
@@ -166,6 +290,29 @@ order: 2
       </tr>
     </tbody>
   </table>
+</div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table table-bordered&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+      &lt;td&gt;Mark&lt;/td&gt;
+      &lt;td&gt;Otto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+      &lt;td&gt;Jacob&lt;/td&gt;
+      &lt;td&gt;Thornton&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
 </div>
 
 <h2 id="small">Small tables</h2>
@@ -192,6 +339,29 @@ order: 2
       </tr>
     </tbody>
   </table>
+</div>
+<div class="highlight">
+  <pre><code>&lt;table class=&quot;table table-sm table-striped&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+      &lt;td&gt;Mark&lt;/td&gt;
+      &lt;td&gt;Otto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+      &lt;td&gt;Jacob&lt;/td&gt;
+      &lt;td&gt;Thornton&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
 </div>
 
 <h2 id="responsive">Responsive tables</h2>
@@ -233,6 +403,43 @@ order: 2
       </tbody>
     </table>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;table-responsive&quot;&gt;
+  &lt;table class=&quot;table&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+        &lt;th&gt;Heading&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th&gt;1&lt;/th&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;2&lt;/th&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+        &lt;td&gt;Cell&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
 </div>
 <p>Responsive tables can also be limited to a specific breakpoint with classes like <code>.table-responsive-md</code>.
 </p>

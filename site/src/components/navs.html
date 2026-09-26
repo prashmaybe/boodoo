@@ -32,6 +32,13 @@ order: 13
     <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
   </ul>
 </div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;nav nav-pills&quot;&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot;&gt;Disabled&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
 
 <h2 id="soft">Soft pills</h2>
 <div class="bd-example">
@@ -39,6 +46,12 @@ order: 13
     <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
     <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
   </ul>
+</div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;nav nav-pills-soft&quot;&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </div>
 
 <h2 id="tabs">Tabs</h2>
@@ -71,6 +84,13 @@ order: 13
     <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
   </ul>
 </div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;nav nav-underline&quot;&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
 
 <h2 id="vertical">Vertical</h2>
 <p>Stack your navigation by changing the flex direction with <code>.nav-vertical</code> (or the <code>flex-column</code>
@@ -81,6 +101,13 @@ order: 13
     <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
     <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
   </ul>
+</div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;nav nav-vertical nav-pills flex-column demo-nav-vertical&quot;&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </div>
 
 <h2 id="tabs-js">Tabs with JavaScript</h2>
@@ -97,4 +124,16 @@ order: 13
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"><p class="mb-0">Home tab content.</p></div>
     <div class="tab-pane fade d-none" id="pills-profile" role="tabpanel"><p class="mb-0">Profile tab content.</p></div>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;nav nav-pills mb-2&quot; role=&quot;tablist&quot;&gt;
+  &lt;button class=&quot;nav-link active&quot; id=&quot;pills-home-tab&quot; data-boodoo-toggle=&quot;pill&quot; data-boodoo-target=&quot;#pills-home&quot;
+    type=&quot;button&quot; role=&quot;tab&quot;&gt;Home&lt;/button&gt;
+  &lt;button class=&quot;nav-link&quot; id=&quot;pills-profile-tab&quot; data-boodoo-toggle=&quot;pill&quot; data-boodoo-target=&quot;#pills-profile&quot;
+    type=&quot;button&quot; role=&quot;tab&quot;&gt;Profile&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tab-content pt-1&quot;&gt;
+  &lt;div class=&quot;tab-pane fade show active&quot; id=&quot;pills-home&quot; role=&quot;tabpanel&quot;&gt;&lt;p class=&quot;mb-0&quot;&gt;Home tab content.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&quot;tab-pane fade d-none&quot; id=&quot;pills-profile&quot; role=&quot;tabpanel&quot;&gt;&lt;p class=&quot;mb-0&quot;&gt;Profile tab content.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>

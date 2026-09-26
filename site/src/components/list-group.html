@@ -30,6 +30,13 @@ order: 11
     <a href="#" class="list-group-item list-group-item-action disabled">A disabled link item</a>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;list-group demo-card-md&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action active&quot; aria-current=&quot;true&quot;&gt;The current link item&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action&quot;&gt;A second link item&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action disabled&quot;&gt;A disabled link item&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="flush">Flush</h2>
 <p>Add <code>.list-group-flush</code> to remove some borders and rounded corners.</p>
@@ -39,6 +46,13 @@ order: 11
     <li class="list-group-item">A second item</li>
     <li class="list-group-item">A third item</li>
   </ul>
+</div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;list-group list-group-flush demo-card-md&quot;&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;An item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;A second item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;A third item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </div>
 
 <h2 id="numbered">Numbered</h2>
@@ -50,6 +64,13 @@ order: 11
     <li class="list-group-item">Morbi leo risus</li>
   </ol>
 </div>
+<div class="highlight">
+  <pre><code>&lt;ol class=&quot;list-group list-group-numbered demo-card-md&quot;&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;Cras justo odio&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;Dapibus ac facilisis in&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;Morbi leo risus&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
 
 <h2 id="horizontal">Horizontal</h2>
 <p>Add <code>.list-group-horizontal</code> to change the layout of list group items from vertical to horizontal across all breakpoints, or with a breakpoint suffix like <code>.list-group-horizontal-sm</code>.</p>
@@ -59,6 +80,13 @@ order: 11
     <li class="list-group-item">A second item</li>
     <li class="list-group-item">A third item</li>
   </ul>
+</div>
+<div class="highlight">
+  <pre><code>&lt;ul class=&quot;list-group list-group-horizontal-md demo-card-lg&quot;&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;An item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;A second item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item&quot;&gt;A third item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </div>
 
 <h2 id="contextual">Contextual classes</h2>
@@ -70,6 +98,15 @@ order: 11
     <li class="list-group-item list-group-item-warning">A simple warning list group item</li>
     <li class="list-group-item list-group-item-info">A simple info list group item</li>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;list-group demo-card-md&quot;&gt;
+  &lt;li class=&quot;list-group-item list-group-item-primary&quot;&gt;A simple primary list group item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item list-group-item-success&quot;&gt;A simple success list group item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item list-group-item-danger&quot;&gt;A simple danger list group item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item list-group-item-warning&quot;&gt;A simple warning list group item&lt;/li&gt;
+  &lt;li class=&quot;list-group-item list-group-item-info&quot;&gt;A simple info list group item&lt;/li&gt;
+&lt;/div&gt;</code></pre>
 </div>
 
 <h2 id="custom">Custom content</h2>
@@ -85,6 +122,18 @@ order: 11
     </a>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;list-group demo-card-md&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action flex-column align-items-start active&quot;&gt;
+    &lt;div class=&quot;d-flex w-100 justify-content-between&quot;&gt;
+      &lt;h5 class=&quot;mb-1&quot;&gt;List group item heading&lt;/h5&gt;
+      &lt;small&gt;3 days ago&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;Some placeholder content in a paragraph.&lt;/p&gt;
+    &lt;small&gt;And some small print.&lt;/small&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="light">Light variant</h2>
 <p>Use <code>.list-group-light</code> for a borderless item list with rounded hover states (handy in sidebars).</p>
@@ -94,4 +143,11 @@ order: 11
     <a href="#" class="list-group-item list-group-item-action">Orders</a>
     <a href="#" class="list-group-item list-group-item-action">Customers</a>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;list-group list-group-light demo-sidebar-list&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action active&quot;&gt;Dashboard&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action&quot;&gt;Orders&lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action&quot;&gt;Customers&lt;/a&gt;
+&lt;/div&gt;</code></pre>
 </div>

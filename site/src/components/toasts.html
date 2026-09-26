@@ -55,6 +55,20 @@ order: 22
     </div>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;toast-container top-0 end-0 position-absolute&quot;&gt;
+  &lt;div class=&quot;toast show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+    &lt;div class=&quot;toast-header&quot;&gt;&lt;strong class=&quot;me-auto&quot;&gt;Notification&lt;/strong&gt;&lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
+        data-boodoo-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;&lt;/div&gt;
+    &lt;div class=&quot;toast-body&quot;&gt;&lt;span&gt;Some quick example text to build on the toast.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toast show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+    &lt;div class=&quot;toast-header&quot;&gt;&lt;strong class=&quot;me-auto&quot;&gt;Second toast&lt;/strong&gt;&lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
+        data-boodoo-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;&lt;/div&gt;
+    &lt;div class=&quot;toast-body&quot;&gt;&lt;span&gt;See, another stacked toast.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="variants">Color variants</h2>
 <div class="bd-example">
@@ -67,6 +81,17 @@ order: 22
   <div class="toast toast-danger show" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body"><span>Danger toast</span></div>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;toast toast-primary show mb-2&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+  &lt;div class=&quot;toast-body&quot;&gt;&lt;span&gt;Primary toast&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;toast toast-success show mb-2&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+  &lt;div class=&quot;toast-body&quot;&gt;&lt;span&gt;Success toast&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;toast toast-danger show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+  &lt;div class=&quot;toast-body&quot;&gt;&lt;span&gt;Danger toast&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>
 
 <h2 id="js">JavaScript behavior</h2>
@@ -104,4 +129,26 @@ boodoo.toast.info('New version 1.0.3 is now ready.');</code></pre>
       boodoo.toast.info('A new background worker update is active.');
     });
   </script>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;d-flex flex-wrap gap-2&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; id=&quot;toastProgBtn&quot; type=&quot;button&quot;&gt;&lt;span&gt;Show Default Toast&lt;/span&gt;&lt;/button&gt;
+  &lt;button class=&quot;btn btn-success&quot; id=&quot;toastSuccessBtn&quot; type=&quot;button&quot;&gt;&lt;span&gt;Success Toast&lt;/span&gt;&lt;/button&gt;
+  &lt;button class=&quot;btn btn-danger&quot; id=&quot;toastDangerBtn&quot; type=&quot;button&quot;&gt;&lt;span&gt;Danger Toast&lt;/span&gt;&lt;/button&gt;
+  &lt;button class=&quot;btn btn-info text-white&quot; id=&quot;toastInfoBtn&quot; type=&quot;button&quot;&gt;&lt;span&gt;Info Toast&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById(&#39;toastProgBtn&#39;).addEventListener(&#39;click&#39;, function () {
+    boodoo.toast(&#39;Hello from boodoo! This toast was created with one line of JS.&#39;, { title: &#39;Notification&#39; });
+  });
+  document.getElementById(&#39;toastSuccessBtn&#39;).addEventListener(&#39;click&#39;, function () {
+    boodoo.toast.success(&#39;Project deployed successfully to edge CDN!&#39;);
+  });
+  document.getElementById(&#39;toastDangerBtn&#39;).addEventListener(&#39;click&#39;, function () {
+    boodoo.toast.danger(&#39;Failed to sync authentication token.&#39;);
+  });
+  document.getElementById(&#39;toastInfoBtn&#39;).addEventListener(&#39;click&#39;, function () {
+    boodoo.toast.info(&#39;A new background worker update is active.&#39;);
+  });
+&lt;/script&gt;</code></pre>
 </div>

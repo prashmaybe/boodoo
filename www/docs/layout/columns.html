@@ -260,6 +260,20 @@
     <div class="col-4"><span>One of two columns</span></div>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row justify-content-start&quot;&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row justify-content-center mt-2&quot;&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row justify-content-end mt-2&quot;&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;One of two columns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="vertical">Vertical alignment</h2>
 <div class="bd-example demo-min-h200">
@@ -274,6 +288,18 @@
     <div class="col"><span>One of three columns</span></div>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row align-items-start&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row align-items-center mt-2&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;One of three columns&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="offsetting">Offsetting columns</h2>
 <p>Move columns to the right using <code>.offset-md-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns.</p>
@@ -287,6 +313,16 @@
     <div class="col-md-3 offset-md-3"><span>.col-md-3 .offset-md-3</span></div>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;&lt;span&gt;.col-md-4&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 offset-md-4&quot;&gt;&lt;span&gt;.col-md-4 .offset-md-4&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row mt-2&quot;&gt;
+  &lt;div class=&quot;col-md-3 offset-md-3&quot;&gt;&lt;span&gt;.col-md-3 .offset-md-3&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-3 offset-md-3&quot;&gt;&lt;span&gt;.col-md-3 .offset-md-3&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="ordering">Ordering</h2>
 <p>Use <code>.order-*</code> classes for controlling the <strong>visual order</strong> of your content.</p>
@@ -296,6 +332,13 @@
     <div class="col"><span>Second in DOM, unordered</span></div>
     <div class="col order-first"><span>Third in DOM, ordered first</span></div>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col order-last&quot;&gt;&lt;span&gt;First in DOM, ordered last&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;Second in DOM, unordered&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col order-first&quot;&gt;&lt;span&gt;Third in DOM, ordered first&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>
 
 <h2 id="auto-layout">Auto-layout columns</h2>
@@ -312,6 +355,18 @@
     <div class="col-4"><span>col-4</span></div>
   </div>
 </div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;col&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;col&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;col&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;&lt;span&gt;col&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row mt-2&quot;&gt;
+  &lt;div class=&quot;col-8&quot;&gt;&lt;span&gt;col-8&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-4&quot;&gt;&lt;span&gt;col-4&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="gutters">Column gutters</h2>
 <p>Gutters exist between columns as horizontal padding. Use the gutter modifier classes <code>g-*</code>, <code>gx-*</code> and <code>gy-*</code> to control the gutter widths.</p>
@@ -324,6 +379,16 @@
     <div class="col-6"><span>.col-6 .g-4</span></div>
     <div class="col-6"><span>.col-6 .g-4</span></div>
   </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;row g-0&quot;&gt;
+  &lt;div class=&quot;col-6&quot;&gt;&lt;span&gt;.col-6&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-6&quot;&gt;&lt;span&gt;.col-6&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row g-4 mt-2&quot;&gt;
+  &lt;div class=&quot;col-6&quot;&gt;&lt;span&gt;.col-6 .g-4&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-6&quot;&gt;&lt;span&gt;.col-6 .g-4&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
