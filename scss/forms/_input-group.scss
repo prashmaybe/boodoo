@@ -46,38 +46,45 @@
     border-radius: $boodoo-border-radius;
   }
 
-  // Border-radius resets for grouped children
-  // Middle children (neither first nor last) - strip all radius
+  // Negative margin-left on sibling children to cleanly collapse adjacent 1px borders
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -$boodoo-input-btn-border-width;
+  }
+
+  // Border-radius resets for grouped children:
+  // 1. Not the first child -> strip left corners
+  > :not(:first-child) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+  // 2. Not the last child -> strip right corners
+  > :not(:last-child) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  // 3. Middle children (neither first nor last) -> strip all corners completely
+  > :not(:first-child):not(:last-child),
   > .form-control:not(:first-child):not(:last-child),
   > .form-select:not(:first-child):not(:last-child),
   > .input-group-text:not(:first-child):not(:last-child),
-  > .btn:not(:first-child):not(:last-child) {
-    border-radius: 0;
-  }
-
-  // Explicit reset: input sandwiched between two .input-group-text elements
-  // (e.g. $ | input | .00 pattern) — ensures middle .form-control has no radius
+  > .btn:not(:first-child):not(:last-child),
   > .input-group-text ~ .form-control:not(:last-child),
   > .input-group-text ~ .form-select:not(:last-child) {
-    border-radius: 0;
+    border-radius: 0 !important;
   }
 
-  // First child - strip right radius
-  > .form-control:first-child:not(:last-child),
-  > .form-select:first-child:not(:last-child),
-  > .input-group-text:first-child:not(:last-child),
-  > .btn:first-child:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  // 4. Form floating children within input-group
+  > .form-floating:not(:first-child) > .form-control,
+  > .form-floating:not(:first-child) > .form-select {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
   }
-
-  // Last child - strip left radius
-  > .form-control:last-child:not(:first-child),
-  > .form-select:last-child:not(:first-child),
-  > .input-group-text:last-child:not(:first-child),
-  > .btn:last-child:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  > .form-floating:not(:last-child) > .form-control,
+  > .form-floating:not(:last-child) > .form-select {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 }
 
@@ -91,9 +98,9 @@
 }
 
 .input-group-lg {
-  > :not(:first-child):not(:last-child) { border-radius: 0; }
-  > :first-child:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-  > :last-child:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  > :not(:first-child) { border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; }
+  > :not(:last-child) { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  > :not(:first-child):not(:last-child) { border-radius: 0 !important; }
 }
 
 .input-group-sm > .form-control,
@@ -105,9 +112,9 @@
 }
 
 .input-group-sm {
-  > :not(:first-child):not(:last-child) { border-radius: 0; }
-  > :first-child:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-  > :last-child:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  > :not(:first-child) { border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; }
+  > :not(:last-child) { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+  > :not(:first-child):not(:last-child) { border-radius: 0 !important; }
 }
 
 // Flush variant (no visual join)
