@@ -49,25 +49,36 @@
 - [Form Control](https://boodoo.dihadiwala.com/docs/forms/form-control.html): Text inputs, textareas, file inputs, and sizing.
 - [Select](https://boodoo.dihadiwala.com/docs/forms/select.html): Custom styled native `<select>` controls.
 - [Checks & Radios](https://boodoo.dihadiwala.com/docs/forms/checks.html): Custom checkboxes, radio buttons, and toggle switches.
-- [Range](https://boodoo.dihadiwala.com/docs/forms/range.html): Custom range sliders.
+- [Range](https://boodoo.dihadiwala.com/docs/forms/range.html): Custom range sliders and dual-thumb range sliders.
 - [Input Group](https://boodoo.dihadiwala.com/docs/forms/input-group.html): Prepend and append text, buttons, or dropdowns to inputs.
 - [Floating Labels](https://boodoo.dihadiwala.com/docs/forms/floating-labels.html): Animated floating text labels over inputs.
+- [OTP & PIN Input](https://boodoo.dihadiwala.com/docs/forms/otp.html): Dedicated digit input boxes with auto-advance and paste splitting.
+- [Dropzone](https://boodoo.dihadiwala.com/docs/forms/dropzone.html): Drag-and-drop file upload containers, file list items, and upload progress.
+- [Pickers (Color & Date)](https://boodoo.dihadiwala.com/docs/forms/pickers.html): Enhanced color picker wrappers with hex badges and date/time groups.
 - [Validation](https://boodoo.dihadiwala.com/docs/forms/validation.html): Server-side and client-side form validation feedback.
 
 ### UI Components
 - [Accordion](https://boodoo.dihadiwala.com/docs/components/accordion.html): Collapsible text panels.
 - [Alerts](https://boodoo.dihadiwala.com/docs/components/alerts.html): Contextual notification banners.
 - [Avatar](https://boodoo.dihadiwala.com/docs/components/avatar.html): User profile images and placeholder badges.
-- [Badge](https://boodoo.dihadiwala.com/docs/components/badge.html): Small count and labeling indicators.
+- [Badge](https://boodoo.dihadiwala.com/docs/components/badge.html): Small count, notification dot, and labeling indicators.
+- [Bottom Sheet](https://boodoo.dihadiwala.com/docs/components/bottom-sheet.html): Mobile-first touch-draggable drawer with physics.
 - [Breadcrumb](https://boodoo.dihadiwala.com/docs/components/breadcrumb.html): Hierarchy navigation trails.
 - [Buttons](https://boodoo.dihadiwala.com/docs/components/buttons.html): Button variants, sizes, states, and outlines.
-- [Button Group](https://boodoo.dihadiwala.com/docs/components/button-group.html): Grouped button toolbars.
+- [Button Group](https://boodoo.dihadiwala.com/docs/components/button-group.html): Grouped button toolbars and split buttons.
 - [Card](https://boodoo.dihadiwala.com/docs/components/card.html): Flexible content containers with headers, footers, and images.
 - [Carousel](https://boodoo.dihadiwala.com/docs/components/carousel.html): Image and content slideshow component.
+- [Chips & Tag Input](https://boodoo.dihadiwala.com/docs/components/chip.html): Compact removable pills and interactive dynamic tag input containers.
 - [Collapse](https://boodoo.dihadiwala.com/docs/components/collapse.html): Toggle visibility of content blocks.
+- [Command Palette](https://boodoo.dihadiwala.com/docs/components/command-palette.html): Global Spotlight-style fuzzy search and keyboard action runner.
+- [Context Menu](https://boodoo.dihadiwala.com/docs/components/context-menu.html): Right-click floating menu with collision protection and shortcuts.
+- [Data Table](https://boodoo.dihadiwala.com/docs/components/data-table.html): Sortable columns, select-all checkboxes, expandable details, and dense sizing.
 - [Dropdowns](https://boodoo.dihadiwala.com/docs/components/dropdowns.html): Contextual menu overlays.
+- [Empty State](https://boodoo.dihadiwala.com/docs/components/empty-state.html): Placeholders for zero-data screens, 404s, and search misses.
+- [Kbd](https://boodoo.dihadiwala.com/docs/components/kbd.html): Tactile 3D shortcut keycaps and key combinations.
 - [List Group](https://boodoo.dihadiwala.com/docs/components/list-group.html): Flexible list item containers.
 - [Modal](https://boodoo.dihadiwala.com/docs/components/modal.html): Dialog overlays and popups.
+- [Native Components](https://boodoo.dihadiwala.com/docs/components/native.html): Operating-system specific platform tokens (Fluent, macOS, HIG, Material).
 - [Navs & Tabs](https://boodoo.dihadiwala.com/docs/components/navs.html): Navigation tabs, pills, and tabbed content panes.
 - [Navbar](https://boodoo.dihadiwala.com/docs/components/navbar.html): Responsive header navigation bars.
 - [Offcanvas](https://boodoo.dihadiwala.com/docs/components/offcanvas.html): Slide-over sidebars for mobile navigation and filters.
@@ -75,10 +86,17 @@
 - [Placeholders](https://boodoo.dihadiwala.com/docs/components/placeholder.html): Skeleton loading indicators.
 - [Popovers](https://boodoo.dihadiwala.com/docs/components/popovers.html): Rich content tooltips.
 - [Progress](https://boodoo.dihadiwala.com/docs/components/progress.html): Progress bars and stacked progress indicators.
+- [Rating](https://boodoo.dihadiwala.com/docs/components/rating.html): Interactive and read-only star rating controls.
 - [Scrollspy](https://boodoo.dihadiwala.com/docs/components/scrollspy.html): Automatically update nav links based on scroll position.
+- [Segmented Control](https://boodoo.dihadiwala.com/docs/components/segmented-control.html): Apple-style segmented pill toggles and blocks.
+- [Sidebar](https://boodoo.dihadiwala.com/docs/components/sidebar.html): Multi-level collapsible desktop navigation sidebar.
+- [Skeleton](https://boodoo.dihadiwala.com/docs/components/skeleton.html): Shimmer animation placeholders for content cards and avatars.
 - [Spinners](https://boodoo.dihadiwala.com/docs/components/spinners.html): Loading spinners and dots.
-- [Toasts](https://boodoo.dihadiwala.com/docs/components/toasts.html): Push notification popups.
+- [Stepper](https://boodoo.dihadiwala.com/docs/components/stepper.html): Multi-step wizard workflows and checkout progress trackers.
+- [Timeline](https://boodoo.dihadiwala.com/docs/components/timeline.html): Activity streams and chronological audit logs.
+- [Toasts](https://boodoo.dihadiwala.com/docs/components/toasts.html): Push notification popups and helper API.
 - [Tooltips](https://boodoo.dihadiwala.com/docs/components/tooltips.html): Lightweight hover popups.
+- [Tree View](https://boodoo.dihadiwala.com/docs/components/tree-view.html): Hierarchical folder structures and expandable file trees.
 - [Ripple Effect](https://boodoo.dihadiwala.com/docs/components/ripple.html): Material Design touch dynamic ripple effect.
 
 ### Helpers & Utilities
