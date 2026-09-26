@@ -21,7 +21,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 ## ✨ Highlights
 
-- **Zero runtime dependencies** — Vanilla JS (~80 KB / ~17.2 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
+- **Zero runtime dependencies** — Vanilla JS (~94 KB / ~19.8 KB gzipped), tree-shakeable, SSR-safe, no jQuery or React required
 - **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, Node, static sites, or any web stack
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens
@@ -34,12 +34,12 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~374 KB | ~51.4 KB | ~33.4 KB | Full framework (all 34+ components + utilities) |
+| `boodoo.min.css` | ~396 KB | ~54.8 KB | ~35.8 KB | Full framework (all 34+ components + utilities) |
 | `boodoo-utilities.min.css` | ~188 KB | ~21.4 KB | ~11.5 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~13 KB | ~1.7 KB | ~1.2 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~10 KB | ~3.0 KB | ~2.6 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~0.9 KB | ~0.7 KB | Motion utilities & keyframes |
-| `boodoo.js` | ~80 KB | ~17.2 KB | ~14.8 KB | Pure vanilla JS (zero dependencies) |
+| `boodoo.js` | ~94 KB | ~19.8 KB | ~17.1 KB | Pure vanilla JS (zero dependencies) |
 
 ---
 
