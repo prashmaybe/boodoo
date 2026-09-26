@@ -25,6 +25,10 @@ import { clipboard } from './clipboard.js';
 import { CommandPalette } from './command-palette.js';
 import { BottomSheet } from './bottom-sheet.js';
 import { registerCustomElements } from './custom-elements.js';
+import { DataTable } from './data-table.js';
+import { Sidebar } from './sidebar.js';
+import { ContextMenu } from './context-menu.js';
+import { ChipInput } from './chip-input.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance) => {
@@ -65,6 +69,10 @@ const boodoo = {
   TreeView,
   clipboard,
   CommandPalette,
+  DataTable,
+  Sidebar,
+  ContextMenu,
+  ChipInput,
   registerCustomElements,
 };
 

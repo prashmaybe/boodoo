@@ -1,0 +1,189 @@
+// =====================================================================
+// BOODOO COMPONENTS — Data Table / Data Grid
+// Sortable headers, selection checkboxes, sticky headers, expandable rows,
+// compact/dense variations, and pagination integration.
+// =====================================================================
+
+.data-table-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius);
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  box-shadow: var(--boodoo-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.05));
+  overflow: hidden;
+
+  .data-table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--boodoo-border-color);
+    background-color: var(--boodoo-body-tertiary-bg, rgba(0, 0, 0, 0.02));
+  }
+
+  .data-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--boodoo-border-color);
+    background-color: var(--boodoo-body-tertiary-bg, rgba(0, 0, 0, 0.02));
+    font-size: 0.875rem;
+  }
+}
+
+.table.data-table {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead th {
+    background-color: var(--boodoo-body-tertiary-bg, #f8fafc);
+    color: var(--boodoo-body-color);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 2px solid var(--boodoo-border-color);
+    white-space: nowrap;
+    user-select: none;
+    padding: 0.75rem 1rem;
+
+    &.sortable {
+      cursor: pointer;
+      position: relative;
+      padding-right: 1.75rem;
+      transition: background-color var(--boodoo-transition-duration, 0.15s) ease;
+
+      &:hover {
+        background-color: var(--boodoo-gray-200, #e2e8f0);
+      }
+
+      &::after {
+        content: "⇅";
+        position: absolute;
+        right: 0.65rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.875rem;
+        opacity: 0.35;
+        font-weight: normal;
+      }
+
+      &.sort-asc::after {
+        content: "↑";
+        opacity: 1;
+        color: var(--boodoo-primary);
+        font-weight: bold;
+      }
+
+      &.sort-desc::after {
+        content: "↓";
+        opacity: 1;
+        color: var(--boodoo-primary);
+        font-weight: bold;
+      }
+    }
+  }
+
+  tbody td {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--boodoo-border-color);
+    font-size: 0.875rem;
+  }
+
+  tbody tr {
+    transition: background-color var(--boodoo-transition-duration, 0.15s) ease;
+
+    &:last-child td {
+      border-bottom: 0;
+    }
+
+    &.selected,
+    &.is-selected {
+      background-color: rgba(var(--boodoo-primary-rgb), 0.08) !important;
+    }
+
+    &.data-table-expandable-row {
+      cursor: pointer;
+    }
+  }
+
+  // Row selection checkbox column
+  th.data-table-select-col,
+  td.data-table-select-col {
+    width: 2.75rem;
+    text-align: center;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    .form-check-input {
+      margin: 0;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+
+  // Row expandable detail drawer
+  .data-table-row-detail {
+    display: none;
+    background-color: var(--boodoo-body-tertiary-bg, rgba(0, 0, 0, 0.02));
+
+    &.show {
+      display: table-row;
+    }
+
+    > td {
+      padding: 1.25rem;
+      border-top: 1px dashed var(--boodoo-border-color);
+    }
+  }
+
+  .data-table-toggle-icon {
+    display: inline-block;
+    transition: transform var(--boodoo-transition-duration, 0.2s) ease;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+
+    &.expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  // Sticky headers variation
+  &.data-table-sticky {
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: inset 0 -1px 0 var(--boodoo-border-color);
+    }
+  }
+
+  // Compact / Dense variation
+  &.data-table-compact,
+  &.data-table-dense {
+    thead th {
+      padding: 0.45rem 0.65rem;
+      font-size: 0.75rem;
+    }
+
+    tbody td {
+      padding: 0.45rem 0.65rem;
+      font-size: 0.8125rem;
+    }
+  }
+}

@@ -1,5 +1,8 @@
-// BOODOO FORMS — Dropzone
-// Drag-and-drop file upload containers.
+// =====================================================================
+// BOODOO FORMS — Dropzone & File Upload
+// Drag-and-drop file upload containers, file list items, progress states,
+// and preview cards.
+// =====================================================================
 
 .dropzone,
 .form-dropzone {
@@ -13,12 +16,24 @@
   background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
   cursor: pointer;
   text-align: center;
-  transition: all var(--boodoo-transition-duration) ease;
+  position: relative;
+  transition: all var(--boodoo-transition-duration, 0.2s) ease;
+
+  input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+  }
 
   &:hover,
   &.dragover {
     border-color: var(--boodoo-primary);
     background-color: rgba(var(--boodoo-primary-rgb), 0.04);
+    box-shadow: 0 0 0 4px rgba(var(--boodoo-primary-rgb), 0.1);
   }
 }
 
@@ -26,11 +41,12 @@
   font-size: 2.5rem;
   color: var(--boodoo-primary);
   margin-bottom: 0.75rem;
+  line-height: 1;
 }
 
 .dropzone-title {
   font-size: 1rem;
-  font-weight: var(--boodoo-font-weight-semibold);
+  font-weight: var(--boodoo-font-weight-semibold, 600);
   color: var(--boodoo-body-color);
   margin-bottom: 0.25rem;
 }
@@ -38,4 +54,79 @@
 .dropzone-subtitle {
   font-size: 0.8125rem;
   color: var(--boodoo-body-secondary-color);
+  margin-bottom: 0;
+}
+
+// Uploaded file list / preview items
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius);
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  box-shadow: var(--boodoo-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
+
+  .file-item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--boodoo-border-radius-sm);
+    background-color: rgba(var(--boodoo-primary-rgb), 0.1);
+    color: var(--boodoo-primary);
+    font-size: 1.125rem;
+    flex-shrink: 0;
+  }
+
+  .file-item-preview {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--boodoo-border-radius-sm);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .file-item-info {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .file-item-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--boodoo-body-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .file-item-meta {
+    font-size: 0.75rem;
+    color: var(--boodoo-body-secondary-color);
+  }
+
+  .file-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  // Mini progress bar in file item
+  .progress {
+    height: 4px;
+    margin-top: 0.35rem;
+  }
 }

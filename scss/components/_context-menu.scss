@@ -1,0 +1,109 @@
+// =====================================================================
+// BOODOO COMPONENTS — Context Menu
+// Floating contextual menu triggered on right-click or custom trigger.
+// =====================================================================
+
+.context-menu {
+  --boodoo-context-menu-min-width: 180px;
+  --boodoo-context-menu-bg: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  --boodoo-context-menu-border-color: var(--boodoo-border-color);
+  --boodoo-context-menu-border-radius: var(--boodoo-border-radius);
+  --boodoo-context-menu-box-shadow: var(--boodoo-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1));
+  --boodoo-context-menu-color: var(--boodoo-body-color);
+  --boodoo-context-menu-hover-bg: rgba(var(--boodoo-primary-rgb), 0.08);
+  --boodoo-context-menu-hover-color: var(--boodoo-primary);
+
+  position: fixed;
+  z-index: 1060;
+  display: none;
+  min-width: var(--boodoo-context-menu-min-width);
+  padding: 0.375rem;
+  margin: 0;
+  list-style: none;
+  background-color: var(--boodoo-context-menu-bg);
+  border: 1px solid var(--boodoo-context-menu-border-color);
+  border-radius: var(--boodoo-context-menu-border-radius);
+  box-shadow: var(--boodoo-context-menu-box-shadow);
+  color: var(--boodoo-context-menu-color);
+  animation: boodoo-zoom-in 0.12s ease-out;
+
+  &.show {
+    display: block;
+  }
+
+  .context-menu-item {
+    position: relative;
+    list-style: none;
+  }
+
+  .context-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--boodoo-context-menu-color);
+    text-decoration: none;
+    border-radius: var(--boodoo-border-radius-sm);
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    transition: background-color var(--boodoo-transition-duration, 0.15s) ease, color var(--boodoo-transition-duration, 0.15s) ease;
+
+    .context-menu-icon {
+      font-size: 1rem;
+      width: 1.25rem;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+    }
+
+    .context-menu-shortcut {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--boodoo-body-secondary-color);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--boodoo-context-menu-hover-bg);
+      color: var(--boodoo-context-menu-hover-color);
+      outline: none;
+
+      .context-menu-shortcut {
+        color: var(--boodoo-context-menu-hover-color);
+      }
+    }
+
+    &.text-danger:hover {
+      background-color: rgba(var(--boodoo-danger-rgb), 0.1);
+      color: var(--boodoo-danger);
+    }
+
+    &.disabled,
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  .context-menu-divider {
+    height: 1px;
+    margin: 0.35rem 0;
+    background-color: var(--boodoo-border-color);
+    list-style: none;
+  }
+
+  .context-menu-header {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--boodoo-body-secondary-color);
+  }
+}

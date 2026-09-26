@@ -1,0 +1,97 @@
+// =====================================================================
+// BOODOO COMPONENTS — Empty State
+// Visual placeholder for empty lists, search misses, 404, or zero-data screens.
+// =====================================================================
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: var(--boodoo-border-radius-lg);
+
+  &.empty-state-card {
+    background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+    border: 1px dashed var(--boodoo-border-color);
+  }
+
+  .empty-state-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background-color: rgba(var(--boodoo-primary-rgb), 0.1);
+    color: var(--boodoo-primary);
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+    line-height: 1;
+
+    &.empty-state-icon-success {
+      background-color: rgba(var(--boodoo-success-rgb), 0.1);
+      color: var(--boodoo-success);
+    }
+
+    &.empty-state-icon-warning {
+      background-color: rgba(var(--boodoo-warning-rgb), 0.1);
+      color: var(--boodoo-warning);
+    }
+
+    &.empty-state-icon-danger {
+      background-color: rgba(var(--boodoo-danger-rgb), 0.1);
+      color: var(--boodoo-danger);
+    }
+  }
+
+  .empty-state-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--boodoo-body-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-state-description {
+    font-size: 0.9375rem;
+    color: var(--boodoo-body-secondary-color);
+    max-width: 420px;
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .empty-state-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  // Sizing variations
+  &.empty-state-sm {
+    padding: 1.75rem 1rem;
+
+    .empty-state-icon {
+      width: 3.25rem;
+      height: 3.25rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-state-title {
+      font-size: 1.05rem;
+    }
+
+    .empty-state-description {
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

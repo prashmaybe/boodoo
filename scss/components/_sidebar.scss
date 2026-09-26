@@ -1,0 +1,201 @@
+// =====================================================================
+// BOODOO COMPONENTS — Sidebar & Drawer
+// Multi-level persistent & collapsible desktop navigation sidebar.
+// =====================================================================
+
+.sidebar {
+  --boodoo-sidebar-width: 260px;
+  --boodoo-sidebar-collapsed-width: 72px;
+  --boodoo-sidebar-bg: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  --boodoo-sidebar-border-color: var(--boodoo-border-color);
+  --boodoo-sidebar-color: var(--boodoo-body-color);
+  --boodoo-sidebar-hover-bg: rgba(var(--boodoo-primary-rgb), 0.08);
+  --boodoo-sidebar-active-bg: rgba(var(--boodoo-primary-rgb), 0.12);
+  --boodoo-sidebar-active-color: var(--boodoo-primary);
+
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: var(--boodoo-sidebar-width);
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--boodoo-sidebar-bg);
+  border-right: 1px solid var(--boodoo-sidebar-border-color);
+  color: var(--boodoo-sidebar-color);
+  transition: width var(--boodoo-transition-duration, 0.25s) ease;
+  overflow-y: auto;
+  position: relative;
+  z-index: 100;
+
+  // Header / Brand area
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--boodoo-sidebar-border-color);
+    white-space: nowrap;
+    overflow: hidden;
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--boodoo-sidebar-color);
+      text-decoration: none;
+    }
+  }
+
+  // Navigation menu
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 0.5rem;
+    list-style: none;
+    margin: 0;
+    gap: 0.25rem;
+  }
+
+  .sidebar-heading {
+    padding: 0.75rem 0.75rem 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--boodoo-body-secondary-color);
+    white-space: nowrap;
+  }
+
+  .sidebar-item {
+    position: relative;
+    list-style: none;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: var(--boodoo-border-radius);
+    color: var(--boodoo-sidebar-color);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all var(--boodoo-transition-duration, 0.15s) ease;
+
+    .sidebar-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+    }
+
+    .sidebar-text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-badge {
+      margin-left: auto;
+    }
+
+    .sidebar-arrow {
+      margin-left: auto;
+      font-size: 0.75rem;
+      transition: transform var(--boodoo-transition-duration, 0.2s) ease;
+    }
+
+    &:hover {
+      background-color: var(--boodoo-sidebar-hover-bg);
+      color: var(--boodoo-sidebar-active-color);
+    }
+
+    &.active {
+      background-color: var(--boodoo-sidebar-active-bg);
+      color: var(--boodoo-sidebar-active-color);
+      font-weight: 600;
+    }
+
+    &[aria-expanded="true"] .sidebar-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  // Nested submenus
+  .sidebar-submenu {
+    list-style: none;
+    padding: 0.25rem 0 0.25rem 2rem;
+    margin: 0;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    .sidebar-link {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  // Footer area (user profile / theme toggle / sign out)
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 1rem;
+    border-top: 1px solid var(--boodoo-sidebar-border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+  }
+
+  // Collapsed compact sidebar mode
+  &.sidebar-collapsed {
+    width: var(--boodoo-sidebar-collapsed-width);
+
+    .sidebar-brand span,
+    .sidebar-heading,
+    .sidebar-text,
+    .sidebar-badge,
+    .sidebar-arrow,
+    .sidebar-footer .sidebar-footer-text,
+    .sidebar-submenu {
+      display: none !important;
+    }
+
+    .sidebar-header {
+      justify-content: center;
+      padding: 1.25rem 0.5rem;
+    }
+
+    .sidebar-link {
+      justify-content: center;
+      padding: 0.625rem;
+    }
+
+    .sidebar-footer {
+      justify-content: center;
+      padding: 1rem 0.5rem;
+    }
+  }
+
+  // Dark variant
+  &.sidebar-dark {
+    --boodoo-sidebar-bg: var(--boodoo-gray-900, #11143d);
+    --boodoo-sidebar-border-color: rgba(255, 255, 255, 0.1);
+    --boodoo-sidebar-color: #cbd5e1;
+    --boodoo-sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+    --boodoo-sidebar-active-bg: var(--boodoo-primary);
+    --boodoo-sidebar-active-color: #ffffff;
+
+    .sidebar-link.active {
+      color: #ffffff;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<!--
+title: Context Menu
+description: Floating contextual menus triggered on right-click or custom triggers with viewport boundary collision protection.
+section: components
+order: 14
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">The Context Menu component binds a customized right-click floating menu to any element or container, complete with viewport boundary collision protection, keyboard shortcuts, and ESC dismissal.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Right-Click Trigger Area</h2>
+  <p>Right-click (or secondary tap on touch screens) anywhere inside the gray dashed box below to open the custom contextual menu:</p>
+
+  <div class="docs-example p-5 border border-dashed rounded text-center bg-light" data-boodoo-toggle="context-menu" data-boodoo-target="#demoContextMenu" style="cursor: context-menu;">
+    <span class="fs-1 d-block mb-2">🖱️</span>
+    <h5 class="mb-1"><span>Right-click anywhere inside this target area</span></h5>
+    <p class="text-muted mb-0"><span>The floating menu opens at your cursor coordinates and stays safely inside the viewport.</span></p>
+  </div>
+
+  <!-- Context Menu element -->
+  <ul class="context-menu" id="demoContextMenu">
+    <li class="context-menu-header"><span>Quick Actions</span></li>
+    <li class="context-menu-item">
+      <button type="button" class="context-menu-link">
+        <span class="context-menu-icon">📋</span>
+        <span>Copy to Clipboard</span>
+        <span class="context-menu-shortcut"><kbd>Ctrl+C</kbd></span>
+      </button>
+    </li>
+    <li class="context-menu-item">
+      <button type="button" class="context-menu-link">
+        <span class="context-menu-icon">🔗</span>
+        <span>Share Link</span>
+      </button>
+    </li>
+    <li class="context-menu-divider"></li>
+    <li class="context-menu-item">
+      <button type="button" class="context-menu-link text-danger">
+        <span class="context-menu-icon">🗑️</span>
+        <span>Delete Item</span>
+        <span class="context-menu-shortcut"><kbd>Del</kbd></span>
+      </button>
+    </li>
+  </ul>
+
+  <pre><code class="language-html">&lt;!-- Target area --&gt;
+&lt;div data-boodoo-toggle="context-menu" data-boodoo-target="#myContextMenu"&gt;
+  &lt;p&gt;&lt;span&gt;Right-click me&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Floating context menu --&gt;
+&lt;ul class="context-menu" id="myContextMenu"&gt;
+  &lt;li class="context-menu-header"&gt;&lt;span&gt;Actions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="context-menu-item"&gt;
+    &lt;button type="button" class="context-menu-link"&gt;
+      &lt;span class="context-menu-icon"&gt;📋&lt;/span&gt;
+      &lt;span&gt;Copy&lt;/span&gt;
+      &lt;span class="context-menu-shortcut"&gt;&lt;kbd&gt;Ctrl+C&lt;/kbd&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/li&gt;
+  &lt;li class="context-menu-divider"&gt;&lt;/li&gt;
+  &lt;li class="context-menu-item"&gt;
+    &lt;button type="button" class="context-menu-link text-danger"&gt;
+      &lt;span class="context-menu-icon"&gt;🗑️&lt;/span&gt;
+      &lt;span&gt;Delete&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</section>

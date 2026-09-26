@@ -1,0 +1,82 @@
+<!--
+title: Pickers (Color & Date)
+description: Modern UI wrapper skins for native color pickers, date, time, and datetime inputs.
+section: forms
+order: 10
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Pickers enhance native browser inputs like <code>&lt;input type="color"&gt;</code> and <code>&lt;input type="date"&gt;</code> with uniform border styling, hex readout badges, integrated calendar icons, and dual date ranges.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Color Picker Wrapper</h2>
+  <p>The <code>.form-color-picker</code> container couples a color swatch preview with an interactive hex readout badge:</p>
+
+  <div class="docs-example p-4 border rounded bg-white">
+    <div class="d-flex align-items-center gap-3">
+      <label class="form-color-picker" for="primaryBrandColor">
+        <input type="color" class="form-control-color" id="primaryBrandColor" name="brandColor" value="#7c3aed" title="Choose brand color" oninput="document.getElementById('colorValText').innerText = this.value">
+        <span class="form-color-value" id="colorValText">#7c3aed</span>
+      </label>
+
+      <label class="form-color-picker" for="accentColor">
+        <input type="color" class="form-control-color" id="accentColor" name="accentColor" value="#1c9e50" title="Choose accent color" oninput="document.getElementById('accentValText').innerText = this.value">
+        <span class="form-color-value" id="accentValText">#1c9e50</span>
+      </label>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;label class="form-color-picker" for="brandColor"&gt;
+  &lt;input type="color" class="form-control-color" id="brandColor" name="brandColor" value="#7c3aed"&gt;
+  &lt;span class="form-color-value"&gt;#7c3aed&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Date & Time Pickers</h2>
+  <p>Use <code>.form-picker-group</code> with leading icons for date and time fields.</p>
+
+  <div class="docs-example p-4 border rounded bg-white">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label" for="pickerDate"><span>Appointment Date</span></label>
+        <div class="form-picker-group">
+          <span class="form-picker-icon">📅</span>
+          <input type="date" class="form-control" id="pickerDate" name="appointmentDate" value="2026-09-26">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="pickerTime"><span>Meeting Time</span></label>
+        <div class="form-picker-group">
+          <span class="form-picker-icon">⏰</span>
+          <input type="time" class="form-control" id="pickerTime" name="meetingTime" value="09:00">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;div class="form-picker-group"&gt;
+  &lt;span class="form-picker-icon"&gt;📅&lt;/span&gt;
+  &lt;input type="date" class="form-control" id="pickerDate" name="appointmentDate"&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Date Range Group</h2>
+  <div class="docs-example p-4 border rounded bg-white">
+    <label class="form-label" for="rangeStartDate"><span>Booking Period</span></label>
+    <div class="form-date-range">
+      <div class="form-picker-group flex-grow-1">
+        <span class="form-picker-icon">📅</span>
+        <input type="date" class="form-control" id="rangeStartDate" name="startDate" value="2026-10-01">
+      </div>
+      <span class="form-date-separator"><span>to</span></span>
+      <div class="form-picker-group flex-grow-1">
+        <span class="form-picker-icon">📅</span>
+        <input type="date" class="form-control" id="rangeEndDate" name="endDate" value="2026-10-15">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<!--
+title: Empty State
+description: Visual placeholders for empty lists, search misses, 404 views, and zero-data screens.
+section: components
+order: 17
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Empty states communicate when no records exist, search queries yield no results, or users haven't yet created data, providing clear calls to action.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Card Empty State</h2>
+  <div class="docs-example p-4 border rounded bg-white">
+    <div class="empty-state empty-state-card">
+      <div class="empty-state-icon">
+        <span>📦</span>
+      </div>
+      <h3 class="empty-state-title"><span>No projects found</span></h3>
+      <p class="empty-state-description"><span>You haven't created any workspaces yet. Get started by launching your first collaborative project.</span></p>
+      <div class="empty-state-actions">
+        <button type="button" class="btn btn-outline-secondary"><span>Read Documentation</span></button>
+        <button type="button" class="btn btn-primary"><span>+ Create Project</span></button>
+      </div>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;div class="empty-state empty-state-card"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span&gt;📦&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="empty-state-title"&gt;&lt;span&gt;No projects found&lt;/span&gt;&lt;/h3&gt;
+  &lt;p class="empty-state-description"&gt;&lt;span&gt;You haven't created any workspaces yet.&lt;/span&gt;&lt;/p&gt;
+  &lt;div class="empty-state-actions"&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;+ Create Project&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Contextual Status Variations</h2>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="empty-state empty-state-sm border rounded bg-white">
+        <div class="empty-state-icon empty-state-icon-success">
+          <span>✓</span>
+        </div>
+        <h5 class="empty-state-title"><span>All caught up!</span></h5>
+        <p class="empty-state-description"><span>You have completed all pending inbox tasks.</span></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="empty-state empty-state-sm border rounded bg-white">
+        <div class="empty-state-icon empty-state-icon-danger">
+          <span>⚠️</span>
+        </div>
+        <h5 class="empty-state-title"><span>Connection lost</span></h5>
+        <p class="empty-state-description"><span>Unable to reach remote sync server. Check your network.</span></p>
+      </div>
+    </div>
+  </div>
+</section>

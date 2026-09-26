@@ -1,0 +1,71 @@
+<!--
+title: Chips & Tag Input
+description: Compact interactive elements for tags, multi-select filters, and removable pill inputs.
+section: components
+order: 11
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">Chips represent complex entities in small blocks, such as tags, contacts, categories, and removable filters. The <code>.chip-input-container</code> lets users type new tags dynamically with Enter or comma, or remove them with Backspace.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Static & Removable Chips</h2>
+  <div class="docs-example p-4 border rounded bg-white">
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <span class="chip"><span>Default Chip</span></span>
+      <span class="chip chip-primary"><span>Primary</span></span>
+      <span class="chip chip-success"><span>Success</span></span>
+      <span class="chip chip-warning"><span>Warning</span></span>
+      <span class="chip chip-danger"><span>Danger</span></span>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+      <span class="chip chip-primary">
+        <span>JavaScript</span>
+        <button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>
+      </span>
+      <span class="chip chip-success">
+        <span>Sass / SCSS</span>
+        <button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>
+      </span>
+      <span class="chip chip-info">
+        <span>HTML5</span>
+        <button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>
+      </span>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;span class="chip chip-primary"&gt;
+  &lt;span&gt;JavaScript&lt;/span&gt;
+  &lt;button type="button" class="chip-remove" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Interactive Tag Input</h2>
+  <p>Type keywords and press <kbd>Enter</kbd> or <kbd>,</kbd> to convert them into removable chips. Press <kbd>Backspace</kbd> when empty to delete the last chip.</p>
+
+  <div class="docs-example p-4 border rounded bg-white">
+    <div class="chip-input-container" data-boodoo="chip-input">
+      <span class="chip chip-primary">
+        <span>Design Systems</span>
+        <button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>
+      </span>
+      <span class="chip chip-success">
+        <span>Mobile-First</span>
+        <button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>
+      </span>
+      <input type="text" class="chip-input-field" id="tagInputField" name="tags" placeholder="Add tag...">
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;div class="chip-input-container" data-boodoo="chip-input"&gt;
+  &lt;span class="chip"&gt;
+    &lt;span&gt;Design Systems&lt;/span&gt;
+    &lt;button type="button" class="chip-remove" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
+  &lt;/span&gt;
+  &lt;input type="text" class="chip-input-field" id="tagInputField" name="tags" placeholder="Add tag..."&gt;
+&lt;/div&gt;</code></pre>
+</section>

@@ -1,0 +1,179 @@
+<!--
+title: Data Table
+description: Advanced data grids with sortable columns, row selection checkboxes, sticky headers, expandable detail rows, and dense sizing.
+section: components
+order: 15
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">The <code>.data-table</code> component turns standard tables into interactive data grids equipped with column sorting, batch row selection, sticky headers, expandable details, and responsive toolbar controls.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Interactive Data Table Example</h2>
+  <p>Click any column header to sort in ascending or descending order. Click the header checkbox to select all rows. Click row toggle arrows to reveal nested drawer details.</p>
+
+  <div class="docs-example p-3 border rounded bg-white">
+    <div class="data-table-wrapper" data-boodoo="datatable">
+      <div class="data-table-toolbar">
+        <div class="d-flex align-items-center gap-2">
+          <input type="text" class="form-control form-control-sm" id="tableFilterInput" name="tableFilter" placeholder="Filter rows..." style="max-width: 200px;">
+          <span class="badge badge-soft-primary">3 Users</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary"><span>Export</span></button>
+          <button type="button" class="btn btn-sm btn-primary"><span>+ Add User</span></button>
+        </div>
+      </div>
+
+      <div class="data-table-container">
+        <table class="table data-table">
+          <thead>
+            <tr>
+              <th scope="col" class="data-table-select-col">
+                <input type="checkbox" class="form-check-input" id="tableSelectAll" name="selectAll" aria-label="Select all rows">
+              </th>
+              <th scope="col" class="sortable"><span>User</span></th>
+              <th scope="col" class="sortable"><span>Role</span></th>
+              <th scope="col" class="sortable"><span>Status</span></th>
+              <th scope="col" class="sortable"><span>Spend</span></th>
+              <th scope="col" class="text-end"><span>Actions</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-table-expandable-row">
+              <td class="data-table-select-col">
+                <input type="checkbox" class="form-check-input" id="userCheck1" name="userCheck1" aria-label="Select user 1">
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="data-table-toggle-icon">▶</span>
+                  <div class="avatar avatar-sm me-2 bg-primary text-white"><span>JD</span></div>
+                  <div>
+                    <div class="fw-semibold"><span>Jane Doe</span></div>
+                    <small class="text-muted"><span>jane@example.com</span></small>
+                  </div>
+                </div>
+              </td>
+              <td><span>Lead Architect</span></td>
+              <td><span class="badge badge-soft-success">Active</span></td>
+              <td><span>$4,250.00</span></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-xs btn-outline-secondary"><span>Edit</span></button>
+              </td>
+            </tr>
+            <tr class="data-table-row-detail">
+              <td colspan="6">
+                <div class="p-2">
+                  <h6 class="mb-1"><span>Jane Doe's Activity History</span></h6>
+                  <p class="text-muted small mb-0"><span>Last login: 10 minutes ago from San Francisco, CA. Has access to 8 repository projects.</span></p>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="data-table-expandable-row">
+              <td class="data-table-select-col">
+                <input type="checkbox" class="form-check-input" id="userCheck2" name="userCheck2" aria-label="Select user 2">
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="data-table-toggle-icon">▶</span>
+                  <div class="avatar avatar-sm me-2 bg-info text-white"><span>AS</span></div>
+                  <div>
+                    <div class="fw-semibold"><span>Alex Smith</span></div>
+                    <small class="text-muted"><span>alex@example.com</span></small>
+                  </div>
+                </div>
+              </td>
+              <td><span>Product Designer</span></td>
+              <td><span class="badge badge-soft-warning">Pending</span></td>
+              <td><span>$1,120.00</span></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-xs btn-outline-secondary"><span>Edit</span></button>
+              </td>
+            </tr>
+            <tr class="data-table-row-detail">
+              <td colspan="6">
+                <div class="p-2">
+                  <h6 class="mb-1"><span>Alex Smith's Activity History</span></h6>
+                  <p class="text-muted small mb-0"><span>Invitation pending verification. Member since Sept 2026.</span></p>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="data-table-expandable-row">
+              <td class="data-table-select-col">
+                <input type="checkbox" class="form-check-input" id="userCheck3" name="userCheck3" aria-label="Select user 3">
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="data-table-toggle-icon">▶</span>
+                  <div class="avatar avatar-sm me-2 bg-secondary text-white"><span>MR</span></div>
+                  <div>
+                    <div class="fw-semibold"><span>Marcus Roy</span></div>
+                    <small class="text-muted"><span>marcus@example.com</span></small>
+                  </div>
+                </div>
+              </td>
+              <td><span>Full Stack Dev</span></td>
+              <td><span class="badge badge-soft-success">Active</span></td>
+              <td><span>$2,890.00</span></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-xs btn-outline-secondary"><span>Edit</span></button>
+              </td>
+            </tr>
+            <tr class="data-table-row-detail">
+              <td colspan="6">
+                <div class="p-2">
+                  <h6 class="mb-1"><span>Marcus Roy's Activity History</span></h6>
+                  <p class="text-muted small mb-0"><span>Active in Frontend Engineering and Design Systems teams.</span></p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="data-table-footer">
+        <span class="text-muted"><span>Showing 1 to 3 of 3 entries</span></span>
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item disabled"><a class="page-link" href="#"><span>Prev</span></a></li>
+          <li class="page-item active"><a class="page-link" href="#"><span>1</span></a></li>
+          <li class="page-item"><a class="page-link" href="#"><span>Next</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;div class="data-table-wrapper" data-boodoo="datatable"&gt;
+  &lt;table class="table data-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class="data-table-select-col"&gt;
+          &lt;input type="checkbox" class="form-check-input" id="tblCheckAll" name="selectAll"&gt;
+        &lt;/th&gt;
+        &lt;th class="sortable"&gt;&lt;span&gt;Name&lt;/span&gt;&lt;/th&gt;
+        &lt;th class="sortable"&gt;&lt;span&gt;Amount&lt;/span&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr class="data-table-expandable-row"&gt;
+        &lt;td class="data-table-select-col"&gt;
+          &lt;input type="checkbox" class="form-check-input" id="row1" name="row1"&gt;
+        &lt;/td&gt;
+        &lt;td&gt;&lt;span class="data-table-toggle-icon"&gt;▶&lt;/span&gt; &lt;span&gt;Jane Doe&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span&gt;$4,250.00&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr class="data-table-row-detail"&gt;
+        &lt;td colspan="3"&gt;&lt;span&gt;Additional drawer details here&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<section class="docs-section">
+  <h2>Compact & Dense Grids</h2>
+  <p>Add <code>.data-table-compact</code> or <code>.data-table-dense</code> to maximize information density for administrative dashboards.</p>
+</section>

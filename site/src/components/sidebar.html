@@ -1,0 +1,104 @@
+<!--
+title: Sidebar
+description: Persistent and collapsible desktop sidebar navigation with multi-level nested menus and dark themes.
+section: components
+order: 28
+-->
+
+<section class="docs-section">
+  <h2>Overview</h2>
+  <p class="lead">The <code>.sidebar</code> component provides a persistent, multi-level desktop navigation frame. It supports collapsible icon-only states, nested submenus, headings, badges, and dark themes.</p>
+</section>
+
+<section class="docs-section">
+  <h2>Desktop Sidebar Example</h2>
+  <div class="docs-example p-0 border rounded overflow-hidden" style="max-height: 480px; display: flex;">
+    <aside class="sidebar" id="docsSidebarDemo" data-boodoo="sidebar" style="min-height: 480px;">
+      <div class="sidebar-header">
+        <a href="#" class="sidebar-brand">
+          <span class="avatar avatar-xs bg-primary text-white"><span>B</span></span>
+          <span>Boodoo UI</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="sidebar-heading"><span>Main Navigation</span></li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link active">
+            <span class="sidebar-icon">📊</span>
+            <span class="sidebar-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" data-boodoo-toggle="sidebar-submenu" aria-expanded="false">
+            <span class="sidebar-icon">📁</span>
+            <span class="sidebar-text">Projects</span>
+            <span class="sidebar-arrow">▶</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><span class="sidebar-text">Active (4)</span></a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><span class="sidebar-text">Archived</span></a></li>
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">💬</span>
+            <span class="sidebar-text">Messages</span>
+            <span class="badge badge-soft-danger sidebar-badge">9</span>
+          </a>
+        </li>
+
+        <li class="sidebar-heading"><span>Settings</span></li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">⚙️</span>
+            <span class="sidebar-text">Preferences</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="avatar avatar-sm bg-secondary text-white"><span>JD</span></div>
+        <div class="sidebar-footer-text">
+          <div class="fw-semibold"><span>Jane Doe</span></div>
+          <small class="text-muted"><span>Admin</span></small>
+        </div>
+      </div>
+    </aside>
+
+    <div class="flex-grow-1 p-4 bg-light">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h4><span>Dashboard Workspace</span></h4>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-boodoo-toggle="sidebar" data-boodoo-target="#docsSidebarDemo">
+          <span>Toggle Collapsed Mode</span>
+        </button>
+      </div>
+      <p class="text-muted"><span>Click the button above to collapse the sidebar into compact icon mode.</span></p>
+    </div>
+  </div>
+
+  <pre><code class="language-html">&lt;aside class="sidebar" data-boodoo="sidebar"&gt;
+  &lt;div class="sidebar-header"&gt;
+    &lt;a href="#" class="sidebar-brand"&gt;&lt;span&gt;App Brand&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;ul class="sidebar-nav"&gt;
+    &lt;li class="sidebar-heading"&gt;&lt;span&gt;Navigation&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="sidebar-item"&gt;
+      &lt;a href="#" class="sidebar-link active"&gt;
+        &lt;span class="sidebar-icon"&gt;📊&lt;/span&gt;
+        &lt;span class="sidebar-text"&gt;Dashboard&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="sidebar-item"&gt;
+      &lt;a href="#" class="sidebar-link" data-boodoo-toggle="sidebar-submenu"&gt;
+        &lt;span class="sidebar-icon"&gt;📁&lt;/span&gt;
+        &lt;span class="sidebar-text"&gt;Projects&lt;/span&gt;
+        &lt;span class="sidebar-arrow"&gt;▶&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;ul class="sidebar-submenu"&gt;
+        &lt;li class="sidebar-item"&gt;&lt;a href="#" class="sidebar-link"&gt;&lt;span class="sidebar-text"&gt;Active&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</section>

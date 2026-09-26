@@ -38,6 +38,7 @@
 @import "forms/floating-labels";
 @import "forms/otp";
 @import "forms/dropzone";
+@import "forms/pickers";
 @import "forms/validation";
 
 // 6. Components
@@ -51,10 +52,14 @@
 @import "components/buttons";
 @import "components/card";
 @import "components/carousel";
+@import "components/chip";
 @import "components/close";
 @import "components/collapse";
 @import "components/command-palette";
+@import "components/context-menu";
+@import "components/data-table";
 @import "components/dropdown";
+@import "components/empty-state";
 @import "components/kbd";
 @import "components/list-group";
 @import "components/modal";
@@ -69,6 +74,7 @@
 @import "components/rating";
 @import "components/ripple";
 @import "components/segmented-control";
+@import "components/sidebar";
 @import "components/skeleton";
 @import "components/spinners";
 @import "components/stepper";
