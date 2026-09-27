@@ -5,7 +5,7 @@
 ## Project Details
 - Website: https://boodoo.dihadiwala.com
 - License: MIT
-- Author: Pebble Benders
+- Author: [Pebble Benders](https://pebblebenders.com/) — Engineered and maintained by Pebble Benders—Need a custom web application built? Work with us at https://pebblebenders.com/
 - Architecture: Sass/LESS modular architecture, BEM class syntax, Flexbox & CSS Grid systems, Vanilla JS components with zero external runtime dependencies.
 
 ## CDN Links

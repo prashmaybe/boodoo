@@ -45,6 +45,23 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 | `boodoo-animations.min.css` | ~4 KB | ~0.9 KB | ~0.7 KB | Motion utilities & keyframes |
 | `boodoo.js` | ~99 KB | ~20.4 KB | ~17.6 KB | Pure vanilla JS (zero dependencies) |
 
+### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
+
+Standard modern front-end configurations (such as **vanilla React + Tailwind CSS**) often suffer from hidden payload compounding and runtime overhead:
+
+1. **Elimination of Utility Class Sprawl in the DOM & AST**: In typical Tailwind and React setups, structural scaffolding requires sprawling class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). In React JSX, these string-heavy attributes bloat the compiled JavaScript bundle, virtual DOM memory tree, and server-rendered HTML payloads. boodoo replaces this repetition with standardized structural scaffolding (`.container`, `.row`, `.col-*`) and 2D CSS Grid primitives, drastically reducing token duplication.
+2. **Tiny Modular Footprint (`boodoo-grid.min.css` is only ~1.7 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a complete 12-column mobile-first flexbox system alongside CSS Grid layout helpers at just **~1.7 KB gzipped / 1.2 KB brotli**. Compared to hauling hundreds of kilobytes of utility CSS parsers or runtime CSS-in-JS abstractions, boodoo loads instantaneously.
+3. **Zero JavaScript Runtime Tax**: React-based UI libraries (Tailwind UI component wrappers, Headless UI, Radix, shadcn) require React runtime reconciliation (`react`, `react-dom` adding 45+ KB gzip before application logic starts) just to manage basic grid transitions, collapsible layouts, and drawer states. boodoo’s scaffolding operates purely on native browser layout engines and zero-overhead declarative HTML primitives (`<dialog>`, `popover`, `@container`), completely eliminating layout-driven JavaScript execution.
+4. **Superior Caching & Zero Build Lock-In**: Unlike bundler-purged Tailwind setups where every slight markup tweak triggers unique CSS build outputs that invalidate client caches, boodoo’s clean grid scaffolding is cache-stable across all pages and subdomains.
+
+| Architectural Metric | Vanilla React + Tailwind Setup | boodoo Structural Grid Scaffolding |
+| :--- | :--- | :--- |
+| **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~1.7 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
+| **Runtime Engine Overhead** | 45+ KB gzip (React + ReactDOM + state hooks) | **0 KB** (Native browser flexbox & CSS Grid engine) |
+| **DOM / Markup Footprint** | Bloated inline class strings on every layout node | Semantic structural containers (`.container`, `.row`, `.col`) |
+| **Build Pipeline Dependency** | Mandatory (Node.js, PostCSS / Tailwind CLI, bundler) | **Zero build required** (Direct CDN or modular Sass/Less) |
+| **Cache Reusability** | Purged atomic CSS cache invalidated on markup changes | Persistent browser-cached global asset |
+
 ---
 
 ## 🚀 Quick start
@@ -195,7 +212,13 @@ Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen m
 
 ## 📄 License
 
-MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 <a href="https://pebblebenders.com" target="_blank" rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>.
+MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 <a href="https://pebblebenders.com/" target="_blank" rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>.
+
+---
+
+<div align="center">
+  <sub>Engineered and maintained by <a href="https://pebblebenders.com/" target="_blank" rel="noopener">Pebble Benders</a>—Need a custom web application built? <a href="https://pebblebenders.com/" target="_blank" rel="noopener">Work with us</a>.</sub>
+</div>
 
 ---
 
