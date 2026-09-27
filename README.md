@@ -195,7 +195,7 @@ Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen m
 
 ## 📄 License
 
-MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 Pebble Benders.
+MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 <a href="https://pebblebenders.com" target="_blank" rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>.
 
 ---
 
