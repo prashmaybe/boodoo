@@ -19,6 +19,9 @@ export class Toast extends BaseComponent {
       this._config.autohide = false;
     }
     this._timeout = null;
+    if (this._element.classList.contains('show')) {
+      this._isShown = true;
+    }
   }
 
   static showToast(el) {
@@ -28,7 +31,7 @@ export class Toast extends BaseComponent {
 
   show() {
     const el = this._element;
-    if (this._isShown) return;
+    if (this._isShown && el.classList.contains('show')) return;
     el.classList.remove('hide');
     el.classList.add('showing');
     triggerEvent(el, 'boodoo.show.toast');
@@ -60,7 +63,7 @@ export class Toast extends BaseComponent {
 
   hide() {
     const el = this._element;
-    if (!this._isShown) return;
+    if (!this._isShown && !el.classList.contains('show')) return;
     if (!triggerEvent(el, 'boodoo.hide.toast')) return;
     el.classList.remove('show');
     el.classList.add('hide');
@@ -85,14 +88,31 @@ export class Toast extends BaseComponent {
   }
 }
 
-// Data API: show toasts with `.toast[data-boodoo-autohide]` on load
+// Data API: dismiss handling and autohide on load
 if (typeof document !== 'undefined') {
-  initToasts();
-  document.addEventListener('DOMContentLoaded', initToasts);
+  document.addEventListener('click', (event) => {
+    const closer = event.target.closest('[data-boodoo-dismiss="toast"]');
+    if (closer) {
+      const toastEl = closer.closest('.toast');
+      if (toastEl) {
+        const toast = Toast.getOrCreateInstance(toastEl);
+        if (toast) toast.hide();
+      }
+    }
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initToasts);
+  } else {
+    initToasts();
+  }
 }
 
 function initToasts() {
-  // Toast visibility is triggered manually; kept for parity with data-api.
+  const autohideToasts = document.querySelectorAll('.toast[data-boodoo-autohide="true"], .toast.show[data-boodoo-delay]');
+  autohideToasts.forEach((el) => {
+    Toast.getOrCreateInstance(el);
+  });
 }
 
 // Expose a ShowAll helper

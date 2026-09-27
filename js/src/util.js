@@ -78,11 +78,15 @@ export const enableDismissTrigger = (component, onToggle) => {
   if (typeof document === 'undefined') return;
   const dismiss = (event) => {
     if (event.button !== 0) return; // ignore right/middle clicks
-    const target = event.currentTarget || event.target;
-    const instance = component.getOrCreateInstance(target);
+    const toggler = event.target.closest('[data-boodoo-dismiss]');
+    if (!toggler) return;
+    const selector = component.selector || `.${component.NAME || ''}`;
+    const container = toggler.closest(selector) || toggler;
+    const instance = component.getOrCreateInstance(container);
     if (!instance) return;
-    if (onToggle) onToggle(instance, event);
-    else instance.hide?.();
+    if (onToggle) onToggle(instance, event, toggler);
+    else if (typeof instance.hide === 'function') instance.hide();
+    else if (typeof instance.close === 'function') instance.close();
   };
   document.addEventListener('click', (event) => {
     const toggler = event.target.closest('[data-boodoo-dismiss]');

@@ -7,11 +7,10 @@ import { getTransitionDuration, emulateTransitionEnd, triggerEvent } from './uti
 export class Alert extends BaseComponent {
   static get NAME() { return 'alert'; }
 
-  static get selector() { return '[data-boodoo-alert]'; }
+  static get selector() { return '[data-boodoo-alert], .alert'; }
 
   hide() {
     const el = this._element;
-    if (!el.classList.contains('show')) return;
     if (!triggerEvent(el, 'boodoo.hide.alert')) return;
 
     el.classList.remove('show');

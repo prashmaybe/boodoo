@@ -142,7 +142,35 @@ const esmBody = bundledBodies.join('\n\n');
 const esmBundle = `${banner}
 ${esmBody}
 export default boodoo;
-export { Alert, Button, Collapse, Dropdown, Modal, Offcanvas, Tab, Toast, Tooltip, Popover, Carousel, ScrollSpy, initRipple, initDataApi, theme, OTP, Rating, TreeView, clipboard, CommandPalette, Stepper, registerCustomElements };
+export {
+  Alert,
+  BottomSheet,
+  Button,
+  ChipInput,
+  Collapse,
+  CommandPalette,
+  ContextMenu,
+  DataTable,
+  Dropdown,
+  Modal,
+  Offcanvas,
+  OTP,
+  Popover,
+  Rating,
+  ScrollSpy,
+  Sidebar,
+  Stepper,
+  Tab,
+  Toast,
+  Tooltip,
+  TreeView,
+  Carousel,
+  clipboard,
+  initDataApi,
+  initRipple,
+  registerCustomElements,
+  theme,
+};
 `;
 fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);
 console.log('Bundled boodoo.esm.js (' + Buffer.byteLength(esmBundle) + ' bytes)');

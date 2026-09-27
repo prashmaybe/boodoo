@@ -32,18 +32,18 @@ import { ChipInput } from './chip-input.js';
 import { Stepper } from './stepper.js';
 
 // Wire up generic data-boodoo-dismiss triggers
-enableDismissTrigger(Alert, (instance) => {
-  const type = instance._element.getAttribute('data-boodoo-dismiss');
+enableDismissTrigger(Alert, (instance, event, toggler) => {
+  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'alert') instance.hide();
 });
 
-enableDismissTrigger(BottomSheet, (instance) => {
-  const type = instance._element.getAttribute('data-boodoo-dismiss');
+enableDismissTrigger(BottomSheet, (instance, event, toggler) => {
+  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'bottom-sheet') instance.hide();
 });
 
-enableDismissTrigger(Toast, (instance) => {
-  const type = instance._element.getAttribute('data-boodoo-dismiss');
+enableDismissTrigger(Toast, (instance, event, toggler) => {
+  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'toast') instance.hide();
 });
 
@@ -179,7 +179,35 @@ if (typeof document === 'undefined') {
 
 // Public default export
 export default boodoo;
-export { theme, OTP, Rating, TreeView, clipboard, CommandPalette, BottomSheet, Stepper, registerCustomElements };
+export {
+  Alert,
+  BottomSheet,
+  Button,
+  ChipInput,
+  Collapse,
+  CommandPalette,
+  ContextMenu,
+  DataTable,
+  Dropdown,
+  Modal,
+  Offcanvas,
+  OTP,
+  Popover,
+  Rating,
+  ScrollSpy,
+  Sidebar,
+  Stepper,
+  Tab,
+  Toast,
+  Tooltip,
+  TreeView,
+  Carousel,
+  clipboard,
+  initDataApi,
+  initRipple,
+  registerCustomElements,
+  theme,
+};
 
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;
