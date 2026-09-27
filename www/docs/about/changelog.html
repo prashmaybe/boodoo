@@ -246,7 +246,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.5</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.6</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -269,7 +269,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.0.5</span></div>
+        <div class="stat-value"><span>v1.0.6</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -296,7 +296,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>📦</span></div>
       <div>
-        <div class="stat-value"><span>5 Milestones</span></div>
+        <div class="stat-value"><span>6 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -305,16 +305,73 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.0.5 -->
+  <!-- Version 1.0.6 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-6">
+            <span>v1.0.6</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 September 27, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.6"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>New Features &amp; Components</span>
+        </h3>
+        <ul class="mb-3">
+          <li>
+            <strong>Complete JavaScript Component Exports</strong>:
+            <span>Extended ESM bundle (<code>boodoo.esm.js</code>) and UMD core entry to export all individual components and utilities (<code>Alert</code>, <code>BottomSheet</code>, <code>Button</code>, <code>ChipInput</code>, <code>Collapse</code>, <code>CommandPalette</code>, <code>ContextMenu</code>, <code>DataTable</code>, <code>Dropdown</code>, <code>Modal</code>, <code>Offcanvas</code>, <code>OTP</code>, <code>Popover</code>, <code>Rating</code>, <code>ScrollSpy</code>, <code>Sidebar</code>, <code>Stepper</code>, <code>Tab</code>, <code>Toast</code>, <code>Tooltip</code>, <code>TreeView</code>, <code>Carousel</code>, <code>clipboard</code>, <code>initDataApi</code>, <code>initRipple</code>, <code>registerCustomElements</code>, <code>theme</code>) for modular imports and tree-shaking.</span>
+          </li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
+          <span>Bug Fixes &amp; Stability</span>
+        </h3>
+        <ul class="mb-0">
+          <li>
+            <strong>Data API Dismiss Trigger Resolution</strong>:
+            <span>Enhanced <code>enableDismissTrigger</code> to accurately identify closer triggers, map component containers via component selectors or names, and seamlessly trigger either <code>.hide()</code> or <code>.close()</code> methods.</span>
+          </li>
+          <li>
+            <strong>Alert Component Dismissal</strong>:
+            <span>Expanded <code>Alert.selector</code> to match both <code>[data-boodoo-alert]</code> and <code>.alert</code>, ensuring graceful hide transitions even if <code>.show</code> class is toggled.</span>
+          </li>
+          <li>
+            <strong>Toast Global Dismiss &amp; Lifecycle Tracking</strong>:
+            <span>Added dedicated capture-phase global click delegation for <code>[data-boodoo-dismiss="toast"]</code> and automatic instance initialization for pre-rendered and autohide toasts.</span>
+          </li>
+          <li>
+            <strong>Documentation Text Wrapping Purity</strong>:
+            <span>Ensured all documentation code examples and snippets comply with the strict inline semantic text wrapping rule.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.0.5 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>●</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-5">
             <span>v1.0.5</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

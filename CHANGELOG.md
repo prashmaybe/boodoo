@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.6] - 2026-09-27
+
+### Added
+- **Full JavaScript Component Exports in ESM & Bundles**:
+  - Exported all components and utilities from ESM bundle and core entry (`build/js-bundle.mjs`, `js/boodoo.js`), including `Alert`, `BottomSheet`, `Button`, `ChipInput`, `Collapse`, `CommandPalette`, `ContextMenu`, `DataTable`, `Dropdown`, `Modal`, `Offcanvas`, `OTP`, `Popover`, `Rating`, `ScrollSpy`, `Sidebar`, `Stepper`, `Tab`, `Toast`, `Tooltip`, `TreeView`, `Carousel`, `clipboard`, `initDataApi`, `initRipple`, `registerCustomElements`, and `theme`.
+
+### Fixed
+- **Dismiss Trigger Event Propagation & Selector Resolution**:
+  - Enhanced `enableDismissTrigger` (`js/src/util.js`, `js/boodoo.js`) to accurately locate dismiss trigger controls (`[data-boodoo-dismiss]`), resolve parent component containers via component selectors or fallback names, support both `.hide()` and `.close()` handlers, and ensure accurate dismiss handling for `Alert`, `BottomSheet`, and `Toast`.
+- **Alert Component Dismissal**:
+  - Broadened `Alert.selector` to target `[data-boodoo-alert], .alert` and removed hard dependency on `.show` presence in `hide()` to support dismiss animations reliably (`js/src/alert.js`).
+- **Toast Initialization & Dismissal**:
+  - Added dedicated global click listener for `[data-boodoo-dismiss="toast"]` with capture phase to reliably close active toasts.
+  - Automatically instantiate and track pre-rendered toasts (`.toast.show[data-boodoo-delay]`, `.toast[data-boodoo-autohide="true"]`) during DOMContentLoaded/load (`js/src/toast.js`).
+- **Documentation Strict Text Wrapping Compliance**:
+  - Wrapped text nodes inside semantic elements (`<span>`) in documentation examples (`site/src/components/alerts.html`, `site/src/components/toasts.html`) in compliance with project rules.
+
+---
+
 ## [1.0.5] - 2026-09-26
 
 ### Added
