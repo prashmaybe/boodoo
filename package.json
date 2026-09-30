@@ -24,6 +24,7 @@
     "README.md"
   ],
   "scripts": {
+    "test": "npm run build && npm run site",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
     "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim && npm run css:less",
