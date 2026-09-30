@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.8] - 2026-09-30
 
+### Added
+- **Electron Desktop Application Integration & Scaffolding**:
+  - **`create-boodoo` Scaffolder Template**: Added option `4) Electron Desktop App (Cross-Platform Native UI)` to `bin/create-boodoo.mjs`, producing a ready-to-run Electron app with frameless custom titlebars, window controls, IPC event bridge, responsive sidebar, and Boodoo component demo.
+  - **Comprehensive Electron Documentation**: Added official guide (`site/src/getting-started/electron.html`) covering setup, frameless window drag mechanics (`-webkit-app-region: drag`), IPC window controls, CSP configurations, and recommended desktop components (Splitter, Command Palette, Native UI tokens, Data Table).
+  - **Browser & Runtime Support Expansion**: Documented verified desktop runtime compatibility (Electron, Tauri, WebView2, Capacitor) in `site/src/getting-started/browser-support.html` and `README.md`.
+
 ### Fixed
 - **Leverage Browser Caching & Static Asset Cache-Control**:
   - Implemented comprehensive `mod_expires` and `mod_headers` directives in `.htaccess`, setting 1-year immutable caching (`max-age=31536000, public, immutable`) for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.

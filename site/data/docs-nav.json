@@ -14,7 +14,8 @@
       { "route": "getting-started/browser-support", "title": "Browser support" },
       { "route": "getting-started/accessibility", "title": "Accessibility" },
       { "route": "getting-started/theme", "title": "Dark Mode & Themes" },
-      { "route": "getting-started/custom-elements", "title": "Custom Elements" }
+      { "route": "getting-started/custom-elements", "title": "Custom Elements" },
+      { "route": "getting-started/electron", "title": "Electron Desktop Apps" }
     ]
   },
   {

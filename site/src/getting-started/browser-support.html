@@ -164,10 +164,18 @@ order: 8
   <li><strong>Safe areas:</strong> layout respects iOS safe areas where relevant.</li>
 </ul>
 
-<h2 id="progressive-enhancement">Progressive enhancement</h2>
-<p>Core features are progressively enhanced: <code>@supports</code> and feature queries let us ship modern CSS
-  (aspect-ratio, <code>text-wrap: balance</code>, backdrop-filter, CSS Grid) while keeping a clean fallback.</p>
+<h2 id="desktop-runtimes"><span>Desktop &amp; Hybrid Runtimes</span></h2>
+<p><span>boodoo is thoroughly tested and optimized for modern desktop and hybrid web container runtimes:</span></p>
+<ul>
+  <li><strong><span>Electron:</span></strong> <span>Fully supported across Windows, macOS, and Linux. Boodoo's pure CSS titlebar styling, <code>-webkit-app-region: drag</code> properties, and zero-dependency ES modules run out of the box with zero runtime penalty. See the <a href="electron.html"><span>Electron Desktop guide</span></a>.</span></li>
+  <li><strong><span>Tauri &amp; WebView2:</span></strong> <span>Native integration with Microsoft Edge WebView2 and WebKitGTK.</span></li>
+  <li><strong><span>Capacitor &amp; Cordova:</span></strong> <span>Seamless touch support, safe area insets, and hardware acceleration on mobile packaging layers.</span></li>
+</ul>
 
-<h2 id="legacy-browsers">Legacy browsers</h2>
-<p>Internet Explorer is not supported. boodoo relies on modern CSS features and the fetch/ES2015+ class syntax that IE
-  cannot run.</p>
+<h2 id="progressive-enhancement"><span>Progressive enhancement</span></h2>
+<p><span>Core features are progressively enhanced: <code>@supports</code> and feature queries let us ship modern CSS
+  (aspect-ratio, <code>text-wrap: balance</code>, backdrop-filter, CSS Grid) while keeping a clean fallback.</span></p>
+
+<h2 id="legacy-browsers"><span>Legacy browsers</span></h2>
+<p><span>Internet Explorer is not supported. boodoo relies on modern CSS features and the fetch/ES2015+ class syntax that IE
+  cannot run.</span></p>

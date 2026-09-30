@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Use the powerful mobile-first flexbox grid to build layouts of all shapes and sizes.">
+  <meta name="description" content="Build modern, cross-platform desktop applications with Electron and boodoo. Native titlebars, drag regions, platform tokens, and desktop UI components.">
   <meta name="theme-color" content="#7c3aed">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="boodoo">
-  <meta property="og:title" content="Grid system · boodoo">
-  <meta property="og:description" content="Use the powerful mobile-first flexbox grid to build layouts of all shapes and sizes.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/layout/grid.html">
+  <meta property="og:title" content="Electron Desktop Apps · boodoo">
+  <meta property="og:description" content="Build modern, cross-platform desktop applications with Electron and boodoo. Native titlebars, drag regions, platform tokens, and desktop UI components.">
+  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
   <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Grid system · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/layout/grid.html">
+  <title>Electron Desktop Apps · boodoo</title>
+  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -118,12 +118,12 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
-<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
+<li><a href="../getting-started/electron.html" class="active">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
 <li><a href="../layout/containers.html">Containers</a></li>
-<li><a href="../layout/grid.html" class="active">Grid system</a></li>
+<li><a href="../layout/grid.html">Grid system</a></li>
 <li><a href="../layout/columns.html">Columns</a></li>
 <li><a href="../layout/gutters.html">Gutters</a></li>
 <li><a href="../layout/css-grid.html">CSS Grid</a></li>
@@ -252,195 +252,213 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-        <li class="breadcrumb-item">Layout</li>
-        <li class="breadcrumb-item active" aria-current="page">Grid system</li>
+        <li class="breadcrumb-item">Getting started</li>
+        <li class="breadcrumb-item active" aria-current="page">Electron Desktop Apps</li>
       </ol>
     </nav>
-          <h1>Grid system</h1>
-<p class="lead">Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve
-  column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
+          <h1><span>Electron Desktop Apps</span></h1>
+<p class="lead"><span>Build lightweight, fast cross-platform desktop applications using Electron and boodoo. Leverage native platform tokens (Windows Fluent, macOS Aqua, Linux Adwaita), draggable titlebars, collapsible sidebars, and desktop UI primitives with zero build configuration.</span></p>
 
-<h2 id="how-it-works">How it works</h2>
-<p>boodoo's grid system uses a series of containers, rows, and columns to layout and align content. It's built with
-  flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
-
-<div class="bd-example">
-  <div class="container px-0">
-    <div class="row">
-      <div class="col"><span>col</span></div>
-      <div class="col"><span>col</span></div>
-      <div class="col"><span>col</span></div>
-    </div>
-  </div>
-</div>
-<div class="highlight">
-  <pre><code>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col"&gt;col&lt;/div&gt;
-    &lt;div class="col"&gt;col&lt;/div&gt;
-    &lt;div class="col"&gt;col&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-</div>
-
-<p>The above example creates three equal-width columns across all devices and viewports using our predefined grid
-  classes. Those columns are centered in the page with the parent <code>.container</code>.</p>
-
-<p>Breaking it down, here's how it works:</p>
-<ul>
-  <li>Containers provide a means to center and horizontally pad your site's contents.</li>
-  <li>Rows are wrappers for columns. Each column has horizontal <code>padding</code> (called a gutter) for controlling
-    the space between them. This padding is then counteracted on the rows with negative margins. This way, all the
-    content in your columns is visually aligned down the left side.</li>
-  <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
-</ul>
-
-<h2 id="grid-options">Grid options</h2>
-<p>boodoo's grid system can adapt across all six default breakpoints.</p>
-<table class="table table-bordered table-sm">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">xs<br>&lt;576px</th>
-      <th scope="col">sm<br>&ge;576px</th>
-      <th scope="col">md<br>&ge;768px</th>
-      <th scope="col">lg<br>&ge;992px</th>
-      <th scope="col">xl<br>&ge;1200px</th>
-      <th scope="col">xxl<br>&ge;1400px</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Max container width</th>
-      <td>None (auto)</td>
-      <td>540px</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-      <td>1320px</td>
-    </tr>
-    <tr>
-      <th scope="row">Class prefix</th>
-      <td><code>.col-</code></td>
-      <td><code>.col-sm-</code></td>
-      <td><code>.col-md-</code></td>
-      <td><code>.col-lg-</code></td>
-      <td><code>.col-xl-</code></td>
-      <td><code>.col-xxl-</code></td>
-    </tr>
-    <tr>
-      <th scope="row"># of columns</th>
-      <td colspan="6">12</td>
-    </tr>
-    <tr>
-      <th scope="row">Gutter width</th>
-      <td colspan="6">1.5rem (0.75rem each side of the column)</td>
-    </tr>
-    <tr>
-      <th scope="row">Nestable</th>
-      <td colspan="6">Yes</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="row-columns">Row columns</h2>
-<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your
-  content.</p>
-<div class="bd-example">
-  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-    <div class="col">
-      <div class="p-3 border rounded text-center"><span>Col</span></div>
-    </div>
-  </div>
-</div>
-<div class="highlight">
-  <pre><code>&lt;div class="row row-cols-2 row-cols-md-3 row-cols-lg-4"&gt;
-  &lt;div class="col"&gt;...&lt;/div&gt;
-  &lt;div class="col"&gt;...&lt;/div&gt;
-  &lt;div class="col"&gt;...&lt;/div&gt;
-  &lt;div class="col"&gt;...&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-</div>
-
-<h2 id="nesting">Nesting</h2>
-<p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns
-  within an existing <code>.col-sm-*</code> column.</p>
-<div class="bd-example">
-  <div class="row">
-    <div class="col-sm-3 d-flex align-items-center justify-content-center"><span>Level 1: .col-sm-3</span></div>
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-8 col-sm-6"><span>Level 2: .col-sm-6</span></div>
-        <div class="col-4 col-sm-6"><span>Level 2: .col-sm-6</span></div>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="fs-4">⚡</span>
+        <h5 class="mb-0"><span>Zero Extra Runtime</span></h5>
       </div>
+      <p class="text-muted fs-7 mb-0"><span>Vanilla JavaScript with no heavy component runtime tax. Boodoo loads in microseconds inside Electron's Chromium renderer.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="fs-4">🖥️</span>
+        <h5 class="mb-0"><span>Native Platform Styling</span></h5>
+      </div>
+      <p class="text-muted fs-7 mb-0"><span>Out-of-the-box support for Windows 11 Fluent/Mica, macOS Aqua traffic lights, and Linux GNOME Adwaita headerbars.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="fs-4">🚀</span>
+        <h5 class="mb-0"><span>Instant Scaffolding</span></h5>
+      </div>
+      <p class="text-muted fs-7 mb-0"><span>Generate a complete, working Electron + Boodoo project in seconds with <code>npx create-boodoo</code>.</span></p>
     </div>
   </div>
 </div>
+
+<hr class="my-4">
+
+<h2 id="scaffold"><span>1. Scaffold with create-boodoo</span></h2>
+<p><span>The fastest way to start an Electron desktop project is using the interactive scaffolding CLI:</span></p>
+
 <div class="highlight">
-  <pre><code>&lt;div class=&quot;row&quot;&gt;
-  &lt;div class=&quot;col-sm-3 d-flex align-items-center justify-content-center&quot;&gt;&lt;span&gt;Level 1: .col-sm-3&lt;/span&gt;&lt;/div&gt;
-  &lt;div class=&quot;col-sm-9&quot;&gt;
-    &lt;div class=&quot;row&quot;&gt;
-      &lt;div class=&quot;col-8 col-sm-6&quot;&gt;&lt;span&gt;Level 2: .col-sm-6&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&quot;col-4 col-sm-6&quot;&gt;&lt;span&gt;Level 2: .col-sm-6&lt;/span&gt;&lt;/div&gt;
+  <pre><code>npx create-boodoo my-desktop-app</code></pre>
+</div>
+<p><span>When prompted, select <strong>Option 4: Electron Desktop App</strong>. Then run:</span></p>
+
+<div class="highlight">
+  <pre><code>cd my-desktop-app
+npm install
+npm start</code></pre>
+</div>
+
+<h2 id="manual-setup"><span>2. Manual Setup in Existing Electron Apps</span></h2>
+<p><span>If you already have an Electron project, install boodoo as a dependency:</span></p>
+
+<div class="highlight">
+  <pre><code>npm install boodoo</code></pre>
+</div>
+
+<h3 id="renderer-html"><span>Renderer HTML Template</span></h3>
+<p><span>Include Boodoo's compiled CSS and JS in your <code>index.html</code>:</span></p>
+
+<div class="highlight">
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"&gt;
+  &lt;title&gt;My Electron App&lt;/title&gt;
+  &lt;!-- Boodoo CSS --&gt;
+  &lt;link rel="stylesheet" href="node_modules/boodoo/dist/css/boodoo.min.css"&gt;
+&lt;/head&gt;
+&lt;body class="bg-light"&gt;
+  &lt;div class="container py-4"&gt;
+    &lt;div class="card p-4 shadow-sm text-center"&gt;
+      &lt;h1 class="text-primary mb-2"&gt;&lt;span&gt;Hello from Electron &amp;amp; Boodoo!&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class="text-muted mb-3"&gt;&lt;span&gt;Desktop-grade responsive UI with zero runtime overhead.&lt;/span&gt;&lt;/p&gt;
+      &lt;div class="d-flex justify-content-center gap-2"&gt;
+        &lt;button type="button" class="btn btn-primary" id="btn-notify"&gt;&lt;span&gt;Trigger Toast&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+
+  &lt;!-- Boodoo JS --&gt;
+  &lt;script src="node_modules/boodoo/dist/js/boodoo.js"&gt;&lt;/script&gt;
+  &lt;script src="renderer.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<h2 id="custom-titlebar"><span>3. Custom Frameless Titlebar &amp; Window Dragging</span></h2>
+<p><span>Boodoo provides built-in CSS rules for draggable window regions and titlebars. In your Electron <code>main.js</code>, configure a hidden titlebar:</span></p>
+
+<div class="highlight">
+  <pre><code>const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('node:path');
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 1040,
+    height: 720,
+    titleBarStyle: 'hidden', // hides OS default title bar
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+  });
+
+  win.loadFile('index.html');
+
+  // Handle minimize, maximize, and close events via IPC
+  ipcMain.on('window-minimize', () => win.minimize());
+  ipcMain.on('window-maximize', () => win.isMaximized() ? win.unmaximize() : win.maximize());
+  ipcMain.on('window-close', () => win.close());
+}
+
+app.whenReady().then(createWindow);</code></pre>
+</div>
+
+<p><span>In your HTML layout, use Boodoo's <code>.native-window</code>, <code>.native-titlebar</code>, and <code>.native-titlebar-controls</code> classes. Draggable areas automatically receive <code>-webkit-app-region: drag</code>, while buttons have <code>no-drag</code>:</span></p>
+
+<div class="highlight">
+  <pre><code>&lt;div class="native-window" data-boodoo-platform="windows"&gt;
+  &lt;!-- Draggable Titlebar --&gt;
+  &lt;header class="native-titlebar bg-white border-bottom"&gt;
+    &lt;span class="fw-semibold fs-7"&gt;&lt;span&gt;My Electron App&lt;/span&gt;&lt;/span&gt;
+    &lt;div class="native-titlebar-controls"&gt;
+      &lt;button type="button" class="native-titlebar-btn" id="win-min"&gt;&lt;span&gt;—&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="native-titlebar-btn" id="win-max"&gt;&lt;span&gt;▢&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="native-titlebar-btn native-titlebar-close" id="win-close"&gt;&lt;span&gt;✕&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- Main Content Window --&gt;
+  &lt;div class="native-window-content d-flex flex-grow-1"&gt;
+    &lt;!-- Desktop Sidebar --&gt;
+    &lt;aside class="sidebar" data-boodoo="sidebar"&gt;
+      &lt;ul class="sidebar-nav"&gt;
+        &lt;li class="sidebar-item"&gt;&lt;a href="#" class="sidebar-link active"&gt;&lt;span&gt;Dashboard&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="sidebar-item"&gt;&lt;a href="#" class="sidebar-link"&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+    &lt;main class="flex-grow-1 p-4 bg-light overflow-auto"&gt;
+      &lt;h3&gt;&lt;span&gt;Workspace Content&lt;/span&gt;&lt;/h3&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
 
-<h2 id="sass">Sass mixins</h2>
-<p>When using boodoo's source Sass files, you have the option of using Sass variables and mixins to create custom,
-  semantic, and responsive page layouts.</p>
-<div class="highlight">
-  <pre><code>@use "sass:math";
-@import "node_modules/boodoo/scss/functions";
-@import "node_modules/boodoo/scss/variables";
-@import "node_modules/boodoo/scss/mixins";
+<h2 id="recommended-components"><span>4. Recommended Components for Desktop Apps</span></h2>
+<p><span>When designing desktop experiences with Electron, these Boodoo components offer native desktop parity:</span></p>
 
-.custom-row {
-  @include make-row();
-}
-.custom-col {
-  @include media-breakpoint-up(sm) {
-    @include make-col(4);
-  }
-  @include media-breakpoint-up(lg) {
-    @include make-col(8);
-  }
-}</code></pre>
+<div class="table-responsive">
+  <table class="table table-bordered align-middle">
+    <thead class="table-light">
+      <tr>
+        <th><span>Component</span></th>
+        <th><span>Purpose in Desktop / Electron</span></th>
+        <th><span>Documentation Link</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><span>Native Components</span></strong></td>
+        <td><span>Platform styling for Windows Fluent/Mica, macOS Aqua, and Linux Adwaita.</span></td>
+        <td><a href="../components/native.html"><span>Native UI Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Desktop Sidebar</span></strong></td>
+        <td><span>Collapsible multi-level desktop navigation with icon-only mode.</span></td>
+        <td><a href="../components/sidebar.html"><span>Sidebar Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Splitter &amp; Docking Panes</span></strong></td>
+        <td><span>Draggable split-view panes with pointer capture and bounds checking.</span></td>
+        <td><a href="../components/splitter.html"><span>Splitter Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Command Palette</span></strong></td>
+        <td><span>Global shortcut (<kbd>Ctrl+K</kbd> / <kbd>Cmd+K</kbd>) quick-open dialog and search runner.</span></td>
+        <td><a href="../components/command-palette.html"><span>Command Palette Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Context Menu</span></strong></td>
+        <td><span>Right-click context menus with custom action handlers and nested items.</span></td>
+        <td><a href="../components/context-menu.html"><span>Context Menu Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Data Table</span></strong></td>
+        <td><span>Client-side sortable, searchable, and paginated desktop data grids.</span></td>
+        <td><a href="../components/data-table.html"><span>Data Table Docs</span></a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
     <div class="docs-pager-item">
-      <span class="docs-pager-label">Layout</span>
-      <a class="docs-pager-link" href="../layout/containers.html">Containers</a>
+      <span class="docs-pager-label">Getting started</span>
+      <a class="docs-pager-link" href="../getting-started/custom-elements.html">Custom Elements</a>
     </div>
     
     <div class="docs-pager-item">
       <span class="docs-pager-label">Layout</span>
-      <a class="docs-pager-link" href="../layout/columns.html">Columns</a>
+      <a class="docs-pager-link" href="../layout/containers.html">Containers</a>
     </div>
   </nav>
 
@@ -451,11 +469,11 @@
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#how-it-works">How it works</a></li>
-<li class="toc-2"><a href="#grid-options">Grid options</a></li>
-<li class="toc-2"><a href="#row-columns">Row columns</a></li>
-<li class="toc-2"><a href="#nesting">Nesting</a></li>
-<li class="toc-2"><a href="#sass">Sass mixins</a></li></ul>
+      <ul><li class="toc-2"><a href="#scaffold">1. Scaffold with create-boodoo</a></li>
+<li class="toc-2"><a href="#manual-setup">2. Manual Setup in Existing Electron Apps</a></li>
+<li class="toc-3"><a href="#renderer-html">Renderer HTML Template</a></li>
+<li class="toc-2"><a href="#custom-titlebar">3. Custom Frameless Titlebar &amp; Window Dragging</a></li>
+<li class="toc-2"><a href="#recommended-components">4. Recommended Components for Desktop Apps</a></li></ul>
     </div>
 </aside>
     </div>

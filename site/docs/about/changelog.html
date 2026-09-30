@@ -118,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -340,14 +341,24 @@
 
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Electron Desktop Integration &amp; Tooling</span>
+        </h3>
+        <ul class="mb-3">
+          <li><strong><span>create-boodoo Desktop Scaffolder</span></strong>: <span>Added option <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>, scaffolding instant desktop apps complete with custom frameless titlebars, window controls, IPC event bridge, responsive sidebar, and Boodoo component demo.</span></li>
+          <li><strong><span>Electron Integration Documentation</span></strong>: <span>Published complete guide at <a href="../getting-started/electron.html"><span>Getting started / Electron Desktop Apps</span></a> detailing frameless window mechanics, <code>-webkit-app-region: drag</code> titlebars, IPC controls, CSP, and desktop UI styling.</span></li>
+          <li><strong><span>Desktop &amp; Hybrid Runtime Support</span></strong>: <span>Formally documented verified compatibility across Electron, Tauri, WebView2, and Capacitor in <a href="../getting-started/browser-support.html"><span>Browser Support</span></a>.</span></li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Performance</span></span>
           <span>Performance, Caching &amp; PageSpeed Optimizations</span>
         </h3>
         <ul class="mb-3">
-          <li><strong>Leverage Browser Caching</strong>: Implemented comprehensive <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>, configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</li>
-          <li><strong>Eliminate Render-Blocking Resources</strong>: Web fonts now preload asynchronously via <code>media="print" onload="this.media='all'"</code> with <code>&amp;display=swap</code> and <code>&lt;noscript&gt;</code> fallback. Added <code>defer</code> attributes to all script tags across all pages.</li>
-          <li><strong>Prevent Layout Shifts (CLS)</strong>: Added explicit <code>width="32"</code> and <code>height="32"</code> dimensions to all navbar brand images.</li>
-          <li><strong>Form Accessibility</strong>: Added semantic <code>name</code>, <code>type</code>, and label association to showcase controls.</li>
+          <li><strong><span>Leverage Browser Caching</span></strong>: <span>Implemented comprehensive <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>, configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</span></li>
+          <li><strong><span>Eliminate Render-Blocking Resources</span></strong>: <span>Web fonts now preload asynchronously via <code>media="print" onload="this.media='all'"</code> with <code>&amp;display=swap</code> and <code>&lt;noscript&gt;</code> fallback. Added <code>defer</code> attributes to all script tags across all pages.</span></li>
+          <li><strong><span>Prevent Layout Shifts (CLS)</span></strong>: <span>Added explicit <code>width="32"</code> and <code>height="32"</code> dimensions to all navbar brand images.</span></li>
+          <li><strong><span>Form Accessibility</span></strong>: <span>Added semantic <code>name</code>, <code>type</code>, and label association to showcase controls.</span></li>
         </ul>
       </div>
     </div>
