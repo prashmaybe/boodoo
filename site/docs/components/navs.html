@@ -310,14 +310,19 @@
 <p>Takes the basic nav from above and adds the <code>.nav-tabs</code> class to generate a tabbed interface.</p>
 <div class="bd-example">
   <ul class="nav nav-tabs">
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a" data-boodoo-toggle="tab">Active</a>
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tab-a"
+        data-boodoo-toggle="tab">Active</a>
     </li>
     <li class="nav-item"><a class="nav-link" href="#tab-b" data-boodoo-toggle="tab">Link</a></li>
     <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
   </ul>
   <div class="pt-3">
-    <div class="tab-content fade show active" id="tab-a"><p class="mb-0">Active tab content.</p></div>
-    <div class="tab-content fade d-none" id="tab-b"><p class="mb-0">Second tab content.</p></div>
+    <div class="tab-content fade show active" id="tab-a">
+      <p class="mb-0">Active tab content.</p>
+    </div>
+    <div class="tab-content fade d-none" id="tab-b">
+      <p class="mb-0">Second tab content.</p>
+    </div>
   </div>
 </div>
 <div class="highlight">
@@ -363,7 +368,8 @@
 </div>
 
 <h2 id="tabs-js">Tabs with JavaScript</h2>
-<p>To make the nav switch content, add <code>data-boodoo-toggle="tab"</code> (or <code>"pill"</code>) to each nav link and
+<p>To make the nav switch content, add <code>data-boodoo-toggle="tab"</code> (or <code>"pill"</code>) to each nav link
+  and
   give the target panes ids matching the link <code>href</code>. boodoo wires everything up automatically.</p>
 <div class="bd-example">
   <div class="nav nav-pills mb-2" role="tablist">
@@ -372,9 +378,13 @@
     <button class="nav-link" id="pills-profile-tab" data-boodoo-toggle="pill" data-boodoo-target="#pills-profile"
       type="button" role="tab">Profile</button>
   </div>
-  <div class="tab-content pt-1">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"><p class="mb-0">Home tab content.</p></div>
-    <div class="tab-pane fade d-none" id="pills-profile" role="tabpanel"><p class="mb-0">Profile tab content.</p></div>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+      <p class="mb-0">Home tab content.</p>
+    </div>
+    <div class="tab-pane fade d-none" id="pills-profile" role="tabpanel">
+      <p class="mb-0">Profile tab content.</p>
+    </div>
   </div>
 </div>
 <div class="highlight">
@@ -384,7 +394,7 @@
   &lt;button class=&quot;nav-link&quot; id=&quot;pills-profile-tab&quot; data-boodoo-toggle=&quot;pill&quot; data-boodoo-target=&quot;#pills-profile&quot;
     type=&quot;button&quot; role=&quot;tab&quot;&gt;Profile&lt;/button&gt;
 &lt;/div&gt;
-&lt;div class=&quot;tab-content pt-1&quot;&gt;
+&lt;div class=&quot;tab-content&quot;&gt;
   &lt;div class=&quot;tab-pane fade show active&quot; id=&quot;pills-home&quot; role=&quot;tabpanel&quot;&gt;&lt;p class=&quot;mb-0&quot;&gt;Home tab content.&lt;/p&gt;&lt;/div&gt;
   &lt;div class=&quot;tab-pane fade d-none&quot; id=&quot;pills-profile&quot; role=&quot;tabpanel&quot;&gt;&lt;p class=&quot;mb-0&quot;&gt;Profile tab content.&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>

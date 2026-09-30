@@ -80,9 +80,10 @@ export class Offcanvas extends BaseComponent {
 
   _removeBackdrop() {
     if (this._backdrop) {
-      this._backdrop.classList.remove('show');
-      setTimeout(() => this._backdrop.parentNode && this._backdrop.parentNode.removeChild(this._backdrop), 200);
+      const backdrop = this._backdrop;
+      backdrop.classList.remove('show');
       this._backdrop = null;
+      setTimeout(() => backdrop.parentNode && backdrop.parentNode.removeChild(backdrop), 200);
     }
   }
 }
