@@ -70,12 +70,14 @@
 - [Carousel](https://boodoo.dihadiwala.com/docs/components/carousel.html): Image and content slideshow component.
 - [Chips & Tag Input](https://boodoo.dihadiwala.com/docs/components/chip.html): Compact removable pills and interactive dynamic tag input containers.
 - [Collapse](https://boodoo.dihadiwala.com/docs/components/collapse.html): Toggle visibility of content blocks.
+- [Combobox](https://boodoo.dihadiwala.com/docs/components/combobox.html): Searchable autocomplete select with keyboard navigation and custom filtering.
 - [Command Palette](https://boodoo.dihadiwala.com/docs/components/command-palette.html): Global Spotlight-style fuzzy search and keyboard action runner.
 - [Context Menu](https://boodoo.dihadiwala.com/docs/components/context-menu.html): Right-click floating menu with collision protection and shortcuts.
 - [Data Table](https://boodoo.dihadiwala.com/docs/components/data-table.html): Sortable columns, select-all checkboxes, expandable details, and dense sizing.
 - [Dropdowns](https://boodoo.dihadiwala.com/docs/components/dropdowns.html): Contextual menu overlays.
 - [Empty State](https://boodoo.dihadiwala.com/docs/components/empty-state.html): Placeholders for zero-data screens, 404s, and search misses.
 - [Kbd](https://boodoo.dihadiwala.com/docs/components/kbd.html): Tactile 3D shortcut keycaps and key combinations.
+- [Lightbox](https://boodoo.dihadiwala.com/docs/components/lightbox.html): Fullscreen media viewer with gallery cycling and zoom toggle.
 - [List Group](https://boodoo.dihadiwala.com/docs/components/list-group.html): Flexible list item containers.
 - [Modal](https://boodoo.dihadiwala.com/docs/components/modal.html): Dialog overlays and popups.
 - [Native Components](https://boodoo.dihadiwala.com/docs/components/native.html): Operating-system specific platform tokens (Fluent, macOS, HIG, Material).
@@ -91,7 +93,9 @@
 - [Segmented Control](https://boodoo.dihadiwala.com/docs/components/segmented-control.html): Apple-style segmented pill toggles and blocks.
 - [Sidebar](https://boodoo.dihadiwala.com/docs/components/sidebar.html): Multi-level collapsible desktop navigation sidebar.
 - [Skeleton](https://boodoo.dihadiwala.com/docs/components/skeleton.html): Shimmer animation placeholders for content cards and avatars.
+- [Speed Dial](https://boodoo.dihadiwala.com/docs/components/speed-dial.html): Expandable floating action button menu with micro-stagger animations.
 - [Spinners](https://boodoo.dihadiwala.com/docs/components/spinners.html): Loading spinners and dots.
+- [Splitter](https://boodoo.dihadiwala.com/docs/components/splitter.html): Resizable dual-pane container and draggable divider.
 - [Stepper](https://boodoo.dihadiwala.com/docs/components/stepper.html): Multi-step wizard workflows and checkout progress trackers.
 - [Timeline](https://boodoo.dihadiwala.com/docs/components/timeline.html): Activity streams and chronological audit logs.
 - [Toasts](https://boodoo.dihadiwala.com/docs/components/toasts.html): Push notification popups and helper API.

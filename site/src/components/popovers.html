@@ -105,3 +105,19 @@ document.querySelectorAll('[data-boodoo-toggle="popover"]').forEach(function (el
   &lt;p class="mb-0"&gt;&lt;span&gt;Zero JavaScript required.&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 </div>
+
+<h2 id="css-anchor-positioning"><span>CSS Anchor Positioning &amp; @starting-style</span></h2>
+<p><span>Modern browsers (Chrome 125+, Safari/Firefox) support CSS Anchor Positioning and <code>@starting-style</code> discrete property transitions. Boodoo harnesses these to tether popovers to triggers and animate them from <code>display: none</code> with <strong>zero positioning JavaScript</strong>:</span></p>
+
+<div class="highlight">
+  <pre><code>&lt;!-- Button sets anchor name --&gt;
+&lt;button type="button" class="btn btn-primary" id="anchorBtn" popovertarget="anchorPopover" style="anchor-name: --my-anchor;"&gt;
+  &lt;span&gt;Anchor Popover&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Popover is tethered using CSS position-anchor with auto flip --&gt;
+&lt;div id="anchorPopover" popover class="popover p-3 shadow-lg" style="position-anchor: --my-anchor; top: anchor(bottom); left: anchor(center); transform: translateX(-50%); position-try-options: flip-block, flip-inline;"&gt;
+  &lt;strong&gt;&lt;span&gt;CSS Anchor Positioned&lt;/span&gt;&lt;/strong&gt;
+  &lt;p class="mb-0 text-muted"&gt;&lt;span&gt;Fluidly tethered and flips vertically without JS math.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>

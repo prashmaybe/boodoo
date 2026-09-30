@@ -21,12 +21,12 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 ## ✨ Highlights
 
-- **Modern CSS native primitives** — Container Queries (`@container`), HTML5 `<dialog>` & `[popover]`, CSS `:has()` parent styling, and `@layer` cascade layering
+- **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
 - **Dual-Engine "Class-First + Data-Attribute" styling** — Clean semantic markup without class bloat (`[data-boodoo-variant]`, `[data-size]`, zero-build variable utilities)
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or React required
-- **Framework agnostic** — Works seamlessly with HTML, PHP, Laravel, Rails, Django, Node, static sites, or any web stack
+- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js) and official VS Code IntelliSense snippet suite
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
-- **Rich components** — 34+ accessible components including Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
+- **Rich components** — 38+ accessible components including Combobox / Autocomplete, Splitter (Docking Panes), Speed Dial (FAB Menu), Lightbox Media Viewer, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens or with the Interactive Theme Builder
 - **Accessible & touch-friendly** — Focus-visible rings, `prefers-reduced-motion` compliance, ARIA wiring, and 44px minimum touch targets
 - **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
@@ -38,12 +38,12 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~411 KB | ~57.1 KB | ~37.9 KB | Full framework (all 34+ components + utilities) |
+| `boodoo.min.css` | ~422 KB | ~58.4 KB | ~38.8 KB | Full framework (all 38+ components + utilities) |
 | `boodoo-utilities.min.css` | ~188 KB | ~21.6 KB | ~11.6 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~13 KB | ~1.7 KB | ~1.2 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~10 KB | ~3.0 KB | ~2.6 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~0.9 KB | ~0.7 KB | Motion utilities & keyframes |
-| `boodoo.js` | ~99 KB | ~20.7 KB | ~17.8 KB | Pure vanilla JS (zero dependencies) |
+| `boodoo.js` | ~119 KB | ~24.1 KB | ~20.9 KB | Pure vanilla JS (zero dependencies) |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
@@ -134,10 +134,10 @@ boodoo/
 
 ## 🧩 Components
 
-Accordion · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb · Buttons · Button group · Card · Carousel · Chips & Tag Input · Collapse · Command Palette · Context Menu · Data Table · Dropdowns · Empty State · Kbd · List group · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Sidebar · Skeleton · Spinners · Stepper · Timeline · Toasts · Tooltips · Tree View
+Accordion · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb · Buttons · Button group · Card · Carousel · Chips & Tag Input · Collapse · Combobox / Autocomplete · Command Palette · Context Menu · Data Table · Dropdowns · Empty State · Kbd · Lightbox Gallery · List group · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Sidebar · Skeleton · Speed Dial (FAB) · Spinners · Splitter (Docking Panes) · Stepper · Timeline · Toasts · Tooltips · Tree View
 
 
-Plus **forms** (control, select, checks/radios/switches, range, input group, floating labels, OTP & PIN, dropzone & file upload, color & date pickers, validation) and ~150 **utility classes** (spacing, flex, grid, display, position, text, borders, shadows, elevation…).
+Plus **forms** (control, select, checks/radios/switches, range, input group, floating labels, OTP & PIN, dropzone & file upload, color & date pickers, validation), **icon token helpers** (`.icon`, `.icon-sm`–`2xl`), and ~150 **utility classes** (spacing, flex, grid, display, position, text, borders, shadows, elevation, scroll-driven animations…).
 
 ---
 

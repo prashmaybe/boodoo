@@ -154,12 +154,14 @@
 <li><a href="../components/carousel.html">Carousel</a></li>
 <li><a href="../components/chip.html">Chips & Tag Input</a></li>
 <li><a href="../components/collapse.html">Collapse</a></li>
+<li><a href="../components/combobox.html">Combobox</a></li>
 <li><a href="../components/command-palette.html">Command Palette</a></li>
 <li><a href="../components/context-menu.html">Context Menu</a></li>
 <li><a href="../components/data-table.html">Data Table</a></li>
 <li><a href="../components/dropdowns.html">Dropdowns</a></li>
 <li><a href="../components/empty-state.html">Empty State</a></li>
 <li><a href="../components/kbd.html">Kbd</a></li>
+<li><a href="../components/lightbox.html">Lightbox</a></li>
 <li><a href="../components/list-group.html">List group</a></li>
 <li><a href="../components/modal.html">Modal</a></li>
 <li><a href="../components/navs.html">Navs & tabs</a></li>
@@ -174,7 +176,9 @@
 <li><a href="../components/segmented-control.html">Segmented Control</a></li>
 <li><a href="../components/sidebar.html">Sidebar</a></li>
 <li><a href="../components/skeleton.html">Skeleton loaders</a></li>
+<li><a href="../components/speed-dial.html">Speed Dial</a></li>
 <li><a href="../components/spinners.html">Spinners</a></li>
+<li><a href="../components/splitter.html">Splitter</a></li>
 <li><a href="../components/stepper.html">Stepper</a></li>
 <li><a href="../components/timeline.html">Timeline</a></li>
 <li><a href="../components/toasts.html">Toasts</a></li>
@@ -304,6 +308,30 @@
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</code></pre>
 </div>
 
+<h2 id="scroll-driven-animations"><span>Native Scroll-Driven Animations (CSS Timeline)</span></h2>
+<p><span>In modern browsers (Chrome, Edge 115+), boodoo supports native CSS Scroll-Driven Animations with <strong>zero JavaScript overhead</strong>:</span></p>
+
+<div class="bd-example">
+  <div class="p-3 border rounded bg-light">
+    <p class="mb-2"><span>Scroll progress indicator:</span></p>
+    <div class="progress" style="height: 6px;">
+      <div class="progress-bar scroll-progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code>&lt;!-- Zero-JS CSS-driven reading progress bar linked to page scroll --&gt;
+&lt;div class="progress" style="height: 6px;"&gt;
+  &lt;div class="progress-bar scroll-progress-bar bg-primary" style="width: 100%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Zero-JS reveal on viewport entry --&gt;
+&lt;div class="card p-4 scroll-reveal"&gt;
+  &lt;p&gt;&lt;span&gt;Reveals smoothly when scrolled into view&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
 <h2 id="reduced">Reduced motion</h2>
 <p>All of boodoo's motion shuts off when the user prefers reduced motion:</p>
 <div class="highlight">
@@ -342,6 +370,7 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</cod
 <li class="toc-2"><a href="#spinning">Spinning</a></li>
 <li class="toc-2"><a href="#delay-duration">Delay &amp; duration</a></li>
 <li class="toc-2"><a href="#scroll-triggered">Scroll-triggered</a></li>
+<li class="toc-2"><a href="#scroll-driven-animations">Native Scroll-Driven Animations (CSS Timeline)</a></li>
 <li class="toc-2"><a href="#reduced">Reduced motion</a></li></ul>
     </div>
 </aside>

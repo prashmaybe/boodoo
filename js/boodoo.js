@@ -30,6 +30,10 @@ import { Sidebar } from './sidebar.js';
 import { ContextMenu } from './context-menu.js';
 import { ChipInput } from './chip-input.js';
 import { Stepper } from './stepper.js';
+import { Combobox } from './combobox.js';
+import { Splitter } from './splitter.js';
+import { SpeedDial } from './speed-dial.js';
+import { Lightbox } from './lightbox.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -75,6 +79,10 @@ const boodoo = {
   ContextMenu,
   ChipInput,
   Stepper,
+  Combobox,
+  Splitter,
+  SpeedDial,
+  Lightbox,
   registerCustomElements,
 };
 
@@ -185,10 +193,12 @@ export {
   Button,
   ChipInput,
   Collapse,
+  Combobox,
   CommandPalette,
   ContextMenu,
   DataTable,
   Dropdown,
+  Lightbox,
   Modal,
   Offcanvas,
   OTP,
@@ -196,6 +206,8 @@ export {
   Rating,
   ScrollSpy,
   Sidebar,
+  SpeedDial,
+  Splitter,
   Stepper,
   Tab,
   Toast,

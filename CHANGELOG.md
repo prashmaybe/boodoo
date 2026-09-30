@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.7] - 2026-09-30
+
+### Added
+- **New Interactive UI Components**:
+  - **Combobox / Autocomplete Select (`Combobox`, `[data-boodoo="combobox"]`)**: Full keyboard navigation (Arrow Up/Down, Enter, Esc), dynamic fuzzy filtering, clear button (`[data-boodoo-combobox-clear]`), and programmatic instance API (`js/src/combobox.js`, `scss/components/_combobox.scss`).
+  - **Resizable Splitter & Docking Panes (`Splitter`, `[data-boodoo="splitter"]`)**: Horizontal and vertical orientation draggable divider (`.splitter-gutter`) with pointer capture, keyboard step resizing, and bounded min/max sizes (`js/src/splitter.js`, `scss/components/_splitter.scss`).
+  - **Speed Dial / FAB Action Menu (`SpeedDial`, `.fab-menu`)**: Expandable floating action menu with staggered actions, micro-interactions, click and hover triggers (`js/src/speed-dial.js`, `scss/components/_speed-dial.scss`).
+  - **Lightbox / Media Zoom Viewer (`Lightbox`, `[data-boodoo="lightbox"]`)**: Fullscreen gallery preview with swipe/cycling navigation, image zoom toggle, counter, caption, and backdrop blur (`js/src/lightbox.js`, `scss/components/_lightbox.scss`).
+- **Emerging Web Platform Primitives**:
+  - **CSS Anchor Positioning**: Declarative tethering for popovers, dropdowns, and tooltips using `position-anchor`, `top: anchor(bottom)`, `left: anchor(center)`, and `position-try-options: flip-block, flip-inline` (`scss/components/_popover.scss`, `scss/components/_tooltip.scss`, `scss/components/_dropdown.scss`).
+  - **Native Scroll-Driven Animations**: Zero-JS scroll indicators and viewport reveals utilizing `animation-timeline: scroll()` and `animation-timeline: view()` (`.scroll-progress-bar`, `.scroll-reveal`, `.scroll-shrink-header` in `scss/_animations.scss`).
+  - **CSS `@starting-style` & Discrete Transitions**: Modern top-layer transitions animating `display` and `overlay` properties smoothly from `display: none` on native `<dialog>` and `[popover]` without JavaScript timers (`scss/components/_modal.scss`, `scss/components/_popover.scss`).
+- **Developer Tooling & Ecosystem**:
+  - **`create-boodoo` Scaffolding CLI**: Interactive CLI (`npx create-boodoo` / `bin/create-boodoo.mjs`) to jumpstart projects with templates for Vanilla HTML5/Sass, Vite + Boodoo, and Next.js / React.
+  - **Official VS Code Extension**: Full IntelliSense autocomplete and snippet pack for layout, components, custom properties, and anchor positioning (`tools/vscode-boodoo/`).
+  - **Icon Token System**: Unified SVG icon sizing tokens (`.icon`, `.icon-xs` through `.icon-2xl`) that automatically scale with typography and theme color inheritance (`scss/_helpers.scss`, `less/boodoo.less`).
+
+---
+
 ## [1.0.6] - 2026-09-27
 
 ### Added

@@ -154,12 +154,14 @@
 <li><a href="../components/carousel.html">Carousel</a></li>
 <li><a href="../components/chip.html">Chips & Tag Input</a></li>
 <li><a href="../components/collapse.html">Collapse</a></li>
+<li><a href="../components/combobox.html">Combobox</a></li>
 <li><a href="../components/command-palette.html">Command Palette</a></li>
 <li><a href="../components/context-menu.html">Context Menu</a></li>
 <li><a href="../components/data-table.html">Data Table</a></li>
 <li><a href="../components/dropdowns.html">Dropdowns</a></li>
 <li><a href="../components/empty-state.html">Empty State</a></li>
 <li><a href="../components/kbd.html">Kbd</a></li>
+<li><a href="../components/lightbox.html">Lightbox</a></li>
 <li><a href="../components/list-group.html">List group</a></li>
 <li><a href="../components/modal.html">Modal</a></li>
 <li><a href="../components/navs.html">Navs & tabs</a></li>
@@ -174,7 +176,9 @@
 <li><a href="../components/segmented-control.html">Segmented Control</a></li>
 <li><a href="../components/sidebar.html">Sidebar</a></li>
 <li><a href="../components/skeleton.html">Skeleton loaders</a></li>
+<li><a href="../components/speed-dial.html">Speed Dial</a></li>
 <li><a href="../components/spinners.html">Spinners</a></li>
+<li><a href="../components/splitter.html">Splitter</a></li>
 <li><a href="../components/stepper.html">Stepper</a></li>
 <li><a href="../components/timeline.html">Timeline</a></li>
 <li><a href="../components/toasts.html">Toasts</a></li>
@@ -246,7 +250,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.6</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.7</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -269,7 +273,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.0.6</span></div>
+        <div class="stat-value"><span>v1.0.7</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -278,7 +282,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>⚡</span></div>
       <div>
-        <div class="stat-value"><span>411 KB / 99 KB</span></div>
+        <div class="stat-value"><span>422 KB / 119 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -305,16 +309,70 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.0.6 -->
+  <!-- Version 1.0.7 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-7">
+            <span>v1.0.7</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 September 30, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.7"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>New Features &amp; Components</span>
+        </h3>
+        <ul class="mb-3">
+          <li>
+            <strong>Combobox / Autocomplete Select</strong>:
+            <span>Added accessible combobox (<code>Combobox</code>, <code>[data-boodoo="combobox"]</code>) with dynamic option filtering, keyboard navigation (Arrow Up/Down, Enter, Esc), clear triggers, and programmatic selection events.</span>
+          </li>
+          <li>
+            <strong>Resizable Splitter &amp; Docking Panes</strong>:
+            <span>Draggable dual-pane container (<code>Splitter</code>, <code>[data-boodoo="splitter"]</code>) supporting both horizontal and vertical split views, pointer capture, and keyboard stepping.</span>
+          </li>
+          <li>
+            <strong>Speed Dial / FAB Action Menu</strong>:
+            <span>Expandable Material-style floating action menu (<code>SpeedDial</code>, <code>.fab-menu</code>) with micro-interactions, trigger rotation, and action labels.</span>
+          </li>
+          <li>
+            <strong>Lightbox / Media Zoom Viewer</strong>:
+            <span>Zero-dependency fullscreen media viewer (<code>Lightbox</code>, <code>[data-boodoo="lightbox"]</code>) with zoom toggle, gallery arrow/touch cycling, and backdrop blur.</span>
+          </li>
+          <li>
+            <strong>Modern CSS Primitives &amp; Transitions</strong>:
+            <span>CSS Anchor Positioning (<code>anchor()</code>, <code>position-anchor</code>) for zero-JS popovers, native Scroll-Driven Animations (<code>animation-timeline: scroll() / view()</code>), and discrete <code>@starting-style</code> transitions for native <code>&lt;dialog&gt;</code> and <code>[popover]</code>.</span>
+          </li>
+          <li>
+            <strong>CLI Scaffolder &amp; Tooling</strong>:
+            <span>Launched <code>create-boodoo</code> CLI (<code>npx create-boodoo</code>) with templates for HTML5/Sass, Vite, and Next.js, plus the official VS Code IntelliSense snippet pack.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.0.6 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>•</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-6">
             <span>v1.0.6</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

@@ -1412,4 +1412,234 @@ ul, ol { margin-top: 0; margin-bottom: 1rem; }
   .form-control {
     padding-left: 2.5rem;
   }
+}
+
+// ---------------------------------------------------------------------
+// Icon Tokens
+// ---------------------------------------------------------------------
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -0.125em;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  stroke: currentColor;
+  flex-shrink: 0;
+  > svg { width: 100%; height: 100%; display: block; }
+}
+.icon-xs { width: 0.75rem; height: 0.75rem; font-size: 0.75rem; }
+.icon-sm { width: 1rem; height: 1rem; font-size: 1rem; }
+.icon-md { width: 1.25rem; height: 1.25rem; font-size: 1.25rem; }
+.icon-lg { width: 1.75rem; height: 1.75rem; font-size: 1.75rem; }
+.icon-xl { width: 2.25rem; height: 2.25rem; font-size: 2.25rem; }
+.icon-2xl { width: 3rem; height: 3rem; font-size: 3rem; }
+
+// ---------------------------------------------------------------------
+// Combobox
+// ---------------------------------------------------------------------
+.combobox {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  .combobox-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .combobox-input {
+    width: 100%;
+    padding-right: 2.25rem;
+  }
+
+  .combobox-clear {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--boodoo-gray-500, #8b8fb0);
+  }
+
+  .combobox-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    max-height: 260px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0.375rem;
+    background-color: var(--boodoo-body-bg, #fff);
+    border: 1px solid var(--boodoo-border-color, #dfe3ee);
+    border-radius: var(--boodoo-border-radius, 0.5rem);
+    box-shadow: var(--boodoo-shadow-md);
+
+    &.show { display: block; }
+  }
+
+  .combobox-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: var(--boodoo-border-radius-sm, 0.375rem);
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      background-color: var(--boodoo-gray-100, #f7f8fb);
+      color: var(--boodoo-primary, #7c3aed);
+    }
+
+    &.selected {
+      font-weight: 600;
+      color: var(--boodoo-primary, #7c3aed);
+    }
+  }
+
+  .combobox-empty {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--boodoo-gray-500, #8b8fb0);
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Splitter
+// ---------------------------------------------------------------------
+.splitter-container,
+.split-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &.splitter-vertical {
+    flex-direction: column;
+
+    > .splitter-gutter {
+      width: 100%;
+      height: 8px;
+      cursor: row-resize;
+    }
+  }
+
+  > .splitter-pane {
+    overflow: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  > .splitter-gutter {
+    flex: 0 0 8px;
+    width: 8px;
+    background-color: var(--boodoo-gray-200, #ececf4);
+    cursor: col-resize;
+    position: relative;
+    user-select: none;
+    touch-action: none;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Speed Dial
+// ---------------------------------------------------------------------
+.fab-menu {
+  position: fixed;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.75rem;
+
+  &.fab-bottom-end,
+  &.fab-bottom-right { bottom: 2rem; right: 2rem; }
+  &.fab-bottom-start,
+  &.fab-bottom-left { bottom: 2rem; left: 2rem; }
+
+  .fab-actions {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.625rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &.open {
+    .fab-actions {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Lightbox
+// ---------------------------------------------------------------------
+.lightbox-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1090;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.show { display: flex; }
+
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 20, 0.92);
+  }
+
+  .lightbox-toolbar {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    color: #fff;
+  }
+
+  .lightbox-btn,
+  .lightbox-nav {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .lightbox-stage {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    z-index: 5;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+  }
 }

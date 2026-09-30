@@ -145,6 +145,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/combobox.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/command-palette.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -176,6 +182,12 @@
   </url>
   <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/kbd.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/lightbox.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -277,7 +289,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/speed-dial.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/spinners.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/splitter.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

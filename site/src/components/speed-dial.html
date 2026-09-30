@@ -1,0 +1,51 @@
+<!--
+title: Speed Dial
+description: Floating Action Button menu that expands to reveal secondary actions.
+section: components
+order: 28
+-->
+<h1><span>Speed Dial</span></h1>
+<p class="lead"><span>Floating Action Button menu that expands to reveal a suite of secondary quick actions with staggered transitions.</span></p>
+
+<h2 id="speed-dial-overview"><span>Speed Dial Example</span></h2>
+<div class="bd-example position-relative bg-light rounded" style="height: 280px; overflow: hidden;">
+  <p class="text-muted p-3"><span>Click the floating action trigger at the bottom right to toggle secondary actions.</span></p>
+
+  <div class="fab-menu fab-bottom-end position-absolute" data-boodoo="speed-dial">
+    <button type="button" class="btn btn-primary btn-fab fab-trigger shadow" aria-label="Toggle actions">
+      <span>+</span>
+    </button>
+    <div class="fab-actions">
+      <div class="fab-action-item">
+        <span class="fab-label"><span>Edit Document</span></span>
+        <button type="button" class="btn btn-secondary btn-fab fab-sm" aria-label="Edit"><span>✎</span></button>
+      </div>
+      <div class="fab-action-item">
+        <span class="fab-label"><span>Share Link</span></span>
+        <button type="button" class="btn btn-info btn-fab fab-sm" aria-label="Share"><span>🔗</span></button>
+      </div>
+      <div class="fab-action-item">
+        <span class="fab-label"><span>Print</span></span>
+        <button type="button" class="btn btn-dark btn-fab fab-sm" aria-label="Print"><span>🖨</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code>&lt;div class="fab-menu fab-bottom-end" data-boodoo="speed-dial"&gt;
+  &lt;button type="button" class="btn btn-primary btn-fab fab-trigger" aria-label="Menu"&gt;
+    &lt;span&gt;+&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="fab-actions"&gt;
+    &lt;div class="fab-action-item"&gt;
+      &lt;span class="fab-label"&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;/span&gt;
+      &lt;button type="button" class="btn btn-secondary btn-fab fab-sm" aria-label="Edit"&gt;&lt;span&gt;✎&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="fab-action-item"&gt;
+      &lt;span class="fab-label"&gt;&lt;span&gt;Share&lt;/span&gt;&lt;/span&gt;
+      &lt;button type="button" class="btn btn-info btn-fab fab-sm" aria-label="Share"&gt;&lt;span&gt;🔗&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>

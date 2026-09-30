@@ -339,3 +339,18 @@
     border-color: $boodoo-gray-800;
   }
 }
+
+// ---------------------------------------------------------------------
+// CSS Anchor Positioning Support (Chrome 125+, Safari/Firefox modern)
+// Declarative zero-JS anchor positioning for dropdown menus
+// ---------------------------------------------------------------------
+@supports (anchor-name: --anchor-target) {
+  .dropdown-menu-anchor,
+  [data-dropdown-anchor] {
+    position-anchor: var(--anchor-target, --boodoo-anchor);
+    top: anchor(bottom);
+    left: anchor(start);
+    position-try-options: flip-block, flip-inline;
+    margin-top: var(--boodoo-dropdown-spacer, 0.125rem);
+  }
+}

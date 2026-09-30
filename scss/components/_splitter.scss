@@ -1,0 +1,84 @@
+// =====================================================================
+// BOODOO SPLITTER
+// Resizable dual panes & splitter divider styles
+// =====================================================================
+
+.splitter-container,
+.split-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &.splitter-vertical {
+    flex-direction: column;
+
+    > .splitter-gutter {
+      width: 100%;
+      height: 8px;
+      cursor: row-resize;
+
+      &::after {
+        width: 32px;
+        height: 2px;
+      }
+    }
+  }
+
+  > .splitter-pane {
+    overflow: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  > .splitter-gutter {
+    flex: 0 0 8px;
+    width: 8px;
+    background-color: var(--boodoo-gray-200);
+    cursor: col-resize;
+    position: relative;
+    user-select: none;
+    touch-action: none;
+    transition: background-color var(--boodoo-transition-duration, 150ms) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: "";
+      width: 2px;
+      height: 32px;
+      background-color: var(--boodoo-gray-400);
+      border-radius: 9999px;
+      transition: background-color var(--boodoo-transition-duration, 150ms) ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba(var(--boodoo-primary-rgb, 124, 58, 237), 0.15);
+      outline: none;
+
+      &::after {
+        background-color: var(--boodoo-primary);
+      }
+    }
+  }
+
+  &.splitter-resizing {
+    user-select: none;
+    cursor: col-resize;
+
+    &.splitter-vertical {
+      cursor: row-resize;
+    }
+
+    > .splitter-gutter {
+      background-color: var(--boodoo-primary);
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}

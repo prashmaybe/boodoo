@@ -1,0 +1,58 @@
+<!--
+title: Combobox
+description: Accessible, searchable autocomplete select component with keyboard navigation.
+section: components
+order: 11
+-->
+<h1><span>Combobox</span></h1>
+<p class="lead"><span>Accessible, searchable autocomplete component with live option filtering, keyboard arrow navigation, and clearable support.</span></p>
+
+<h2 id="basic-combobox"><span>Basic Autocomplete</span></h2>
+<div class="bd-example" style="max-width: 380px;">
+  <div class="combobox" data-boodoo="combobox" id="demoCombobox">
+    <div class="combobox-input-wrapper">
+      <input type="text" class="form-control combobox-input" id="frameworkSearchInput" name="frameworkSearchInput" placeholder="Search web frameworks..." autocomplete="off">
+      <button type="button" class="combobox-clear" data-boodoo-combobox-clear aria-label="Clear selection"><span>&times;</span></button>
+    </div>
+    <ul class="combobox-menu" data-boodoo-combobox-menu>
+      <li class="combobox-item" data-value="boodoo"><span>Boodoo (Modern & Fast)</span></li>
+      <li class="combobox-item" data-value="react"><span>React</span></li>
+      <li class="combobox-item" data-value="vue"><span>Vue.js</span></li>
+      <li class="combobox-item" data-value="svelte"><span>Svelte</span></li>
+      <li class="combobox-item" data-value="astro"><span>Astro</span></li>
+      <li class="combobox-item" data-value="angular"><span>Angular</span></li>
+      <li class="combobox-empty"><span>No frameworks found</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code>&lt;div class="combobox" data-boodoo="combobox"&gt;
+  &lt;div class="combobox-input-wrapper"&gt;
+    &lt;input type="text" class="form-control combobox-input" id="fruitInput" name="fruitInput" placeholder="Search..." autocomplete="off"&gt;
+    &lt;button type="button" class="combobox-clear" data-boodoo-combobox-clear aria-label="Clear"&gt;&lt;span&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;ul class="combobox-menu" data-boodoo-combobox-menu&gt;
+    &lt;li class="combobox-item" data-value="apple"&gt;&lt;span&gt;Apple&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="combobox-item" data-value="banana"&gt;&lt;span&gt;Banana&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="combobox-item" data-value="cherry"&gt;&lt;span&gt;Cherry&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="combobox-empty"&gt;&lt;span&gt;No options match&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="combobox-js-api"><span>JavaScript API</span></h2>
+<div class="highlight">
+  <pre><code>import { Combobox } from 'boodoo';
+
+const element = document.getElementById('demoCombobox');
+const combobox = Combobox.getOrCreateInstance(element);
+
+// Listen to selection events
+element.addEventListener('select.boodoo.combobox', (e) => {
+  console.log('Selected value:', e.detail.value);
+});
+
+// Clear programmatically
+combobox.clear();</code></pre>
+</div>

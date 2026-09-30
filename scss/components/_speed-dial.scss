@@ -1,0 +1,110 @@
+// =====================================================================
+// BOODOO SPEED DIAL
+// Expandable FAB menu with stagger animations
+// =====================================================================
+
+.fab-menu {
+  position: fixed;
+  z-index: var(--boodoo-zindex-fixed, 1030);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.75rem;
+
+  &.fab-bottom-end,
+  &.fab-bottom-right {
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+  &.fab-bottom-start,
+  &.fab-bottom-left {
+    bottom: 2rem;
+    left: 2rem;
+  }
+
+  &.fab-top-end,
+  &.fab-top-right {
+    top: 2rem;
+    right: 2rem;
+    flex-direction: column;
+  }
+
+  &.fab-top-start,
+  &.fab-top-left {
+    top: 2rem;
+    left: 2rem;
+    flex-direction: column;
+  }
+
+  .btn-fab {
+    position: static;
+  }
+
+  .fab-trigger {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color var(--boodoo-transition-duration, 150ms) ease;
+
+    .fab-icon-open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+    }
+
+    .fab-icon-close {
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .fab-actions {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.625rem;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.85);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  }
+
+  .fab-action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+
+    .fab-label {
+      background: rgba(var(--boodoo-dark-rgb, 23, 19, 95), 0.85);
+      color: #fff;
+      padding: 0.25rem 0.625rem;
+      border-radius: var(--boodoo-border-radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: var(--boodoo-shadow-sm);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      pointer-events: none;
+    }
+
+    &:hover .fab-label {
+      opacity: 1;
+    }
+  }
+
+  &.open {
+    .fab-trigger {
+      transform: rotate(45deg);
+    }
+
+    .fab-actions {
+      pointer-events: auto;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
