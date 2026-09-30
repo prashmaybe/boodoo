@@ -66,6 +66,30 @@ order: 0
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</code></pre>
 </div>
 
+<h2 id="scroll-driven-animations"><span>Native Scroll-Driven Animations (CSS Timeline)</span></h2>
+<p><span>In modern browsers (Chrome, Edge 115+), boodoo supports native CSS Scroll-Driven Animations with <strong>zero JavaScript overhead</strong>:</span></p>
+
+<div class="bd-example">
+  <div class="p-3 border rounded bg-light">
+    <p class="mb-2"><span>Scroll progress indicator:</span></p>
+    <div class="progress" style="height: 6px;">
+      <div class="progress-bar scroll-progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code>&lt;!-- Zero-JS CSS-driven reading progress bar linked to page scroll --&gt;
+&lt;div class="progress" style="height: 6px;"&gt;
+  &lt;div class="progress-bar scroll-progress-bar bg-primary" style="width: 100%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Zero-JS reveal on viewport entry --&gt;
+&lt;div class="card p-4 scroll-reveal"&gt;
+  &lt;p&gt;&lt;span&gt;Reveals smoothly when scrolled into view&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
 <h2 id="reduced">Reduced motion</h2>
 <p>All of boodoo's motion shuts off when the user prefers reduced motion:</p>
 <div class="highlight">

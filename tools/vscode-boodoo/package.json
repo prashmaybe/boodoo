@@ -1,0 +1,55 @@
+{
+  "name": "vscode-boodoo-intellisense",
+  "displayName": "Boodoo IntelliSense",
+  "description": "Autocomplete, CSS variable tokens, and snippet generator for the Boodoo framework",
+  "version": "1.0.7",
+  "publisher": "pebblebenders",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "boodoo",
+    "css",
+    "framework",
+    "bootstrap",
+    "tailwind",
+    "snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/html-snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/html-snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/html-snippets.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/html-snippets.json"
+      },
+      {
+        "language": "svelte",
+        "path": "./snippets/html-snippets.json"
+      },
+      {
+        "language": "scss",
+        "path": "./snippets/scss-snippets.json"
+      },
+      {
+        "language": "css",
+        "path": "./snippets/scss-snippets.json"
+      }
+    ]
+  }
+}

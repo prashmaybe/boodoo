@@ -1,0 +1,36 @@
+<!--
+title: Lightbox
+description: Zero-dependency fullscreen media and image zoom viewer with gallery cycling.
+section: components
+order: 17
+-->
+<h1><span>Lightbox</span></h1>
+<p class="lead"><span>Zero-dependency fullscreen media and image viewer with gallery navigation, keyboard controls, zoom toggle, and backdrop blur.</span></p>
+
+<h2 id="lightbox-gallery"><span>Image Gallery Example</span></h2>
+<div class="bd-example">
+  <div class="row g-3">
+    <div class="col-sm-4">
+      <a href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80" class="lightbox-trigger d-block" data-boodoo="lightbox" data-boodoo-gallery="nature" data-caption="Misty mountain landscape at sunrise">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=80" alt="Mountain Landscape" class="img-fluid rounded shadow-sm hover-scale-105 transition-all">
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&auto=format&fit=crop&q=80" class="lightbox-trigger d-block" data-boodoo="lightbox" data-boodoo-gallery="nature" data-caption="Serene fog over forest hills">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&auto=format&fit=crop&q=80" alt="Fog over forest" class="img-fluid rounded shadow-sm hover-scale-105 transition-all">
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=1200&auto=format&fit=crop&q=80" class="lightbox-trigger d-block" data-boodoo="lightbox" data-boodoo-gallery="nature" data-caption="Emerald valley between rugged peaks">
+        <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&auto=format&fit=crop&q=80" alt="Valley view" class="img-fluid rounded shadow-sm hover-scale-105 transition-all">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code>&lt;!-- Zero-JS declarative markup using data-boodoo="lightbox" --&gt;
+&lt;a href="large-image.jpg" class="lightbox-trigger" data-boodoo="lightbox" data-boodoo-gallery="vacation" data-caption="Tropical beach"&gt;
+  &lt;img src="thumb-image.jpg" alt="Thumbnail" class="img-fluid rounded"&gt;
+&lt;/a&gt;</code></pre>
+</div>

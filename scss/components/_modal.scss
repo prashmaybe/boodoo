@@ -246,18 +246,36 @@ dialog.modal-dialog {
   width: calc(100% - var(--boodoo-modal-margin, 0.5rem) * 2);
   margin: auto;
   outline: 0;
+  opacity: 0;
+  transform: translateY(1.5rem) scale(0.95);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), overlay 0.25s allow-discrete, display 0.25s allow-discrete;
 
   &::backdrop {
     background-color: var(--boodoo-modal-backdrop-bg, rgba(0, 0, 0, 0.5));
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    animation: boodoo-fade-in 0.2s ease-out;
+    opacity: 0;
+    transition: opacity 0.25s ease, overlay 0.25s allow-discrete, display 0.25s allow-discrete;
   }
 
   &[open] {
     display: flex;
     flex-direction: column;
-    animation: boodoo-slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(1.5rem) scale(0.95);
+    }
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
   }
 
   .modal-header,

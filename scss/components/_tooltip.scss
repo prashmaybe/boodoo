@@ -124,3 +124,19 @@
     }
   }
 }
+
+// ---------------------------------------------------------------------
+// CSS Anchor Positioning Support (Chrome 125+, Safari/Firefox modern)
+// Declarative anchor positioning for zero-JS tooltips
+// ---------------------------------------------------------------------
+@supports (anchor-name: --anchor-target) {
+  .tooltip-anchor,
+  [data-tooltip-anchor] {
+    position-anchor: var(--anchor-target, --boodoo-anchor);
+    bottom: anchor(top);
+    left: anchor(center);
+    transform: translateX(-50%);
+    position-try-options: flip-block, flip-inline;
+    margin: 0.4rem 0;
+  }
+}

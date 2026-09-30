@@ -1,0 +1,115 @@
+{
+  "Boodoo Container": {
+    "prefix": "boo-container",
+    "body": [
+      "<div class=\"container${1:-fluid}\">",
+      "  $0",
+      "</div>"
+    ],
+    "description": "Boodoo layout container"
+  },
+  "Boodoo Row and Columns": {
+    "prefix": "boo-row",
+    "body": [
+      "<div class=\"row g-${1:3}\">",
+      "  <div class=\"col-${2:12} col-md-${3:6}\">",
+      "    $0",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "Boodoo 12-column grid row"
+  },
+  "Boodoo Button": {
+    "prefix": "boo-btn",
+    "body": [
+      "<button type=\"button\" class=\"btn btn-${1|primary,secondary,success,danger,warning,info,dark,light|}\"${2: data-boodoo-ripple}>",
+      "  <span>${3:Button Text}</span>",
+      "</button>"
+    ],
+    "description": "Boodoo styled button"
+  },
+  "Boodoo Card": {
+    "prefix": "boo-card",
+    "body": [
+      "<div class=\"card shadow-sm\">",
+      "  <div class=\"card-body\">",
+      "    <h5 class=\"card-title\"><span>${1:Card Title}</span></h5>",
+      "    <p class=\"card-text text-muted\"><span>${2:Card description text goes here.}</span></p>",
+      "    <button type=\"button\" class=\"btn btn-primary btn-sm\"><span>Action</span></button>",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "Boodoo card component"
+  },
+  "Boodoo Combobox": {
+    "prefix": "boo-combobox",
+    "body": [
+      "<div class=\"combobox\" data-boodoo=\"combobox\">",
+      "  <div class=\"combobox-input-wrapper\">",
+      "    <input type=\"text\" class=\"form-control combobox-input\" id=\"${1:combobox-input}\" name=\"${1:combobox-input}\" placeholder=\"${2:Search items...}\" autocomplete=\"off\">",
+      "    <button type=\"button\" class=\"combobox-clear\" data-boodoo-combobox-clear aria-label=\"Clear input\">&times;</button>",
+      "  </div>",
+      "  <ul class=\"combobox-menu\" data-boodoo-combobox-menu>",
+      "    <li class=\"combobox-item\" data-value=\"${3:item1}\"><span>${4:First Option}</span></li>",
+      "    <li class=\"combobox-item\" data-value=\"${5:item2}\"><span>${6:Second Option}</span></li>",
+      "    <li class=\"combobox-empty\"><span>No matching options</span></li>",
+      "  </ul>",
+      "</div>"
+    ],
+    "description": "Boodoo searchable combobox autocomplete"
+  },
+  "Boodoo Splitter": {
+    "prefix": "boo-splitter",
+    "body": [
+      "<div class=\"splitter-container split-view\" data-boodoo=\"splitter\" style=\"height: ${1:400px};\">",
+      "  <div class=\"splitter-pane p-3\" style=\"width: 250px;\">",
+      "    <p><span>${2:Left Pane}</span></p>",
+      "  </div>",
+      "  <div class=\"splitter-gutter\" data-boodoo-splitter-gutter></div>",
+      "  <div class=\"splitter-pane p-3 flex-grow-1\">",
+      "    <p><span>${3:Right Pane}</span></p>",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "Boodoo draggable splitter dual panes"
+  },
+  "Boodoo Speed Dial": {
+    "prefix": "boo-speed-dial",
+    "body": [
+      "<div class=\"fab-menu fab-bottom-end\" data-boodoo=\"speed-dial\">",
+      "  <button type=\"button\" class=\"btn btn-primary btn-fab fab-trigger\" aria-label=\"Actions\">",
+      "    <span>+</span>",
+      "  </button>",
+      "  <div class=\"fab-actions\">",
+      "    <div class=\"fab-action-item\">",
+      "      <span class=\"fab-label\">${1:Edit}</span>",
+      "      <button type=\"button\" class=\"btn btn-secondary btn-fab fab-sm\" aria-label=\"${1:Edit}\"><span>✎</span></button>",
+      "    </div>",
+      "    <div class=\"fab-action-item\">",
+      "      <span class=\"fab-label\">${2:Share}</span>",
+      "      <button type=\"button\" class=\"btn btn-info btn-fab fab-sm\" aria-label=\"${2:Share}\"><span>🔗</span></button>",
+      "    </div>",
+      "  </div>",
+      "</div>"
+    ],
+    "description": "Boodoo speed dial floating action menu"
+  },
+  "Boodoo Lightbox Image": {
+    "prefix": "boo-lightbox",
+    "body": [
+      "<a href=\"${1:image-full.jpg}\" class=\"lightbox-trigger\" data-boodoo=\"lightbox\" data-boodoo-gallery=\"${2:gallery1}\" data-caption=\"${3:Image caption}\">",
+      "  <img src=\"${4:image-thumb.jpg}\" alt=\"${3:Image caption}\" class=\"img-fluid rounded\">",
+      "</a>"
+    ],
+    "description": "Boodoo lightbox gallery trigger"
+  },
+  "Boodoo Icon": {
+    "prefix": "boo-icon",
+    "body": [
+      "<span class=\"icon icon-${1|sm,md,lg,xl,2xl|}\">",
+      "  $0",
+      "</span>"
+    ],
+    "description": "Boodoo icon token wrapper"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "Boodoo SCSS Variable Tokens": {
+    "prefix": "boo-vars",
+    "body": [
+      "\\$boodoo-primary: ${1:#7c3aed};",
+      "\\$boodoo-secondary: ${2:#5b21e6};",
+      "\\$boodoo-border-radius: ${3:0.5rem};"
+    ],
+    "description": "Boodoo primary SCSS configuration variables"
+  },
+  "Boodoo CSS Custom Properties": {
+    "prefix": "boo-tokens",
+    "body": [
+      "--boodoo-primary: ${1:#7c3aed};",
+      "--boodoo-secondary: ${2:#5b21e6};",
+      "--boodoo-border-radius: ${3:0.5rem};",
+      "--boodoo-transition-duration: ${4:150ms};"
+    ],
+    "description": "Boodoo CSS custom properties tokens"
+  },
+  "Boodoo Anchor Positioning": {
+    "prefix": "boo-anchor",
+    "body": [
+      "position-anchor: --${1:anchor-target};",
+      "top: anchor(bottom);",
+      "left: anchor(center);",
+      "transform: translateX(-50%);",
+      "position-try-options: flip-block, flip-inline;"
+    ],
+    "description": "CSS Anchor positioning snippet"
+  }
+}
