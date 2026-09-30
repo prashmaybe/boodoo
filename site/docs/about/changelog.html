@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -252,7 +259,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.7</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.0.8</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -275,7 +282,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.0.7</span></div>
+        <div class="stat-value"><span>v1.0.8</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -284,7 +291,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>⚡</span></div>
       <div>
-        <div class="stat-value"><span>422 KB / 119 KB</span></div>
+        <div class="stat-value"><span>422 KB / 120 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -302,7 +309,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>📦</span></div>
       <div>
-        <div class="stat-value"><span>6 Milestones</span></div>
+        <div class="stat-value"><span>7 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -311,16 +318,51 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.0.7 -->
+  <!-- Version 1.0.8 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-8">
+            <span>v1.0.8</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 September 30, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.8"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Performance</span></span>
+          <span>Performance, Caching &amp; PageSpeed Optimizations</span>
+        </h3>
+        <ul class="mb-3">
+          <li><strong>Leverage Browser Caching</strong>: Implemented comprehensive <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>, configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</li>
+          <li><strong>Eliminate Render-Blocking Resources</strong>: Web fonts now preload asynchronously via <code>media="print" onload="this.media='all'"</code> with <code>&amp;display=swap</code> and <code>&lt;noscript&gt;</code> fallback. Added <code>defer</code> attributes to all script tags across all pages.</li>
+          <li><strong>Prevent Layout Shifts (CLS)</strong>: Added explicit <code>width="32"</code> and <code>height="32"</code> dimensions to all navbar brand images.</li>
+          <li><strong>Form Accessibility</strong>: Added semantic <code>name</code>, <code>type</code>, and label association to showcase controls.</li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.0.7 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>●</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-7">
             <span>v1.0.7</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+            <span class="badge bg-light text-muted fs-6"><span>Stable</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
@@ -795,8 +837,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -361,8 +368,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

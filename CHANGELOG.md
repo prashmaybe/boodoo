@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.8] - 2026-09-30
+
+### Fixed
+- **Leverage Browser Caching & Static Asset Cache-Control**:
+  - Implemented comprehensive `mod_expires` and `mod_headers` directives in `.htaccess`, setting 1-year immutable caching (`max-age=31536000, public, immutable`) for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.
+- **Eliminate Render-Blocking Resources & Webfont Load Optimization**:
+  - Configured font stylesheet preloading and asynchronous loading (`media="print" onload="this.media='all'"`) with `<noscript>` fallback across all site pages and templates.
+  - Retained `&display=swap` to prevent invisible text during webfont download.
+  - Added the `defer` attribute to framework scripts (`boodoo.js` and `search.js`) to unblock main thread HTML parsing.
+- **Cumulative Layout Shift (CLS) Prevention**:
+  - Added explicit `width="32"` and `height="32"` attributes to all navbar brand images (`boodoo-icon.svg`) across landing, documentation layouts, 404, and example templates.
+- **Accessibility & Form Control Identification**:
+  - Added explicit semantic `name`, `type`, and `<label for="...">` associations to interactive showcase controls in compliance with framework accessibility rules.
+
+---
+
 ## [1.0.7] - 2026-09-30
 
 ### Added
