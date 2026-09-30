@@ -81,6 +81,7 @@
     background-color: map.get($boodoo-bg-subtle-map, $name);
 
     &.list-group-item-action {
+
       &:hover,
       &:focus {
         color: map.get($boodoo-text-emphasis-map, $name);
@@ -116,41 +117,41 @@
 .list-group-horizontal {
   flex-direction: row;
 
-  > .list-group-item:first-child:not(:last-child) {
+  >.list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--boodoo-list-group-border-radius);
     border-top-right-radius: 0;
   }
 
-  > .list-group-item:last-child:not(:first-child) {
+  >.list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--boodoo-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
 
-  > .list-group-item + .list-group-item {
+  >.list-group-item+.list-group-item {
     border-top-width: var(--boodoo-list-group-border-width);
     border-left-width: 0;
   }
 }
 
 @each $breakpoint in map.keys($boodoo-grid-breakpoints) {
-  @if $breakpoint != "xs" {
+  @if $breakpoint !="xs" {
     $infix: "-#{$breakpoint}";
 
     @include media-breakpoint-up($breakpoint) {
       .list-group-horizontal#{$infix} {
         flex-direction: row;
 
-        > .list-group-item:first-child:not(:last-child) {
+        >.list-group-item:first-child:not(:last-child) {
           border-bottom-left-radius: var(--boodoo-list-group-border-radius);
           border-top-right-radius: 0;
         }
 
-        > .list-group-item:last-child:not(:first-child) {
+        >.list-group-item:last-child:not(:first-child) {
           border-top-right-radius: var(--boodoo-list-group-border-radius);
           border-bottom-left-radius: 0;
         }
 
-        > .list-group-item + .list-group-item {
+        >.list-group-item+.list-group-item {
           border-top-width: var(--boodoo-list-group-border-width);
           border-left-width: 0;
         }
@@ -163,7 +164,7 @@
 .list-group-flush {
   border-radius: 0;
 
-  > .list-group-item {
+  >.list-group-item {
     border-width: 0 0 var(--boodoo-list-group-border-width);
 
     &:last-child {
@@ -175,10 +176,6 @@
 // Light
 .list-group-light {
   --boodoo-list-group-border-color: transparent;
-
-  .list-group-item {
-    background-color: transparent;
-  }
 
   .list-group-item-action:hover {
     background-color: var(--boodoo-list-group-hover-bg);

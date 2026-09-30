@@ -7,22 +7,27 @@ order: 10
 
 <section class="docs-section">
   <h2><span>Overview</span></h2>
-  <p class="lead"><span>Pickers enhance native browser inputs like <code>&lt;input type="color"&gt;</code> and <code>&lt;input type="date"&gt;</code> with uniform border styling, hex readout badges, integrated calendar icons, and dual date ranges.</span></p>
+  <p class="lead"><span>Pickers enhance native browser inputs like <code>&lt;input type="color"&gt;</code> and
+      <code>&lt;input type="date"&gt;</code> with uniform border styling, hex readout badges, integrated calendar icons,
+      and dual date ranges.</span></p>
 </section>
 
 <section class="docs-section">
   <h2><span>Color Picker Wrapper</span></h2>
-  <p><span>The <code>.form-color-picker</code> container couples a color swatch preview with an interactive hex readout badge:</span></p>
+  <p><span>The <code>.form-color-picker</code> container couples a color swatch preview with an interactive hex readout
+      badge:</span></p>
 
   <div class="bd-example p-4 border rounded bg-white">
-    <div class="d-flex align-items-center gap-3">
+    <div class="d-flex align-items-center gap-2">
       <label class="form-color-picker" for="primaryBrandColor">
-        <input type="color" class="form-control-color" id="primaryBrandColor" name="brandColor" value="#7c3aed" title="Choose brand color" oninput="document.getElementById('colorValText').innerText = this.value">
+        <input type="color" class="form-control-color" id="primaryBrandColor" name="brandColor" value="#7c3aed"
+          title="Choose brand color" oninput="document.getElementById('colorValText').innerText = this.value">
         <span class="form-color-value" id="colorValText"><span>#7c3aed</span></span>
       </label>
 
       <label class="form-color-picker" for="accentColor">
-        <input type="color" class="form-control-color" id="accentColor" name="accentColor" value="#1c9e50" title="Choose accent color" oninput="document.getElementById('accentValText').innerText = this.value">
+        <input type="color" class="form-control-color" id="accentColor" name="accentColor" value="#1c9e50"
+          title="Choose accent color" oninput="document.getElementById('accentValText').innerText = this.value">
         <span class="form-color-value" id="accentValText"><span>#1c9e50</span></span>
       </label>
     </div>
