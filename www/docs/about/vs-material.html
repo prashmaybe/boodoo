@@ -256,64 +256,92 @@
         <li class="breadcrumb-item active" aria-current="page">boodoo vs Material Design</li>
       </ol>
     </nav>
-          <h1>boodoo vs Material Design</h1>
-<p class="lead">Compare <strong>boodoo</strong> and <strong>Material Design</strong> (Material UI / MDC) to discover how boodoo integrates Google Material Design's tactile surfaces, elevation shadows, touch ripples, and motion curves into an ultra-lightweight, framework-agnostic CSS/JS toolkit.</p>
+          <h1><span>boodoo vs Material Design</span></h1>
+<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>Material Design</strong> (Material UI / MDC) to discover how boodoo integrates Google Material Design's tactile surfaces, elevation shadows, touch ripples, and motion curves into an ultra-lightweight, framework-agnostic CSS/JS toolkit.</span></p>
 
-<h2 id="comparison">Feature Comparison</h2>
+<h2 id="interactive-preview"><span>Material Surfaces &amp; Elevation Preview</span></h2>
+<p><span>Experience tactile elevations and ripple effects with zero React overhead:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <div class="p-3 bg-body border rounded-3 elevation-1" style="min-width: 140px; text-align: center;">
+      <span class="small fw-semibold"><span>Elevation 1</span></span>
+    </div>
+    <div class="p-3 bg-body border rounded-3 elevation-3" style="min-width: 140px; text-align: center;">
+      <span class="small fw-semibold"><span>Elevation 3</span></span>
+    </div>
+    <button type="button" class="btn btn-primary btn-fab shadow-sm" aria-label="Add item">
+      <span>+</span>
+    </button>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="p-3 bg-body border rounded-3 elevation-1"&gt;
+  &lt;span class="small fw-semibold"&gt;&lt;span&gt;Elevation 1&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="p-3 bg-body border rounded-3 elevation-3"&gt;
+  &lt;span class="small fw-semibold"&gt;&lt;span&gt;Elevation 3&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;button type="button" class="btn btn-primary btn-fab shadow-sm" aria-label="Add item"&gt;
+  &lt;span&gt;+&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>
+
+<h2 id="comparison"><span>Feature Comparison</span></h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Feature</th>
-      <th>boodoo</th>
-      <th>Material Design (MUI / MDC)</th>
+      <th><span>Feature</span></th>
+      <th><span>boodoo</span></th>
+      <th><span>Material Design (MUI / MDC)</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Core Architecture</strong></td>
-      <td>Framework-agnostic HTML/CSS + vanilla JS micro-engine</td>
-      <td>Heavily coupled to React (MUI) or complex JS component lifecycles</td>
+      <td><strong><span>Core Architecture</span></strong></td>
+      <td><span>Framework-agnostic HTML/CSS + vanilla JS micro-engine</span></td>
+      <td><span>Heavily coupled to React (MUI) or complex JS component lifecycles</span></td>
     </tr>
     <tr>
-      <td><strong>Elevation &amp; Depth Shadows</strong></td>
-      <td>✅ 5-level elevation system (<code>.elevation-1</code> to <code>.elevation-5</code>)</td>
-      <td>✅ 24-level elevation system</td>
+      <td><strong><span>Elevation &amp; Depth Shadows</span></strong></td>
+      <td><span>✅ 5-level elevation system (<code>.elevation-1</code> to <code>.elevation-5</code>)</span></td>
+      <td><span>✅ 24-level elevation system</span></td>
     </tr>
     <tr>
-      <td><strong>Touch Ripple Effect</strong></td>
-      <td>✅ Lightweight native CSS/JS ripple with zero dependencies</td>
-      <td>✅ Material ripple effect included</td>
+      <td><strong><span>Touch Ripple Effect</span></strong></td>
+      <td><span>✅ Lightweight native CSS/JS ripple with zero dependencies</span></td>
+      <td><span>✅ Material ripple effect included</span></td>
     </tr>
     <tr>
-      <td><strong>Floating Form Labels</strong></td>
-      <td>✅ Pure CSS floating labels (<code>.form-floating</code>)</td>
-      <td>✅ Floating outlined / filled text fields</td>
+      <td><strong><span>Floating Form Labels</span></strong></td>
+      <td><span>✅ Pure CSS floating labels (<code>.form-floating</code>)</span></td>
+      <td><span>✅ Floating outlined / filled text fields</span></td>
     </tr>
     <tr>
-      <td><strong>Runtime Dependencies</strong></td>
-      <td><strong>0 dependencies</strong> (No React, Emotion, or build tool needed)</td>
-      <td>Requires React, Emotion/styled-engine, and build pipeline</td>
+      <td><strong><span>Runtime Dependencies</span></strong></td>
+      <td><strong><span>0 dependencies</span></strong> <span>(No React, Emotion, or build tool needed)</span></td>
+      <td><span>Requires React, Emotion/styled-engine, and build pipeline</span></td>
     </tr>
     <tr>
-      <td><strong>Bundle Size Footprint</strong></td>
-      <td><strong>~422 KB</strong> CSS + <strong>~119 KB</strong> JS</td>
-      <td>~150–300+ KB minified + runtime overhead</td>
+      <td><strong><span>Bundle Size Footprint</span></strong></td>
+      <td><strong><span>~422 KB</span></strong> <span>CSS +</span> <strong><span>~119 KB</span></strong> <span>JS</span></td>
+      <td><span>~150–300+ KB minified + runtime overhead</span></td>
     </tr>
     <tr>
-      <td><strong>Design Flexibility</strong></td>
-      <td>Balanced aesthetic: clean modern UI without rigid "all-Google" look</td>
-      <td>Strictly enforces Google Material Design language across all components</td>
+      <td><strong><span>Design Flexibility</span></strong></td>
+      <td><span>Balanced aesthetic: clean modern UI without rigid "all-Google" look</span></td>
+      <td><span>Strictly enforces Google Material Design language across all components</span></td>
     </tr>
     <tr>
-      <td><strong>Framework Agnostic</strong></td>
-      <td>✅ Works with static HTML, Vue, React, Svelte, Laravel, Rails, Django</td>
-      <td>Primarily React ecosystem (MUI)</td>
+      <td><strong><span>Framework Agnostic</span></strong></td>
+      <td><span>✅ Works with static HTML, Vue, React, Svelte, Laravel, Rails, Django</span></td>
+      <td><span>Primarily React ecosystem (MUI)</span></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="why-choose-boodoo">Why developers choose boodoo over Material Design</h2>
-<p>While Google's Material Design provides exceptional tactile cues, depth elevation, and natural animations, implementing official Material libraries often forces teams into heavy React ecosystems, massive bundle sizes, and rigid visual styling. <strong>boodoo</strong> distills the best aspects of Material Design — smooth elevation shadows, dynamic touch ripples, floating form labels, and natural cubic-bezier motion — into pure CSS and lightweight vanilla JS that drops into any website or stack in seconds.</p>
+<h2 id="why-choose-boodoo"><span>Why developers choose boodoo over Material Design</span></h2>
+<p><span>While Google's Material Design provides exceptional tactile cues, depth elevation, and natural animations, implementing official Material libraries often forces teams into heavy React ecosystems, massive bundle sizes, and rigid visual styling. <strong>boodoo</strong> distills the best aspects of Material Design — smooth elevation shadows, dynamic touch ripples, floating form labels, and natural cubic-bezier motion — into pure CSS and lightweight vanilla JS that drops into any website or stack in seconds.</span></p>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -335,7 +363,8 @@
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#comparison">Feature Comparison</a></li>
+      <ul><li class="toc-2"><a href="#interactive-preview">Material Surfaces &amp; Elevation Preview</a></li>
+<li class="toc-2"><a href="#comparison">Feature Comparison</a></li>
 <li class="toc-2"><a href="#why-choose-boodoo">Why developers choose boodoo over Material Design</a></li></ul>
     </div>
 </aside>

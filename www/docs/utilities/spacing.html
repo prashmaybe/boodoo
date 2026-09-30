@@ -256,51 +256,85 @@
         <li class="breadcrumb-item active" aria-current="page">Spacing</li>
       </ol>
     </nav>
-          <h1>Spacing</h1>
-<p class="lead">Assign responsive-friendly <code>margin</code> or <code>padding</code> values to an element or a subset of its sides with simple classes, based on a 5-step spacing scale.</p>
+          <h1><span>Spacing</span></h1>
+<p class="lead"><span>Assign responsive-friendly <code>margin</code> or <code>padding</code> values to an element or a subset of its sides with simple classes, based on a 5-step spacing scale.</span></p>
 
-<h2 id="notation">Notation</h2>
-<p>Spacing utilities that apply to all breakpoints, from <code>xs</code> to <code>xxl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not bound by a media query.</p>
-<p>The classes are named using the format <code>{property}{sides}-{size}</code>:</p>
+<h2 id="notation"><span>Notation</span></h2>
+<p><span>Spacing utilities that apply to all breakpoints, from <code>xs</code> to <code>xxl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not bound by a media query.</span></p>
+<p><span>The classes are named using the format <code>{property}{sides}-{size}</code>:</span></p>
 <table class="table table-sm table-bordered">
-  <thead><tr><th>Part</th><th>Meaning</th></tr></thead>
+  <thead><tr><th><span>Part</span></th><th><span>Meaning</span></th></tr></thead>
   <tbody>
-    <tr><td><code>m</code></td><td>margin</td></tr>
-    <tr><td><code>p</code></td><td>padding</td></tr>
-    <tr><td><code>t</code> <code>e</code> <code>b</code> <code>s</code></td><td>top, end (right), bottom, start (left)</td></tr>
-    <tr><td><code>x</code></td><td>left &amp; right</td></tr>
-    <tr><td><code>y</code></td><td>top &amp; bottom</td></tr>
-    <tr><td><code>blank</code></td><td>all four sides</td></tr>
-    <tr><td><code>-{0..5}</code></td><td>the spacer step (0 = 0, 1 ≈ 20px, …, 5 ≈ 84px)</td></tr>
+    <tr><td><code>m</code></td><td><span>margin</span></td></tr>
+    <tr><td><code>p</code></td><td><span>padding</span></td></tr>
+    <tr><td><code>t</code> <code>e</code> <code>b</code> <code>s</code></td><td><span>top, end (right), bottom, start (left)</span></td></tr>
+    <tr><td><code>x</code></td><td><span>left &amp; right</span></td></tr>
+    <tr><td><code>y</code></td><td><span>top &amp; bottom</span></td></tr>
+    <tr><td><code>blank</code></td><td><span>all four sides</span></td></tr>
+    <tr><td><code>-{0..5}</code></td><td><span>the spacer step (0 = 0, 1 ≈ 20px, …, 5 ≈ 84px)</span></td></tr>
   </tbody>
 </table>
-<div class="highlight"><pre><code>&lt;div class="mt-3"&gt;margin-top 1rem&lt;/div&gt;
-&lt;div class="px-2"&gt;padding-left/right&lt;/div&gt;
-&lt;div class="me-4"&gt;margin-end (right)&lt;/div&gt;
-&lt;div class="pb-5"&gt;padding-bottom&lt;/div&gt;</code></pre></div>
 
-<h2 id="negative">Negative margin</h2>
-<p>Negative margin works exactly as positive, using <code>-</code> before the size: <code>.m-n1</code>, <code>.-mt-2</code> naming (<code>mt-n2</code>, <code>mx-n3</code>, etc.). Works for <code>m</code>, <code>mx</code>, <code>my</code>, <code>mt</code>, <code>me</code>, <code>mb</code>, <code>ms</code>.</p>
-<div class="highlight"><pre><code>&lt;div class="mt-n3"&gt;Negative top margin (12px)&lt;/div&gt;</code></pre></div>
+<div class="bd-example">
+  <div class="d-flex flex-column gap-2">
+    <div class="p-2 bg-primary-soft text-primary border rounded"><span><code>.p-2</code>: padding 0.5rem (8px)</span></div>
+    <div class="p-4 bg-info-soft text-info border rounded"><span><code>.p-4</code>: padding 1.5rem (24px)</span></div>
+    <div class="mt-3 p-2 bg-light border rounded"><span><code>.mt-3</code>: margin top 1rem</span></div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="p-2"&gt;&lt;span&gt;padding 0.5rem&lt;/span&gt;&lt;/div&gt;
+&lt;div class="p-4"&gt;&lt;span&gt;padding 1.5rem&lt;/span&gt;&lt;/div&gt;
+&lt;div class="mt-3"&gt;&lt;span&gt;margin-top 1rem&lt;/span&gt;&lt;/div&gt;</code></pre>
+</div>
 
-<h2 id="responsive">Responsive</h2>
-<p>Add the breakpoint suffix to apply only from that breakpoint up: <code>.mt-md-4</code>, <code>.px-lg-3</code>, <code>.py-xl-0</code>, <code>.ms-xxl-2</code>.</p>
-<div class="highlight"><pre><code>&lt;div class="mt-2 mt-md-4 mt-lg-0"&gt;Responsive spacing&lt;/div&gt;</code></pre></div>
+<h2 id="negative"><span>Negative margin</span></h2>
+<p><span>Negative margin works exactly as positive, using <code>-</code> before the size: <code>.m-n1</code>, <code>.-mt-2</code> naming (<code>mt-n2</code>, <code>mx-n3</code>, etc.). Works for <code>m</code>, <code>mx</code>, <code>my</code>, <code>mt</code>, <code>me</code>, <code>mb</code>, <code>ms</code>.</span></p>
 
-<h2 id="scale">The scale</h2>
-<p>The <code>$boodoo-spacers</code> map defines a 0–5 (plus <code>0.5</code>–<code>10</code>) scale. Here are the base steps:</p>
+<div class="bd-example">
+  <div class="p-4 bg-light border rounded position-relative">
+    <div class="p-2 bg-primary text-white rounded text-center"><span>Base Container Element</span></div>
+    <div class="mt-n2 mx-auto p-2 bg-warning text-dark rounded shadow-sm text-center" style="max-width: 240px;">
+      <span><code>.mt-n2</code>: Negative top margin (overlaps base)</span>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="mt-n2 mx-auto"&gt;
+  &lt;span&gt;Negative top margin overlaps previous block&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="responsive"><span>Responsive</span></h2>
+<p><span>Add the breakpoint suffix to apply only from that breakpoint up: <code>.mt-md-4</code>, <code>.px-lg-3</code>, <code>.py-xl-0</code>, <code>.ms-xxl-2</code>.</span></p>
+
+<div class="bd-example">
+  <div class="p-2 p-md-4 p-lg-5 bg-success-soft text-success border border-success rounded text-center">
+    <span>Responsive padding: <code>.p-2 .p-md-4 .p-lg-5</code> (Resize viewport to test)</span>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="p-2 p-md-4 p-lg-5"&gt;
+  &lt;span&gt;Responsive padding scaling with viewport&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="scale"><span>The scale</span></h2>
+<p><span>The <code>$boodoo-spacers</code> map defines a 0–5 (plus <code>0.5</code>–<code>10</code>) scale. Here are the base steps:</span></p>
 <table class="table table-sm table-bordered">
-  <thead><tr><th>Size</th><th>px</th><th>&nbsp;</th><th>Size</th><th>px</th></tr></thead>
+  <thead><tr><th><span>Size</span></th><th><span>px</span></th><th>&nbsp;</th><th><span>Size</span></th><th><span>px</span></th></tr></thead>
   <tbody>
-    <tr><td><code>0.5</code></td><td>8px</td><td>&nbsp;</td><td><code>3</code></td><td>52px</td></tr>
-    <tr><td><code>1</code></td><td>20px</td><td>&nbsp;</td><td><code>4</code></td><td>68px</td></tr>
-    <tr><td><code>2</code></td><td>36px</td><td>&nbsp;</td><td><code>5</code></td><td>84px</td></tr>
+    <tr><td><code>0.5</code></td><td><span>8px</span></td><td>&nbsp;</td><td><code>3</code></td><td><span>52px</span></td></tr>
+    <tr><td><code>1</code></td><td><span>20px</span></td><td>&nbsp;</td><td><code>4</code></td><td><span>68px</span></td></tr>
+    <tr><td><code>2</code></td><td><span>36px</span></td><td>&nbsp;</td><td><code>5</code></td><td><span>84px</span></td></tr>
   </tbody>
 </table>
-<p>Extend the <code>$boodoo-spacers</code> map in your Sass to add custom steps:</p>
-<div class="highlight"><pre><code>$boodoo-spacers: map.merge($boodoo-spacers, (
+<p><span>Extend the <code>$boodoo-spacers</code> map in your Sass to add custom steps:</span></p>
+<div class="highlight">
+  <pre><code>$boodoo-spacers: map.merge($boodoo-spacers, (
   6: $boodoo-spacer * 6.5,
-));</code></pre></div>
+));</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     

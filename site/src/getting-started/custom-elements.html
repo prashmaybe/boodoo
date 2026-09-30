@@ -6,15 +6,53 @@ order: 6
 -->
 
 <section class="docs-section">
-  <h2>Overview</h2>
-  <p class="lead">boodoo provides framework-agnostic Web Components so you can drop interactive widgets directly into raw HTML, React, Vue, or Svelte.</p>
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>boodoo provides framework-agnostic Web Components so you can drop interactive widgets directly into raw HTML, React, Vue, or Svelte.</span></p>
 </section>
 
 <section class="docs-section">
-  <h2>Available Custom Elements</h2>
-  <ul>
-    <li><code>&lt;bd-theme-toggle&gt;</code>: Clickable theme switcher button.</li>
-    <li><code>&lt;bd-otp length="6"&gt;</code>: Six-box PIN / verification code input.</li>
-    <li><code>&lt;bd-rating value="4" max="5"&gt;</code>: Five-star rating control.</li>
-  </ul>
+  <h2><span>Live Custom Elements Showcase</span></h2>
+  <p><span>Drop pre-registered custom elements into your markup with zero JavaScript glue:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="d-flex flex-column gap-4">
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Theme Switcher Element</span></h6>
+        <bd-theme-toggle class="btn btn-outline-primary btn-sm rounded-pill px-3"></bd-theme-toggle>
+      </div>
+
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Six-Digit Verification Code</span></h6>
+        <bd-otp length="6"></bd-otp>
+      </div>
+
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Five-Star Rating Element</span></h6>
+        <bd-rating value="4" max="5"></bd-rating>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Theme Toggle Custom Element --&gt;
+&lt;bd-theme-toggle class="btn btn-outline-primary btn-sm rounded-pill"&gt;&lt;/bd-theme-toggle&gt;
+
+&lt;!-- 6-Digit OTP / PIN Input --&gt;
+&lt;bd-otp length="6"&gt;&lt;/bd-otp&gt;
+
+&lt;!-- 5-Star Rating Component --&gt;
+&lt;bd-rating value="4" max="5"&gt;&lt;/bd-rating&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Registration &amp; Usage</span></h2>
+  <p><span>When loading <code>boodoo.js</code> or calling <code>registerCustomElements()</code> in ES modules, all custom elements register automatically with the browser's <code>customElements</code> registry:</span></p>
+
+  <div class="highlight">
+    <pre><code class="language-javascript">import { registerCustomElements } from 'boodoo/dist/js/boodoo.esm.js';
+
+// Automatically defines &lt;bd-theme-toggle&gt;, &lt;bd-otp&gt;, &lt;bd-rating&gt;
+registerCustomElements();</code></pre>
+  </div>
 </section>

@@ -256,21 +256,21 @@
         <li class="breadcrumb-item active" aria-current="page">Download</li>
       </ol>
     </nav>
-          <h1>Download</h1>
-<p class="lead">Download boodoo to get the compiled CSS and JavaScript, source code, or include it with your favorite
-  package managers like npm.</p>
+          <h1><span>Download</span></h1>
+<p class="lead"><span>Download boodoo to get the compiled CSS and JavaScript, source code, or include it with your favorite
+  package managers like npm.</span></p>
 
 <div class="card border-0 shadow-sm mb-4">
   <div class="card-body p-2">
     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
       <div>
-        <h3 class="card-title mb-1" id="">Compiled CSS and JS</h3>
-        <p class="text-muted mb-0">An ready-to-use compressed bundle. No build step required. Everything you need to get
-          started.</p>
+        <h3 class="card-title mb-1" id=""><span>Compiled CSS and JS</span></h3>
+        <p class="text-muted mb-0"><span>An ready-to-use compressed bundle. No build step required. Everything you need to get
+          started.</span></p>
       </div>
       <div class="text-md-end flex-shrink-0">
-        <a class="btn btn-primary btn-lg mb-1" href="../../dist/css/boodoo.min.css" download>Download CSS</a><br>
-        <a class="btn btn-outline-primary btn-lg mt-1" href="../../dist/js/boodoo.js" download>Download JS</a>
+        <a class="btn btn-primary btn-lg mb-1" href="../../dist/css/boodoo.min.css" download><span>Download CSS</span></a><br>
+        <a class="btn btn-outline-primary btn-lg mt-1" href="../../dist/js/boodoo.js" download><span>Download JS</span></a>
       </div>
     </div>
     <hr class="my-4">
@@ -289,64 +289,82 @@
   <div class="card-body p-2">
     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
       <div>
-        <h3 class="card-title mb-1" id="">Source Code Archive</h3>
-        <p class="text-muted mb-0">Download the complete source files for Sass, Less, JavaScript, dist assets,
-          documentation, and starters.</p>
+        <h3 class="card-title mb-1" id=""><span>Source Code Archive</span></h3>
+        <p class="text-muted mb-0"><span>Download the complete source files for Sass, Less, JavaScript, dist assets,
+          documentation, and starters.</span></p>
       </div>
       <div class="text-md-end flex-shrink-0">
-        <a class="btn btn-primary btn-lg mb-1" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.0.8.zip" download>Download
-          v1.0.8 (.zip)</a><br>
-        <a class="btn btn-outline-secondary btn-sm mt-1" href="../../examples/index.html">Browse Examples</a>
+        <a class="btn btn-primary btn-lg mb-1" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.0.8.zip" download><span>Download
+          v1.0.8 (.zip)</span></a><br>
+        <a class="btn btn-outline-secondary btn-sm mt-1" href="../../examples/index.html"><span>Browse Examples</span></a>
       </div>
     </div>
   </div>
 </div>
 
-<h2 id="package-managers">Package managers</h2>
-<p>Pull in boodoo's source files with npm. Requires Node.js and either the npm or yarn CLI.</p>
+<h2 id="quick-preview"><span>Compiled Components Preview</span></h2>
+<p><span>Once downloaded and linked, you can immediately render styled UI components without compiling any source code:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-2">
+    <button type="button" class="btn btn-primary"><span>Primary</span></button>
+    <button type="button" class="btn btn-secondary"><span>Secondary</span></button>
+    <button type="button" class="btn btn-outline-success"><span>Success Outline</span></button>
+    <span class="badge bg-info text-dark"><span>v1.0.8</span></span>
+  </div>
+</div>
 <div class="highlight">
-  <pre><code># Latest stable version
+  <pre><code class="language-html">&lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;Primary&lt;/span&gt;&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;&lt;span&gt;Secondary&lt;/span&gt;&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-success"&gt;&lt;span&gt;Success Outline&lt;/span&gt;&lt;/button&gt;
+&lt;span class="badge bg-info text-dark"&gt;&lt;span&gt;v1.0.8&lt;/span&gt;&lt;/span&gt;</code></pre>
+</div>
+
+<h2 id="package-managers"><span>Package managers</span></h2>
+<p><span>Pull in boodoo's source files with npm. Requires Node.js and either the npm or yarn CLI.</span></p>
+<div class="highlight">
+  <pre><code class="language-bash"># Latest stable version
 npm install boodoo</code></pre>
 </div>
 
-<h2 id="sass">Compile Sass / Less</h2>
-<p>boodoo is authored in Sass (primary) and ships a Less build too. Import the source to compile exactly the CSS you
-  need:
+<h2 id="sass"><span>Compile Sass / Less</span></h2>
+<p><span>boodoo is authored in Sass (primary) and ships a Less build too. Import the source to compile exactly the CSS you
+  need:</span>
 </p>
 <div class="highlight">
-  <pre><code>// Sass
+  <pre><code class="language-scss">// Sass
 @import "node_modules/boodoo/scss/boodoo";
 
 // Less
 @import "node_modules/boodoo/less/boodoo";</code></pre>
 </div>
 
-<h2 id="whats-included">What's included</h2>
-<p>The download includes the compiled and minified CSS and JavaScript bundles, plus source Sass and Less.</p>
+<h2 id="whats-included"><span>What's included</span></h2>
+<p><span>The download includes the compiled and minified CSS and JavaScript bundles, plus source Sass and Less.</span></p>
 <table class="table table-bordered table-sm">
   <thead>
     <tr>
-      <th>Folder</th>
-      <th>Description</th>
+      <th><span>Folder</span></th>
+      <th><span>Description</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code>dist/css/</code></td>
-      <td>Precompiled stylesheets (<code>boodoo.css</code>, <code>boodoo.min.css</code>, plus
-        grid/reboot/utilities/animations builds)</td>
+      <td><span>Precompiled stylesheets (<code>boodoo.css</code>, <code>boodoo.min.css</code>, plus
+        grid/reboot/utilities/animations builds)</span></td>
     </tr>
     <tr>
       <td><code>dist/js/</code></td>
-      <td>Umd bundle (<code>boodoo.js</code>), ESM (<code>boodoo.esm.js</code>)</td>
+      <td><span>Umd bundle (<code>boodoo.js</code>), ESM (<code>boodoo.esm.js</code>)</span></td>
     </tr>
     <tr>
       <td><code>scss/</code></td>
-      <td>Sass source for current library</td>
+      <td><span>Sass source for current library</span></td>
     </tr>
     <tr>
       <td><code>less/</code></td>
-      <td>Less source build</td>
+      <td><span>Less source build</span></td>
     </tr>
   </tbody>
 </table>
@@ -371,7 +389,8 @@ npm install boodoo</code></pre>
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#package-managers">Package managers</a></li>
+      <ul><li class="toc-2"><a href="#quick-preview">Compiled Components Preview</a></li>
+<li class="toc-2"><a href="#package-managers">Package managers</a></li>
 <li class="toc-2"><a href="#sass">Compile Sass / Less</a></li>
 <li class="toc-2"><a href="#whats-included">What's included</a></li></ul>
     </div>

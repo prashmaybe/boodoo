@@ -5,34 +5,39 @@ section: getting-started
 order: 14
 -->
 <h1><span>Electron Desktop Apps</span></h1>
-<p class="lead"><span>Build lightweight, fast cross-platform desktop applications using Electron and boodoo. Leverage native platform tokens (Windows Fluent, macOS Aqua, Linux Adwaita), draggable titlebars, collapsible sidebars, and desktop UI primitives with zero build configuration.</span></p>
+<p class="lead"><span>Build lightweight, fast cross-platform desktop applications using Electron and boodoo. Leverage
+    native platform tokens (Windows Fluent, macOS Aqua, Linux Adwaita), draggable titlebars, collapsible sidebars, and
+    desktop UI primitives with zero build configuration.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
-      <div class="d-flex align-items-center gap-2 mb-2">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
         <span class="fs-4">⚡</span>
         <h5 class="mb-0"><span>Zero Extra Runtime</span></h5>
       </div>
-      <p class="text-muted fs-7 mb-0"><span>Vanilla JavaScript with no heavy component runtime tax. Boodoo loads in microseconds inside Electron's Chromium renderer.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Vanilla JavaScript with no heavy component runtime tax. Boodoo loads in
+          microseconds inside Electron's Chromium renderer.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
-      <div class="d-flex align-items-center gap-2 mb-2">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
         <span class="fs-4">🖥️</span>
         <h5 class="mb-0"><span>Native Platform Styling</span></h5>
       </div>
-      <p class="text-muted fs-7 mb-0"><span>Out-of-the-box support for Windows 11 Fluent/Mica, macOS Aqua traffic lights, and Linux GNOME Adwaita headerbars.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Out-of-the-box support for Windows 11 Fluent/Mica, macOS Aqua traffic
+          lights, and Linux GNOME Adwaita headerbars.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
-      <div class="d-flex align-items-center gap-2 mb-2">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
         <span class="fs-4">🚀</span>
         <h5 class="mb-0"><span>Instant Scaffolding</span></h5>
       </div>
-      <p class="text-muted fs-7 mb-0"><span>Generate a complete, working Electron + Boodoo project in seconds with <code>npx create-boodoo</code>.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Generate a complete, working Electron + Boodoo project in seconds with
+          <code>npx create-boodoo</code>.</span></p>
     </div>
   </div>
 </div>
@@ -93,7 +98,8 @@ npm start</code></pre>
 </div>
 
 <h2 id="custom-titlebar"><span>3. Custom Frameless Titlebar &amp; Window Dragging</span></h2>
-<p><span>Boodoo provides built-in CSS rules for draggable window regions and titlebars. In your Electron <code>main.js</code>, configure a hidden titlebar:</span></p>
+<p><span>Boodoo provides built-in CSS rules for draggable window regions and titlebars. In your Electron
+    <code>main.js</code>, configure a hidden titlebar:</span></p>
 
 <div class="highlight">
   <pre><code>const { app, BrowserWindow, ipcMain } = require('electron');
@@ -120,8 +126,38 @@ function createWindow() {
 app.whenReady().then(createWindow);</code></pre>
 </div>
 
-<p><span>In your HTML layout, use Boodoo's <code>.native-window</code>, <code>.native-titlebar</code>, and <code>.native-titlebar-controls</code> classes. Draggable areas automatically receive <code>-webkit-app-region: drag</code>, while buttons have <code>no-drag</code>:</span></p>
+<p><span>In your HTML layout, use Boodoo's <code>.native-window</code>, <code>.native-titlebar</code>, and
+    <code>.native-titlebar-controls</code> classes. Draggable areas automatically receive
+    <code>-webkit-app-region: drag</code>, while buttons have <code>no-drag</code>:</span></p>
 
+<div class="bd-example">
+  <div class="native-window border rounded shadow-sm overflow-hidden" data-boodoo-platform="windows"
+    style="height: 220px; background: #fff;">
+    <header class="native-titlebar bg-white border-bottom">
+      <span class="fw-semibold fs-7"><span>My Electron App</span></span>
+      <div class="native-titlebar-controls">
+        <button type="button" class="native-titlebar-btn" id="demoWinMin"><span>—</span></button>
+        <button type="button" class="native-titlebar-btn" id="demoWinMax"><span>▢</span></button>
+        <button type="button" class="native-titlebar-btn native-titlebar-close"
+          id="demoWinClose"><span>✕</span></button>
+      </div>
+    </header>
+    <div class="native-window-content d-flex flex-grow-1" style="height: calc(100% - 33px);">
+      <aside class="sidebar p-2 border-end bg-light" style="width: 140px;">
+        <ul class="sidebar-nav list-unstyled mb-0">
+          <li class="sidebar-item"><a href="#"
+              class="sidebar-link active text-primary fw-semibold text-decoration-none"><span>Dashboard</span></a></li>
+          <li class="sidebar-item"><a href="#"
+              class="sidebar-link text-muted text-decoration-none"><span>Settings</span></a></li>
+        </ul>
+      </aside>
+      <main class="flex-grow-1 p-3 bg-white overflow-auto">
+        <h6 class="fw-bold mb-1"><span>Workspace Content</span></h6>
+        <p class="text-muted fs-7 mb-0"><span>Native desktop layout with draggable header and sidebar.</span></p>
+      </main>
+    </div>
+  </div>
+</div>
 <div class="highlight">
   <pre><code>&lt;div class="native-window" data-boodoo-platform="windows"&gt;
   &lt;!-- Draggable Titlebar --&gt;
@@ -151,7 +187,8 @@ app.whenReady().then(createWindow);</code></pre>
 </div>
 
 <h2 id="recommended-components"><span>4. Recommended Components for Desktop Apps</span></h2>
-<p><span>When designing desktop experiences with Electron, these Boodoo components offer native desktop parity:</span></p>
+<p><span>When designing desktop experiences with Electron, these Boodoo components offer native desktop parity:</span>
+</p>
 
 <div class="table-responsive">
   <table class="table table-bordered align-middle">
@@ -180,7 +217,8 @@ app.whenReady().then(createWindow);</code></pre>
       </tr>
       <tr>
         <td><strong><span>Command Palette</span></strong></td>
-        <td><span>Global shortcut (<kbd>Ctrl+K</kbd> / <kbd>Cmd+K</kbd>) quick-open dialog and search runner.</span></td>
+        <td><span>Global shortcut (<kbd>Ctrl+K</kbd> / <kbd>Cmd+K</kbd>) quick-open dialog and search runner.</span>
+        </td>
         <td><a href="../components/command-palette.html"><span>Command Palette Docs</span></a></td>
       </tr>
       <tr>

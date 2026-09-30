@@ -4,61 +4,81 @@ description: Compare boodoo and Zurb Foundation. See differences in modern CSS a
 section: about
 order: 6
 -->
-<h1>boodoo vs Foundation</h1>
-<p class="lead">Compare <strong>boodoo</strong> and <strong>Zurb Foundation</strong> to see how boodoo brings Foundation's clean scaffolding and flexible layout philosophy into the modern era of CSS variables, zero-dependency vanilla JS, and modern build tooling.</p>
+<h1><span>boodoo vs Foundation</span></h1>
+<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>Zurb Foundation</strong> to see how boodoo brings Foundation's clean scaffolding and flexible layout philosophy into the modern era of CSS variables, zero-dependency vanilla JS, and modern build tooling.</span></p>
 
-<h2 id="comparison">Feature Comparison</h2>
+<h2 id="interactive-preview"><span>Scaffolding &amp; Components Preview</span></h2>
+<p><span>Boodoo delivers clean responsive layout structures and modern typography without legacy jQuery dependencies:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <div class="p-2 px-3 border rounded bg-light">
+      <span class="fw-semibold"><span>Clean Scaffolding</span></span>
+    </div>
+    <span class="badge bg-secondary"><span>Zero jQuery</span></span>
+    <button type="button" class="btn btn-sm btn-primary"><span>Modern Layout</span></button>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="p-2 px-3 border rounded bg-light"&gt;
+  &lt;span class="fw-semibold"&gt;&lt;span&gt;Clean Scaffolding&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;span class="badge bg-secondary"&gt;&lt;span&gt;Zero jQuery&lt;/span&gt;&lt;/span&gt;
+&lt;button type="button" class="btn btn-sm btn-primary"&gt;&lt;span&gt;Modern Layout&lt;/span&gt;&lt;/button&gt;</code></pre>
+</div>
+
+<h2 id="comparison"><span>Feature Comparison</span></h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Feature</th>
-      <th>boodoo</th>
-      <th>Foundation 6</th>
+      <th><span>Feature</span></th>
+      <th><span>boodoo</span></th>
+      <th><span>Foundation 6</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Core Philosophy</strong></td>
-      <td>Modern CSS tokens + Tailwind utilities + Material elevation + Bootstrap ease</td>
-      <td>Semantic, highly customizable HTML/CSS framework for sites &amp; emails</td>
+      <td><strong><span>Core Philosophy</span></strong></td>
+      <td><span>Modern CSS tokens + Tailwind utilities + Material elevation + Bootstrap ease</span></td>
+      <td><span>Semantic, highly customizable HTML/CSS framework for sites &amp; emails</span></td>
     </tr>
     <tr>
-      <td><strong>Active Maintenance &amp; Standards</strong></td>
-      <td>✅ Actively maintained with modern CSS features (CSS variables, modern grid, subgrid)</td>
-      <td>⚠️ Infrequent updates, legacy Sass syntax &amp; toolchains</td>
+      <td><strong><span>Active Maintenance &amp; Standards</span></strong></td>
+      <td><span>✅ Actively maintained with modern CSS features (CSS variables, modern grid, subgrid)</span></td>
+      <td><span>⚠️ Infrequent updates, legacy Sass syntax &amp; toolchains</span></td>
     </tr>
     <tr>
-      <td><strong>Runtime Dependencies</strong></td>
-      <td><strong>0 dependencies</strong> (Vanilla JS)</td>
-      <td>Requires jQuery and external plugins (What-Input)</td>
+      <td><strong><span>Runtime Dependencies</span></strong></td>
+      <td><strong><span>0 dependencies</span></strong> <span>(Vanilla JS)</span></td>
+      <td><span>Requires jQuery and external plugins (What-Input)</span></td>
     </tr>
     <tr>
-      <td><strong>JS Bundle Footprint</strong></td>
-      <td><strong>~{{jsRawKb}} KB</strong> pure vanilla JS (~16 KB gzip)</td>
-      <td>~100+ KB (Foundation JS + jQuery dependency)</td>
+      <td><strong><span>JS Bundle Footprint</span></strong></td>
+      <td><strong><span>~{{jsRawKb}} KB</span></strong> <span>pure vanilla JS (~16 KB gzip)</span></td>
+      <td><span>~100+ KB (Foundation JS + jQuery dependency)</span></td>
     </tr>
     <tr>
-      <td><strong>CSS Custom Properties (Variables)</strong></td>
-      <td>✅ Full CSS variable system for dynamic theming &amp; dark mode</td>
-      <td>❌ Static Sass variables compiled at build time</td>
+      <td><strong><span>CSS Custom Properties (Variables)</span></strong></td>
+      <td><span>✅ Full CSS variable system for dynamic theming &amp; dark mode</span></td>
+      <td><span>❌ Static Sass variables compiled at build time</span></td>
     </tr>
     <tr>
-      <td><strong>Utility-First Classes</strong></td>
-      <td>✅ 150+ functional utility classes (spacing, flex, grid, colors, opacity)</td>
-      <td>Basic layout and visibility classes</td>
+      <td><strong><span>Utility-First Classes</span></strong></td>
+      <td><span>✅ 150+ functional utility classes (spacing, flex, grid, colors, opacity)</span></td>
+      <td><span>Basic layout and visibility classes</span></td>
     </tr>
     <tr>
-      <td><strong>Dual Sass &amp; Less Support</strong></td>
-      <td>✅ Complete Sass and Less source code trees included</td>
-      <td>Sass only</td>
+      <td><strong><span>Dual Sass &amp; Less Support</span></strong></td>
+      <td><span>✅ Complete Sass and Less source code trees included</span></td>
+      <td><span>Sass only</span></td>
     </tr>
     <tr>
-      <td><strong>Zero-Build CDN Ready</strong></td>
-      <td>✅ Drop-in single link CSS + single script JS</td>
-      <td>Requires jQuery include and custom initialization script</td>
+      <td><strong><span>Zero-Build CDN Ready</span></strong></td>
+      <td><span>✅ Drop-in single link CSS + single script JS</span></td>
+      <td><span>Requires jQuery include and custom initialization script</span></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="why-choose-boodoo">Why developers choose boodoo over Foundation</h2>
-<p>Foundation was a pioneer in responsive web design, flexible grid systems, and semantic scaffolding. However, maintaining legacy projects that rely on jQuery and older Sass pipelines has become challenging in modern web workflows. <strong>boodoo</strong> takes the best structural ideas and subtle gray scales that made Foundation great and reimplements them from scratch: zero jQuery dependencies, full native dark mode support, and built-in modern utilities.</p>
+<h2 id="why-choose-boodoo"><span>Why developers choose boodoo over Foundation</span></h2>
+<p><span>Foundation was a pioneer in responsive web design, flexible grid systems, and semantic scaffolding. However, maintaining legacy projects that rely on jQuery and older Sass pipelines has become challenging in modern web workflows. <strong>boodoo</strong> takes the best structural ideas and subtle gray scales that made Foundation great and reimplements them from scratch: zero jQuery dependencies, full native dark mode support, and built-in modern utilities.</span></p>

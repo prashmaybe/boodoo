@@ -4,56 +4,76 @@ description: Compare boodoo and Bootstrap. See differences in bundle size, archi
 section: about
 order: 5
 -->
-<h1>boodoo vs Bootstrap</h1>
-<p class="lead">Compare <strong>boodoo</strong> and <strong>Bootstrap</strong> to see how they differ in architectural philosophy, customization, bundle footprint, and developer experience.</p>
+<h1><span>boodoo vs Bootstrap</span></h1>
+<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>Bootstrap</strong> to see how they differ in architectural philosophy, customization, bundle footprint, and developer experience.</span></p>
 
-<h2 id="comparison">Feature Comparison</h2>
+<h2 id="interactive-preview"><span>Syntax Comparison Preview</span></h2>
+<p><span>Boodoo delivers familiar Bootstrap-like semantic classes enhanced with Tailwind utilities and Material elevation:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <button type="button" class="btn btn-primary elevation-2"><span>Boodoo Elevated Button</span></button>
+    <button type="button" class="btn btn-outline-secondary"><span>Outline Button</span></button>
+    <span class="badge bg-primary"><span>~{{jsRawKb}} KB JS</span></span>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;button type="button" class="btn btn-primary elevation-2"&gt;
+  &lt;span&gt;Boodoo Elevated Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-secondary"&gt;
+  &lt;span&gt;Outline Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;span class="badge bg-primary"&gt;&lt;span&gt;~{{jsRawKb}} KB JS&lt;/span&gt;&lt;/span&gt;</code></pre>
+</div>
+
+<h2 id="comparison"><span>Feature Comparison</span></h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Feature</th>
-      <th>boodoo</th>
-      <th>Bootstrap 5</th>
+      <th><span>Feature</span></th>
+      <th><span>boodoo</span></th>
+      <th><span>Bootstrap 5</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Core Philosophy</strong></td>
-      <td>Bootstrap simplicity + Tailwind utilities + Material polish</td>
-      <td>Battle-tested component library &amp; grid system</td>
+      <td><strong><span>Core Philosophy</span></strong></td>
+      <td><span>Bootstrap simplicity + Tailwind utilities + Material polish</span></td>
+      <td><span>Battle-tested component library &amp; grid system</span></td>
     </tr>
     <tr>
-      <td><strong>Runtime Dependencies</strong></td>
-      <td><strong>0 dependencies</strong> (Vanilla JS)</td>
-      <td>0 dependencies (Popper.js bundled)</td>
+      <td><strong><span>Runtime Dependencies</span></strong></td>
+      <td><strong><span>0 dependencies</span></strong> <span>(Vanilla JS)</span></td>
+      <td><span>0 dependencies (Popper.js bundled)</span></td>
     </tr>
     <tr>
-      <td><strong>JS Bundle Size</strong></td>
-      <td><strong>~{{jsRawKb}} KB</strong> (~16 KB gzip)</td>
-      <td>~60 KB (~16 KB gzip) + Popper</td>
+      <td><strong><span>JS Bundle Size</span></strong></td>
+      <td><strong><span>~{{jsRawKb}} KB</span></strong> <span>(~16 KB gzip)</span></td>
+      <td><span>~60 KB (~16 KB gzip) + Popper</span></td>
     </tr>
     <tr>
-      <td><strong>Tailwind-style Utilities</strong></td>
-      <td>✅ Full 150+ functional utility classes built-in</td>
-      <td>Limited utility API</td>
+      <td><strong><span>Tailwind-style Utilities</span></strong></td>
+      <td><span>✅ Full 150+ functional utility classes built-in</span></td>
+      <td><span>Limited utility API</span></td>
     </tr>
     <tr>
-      <td><strong>Material Elevation &amp; Motion</strong></td>
-      <td>✅ Built-in design tokens, ripple, elevation shadows</td>
-      <td>❌ Manual custom CSS required</td>
+      <td><strong><span>Material Elevation &amp; Motion</span></strong></td>
+      <td><span>✅ Built-in design tokens, ripple, elevation shadows</span></td>
+      <td><span>❌ Manual custom CSS required</span></td>
     </tr>
     <tr>
-      <td><strong>Less &amp; Sass Support</strong></td>
-      <td>✅ Dual Sass &amp; Less source trees included</td>
-      <td>Sass only</td>
+      <td><strong><span>Less &amp; Sass Support</span></strong></td>
+      <td><span>✅ Dual Sass &amp; Less source trees included</span></td>
+      <td><span>Sass only</span></td>
     </tr>
     <tr>
-      <td><strong>Framework Agnostic</strong></td>
-      <td>✅ Works with HTML, PHP, Laravel, Rails, Django, Node</td>
-      <td>✅ Framework agnostic</td>
+      <td><strong><span>Framework Agnostic</span></strong></td>
+      <td><span>✅ Works with HTML, PHP, Laravel, Rails, Django, Node</span></td>
+      <td><span>✅ Framework agnostic</span></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="why-choose-boodoo">Why developers choose boodoo over Bootstrap</h2>
-<p>If you love Bootstrap's zero-config drop-in components but want the utility flexibility of Tailwind and the elevation polish of Material Design, <strong>boodoo</strong> gives you all three in one lightweight, modern toolkit.</p>
+<h2 id="why-choose-boodoo"><span>Why developers choose boodoo over Bootstrap</span></h2>
+<p><span>If you love Bootstrap's zero-config drop-in components but want the utility flexibility of Tailwind and the elevation polish of Material Design, <strong>boodoo</strong> gives you all three in one lightweight, modern toolkit.</span></p>

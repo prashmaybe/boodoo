@@ -263,7 +263,7 @@
 
 <section class="docs-section">
   <h2 id="">Card Empty State</h2>
-  <div class="docs-example p-4 border rounded bg-white">
+  <div class="bd-example p-4 border rounded bg-white">
     <div class="empty-state empty-state-card">
       <div class="empty-state-icon">
         <span>📦</span>
@@ -277,39 +277,54 @@
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;div class="empty-state empty-state-card"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="empty-state empty-state-card"&gt;
   &lt;div class="empty-state-icon"&gt;
     &lt;span&gt;📦&lt;/span&gt;
   &lt;/div&gt;
   &lt;h3 class="empty-state-title"&gt;&lt;span&gt;No projects found&lt;/span&gt;&lt;/h3&gt;
   &lt;p class="empty-state-description"&gt;&lt;span&gt;You haven't created any workspaces yet.&lt;/span&gt;&lt;/p&gt;
   &lt;div class="empty-state-actions"&gt;
+    &lt;button type="button" class="btn btn-outline-secondary"&gt;&lt;span&gt;Read Documentation&lt;/span&gt;&lt;/button&gt;
     &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;+ Create Project&lt;/span&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Contextual Status Variations</h2>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <div class="empty-state empty-state-sm border rounded bg-white">
-        <div class="empty-state-icon empty-state-icon-success">
-          <span>✓</span>
+  <h2 id=""><span>Contextual Status Variations</span></h2>
+  <div class="bd-example p-4 border rounded bg-light">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="empty-state empty-state-sm border rounded bg-white">
+          <div class="empty-state-icon empty-state-icon-success">
+            <span>✓</span>
+          </div>
+          <h5 class="empty-state-title"><span>All caught up!</span></h5>
+          <p class="empty-state-description"><span>You have completed all pending inbox tasks.</span></p>
         </div>
-        <h5 class="empty-state-title"><span>All caught up!</span></h5>
-        <p class="empty-state-description"><span>You have completed all pending inbox tasks.</span></p>
+      </div>
+      <div class="col-md-6">
+        <div class="empty-state empty-state-sm border rounded bg-white">
+          <div class="empty-state-icon empty-state-icon-danger">
+            <span>⚠️</span>
+          </div>
+          <h5 class="empty-state-title"><span>Connection lost</span></h5>
+          <p class="empty-state-description"><span>Unable to reach remote sync server. Check your network.</span></p>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="empty-state empty-state-sm border rounded bg-white">
-        <div class="empty-state-icon empty-state-icon-danger">
-          <span>⚠️</span>
-        </div>
-        <h5 class="empty-state-title"><span>Connection lost</span></h5>
-        <p class="empty-state-description"><span>Unable to reach remote sync server. Check your network.</span></p>
-      </div>
-    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="empty-state empty-state-sm border rounded bg-white"&gt;
+  &lt;div class="empty-state-icon empty-state-icon-success"&gt;
+    &lt;span&gt;✓&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h5 class="empty-state-title"&gt;&lt;span&gt;All caught up!&lt;/span&gt;&lt;/h5&gt;
+  &lt;p class="empty-state-description"&gt;&lt;span&gt;You have completed all pending inbox tasks.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </section>
           

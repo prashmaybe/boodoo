@@ -246,7 +246,7 @@
         </div>
       </aside>
 
-      <main class="col-lg-9 col-xl-10">
+      <main class="col-lg-6 col-xl-7">
         <div class="docs-main py-1" id="docs-content">
           
     <nav aria-label="breadcrumb">
@@ -317,6 +317,32 @@
   </div>
 </div>
 
+<h2 id="interactive-preview"><span>Timeline Component Preview</span></h2>
+<p><span>The changelog utilizes Boodoo's built-in responsive timeline component:</span></p>
+
+<div class="bd-example">
+  <ul class="timeline mb-0">
+    <li class="timeline-item">
+      <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+      <div class="timeline-content">
+        <h5 class="mb-1"><span>Release Announcement</span></h5>
+        <p class="text-muted small mb-0"><span>Zero-runtime dependency updates and new modern UI components.</span></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;ul class="timeline"&gt;
+  &lt;li class="timeline-item"&gt;
+    &lt;div class="timeline-badge timeline-badge-primary"&gt;&lt;span&gt;★&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="timeline-content"&gt;
+      &lt;h5 class="mb-1"&gt;&lt;span&gt;Release Announcement&lt;/span&gt;&lt;/h5&gt;
+      &lt;p class="text-muted small mb-0"&gt;&lt;span&gt;Zero-runtime dependency updates.&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
 <ul class="timeline changelog-timeline mt-4">
 
   <!-- Version 1.0.8 -->
@@ -340,25 +366,40 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Electron Desktop Integration &amp; Tooling</span>
         </h3>
         <ul class="mb-3">
-          <li><strong><span>create-boodoo Desktop Scaffolder</span></strong>: <span>Added option <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>, scaffolding instant desktop apps complete with custom frameless titlebars, window controls, IPC event bridge, responsive sidebar, and Boodoo component demo.</span></li>
-          <li><strong><span>Electron Integration Documentation</span></strong>: <span>Published complete guide at <a href="../getting-started/electron.html"><span>Getting started / Electron Desktop Apps</span></a> detailing frameless window mechanics, <code>-webkit-app-region: drag</code> titlebars, IPC controls, CSP, and desktop UI styling.</span></li>
-          <li><strong><span>Desktop &amp; Hybrid Runtime Support</span></strong>: <span>Formally documented verified compatibility across Electron, Tauri, WebView2, and Capacitor in <a href="../getting-started/browser-support.html"><span>Browser Support</span></a>.</span></li>
+          <li><strong><span>create-boodoo Desktop Scaffolder</span></strong>: <span>Added option
+              <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>,
+              scaffolding instant desktop apps complete with custom frameless titlebars, window controls, IPC event
+              bridge, responsive sidebar, and Boodoo component demo.</span></li>
+          <li><strong><span>Electron Integration Documentation</span></strong>: <span>Published complete guide at <a
+                href="../getting-started/electron.html"><span>Getting started / Electron Desktop Apps</span></a>
+              detailing frameless window mechanics, <code>-webkit-app-region: drag</code> titlebars, IPC controls, CSP,
+              and desktop UI styling.</span></li>
+          <li><strong><span>Desktop &amp; Hybrid Runtime Support</span></strong>: <span>Formally documented verified
+              compatibility across Electron, Tauri, WebView2, and Capacitor in <a
+                href="../getting-started/browser-support.html"><span>Browser Support</span></a>.</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Performance</span></span>
           <span>Performance, Caching &amp; PageSpeed Optimizations</span>
         </h3>
         <ul class="mb-3">
-          <li><strong><span>Leverage Browser Caching</span></strong>: <span>Implemented comprehensive <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>, configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</span></li>
-          <li><strong><span>Eliminate Render-Blocking Resources</span></strong>: <span>Web fonts now preload asynchronously via <code>media="print" onload="this.media='all'"</code> with <code>&amp;display=swap</code> and <code>&lt;noscript&gt;</code> fallback. Added <code>defer</code> attributes to all script tags across all pages.</span></li>
-          <li><strong><span>Prevent Layout Shifts (CLS)</span></strong>: <span>Added explicit <code>width="32"</code> and <code>height="32"</code> dimensions to all navbar brand images.</span></li>
-          <li><strong><span>Form Accessibility</span></strong>: <span>Added semantic <code>name</code>, <code>type</code>, and label association to showcase controls.</span></li>
+          <li><strong><span>Leverage Browser Caching</span></strong>: <span>Implemented comprehensive
+              <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>,
+              configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</span></li>
+          <li><strong><span>Eliminate Render-Blocking Resources</span></strong>: <span>Web fonts now preload
+              asynchronously via <code>media="print" onload="this.media='all'"</code> with
+              <code>&amp;display=swap</code> and <code>&lt;noscript&gt;</code> fallback. Added <code>defer</code>
+              attributes to all script tags across all pages.</span></li>
+          <li><strong><span>Prevent Layout Shifts (CLS)</span></strong>: <span>Added explicit <code>width="32"</code>
+              and <code>height="32"</code> dimensions to all navbar brand images.</span></li>
+          <li><strong><span>Form Accessibility</span></strong>: <span>Added semantic <code>name</code>,
+              <code>type</code>, and label association to showcase controls.</span></li>
         </ul>
       </div>
     </div>
@@ -385,34 +426,43 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
         <ul class="mb-3">
           <li>
             <strong>Combobox / Autocomplete Select</strong>:
-            <span>Added accessible combobox (<code>Combobox</code>, <code>[data-boodoo="combobox"]</code>) with dynamic option filtering, keyboard navigation (Arrow Up/Down, Enter, Esc), clear triggers, and programmatic selection events.</span>
+            <span>Added accessible combobox (<code>Combobox</code>, <code>[data-boodoo="combobox"]</code>) with dynamic
+              option filtering, keyboard navigation (Arrow Up/Down, Enter, Esc), clear triggers, and programmatic
+              selection events.</span>
           </li>
           <li>
             <strong>Resizable Splitter &amp; Docking Panes</strong>:
-            <span>Draggable dual-pane container (<code>Splitter</code>, <code>[data-boodoo="splitter"]</code>) supporting both horizontal and vertical split views, pointer capture, and keyboard stepping.</span>
+            <span>Draggable dual-pane container (<code>Splitter</code>, <code>[data-boodoo="splitter"]</code>)
+              supporting both horizontal and vertical split views, pointer capture, and keyboard stepping.</span>
           </li>
           <li>
             <strong>Speed Dial / FAB Action Menu</strong>:
-            <span>Expandable Material-style floating action menu (<code>SpeedDial</code>, <code>.fab-menu</code>) with micro-interactions, trigger rotation, and action labels.</span>
+            <span>Expandable Material-style floating action menu (<code>SpeedDial</code>, <code>.fab-menu</code>) with
+              micro-interactions, trigger rotation, and action labels.</span>
           </li>
           <li>
             <strong>Lightbox / Media Zoom Viewer</strong>:
-            <span>Zero-dependency fullscreen media viewer (<code>Lightbox</code>, <code>[data-boodoo="lightbox"]</code>) with zoom toggle, gallery arrow/touch cycling, and backdrop blur.</span>
+            <span>Zero-dependency fullscreen media viewer (<code>Lightbox</code>, <code>[data-boodoo="lightbox"]</code>)
+              with zoom toggle, gallery arrow/touch cycling, and backdrop blur.</span>
           </li>
           <li>
             <strong>Modern CSS Primitives &amp; Transitions</strong>:
-            <span>CSS Anchor Positioning (<code>anchor()</code>, <code>position-anchor</code>) for zero-JS popovers, native Scroll-Driven Animations (<code>animation-timeline: scroll() / view()</code>), and discrete <code>@starting-style</code> transitions for native <code>&lt;dialog&gt;</code> and <code>[popover]</code>.</span>
+            <span>CSS Anchor Positioning (<code>anchor()</code>, <code>position-anchor</code>) for zero-JS popovers,
+              native Scroll-Driven Animations (<code>animation-timeline: scroll() / view()</code>), and discrete
+              <code>@starting-style</code> transitions for native <code>&lt;dialog&gt;</code> and
+              <code>[popover]</code>.</span>
           </li>
           <li>
             <strong>CLI Scaffolder &amp; Tooling</strong>:
-            <span>Launched <code>create-boodoo</code> CLI (<code>npx create-boodoo</code>) with templates for HTML5/Sass, Vite, and Next.js, plus the official VS Code IntelliSense snippet pack.</span>
+            <span>Launched <code>create-boodoo</code> CLI (<code>npx create-boodoo</code>) with templates for
+              HTML5/Sass, Vite, and Next.js, plus the official VS Code IntelliSense snippet pack.</span>
           </li>
         </ul>
       </div>
@@ -439,37 +489,50 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
         <ul class="mb-3">
           <li>
             <strong>Complete JavaScript Component Exports</strong>:
-            <span>Extended ESM bundle (<code>boodoo.esm.js</code>) and UMD core entry to export all individual components and utilities (<code>Alert</code>, <code>BottomSheet</code>, <code>Button</code>, <code>ChipInput</code>, <code>Collapse</code>, <code>CommandPalette</code>, <code>ContextMenu</code>, <code>DataTable</code>, <code>Dropdown</code>, <code>Modal</code>, <code>Offcanvas</code>, <code>OTP</code>, <code>Popover</code>, <code>Rating</code>, <code>ScrollSpy</code>, <code>Sidebar</code>, <code>Stepper</code>, <code>Tab</code>, <code>Toast</code>, <code>Tooltip</code>, <code>TreeView</code>, <code>Carousel</code>, <code>clipboard</code>, <code>initDataApi</code>, <code>initRipple</code>, <code>registerCustomElements</code>, <code>theme</code>) for modular imports and tree-shaking.</span>
+            <span>Extended ESM bundle (<code>boodoo.esm.js</code>) and UMD core entry to export all individual
+              components and utilities (<code>Alert</code>, <code>BottomSheet</code>, <code>Button</code>,
+              <code>ChipInput</code>, <code>Collapse</code>, <code>CommandPalette</code>, <code>ContextMenu</code>,
+              <code>DataTable</code>, <code>Dropdown</code>, <code>Modal</code>, <code>Offcanvas</code>,
+              <code>OTP</code>, <code>Popover</code>, <code>Rating</code>, <code>ScrollSpy</code>, <code>Sidebar</code>,
+              <code>Stepper</code>, <code>Tab</code>, <code>Toast</code>, <code>Tooltip</code>, <code>TreeView</code>,
+              <code>Carousel</code>, <code>clipboard</code>, <code>initDataApi</code>, <code>initRipple</code>,
+              <code>registerCustomElements</code>, <code>theme</code>) for modular imports and tree-shaking.</span>
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
         <ul class="mb-0">
           <li>
             <strong>Data API Dismiss Trigger Resolution</strong>:
-            <span>Enhanced <code>enableDismissTrigger</code> to accurately identify closer triggers, map component containers via component selectors or names, and seamlessly trigger either <code>.hide()</code> or <code>.close()</code> methods.</span>
+            <span>Enhanced <code>enableDismissTrigger</code> to accurately identify closer triggers, map component
+              containers via component selectors or names, and seamlessly trigger either <code>.hide()</code> or
+              <code>.close()</code> methods.</span>
           </li>
           <li>
             <strong>Alert Component Dismissal</strong>:
-            <span>Expanded <code>Alert.selector</code> to match both <code>[data-boodoo-alert]</code> and <code>.alert</code>, ensuring graceful hide transitions even if <code>.show</code> class is toggled.</span>
+            <span>Expanded <code>Alert.selector</code> to match both <code>[data-boodoo-alert]</code> and
+              <code>.alert</code>, ensuring graceful hide transitions even if <code>.show</code> class is
+              toggled.</span>
           </li>
           <li>
             <strong>Toast Global Dismiss &amp; Lifecycle Tracking</strong>:
-            <span>Added dedicated capture-phase global click delegation for <code>[data-boodoo-dismiss="toast"]</code> and automatic instance initialization for pre-rendered and autohide toasts.</span>
+            <span>Added dedicated capture-phase global click delegation for <code>[data-boodoo-dismiss="toast"]</code>
+              and automatic instance initialization for pre-rendered and autohide toasts.</span>
           </li>
           <li>
             <strong>Documentation Text Wrapping Purity</strong>:
-            <span>Ensured all documentation code examples and snippets comply with the strict inline semantic text wrapping rule.</span>
+            <span>Ensured all documentation code examples and snippets comply with the strict inline semantic text
+              wrapping rule.</span>
           </li>
         </ul>
       </div>
@@ -496,37 +559,49 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
         <ul class="mb-3">
           <li>
             <strong>Modern CSS Native Primitives</strong>:
-            <span>Integrated Container Queries (<code>@container</code>, <code>@mixin container-up</code>, <code>.card-container</code>, <code>.card-responsive</code>), native HTML5 <code>&lt;dialog class="modal"&gt;</code>, native <code>[popover].popover</code> API, CSS <code>:has()</code> parent selectors for forms and cards, and <code>@layer reset, tokens, components, utilities;</code> cascade organization.</span>
+            <span>Integrated Container Queries (<code>@container</code>, <code>@mixin container-up</code>,
+              <code>.card-container</code>, <code>.card-responsive</code>), native HTML5
+              <code>&lt;dialog class="modal"&gt;</code>, native <code>[popover].popover</code> API, CSS
+              <code>:has()</code> parent selectors for forms and cards, and
+              <code>@layer reset, tokens, components, utilities;</code> cascade organization.</span>
           </li>
           <li>
             <strong>Dual-Engine "Class-First + Data-Attribute" Styling</strong>:
-            <span>Added semantic HTML defaults for buttons, text inputs, and select elements, supported <code>[data-boodoo-variant]</code>, <code>[data-size]</code>, and zero-build CSS variable utility classes (<code>.b-var-pad</code>, <code>.b-var-gap</code>, etc.).</span>
+            <span>Added semantic HTML defaults for buttons, text inputs, and select elements, supported
+              <code>[data-boodoo-variant]</code>, <code>[data-size]</code>, and zero-build CSS variable utility classes
+              (<code>.b-var-pad</code>, <code>.b-var-gap</code>, etc.).</span>
           </li>
           <li>
             <strong>High-Impact Component Additions</strong>:
-            <span>Added Floating Action Buttons (<code>.btn-fab</code>, <code>.fab-extended</code>), interactive vanilla JS <code>Stepper</code> wizard with step navigation and panel toggling, and smart toast notification countdown progress bars (<code>.toast-progress</code>).</span>
+            <span>Added Floating Action Buttons (<code>.btn-fab</code>, <code>.fab-extended</code>), interactive vanilla
+              JS <code>Stepper</code> wizard with step navigation and panel toggling, and smart toast notification
+              countdown progress bars (<code>.toast-progress</code>).</span>
           </li>
           <li>
             <strong>Interactive Documentation &amp; Theme Builder</strong>:
-            <span>Added live GUI Theme Builder to docs for real-time CSS variable customizing, plus interactive live examples and copy-to-clipboard integration.</span>
+            <span>Added live GUI Theme Builder to docs for real-time CSS variable customizing, plus interactive live
+              examples and copy-to-clipboard integration.</span>
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
         <ul class="mb-0">
           <li>
             <strong>Disabled Form Controls Cursor</strong>:
-            <span>Added <code>cursor: not-allowed;</code> to <code>:disabled</code> states for <code>.form-control</code> and <code>.form-select</code> in both Sass (<code>scss/forms/_control.scss</code>, <code>scss/forms/_select.scss</code>) and Less (<code>less/boodoo.less</code>).</span>
+            <span>Added <code>cursor: not-allowed;</code> to <code>:disabled</code> states for
+              <code>.form-control</code> and <code>.form-select</code> in both Sass
+              (<code>scss/forms/_control.scss</code>, <code>scss/forms/_select.scss</code>) and Less
+              (<code>less/boodoo.less</code>).</span>
           </li>
         </ul>
       </div>
@@ -554,49 +629,67 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
         <ul class="mb-3">
           <li>
             <strong>Data Table / Data Grid Component (<code>DataTable</code>)</strong>:
-            <span>Interactive table suite supporting sortable column headers (<code>.sortable</code>, <code>.sort-asc</code>, <code>.sort-desc</code>), row selection checkboxes with select-all indeterminate synchronization, expandable detail drawer rows (<code>.data-table-expandable-row</code>, <code>.data-table-row-detail</code>), sticky headers (<code>.data-table-sticky</code>), and dense/compact variations (<code>.data-table-compact</code>, <code>.data-table-dense</code>).</span>
+            <span>Interactive table suite supporting sortable column headers (<code>.sortable</code>,
+              <code>.sort-asc</code>, <code>.sort-desc</code>), row selection checkboxes with select-all indeterminate
+              synchronization, expandable detail drawer rows (<code>.data-table-expandable-row</code>,
+              <code>.data-table-row-detail</code>), sticky headers (<code>.data-table-sticky</code>), and dense/compact
+              variations (<code>.data-table-compact</code>, <code>.data-table-dense</code>).</span>
           </li>
           <li>
             <strong>Sidebar &amp; Drawer Component (<code>Sidebar</code>)</strong>:
-            <span>Persistent and collapsible desktop multi-level navigation sidebar (<code>.sidebar</code>, <code>.sidebar-collapsed</code>, <code>.sidebar-dark</code>) with nested submenu toggling (<code>data-boodoo-toggle="sidebar-submenu"</code>), badge integration, and header/footer scaffolds.</span>
+            <span>Persistent and collapsible desktop multi-level navigation sidebar (<code>.sidebar</code>,
+              <code>.sidebar-collapsed</code>, <code>.sidebar-dark</code>) with nested submenu toggling
+              (<code>data-boodoo-toggle="sidebar-submenu"</code>), badge integration, and header/footer
+              scaffolds.</span>
           </li>
           <li>
             <strong>Dropzone &amp; File Upload Enhancement</strong>:
-            <span>Drag-and-drop file upload container with invisible file input overlay, <code>.file-list</code> preview cards, file format icons, progress bars, and file action buttons.</span>
+            <span>Drag-and-drop file upload container with invisible file input overlay, <code>.file-list</code> preview
+              cards, file format icons, progress bars, and file action buttons.</span>
           </li>
           <li>
             <strong>Context Menu Component (<code>ContextMenu</code>)</strong>:
-            <span>Right-click floating menu (<code>.context-menu</code>, <code>data-boodoo-toggle="context-menu"</code>) with dynamic cursor positioning, viewport collision protection, keyboard shortcuts, and ESC/outside-click dismissal.</span>
+            <span>Right-click floating menu (<code>.context-menu</code>, <code>data-boodoo-toggle="context-menu"</code>)
+              with dynamic cursor positioning, viewport collision protection, keyboard shortcuts, and ESC/outside-click
+              dismissal.</span>
           </li>
           <li>
             <strong>Color Picker &amp; Date/Time Wrappers</strong>:
-            <span>Enhanced UI skins for native inputs: <code>.form-color-picker</code> with live hex readout badge and preview swatch, <code>.form-picker-group</code> with integrated calendar/clock icons, and <code>.form-date-range</code>.</span>
+            <span>Enhanced UI skins for native inputs: <code>.form-color-picker</code> with live hex readout badge and
+              preview swatch, <code>.form-picker-group</code> with integrated calendar/clock icons, and
+              <code>.form-date-range</code>.</span>
           </li>
           <li>
             <strong>Empty State Component</strong>:
-            <span>Visual placeholder pattern (<code>.empty-state</code>, <code>.empty-state-card</code>, <code>.empty-state-sm</code>) with circular icon badges, headings, descriptive text, action button groups, and contextual status variants.</span>
+            <span>Visual placeholder pattern (<code>.empty-state</code>, <code>.empty-state-card</code>,
+              <code>.empty-state-sm</code>) with circular icon badges, headings, descriptive text, action button groups,
+              and contextual status variants.</span>
           </li>
           <li>
             <strong>Chips &amp; Tag Input Component (<code>ChipInput</code>)</strong>:
-            <span>Interactive chips and tags (<code>.chip</code>, <code>.chip-remove</code>, <code>.chip-primary</code>) and dynamic <code>.chip-input-container</code> supporting tag creation on <kbd>Enter</kbd>/comma and deletion on <kbd>Backspace</kbd>.</span>
+            <span>Interactive chips and tags (<code>.chip</code>, <code>.chip-remove</code>, <code>.chip-primary</code>)
+              and dynamic <code>.chip-input-container</code> supporting tag creation on <kbd>Enter</kbd>/comma and
+              deletion on <kbd>Backspace</kbd>.</span>
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
         <ul class="mb-0">
           <li>
             <strong>Floating Labels Autofill &amp; Pre-touch State</strong>:
-            <span>Added support for <code>:-webkit-autofill</code> and <code>:autofill</code> states on <code>.form-control</code> and <code>.form-control-plaintext</code> within <code>.form-floating</code> to prevent text collision.</span>
+            <span>Added support for <code>:-webkit-autofill</code> and <code>:autofill</code> states on
+              <code>.form-control</code> and <code>.form-control-plaintext</code> within <code>.form-floating</code> to
+              prevent text collision.</span>
           </li>
         </ul>
       </div>
@@ -623,7 +716,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -662,7 +755,7 @@
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-info text-info"><span>Changed</span></span>
           <span>Enhancements &amp; Standards Compliance</span>
         </h3>
@@ -714,7 +807,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Documentation</span>
         </h3>
@@ -746,7 +839,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Tooling &amp; Brand Assets</span>
         </h3>
@@ -780,7 +873,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-2 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Foundation &amp; Architecture</span>
         </h3>
@@ -813,7 +906,13 @@
         </div>
       </main>
 
-      
+      <aside class="col-lg-3 col-xl-3">
+
+    <div class="docs-toc d-none d-lg-block">
+      <h6 class="docs-toc-title">On this page</h6>
+      <ul><li class="toc-2"><a href="#interactive-preview">Timeline Component Preview</a></li></ul>
+    </div>
+</aside>
     </div>
   </div>
 
