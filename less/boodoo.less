@@ -1346,13 +1346,26 @@ ul, ol { margin-top: 0; margin-bottom: 1rem; }
   user-select: none;
 
   .chip-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.125rem;
+    min-height: 1.125rem;
     cursor: pointer;
     background: transparent;
     border: 0;
     padding: 0;
     margin-left: 0.25rem;
+    margin-right: -0.25rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    border-radius: 50%;
     opacity: 0.65;
-    &:hover { opacity: 1; }
+    transition: opacity var(--boodoo-transition-duration, 0.15s) ease, background-color var(--boodoo-transition-duration, 0.15s) ease;
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
   }
 
   &.chip-primary {
