@@ -68,16 +68,50 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.0.8 -->
+  <!-- Version 1.0.9 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-9">
+            <span>v1.0.9</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 6, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.9"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Multi-Platform Expansion (Angular, Cordova, PhoneGap, Meteor, Photon, React Native)</span>
+        </h3>
+        <ul class="mb-3">
+          <li><strong><span>create-boodoo Multi-Platform Scaffolder</span></strong>: <span>Expanded <code>npx create-boodoo</code> with 9 complete templates including <code>Angular</code>, <code>Cordova &amp; PhoneGap</code>, <code>Meteor.js</code>, <code>Photon Desktop UI</code>, and <code>React Native Web</code>.</span></li>
+          <li><strong><span>Photon Desktop UI Primitives</span></strong>: <span>Added <code>.native-photon</code> styling suite for macOS &amp; Electron desktop applications, including native toolbar headers, footers, split pane groups, nav group lists, and tab groups.</span></li>
+          <li><strong><span>Hybrid Mobile &amp; Cordova/PhoneGap Lifecycle</span></strong>: <span>Added <code>deviceready</code> auto-initialization hooks to Boodoo JS and safe-area inset container ergonomics.</span></li>
+          <li><strong><span>Platforms &amp; Frameworks Guide</span></strong>: <span>Added dedicated guide at <a href="../getting-started/platforms.html"><span>Platforms &amp; Frameworks</span></a> covering Angular, Cordova, PhoneGap, Meteor, Photon, and React Native Web.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.0.8 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>●</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-0-8">
             <span>v1.0.8</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
@@ -94,10 +128,7 @@ order: 7
           <span>Electron Desktop Integration &amp; Tooling</span>
         </h3>
         <ul class="mb-3">
-          <li><strong><span>create-boodoo Desktop Scaffolder</span></strong>: <span>Added option
-              <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>,
-              scaffolding instant desktop apps complete with custom frameless titlebars, window controls, IPC event
-              bridge, responsive sidebar, and Boodoo component demo.</span></li>
+          <li><strong><span>Electron Desktop Scaffolder</span></strong>: <span>Added option <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>.</span></li>
           <li><strong><span>Electron Integration Documentation</span></strong>: <span>Published complete guide at <a
                 href="../getting-started/electron.html"><span>Getting started / Electron Desktop Apps</span></a>
               detailing frameless window mechanics, <code>-webkit-app-region: drag</code> titlebars, IPC controls, CSP,

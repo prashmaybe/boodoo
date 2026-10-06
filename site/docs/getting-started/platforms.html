@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Add boodoo to your project via CSS and JS CDN links, or reference the local bundle.">
+  <meta name="description" content="Integrate boodoo with Angular, Cordova, PhoneGap, Meteor, Photon, React Native Web, Electron, and more.">
   <meta name="theme-color" content="#7c3aed">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="boodoo">
-  <meta property="og:title" content="Usage & CDN · boodoo">
-  <meta property="og:description" content="Add boodoo to your project via CSS and JS CDN links, or reference the local bundle.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/usage.html">
+  <meta property="og:title" content="Platforms & Frameworks · boodoo">
+  <meta property="og:description" content="Integrate boodoo with Angular, Cordova, PhoneGap, Meteor, Photon, React Native Web, Electron, and more.">
+  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/platforms.html">
   <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Usage & CDN · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/usage.html">
+  <title>Platforms & Frameworks · boodoo</title>
+  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/platforms.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -108,7 +108,7 @@
 <li><a href="../getting-started/introduction.html">Introduction</a></li>
 <li><a href="../getting-started/download.html">Download</a></li>
 <li><a href="../getting-started/contents.html">What's included</a></li>
-<li><a href="../getting-started/usage.html" class="active">Usage & CDN</a></li>
+<li><a href="../getting-started/usage.html">Usage & CDN</a></li>
 <li><a href="../getting-started/npm.html">Install via npm</a></li>
 <li><a href="../getting-started/sass.html">Customize with Sass</a></li>
 <li><a href="../getting-started/less.html">Customize with Less</a></li>
@@ -119,7 +119,7 @@
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
 <li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
-<li><a href="../getting-started/platforms.html">Platforms & Frameworks</a></li>
+<li><a href="../getting-started/platforms.html" class="active">Platforms & Frameworks</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -254,105 +254,224 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
         <li class="breadcrumb-item">Getting started</li>
-        <li class="breadcrumb-item active" aria-current="page">Usage & CDN</li>
+        <li class="breadcrumb-item active" aria-current="page">Platforms & Frameworks</li>
       </ol>
     </nav>
-          <h1><span>Usage &amp; CDN</span></h1>
-<p class="lead"><span>Include boodoo in your project using easy-to-use CDN links for quick prototyping, or reference the
-  compiled bundles locally.</span></p>
+          <h1><span>Platforms &amp; Frameworks</span></h1>
+<p class="lead"><span>Boodoo is engineered with zero JavaScript framework lock-in. Whether you are building with Angular, Cordova/PhoneGap, Meteor.js, Photon desktop UI, or React Native Web, Boodoo integrates cleanly into your stack.</span></p>
 
-<h2 id="cdn"><span>CSS only</span></h2>
-<p><span>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you the
-  global styles, grid, all components, and utilities.</span></p>
-
-<div class="highlight">
-  <pre><code class="language-html">&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css" rel="stylesheet"&gt;</code></pre>
-</div>
-
-<p><span>You can also load just the grid, reboot, or utilities separately for the leanest possible page:</span></p>
-<div class="highlight">
-  <pre><code class="language-html">&lt;!-- Grid only --&gt;
-&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-f2180304.css" rel="stylesheet"&gt;
-
-&lt;!-- Utilities only --&gt;
-&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-6a1dbb55.css" rel="stylesheet"&gt;</code></pre>
-</div>
-
-<h2 id="quick-demo"><span>Quick CDN Demo</span></h2>
-<p><span>Once included, all Boodoo components, typography, buttons, and responsive grid work immediately out of the box with no build step required:</span></p>
-
-<div class="bd-example">
-  <div class="alert alert-primary d-flex align-items-center gap-2 mb-3" role="alert">
-    <span>✨</span>
-    <div>
-      <strong><span>CDN Ready!</span></strong>
-      <span>Boodoo loaded instantly via CDN link with zero bundler setup.</span>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>🅰️</span></div>
+      <h5><span>Angular</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Zero build collision. Import stylesheets into <code>angular.json</code> or component styles, and call Boodoo APIs inside lifecycle methods.</span></p>
     </div>
   </div>
-  <div class="d-flex flex-wrap gap-2">
-    <button type="button" class="btn btn-primary"><span>Primary Action</span></button>
-    <button type="button" class="btn btn-outline-secondary"><span>Secondary</span></button>
-    <button type="button" class="btn btn-success"><span>Live Demo</span></button>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>📱</span></div>
+      <h5><span>Cordova &amp; PhoneGap</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Optimized for hybrid WebViews with automatic <code>deviceready</code> event hooks, viewport safe areas, and touch ergonomics.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>☄️</span></div>
+      <h5><span>Meteor.js</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Instant reactivity in Meteor Blaze or React templates with zero CSS bundle conflicts.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>💡</span></div>
+      <h5><span>Photon Desktop UI</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Built-in Electron and macOS native desktop chrome: header toolbars, pane groups, and tab bars with <code>.native-photon</code>.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>📱</span></div>
+      <h5><span>React Native Web</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Combine universal React Native components with Boodoo responsive CSS classes and design tokens.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100">
+      <div class="fs-3 mb-2"><span>⚡</span></div>
+      <h5><span>create-boodoo CLI</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Instantly scaffold working starters for all platforms using <code>npx create-boodoo</code>.</span></p>
+    </div>
   </div>
 </div>
+
+<hr class="my-4">
+
+<h2 id="angular"><span>1. Angular Integration</span></h2>
+<p><span>Install boodoo in your Angular project:</span></p>
 <div class="highlight">
-  <pre><code class="language-html">&lt;div class="alert alert-primary d-flex align-items-center gap-2 mb-3" role="alert"&gt;
-  &lt;span&gt;✨&lt;/span&gt;
-  &lt;div&gt;
-    &lt;strong&gt;&lt;span&gt;CDN Ready!&lt;/span&gt;&lt;/strong&gt;
-    &lt;span&gt;Boodoo loaded instantly via CDN link with zero bundler setup.&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="d-flex flex-wrap gap-2"&gt;
-  &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;Primary Action&lt;/span&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn btn-outline-secondary"&gt;&lt;span&gt;Secondary&lt;/span&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn btn-success"&gt;&lt;span&gt;Live Demo&lt;/span&gt;&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+  <pre><code>npm install boodoo</code></pre>
+</div>
+<p><span>Include the compiled CSS bundle in your <code>angular.json</code> under <code>architect.build.options.styles</code>:</span></p>
+<div class="highlight">
+  <pre><code class="language-json">"styles": [
+  "node_modules/boodoo/dist/css/boodoo.min.css",
+  "src/styles.css"
+],
+"scripts": [
+  "node_modules/boodoo/dist/js/boodoo.js"
+]</code></pre>
+</div>
+<p><span>Or import Boodoo inside your root <code>styles.scss</code>:</span></p>
+<div class="highlight">
+  <pre><code class="language-scss">@import "boodoo/scss/boodoo";</code></pre>
+</div>
+<p><span>You can trigger Boodoo toasts and interactive components from Angular TypeScript controllers:</span></p>
+<div class="highlight">
+  <pre><code class="language-typescript">import { Component } from '@angular/core';
+
+declare const boodoo: any;
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    &lt;div class="container py-4"&gt;
+      &lt;div class="card p-4 shadow-sm"&gt;
+        &lt;h2 class="text-primary"&gt;Angular + Boodoo&lt;/h2&gt;
+        &lt;button type="button" class="btn btn-primary" (click)="showToast()"&gt;Show Toast&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class AppComponent {
+  showToast() {
+    boodoo?.toast?.('Angular triggered Boodoo notification!', { variant: 'primary' });
+  }
+}</code></pre>
 </div>
 
-<h2 id="js"><span>JavaScript</span></h2>
-<p><span>Many boodoo components require the JavaScript bundle to function. Add it right before the closing
-  <code>&lt;/body&gt;</code> tag:</span></p>
+<hr class="my-4">
+
+<h2 id="cordova-phonegap"><span>2. Cordova &amp; PhoneGap Hybrid Apps</span></h2>
+<p><span>Boodoo is lightweight and fast, making it ideal for mobile WebViews without runtime overhead. Boodoo's JS core automatically listens for the Cordova/PhoneGap <code>deviceready</code> lifecycle event.</span></p>
+
+<p><span>In your <code>index.html</code>:</span></p>
 <div class="highlight">
-  <pre><code class="language-html">&lt;script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-22f6ff5d.js"&gt;&lt;/script&gt;</code></pre>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover"&gt;
+  &lt;title&gt;Hybrid Mobile App&lt;/title&gt;
+  &lt;link rel="stylesheet" href="node_modules/boodoo/dist/css/boodoo.min.css"&gt;
+  &lt;style&gt;
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="native-ios bg-light"&gt;
+  &lt;header class="native-navbar"&gt;
+    &lt;span class="fs-6 fw-bold"&gt;Mobile App&lt;/span&gt;
+    &lt;span class="badge bg-success"&gt;Ready&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;main class="container py-3"&gt;
+    &lt;div class="card p-3 shadow-sm"&gt;
+      &lt;button type="button" class="btn btn-primary w-100 rounded-pill" id="action-btn"&gt;Trigger Alert&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+  &lt;script src="cordova.js"&gt;&lt;/script&gt;
+  &lt;script src="node_modules/boodoo/dist/js/boodoo.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 </div>
 
-<p><span>If you only need a subset, import individual components from the ESM build:</span></p>
+<hr class="my-4">
+
+<h2 id="meteor"><span>3. Meteor.js Full-Stack</span></h2>
+<p><span>Meteor applications benefit from Boodoo's zero-build runtime compatibility. Add Boodoo to your Meteor app:</span></p>
 <div class="highlight">
-  <pre><code class="language-html">&lt;script type="module"&gt;
-  import { Modal, Toast, Dropdown } from 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.esm-a232cde6.js';
-  // components are auto-initialized from their data-* attributes
-&lt;/script&gt;</code></pre>
+  <pre><code>meteor npm install boodoo</code></pre>
+</div>
+<p><span>In your client entrypoint (e.g. <code>client/main.js</code>):</span></p>
+<div class="highlight">
+  <pre><code class="language-javascript">import 'boodoo/dist/css/boodoo.min.css';
+import boodoo from 'boodoo';
+import { Template } from 'meteor/templating';
+import './main.html';
+
+Template.dashboard.events({
+  'click #btn-notify'() {
+    boodoo.toast('Meteor reactive update delivered!', { variant: 'success' });
+  }
+});</code></pre>
 </div>
 
-<h2 id="bundled"><span>Local bundle</span></h2>
-<p><span>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a href="./download.html"><span>download</span></a> into
-  a folder and reference them relatively:</span></p>
+<hr class="my-4">
+
+<h2 id="photon-desktop"><span>4. Photon Desktop UI</span></h2>
+<p><span>For Electron, desktop, or classic macOS-style window layouts, Boodoo ships built-in Photon UI classes:</span></p>
+<ul>
+  <li><code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> — Activates the Photon desktop styling container</li>
+  <li><code>.toolbar-header</code> / <code>.toolbar-footer</code> — Native gradient toolbars with dragging enabled</li>
+  <li><code>.window-content</code>, <code>.pane-group</code>, and <code>.pane-sidebar</code> — Responsive split window panes</li>
+  <li><code>.nav-group</code> and <code>.nav-group-item</code> — Classic desktop sidebar navigation items</li>
+  <li><code>.tab-group</code> and <code>.tab-item</code> — Desktop application tab bars</li>
+</ul>
+<p><span>For live examples and interactive demos, visit the <a href="../components/native.html#photon"><span>Photon Native UI Documentation</span></a>.</span></p>
+
+<hr class="my-4">
+
+<h2 id="react-native"><span>5. React Native Web</span></h2>
+<p><span>When sharing code across React Native (iOS/Android) and React Native Web, you can import Boodoo's compiled CSS or design tokens into your web root:</span></p>
 <div class="highlight">
-  <pre><code class="language-html">&lt;link rel="stylesheet" href="css/boodoo.min.css"&gt;
-&lt;script src="js/boodoo.js"&gt;&lt;/script&gt;</code></pre>
+  <pre><code class="language-javascript">import 'boodoo/dist/css/boodoo.min.css';
+import { View, Text, TouchableOpacity } from 'react-native';
+
+export default function App() {
+  return (
+    &lt;View style={{ padding: 20 }}&gt;
+      &lt;div className="card p-4 shadow-sm text-center"&gt;
+        &lt;h3 className="text-primary mb-2"&gt;React Native Web + Boodoo&lt;/h3&gt;
+        &lt;p className="text-muted"&gt;Hybrid universal design architecture.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/View&gt;
+  );
+}</code></pre>
 </div>
 
-<h2 id="modules"><span>JavaScript modules</span></h2>
-<p><span>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>boodoo</code> object with every
-  component, so you can call them programmatically:</span></p>
+<hr class="my-4">
+
+<h2 id="cli-scaffold"><span>6. Instant Scaffolding via create-boodoo</span></h2>
+<p><span>Run the official CLI scaffolder to generate a configured starter for any platform:</span></p>
 <div class="highlight">
-  <pre><code class="language-html">&lt;script&gt;
-  boodoo.toast('Hello from boodoo!', { title: 'Welcome' });
-  new boodoo.Modal(document.getElementById('myModal')).show();
-&lt;/script&gt;</code></pre>
+  <pre><code>npx create-boodoo my-new-project</code></pre>
 </div>
+<p><span>Choose from 9 curated templates:</span></p>
+<ol>
+  <li><strong>HTML5 + Sass Starter</strong> (Vanilla, Fast &amp; Clean)</li>
+  <li><strong>Vite + Vanilla</strong> (Modern dev server &amp; HMR)</li>
+  <li><strong>Next.js / React</strong> (App Router + Boodoo CSS)</li>
+  <li><strong>Electron Desktop App</strong> (Cross-Platform Native UI)</li>
+  <li><strong>Angular Starter</strong> (Standalone Components + Boodoo)</li>
+  <li><strong>Cordova &amp; PhoneGap</strong> (Hybrid Mobile App)</li>
+  <li><strong>Meteor.js</strong> (Full-Stack Reactive App)</li>
+  <li><strong>Photon Desktop UI</strong> (Classic macOS / Electron Pane layout)</li>
+  <li><strong>React Native Web</strong> (Universal Web &amp; Mobile)</li>
+</ol>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
     <div class="docs-pager-item">
       <span class="docs-pager-label">Getting started</span>
-      <a class="docs-pager-link" href="../getting-started/contents.html">What's included</a>
+      <a class="docs-pager-link" href="../getting-started/electron.html">Electron Desktop Apps</a>
     </div>
     
     <div class="docs-pager-item">
-      <span class="docs-pager-label">Getting started</span>
-      <a class="docs-pager-link" href="../getting-started/npm.html">Install via npm</a>
+      <span class="docs-pager-label">Layout</span>
+      <a class="docs-pager-link" href="../layout/containers.html">Containers</a>
     </div>
   </nav>
 
@@ -363,11 +482,12 @@
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#cdn">CSS only</a></li>
-<li class="toc-2"><a href="#quick-demo">Quick CDN Demo</a></li>
-<li class="toc-2"><a href="#js">JavaScript</a></li>
-<li class="toc-2"><a href="#bundled">Local bundle</a></li>
-<li class="toc-2"><a href="#modules">JavaScript modules</a></li></ul>
+      <ul><li class="toc-2"><a href="#angular">1. Angular Integration</a></li>
+<li class="toc-2"><a href="#cordova-phonegap">2. Cordova &amp; PhoneGap Hybrid Apps</a></li>
+<li class="toc-2"><a href="#meteor">3. Meteor.js Full-Stack</a></li>
+<li class="toc-2"><a href="#photon-desktop">4. Photon Desktop UI</a></li>
+<li class="toc-2"><a href="#react-native">5. React Native Web</a></li>
+<li class="toc-2"><a href="#cli-scaffold">6. Instant Scaffolding via create-boodoo</a></li></ul>
     </div>
 </aside>
     </div>

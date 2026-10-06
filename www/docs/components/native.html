@@ -119,6 +119,7 @@
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
 <li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
+<li><a href="../getting-started/platforms.html">Platforms & Frameworks</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -513,6 +514,80 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
+
+<h2 id="photon"><span>Photon (Electron &amp; Classic Desktop UI)</span></h2>
+<p><span>Use <code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> to render classic macOS/Electron desktop chrome: native toolbars, segmented button groups, pane splitters, sidebars, and tab groups without external styling dependencies.</span></p>
+
+<div class="bd-example">
+  <div class="native-photon border rounded overflow-hidden shadow-sm" style="max-width: 650px; margin: 0 auto; height: 260px; display: flex; flex-direction: column;">
+    <div class="toolbar-header">
+      <div class="toolbar-actions">
+        <div class="btn-group">
+          <button type="button" class="btn" title="Back"><span>◀</span></button>
+          <button type="button" class="btn" title="Forward"><span>▶</span></button>
+        </div>
+      </div>
+      <span class="title"><span>Photon App Window</span></span>
+      <div class="toolbar-actions">
+        <button type="button" class="btn btn-primary"><span>Save</span></button>
+      </div>
+    </div>
+    <div class="window-content">
+      <div class="pane-group">
+        <div class="pane pane-sidebar">
+          <div class="nav-group">
+            <h6 class="nav-group-title"><span>Navigation</span></h6>
+            <a href="#" class="nav-group-item active"><span>🏠 Home</span></a>
+            <a href="#" class="nav-group-item"><span>📁 Files</span></a>
+            <a href="#" class="nav-group-item"><span>⚙️ Preferences</span></a>
+          </div>
+        </div>
+        <div class="pane p-3">
+          <div class="tab-group mb-3">
+            <div class="tab-item active">
+              <span>Workspace</span>
+              <span class="icon-close-tab">✕</span>
+            </div>
+            <div class="tab-item">
+              <span>Settings</span>
+            </div>
+          </div>
+          <p class="text-muted small mb-2"><span>Classic desktop UI components styled with lightweight Boodoo tokens.</span></p>
+          <div class="btn-group">
+            <button type="button" class="btn btn-positive"><span>Commit</span></button>
+            <button type="button" class="btn btn-negative"><span>Revert</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar-footer">
+      <span>Ready — 1 workspace active</span>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-photon"&gt;
+  &lt;header class="toolbar-header"&gt;
+    &lt;span class="title"&gt;&lt;span&gt;Photon App Window&lt;/span&gt;&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;div class="window-content"&gt;
+    &lt;div class="pane-group"&gt;
+      &lt;div class="pane pane-sidebar"&gt;
+        &lt;nav class="nav-group"&gt;
+          &lt;h6 class="nav-group-title"&gt;&lt;span&gt;Navigation&lt;/span&gt;&lt;/h6&gt;
+          &lt;a href="#" class="nav-group-item active"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+      &lt;div class="pane p-3"&gt;
+        &lt;div class="tab-group"&gt;
+          &lt;div class="tab-item active"&gt;&lt;span&gt;Workspace&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -539,7 +614,8 @@
 <li class="toc-2"><a href="#ios">iOS (Human Interface Guidelines)</a></li>
 <li class="toc-2"><a href="#ipados">iPadOS (Sidebar &amp; Split View)</a></li>
 <li class="toc-2"><a href="#android">Android (Material Design 3)</a></li>
-<li class="toc-2"><a href="#linux">Linux (GNOME Adwaita / GTK4)</a></li></ul>
+<li class="toc-2"><a href="#linux">Linux (GNOME Adwaita / GTK4)</a></li>
+<li class="toc-2"><a href="#photon">Photon (Electron &amp; Classic Desktop UI)</a></li></ul>
     </div>
 </aside>
     </div>

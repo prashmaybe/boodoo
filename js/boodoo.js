@@ -178,11 +178,16 @@ function autoInit() {
 }
 
 if (typeof document === 'undefined') {
-  // SSR-safe: no auto-init
-} else if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', autoInit);
+  // SSR-safe / React Native headless: no auto-init
 } else {
-  autoInit();
+  // Support standard Web, Cordova, and PhoneGap lifecycles
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInit);
+  } else {
+    autoInit();
+  }
+  // Re-run or hook initialization on Cordova / PhoneGap device readiness
+  document.addEventListener('deviceready', autoInit, false);
 }
 
 // Public default export

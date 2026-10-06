@@ -2,7 +2,7 @@
   "name": "vscode-boodoo-intellisense",
   "displayName": "Boodoo IntelliSense",
   "description": "Autocomplete, CSS variable tokens, and snippet generator for the Boodoo framework",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "publisher": "pebblebenders",
   "engines": {
     "vscode": "^1.75.0"

@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.9] - 2026-10-06
+
+### Added
+- **Multi-Platform & Framework Expansion (Angular, Cordova, PhoneGap, Meteor, Photon, React Native)**:
+  - **`create-boodoo` Scaffolder Suite**: Expanded `bin/create-boodoo.mjs` to 9 production-ready starter templates:
+    1. Vanilla HTML5 + Sass
+    2. Vite + Vanilla
+    3. Next.js / React
+    4. Electron Desktop App
+    5. Angular Starter (Standalone Components + Boodoo CSS & scripts)
+    6. Cordova & PhoneGap Hybrid Mobile App (`config.xml`, `deviceready` lifecycle, viewport safe-area styling)
+    7. Meteor.js Full-Stack App (Reactive templates + Boodoo components)
+    8. Photon Desktop UI (Classic macOS & Electron desktop panes, toolbar, segmented buttons, tab bars)
+    9. React Native Web (Universal web & mobile architecture)
+  - **Photon Native UI Primitives**: Added `.native-photon` styling suite in `scss/components/_native.scss` supporting `.toolbar-header`, `.toolbar-footer`, `.pane-group`, `.pane`, `.pane-sidebar`, `.nav-group`, `.tab-group`, and native macOS/Electron push buttons.
+  - **Cordova & PhoneGap Lifecycle Support**: Integrated Cordova/PhoneGap `deviceready` event hook directly into Boodoo JS `autoInit()`.
+  - **Platforms & Frameworks Guide**: Published `site/src/getting-started/platforms.html` with step-by-step code samples and configuration for Angular, Cordova/PhoneGap, Meteor, Photon, and React Native Web.
+
+---
+
 ## [1.0.8] - 2026-09-30
 
 ### Added
