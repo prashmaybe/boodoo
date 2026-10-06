@@ -7,13 +7,15 @@ order: 11
 
 <section class="docs-section">
   <h2>Overview</h2>
-  <p class="lead">Chips represent complex entities in small blocks, such as tags, contacts, categories, and removable filters. The <code>.chip-input-container</code> lets users type new tags dynamically with Enter or comma, or remove them with Backspace.</p>
+  <p class="lead">Chips represent complex entities in small blocks, such as tags, contacts, categories, and removable
+    filters. The <code>.chip-input-container</code> lets users type new tags dynamically with Enter or comma, or remove
+    them with Backspace.</p>
 </section>
 
 <section class="docs-section">
   <h2>Static & Removable Chips</h2>
-  <div class="docs-example p-4 border rounded bg-white">
-    <div class="d-flex flex-wrap gap-2 mb-3">
+  <div class="bd-example p-2 border rounded bg-white">
+    <div class="d-flex flex-wrap gap-2 mb-2">
       <span class="chip"><span>Default Chip</span></span>
       <span class="chip chip-primary"><span>Primary</span></span>
       <span class="chip chip-success"><span>Success</span></span>
@@ -37,17 +39,21 @@ order: 11
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;span class="chip chip-primary"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;span class="chip chip-primary"&gt;
   &lt;span&gt;JavaScript&lt;/span&gt;
   &lt;button type="button" class="chip-remove" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
 &lt;/span&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
   <h2>Interactive Tag Input</h2>
-  <p>Type keywords and press <kbd>Enter</kbd> or <kbd>,</kbd> to convert them into removable chips. Press <kbd>Backspace</kbd> when empty to delete the last chip.</p>
+  <p>Type keywords and press <kbd>Enter</kbd> or <kbd>,</kbd> to convert them into removable chips. Press
+    <kbd>Backspace</kbd> when empty to delete the last chip.
+  </p>
 
-  <div class="docs-example p-4 border rounded bg-white">
+  <div class="bd-example p-2 border rounded bg-white">
     <div class="chip-input-container" data-boodoo="chip-input">
       <span class="chip chip-primary">
         <span>Design Systems</span>
@@ -61,11 +67,13 @@ order: 11
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;div class="chip-input-container" data-boodoo="chip-input"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="chip-input-container" data-boodoo="chip-input"&gt;
   &lt;span class="chip"&gt;
     &lt;span&gt;Design Systems&lt;/span&gt;
     &lt;button type="button" class="chip-remove" aria-label="Remove tag"&gt;&amp;times;&lt;/button&gt;
   &lt;/span&gt;
   &lt;input type="text" class="chip-input-field" id="tagInputField" name="tags" placeholder="Add tag..."&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </section>

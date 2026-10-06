@@ -9,7 +9,8 @@ const ARROW_SHIFT = 8;
 class AbstractTrigger extends BaseComponent {
   constructor(target, config = {}) {
     super(target, config);
-    this._config = this._getConfig(config, this.constructor.Default);
+    const dataAttrs = BaseComponent._dataAttrConfig(this._element);
+    this._config = this._getConfig({ ...dataAttrs, ...config }, this.constructor.Default);
     this._tip = null;
     this._popper = null;
     this._hideTimeout = null;
@@ -64,8 +65,13 @@ class AbstractTrigger extends BaseComponent {
     } else {
       const header = tip.querySelector('.popover-header');
       const body = tip.querySelector('.popover-body');
-      if (header && this._config.title) header.textContent = this._config.title;
-      if (body) body.innerHTML = title;
+      if (header && title) {
+        header.textContent = title;
+      } else if (header) {
+        header.style.display = 'none';
+      }
+      const content = this._getContent();
+      if (body && content) body.innerHTML = content;
     }
   }
 
@@ -74,6 +80,10 @@ class AbstractTrigger extends BaseComponent {
     const title = this._config.title || element.getAttribute('data-boodoo-title') || element.getAttribute('title') || '';
     if (element.title === title && element.removeAttribute) element.removeAttribute('title');
     return title;
+  }
+
+  _getContent() {
+    return this._config.content || this._element.getAttribute('data-boodoo-content') || '';
   }
 
   toggle() {

@@ -6,13 +6,13 @@ order: 25
 -->
 
 <section class="docs-section">
-  <h2>Overview</h2>
-  <p class="lead">The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</p>
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</span></p>
 </section>
 
 <section class="docs-section">
-  <h2>Horizontal Stepper</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2><span>Horizontal Stepper</span></h2>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper">
        <li class="step-item completed">
          <div class="step-circle"><span>✓</span></div>
@@ -38,34 +38,36 @@ order: 25
     </ul>
   </div>
 
-  <pre><code class="language-html">&lt;ul class="stepper"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;ul class="stepper"&gt;
   &lt;li class="step-item completed"&gt;
-    &lt;div class="step-circle"&gt;✓&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Account&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Setup credentials&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Account&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Setup credentials&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li class="step-item active"&gt;
-    &lt;div class="step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;2&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Profile&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Personal info&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Profile&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Personal info&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li class="step-item"&gt;
-    &lt;div class="step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;3&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Review&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Final confirmation&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Review&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Final confirmation&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2>Vertical Stepper</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2><span>Vertical Stepper</span></h2>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper stepper-vertical">
       <li class="step-item completed">
         <div class="step-circle"><span>✓</span></div>
@@ -90,8 +92,8 @@ order: 25
       </li>
     </ul>
   </div>
-<div class="highlight">
-  <pre><code>&lt;ul class=&quot;stepper stepper-vertical&quot;&gt;
+  <div class="highlight">
+    <pre><code>&lt;ul class=&quot;stepper stepper-vertical&quot;&gt;
   &lt;li class=&quot;step-item completed&quot;&gt;
     &lt;div class=&quot;step-circle&quot;&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;step-content&quot;&gt;
@@ -114,13 +116,13 @@ order: 25
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-</div>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2>Interactive Wizard with JavaScript & Buttons</h2>
-  <p>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</p>
-  <div class="docs-example p-4 border rounded">
+  <h2><span>Interactive Wizard with JavaScript &amp; Buttons</span></h2>
+  <p><span>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</span></p>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper" id="wizardStepper" data-boodoo-target="#wizardPanels">
       <li class="step-item active">
         <div class="step-circle"><span>1</span></div>

@@ -6,15 +6,10 @@
 import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent, element } from './util.js';
 
-const NAME = 'splitter';
-const DATA_KEY = `boodoo.${NAME}`;
-const EVENT_KEY = `.${DATA_KEY}`;
-
-const EVENT_RESIZE = `resize${EVENT_KEY}`;
-const EVENT_DRAG_START = `dragstart${EVENT_KEY}`;
-const EVENT_DRAG_END = `dragend${EVENT_KEY}`;
-
 export class Splitter extends BaseComponent {
+  static get NAME() {
+    return 'splitter';
+  }
   constructor(target, config = {}) {
     super(target, config);
 
@@ -32,10 +27,6 @@ export class Splitter extends BaseComponent {
     this._initEvents();
   }
 
-  static get NAME() {
-    return NAME;
-  }
-
   _initEvents() {
     this._gutter.setAttribute('tabindex', '0');
     this._gutter.setAttribute('role', 'separator');
@@ -50,7 +41,7 @@ export class Splitter extends BaseComponent {
       this._element.classList.add('splitter-resizing');
       this._gutter.setPointerCapture(e.pointerId);
 
-      triggerEvent(this._element, EVENT_DRAG_START);
+      triggerEvent(this._element, 'boodoo.splitter.dragstart');
 
       const moveHandler = (moveEvent) => this._onPointerMove(moveEvent);
       const upHandler = (upEvent) => {
@@ -61,7 +52,7 @@ export class Splitter extends BaseComponent {
         } catch (_) {}
         window.removeEventListener('pointermove', moveHandler);
         window.removeEventListener('pointerup', upHandler);
-        triggerEvent(this._element, EVENT_DRAG_END);
+        triggerEvent(this._element, 'boodoo.splitter.dragend');
       };
 
       window.addEventListener('pointermove', moveHandler);
@@ -125,7 +116,7 @@ export class Splitter extends BaseComponent {
       this._panePrimary.style.flex = `0 0 ${clamped}px`;
     }
 
-    triggerEvent(this._element, EVENT_RESIZE, { size: clamped, totalSize });
+    triggerEvent(this._element, 'boodoo.splitter.resize', { size: clamped, totalSize });
   }
 }
 

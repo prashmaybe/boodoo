@@ -11,7 +11,7 @@
   <meta property="og:title" content="Usage & CDN · boodoo">
   <meta property="og:description" content="Add boodoo to your project via CSS and JS CDN links, or reference the local bundle.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/usage.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Usage & CDN · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/usage.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -248,55 +256,87 @@
         <li class="breadcrumb-item active" aria-current="page">Usage & CDN</li>
       </ol>
     </nav>
-          <h1>Usage &amp; CDN</h1>
-<p class="lead">Include boodoo in your project using easy-to-use CDN links for quick prototyping, or reference the
-  compiled bundles locally.</p>
+          <h1><span>Usage &amp; CDN</span></h1>
+<p class="lead"><span>Include boodoo in your project using easy-to-use CDN links for quick prototyping, or reference the
+  compiled bundles locally.</span></p>
 
-<h2 id="cdn">CSS only</h2>
-<p>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you the
-  global styles, grid, all components, and utilities.</p>
+<h2 id="cdn"><span>CSS only</span></h2>
+<p><span>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you the
+  global styles, grid, all components, and utilities.</span></p>
 
 <div class="highlight">
-  <pre><code>&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css" rel="stylesheet"&gt;</code></pre>
+  <pre><code class="language-html">&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css" rel="stylesheet"&gt;</code></pre>
 </div>
 
-<p>You can also load just the grid, reboot, or utilities separately for the leanest possible page:</p>
+<p><span>You can also load just the grid, reboot, or utilities separately for the leanest possible page:</span></p>
 <div class="highlight">
-  <pre><code>&lt;!-- Grid only -->
+  <pre><code class="language-html">&lt;!-- Grid only --&gt;
 &lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-f2180304.css" rel="stylesheet"&gt;
 
-&lt;!-- Utilities only -->
+&lt;!-- Utilities only --&gt;
 &lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-6a1dbb55.css" rel="stylesheet"&gt;</code></pre>
 </div>
 
-<h2 id="js">JavaScript</h2>
-<p>Many boodoo components require the JavaScript bundle to function. Add it right before the closing
-  <code>&lt;/body&gt;</code> tag:</p>
+<h2 id="quick-demo"><span>Quick CDN Demo</span></h2>
+<p><span>Once included, all Boodoo components, typography, buttons, and responsive grid work immediately out of the box with no build step required:</span></p>
+
+<div class="bd-example">
+  <div class="alert alert-primary d-flex align-items-center gap-2 mb-3" role="alert">
+    <span>✨</span>
+    <div>
+      <strong><span>CDN Ready!</span></strong>
+      <span>Boodoo loaded instantly via CDN link with zero bundler setup.</span>
+    </div>
+  </div>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary"><span>Primary Action</span></button>
+    <button type="button" class="btn btn-outline-secondary"><span>Secondary</span></button>
+    <button type="button" class="btn btn-success"><span>Live Demo</span></button>
+  </div>
+</div>
 <div class="highlight">
-  <pre><code>&lt;script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-22f6ff5d.js"&gt;&lt;/script&gt;</code></pre>
+  <pre><code class="language-html">&lt;div class="alert alert-primary d-flex align-items-center gap-2 mb-3" role="alert"&gt;
+  &lt;span&gt;✨&lt;/span&gt;
+  &lt;div&gt;
+    &lt;strong&gt;&lt;span&gt;CDN Ready!&lt;/span&gt;&lt;/strong&gt;
+    &lt;span&gt;Boodoo loaded instantly via CDN link with zero bundler setup.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="d-flex flex-wrap gap-2"&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;Primary Action&lt;/span&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn btn-outline-secondary"&gt;&lt;span&gt;Secondary&lt;/span&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn btn-success"&gt;&lt;span&gt;Live Demo&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
 </div>
 
-<p>If you only need a subset, import individual components from the ESM build:</p>
+<h2 id="js"><span>JavaScript</span></h2>
+<p><span>Many boodoo components require the JavaScript bundle to function. Add it right before the closing
+  <code>&lt;/body&gt;</code> tag:</span></p>
 <div class="highlight">
-  <pre><code>&lt;script type="module"&gt;
+  <pre><code class="language-html">&lt;script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-22f6ff5d.js"&gt;&lt;/script&gt;</code></pre>
+</div>
+
+<p><span>If you only need a subset, import individual components from the ESM build:</span></p>
+<div class="highlight">
+  <pre><code class="language-html">&lt;script type="module"&gt;
   import { Modal, Toast, Dropdown } from 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.esm-a232cde6.js';
   // components are auto-initialized from their data-* attributes
 &lt;/script&gt;</code></pre>
 </div>
 
-<h2 id="bundled">Local bundle</h2>
-<p>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a href="./download.html">download</a> into
-  a folder and reference them relatively:</p>
+<h2 id="bundled"><span>Local bundle</span></h2>
+<p><span>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a href="./download.html"><span>download</span></a> into
+  a folder and reference them relatively:</span></p>
 <div class="highlight">
-  <pre><code>&lt;link rel="stylesheet" href="css/boodoo.min.css"&gt;
+  <pre><code class="language-html">&lt;link rel="stylesheet" href="css/boodoo.min.css"&gt;
 &lt;script src="js/boodoo.js"&gt;&lt;/script&gt;</code></pre>
 </div>
 
-<h2 id="modules">JavaScript modules</h2>
-<p>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>boodoo</code> object with every
-  component, so you can call them programmatically:</p>
+<h2 id="modules"><span>JavaScript modules</span></h2>
+<p><span>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>boodoo</code> object with every
+  component, so you can call them programmatically:</span></p>
 <div class="highlight">
-  <pre><code>&lt;script&gt;
+  <pre><code class="language-html">&lt;script&gt;
   boodoo.toast('Hello from boodoo!', { title: 'Welcome' });
   new boodoo.Modal(document.getElementById('myModal')).show();
 &lt;/script&gt;</code></pre>
@@ -323,6 +363,7 @@
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#cdn">CSS only</a></li>
+<li class="toc-2"><a href="#quick-demo">Quick CDN Demo</a></li>
 <li class="toc-2"><a href="#js">JavaScript</a></li>
 <li class="toc-2"><a href="#bundled">Local bundle</a></li>
 <li class="toc-2"><a href="#modules">JavaScript modules</a></li></ul>
@@ -362,8 +403,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

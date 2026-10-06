@@ -11,7 +11,7 @@
   <meta property="og:title" content="Stepper & Wizard · boodoo">
   <meta property="og:description" content="Step indicator and multi-step workflow components for boodoo.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/components/stepper.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Stepper & Wizard · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/components/stepper.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -249,13 +257,13 @@
       </ol>
     </nav>
           <section class="docs-section">
-  <h2 id="">Overview</h2>
-  <p class="lead">The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</p>
+  <h2 id=""><span>Overview</span></h2>
+  <p class="lead"><span>The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</span></p>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Horizontal Stepper</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2 id=""><span>Horizontal Stepper</span></h2>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper">
        <li class="step-item completed">
          <div class="step-circle"><span>✓</span></div>
@@ -281,34 +289,36 @@
     </ul>
   </div>
 
-  <pre><code class="language-html">&lt;ul class="stepper"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;ul class="stepper"&gt;
   &lt;li class="step-item completed"&gt;
-    &lt;div class="step-circle"&gt;✓&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Account&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Setup credentials&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Account&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Setup credentials&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li class="step-item active"&gt;
-    &lt;div class="step-circle"&gt;2&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;2&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Profile&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Personal info&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Profile&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Personal info&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li class="step-item"&gt;
-    &lt;div class="step-circle"&gt;3&lt;/div&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;3&lt;/span&gt;&lt;/div&gt;
     &lt;div class="step-content"&gt;
-      &lt;div class="step-title"&gt;Review&lt;/div&gt;
-      &lt;div class="step-subtitle"&gt;Final confirmation&lt;/div&gt;
+      &lt;div class="step-title"&gt;&lt;span&gt;Review&lt;/span&gt;&lt;/div&gt;
+      &lt;div class="step-subtitle"&gt;&lt;span&gt;Final confirmation&lt;/span&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Vertical Stepper</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2 id=""><span>Vertical Stepper</span></h2>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper stepper-vertical">
       <li class="step-item completed">
         <div class="step-circle"><span>✓</span></div>
@@ -333,8 +343,8 @@
       </li>
     </ul>
   </div>
-<div class="highlight">
-  <pre><code>&lt;ul class=&quot;stepper stepper-vertical&quot;&gt;
+  <div class="highlight">
+    <pre><code>&lt;ul class=&quot;stepper stepper-vertical&quot;&gt;
   &lt;li class=&quot;step-item completed&quot;&gt;
     &lt;div class=&quot;step-circle&quot;&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;step-content&quot;&gt;
@@ -357,13 +367,13 @@
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-</div>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Interactive Wizard with JavaScript & Buttons</h2>
-  <p>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</p>
-  <div class="docs-example p-4 border rounded">
+  <h2 id=""><span>Interactive Wizard with JavaScript &amp; Buttons</span></h2>
+  <p><span>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</span></p>
+  <div class="bd-example p-4 border rounded">
     <ul class="stepper" id="wizardStepper" data-boodoo-target="#wizardPanels">
       <li class="step-item active">
         <div class="step-circle"><span>1</span></div>
@@ -477,8 +487,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

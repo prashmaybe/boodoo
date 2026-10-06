@@ -4,51 +4,71 @@ description: Compare boodoo and Tailwind CSS. Learn why boodoo provides zero-bui
 section: about
 order: 6
 -->
-<h1>boodoo vs Tailwind CSS</h1>
-<p class="lead">Compare <strong>boodoo</strong> and <strong>Tailwind CSS</strong> to discover how boodoo combines utility-first control with pre-designed accessible components without requiring PostCSS or Node build setups.</p>
+<h1><span>boodoo vs Tailwind CSS</span></h1>
+<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>Tailwind CSS</strong> to discover how boodoo combines utility-first control with pre-designed accessible components without requiring PostCSS or Node build setups.</span></p>
 
-<h2 id="comparison">Feature Comparison</h2>
+<h2 id="interactive-preview"><span>Components + Utilities Preview</span></h2>
+<p><span>Unlike Tailwind which requires long class strings for basic components, Boodoo lets you combine semantic component classes with utility modifiers:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <div class="card p-3 shadow-sm border rounded-3">
+      <h5 class="card-title mb-1"><span>Semantic Card</span></h5>
+      <p class="text-muted small mb-2"><span>Pre-styled component structure.</span></p>
+      <button type="button" class="btn btn-sm btn-primary"><span>Clean Class</span></button>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="card p-3 shadow-sm border rounded-3"&gt;
+  &lt;h5 class="card-title mb-1"&gt;&lt;span&gt;Semantic Card&lt;/span&gt;&lt;/h5&gt;
+  &lt;p class="text-muted small mb-2"&gt;&lt;span&gt;Pre-styled component structure.&lt;/span&gt;&lt;/p&gt;
+  &lt;button type="button" class="btn btn-sm btn-primary"&gt;&lt;span&gt;Clean Class&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="comparison"><span>Feature Comparison</span></h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Feature</th>
-      <th>boodoo</th>
-      <th>Tailwind CSS</th>
+      <th><span>Feature</span></th>
+      <th><span>boodoo</span></th>
+      <th><span>Tailwind CSS</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Build Requirement</strong></td>
-      <td><strong>Zero build required</strong> (Instant CDN / Static HTML)</td>
-      <td>PostCSS / Tailwind CLI build step required</td>
+      <td><strong><span>Build Requirement</span></strong></td>
+      <td><strong><span>Zero build required</span></strong> <span>(Instant CDN / Static HTML)</span></td>
+      <td><span>PostCSS / Tailwind CLI build step required</span></td>
     </tr>
     <tr>
-      <td><strong>Pre-built Components</strong></td>
-      <td>✅ 26+ UI components (Modals, Toasts, Dropdowns, Cards)</td>
-      <td>❌ None (Requires Tailwind UI or 3rd-party library)</td>
+      <td><strong><span>Pre-built Components</span></strong></td>
+      <td><span>✅ 26+ UI components (Modals, Toasts, Dropdowns, Cards)</span></td>
+      <td><span>❌ None (Requires Tailwind UI or 3rd-party library)</span></td>
     </tr>
     <tr>
-      <td><strong>Vanilla JS Included</strong></td>
-      <td>✅ Yes (~{{jsRawKb}} KB pure vanilla JS with data-* API)</td>
-      <td>❌ No (Requires React, Vue, or Alpine.js)</td>
+      <td><strong><span>Vanilla JS Included</span></strong></td>
+      <td><span>✅ Yes (~{{jsRawKb}} KB pure vanilla JS with data-* API)</span></td>
+      <td><span>❌ No (Requires React, Vue, or Alpine.js)</span></td>
     </tr>
     <tr>
-      <td><strong>Utility Classes</strong></td>
-      <td>✅ 150+ functional utilities (Spacing, Flex, Grid, Color)</td>
-      <td>✅ Comprehensive utility engine</td>
+      <td><strong><span>Utility Classes</span></strong></td>
+      <td><span>✅ 150+ functional utilities (Spacing, Flex, Grid, Color)</span></td>
+      <td><span>✅ Comprehensive utility engine</span></td>
     </tr>
     <tr>
-      <td><strong>HTML Class Cleanliness</strong></td>
-      <td>Clean semantic component classes (<code>.btn .btn-primary</code>)</td>
-      <td>Long utility class strings</td>
+      <td><strong><span>HTML Class Cleanliness</span></strong></td>
+      <td><span>Clean semantic component classes (<code>.btn .btn-primary</code>)</span></td>
+      <td><span>Long utility class strings</span></td>
     </tr>
     <tr>
-      <td><strong>Sass &amp; Token Customization</strong></td>
-      <td>✅ Simple token override via Sass or CSS variables</td>
-      <td>Config file (tailwind.config.js)</td>
+      <td><strong><span>Sass &amp; Token Customization</span></strong></td>
+      <td><span>✅ Simple token override via Sass or CSS variables</span></td>
+      <td><span>Config file (tailwind.config.js)</span></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="why-choose-boodoo">Why developers choose boodoo over Tailwind</h2>
-<p>Tailwind CSS is fantastic for custom utility design, but it requires a Javascript framework, a bundler pipeline, and custom HTML for every UI component. <strong>boodoo</strong> gives you Tailwind-style utilities combined with pre-styled Bootstrap components and Material Design elevation, ready to drop in via CDN or npm with zero build overhead.</p>
+<h2 id="why-choose-boodoo"><span>Why developers choose boodoo over Tailwind</span></h2>
+<p><span>Tailwind CSS is fantastic for custom utility design, but it requires a Javascript framework, a bundler pipeline, and custom HTML for every UI component. <strong>boodoo</strong> gives you Tailwind-style utilities combined with pre-styled Bootstrap components and Material Design elevation, ready to drop in via CDN or npm with zero build overhead.</span></p>

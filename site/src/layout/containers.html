@@ -4,110 +4,128 @@ description: Containers are the most basic layout element in boodoo and are requ
 section: layout
 order: 0
 -->
-<h1>Containers</h1>
-<p class="lead">Containers are a fundamental building block of boodoo that contain, pad, and (sometimes) center the
-  content within them. Use them to avoid awkward full-width horizontal layouts.</p>
+<h1><span>Containers</span></h1>
+<p class="lead"><span>Containers are a fundamental building block of boodoo that contain, pad, and (sometimes) center the
+  content within them. Use them to avoid awkward full-width horizontal layouts.</span></p>
 
-<h2 id="how-it-works">How they work</h2>
-<p>Containers are the most basic layout element in boodoo and are <strong>required when using the default grid
+<h2 id="how-it-works"><span>How they work</span></h2>
+<p><span>Containers are the most basic layout element in boodoo and are <strong>required when using the default grid
     system</strong>. Choose from a responsive, fixed-width container (meaning its <code>max-width</code> changes at each
   breakpoint) or fluid-width (meaning it's <code>100%</code> wide all the time). While containers <em>can</em> be
-  nested, most layouts do not require a nested container.</p>
+  nested, most layouts do not require a nested container.</span></p>
 
-<h2 id="default">Default container</h2>
-<p>boodoo's default <code>.container</code> class is a responsive, fixed-width container, meaning its
-  <code>max-width</code> changes at each breakpoint.</p>
+<h2 id="default"><span>Default container</span></h2>
+<p><span>boodoo's default <code>.container</code> class is a responsive, fixed-width container, meaning its
+  <code>max-width</code> changes at each breakpoint.</span></p>
+
+<div class="bd-example">
+  <div class="container p-3 bg-primary-soft text-primary border border-primary rounded text-center">
+    <span>Responsive <code>.container</code> centered with horizontal padding</span>
+  </div>
+</div>
 <div class="highlight">
   <pre><code>&lt;div class="container"&gt;
-  &lt;!-- Content here --&gt;
+  &lt;span&gt;Responsive container content&lt;/span&gt;
 &lt;/div&gt;</code></pre>
 </div>
 
-<h2 id="fluid">Fluid container</h2>
-<p>Use <code>.container-fluid</code> for a full-width container, spanning the entire width of the viewport.</p>
+<h2 id="fluid"><span>Fluid container</span></h2>
+<p><span>Use <code>.container-fluid</code> for a full-width container, spanning the entire width of the viewport.</span></p>
+
+<div class="bd-example">
+  <div class="container-fluid p-3 bg-info-soft text-info border border-info rounded text-center">
+    <span>Full-width <code>.container-fluid</code> spanning 100% of viewport</span>
+  </div>
+</div>
 <div class="highlight">
   <pre><code>&lt;div class="container-fluid"&gt;
-  &lt;!-- Content here --&gt;
+  &lt;span&gt;Full-width fluid content&lt;/span&gt;
 &lt;/div&gt;</code></pre>
 </div>
 
-<h2 id="responsive">Responsive containers</h2>
-<p>boodoo comes with three responsive containers, which change the <code>max-width</code> at specific breakpoints.</p>
+<h2 id="responsive"><span>Responsive containers</span></h2>
+<p><span>boodoo comes with responsive containers which change max-width at specific breakpoints.</span></p>
+
+<div class="bd-example d-flex flex-column gap-2">
+  <div class="container-sm p-2 bg-light border rounded text-center small"><span>100% wide until small (&ge;576px)</span></div>
+  <div class="container-md p-2 bg-light border rounded text-center small"><span>100% wide until medium (&ge;768px)</span></div>
+  <div class="container-lg p-2 bg-light border rounded text-center small"><span>100% wide until large (&ge;992px)</span></div>
+</div>
 <div class="highlight">
-  <pre><code>&lt;div class="container-sm"&gt;100% wide until small breakpoint&lt;/div&gt;
-&lt;div class="container-md"&gt;100% wide until medium breakpoint&lt;/div&gt;
-&lt;div class="container-lg"&gt;100% wide until large breakpoint&lt;/div&gt;
-&lt;div class="container-xl"&gt;100% wide until extra-large breakpoint&lt;/div&gt;
-&lt;div class="container-xxl"&gt;100% wide until extra-extra-large breakpoint&lt;/div&gt;</code></pre>
+  <pre><code>&lt;div class="container-sm"&gt;&lt;span&gt;100% wide until small breakpoint&lt;/span&gt;&lt;/div&gt;
+&lt;div class="container-md"&gt;&lt;span&gt;100% wide until medium breakpoint&lt;/span&gt;&lt;/div&gt;
+&lt;div class="container-lg"&gt;&lt;span&gt;100% wide until large breakpoint&lt;/span&gt;&lt;/div&gt;
+&lt;div class="container-xl"&gt;&lt;span&gt;100% wide until extra-large breakpoint&lt;/span&gt;&lt;/div&gt;
+&lt;div class="container-xxl"&gt;&lt;span&gt;100% wide until extra-extra-large breakpoint&lt;/span&gt;&lt;/div&gt;</code></pre>
 </div>
 
-<h2 id="widths">Container widths</h2>
+<h2 id="widths"><span>Container widths</span></h2>
 <table class="table table-bordered table-sm">
   <thead>
     <tr>
       <th></th>
-      <th>Extra small &lt;576px</th>
-      <th>Small &ge;576px</th>
-      <th>Medium &ge;768px</th>
-      <th>Large &ge;992px</th>
-      <th>X-Large &ge;1200px</th>
-      <th>XX-Large &ge;1400px</th>
+      <th><span>Extra small &lt;576px</span></th>
+      <th><span>Small &ge;576px</span></th>
+      <th><span>Medium &ge;768px</span></th>
+      <th><span>Large &ge;992px</span></th>
+      <th><span>X-Large &ge;1200px</span></th>
+      <th><span>XX-Large &ge;1400px</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code>.container</code></td>
-      <td>100%</td>
-      <td>540px</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>540px</span></td>
+      <td><span>720px</span></td>
+      <td><span>960px</span></td>
+      <td><span>1140px</span></td>
+      <td><span>1320px</span></td>
     </tr>
     <tr>
       <td><code>.container-sm</code></td>
-      <td>100%</td>
-      <td>540px</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>540px</span></td>
+      <td><span>720px</span></td>
+      <td><span>960px</span></td>
+      <td><span>1140px</span></td>
+      <td><span>1320px</span></td>
     </tr>
     <tr>
       <td><code>.container-md</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>720px</span></td>
+      <td><span>960px</span></td>
+      <td><span>1140px</span></td>
+      <td><span>1320px</span></td>
     </tr>
     <tr>
       <td><code>.container-lg</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>960px</td>
-      <td>1140px</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>960px</span></td>
+      <td><span>1140px</span></td>
+      <td><span>1320px</span></td>
     </tr>
     <tr>
       <td><code>.container-xl</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>1140px</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>1140px</span></td>
+      <td><span>1320px</span></td>
     </tr>
     <tr>
       <td><code>.container-xxl</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>1320px</td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>100%</span></td>
+      <td><span>1320px</span></td>
     </tr>
   </tbody>
 </table>

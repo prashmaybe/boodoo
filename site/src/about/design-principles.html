@@ -4,32 +4,64 @@ description: The principles that guide boodoo's design decisions.
 section: about
 order: 1
 -->
-<h1>Design principles</h1>
-<p class="lead">The following principles drive every design decision in boodoo. They keep the system coherent, accessible,
-    and enjoyable to use.</p>
+<h1><span>Design principles</span></h1>
+<p class="lead"><span>The following principles drive every design decision in boodoo. They keep the system coherent, accessible,
+    and enjoyable to use.</span></p>
 
-<h2 id="mobile-first">1 · Mobile first</h2>
-<p>We design for the smallest screen first, then scale up. Media queries are min-width based; base styles apply to
-    everything and layer on at larger breakpoints.</p>
+<h2 id="interactive-preview"><span>Principles in Practice</span></h2>
+<p><span>Every token and component adheres to accessible, mobile-first, and composable standards:</span></p>
 
-<h2 id="accessible">2 · Accessible by default</h2>
-<p>Keyboard, screen-reader, touch, and reduced-motion support are not afterthoughts. Every component ships with correct
-    ARIA and keyboard handling.</p>
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <div class="p-2 border rounded text-center" style="min-width: 140px;">
+      <span class="badge bg-primary mb-1"><span>Accessible</span></span>
+      <p class="small text-muted mb-0"><span>44px touch targets</span></p>
+    </div>
+    <div class="p-2 border rounded text-center" style="min-width: 140px;">
+      <span class="badge bg-success mb-1"><span>Composable</span></span>
+      <p class="small text-muted mb-0"><span>Tokens &amp; utilities</span></p>
+    </div>
+    <div class="p-2 border rounded text-center" style="min-width: 140px;">
+      <span class="badge bg-info text-dark mb-1"><span>Responsive</span></span>
+      <p class="small text-muted mb-0"><span>Mobile-first layout</span></p>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="d-flex flex-wrap align-items-center gap-3"&gt;
+  &lt;div class="p-2 border rounded text-center"&gt;
+    &lt;span class="badge bg-primary mb-1"&gt;&lt;span&gt;Accessible&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="small text-muted mb-0"&gt;&lt;span&gt;44px touch targets&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="p-2 border rounded text-center"&gt;
+    &lt;span class="badge bg-success mb-1"&gt;&lt;span&gt;Composable&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="small text-muted mb-0"&gt;&lt;span&gt;Tokens &amp;amp; utilities&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
-<h2 id="modular">3 · Modular &amp; composable</h2>
-<p>The framework is a set of small, independent pieces — tokens → utilities → components. Import only what you need; the
-    build is designed to tree-shake and be lean.</p>
+<h2 id="mobile-first"><span>1 · Mobile first</span></h2>
+<p><span>We design for the smallest screen first, then scale up. Media queries are min-width based; base styles apply to
+    everything and layer on at larger breakpoints.</span></p>
 
-<h2 id="tokens">4 · Tokens over magic values</h2>
-<p>Every color, radius, shadow, and timing value lives in a token. Change a token, change the whole system consistently.
+<h2 id="accessible"><span>2 · Accessible by default</span></h2>
+<p><span>Keyboard, screen-reader, touch, and reduced-motion support are not afterthoughts. Every component ships with correct
+    ARIA and keyboard handling.</span></p>
+
+<h2 id="modular"><span>3 · Modular &amp; composable</span></h2>
+<p><span>The framework is a set of small, independent pieces — tokens → utilities → components. Import only what you need; the
+    build is designed to tree-shake and be lean.</span></p>
+
+<h2 id="tokens"><span>4 · Tokens over magic values</span></h2>
+<p><span>Every color, radius, shadow, and timing value lives in a token. Change a token, change the whole system consistently.</span>
 </p>
 
-<h2 id="progressive">5 · Progressive enhancement</h2>
-<p>Use the newest CSS only where it degrades gracefully, and always provide a solid fallback for older browsers.</p>
+<h2 id="progressive"><span>5 · Progressive enhancement</span></h2>
+<p><span>Use the newest CSS only where it degrades gracefully, and always provide a solid fallback for older browsers.</span></p>
 
-<h2 id="semantic">6 · Both semantic &amp; utility</h2>
-<p>You get value from composite components <em>and</em> from primitive utilities. Use whichever fits the moment — and
-    mix them freely.</p>
+<h2 id="semantic"><span>6 · Both semantic &amp; utility</span></h2>
+<p><span>You get value from composite components <em>and</em> from primitive utilities. Use whichever fits the moment — and
+    mix them freely.</span></p>
 
-<h2 id="timeless">7 · Delight without decoration</h2>
-<p>Motion and elevation are purposeful: they communicate state, hierarchy, and affordance, never noise.</p>
+<h2 id="timeless"><span>7 · Delight without decoration</span></h2>
+<p><span>Motion and elevation are purposeful: they communicate state, hierarchy, and affordance, never noise.</span></p>

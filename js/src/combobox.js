@@ -7,30 +7,22 @@
 import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent, element, elements } from './util.js';
 
-const NAME = 'combobox';
-const DATA_KEY = `boodoo.${NAME}`;
-const EVENT_KEY = `.${DATA_KEY}`;
-
-const EVENT_CHANGE = `change${EVENT_KEY}`;
-const EVENT_SELECT = `select${EVENT_KEY}`;
-const EVENT_SHOW = `show${EVENT_KEY}`;
-const EVENT_HIDE = `hide${EVENT_KEY}`;
-
-const SELECTOR_INPUT = '.combobox-input, [data-boodoo-combobox-input]';
-const SELECTOR_MENU = '.combobox-menu, [data-boodoo-combobox-menu]';
-const SELECTOR_ITEM = '.combobox-item:not(.disabled), [data-boodoo-combobox-item]:not([disabled])';
-const SELECTOR_CLEAR = '[data-boodoo-combobox-clear]';
-
-const CLASS_SHOW = 'show';
-const CLASS_ACTIVE = 'active';
+const COMBOBOX_SELECTOR_INPUT = '.combobox-input, [data-boodoo-combobox-input]';
+const COMBOBOX_SELECTOR_MENU = '.combobox-menu, [data-boodoo-combobox-menu]';
+const COMBOBOX_SELECTOR_ITEM = '.combobox-item:not(.disabled), [data-boodoo-combobox-item]:not([disabled])';
+const COMBOBOX_SELECTOR_CLEAR = '[data-boodoo-combobox-clear]';
 
 export class Combobox extends BaseComponent {
+  static get NAME() {
+    return 'combobox';
+  }
+
   constructor(target, config = {}) {
     super(target, config);
 
-    this._input = this._element.querySelector(SELECTOR_INPUT);
-    this._menu = this._element.querySelector(SELECTOR_MENU);
-    this._clearBtn = this._element.querySelector(SELECTOR_CLEAR);
+    this._input = this._element.querySelector(COMBOBOX_SELECTOR_INPUT);
+    this._menu = this._element.querySelector(COMBOBOX_SELECTOR_MENU);
+    this._clearBtn = this._element.querySelector(COMBOBOX_SELECTOR_CLEAR);
     this._activeIndex = -1;
     this._items = [];
 
@@ -38,10 +30,6 @@ export class Combobox extends BaseComponent {
 
     this._initEvents();
     this._refreshItems();
-  }
-
-  static get NAME() {
-    return NAME;
   }
 
   _initEvents() {
@@ -60,7 +48,7 @@ export class Combobox extends BaseComponent {
     document.addEventListener('click', this._onDocumentClick);
 
     this._menu.addEventListener('click', (e) => {
-      const item = e.target.closest(SELECTOR_ITEM);
+      const item = e.target.closest(COMBOBOX_SELECTOR_ITEM);
       if (item) {
         this.selectItem(item);
       }
@@ -76,7 +64,7 @@ export class Combobox extends BaseComponent {
   }
 
   _refreshItems() {
-    this._items = Array.from(this._menu.querySelectorAll(SELECTOR_ITEM));
+    this._items = Array.from(this._menu.querySelectorAll(COMBOBOX_SELECTOR_ITEM));
   }
 
   _handleInput() {
@@ -99,7 +87,7 @@ export class Combobox extends BaseComponent {
 
     this._activeIndex = -1;
     this._updateActive();
-    triggerEvent(this._element, EVENT_CHANGE, { query });
+    triggerEvent(this._element, 'boodoo.combobox.change', { query });
   }
 
   _handleKeyDown(e) {
@@ -140,10 +128,10 @@ export class Combobox extends BaseComponent {
     const list = visibleItems || this._items.filter((item) => item.style.display !== 'none');
     list.forEach((item, idx) => {
       if (idx === this._activeIndex) {
-        item.classList.add(CLASS_ACTIVE);
+        item.classList.add('active');
         item.scrollIntoView({ block: 'nearest' });
       } else {
-        item.classList.remove(CLASS_ACTIVE);
+        item.classList.remove('active');
       }
     });
   }
@@ -160,7 +148,7 @@ export class Combobox extends BaseComponent {
       el.classList.toggle('selected', el === item);
     }
 
-    triggerEvent(this._element, EVENT_SELECT, { value, label, item });
+    triggerEvent(this._element, 'boodoo.combobox.select', { value, label, item });
     this.hide();
     this._input.focus();
   }
@@ -176,30 +164,30 @@ export class Combobox extends BaseComponent {
     if (emptyNotice) emptyNotice.style.display = 'none';
     this._activeIndex = -1;
     this._updateActive();
-    triggerEvent(this._element, EVENT_CHANGE, { query: '', cleared: true });
+    triggerEvent(this._element, 'boodoo.combobox.change', { query: '', cleared: true });
     this._input.focus();
   }
 
   show() {
     if (this.isShown()) return;
-    this._menu.classList.add(CLASS_SHOW);
-    this._element.classList.add(CLASS_SHOW);
+    this._menu.classList.add('show');
+    this._element.classList.add('show');
     this._isShown = true;
-    triggerEvent(this._element, EVENT_SHOW);
+    triggerEvent(this._element, 'boodoo.combobox.show');
   }
 
   hide() {
     if (!this.isShown()) return;
-    this._menu.classList.remove(CLASS_SHOW);
-    this._element.classList.remove(CLASS_SHOW);
+    this._menu.classList.remove('show');
+    this._element.classList.remove('show');
     this._isShown = false;
     this._activeIndex = -1;
     this._updateActive();
-    triggerEvent(this._element, EVENT_HIDE);
+    triggerEvent(this._element, 'boodoo.combobox.hide');
   }
 
   isShown() {
-    return this._menu.classList.contains(CLASS_SHOW);
+    return this._menu.classList.contains('show');
   }
 
   dispose() {

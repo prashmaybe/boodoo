@@ -13,15 +13,22 @@
   <meta property="og:description"
     content="Explore responsive templates, full-page examples, framework starters (React, Vue, Next.js), and download versioned source archives.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/examples/index.html">
-  <meta property="og:image" content="../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <title>Examples · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/examples/index.html">
   <link rel="icon" type="image/svg+xml" href="../assets/brand/boodoo-icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../assets/docs.css">
   <style>
@@ -80,7 +87,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../index.html">
-        <img src="../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse"
@@ -132,7 +139,7 @@
             complete templates and modern framework starter kits.</span>
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm d-inline-flex align-items-center gap-2"
+          <a class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm d-inline-flex align-items-center gap-1"
             href="{{archiveExamplesZip}}" download>
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -140,7 +147,7 @@
             </svg>
             <span>Download All Examples (.zip)</span>
           </a>
-          <a class="btn btn-outline-primary btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-2"
+          <a class="btn btn-outline-primary btn-lg rounded-pill px-4 d-inline-flex align-items-center gap-1"
             href="{{archiveFrameworkZip}}" download>
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -584,8 +591,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="../dist/js/boodoo.js"></script>
-  <script src="../assets/search.js"></script>
+  <script src="../dist/js/boodoo.js" defer></script>
+  <script src="../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

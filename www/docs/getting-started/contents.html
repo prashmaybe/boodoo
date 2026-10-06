@@ -11,7 +11,7 @@
   <meta property="og:title" content="What's included · boodoo">
   <meta property="og:description" content="boodoo includes precompiled CSS and JavaScript bundles, plus Sass and Less source files.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/contents.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>What's included · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/contents.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -248,14 +256,15 @@
         <li class="breadcrumb-item active" aria-current="page">What's included</li>
       </ol>
     </nav>
-          <h1>What's included</h1>
-<p class="lead">boodoo is downloadable in two forms: within which you'll find the following directories and files,
-  logically grouping common resources and providing both compiled and minified variations.</p>
+          <h1><span>What's included</span></h1>
+<p class="lead"><span>boodoo is downloadable in two forms: within which you'll find the following directories and files,
+  logically grouping common resources and providing both compiled and minified variations.</span></p>
 
-<p>The compiled CSS and JS are split into a few useful, deliberately small builds so you only ship what you need:</p>
+<p><span>The compiled CSS and JS are split into a few useful, deliberately small builds so you only ship what you need:</span></p>
 
-<h2 id="precompiled">Precompiled</h2>
-<pre><code>boodoo/
+<h2 id="precompiled"><span>Precompiled</span></h2>
+<div class="highlight">
+  <pre><code>boodoo/
 ├── dist/
 │   ├── css/
 │   │   ├── boodoo.css            <span class="text-muted"># full framework (components + grid + utilities + helpers)</span>
@@ -268,13 +277,32 @@
 │   └── js/
 │       ├── boodoo.js             <span class="text-muted"># UMD bundle (all components, ~119 KB)</span>
 │       └── boodoo.esm.js         <span class="text-muted"># ES module, tree-shakeable</span></code></pre>
+</div>
 
-<h2 id="source">Source code</h2>
-<p>Build boodoo from source using the Sass and Less files in the <code>scss/</code> and <code>less/</code> folders. The
-  Sass source is modular — override variables, mixins, and maps to create your perfect output.</p>
+<h2 id="quick-example"><span>Included Components Preview</span></h2>
+<p><span>The precompiled bundle brings all responsive components directly to your page without any compilation step:</span></p>
 
-<h2 id="js-components">JavaScript components</h2>
-<p>Bring boodoo to life with our optional vanilla JavaScript plugins. Learn about each plugin and its data API below.</p>
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-2">
+    <span class="badge bg-primary"><span>CSS Ready</span></span>
+    <span class="badge bg-success"><span>JS Plugins</span></span>
+    <span class="badge bg-info text-dark"><span>Zero Dependencies</span></span>
+    <button type="button" class="btn btn-sm btn-outline-primary"><span>Try Plugin</span></button>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;span class="badge bg-primary"&gt;&lt;span&gt;CSS Ready&lt;/span&gt;&lt;/span&gt;
+&lt;span class="badge bg-success"&gt;&lt;span&gt;JS Plugins&lt;/span&gt;&lt;/span&gt;
+&lt;span class="badge bg-info text-dark"&gt;&lt;span&gt;Zero Dependencies&lt;/span&gt;&lt;/span&gt;
+&lt;button type="button" class="btn btn-sm btn-outline-primary"&gt;&lt;span&gt;Try Plugin&lt;/span&gt;&lt;/button&gt;</code></pre>
+</div>
+
+<h2 id="source"><span>Source code</span></h2>
+<p><span>Build boodoo from source using the Sass and Less files in the <code>scss/</code> and <code>less/</code> folders. The
+  Sass source is modular — override variables, mixins, and maps to create your perfect output.</span></p>
+
+<h2 id="js-components"><span>JavaScript components</span></h2>
+<p><span>Bring boodoo to life with our optional vanilla JavaScript plugins. Learn about each plugin and its data API below.</span></p>
 <div class="row g-3">
   <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Alert</span> <span
       class="text-muted small">dismiss</span></div>
@@ -325,6 +353,7 @@
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#precompiled">Precompiled</a></li>
+<li class="toc-2"><a href="#quick-example">Included Components Preview</a></li>
 <li class="toc-2"><a href="#source">Source code</a></li>
 <li class="toc-2"><a href="#js-components">JavaScript components</a></li></ul>
     </div>
@@ -363,8 +392,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

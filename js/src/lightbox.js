@@ -6,15 +6,11 @@
 import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent, element, elements } from './util.js';
 
-const NAME = 'lightbox';
-const DATA_KEY = `boodoo.${NAME}`;
-const EVENT_KEY = `.${DATA_KEY}`;
-
-const EVENT_OPEN = `open${EVENT_KEY}`;
-const EVENT_CLOSE = `close${EVENT_KEY}`;
-const EVENT_CHANGE = `change${EVENT_KEY}`;
-
 export class Lightbox extends BaseComponent {
+  static get NAME() {
+    return 'lightbox';
+  }
+
   constructor(target, config = {}) {
     super(target, config);
 
@@ -22,10 +18,6 @@ export class Lightbox extends BaseComponent {
     this._galleryItems = [];
     this._initLightboxDOM();
     this._initEvents();
-  }
-
-  static get NAME() {
-    return NAME;
   }
 
   _initLightboxDOM() {
@@ -112,7 +104,7 @@ export class Lightbox extends BaseComponent {
     this._viewer.classList.add('show');
     document.body.classList.add('lightbox-open');
     this._updateMedia();
-    triggerEvent(this._element, EVENT_OPEN);
+    triggerEvent(this._element, 'boodoo.lightbox.open');
   }
 
   static closeActive() {
@@ -126,7 +118,7 @@ export class Lightbox extends BaseComponent {
     this._viewer.classList.remove('zoomed');
     document.body.classList.remove('lightbox-open');
     Lightbox.activeInstance = null;
-    triggerEvent(this._element, EVENT_CLOSE);
+    triggerEvent(this._element, 'boodoo.lightbox.close');
   }
 
   prev() {
@@ -162,7 +154,7 @@ export class Lightbox extends BaseComponent {
     }
 
     this._viewer.classList.remove('zoomed');
-    triggerEvent(this._element, EVENT_CHANGE, { index: this._currentIndex, src });
+    triggerEvent(this._element, 'boodoo.lightbox.change', { index: this._currentIndex, src });
   }
 }
 

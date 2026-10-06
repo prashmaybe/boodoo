@@ -11,7 +11,7 @@
   <meta property="og:title" content="Rating · boodoo">
   <meta property="og:description" content="Star rating input and read-only preview components for boodoo.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/components/rating.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Rating · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/components/rating.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -249,13 +257,13 @@
       </ol>
     </nav>
           <section class="docs-section">
-  <h2 id="">Overview</h2>
-  <p class="lead">Star rating inputs and read-only displays for customer reviews, feedback forms, and product ratings.</p>
+  <h2 id=""><span>Overview</span></h2>
+  <p class="lead"><span>Star rating inputs and read-only displays for customer reviews, feedback forms, and product ratings.</span></p>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Interactive Rating</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2 id=""><span>Interactive Rating</span></h2>
+  <div class="bd-example p-4 border rounded">
     <div class="rating" data-boodoo="rating" data-rating-value="4">
       <span class="rating-star">★</span>
       <span class="rating-star">★</span>
@@ -265,18 +273,20 @@
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;div class="rating" data-boodoo="rating" data-rating-value="4"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="rating" data-boodoo="rating" data-rating-value="4"&gt;
   &lt;span class="rating-star"&gt;★&lt;/span&gt;
   &lt;span class="rating-star"&gt;★&lt;/span&gt;
   &lt;span class="rating-star"&gt;★&lt;/span&gt;
   &lt;span class="rating-star"&gt;★&lt;/span&gt;
   &lt;span class="rating-star"&gt;★&lt;/span&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Readonly Rating</h2>
-  <div class="docs-example p-4 border rounded">
+  <h2 id=""><span>Readonly Rating</span></h2>
+  <div class="bd-example p-4 border rounded">
     <div class="rating rating-readonly" data-boodoo="rating" data-rating-value="5">
       <span class="rating-star">★</span>
       <span class="rating-star">★</span>
@@ -285,15 +295,15 @@
       <span class="rating-star">★</span>
     </div>
   </div>
-<div class="highlight">
-  <pre><code>&lt;div class=&quot;rating rating-readonly&quot; data-boodoo=&quot;rating&quot; data-rating-value=&quot;5&quot;&gt;
+  <div class="highlight">
+    <pre><code>&lt;div class=&quot;rating rating-readonly&quot; data-boodoo=&quot;rating&quot; data-rating-value=&quot;5&quot;&gt;
   &lt;span class=&quot;rating-star&quot;&gt;★&lt;/span&gt;
   &lt;span class=&quot;rating-star&quot;&gt;★&lt;/span&gt;
   &lt;span class=&quot;rating-star&quot;&gt;★&lt;/span&gt;
   &lt;span class=&quot;rating-star&quot;&gt;★&lt;/span&gt;
   &lt;span class=&quot;rating-star&quot;&gt;★&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-</div>
+  </div>
 </section>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -347,8 +357,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

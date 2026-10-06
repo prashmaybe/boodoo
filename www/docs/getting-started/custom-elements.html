@@ -11,7 +11,7 @@
   <meta property="og:title" content="Custom Elements · boodoo">
   <meta property="og:description" content="Web Components wrappers for boodoo UI components.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/custom-elements.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Custom Elements · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/custom-elements.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html" class="active">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -249,17 +257,57 @@
       </ol>
     </nav>
           <section class="docs-section">
-  <h2 id="">Overview</h2>
-  <p class="lead">boodoo provides framework-agnostic Web Components so you can drop interactive widgets directly into raw HTML, React, Vue, or Svelte.</p>
+  <h2 id=""><span>Overview</span></h2>
+  <p class="lead"><span>boodoo provides framework-agnostic Web Components so you can drop interactive widgets directly
+      into raw HTML, React, Vue, or Svelte.</span></p>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Available Custom Elements</h2>
-  <ul>
-    <li><code>&lt;bd-theme-toggle&gt;</code>: Clickable theme switcher button.</li>
-    <li><code>&lt;bd-otp length="6"&gt;</code>: Six-box PIN / verification code input.</li>
-    <li><code>&lt;bd-rating value="4" max="5"&gt;</code>: Five-star rating control.</li>
-  </ul>
+  <h2 id=""><span>Live Custom Elements Showcase</span></h2>
+  <p><span>Drop pre-registered custom elements into your markup with zero JavaScript glue:</span></p>
+
+  <div class="bd-example p-2 border rounded bg-white">
+    <div class="d-flex flex-column gap-4">
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Theme Switcher Element</span></h6>
+        <bd-theme-toggle class="btn btn-outline-primary btn-sm rounded-pill px-3"></bd-theme-toggle>
+      </div>
+
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Six-Digit Verification Code</span></h6>
+        <bd-otp length="6"></bd-otp>
+      </div>
+
+      <div>
+        <h6 class="text-muted text-uppercase fs-7 mb-2"><span>Five-Star Rating Element</span></h6>
+        <bd-rating value="4" max="5"></bd-rating>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Theme Toggle Custom Element --&gt;
+&lt;bd-theme-toggle class="btn btn-outline-primary btn-sm rounded-pill"&gt;&lt;/bd-theme-toggle&gt;
+
+&lt;!-- 6-Digit OTP / PIN Input --&gt;
+&lt;bd-otp length="6"&gt;&lt;/bd-otp&gt;
+
+&lt;!-- 5-Star Rating Component --&gt;
+&lt;bd-rating value="4" max="5"&gt;&lt;/bd-rating&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id=""><span>Registration &amp; Usage</span></h2>
+  <p><span>When loading <code>boodoo.js</code> or calling <code>registerCustomElements()</code> in ES modules, all
+      custom elements register automatically with the browser's <code>customElements</code> registry:</span></p>
+
+  <div class="highlight">
+    <pre><code class="language-javascript">import { registerCustomElements } from 'boodoo/dist/js/boodoo.esm.js';
+
+// Automatically defines &lt;bd-theme-toggle&gt;, &lt;bd-otp&gt;, &lt;bd-rating&gt;
+registerCustomElements();</code></pre>
+  </div>
 </section>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -270,8 +318,8 @@
     </div>
     
     <div class="docs-pager-item">
-      <span class="docs-pager-label">Layout</span>
-      <a class="docs-pager-link" href="../layout/containers.html">Containers</a>
+      <span class="docs-pager-label">Getting started</span>
+      <a class="docs-pager-link" href="../getting-started/electron.html">Electron Desktop Apps</a>
     </div>
   </nav>
 
@@ -313,8 +361,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

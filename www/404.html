@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Page not found or resource unavailable — boodoo CSS framework">
+  <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#7c3aed">
   <title>404 Page Not Found · boodoo</title>
+  <link rel="canonical" href="https://boodoo.dihadiwala.com/404.html">
   <link rel="icon" type="image/svg+xml" href="/assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/boodoo-icon-192.png">
@@ -15,9 +17,16 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="/dist/css/boodoo.min.css">
   <link rel="stylesheet" href="/assets/docs.css">
   <style>
@@ -116,7 +125,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="d-flex container">
       <a class="navbar-brand d-flex align-items-center gap-1" href="/index.html">
-        <img src="/assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="/assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#errorNav"
@@ -215,7 +224,7 @@
     </div>
   </footer>
 
-  <script src="/dist/js/boodoo.js"></script>
+  <script src="/dist/js/boodoo.js" defer></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     (function () {

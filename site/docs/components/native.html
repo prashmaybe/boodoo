@@ -11,7 +11,7 @@
   <meta property="og:title" content="Native components · boodoo">
   <meta property="og:description" content="Native platform-specific UI styles for Windows, macOS, iOS, iPadOS, Android, and Linux desktop/hybrid apps.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/components/native.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Native components · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/components/native.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -248,149 +256,262 @@
         <li class="breadcrumb-item active" aria-current="page">Native components</li>
       </ol>
     </nav>
-          <h1 class="boodoo-title">Native components</h1>
+          <h1 class="boodoo-title"><span>Native components</span></h1>
 <p class="boodoo-lead">
-  Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or Cordova/Capacitor) using platform-native visual conventions for Windows, macOS, iOS, iPadOS, Android, and Linux.
+  <span>Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or Cordova/Capacitor) using platform-native visual conventions for Windows, macOS, iOS, iPadOS, Android, and Linux. For Electron configuration and titlebar drag mechanics, read the <a href="../getting-started/electron.html"><span>Electron Desktop guide</span></a>.</span>
 </p>
 
 <hr class="my-4">
 
-<h2 id="windows">Windows (Fluent Design & Mica)</h2>
-<p>Use <code>.native-win</code> or <code>[data-boodoo-platform="windows"]</code> to apply Windows 11 Fluent Design tokens, subtle acrylic/mica blurs, and standard titlebar controls.</p>
+<h2 id="windows"><span>Windows (Fluent Design &amp; Mica)</span></h2>
+<p><span>Use <code>.native-win</code> or <code>[data-boodoo-platform="windows"]</code> to apply Windows 11 Fluent Design tokens, subtle acrylic/mica blurs, and standard titlebar controls.</span></p>
 
-<div class="card p-3 mb-4 native-win">
-  <div class="native-window border rounded overflow-hidden shadow-sm" style="height: 220px; background: #f3f3f3;">
-    <div class="native-titlebar bg-white border-bottom">
-      <span class="fw-semibold fs-7">Windows Hybrid App</span>
-      <div class="native-titlebar-controls">
-        <button class="native-titlebar-btn">—</button>
-        <button class="native-titlebar-btn">▢</button>
-        <button class="native-titlebar-btn native-titlebar-close">✕</button>
-      </div>
-    </div>
-    <div class="p-3">
-      <div class="native-card mb-3">
-        <h5 class="fs-6 fw-semibold mb-1">Fluent Surface Card</h5>
-        <p class="text-muted fs-7 mb-2">Native Windows 11 rounded cards with micro-elevation.</p>
-        <button class="native-btn native-btn-primary">Fluent Action</button>
-        <button class="native-btn ms-2">Secondary</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<h2 id="macos">macOS (Aqua & Vibrancy)</h2>
-<p>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography, window traffic lights, translucent sidebar navigation, and gradient push buttons.</p>
-
-<div class="card p-3 mb-4 native-mac">
-  <div class="native-window border rounded overflow-hidden shadow-sm position-relative" style="height: 240px; background: #fafafa;">
-    <div class="native-traffic-lights">
-      <div class="native-dot dot-close"></div>
-      <div class="native-dot dot-minimize"></div>
-      <div class="native-dot dot-maximize"></div>
-    </div>
-    <div class="native-titlebar">
-      <span class="fw-semibold fs-7">macOS Desktop App</span>
-    </div>
-    <div class="native-window-content">
-      <div class="native-sidebar">
-        <a href="#" class="native-sidebar-item active">Dashboard</a>
-        <a href="#" class="native-sidebar-item">Projects</a>
-        <a href="#" class="native-sidebar-item">Settings</a>
-      </div>
-      <div class="p-3 flex-fill">
-        <h5 class="fs-6 fw-semibold mb-2">macOS Push Buttons</h5>
-        <button class="native-btn native-btn-primary">Primary Action</button>
-        <button class="native-btn ms-2">Standard</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<h2 id="ios">iOS (Human Interface Guidelines)</h2>
-<p>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars, segmented controls, grouped inset lists, and 50px touch-friendly action buttons.</p>
-
-<div class="card p-3 mb-4 native-ios" style="max-width: 400px;">
-  <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #f2f2f7;">
-    <div class="native-navbar">
-      <a href="#" class="native-nav-link">Back</a>
-      <span>Settings</span>
-      <a href="#" class="native-nav-link">Done</a>
-    </div>
-    <div class="p-3">
-      <div class="native-segmented-control mb-3">
-        <div class="native-segment active"><span>First</span></div>
-        <div class="native-segment"><span>Second</span></div>
-        <div class="native-segment"><span>Third</span></div>
-      </div>
-      <div class="native-list-grouped mb-3">
-        <div class="native-list-item">
-          <span>Notifications</span>
-          <span class="text-muted">On</span>
-        </div>
-        <div class="native-list-item">
-          <span>Privacy & Security</span>
-          <span class="text-muted">›</span>
+<div class="bd-example">
+  <div class="native-win">
+    <div class="native-window border rounded overflow-hidden shadow-sm" style="height: 220px; background: #f3f3f3;">
+      <div class="native-titlebar bg-white border-bottom">
+        <span class="fw-semibold fs-7"><span>Windows Hybrid App</span></span>
+        <div class="native-titlebar-controls">
+          <button type="button" class="native-titlebar-btn"><span>—</span></button>
+          <button type="button" class="native-titlebar-btn"><span>▢</span></button>
+          <button type="button" class="native-titlebar-btn native-titlebar-close"><span>✕</span></button>
         </div>
       </div>
-      <button class="native-btn native-btn-primary">iOS Primary Button</button>
-    </div>
-  </div>
-</div>
-
-<h2 id="ipados">iPadOS (Sidebar & Split View)</h2>
-<p>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view layouts optimized for tablet touch & pointer interaction.</p>
-
-<div class="card p-3 mb-4 native-ipados">
-  <div class="native-split-view border rounded-3 overflow-hidden" style="height: 180px;">
-    <div class="native-sidebar-col">
-      <h6 class="fw-bold mb-2">Library</h6>
-      <ul class="list-unstyled fs-7 mb-0">
-        <li class="py-1 text-primary fw-semibold">All Files</li>
-        <li class="py-1 text-muted">Recents</li>
-        <li class="py-1 text-muted">Favorites</li>
-      </ul>
-    </div>
-    <div class="native-detail-col">
-      <h5 class="fs-6 fw-bold">Detail View</h5>
-      <p class="text-muted fs-7">iPadOS split view pane content layout.</p>
-    </div>
-  </div>
-</div>
-
-<h2 id="android">Android (Material Design 3)</h2>
-<p>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated top app bars, pills, and 20px rounded pill buttons.</p>
-
-<div class="card p-3 mb-4 native-android" style="max-width: 420px;">
-  <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #fef7ff;">
-    <div class="native-appbar">
-      <span>Android App Bar</span>
-    </div>
-    <div class="p-3">
-      <div class="native-card mb-3">
-        <h6 class="fw-bold mb-1">Material 3 Surface</h6>
-        <p class="fs-7 text-muted mb-0">Container styled after Material 3 guidelines.</p>
+      <div class="p-3">
+        <div class="native-card mb-3">
+          <h5 class="fs-6 fw-semibold mb-1"><span>Fluent Surface Card</span></h5>
+          <p class="text-muted fs-7 mb-2"><span>Native Windows 11 rounded cards with micro-elevation.</span></p>
+          <button type="button" class="native-btn native-btn-primary"><span>Fluent Action</span></button>
+          <button type="button" class="native-btn ms-2"><span>Secondary</span></button>
+        </div>
       </div>
-      <button class="native-btn native-btn-primary">Material Action</button>
-      <button class="native-btn ms-2">Outlined</button>
     </div>
   </div>
 </div>
 
-<h2 id="linux">Linux (GNOME Adwaita / GTK4)</h2>
-<p>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars and GTK4 rounded widget styling.</p>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-win"&gt;
+  &lt;div class="native-window"&gt;
+    &lt;header class="native-titlebar"&gt;
+      &lt;span&gt;Windows Hybrid App&lt;/span&gt;
+      &lt;div class="native-titlebar-controls"&gt;
+        &lt;button type="button" class="native-titlebar-btn"&gt;&lt;span&gt;—&lt;/span&gt;&lt;/button&gt;
+        &lt;button type="button" class="native-titlebar-btn"&gt;&lt;span&gt;▢&lt;/span&gt;&lt;/button&gt;
+        &lt;button type="button" class="native-titlebar-btn native-titlebar-close"&gt;&lt;span&gt;✕&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="p-3"&gt;
+      &lt;div class="native-card"&gt;
+        &lt;h5&gt;&lt;span&gt;Fluent Surface Card&lt;/span&gt;&lt;/h5&gt;
+        &lt;button type="button" class="native-btn native-btn-primary"&gt;&lt;span&gt;Fluent Action&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
 
-<div class="card p-3 mb-4 native-linux">
-  <div class="border rounded-3 overflow-hidden shadow-sm" style="background: #fafafa;">
-    <div class="native-headerbar">
-      <span class="native-header-title">Linux Application</span>
-      <button class="native-btn">Options</button>
-    </div>
-    <div class="p-3">
-      <p class="fs-7 mb-2">GTK4 / Libadwaita desktop controls.</p>
-      <button class="native-btn native-btn-primary">Adwaita Action</button>
+<h2 id="macos"><span>macOS (Aqua &amp; Vibrancy)</span></h2>
+<p><span>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography, window traffic lights, translucent sidebar navigation, and gradient push buttons.</span></p>
+
+<div class="bd-example">
+  <div class="native-mac">
+    <div class="native-window border rounded overflow-hidden shadow-sm position-relative" style="height: 240px; background: #fafafa;">
+      <div class="native-traffic-lights">
+        <div class="native-dot dot-close"></div>
+        <div class="native-dot dot-minimize"></div>
+        <div class="native-dot dot-maximize"></div>
+      </div>
+      <div class="native-titlebar">
+        <span class="fw-semibold fs-7"><span>macOS Desktop App</span></span>
+      </div>
+      <div class="native-window-content">
+        <div class="native-sidebar">
+          <a href="#" class="native-sidebar-item active"><span>Dashboard</span></a>
+          <a href="#" class="native-sidebar-item"><span>Projects</span></a>
+          <a href="#" class="native-sidebar-item"><span>Settings</span></a>
+        </div>
+        <div class="p-3 flex-fill">
+          <h5 class="fs-6 fw-semibold mb-2"><span>macOS Push Buttons</span></h5>
+          <button type="button" class="native-btn native-btn-primary"><span>Primary Action</span></button>
+          <button type="button" class="native-btn ms-2"><span>Standard</span></button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-mac"&gt;
+  &lt;div class="native-window"&gt;
+    &lt;div class="native-traffic-lights"&gt;
+      &lt;div class="native-dot dot-close"&gt;&lt;/div&gt;
+      &lt;div class="native-dot dot-minimize"&gt;&lt;/div&gt;
+      &lt;div class="native-dot dot-maximize"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;header class="native-titlebar"&gt;
+      &lt;span&gt;macOS Desktop App&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;div class="native-window-content"&gt;
+      &lt;nav class="native-sidebar"&gt;
+        &lt;a href="#" class="native-sidebar-item active"&gt;&lt;span&gt;Dashboard&lt;/span&gt;&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;div class="p-3"&gt;
+        &lt;button type="button" class="native-btn native-btn-primary"&gt;&lt;span&gt;Primary Action&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="ios"><span>iOS (Human Interface Guidelines)</span></h2>
+<p><span>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars, segmented controls, grouped inset lists, and 50px touch-friendly action buttons.</span></p>
+
+<div class="bd-example">
+  <div class="native-ios" style="max-width: 400px; margin: 0 auto;">
+    <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #f2f2f7;">
+      <div class="native-navbar">
+        <a href="#" class="native-nav-link"><span>Back</span></a>
+        <span>Settings</span>
+        <a href="#" class="native-nav-link"><span>Done</span></a>
+      </div>
+      <div class="p-3">
+        <div class="native-segmented-control mb-3">
+          <div class="native-segment active"><span>First</span></div>
+          <div class="native-segment"><span>Second</span></div>
+          <div class="native-segment"><span>Third</span></div>
+        </div>
+        <div class="native-list-grouped mb-3">
+          <div class="native-list-item">
+            <span>Notifications</span>
+            <span class="text-muted"><span>On</span></span>
+          </div>
+          <div class="native-list-item">
+            <span>Privacy &amp; Security</span>
+            <span class="text-muted"><span>›</span></span>
+          </div>
+        </div>
+        <button type="button" class="native-btn native-btn-primary w-100"><span>iOS Primary Button</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-ios"&gt;
+  &lt;div class="native-navbar"&gt;
+    &lt;a href="#" class="native-nav-link"&gt;&lt;span&gt;Back&lt;/span&gt;&lt;/a&gt;
+    &lt;span&gt;Settings&lt;/span&gt;
+    &lt;a href="#" class="native-nav-link"&gt;&lt;span&gt;Done&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="p-3"&gt;
+    &lt;div class="native-list-grouped"&gt;
+      &lt;div class="native-list-item"&gt;
+        &lt;span&gt;Notifications&lt;/span&gt;
+        &lt;span class="text-muted"&gt;&lt;span&gt;On&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="ipados"><span>iPadOS (Sidebar &amp; Split View)</span></h2>
+<p><span>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view layouts optimized for tablet touch &amp; pointer interaction.</span></p>
+
+<div class="bd-example">
+  <div class="native-ipados">
+    <div class="native-split-view border rounded-3 overflow-hidden" style="height: 180px;">
+      <div class="native-sidebar-col">
+        <h6 class="fw-bold mb-2"><span>Library</span></h6>
+        <ul class="list-unstyled fs-7 mb-0">
+          <li class="py-1 text-primary fw-semibold"><span>All Files</span></li>
+          <li class="py-1 text-muted"><span>Recents</span></li>
+          <li class="py-1 text-muted"><span>Favorites</span></li>
+        </ul>
+      </div>
+      <div class="native-detail-col">
+        <h5 class="fs-6 fw-bold"><span>Detail View</span></h5>
+        <p class="text-muted fs-7"><span>iPadOS split view pane content layout.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-ipados"&gt;
+  &lt;div class="native-split-view"&gt;
+    &lt;aside class="native-sidebar-col"&gt;
+      &lt;h6 class="fw-bold mb-2"&gt;&lt;span&gt;Library&lt;/span&gt;&lt;/h6&gt;
+    &lt;/aside&gt;
+    &lt;main class="native-detail-col"&gt;
+      &lt;h5 class="fs-6 fw-bold"&gt;&lt;span&gt;Detail View&lt;/span&gt;&lt;/h5&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="android"><span>Android (Material Design 3)</span></h2>
+<p><span>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated top app bars, pills, and 20px rounded pill buttons.</span></p>
+
+<div class="bd-example">
+  <div class="native-android" style="max-width: 420px; margin: 0 auto;">
+    <div class="border rounded-4 overflow-hidden shadow-sm" style="background: #fef7ff;">
+      <div class="native-appbar">
+        <span>Android App Bar</span>
+      </div>
+      <div class="p-3">
+        <div class="native-card mb-3">
+          <h6 class="fw-bold mb-1"><span>Material 3 Surface</span></h6>
+          <p class="fs-7 text-muted mb-0"><span>Container styled after Material 3 guidelines.</span></p>
+        </div>
+        <button type="button" class="native-btn native-btn-primary"><span>Material Action</span></button>
+        <button type="button" class="native-btn ms-2"><span>Outlined</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-android"&gt;
+  &lt;div class="native-appbar"&gt;
+    &lt;span&gt;Android App Bar&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="p-3"&gt;
+    &lt;div class="native-card"&gt;
+      &lt;h6 class="fw-bold"&gt;&lt;span&gt;Material 3 Surface&lt;/span&gt;&lt;/h6&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="native-btn native-btn-primary"&gt;&lt;span&gt;Material Action&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="linux"><span>Linux (GNOME Adwaita / GTK4)</span></h2>
+<p><span>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars and GTK4 rounded widget styling.</span></p>
+
+<div class="bd-example">
+  <div class="native-linux">
+    <div class="border rounded-3 overflow-hidden shadow-sm" style="background: #fafafa;">
+      <div class="native-headerbar">
+        <span class="native-header-title"><span>Linux Application</span></span>
+        <button type="button" class="native-btn"><span>Options</span></button>
+      </div>
+      <div class="p-3">
+        <p class="fs-7 mb-2"><span>GTK4 / Libadwaita desktop controls.</span></p>
+        <button type="button" class="native-btn native-btn-primary"><span>Adwaita Action</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="native-linux"&gt;
+  &lt;header class="native-headerbar"&gt;
+    &lt;span class="native-header-title"&gt;&lt;span&gt;Linux Application&lt;/span&gt;&lt;/span&gt;
+    &lt;button type="button" class="native-btn"&gt;&lt;span&gt;Options&lt;/span&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div class="p-3"&gt;
+    &lt;button type="button" class="native-btn native-btn-primary"&gt;&lt;span&gt;Adwaita Action&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -413,10 +534,10 @@
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#windows">Windows (Fluent Design & Mica)</a></li>
-<li class="toc-2"><a href="#macos">macOS (Aqua & Vibrancy)</a></li>
+      <ul><li class="toc-2"><a href="#windows">Windows (Fluent Design &amp; Mica)</a></li>
+<li class="toc-2"><a href="#macos">macOS (Aqua &amp; Vibrancy)</a></li>
 <li class="toc-2"><a href="#ios">iOS (Human Interface Guidelines)</a></li>
-<li class="toc-2"><a href="#ipados">iPadOS (Sidebar & Split View)</a></li>
+<li class="toc-2"><a href="#ipados">iPadOS (Sidebar &amp; Split View)</a></li>
 <li class="toc-2"><a href="#android">Android (Material Design 3)</a></li>
 <li class="toc-2"><a href="#linux">Linux (GNOME Adwaita / GTK4)</a></li></ul>
     </div>
@@ -455,8 +576,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

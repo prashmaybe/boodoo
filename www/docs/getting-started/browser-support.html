@@ -11,7 +11,7 @@
   <meta property="og:title" content="Browser support · boodoo">
   <meta property="og:description" content="boodoo supports the latest, stable releases of all major browsers and platforms.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/browser-support.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Browser support · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/browser-support.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -399,22 +407,42 @@
   </div>
 </div>
 
-<h2 id="mobile">Mobile / touch</h2>
-<p>A special mention to mobile devices:</p>
+<h2 id="mobile"><span>Mobile / touch</span></h2>
+<p><span>A special mention to mobile devices:</span></p>
 <ul>
-  <li><strong>Touch targets:</strong> interactive <code>.btn</code> and buttons get a <code>min-height: 44px</code>
-    touch target via a <code>@supports</code> query.</li>
-  <li><strong>Swipe support:</strong> the Carousel responds to touch swipes out of the box.</li>
-  <li><strong>Safe areas:</strong> layout respects iOS safe areas where relevant.</li>
+  <li><strong><span>Touch targets:</span></strong> <span>interactive <code>.btn</code> and buttons get a <code>min-height: 44px</code>
+    touch target via a <code>@supports</code> query.</span></li>
+  <li><strong><span>Swipe support:</span></strong> <span>the Carousel responds to touch swipes out of the box.</span></li>
+  <li><strong><span>Safe areas:</span></strong> <span>layout respects iOS safe areas where relevant.</span></li>
 </ul>
 
-<h2 id="progressive-enhancement">Progressive enhancement</h2>
-<p>Core features are progressively enhanced: <code>@supports</code> and feature queries let us ship modern CSS
-  (aspect-ratio, <code>text-wrap: balance</code>, backdrop-filter, CSS Grid) while keeping a clean fallback.</p>
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-primary px-4 py-2">
+    <span>Accessible 44px Touch Target</span>
+  </button>
+</div>
+<div class="highlight">
+  <pre><code>&lt;!-- Minimum 44px touch target enforced via @supports query --&gt;
+&lt;button type="button" class="btn btn-primary px-4"&gt;
+  &lt;span&gt;Accessible Touch Target&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>
 
-<h2 id="legacy-browsers">Legacy browsers</h2>
-<p>Internet Explorer is not supported. boodoo relies on modern CSS features and the fetch/ES2015+ class syntax that IE
-  cannot run.</p>
+<h2 id="desktop-runtimes"><span>Desktop &amp; Hybrid Runtimes</span></h2>
+<p><span>boodoo is thoroughly tested and optimized for modern desktop and hybrid web container runtimes:</span></p>
+<ul>
+  <li><strong><span>Electron:</span></strong> <span>Fully supported across Windows, macOS, and Linux. Boodoo's pure CSS titlebar styling, <code>-webkit-app-region: drag</code> properties, and zero-dependency ES modules run out of the box with zero runtime penalty. See the <a href="electron.html"><span>Electron Desktop guide</span></a>.</span></li>
+  <li><strong><span>Tauri &amp; WebView2:</span></strong> <span>Native integration with Microsoft Edge WebView2 and WebKitGTK.</span></li>
+  <li><strong><span>Capacitor &amp; Cordova:</span></strong> <span>Seamless touch support, safe area insets, and hardware acceleration on mobile packaging layers.</span></li>
+</ul>
+
+<h2 id="progressive-enhancement"><span>Progressive enhancement</span></h2>
+<p><span>Core features are progressively enhanced: <code>@supports</code> and feature queries let us ship modern CSS
+  (aspect-ratio, <code>text-wrap: balance</code>, backdrop-filter, CSS Grid) while keeping a clean fallback.</span></p>
+
+<h2 id="legacy-browsers"><span>Legacy browsers</span></h2>
+<p><span>Internet Explorer is not supported. boodoo relies on modern CSS features and the fetch/ES2015+ class syntax that IE
+  cannot run.</span></p>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -438,6 +466,7 @@
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#supported-browsers">Supported browsers</a></li>
 <li class="toc-2"><a href="#mobile">Mobile / touch</a></li>
+<li class="toc-2"><a href="#desktop-runtimes">Desktop &amp; Hybrid Runtimes</a></li>
 <li class="toc-2"><a href="#progressive-enhancement">Progressive enhancement</a></li>
 <li class="toc-2"><a href="#legacy-browsers">Legacy browsers</a></li></ul>
     </div>
@@ -476,8 +505,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

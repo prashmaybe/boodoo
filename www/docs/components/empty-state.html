@@ -11,7 +11,7 @@
   <meta property="og:title" content="Empty State · boodoo">
   <meta property="og:description" content="Visual placeholders for empty lists, search misses, 404 views, and zero-data screens.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/components/empty-state.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Empty State · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/components/empty-state.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -250,18 +258,20 @@
     </nav>
           <section class="docs-section">
   <h2 id="">Overview</h2>
-  <p class="lead">Empty states communicate when no records exist, search queries yield no results, or users haven't yet created data, providing clear calls to action.</p>
+  <p class="lead">Empty states communicate when no records exist, search queries yield no results, or users haven't yet
+    created data, providing clear calls to action.</p>
 </section>
 
 <section class="docs-section">
   <h2 id="">Card Empty State</h2>
-  <div class="docs-example p-4 border rounded bg-white">
+  <div class="bd-example p-2 border rounded bg-white">
     <div class="empty-state empty-state-card">
       <div class="empty-state-icon">
         <span>📦</span>
       </div>
       <h3 class="empty-state-title" id=""><span>No projects found</span></h3>
-      <p class="empty-state-description"><span>You haven't created any workspaces yet. Get started by launching your first collaborative project.</span></p>
+      <p class="empty-state-description"><span>You haven't created any workspaces yet. Get started by launching your
+          first collaborative project.</span></p>
       <div class="empty-state-actions">
         <button type="button" class="btn btn-outline-secondary"><span>Read Documentation</span></button>
         <button type="button" class="btn btn-primary"><span>+ Create Project</span></button>
@@ -269,39 +279,54 @@
     </div>
   </div>
 
-  <pre><code class="language-html">&lt;div class="empty-state empty-state-card"&gt;
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="empty-state empty-state-card"&gt;
   &lt;div class="empty-state-icon"&gt;
     &lt;span&gt;📦&lt;/span&gt;
   &lt;/div&gt;
   &lt;h3 class="empty-state-title"&gt;&lt;span&gt;No projects found&lt;/span&gt;&lt;/h3&gt;
   &lt;p class="empty-state-description"&gt;&lt;span&gt;You haven't created any workspaces yet.&lt;/span&gt;&lt;/p&gt;
   &lt;div class="empty-state-actions"&gt;
+    &lt;button type="button" class="btn btn-outline-secondary"&gt;&lt;span&gt;Read Documentation&lt;/span&gt;&lt;/button&gt;
     &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;+ Create Project&lt;/span&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Contextual Status Variations</h2>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <div class="empty-state empty-state-sm border rounded bg-white">
-        <div class="empty-state-icon empty-state-icon-success">
-          <span>✓</span>
+  <h2 id=""><span>Contextual Status Variations</span></h2>
+  <div class="bd-example p-4 border rounded bg-light">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="empty-state empty-state-sm border rounded bg-white">
+          <div class="empty-state-icon empty-state-icon-success">
+            <span>✓</span>
+          </div>
+          <h5 class="empty-state-title"><span>All caught up!</span></h5>
+          <p class="empty-state-description"><span>You have completed all pending inbox tasks.</span></p>
         </div>
-        <h5 class="empty-state-title"><span>All caught up!</span></h5>
-        <p class="empty-state-description"><span>You have completed all pending inbox tasks.</span></p>
+      </div>
+      <div class="col-md-6">
+        <div class="empty-state empty-state-sm border rounded bg-white">
+          <div class="empty-state-icon empty-state-icon-danger">
+            <span>⚠️</span>
+          </div>
+          <h5 class="empty-state-title"><span>Connection lost</span></h5>
+          <p class="empty-state-description"><span>Unable to reach remote sync server. Check your network.</span></p>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="empty-state empty-state-sm border rounded bg-white">
-        <div class="empty-state-icon empty-state-icon-danger">
-          <span>⚠️</span>
-        </div>
-        <h5 class="empty-state-title"><span>Connection lost</span></h5>
-        <p class="empty-state-description"><span>Unable to reach remote sync server. Check your network.</span></p>
-      </div>
-    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="empty-state empty-state-sm border rounded bg-white"&gt;
+  &lt;div class="empty-state-icon empty-state-icon-success"&gt;
+    &lt;span&gt;✓&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h5 class="empty-state-title"&gt;&lt;span&gt;All caught up!&lt;/span&gt;&lt;/h5&gt;
+  &lt;p class="empty-state-description"&gt;&lt;span&gt;You have completed all pending inbox tasks.&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </section>
           
@@ -356,8 +381,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

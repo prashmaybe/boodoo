@@ -69,6 +69,10 @@ export class Modal extends BaseComponent {
     this._element.classList.remove('show');
     const duration = getTransitionDuration(this._element);
     this._removeKeydownListener();
+    if (this._preventScrollBinds) {
+      this._preventScrollBinds();
+      this._preventScrollBinds = null;
+    }
 
     emulateTransitionEnd(this._element, duration).then(() => {
       this._isShown = false;
@@ -91,7 +95,7 @@ export class Modal extends BaseComponent {
       void reflow(backdrop);
       backdrop.classList.add('show');
       backdrop.addEventListener('click', () => {
-        if (!this._config.backdrop && this._config.backdrop !== 'static') {
+        if (this._config.backdrop !== 'static') {
           this.hide();
         }
       });

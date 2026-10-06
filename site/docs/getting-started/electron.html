@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Color utilities for text and backgrounds using boodoo's full palette.">
+  <meta name="description" content="Build modern, cross-platform desktop applications with Electron and boodoo. Native titlebars, drag regions, platform tokens, and desktop UI components.">
   <meta name="theme-color" content="#7c3aed">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="boodoo">
-  <meta property="og:title" content="Colors · boodoo">
-  <meta property="og:description" content="Color utilities for text and backgrounds using boodoo's full palette.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/utilities/colors.html">
+  <meta property="og:title" content="Electron Desktop Apps · boodoo">
+  <meta property="og:description" content="Build modern, cross-platform desktop applications with Electron and boodoo. Native titlebars, drag regions, platform tokens, and desktop UI components.">
+  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
   <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Colors · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/utilities/colors.html">
+  <title>Electron Desktop Apps · boodoo</title>
+  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -118,7 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
-<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
+<li><a href="../getting-started/electron.html" class="active">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -210,7 +210,7 @@
 <ul class="docs-nav-list">
 <li><a href="../utilities/background.html">Background</a></li>
 <li><a href="../utilities/borders.html">Borders</a></li>
-<li><a href="../utilities/colors.html" class="active">Colors</a></li>
+<li><a href="../utilities/colors.html">Colors</a></li>
 <li><a href="../utilities/display.html">Display</a></li>
 <li><a href="../utilities/flex.html">Flex</a></li>
 <li><a href="../utilities/float.html">Float</a></li>
@@ -252,134 +252,251 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-        <li class="breadcrumb-item">Utilities</li>
-        <li class="breadcrumb-item active" aria-current="page">Colors</li>
+        <li class="breadcrumb-item">Getting started</li>
+        <li class="breadcrumb-item active" aria-current="page">Electron Desktop Apps</li>
       </ol>
     </nav>
-          <h1>Colors</h1>
-<p class="lead">Convey meaning through color with a handful of color utility classes. Includes support for styling links
-  with hover states, too.</p>
+          <h1><span>Electron Desktop Apps</span></h1>
+<p class="lead"><span>Build lightweight, fast cross-platform desktop applications using Electron and boodoo. Leverage
+    native platform tokens (Windows Fluent, macOS Aqua, Linux Adwaita), draggable titlebars, collapsible sidebars, and
+    desktop UI primitives with zero build configuration.</span></p>
 
-<h2 id="colors">Colors</h2>
-<div class="row g-3">
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-primary"></div>
-    <div class="color-name"><span>--boodoo-primary #7c3aed</span></div>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <span class="fs-4">⚡</span>
+      </div>
+      <h5><span>Zero Extra Runtime</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Vanilla JavaScript with no heavy component runtime tax. Boodoo loads in
+          microseconds inside Electron's Chromium renderer.</span></p>
+    </div>
   </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-secondary"></div>
-    <div class="color-name"><span>secondary #5b21e6</span></div>
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <span class="fs-4">🖥️</span>
+      </div>
+      <h5><span>Native Platform Styling</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Out-of-the-box support for Windows 11 Fluent/Mica, macOS Aqua traffic
+          lights, and Linux GNOME Adwaita headerbars.</span></p>
+    </div>
   </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-success"></div>
-    <div class="color-name"><span>success #1c9e50</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-info"></div>
-    <div class="color-name"><span>info #0ea5e9</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-warning"></div>
-    <div class="color-name"><span>warning #f59e0b</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-danger"></div>
-    <div class="color-name"><span>danger #e11d48</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-accent"></div>
-    <div class="color-name"><span>accent #f43f5e</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-dark"></div>
-    <div class="color-name"><span>dark #17135f</span></div>
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <span class="fs-4">🚀</span>
+      </div>
+      <h5><span>Instant Scaffolding</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Generate a complete, working Electron + Boodoo project in seconds with
+          <code>npx create-boodoo</code>.</span></p>
+    </div>
   </div>
 </div>
 
-<h2 id="text">Text colors</h2>
+<hr class="my-4">
+
+<h2 id="scaffold"><span>1. Scaffold with create-boodoo</span></h2>
+<p><span>The fastest way to start an Electron desktop project is using the interactive scaffolding CLI:</span></p>
+
+<div class="highlight">
+  <pre><code>npx create-boodoo my-desktop-app</code></pre>
+</div>
+<p><span>When prompted, select <strong>Option 4: Electron Desktop App</strong>. Then run:</span></p>
+
+<div class="highlight">
+  <pre><code>cd my-desktop-app
+npm install
+npm start</code></pre>
+</div>
+
+<h2 id="manual-setup"><span>2. Manual Setup in Existing Electron Apps</span></h2>
+<p><span>If you already have an Electron project, install boodoo as a dependency:</span></p>
+
+<div class="highlight">
+  <pre><code>npm install boodoo</code></pre>
+</div>
+
+<h3 id="renderer-html"><span>Renderer HTML Template</span></h3>
+<p><span>Include Boodoo's compiled CSS and JS in your <code>index.html</code>:</span></p>
+
+<div class="highlight">
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"&gt;
+  &lt;title&gt;My Electron App&lt;/title&gt;
+  &lt;!-- Boodoo CSS --&gt;
+  &lt;link rel="stylesheet" href="node_modules/boodoo/dist/css/boodoo.min.css"&gt;
+&lt;/head&gt;
+&lt;body class="bg-light"&gt;
+  &lt;div class="container py-4"&gt;
+    &lt;div class="card p-4 shadow-sm text-center"&gt;
+      &lt;h1 class="text-primary mb-2"&gt;&lt;span&gt;Hello from Electron &amp;amp; Boodoo!&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class="text-muted mb-3"&gt;&lt;span&gt;Desktop-grade responsive UI with zero runtime overhead.&lt;/span&gt;&lt;/p&gt;
+      &lt;div class="d-flex justify-content-center gap-2"&gt;
+        &lt;button type="button" class="btn btn-primary" id="btn-notify"&gt;&lt;span&gt;Trigger Toast&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Boodoo JS --&gt;
+  &lt;script src="node_modules/boodoo/dist/js/boodoo.js"&gt;&lt;/script&gt;
+  &lt;script src="renderer.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<h2 id="custom-titlebar"><span>3. Custom Frameless Titlebar &amp; Window Dragging</span></h2>
+<p><span>Boodoo provides built-in CSS rules for draggable window regions and titlebars. In your Electron
+    <code>main.js</code>, configure a hidden titlebar:</span></p>
+
+<div class="highlight">
+  <pre><code>const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('node:path');
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 1040,
+    height: 720,
+    titleBarStyle: 'hidden', // hides OS default title bar
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+  });
+
+  win.loadFile('index.html');
+
+  // Handle minimize, maximize, and close events via IPC
+  ipcMain.on('window-minimize', () => win.minimize());
+  ipcMain.on('window-maximize', () => win.isMaximized() ? win.unmaximize() : win.maximize());
+  ipcMain.on('window-close', () => win.close());
+}
+
+app.whenReady().then(createWindow);</code></pre>
+</div>
+
+<p><span>In your HTML layout, use Boodoo's <code>.native-window</code>, <code>.native-titlebar</code>, and
+    <code>.native-titlebar-controls</code> classes. Draggable areas automatically receive
+    <code>-webkit-app-region: drag</code>, while buttons have <code>no-drag</code>:</span></p>
+
 <div class="bd-example">
-  <p class="text-primary">.text-primary</p>
-  <p class="text-secondary">.text-secondary</p>
-  <p class="text-success">.text-success</p>
-  <p class="text-danger">.text-danger</p>
-  <p class="text-warning">.text-warning</p>
-  <p class="text-info">.text-info</p>
-  <p class="text-muted">.text-muted</p>
-  <p class="text-body">.text-body</p>
-  <p class="text-emphasis">.text-emphasis</p>
-  <p class="text-white bg-dark">.text-white</p>
+  <div class="native-window border rounded shadow-sm overflow-hidden" data-boodoo-platform="windows"
+    style="height: 220px; background: #fff;">
+    <header class="native-titlebar bg-white border-bottom">
+      <span class="fw-semibold fs-7"><span>My Electron App</span></span>
+      <div class="native-titlebar-controls">
+        <button type="button" class="native-titlebar-btn" id="demoWinMin"><span>—</span></button>
+        <button type="button" class="native-titlebar-btn" id="demoWinMax"><span>▢</span></button>
+        <button type="button" class="native-titlebar-btn native-titlebar-close"
+          id="demoWinClose"><span>✕</span></button>
+      </div>
+    </header>
+    <div class="native-window-content d-flex flex-grow-1" style="height: calc(100% - 33px);">
+      <aside class="sidebar p-05 border-end bg-light" style="width: 140px;">
+        <ul class="sidebar-nav list-unstyled mb-0">
+          <li class="sidebar-item"><a href="#"
+              class="sidebar-link active text-primary fw-semibold text-decoration-none"><span>Dashboard</span></a></li>
+          <li class="sidebar-item"><a href="#"
+              class="sidebar-link text-muted text-decoration-none"><span>Settings</span></a></li>
+        </ul>
+      </aside>
+      <main class="flex-grow-1 p-3 bg-white overflow-auto">
+        <h6 class="fw-bold mb-1"><span>Workspace Content</span></h6>
+        <p class="text-muted fs-7 mb-0"><span>Native desktop layout with draggable header and sidebar.</span></p>
+      </main>
+    </div>
+  </div>
 </div>
 <div class="highlight">
-  <pre><code>&lt;p class=&quot;text-primary&quot;&gt;.text-primary&lt;/p&gt;
-&lt;p class=&quot;text-secondary&quot;&gt;.text-secondary&lt;/p&gt;
-&lt;p class=&quot;text-success&quot;&gt;.text-success&lt;/p&gt;
-&lt;p class=&quot;text-danger&quot;&gt;.text-danger&lt;/p&gt;
-&lt;p class=&quot;text-warning&quot;&gt;.text-warning&lt;/p&gt;
-&lt;p class=&quot;text-info&quot;&gt;.text-info&lt;/p&gt;
-&lt;p class=&quot;text-muted&quot;&gt;.text-muted&lt;/p&gt;
-&lt;p class=&quot;text-body&quot;&gt;.text-body&lt;/p&gt;
-&lt;p class=&quot;text-emphasis&quot;&gt;.text-emphasis&lt;/p&gt;
-&lt;p class=&quot;text-white bg-dark&quot;&gt;.text-white&lt;/p&gt;</code></pre>
+  <pre><code>&lt;div class="native-window" data-boodoo-platform="windows"&gt;
+  &lt;!-- Draggable Titlebar --&gt;
+  &lt;header class="native-titlebar bg-white border-bottom"&gt;
+    &lt;span class="fw-semibold fs-7"&gt;&lt;span&gt;My Electron App&lt;/span&gt;&lt;/span&gt;
+    &lt;div class="native-titlebar-controls"&gt;
+      &lt;button type="button" class="native-titlebar-btn" id="win-min"&gt;&lt;span&gt;—&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="native-titlebar-btn" id="win-max"&gt;&lt;span&gt;▢&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="native-titlebar-btn native-titlebar-close" id="win-close"&gt;&lt;span&gt;✕&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- Main Content Window --&gt;
+  &lt;div class="native-window-content d-flex flex-grow-1"&gt;
+    &lt;!-- Desktop Sidebar --&gt;
+    &lt;aside class="sidebar" data-boodoo="sidebar"&gt;
+      &lt;ul class="sidebar-nav"&gt;
+        &lt;li class="sidebar-item"&gt;&lt;a href="#" class="sidebar-link active"&gt;&lt;span&gt;Dashboard&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="sidebar-item"&gt;&lt;a href="#" class="sidebar-link"&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+    &lt;main class="flex-grow-1 p-4 bg-light overflow-auto"&gt;
+      &lt;h3&gt;&lt;span&gt;Workspace Content&lt;/span&gt;&lt;/h3&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 </div>
 
-<h2 id="grays">Grays</h2>
-<p>A Foundation-inspired neutral scale via <code>.text-gray-{100..900}</code> / <code>.bg-gray-{100..900}</code>.</p>
-<div class="row g-2 mb-3">
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-100"></div>
-    <div class="color-name"><span>gray-100</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-200"></div>
-    <div class="color-name"><span>gray-200</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-300"></div>
-    <div class="color-name"><span>gray-300</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-400"></div>
-    <div class="color-name"><span>gray-400</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-500"></div>
-    <div class="color-name"><span>gray-500</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-600"></div>
-    <div class="color-name"><span>gray-600</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-700"></div>
-    <div class="color-name"><span>gray-700</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-800"></div>
-    <div class="color-name"><span>gray-800</span></div>
-  </div>
-  <div class="col-6 col-md-3">
-    <div class="swatch bg-gray-900"></div>
-    <div class="color-name"><span>gray-900</span></div>
-  </div>
+<h2 id="recommended-components"><span>4. Recommended Components for Desktop Apps</span></h2>
+<p><span>When designing desktop experiences with Electron, these Boodoo components offer native desktop parity:</span>
+</p>
+
+<div class="table-responsive">
+  <table class="table table-bordered align-middle">
+    <thead class="table-light">
+      <tr>
+        <th><span>Component</span></th>
+        <th><span>Purpose in Desktop / Electron</span></th>
+        <th><span>Documentation Link</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><span>Native Components</span></strong></td>
+        <td><span>Platform styling for Windows Fluent/Mica, macOS Aqua, and Linux Adwaita.</span></td>
+        <td><a href="../components/native.html"><span>Native UI Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Desktop Sidebar</span></strong></td>
+        <td><span>Collapsible multi-level desktop navigation with icon-only mode.</span></td>
+        <td><a href="../components/sidebar.html"><span>Sidebar Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Splitter &amp; Docking Panes</span></strong></td>
+        <td><span>Draggable split-view panes with pointer capture and bounds checking.</span></td>
+        <td><a href="../components/splitter.html"><span>Splitter Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Command Palette</span></strong></td>
+        <td><span>Global shortcut (<kbd>Ctrl+K</kbd> / <kbd>Cmd+K</kbd>) quick-open dialog and search runner.</span>
+        </td>
+        <td><a href="../components/command-palette.html"><span>Command Palette Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Context Menu</span></strong></td>
+        <td><span>Right-click context menus with custom action handlers and nested items.</span></td>
+        <td><a href="../components/context-menu.html"><span>Context Menu Docs</span></a></td>
+      </tr>
+      <tr>
+        <td><strong><span>Data Table</span></strong></td>
+        <td><span>Client-side sortable, searchable, and paginated desktop data grids.</span></td>
+        <td><a href="../components/data-table.html"><span>Data Table Docs</span></a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<h2 id="opacity">Opacity</h2>
-<p>Use <code>.text-opacity-{10|25|50|75|100}</code> for text alphras on a primary-tinged color.</p>
-
-<h2 id="css-vars">CSS variables</h2>
-<p>Every color is exposed as a CSS custom property: <code>--boodoo-primary</code>, <code>--boodoo-primary-rgb</code>,
-  <code>--boodoo-gray-100</code>, etc. Use them anywhere in your own CSS.</p>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
     <div class="docs-pager-item">
-      <span class="docs-pager-label">Utilities</span>
-      <a class="docs-pager-link" href="../utilities/borders.html">Borders</a>
+      <span class="docs-pager-label">Getting started</span>
+      <a class="docs-pager-link" href="../getting-started/custom-elements.html">Custom Elements</a>
     </div>
     
     <div class="docs-pager-item">
-      <span class="docs-pager-label">Utilities</span>
-      <a class="docs-pager-link" href="../utilities/display.html">Display</a>
+      <span class="docs-pager-label">Layout</span>
+      <a class="docs-pager-link" href="../layout/containers.html">Containers</a>
     </div>
   </nav>
 
@@ -390,11 +507,11 @@
 
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
-      <ul><li class="toc-2"><a href="#colors">Colors</a></li>
-<li class="toc-2"><a href="#text">Text colors</a></li>
-<li class="toc-2"><a href="#grays">Grays</a></li>
-<li class="toc-2"><a href="#opacity">Opacity</a></li>
-<li class="toc-2"><a href="#css-vars">CSS variables</a></li></ul>
+      <ul><li class="toc-2"><a href="#scaffold">1. Scaffold with create-boodoo</a></li>
+<li class="toc-2"><a href="#manual-setup">2. Manual Setup in Existing Electron Apps</a></li>
+<li class="toc-3"><a href="#renderer-html">Renderer HTML Template</a></li>
+<li class="toc-2"><a href="#custom-titlebar">3. Custom Frameless Titlebar &amp; Window Dragging</a></li>
+<li class="toc-2"><a href="#recommended-components">4. Recommended Components for Desktop Apps</a></li></ul>
     </div>
 </aside>
     </div>

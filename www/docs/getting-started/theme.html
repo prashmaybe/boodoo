@@ -11,7 +11,7 @@
   <meta property="og:title" content="Dark Mode & Themes · boodoo">
   <meta property="og:description" content="Theme switching and dark mode persistence in boodoo.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/theme.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Dark Mode & Themes · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/theme.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html" class="active">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -250,7 +258,8 @@
     </nav>
           <section class="docs-section">
   <h2 id="">Overview</h2>
-  <p class="lead">boodoo comes with built-in dark mode support, automatic system scheme detection, and the <code>boodoo.theme</code> JS module.</p>
+  <p class="lead">boodoo comes with built-in dark mode support, automatic system scheme detection, and the
+    <code>boodoo.theme</code> JS module.</p>
 </section>
 
 <section class="docs-section">
@@ -270,23 +279,28 @@ boodoo.theme.toggle();</code></pre>
 </section>
 
 <section class="docs-section">
-  <h2 id="">HTML Trigger Attribute</h2>
-  <p>You can toggle theme via HTML buttons without writing any JavaScript:</p>
+  <h2 id=""><span>HTML Trigger Attribute</span></h2>
+  <p><span>You can toggle theme via HTML buttons without writing any JavaScript:</span></p>
+  <div class="bd-example text-center">
+    <button type="button" class="btn btn-secondary" data-boodoo-toggle="theme"><span>Toggle Theme</span></button>
+  </div>
   <div class="highlight">
-    <pre><code class="language-html">&lt;button class="btn btn-secondary" data-boodoo-toggle="theme"&gt;Toggle Theme&lt;/button&gt;</code></pre>
+    <pre><code class="language-html">&lt;button class="btn btn-secondary" data-boodoo-toggle="theme"&gt;&lt;span&gt;Toggle Theme&lt;/span&gt;&lt;/button&gt;</code></pre>
   </div>
 </section>
 
 <section class="docs-section">
   <h2 id="">Interactive Theme Builder</h2>
-  <p>Customize primary colors, border radiuses, and base fonts in real time. Preview live components and export your custom CSS variables snippet:</p>
+  <p>Customize primary colors, border radiuses, and base fonts in real time. Preview live components and export your
+    custom CSS variables snippet:</p>
 
   <div class="card p-4 shadow-sm border mb-4" id="themeBuilderApp">
     <div class="row g-3 mb-4">
       <div class="col-md-4">
         <label for="tbPrimaryColor" class="form-label"><span>Primary Accent Color</span></label>
         <div class="d-flex align-items-center gap-2">
-          <input type="color" class="form-control form-control-color" id="tbPrimaryColor" name="primaryColor" value="#7c3aed" title="Choose primary color">
+          <input type="color" class="form-control form-control-color" id="tbPrimaryColor" name="primaryColor"
+            value="#7c3aed" title="Choose primary color">
           <span class="font-monospace small" id="tbPrimaryHex"><span>#7c3aed</span></span>
         </div>
       </div>
@@ -313,14 +327,15 @@ boodoo.theme.toggle();</code></pre>
     <!-- Live Preview Sandbox -->
     <div class="p-4 rounded border mb-3" id="themeSandbox" style="background-color: var(--boodoo-body-bg);">
       <h5 class="mb-3"><span>Live Component Preview</span></h5>
-      <div class="d-flex flex-wrap gap-2 mb-3">
+      <div class="d-flex flex-wrap gap-2 mb-2">
         <button type="button" class="btn btn-primary" id="demoPrimaryBtn"><span>Primary Button</span></button>
         <button type="button" class="btn btn-outline-primary" id="demoOutlineBtn"><span>Outline Button</span></button>
         <button type="button" class="btn btn-soft-primary" id="demoSoftBtn"><span>Soft Accent</span></button>
       </div>
       <div class="card p-3" id="demoCard" style="max-width: 320px;">
         <h6 class="card-title"><span>Interactive Card</span></h6>
-        <p class="card-text small text-muted"><span>Theme variables immediately update typography, border radii, and accent rings.</span></p>
+        <p class="card-text small text-muted"><span>Theme variables immediately update typography, border radii, and
+            accent rings.</span></p>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="themeCheck" name="themeSample" checked>
           <label class="form-check-label" for="themeCheck"><span>Styled check control</span></label>
@@ -431,8 +446,8 @@ boodoo.theme.toggle();</code></pre>
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

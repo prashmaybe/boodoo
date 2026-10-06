@@ -4,68 +4,81 @@ description: Breakpoints are customizable widths that determine how your respons
 section: layout
 order: 5
 -->
-<h1>Breakpoints</h1>
-<p class="lead">Breakpoints are customizable widths that determine how your responsive layout behaves across device or
-  viewport sizes in boodoo.</p>
+<h1><span>Breakpoints</span></h1>
+<p class="lead"><span>Breakpoints are customizable widths that determine how your responsive layout behaves across device or
+  viewport sizes in boodoo.</span></p>
 
-<h2 id="core">Core concepts</h2>
+<h2 id="core"><span>Core concepts</span></h2>
 <ul>
-  <li><strong>Breakpoints are the building blocks of responsive design.</strong> Use them to control when your layout
-    can be adapted at a particular viewport or device size.</li>
-  <li><strong>Use media queries to architect your CSS by breakpoint.</strong> Media queries are a feature of CSS that
-    allow you to conditionally apply styles based on a set of browser and operating system parameters.</li>
-  <li><strong>Mobile first, responsive design.</strong> boodoo's CSS aims to apply the fewest styles to make a layout work
-    at the smallest breakpoint, and then layers on styles for larger devices.</li>
+  <li><strong><span>Breakpoints are the building blocks of responsive design.</span></strong> <span>Use them to control when your layout
+    can be adapted at a particular viewport or device size.</span></li>
+  <li><strong><span>Use media queries to architect your CSS by breakpoint.</span></strong> <span>Media queries are a feature of CSS that
+    allow you to conditionally apply styles based on a set of browser and operating system parameters.</span></li>
+  <li><strong><span>Mobile first, responsive design.</span></strong> <span>boodoo's CSS aims to apply the fewest styles to make a layout work
+    at the smallest breakpoint, and then layers on styles for larger devices.</span></li>
 </ul>
 
-<h2 id="available">Available breakpoints</h2>
-<p>boodoo includes six default breakpoints, sometimes referred to as grid tiers.</p>
+<h2 id="available"><span>Available breakpoints</span></h2>
+<p><span>boodoo includes six default breakpoints, sometimes referred to as grid tiers:</span></p>
+
+<div class="bd-example">
+  <div class="row g-2 text-center small">
+    <div class="col-4 col-sm-2"><div class="p-2 bg-light border rounded"><strong>xs</strong><br>&lt;576px</div></div>
+    <div class="col-4 col-sm-2"><div class="p-2 bg-primary-soft text-primary border border-primary rounded"><strong>sm</strong><br>&ge;576px</div></div>
+    <div class="col-4 col-sm-2"><div class="p-2 bg-success-soft text-success border border-success rounded"><strong>md</strong><br>&ge;768px</div></div>
+    <div class="col-4 col-sm-2"><div class="p-2 bg-warning-soft text-dark border border-warning rounded"><strong>lg</strong><br>&ge;992px</div></div>
+    <div class="col-4 col-sm-2"><div class="p-2 bg-info-soft text-info border border-info rounded"><strong>xl</strong><br>&ge;1200px</div></div>
+    <div class="col-4 col-sm-2"><div class="p-2 bg-dark text-white rounded"><strong>xxl</strong><br>&ge;1400px</div></div>
+  </div>
+</div>
+
 <table class="table table-bordered table-sm">
   <thead>
     <tr>
-      <th>Breakpoint</th>
-      <th>Class infix</th>
-      <th>Dimensions</th>
+      <th><span>Breakpoint</span></th>
+      <th><span>Class infix</span></th>
+      <th><span>Dimensions</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>X-Small</td>
-      <td><em>None</em></td>
-      <td>&lt;576px</td>
+      <td><span>X-Small</span></td>
+      <td><em><span>None</span></em></td>
+      <td><span>&lt;576px</span></td>
     </tr>
     <tr>
-      <td>Small</td>
+      <td><span>Small</span></td>
       <td><code>sm</code></td>
-      <td>&ge;576px</td>
+      <td><span>&ge;576px</span></td>
     </tr>
     <tr>
-      <td>Medium</td>
+      <td><span>Medium</span></td>
       <td><code>md</code></td>
-      <td>&ge;768px</td>
+      <td><span>&ge;768px</span></td>
     </tr>
     <tr>
-      <td>Large</td>
+      <td><span>Large</span></td>
       <td><code>lg</code></td>
-      <td>&ge;992px</td>
+      <td><span>&ge;992px</span></td>
     </tr>
     <tr>
-      <td>Extra large</td>
+      <td><span>Extra large</span></td>
       <td><code>xl</code></td>
-      <td>&ge;1200px</td>
+      <td><span>&ge;1200px</span></td>
     </tr>
     <tr>
-      <td>Extra extra large</td>
+      <td><span>Extra extra large</span></td>
       <td><code>xxl</code></td>
-      <td>&ge;1400px</td>
+      <td><span>&ge;1400px</span></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="media-queries">Media queries</h2>
-<p>Since boodoo is developed to be mobile first, we use a handful of media queries to create sensible breakpoints for our
+<h2 id="media-queries"><span>Media queries</span></h2>
+<p><span>Since boodoo is developed to be mobile first, we use a handful of media queries to create sensible breakpoints for our
   layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up
-  elements as the viewport changes.</p>
+  elements as the viewport changes.</span></p>
+
 <div class="highlight">
   <pre><code>// Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in boodoo
@@ -86,9 +99,9 @@ order: 5
 @media (min-width: 1400px) { ... }</code></pre>
 </div>
 
-<h2 id="mixins">Media mixins</h2>
-<p>In your source Sass, use the <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>, and
-  <code>media-breakpoint-only</code> mixins:</p>
+<h2 id="mixins"><span>Media mixins</span></h2>
+<p><span>In your source Sass, use the <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>, and
+  <code>media-breakpoint-only</code> mixins:</span></p>
 <div class="highlight">
   <pre><code>@include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-down(lg) { ... }

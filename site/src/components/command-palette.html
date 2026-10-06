@@ -6,14 +6,88 @@ order: 30
 -->
 
 <section class="docs-section">
-  <h2>Overview</h2>
-  <p class="lead">Command Palette gives users rapid keyboard navigation and quick actions with <kbd>Ctrl+K</kbd> or <kbd>Cmd+K</kbd>.</p>
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>Command Palette gives users rapid keyboard navigation and quick actions with</span> <kbd>Ctrl+K</kbd> <span>or</span> <kbd>Cmd+K</kbd>.</p>
 </section>
 
 <section class="docs-section">
-  <h2>Triggering from JavaScript</h2>
-  <p>You can launch a command palette programmatically or via the global keyboard listener:</p>
-  <pre><code class="language-javascript">const palette = boodoo.CommandPalette.getOrCreateInstance(document.querySelector('#my-palette'), {
+  <h2><span>Live Example</span></h2>
+  <p><span>Below is a live inline view of the Command Palette modal interface, featuring search filtering, action items, shortcut hints, and a navigation footer:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-light">
+    <div class="command-palette shadow-sm mx-auto position-relative" style="max-width: 600px; transform: none;">
+      <div class="command-palette-header">
+        <span class="text-secondary me-2"><span>🔍</span></span>
+        <input type="text" class="command-palette-input" id="demoCommandInput" name="commandQuery" placeholder="Type a command or search...">
+      </div>
+      <ul class="command-palette-results">
+        <li class="command-palette-group-title"><span>Navigation</span></li>
+        <li class="command-palette-item active">
+          <span class="command-palette-item-title">
+            <span>📊</span>
+            <span>Go to Dashboard</span>
+          </span>
+          <span class="command-palette-item-shortcut"><kbd>G D</kbd></span>
+        </li>
+        <li class="command-palette-item">
+          <span class="command-palette-item-title">
+            <span>📁</span>
+            <span>View Projects</span>
+          </span>
+          <span class="command-palette-item-shortcut"><kbd>G P</kbd></span>
+        </li>
+        <li class="command-palette-group-title"><span>Preferences</span></li>
+        <li class="command-palette-item">
+          <span class="command-palette-item-title">
+            <span>🌓</span>
+            <span>Toggle Dark Mode</span>
+          </span>
+          <span class="command-palette-item-shortcut"><kbd>T</kbd></span>
+        </li>
+      </ul>
+      <div class="command-palette-footer">
+        <span>Navigation: <kbd>↑</kbd> <kbd>↓</kbd> to select</span>
+        <span><kbd>Esc</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="command-palette" role="dialog" aria-modal="true"&gt;
+  &lt;div class="command-palette-header"&gt;
+    &lt;span class="text-secondary me-2"&gt;&lt;span&gt;🔍&lt;/span&gt;&lt;/span&gt;
+    &lt;input type="text" class="command-palette-input" id="commandInput" name="commandQuery" placeholder="Type a command or search..."&gt;
+  &lt;/div&gt;
+  &lt;ul class="command-palette-results"&gt;
+    &lt;li class="command-palette-group-title"&gt;&lt;span&gt;Navigation&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="command-palette-item active"&gt;
+      &lt;span class="command-palette-item-title"&gt;
+        &lt;span&gt;📊&lt;/span&gt;
+        &lt;span&gt;Go to Dashboard&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;span class="command-palette-item-shortcut"&gt;&lt;kbd&gt;G D&lt;/kbd&gt;&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="command-palette-item"&gt;
+      &lt;span class="command-palette-item-title"&gt;
+        &lt;span&gt;📁&lt;/span&gt;
+        &lt;span&gt;View Projects&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;span class="command-palette-item-shortcut"&gt;&lt;kbd&gt;G P&lt;/kbd&gt;&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="command-palette-footer"&gt;
+    &lt;span&gt;Navigation: &lt;kbd&gt;↑&lt;/kbd&gt; &lt;kbd&gt;↓&lt;/kbd&gt; to select&lt;/span&gt;
+    &lt;span&gt;&lt;kbd&gt;Esc&lt;/kbd&gt; to close&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Triggering from JavaScript</span></h2>
+  <p><span>You can launch a command palette programmatically or via the global keyboard listener:</span></p>
+  <div class="highlight">
+    <pre><code class="language-javascript">const palette = boodoo.CommandPalette.getOrCreateInstance(document.querySelector('#my-palette'), {
   items: [
     { title: 'Dashboard', href: '/dashboard', icon: '📊', shortcut: 'G D' },
     { title: 'Toggle Theme', action: () => boodoo.theme.toggle(), icon: '🌓' }
@@ -21,4 +95,5 @@ order: 30
 });
 
 palette.open();</code></pre>
+  </div>
 </section>

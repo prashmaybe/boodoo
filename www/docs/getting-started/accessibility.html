@@ -11,7 +11,7 @@
   <meta property="og:title" content="Accessibility · boodoo">
   <meta property="og:description" content="boodoo is built with accessibility in mind — skip links, focus rings, aria attributes and reduced motion support.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/accessibility.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Accessibility · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/accessibility.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html" class="active">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -248,30 +256,43 @@
         <li class="breadcrumb-item active" aria-current="page">Accessibility</li>
       </ol>
     </nav>
-          <h1>Accessibility</h1>
-<p class="lead">boodoo follows common web standards, and can easily be adapted to meet the WCAG 2.1 AA requirements with
-  the proper markup and configuration.</p>
+          <h1><span>Accessibility</span></h1>
+<p class="lead"><span>boodoo follows common web standards, and can easily be adapted to meet the WCAG 2.1 AA requirements with
+  the proper markup and configuration.</span></p>
 
-<h2 id="summary">Summary of accessibility features</h2>
+<h2 id="summary"><span>Summary of accessibility features</span></h2>
 <ul>
-  <li><strong>Focus visible:</strong> boodoo suppresses the focus ring only for mouse users
-    (<code>:focus:not(:focus-visible)</code>) and keeps it for keyboard navigation.</li>
-  <li><strong>Skip link:</strong> the docs layout ships with a <code>visually-hidden-focusable</code> "skip to main
-    content" link.</li>
-  <li><strong>Reduced motion:</strong> all animations and transitions respect
-    <code>prefers-reduced-motion: reduce</code>.</li>
-  <li><strong>ARIA roles &amp; states:</strong> components set <code>aria-expanded</code>, <code>aria-selected</code>,
+  <li><strong><span>Focus visible:</span></strong> <span>boodoo suppresses the focus ring only for mouse users
+    (<code>:focus:not(:focus-visible)</code>) and keeps it for keyboard navigation.</span></li>
+  <li><strong><span>Skip link:</span></strong> <span>the docs layout ships with a <code>visually-hidden-focusable</code> "skip to main
+    content" link.</span></li>
+  <li><strong><span>Reduced motion:</span></strong> <span>all animations and transitions respect
+    <code>prefers-reduced-motion: reduce</code>.</span></li>
+  <li><strong><span>ARIA roles &amp; states:</span></strong> <span>components set <code>aria-expanded</code>, <code>aria-selected</code>,
     <code>aria-busy</code>, <code>aria-labelledby</code>, and use <code>role="alert"</code> / <code>role="dialog"</code>
-    where appropriate.</li>
-  <li><strong>Keyboard:</strong> modals trap focus, dropdowns close with <kbd>Esc</kbd>, carousels support arrow keys.
+    where appropriate.</span></li>
+  <li><strong><span>Keyboard:</span></strong> <span>modals trap focus, dropdowns close with <kbd>Esc</kbd>, carousels support arrow keys.</span>
   </li>
-  <li><strong>Color contrast:</strong> the default palette meets AA contrast on white, and subtle/emphasis variants are
-    provided.</li>
-  <li><strong>Touch:</strong> 44px minimum interactive target sizes to satisfy touch accessibility guidelines.</li>
+  <li><strong><span>Color contrast:</span></strong> <span>the default palette meets AA contrast on white, and subtle/emphasis variants are
+    provided.</span></li>
+  <li><strong><span>Touch:</span></strong> <span>44px minimum interactive target sizes to satisfy touch accessibility guidelines.</span></li>
 </ul>
 
-<h2 id="reduced-motion">Reduced motion</h2>
-<p>boodoo includes a media query that disables animations and transitions for users who prefer reduced motion:</p>
+<h2 id="skip-link"><span>Skip Link Example</span></h2>
+<p><span>Test the focusable skip link by clicking below and pressing <kbd>Tab</kbd>:</span></p>
+
+<div class="bd-example text-center">
+  <a class="visually-hidden-focusable btn btn-primary" href="#summary"><span>Skip to main content</span></a>
+  <span class="text-muted small"><span>(Press Tab to reveal the skip button)</span></span>
+</div>
+<div class="highlight">
+  <pre><code>&lt;a class="visually-hidden-focusable btn btn-primary" href="#main-content"&gt;
+  &lt;span&gt;Skip to main content&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+</div>
+
+<h2 id="reduced-motion"><span>Reduced motion</span></h2>
+<p><span>boodoo includes a media query that disables animations and transitions for users who prefer reduced motion:</span></p>
 <div class="highlight">
   <pre><code>@media (prefers-reduced-motion: reduce) {
   *,
@@ -285,14 +306,14 @@
 }</code></pre>
 </div>
 
-<h2 id="color-contrast">Color contrast</h2>
-<p>Some combinations of colors that make up boodoo's default palette may not have sufficient contrast on certain
+<h2 id="color-contrast"><span>Color contrast</span></h2>
+<p><span>Some combinations of colors that make up boodoo's default palette may not have sufficient contrast on certain
   backgrounds. You can adjust these via the Sass variables, or use the <code>-subtle</code> background/border helpers
-  and <code>-emphasis</code> text helpers to tune it per component.</p>
+  and <code>-emphasis</code> text helpers to tune it per component.</span></p>
 
 <div class="bd-callout bd-callout-info">
-  <p class="mb-0"><strong>Tip:</strong> use the <code>.visually-hidden</code> helper for content that should be available to assistive
-  technologies but hidden visually.</p>
+  <p class="mb-0"><span><strong>Tip:</strong> use the <code>.visually-hidden</code> helper for content that should be available to assistive
+  technologies but hidden visually. See the <a href="../helpers/visually-hidden.html"><span>visually hidden guide</span></a>.</span></p>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -316,6 +337,7 @@
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#summary">Summary of accessibility features</a></li>
+<li class="toc-2"><a href="#skip-link">Skip Link Example</a></li>
 <li class="toc-2"><a href="#reduced-motion">Reduced motion</a></li>
 <li class="toc-2"><a href="#color-contrast">Color contrast</a></li></ul>
     </div>
@@ -354,8 +376,8 @@
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

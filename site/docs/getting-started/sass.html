@@ -11,7 +11,7 @@
   <meta property="og:title" content="Customize with Sass · boodoo">
   <meta property="og:description" content="boodoo is built with Sass — customize variables, maps and mixins to build your own theme.">
   <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/sass.html">
-  <meta property="og:image" content="../../assets/brand/boodoo-og-image.png">
+  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Customize with Sass · boodoo</title>
   <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/sass.html">
@@ -24,9 +24,16 @@
   <meta name="msapplication-TileColor" content="#7c3aed">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
@@ -38,7 +45,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -111,6 +118,7 @@
 <li><a href="../getting-started/accessibility.html">Accessibility</a></li>
 <li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -248,16 +256,16 @@
         <li class="breadcrumb-item active" aria-current="page">Customize with Sass</li>
       </ol>
     </nav>
-          <h1>Customize with Sass</h1>
-<p class="lead">boodoo is developed mobile-first with a modular Sass architecture. Customization happens via variables,
-  maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</p>
+          <h1><span>Customize with Sass</span></h1>
+<p class="lead"><span>boodoo is developed mobile-first with a modular Sass architecture. Customization happens via variables,
+  maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</span></p>
 
-<h2 id="variables">Variables</h2>
-<p>Every Sass variable in boodoo includes the <code>!default</code> flag, meaning you can override them by assigning your
-  own values <em>before</em> importing boodoo. Here's a typical <code>boodoo.scss</code>:</p>
+<h2 id="variables"><span>Variables</span></h2>
+<p><span>Every Sass variable in boodoo includes the <code>!default</code> flag, meaning you can override them by assigning your
+  own values <em>before</em> importing boodoo. Here's a typical <code>boodoo.scss</code>:</span></p>
 
 <div class="highlight">
-  <pre><code>// 1. Include functions, variables and mixins first (if importing individual parts)
+  <pre><code class="language-scss">// 1. Include functions, variables and mixins first (if importing individual parts)
 @import "node_modules/boodoo/scss/functions";
 @import "node_modules/boodoo/scss/variables";
 @import "node_modules/boodoo/scss/maps";
@@ -275,23 +283,47 @@ $boodoo-border-radius: 0.375rem;
 @import "node_modules/boodoo/scss/grid";</code></pre>
 </div>
 
-<h2 id="maps-and-loops">Maps and loops</h2>
-<p>boodoo uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
-  classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
-  variant is generated for you:</p>
+<h2 id="custom-example"><span>Theme Customization Preview</span></h2>
+<p><span>Changing variables like <code>$boodoo-primary</code> or border radii propagates across all components, badges, alerts, and buttons:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <button type="button" class="btn btn-primary" style="background-color: #7952b3; border-color: #7952b3;">
+      <span>Custom Primary Button</span>
+    </button>
+    <button type="button" class="btn btn-danger" style="background-color: #e83e8c; border-color: #e83e8c;">
+      <span>Custom Danger Button</span>
+    </button>
+    <span class="badge" style="background-color: #7952b3;"><span>Custom Token Badge</span></span>
+  </div>
+</div>
 <div class="highlight">
-  <pre><code>$boodoo-theme-colors: map.merge($boodoo-theme-colors, (
+  <pre><code class="language-html">&lt;button type="button" class="btn btn-primary"&gt;
+  &lt;span&gt;Custom Primary Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;
+  &lt;span&gt;Custom Danger Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;span class="badge bg-primary"&gt;&lt;span&gt;Custom Token Badge&lt;/span&gt;&lt;/span&gt;</code></pre>
+</div>
+
+<h2 id="maps-and-loops"><span>Maps and loops</span></h2>
+<p><span>boodoo uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
+  classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
+  variant is generated for you:</span></p>
+<div class="highlight">
+  <pre><code class="language-scss">$boodoo-theme-colors: map.merge($boodoo-theme-colors, (
   "turquoise": #20c997,
 ));</code></pre>
 </div>
 
-<h2 id="variables-custom">Customizing components</h2>
-<p>Generated button variants, badge, alert, and other components will all pick up the new color automatically.</p>
+<h2 id="variables-custom"><span>Customizing components</span></h2>
+<p><span>Generated button variants, badge, alert, and other components will all pick up the new color automatically.</span></p>
 
 <div class="bd-callout bd-callout-info">
-  <p class="mb-0"><strong>Pro tip:</strong> You only need to import the config layer (<code>functions</code>, <code>variables</code>,
+  <p class="mb-0"><strong><span>Pro tip:</span></strong> <span>You only need to import the config layer (<code>functions</code>, <code>variables</code>,
   <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use boodoo's mixins and maps in your
-  own Sass, then import the partials you actually need for the leanest output.</p>
+  own Sass, then import the partials you actually need for the leanest output.</span></p>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -315,6 +347,7 @@ $boodoo-border-radius: 0.375rem;
     <div class="docs-toc d-none d-lg-block">
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#variables">Variables</a></li>
+<li class="toc-2"><a href="#custom-example">Theme Customization Preview</a></li>
 <li class="toc-2"><a href="#maps-and-loops">Maps and loops</a></li>
 <li class="toc-2"><a href="#variables-custom">Customizing components</a></li></ul>
     </div>
@@ -353,8 +386,8 @@ $boodoo-border-radius: 0.375rem;
     </div>
   </footer>
 
-  <script src="../../dist/js/boodoo.js"></script>
-  <script src="../../assets/search.js"></script>
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
   <script>
     // Theme toggle logic
     (function () {

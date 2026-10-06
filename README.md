@@ -24,7 +24,8 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 - **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
 - **Dual-Engine "Class-First + Data-Attribute" styling** — Clean semantic markup without class bloat (`[data-boodoo-variant]`, `[data-size]`, zero-build variable utilities)
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or React required
-- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js) and official VS Code IntelliSense snippet suite
+- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron) and official VS Code IntelliSense snippet suite
+- **Cross-Platform & Desktop Ready** — First-class support for Electron, Tauri, and native desktop runtimes with draggable titlebars (`-webkit-app-region: drag`), Fluent/Mica, Aqua, and Adwaita design tokens
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Rich components** — 38+ accessible components including Combobox / Autocomplete, Splitter (Docking Panes), Speed Dial (FAB Menu), Lightbox Media Viewer, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens or with the Interactive Theme Builder
@@ -204,9 +205,10 @@ Official brand assets (logo lockup, icon set, banner, OG image, color tokens) li
 
 ---
 
-## 📦 Browser support
+## 📦 Browser & Desktop Runtime Support
 
-Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen mobile browsers. Internet Explorer is not supported. Legacy CSS features degrade gracefully via `@supports`.
+- **Browsers**: Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen mobile browsers. Internet Explorer is not supported. Legacy CSS features degrade gracefully via `@supports`.
+- **Desktop & Hybrid Apps**: First-class compatibility with **Electron**, **Tauri**, and **Capacitor**. Zero-overhead runtime, built-in window drag regions, custom frameless titlebars, and native OS tokens (Windows Mica, macOS Aqua, Linux Adwaita). Check the [Electron Desktop Guide](https://boodoo.dihadiwala.com/docs/getting-started/electron.html).
 
 ---
 

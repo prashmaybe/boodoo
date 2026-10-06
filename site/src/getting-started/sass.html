@@ -4,16 +4,16 @@ description: boodoo is built with Sass — customize variables, maps and mixins 
 section: getting-started
 order: 5
 -->
-<h1>Customize with Sass</h1>
-<p class="lead">boodoo is developed mobile-first with a modular Sass architecture. Customization happens via variables,
-  maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</p>
+<h1><span>Customize with Sass</span></h1>
+<p class="lead"><span>boodoo is developed mobile-first with a modular Sass architecture. Customization happens via variables,
+  maps, and mixins, so you can change colors, spacing, typography, and more without touching core files.</span></p>
 
-<h2 id="variables">Variables</h2>
-<p>Every Sass variable in boodoo includes the <code>!default</code> flag, meaning you can override them by assigning your
-  own values <em>before</em> importing boodoo. Here's a typical <code>boodoo.scss</code>:</p>
+<h2 id="variables"><span>Variables</span></h2>
+<p><span>Every Sass variable in boodoo includes the <code>!default</code> flag, meaning you can override them by assigning your
+  own values <em>before</em> importing boodoo. Here's a typical <code>boodoo.scss</code>:</span></p>
 
 <div class="highlight">
-  <pre><code>// 1. Include functions, variables and mixins first (if importing individual parts)
+  <pre><code class="language-scss">// 1. Include functions, variables and mixins first (if importing individual parts)
 @import "node_modules/boodoo/scss/functions";
 @import "node_modules/boodoo/scss/variables";
 @import "node_modules/boodoo/scss/maps";
@@ -31,21 +31,45 @@ $boodoo-border-radius: 0.375rem;
 @import "node_modules/boodoo/scss/grid";</code></pre>
 </div>
 
-<h2 id="maps-and-loops">Maps and loops</h2>
-<p>boodoo uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
-  classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
-  variant is generated for you:</p>
+<h2 id="custom-example"><span>Theme Customization Preview</span></h2>
+<p><span>Changing variables like <code>$boodoo-primary</code> or border radii propagates across all components, badges, alerts, and buttons:</span></p>
+
+<div class="bd-example">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <button type="button" class="btn btn-primary" style="background-color: #7952b3; border-color: #7952b3;">
+      <span>Custom Primary Button</span>
+    </button>
+    <button type="button" class="btn btn-danger" style="background-color: #e83e8c; border-color: #e83e8c;">
+      <span>Custom Danger Button</span>
+    </button>
+    <span class="badge" style="background-color: #7952b3;"><span>Custom Token Badge</span></span>
+  </div>
+</div>
 <div class="highlight">
-  <pre><code>$boodoo-theme-colors: map.merge($boodoo-theme-colors, (
+  <pre><code class="language-html">&lt;button type="button" class="btn btn-primary"&gt;
+  &lt;span&gt;Custom Primary Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;
+  &lt;span&gt;Custom Danger Button&lt;/span&gt;
+&lt;/button&gt;
+&lt;span class="badge bg-primary"&gt;&lt;span&gt;Custom Token Badge&lt;/span&gt;&lt;/span&gt;</code></pre>
+</div>
+
+<h2 id="maps-and-loops"><span>Maps and loops</span></h2>
+<p><span>boodoo uses Sass maps for its color system, spacers, breakpoints, and the utility API. Override a map to change many
+  classes at once. For example, add a new theme color and every <code>.bg-*</code>, <code>.text-*</code>, and button
+  variant is generated for you:</span></p>
+<div class="highlight">
+  <pre><code class="language-scss">$boodoo-theme-colors: map.merge($boodoo-theme-colors, (
   "turquoise": #20c997,
 ));</code></pre>
 </div>
 
-<h2 id="variables-custom">Customizing components</h2>
-<p>Generated button variants, badge, alert, and other components will all pick up the new color automatically.</p>
+<h2 id="variables-custom"><span>Customizing components</span></h2>
+<p><span>Generated button variants, badge, alert, and other components will all pick up the new color automatically.</span></p>
 
 <div class="bd-callout bd-callout-info">
-  <p class="mb-0"><strong>Pro tip:</strong> You only need to import the config layer (<code>functions</code>, <code>variables</code>,
+  <p class="mb-0"><strong><span>Pro tip:</span></strong> <span>You only need to import the config layer (<code>functions</code>, <code>variables</code>,
   <code>maps</code>, <code>mixins</code>, <code>utility-api</code>) if you want to use boodoo's mixins and maps in your
-  own Sass, then import the partials you actually need for the leanest output.</p>
+  own Sass, then import the partials you actually need for the leanest output.</span></p>
 </div>
