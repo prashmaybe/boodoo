@@ -126,10 +126,13 @@
   color: var(--boodoo-body-secondary-color);
 
   kbd {
+    color: var(--boodoo-body-color);
     background: var(--boodoo-body-bg);
     border: 1px solid var(--boodoo-border-color);
     padding: 0.1rem 0.35rem;
     border-radius: 4px;
     font-size: 0.7rem;
+    line-height: 1.2;
+    display: inline-block;
   }
 }
