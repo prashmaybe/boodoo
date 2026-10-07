@@ -388,23 +388,106 @@
       }
     })();
 
-    // Copy-to-clipboard for code blocks
+    // Action buttons (Copy + CodePen) for code blocks
     document.querySelectorAll('.highlight pre').forEach(function (pre) {
-      var btn = document.createElement('button');
-      btn.className = 'btn btn-sm btn-soft-primary highlight-copy';
-      btn.textContent = 'Copy';
-      btn.type = 'button';
       var container = pre.closest('.highlight') || pre.parentElement;
-      if (container) container.appendChild(btn);
-      btn.addEventListener('click', function () {
+      if (!container) return;
+
+      var actionsBar = document.createElement('div');
+      actionsBar.className = 'highlight-actions';
+
+      // 1. CodePen button
+      var penBtn = document.createElement('button');
+      penBtn.className = 'btn btn-sm highlight-codepen';
+      penBtn.type = 'button';
+      penBtn.title = 'Open example in CodePen';
+      penBtn.setAttribute('aria-label', 'Open example in CodePen');
+      penBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg><span>CodePen</span>';
+
+      penBtn.addEventListener('click', function () {
+        var rawCode = pre.innerText || '';
+        // Extract title from nearest heading or page
+        var heading = container.previousElementSibling;
+        while (heading && !/^H[1-6]$/i.test(heading.tagName)) {
+          heading = heading.previousElementSibling;
+        }
+        var pageTitle = document.querySelector('h1')?.innerText || document.title.split('·')[0].trim() || 'boodoo';
+        var demoTitle = (heading ? heading.innerText.trim() + ' - ' : '') + pageTitle + ' Example (boodoo)';
+
+        // Detect if snippet is pure CSS, JS, or HTML
+        var isCssOnly = /^\s*(\.|#|@|:root|--)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
+        var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
+
+        var cdnCss = 'https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/dist/css/boodoo.min.css';
+        var cdnJs = 'https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/dist/js/boodoo.min.js';
+
+        var htmlPayload = '';
+        var cssPayload = '';
+        var jsPayload = '';
+
+        if (isCssOnly) {
+          cssPayload = rawCode;
+          htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <!-- Apply your CSS here -->\n  </div>\n</div>';
+        } else if (isJsOnly) {
+          jsPayload = rawCode;
+          htmlPayload = '<div class="container py-4">\n  <!-- Interactive JS Demo -->\n</div>';
+        } else {
+          htmlPayload = '<div class="container py-4">\n' + rawCode + '\n</div>';
+        }
+
+        var penData = {
+          title: demoTitle,
+          description: 'Interactive demo built with boodoo CSS & JS framework',
+          tags: ['boodoo', 'css-framework', 'responsive', 'ui-components'],
+          html: htmlPayload,
+          css: cssPayload,
+          js: jsPayload,
+          css_external: cdnCss,
+          js_external: cdnJs,
+          editors: '100'
+        };
+
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://codepen.io/pen/define';
+        form.target = '_blank';
+        form.style.display = 'none';
+
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'data';
+        input.id = 'codepen_data_' + Math.random().toString(36).substring(2, 9);
+        input.value = JSON.stringify(penData);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        setTimeout(function () {
+          if (form.parentNode) form.parentNode.removeChild(form);
+        }, 1000);
+      });
+
+      // 2. Copy button
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
+      copyBtn.innerHTML = '<span>Copy</span>';
+      copyBtn.type = 'button';
+      copyBtn.title = 'Copy code snippet';
+      copyBtn.setAttribute('aria-label', 'Copy code snippet');
+
+      copyBtn.addEventListener('click', function () {
         var text = pre.innerText;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(text).then(function () {
-            btn.textContent = 'Copied!';
-            setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+            copyBtn.innerHTML = '<span>Copied!</span>';
+            setTimeout(function () { copyBtn.innerHTML = '<span>Copy</span>'; }, 1500);
           });
         }
       });
+
+      actionsBar.appendChild(penBtn);
+      actionsBar.appendChild(copyBtn);
+      container.appendChild(actionsBar);
     });
   </script>
 </body>

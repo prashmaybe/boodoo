@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Photon Native UI Primitives**: Added `.native-photon` styling suite in `scss/components/_native.scss` supporting `.toolbar-header`, `.toolbar-footer`, `.pane-group`, `.pane`, `.pane-sidebar`, `.nav-group`, `.tab-group`, and native macOS/Electron push buttons.
   - **Cordova & PhoneGap Lifecycle Support**: Integrated Cordova/PhoneGap `deviceready` event hook directly into Boodoo JS `autoInit()`.
   - **Platforms & Frameworks Guide**: Published `site/src/getting-started/platforms.html` with step-by-step code samples and configuration for Angular, Cordova/PhoneGap, Meteor, Photon, and React Native Web.
+  - **Interactive CodePen Integration**: Added one-click "CodePen" launch buttons beside the "Copy" action for all component and demo documentation code snippets across the website, pre-filling external Boodoo CDN stylesheets and scripts with live runnable HTML/CSS/JS payloads.
 
 ---
 
