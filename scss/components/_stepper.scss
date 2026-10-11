@@ -120,3 +120,197 @@
     flex: 1;
   }
 }
+
+// ---------------------------------------------------------------------
+// Progress Stepper with percentage markers & glowing circles (Image 1)
+// ---------------------------------------------------------------------
+.stepper-progress {
+  align-items: center;
+
+  .step-item {
+    position: relative;
+
+    &:not(:last-child)::after {
+      top: 1.25rem;
+      height: 3px;
+      background-color: var(--boodoo-gray-300, #e2e8f0);
+    }
+
+    &.completed:not(:last-child)::after {
+      background-color: var(--boodoo-success, #22c55e);
+    }
+  }
+
+  .step-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 3px;
+    border-color: var(--boodoo-gray-300, #cbd5e1);
+    background-color: var(--boodoo-card-bg, #fff);
+    color: var(--boodoo-body-secondary-color, #94a3b8);
+    font-size: 0.875rem;
+
+    .completed > & {
+      border-color: rgba(var(--boodoo-success-rgb, 34, 197, 94), 0.25);
+      background-color: var(--boodoo-success, #22c55e);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(var(--boodoo-success-rgb, 34, 197, 94), 0.2);
+    }
+
+    .active > & {
+      border-color: rgba(var(--boodoo-info-rgb, 14, 165, 233), 0.25);
+      background-color: var(--boodoo-info, #0ea5e9);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(var(--boodoo-info-rgb, 14, 165, 233), 0.2);
+    }
+  }
+
+  .step-percent {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--boodoo-body-secondary-color, #94a3b8);
+
+    .active > & {
+      color: var(--boodoo-info, #0ea5e9);
+    }
+
+    .completed > & {
+      color: var(--boodoo-success, #22c55e);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Chevron Arrow Flow / Breadcrumb Process Pipeline (Image 5)
+// ---------------------------------------------------------------------
+.process-flow,
+.stepper-chevron {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: var(--boodoo-gray-200, #f1f5f9);
+  border: 1px solid var(--boodoo-border-color, #e2e8f0);
+  box-shadow: var(--boodoo-box-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+
+  .process-step,
+  .step-chevron {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.75rem 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--boodoo-body-color, #334155);
+    background-color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    flex: 1 1 0;
+    text-align: center;
+    white-space: nowrap;
+
+    // Arrow tail clip-path
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 14px) 0%,
+      100% 50%,
+      calc(100% - 14px) 100%,
+      0% 100%,
+      14px 50%
+    );
+    margin-left: -12px;
+
+    &:first-child {
+      margin-left: 0;
+      clip-path: polygon(
+        0% 0%,
+        calc(100% - 14px) 0%,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        0% 100%
+      );
+      border-top-left-radius: 9999px;
+      border-bottom-left-radius: 9999px;
+      padding-left: 1.25rem;
+    }
+
+    &:last-child {
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%,
+        14px 50%
+      );
+      border-top-right-radius: 9999px;
+      border-bottom-right-radius: 9999px;
+      padding-right: 1.25rem;
+    }
+
+    // Status variants
+    &.completed,
+    &.step-success {
+      background-color: var(--boodoo-success, #22c55e);
+      color: #ffffff;
+
+      .step-icon,
+      .process-icon {
+        color: #ffffff;
+      }
+    }
+
+    &.active,
+    &.step-active {
+      background-color: var(--boodoo-primary, #0ea5e9);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &:hover:not(.active):not(.completed):not(.disabled) {
+      background-color: var(--boodoo-gray-100, #f8fafc);
+      color: var(--boodoo-primary);
+    }
+  }
+
+  // Dark theme support
+  [data-boodoo-theme="dark"] & {
+    background-color: #1e293b;
+    border-color: #334155;
+
+    .process-step,
+    .step-chevron {
+      background-color: #0f172a;
+      color: #cbd5e1;
+
+      &.completed,
+      &.step-success {
+        background-color: #16a34a;
+        color: #ffffff;
+      }
+
+      &.active,
+      &.step-active {
+        background-color: #0284c7;
+        color: #ffffff;
+      }
+
+      &:hover:not(.active):not(.completed):not(.disabled) {
+        background-color: #1e293b;
+      }
+    }
+  }
+}
+

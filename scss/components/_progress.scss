@@ -103,3 +103,155 @@
     border-radius: calc(var(--boodoo-progress-border-radius) - 2px);
   }
 }
+
+// =====================================================================
+// Circular Progress & Radial Gauge Indicators (Images 2, 3, 4)
+// Pure CSS conic-gradient and SVG dash-offset gauges
+// =====================================================================
+.progress-circle,
+.progress-radial {
+  --circle-size: 7.5rem;
+  --circle-thickness: 8px;
+  --circle-value: 0;
+  --circle-bg: var(--boodoo-gray-200, #e2e8f0);
+  --circle-bar-color: var(--boodoo-primary, #0ea5e9);
+  --circle-inner-bg: var(--boodoo-card-bg, #ffffff);
+
+  position: relative;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--circle-bar-color) calc(var(--circle-value) * 1%),
+    var(--circle-bg) 0deg
+  );
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  // Mask / Hole inside doughnut
+  &::before {
+    content: "";
+    position: absolute;
+    inset: var(--circle-thickness);
+    background-color: var(--circle-inner-bg);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .progress-circle-body,
+  .progress-radial-value {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+
+    .progress-number {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--boodoo-body-color, #1e293b);
+    }
+
+    .progress-label {
+      font-size: 0.75rem;
+      color: var(--boodoo-body-secondary-color, #64748b);
+      margin-top: 0.125rem;
+    }
+  }
+
+  // Segmented / Dashed Notch Ring (Image 2 & 4 rightmost)
+  &.progress-segmented {
+    -webkit-mask-image: radial-gradient(transparent calc(50% - var(--circle-thickness)), #000 calc(50% - var(--circle-thickness))),
+      repeating-conic-gradient(from 0deg, #000 0deg 12deg, transparent 12deg 18deg);
+    mask-image: radial-gradient(transparent calc(50% - var(--circle-thickness)), #000 calc(50% - var(--circle-thickness))),
+      repeating-conic-gradient(from 0deg, #000 0deg 12deg, transparent 12deg 18deg);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  // Solid Pie Chart (Image 4 center-right)
+  &.progress-pie {
+    &::before {
+      display: none;
+    }
+  }
+
+  // Semi-Circular Gauge / Speedometer (Images 2 & 3)
+  &.progress-semicircle,
+  &.progress-gauge {
+    height: calc(var(--circle-size) * 0.5);
+    border-radius: var(--circle-size) var(--circle-size) 0 0;
+    background: conic-gradient(
+      from 270deg,
+      var(--circle-bar-color) calc(var(--circle-value) * 0.5%),
+      var(--circle-bg) calc(var(--circle-value) * 0.5%) 180deg,
+      transparent 180deg
+    );
+    align-items: flex-end;
+    overflow: hidden;
+
+    &::before {
+      inset: var(--circle-thickness) var(--circle-thickness) 0 var(--circle-thickness);
+      border-radius: calc(var(--circle-size) - var(--circle-thickness)) calc(var(--circle-size) - var(--circle-thickness)) 0 0;
+    }
+
+    .progress-circle-body {
+      margin-bottom: 0.25rem;
+    }
+
+    // Indicator Dot on gauge needle arc (Image 3)
+    .progress-gauge-indicator {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--circle-bar-color);
+      box-shadow: 0 0 0 2px #fff;
+      top: 0;
+      left: 50%;
+      transform-origin: 0 calc(var(--circle-size) * 0.5);
+      transform: rotate(calc(-90deg + (var(--circle-value) * 1.8deg)));
+      z-index: 3;
+    }
+  }
+
+  // Size variations
+  &.progress-circle-sm {
+    --circle-size: 5rem;
+    --circle-thickness: 6px;
+
+    .progress-number { font-size: 1rem; }
+  }
+
+  &.progress-circle-lg {
+    --circle-size: 10rem;
+    --circle-thickness: 12px;
+
+    .progress-number { font-size: 1.75rem; }
+  }
+
+  // Theme Colors
+  @each $name, $color in $boodoo-theme-colors {
+    &.progress-circle-#{$name} {
+      --circle-bar-color: #{$color};
+    }
+  }
+
+  &.progress-circle-danger {
+    --circle-bar-color: var(--boodoo-danger, #ef4444);
+    --circle-inner-bg: rgba(var(--boodoo-danger-rgb, 239, 68, 68), 0.05);
+  }
+
+  &.progress-circle-teal {
+    --circle-bar-color: #0d9488;
+  }
+}
