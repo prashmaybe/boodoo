@@ -1,0 +1,114 @@
+// =====================================================================
+// BOODOO BANNER
+// Full-width floating/sticky notification banners with action controls.
+// =====================================================================
+
+@use "sass:map";
+
+.banner,
+.announcement-bar {
+  --boodoo-banner-bg: var(--boodoo-tertiary-bg, #f8f9fa);
+  --boodoo-banner-color: var(--boodoo-body-color, #212529);
+  --boodoo-banner-border: var(--boodoo-border-color, #dee2e6);
+  --boodoo-banner-padding-y: 0.75rem;
+  --boodoo-banner-padding-x: 1rem;
+
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: var(--boodoo-banner-padding-y) var(--boodoo-banner-padding-x);
+  background-color: var(--boodoo-banner-bg);
+  color: var(--boodoo-banner-color);
+  border-bottom: 1px solid var(--boodoo-banner-border);
+  font-size: 0.9375rem;
+  z-index: var(--boodoo-zindex-sticky, 1020);
+  transition: opacity 0.25s ease, transform 0.25s ease, margin 0.25s ease;
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1;
+    min-width: 0;
+
+    .banner-icon {
+      flex-shrink: 0;
+      font-size: 1.25em;
+      line-height: 1;
+    }
+
+    .banner-text {
+      flex-grow: 1;
+      margin: 0;
+    }
+  }
+
+  .banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .btn-close {
+    padding: 0.5rem;
+    margin-left: 0.25rem;
+  }
+
+  // Sticky variants
+  &.banner-sticky-top {
+    position: sticky;
+    top: 0;
+  }
+
+  &.banner-sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid var(--boodoo-banner-border);
+    border-bottom: none;
+  }
+
+  // Floating variant with rounded corners and elevated shadow
+  &.banner-floating {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(100% - 2rem), 960px);
+    border-radius: var(--boodoo-border-radius-lg, 0.5rem);
+    border: 1px solid var(--boodoo-banner-border);
+    box-shadow: var(--boodoo-box-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+    z-index: var(--boodoo-zindex-modal, 1055);
+
+    &.banner-floating-bottom {
+      top: auto;
+      bottom: 1rem;
+    }
+  }
+
+  // Dismissing animation state
+  &.banner-dismissed {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    margin-top: calc(-1 * var(--boodoo-banner-height, 3.5rem));
+  }
+}
+
+// Theme Color Variants
+@each $name, $color in $boodoo-theme-colors {
+  .banner-#{$name} {
+    --boodoo-banner-color: #{map.get($boodoo-text-emphasis-map, $name)};
+    --boodoo-banner-bg: #{map.get($boodoo-bg-subtle-map, $name)};
+    --boodoo-banner-border: #{map.get($boodoo-border-subtle-map, $name)};
+
+    .banner-link {
+      color: map.get($boodoo-text-emphasis-map, $name);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+}

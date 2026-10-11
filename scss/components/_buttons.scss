@@ -340,4 +340,85 @@ button[role="button"],
     font-size: 0.9375rem;
     font-weight: var(--boodoo-font-weight-medium, 500);
   }
-}
+}
+
+// ---------------------------------------------------------------------
+// Copy-to-Clipboard Button Component (.btn-copy / .btn-clipboard)
+// ---------------------------------------------------------------------
+.btn-copy,
+.btn-clipboard {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: var(--boodoo-font-weight-medium, 500);
+  line-height: 1.4;
+  color: var(--boodoo-body-secondary-color, #6c757d);
+  background-color: var(--boodoo-body-bg, #fff);
+  border: 1px solid var(--boodoo-border-color, #dee2e6);
+  border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    color: var(--boodoo-body-color);
+    background-color: var(--boodoo-tertiary-bg, #f8f9fa);
+    border-color: var(--boodoo-border-color-dark, #c0c4c8);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .copy-icon,
+  .btn-copy-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875em;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Copied Success State
+  &.copied {
+    color: var(--boodoo-success, #198754) !important;
+    border-color: rgba(var(--boodoo-success-rgb, 25, 135, 84), 0.5) !important;
+    background-color: rgba(var(--boodoo-success-rgb, 25, 135, 84), 0.08) !important;
+    animation: btn-copy-pulse 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .copy-icon,
+    .btn-copy-icon {
+      transform: scale(1.2);
+    }
+  }
+
+  // Positioned absolute inside code blocks or card headers
+  &.btn-copy-absolute {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 5;
+    background-color: rgba(var(--boodoo-body-bg-rgb, 255, 255, 255), 0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  // Icon-only square variant
+  &.btn-copy-icon-only {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+}
+
+@keyframes btn-copy-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+

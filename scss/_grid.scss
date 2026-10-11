@@ -180,3 +180,71 @@
     grid-template-rows: repeat($i, minmax(0, 1fr));
   }
 }
+
+// Subgrid helpers
+.grid-cols-subgrid {
+  grid-template-columns: subgrid;
+}
+
+.grid-rows-subgrid {
+  grid-template-rows: subgrid;
+}
+
+// =====================================================================
+// Masonry Layout Primitives
+// High-performance CSS column and grid-based masonry systems.
+// =====================================================================
+.masonry {
+  column-gap: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}));
+  column-count: 1;
+
+  > * {
+    break-inside: avoid;
+    margin-bottom: calc(var(--boodoo-gutter-y, #{$boodoo-gutter-y}));
+    width: 100%;
+    display: inline-block;
+  }
+
+  // Native CSS Grid Masonry where supported (Firefox behind flag / upcoming CSS spec)
+  @supports (grid-template-rows: masonry) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-rows: masonry;
+    gap: calc(var(--boodoo-gutter-x, #{$boodoo-gutter-x}));
+
+    > * {
+      margin-bottom: 0;
+      display: block;
+    }
+  }
+}
+
+// Masonry column count variations
+@for $i from 2 through 6 {
+  .masonry-#{$i} {
+    column-count: #{$i};
+
+    @supports (grid-template-rows: masonry) {
+      grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+    }
+  }
+}
+
+// Responsive masonry columns
+@each $breakpoint in map.keys($boodoo-grid-breakpoints) {
+  $infix: if($breakpoint == "xs", "", "-#{$breakpoint}");
+
+  @if $breakpoint != "xs" {
+    @include media-breakpoint-up($breakpoint, $boodoo-grid-breakpoints) {
+      @for $i from 1 through 6 {
+        .masonry#{$infix}-#{$i} {
+          column-count: #{$i};
+
+          @supports (grid-template-rows: masonry) {
+            grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+          }
+        }
+      }
+    }
+  }
+}

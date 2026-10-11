@@ -4,7 +4,8 @@
 // <input type="time">, and date range fields.
 // =====================================================================
 
-// Enhanced Color Picker Field
+// Enhanced Color Picker Field (.form-color-picker & .color-picker)
+.color-picker,
 .form-color-picker {
   display: inline-flex;
   align-items: center;
@@ -21,7 +22,8 @@
     box-shadow: 0 0 0 3px rgba(var(--boodoo-primary-rgb), 0.25);
   }
 
-  .form-control-color {
+  .form-control-color,
+  .color-picker-input {
     width: 2rem;
     height: 2rem;
     padding: 0;
@@ -46,7 +48,8 @@
     }
   }
 
-  .form-color-value {
+  .form-color-value,
+  .color-picker-value {
     font-family: var(--boodoo-font-monospace);
     font-size: 0.875rem;
     font-weight: 500;
@@ -54,7 +57,107 @@
     letter-spacing: 0.05em;
     user-select: all;
   }
+
+  .color-picker-preview {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--boodoo-border-radius-sm);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
 }
+
+// Swatch Group & Palette Palette Selector
+.swatch-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+  border: 2px solid transparent;
+  cursor: pointer;
+  background-clip: padding-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &.active,
+  &:focus-visible,
+  &[aria-checked="true"] {
+    outline: none;
+    border-color: var(--boodoo-body-color);
+    box-shadow: 0 0 0 2px var(--boodoo-body-bg, #fff), 0 0 0 4px var(--boodoo-primary);
+    transform: scale(1.1);
+    z-index: 2;
+
+    &::after {
+      content: "✓";
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: bold;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &.swatch-circle {
+    border-radius: 50%;
+  }
+
+  &.swatch-sm {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &.swatch-lg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+// Color Picker Card / Popover Container
+.color-picker-popover {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1rem;
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  border: 1px solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius-lg);
+  box-shadow: var(--boodoo-box-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.1));
+  width: 16rem;
+
+  .color-picker-slider {
+    width: 100%;
+    margin: 0;
+  }
+
+  .color-picker-alpha {
+    height: 0.75rem;
+    border-radius: 9999px;
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+      linear-gradient(-45deg, #ccc 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #ccc 75%),
+      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  }
+}
+
 
 // Polished Date & Time input wrappers
 .form-picker-group {

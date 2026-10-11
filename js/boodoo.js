@@ -34,11 +34,18 @@ import { Combobox } from './combobox.js';
 import { Splitter } from './splitter.js';
 import { SpeedDial } from './speed-dial.js';
 import { Lightbox } from './lightbox.js';
+import { Banner } from './banner.js';
+import { Dropzone } from './dropzone.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
   const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'alert') instance.hide();
+});
+
+enableDismissTrigger(Banner, (instance, event, toggler) => {
+  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  if (type === 'banner') instance.hide();
 });
 
 enableDismissTrigger(BottomSheet, (instance, event, toggler) => {
@@ -83,6 +90,8 @@ const boodoo = {
   Splitter,
   SpeedDial,
   Lightbox,
+  Banner,
+  Dropzone,
   registerCustomElements,
 };
 
@@ -194,6 +203,7 @@ if (typeof document === 'undefined') {
 export default boodoo;
 export {
   Alert,
+  Banner,
   BottomSheet,
   Button,
   ChipInput,
@@ -203,6 +213,7 @@ export {
   ContextMenu,
   DataTable,
   Dropdown,
+  Dropzone,
   Lightbox,
   Modal,
   Offcanvas,
