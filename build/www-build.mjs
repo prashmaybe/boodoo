@@ -108,27 +108,42 @@ fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
 copy(path.join(root, 'site', 'examples'), 'examples');           // Examples & templates
-copy(path.join(root, 'site', 'archives'), 'archives');           // Downloadable zip archives
+// Copy archives metadata (JSON manifest only, exclude local zip files)
+const archivesOutDir = path.join(www, 'archives');
+fs.mkdirSync(archivesOutDir, { recursive: true });
+const manifestFile = path.join(root, 'site', 'archives', 'archives.json');
+if (fs.existsSync(manifestFile)) {
+  fs.copyFileSync(manifestFile, path.join(archivesOutDir, 'archives.json'));
+}
 copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
 copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
 
-// Also inject dynamic version and archive CDN URLs into examples index page
-const examplesIndexFile = path.join(www, 'examples', 'index.html');
-if (fs.existsSync(examplesIndexFile)) {
-  let exContent = fs.readFileSync(examplesIndexFile, 'utf8');
-  exContent = exContent
-    .replaceAll('{{version}}', pkg.version)
-    .replaceAll('{{cssMinKb}}', sizes.cssMin)
-    .replaceAll('{{jsMinKb}}', sizes.jsMin)
-    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
-    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
-    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
-    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
-    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
-    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
-  fs.writeFileSync(examplesIndexFile, exContent, 'utf8');
+// Also inject dynamic version and archive CDN URLs into all example HTML pages
+function injectArchiveUrlsInDir(dirPath) {
+  if (!fs.existsSync(dirPath)) return;
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      injectArchiveUrlsInDir(full);
+    } else if (entry.name.endsWith('.html')) {
+      let content = fs.readFileSync(full, 'utf8');
+      content = content
+        .replaceAll('{{version}}', pkg.version)
+        .replaceAll('{{cssMinKb}}', sizes.cssMin)
+        .replaceAll('{{jsMinKb}}', sizes.jsMin)
+        .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
+        .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
+        .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
+        .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
+        .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
+        .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
+        .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
+      fs.writeFileSync(full, content, 'utf8');
+    }
+  }
 }
+injectArchiveUrlsInDir(path.join(www, 'examples'));
 copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');

@@ -21,3 +21,11 @@ Text nodes must never be placed directly inside layout/container block elements 
 2. **Container Purity**: Block containers such as `<div>` and `<section>` are strictly structural layouts (flex, grid, rows, cols, containers) and should only contain other elements, never raw/naked text strings.
 3. **Consistency Across Framework**: All templates, HTML fragments, documentation examples, and component generation scripts across the project (`site/src/**/*.html`, `site/**/*.html`, `js/src/**/*.js`) must strictly follow this rule.
 
+## Zip Archive CDN Hosting & Exclusion Rule
+No `.zip` binary archive files may be committed or retained inside the project codebase or repository:
+
+1. **Repository Exclusion**: All `.zip` files are strictly excluded from source control via `.gitignore` (`*.zip`, `site/archives/*.zip`, `www/archives/*.zip`). No zip binary must ever be added to git.
+2. **CDN Delivery**: All downloadable zip archives (framework bundles, starter kits, example bundles) must be referenced exclusively via CDN URLs or dynamic template variables (`{{archiveLatestZip}}`, `{{archiveFrameworkZip}}`, `{{archiveExamplesZip}}`, `{{archiveStarterReact}}`, `{{archiveStarterVue}}`, `{{archiveStarterNext}}`, `{{archiveStarterHtml}}`). Hardcoded local zip links are strictly prohibited.
+3. **Post-Creation CDN Upload**: When new zip archives are generated via `build/zip-build.mjs`, they must be uploaded to the CDN / release host (e.g., GitHub Releases / jsDelivr / CDN storage) post-creation. Code and templates must consume them via their CDN URLs recorded in `archives.json` / CDN endpoints, keeping the repository lean and binary-free.
+
+
