@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.0.9';
+const BOODOO_VERSION = '1.1.0';
 
 function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -37,15 +37,15 @@ async function main() {
   }
 
   console.log('\nSelect a template:');
-  console.log('  1) HTML5 + Sass Starter (Vanilla, Fast & Clean)');
-  console.log('  2) Vite + Vanilla (Modern dev server & HMR)');
-  console.log('  3) Next.js / React (App Router + Boodoo CSS)');
-  console.log('  4) Electron Desktop App (Cross-Platform Native UI)');
-  console.log('  5) Angular Starter (Standalone Components + Boodoo)');
-  console.log('  6) Cordova & PhoneGap Hybrid Mobile App');
-  console.log('  7) Meteor.js Full-Stack App');
-  console.log('  8) Photon Desktop UI (Classic macOS / Electron Pane layout)');
-  console.log('  9) React Native Web (Cross-Platform Web & Mobile)');
+  console.log('  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, Vanilla JS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, Node.js, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TypeScript ~5.4.2, RxJS ~7.8.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, Blaze ReactiveVar, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
   
   const choice = await prompt('Choose template [1-9]', '1');
 

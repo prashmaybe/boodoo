@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-10-11
+
+### Added
+- **create-boodoo Tech Stack & Version Indicators**:
+  - Enhanced `create-boodoo` CLI (`bin/create-boodoo.mjs`) template selection prompt with explicit technology stack versions across all 9 scaffolds:
+    1. **HTML5 + Sass Starter**: HTML5, Sass ^1.77.0, Boodoo v1.1.0
+    2. **Vite + Vanilla**: Vite ^5.0.0, Vanilla JS, Boodoo v1.1.0
+    3. **Next.js / React**: Next.js ^14.2.0, React ^18.3.0, Boodoo v1.1.0
+    4. **Electron Desktop App**: Electron ^32.0.0, Node.js, Boodoo v1.1.0
+    5. **Angular Starter**: Angular ^18.0.0, TypeScript ~5.4.2, RxJS ~7.8.0, Boodoo v1.1.0
+    6. **Cordova & PhoneGap Mobile**: Cordova Hybrid, Mobile WebView, Boodoo v1.1.0
+    7. **Meteor.js Full-Stack App**: Meteor.js ^2.0.0, Blaze ReactiveVar, Boodoo v1.1.0
+    8. **Photon Desktop UI**: Electron ^32.0.0, Photon UI CSS, Boodoo v1.1.0
+    9. **React Native Web**: React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v1.1.0
+
+---
+
 ## [1.0.9] - 2026-10-06
 
 ### Added
