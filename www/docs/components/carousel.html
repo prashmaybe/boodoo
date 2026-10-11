@@ -446,8 +446,9 @@
         var isCssOnly = /^\s*(\.|#|@|:root|--)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
-        var cdnCss = 'https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/dist/css/boodoo.min.css';
-        var cdnJs = 'https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/dist/js/boodoo.min.js';
+        // Official high-speed CDN URLs hosted for boodoo CSS and JS
+        var cdnCss = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnJs = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-4741e069.js';
 
         var htmlPayload = '';
         var cssPayload = '';
@@ -455,12 +456,35 @@
 
         if (isCssOnly) {
           cssPayload = rawCode;
-          htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <!-- Apply your CSS here -->\n  </div>\n</div>';
+          htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <p class="mb-0"><span>Apply your CSS classes or styles here</span></p>\n  </div>\n</div>';
         } else if (isJsOnly) {
           jsPayload = rawCode;
-          htmlPayload = '<div class="container py-4">\n  <!-- Interactive JS Demo -->\n</div>';
+          // Check if there is an associated interactive example right before the code block
+          var prevEx = container.previousElementSibling;
+          while (prevEx && !prevEx.classList.contains('bd-example') && !/^H[1-6]$/i.test(prevEx.tagName)) {
+            prevEx = prevEx.previousElementSibling;
+          }
+          if (prevEx && prevEx.classList.contains('bd-example')) {
+            htmlPayload = '<div class="container py-4">\n' + prevEx.innerHTML.trim() + '\n</div>';
+          } else {
+            htmlPayload = '<div class="container py-4">\n  <p class="text-muted"><span>Interactive JS demo &mdash; check developer console for logs.</span></p>\n</div>';
+          }
         } else {
-          htmlPayload = '<div class="container py-4">\n' + rawCode + '\n</div>';
+          // If code snippet references an element by ID (e.g. data-boodoo-target="#exampleModal")
+          // that exists on the current page outside this snippet, include it so the interactive component renders properly.
+          var extraHtml = '';
+          var idMatches = rawCode.match(/(?:data-boodoo-target|data-target|href)=["']#([a-zA-Z0-9_-]+)["']/g) || [];
+          idMatches.forEach(function (match) {
+            var targetId = match.replace(/.*#([a-zA-Z0-9_-]+).*/, '$1');
+            if (targetId && !rawCode.includes('id="' + targetId + '"') && !rawCode.includes("id='" + targetId + "'")) {
+              var targetEl = document.getElementById(targetId);
+              if (targetEl && !container.contains(targetEl)) {
+                extraHtml += '\n\n<!-- Associated target element -->' + '\n' + targetEl.outerHTML;
+              }
+            }
+          });
+
+          htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
         }
 
         var penData = {
