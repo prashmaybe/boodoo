@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-10-11
 
 ### Added
+- **Motion & Animation Utilities (`scss/_animations.scss`)**:
+  - Expanded keyframe animation utilities including `.anim-pulse`, `.anim-bounce`, `.anim-ping`, `.anim-spin`, `.anim-fade-in`, `.anim-slide-up`, and transition speed helpers (`.anim-fast`, `.anim-slow`).
+  - Added dedicated interactive documentation page (`docs/motion/animations.html`) showcasing animated preview cards, replay controls, duration modifiers, easing functions, and code examples.
+- **Announcement Banner Component (`scss/components/_banner.scss`, `js/src/banner.js`)**:
+  - New `.banner` component supporting dismissible headers/footers, fixed positioning (`.banner-fixed-top`, `.banner-fixed-bottom`), full color palettes, actions, and auto-dismiss JavaScript integration.
+  - Published comprehensive Banner documentation page (`docs/components/banner.html`).
+- **Enhanced Dropzone & File Pickers (`js/src/dropzone.js`, `scss/components/_dropzone.scss`)**:
+  - Drag-and-drop file upload component with visual feedback, progress indicators, preview thumbnail generation, and multi-file validation.
+- **Dynamic Asset Sizing & Remote Archive Architecture**:
+  - Replaced hardcoded package and archive download sizes across documentation with dynamic template injection variables.
+  - Migrated zip release distribution assets to CDN endpoints (`cdn.jsdelivr.net`) keeping the core repository lightweight.
 - **create-boodoo Tech Stack & Version Indicators**:
   - Enhanced `create-boodoo` CLI (`bin/create-boodoo.mjs`) template selection prompt with explicit technology stack versions across all 9 scaffolds:
     1. **HTML5 + Sass Starter**: HTML5, Sass ^1.77.0, Boodoo v1.1.0
@@ -21,6 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     7. **Meteor.js Full-Stack App**: Meteor.js ^2.0.0, Blaze ReactiveVar, Boodoo v1.1.0
     8. **Photon Desktop UI**: Electron ^32.0.0, Photon UI CSS, Boodoo v1.1.0
     9. **React Native Web**: React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v1.1.0
+
+### Fixed & Improved
+- **Code & Template Sanitization**:
+  - Audited inline styling and text wrapping across all documentation snippets and component layouts, ensuring strict adherence to semantic typography and framework standards.
+- **Documentation & Navigation Consistency**:
+  - Refined site navigation indexes, sitemap generation, and cross-framework comparison pages.
 
 ---
 
