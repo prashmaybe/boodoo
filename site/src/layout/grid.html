@@ -178,3 +178,40 @@ order: 1
   }
 }</code></pre>
 </div>
+
+<h2 id="masonry">Masonry Layout Engine</h2>
+<p>Create fluid multi-column Pinterest-style card cascades using <code>.masonry</code> without heavy JavaScript:</p>
+
+<div class="bd-example p-3 bg-light rounded">
+  <div class="masonry masonry-3">
+    <div class="p-3 mb-3 bg-white border rounded shadow-sm">
+      <h6 class="mb-1"><span>Card Item 1</span></h6>
+      <p class="small text-muted mb-0"><span>Short content block fitting dynamically.</span></p>
+    </div>
+    <div class="p-4 mb-3 bg-white border rounded shadow-sm">
+      <h6 class="mb-1"><span>Card Item 2</span></h6>
+      <p class="small text-muted mb-0"><span>Taller content block that spans longer height, seamlessly packing adjacent column space.</span></p>
+    </div>
+    <div class="p-3 mb-3 bg-white border rounded shadow-sm">
+      <h6 class="mb-1"><span>Card Item 3</span></h6>
+      <p class="small text-muted mb-0"><span>Compact dashboard summary widget.</span></p>
+    </div>
+    <div class="p-4 mb-3 bg-white border rounded shadow-sm">
+      <h6 class="mb-1"><span>Card Item 4</span></h6>
+      <p class="small text-muted mb-0"><span>Medium-height gallery tile preview with automatic column balancing.</span></p>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- 3-Column Masonry Cascade with automatic responsive fallbacks --&gt;
+&lt;div class="masonry masonry-3"&gt;
+  &lt;div class="card p-3"&gt;...&lt;/div&gt;
+  &lt;div class="card p-4"&gt;...&lt;/div&gt;
+  &lt;div class="card p-3"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Responsive Masonry (e.g., 1 col mobile, 2 tablet, 4 desktop) --&gt;
+&lt;div class="masonry masonry-sm-2 masonry-lg-4"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+</div>

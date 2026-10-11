@@ -1,0 +1,71 @@
+<!--
+title: Banners & Announcement Bars
+description: Sticky and floating notification banner components for top-level announcements.
+section: components
+order: 4
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>Banners display prominent, viewport-wide announcement notices at the top or bottom of a page, complete with action links and dismissal controls.</span></p>
+</section>
+
+<section class="docs-section">
+  <h2><span>Sticky Top Announcement Bar</span></h2>
+  <p><span>Full-width top bar using <code>.banner</code> and <code>.banner-primary</code>:</span></p>
+
+  <div class="bd-example p-0 border rounded overflow-hidden">
+    <div class="banner banner-primary" data-boodoo-banner>
+      <div class="banner-content">
+        <span class="banner-icon"><span>🚀</span></span>
+        <p class="banner-text mb-0"><span>boodoo v1.1.0 is now live! Check out new masonry layouts, radial gauges, and dropzones.</span></p>
+      </div>
+      <div class="banner-actions">
+        <a href="#whats-new" class="banner-link"><span>Learn more</span></a>
+        <button type="button" class="btn-close" data-boodoo-dismiss="banner" aria-label="Dismiss banner"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="banner banner-primary banner-sticky-top" data-boodoo-banner&gt;
+  &lt;div class="banner-content"&gt;
+    &lt;span class="banner-icon"&gt;&lt;span&gt;🚀&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="banner-text mb-0"&gt;&lt;span&gt;boodoo v1.1.0 is now live!&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="banner-actions"&gt;
+    &lt;a href="#" class="banner-link"&gt;&lt;span&gt;Learn more&lt;/span&gt;&lt;/a&gt;
+    &lt;button type="button" class="btn-close" data-boodoo-dismiss="banner" aria-label="Close"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Floating Announcement Pill</span></h2>
+  <p><span>Elevated floating capsule banner using <code>.banner-floating</code>:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-light position-relative">
+    <div class="banner banner-success banner-floating position-static w-100" data-boodoo-banner>
+      <div class="banner-content">
+        <span class="banner-icon"><span>🎉</span></span>
+        <p class="banner-text mb-0"><span>System upgrade completed successfully.</span></p>
+      </div>
+      <div class="banner-actions">
+        <button type="button" class="btn-close" data-boodoo-dismiss="banner" aria-label="Dismiss banner"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="banner banner-success banner-floating" data-boodoo-banner&gt;
+  &lt;div class="banner-content"&gt;
+    &lt;span class="banner-icon"&gt;&lt;span&gt;🎉&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="banner-text mb-0"&gt;&lt;span&gt;System upgrade completed successfully.&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="banner-actions"&gt;
+    &lt;button type="button" class="btn-close" data-boodoo-dismiss="banner" aria-label="Dismiss"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>

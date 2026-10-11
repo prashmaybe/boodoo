@@ -184,3 +184,186 @@ order: 25
 &lt;/button&gt;</code></pre>
   </div>
 </section>
+
+<section class="docs-section">
+  <h2><span>Progress Stepper with Percentage Markers</span></h2>
+  <p><span>Conveys completion metrics at every stage with <code>.stepper-progress</code> and <code>.step-percent</code>:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <ul class="stepper stepper-progress mb-0">
+      <li class="step-item completed">
+        <div class="step-circle"><span>✓</span></div>
+        <div class="step-percent"><span>0%</span></div>
+      </li>
+      <li class="step-item active">
+        <div class="step-circle"><span>2</span></div>
+        <div class="step-percent"><span>25%</span></div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>3</span></div>
+        <div class="step-percent"><span>50%</span></div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>4</span></div>
+        <div class="step-percent"><span>75%</span></div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>5</span></div>
+        <div class="step-percent"><span>100%</span></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;ul class="stepper stepper-progress"&gt;
+  &lt;li class="step-item completed"&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="step-percent"&gt;&lt;span&gt;0%&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="step-item active"&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;2&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="step-percent"&gt;&lt;span&gt;25%&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="step-item"&gt;
+    &lt;div class="step-circle"&gt;&lt;span&gt;3&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="step-percent"&gt;&lt;span&gt;50%&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Chevron Arrow Process Pipeline</span></h2>
+  <p><span>Interlocking arrow sequence for lead stages, CRM lifecycles, and deal tracking using <code>.process-flow</code>:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-dark">
+    <div class="process-flow">
+      <div class="process-step completed">
+        <span class="process-icon"><span>✓</span></span>
+      </div>
+      <div class="process-step">
+        <span>Unqualified</span>
+      </div>
+      <div class="process-step">
+        <span>Closed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="process-flow"&gt;
+  &lt;div class="process-step completed"&gt;
+    &lt;span class="process-icon"&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="process-step"&gt;
+    &lt;span&gt;Unqualified&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="process-step"&gt;
+    &lt;span&gt;Closed&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Illustrated Icon Timeline</span></h2>
+  <p><span>Multi-tier milestone flow with top artwork/icons, center timeline bullets, and descriptive labels using <code>.stepper-icons</code>:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-light">
+    <ul class="stepper-icons mb-0">
+      <li class="step-item completed">
+        <span class="step-illustration"><span>👻</span></span>
+        <span class="step-bullet"></span>
+        <span class="step-name"><span>Ghost</span></span>
+      </li>
+      <li class="step-item completed">
+        <span class="step-illustration"><span>🐱</span></span>
+        <span class="step-bullet"></span>
+        <span class="step-name"><span>Cat</span></span>
+      </li>
+      <li class="step-item active">
+        <span class="step-illustration"><span>🕷️</span></span>
+        <span class="step-bullet"></span>
+        <span class="step-name"><span>Spider</span></span>
+      </li>
+      <li class="step-item">
+        <span class="step-illustration"><span>💀</span></span>
+        <span class="step-bullet"></span>
+        <span class="step-name"><span>Skull</span></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;ul class="stepper-icons"&gt;
+  &lt;li class="step-item completed"&gt;
+    &lt;span class="step-illustration"&gt;&lt;span&gt;👻&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="step-bullet"&gt;&lt;/span&gt;
+    &lt;span class="step-name"&gt;&lt;span&gt;Ghost&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="step-item active"&gt;
+    &lt;span class="step-illustration"&gt;&lt;span&gt;🕷️&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="step-bullet"&gt;&lt;/span&gt;
+    &lt;span class="step-name"&gt;&lt;span&gt;Spider&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Minimal Stepper Nodes &amp; Progress Step Cards</span></h2>
+  <p><span>Clean bullet milestones and modular wizard cards for streamlined checkout panels:</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card-progress-step">
+          <span class="card-step-badge"><span>01</span></span>
+          <div class="card-step-body">
+            <div class="card-step-header">
+              <h6 class="card-step-title"><span>100% Completed</span></h6>
+            </div>
+            <div class="progress progress-sm">
+              <div class="progress-bar bg-success w-100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-progress-step">
+          <span class="card-step-badge"><span>02</span></span>
+          <div class="card-step-body">
+            <ul class="stepper-minimal mb-0">
+              <li class="step-node completed">
+                <span class="node-dot"><span>✓</span></span>
+                <span class="node-label"><span>Cart</span></span>
+              </li>
+              <li class="step-node active">
+                <span class="node-dot"></span>
+                <span class="node-label"><span>Pay</span></span>
+              </li>
+              <li class="step-node">
+                <span class="node-dot"></span>
+                <span class="node-label"><span>Done</span></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;ul class="stepper-minimal"&gt;
+  &lt;li class="step-node completed"&gt;
+    &lt;span class="node-dot"&gt;&lt;span&gt;✓&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="node-label"&gt;&lt;span&gt;Cart&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="step-node active"&gt;
+    &lt;span class="node-dot"&gt;&lt;/span&gt;
+    &lt;span class="node-label"&gt;&lt;span&gt;Pay&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+  </div>
+</section>
+

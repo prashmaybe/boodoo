@@ -62,6 +62,7 @@
       { "route": "components/alerts", "title": "Alerts" },
       { "route": "components/avatar", "title": "Avatar" },
       { "route": "components/badge", "title": "Badge" },
+      { "route": "components/banner", "title": "Banners" },
       { "route": "components/bottom-sheet", "title": "Bottom Sheet" },
       { "route": "components/breadcrumb", "title": "Breadcrumb" },
       { "route": "components/buttons", "title": "Buttons" },

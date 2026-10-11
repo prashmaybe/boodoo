@@ -157,6 +157,7 @@
 <li><a href="../components/alerts.html">Alerts</a></li>
 <li><a href="../components/avatar.html">Avatar</a></li>
 <li><a href="../components/badge.html">Badge</a></li>
+<li><a href="../components/banner.html">Banners</a></li>
 <li><a href="../components/bottom-sheet.html">Bottom Sheet</a></li>
 <li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
 <li><a href="../components/buttons.html" class="active">Buttons</a></li>
@@ -464,6 +465,28 @@
   &lt;span&gt;✨&lt;/span&gt;
   &lt;span&gt;Compose&lt;/span&gt;
 &lt;/button&gt;</code></pre>
+<h2 id="copy-clipboard">Copy-to-Clipboard Buttons</h2>
+<p>Easily wire one-click copy functionality using <code>.btn-copy</code> and the <code>data-boodoo-copy</code> attribute:</p>
+<div class="bd-example d-flex align-items-center gap-3">
+  <button type="button" class="btn-copy" data-boodoo-copy="npm install boodoo">
+    <span class="copy-icon"><span>📋</span></span>
+    <span>Copy command</span>
+  </button>
+  <button type="button" class="btn-copy btn-copy-icon-only" data-boodoo-copy="https://boodoo.dihadiwala.com" aria-label="Copy URL">
+    <span class="copy-icon"><span>📋</span></span>
+  </button>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Copy button with text feedback --&gt;
+&lt;button type="button" class="btn-copy" data-boodoo-copy="npm install boodoo"&gt;
+  &lt;span class="copy-icon"&gt;&lt;span&gt;📋&lt;/span&gt;&lt;/span&gt;
+  &lt;span&gt;Copy command&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Square icon-only copy button --&gt;
+&lt;button type="button" class="btn-copy btn-copy-icon-only" data-boodoo-copy="https://boodoo.dihadiwala.com" aria-label="Copy URL"&gt;
+  &lt;span class="copy-icon"&gt;&lt;span&gt;📋&lt;/span&gt;&lt;/span&gt;
+&lt;/button&gt;</code></pre>
 </div>
 
 <h2 id="dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</h2>
@@ -513,6 +536,7 @@
 <li class="toc-2"><a href="#material-ripple">Material ripple</a></li>
 <li class="toc-2"><a href="#split-buttons">Split buttons</a></li>
 <li class="toc-2"><a href="#floating-action-buttons">Floating Action Buttons (FAB)</a></li>
+<li class="toc-2"><a href="#copy-clipboard">Copy-to-Clipboard Buttons</a></li>
 <li class="toc-2"><a href="#dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</a></li></ul>
     </div>
 </aside>

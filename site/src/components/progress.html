@@ -130,3 +130,182 @@ const bar = document.querySelector('.progress-bar');
 bar.classList.add('w-75');
 bar.setAttribute('aria-valuenow', '75');</code></pre>
 </div>
+
+<h2 id="circular-progress">Circular Progress &amp; Radial Gauges</h2>
+<p>Pure CSS circular indicators and speedometer gauges driven by <code>conic-gradient</code> and the <code>--circle-value</code> CSS variable.</p>
+
+<div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-light rounded">
+  <div class="progress-circle progress-circle-primary" style="--circle-value: 66;">
+    <div class="progress-circle-body">
+      <span class="progress-number">66%</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-circle-danger" style="--circle-value: 45;">
+    <div class="progress-circle-body">
+      <span class="progress-number">45%</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-circle-teal" style="--circle-value: 75;">
+    <div class="progress-circle-body">
+      <span class="progress-number">75%</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-segmented progress-circle-danger" style="--circle-value: 40;">
+    <div class="progress-circle-body">
+      <span class="progress-number">40%</span>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Circular Doughnut Meter --&gt;
+&lt;div class="progress-circle progress-circle-primary" style="--circle-value: 66;"&gt;
+  &lt;div class="progress-circle-body"&gt;
+    &lt;span class="progress-number"&gt;66%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Segmented Radial Notch Ring --&gt;
+&lt;div class="progress-circle progress-segmented progress-circle-danger" style="--circle-value: 40;"&gt;
+  &lt;div class="progress-circle-body"&gt;
+    &lt;span class="progress-number"&gt;40%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="semicircular-gauges">Semi-Circular Speedometer &amp; Battery Gauges</h2>
+<p>Arched 180° speedometers and capacity gauges with needle indicator points using <code>.progress-semicircle</code>.</p>
+
+<div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-white border rounded">
+  <div class="progress-circle progress-semicircle progress-circle-info" style="--circle-value: 37;">
+    <div class="progress-gauge-indicator"></div>
+    <div class="progress-circle-body">
+      <span class="progress-number">37.05%</span>
+      <span class="progress-label">Battery</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-semicircle progress-circle-teal" style="--circle-value: 82;">
+    <div class="progress-gauge-indicator"></div>
+    <div class="progress-circle-body">
+      <span class="progress-number">82.05%</span>
+      <span class="progress-label">Usage</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-semicircle progress-circle-danger" style="--circle-value: 73;">
+    <div class="progress-gauge-indicator"></div>
+    <div class="progress-circle-body">
+      <span class="progress-number">73%</span>
+      <span class="progress-label">CPU Load</span>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Semicircular Gauge with Indicator Dot --&gt;
+&lt;div class="progress-circle progress-semicircle progress-circle-info" style="--circle-value: 37;"&gt;
+  &lt;div class="progress-gauge-indicator"&gt;&lt;/div&gt;
+  &lt;div class="progress-circle-body"&gt;
+    &lt;span class="progress-number"&gt;37.05%&lt;/span&gt;
+    &lt;span class="progress-label"&gt;Battery&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="inset-contrast-gauges">Inset Ring Gauges &amp; Contrasting Dials</h2>
+<p>High-contrast dark-slate core dials with vibrant peripheral progress arcs using <code>.progress-circle-inset</code>.</p>
+
+<div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-light rounded">
+  <div class="progress-circle progress-circle-inset progress-circle-inset-blue" style="--circle-value: 30;">
+    <div class="progress-circle-body">
+      <span class="progress-number">30%</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-circle-inset progress-circle-inset-purple" style="--circle-value: 60;">
+    <div class="progress-circle-body">
+      <span class="progress-number">60%</span>
+    </div>
+  </div>
+
+  <div class="progress-circle progress-circle-inset progress-circle-inset-orange" style="--circle-value: 90;">
+    <div class="progress-circle-body">
+      <span class="progress-number">90%</span>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="progress-circle progress-circle-inset progress-circle-inset-purple" style="--circle-value: 60;"&gt;
+  &lt;div class="progress-circle-body"&gt;
+    &lt;span class="progress-number"&gt;60%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="segmented-bar">Segmented Milestone Progress Bar</h2>
+<p>Multi-capsule progress tracks for onboarding workflows and multi-step forms.</p>
+
+<div class="bd-example p-4 bg-white border rounded">
+  <div class="d-flex flex-column gap-3">
+    <div class="progress-segmented-bar">
+      <div class="progress-segment completed"></div>
+      <div class="progress-segment completed"></div>
+      <div class="progress-segment active"></div>
+      <div class="progress-segment"></div>
+    </div>
+    <div class="progress-segmented-bar progress-segmented-lg">
+      <div class="progress-segment completed"></div>
+      <div class="progress-segment active"></div>
+      <div class="progress-segment"></div>
+      <div class="progress-segment"></div>
+      <div class="progress-segment"></div>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="progress-segmented-bar"&gt;
+  &lt;div class="progress-segment completed"&gt;&lt;/div&gt;
+  &lt;div class="progress-segment completed"&gt;&lt;/div&gt;
+  &lt;div class="progress-segment active"&gt;&lt;/div&gt;
+  &lt;div class="progress-segment"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="task-ring">Circular Task Ring with Milestone Checkpoints</h2>
+<p>Comprehensive dark-mode process dial with perimeter checkpoint nodes.</p>
+
+<div class="bd-example p-4 rounded text-center" style="background-color: #1e293b;">
+  <div class="progress-circle-tasks" style="--task-ring-color: #14b8a6;">
+    <div class="task-node completed" style="top: 0%; left: 50%;">✓</div>
+    <div class="task-node completed" style="top: 25%; left: 93%;">✓</div>
+    <div class="task-node completed" style="top: 75%; left: 93%;">✓</div>
+    <div class="task-node completed" style="top: 100%; left: 50%;">✓</div>
+    <div class="task-node in-progress" style="top: 75%; left: 7%;">…</div>
+    <div class="task-node" style="top: 25%; left: 7%;"></div>
+
+    <div class="task-ring-center">
+      <h4 class="task-ring-title mb-1">Task 5</h4>
+      <span class="task-ring-status">66% Completed</span>
+      <div class="task-ring-dots mt-1">
+        <span class="active"></span>
+        <span class="active"></span>
+        <span class="active"></span>
+        <span class="active"></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="progress-circle-tasks" style="--task-ring-color: #14b8a6;"&gt;
+  &lt;div class="task-node completed" style="top: 0%; left: 50%;"&gt;✓&lt;/div&gt;
+  &lt;div class="task-node in-progress" style="top: 75%; left: 7%;"&gt;…&lt;/div&gt;
+
+  &lt;div class="task-ring-center"&gt;
+    &lt;h4 class="task-ring-title"&gt;Task 5&lt;/h4&gt;
+    &lt;span class="task-ring-status"&gt;66% Completed&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>

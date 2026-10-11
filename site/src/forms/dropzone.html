@@ -11,20 +11,38 @@ order: 9
 </section>
 
 <section class="docs-section">
-  <h2><span>Example</span></h2>
-  <div class="bd-example p-4 border rounded">
-    <div class="dropzone">
+  <h2><span>Drag &amp; Drop with Live File List</span></h2>
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="dropzone" data-boodoo-dropzone data-boodoo-target-list="#exampleFileList" data-boodoo-max-size="10">
       <div class="dropzone-icon"><span>📁</span></div>
       <h6 class="dropzone-title"><span>Drag &amp; drop files here, or browse</span></h6>
       <p class="dropzone-subtitle mb-0"><span>Supports JPG, PNG, PDF up to 10MB</span></p>
     </div>
+
+    <!-- Container for dynamic preview items -->
+    <ul class="file-list" id="exampleFileList">
+      <li class="file-item">
+        <span class="file-item-icon"><span>📄</span></span>
+        <div class="file-item-info">
+          <p class="file-item-name m-0"><span>project-proposal.pdf</span></p>
+          <span class="file-item-meta"><span>2.4 MB</span></span>
+        </div>
+        <div class="file-item-actions">
+          <button type="button" class="btn-close" aria-label="Remove file"></button>
+        </div>
+      </li>
+    </ul>
   </div>
 
   <div class="highlight">
-    <pre><code class="language-html">&lt;div class="dropzone"&gt;
+    <pre><code class="language-html">&lt;!-- Dropzone container --&gt;
+&lt;div class="dropzone" data-boodoo-dropzone data-boodoo-target-list="#myFileList" data-boodoo-max-size="10"&gt;
   &lt;div class="dropzone-icon"&gt;&lt;span&gt;📁&lt;/span&gt;&lt;/div&gt;
   &lt;h6 class="dropzone-title"&gt;&lt;span&gt;Drag &amp;amp; drop files here, or browse&lt;/span&gt;&lt;/h6&gt;
   &lt;p class="dropzone-subtitle mb-0"&gt;&lt;span&gt;Supports JPG, PNG, PDF up to 10MB&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+
+&lt;!-- Uploaded items list --&gt;
+&lt;ul class="file-list" id="myFileList"&gt;&lt;/ul&gt;</code></pre>
   </div>
 </section>
