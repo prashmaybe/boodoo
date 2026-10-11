@@ -189,9 +189,9 @@
 
 // Respect reduced motion
 @media (prefers-reduced-motion: reduce) {
-  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]),
-  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::before,
-  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"])::after {
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]):not(.demo-anim-badge):not(.demo-anim-box):not([data-demo-anim]),
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]):not(.demo-anim-badge):not(.demo-anim-box):not([data-demo-anim])::before,
+  *:not(.spinner-border):not(.spinner-grow):not(.btn-loading):not([class*="spinner-"]):not(.demo-anim-badge):not(.demo-anim-box):not([data-demo-anim])::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

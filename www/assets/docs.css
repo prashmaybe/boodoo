@@ -2239,4 +2239,31 @@ svg {
   align-items: center;
   gap: 0.25rem;
 }
+
+/* Interactive demo badges on Motion / Animations page */
+.demo-anim-badge {
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.demo-anim-badge:hover {
+  border-color: var(--boodoo-primary) !important;
+  color: var(--boodoo-primary) !important;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.2);
+}
+
+.demo-anim-badge.is-animating {
+  border-color: var(--boodoo-primary) !important;
+  color: var(--boodoo-primary) !important;
+}
+
 
