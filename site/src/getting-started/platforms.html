@@ -1,11 +1,11 @@
 <!--
 title: Platforms & Frameworks
-description: Integrate boodoo with Angular, Cordova, PhoneGap, Meteor, Photon, React Native Web, Electron, and more.
+description: Integrate boodoo with Angular, Cordova, PhoneGap, Meteor, Photon, React Native Web, React Native Mobile (iOS & Android), Electron, and more.
 section: getting-started
 order: 15
 -->
 <h1><span>Platforms &amp; Frameworks</span></h1>
-<p class="lead"><span>Boodoo is engineered with zero JavaScript framework lock-in. Whether you are building with Angular, Cordova/PhoneGap, Meteor.js, Photon desktop UI, or React Native Web, Boodoo integrates cleanly into your stack.</span></p>
+<p class="lead"><span>Boodoo is engineered with zero JavaScript framework lock-in. Whether you are building with Angular, Cordova/PhoneGap, Meteor.js, Photon desktop UI, React Native Web, or Native Mobile (iOS &amp; Android), Boodoo integrates cleanly into your stack.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-4">
@@ -191,12 +191,75 @@ export default function App() {
 
 <hr class="my-4">
 
-<h2 id="cli-scaffold"><span>6. Instant Scaffolding via create-boodoo</span></h2>
+<h2 id="react-native-mobile"><span>6. React Native Mobile (iOS &amp; Android)</span></h2>
+<p><span>Boodoo delivers native mobile components and design tokens for pure iOS and Android applications with zero DOM and zero heavy runtime dependencies:</span></p>
+
+<h3><span>A. Native Boodoo Component Suite</span></h3>
+<p><span>Import clean, drop-in components with auto-theming, tactile touch feedback, and responsive typography:</span></p>
+<div class="highlight">
+  <pre><code class="language-jsx">import React from 'react';
+import { BoodooProvider, Card, Button, Badge, Text } from 'boodoo/react-native';
+
+export default function App() {
+  return (
+    &lt;BoodooProvider theme="light"&gt;
+      &lt;Card variant="elevated"&gt;
+        &lt;Card.Title title="Native Mobile App" subtitle="iOS &amp; Android" /&gt;
+        &lt;Card.Content&gt;
+          &lt;Badge variant="primary"&gt;Zero Bloat&lt;/Badge&gt;
+          &lt;Text variant="lead"&gt;Clean design system without Material 3 clutter.&lt;/Text&gt;
+        &lt;/Card.Content&gt;
+        &lt;Card.Actions&gt;
+          &lt;Button variant="primary" size="sm" onPress={() =&gt; console.log('Tapped!')}&gt;
+            Get Started
+          &lt;/Button&gt;
+        &lt;/Card.Actions&gt;
+      &lt;/Card&gt;
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<h3><span>B. React Native Paper Theme Preset (Drop-in Adapter)</span></h3>
+<p><span>Already using React Native Paper? Upgrade your app's aesthetics without refactoring existing components using Boodoo's Material 3 theme preset:</span></p>
+<div class="highlight">
+  <pre><code class="language-jsx">import { Provider as PaperProvider } from 'react-native-paper';
+import { boodooPaperLightTheme, boodooPaperDarkTheme } from 'boodoo/paper';
+
+export default function App() {
+  return (
+    &lt;PaperProvider theme={boodooPaperLightTheme}&gt;
+      &lt;YourAppNavigation /&gt;
+    &lt;/PaperProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<h3><span>C. Universal Design Tokens</span></h3>
+<p><span>Need raw tokens for custom <code>StyleSheet.create</code> layouts? Import token dictionaries directly:</span></p>
+<div class="highlight">
+  <pre><code class="language-javascript">import { colors, spacing, radii, typography, shadows } from 'boodoo/tokens';
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: colors.primary,
+    padding: spacing[4],
+    borderRadius: radii.lg,
+    ...shadows.md,
+  },
+});</code></pre>
+</div>
+
+<p><span>For a detailed architectural comparison, read the <a href="../about/vs-react-native-paper.html"><span>boodoo vs React Native Paper guide</span></a>.</span></p>
+
+<hr class="my-4">
+
+<h2 id="cli-scaffold"><span>7. Instant Scaffolding via create-boodoo</span></h2>
 <p><span>Run the official CLI scaffolder to generate a configured starter for any platform:</span></p>
 <div class="highlight">
   <pre><code>npx create-boodoo my-new-project</code></pre>
 </div>
-<p><span>Choose from 9 curated templates:</span></p>
+<p><span>Choose from 10 curated templates:</span></p>
 <ol>
   <li><strong>HTML5 + Sass Starter</strong> (Vanilla, Fast &amp; Clean)</li>
   <li><strong>Vite + Vanilla</strong> (Modern dev server &amp; HMR)</li>
@@ -207,4 +270,5 @@ export default function App() {
   <li><strong>Meteor.js</strong> (Full-Stack Reactive App)</li>
   <li><strong>Photon Desktop UI</strong> (Classic macOS / Electron Pane layout)</li>
   <li><strong>React Native Web</strong> (Universal Web &amp; Mobile)</li>
+  <li><strong>React Native Mobile (Expo)</strong> (Expo SDK 51, iOS &amp; Android, Boodoo Native UI)</li>
 </ol>

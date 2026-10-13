@@ -16,7 +16,8 @@
       { "route": "getting-started/theme", "title": "Dark Mode & Themes" },
       { "route": "getting-started/custom-elements", "title": "Custom Elements" },
       { "route": "getting-started/electron", "title": "Electron Desktop Apps" },
-      { "route": "getting-started/platforms", "title": "Platforms & Frameworks" }
+      { "route": "getting-started/platforms", "title": "Platforms & Frameworks" },
+      { "route": "getting-started/react-native-examples", "title": "React Native & Mobile" }
     ]
   },
   {
@@ -153,9 +154,15 @@
       { "route": "about/design-principles", "title": "Design principles" },
       { "route": "about/brand", "title": "Brand assets" },
       { "route": "about/vs-bootstrap", "title": "boodoo vs Bootstrap" },
+      { "route": "about/migrate-from-bootstrap", "title": "Migrate from Bootstrap" },
       { "route": "about/vs-foundation", "title": "boodoo vs Foundation" },
+      { "route": "about/migrate-from-foundation", "title": "Migrate from Foundation" },
       { "route": "about/vs-tailwind", "title": "boodoo vs Tailwind" },
+      { "route": "about/migrate-from-tailwind", "title": "Migrate from Tailwind" },
       { "route": "about/vs-material", "title": "boodoo vs Material" },
+      { "route": "about/migrate-from-material", "title": "Migrate from Material" },
+      { "route": "about/vs-react-native-paper", "title": "boodoo vs React Native Paper" },
+      { "route": "about/migrate-from-react-native-paper", "title": "Migrate from React Native Paper" },
       { "route": "about/changelog", "title": "Changelog" },
       { "route": "about/license", "title": "License" }
     ]

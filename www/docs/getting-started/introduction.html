@@ -120,6 +120,7 @@
 <li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
 <li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
 <li><a href="../getting-started/platforms.html">Platforms & Frameworks</a></li>
+<li><a href="../getting-started/react-native-examples.html">React Native & Mobile</a></li>
 </ul>
 <h6 class="docs-nav-section">Layout</h6>
 <ul class="docs-nav-list">
@@ -238,9 +239,15 @@
 <li><a href="../about/design-principles.html">Design principles</a></li>
 <li><a href="../about/brand.html">Brand assets</a></li>
 <li><a href="../about/vs-bootstrap.html">boodoo vs Bootstrap</a></li>
+<li><a href="../about/migrate-from-bootstrap.html">Migrate from Bootstrap</a></li>
 <li><a href="../about/vs-foundation.html">boodoo vs Foundation</a></li>
+<li><a href="../about/migrate-from-foundation.html">Migrate from Foundation</a></li>
 <li><a href="../about/vs-tailwind.html">boodoo vs Tailwind</a></li>
+<li><a href="../about/migrate-from-tailwind.html">Migrate from Tailwind</a></li>
 <li><a href="../about/vs-material.html">boodoo vs Material</a></li>
+<li><a href="../about/migrate-from-material.html">Migrate from Material</a></li>
+<li><a href="../about/vs-react-native-paper.html">boodoo vs React Native Paper</a></li>
+<li><a href="../about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a></li>
 <li><a href="../about/changelog.html">Changelog</a></li>
 <li><a href="../about/license.html">License</a></li>
 </ul>
@@ -263,7 +270,7 @@
   open-source
   front-end toolkit built with Sass and vanilla JavaScript.</p>
 <div class="mb-3"><a class="text-decoration-none" href="../about/changelog.html" title="View changelog"><span
-      class="version-chip">v1.1.0 · Changelog</span></a></div>
+      class="version-chip">v1.1.1 · Changelog</span></a></div>
 
 <p>boodoo blends the best of the modern CSS ecosystems into one cohesive, dependency-free toolkit:</p>
 
@@ -324,7 +331,12 @@
 <p>Then import the Sass source:</p>
 <div class="highlight">
   <pre><code>@import "node_modules/boodoo/scss/boodoo";</code></pre>
+<h2 id="react-native"><span>React Native &amp; Mobile</span></h2>
+<p><span>Building for iOS and Android? Boodoo includes a pure native component suite with zero DOM overhead:</span></p>
+<div class="highlight">
+  <pre><code class="language-jsx">import { BoodooProvider, Card, Button, Badge } from 'boodoo/react-native';</code></pre>
 </div>
+<p><span>Existing React Native Paper projects can also inherit Boodoo's modern styling with the zero-overhead MD3 theme preset from <code>boodoo/paper</code>. Read the <a href="react-native-examples.html"><span>React Native &amp; Mobile Examples guide</span></a> to learn more.</span></p>
 
 <h2 id="license">License</h2>
 <p>Code and documentation copyright 2026 <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
@@ -351,6 +363,7 @@
       <ul><li class="toc-2"><a href="#quick-start">Quick start</a></li>
 <li class="toc-2"><a href="#js">JavaScript components</a></li>
 <li class="toc-2"><a href="#npm">Install via npm</a></li>
+<li class="toc-2"><a href="#react-native">React Native &amp; Mobile</a></li>
 <li class="toc-2"><a href="#license">License</a></li></ul>
     </div>
 </aside>

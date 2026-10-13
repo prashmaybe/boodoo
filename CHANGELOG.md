@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-10-13
+
+### Added
+- **React Native Mobile Component Suite (`react-native/index.js`, subpath `boodoo/react-native`)**:
+  - Pure native mobile components for iOS & Android without DOM dependencies: `BoodooProvider`, `Button`, `Card`, `Badge`, `Text`, `TextInput`, and `useTheme`.
+  - Built with pure React Native `StyleSheet` primitives — 0 external packages, zero native linking, Expo Go compatible.
+- **React Native Paper Theme Adapter (`react-native/paper.js`, subpath `boodoo/paper`)**:
+  - Drop-in MD3 Light and Dark theme presets (`boodooPaperLightTheme`, `boodooPaperDarkTheme`) enabling existing React Native Paper projects to immediately inherit Boodoo's brand aesthetics without migrating components.
+- **Universal Design Tokens (`tokens/index.js`, `tokens/tokens.json`, subpath `boodoo/tokens`)**:
+  - Exported complete token system (colors, spacing, radii, typography, elevation shadows) as modular JavaScript and JSON constants for cross-platform sharing across Web, Desktop, and Mobile.
+- **Complete Framework Migration Suite**:
+  - Added dedicated, step-by-step migration guides and class mappings for all major alternatives:
+    1. [Migrate from Bootstrap](site/src/about/migrate-from-bootstrap.html)
+    2. [Migrate from Tailwind CSS](site/src/about/migrate-from-tailwind.html)
+    3. [Migrate from Foundation](site/src/about/migrate-from-foundation.html)
+    4. [Migrate from Material Design](site/src/about/migrate-from-material.html)
+    5. [Migrate from React Native Paper](site/src/about/migrate-from-react-native-paper.html)
+  - Added bidirectional cross-linking between all "vs" comparison pages and migration guides.
+- **Expo Mobile Starter Scaffold (`bin/create-boodoo.mjs`)**:
+  - Added template 10 (`React Native Mobile (Expo SDK 51 + Boodoo Native UI)`) to `npx create-boodoo`.
+- **boodoo vs React Native Paper Guide (`site/src/about/vs-react-native-paper.html`)**:
+  - Published comprehensive architectural comparison, performance breakdown, and zero-risk two-phase migration roadmap.
+- **React Native Mobile Starter Zip Archive**:
+  - Generates standalone `boodoo-react-native-starter.zip` accessible via CDN template variables and downloadable from documentation and starter guides.
+
+---
+
 ## [1.1.0] - 2026-10-11
 
 ### Added

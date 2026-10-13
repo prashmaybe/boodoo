@@ -24,8 +24,8 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 - **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
 - **Dual-Engine "Class-First + Data-Attribute" styling** — Clean semantic markup without class bloat (`[data-boodoo-variant]`, `[data-size]`, zero-build variable utilities)
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or React required
-- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron, Angular, Cordova/PhoneGap, Meteor, Photon, React Native Web) and official VS Code IntelliSense snippet suite
-- **Cross-Platform, Mobile & Desktop Ready** — First-class support for Angular, Cordova, PhoneGap, Meteor, Photon Desktop UI, React Native Web, Electron, and Tauri with draggable titlebars (`-webkit-app-region: drag`), Fluent/Mica, Aqua, Adwaita, and Photon tokens
+- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron, Angular, Cordova/PhoneGap, Meteor, Photon, React Native Web, React Native Mobile Expo) and official VS Code IntelliSense snippet suite
+- **Cross-Platform, Mobile & Desktop Ready** — First-class support for React Native Mobile (iOS & Android via `boodoo/react-native`), React Native Paper theming adapter (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), React Native Web, Cordova, PhoneGap, Meteor, Angular, Photon Desktop UI, Electron, and Tauri with draggable titlebars (`-webkit-app-region: drag`)
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Rich components** — 38+ accessible components including Combobox / Autocomplete, Splitter (Docking Panes), Speed Dial (FAB Menu), Lightbox Media Viewer, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens or with the Interactive Theme Builder
@@ -81,8 +81,18 @@ npm install boodoo
 ```
 
 ```js
+// Web & Modern Bundlers
 import boodoo from 'boodoo/dist/js/boodoo.esm.js';      // ESM, tree-shakeable
 import 'boodoo/dist/css/boodoo.min.css';
+
+// React Native Mobile (iOS & Android)
+import { Button, Card, BoodooProvider } from 'boodoo/react-native';
+
+// Universal Design Tokens
+import { colors, spacing, radii } from 'boodoo/tokens';
+
+// React Native Paper MD3 Theme Adapter
+import { boodooPaperLightTheme, boodooPaperDarkTheme } from 'boodoo/paper';
 ```
 
 ### Sass source
@@ -125,10 +135,18 @@ boodoo/
 │   └── js/
 │       ├── boodoo.js                          # UMD bundle
 │       └── boodoo.esm.js                      # ES module (SSR-safe)
-├── scss/                                    # Sass source
-├── less/                                    # Less build
-├── js/src/                                  # Vanilla JS modules
-└── site/                                    # Documentation (static)
+├── react-native/                              # Pure React Native mobile components & theme provider
+│   ├── index.js                               # boodoo/react-native (Button, Card, Badge, TextInput, Text)
+│   ├── paper.js                               # boodoo/paper (React Native Paper MD3 theme presets)
+│   └── theme.js                               # BoodooProvider & useTheme hook
+├── tokens/                                    # Universal design tokens
+│   ├── index.js                               # boodoo/tokens JS constants
+│   └── tokens.json                            # boodoo/tokens.json cross-platform tokens
+├── bin/                                       # Scaffolding CLI (npx create-boodoo)
+├── scss/                                      # Sass source
+├── less/                                      # Less build
+├── js/src/                                    # Vanilla JS modules
+└── site/                                      # Documentation (static)
 ```
 
 ---

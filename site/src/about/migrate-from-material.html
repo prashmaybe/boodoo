@@ -1,0 +1,83 @@
+<!--
+title: Migrate from Material Design to boodoo
+description: Migrate from Google Material Design, MUI, or MDC to boodoo. Keep elevation, ripples, and floating labels without heavy React runtimes.
+section: about
+order: 13
+-->
+<h1><span>Migrate from Material Design to boodoo</span></h1>
+<p class="lead"><span>Love Google Material Design's tactile surfaces, elevation shadows, floating labels, and touch ripples, but tired of heavy React runtimes (MUI / Emotion) and rigid Google-centric aesthetics? Learn how to migrate to <strong>boodoo</strong> for pure CSS and vanilla JS.</span></p>
+
+<div class="card p-3 border-0 bg-light shadow-sm rounded-4 mb-4">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <h5 class="mb-1"><span>Compare features first?</span></h5>
+      <p class="text-muted small mb-0"><span>Examine our side-by-side technical breakdown between boodoo and Material Design.</span></p>
+    </div>
+    <a href="vs-material.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs Material →</span></a>
+  </div>
+</div>
+
+<h2 id="why-migrate"><span>Why Migrate from Material Design to boodoo?</span></h2>
+<ul>
+  <li><span><strong>Eliminate 200+ KB of React Overhead:</strong> Libraries like MUI pull in Emotion or styled-components, adding huge runtime JS taxes. Boodoo runs on pure static CSS and lightweight vanilla JS.</span></li>
+  <li><span><strong>Freedom from the "Pure Google" Look:</strong> Boodoo incorporates Material's depth and touch feedback while allowing sleek, custom SaaS brand aesthetics.</span></li>
+  <li><span><strong>Native HTML5 Dialog &amp; Popover:</strong> Modern dialogs and drawer sheets without complex portal lifecycles.</span></li>
+</ul>
+
+<h2 id="feature-mapping"><span>Material Design to boodoo Mapping</span></h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Material Feature / MUI Component</span></th>
+      <th><span>boodoo Equivalent</span></th>
+      <th><span>Implementation</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;Paper elevation={3}&gt;</code></td>
+      <td><code>.elevation-3</code> or <code>.shadow-sm</code></td>
+      <td><span>Pure CSS box-shadow tokens</span></td>
+    </tr>
+    <tr>
+      <td><code>TouchRipple</code></td>
+      <td><code>.ripple</code> or <code>.btn-ripple</code></td>
+      <td><span>Zero-dependency CSS/JS click ripple</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;TextField label="Name" variant="outlined"&gt;</code></td>
+      <td><code>.form-floating</code></td>
+      <td><span>Standard CSS floating form label</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;Fab color="primary"&gt;</code></td>
+      <td><code>.btn.btn-primary.btn-fab</code></td>
+      <td><span>Floating action button with elevation</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;Snackbar open={true}&gt;</code></td>
+      <td><code>.toast</code> / <code>window.boodoo.toast()</code></td>
+      <td><span>Native stackable toast notifications</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;SpeedDial&gt;</code></td>
+      <td><code>.speed-dial</code></td>
+      <td><span>Expandable floating action menu</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="syntax-comparison"><span>Code Migration Example</span></h2>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Before: MUI (React runtime required) --&gt;
+&lt;Card elevation={2} sx={{ p: 3, borderRadius: 2 }}&gt;
+  &lt;Typography variant="h5"&gt;Profile Card&lt;/Typography&gt;
+  &lt;Button variant="contained" color="primary"&gt;Save&lt;/Button&gt;
+&lt;/Card&gt;
+
+&lt;!-- After: boodoo (Clean HTML/CSS, zero dependencies) --&gt;
+&lt;div class="card p-3 elevation-2 rounded-3"&gt;
+  &lt;h3 class="h5 fw-bold mb-2"&gt;Profile Card&lt;/h3&gt;
+  &lt;button type="button" class="btn btn-primary btn-ripple ripple"&gt;Save&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>

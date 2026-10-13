@@ -1,0 +1,85 @@
+<!--
+title: Migrate from Foundation to boodoo
+description: Step-by-step guide to modernize Foundation 6 websites to boodoo with modern flexbox/grid layout and zero-dependency ES modules.
+section: about
+order: 12
+-->
+<h1><span>Migrate from Foundation to boodoo</span></h1>
+<p class="lead"><span><strong>Foundation</strong> by ZURB pioneered responsive web design and typographic grids, but its active maintenance has slowed down and it relies on legacy Sass setups and jQuery. Learn how to migrate Foundation projects to <strong>boodoo</strong> for modern CSS, active maintenance, and vanilla JavaScript.</span></p>
+
+<div class="card p-3 border-0 bg-light shadow-sm rounded-4 mb-4">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <h5 class="mb-1"><span>Compare features first?</span></h5>
+      <p class="text-muted small mb-0"><span>Review our feature and architectural breakdown between boodoo and Foundation.</span></p>
+    </div>
+    <a href="vs-foundation.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs Foundation →</span></a>
+  </div>
+</div>
+
+<h2 id="why-migrate"><span>Key Benefits of Upgrading from Foundation</span></h2>
+<ul>
+  <li><span><strong>Drop jQuery:</strong> Eliminate the 85+ KB jQuery runtime dependency. Boodoo's components run on modern vanilla ES modules.</span></li>
+  <li><span><strong>Native Flexbox &amp; 2D CSS Grid:</strong> Replace legacy float-based and older flex grids with modern <code>.container</code>, <code>.row</code>, <code>.col-*</code>, and <code>.grid</code> layouts.</span></li>
+  <li><span><strong>Modern Color &amp; Dark Mode Tokens:</strong> Built-in CSS custom properties and automatic <code>prefers-color-scheme</code> dark theme switching.</span></li>
+</ul>
+
+<h2 id="class-mapping"><span>Foundation to boodoo Class Mapping</span></h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Foundation 6 Class</span></th>
+      <th><span>boodoo Equivalent</span></th>
+      <th><span>Description</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.grid-container</code></td>
+      <td><code>.container</code></td>
+      <td><span>Fixed-width responsive layout container</span></td>
+    </tr>
+    <tr>
+      <td><code>.grid-x</code></td>
+      <td><code>.row</code></td>
+      <td><span>Horizontal flexbox container</span></td>
+    </tr>
+    <tr>
+      <td><code>.cell.small-12.medium-6</code></td>
+      <td><code>.col-12.col-md-6</code></td>
+      <td><span>Responsive column spans across breakpoints</span></td>
+    </tr>
+    <tr>
+      <td><code>.button.primary</code></td>
+      <td><code>.btn.btn-primary</code></td>
+      <td><span>Primary action button</span></td>
+    </tr>
+    <tr>
+      <td><code>.callout.primary</code></td>
+      <td><code>.alert.alert-primary</code> / <code>.bd-callout</code></td>
+      <td><span>Callout and notification boxes</span></td>
+    </tr>
+    <tr>
+      <td><code>.badge</code></td>
+      <td><code>.badge</code></td>
+      <td><span>Status and tag badges</span></td>
+    </tr>
+    <tr>
+      <td><code>.reveal</code></td>
+      <td><code>.modal</code></td>
+      <td><span>Dialog modal overlays</span></td>
+    </tr>
+    <tr>
+      <td><code>.top-bar</code></td>
+      <td><code>.navbar</code></td>
+      <td><span>Main navigation header bar</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="javascript-migration"><span>Replacing Foundation JavaScript Plugins</span></h2>
+<p><span>Foundation relied on <code>$(document).foundation();</code>. In boodoo, plugins initialize automatically:</span></p>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Drop in boodoo JS: No jQuery, no init call required --&gt;
+&lt;script src="{{cdnJsRaw}}"&gt;&lt;/script&gt;</code></pre>
+</div>
