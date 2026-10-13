@@ -81,8 +81,18 @@ npm install boodoo
 ```
 
 ```js
+// Web & Modern Bundlers
 import boodoo from 'boodoo/dist/js/boodoo.esm.js';      // ESM, tree-shakeable
 import 'boodoo/dist/css/boodoo.min.css';
+
+// React Native Mobile (iOS & Android)
+import { Button, Card, BoodooProvider } from 'boodoo/react-native';
+
+// Universal Design Tokens
+import { colors, spacing, radii } from 'boodoo/tokens';
+
+// React Native Paper MD3 Theme Adapter
+import { boodooPaperLightTheme, boodooPaperDarkTheme } from 'boodoo/paper';
 ```
 
 ### Sass source
@@ -125,10 +135,18 @@ boodoo/
 │   └── js/
 │       ├── boodoo.js                          # UMD bundle
 │       └── boodoo.esm.js                      # ES module (SSR-safe)
-├── scss/                                    # Sass source
-├── less/                                    # Less build
-├── js/src/                                  # Vanilla JS modules
-└── site/                                    # Documentation (static)
+├── react-native/                              # Pure React Native mobile components & theme provider
+│   ├── index.js                               # boodoo/react-native (Button, Card, Badge, TextInput, Text)
+│   ├── paper.js                               # boodoo/paper (React Native Paper MD3 theme presets)
+│   └── theme.js                               # BoodooProvider & useTheme hook
+├── tokens/                                    # Universal design tokens
+│   ├── index.js                               # boodoo/tokens JS constants
+│   └── tokens.json                            # boodoo/tokens.json cross-platform tokens
+├── bin/                                       # Scaffolding CLI (npx create-boodoo)
+├── scss/                                      # Sass source
+├── less/                                      # Less build
+├── js/src/                                    # Vanilla JS modules
+└── site/                                      # Documentation (static)
 ```
 
 ---
