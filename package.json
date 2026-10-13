@@ -16,12 +16,37 @@
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
   "main": "dist/js/boodoo.js",
-  "module": "dist/js/boodoo.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/js/boodoo.esm.js",
+      "require": "./dist/js/boodoo.js"
+    },
+    "./css": "./dist/css/boodoo.min.css",
+    "./tokens": "./tokens/index.js",
+    "./tokens.json": "./tokens/tokens.json",
+    "./paper": "./react-native/paper.js",
+    "./react-native": "./react-native/index.js",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-native": ">=0.70.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
+  },
   "files": [
     "dist/",
     "scss/",
     "less/",
     "js/",
+    "tokens/",
+    "react-native/",
     "bin/",
     "CHANGELOG.md",
     "LICENSE",

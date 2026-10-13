@@ -46,8 +46,9 @@ async function main() {
   console.log('  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, Blaze ReactiveVar, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
   console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
   console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+  console.log(' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, Boodoo Native v' + BOODOO_VERSION + ')\x1b[0m');
   
-  const choice = await prompt('Choose template [1-9]', '1');
+  const choice = await prompt('Choose template [1-10]', '1');
 
   fs.mkdirSync(targetDir, { recursive: true });
 
@@ -931,6 +932,171 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 `;
     fs.writeFileSync(path.join(targetDir, 'src/main.jsx'), mainJsx);
 
+  } else if (choice === '10') {
+    // React Native Mobile (Expo + Boodoo UI)
+    const pkg = {
+      name: projectName,
+      version: '1.0.0',
+      main: 'expo-router/entry',
+      scripts: {
+        start: 'expo start',
+        android: 'expo start --android',
+        ios: 'expo start --ios',
+        web: 'expo start --web',
+      },
+      dependencies: {
+        expo: '~51.0.0',
+        'expo-status-bar': '~1.12.1',
+        react: '18.2.0',
+        'react-native': '0.74.5',
+        boodoo: `^${BOODOO_VERSION}`,
+      },
+      devDependencies: {
+        '@babel/core': '^7.20.0',
+      },
+      private: true,
+    };
+    fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
+
+    const appJson = {
+      expo: {
+        name: projectName,
+        slug: projectName,
+        version: '1.0.0',
+        orientation: 'portrait',
+        userInterfaceStyle: 'automatic',
+        splash: {
+          backgroundColor: '#0f172a',
+        },
+        ios: {
+          supportsTablet: true,
+        },
+        android: {
+          adaptiveIcon: {
+            backgroundColor: '#0f172a',
+          },
+        },
+      },
+    };
+    fs.writeFileSync(path.join(targetDir, 'app.json'), JSON.stringify(appJson, null, 2));
+
+    const appJs = `import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import {
+  BoodooProvider,
+  Card,
+  Button,
+  Badge,
+  Text,
+  TextInput,
+  useTheme,
+} from 'boodoo/react-native';
+
+function HomeScreen() {
+  const [name, setName] = useState('');
+  const [likes, setLikes] = useState(0);
+  const theme = useTheme();
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.colors.background }]}>
+      <StatusBar style="auto" />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.header}>
+          <Badge variant="soft" style={styles.badge}>
+            boodoo v${BOODOO_VERSION} Native
+          </Badge>
+          <Text variant="h2" style={styles.title}>
+            Mobile Design System
+          </Text>
+          <Text variant="lead" style={styles.subtitle}>
+            Lightweight, native components for iOS & Android without Material Design 3 bloat.
+          </Text>
+        </View>
+
+        <Card variant="elevated" style={styles.card}>
+          <Card.Title
+            title="Interactive Component Demo"
+            subtitle="Drop-in replacement & alternative to RN Paper"
+          />
+          <Card.Content>
+            <TextInput
+              label="Developer Name"
+              placeholder="e.g. Satoshi"
+              value={name}
+              onChangeText={setName}
+            />
+            <View style={styles.badgeRow}>
+              <Badge variant="primary">iOS & Android</Badge>
+              <Badge variant="success">Zero Bloat</Badge>
+              <Badge variant="secondary">Likes: {likes}</Badge>
+            </View>
+          </Card.Content>
+          <Card.Actions>
+            <Button
+              variant="outline"
+              size="sm"
+              onPress={() => setLikes(0)}
+            >
+              Reset
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              onPress={() => setLikes(likes + 1)}
+            >
+              Like App 👍
+            </Button>
+          </Card.Actions>
+        </Card>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+export default function App() {
+  return (
+    <BoodooProvider theme="light">
+      <HomeScreen />
+    </BoodooProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    padding: 20,
+  },
+  header: {
+    marginBottom: 24,
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  badge: {
+    marginBottom: 12,
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  subtitle: {
+    textAlign: 'center',
+  },
+  card: {
+    marginBottom: 16,
+  },
+  badgeRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 8,
+    flexWrap: 'wrap',
+  },
+});
+`;
+    fs.writeFileSync(path.join(targetDir, 'App.js'), appJs);
+
   } else {
     // Vanilla HTML + CDN / NPM Starter
     const pkg = {
@@ -1013,7 +1179,12 @@ Visit [https://boodoo.dihadiwala.com](https://boodoo.dihadiwala.com) for compone
   console.log('Next steps:');
   console.log(`  cd ${projectName}`);
   console.log('  npm install');
-  const startCmd = (choice === '2' || choice === '3' || choice === '9') ? '  npm run dev' : '  npm start';
+  let startCmd = '  npm start';
+  if (choice === '2' || choice === '3' || choice === '9') {
+    startCmd = '  npm run dev';
+  } else if (choice === '10') {
+    startCmd = '  npx expo start';
+  }
   console.log(startCmd);
   console.log('');
 }

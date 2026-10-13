@@ -1,0 +1,110 @@
+/**
+ * Boodoo Theme Presets for React Native Paper (MD3)
+ * Drop-in themes that allow existing React Native Paper applications
+ * to seamlessly adopt Boodoo's modern styling and color palette.
+ */
+
+import { colors } from '../tokens/index.js';
+
+export const boodooPaperLightTheme = {
+  version: 3,
+  isV3: true,
+  dark: false,
+  roundness: 3, // ~12px radius
+  colors: {
+    primary: colors.primary,
+    onPrimary: '#ffffff',
+    primaryContainer: '#ede9fe',
+    onPrimaryContainer: '#3b0764',
+    secondary: colors.secondary,
+    onSecondary: '#ffffff',
+    secondaryContainer: '#cffafe',
+    onSecondaryContainer: '#164e63',
+    tertiary: '#ec4899',
+    onTertiary: '#ffffff',
+    tertiaryContainer: '#fce7f3',
+    onTertiaryContainer: '#831843',
+    error: colors.danger,
+    onError: '#ffffff',
+    errorContainer: '#fee2e2',
+    onErrorContainer: '#7f1d1d',
+    background: colors.light,
+    onBackground: colors.dark,
+    surface: '#ffffff',
+    onSurface: colors.dark,
+    surfaceVariant: '#f1f5f9',
+    onSurfaceVariant: '#475569',
+    outline: '#cbd5e1',
+    outlineVariant: '#e2e8f0',
+    shadow: '#000000',
+    scrim: '#000000',
+    inverseSurface: colors.dark,
+    inverseOnSurface: colors.light,
+    inversePrimary: '#c4b5fd',
+    elevation: {
+      level0: 'transparent',
+      level1: '#ffffff',
+      level2: '#ffffff',
+      level3: '#ffffff',
+      level4: '#ffffff',
+      level5: '#ffffff',
+    },
+    surfaceDisabled: 'rgba(15, 23, 42, 0.12)',
+    onSurfaceDisabled: 'rgba(15, 23, 42, 0.38)',
+    backdrop: 'rgba(15, 23, 42, 0.4)',
+  },
+};
+
+export const boodooPaperDarkTheme = {
+  version: 3,
+  isV3: true,
+  dark: true,
+  roundness: 3,
+  colors: {
+    primary: '#a78bfa',
+    onPrimary: '#2e1065',
+    primaryContainer: '#5b21b6',
+    onPrimaryContainer: '#ede9fe',
+    secondary: '#22d3ee',
+    onSecondary: '#083344',
+    secondaryContainer: '#0e7490',
+    onSecondaryContainer: '#cffafe',
+    tertiary: '#f472b6',
+    onTertiary: '#500724',
+    tertiaryContainer: '#9d174d',
+    onTertiaryContainer: '#fce7f3',
+    error: '#f87171',
+    onError: '#450a0a',
+    errorContainer: '#7f1d1d',
+    onErrorContainer: '#fee2e2',
+    background: colors.dark,
+    onBackground: colors.light,
+    surface: colors.darkSurface,
+    onSurface: colors.light,
+    surfaceVariant: '#334155',
+    onSurfaceVariant: '#94a3b8',
+    outline: '#475569',
+    outlineVariant: '#334155',
+    shadow: '#000000',
+    scrim: '#000000',
+    inverseSurface: colors.light,
+    inverseOnSurface: colors.dark,
+    inversePrimary: colors.primary,
+    elevation: {
+      level0: 'transparent',
+      level1: colors.darkSurface,
+      level2: '#243047',
+      level3: '#293853',
+      level4: '#2c3c59',
+      level5: '#324566',
+    },
+    surfaceDisabled: 'rgba(248, 250, 252, 0.12)',
+    onSurfaceDisabled: 'rgba(248, 250, 252, 0.38)',
+    backdrop: 'rgba(0, 0, 0, 0.6)',
+  },
+};
+
+export default {
+  light: boodooPaperLightTheme,
+  dark: boodooPaperDarkTheme,
+};

@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-10-11
 
 ### Added
+- **React Native Mobile Component Suite (`react-native/index.js`, subpath `boodoo/react-native`)**:
+  - Pure native mobile components for iOS & Android without DOM dependencies: `BoodooProvider`, `Button`, `Card`, `Badge`, `Text`, `TextInput`, and `useTheme`.
+  - Built with pure React Native `StyleSheet` primitives — 0 external packages, zero native linking, Expo Go compatible.
+- **React Native Paper Theme Adapter (`react-native/paper.js`, subpath `boodoo/paper`)**:
+  - Drop-in MD3 Light and Dark theme presets (`boodooPaperLightTheme`, `boodooPaperDarkTheme`) enabling existing React Native Paper projects to immediately inherit Boodoo's brand aesthetics without migrating components.
+- **Universal Design Tokens (`tokens/index.js`, `tokens/tokens.json`, subpath `boodoo/tokens`)**:
+  - Exported complete token system (colors, spacing, radii, typography, elevation shadows) as modular JavaScript and JSON constants for cross-platform sharing across Web, Desktop, and Mobile.
+- **Expo Mobile Starter Scaffold (`bin/create-boodoo.mjs`)**:
+  - Added template 10 (`React Native Mobile (Expo SDK 51 + Boodoo Native UI)`) to `npx create-boodoo`.
+- **boodoo vs React Native Paper Guide (`site/src/about/vs-react-native-paper.html`)**:
+  - Published comprehensive architectural comparison, performance breakdown, and zero-risk two-phase migration roadmap.
 - **Motion & Animation Utilities (`scss/_animations.scss`)**:
   - Expanded keyframe animation utilities including `.anim-pulse`, `.anim-bounce`, `.anim-ping`, `.anim-spin`, `.anim-fade-in`, `.anim-slide-up`, and transition speed helpers (`.anim-fast`, `.anim-slow`).
   - Added dedicated interactive documentation page (`docs/motion/animations.html`) showcasing animated preview cards, replay controls, duration modifiers, easing functions, and code examples.
