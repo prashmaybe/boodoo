@@ -61,6 +61,7 @@
         <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
           <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mobile">React Native</a></li>
           <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
           <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html">Docs</a></li>
           <li class="nav-item"><a class="nav-link" href="examples/index.html">Examples</a></li>
@@ -96,15 +97,14 @@
           <a class="hero-pill-badge text-decoration-none" href="docs/about/changelog.html"
             title="View boodoo changelog">
             <span class="dot"></span>
-            <span>boodoo v{{version}} Stable • Bootstrap + Foundation + Tailwind + Material</span>
+            <span>boodoo v{{version}} • Now Available for Web &amp; React Native Mobile (iOS &amp; Android)</span>
           </a>
         </div>
         <h1 class="mb-3">
           The simplicity of Bootstrap. The flexibility of Tailwind. <span class="text-gradient">boodoo</span>
         </h1>
         <p class="hero-description text-muted">
-          Inspired by the best ideas in modern CSS frameworks. A modular, mobile-first toolkit with pre-styled
-          accessible components, functional utilities, and zero JS framework lock-in.
+          A unified design framework for modern Web &amp; React Native Mobile apps. Built with modular components, universal design tokens, and zero heavy dependencies.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary shadow-sm" href="docs/getting-started/introduction.html">
@@ -391,6 +391,99 @@
       </div>
     </section>
 
+    <!-- React Native & Mobile Section -->
+    <section id="mobile" class="py-5 bg-light position-relative border-top border-bottom">
+      <div class="container py-2">
+        <div class="text-center mb-5">
+          <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2"><span>Cross-Platform Ready</span></span>
+          <h2 class="fw-bold mb-2"><span>Now in React Native &amp; Mobile</span></h2>
+          <p class="text-muted mx-auto" style="max-width: 640px;">
+            <span>Bring Boodoo's clean modern aesthetics to iOS and Android. Zero DOM, pure React Native StyleSheet engine, drop-in React Native Paper theme presets, and universal design tokens.</span>
+          </p>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="d-flex flex-column gap-3">
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-primary text-primary flex-shrink-0"><span>📱</span></div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>Native Mobile Components (`boodoo/react-native`)</span></h3>
+                    <p class="text-muted small mb-0"><span>Drop-in `Button`, `Card`, `Badge`, `Text`, and `TextInput` with auto light/dark theming and touch ripples. 0 external packages, Expo Go ready.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-info text-info flex-shrink-0"><span>🔄</span></div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>React Native Paper Theme Adapter (`boodoo/paper`)</span></h3>
+                    <p class="text-muted small mb-0"><span>Skin your existing React Native Paper app in 2 lines with Boodoo's MD3 Light &amp; Dark theme presets. Zero rewrite needed.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-success text-success flex-shrink-0"><span>🎨</span></div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>Universal Design Tokens (`boodoo/tokens`)</span></h3>
+                    <p class="text-muted small mb-0"><span>Shared brand palettes, spacing units, border radii, typography, and elevation shadows in JS and JSON formats.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap mt-2">
+                <a href="docs/getting-started/react-native-examples.html" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                  <span>Explore Mobile Examples →</span>
+                </a>
+                <a href="docs/about/vs-react-native-paper.html" class="btn btn-outline-secondary rounded-pill px-4">
+                  <span>boodoo vs Paper</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="terminal shadow-lg">
+              <div class="terminal-header">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="terminal-dots">
+                    <span class="terminal-dot terminal-dot-red"></span>
+                    <span class="terminal-dot terminal-dot-yellow"></span>
+                    <span class="terminal-dot terminal-dot-green"></span>
+                  </div>
+                  <span class="small fw-semibold text-muted ms-2"><span>Mobile Screen (Expo / React Native)</span></span>
+                </div>
+              </div>
+              <pre><code><span class="terminal-comment">// Zero-bloat mobile component with Boodoo</span>
+<span class="terminal-prompt">import</span> { BoodooProvider, Card, Button, Badge } <span class="terminal-prompt">from</span> <span class="terminal-success">'boodoo/react-native'</span>;
+
+<span class="terminal-prompt">export default function</span> <span class="text-warning">App</span>() {
+  <span class="terminal-prompt">return</span> (
+    &lt;<span class="text-warning">BoodooProvider</span> theme=<span class="terminal-success">"auto"</span>&gt;
+      &lt;<span class="text-warning">Card</span> variant=<span class="terminal-success">"elevated"</span>&gt;
+        &lt;<span class="text-warning">Card.Title</span> title=<span class="terminal-success">"Boodoo Mobile"</span> /&gt;
+        &lt;<span class="text-warning">Card.Content</span>&gt;
+          &lt;<span class="text-warning">Badge</span> variant=<span class="terminal-success">"success"</span>&gt;iOS &amp; Android&lt;/<span class="text-warning">Badge</span>&gt;
+        &lt;/<span class="text-warning">Card.Content</span>&gt;
+        &lt;<span class="text-warning">Card.Actions</span>&gt;
+          &lt;<span class="text-warning">Button</span> variant=<span class="terminal-success">"primary"</span> size=<span class="terminal-success">"sm"</span>&gt;
+            Get Started
+          &lt;/<span class="text-warning">Button</span>&gt;
+        &lt;/<span class="text-warning">Card.Actions</span>&gt;
+      &lt;/<span class="text-warning">Card</span>&gt;
+    &lt;/<span class="text-warning">BoodooProvider</span>&gt;
+  );
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Installation -->
     <section id="installation" class="py-5 position-relative">
       <div class="container py-2 install-container">
@@ -554,6 +647,8 @@
       </div>
       <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
         <a class="text-muted text-decoration-none" href="docs/getting-started/introduction.html">Documentation</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="docs/getting-started/react-native-examples.html">React Native Mobile</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="examples/index.html">Examples</a>
         <span class="footer-dot">·</span>

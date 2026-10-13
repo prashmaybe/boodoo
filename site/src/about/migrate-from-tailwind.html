@@ -1,0 +1,91 @@
+<!--
+title: Migrate from Tailwind CSS to boodoo
+description: How to migrate from Tailwind CSS to boodoo. Eliminate complex compiler build pipelines and HTML class clutter with clean semantic components and utility classes.
+section: about
+order: 11
+-->
+<h1><span>Migrate from Tailwind CSS to boodoo</span></h1>
+<p class="lead"><span>Tired of huge PostCSS compiler build steps, 40-character class chains in your HTML, or complex Tailwind purging bugs? Learn how to migrate to <strong>boodoo</strong> for clean semantic markup while keeping the power of functional utilities.</span></p>
+
+<div class="card p-3 border-0 bg-light shadow-sm rounded-4 mb-4">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <h5 class="mb-1"><span>Want to compare philosophy &amp; bundle sizes first?</span></h5>
+      <p class="text-muted small mb-0"><span>Read our direct head-to-head comparison between boodoo and Tailwind CSS.</span></p>
+    </div>
+    <a href="vs-tailwind.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs Tailwind →</span></a>
+  </div>
+</div>
+
+<h2 id="why-migrate"><span>Why Migrate from Tailwind to boodoo?</span></h2>
+<ul>
+  <li><span><strong>No Build Tool Lock-In:</strong> Works instantly with vanilla HTML, PHP, Rails, or Next.js without PostCSS, npm watcher pipelines, or complex configuration files.</span></li>
+  <li><span><strong>Clean Readable Markup:</strong> Replace 15 repetitive atomic classes on cards and buttons with semantic primitives like <code>.card</code>, <code>.btn</code>, and <code>.badge</code>.</span></li>
+  <li><span><strong>Zero-Config JS Included:</strong> Built-in modals, tooltips, collapse, command palette, and drawer menus without needing Headless UI or external React dependencies.</span></li>
+</ul>
+
+<h2 id="syntax-comparison"><span>Side-by-Side Markup Comparison</span></h2>
+
+<h3><span>1. Card Component</span></h3>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Before: Tailwind CSS (Long class chain) --&gt;
+&lt;div class="bg-white rounded-xl shadow-md p-6 max-w-sm border border-slate-200"&gt;
+  &lt;h3 class="text-xl font-bold text-slate-900 mb-2"&gt;Account Details&lt;/h3&gt;
+  &lt;p class="text-slate-500 text-sm"&gt;Manage your team settings and preferences.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- After: boodoo (Clean semantic hierarchy) --&gt;
+&lt;div class="card p-4 shadow-sm" style="max-width: 380px;"&gt;
+  &lt;h3 class="h5 fw-bold mb-2"&gt;Account Details&lt;/h3&gt;
+  &lt;p class="text-muted small mb-0"&gt;Manage your team settings and preferences.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h3><span>2. Buttons &amp; Interactive Controls</span></h3>
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Before: Tailwind CSS --&gt;
+&lt;button class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-full transition-colors"&gt;
+  Submit
+&lt;/button&gt;
+
+&lt;!-- After: boodoo --&gt;
+&lt;button class="btn btn-primary rounded-pill"&gt;
+  Submit
+&lt;/button&gt;</code></pre>
+</div>
+
+<h2 id="utility-mapping"><span>Tailwind to boodoo Utility Mapping</span></h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Tailwind Utility</span></th>
+      <th><span>boodoo Equivalent</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>flex</code>, <code>flex-col</code>, <code>items-center</code>, <code>justify-between</code></td>
+      <td><code>.d-flex</code>, <code>.flex-column</code>, <code>.align-items-center</code>, <code>.justify-content-between</code></td>
+    </tr>
+    <tr>
+      <td><code>gap-2</code>, <code>gap-4</code>, <code>gap-6</code></td>
+      <td><code>.gap-2</code>, <code>.gap-3</code>, <code>.gap-4</code></td>
+    </tr>
+    <tr>
+      <td><code>p-4</code>, <code>m-2</code>, <code>px-3</code>, <code>my-4</code></td>
+      <td><code>.p-3</code>, <code>.m-2</code>, <code>.px-3</code>, <code>.my-4</code></td>
+    </tr>
+    <tr>
+      <td><code>text-sm</code>, <code>text-lg</code>, <code>font-bold</code></td>
+      <td><code>.small</code>, <code>.fs-5</code>, <code>.fw-bold</code></td>
+    </tr>
+    <tr>
+      <td><code>rounded-full</code>, <code>rounded-lg</code></td>
+      <td><code>.rounded-pill</code>, <code>.rounded-3</code></td>
+    </tr>
+    <tr>
+      <td><code>shadow-sm</code>, <code>shadow-md</code>, <code>shadow-lg</code></td>
+      <td><code>.shadow-sm</code>, <code>.elevation-2</code>, <code>.shadow-lg</code></td>
+    </tr>
+  </tbody>
+</table>

@@ -103,7 +103,8 @@ indexContent = indexContent
   .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
   .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
   .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-  .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
+  .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
+  .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
@@ -138,7 +139,8 @@ function injectArchiveUrlsInDir(dirPath) {
         .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
         .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
         .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-        .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
+        .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
+        .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
       fs.writeFileSync(full, content, 'utf8');
     }
   }

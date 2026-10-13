@@ -58,7 +58,8 @@ export function getArchiveCdnUrls(version) {
     starterReact: `${cdnBase}/boodoo-react-vite-starter.zip`,
     starterVue: `${cdnBase}/boodoo-vue-vite-starter.zip`,
     starterNext: `${cdnBase}/boodoo-nextjs-starter.zip`,
-    starterHtml: `${cdnBase}/boodoo-html-starter.zip`
+    starterHtml: `${cdnBase}/boodoo-html-starter.zip`,
+    starterReactNative: `${cdnBase}/boodoo-react-native-starter.zip`
   };
 }
 
@@ -283,7 +284,8 @@ const archiveUrls = getArchiveCdnUrls(VERSION);
     .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
     .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
     .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml);
+    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
+    .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)

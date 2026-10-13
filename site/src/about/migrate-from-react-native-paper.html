@@ -1,0 +1,104 @@
+<!--
+title: Migrate from React Native Paper to boodoo
+description: Step-by-step migration guide from React Native Paper to boodoo. Two-phase migration roadmap, Paper theme skinning, and lightweight native mobile components.
+section: about
+order: 14
+-->
+<h1><span>Migrate from React Native Paper to boodoo</span></h1>
+<p class="lead"><span>Upgrade your React Native mobile app from <strong>React Native Paper</strong> to <strong>boodoo</strong> to eliminate heavy bundle bloat, remove icon linking headaches, and unlock modern cross-platform styling.</span></p>
+
+<div class="card p-3 border-0 bg-light shadow-sm rounded-4 mb-4">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <h5 class="mb-1"><span>Want to see technical and bundle benchmarks first?</span></h5>
+      <p class="text-muted small mb-0"><span>Explore our comprehensive head-to-head comparison between boodoo and React Native Paper.</span></p>
+    </div>
+    <a href="vs-react-native-paper.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs React Native Paper →</span></a>
+  </div>
+</div>
+
+<h2 id="two-phase-roadmap"><span>The Two-Phase Migration Strategy</span></h2>
+<p><span>You do not need to rewrite your application overnight. We recommend a risk-free two-phase adoption:</span></p>
+
+<h3><span>Phase 1: Zero-Downtime Skinning via `boodoo/paper` (Day 1)</span></h3>
+<p><span>Apply Boodoo's brand colors, typography, elevations, and border curves directly into React Native Paper's <code>Provider</code>. All existing Paper components instantly inherit Boodoo styling:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-jsx">import React from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { boodooPaperLightTheme, boodooPaperDarkTheme } from 'boodoo/paper';
+import { useColorScheme } from 'react-native';
+
+export default function App() {
+  const isDark = useColorScheme() === 'dark';
+  const theme = isDark ? boodooPaperDarkTheme : boodooPaperLightTheme;
+
+  return (
+    &lt;PaperProvider theme={theme}&gt;
+      &lt;YourExistingNavigation /&gt;
+    &lt;/PaperProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<h3><span>Phase 2: Gradual Component Replacement via `boodoo/react-native`</span></h3>
+<p><span>As you build new features or optimize screens, replace heavy Paper components with Boodoo native primitives to slash runtime memory and bundle sizes:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-jsx">// Before: React Native Paper
+import { Button as PaperButton, Card as PaperCard } from 'react-native-paper';
+
+// After: boodoo Native (Zero external dependencies, pure StyleSheet engine)
+import { Button, Card, Badge, BoodooProvider } from 'boodoo/react-native';
+
+export function ModernScreen() {
+  return (
+    &lt;BoodooProvider theme="light"&gt;
+      &lt;Card variant="elevated"&gt;
+        &lt;Card.Title title="Ultra-Fast Screen" /&gt;
+        &lt;Card.Content&gt;
+          &lt;Badge variant="success"&gt;Zero Bloat&lt;/Badge&gt;
+        &lt;/Card.Content&gt;
+        &lt;Card.Actions&gt;
+          &lt;Button variant="primary" size="sm" onPress={() =&gt; console.log('Saved!')}&gt;
+            Save
+          &lt;/Button&gt;
+        &lt;/Card.Actions&gt;
+      &lt;/Card&gt;
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<h2 id="component-mapping"><span>Component &amp; Prop Mapping Guide</span></h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>React Native Paper</span></th>
+      <th><span>boodoo Native</span></th>
+      <th><span>Key Advantages</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;Button mode="contained"&gt;</code></td>
+      <td><code>&lt;Button variant="primary"&gt;</code></td>
+      <td><span>Intuitive sizing (<code>sm</code>, <code>md</code>, <code>lg</code>) and modern variants (<code>soft</code>, <code>outline</code>, <code>ghost</code>)</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;Card mode="elevated"&gt;</code></td>
+      <td><code>&lt;Card variant="elevated"&gt;</code></td>
+      <td><span>Direct styling support without complicated nested theme overrides</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;Chip&gt;</code></td>
+      <td><code>&lt;Badge variant="primary"&gt;</code></td>
+      <td><span>Lightweight status and tag indicators</span></td>
+    </tr>
+    <tr>
+      <td><code>&lt;TextInput mode="outlined"&gt;</code></td>
+      <td><code>&lt;TextInput label="..."&gt;</code></td>
+      <td><span>Zero native font-linking friction; Expo Go compatible out of the box</span></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,16 +1,16 @@
 {
-  "version": "1.1.0",
-  "generatedAt": "2026-10-13T04:40:30.180Z",
+  "version": "1.1.1",
+  "generatedAt": "2026-10-13T04:49:49.627Z",
   "cdnBase": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives",
-  "frameworkZip": "boodoo-v1.1.0.zip",
-  "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.1.0.zip",
+  "frameworkZip": "boodoo-v1.1.1.zip",
+  "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.1.1.zip",
   "frameworkZipSizeKb": 486,
-  "frameworkZipBytes": 497776,
+  "frameworkZipBytes": 498018,
   "latestZip": "boodoo-latest.zip",
   "latestZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip",
-  "examplesZip": "boodoo-examples-v1.1.0.zip",
-  "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.1.0.zip",
-  "examplesZipSizeKb": 39,
+  "examplesZip": "boodoo-examples-v1.1.1.zip",
+  "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.1.1.zip",
+  "examplesZipSizeKb": 41,
   "starters": [
     {
       "id": "react-vite",
@@ -31,6 +31,11 @@
       "id": "html-starter",
       "file": "boodoo-html-starter.zip",
       "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-html-starter.zip"
+    },
+    {
+      "id": "react-native",
+      "file": "boodoo-react-native-starter.zip",
+      "cdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-react-native-starter.zip"
     }
   ]
 }
