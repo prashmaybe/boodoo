@@ -87,8 +87,10 @@ test('contrast and accessible touch targets verification', () => {
 test('React Native adapter exports valid definitions without bundling errors', async () => {
   const rnIndex = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
   const expectedExports = [
+    // Core & Provider
     'BoodooProvider',
     'useTheme',
+    // Paper
     'Text',
     'Button',
     'IconButton',
@@ -122,11 +124,175 @@ test('React Native adapter exports valid definitions without bundling errors', a
     'DataTable',
     'Portal',
     'TouchableRipple',
+    // Gluestack & Tamagui Layout Primitives
+    'Box',
+    'HStack',
+    'VStack',
+    'Center',
+    'ZStack',
+    'Pressable',
+    'Grid',
+    'Heading',
+    'XStack',
+    'YStack',
+    'Separator',
+    'Spinner',
+    'Progress',
+    'Alert',
+    'AlertDialog',
+    'Actionsheet',
+    'Sheet',
+    'Skeleton',
+    'Textarea',
+    'TextArea',
+    'Tabs',
+    'Popover',
+    // React Native Elements (RNE UI)
+    'ButtonGroup',
+    'PricingCard',
+    'Tile',
+    'SearchBar',
+    'CheckBox',
+    'Slider',
+    'Header',
+    'BottomSheet',
+    'Overlay',
+    'Input',
+    'ListItem',
+    // UI Kitten
+    'Toggle',
+    'TopNavigation',
+    'Radio',
+    'RadioGroup',
+    // Wix react-native-ui-lib
+    'TextField',
+    'Stepper',
+    'Select',
+    'Picker',
+    'PageControl',
+    'ActionSheet',
+    'Toast',
+    'Table',
   ];
 
   for (const exp of expectedExports) {
-    assert.ok(rnIndex.includes(`export function ${exp}`) || rnIndex.includes(`export const ${exp}`) || rnIndex.includes(exp), `React Native module must export ${exp}`);
+    assert.ok(
+      rnIndex.includes(`export function ${exp}`) ||
+      rnIndex.includes(`export const ${exp}`) ||
+      rnIndex.includes(`export { ${exp}`) ||
+      rnIndex.includes(exp),
+      `React Native module must export ${exp}`
+    );
   }
+});
+
+test('React Native modular submodules existence and exports verification', () => {
+  const modules = [
+    { file: 'typography.js', expected: ['Text', 'Heading'] },
+    { file: 'layout.js', expected: ['Box', 'HStack', 'XStack', 'VStack', 'YStack', 'Center', 'ZStack', 'Pressable', 'Grid'] },
+    { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
+    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile'] },
+    { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
+    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar'] },
+    { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
+    { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table'] },
+    { file: 'navigation.js', expected: ['Appbar', 'Header', 'TopNavigation', 'Drawer', 'BottomNavigation', 'Tabs', 'PageControl'] },
+    { file: 'overlays.js', expected: ['Dialog', 'AlertDialog', 'Modal', 'Overlay', 'BottomSheet', 'Actionsheet', 'ActionSheet', 'Sheet', 'Menu', 'Popover', 'Tooltip', 'Portal', 'TouchableRipple'] },
+    { file: 'theme.js', expected: ['defaultLightTheme', 'defaultDarkTheme', 'BoodooProvider', 'useTheme'] },
+    { file: 'paper.js', expected: ['boodooPaperLightTheme', 'boodooPaperDarkTheme'] },
+  ];
+
+  for (const mod of modules) {
+    const filePath = resolve(rootDir, 'react-native', mod.file);
+    assert.ok(existsSync(filePath), `Submodule react-native/${mod.file} must exist`);
+    const code = readFileSync(filePath, 'utf8');
+    for (const item of mod.expected) {
+      assert.ok(
+        code.includes(`export function ${item}`) ||
+        code.includes(`export const ${item}`) ||
+        code.includes(`export { ${item}`) ||
+        code.includes(item),
+        `Submodule react-native/${mod.file} must export ${item}`
+      );
+    }
+  }
+});
+
+test('React Native Paper theme presets verification', async () => {
+  const paperModule = await import(pathToFileURL(resolve(rootDir, 'react-native/paper.js')).href);
+  const { boodooPaperLightTheme, boodooPaperDarkTheme, default: paperDefault } = paperModule;
+
+  assert.ok(boodooPaperLightTheme, 'boodooPaperLightTheme must be exported');
+  assert.equal(boodooPaperLightTheme.version, 3);
+  assert.equal(boodooPaperLightTheme.isV3, true);
+  assert.equal(boodooPaperLightTheme.dark, false);
+  assert.ok(boodooPaperLightTheme.colors.primary);
+  assert.ok(boodooPaperLightTheme.colors.elevation);
+
+  assert.ok(boodooPaperDarkTheme, 'boodooPaperDarkTheme must be exported');
+  assert.equal(boodooPaperDarkTheme.version, 3);
+  assert.equal(boodooPaperDarkTheme.isV3, true);
+  assert.equal(boodooPaperDarkTheme.dark, true);
+  assert.ok(boodooPaperDarkTheme.colors.primary);
+
+  assert.equal(paperDefault.light, boodooPaperLightTheme);
+  assert.equal(paperDefault.dark, boodooPaperDarkTheme);
+});
+
+test('Comprehensive tokens scale coverage (colors, radii, typography, shadows)', async () => {
+  const tokensModule = await import(pathToFileURL(resolve(rootDir, 'tokens/index.js')).href);
+  const { colors, spacing, radii, typography, shadows, boodooTokens, default: defaultTokens } = tokensModule;
+
+  // Colors
+  assert.equal(typeof colors.primary, 'string');
+  assert.equal(typeof colors.secondary, 'string');
+  assert.equal(typeof colors.success, 'string');
+  assert.equal(typeof colors.warning, 'string');
+  assert.equal(typeof colors.danger, 'string');
+  assert.equal(typeof colors.info, 'string');
+  assert.equal(typeof colors.darkSurface, 'string');
+  assert.equal(typeof colors.darkCard, 'string');
+  assert.equal(typeof colors.darkBorder, 'string');
+
+  // Radii
+  assert.equal(radii.none, 0);
+  assert.equal(radii.xs, 2);
+  assert.equal(radii.sm, 4);
+  assert.equal(radii.md, 8);
+  assert.equal(radii.lg, 12);
+  assert.equal(radii.xl, 16);
+  assert.equal(radii.full, 9999);
+
+  // Typography
+  assert.equal(typography.fontFamily, 'System');
+  assert.equal(typography.sizes.xs, 12);
+  assert.equal(typography.sizes.sm, 14);
+  assert.equal(typography.sizes.base, 16);
+  assert.equal(typography.sizes['4xl'], 36);
+  assert.equal(typography.weights.regular, '400');
+  assert.equal(typography.weights.bold, '700');
+  assert.equal(typography.lineHeights.tight, 1.25);
+  assert.equal(typography.lineHeights.normal, 1.5);
+  assert.equal(typography.lineHeights.relaxed, 1.75);
+
+  // Shadows
+  assert.ok(shadows.none);
+  assert.ok(shadows.sm.elevation >= 2);
+  assert.ok(shadows.md.elevation >= 4);
+  assert.ok(shadows.lg.elevation >= 8);
+
+  // Defaults and bundles
+  assert.deepEqual(boodooTokens.colors, colors);
+  assert.deepEqual(boodooTokens.spacing, spacing);
+  assert.deepEqual(defaultTokens, boodooTokens);
+});
+
+test('React Native default themes data integrity', () => {
+  const themeSource = readFileSync(resolve(rootDir, 'react-native/theme.js'), 'utf8');
+  assert.ok(themeSource.includes('export const defaultLightTheme'), 'defaultLightTheme must be declared');
+  assert.ok(themeSource.includes('export const defaultDarkTheme'), 'defaultDarkTheme must be declared');
+  assert.ok(themeSource.includes('dark: false'), 'defaultLightTheme must have dark: false');
+  assert.ok(themeSource.includes('dark: true'), 'defaultDarkTheme must have dark: true');
 });
 
 test('SCSS and LESS full component & feature parity verification', () => {
