@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -37,6 +37,11 @@
       "import": "./react-native/index.js",
       "require": "./react-native/index.js"
     },
+    "./react": {
+      "types": "./react/index.d.ts",
+      "import": "./react/index.js",
+      "require": "./react/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -58,6 +63,7 @@
     "js/",
     "tokens/",
     "react-native/",
+    "react/",
     "bin/",
     "CHANGELOG.md",
     "LICENSE",

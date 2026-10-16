@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.5] - 2026-10-17
+
+### Added
+- **Headless React Hooks (`react/hooks.js`, `react/index.js`, `react/index.d.ts`, `boodoo/react`)**:
+  - Introduced first-party declarative headless React hooks for seamless integration in Next.js, Remix, Vite, and React tree apps:
+    - `useDisclosure`: Declarative modal/dialog/drawer state management with `getTriggerProps()` and `getDialogProps()`.
+    - `useCombobox`: Autocomplete filter state, keyboard active-descendant tracking, and ARIA listbox bindings with `getInputProps()`, `getListboxProps()`, and `getOptionProps()`.
+    - `useAccordion`: Single- and multi-panel expand/collapse state with `getButtonProps()` and `getPanelProps()`.
+  - Added TypeScript declarations (`react/index.d.ts`) and exported via the `"boodoo/react"` package subpath.
+- **WAI-ARIA Accessibility & Screen-Reader Suite (`js/src/a11y.js`, `boodoo.a11y`)**:
+  - `a11y.announce(message, politeness)`: Screen-reader dynamic announcement via persistent, visually hidden `aria-live="polite"` and `aria-live="assertive"` status regions.
+  - `a11y.setRovingTabindex(items, activeIndex)`: W3C roving tabindex coordinator across interactive lists, comboboxes, tree views, and toolbars.
+  - `a11y.createFocusTrap(container, options)`: Full keyboard focus trapping for dialogs, modals, and offcanvas with automatic focus return on teardown.
+- **WAI-ARIA Patterns on Complex Components (`js/src/combobox.js`, `js/src/tree-view.js`)**:
+  - **Combobox**: Updated to W3C ARIA 1.2 Combobox specification (`role="combobox"`, `role="listbox"`, `role="option"`, `aria-autocomplete="list"`, `aria-activedescendant`, `aria-selected`, and `aria-expanded`).
+  - **TreeView**: Full WAI-ARIA tree structure (`role="tree"`, `role="treeitem"`, `role="group"`) with arrow-key roving focus and Left/Right arrow expand/collapse keybindings.
+- **Competitive Architecture Comparison Matrix (`site/index.html`)**:
+  - Added a deep comparison table on the website landing page contrasting Boodoo against Bootstrap 5, Tailwind CSS, Material UI (MUI), and Foundation across 8 architectural metrics.
+
+### Security & Governance
+- **Protected Main Branch Rule Enforced (`.agents/AGENTS.md`)**:
+  - Enforced a rule prohibiting direct pushes to `main`. All changes must be developed in feature/release branches and merged via Pull Requests.
+
+---
+
 ## [1.1.4] - 2026-10-16
 
 ### Security

@@ -115,6 +115,11 @@ export interface BoodooGlobal {
   Combobox: typeof Combobox;
   clipboard: any;
   theme: any;
+  a11y: {
+    announce(message: string, politeness?: 'polite' | 'assertive'): void;
+    setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
+    createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
+  };
 }
 
 declare const boodoo: BoodooGlobal;
@@ -151,4 +156,5 @@ export {
   Carousel,
   clipboard,
   theme,
+  a11y,
 };
