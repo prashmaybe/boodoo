@@ -280,7 +280,7 @@
     <tr><td><code>x</code></td><td><span>left &amp; right</span></td></tr>
     <tr><td><code>y</code></td><td><span>top &amp; bottom</span></td></tr>
     <tr><td><code>blank</code></td><td><span>all four sides</span></td></tr>
-    <tr><td><code>-{0..5}</code></td><td><span>the spacer step (0 = 0, 1 ≈ 20px, …, 5 ≈ 84px)</span></td></tr>
+    <tr><td><code>-{0..5}</code></td><td><span>the spacer step (0 = 0, 1 = 0.25rem (4px), 2 = 0.5rem (8px), 3 = 1rem (16px), 4 = 1.5rem (24px), 5 = 3rem (48px))</span></td></tr>
   </tbody>
 </table>
 
@@ -288,7 +288,7 @@
   <div class="d-flex flex-column gap-2">
     <div class="p-2 bg-primary-soft text-primary border rounded"><span><code>.p-2</code>: padding 0.5rem (8px)</span></div>
     <div class="p-4 bg-info-soft text-info border rounded"><span><code>.p-4</code>: padding 1.5rem (24px)</span></div>
-    <div class="mt-3 p-2 bg-light border rounded"><span><code>.mt-3</code>: margin top 1rem</span></div>
+    <div class="mt-3 p-2 bg-light border rounded"><span><code>.mt-3</code>: margin top 1rem (16px)</span></div>
   </div>
 </div>
 <div class="highlight">
@@ -331,17 +331,17 @@
 <h2 id="scale"><span>The scale</span></h2>
 <p><span>The <code>$boodoo-spacers</code> map defines a 0–5 (plus <code>0.5</code>–<code>10</code>) scale. Here are the base steps:</span></p>
 <table class="table table-sm table-bordered">
-  <thead><tr><th><span>Size</span></th><th><span>px</span></th><th>&nbsp;</th><th><span>Size</span></th><th><span>px</span></th></tr></thead>
+  <thead><tr><th><span>Size</span></th><th><span>Rem</span></th><th><span>px</span></th><th>&nbsp;</th><th><span>Size</span></th><th><span>Rem</span></th><th><span>px</span></th></tr></thead>
   <tbody>
-    <tr><td><code>0.5</code></td><td><span>8px</span></td><td>&nbsp;</td><td><code>3</code></td><td><span>52px</span></td></tr>
-    <tr><td><code>1</code></td><td><span>20px</span></td><td>&nbsp;</td><td><code>4</code></td><td><span>68px</span></td></tr>
-    <tr><td><code>2</code></td><td><span>36px</span></td><td>&nbsp;</td><td><code>5</code></td><td><span>84px</span></td></tr>
+    <tr><td><code>0.5</code></td><td><span>0.125rem</span></td><td><span>2px</span></td><td>&nbsp;</td><td><code>3</code></td><td><span>1rem</span></td><td><span>16px</span></td></tr>
+    <tr><td><code>1</code></td><td><span>0.25rem</span></td><td><span>4px</span></td><td>&nbsp;</td><td><code>4</code></td><td><span>1.5rem</span></td><td><span>24px</span></td></tr>
+    <tr><td><code>2</code></td><td><span>0.5rem</span></td><td><span>8px</span></td><td>&nbsp;</td><td><code>5</code></td><td><span>3rem</span></td><td><span>48px</span></td></tr>
   </tbody>
 </table>
 <p><span>Extend the <code>$boodoo-spacers</code> map in your Sass to add custom steps:</span></p>
 <div class="highlight">
   <pre><code>$boodoo-spacers: map.merge($boodoo-spacers, (
-  6: $boodoo-spacer * 6.5,
+  6: $boodoo-spacer * 4,
 ));</code></pre>
 </div>
           

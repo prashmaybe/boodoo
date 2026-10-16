@@ -269,7 +269,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.1.1</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.1.2</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -292,7 +292,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.1.1</span></div>
+        <div class="stat-value"><span>v1.1.2</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -301,7 +301,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>⚡</span></div>
       <div>
-        <div class="stat-value"><span>470 KB / 126 KB</span></div>
+        <div class="stat-value"><span>449 KB / 126 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -328,16 +328,62 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.1.1 -->
+  <!-- Version 1.1.2 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-2">
+            <span>v1.1.2</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 16, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.2"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-warning d-flex align-items-center gap-1 mb-2" id="">
+          <span class="badge bg-soft-warning text-warning"><span>Fixed</span></span>
+          <span>Spacing Scale Normalization &amp; Runtime CSS Variable Architecture</span>
+        </h3>
+        <p class="text-muted mb-2"><span>Resolved critical framework architectural issues across spacing consistency, component-level dark mode variables, and CSS cascade layer inheritance:</span></p>
+        <ul class="changelog-list mb-3">
+          <li><span><strong>Normalized Spacing Scale:</strong> Restored consistent Bootstrap-aligned 5-step spacing scale (0=0, 1=0.25rem, 2=0.5rem, 3=1rem, 4=1.5rem, 5=3rem) alongside fractional and extended steps.</span></li>
+          <li><span><strong>Dynamic Component CSS Variable Theming:</strong> Converted tables, outline buttons, pagination, list groups, and avatars from compile-time Sass literals to dynamic <code>var(--boodoo-...)</code> custom properties and <code>color-mix(...)</code>.</span></li>
+          <li><span><strong>Dark Mode Palette Inversion:</strong> Enhanced dark mode theme blocks to dynamically invert the full gray-scale palette and surface tokens at runtime.</span></li>
+          <li><span><strong>SVG Mask Carets:</strong> Refactored accordion carets to CSS <code>mask-image</code> with currentColor, eliminating hardcoded hex color fills.</span></li>
+          <li><span><strong>Layer Specificity Trap Removed:</strong> Dropped empty <code>@layer</code> declaration to protect downstream layered consumer stylesheets from specificity fights.</span></li>
+          <li><span><strong>Modular Core CSS Bundle:</strong> Excluded uncompiled native platform skins from the core stylesheet distribution.</span></li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Automated Unit Testing &amp; Component Validation Suite</span>
+        </h3>
+        <ul class="changelog-list mb-0">
+          <li><span>Added <code>tests/framework.test.mjs</code> covering CSS bundle generation, spacing scales, CSS variable color bindings, token parity, accessibility focus rings, and React Native package exports.</span></li>
+          <li><span>Wired automated unit tests into <code>npm test</code> via <code>npm run test:unit</code>.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.1.1 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-1">
             <span>v1.1.1</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
