@@ -74,6 +74,33 @@ order: 4
 &lt;/div&gt;</code></pre>
 </div>
 
+<h2 id="auto-fill">Auto-fill &amp; Auto-fit responsive grids</h2>
+<p>Build responsive card decks that adjust column count based on available container width without media queries using <code>.grid-auto-fill</code> or <code>.grid-auto-fit</code>:</p>
+
+<div class="bd-example">
+  <div class="grid grid-auto-fit gap-3">
+    <div class="p-3 border rounded text-center"><span>Card A</span></div>
+    <div class="p-3 border rounded text-center"><span>Card B</span></div>
+    <div class="p-3 border rounded text-center"><span>Card C</span></div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class="grid grid-auto-fit gap-3"&gt;
+  &lt;div class="p-3 border rounded"&gt;&lt;span&gt;Card A&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="p-3 border rounded"&gt;&lt;span&gt;Card B&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="p-3 border rounded"&gt;&lt;span&gt;Card C&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<h2 id="templates">Enterprise layout templates</h2>
+<p>boodoo provides preconfigured layout column templates for SaaS applications:</p>
+<ul>
+  <li><code>.grid-cols-tier</code>: Auto-fit pricing tier cards (min 300px).</li>
+  <li><code>.grid-cols-search</code>: Split row with fluid input and fixed action button.</li>
+  <li><code>.grid-cols-line</code>: Header line layout with icon, fluid text, and action trigger.</li>
+  <li><code>.grid-cols-simulation</code>: 3-column workspace with left inspector, fluid canvas, and right control panel.</li>
+</ul>
+
 <h2 id="vs-flex">Grid vs flex</h2>
 <p>Reach for <strong>flexbox</strong> when you have a one-dimensional row or column to align (navbars, button groups,
   simple lists). Reach for <strong>CSS Grid</strong> when you want to control layout in two dimensions — rows

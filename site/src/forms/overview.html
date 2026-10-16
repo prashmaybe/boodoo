@@ -96,3 +96,38 @@ order: 0
 <div class="highlight">
   <pre><code>&lt;input class=&quot;form-control&quot; type=&quot;text&quot; id=&quot;readonlyInputOverview&quot; name=&quot;readonlyInputOverview&quot; value=&quot;Readonly input here…&quot; aria-label=&quot;readonly input example&quot; readonly&gt;</code></pre>
 </div>
+
+<h2 id="form-sections">Form Sections</h2>
+<p>Organize complex enterprise forms into visual grouped cards using <code>.form-section</code>, complete with <code>.form-section-title</code> and <code>.form-section-desc</code>.</p>
+<div class="bd-example">
+  <div class="form-section mb-0">
+    <h3 class="form-section-title"><span>Organization Details</span></h3>
+    <p class="form-section-desc"><span>Manage your business entity profile and communication preferences.</span></p>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label" for="orgNameInput"><span>Company Name</span></label>
+        <input type="text" class="form-control" id="orgNameInput" name="orgName" placeholder="Acme Global Inc.">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="orgEmailInput"><span>Billing Email</span></label>
+        <input type="email" class="form-control" id="orgEmailInput" name="orgEmail" placeholder="billing@acme.com">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;form-section&quot;&gt;
+  &lt;h3 class=&quot;form-section-title&quot;&gt;&lt;span&gt;Organization Details&lt;/span&gt;&lt;/h3&gt;
+  &lt;p class=&quot;form-section-desc&quot;&gt;&lt;span&gt;Manage your business entity profile and communication preferences.&lt;/span&gt;&lt;/p&gt;
+  &lt;div class=&quot;row g-3&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;label class=&quot;form-label&quot; for=&quot;orgNameInput&quot;&gt;&lt;span&gt;Company Name&lt;/span&gt;&lt;/label&gt;
+      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;orgNameInput&quot; name=&quot;orgName&quot; placeholder=&quot;Acme Global Inc.&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;label class=&quot;form-label&quot; for=&quot;orgEmailInput&quot;&gt;&lt;span&gt;Billing Email&lt;/span&gt;&lt;/label&gt;
+      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;orgEmailInput&quot; name=&quot;orgEmail&quot; placeholder=&quot;billing@acme.com&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
