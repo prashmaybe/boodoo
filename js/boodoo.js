@@ -36,6 +36,7 @@ import { SpeedDial } from './speed-dial.js';
 import { Lightbox } from './lightbox.js';
 import { Banner } from './banner.js';
 import { Dropzone } from './dropzone.js';
+import { a11y } from './a11y.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -92,6 +93,7 @@ const boodoo = {
   Lightbox,
   Banner,
   Dropzone,
+  a11y,
   registerCustomElements,
 };
 
@@ -238,6 +240,7 @@ export {
   initRipple,
   registerCustomElements,
   theme,
+  a11y,
 };
 
 if (typeof window !== 'undefined') {

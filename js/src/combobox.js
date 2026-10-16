@@ -28,8 +28,23 @@ export class Combobox extends BaseComponent {
 
     if (!this._input || !this._menu) return;
 
+    this._setupAria();
     this._initEvents();
     this._refreshItems();
+  }
+
+  _setupAria() {
+    const id = this._input.id || `boodoo-combobox-input-${Math.random().toString(36).substr(2, 9)}`;
+    const menuId = this._menu.id || `boodoo-combobox-menu-${Math.random().toString(36).substr(2, 9)}`;
+    this._input.id = id;
+    this._menu.id = menuId;
+
+    this._input.setAttribute('role', 'combobox');
+    this._input.setAttribute('aria-autocomplete', 'list');
+    this._input.setAttribute('aria-expanded', 'false');
+    this._input.setAttribute('aria-haspopup', 'listbox');
+    this._input.setAttribute('aria-controls', menuId);
+    this._menu.setAttribute('role', 'listbox');
   }
 
   _initEvents() {
@@ -65,6 +80,15 @@ export class Combobox extends BaseComponent {
 
   _refreshItems() {
     this._items = Array.from(this._menu.querySelectorAll(COMBOBOX_SELECTOR_ITEM));
+    this._items.forEach((item, index) => {
+      item.setAttribute('role', 'option');
+      if (!item.id) {
+        item.id = `${this._menu.id}-opt-${index}`;
+      }
+      if (!item.hasAttribute('aria-selected')) {
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
   }
 
   _handleInput() {
@@ -73,11 +97,15 @@ export class Combobox extends BaseComponent {
     this._refreshItems();
 
     let hasMatches = false;
+    let matchCount = 0;
     for (const item of this._items) {
       const val = (item.getAttribute('data-value') || item.textContent || '').trim().toLowerCase();
       const matches = !query || val.includes(query);
       item.style.display = matches ? '' : 'none';
-      if (matches) hasMatches = true;
+      if (matches) {
+        hasMatches = true;
+        matchCount++;
+      }
     }
 
     const emptyNotice = this._menu.querySelector('.combobox-empty');
@@ -87,7 +115,7 @@ export class Combobox extends BaseComponent {
 
     this._activeIndex = -1;
     this._updateActive();
-    triggerEvent(this._element, 'boodoo.combobox.change', { query });
+    triggerEvent(this._element, 'boodoo.combobox.change', { query, matchCount });
   }
 
   _handleKeyDown(e) {
@@ -130,10 +158,17 @@ export class Combobox extends BaseComponent {
       if (idx === this._activeIndex) {
         item.classList.add('active');
         item.scrollIntoView({ block: 'nearest' });
+        if (this._input) {
+          this._input.setAttribute('aria-activedescendant', item.id);
+        }
       } else {
         item.classList.remove('active');
       }
     });
+
+    if (this._activeIndex === -1 && this._input) {
+      this._input.removeAttribute('aria-activedescendant');
+    }
   }
 
   selectItem(item) {
@@ -145,7 +180,9 @@ export class Combobox extends BaseComponent {
     this._element.setAttribute('data-selected-value', value);
 
     for (const el of this._items) {
-      el.classList.toggle('selected', el === item);
+      const isSelected = (el === item);
+      el.classList.toggle('selected', isSelected);
+      el.setAttribute('aria-selected', isSelected ? 'true' : 'false');
     }
 
     triggerEvent(this._element, 'boodoo.combobox.select', { value, label, item });
@@ -158,6 +195,7 @@ export class Combobox extends BaseComponent {
     this._element.removeAttribute('data-selected-value');
     for (const el of this._items) {
       el.classList.remove('selected');
+      el.setAttribute('aria-selected', 'false');
       el.style.display = '';
     }
     const emptyNotice = this._menu.querySelector('.combobox-empty');
@@ -172,6 +210,9 @@ export class Combobox extends BaseComponent {
     if (this.isShown()) return;
     this._menu.classList.add('show');
     this._element.classList.add('show');
+    if (this._input) {
+      this._input.setAttribute('aria-expanded', 'true');
+    }
     this._isShown = true;
     triggerEvent(this._element, 'boodoo.combobox.show');
   }
@@ -180,6 +221,9 @@ export class Combobox extends BaseComponent {
     if (!this.isShown()) return;
     this._menu.classList.remove('show');
     this._element.classList.remove('show');
+    if (this._input) {
+      this._input.setAttribute('aria-expanded', 'false');
+    }
     this._isShown = false;
     this._activeIndex = -1;
     this._updateActive();

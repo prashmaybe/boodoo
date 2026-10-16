@@ -94,6 +94,14 @@ Public package entry points and bundles must maintain accompanying TypeScript de
 2. **Automated Bundle Emission**: The build script (`build/js-bundle.mjs`) must copy/emit `dist/js/boodoo.d.ts` during every JS compilation run (`npm run js`), ensuring that `dist/js/boodoo.d.ts` always exists when consumers run `npm run build` or `npm test`.
 3. **Export Map Alignment**: All entries defined in `package.json` `"types"` or `"exports.[*].types"` must have matching `.d.ts` definitions emitted to `dist/` upon build completion.
 
+## Protected Main Branch & PR Workflow Rule
+Direct pushes to the `main` branch are strictly prohibited:
+
+1. **No Direct Pushes to Main**: Developers, contributors, and automated agents must never commit or push directly to `main`. All changes must be developed in dedicated feature or bugfix branches (e.g., `feat/...`, `fix/...`, `chore/...`).
+2. **Pull Request Workflow**: All code, documentation, assets, and configuration changes must be submitted via a Pull Request (PR) targeted against `main`.
+3. **Review & CI Verification**: PRs must pass all automated test suites, linting, build verification, and receive required reviews/approvals before merging into `main`.
+
+
 
 
 

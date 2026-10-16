@@ -564,4 +564,61 @@ test('Offcanvas and SpeedDial lifecycle teardown & listener cleanup', async () =
   assert.ok(speedDialDisposeSrc.includes('removeEventListener'), 'SpeedDial dispose must clean up document listeners');
 });
 
+test('WAI-ARIA accessibility suite (announcer, roving tabindex, focus trap, combobox, treeview)', async () => {
+  const { a11y } = await import(pathToFileURL(resolve(rootDir, 'js/src/a11y.js')).href);
+  assert.equal(typeof a11y.announce, 'function', 'a11y.announce must be a function');
+  assert.equal(typeof a11y.setRovingTabindex, 'function', 'a11y.setRovingTabindex must be a function');
+  assert.equal(typeof a11y.createFocusTrap, 'function', 'a11y.createFocusTrap must be a function');
+
+  // Combobox WAI-ARIA 1.2 patterns
+  const comboboxSrc = readFileSync(resolve(rootDir, 'js/src/combobox.js'), 'utf8');
+  assert.ok(comboboxSrc.includes("role', 'combobox'"), 'Combobox input must have role="combobox"');
+  assert.ok(comboboxSrc.includes("aria-autocomplete', 'list'"), 'Combobox input must declare aria-autocomplete');
+  assert.ok(comboboxSrc.includes("aria-activedescendant"), 'Combobox must manage aria-activedescendant');
+  assert.ok(comboboxSrc.includes("role', 'listbox'"), 'Combobox menu must have role="listbox"');
+  assert.ok(comboboxSrc.includes("role', 'option'"), 'Combobox items must have role="option"');
+
+  // TreeView WAI-ARIA patterns
+  const treeViewSrc = readFileSync(resolve(rootDir, 'js/src/tree-view.js'), 'utf8');
+  assert.ok(treeViewSrc.includes("role', 'tree'"), 'TreeView root must declare role="tree"');
+  assert.ok(treeViewSrc.includes("role', 'treeitem'"), 'TreeView items must declare role="treeitem"');
+  assert.ok(treeViewSrc.includes("aria-expanded"), 'TreeView must toggle aria-expanded');
+  assert.ok(treeViewSrc.includes("role', 'group'"), 'Subtrees must declare role="group"');
+});
+
+test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declarations and module', async () => {
+  const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+  assert.ok(hooksSrc.includes('export function useDisclosure'), 'useDisclosure hook must be exported');
+  assert.ok(hooksSrc.includes('export function useCombobox'), 'useCombobox hook must be exported');
+  assert.ok(hooksSrc.includes('export function useAccordion'), 'useAccordion hook must be exported');
+
+  // Verify disclosure logic and ARIA props
+  assert.ok(hooksSrc.includes('getTriggerProps'), 'useDisclosure must provide getTriggerProps');
+  assert.ok(hooksSrc.includes('getDialogProps'), 'useDisclosure must provide getDialogProps');
+  assert.ok(hooksSrc.includes("'aria-expanded': isOpen"), 'useDisclosure must set aria-expanded');
+
+  // Verify combobox logic and ARIA props
+  assert.ok(hooksSrc.includes('getInputProps'), 'useCombobox must provide getInputProps');
+  assert.ok(hooksSrc.includes('getListboxProps'), 'useCombobox must provide getListboxProps');
+  assert.ok(hooksSrc.includes('getOptionProps'), 'useCombobox must provide getOptionProps');
+  assert.ok(hooksSrc.includes("'aria-autocomplete': 'list'"), 'useCombobox must set aria-autocomplete');
+
+  // Verify accordion logic and ARIA props
+  assert.ok(hooksSrc.includes('getButtonProps'), 'useAccordion must provide getButtonProps');
+  assert.ok(hooksSrc.includes('getPanelProps'), 'useAccordion must provide getPanelProps');
+
+  // Test TypeScript declaration file for React hooks
+  const reactDts = readFileSync(resolve(rootDir, 'react/index.d.ts'), 'utf8');
+  assert.ok(reactDts.includes('useDisclosure'), 'react/index.d.ts must type useDisclosure');
+  assert.ok(reactDts.includes('useCombobox'), 'react/index.d.ts must type useCombobox');
+  assert.ok(reactDts.includes('useAccordion'), 'react/index.d.ts must type useAccordion');
+
+  // Test package.json export mapping for react subpath
+  const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));
+  assert.ok(pkg.exports['./react'], 'package.json must export ./react subpath');
+  assert.equal(pkg.exports['./react'].types, './react/index.d.ts');
+  assert.equal(pkg.exports['./react'].import, './react/index.js');
+});
+
+
 

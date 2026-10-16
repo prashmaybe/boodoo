@@ -37,6 +37,11 @@
       "import": "./react-native/index.js",
       "require": "./react-native/index.js"
     },
+    "./react": {
+      "types": "./react/index.d.ts",
+      "import": "./react/index.js",
+      "require": "./react/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -58,6 +63,7 @@
     "js/",
     "tokens/",
     "react-native/",
+    "react/",
     "bin/",
     "CHANGELOG.md",
     "LICENSE",
