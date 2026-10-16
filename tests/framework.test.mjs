@@ -20,19 +20,19 @@ test('no empty @layer is declared in dist CSS', () => {
   assert.ok(!mainCss.includes('@layer reset, tokens, components, utilities;'), 'Empty @layer must not be present');
 });
 
-test('spacing scale implements correct Bootstrap-compatible rem values', () => {
+test('spacing scale implements consistent expansive rem values', () => {
   const mainCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
   
-  // .mt-1: 0.25rem (4px)
-  assert.match(mainCss, /\.mt-1\s*\{[^}]*margin-top:\s*0\.25rem/);
-  // .mt-2: 0.5rem (8px)
-  assert.match(mainCss, /\.mt-2\s*\{[^}]*margin-top:\s*0\.5rem/);
-  // .mt-3: 1rem (16px)
-  assert.match(mainCss, /\.mt-3\s*\{[^}]*margin-top:\s*1rem/);
-  // .mt-4: 1.5rem (24px)
-  assert.match(mainCss, /\.mt-4\s*\{[^}]*margin-top:\s*1\.5rem/);
-  // .mt-5: 3rem (48px)
-  assert.match(mainCss, /\.mt-5\s*\{[^}]*margin-top:\s*3rem/);
+  // .mt-1: 1.25rem (20px)
+  assert.match(mainCss, /\.mt-1\s*\{[^}]*margin-top:\s*1\.25rem/);
+  // .mt-2: 2.25rem (36px)
+  assert.match(mainCss, /\.mt-2\s*\{[^}]*margin-top:\s*2\.25rem/);
+  // .mt-3: 3.25rem (52px)
+  assert.match(mainCss, /\.mt-3\s*\{[^}]*margin-top:\s*3\.25rem/);
+  // .mt-4: 4.25rem (68px)
+  assert.match(mainCss, /\.mt-4\s*\{[^}]*margin-top:\s*4\.25rem/);
+  // .mt-5: 5.25rem (84px)
+  assert.match(mainCss, /\.mt-5\s*\{[^}]*margin-top:\s*5\.25rem/);
 });
 
 test('table component colors consume CSS variables rather than hardcoded literals', () => {
