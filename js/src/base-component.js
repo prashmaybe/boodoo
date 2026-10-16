@@ -1,9 +1,19 @@
 // BOODOO JS — Base Component
 // Shared class with instance registry & get/create API (Bootstrap-like).
 
-import { element, DATA_PREFIX } from './util.js';
+import { element } from './util.js';
 
-const registry = new Map();
+// Component-namespaced registry: Map<ComponentClass, WeakMap<Element, Instance>>
+const componentRegistries = new Map();
+
+function getComponentRegistry(componentClass) {
+  let reg = componentRegistries.get(componentClass);
+  if (!reg) {
+    reg = new WeakMap();
+    componentRegistries.set(componentClass, reg);
+  }
+  return reg;
+}
 
 export class BaseComponent {
   constructor(target, config = {}) {
@@ -23,26 +33,28 @@ export class BaseComponent {
 
   // ----- Registry -----
   static getInstance(target) {
-    return registry.get(element(target)) || null;
+    const el = element(target);
+    if (!el) return null;
+    return getComponentRegistry(this).get(el) || null;
   }
 
   static getOrCreateInstance(target, config) {
     const el = element(target);
     if (!el) return null;
-    let instance = registry.get(el);
+    const reg = getComponentRegistry(this);
+    let instance = reg.get(el);
     if (!instance) {
       instance = new this(el, config);
-      registry.set(el, instance);
+      reg.set(el, instance);
     }
     return instance;
   }
 
-  static getAll() {
-    return Array.from(registry.values());
-  }
-
   dispose() {
-    registry.delete(this._element);
+    const reg = getComponentRegistry(this.constructor);
+    if (this._element) {
+      reg.delete(this._element);
+    }
     this._element = null;
   }
 
@@ -63,14 +75,18 @@ export class BaseComponent {
 
   static _dataAttrConfig(el, prefix = 'boodoo') {
     const result = {};
-    for (const attr of Array.from(el.attributes)) {
+    const toCamel = (s) => s.replace(/-([a-z])/g, (_, ch) => ch.toUpperCase());
+    for (const attr of Array.from(el.attributes || [])) {
       if (attr.name.startsWith(`data-${prefix}-`)) {
-        const key = attr.name.slice(`data-${prefix}-`.length);
+        const rawKey = attr.name.slice(`data-${prefix}-`.length);
+        const key = toCamel(rawKey);
         let value = attr.value;
         if (value === 'true') value = true;
         else if (value === 'false') value = false;
         else if (value === 'null') value = null;
-        else if (value !== '' && !Number.isNaN(Number(value))) value = Number(value);
+        else if (typeof value === 'string' && value.trim() !== '' && !Number.isNaN(Number(value))) {
+          value = Number(value);
+        }
         result[key] = value;
       }
     }

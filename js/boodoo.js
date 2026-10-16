@@ -16,7 +16,7 @@ import { Carousel } from './carousel.js';
 import { ScrollSpy } from './scrollspy.js';
 import { initRipple } from './ripple.js';
 import { initDataApi } from './base-component.js';
-import { enableDismissTrigger } from './util.js';
+import { enableDismissTrigger, escapeHtml } from './util.js';
 import { theme } from './theme.js';
 import { OTP } from './otp.js';
 import { Rating } from './rating.js';
@@ -121,18 +121,21 @@ function createToast(message, options = {}) {
   wrapper.setAttribute('aria-live', 'assertive');
   wrapper.setAttribute('aria-atomic', 'true');
 
+  const safeTitle = escapeHtml(opts.title);
+  const safeMessage = escapeHtml(message);
+
   if (opts.title) {
     wrapper.innerHTML = `
       <div class="toast-header">
-        <strong class="me-auto"><span>${opts.title}</span></strong>
+        <strong class="me-auto"><span>${safeTitle}</span></strong>
         <button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div class="toast-body"><span>${message}</span></div>
+      <div class="toast-body"><span>${safeMessage}</span></div>
     `;
   } else {
     wrapper.innerHTML = `
       <div class="d-flex">
-        <div class="toast-body"><span>${message}</span></div>
+        <div class="toast-body"><span>${safeMessage}</span></div>
         <button type="button" class="btn-close ${opts.variant && opts.variant !== 'light' ? 'btn-close-white' : ''} me-2 m-auto" data-boodoo-dismiss="toast" aria-label="Close"></button>
       </div>
     `;

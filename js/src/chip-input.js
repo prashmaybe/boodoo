@@ -59,7 +59,18 @@ export class ChipInput extends BaseComponent {
   addChip(text, variant = '') {
     const chip = document.createElement('span');
     chip.className = `chip ${variant}`.trim();
-    chip.innerHTML = `<span>${text}</span><button type="button" class="chip-remove" aria-label="Remove tag">&times;</button>`;
+    
+    const labelSpan = document.createElement('span');
+    labelSpan.textContent = text;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'chip-remove';
+    removeBtn.setAttribute('aria-label', 'Remove tag');
+    removeBtn.innerHTML = '&times;';
+
+    chip.appendChild(labelSpan);
+    chip.appendChild(removeBtn);
 
     if (this._input) {
       this._element.insertBefore(chip, this._input);

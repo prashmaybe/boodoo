@@ -1,11 +1,23 @@
 // BOODOO JS — Utilities
 // Safe, dependency-free DOM/event helpers.
 
-export const element = (selector) =>
-  typeof selector === 'string' ? document.querySelector(selector) : selector;
+export const element = (selector) => {
+  if (typeof selector !== 'string') return selector;
+  try {
+    return document.querySelector(selector);
+  } catch {
+    return null;
+  }
+};
 
-export const elements = (selector) =>
-  typeof selector === 'string' ? Array.from(document.querySelectorAll(selector)) : [selector].filter(Boolean);
+export const elements = (selector) => {
+  if (typeof selector !== 'string') return [selector].filter(Boolean);
+  try {
+    return Array.from(document.querySelectorAll(selector));
+  } catch {
+    return [];
+  }
+};
 
 export const isVisible = (el) => {
   if (!el) return false;
@@ -74,24 +86,48 @@ export const triggerEvent = (el, name, payload) => {
   return !event.defaultPrevented;
 };
 
-export const enableDismissTrigger = (component, onToggle) => {
-  if (typeof document === 'undefined') return;
-  const dismiss = (event) => {
-    if (event.button !== 0) return; // ignore right/middle clicks
-    const toggler = event.target.closest('[data-boodoo-dismiss]');
-    if (!toggler) return;
-    const selector = component.selector || `.${component.NAME || ''}`;
+const dismissComponents = new Map();
+let isDismissListenerBound = false;
+
+function handleGlobalDismiss(event) {
+  if (event.button !== 0) return; // ignore right/middle clicks
+  const toggler = event.target.closest('[data-boodoo-dismiss]');
+  if (!toggler) return;
+
+  const dismissType = toggler.getAttribute('data-boodoo-dismiss');
+  for (const [component, onToggle] of dismissComponents.entries()) {
+    const compName = (component.NAME || '').toLowerCase();
+    if (dismissType && dismissType !== compName && !toggler.closest(component.selector || `.${compName}`)) {
+      continue;
+    }
+    const selector = component.selector || `.${compName}`;
     const container = toggler.closest(selector) || toggler;
-    const instance = component.getOrCreateInstance(container);
-    if (!instance) return;
+    const instance = component.getInstance(container) || component.getOrCreateInstance(container);
+    if (!instance) continue;
+
     if (onToggle) onToggle(instance, event, toggler);
     else if (typeof instance.hide === 'function') instance.hide();
     else if (typeof instance.close === 'function') instance.close();
-  };
-  document.addEventListener('click', (event) => {
-    const toggler = event.target.closest('[data-boodoo-dismiss]');
-    if (toggler) dismiss(event);
-  }, true);
+  }
+}
+
+export const enableDismissTrigger = (component, onToggle) => {
+  if (typeof document === 'undefined') return;
+  dismissComponents.set(component, onToggle);
+
+  if (!isDismissListenerBound) {
+    document.addEventListener('click', handleGlobalDismiss, true);
+    isDismissListenerBound = true;
+  }
+};
+
+export const disableDismissTrigger = (component) => {
+  if (typeof document === 'undefined') return;
+  dismissComponents.delete(component);
+  if (dismissComponents.size === 0 && isDismissListenerBound) {
+    document.removeEventListener('click', handleGlobalDismiss, true);
+    isDismissListenerBound = false;
+  }
 };
 
 export const DATA_PREFIX = 'boodoo';
@@ -126,4 +162,19 @@ export const debounce = (fn, wait = 100) => {
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(this, args), wait);
   };
+};
+
+/**
+ * Escapes unsafe characters in untrusted user strings before DOM insertion.
+ * @param {string|unknown} str
+ * @returns {string}
+ */
+export const escapeHtml = (str) => {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 };

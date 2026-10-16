@@ -67,6 +67,34 @@ React Native mobile components (`react-native/`) must remain modular and strictl
 1. **Submodule Architecture**: Components must be organized into dedicated, cohesive submodules (`typography.js`, `layout.js`, `buttons.js`, `surfaces.js`, `inputs.js`, `data-display.js`, `feedback.js`, `lists.js`, `navigation.js`, `overlays.js`, `theme.js`, `paper.js`) re-exported via `react-native/index.js`. Never collapse all components into a single giant monolithic file.
 2. **Pure Primitives**: Mobile components must rely exclusively on core React Native primitives (`View`, `Text`, `StyleSheet`, `Pressable`, `TextInput`, `Modal`) — zero DOM access, zero uncompiled CSS, and zero mandatory external native dependencies.
 
+## DOM XSS Prevention & Safe Insertion Rule
+Untrusted or runtime user data (such as file names, labels, user input strings, and query parameters) must never be directly interpolated into HTML strings or assigned via `innerHTML`:
+
+1. **Safe DOM Construction**: Dynamic elements must be constructed using safe DOM methods (`document.createElement()`, `element.textContent`, `element.setAttribute()`), or sanitized using an approved escaper (`escapeHtml()`) before insertion.
+2. **Attribute Safety**: Never interpolate raw strings into attributes (such as `alt="${file.name}"` or `title="${label}"`). Always assign them directly via property setters (`img.alt = file.name`) or escape quotes and HTML control characters.
+3. **Automated Verification**: Component tests and regressions in `tests/framework.test.mjs` must assert that strings containing special HTML characters (`<`, `>`, `"`, `&`) are treated strictly as text nodes or properly escaped, preventing code execution.
+
+## Non-Intrusive Global Shortcut & Safe Navigation Rule
+Library components must not hijack global shortcuts without contextual presence or user opt-in, and all programmatic navigation must validate protocols:
+
+1. **No Unconditional Global Interception**: Global keyboard listeners (e.g. `Ctrl+K`, `Cmd+K`) must not be registered on `document` or `window` unconditionally unless the target element or trigger exists in the current DOM (e.g. `[data-boodoo="command-palette"]` or `.command-palette-backdrop`), or until explicitly activated via an API initialization call (e.g. `CommandPalette.initDefault()`).
+2. **Safe Navigation URLs**: Any component handling URL redirects or item navigation (e.g., Command Palette item selection) must validate the URL scheme against a strict allowlist (`https:`, `http:`, `/`, `#`, `mailto:`) before mutating `window.location`. Unsafe protocols such as `javascript:` or `data:` must never be executed.
+
+## Lifecycle Teardown & Resource Revocation Rule
+All interactive components and plugins with document-level event listeners, timers, observer handles, or object URLs must implement a robust teardown cycle:
+
+1. **Document Listener Cleanup**: Any component adding listeners to `document` or `window` (click outside dismiss, Escape key handlers, scroll/resize trackers) must store stable function references and remove all listeners inside `dispose()`.
+2. **Resource & URL Revocation**: Any component generating ephemeral browser resources such as `URL.createObjectURL(blob)` (e.g., Dropzone file previews) must retain track of created URLs and explicitly call `URL.revokeObjectURL(url)` upon item removal or component teardown.
+3. **Synchronous Teardown Purity**: `dispose()` must perform synchronous cleanup and detach from the DOM and element registry immediately, without relying on pending asynchronous CSS transitions that could dereference nulled state.
+
+## Dual TypeScript Declaration Maintenance Rule
+Public package entry points and bundles must maintain accompanying TypeScript definitions (`.d.ts`):
+
+1. **Persistent Source Definitions**: Because `dist/` is gitignored, the primary TypeScript declaration file for the framework JS bundle must be maintained under source control (e.g. `js/boodoo.d.ts`).
+2. **Automated Bundle Emission**: The build script (`build/js-bundle.mjs`) must copy/emit `dist/js/boodoo.d.ts` during every JS compilation run (`npm run js`), ensuring that `dist/js/boodoo.d.ts` always exists when consumers run `npm run build` or `npm test`.
+3. **Export Map Alignment**: All entries defined in `package.json` `"types"` or `"exports.[*].types"` must have matching `.d.ts` definitions emitted to `dist/` upon build completion.
+
+
 
 
 

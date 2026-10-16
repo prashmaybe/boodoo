@@ -30,43 +30,53 @@ export class Modal extends BaseComponent {
   }
 
   show() {
-    if (this._isShown) return;
+    if (this._isShown || this._isTransitioning) return;
     if (!triggerEvent(this._element, 'boodoo.show.modal')) return;
 
-    this._isShown = true;
+    this._isTransitioning = true;
     this._focussedBefore = document.activeElement;
+
+    // Accessibility attributes
+    this._element.setAttribute('role', 'dialog');
+    this._element.setAttribute('aria-modal', 'true');
+    this._element.removeAttribute('aria-hidden');
 
     // Lock body scroll
     document.body.classList.add('modal-open');
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = this._scrollBarWidth() + 'px';
 
-    this._element.style.display = 'block';
-    this._element.classList.add('show');
     this._createBackdrop().then(() => this._showModal());
   }
 
   _showModal() {
     const el = this._element;
-    el.style.display = 'none';
-    void reflow(el);
     el.style.display = 'block';
+    void reflow(el);
     el.classList.add('show');
     this._addKeydownListener();
 
-    const focusable = this._element.querySelectorAll(focusableSelector);
     this._preventScrollBinds = this._handleScroll();
-    const first = focusable[0];
-    if (first) first.focus();
-    else el.focus();
-    triggerEvent(el, 'boodoo.shown.modal');
+    const duration = getTransitionDuration(el);
+    emulateTransitionEnd(el, duration).then(() => {
+      this._isShown = true;
+      this._isTransitioning = false;
+      const focusable = this._element.querySelectorAll(focusableSelector);
+      const first = focusable[0];
+      if (first) first.focus();
+      else el.focus();
+      triggerEvent(el, 'boodoo.shown.modal');
+    });
   }
 
   hide() {
-    if (!this._isShown) return;
+    if (!this._isShown || this._isTransitioning) return;
     if (!triggerEvent(this._element, 'boodoo.hide.modal')) return;
 
+    this._isTransitioning = true;
     this._element.classList.remove('show');
+    this._element.removeAttribute('aria-modal');
+
     const duration = getTransitionDuration(this._element);
     this._removeKeydownListener();
     if (this._preventScrollBinds) {
@@ -74,16 +84,48 @@ export class Modal extends BaseComponent {
       this._preventScrollBinds = null;
     }
 
-    emulateTransitionEnd(this._element, duration).then(() => {
+    const element = this._element;
+    emulateTransitionEnd(element, duration).then(() => {
       this._isShown = false;
-      this._element.style.display = 'none';
+      this._isTransitioning = false;
+      if (this._focussedBefore) {
+        this._focussedBefore.focus?.();
+        this._focussedBefore = null;
+      }
+      if (element) {
+        element.setAttribute('aria-hidden', 'true');
+        element.style.display = 'none';
+      }
       this._removeBackdrop();
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
-      if (this._focussedBefore) this._focussedBefore.focus?.();
-      triggerEvent(this._element, 'boodoo.hidden.modal');
+      if (element) {
+        triggerEvent(element, 'boodoo.hidden.modal');
+      }
     });
+  }
+
+  dispose() {
+    this._removeKeydownListener();
+    if (this._preventScrollBinds) {
+      this._preventScrollBinds();
+      this._preventScrollBinds = null;
+    }
+    this._removeBackdrop();
+    if (this._element) {
+      this._element.classList.remove('show');
+      this._element.style.display = 'none';
+      this._element.removeAttribute('aria-modal');
+      this._element.setAttribute('aria-hidden', 'true');
+    }
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+    this._isShown = false;
+    super.dispose();
   }
 
   _createBackdrop() {
@@ -126,9 +168,18 @@ export class Modal extends BaseComponent {
 
   _traverseTab(event) {
     const focusable = Array.from(this._element.querySelectorAll(focusableSelector));
-    if (!focusable.length) return;
+    if (!focusable.length) {
+      event.preventDefault();
+      this._element.focus?.();
+      return;
+    }
     const firstEl = focusable[0];
     const lastEl = focusable[focusable.length - 1];
+    if (!this._element.contains(document.activeElement)) {
+      event.preventDefault();
+      firstEl.focus();
+      return;
+    }
     if (event.shiftKey && document.activeElement === firstEl) {
       event.preventDefault();
       lastEl.focus();

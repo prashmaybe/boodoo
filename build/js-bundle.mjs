@@ -109,11 +109,24 @@ function collect(file, fromDir) {
 // entries
 collect(entry, path.dirname(entry));
 
+const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+
 const banner = `/*!
-* boodoo ${'1.0.0'} | (c) Pebble Benders | MIT License
+* boodoo v${pkg.version} | (c) Pebble Benders | MIT License
 * A modular, mobile-first CSS design framework
 */`;
-const footer = `window.boodoo = window.boodoo || boodoo;`;
+
+// Simple safe JS compressor for .min.js
+function simpleMinifyJs(code) {
+  return code
+    // Remove block comments (preserving license banner)
+    .replace(/\/\*(?![\s\S]*?MIT License)[\s\S]*?\*\//g, '')
+    // Remove line comments
+    .replace(/(^|[^:])\/\/[^'\n\r]*$/gm, '$1')
+    // Collapse multiple blank lines
+    .replace(/\n\s*\n/g, '\n')
+    .trim();
+}
 
 const bundle = `${banner}
 (function (global, factory) {
@@ -134,8 +147,10 @@ ${bundledBodies.join('\n\n')}
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'boodoo.js'), bundle);
-fs.writeFileSync(path.join(outDir, 'boodoo.min.js'), bundle); // placeholder; real minification via esbuild/terser optional
+const minBundle = simpleMinifyJs(bundle);
+fs.writeFileSync(path.join(outDir, 'boodoo.min.js'), minBundle);
 console.log('Bundled boodoo.js (' + Buffer.byteLength(bundle) + ' bytes)');
+console.log('Bundled boodoo.min.js (' + Buffer.byteLength(minBundle) + ' bytes)');
 
 // ESM build (keeps exports)
 const esmBody = bundledBodies.join('\n\n');
@@ -180,3 +195,10 @@ export {
 `;
 fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);
 console.log('Bundled boodoo.esm.js (' + Buffer.byteLength(esmBundle) + ' bytes)');
+
+// Emit TypeScript definition
+const dtsSrc = path.join(root, 'js', 'boodoo.d.ts');
+if (fs.existsSync(dtsSrc)) {
+  fs.copyFileSync(dtsSrc, path.join(outDir, 'boodoo.d.ts'));
+  console.log('Emitted dist/js/boodoo.d.ts');
+}
