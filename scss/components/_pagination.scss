@@ -12,7 +12,7 @@
     padding: 0.5rem 0.875rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: $boodoo-link-color;
+    color: var(--boodoo-link-color);
     text-decoration: none;
     background-color: var(--boodoo-body-bg);
     border: $boodoo-border-width solid var(--boodoo-border-color);
@@ -21,14 +21,14 @@
 
     &:hover {
       z-index: 2;
-      color: $boodoo-link-hover-color;
+      color: var(--boodoo-link-hover-color);
       background-color: var(--boodoo-body-tertiary-bg);
       border-color: var(--boodoo-border-color);
     }
 
     &:focus {
       z-index: 3;
-      color: $boodoo-link-hover-color;
+      color: var(--boodoo-link-hover-color);
       background-color: var(--boodoo-body-tertiary-bg);
       outline: 0;
       box-shadow: $boodoo-focus-ring-box-shadow;
@@ -52,9 +52,9 @@
 
     &.active .page-link {
       z-index: 3;
-      color: $boodoo-white;
-      background-color: $boodoo-primary;
-      border-color: $boodoo-primary;
+      color: var(--boodoo-white);
+      background-color: var(--boodoo-primary);
+      border-color: var(--boodoo-primary);
     }
 
     &.disabled .page-link {

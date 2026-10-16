@@ -118,8 +118,8 @@
   }
 
   .avatar-more {
-    background-color: $boodoo-gray-300;
-    color: $boodoo-gray-700;
+    background-color: var(--boodoo-gray-300);
+    color: var(--boodoo-gray-700);
   }
 }
 
@@ -132,17 +132,17 @@
   height: 22%;
   min-width: 0.5rem;
   min-height: 0.5rem;
-  background-color: $boodoo-success;
+  background-color: var(--boodoo-success);
   border: 2px solid var(--boodoo-body-bg);
   border-radius: 50%;
 }
 
 .avatar-status-offline {
-  background-color: $boodoo-gray-400;
+  background-color: var(--boodoo-gray-400);
 }
 
 .avatar-status-busy {
-  background-color: $boodoo-danger;
+  background-color: var(--boodoo-danger);
 }
 
 .avatar-status-away {

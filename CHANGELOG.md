@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.2] - 2026-10-16
+
+### Fixed
+- **Normalized Spacing Scale (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
+  - Restored true Bootstrap-compatible 5-step spacing scale: `0` (0), `1` (0.25rem = 4px), `2` (0.5rem = 8px), `3` (1rem = 16px), `4` (1.5rem = 24px), and `5` (3rem = 48px), alongside fractional steps (`0.5`, `1.5`, `2.5`, `3.5`, `4.5`) and extended steps (`6` through `10`).
+  - Synchronized documentation tables and code examples to match the implemented scale.
+- **Dynamic Component CSS Variable Theming & Dark Mode Inversion (`scss/_root.scss`, `scss/content/_tables.scss`, `scss/components/*`)**:
+  - Replaced hardcoded compile-time Sass color literals in `.table`, `.btn-outline-*`, `.pagination`, `.list-group`, and `.avatar` with dynamic CSS custom properties (`var(--boodoo-...)`).
+  - Dark mode rules (`@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`) now dynamically invert the entire gray-scale palette (`--boodoo-gray-100` through `--boodoo-gray-900`) and surface tokens (`--boodoo-light`, `--boodoo-dark`), allowing immediate runtime re-theming across components.
+  - Converted table striped and hover background formulas to use CSS `color-mix(...)` driven by CSS custom properties.
+  - Refactored `.accordion-button::after` caret icon to use CSS `mask-image` with `var(--boodoo-accordion-icon-color, currentColor)` and active background colors, eliminating static hex color fills.
+- **CSS Cascade Layers Specificity Trap Removed (`scss/_root.scss`)**:
+  - Removed empty `@layer reset, tokens, components, utilities;` declaration that erroneously caused consumer layered CSS to lose specificity battles against unlayered framework styles.
+- **Modular Core CSS Bundle Surface (`scss/boodoo.scss`)**:
+  - Excluded uncompiled native platform skins (`@import "components/native";`) from the core framework distribution, keeping the compiled web bundle lean and strictly standard-compliant.
+
+### Added
+- **Automated Unit Testing & Component Validation Suite (`tests/framework.test.mjs`, `package.json`)**:
+  - Added comprehensive automated test suite testing CSS bundle generation, `@layer` omission, spacing scales, CSS variable color bindings, token parity, accessibility focus rings/reduced motion, and React Native package exports.
+  - Integrated `npm run test:unit` directly into `npm test`.
+
+---
+
 ## [1.1.1] - 2026-10-13
 
 ### Added

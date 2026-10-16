@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -53,7 +53,8 @@
     "README.md"
   ],
   "scripts": {
-    "test": "npm run build && npm run site",
+    "test": "npm run build && npm run test:unit && npm run site",
+    "test:unit": "node --test tests/**/*.test.mjs",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
     "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim && npm run css:less",

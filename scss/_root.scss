@@ -1,11 +1,5 @@
 @use "sass:map";
 
-// ---------------------------------------------------------------------
-// CSS Cascade Layers (@layer)
-// Eliminates !important specificity battles and controls order of precedence
-// ---------------------------------------------------------------------
-@layer reset, tokens, components, utilities;
-
 :root {
 
 
@@ -170,6 +164,21 @@
     --boodoo-dropdown-border-color: #{$boodoo-gray-800};
     --boodoo-form-control-bg: #{$boodoo-gray-900};
     --boodoo-form-control-border-color: #{$boodoo-gray-700};
+
+    // Gray scale inversion for dark mode
+    --boodoo-gray-100: #{$boodoo-gray-800};
+    --boodoo-gray-200: #{$boodoo-gray-700};
+    --boodoo-gray-300: #{$boodoo-gray-600};
+    --boodoo-gray-400: #{$boodoo-gray-500};
+    --boodoo-gray-500: #{$boodoo-gray-400};
+    --boodoo-gray-600: #{$boodoo-gray-300};
+    --boodoo-gray-700: #{$boodoo-gray-200};
+    --boodoo-gray-800: #{$boodoo-gray-100};
+    --boodoo-gray-900: #{$boodoo-gray-100};
+
+    // Component surface tokens
+    --boodoo-light: #{$boodoo-gray-800};
+    --boodoo-dark: #{$boodoo-gray-100};
   }
 }
 
@@ -193,4 +202,19 @@
   --boodoo-dropdown-border-color: #{$boodoo-gray-800};
   --boodoo-form-control-bg: #{$boodoo-gray-900};
   --boodoo-form-control-border-color: #{$boodoo-gray-700};
+
+  // Gray scale inversion for dark mode
+  --boodoo-gray-100: #{$boodoo-gray-800};
+  --boodoo-gray-200: #{$boodoo-gray-700};
+  --boodoo-gray-300: #{$boodoo-gray-600};
+  --boodoo-gray-400: #{$boodoo-gray-500};
+  --boodoo-gray-500: #{$boodoo-gray-400};
+  --boodoo-gray-600: #{$boodoo-gray-300};
+  --boodoo-gray-700: #{$boodoo-gray-200};
+  --boodoo-gray-800: #{$boodoo-gray-100};
+  --boodoo-gray-900: #{$boodoo-gray-100};
+
+  // Component surface tokens
+  --boodoo-light: #{$boodoo-gray-800};
+  --boodoo-dark: #{$boodoo-gray-100};
 }
