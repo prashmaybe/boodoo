@@ -91,24 +91,41 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
-          <span>Modular React Native UI Suite, Enterprise Layout Chrome, Auto Grids & Role Badges</span>
+          <span>Modular React Native UI Suite, Enterprise Layout Chrome, Auto Grids &amp; Role Badges</span>
         </h3>
         <p><span>boodoo <strong>v1.1.3</strong> delivers a major expansion to mobile and enterprise web architecture:</span></p>
         <ul class="mb-3">
-          <li><strong>Modular Native Mobile Suite</strong>: 12 modular submodules under <code>boodoo/react-native</code> providing drop-in compatibility for React Native Paper, React Native Elements, Gluestack, Tamagui, UI Kitten, and Wix UI Lib.</li>
-          <li><strong>Enterprise Layout Shell</strong>: Added <code>.shell-header</code>, <code>.shell-sidebar</code>, <code>.shell-pad</code>, <code>.bg-login-gradient</code>, <code>.feature-card</code>, <code>.table-scroll-max</code>, and <code>.form-section</code>.</li>
-          <li><strong>Grid Auto Columns & Gutter Bridge</strong>: Gutter bridge support for <code>.grid</code>, auto-fill and auto-fit layouts, and <code>.grid-cols-tier</code> / <code>search</code> / <code>line</code> / <code>simulation</code> templates.</li>
-          <li><strong>SaaS Role Status Badges</strong>: 8 role status badges (<code>.badge-role-admin</code>, <code>member</code>, <code>viewer</code>, <code>owner</code>, <code>billing</code>, <code>guest</code>, <code>developer</code>, <code>security</code>) and <code>.nav-sidebar</code> active indicator bars.</li>
+          <li><span><strong>Modular Native Mobile Suite</strong>: Re-architected native mobile framework into 12 dedicated, tree-shakeable submodules under <code>boodoo/react-native</code> with zero DOM dependencies:</span>
+            <ul class="mt-1">
+              <li><span><strong>Typography</strong> (<code>typography.js</code>): <code>Text</code> (with Paper variants, RNE UI <code>h1</code>–<code>h4</code>, UI Kitten categories), <code>Heading</code>.</span></li>
+              <li><span><strong>Layout</strong> (<code>layout.js</code>): <code>Box</code>, <code>HStack</code>, <code>XStack</code>, <code>VStack</code>, <code>YStack</code>, <code>Center</code>, <code>ZStack</code>, <code>Pressable</code>, <code>Grid</code>.</span></li>
+              <li><span><strong>Buttons</strong> (<code>buttons.js</code>): <code>Button</code> (with Paper modes, RNE types, UI Kitten status), <code>ButtonGroup</code>, <code>IconButton</code>, <code>FAB</code>, <code>SegmentedButtons</code>.</span></li>
+              <li><span><strong>Surfaces</strong> (<code>surfaces.js</code>): <code>Card</code> (with <code>.Content</code>, <code>.Cover</code>, <code>.Actions</code>, <code>.Title</code>), <code>Surface</code>, <code>Divider</code>, <code>Separator</code>, <code>PricingCard</code>, <code>Tile</code>.</span></li>
+              <li><span><strong>Inputs &amp; Forms</strong> (<code>inputs.js</code>): <code>TextInput</code>, <code>Input</code>, <code>TextField</code>, <code>Textarea</code>, <code>TextArea</code>, <code>Searchbar</code>, <code>SearchBar</code>, <code>HelperText</code>, <code>Checkbox</code>, <code>CheckBox</code>, <code>RadioButton</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Switch</code>, <code>Toggle</code>, <code>Slider</code>, <code>Stepper</code>, <code>Select</code>, <code>Picker</code>, <code>ToggleButton</code>.</span></li>
+              <li><span><strong>Data Display</strong> (<code>data-display.js</code>): <code>Chip</code>, <code>Badge</code>, <code>Avatar</code> (with <code>.Image</code>, <code>.Text</code>, <code>.Icon</code>).</span></li>
+              <li><span><strong>Feedback</strong> (<code>feedback.js</code>): <code>ActivityIndicator</code>, <code>Spinner</code>, <code>ProgressBar</code>, <code>Progress</code>, <code>Skeleton</code>, <code>Alert</code>, <code>Banner</code>, <code>Toast</code>, <code>Snackbar</code>.</span></li>
+              <li><span><strong>Lists &amp; Tables</strong> (<code>lists.js</code>): <code>List</code> (with <code>.Section</code>, <code>.Subheader</code>, <code>.Accordion</code>), <code>ListItem</code>, <code>DataTable</code> (with <code>.Header</code>, <code>.Row</code>, <code>.Cell</code>, <code>.Pagination</code>), <code>Table</code>.</span></li>
+              <li><span><strong>Navigation</strong> (<code>navigation.js</code>): <code>Appbar</code> (with <code>.BackAction</code>, <code>.Action</code>), <code>Header</code>, <code>TopNavigation</code>, <code>Drawer</code>, <code>BottomNavigation</code>, <code>Tabs</code>, <code>PageControl</code>.</span></li>
+              <li><span><strong>Overlays &amp; Sheets</strong> (<code>overlays.js</code>): <code>Dialog</code>, <code>AlertDialog</code>, <code>Modal</code>, <code>Overlay</code>, <code>BottomSheet</code>, <code>Actionsheet</code>, <code>ActionSheet</code>, <code>Sheet</code>, <code>Menu</code>, <code>Popover</code>, <code>Tooltip</code>, <code>Portal</code>, <code>TouchableRipple</code>.</span></li>
+              <li><span><strong>Themes &amp; Paper Adapters</strong> (<code>theme.js</code>, <code>paper.js</code>): <code>BoodooProvider</code>, <code>useTheme</code>, <code>defaultLightTheme</code>, <code>defaultDarkTheme</code>, <code>boodooPaperLightTheme</code>, <code>boodooPaperDarkTheme</code>.</span></li>
+            </ul>
+          </li>
+          <li><span><strong>Enterprise Application Shell</strong>: Added <code>.shell-header</code> (sticky header), <code>.shell-sidebar</code> (100vh scrolling sidebar), <code>.shell-pad</code> / <code>sm</code> / <code>lg</code> (responsive padding), <code>.bg-login-gradient</code>, <code>.bg-hero-gradient</code>, <code>.feature-card</code> (hover elevation), <code>.table-scroll-max</code> (max-height scrolling), and <code>.form-section</code> (grouped card forms).</span></li>
+          <li><span><strong>CSS Grid Auto Columns &amp; Gutter Bridge</strong>: Gutter bridge support for <code>.grid</code> (<code>--boodoo-gutter-x</code>, <code>--boodoo-gutter-y</code>), auto-fill / auto-fit layouts (<code>.grid-auto-fill</code>, <code>.grid-auto-fit</code>), and <code>.grid-cols-tier</code> / <code>search</code> / <code>line</code> / <code>simulation</code> templates.</span></li>
+          <li><span><strong>SaaS Role Status Badges &amp; Active Indicators</strong>: 8 role status badges (<code>.badge-role-admin</code>, <code>member</code>, <code>viewer</code>, <code>owner</code>, <code>billing</code>, <code>guest</code>, <code>developer</code>, <code>security</code>) and <code>.nav-active-bar</code> (<code>.nav-active-bar-start</code>, <code>.nav-active-bar-bottom</code>).</span></li>
+          <li><span><strong>Dynamic CodePen Snippets</strong>: Dynamically sets CodePen editor pane (JS for script demos, CSS for styling overrides, HTML for component markup).</span></li>
         </ul>
 
         <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-info text-info"><span>Fixed</span></span>
-          <span>Dark Mode Gray Inversion, Runtime CSS Custom Properties & Spacing Truth</span>
+          <span>Standards Compliance, Theme Inversion &amp; CSS Variable Theming</span>
         </h3>
         <ul class="mb-0">
-          <li><strong>Dark Mode Gray Scale</strong>: Fixed dark inversion scale ensuring <code>--boodoo-gray-800</code> (<code>#ececf4</code>) and <code>--boodoo-gray-900</code> (<code>#f7f8fb</code>) remain distinct.</li>
-          <li><strong>Runtime CSS Variable Theming</strong>: <code>.text-primary</code>, <code>.text-muted</code>, <code>a</code>, <code>h1</code>–<code>h6</code>, solid <code>.btn-primary</code>, avatar, badge, nav, and card clickable hover states now dynamically consume CSS custom properties.</li>
-          <li><strong>Sticky Flexibility</strong>: <code>.sticky-top</code> and <code>.sticky-bottom</code> now respect <code>var(--boodoo-zindex-sticky, 1020)</code>.</li>
+          <li><span><strong>Cross-Browser Standard Property</strong>: Added standard <code>appearance: none;</code> alongside <code>-webkit-appearance: none;</code> in reboot rules.</span></li>
+          <li><span><strong>Dark Mode Gray Scale Step Flattening</strong>: Fixed dark inversion scale ensuring <code>--boodoo-gray-800</code> (<code>#ececf4</code>) and <code>--boodoo-gray-900</code> (<code>#f7f8fb</code>) remain distinct across media queries and <code>[data-boodoo-theme="dark"]</code>.</span></li>
+          <li><span><strong>Runtime CSS Variable Theming</strong>: <code>.text-primary</code>, <code>.text-muted</code>, <code>a</code>, <code>h1</code>–<code>h6</code>, solid <code>.btn-primary</code>, avatar, badge, nav, and card clickable hover states now dynamically consume CSS custom properties.</span></li>
+          <li><span><strong>Sticky Helpers Flexibility</strong>: <code>.sticky-top</code>, <code>.sticky-bottom</code>, and <code>.sticky-lg-top</code> now respect <code>var(--boodoo-zindex-sticky, 1020)</code>.</span></li>
+          <li><span><strong>Spacing Scale Truthfulness</strong>: Corrected spacing scale docs, changelogs, and tests to accurately reflect the compiled modern scale (0.5 = 8px, 1 = 20px, 2 = 36px, 3 = 52px, 4 = 68px, 5 = 84px) with <code>createSpacing()</code> for compact scales.</span></li>
         </ul>
       </div>
     </div>
