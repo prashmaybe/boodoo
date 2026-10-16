@@ -471,6 +471,41 @@ document.querySelectorAll('[data-boodoo-toggle="popover"]').forEach(function (el
       }
     })();
 
+    // Auto-scroll the active documentation sidebar item into the visible viewport
+    (function () {
+      function scrollActiveNavIntoView() {
+        var sidebar = document.querySelector('.docs-sidebar');
+        if (!sidebar) return;
+        var activeLink = sidebar.querySelector('.docs-nav-list a.active');
+        if (!activeLink) return;
+
+        // Calculate offset relative to sidebar scroll container to center it precisely
+        var sidebarRect = sidebar.getBoundingClientRect();
+        var linkRect = activeLink.getBoundingClientRect();
+        var isVisible = (linkRect.top >= sidebarRect.top + 40 && linkRect.bottom <= sidebarRect.bottom - 40);
+
+        if (!isVisible) {
+          // Scroll active link to center of sidebar
+          var targetScrollTop = activeLink.offsetTop - (sidebar.clientHeight / 2) + (activeLink.clientHeight / 2);
+          sidebar.scrollTop = Math.max(0, targetScrollTop);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scrollActiveNavIntoView);
+      } else {
+        scrollActiveNavIntoView();
+      }
+
+      // Also ensure when mobile collapse is opened, the active link is visible
+      var collapseToggle = document.querySelector('[data-boodoo-target="#docsSidebarCollapse"]');
+      if (collapseToggle) {
+        collapseToggle.addEventListener('click', function () {
+          setTimeout(scrollActiveNavIntoView, 250);
+        });
+      }
+    })();
+
     // Action buttons (Copy + CodePen) for code blocks
     document.querySelectorAll('.highlight pre').forEach(function (pre) {
       var container = pre.closest('.highlight') || pre.parentElement;
