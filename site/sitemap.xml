@@ -115,6 +115,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/ai-prompt.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/alerts.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -211,6 +217,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/dock.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/dropdowns.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -224,6 +236,12 @@
   </url>
   <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/kbd.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/kpi-card.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

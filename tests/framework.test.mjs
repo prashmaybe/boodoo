@@ -110,7 +110,11 @@ test('SCSS and LESS full component & feature parity verification', () => {
     '.popover',
     '.toast',
     '.tooltip',
-    '.tree-view'
+    '.tree-view',
+    '.dock',
+    '.kpi-card',
+    '.ai-prompt-container',
+    '.chat-bubble'
   ];
 
   for (const cls of expectedClasses) {

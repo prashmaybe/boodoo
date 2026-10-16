@@ -1,0 +1,58 @@
+<!--
+title: Dock
+description: Floating application shelf and launcher bar with magnification effects.
+section: components
+order: 30
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>The Dock component provides a modern, floating application shelf inspired by macOS and iPadOS. It features smooth hover elevation, active indicators, and glassmorphism backdrop blurs.</span></p>
+</section>
+
+<section class="docs-section">
+  <h2><span>Example Dock</span></h2>
+  <div class="bd-example p-5 border rounded bg-light d-flex justify-content-center">
+    <div class="dock">
+      <button type="button" class="dock-item active" title="Finder">
+        <span class="fs-4"><span>📂</span></span>
+      </button>
+      <button type="button" class="dock-item" title="Terminal">
+        <span class="fs-4"><span>💻</span></span>
+      </button>
+      <button type="button" class="dock-item" title="Browser">
+        <span class="fs-4"><span>🌐</span></span>
+      </button>
+      <div class="dock-divider"></div>
+      <button type="button" class="dock-item" title="Settings">
+        <span class="fs-4"><span>⚙️</span></span>
+      </button>
+      <button type="button" class="dock-item" title="Trash">
+        <span class="fs-4"><span>🗑️</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Inline or pinned bottom dock --&gt;
+&lt;div class="dock"&gt;
+  &lt;button type="button" class="dock-item active" title="Files"&gt;
+    &lt;span&gt;📂&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button type="button" class="dock-item" title="Terminal"&gt;
+    &lt;span&gt;💻&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="dock-divider"&gt;&lt;/div&gt;
+  &lt;button type="button" class="dock-item" title="Settings"&gt;
+    &lt;span&gt;⚙️&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Screen-pinned bottom dock --&gt;
+&lt;div class="dock-container"&gt;
+  &lt;div class="dock"&gt;
+    &lt;!-- Dock items --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
