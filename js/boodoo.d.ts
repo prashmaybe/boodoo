@@ -20,6 +20,10 @@ export declare class Alert extends BaseComponent {
   close(): void;
 }
 
+export declare class Button extends BaseComponent {
+  setLoading(loading: boolean): void;
+}
+
 export declare class Modal extends BaseComponent {
   static toggleVia(source: Element): void;
 }
@@ -120,6 +124,7 @@ export {
   Alert,
   Banner,
   BottomSheet,
+  Button,
   ChipInput,
   Collapse,
   Combobox,
@@ -144,4 +149,6 @@ export {
   Tooltip,
   TreeView,
   Carousel,
+  clipboard,
+  theme,
 };

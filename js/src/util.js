@@ -1,11 +1,23 @@
 // BOODOO JS — Utilities
 // Safe, dependency-free DOM/event helpers.
 
-export const element = (selector) =>
-  typeof selector === 'string' ? document.querySelector(selector) : selector;
+export const element = (selector) => {
+  if (typeof selector !== 'string') return selector;
+  try {
+    return document.querySelector(selector);
+  } catch {
+    return null;
+  }
+};
 
-export const elements = (selector) =>
-  typeof selector === 'string' ? Array.from(document.querySelectorAll(selector)) : [selector].filter(Boolean);
+export const elements = (selector) => {
+  if (typeof selector !== 'string') return [selector].filter(Boolean);
+  try {
+    return Array.from(document.querySelectorAll(selector));
+  } catch {
+    return [];
+  }
+};
 
 export const isVisible = (el) => {
   if (!el) return false;
@@ -106,6 +118,15 @@ export const enableDismissTrigger = (component, onToggle) => {
   if (!isDismissListenerBound) {
     document.addEventListener('click', handleGlobalDismiss, true);
     isDismissListenerBound = true;
+  }
+};
+
+export const disableDismissTrigger = (component) => {
+  if (typeof document === 'undefined') return;
+  dismissComponents.delete(component);
+  if (dismissComponents.size === 0 && isDismissListenerBound) {
+    document.removeEventListener('click', handleGlobalDismiss, true);
+    isDismissListenerBound = false;
   }
 };
 

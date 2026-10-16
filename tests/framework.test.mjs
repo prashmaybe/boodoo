@@ -89,10 +89,12 @@ test('dark mode theme gray-scale inversion maintains distinct gray-800 and gray-
   const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
 
   // Verify in SCSS dist
+  assert.match(mainCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-700:\s*#dedfec/);
   assert.match(mainCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-800:\s*#ececf4/);
   assert.match(mainCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-900:\s*#f7f8fb/);
 
   // Verify in LESS dist
+  assert.match(lessCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-700:\s*#dedfec/);
   assert.match(lessCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-800:\s*#ececf4/);
   assert.match(lessCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-900:\s*#f7f8fb/);
 });
@@ -455,6 +457,21 @@ test('Modal focus management, Data API, and dispose() lifecycle verification', a
   assert.equal(DummyComponent.getInstance(el), dummy, 'DummyComponent should remain registered');
   dummy.dispose();
   assert.equal(DummyComponent.getInstance(el), null);
+
+  // Verify BaseComponent._dataAttrConfig kebab->camelCase conversion and numeric whitespace parsing
+  const mockAttrEl = {
+    attributes: [
+      { name: 'data-boodoo-placement-top', value: 'true' },
+      { name: 'data-boodoo-max-count', value: '42' },
+      { name: 'data-boodoo-blank-space', value: '   ' },
+      { name: 'data-boodoo-raw-string', value: 'active-state' }
+    ]
+  };
+  const cfg = BaseComponent._dataAttrConfig(mockAttrEl);
+  assert.equal(cfg.placementTop, true, 'Kebab key must be converted to camelCase');
+  assert.equal(cfg.maxCount, 42, 'Numeric string should be parsed to Number');
+  assert.equal(cfg.blankSpace, '   ', 'Whitespace strings must not be coerced to 0');
+  assert.equal(cfg.rawString, 'active-state');
 });
 
 test('XSS sanitization regression tests across Toast, ChipInput, and CommandPalette', async () => {

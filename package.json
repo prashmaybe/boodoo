@@ -28,7 +28,7 @@
     "./tokens": {
       "types": "./tokens/index.d.ts",
       "import": "./tokens/index.js",
-      "require": "./tokens/index.js"
+      "require": "./tokens/index.cjs"
     },
     "./tokens.json": "./tokens/tokens.json",
     "./paper": "./react-native/paper.js",
