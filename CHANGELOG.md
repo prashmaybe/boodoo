@@ -9,10 +9,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.2] - 2026-10-16
 
+### Added
+- **New Component: Dock / App Shelf (`.dock`, `scss/components/_dock.scss`, `less/boodoo.less`)**:
+  - macOS & iPadOS-inspired floating app shelf and persistent bottom navigation bar.
+  - Features glassmorphism background (`backdrop-filter: blur(...)`), customizable icon magnification effects, active app dot indicators (`.dock-dot`), badge support, separator dividers (`.dock-divider`), and positioning variants (`.dock-bottom`, `.dock-top`, `.dock-start`, `.dock-end`).
+  - Fully responsive with auto-scrolling overflow on narrow viewports.
+  - Published comprehensive interactive documentation and code examples in `docs/components/dock.html`.
+- **New Component: KPI Stat Card (`.kpi-card`, `scss/components/_kpi-card.scss`, `less/boodoo.less`)**:
+  - Dashboard analytics metric card for SaaS, e-commerce, and admin backends.
+  - Built-in slots for metric value (`.kpi-value`), label (`.kpi-label`), trend indicator pills (`.kpi-trend.kpi-trend-up`, `.kpi-trend.kpi-trend-down`, `.kpi-trend-neutral`), visual icon wrappers (`.kpi-icon`), and mini progress tracking bars (`.kpi-progress`).
+  - Supports variant styles including `.kpi-card-gradient`, `.kpi-card-bordered`, and glassmorphic elevations with full dark mode token adaptation.
+  - Published interactive documentation with realistic SaaS dashboard metrics in `docs/components/kpi-card.html`.
+- **New Component: AI Prompt & Chat Input (`.ai-prompt`, `scss/components/_ai-prompt.scss`, `less/boodoo.less`)**:
+  - Purpose-built conversational input interface for generative AI, LLM assistants, and chat applications.
+  - Includes auto-expanding textarea container, action triggers (`.ai-prompt-btn`, `.ai-prompt-btn-stop`), quick suggestion chips/prompts row (`.ai-prompt-chips`), token/character counter (`.ai-prompt-counter`), model selector dropdown slot, and attachment action buttons.
+  - Interactive status states: streaming mode (`.ai-prompt-streaming`), focus ring animations, and disabled states.
+  - Published interactive documentation in `docs/components/ai-prompt.html`.
+- **Full SCSS and LESS Feature & Component Parity (`scss/`, `less/boodoo.less`, `tests/framework.test.mjs`)**:
+  - Implemented 100% component parity between SCSS and LESS distributions across all 44 components.
+  - Added full LESS implementations for:
+    - `.dock` (App shelf / macOS-style floating dock)
+    - `.kpi-card` (Dashboard KPI metrics with trend badges and progress indicators)
+    - `.ai-prompt` (AI chat inputs, prompt suggestion chips, stop/send action triggers)
+    - `.banner` (Dismissible header/footer notification banners)
+    - `.bottom-sheet` (Mobile drawer and touch-friendly action sheets)
+    - `.chip` (Tag inputs, filter pills, removable badges)
+    - `.command-palette` (Search & quick command launcher)
+    - `.context-menu` (Right-click popup menus)
+    - `.data-table` (Sortable, filterable responsive tables)
+    - `.dropzone` (Drag-and-drop file uploaders)
+    - `.empty-state` (First-time user & empty search indicators)
+    - `.kbd` (Styled keyboard shortcut keys)
+    - `.lightbox` (Fullscreen modal media viewports)
+    - `.otp-input` (SMS/2FA code verification digit groups)
+    - `.rating` (Star and numeric rating indicators)
+    - `.segmented-control` (iOS-style switchable pill tabs)
+    - `.speed-dial` (Material Floating Action Button menus)
+    - `.splitter` (Docking, resizable pane layouts)
+    - `.stepper` (Multi-step wizards and checkout trackers)
+    - `.timeline` (Chronological activity & audit logs)
+    - `.tree-view` (Nested file and organizational hierarchy trees)
+  - Established permanent **Dual-Source Feature Parity Rule** in project guidelines (`.agents/AGENTS.md`) enforced via automated unit tests.
+- **Documentation Navigation Auto-Focus & Centering (`site/layout.html`, `site/assets/docs.css`)**:
+  - On page load and navigation, active sidebar links (`.docs-nav-list li a.active`) automatically calculate their offset and scroll into view (`sidebar.scrollTop`) centered within the visible viewport.
+  - Added enhanced active state styling with a 3px primary indicator bar, gradient highlight pill, and `:focus-visible` accessibility rings.
+- **Automated Unit Testing & Component Validation Suite (`tests/framework.test.mjs`, `package.json`)**:
+  - Added 11 automated test suites covering CSS bundle generation, `@layer` omission, spacing scales, CSS variable color bindings, token parity, accessibility focus rings/reduced motion, React Native exports, and complete SCSS/LESS parity verification.
+  - Integrated `npm run test:unit` directly into `npm test`.
+
 ### Fixed
-- **Normalized Spacing Scale (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
+- **Material Comparison Floating Button (`site/src/about/vs-material.html`)**:
+  - Fixed floating action button escaping the example card on `vs-material.html` by applying `.position-static` to the inline demonstration button.
+- **Normalized Spacing Scale & Customization (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
   - Restored true Bootstrap-compatible 5-step spacing scale: `0` (0), `1` (0.25rem = 4px), `2` (0.5rem = 8px), `3` (1rem = 16px), `4` (1.5rem = 24px), and `5` (3rem = 48px), alongside fractional steps (`0.5`, `1.5`, `2.5`, `3.5`, `4.5`) and extended steps (`6` through `10`).
-  - Synchronized documentation tables and code examples to match the implemented scale.
+  - Added comprehensive documentation and developer guides for customizing spacing via CSS variables, SCSS `$boodoo-spacers`, LESS `@boodoo-spacer`, and `boodoo/tokens` JavaScript / React Native APIs.
 - **Dynamic Component CSS Variable Theming & Dark Mode Inversion (`scss/_root.scss`, `scss/content/_tables.scss`, `scss/components/*`)**:
   - Replaced hardcoded compile-time Sass color literals in `.table`, `.btn-outline-*`, `.pagination`, `.list-group`, and `.avatar` with dynamic CSS custom properties (`var(--boodoo-...)`).
   - Dark mode rules (`@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`) now dynamically invert the entire gray-scale palette (`--boodoo-gray-100` through `--boodoo-gray-900`) and surface tokens (`--boodoo-light`, `--boodoo-dark`), allowing immediate runtime re-theming across components.
@@ -22,11 +72,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed empty `@layer reset, tokens, components, utilities;` declaration that erroneously caused consumer layered CSS to lose specificity battles against unlayered framework styles.
 - **Modular Core CSS Bundle Surface (`scss/boodoo.scss`)**:
   - Excluded uncompiled native platform skins (`@import "components/native";`) from the core framework distribution, keeping the compiled web bundle lean and strictly standard-compliant.
-
-### Added
-- **Automated Unit Testing & Component Validation Suite (`tests/framework.test.mjs`, `package.json`)**:
-  - Added comprehensive automated test suite testing CSS bundle generation, `@layer` omission, spacing scales, CSS variable color bindings, token parity, accessibility focus rings/reduced motion, and React Native package exports.
-  - Integrated `npm run test:unit` directly into `npm test`.
 
 ---
 

@@ -39,7 +39,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~454 KB | ~63.1 KB | ~41.6 KB | Full framework (all 38+ components + utilities) |
+| `boodoo.min.css` | ~459 KB | ~63.8 KB | ~42.1 KB | Full framework (all 44 components + utilities) |
 | `boodoo-utilities.min.css` | ~192 KB | ~22.0 KB | ~11.6 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~18 KB | ~2.2 KB | ~1.5 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~11 KB | ~3.1 KB | ~2.7 KB | Modern CSS reset & base typography |
