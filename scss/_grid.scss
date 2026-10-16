@@ -153,6 +153,64 @@
 // CSS Grid helpers (Tailwind/Foundation flavor)
 .grid {
   display: grid;
+  column-gap: var(--boodoo-gutter-x, 1.5rem);
+  row-gap: var(--boodoo-gutter-y, 0);
+}
+
+// Auto-fill & Auto-fit responsive column layouts
+.grid-auto-fill,
+.grid-cols-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(var(--boodoo-grid-min, 280px), 1fr));
+}
+
+.grid-auto-fit,
+.grid-cols-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(var(--boodoo-grid-min, 280px), 1fr));
+}
+
+.grid-auto-fill-sm {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.grid-auto-fill-md {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.grid-auto-fill-lg {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+.grid-auto-fit-sm {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.grid-auto-fit-md {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.grid-auto-fit-lg {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+// Enterprise app column templates (tier, search, line, simulation)
+.grid-cols-tier {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-cols-search {
+  grid-template-columns: 1fr auto;
+}
+
+.grid-cols-line {
+  grid-template-columns: auto 1fr auto;
+}
+
+.grid-cols-simulation {
+  grid-template-columns: 320px 1fr 360px;
+
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: 1fr;
+  }
 }
 
 @for $i from 1 through 12 {

@@ -152,20 +152,20 @@
 .sticky-top {
   position: sticky;
   top: 0;
-  z-index: $boodoo-zindex-sticky;
+  z-index: var(--boodoo-zindex-sticky, #{$boodoo-zindex-sticky});
 }
 
 .sticky-bottom {
   position: sticky;
   bottom: 0;
-  z-index: $boodoo-zindex-sticky;
+  z-index: var(--boodoo-zindex-sticky, #{$boodoo-zindex-sticky});
 }
 
 .sticky-lg-top {
   @include media-breakpoint-up(lg) {
     position: sticky;
     top: 0;
-    z-index: $boodoo-zindex-sticky;
+    z-index: var(--boodoo-zindex-sticky, #{$boodoo-zindex-sticky});
   }
 }
 

@@ -7,6 +7,129 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.3] - 2026-10-16
+
+### Added
+- **Full Modular React Native UI Component Suite (`react-native/`, subpath `boodoo/react-native`)**:
+  - Re-architected native mobile framework from a monolithic file into 12 clean, tree-shakeable, dedicated submodules with zero DOM dependencies and 100% pure React Native primitives (`View`, `Text`, `StyleSheet`, `Pressable`, `TextInput`, `Modal`):
+    - **`typography.js`** (2 components):
+      - `Text`: Universal typography primitive supporting Paper variants (`displayLarge`, `headlineMedium`, `titleLarge`, `bodyMedium`, `labelSmall`), React Native Elements heading flags (`h1`–`h4`), UI Kitten `category` presets, and custom colors.
+      - `Heading`: Layout heading component with levels 1 through 6, semantic sizes, and automatic font weight scaling.
+    - **`layout.js`** (9 components):
+      - `Box`: Fundamental layout container with theme-aware padding, margin, surface colors, borders, and rounded corners.
+      - `HStack` / `XStack`: Horizontal flex container with customizable child spacing gap, alignment, and flex-wrap.
+      - `VStack` / `YStack`: Vertical flex layout stack supporting configurable child element spacing.
+      - `Center`: Centering flexbox wrapper aligning items along both axes.
+      - `ZStack`: Absolute-positioned depth stacking container for overlays, floating badges, and hero elements.
+      - `Pressable`: Interactive responsive touch wrapper with opacity feedback and theme-driven states.
+      - `Grid`: Multi-column native layout grid primitive with column count configuration and gutters.
+    - **`buttons.js`** (5 components):
+      - `Button`: Cross-platform button compatible with React Native Paper (`mode="contained|outlined|text|elevated"`), RNE UI (`title`, `type="solid|outline|clear"`), UI Kitten (`status="primary|success|warning|danger|info"`), and Wix UI Lib, with loading spinner and disabled states.
+      - `ButtonGroup`: Multi-segment button array for option selection with active highlights.
+      - `IconButton`: Circular or rounded touchable icon trigger with custom background tints.
+      - `FAB`: Floating Action Button supporting extended labels, surface elevation, and fixed screen positioning.
+      - `SegmentedButtons`: iOS and Material segmented pill selector with mutually exclusive or multi-toggle states.
+    - **`surfaces.js`** (6 components):
+      - `Card`: Content card with optional subcomponents (`Card.Content`, `Card.Cover`, `Card.Actions`, `Card.Title`) and hover/press feedback.
+      - `Surface`: Elevated surface container consuming theme elevation tokens and dark-mode surface inverters.
+      - `Divider` / `Separator`: Horizontal and vertical hairline dividers supporting inset margins and subhead labels.
+      - `PricingCard`: RNE UI-inspired subscription tier card with price tags, feature bullet lists, and CTA triggers.
+      - `Tile`: Image-backed content tile with overlay captions and touch callbacks.
+    - **`inputs.js`** (20 components):
+      - `TextInput` / `Input` / `TextField`: Cross-platform text entry supporting Paper outlined/flat modes, RNE UI error messages, icons, left/right accessories, and disabled states.
+      - `Textarea` / `TextArea`: Multi-line text field with min-height constraints and scroll handling.
+      - `Searchbar` / `SearchBar`: Search input with clear button, debounced query handling, and search icon slot.
+      - `HelperText`: Sub-field validation and instructional micro-copy supporting error and info modes.
+      - `Checkbox` / `CheckBox`: Material and agnostic checkbox toggle with checked, unchecked, and indeterminate icons.
+      - `RadioButton` / `Radio` / `RadioGroup`: Mutual exclusion option groups with accessible selection events.
+      - `Switch` / `Toggle`: Platform-native toggle switch with theme color bindings.
+      - `Slider`: Range slider with thumb interaction, step intervals, and min/max limits.
+      - `Stepper`: Numeric step increment/decrement control with tactile touch buttons.
+      - `Select` / `Picker`: Native dropdown selector supporting modal picker dialogs and option lists.
+      - `ToggleButton`: Standalone binary toggle button with selected styling.
+    - **`data-display.js`** (3 components):
+      - `Chip`: Compact interactive token with avatar slots, close triggers, and selected pills.
+      - `Badge`: Notification and status badge supporting numerical counters and dot indicators.
+      - `Avatar`: User avatar supporting image URIs (`Avatar.Image`), initials text (`Avatar.Text`), and icons (`Avatar.Icon`).
+    - **`feedback.js`** (9 components):
+      - `ActivityIndicator` / `Spinner`: Animated loading indicators with theme color mapping and size controls.
+      - `ProgressBar` / `Progress`: Linear meter bar with indeterminate and determinate percentage values.
+      - `Skeleton`: Content placeholder shimmer loader for cards, text blocks, and avatars.
+      - `Alert`: Semantic alert banner supporting `info`, `success`, `warning`, and `danger` variants.
+      - `Banner`: Collapsible top banner with action triggers and illustration slot.
+      - `Toast` / `Snackbar`: Ephemeral bottom notification with dismiss button and timer autohide.
+    - **`lists.js`** (4 components):
+      - `List`: Grouped list container with section titles (`List.Section`, `List.Subheader`).
+      - `ListItem`: Flexible row component with left icon/avatar, title, subtitle, right accessory, and accordion support (`List.Accordion`).
+      - `DataTable` / `Table`: Native tabular data layout supporting `DataTable.Header`, `DataTable.Row`, `DataTable.Cell`, and `DataTable.Pagination`.
+    - **`navigation.js`** (7 components):
+      - `Appbar` / `Header`: Top screen bar with title, back navigation action (`Appbar.BackAction`), and action icons (`Appbar.Action`).
+      - `TopNavigation`: UI Kitten-style header layout with accessory slots.
+      - `Drawer`: Slide-over navigation panel with section links and user profile slots.
+      - `BottomNavigation`: Mobile bottom tab bar with icon, active indicator pill, and badge notifications.
+      - `Tabs`: Scrollable or fixed horizontal tab strips for view switching.
+      - `PageControl`: Carousel and onboarding pagination dot indicator.
+    - **`overlays.js`** (13 components):
+      - `Dialog` / `AlertDialog`: Accessible modal alerts with title, body content, and action confirmations.
+      - `Modal` / `Overlay`: Fullscreen or centered overlay dialogs with backdrop dimming and dismiss callbacks.
+      - `BottomSheet` / `Actionsheet` / `ActionSheet` / `Sheet`: Bottom-docked sliding sheet with swipe-to-dismiss gesture support and drag handles.
+      - `Menu`: Contextual anchor-positioned popup list.
+      - `Popover`: Anchored floating callout balloon with arrow indicator.
+      - `Tooltip`: Hover/long-press micro-copy helper bubble.
+      - `Portal`: Host-agnostic React portal layer for rendering overlays outside parent hierarchy.
+      - `TouchableRipple`: Material Design ink ripple touch feedback container.
+    - **`theme.js`** & **`paper.js`**:
+      - `BoodooProvider`, `useTheme`, `defaultLightTheme`, and `defaultDarkTheme` context providers.
+      - `boodooPaperLightTheme` and `boodooPaperDarkTheme` Material Design 3 (MD3) preset adapters directly consumable by React Native Paper's `<PaperProvider theme={boodooPaperLightTheme}>`.
+- **Enterprise Application Shell & Layout Utilities (`scss/_helpers.scss`, `less/boodoo.less`)**:
+  - `.shell-header`: Sticky top bar with `var(--boodoo-zindex-sticky, 1020)` z-index mapping, body background, and subtle border.
+  - `.shell-sidebar`: Full viewport-height (`100vh`) scrolling navigation sidebar.
+  - `.shell-pad`, `.shell-pad-sm`, `.shell-pad-lg`: Responsive internal shell padding scale for dashboards.
+  - `.bg-login-gradient`: Multi-stop diagonal mesh gradient for login, onboarding, and auth screens.
+  - `.bg-hero-gradient`: Top-radial spotlight ambient gradient for landing pages and marketing banners.
+  - `.feature-card`: Interactive elevated feature card with hover translateY lift, border-color transition, and dynamic shadow.
+  - `.form-section`, `.form-section-title`, `.form-section-desc`: Grouped card wrappers for enterprise multi-step forms.
+- **Responsive CSS Grid Auto Columns & Layout Templates (`scss/_grid.scss`, `less/boodoo.less`)**:
+  - Gutter Bridge: Added full `--boodoo-gutter-x` and `--boodoo-gutter-y` support across `.grid` containers.
+  - Auto-Fit & Auto-Fill utilities: `.grid-auto-fill`, `.grid-auto-fit`, `.grid-auto-fill-sm/md/lg`, `.grid-auto-fit-sm/md/lg` allowing dynamic card grids without media query boilerplate.
+  - Enterprise Grid Templates: `.grid-cols-tier` (pricing columns), `.grid-cols-search` (filter bar layouts), `.grid-cols-line` (key-value audit logs), `.grid-cols-simulation` (data telemetry layouts).
+- **SaaS Role Badges & Navigation Active Bar (`scss/components/_badge.scss`, `scss/components/_nav.scss`, `less/boodoo.less`)**:
+  - 8 Semantic Role Badges: Added `.badge-role-admin`, `.badge-role-member`, `.badge-role-viewer`, `.badge-role-owner`, `.badge-role-billing`, `.badge-role-guest`, `.badge-role-developer`, and `.badge-role-security` with soft tint backgrounds and themed text.
+  - Navigation Active Bars: Added `.nav-active-bar` with `.nav-active-bar-start` (vertical sidebar 3px indicator line) and `.nav-active-bar-bottom` (horizontal tab underline).
+  - Max-Height Table Scrolling: Added `.table-scroll-max` paired with `.table-scroll-sm` (240px), `.table-scroll-md` (380px), `.table-scroll-lg` (520px), and `.table-scroll-xl` (680px).
+- **Dynamic CodePen Snippet Landing Logic (`site/layout.html`)**:
+  - Enhanced CodePen integration to automatically land users in the appropriate editor panel based on the code type:
+    - Pure JavaScript snippets open directly in the **JS editor** (`editors: '001'`).
+    - CSS/Sass snippets open directly in the **CSS editor** (`editors: '010'`).
+    - HTML and component templates open directly in the **HTML editor** (`editors: '100'`).
+
+### Fixed
+- **Standard Cross-Browser `appearance` Property (`scss/_reboot.scss`, `less/boodoo.less`)**:
+  - Fixed vendor-prefix compliance by adding standard `appearance: none;` alongside `-webkit-appearance: none;` across search cancel buttons and form decoration resets.
+- **Dark Mode Gray Scale Step Flattening Defect (`scss/_root.scss`, `less/boodoo.less`)**:
+  - Fixed dark mode gray scale mapping where `--boodoo-gray-800` previously flattened into the same value as `--boodoo-gray-900`.
+  - Inverted `--boodoo-gray-800` to `#ececf4` (light gray-200) and `--boodoo-gray-900` to `#f7f8fb` (light gray-100) across both `@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`.
+- **Runtime CSS Custom Property Theming Across Components (`scss/components/*`, `less/boodoo.less`)**:
+  - Replaced compile-time hardcoded Sass color literals with runtime dynamic custom property bindings:
+    - `.avatar`: Binds `--boodoo-avatar-bg` to `var(--boodoo-primary)` and `--boodoo-avatar-color` to `var(--boodoo-white)`.
+    - `.badge`: Binds `background-color` to `var(--boodoo-primary)`, soft badges bind to `var(--boodoo-primary-subtle)`, and outline borders consume `var(--boodoo-primary)`.
+    - `.card-clickable`: Hover borders dynamically bind to `var(--boodoo-primary)`.
+    - `.nav`: Active links and pills dynamically bind to `var(--boodoo-primary)`.
+    - `.dropdown-item.active`: Dynamically binds to `var(--boodoo-dropdown-link-active-bg, var(--boodoo-primary))`.
+    - `.navbar-nav .nav-link.active`: Dynamically binds to `var(--boodoo-primary)`.
+- **Dynamic CSS Custom Properties for Utilities, Links, Headings, and Solid Buttons (`scss/_maps.scss`, `scss/_reboot.scss`, `scss/components/_buttons.scss`)**:
+  - `.text-primary` and `.bg-primary` compile to `var(--boodoo-primary) !important;`.
+  - `.text-muted` compiles to `var(--boodoo-text-muted, var(--boodoo-gray-600, #6c757d)) !important;`.
+  - `a` hyperlinks consume `var(--boodoo-link-color)` and `var(--boodoo-link-hover-color)`.
+  - Headings `h1`–`h6` consume `var(--boodoo-heading-color)` and `var(--boodoo-h1-font-size)` through `var(--boodoo-h6-font-size)`.
+  - Solid `.btn-primary` and palette variants bind `--boodoo-btn-bg` and `--boodoo-btn-border` to `var(--boodoo-#{$name})` using `color-mix(...)` for hover and active state transitions.
+- **Sticky Helpers Sticky Z-Index Flexibility (`scss/_helpers.scss`, `scss/_utilities.scss`, `less/boodoo.less`)**:
+  - `.sticky-top`, `.sticky-bottom`, and `.sticky-lg-top` now bind to `var(--boodoo-zindex-sticky, 1020)` for flexible stacking context control.
+- **Spacing Scale Documentation & Token Alignment (`CHANGELOG.md`, `tokens/tokens.json`, `tests/framework.test.mjs`)**:
+  - Corrected changelog discrepancies to accurately reflect the actual compiled generous modern spacing scale (`0 = 0`, `0.5 = 8px`, `1 = 20px`, `2 = 36px`, `3 = 52px`, `4 = 68px`, `5 = 84px`) while providing `createSpacing()` for Bootstrap 4/8/16/24/48px density.
+
+---
+
 ## [1.1.2] - 2026-10-16
 
 ### Added
@@ -60,9 +183,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **Material Comparison Floating Button (`site/src/about/vs-material.html`)**:
   - Fixed floating action button escaping the example card on `vs-material.html` by applying `.position-static` to the inline demonstration button.
-- **Normalized Spacing Scale & Customization (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
-  - Restored true Bootstrap-compatible 5-step spacing scale: `0` (0), `1` (0.25rem = 4px), `2` (0.5rem = 8px), `3` (1rem = 16px), `4` (1.5rem = 24px), and `5` (3rem = 48px), alongside fractional steps (`0.5`, `1.5`, `2.5`, `3.5`, `4.5`) and extended steps (`6` through `10`).
-  - Added comprehensive documentation and developer guides for customizing spacing via CSS variables, SCSS `$boodoo-spacers`, LESS `@boodoo-spacer`, and `boodoo/tokens` JavaScript / React Native APIs.
+- **Spacing Scale Architecture & Customization (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
+  - Documented and validated the default generous modern spacing scale: `0` (0), `0.5` (0.5rem = 8px), `1` (1.25rem = 20px), `2` (2.25rem = 36px), `3` (3.25rem = 52px), `4` (4.25rem = 68px), and `5` (5.25rem = 84px), engineered for comfortable SaaS card and section breathing room.
+  - Added comprehensive documentation and developer guides for customizing spacing to a compact Bootstrap scale (`1 = 0.25rem`, `3 = 1rem`, `5 = 3rem`) or any custom density via CSS variables (`--boodoo-spacer-*`), SCSS `$boodoo-spacers`, LESS `@boodoo-spacer`, and `boodoo/tokens` JavaScript / React Native APIs.
 - **Dynamic Component CSS Variable Theming & Dark Mode Inversion (`scss/_root.scss`, `scss/content/_tables.scss`, `scss/components/*`)**:
   - Replaced hardcoded compile-time Sass color literals in `.table`, `.btn-outline-*`, `.pagination`, `.list-group`, and `.avatar` with dynamic CSS custom properties (`var(--boodoo-...)`).
   - Dark mode rules (`@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`) now dynamically invert the entire gray-scale palette (`--boodoo-gray-100` through `--boodoo-gray-900`) and surface tokens (`--boodoo-light`, `--boodoo-dark`), allowing immediate runtime re-theming across components.

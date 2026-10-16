@@ -35,6 +35,39 @@ All features, styling primitives, theme tokens, layout utilities, and components
 2. **Build Validation**: The LESS distribution (`dist/css/boodoo.less.css`) must compile cleanly via `npm run css:less` on every change with zero syntax errors and zero deprecation warnings.
 3. **Automated Verification**: `tests/framework.test.mjs` must enforce parity between SCSS and LESS implementations so that regressions or omissions in either stylesheet preprocessor are caught during `npm test`.
 
+## Dynamic CSS Custom Property Theming Rule
+Components, utility classes, hyperlinks, headings, and interactive states must bind to dynamic CSS custom properties (`var(--boodoo-...)`) rather than baking compile-time preprocessor values into the output:
+
+1. **No Hardcoded Hex/Color Literals**: Never hardcode static theme colors (`$boodoo-primary`, `#7c3aed`) into component selectors (`.avatar`, `.badge`, `.card`, `.nav`, `.dropdown-item`, `.table`, `.btn-primary`, `.text-primary`, `a`, `h1`–`h6`). Always use `var(--boodoo-primary)` or `var(--boodoo-<token>, <fallback>)`.
+2. **Runtime Re-Theming**: Overriding `--boodoo-primary` or any theme token on `:root` or a scoped container at runtime in the browser must immediately cascade through components, buttons, active states, text colors, links, and borders without requiring stylesheet recompilation.
+3. **Utility Generation**: All utility classes generated in `$boodoo-color-map` and `$boodoo-utilities` must evaluate to CSS custom property bindings (`var(--boodoo-<name>, ...)`) so dynamic palette customization remains fully responsive in production.
+
+## Dark Theme Inversion & Gray Scale Separation Rule
+Dark mode rules (`@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`) must invert the gray scale without flattening distinct steps:
+
+1. **Strict Step Separation**: The dark mode gray inversion must strictly mirror the light scale step-by-step: `--boodoo-gray-800` must map to light gray-200 (`#ececf4`), and `--boodoo-gray-900` must map to light gray-100 (`#f7f8fb`). Never assign both gray-800 and gray-900 to the same pale color.
+2. **Surface Token Parity**: `--boodoo-light` and `--boodoo-dark` must invert dynamically between light and dark surfaces, and all component backgrounds (`--boodoo-card-bg`, `--boodoo-dropdown-bg`, `--boodoo-form-control-bg`) must consume their respective inverted dark-surface tokens.
+3. **Automated Inversion Testing**: `tests/framework.test.mjs` must assert that dark mode selectors contain distinct values for `--boodoo-gray-800` and `--boodoo-gray-900` across both SCSS and LESS compiled bundles.
+
+## Cross-Browser Standard Appearance Property Rule
+Whenever vendor-prefixed appearance properties (`-webkit-appearance` or `-moz-appearance`) are declared, the standard `appearance` property must always be specified alongside them:
+
+1. **Standard Property Declaration**: Any reboot rule, form control reset, search decoration, or range input declaring `-webkit-appearance: <val>` must simultaneously declare the standard `appearance: <val>` for complete standards compliance and future-proof browser compatibility.
+2. **Consistent Resets**: Both SCSS (`scss/_reboot.scss`, `scss/forms/*`) and LESS (`less/boodoo.less`) must maintain the dual appearance declaration across all interactive elements (`[type="search"]`, `[type="button"]`, select dropdowns, checkboxes, range sliders).
+
+## Spacing Scale Truthfulness & Density Configuration Rule
+The framework's spacing scale, tokens, tests, and documentation must remain strictly aligned and truthful:
+
+1. **Truth in Documentation**: Documentation pages (`site/src/utilities/spacing.html`), tokens (`tokens/tokens.json`), and changelogs (`CHANGELOG.md`) must accurately describe the actual compiled scale (e.g. generous modern scale: `0.5 = 8px`, `1 = 20px`, `2 = 36px`, `3 = 52px`, `4 = 68px`, `5 = 84px`). Never state in release notes or documentation that a different scale is compiled than what the code and tests enforce.
+2. **Multi-Density Flexibility**: Boodoo must document and support seamless density customization across all environments: runtime CSS variables (`--boodoo-spacer-*`), Sass `$boodoo-spacers`, Less `@boodoo-spacer`, and JavaScript `createSpacing()` for compact Bootstrap (4/8/16/24/48px) and custom scales.
+
+## Modular React Native Component Architecture Rule
+React Native mobile components (`react-native/`) must remain modular and strictly free of DOM dependencies:
+
+1. **Submodule Architecture**: Components must be organized into dedicated, cohesive submodules (`typography.js`, `layout.js`, `buttons.js`, `surfaces.js`, `inputs.js`, `data-display.js`, `feedback.js`, `lists.js`, `navigation.js`, `overlays.js`, `theme.js`, `paper.js`) re-exported via `react-native/index.js`. Never collapse all components into a single giant monolithic file.
+2. **Pure Primitives**: Mobile components must rely exclusively on core React Native primitives (`View`, `Text`, `StyleSheet`, `Pressable`, `TextInput`, `Modal`) — zero DOM access, zero uncompiled CSS, and zero mandatory external native dependencies.
+
+
 
 
 

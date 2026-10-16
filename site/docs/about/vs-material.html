@@ -333,7 +333,7 @@
     </tr>
     <tr>
       <td><strong><span>Bundle Size Footprint</span></strong></td>
-      <td><strong><span>~459 KB</span></strong> <span>CSS +</span> <strong><span>~126 KB</span></strong> <span>JS</span></td>
+      <td><strong><span>~469 KB</span></strong> <span>CSS +</span> <strong><span>~126 KB</span></strong> <span>JS</span></td>
       <td><span>~150–300+ KB minified + runtime overhead</span></td>
     </tr>
     <tr>
@@ -544,6 +544,13 @@
           htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
         }
 
+        var editorsMode = '100'; // HTML default
+        if (isCssOnly) {
+          editorsMode = '010'; // Open CSS editor
+        } else if (isJsOnly) {
+          editorsMode = '001'; // Open JS editor
+        }
+
         var penData = {
           title: demoTitle,
           description: 'Interactive demo built with boodoo CSS & JS framework',
@@ -553,7 +560,7 @@
           js: jsPayload,
           css_external: cdnCss,
           js_external: cdnJs,
-          editors: '100'
+          editors: editorsMode
         };
 
         var form = document.createElement('form');

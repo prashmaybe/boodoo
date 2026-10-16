@@ -443,3 +443,72 @@ order: 2
 </div>
 <p>Responsive tables can also be limited to a specific breakpoint with classes like <code>.table-responsive-md</code>.
 </p>
+
+<h2 id="scrollable-tables">Scrollable Table Containers</h2>
+<p>For data-dense dashboards with long tabular lists, use <code>.table-scroll-max</code> paired with height bounds like <code>.table-scroll-sm</code> (240px), <code>.table-scroll-md</code> (380px), <code>.table-scroll-lg</code> (520px), or <code>.table-scroll-xl</code> (680px) to lock vertical space and scroll internally.</p>
+<div class="bd-example">
+  <div class="table-scroll-max table-scroll-sm border rounded">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th scope="col"><span>#</span></th>
+          <th scope="col"><span>User</span></th>
+          <th scope="col"><span>Role</span></th>
+          <th scope="col"><span>Status</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span>1</span></td>
+          <td><span>Sarah Connor</span></td>
+          <td><span class="badge badge-admin"><span>Admin</span></span></td>
+          <td><span class="text-success"><span>Active</span></span></td>
+        </tr>
+        <tr>
+          <td><span>2</span></td>
+          <td><span>John Connor</span></td>
+          <td><span class="badge badge-owner"><span>Owner</span></span></td>
+          <td><span class="text-success"><span>Active</span></span></td>
+        </tr>
+        <tr>
+          <td><span>3</span></td>
+          <td><span>Kyle Reese</span></td>
+          <td><span class="badge badge-member"><span>Member</span></span></td>
+          <td><span class="text-muted"><span>Offline</span></span></td>
+        </tr>
+        <tr>
+          <td><span>4</span></td>
+          <td><span>Miles Dyson</span></td>
+          <td><span class="badge badge-developer"><span>Developer</span></span></td>
+          <td><span class="text-success"><span>Active</span></span></td>
+        </tr>
+        <tr>
+          <td><span>5</span></td>
+          <td><span>T-800</span></td>
+          <td><span class="badge badge-guest"><span>Guest</span></span></td>
+          <td><span class="text-warning"><span>Pending</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;div class=&quot;table-scroll-max table-scroll-md border rounded&quot;&gt;
+  &lt;table class=&quot;table mb-0&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope=&quot;col&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;&lt;span&gt;User&lt;/span&gt;&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;&lt;span&gt;Role&lt;/span&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;span&gt;1&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span&gt;Sarah Connor&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;badge badge-admin&quot;&gt;&lt;span&gt;Admin&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+</div>

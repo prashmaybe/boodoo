@@ -257,14 +257,14 @@
 
   &:hover,
   &:focus {
-    color: $boodoo-dropdown-link-color;
-    background-color: $boodoo-dropdown-link-hover-bg;
+    color: var(--boodoo-dropdown-link-hover-color, #{$boodoo-dropdown-link-color});
+    background-color: var(--boodoo-dropdown-link-hover-bg, #{$boodoo-dropdown-link-hover-bg});
   }
 
   &.active {
-    color: $boodoo-dropdown-link-active-color;
+    color: var(--boodoo-dropdown-link-active-color, var(--boodoo-white, #{$boodoo-dropdown-link-active-color}));
     text-decoration: none;
-    background-color: $boodoo-dropdown-link-active-bg;
+    background-color: var(--boodoo-dropdown-link-active-bg, var(--boodoo-primary));
   }
 
   &.disabled {
@@ -326,8 +326,8 @@
     }
 
     &.active {
-      color: $boodoo-white;
-      background-color: $boodoo-primary;
+      color: var(--boodoo-white, #fff);
+      background-color: var(--boodoo-dropdown-link-active-bg, var(--boodoo-primary));
     }
   }
 

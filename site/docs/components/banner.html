@@ -512,6 +512,13 @@
           htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
         }
 
+        var editorsMode = '100'; // HTML default
+        if (isCssOnly) {
+          editorsMode = '010'; // Open CSS editor
+        } else if (isJsOnly) {
+          editorsMode = '001'; // Open JS editor
+        }
+
         var penData = {
           title: demoTitle,
           description: 'Interactive demo built with boodoo CSS & JS framework',
@@ -521,7 +528,7 @@
           js: jsPayload,
           css_external: cdnCss,
           js_external: cdnJs,
-          editors: '100'
+          editors: editorsMode
         };
 
         var form = document.createElement('form');

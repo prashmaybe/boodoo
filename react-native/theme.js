@@ -66,10 +66,10 @@ export function BoodooProvider({ theme = 'light', customTheme = {}, children }) 
     };
   }, [theme, customTheme]);
 
-  return (
-    <BoodooThemeContext.Provider value={activeTheme}>
-      {children}
-    </BoodooThemeContext.Provider>
+  return React.createElement(
+    BoodooThemeContext.Provider,
+    { value: activeTheme },
+    children
   );
 }
 

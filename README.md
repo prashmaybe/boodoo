@@ -136,9 +136,19 @@ boodoo/
 │       ├── boodoo.js                          # UMD bundle
 │       └── boodoo.esm.js                      # ES module (SSR-safe)
 ├── react-native/                              # Pure React Native mobile components & theme provider
-│   ├── index.js                               # boodoo/react-native (Button, Card, Badge, TextInput, Text)
-│   ├── paper.js                               # boodoo/paper (React Native Paper MD3 theme presets)
-│   └── theme.js                               # BoodooProvider & useTheme hook
+│   ├── index.js                               # boodoo/react-native modular root re-export
+│   ├── layout.js                              # Box, HStack, XStack, VStack, YStack, Center, ZStack, Pressable, Grid
+│   ├── typography.js                          # Text, Heading
+│   ├── buttons.js                             # Button, ButtonGroup, IconButton, FAB, SegmentedButtons
+│   ├── surfaces.js                            # Card, Surface, Divider, Separator, PricingCard, Tile
+│   ├── inputs.js                              # TextInput, Input, TextField, Textarea, Searchbar, Checkbox, Radio, Switch, Slider
+│   ├── data-display.js                        # Chip, Badge, Avatar
+│   ├── feedback.js                            # ActivityIndicator, Spinner, ProgressBar, Progress, Skeleton, Alert, Banner, Toast, Snackbar
+│   ├── lists.js                               # List, ListItem, DataTable, Table
+│   ├── navigation.js                          # Appbar, Header, TopNavigation, Drawer, BottomNavigation, Tabs, PageControl
+│   ├── overlays.js                            # Dialog, AlertDialog, Modal, Overlay, BottomSheet, Actionsheet, Sheet, Menu, Popover, Tooltip
+│   ├── theme.js                               # BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme
+│   └── paper.js                               # boodoo/paper (React Native Paper MD3 theme presets)
 ├── tokens/                                    # Universal design tokens
 │   ├── index.js                               # boodoo/tokens JS constants
 │   └── tokens.json                            # boodoo/tokens.json cross-platform tokens

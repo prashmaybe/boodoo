@@ -131,6 +131,232 @@ const styles = StyleSheet.create({
 
 <hr class="my-4">
 
+<h2 id="component-suite"><span>React Native Paper Component Parity in `boodoo/react-native`</span></h2>
+<p><span>All major components from <strong>React Native Paper</strong> are implemented as lightweight, pure native components with zero external dependencies and full theme support:</span></p>
+
+<div class="table-responsive mb-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><span>Component</span></th>
+        <th><span>Category</span></th>
+        <th><span>Description &amp; Sub-components</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>Text</code></td>
+        <td><span>Typography</span></td>
+        <td><span>Supports MD3 variants (<code>displayLarge</code>, <code>headlineMedium</code>, <code>titleMedium</code>, <code>bodySmall</code>, etc.) and semantic scale.</span></td>
+      </tr>
+      <tr>
+        <td><code>Button</code></td>
+        <td><span>Buttons</span></td>
+        <td><span>Modes: <code>contained</code>, <code>outlined</code>, <code>text</code>, <code>elevated</code> with icon, loading, and size props.</span></td>
+      </tr>
+      <tr>
+        <td><code>IconButton</code></td>
+        <td><span>Buttons</span></td>
+        <td><span>Round interactive icon button with size, custom colors, and disabled states.</span></td>
+      </tr>
+      <tr>
+        <td><code>FAB</code></td>
+        <td><span>Buttons</span></td>
+        <td><span>Floating action button with <code>FAB.Group</code> speed-dial expandable actions.</span></td>
+      </tr>
+      <tr>
+        <td><code>SegmentedButtons</code></td>
+        <td><span>Buttons</span></td>
+        <td><span>Multi-option toggle group with selected state styling and icon support.</span></td>
+      </tr>
+      <tr>
+        <td><code>ActivityIndicator</code></td>
+        <td><span>Indicators</span></td>
+        <td><span>Smooth loading spinner adhering to active theme colors.</span></td>
+      </tr>
+      <tr>
+        <td><code>ProgressBar</code></td>
+        <td><span>Indicators</span></td>
+        <td><span>Determinate and indeterminate progress tracking bar.</span></td>
+      </tr>
+      <tr>
+        <td><code>Badge</code></td>
+        <td><span>Data Display</span></td>
+        <td><span>Notification badge supporting numbers, text, or dot indicators.</span></td>
+      </tr>
+      <tr>
+        <td><code>Avatar</code></td>
+        <td><span>Data Display</span></td>
+        <td><span>Entity visuals with <code>Avatar.Text</code>, <code>Avatar.Icon</code>, and <code>Avatar.Image</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Chip</code></td>
+        <td><span>Data Display</span></td>
+        <td><span>Interactive tag/filter chip with icon, avatar, selection, and close callback.</span></td>
+      </tr>
+      <tr>
+        <td><code>Card</code></td>
+        <td><span>Surfaces</span></td>
+        <td><span>Content container with <code>Card.Title</code>, <code>Card.Content</code>, <code>Card.Cover</code>, and <code>Card.Actions</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Surface</code></td>
+        <td><span>Surfaces</span></td>
+        <td><span>Elevation-aware card/container surface mapped to Boodoo design tokens.</span></td>
+      </tr>
+      <tr>
+        <td><code>Divider</code></td>
+        <td><span>Layout</span></td>
+        <td><span>Content separator rule supporting <code>bold</code> and <code>inset</code> margins.</span></td>
+      </tr>
+      <tr>
+        <td><code>TextInput</code></td>
+        <td><span>Inputs</span></td>
+        <td><span>Inputs supporting <code>outlined</code> and <code>flat</code> modes with left/right accessories.</span></td>
+      </tr>
+      <tr>
+        <td><code>Searchbar</code></td>
+        <td><span>Inputs</span></td>
+        <td><span>Rounded search input with built-in clear action and icon accessories.</span></td>
+      </tr>
+      <tr>
+        <td><code>HelperText</code></td>
+        <td><span>Inputs</span></td>
+        <td><span>Validation error and info messages beneath inputs.</span></td>
+      </tr>
+      <tr>
+        <td><code>Checkbox</code></td>
+        <td><span>Selection</span></td>
+        <td><span>Check control with <code>Checkbox.Item</code> list integration.</span></td>
+      </tr>
+      <tr>
+        <td><code>RadioButton</code></td>
+        <td><span>Selection</span></td>
+        <td><span>Radio selection control with <code>RadioButton.Group</code> and <code>RadioButton.Item</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Switch</code></td>
+        <td><span>Selection</span></td>
+        <td><span>Smooth native boolean toggle switch.</span></td>
+      </tr>
+      <tr>
+        <td><code>ToggleButton</code></td>
+        <td><span>Selection</span></td>
+        <td><span>Stateful toggles with <code>ToggleButton.Group</code> and <code>ToggleButton.Row</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>List</code></td>
+        <td><span>Navigation &amp; Lists</span></td>
+        <td><span>Includes <code>List.Section</code>, <code>List.Subheader</code>, <code>List.Item</code>, <code>List.Icon</code>, and expandable <code>List.Accordion</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Appbar</code></td>
+        <td><span>Navigation</span></td>
+        <td><span>Header navigation with <code>Appbar.Header</code>, <code>Appbar.Content</code>, <code>Appbar.Action</code>, and <code>Appbar.BackAction</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Drawer</code></td>
+        <td><span>Navigation</span></td>
+        <td><span>Side navigation list with <code>Drawer.Section</code> and <code>Drawer.Item</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>BottomNavigation</code></td>
+        <td><span>Navigation</span></td>
+        <td><span>Tab bar navigation with active indicators and scene switching.</span></td>
+      </tr>
+      <tr>
+        <td><code>Dialog</code></td>
+        <td><span>Overlays</span></td>
+        <td><span>Modal dialog with <code>Dialog.Title</code>, <code>Dialog.Content</code>, <code>Dialog.Actions</code>, and <code>Dialog.ScrollArea</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Modal</code></td>
+        <td><span>Overlays</span></td>
+        <td><span>General-purpose overlay dialog with backdrop dismissibility.</span></td>
+      </tr>
+      <tr>
+        <td><code>Menu</code></td>
+        <td><span>Overlays</span></td>
+        <td><span>Contextual dropdown popup menu with <code>Menu.Item</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>Tooltip</code></td>
+        <td><span>Overlays</span></td>
+        <td><span>Informational hint popover triggered on long press.</span></td>
+      </tr>
+      <tr>
+        <td><code>Snackbar</code></td>
+        <td><span>Feedback</span></td>
+        <td><span>Floating bottom notification banner with timed auto-dismissal and action buttons.</span></td>
+      </tr>
+      <tr>
+        <td><code>Banner</code></td>
+        <td><span>Feedback</span></td>
+        <td><span>Top advisory banner with action buttons and dismiss actions.</span></td>
+      </tr>
+      <tr>
+        <td><code>DataTable</code></td>
+        <td><span>Data Display</span></td>
+        <td><span>Tabular data presentation with <code>DataTable.Header</code>, <code>DataTable.Title</code>, <code>DataTable.Row</code>, <code>DataTable.Cell</code>, and <code>DataTable.Pagination</code>.</span></td>
+      </tr>
+      <tr>
+        <td><code>TouchableRipple</code></td>
+        <td><span>Utilities</span></td>
+        <td><span>Tactile touch feedback wrapper.</span></td>
+      </tr>
+      <tr>
+        <td><code>Portal</code></td>
+        <td><span>Utilities</span></td>
+        <td><span>Overlay rendering helper with <code>Portal.Host</code>.</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="multi-library-parity"><span>Cross-Library Component Matrix (RNE UI, Gluestack, Tamagui, UI Kitten, Wix)</span></h3>
+<p><span>In addition to React Native Paper, <code>boodoo/react-native</code> includes zero-runtime-overhead equivalents and drop-in component aliases for the most popular React Native ecosystems:</span></p>
+
+<div class="table-responsive mb-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><span>Source Library</span></th>
+        <th><span>Key Components Implemented</span></th>
+        <th><span>Boodoo Exports</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>React Native Elements (RNE UI)</strong></td>
+        <td><span><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>, <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>, <code>Overlay</code>, <code>Input</code>, <code>ListItem</code></span></td>
+        <td><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>, <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>, <code>Overlay</code>, <code>Input</code>, <code>ListItem</code></td>
+      </tr>
+      <tr>
+        <td><strong>gluestack-ui</strong></td>
+        <td><span><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>, <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>, <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code></span></td>
+        <td><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>, <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>, <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code></td>
+      </tr>
+      <tr>
+        <td><strong>Tamagui</strong></td>
+        <td><span><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>, <code>Spinner</code>, <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>, <code>Popover</code></span></td>
+        <td><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>, <code>Spinner</code>, <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>, <code>Popover</code></td>
+      </tr>
+      <tr>
+        <td><strong>UI Kitten (Eva Design)</strong></td>
+        <td><span><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Card</code>, <code>Divider</code>, <code>Select</code></span></td>
+        <td><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Card</code>, <code>Divider</code>, <code>Select</code></td>
+      </tr>
+      <tr>
+        <td><strong>react-native-ui-lib (Wix)</strong></td>
+        <td><span><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>, <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code></span></td>
+        <td><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>, <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="my-4">
+
 <h2 id="paper-adapter"><span>Example 2: React Native Paper Integration (`boodoo/paper`)</span></h2>
 <p><span>If your project already uses <strong>react-native-paper</strong>, apply Boodoo's modern styling and color palette across all existing Material 3 components in just 2 lines:</span></p>
 

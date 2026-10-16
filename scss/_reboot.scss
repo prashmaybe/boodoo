@@ -52,22 +52,44 @@ hr {
   opacity: 0.25;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: $boodoo-headings-margin-bottom;
   font-family: $boodoo-headings-font-family;
   font-style: $boodoo-headings-font-style;
   font-weight: $boodoo-headings-font-weight;
   line-height: $boodoo-headings-line-height;
-  color: $boodoo-headings-color;
+  color: var(--boodoo-heading-color, #{$boodoo-headings-color});
 }
 
-h1 { font-size: $boodoo-h1-font-size; }
-h2 { font-size: $boodoo-h2-font-size; }
-h3 { font-size: $boodoo-h3-font-size; }
-h4 { font-size: $boodoo-h4-font-size; }
-h5 { font-size: $boodoo-h5-font-size; }
-h6 { font-size: $boodoo-h6-font-size; }
+h1 {
+  font-size: var(--boodoo-h1-font-size, #{$boodoo-h1-font-size});
+}
+
+h2 {
+  font-size: var(--boodoo-h2-font-size, #{$boodoo-h2-font-size});
+}
+
+h3 {
+  font-size: var(--boodoo-h3-font-size, #{$boodoo-h3-font-size});
+}
+
+h4 {
+  font-size: var(--boodoo-h4-font-size, #{$boodoo-h4-font-size});
+}
+
+h5 {
+  font-size: var(--boodoo-h5-font-size, #{$boodoo-h5-font-size});
+}
+
+h6 {
+  font-size: var(--boodoo-h6-font-size, #{$boodoo-h6-font-size});
+}
 
 p {
   margin-top: 0;
@@ -129,16 +151,21 @@ sup {
   vertical-align: baseline;
 }
 
-sub { bottom: -0.25em; }
-sup { top: -0.5em; }
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
 
 a {
-  color: $boodoo-link-color;
+  color: var(--boodoo-link-color, #{$boodoo-link-color});
   text-decoration: $boodoo-link-decoration;
   background-color: transparent;
 
   &:hover {
-    color: $boodoo-link-hover-color;
+    color: var(--boodoo-link-hover-color, #{$boodoo-link-hover-color});
     text-decoration: $boodoo-link-hover-decoration;
   }
 
@@ -163,7 +190,7 @@ code {
   word-wrap: break-word;
 }
 
-a > code {
+a>code {
   color: inherit;
 }
 
@@ -331,12 +358,14 @@ textarea {
 
 // 1. Correct the odd appearance in Chrome and Safari.
 [type="search"] {
+  appearance: textfield;
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 // Custom search input cancel button
@@ -351,8 +380,18 @@ textarea {
 }
 
 // Set display for HTML5 elements
-article, aside, details, figcaption, figure,
-footer, header, hgroup, main, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -361,7 +400,7 @@ footer, header, hgroup, main, menu, nav, section {
 }
 
 // Contain images inside figures
-figure > img {
+figure>img {
   display: block;
 }
 
@@ -395,6 +434,7 @@ figure > img {
 
 // Touch-friendly tap target minimum for interactive elements
 @supports (min-height: 44px) {
+
   button,
   [role="button"],
   input[type="submit"],
@@ -407,6 +447,7 @@ figure > img {
 
 // Windows high-contrast fallback
 @media (forced-colors: active) {
+
   *,
   *::before,
   *::after {

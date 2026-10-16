@@ -49,6 +49,7 @@
   --boodoo-body-secondary-bg: #{$boodoo-body-secondary-bg};
   --boodoo-body-tertiary-bg: #{$boodoo-body-tertiary-bg};
   --boodoo-body-emphasis-color: #{$boodoo-body-emphasis-color};
+  --boodoo-text-muted: #{$boodoo-text-muted};
 
   // Typography
   --boodoo-font-sans-serif: #{$boodoo-font-family-sans-serif};
@@ -139,6 +140,12 @@
 
   // Typography scale (Material)
   --boodoo-typography-scale: #{$boodoo-type-ratio};
+  --boodoo-h1-font-size: #{$boodoo-h1-font-size};
+  --boodoo-h2-font-size: #{$boodoo-h2-font-size};
+  --boodoo-h3-font-size: #{$boodoo-h3-font-size};
+  --boodoo-h4-font-size: #{$boodoo-h4-font-size};
+  --boodoo-h5-font-size: #{$boodoo-h5-font-size};
+  --boodoo-h6-font-size: #{$boodoo-h6-font-size};
 }
 
 // Dark mode via media query (pure CSS, overridable with [data-boodoo-theme="light"])
@@ -172,7 +179,7 @@
     --boodoo-gray-500: #{$boodoo-gray-400};
     --boodoo-gray-600: #{$boodoo-gray-300};
     --boodoo-gray-700: #{$boodoo-gray-200};
-    --boodoo-gray-800: #{$boodoo-gray-100};
+    --boodoo-gray-800: #{$boodoo-gray-200};
     --boodoo-gray-900: #{$boodoo-gray-100};
 
     // Component surface tokens
@@ -210,7 +217,7 @@
   --boodoo-gray-500: #{$boodoo-gray-400};
   --boodoo-gray-600: #{$boodoo-gray-300};
   --boodoo-gray-700: #{$boodoo-gray-200};
-  --boodoo-gray-800: #{$boodoo-gray-100};
+  --boodoo-gray-800: #{$boodoo-gray-200};
   --boodoo-gray-900: #{$boodoo-gray-100};
 
   // Component surface tokens

@@ -390,6 +390,51 @@
     </tr>
   </tbody>
 </table>
+
+<h2 id="application-shell">Application Shell Chrome</h2>
+<p>For modern web applications, SaaS consoles, and enterprise portals, Boodoo provides dedicated layout chrome helpers that integrate seamlessly with grid and flexbox architectures.</p>
+<div class="bd-example">
+  <div class="border rounded overflow-hidden">
+    <div class="shell-header p-3 bg-light border-bottom d-flex align-items-center justify-content-between">
+      <span class="fw-semibold"><span>App Shell Header (.shell-header)</span></span>
+      <span class="badge badge-primary"><span>Sticky Nav</span></span>
+    </div>
+    <div class="d-flex" style="min-height: 180px;">
+      <div class="shell-sidebar p-3 border-end bg-light" style="width: 200px; height: auto;">
+        <p class="small text-muted mb-2"><span>.shell-sidebar</span></p>
+        <ul class="nav flex-column gap-1">
+          <li class="nav-item"><a class="nav-link nav-active-bar nav-active-bar-start active py-1" href="#!"><span>Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link py-1" href="#!"><span>Projects</span></a></li>
+        </ul>
+      </div>
+      <div class="shell-pad flex-grow-1 bg-white">
+        <div class="feature-card">
+          <h4 class="h6 fw-bold mb-1"><span>Interactive Feature Card (.feature-card)</span></h4>
+          <p class="small text-muted mb-0"><span>Includes elevation hover effects and responsive border transitions.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight">
+  <pre><code>&lt;!-- Shell header with sticky positioning --&gt;
+&lt;header class=&quot;shell-header d-flex align-items-center justify-content-between p-3&quot;&gt;
+  &lt;span&gt;Enterprise Console&lt;/span&gt;
+&lt;/header&gt;
+
+&lt;!-- Shell layout with sidebar and responsive padding --&gt;
+&lt;div class=&quot;d-flex&quot;&gt;
+  &lt;aside class=&quot;shell-sidebar&quot;&gt;
+    &lt;!-- Sidebar nav --&gt;
+  &lt;/aside&gt;
+  &lt;main class=&quot;shell-pad flex-grow-1&quot;&gt;
+    &lt;div class=&quot;feature-card&quot;&gt;
+      &lt;h4&gt;&lt;span&gt;Card Title&lt;/span&gt;&lt;/h4&gt;
+      &lt;p&gt;&lt;span&gt;Card description.&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+</div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     
@@ -415,7 +460,8 @@
 <li class="toc-2"><a href="#default">Default container</a></li>
 <li class="toc-2"><a href="#fluid">Fluid container</a></li>
 <li class="toc-2"><a href="#responsive">Responsive containers</a></li>
-<li class="toc-2"><a href="#widths">Container widths</a></li></ul>
+<li class="toc-2"><a href="#widths">Container widths</a></li>
+<li class="toc-2"><a href="#application-shell">Application Shell Chrome</a></li></ul>
     </div>
 </aside>
     </div>
@@ -583,6 +629,13 @@
           htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
         }
 
+        var editorsMode = '100'; // HTML default
+        if (isCssOnly) {
+          editorsMode = '010'; // Open CSS editor
+        } else if (isJsOnly) {
+          editorsMode = '001'; // Open JS editor
+        }
+
         var penData = {
           title: demoTitle,
           description: 'Interactive demo built with boodoo CSS & JS framework',
@@ -592,7 +645,7 @@
           js: jsPayload,
           css_external: cdnCss,
           js_external: cdnJs,
-          editors: '100'
+          editors: editorsMode
         };
 
         var form = document.createElement('form');

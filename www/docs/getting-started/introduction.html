@@ -270,7 +270,7 @@
   open-source
   front-end toolkit built with Sass and vanilla JavaScript.</p>
 <div class="mb-3"><a class="text-decoration-none" href="../about/changelog.html" title="View changelog"><span
-      class="version-chip">v1.1.2 · Changelog</span></a></div>
+      class="version-chip">v1.1.3 · Changelog</span></a></div>
 
 <p>boodoo blends the best of the modern CSS ecosystems into one cohesive, dependency-free toolkit:</p>
 
@@ -532,6 +532,13 @@
           htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
         }
 
+        var editorsMode = '100'; // HTML default
+        if (isCssOnly) {
+          editorsMode = '010'; // Open CSS editor
+        } else if (isJsOnly) {
+          editorsMode = '001'; // Open JS editor
+        }
+
         var penData = {
           title: demoTitle,
           description: 'Interactive demo built with boodoo CSS & JS framework',
@@ -541,7 +548,7 @@
           js: jsPayload,
           css_external: cdnCss,
           js_external: cdnJs,
-          editors: '100'
+          editors: editorsMode
         };
 
         var form = document.createElement('form');
