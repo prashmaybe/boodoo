@@ -71,7 +71,13 @@ class AbstractTrigger extends BaseComponent {
         header.style.display = 'none';
       }
       const content = this._getContent();
-      if (body && content) body.innerHTML = content;
+      if (body && content) {
+        if (this._config.html) {
+          body.innerHTML = content;
+        } else {
+          body.textContent = content;
+        }
+      }
     }
   }
 

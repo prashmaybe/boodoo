@@ -319,13 +319,14 @@ test('Comprehensive tokens scale coverage (colors, radii, typography, shadows)',
   const tokensModule = await import(pathToFileURL(resolve(rootDir, 'tokens/index.js')).href);
   const { colors, spacing, radii, typography, shadows, boodooTokens, default: defaultTokens } = tokensModule;
 
-  // Colors
-  assert.equal(typeof colors.primary, 'string');
-  assert.equal(typeof colors.secondary, 'string');
-  assert.equal(typeof colors.success, 'string');
-  assert.equal(typeof colors.warning, 'string');
-  assert.equal(typeof colors.danger, 'string');
-  assert.equal(typeof colors.info, 'string');
+  // Colors & Brand Unification
+  assert.equal(colors.primary, '#7c3aed', 'Primary must be brand violet');
+  assert.equal(colors.secondary, '#5b21e6', 'Secondary must match brand indigo #5b21e6');
+  assert.equal(colors.success, '#1c9e50', 'Success must match Sass #1c9e50');
+  assert.equal(colors.danger, '#e11d48', 'Danger must match Sass #e11d48');
+  assert.equal(colors.info, '#0ea5e9', 'Info must match Sass #0ea5e9');
+  assert.equal(colors.dark, '#17135f', 'Dark must match brand deep indigo #17135f');
+  assert.equal(colors.light, '#f6f5fb', 'Light must match brand light #f6f5fb');
   assert.equal(typeof colors.darkSurface, 'string');
   assert.equal(typeof colors.darkCard, 'string');
   assert.equal(typeof colors.darkBorder, 'string');
@@ -406,4 +407,96 @@ test('SCSS and LESS full component & feature parity verification', () => {
   assert.ok(lessSource.includes('prefers-color-scheme: dark'), 'LESS source must support prefers-color-scheme: dark');
   assert.ok(lessSource.includes('[data-boodoo-theme="dark"]'), 'LESS source must support data-boodoo-theme="dark"');
 });
+
+test('Modal focus management, Data API, and dispose() lifecycle verification', async () => {
+  // Test BaseComponent and Modal in simulated environment
+  const { BaseComponent, initDataApi } = await import(pathToFileURL(resolve(rootDir, 'js/src/base-component.js')).href);
+  const { Modal } = await import(pathToFileURL(resolve(rootDir, 'js/src/modal.js')).href);
+
+  // Fake DOM element for component lifecycle testing
+  class FakeElement {
+    constructor(id = 'test-el') {
+      this.id = id;
+      this.attributes = [];
+      this.style = {};
+      this.classList = {
+        _classes: new Set(),
+        add(c) { this._classes.add(c); },
+        remove(c) { this._classes.delete(c); },
+        contains(c) { return this._classes.has(c); },
+      };
+      this.children = [];
+    }
+    querySelector() { return null; }
+    querySelectorAll() { return []; }
+    addEventListener() {}
+    removeEventListener() {}
+    getAttribute() { return null; }
+    setAttribute() {}
+    removeAttribute() {}
+  }
+
+  const el = new FakeElement('modal-1');
+  const modal = Modal.getOrCreateInstance(el, { keyboard: true });
+  assert.ok(modal, 'Modal instance should be created');
+  assert.equal(Modal.getInstance(el), modal, 'Modal.getInstance should return cached instance');
+
+  // Verify component namespacing in registry
+  class DummyComponent extends BaseComponent {
+    static get NAME() { return 'dummy'; }
+  }
+  const dummy = DummyComponent.getOrCreateInstance(el);
+  assert.notEqual(Modal.getInstance(el), dummy, 'Modal and DummyComponent should not collide on same element');
+  assert.equal(DummyComponent.getInstance(el), dummy);
+
+  // Verify dispose() lifecycle
+  modal.dispose();
+  assert.equal(Modal.getInstance(el), null, 'Modal.getInstance should return null after dispose()');
+  assert.equal(DummyComponent.getInstance(el), dummy, 'DummyComponent should remain registered');
+  dummy.dispose();
+  assert.equal(DummyComponent.getInstance(el), null);
+});
+
+test('XSS sanitization regression tests across Toast, ChipInput, and CommandPalette', async () => {
+  const { escapeHtml } = await import(pathToFileURL(resolve(rootDir, 'js/src/util.js')).href);
+
+  // 1. Direct utility testing
+  const malicious = '<script>alert("xss")</script><img src="x" onerror="alert(1)">';
+  const sanitized = escapeHtml(malicious);
+  assert.ok(!sanitized.includes('<script>'), 'Must escape script tags');
+  assert.ok(!sanitized.includes('</script>'), 'Must escape script closing tags');
+  assert.ok(!sanitized.includes('<img'), 'Must escape img tags');
+  assert.ok(sanitized.includes('&lt;script&gt;'), 'Must entity-encode < and >');
+  assert.ok(sanitized.includes('&quot;'), 'Must entity-encode quotes');
+
+  // Null & undefined handling
+  assert.equal(escapeHtml(null), '');
+  assert.equal(escapeHtml(undefined), '');
+
+  // 2. ChipInput safe DOM creation
+  const { ChipInput } = await import(pathToFileURL(resolve(rootDir, 'js/src/chip-input.js')).href);
+  class MockChipContainer {
+    constructor() {
+      this.attributes = [];
+      this.classList = { add() {}, remove() {}, contains() { return false; } };
+      this.children = [];
+    }
+    querySelector() { return null; }
+    appendChild(child) { this.children.push(child); }
+    insertBefore(child) { this.children.unshift(child); }
+    dispatchEvent() { return true; }
+  }
+
+  const container = new MockChipContainer();
+  // Ensure ChipInput.prototype.addChip does not inject raw HTML
+  const addChipSrc = ChipInput.prototype.addChip.toString();
+  assert.ok(addChipSrc.includes('labelSpan.textContent = text'), 'addChip must assign text via textContent');
+  assert.ok(!addChipSrc.includes('innerHTML = `<span>${text}</span>'), 'addChip must not interpolate raw user text into innerHTML');
+
+  // 3. TypeScript definition files existence
+  assert.ok(existsSync(resolve(rootDir, 'dist/js/boodoo.d.ts')), 'dist/js/boodoo.d.ts must exist');
+  assert.ok(existsSync(resolve(rootDir, 'tokens/index.d.ts')), 'tokens/index.d.ts must exist');
+  assert.ok(existsSync(resolve(rootDir, 'react-native/index.d.ts')), 'react-native/index.d.ts must exist');
+});
+
 

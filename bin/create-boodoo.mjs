@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.1.1';
+const BOODOO_VERSION = '1.1.4';
 
 function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -96,7 +96,7 @@ async function main() {
 </html>`;
     fs.writeFileSync(path.join(targetDir, 'index.html'), html);
 
-    const mainJs = `import 'boodoo/dist/css/boodoo.min.css';
+    const mainJs = `import 'boodoo/css';
 import boodoo from 'boodoo';
 
 document.getElementById('btn-demo')?.addEventListener('click', () => {
@@ -126,7 +126,7 @@ document.getElementById('btn-demo')?.addEventListener('click', () => {
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
     fs.mkdirSync(path.join(targetDir, 'app'), { recursive: true });
 
-    const layout = `import 'boodoo/dist/css/boodoo.min.css';
+    const layout = `import 'boodoo/css';
 
 export const metadata = {
   title: '${projectName}',
@@ -661,7 +661,7 @@ function onDeviceReady() {
 
     const clientJs = `import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import 'boodoo/dist/css/boodoo.min.css';
+import 'boodoo/css';
 import boodoo from 'boodoo';
 
 import './main.html';
@@ -871,7 +871,7 @@ export default defineConfig({
 
     const appJsx = `import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import 'boodoo/dist/css/boodoo.min.css';
+import 'boodoo/css';
 import boodoo from 'boodoo';
 
 export default function App() {

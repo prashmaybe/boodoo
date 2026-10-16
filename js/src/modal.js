@@ -36,6 +36,11 @@ export class Modal extends BaseComponent {
     this._isShown = true;
     this._focussedBefore = document.activeElement;
 
+    // Accessibility attributes
+    this._element.setAttribute('role', 'dialog');
+    this._element.setAttribute('aria-modal', 'true');
+    this._element.removeAttribute('aria-hidden');
+
     // Lock body scroll
     document.body.classList.add('modal-open');
     document.body.style.overflow = 'hidden';
@@ -67,6 +72,9 @@ export class Modal extends BaseComponent {
     if (!triggerEvent(this._element, 'boodoo.hide.modal')) return;
 
     this._element.classList.remove('show');
+    this._element.setAttribute('aria-hidden', 'true');
+    this._element.removeAttribute('aria-modal');
+
     const duration = getTransitionDuration(this._element);
     this._removeKeydownListener();
     if (this._preventScrollBinds) {
@@ -84,6 +92,19 @@ export class Modal extends BaseComponent {
       if (this._focussedBefore) this._focussedBefore.focus?.();
       triggerEvent(this._element, 'boodoo.hidden.modal');
     });
+  }
+
+  dispose() {
+    if (this._isShown) {
+      this.hide();
+    }
+    this._removeKeydownListener();
+    if (this._preventScrollBinds) {
+      this._preventScrollBinds();
+      this._preventScrollBinds = null;
+    }
+    this._removeBackdrop();
+    super.dispose();
   }
 
   _createBackdrop() {

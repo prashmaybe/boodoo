@@ -3,6 +3,7 @@
 // =====================================================================
 
 import { BaseComponent } from './base-component.js';
+import { escapeHtml } from './util.js';
 
 export class CommandPalette extends BaseComponent {
   static get NAME() {
@@ -95,15 +96,20 @@ export class CommandPalette extends BaseComponent {
       return;
     }
 
-    this._results.innerHTML = items.map((item, index) => `
+    this._results.innerHTML = items.map((item, index) => {
+      const safeTitle = escapeHtml(item.title);
+      const safeShortcut = item.shortcut ? escapeHtml(item.shortcut) : '';
+      const iconHtml = item.icon ? `<span>${escapeHtml(item.icon)}</span>` : '';
+      return `
       <li class="command-palette-item" data-index="${index}">
         <div class="command-palette-item-title">
-          ${item.icon ? `<span>${item.icon}</span>` : ''}
-          <span>${item.title}</span>
+          ${iconHtml}
+          <span>${safeTitle}</span>
         </div>
-        ${item.shortcut ? `<span class="command-palette-item-shortcut"><kbd>${item.shortcut}</kbd></span>` : ''}
+        ${safeShortcut ? `<span class="command-palette-item-shortcut"><kbd>${safeShortcut}</kbd></span>` : ''}
       </li>
-    `).join('');
+    `;
+    }).join('');
 
     this._results.querySelectorAll('.command-palette-item').forEach((el, index) => {
       el.addEventListener('click', () => {

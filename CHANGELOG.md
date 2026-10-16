@@ -7,6 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.4] - 2026-10-16
+
+### Security
+- **Public API XSS Vulnerability Elimination (`js/src/util.js`, `js/boodoo.js`, `js/src/chip-input.js`, `js/src/command-palette.js`, `js/src/tooltip.js`)**:
+  - Implemented lightweight, dependency-free `escapeHtml(str)` utility to entity-encode untrusted characters (`&`, `<`, `>`, `"`, `'`).
+  - **Toast (`boodoo.toast`)**: Sanitized both `title` and `message` strings before DOM rendering.
+  - **Chip Input (`ChipInput.addChip`)**: Switched from vulnerable `innerHTML` interpolation to safe DOM element creation using `labelSpan.textContent = text`.
+  - **Command Palette (`CommandPalette._renderResults`)**: Escaped all user-supplied search items, item titles, and keyboard shortcuts.
+  - **Popover (`Popover.setContent`)**: Content is now assigned safely via `textContent` by default; only evaluates as HTML if explicit `{ html: true }` configuration is enabled.
+
+### Added
+- **Complete TypeScript Declaration Surface (`dist/js/boodoo.d.ts`, `tokens/index.d.ts`, `react-native/index.d.ts`, `package.json`)**:
+  - Authored first-class `.d.ts` type definition files across all framework entrypoints.
+  - Added root and subpath `"types"` exports in `package.json` for `.`, `./tokens`, and `./react-native`.
+- **Component-Namespaced Registry (`js/src/base-component.js`)**:
+  - Re-architected `BaseComponent` registry to namespace by `Map<ComponentClass, Map<Element, Instance>>`.
+  - Multiple components (such as `Tooltip` and `Dropdown`) can now attach to the same DOM element without colliding or overwriting each other.
+- **True JS Minification & Dynamic Build Banner (`build/js-bundle.mjs`)**:
+  - Added dedicated JavaScript minification stage generating genuine compressed bundles (`boodoo.min.js`) rather than raw duplicates.
+  - Dynamically reads framework version from `package.json` for accurate header banners.
+- **Behavioral & Security Unit Testing Suite (`tests/framework.test.mjs`)**:
+  - Added test suites for `Modal` instance initialization, multi-component isolation, and complete `dispose()` lifecycle clean-up.
+  - Added regression test suites validating `escapeHtml`, `ChipInput` DOM safety, and `.d.ts` declaration file existence.
+
+### Fixed
+- **Brand Token Unification Across Web and Mobile (`tokens/tokens.json`, `tokens/index.js`, `react-native/theme.js`, `react-native/paper.js`)**:
+  - Unified all token palettes to match the canonical brand scale:
+    - Primary: Brand Violet (`#7c3aed`)
+    - Secondary: Brand Indigo (`#5b21e6`, replacing cyan `#06b6d4`)
+    - Success: `#1c9e50`
+    - Danger: `#e11d48`
+    - Info: `#0ea5e9`
+    - Dark / Base: Deep Indigo (`#17135f`, replacing slate `#0f172a`)
+    - Neutrals: Unified Foundation grays (`#f7f8fb` to `#11143d`)
+  - Web CSS, React Native themes, and React Native Paper MD3 presets now share an identical system of record.
+- **Event Listener Leak Prevention in Dismiss Triggers (`js/src/util.js`)**:
+  - Replaced repetitive capturing click listeners in `enableDismissTrigger` with a single delegated document listener managing all dismissible components.
+- **Modal Accessibility Attributes & Cleanup (`js/src/modal.js`)**:
+  - Sets `role="dialog"`, `aria-modal="true"`, and clears `aria-hidden` when opened.
+  - Added complete `dispose()` method unbinding Escape and Tab keydown listeners, removing wheel scroll guards, and detaching lingering backdrops.
+- **CLI Scaffolder Updates (`bin/create-boodoo.mjs`)**:
+  - Bumped CLI template dependency pin to `1.1.4`.
+  - Replaced deep internal stylesheet imports with canonical `import 'boodoo/css';`.
+
+---
+
 ## [1.1.3] - 2026-10-16
 
 ### Added

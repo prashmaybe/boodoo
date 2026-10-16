@@ -8,38 +8,38 @@ export const colors = {
   primary: '#7c3aed',
   primaryHover: '#6d28d9',
   primaryActive: '#5b21b6',
-  secondary: '#06b6d4',
-  secondaryHover: '#0891b2',
-  secondaryActive: '#0e7490',
+  secondary: '#5b21e6',
+  secondaryHover: '#4c1bc0',
+  secondaryActive: '#3d149c',
 
   // Status & Feedback
-  success: '#10b981',
+  success: '#1c9e50',
   warning: '#f59e0b',
-  danger: '#ef4444',
-  info: '#3b82f6',
+  danger: '#e11d48',
+  info: '#0ea5e9',
 
   // Neutrals / Base
-  dark: '#0f172a',
-  light: '#f8fafc',
+  dark: '#17135f',
+  light: '#f6f5fb',
   white: '#ffffff',
   black: '#000000',
 
-  // Grays
-  gray50: '#f8fafc',
-  gray100: '#f1f5f9',
-  gray200: '#e2e8f0',
-  gray300: '#cbd5e1',
-  gray400: '#94a3b8',
-  gray500: '#64748b',
-  gray600: '#475569',
-  gray700: '#334155',
-  gray800: '#1e293b',
-  gray900: '#0f172a',
+  // Grays (Unified with Sass/LESS scale)
+  gray50: '#f7f8fb',
+  gray100: '#f7f8fb',
+  gray200: '#ececf4',
+  gray300: '#dedfec',
+  gray400: '#c2c4d8',
+  gray500: '#8b8fb0',
+  gray600: '#5c6280',
+  gray700: '#3f4463',
+  gray800: '#272c4f',
+  gray900: '#11143d',
 
   // Dark mode surface tokens
-  darkSurface: '#1e293b',
-  darkCard: '#0f172a',
-  darkBorder: '#334155',
+  darkSurface: '#272c4f',
+  darkCard: '#17135f',
+  darkBorder: '#3f4463',
 };
 
 export const createSpacing = (baseSpacer = 16) => ({

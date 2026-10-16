@@ -22,14 +22,16 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 ## ✨ Highlights
 
 - **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
-- **Dual-Engine "Class-First + Data-Attribute" styling** — Clean semantic markup without class bloat (`[data-boodoo-variant]`, `[data-size]`, zero-build variable utilities)
+- **Complete TypeScript Surface** — Full `.d.ts` type declarations across all entrypoints (`boodoo`, `boodoo/tokens`, `boodoo/react-native`)
+- **Unified Design Tokens** — Single unified brand palette across Sass, Less, tokens JSON, and React Native themes
+- **Sanitized Public APIs** — Zero-dependency HTML entity escaping across Toasts, Chip Input, and Command Palette
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or React required
-- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron, Angular, Cordova/PhoneGap, Meteor, Photon, React Native Web, React Native Mobile Expo) and official VS Code IntelliSense snippet suite
-- **Cross-Platform, Mobile & Desktop Ready** — First-class support for React Native Mobile (iOS & Android via `boodoo/react-native`), React Native Paper theming adapter (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), React Native Web, Cordova, PhoneGap, Meteor, Angular, Photon Desktop UI, Electron, and Tauri with draggable titlebars (`-webkit-app-region: drag`)
+- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron, Angular, Cordova, Meteor, Photon, React Native Web, React Native Expo) and official VS Code IntelliSense snippet suite
+- **Cross-Platform Mobile & Desktop** — Pure native components (`boodoo/react-native`), React Native Paper MD3 theme presets (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), and desktop window drag regions
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
-- **Rich components** — 38+ accessible components including Combobox / Autocomplete, Splitter (Docking Panes), Speed Dial (FAB Menu), Lightbox Media Viewer, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper Wizard, Smart Toasts with progress bar, and Floating Action Buttons (FAB)
-- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme easily by overriding design tokens or with the Interactive Theme Builder
-- **Accessible & touch-friendly** — Focus-visible rings, `prefers-reduced-motion` compliance, ARIA wiring, and 44px minimum touch targets
+- **Rich components** — 44+ accessible components including Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons
+- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme dynamically via runtime CSS custom properties
+- **Accessible & touch-friendly** — `role="dialog"`, `aria-modal="true"`, focus-visible rings, `prefers-reduced-motion`, and 44px minimum touch targets
 - **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
 
 
