@@ -117,7 +117,11 @@ export class CommandPalette extends BaseComponent {
         if (item && item.action) {
           item.action();
         } else if (item && item.href) {
-          window.location.href = item.href;
+          const href = String(item.href).trim();
+          // Safe navigation: only allow relative paths, http, https, or mailto
+          if (/^(?:https?:|\/|#|mailto:)/i.test(href)) {
+            window.location.href = href;
+          }
         }
         this.close();
       });
@@ -154,27 +158,28 @@ export class CommandPalette extends BaseComponent {
     this._items = items;
     if (this._isOpen) this._filter(this._input.value);
   }
+
+  static initDefault(options = {}) {
+    if (typeof document === 'undefined') return;
+    let modal = document.querySelector('.command-palette-backdrop');
+    if (!modal) {
+      modal = document.createElement('div');
+      document.body.appendChild(modal);
+    }
+    return CommandPalette.getOrCreateInstance(modal, options);
+  }
 }
 
-// Global keyboard shortcut (Ctrl+K or Cmd+K)
+// Opt-in keyboard shortcut: only intercepts Ctrl+K / Cmd+K if an element has [data-boodoo-hotkey="true"] or .command-palette-backdrop exists
 if (typeof document !== 'undefined') {
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      let modal = document.querySelector('.command-palette-backdrop');
-      if (!modal) {
-        modal = document.createElement('div');
-        document.body.appendChild(modal);
-        CommandPalette.getOrCreateInstance(modal, {
-          items: [
-            { title: 'Home', href: '/', icon: '🏠' },
-            { title: 'Documentation', href: '/docs/getting-started/introduction.html', icon: '📚' },
-            { title: 'Toggle Dark Mode', action: () => { if (window.boodoo && window.boodoo.theme) window.boodoo.theme.toggle(); }, icon: '🌓' }
-          ]
-        });
+      const modal = document.querySelector('.command-palette-backdrop, [data-boodoo="command-palette"]');
+      if (modal) {
+        e.preventDefault();
+        const instance = CommandPalette.getInstance(modal) || CommandPalette.getOrCreateInstance(modal);
+        instance.toggle();
       }
-      const instance = CommandPalette.getInstance(modal) || CommandPalette.getOrCreateInstance(modal);
-      instance.toggle();
     }
   });
 }

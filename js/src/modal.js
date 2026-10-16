@@ -82,28 +82,42 @@ export class Modal extends BaseComponent {
       this._preventScrollBinds = null;
     }
 
-    emulateTransitionEnd(this._element, duration).then(() => {
+    const element = this._element;
+    emulateTransitionEnd(element, duration).then(() => {
       this._isShown = false;
-      this._element.style.display = 'none';
+      if (element) {
+        element.style.display = 'none';
+      }
       this._removeBackdrop();
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
       if (this._focussedBefore) this._focussedBefore.focus?.();
-      triggerEvent(this._element, 'boodoo.hidden.modal');
+      if (element) {
+        triggerEvent(element, 'boodoo.hidden.modal');
+      }
     });
   }
 
   dispose() {
-    if (this._isShown) {
-      this.hide();
-    }
     this._removeKeydownListener();
     if (this._preventScrollBinds) {
       this._preventScrollBinds();
       this._preventScrollBinds = null;
     }
     this._removeBackdrop();
+    if (this._element) {
+      this._element.classList.remove('show');
+      this._element.style.display = 'none';
+      this._element.removeAttribute('aria-modal');
+      this._element.setAttribute('aria-hidden', 'true');
+    }
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+    this._isShown = false;
     super.dispose();
   }
 

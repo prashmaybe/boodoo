@@ -104,34 +104,54 @@ export class Dropzone extends BaseComponent {
     const li = document.createElement('li');
     li.className = 'file-item';
 
-    const isImage = file.type.startsWith('image/');
-    let previewHtml = '';
+    const isImage = file.type && file.type.startsWith('image/');
+    let previewEl;
 
     if (isImage) {
       const url = URL.createObjectURL(file);
-      previewHtml = `<img src="${url}" class="file-item-preview" alt="${file.name}">`;
+      li.dataset.previewUrl = url;
+      previewEl = document.createElement('img');
+      previewEl.src = url;
+      previewEl.className = 'file-item-preview';
+      previewEl.alt = file.name;
     } else {
-      previewHtml = `<span class="file-item-icon">📄</span>`;
+      previewEl = document.createElement('span');
+      previewEl.className = 'file-item-icon';
+      previewEl.textContent = '📄';
     }
 
-    li.innerHTML = `
-      ${previewHtml}
-      <div class="file-item-info">
-        <p class="file-item-name m-0"><span>${file.name}</span></p>
-        <span class="file-item-meta">${this._formatSize(file.size)}</span>
-      </div>
-      <div class="file-item-actions">
-        <button type="button" class="btn-close" aria-label="Remove file"></button>
-      </div>
-    `;
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'file-item-info';
 
-    const removeBtn = li.querySelector('.btn-close');
-    if (removeBtn) {
-      removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.removeFile(file, li);
-      });
-    }
+    const nameP = document.createElement('p');
+    nameP.className = 'file-item-name m-0';
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = file.name;
+    nameP.appendChild(nameSpan);
+
+    const metaSpan = document.createElement('span');
+    metaSpan.className = 'file-item-meta';
+    metaSpan.textContent = this._formatSize(file.size);
+
+    infoDiv.appendChild(nameP);
+    infoDiv.appendChild(metaSpan);
+
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'file-item-actions';
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'btn-close';
+    removeBtn.setAttribute('aria-label', 'Remove file');
+    actionsDiv.appendChild(removeBtn);
+
+    li.appendChild(previewEl);
+    li.appendChild(infoDiv);
+    li.appendChild(actionsDiv);
+
+    removeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.removeFile(file, li);
+    });
 
     this._listContainer.appendChild(li);
   }
@@ -141,8 +161,13 @@ export class Dropzone extends BaseComponent {
     if (idx > -1) {
       this._files.splice(idx, 1);
     }
-    if (elementNode && elementNode.parentNode) {
-      elementNode.parentNode.removeChild(elementNode);
+    if (elementNode) {
+      if (elementNode.dataset && elementNode.dataset.previewUrl) {
+        URL.revokeObjectURL(elementNode.dataset.previewUrl);
+      }
+      if (elementNode.parentNode) {
+        elementNode.parentNode.removeChild(elementNode);
+      }
     }
     triggerEvent(this._element, 'boodoo.dropzone.remove', {
       file,
@@ -155,11 +180,16 @@ export class Dropzone extends BaseComponent {
   }
 
   clear() {
-    this._files = [];
     if (this._listContainer) {
+      this._listContainer.querySelectorAll('.file-item').forEach((li) => {
+        if (li.dataset && li.dataset.previewUrl) {
+          URL.revokeObjectURL(li.dataset.previewUrl);
+        }
+      });
       this._listContainer.innerHTML = '';
     }
-    this._input.value = '';
+    this._files = [];
+    if (this._input) this._input.value = '';
   }
 }
 

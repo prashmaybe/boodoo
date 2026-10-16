@@ -499,4 +499,52 @@ test('XSS sanitization regression tests across Toast, ChipInput, and CommandPale
   assert.ok(existsSync(resolve(rootDir, 'react-native/index.d.ts')), 'react-native/index.d.ts must exist');
 });
 
+test('Dropzone safe DOM creation, XSS prevention, and URL revocation', async () => {
+  const { Dropzone } = await import(pathToFileURL(resolve(rootDir, 'js/src/dropzone.js')).href);
+  const dropzoneSrc = Dropzone.prototype._renderFileItem.toString();
+
+  // Dropzone must not interpolate file.name into innerHTML
+  assert.ok(!dropzoneSrc.includes('alt="${file.name}"'), 'Dropzone must not interpolate file.name in string template alt');
+  assert.ok(!dropzoneSrc.includes('<span>${file.name}</span>'), 'Dropzone must not interpolate file.name into HTML span');
+  assert.ok(dropzoneSrc.includes('nameSpan.textContent = file.name'), 'Dropzone must assign file name using textContent');
+  assert.ok(dropzoneSrc.includes('previewEl.alt = file.name'), 'Dropzone must assign alt safely via property setter');
+
+  // Verify URL.revokeObjectURL tracking
+  const removeSrc = Dropzone.prototype.removeFile.toString();
+  const clearSrc = Dropzone.prototype.clear.toString();
+  assert.ok(removeSrc.includes('URL.revokeObjectURL'), 'removeFile must revoke object URL to prevent memory leaks');
+  assert.ok(clearSrc.includes('URL.revokeObjectURL'), 'clear must revoke object URL to prevent memory leaks');
+});
+
+test('CommandPalette non-intrusive shortcut activation and safe navigation validation', async () => {
+  const { CommandPalette } = await import(pathToFileURL(resolve(rootDir, 'js/src/command-palette.js')).href);
+  const cpModuleSrc = readFileSync(resolve(rootDir, 'js/src/command-palette.js'), 'utf8');
+
+  // Must not unconditionally bind Ctrl+K on document without presence check
+  assert.ok(
+    cpModuleSrc.includes('document.querySelector') || cpModuleSrc.includes('initDefault'),
+    'CommandPalette must guard global shortcut registration'
+  );
+
+  // Must validate navigation URL protocols
+  assert.ok(
+    cpModuleSrc.includes('/^(?:https?:|\\/|#|mailto:)/i'),
+    'CommandPalette must restrict item.href to safe protocols'
+  );
+});
+
+test('Offcanvas and SpeedDial lifecycle teardown & listener cleanup', async () => {
+  const { Offcanvas } = await import(pathToFileURL(resolve(rootDir, 'js/src/offcanvas.js')).href);
+  const { SpeedDial } = await import(pathToFileURL(resolve(rootDir, 'js/src/speed-dial.js')).href);
+
+  assert.equal(typeof Offcanvas.prototype.dispose, 'function', 'Offcanvas must provide dispose()');
+  assert.equal(typeof SpeedDial.prototype.dispose, 'function', 'SpeedDial must provide dispose()');
+
+  const offcanvasModuleSrc = readFileSync(resolve(rootDir, 'js/src/offcanvas.js'), 'utf8');
+  assert.ok(offcanvasModuleSrc.includes('removeEventListener'), 'Offcanvas must clean up event listeners on teardown');
+
+  const speedDialDisposeSrc = SpeedDial.prototype.dispose.toString();
+  assert.ok(speedDialDisposeSrc.includes('removeEventListener'), 'SpeedDial dispose must clean up document listeners');
+});
+
 

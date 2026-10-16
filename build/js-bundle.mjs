@@ -195,3 +195,10 @@ export {
 `;
 fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);
 console.log('Bundled boodoo.esm.js (' + Buffer.byteLength(esmBundle) + ' bytes)');
+
+// Emit TypeScript definition
+const dtsSrc = path.join(root, 'js', 'boodoo.d.ts');
+if (fs.existsSync(dtsSrc)) {
+  fs.copyFileSync(dtsSrc, path.join(outDir, 'boodoo.d.ts'));
+  console.log('Emitted dist/js/boodoo.d.ts');
+}

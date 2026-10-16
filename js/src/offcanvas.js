@@ -74,7 +74,7 @@ export class Offcanvas extends BaseComponent {
     void reflow(backdrop);
     backdrop.classList.add('show');
     backdrop.addEventListener('click', () => {
-      if (this._config.scroll !== false && this._config.backdrop !== 'static') this.hide();
+      if (this._config.backdrop !== 'static') this.hide();
     });
   }
 
@@ -85,6 +85,35 @@ export class Offcanvas extends BaseComponent {
       this._backdrop = null;
       setTimeout(() => backdrop.parentNode && backdrop.parentNode.removeChild(backdrop), 200);
     }
+  }
+
+  _addKeydownListener() {
+    this._bindKeydown = (event) => {
+      if (event.key === 'Escape' && this._config.keyboard !== false) this.hide();
+    };
+    document.addEventListener('keydown', this._bindKeydown);
+  }
+
+  _removeKeydownListener() {
+    if (this._bindKeydown) {
+      document.removeEventListener('keydown', this._bindKeydown);
+      this._bindKeydown = null;
+    }
+  }
+
+  dispose() {
+    this._removeKeydownListener();
+    this._removeBackdrop();
+    if (this._element) {
+      this._element.classList.remove('show', 'showing', 'hiding');
+      this._element.setAttribute('aria-hidden', 'true');
+    }
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.remove('modal-open', 'offcanvas-open');
+      document.body.style.overflow = '';
+    }
+    this._isShown = false;
+    super.dispose();
   }
 }
 

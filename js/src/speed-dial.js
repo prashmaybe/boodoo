@@ -40,18 +40,33 @@ export class SpeedDial extends BaseComponent {
       this._element.addEventListener('mouseleave', () => this.close());
     }
 
-    document.addEventListener('click', (e) => {
+    this._onDocClick = (e) => {
       if (!this._element.contains(e.target)) {
         this.close();
       }
-    });
+    };
 
-    document.addEventListener('keydown', (e) => {
+    this._onKeydown = (e) => {
       if (e.key === 'Escape' && this.isOpen()) {
         this.close();
         this._trigger.focus();
       }
-    });
+    };
+
+    document.addEventListener('click', this._onDocClick);
+    document.addEventListener('keydown', this._onKeydown);
+  }
+
+  dispose() {
+    if (this._onDocClick) {
+      document.removeEventListener('click', this._onDocClick);
+      this._onDocClick = null;
+    }
+    if (this._onKeydown) {
+      document.removeEventListener('keydown', this._onKeydown);
+      this._onKeydown = null;
+    }
+    super.dispose();
   }
 
   isOpen() {
