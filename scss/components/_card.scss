@@ -47,7 +47,7 @@
 
   &:hover {
     box-shadow: map.get($boodoo-elevation-map, 3);
-    border-color: $boodoo-primary;
+    border-color: var(--boodoo-primary);
   }
 }
 

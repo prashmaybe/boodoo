@@ -68,16 +68,61 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.1.2 -->
+  <!-- Version 1.1.3 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-3">
+            <span>v1.1.3</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 16, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.3"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Modular React Native UI Suite, Enterprise Layout Chrome, Auto Grids & Role Badges</span>
+        </h3>
+        <p><span>boodoo <strong>v1.1.3</strong> delivers a major expansion to mobile and enterprise web architecture:</span></p>
+        <ul class="mb-3">
+          <li><strong>Modular Native Mobile Suite</strong>: 12 modular submodules under <code>boodoo/react-native</code> providing drop-in compatibility for React Native Paper, React Native Elements, Gluestack, Tamagui, UI Kitten, and Wix UI Lib.</li>
+          <li><strong>Enterprise Layout Shell</strong>: Added <code>.shell-header</code>, <code>.shell-sidebar</code>, <code>.shell-pad</code>, <code>.bg-login-gradient</code>, <code>.feature-card</code>, <code>.table-scroll-max</code>, and <code>.form-section</code>.</li>
+          <li><strong>Grid Auto Columns & Gutter Bridge</strong>: Gutter bridge support for <code>.grid</code>, auto-fill and auto-fit layouts, and <code>.grid-cols-tier</code> / <code>search</code> / <code>line</code> / <code>simulation</code> templates.</li>
+          <li><strong>SaaS Role Status Badges</strong>: 8 role status badges (<code>.badge-role-admin</code>, <code>member</code>, <code>viewer</code>, <code>owner</code>, <code>billing</code>, <code>guest</code>, <code>developer</code>, <code>security</code>) and <code>.nav-sidebar</code> active indicator bars.</li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-info text-info"><span>Fixed</span></span>
+          <span>Dark Mode Gray Inversion, Runtime CSS Custom Properties & Spacing Truth</span>
+        </h3>
+        <ul class="mb-0">
+          <li><strong>Dark Mode Gray Scale</strong>: Fixed dark inversion scale ensuring <code>--boodoo-gray-800</code> (<code>#ececf4</code>) and <code>--boodoo-gray-900</code> (<code>#f7f8fb</code>) remain distinct.</li>
+          <li><strong>Runtime CSS Variable Theming</strong>: <code>.text-primary</code>, <code>.text-muted</code>, <code>a</code>, <code>h1</code>–<code>h6</code>, solid <code>.btn-primary</code>, avatar, badge, nav, and card clickable hover states now dynamically consume CSS custom properties.</li>
+          <li><strong>Sticky Flexibility</strong>: <code>.sticky-top</code> and <code>.sticky-bottom</code> now respect <code>var(--boodoo-zindex-sticky, 1020)</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.1.2 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-2">
             <span>v1.1.2</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

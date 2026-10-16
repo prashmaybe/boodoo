@@ -7,6 +7,63 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.3] - 2026-10-16
+
+### Added
+- **Full Modular React Native UI Component Suite (`react-native/`, subpath `boodoo/react-native`)**:
+  - Expanded native mobile coverage with 12 clean, dedicated modular submodules:
+    - `layout.js` (`Box`, `HStack`, `XStack`, `VStack`, `YStack`, `Center`, `ZStack`, `Pressable`, `Grid`)
+    - `typography.js` (`Text`, `Heading`)
+    - `buttons.js` (`Button`, `ButtonGroup`, `IconButton`, `FAB`, `SegmentedButtons`)
+    - `surfaces.js` (`Card`, `Surface`, `Divider`, `Separator`, `PricingCard`, `Tile`)
+    - `inputs.js` (`TextInput`, `Input`, `TextField`, `Textarea`, `TextArea`, `Searchbar`, `SearchBar`, `HelperText`, `Checkbox`, `CheckBox`, `RadioButton`, `Radio`, `RadioGroup`, `Switch`, `Toggle`, `Slider`, `Stepper`, `Select`, `Picker`, `ToggleButton`)
+    - `data-display.js` (`Chip`, `Badge`, `Avatar`)
+    - `feedback.js` (`ActivityIndicator`, `Spinner`, `ProgressBar`, `Progress`, `Skeleton`, `Alert`, `Banner`, `Toast`, `Snackbar`)
+    - `lists.js` (`List`, `ListItem`, `DataTable`, `Table`)
+    - `navigation.js` (`Appbar`, `Header`, `TopNavigation`, `Drawer`, `BottomNavigation`, `Tabs`, `PageControl`)
+    - `overlays.js` (`Dialog`, `AlertDialog`, `Modal`, `Overlay`, `BottomSheet`, `Actionsheet`, `ActionSheet`, `Sheet`, `Menu`, `Popover`, `Tooltip`, `Portal`, `TouchableRipple`)
+    - `theme.js` (`BoodooProvider`, `useTheme`, `defaultLightTheme`, `defaultDarkTheme`)
+    - `paper.js` (`boodooPaperLightTheme`, `boodooPaperDarkTheme`)
+  - Features complete cross-platform coverage for React Native Paper, React Native Elements (RNE UI), Gluestack, Tamagui, UI Kitten, and Wix UI Lib.
+- **Enterprise Application Shell & Layout Utilities (`scss/_helpers.scss`, `less/boodoo.less`)**:
+  - Added `.shell-header` with sticky header positioning and z-index mapping.
+  - Added `.shell-sidebar` with viewport-height scrolling.
+  - Added `.shell-pad`, `.shell-pad-sm`, and `.shell-pad-lg` for responsive shell padding.
+  - Added `.bg-login-gradient` and `.bg-hero-gradient` aesthetic gradient backgrounds.
+  - Added `.feature-card` interactive elevated cards with hover lift.
+  - Added `.form-section`, `.form-section-title`, and `.form-section-desc` chrome utilities.
+- **Responsive Grid Auto Columns & Gutter Bridge (`scss/_grid.scss`, `less/boodoo.less`)**:
+  - Enabled `.grid` gutter bridge with `--boodoo-gutter-x` and `--boodoo-gutter-y`.
+  - Added auto-fit and auto-fill column layout utilities: `.grid-auto-fill`, `.grid-auto-fit`, `.grid-auto-fill-sm/md/lg`, `.grid-auto-fit-sm/md/lg`.
+  - Added enterprise column templates: `.grid-cols-tier`, `.grid-cols-search`, `.grid-cols-line`, `.grid-cols-simulation`.
+- **SaaS Role Badges & Navigation Active Bar (`scss/components/_badge.scss`, `scss/components/_nav.scss`, `less/boodoo.less`)**:
+  - Added 8 semantic role badges: `.badge-role-admin`, `.badge-role-member`, `.badge-role-viewer`, `.badge-role-owner`, `.badge-role-billing`, `.badge-role-guest`, `.badge-role-developer`, `.badge-role-security`.
+  - Added `.nav-sidebar` and `.nav-active-bar` (`.nav-active-bar-start`, `.nav-active-bar-bottom`) for navigation menus.
+  - Added `.table-scroll-max` (`.table-scroll-sm/md/lg/xl`) max-height table scrolling wrappers.
+
+### Fixed
+- **Dark Mode Gray Scale Inversion Defect (`scss/_root.scss`, `less/boodoo.less`)**:
+  - Fixed dark mode gray scale mapping where `--boodoo-gray-800` was previously identical to `--boodoo-gray-900`.
+  - Inverted `--boodoo-gray-800` to `#ececf4` (light gray-200) and `--boodoo-gray-900` to `#f7f8fb` (light gray-100) across both media queries and `[data-boodoo-theme="dark"]`.
+- **Dynamic CSS Variable Theming Across Components (`scss/components/*`, `less/boodoo.less`)**:
+  - Replaced hardcoded Sass variables with dynamic CSS custom properties:
+    - `.avatar`: `--boodoo-avatar-bg: var(--boodoo-primary)` and `--boodoo-avatar-color: var(--boodoo-white)`.
+    - `.badge`: `background-color: var(--boodoo-primary)`, soft badges, and outline borders now read `var(--boodoo-...)`.
+    - `.card-clickable`: Hover border now dynamically binds to `var(--boodoo-primary)`.
+    - `.nav`: Active states and pills bind to `var(--boodoo-primary)`.
+    - `.dropdown-item.active`: Now binds to `var(--boodoo-dropdown-link-active-bg, var(--boodoo-primary))`.
+    - `.navbar-nav .nav-link.active`: Dynamically binds to `var(--boodoo-primary)`.
+- **CSS Custom Properties for Utilities, Links, Headings, and Solid Buttons (`scss/_maps.scss`, `scss/_reboot.scss`, `scss/components/_buttons.scss`)**:
+  - `.text-primary` and `.bg-primary` compile to `var(--boodoo-primary) !important;`.
+  - `.text-muted` compiles to `var(--boodoo-text-muted, var(--boodoo-gray-600, #6c757d)) !important;`.
+  - `a` hyperlinks consume `var(--boodoo-link-color)` and `var(--boodoo-link-hover-color)`.
+  - Headings `h1`–`h6` consume `var(--boodoo-heading-color)` and `var(--boodoo-h1-font-size)` through `var(--boodoo-h6-font-size)`.
+  - Solid `.btn-primary` and variants bind `--boodoo-btn-bg` and `--boodoo-btn-border` to `var(--boodoo-#{$name})` with `color-mix(...)` for hover/active states.
+- **Sticky Helpers Sticky Z-Index Flexibility (`scss/_helpers.scss`, `scss/_utilities.scss`, `less/boodoo.less`)**:
+  - `.sticky-top`, `.sticky-bottom`, and `.sticky-lg-top` now bind to `var(--boodoo-zindex-sticky, 1020)`.
+
+---
+
 ## [1.1.2] - 2026-10-16
 
 ### Added
@@ -60,9 +117,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **Material Comparison Floating Button (`site/src/about/vs-material.html`)**:
   - Fixed floating action button escaping the example card on `vs-material.html` by applying `.position-static` to the inline demonstration button.
-- **Normalized Spacing Scale & Customization (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
-  - Restored true Bootstrap-compatible 5-step spacing scale: `0` (0), `1` (0.25rem = 4px), `2` (0.5rem = 8px), `3` (1rem = 16px), `4` (1.5rem = 24px), and `5` (3rem = 48px), alongside fractional steps (`0.5`, `1.5`, `2.5`, `3.5`, `4.5`) and extended steps (`6` through `10`).
-  - Added comprehensive documentation and developer guides for customizing spacing via CSS variables, SCSS `$boodoo-spacers`, LESS `@boodoo-spacer`, and `boodoo/tokens` JavaScript / React Native APIs.
+- **Spacing Scale Architecture & Customization (`scss/_variables.scss`, `site/src/utilities/spacing.html`)**:
+  - Documented and validated the default generous modern spacing scale: `0` (0), `0.5` (0.5rem = 8px), `1` (1.25rem = 20px), `2` (2.25rem = 36px), `3` (3.25rem = 52px), `4` (4.25rem = 68px), and `5` (5.25rem = 84px), engineered for comfortable SaaS card and section breathing room.
+  - Added comprehensive documentation and developer guides for customizing spacing to a compact Bootstrap scale (`1 = 0.25rem`, `3 = 1rem`, `5 = 3rem`) or any custom density via CSS variables (`--boodoo-spacer-*`), SCSS `$boodoo-spacers`, LESS `@boodoo-spacer`, and `boodoo/tokens` JavaScript / React Native APIs.
 - **Dynamic Component CSS Variable Theming & Dark Mode Inversion (`scss/_root.scss`, `scss/content/_tables.scss`, `scss/components/*`)**:
   - Replaced hardcoded compile-time Sass color literals in `.table`, `.btn-outline-*`, `.pagination`, `.list-group`, and `.avatar` with dynamic CSS custom properties (`var(--boodoo-...)`).
   - Dark mode rules (`@media (prefers-color-scheme: dark)` and `[data-boodoo-theme="dark"]`) now dynamically invert the entire gray-scale palette (`--boodoo-gray-100` through `--boodoo-gray-900`) and surface tokens (`--boodoo-light`, `--boodoo-dark`), allowing immediate runtime re-theming across components.

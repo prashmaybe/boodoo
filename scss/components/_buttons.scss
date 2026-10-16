@@ -70,21 +70,80 @@ button[role="button"],
   @if $name != "light" and $name != "dark" {
     .btn-#{$name},
     [data-boodoo-variant="#{$name}"] {
-      @include button-variant(
-        $color, $color, $boodoo-white,
-        shift-color($color, -10%), shift-color($color, -10%),
-        shift-color($color, -15%), shift-color($color, -15%)
-      );
+      --boodoo-btn-bg: var(--boodoo-#{$name}, #{$color});
+      --boodoo-btn-border: var(--boodoo-#{$name}, #{$color});
+      --boodoo-btn-color: var(--boodoo-white, #{$boodoo-white});
+      --boodoo-btn-hover-bg: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 90%, black);
+      --boodoo-btn-hover-border: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 90%, black);
+      --boodoo-btn-active-bg: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 85%, black);
+      --boodoo-btn-active-border: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 85%, black);
+
+      color: var(--boodoo-btn-color);
+      background-color: var(--boodoo-btn-bg);
+      border-color: var(--boodoo-btn-border);
+
+      &:hover {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-hover-bg);
+        border-color: var(--boodoo-btn-hover-border);
+      }
+
+      &:focus-visible {
+        box-shadow: $boodoo-btn-focus-box-shadow;
+      }
+
+      &:active,
+      &.active {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-active-bg);
+        border-color: var(--boodoo-btn-active-border);
+      }
+
+      &.disabled,
+      &:disabled {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-bg);
+        border-color: var(--boodoo-btn-border);
+      }
     }
   } @else {
     .btn-#{$name},
     [data-boodoo-variant="#{$name}"] {
-      @include button-variant(
-        $color, $color,
-        if($name == "light", $boodoo-dark, $boodoo-white),
-        shade-color($color, 10%), shade-color($color, 10%),
-        shade-color($color, 15%), shade-color($color, 15%)
-      );
+      --boodoo-btn-bg: var(--boodoo-#{$name}, #{$color});
+      --boodoo-btn-border: var(--boodoo-#{$name}, #{$color});
+      --boodoo-btn-color: #{if($name == "light", var(--boodoo-dark, #{$boodoo-dark}), var(--boodoo-white, #{$boodoo-white}))};
+      --boodoo-btn-hover-bg: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 90%, black);
+      --boodoo-btn-hover-border: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 90%, black);
+      --boodoo-btn-active-bg: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 85%, black);
+      --boodoo-btn-active-border: color-mix(in srgb, var(--boodoo-#{$name}, #{$color}) 85%, black);
+
+      color: var(--boodoo-btn-color);
+      background-color: var(--boodoo-btn-bg);
+      border-color: var(--boodoo-btn-border);
+
+      &:hover {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-hover-bg);
+        border-color: var(--boodoo-btn-hover-border);
+      }
+
+      &:focus-visible {
+        box-shadow: $boodoo-btn-focus-box-shadow;
+      }
+
+      &:active,
+      &.active {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-active-bg);
+        border-color: var(--boodoo-btn-active-border);
+      }
+
+      &.disabled,
+      &:disabled {
+        color: var(--boodoo-btn-color);
+        background-color: var(--boodoo-btn-bg);
+        border-color: var(--boodoo-btn-border);
+      }
     }
   }
 }

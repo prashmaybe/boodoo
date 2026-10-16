@@ -3,8 +3,8 @@
 
 .avatar {
   --boodoo-avatar-size: 2.5rem;
-  --boodoo-avatar-bg: #{$boodoo-primary};
-  --boodoo-avatar-color: #{$boodoo-white};
+  --boodoo-avatar-bg: var(--boodoo-primary);
+  --boodoo-avatar-color: var(--boodoo-white, #fff);
 
   position: relative;
   display: inline-flex;
@@ -68,39 +68,39 @@
 // Colors
 @each $name, $color in $boodoo-theme-colors {
   .avatar-#{$name} {
-    --boodoo-avatar-bg: #{$color};
-    --boodoo-avatar-color: #{if($name == "light", $boodoo-dark, $boodoo-white)};
+    --boodoo-avatar-bg: var(--boodoo-#{$name}, #{$color});
+    --boodoo-avatar-color: #{if($name == "light", var(--boodoo-dark, #{$boodoo-dark}), var(--boodoo-white, #{$boodoo-white}))};
   }
 }
 
 .avatar-soft-primary {
-  --boodoo-avatar-bg: #{tint-color($boodoo-primary, 88%)};
-  --boodoo-avatar-color: #{$boodoo-primary};
+  --boodoo-avatar-bg: var(--boodoo-primary-bg-subtle, #{tint-color($boodoo-primary, 88%)});
+  --boodoo-avatar-color: var(--boodoo-primary);
 }
 
 .avatar-soft-secondary {
-  --boodoo-avatar-bg: #{tint-color($boodoo-secondary, 88%)};
-  --boodoo-avatar-color: #{$boodoo-secondary};
+  --boodoo-avatar-bg: var(--boodoo-secondary-bg-subtle, #{tint-color($boodoo-secondary, 88%)});
+  --boodoo-avatar-color: var(--boodoo-secondary);
 }
 
 .avatar-soft-success {
-  --boodoo-avatar-bg: #{tint-color($boodoo-success, 88%)};
-  --boodoo-avatar-color: #{$boodoo-success};
+  --boodoo-avatar-bg: var(--boodoo-success-bg-subtle, #{tint-color($boodoo-success, 88%)});
+  --boodoo-avatar-color: var(--boodoo-success);
 }
 
 .avatar-soft-danger {
-  --boodoo-avatar-bg: #{tint-color($boodoo-danger, 88%)};
-  --boodoo-avatar-color: #{$boodoo-danger};
+  --boodoo-avatar-bg: var(--boodoo-danger-bg-subtle, #{tint-color($boodoo-danger, 88%)});
+  --boodoo-avatar-color: var(--boodoo-danger);
 }
 
 .avatar-soft-warning {
-  --boodoo-avatar-bg: #{tint-color($boodoo-warning, 88%)};
-  --boodoo-avatar-color: #{$boodoo-warning};
+  --boodoo-avatar-bg: var(--boodoo-warning-bg-subtle, #{tint-color($boodoo-warning, 88%)});
+  --boodoo-avatar-color: var(--boodoo-warning);
 }
 
 .avatar-soft-info {
-  --boodoo-avatar-bg: #{tint-color($boodoo-info, 88%)};
-  --boodoo-avatar-color: #{$boodoo-info};
+  --boodoo-avatar-bg: var(--boodoo-info-bg-subtle, #{tint-color($boodoo-info, 88%)});
+  --boodoo-avatar-color: var(--boodoo-info);
 }
 
 // Group stack
@@ -146,5 +146,5 @@
 }
 
 .avatar-status-away {
-  background-color: $boodoo-warning;
+  background-color: var(--boodoo-warning);
 }

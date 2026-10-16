@@ -56,7 +56,7 @@
       }
 
       &.active {
-        color: $boodoo-primary;
+        color: var(--boodoo-primary);
       }
     }
   }

@@ -57,6 +57,82 @@ test('outline buttons consume CSS variables dynamically', () => {
   assert.match(mainCss, /\.btn-outline-primary[^\{]*\{[^}]*--boodoo-btn-color:\s*var\(--boodoo-primary\)/);
 });
 
+test('core utilities, links, headings, and solid buttons consume dynamic CSS custom properties', () => {
+  const mainCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+
+  // .text-primary must resolve to var(--boodoo-primary)
+  assert.match(mainCss, /\.text-primary\s*\{[^}]*color:\s*var\(--boodoo-primary/);
+
+  // .text-muted must resolve to var(--boodoo-text-muted
+  assert.match(mainCss, /\.text-muted\s*\{[^}]*color:\s*var\(--boodoo-text-muted/);
+
+  // a link must resolve to var(--boodoo-link-color
+  assert.match(mainCss, /a\s*\{[^}]*color:\s*var\(--boodoo-link-color/);
+
+  // solid .btn-primary must bind to var(--boodoo-primary)
+  assert.match(mainCss, /\.btn-primary[^\{]*\{[^}]*--boodoo-btn-bg:\s*var\(--boodoo-primary/);
+
+  // Headings h1-h6 must use var(--boodoo-h*-font-size
+  assert.match(mainCss, /h1\s*\{[^}]*font-size:\s*var\(--boodoo-h1-font-size/);
+  assert.match(mainCss, /h2\s*\{[^}]*font-size:\s*var\(--boodoo-h2-font-size/);
+  assert.match(mainCss, /h3\s*\{[^}]*font-size:\s*var\(--boodoo-h3-font-size/);
+
+  // Avatar, badge, nav, card border, dropdown active state must consume var(--boodoo-primary)
+  assert.match(mainCss, /\.avatar\s*\{[^}]*--boodoo-avatar-bg:\s*var\(--boodoo-primary\)/);
+  assert.match(mainCss, /\.badge\s*\{[^}]*background-color:\s*var\(--boodoo-primary\)/);
+  assert.match(mainCss, /\.card-clickable:hover\s*\{[^}]*border-color:\s*var\(--boodoo-primary\)/);
+  assert.match(mainCss, /\.nav-pills\s+\.nav-link\.active\s*\{[^}]*background-color:\s*var\(--boodoo-primary\)/);
+});
+
+test('dark mode theme gray-scale inversion maintains distinct gray-800 and gray-900 values', () => {
+  const mainCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Verify in SCSS dist
+  assert.match(mainCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-800:\s*#ececf4/);
+  assert.match(mainCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-900:\s*#f7f8fb/);
+
+  // Verify in LESS dist
+  assert.match(lessCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-800:\s*#ececf4/);
+  assert.match(lessCss, /\[data-boodoo-theme=["']?dark["']?\]\s*\{[^}]*--boodoo-gray-900:\s*#f7f8fb/);
+});
+
+test('enterprise application shell, active indicator bars, and layout utilities exist', () => {
+  const mainCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  const requiredClasses = [
+    '.nav-sidebar',
+    '.nav-active-bar',
+    '.shell-header',
+    '.shell-sidebar',
+    '.shell-pad',
+    '.bg-login-gradient',
+    '.feature-card',
+    '.table-scroll-max',
+    '.badge-role-admin',
+    '.badge-role-member',
+    '.badge-role-viewer',
+    '.badge-role-owner',
+    '.badge-role-billing',
+    '.badge-role-guest',
+    '.badge-role-developer',
+    '.badge-role-security',
+    '.grid-auto-fill',
+    '.grid-auto-fit',
+    '.grid-cols-tier',
+    '.grid-cols-search',
+    '.grid-cols-line',
+    '.grid-cols-simulation',
+    '.form-section',
+  ];
+
+  for (const cls of requiredClasses) {
+    assert.ok(mainCss.includes(cls), `dist/css/boodoo.css must contain ${cls}`);
+    assert.ok(lessCss.includes(cls), `dist/css/boodoo.less.css must contain ${cls}`);
+  }
+});
+
 test('tokens consistency between tokens.json, tokens/index.js, and CSS scale', async () => {
   const tokensJson = JSON.parse(readFileSync(resolve(rootDir, 'tokens/tokens.json'), 'utf8'));
   const { spacing } = tokensJson;

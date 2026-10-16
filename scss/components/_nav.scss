@@ -19,11 +19,11 @@
 
     &:hover,
     &:focus {
-      color: $boodoo-link-hover-color;
+      color: var(--boodoo-link-hover-color, #{$boodoo-link-hover-color});
     }
 
     &.active {
-      color: $boodoo-primary;
+      color: var(--boodoo-primary);
       font-weight: 500;
     }
 
@@ -39,8 +39,8 @@
 .nav-pills {
   .nav-link {
     &.active {
-      color: $boodoo-white;
-      background-color: $boodoo-primary;
+      color: var(--boodoo-white, #fff);
+      background-color: var(--boodoo-primary);
     }
   }
 }
@@ -49,8 +49,8 @@
 .nav-pills-soft {
   .nav-link {
     &.active {
-      color: $boodoo-primary;
-      background-color: $boodoo-primary-bg-subtle;
+      color: var(--boodoo-primary);
+      background-color: var(--boodoo-primary-bg-subtle, #{$boodoo-primary-bg-subtle});
     }
   }
 }
@@ -73,7 +73,7 @@
     }
 
     &.active {
-      color: $boodoo-primary;
+      color: var(--boodoo-primary);
       background-color: var(--boodoo-body-bg);
       border-color: var(--boodoo-border-color) var(--boodoo-border-color) var(--boodoo-body-bg);
     }
@@ -90,13 +90,13 @@
     border-radius: 0;
 
     &:hover {
-      color: $boodoo-body-color;
+      color: var(--boodoo-body-color);
     }
 
     &.active {
-      color: $boodoo-primary;
+      color: var(--boodoo-primary);
       font-weight: 500;
-      border-bottom-color: $boodoo-primary;
+      border-bottom-color: var(--boodoo-primary);
     }
   }
 }
@@ -135,5 +135,61 @@
 .nav-compact {
   .nav-link {
     padding: 0.35rem 0.75rem;
+  }
+}
+
+// Sidebar navigation & active bar indicators
+.nav-sidebar {
+  flex-direction: column;
+  position: relative;
+
+  .nav-link {
+    position: relative;
+    border-radius: var(--boodoo-border-radius-sm, 0.375rem);
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &.active {
+      color: var(--boodoo-primary);
+      background-color: var(--boodoo-primary-bg-subtle, rgba(124, 58, 237, 0.08));
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.25rem;
+        bottom: 0.25rem;
+        left: 0;
+        width: 3px;
+        background-color: var(--boodoo-primary);
+        border-radius: 0 2px 2px 0;
+      }
+    }
+  }
+}
+
+// Standalone active bar indicator utility
+.nav-active-bar {
+  position: relative;
+
+  &.active::before,
+  &.active::after {
+    content: "";
+    position: absolute;
+    background-color: var(--boodoo-primary);
+  }
+
+  &.active.nav-active-bar-start::before {
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  &.active.nav-active-bar-bottom::after {
+    bottom: 0;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
   }
 }
