@@ -39,25 +39,25 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~434 KB | ~61.0 KB | ~40.1 KB | Full framework (all 38+ components + utilities) |
-| `boodoo-utilities.min.css` | ~191 KB | ~22.0 KB | ~11.5 KB | Tailwind-style utility classes only |
-| `boodoo-grid.min.css` | ~13 KB | ~1.7 KB | ~1.2 KB | Flexbox grid + CSS Grid containers only |
-| `boodoo-reboot.min.css` | ~10 KB | ~3.0 KB | ~2.6 KB | Modern CSS reset & base typography |
+| `boodoo.min.css` | ~454 KB | ~63.1 KB | ~41.6 KB | Full framework (all 38+ components + utilities) |
+| `boodoo-utilities.min.css` | ~192 KB | ~22.0 KB | ~11.6 KB | Tailwind-style utility classes only |
+| `boodoo-grid.min.css` | ~18 KB | ~2.2 KB | ~1.5 KB | Flexbox grid + CSS Grid containers only |
+| `boodoo-reboot.min.css` | ~11 KB | ~3.1 KB | ~2.7 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.0 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.js` | ~120 KB | ~24.8 KB | ~21.1 KB | Pure vanilla JS (zero dependencies) |
+| `boodoo.js` | ~126 KB | ~26.2 KB | ~22.2 KB | Pure vanilla JS (zero dependencies) |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
 Standard modern front-end configurations (such as **vanilla React + Tailwind CSS**) often suffer from hidden payload compounding and runtime overhead:
 
 1. **Elimination of Utility Class Sprawl in the DOM & AST**: In typical Tailwind and React setups, structural scaffolding requires sprawling class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). In React JSX, these string-heavy attributes bloat the compiled JavaScript bundle, virtual DOM memory tree, and server-rendered HTML payloads. boodoo replaces this repetition with standardized structural scaffolding (`.container`, `.row`, `.col-*`) and 2D CSS Grid primitives, drastically reducing token duplication.
-2. **Tiny Modular Footprint (`boodoo-grid.min.css` is only ~1.7 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a complete 12-column mobile-first flexbox system alongside CSS Grid layout helpers at just **~1.7 KB gzipped / 1.2 KB brotli**. Compared to hauling hundreds of kilobytes of utility CSS parsers or runtime CSS-in-JS abstractions, boodoo loads instantaneously.
+2. **Tiny Modular Footprint (`boodoo-grid.min.css` is only ~2.2 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a complete 12-column mobile-first flexbox system alongside CSS Grid layout helpers at just **~2.2 KB gzipped / 1.5 KB brotli**. Compared to hauling hundreds of kilobytes of utility CSS parsers or runtime CSS-in-JS abstractions, boodoo loads instantaneously.
 3. **Zero JavaScript Runtime Tax**: React-based UI libraries (Tailwind UI component wrappers, Headless UI, Radix, shadcn) require React runtime reconciliation (`react`, `react-dom` adding 45+ KB gzip before application logic starts) just to manage basic grid transitions, collapsible layouts, and drawer states. boodoo’s scaffolding operates purely on native browser layout engines and zero-overhead declarative HTML primitives (`<dialog>`, `popover`, `@container`), completely eliminating layout-driven JavaScript execution.
 4. **Superior Caching & Zero Build Lock-In**: Unlike bundler-purged Tailwind setups where every slight markup tweak triggers unique CSS build outputs that invalidate client caches, boodoo’s clean grid scaffolding is cache-stable across all pages and subdomains.
 
 | Architectural Metric | Vanilla React + Tailwind Setup | boodoo Structural Grid Scaffolding |
 | :--- | :--- | :--- |
-| **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~1.7 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
+| **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~2.2 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
 | **Runtime Engine Overhead** | 45+ KB gzip (React + ReactDOM + state hooks) | **0 KB** (Native browser flexbox & CSS Grid engine) |
 | **DOM / Markup Footprint** | Bloated inline class strings on every layout node | Semantic structural containers (`.container`, `.row`, `.col`) |
 | **Build Pipeline Dependency** | Mandatory (Node.js, PostCSS / Tailwind CLI, bundler) | **Zero build required** (Direct CDN or modular Sass/Less) |
@@ -70,8 +70,8 @@ Standard modern front-end configurations (such as **vanilla React + Tailwind CSS
 ### CDN
 
 ```html
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-86cc87a5.css" rel="stylesheet">
-<script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-3e0a74ee.js"></script>
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-0baa755e.css" rel="stylesheet">
+<script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-f57676e3.js"></script>
 ```
 
 ### npm
@@ -81,9 +81,9 @@ npm install boodoo
 ```
 
 ```js
-// Web & Modern Bundlers
-import boodoo from 'boodoo/dist/js/boodoo.esm.js';      // ESM, tree-shakeable
-import 'boodoo/dist/css/boodoo.min.css';
+// Web & Modern Bundlers (Subpath imports)
+import boodoo, { Modal, Toast, Collapse } from 'boodoo';
+import 'boodoo/css';
 
 // React Native Mobile (iOS & Android)
 import { Button, Card, BoodooProvider } from 'boodoo/react-native';
@@ -113,9 +113,9 @@ $boodoo-primary: #7C3AED;
 ### Lean builds
 
 ```html
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-00656288.css"   rel="stylesheet">  <!-- grid only -->
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-10ded7df.css" rel="stylesheet"> <!-- utilities only -->
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-reboot.min-bac848f1.css" rel="stylesheet">  <!-- reset only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-03b6ee31.css"      rel="stylesheet"> <!-- grid only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-cf761191.css" rel="stylesheet"> <!-- utilities only -->
+<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-reboot.min-8f22f2db.css"    rel="stylesheet"> <!-- reset only -->
 ```
 
 ---

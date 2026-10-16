@@ -16,6 +16,7 @@
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
   "main": "dist/js/boodoo.js",
+  "module": "dist/js/boodoo.esm.js",
   "exports": {
     ".": {
       "import": "./dist/js/boodoo.esm.js",

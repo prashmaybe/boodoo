@@ -32,16 +32,23 @@ order: 4
 </div>
 
 <h2 id="es-module"><span>ES modules</span></h2>
-<p><span>If you're using a bundler like Vite, webpack, or Rollup, import the ES module build:</span></p>
+<p><span>If you're using a bundler like Vite, webpack, or Rollup, you can import directly from the package entry point or via deep path:</span></p>
 <div class="highlight">
-  <pre><code class="language-javascript">import boodoo from 'boodoo/dist/js/boodoo.esm.js';
-// or
-import { Modal, Toast, Collapse } from 'boodoo/dist/js/boodoo.esm.js';</code></pre>
+  <pre><code class="language-javascript">// Standard package import (ESM)
+import boodoo from 'boodoo';
+import { Modal, Toast, Collapse } from 'boodoo';
+
+// Or direct bundle path
+import boodoo from 'boodoo/dist/js/boodoo.esm.js';</code></pre>
 </div>
 
 <h2 id="css"><span>Import compiled CSS</span></h2>
 <div class="highlight">
-  <pre><code class="language-javascript">import 'boodoo/dist/css/boodoo.min.css';</code></pre>
+  <pre><code class="language-javascript">// Subpath export
+import 'boodoo/css';
+
+// Or direct file path
+import 'boodoo/dist/css/boodoo.min.css';</code></pre>
 </div>
 
 <h2 id="sass"><span>Compile from Sass</span></h2>
@@ -57,13 +64,24 @@ $boodoo-border-radius: 0.375rem;
 </div>
 
 <h2 id="package-json"><span>Package exports</span></h2>
-<p><span>The package exposes these entry points via <code>package.json</code>:</span></p>
+<p><span>The package exposes standard entry points and subpath exports via <code>package.json</code>:</span></p>
 <div class="highlight">
   <pre><code class="language-json">{
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
   "main": "dist/js/boodoo.js",
-  "module": "dist/js/boodoo.esm.js"
+  "module": "dist/js/boodoo.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/js/boodoo.esm.js",
+      "require": "./dist/js/boodoo.js"
+    },
+    "./css": "./dist/css/boodoo.min.css",
+    "./tokens": "./tokens/index.js",
+    "./tokens.json": "./tokens/tokens.json",
+    "./paper": "./react-native/paper.js",
+    "./react-native": "./react-native/index.js"
+  }
 }</code></pre>
 </div>
 
