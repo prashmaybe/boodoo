@@ -86,9 +86,47 @@ test('contrast and accessible touch targets verification', () => {
 
 test('React Native adapter exports valid definitions without bundling errors', async () => {
   const rnIndex = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
-  assert.ok(rnIndex.includes('BoodooProvider'), 'React Native module must export BoodooProvider');
-  assert.ok(rnIndex.includes('Button'), 'React Native module must export Button');
-  assert.ok(rnIndex.includes('Card'), 'React Native module must export Card');
+  const expectedExports = [
+    'BoodooProvider',
+    'useTheme',
+    'Text',
+    'Button',
+    'IconButton',
+    'FAB',
+    'ActivityIndicator',
+    'SegmentedButtons',
+    'Card',
+    'Surface',
+    'Divider',
+    'TextInput',
+    'Searchbar',
+    'HelperText',
+    'Checkbox',
+    'RadioButton',
+    'Switch',
+    'ToggleButton',
+    'Chip',
+    'Badge',
+    'Avatar',
+    'ProgressBar',
+    'List',
+    'Appbar',
+    'Drawer',
+    'BottomNavigation',
+    'Dialog',
+    'Modal',
+    'Menu',
+    'Tooltip',
+    'Snackbar',
+    'Banner',
+    'DataTable',
+    'Portal',
+    'TouchableRipple',
+  ];
+
+  for (const exp of expectedExports) {
+    assert.ok(rnIndex.includes(`export function ${exp}`) || rnIndex.includes(`export const ${exp}`) || rnIndex.includes(exp), `React Native module must export ${exp}`);
+  }
 });
 
 test('SCSS and LESS full component & feature parity verification', () => {
