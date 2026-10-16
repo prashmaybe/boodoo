@@ -620,5 +620,16 @@ test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declaratio
   assert.equal(pkg.exports['./react'].import, './react/index.js');
 });
 
+test('Landing page comparison table uses dynamic version variable {{version}} and no hardcoded version', () => {
+  const landingHtml = readFileSync(resolve(rootDir, 'site/index.html'), 'utf8');
+  assert.match(
+    landingHtml,
+    /<th[^>]*>\s*<span>boodoo v\{\{version\}\}<\/span>\s*<\/th>/,
+    'Comparison table header must use boodoo v{{version}}'
+  );
+  assert.ok(!landingHtml.includes('boodoo 1.1.4'), 'Landing page must not contain obsolete hardcoded version "boodoo 1.1.4"');
+});
+
+
 
 

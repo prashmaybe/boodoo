@@ -101,6 +101,14 @@ Direct pushes to the `main` branch are strictly prohibited:
 2. **Pull Request Workflow**: All code, documentation, assets, and configuration changes must be submitted via a Pull Request (PR) targeted against `main`.
 3. **Review & CI Verification**: PRs must pass all automated test suites, linting, build verification, and receive required reviews/approvals before merging into `main`.
 
+## Dynamic Version & Comparison Matrix Versioning Rule
+Framework versions in templates, landing pages, and comparison tables must never be hardcoded:
+
+1. **Dynamic Version Template Variables**: All references to the current framework version across landing pages (`site/index.html`), feature comparison matrices, badges, terminal snippets, and documentation templates (`site/src/**/*.html`) must use the dynamic template variable `{{version}}` (e.g., `boodoo v{{version}}`).
+2. **No Hardcoded Version Literals**: Never hardcode static version numbers (such as `1.1.4`, `1.1.5`) into feature comparison table column headers, landing page banners, or download widgets.
+3. **Automated Verification**: Build scripts (`build/site-build.mjs`, `build/www-build.mjs`) and unit test assertions in `tests/framework.test.mjs` must enforce that `site/index.html` contains no obsolete or hardcoded past version numbers in comparison tables.
+
+
 
 
 
