@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const rootDir = resolve(import.meta.dirname, '..');
 
@@ -56,16 +57,23 @@ test('outline buttons consume CSS variables dynamically', () => {
   assert.match(mainCss, /\.btn-outline-primary[^\{]*\{[^}]*--boodoo-btn-color:\s*var\(--boodoo-primary\)/);
 });
 
-test('tokens consistency between tokens.json, tokens/index.js, and CSS scale', () => {
+test('tokens consistency between tokens.json, tokens/index.js, and CSS scale', async () => {
   const tokensJson = JSON.parse(readFileSync(resolve(rootDir, 'tokens/tokens.json'), 'utf8'));
   const { spacing } = tokensJson;
 
   assert.equal(spacing['0'], 0);
-  assert.equal(spacing['1'], 4); // 0.25rem
-  assert.equal(spacing['2'], 8); // 0.5rem
-  assert.equal(spacing['3'], 16); // 1rem
-  assert.equal(spacing['4'], 24); // 1.5rem
-  assert.equal(spacing['5'], 32); // extended
+  assert.equal(spacing['0.5'], 8);
+  assert.equal(spacing['1'], 20);
+  assert.equal(spacing['2'], 36);
+  assert.equal(spacing['3'], 52);
+  assert.equal(spacing['4'], 68);
+  assert.equal(spacing['5'], 84);
+
+  const { createSpacing } = await import(pathToFileURL(resolve(rootDir, 'tokens/index.js')).href);
+  const custom = createSpacing(10);
+  assert.equal(custom['0'], 0);
+  assert.equal(custom['1'], 13);
+  assert.equal(custom['3'], 33);
 });
 
 test('contrast and accessible touch targets verification', () => {

@@ -77,9 +77,61 @@ order: 12
     <tr><td><code>2</code></td><td><span>2.25rem</span></td><td><span>36px</span></td><td>&nbsp;</td><td><code>5</code></td><td><span>5.25rem</span></td><td><span>84px</span></td></tr>
   </tbody>
 </table>
-<p><span>Extend the <code>$boodoo-spacers</code> map in your Sass to add custom steps:</span></p>
+<h2 id="customization"><span>Customizing the spacing scale</span></h2>
+<p><span>boodoo provides zero-effort customization of the spacing scale across any tech stack:</span></p>
+
+<h3><span>1. Pure CSS / CDN / Runtime Custom Properties</span></h3>
+<p><span>Override CSS custom properties on <code>:root</code> or any container element to reshape spacing dynamically:</span></p>
 <div class="highlight">
-  <pre><code>$boodoo-spacers: map.merge($boodoo-spacers, (
-  6: $boodoo-spacer * 6.25,
-));</code></pre>
+  <pre><code>:root {
+  --boodoo-spacer: 1rem;
+  --boodoo-spacer-1: 1rem;
+  --boodoo-spacer-2: 1.5rem;
+  --boodoo-spacer-3: 2rem;
+  --boodoo-spacer-4: 3rem;
+  --boodoo-spacer-5: 4rem;
+}</code></pre>
+</div>
+
+<h3><span>2. Sass / SCSS (npm / yarn / Vite / Next.js)</span></h3>
+<p><span>Override <code>$boodoo-spacer</code> or merge custom steps into <code>$boodoo-spacers</code> before importing boodoo:</span></p>
+<div class="highlight">
+  <pre><code>// Custom base spacer
+$boodoo-spacer: 1.125rem;
+
+// Or customize individual steps
+$boodoo-spacers: (
+  0: 0,
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2.5rem,
+  5: 4rem
+);
+
+@import "boodoo/scss/boodoo";</code></pre>
+</div>
+
+<h3><span>3. LESS</span></h3>
+<p><span>Override <code>@boodoo-spacer</code> in your Less configuration:</span></p>
+<div class="highlight">
+  <pre><code>@boodoo-spacer: 1.2rem;
+@import "boodoo/less/boodoo.less";</code></pre>
+</div>
+
+<h3><span>4. JavaScript / TypeScript &amp; React Native Mobile</span></h3>
+<p><span>Use <code>createSpacing()</code> or pass a customized spacing map into <code>&lt;BoodooProvider&gt;</code>:</span></p>
+<div class="highlight">
+  <pre><code>import { createSpacing } from 'boodoo/tokens';
+import { BoodooProvider } from 'boodoo/react-native';
+
+const mySpacing = createSpacing(14); // Generates custom scale from 14px base
+
+function App() {
+  return (
+    &lt;BoodooProvider customTheme={{ spacing: mySpacing }}&gt;
+      {/* App components */}
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
 </div>

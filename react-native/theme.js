@@ -59,6 +59,10 @@ export function BoodooProvider({ theme = 'light', customTheme = {}, children }) 
         ...base.colors,
         ...(customTheme.colors || {}),
       },
+      spacing: {
+        ...base.spacing,
+        ...(customTheme.spacing || {}),
+      },
     };
   }, [theme, customTheme]);
 

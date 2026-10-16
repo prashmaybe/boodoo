@@ -72,12 +72,11 @@
 
   // Spacing
   --boodoo-spacer: #{$boodoo-spacer};
-  --boodoo-spacers-0: #{map.get($boodoo-spacers, 0)};
-  --boodoo-spacers-1: #{map.get($boodoo-spacers, 1)};
-  --boodoo-spacers-2: #{map.get($boodoo-spacers, 2)};
-  --boodoo-spacers-3: #{map.get($boodoo-spacers, 3)};
-  --boodoo-spacers-4: #{map.get($boodoo-spacers, 4)};
-  --boodoo-spacers-5: #{map.get($boodoo-spacers, 5)};
+  @each $key, $value in $boodoo-spacers {
+    $escaped-key: if($key == 0.5, "0-5", if($key == 1.5, "1-5", if($key == 2.5, "2-5", if($key == 3.5, "3-5", if($key == 4.5, "4-5", "#{$key}")))));
+    --boodoo-spacer-#{$escaped-key}: #{$value};
+    --boodoo-spacers-#{$escaped-key}: #{$value};
+  }
 
   // Border & radius
   --boodoo-border-width: #{$boodoo-border-width};
