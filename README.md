@@ -175,23 +175,65 @@ Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [
 
 ---
 
-## 🎨 Theming
+## 🎨 Theming & Spacing Customization
 
-boodoo is token-driven. Every color, radius, shadow, and timing value is either a Sass variable or a CSS custom property:
+boodoo is token-driven and engineered for minimal customization effort across any consumption pattern (CSS, Sass, Less, npm/yarn packages, React Native):
 
-```scss
-$boodoo-primary: #7C3AED;
-$boodoo-border-radius: 0.5rem;
-```
-
+### 1. Pure CSS / CDN (Runtime Variables)
+Override CSS custom properties on `:root` or any element container:
 ```css
 :root {
   --boodoo-primary: #7c3aed;
-  --boodoo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  /* Customize spacing scale dynamically */
+  --boodoo-spacer: 1rem;
+  --boodoo-spacer-1: 1.25rem;
+  --boodoo-spacer-2: 2.25rem;
+  --boodoo-spacer-3: 3.25rem;
 }
 ```
 
-Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with `data-boodoo-theme="light|dark"` on `<html>`.
+### 2. Sass / SCSS (npm / yarn / Vite / Next.js)
+Override `$boodoo-spacer` or provide your own `$boodoo-spacers` map before importing:
+```scss
+// Override base spacer or individual steps
+$boodoo-primary: #7C3AED;
+$boodoo-spacer: 1.125rem;
+$boodoo-spacers: (
+  0: 0,
+  1: 1rem,
+  2: 1.5rem,
+  3: 2rem,
+  4: 3rem,
+  5: 4rem
+);
+
+@import "node_modules/boodoo/scss/boodoo";
+```
+
+### 3. LESS Source
+```less
+@boodoo-spacer: 1.15rem;
+@import "node_modules/boodoo/less/boodoo";
+```
+
+### 4. JavaScript / TypeScript & React Native
+Use `createSpacing()` from `boodoo/tokens` or provide a custom spacing object to `<BoodooProvider>`:
+```jsx
+import { createSpacing } from 'boodoo/tokens';
+import { BoodooProvider, Button, Card } from 'boodoo/react-native';
+
+const mySpacing = createSpacing(14); // Generates custom scale from 14px base
+
+export default function App() {
+  return (
+    <BoodooProvider customTheme={{ spacing: mySpacing }}>
+      <Card><Button title="Custom Spacing" /></Card>
+    </BoodooProvider>
+  );
+}
+```
+
+Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with `data-boodoo-theme="light|dark"` on `<html>`. All component colors adapt dynamically via runtime CSS custom properties.
 
 ---
 
