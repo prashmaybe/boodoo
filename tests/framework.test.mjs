@@ -90,3 +90,36 @@ test('React Native adapter exports valid definitions without bundling errors', a
   assert.ok(rnIndex.includes('Button'), 'React Native module must export Button');
   assert.ok(rnIndex.includes('Card'), 'React Native module must export Card');
 });
+
+test('SCSS and LESS full component & feature parity verification', () => {
+  const lessSource = readFileSync(resolve(rootDir, 'less/boodoo.less'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Verify core missing components are now present in LESS source and compiled CSS
+  const expectedClasses = [
+    '.accordion',
+    '.avatar',
+    '.announcement-bar',
+    '.breadcrumb',
+    '.carousel',
+    '.modal',
+    '.navbar',
+    '.offcanvas',
+    '.pagination',
+    '.placeholder',
+    '.popover',
+    '.toast',
+    '.tooltip',
+    '.tree-view'
+  ];
+
+  for (const cls of expectedClasses) {
+    assert.ok(lessSource.includes(cls), `LESS source must implement ${cls} for SCSS parity`);
+    assert.ok(lessCss.includes(cls), `dist/css/boodoo.less.css must contain compiled ${cls}`);
+  }
+
+  // Verify dark mode theme support in LESS
+  assert.ok(lessSource.includes('prefers-color-scheme: dark'), 'LESS source must support prefers-color-scheme: dark');
+  assert.ok(lessSource.includes('[data-boodoo-theme="dark"]'), 'LESS source must support data-boodoo-theme="dark"');
+});
+

@@ -28,4 +28,13 @@ No `.zip` binary archive files may be committed or retained inside the project c
 2. **CDN Delivery**: All downloadable zip archives (framework bundles, starter kits, example bundles) must be referenced exclusively via CDN URLs or dynamic template variables (`{{archiveLatestZip}}`, `{{archiveFrameworkZip}}`, `{{archiveExamplesZip}}`, `{{archiveStarterReact}}`, `{{archiveStarterVue}}`, `{{archiveStarterNext}}`, `{{archiveStarterHtml}}`). Hardcoded local zip links are strictly prohibited.
 3. **Post-Creation CDN Upload**: When new zip archives are generated via `build/zip-build.mjs`, they must be uploaded to the CDN / release host (e.g., GitHub Releases / jsDelivr / CDN storage) post-creation. Code and templates must consume them via their CDN URLs recorded in `archives.json` / CDN endpoints, keeping the repository lean and binary-free.
 
+## SCSS and LESS Dual-Source Feature Parity Rule
+All features, styling primitives, theme tokens, layout utilities, and components added to Boodoo must be implemented and maintained across both SCSS (`scss/`) and LESS (`less/boodoo.less`):
+
+1. **Equal Support & Parity**: Whenever a new component, styling modifier, utility class, design token, custom property binding, or dark mode behavior is added to `scss/`, its exact functional equivalent must simultaneously be implemented in `less/boodoo.less`.
+2. **Build Validation**: The LESS distribution (`dist/css/boodoo.less.css`) must compile cleanly via `npm run css:less` on every change with zero syntax errors and zero deprecation warnings.
+3. **Automated Verification**: `tests/framework.test.mjs` must enforce parity between SCSS and LESS implementations so that regressions or omissions in either stylesheet preprocessor are caught during `npm test`.
+
+
+
 
