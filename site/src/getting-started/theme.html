@@ -143,3 +143,61 @@ boodoo.theme.toggle();</code></pre>
     })();
   </script>
 </section>
+
+<section class="docs-section">
+  <h2><span>Spacing Scale Customization</span></h2>
+  <p class="lead"><span>Customizing the spacing system takes minimal effort across any consumption pattern:</span></p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-6">
+      <div class="card p-3 h-100 shadow-sm border">
+        <h5><span>1. Pure CSS / CDN (Runtime)</span></h5>
+        <p class="text-muted small"><span>Override custom properties on <code>:root</code> to re-scale utilities on the fly without build tools:</span></p>
+        <pre><code class="language-css">:root {
+  --boodoo-spacer: 1rem;
+  --boodoo-spacer-1: 1.25rem;
+  --boodoo-spacer-2: 2.25rem;
+  --boodoo-spacer-3: 3.25rem;
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card p-3 h-100 shadow-sm border">
+        <h5><span>2. Sass / SCSS Source</span></h5>
+        <p class="text-muted small"><span>Define <code>$boodoo-spacer</code> or a custom <code>$boodoo-spacers</code> map before importing:</span></p>
+        <pre><code class="language-scss">$boodoo-spacer: 1.125rem;
+$boodoo-spacers: (
+  0: 0,
+  1: 1rem,
+  2: 1.5rem,
+  3: 2rem
+);
+@import "boodoo/scss/boodoo";</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card p-3 h-100 shadow-sm border">
+        <h5><span>3. LESS Source</span></h5>
+        <p class="text-muted small"><span>Override <code>@boodoo-spacer</code> in your Less configuration:</span></p>
+        <pre><code class="language-less">@boodoo-spacer: 1.2rem;
+@import "boodoo/less/boodoo.less";</code></pre>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card p-3 h-100 shadow-sm border">
+        <h5><span>4. React Native &amp; Design Tokens</span></h5>
+        <p class="text-muted small"><span>Use <code>createSpacing()</code> or pass custom spacing to <code>&lt;BoodooProvider&gt;</code>:</span></p>
+        <pre><code class="language-jsx">import { createSpacing } from 'boodoo/tokens';
+import { BoodooProvider } from 'boodoo/react-native';
+
+const customSpacing = createSpacing(14);
+&lt;BoodooProvider customTheme={{ spacing: customSpacing }}&gt;
+  {/* App */}
+&lt;/BoodooProvider&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

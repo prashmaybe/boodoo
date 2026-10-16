@@ -1,0 +1,61 @@
+<!--
+title: AI Prompt & Chat
+description: Next-generation AI prompt input bar, model actions, and chat bubbles.
+section: components
+order: 32
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>Build conversational AI tools, assistant sidebars, and LLM interfaces with Boodoo's flexible prompt container and chat bubble primitives.</span></p>
+</section>
+
+<section class="docs-section">
+  <h2><span>AI Prompt Bar</span></h2>
+  <div class="bd-example p-4 border rounded">
+    <div class="ai-prompt-container">
+      <textarea id="ai-demo-input" name="ai-prompt" class="ai-prompt-input" rows="2" placeholder="Ask Boodoo AI anything..."></textarea>
+      <div class="ai-prompt-actions">
+        <div class="ai-prompt-tools">
+          <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-2"><span>📎 Attach</span></button>
+          <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-2"><span>✨ Fast</span></button>
+        </div>
+        <button type="button" class="btn btn-sm btn-primary rounded-pill px-3"><span>Send →</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="ai-prompt-container"&gt;
+  &lt;textarea id="ai-input" name="prompt" class="ai-prompt-input" rows="2" placeholder="Ask AI anything..."&gt;&lt;/textarea&gt;
+  &lt;div class="ai-prompt-actions"&gt;
+    &lt;div class="ai-prompt-tools"&gt;
+      &lt;button type="button" class="btn btn-sm btn-outline-secondary rounded-pill"&gt;&lt;span&gt;📎 Attach&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn btn-sm btn-primary rounded-pill"&gt;&lt;span&gt;Send →&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section mt-5">
+  <h2><span>Chat Message Bubbles</span></h2>
+  <div class="bd-example p-4 border rounded d-flex flex-column gap-2 bg-light">
+    <div class="chat-bubble chat-bubble-user">
+      <p class="mb-0"><span>Can you show me how Boodoo compares to Bootstrap?</span></p>
+    </div>
+    <div class="chat-bubble chat-bubble-ai">
+      <p class="mb-0"><span>Boodoo brings zero-dependency modern CSS native primitives (CSS Anchor Positioning, Container Queries, Scroll Animations), native React Native Mobile support, and 40+ modular components out of the box.</span></p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="chat-bubble chat-bubble-user"&gt;
+  &lt;p&gt;&lt;span&gt;User question goes here...&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="chat-bubble chat-bubble-ai"&gt;
+  &lt;p&gt;&lt;span&gt;AI assistant reply goes here...&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>

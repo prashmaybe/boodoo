@@ -42,15 +42,38 @@ export const colors = {
   darkBorder: '#334155',
 };
 
+export const createSpacing = (baseSpacer = 16) => ({
+  0: 0,
+  0.5: Math.round(baseSpacer * 0.5),
+  1: Math.round(baseSpacer * 1.25),
+  1.5: Math.round(baseSpacer * 1.75),
+  2: Math.round(baseSpacer * 2.25),
+  2.5: Math.round(baseSpacer * 2.75),
+  3: Math.round(baseSpacer * 3.25),
+  3.5: Math.round(baseSpacer * 3.75),
+  4: Math.round(baseSpacer * 4.25),
+  4.5: Math.round(baseSpacer * 4.75),
+  5: Math.round(baseSpacer * 5.25),
+  6: Math.round(baseSpacer * 6.25),
+  8: Math.round(baseSpacer * 8.25),
+  10: Math.round(baseSpacer * 10.25),
+});
+
 export const spacing = {
   0: 0,
-  1: 4,
-  2: 8,
-  3: 16,
-  4: 24,
-  5: 32,
-  6: 48,
-  8: 64,
+  0.5: 8,
+  1: 20,
+  1.5: 28,
+  2: 36,
+  2.5: 44,
+  3: 52,
+  3.5: 60,
+  4: 68,
+  4.5: 76,
+  5: 84,
+  6: 100,
+  8: 132,
+  10: 164,
 };
 
 export const radii = {

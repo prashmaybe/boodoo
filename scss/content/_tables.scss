@@ -3,15 +3,15 @@
 
 .table {
   --boodoo-table-bg: transparent;
-  --boodoo-table-color: #{$boodoo-body-color};
-  --boodoo-table-border-color: #{$boodoo-border-color};
+  --boodoo-table-color: var(--boodoo-body-color);
+  --boodoo-table-border-color: var(--boodoo-border-color);
   --boodoo-table-accent-bg: transparent;
   --boodoo-table-striped-color: var(--boodoo-body-color);
-  --boodoo-table-striped-bg: #{rgba($boodoo-gray-100, 0.6)};
+  --boodoo-table-striped-bg: color-mix(in srgb, var(--boodoo-body-color) 4%, transparent);
   --boodoo-table-active-color: var(--boodoo-body-color);
-  --boodoo-table-active-bg: #{rgba($boodoo-primary, 0.08)};
+  --boodoo-table-active-bg: color-mix(in srgb, var(--boodoo-primary) 8%, transparent);
   --boodoo-table-hover-color: var(--boodoo-body-color);
-  --boodoo-table-hover-bg: #{rgba($boodoo-gray-100, 0.75)};
+  --boodoo-table-hover-bg: color-mix(in srgb, var(--boodoo-body-color) 6%, transparent);
 
   width: 100%;
   margin-bottom: 1rem;

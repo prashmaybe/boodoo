@@ -68,16 +68,74 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.1.1 -->
+  <!-- Version 1.1.2 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-2">
+            <span>v1.1.2</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 16, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.2"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Brand-New Components: Dock, KPI Stat Card, and AI Prompt Interface</span>
+        </h3>
+        <ul class="changelog-list mb-3">
+          <li><span><strong>Dock / App Shelf (<code>.dock</code>):</strong> macOS/iPadOS-inspired floating app shelf and persistent bottom navigation bar featuring glassmorphic backgrounds, icon magnification, active app dots (<code>.dock-dot</code>), badge indicators, dividers, and orientation controls (<code>.dock-bottom</code>, <code>.dock-top</code>, <code>.dock-start</code>, <code>.dock-end</code>).</span></li>
+          <li><span><strong>KPI Stat Card (<code>.kpi-card</code>):</strong> Modern dashboard analytics cards with formatted metric values, category labels, trend badges (<code>.kpi-trend-up</code>, <code>.kpi-trend-down</code>), icon wrappers, and micro progress bars with seamless dark mode support.</span></li>
+          <li><span><strong>AI Prompt &amp; Chat Input (<code>.ai-prompt</code>):</strong> Generative AI conversational interface with auto-expanding textarea, send/stop streaming action buttons (<code>.ai-prompt-btn-stop</code>), prompt suggestion chips, token counter, and model selector slot.</span></li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Added</span></span>
+          <span>Full SCSS &amp; LESS Parity, Navigation Auto-Focus, and Framework Tests</span>
+        </h3>
+        <ul class="changelog-list mb-3">
+          <li><span><strong>100% SCSS &amp; LESS Parity:</strong> Implemented full LESS equivalents across all 44 components (including <code>.dock</code>, <code>.kpi-card</code>, <code>.ai-prompt</code>, <code>.bottom-sheet</code>, <code>.command-palette</code>, <code>.splitter</code>, <code>.stepper</code>, and <code>.tree-view</code>) backed by dual-preprocessor verification tests.</span></li>
+          <li><span><strong>Documentation Navigation Auto-Focus:</strong> Active documentation sidebar navigation items now automatically scroll and center within the visible viewport on load, with distinct high-contrast active state indicators and focus-visible styling.</span></li>
+          <li><span><strong>Automated Framework Testing Suite:</strong> Added <code>tests/framework.test.mjs</code> validating bundle sizes, layer omission, spacing consistency, runtime CSS color variables, and dual SCSS/LESS parity.</span></li>
+        </ul>
+
+        <h3 class="h6 text-uppercase fw-bold text-warning d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-warning text-warning"><span>Fixed</span></span>
+          <span>Spacing Scale Normalization &amp; Runtime CSS Variable Architecture</span>
+        </h3>
+        <p class="text-muted mb-2"><span>Resolved critical framework architectural issues across spacing consistency, component-level dark mode variables, and CSS cascade layer inheritance:</span></p>
+        <ul class="changelog-list mb-3">
+          <li><span><strong>Normalized Spacing Scale:</strong> Restored consistent Bootstrap-aligned 5-step spacing scale (0=0, 1=0.25rem, 2=0.5rem, 3=1rem, 4=1.5rem, 5=3rem) alongside fractional and extended steps, with cross-stack customization support (CSS variables, SCSS, LESS, tokens).</span></li>
+          <li><span><strong>Material Preview FAB Fix:</strong> Fixed floating action button escaping the preview container on the Material comparison page by adding <code>.position-static</code>.</span></li>
+          <li><span><strong>Dynamic Component CSS Variable Theming:</strong> Converted tables, outline buttons, pagination, list groups, and avatars from compile-time Sass literals to dynamic <code>var(--boodoo-...)</code> custom properties and <code>color-mix(...)</code>.</span></li>
+          <li><span><strong>Dark Mode Palette Inversion:</strong> Enhanced dark mode theme blocks to dynamically invert the full gray-scale palette and surface tokens at runtime.</span></li>
+          <li><span><strong>SVG Mask Carets:</strong> Refactored accordion carets to CSS <code>mask-image</code> with currentColor, eliminating hardcoded hex color fills.</span></li>
+          <li><span><strong>Layer Specificity Trap Removed:</strong> Dropped empty <code>@layer</code> declaration to protect downstream layered consumer stylesheets from specificity fights.</span></li>
+          <li><span><strong>Modular Core CSS Bundle:</strong> Excluded uncompiled native platform skins from the core stylesheet distribution.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.1.1 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-1">
             <span>v1.1.1</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

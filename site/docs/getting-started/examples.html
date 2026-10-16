@@ -512,16 +512,16 @@
 
 <h2 id="versioned-zip"><span>Versioned Source Code Archive</span></h2>
 <p><span>You can download the full boodoo framework source code corresponding to the current release
-  (<code>v1.1.1</code>):</span></p>
+  (<code>v1.1.2</code>):</span></p>
 <div class="card p-4 rounded-4 border bg-light">
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
     <div>
-      <h4 class="fw-bold mb-1"><span>boodoo v1.1.1 Source Zip</span></h4>
+      <h4 class="fw-bold mb-1"><span>boodoo v1.1.2 Source Zip</span></h4>
       <p class="text-muted small mb-0"><span>Includes all Sass files, Less files, vanilla JS source modules, precompiled dist
         CSS and JS assets, and license.</span></p>
     </div>
-    <a class="btn btn-primary rounded-pill px-4 shadow-sm" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.1.1.zip" download><span>Download
-      boodoo-v1.1.1.zip</span></a>
+    <a class="btn btn-primary rounded-pill px-4 shadow-sm" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.1.2.zip" download><span>Download
+      boodoo-v1.1.2.zip</span></a>
   </div>
 </div>
           
@@ -606,6 +606,41 @@
           document.documentElement.setAttribute('data-boodoo-theme', next);
           localStorage.setItem('boodoo-theme', next);
           updateIcon(next);
+        });
+      }
+    })();
+
+    // Auto-scroll the active documentation sidebar item into the visible viewport
+    (function () {
+      function scrollActiveNavIntoView() {
+        var sidebar = document.querySelector('.docs-sidebar');
+        if (!sidebar) return;
+        var activeLink = sidebar.querySelector('.docs-nav-list a.active');
+        if (!activeLink) return;
+
+        // Calculate offset relative to sidebar scroll container to center it precisely
+        var sidebarRect = sidebar.getBoundingClientRect();
+        var linkRect = activeLink.getBoundingClientRect();
+        var isVisible = (linkRect.top >= sidebarRect.top + 40 && linkRect.bottom <= sidebarRect.bottom - 40);
+
+        if (!isVisible) {
+          // Scroll active link to center of sidebar
+          var targetScrollTop = activeLink.offsetTop - (sidebar.clientHeight / 2) + (activeLink.clientHeight / 2);
+          sidebar.scrollTop = Math.max(0, targetScrollTop);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scrollActiveNavIntoView);
+      } else {
+        scrollActiveNavIntoView();
+      }
+
+      // Also ensure when mobile collapse is opened, the active link is visible
+      var collapseToggle = document.querySelector('[data-boodoo-target="#docsSidebarCollapse"]');
+      if (collapseToggle) {
+        collapseToggle.addEventListener('click', function () {
+          setTimeout(scrollActiveNavIntoView, 250);
         });
       }
     })();

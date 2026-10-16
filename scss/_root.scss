@@ -1,11 +1,5 @@
 @use "sass:map";
 
-// ---------------------------------------------------------------------
-// CSS Cascade Layers (@layer)
-// Eliminates !important specificity battles and controls order of precedence
-// ---------------------------------------------------------------------
-@layer reset, tokens, components, utilities;
-
 :root {
 
 
@@ -78,12 +72,11 @@
 
   // Spacing
   --boodoo-spacer: #{$boodoo-spacer};
-  --boodoo-spacers-0: #{map.get($boodoo-spacers, 0)};
-  --boodoo-spacers-1: #{map.get($boodoo-spacers, 1)};
-  --boodoo-spacers-2: #{map.get($boodoo-spacers, 2)};
-  --boodoo-spacers-3: #{map.get($boodoo-spacers, 3)};
-  --boodoo-spacers-4: #{map.get($boodoo-spacers, 4)};
-  --boodoo-spacers-5: #{map.get($boodoo-spacers, 5)};
+  @each $key, $value in $boodoo-spacers {
+    $escaped-key: if($key == 0.5, "0-5", if($key == 1.5, "1-5", if($key == 2.5, "2-5", if($key == 3.5, "3-5", if($key == 4.5, "4-5", "#{$key}")))));
+    --boodoo-spacer-#{$escaped-key}: #{$value};
+    --boodoo-spacers-#{$escaped-key}: #{$value};
+  }
 
   // Border & radius
   --boodoo-border-width: #{$boodoo-border-width};
@@ -170,6 +163,21 @@
     --boodoo-dropdown-border-color: #{$boodoo-gray-800};
     --boodoo-form-control-bg: #{$boodoo-gray-900};
     --boodoo-form-control-border-color: #{$boodoo-gray-700};
+
+    // Gray scale inversion for dark mode
+    --boodoo-gray-100: #{$boodoo-gray-800};
+    --boodoo-gray-200: #{$boodoo-gray-700};
+    --boodoo-gray-300: #{$boodoo-gray-600};
+    --boodoo-gray-400: #{$boodoo-gray-500};
+    --boodoo-gray-500: #{$boodoo-gray-400};
+    --boodoo-gray-600: #{$boodoo-gray-300};
+    --boodoo-gray-700: #{$boodoo-gray-200};
+    --boodoo-gray-800: #{$boodoo-gray-100};
+    --boodoo-gray-900: #{$boodoo-gray-100};
+
+    // Component surface tokens
+    --boodoo-light: #{$boodoo-gray-800};
+    --boodoo-dark: #{$boodoo-gray-100};
   }
 }
 
@@ -193,4 +201,19 @@
   --boodoo-dropdown-border-color: #{$boodoo-gray-800};
   --boodoo-form-control-bg: #{$boodoo-gray-900};
   --boodoo-form-control-border-color: #{$boodoo-gray-700};
+
+  // Gray scale inversion for dark mode
+  --boodoo-gray-100: #{$boodoo-gray-800};
+  --boodoo-gray-200: #{$boodoo-gray-700};
+  --boodoo-gray-300: #{$boodoo-gray-600};
+  --boodoo-gray-400: #{$boodoo-gray-500};
+  --boodoo-gray-500: #{$boodoo-gray-400};
+  --boodoo-gray-600: #{$boodoo-gray-300};
+  --boodoo-gray-700: #{$boodoo-gray-200};
+  --boodoo-gray-800: #{$boodoo-gray-100};
+  --boodoo-gray-900: #{$boodoo-gray-100};
+
+  // Component surface tokens
+  --boodoo-light: #{$boodoo-gray-800};
+  --boodoo-dark: #{$boodoo-gray-100};
 }

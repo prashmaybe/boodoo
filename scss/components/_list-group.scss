@@ -4,12 +4,12 @@
 .list-group {
   --boodoo-list-group-bg: var(--boodoo-body-bg);
   --boodoo-list-group-color: var(--boodoo-body-color);
-  --boodoo-list-group-border-color: #{$boodoo-border-color};
+  --boodoo-list-group-border-color: var(--boodoo-border-color);
   --boodoo-list-group-border-width: #{$boodoo-border-width};
   --boodoo-list-group-border-radius: #{$boodoo-border-radius};
-  --boodoo-list-group-active-bg: #{$boodoo-primary};
-  --boodoo-list-group-active-color: #{$boodoo-white};
-  --boodoo-list-group-hover-bg: #{$boodoo-gray-100};
+  --boodoo-list-group-active-bg: var(--boodoo-primary);
+  --boodoo-list-group-active-color: var(--boodoo-white);
+  --boodoo-list-group-hover-bg: var(--boodoo-gray-100);
 
   display: flex;
   flex-direction: column;

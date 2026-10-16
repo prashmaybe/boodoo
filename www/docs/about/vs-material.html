@@ -279,7 +279,7 @@
     <div class="p-3 bg-body border rounded-3 elevation-3" style="min-width: 140px; text-align: center;">
       <span class="small fw-semibold"><span>Elevation 3</span></span>
     </div>
-    <button type="button" class="btn btn-primary btn-fab shadow-sm" aria-label="Add item">
+    <button type="button" class="btn btn-primary btn-fab position-static shadow-sm" aria-label="Add item">
       <span>+</span>
     </button>
   </div>
@@ -291,7 +291,7 @@
 &lt;div class="p-3 bg-body border rounded-3 elevation-3"&gt;
   &lt;span class="small fw-semibold"&gt;&lt;span&gt;Elevation 3&lt;/span&gt;&lt;/span&gt;
 &lt;/div&gt;
-&lt;button type="button" class="btn btn-primary btn-fab shadow-sm" aria-label="Add item"&gt;
+&lt;button type="button" class="btn btn-primary btn-fab position-static shadow-sm" aria-label="Add item"&gt;
   &lt;span&gt;+&lt;/span&gt;
 &lt;/button&gt;</code></pre>
 </div>
@@ -333,7 +333,7 @@
     </tr>
     <tr>
       <td><strong><span>Bundle Size Footprint</span></strong></td>
-      <td><strong><span>~470 KB</span></strong> <span>CSS +</span> <strong><span>~126 KB</span></strong> <span>JS</span></td>
+      <td><strong><span>~459 KB</span></strong> <span>CSS +</span> <strong><span>~126 KB</span></strong> <span>JS</span></td>
       <td><span>~150–300+ KB minified + runtime overhead</span></td>
     </tr>
     <tr>
@@ -434,6 +434,41 @@
           document.documentElement.setAttribute('data-boodoo-theme', next);
           localStorage.setItem('boodoo-theme', next);
           updateIcon(next);
+        });
+      }
+    })();
+
+    // Auto-scroll the active documentation sidebar item into the visible viewport
+    (function () {
+      function scrollActiveNavIntoView() {
+        var sidebar = document.querySelector('.docs-sidebar');
+        if (!sidebar) return;
+        var activeLink = sidebar.querySelector('.docs-nav-list a.active');
+        if (!activeLink) return;
+
+        // Calculate offset relative to sidebar scroll container to center it precisely
+        var sidebarRect = sidebar.getBoundingClientRect();
+        var linkRect = activeLink.getBoundingClientRect();
+        var isVisible = (linkRect.top >= sidebarRect.top + 40 && linkRect.bottom <= sidebarRect.bottom - 40);
+
+        if (!isVisible) {
+          // Scroll active link to center of sidebar
+          var targetScrollTop = activeLink.offsetTop - (sidebar.clientHeight / 2) + (activeLink.clientHeight / 2);
+          sidebar.scrollTop = Math.max(0, targetScrollTop);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scrollActiveNavIntoView);
+      } else {
+        scrollActiveNavIntoView();
+      }
+
+      // Also ensure when mobile collapse is opened, the active link is visible
+      var collapseToggle = document.querySelector('[data-boodoo-target="#docsSidebarCollapse"]');
+      if (collapseToggle) {
+        collapseToggle.addEventListener('click', function () {
+          setTimeout(scrollActiveNavIntoView, 250);
         });
       }
     })();

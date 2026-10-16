@@ -135,42 +135,27 @@ $boodoo-accordion-icon-active-color: $boodoo-primary-text-emphasis !default;
 // 2. SPACING & BASE
 // -----------------------------------------------------------------
 
-// 5-step scale (Tailwind-flavored power-of-2 base) plus a deeper map.
-// $boodoo-spacer: 1rem = 16px.
+// Spacing scale: $boodoo-spacer: 1rem (16px).
+// Generous modern spacing scale designed for expansive layouts and rich card padding.
 $boodoo-spacer: 1rem !default;
 $boodoo-spacers: (
   0: 0,
-  0.5: $boodoo-spacer,
-  // 0.5  → 8px
-  1: $boodoo-spacer * 1.25,
-  // 1    → 20px
-  1.5: $boodoo-spacer * 1.75,
-  // 1.5  → 28px
-  2: $boodoo-spacer * 2.25,
-  // 2    → 36px
-  2.5: $boodoo-spacer * 2.75,
-  // 2.5  → 44px
-  3: $boodoo-spacer * 3.25,
-  // 3    → 52px
-  3.5: $boodoo-spacer * 3.75,
-  // 3.5  → 60px
-  4: $boodoo-spacer * 4.25,
-  // 4    → 68px
-  4.5: $boodoo-spacer * 4.75,
-  // 4.5  → 76px
-  5: $boodoo-spacer * 5.25,
-  // 5    → 84px
-  6: $boodoo-spacer * 6.25,
-  // 6    → 100px
-  7: $boodoo-spacer * 7.25,
-  // 7    → 116px
-  8: $boodoo-spacer * 8.25,
-  // 8    → 132px
-  9: $boodoo-spacer * 9.25,
-  // 9    → 148px
-  10: $boodoo-spacer * 10.25,
-  // 10   → 164px
-  ) !default;
+  0.5: $boodoo-spacer * 0.5,    // 0.5 → 8px
+  1: $boodoo-spacer * 1.25,     // 1   → 20px
+  1.5: $boodoo-spacer * 1.75,   // 1.5 → 28px
+  2: $boodoo-spacer * 2.25,     // 2   → 36px
+  2.5: $boodoo-spacer * 2.75,   // 2.5 → 44px
+  3: $boodoo-spacer * 3.25,     // 3   → 52px
+  3.5: $boodoo-spacer * 3.75,   // 3.5 → 60px
+  4: $boodoo-spacer * 4.25,     // 4   → 68px
+  4.5: $boodoo-spacer * 4.75,   // 4.5 → 76px
+  5: $boodoo-spacer * 5.25,     // 5   → 84px
+  6: $boodoo-spacer * 6.25,     // 6   → 100px
+  7: $boodoo-spacer * 7.25,     // 7   → 116px
+  8: $boodoo-spacer * 8.25,     // 8   → 132px
+  9: $boodoo-spacer * 9.25,     // 9   → 148px
+  10: $boodoo-spacer * 10.25,   // 10  → 164px
+) !default;
 
 // Foundation-style px-scale for precise utilities
 $boodoo-space: (
