@@ -91,15 +91,16 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-danger text-danger"><span>Security</span></span>
-          <span>Zero-Dependency HTML Sanitization &amp; Complete XSS Elimination</span>
+          <span>Zero-Dependency HTML Sanitization, Dependabot Resolutions &amp; TypeScript Declaration Surface</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.4</strong> hardens all public DOM APIs and unifies design system tokens:</span></p>
+        <p><span>boodoo <strong>v1.1.4</strong> hardens all public DOM APIs, resolves all starter dependencies, and unifies design system tokens:</span></p>
         <ul class="mb-3">
-          <li><span><strong>Public API Sanitization</strong>: Added <code>escapeHtml()</code> utility. Toasts (<code>boodoo.toast</code>), chip inputs (<code>ChipInput.addChip</code>), command palettes (<code>CommandPalette</code>), and popovers now safely escape untrusted markup before DOM insertion.</span></li>
-          <li><span><strong>Complete TypeScript Surface</strong>: Added first-class <code>.d.ts</code> declarations across all package exports: <code>dist/js/boodoo.d.ts</code>, <code>tokens/index.d.ts</code>, and <code>react-native/index.d.ts</code>.</span></li>
+          <li><span><strong>Dependabot Security Resolutions</strong>: Upgraded Next.js in starters to <code>^15.5.28</code> (with React 19) and Vite to <code>^6.4.4</code>, successfully eliminating all 58 repository Dependabot security advisories.</span></li>
+          <li><span><strong>Public API Sanitization</strong>: Added <code>escapeHtml()</code> utility. Toasts (<code>boodoo.toast</code>), chip inputs (<code>ChipInput.addChip</code>), command palettes (<code>CommandPalette</code>), dropzones (<code>Dropzone</code>), and popovers now safely escape untrusted markup and validate URI schemes before DOM insertion.</span></li>
+          <li><span><strong>Complete TypeScript Surface</strong>: Added first-class <code>.d.ts</code> declarations across all package exports: <code>dist/js/boodoo.d.ts</code>, <code>tokens/index.d.ts</code>, and <code>react-native/index.d.ts</code>, plus CommonJS token support (<code>tokens/index.cjs</code>).</span></li>
+          <li><span><strong>Lifecycle Teardown &amp; Cleanup</strong>: Full <code>dispose()</code> lifecycle implementations across <code>Modal</code>, <code>Offcanvas</code>, <code>SpeedDial</code>, and <code>Dropzone</code> (automatic <code>URL.revokeObjectURL</code> cleanup).</span></li>
           <li><span><strong>Isolated Component Registry</strong>: Re-engineered <code>BaseComponent</code> registry to namespace by component class, preventing element collision when multiple plugins attach to the same node.</span></li>
           <li><span><strong>Unified Brand Palette</strong>: Aligned <code>tokens/tokens.json</code>, <code>tokens/index.js</code>, and React Native themes with the official brand palette (secondary indigo <code>#5b21e6</code>, success <code>#1c9e50</code>, info <code>#0ea5e9</code>, dark <code>#17135f</code>).</span></li>
-          <li><span><strong>Modal Lifecycle &amp; A11y</strong>: Added <code>role="dialog"</code>, <code>aria-modal="true"</code>, and comprehensive <code>dispose()</code> cleanup unbinding keydown listeners and scroll locks.</span></li>
           <li><span><strong>CLI &amp; Bundler Enhancements</strong>: Dynamic version banners in <code>js-bundle.mjs</code>, true minification for <code>boodoo.min.js</code>, and updated <code>create-boodoo</code> scaffolding.</span></li>
         </ul>
       </div>
