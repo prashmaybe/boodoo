@@ -173,31 +173,33 @@
 }
 
 .navbar-dark {
-  --boodoo-navbar-bg: #{$boodoo-gray-900};
-  --boodoo-navbar-border-color: #{$boodoo-gray-800};
+  --boodoo-navbar-bg: var(--boodoo-gray-900, #{$boodoo-gray-900});
+  --boodoo-navbar-border-color: var(--boodoo-gray-800, #{$boodoo-gray-800});
+  background-color: var(--boodoo-navbar-bg);
   color-scheme: dark;
 
   .navbar-brand,
   .navbar-text {
-    color: $boodoo-white;
+    color: var(--boodoo-white, #ffffff) !important;
   }
 
   .navbar-nav .nav-link {
-    color: rgba($boodoo-white, 0.7);
+    color: rgba(255, 255, 255, 0.75) !important;
 
     &:hover,
     &:focus {
-      color: $boodoo-white;
+      color: var(--boodoo-white, #ffffff) !important;
     }
 
     &.active {
-      color: $boodoo-white;
+      color: var(--boodoo-white, #ffffff) !important;
+      font-weight: 600;
     }
   }
 
   .navbar-toggler {
-    color: $boodoo-white;
-    border-color: rgba($boodoo-white, 0.4);
+    color: var(--boodoo-white, #ffffff) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
 
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
