@@ -661,6 +661,14 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.equal(pkg.exports['./vue'].import, './vue/index.js');
 });
 
-
-
-
+test('Universal design tokens CommonJS module export verification', () => {
+  const cjsPath = resolve(rootDir, 'tokens/index.cjs');
+  assert.ok(existsSync(cjsPath), 'tokens/index.cjs must exist');
+  const tokensCjs = readFileSync(cjsPath, 'utf8');
+  assert.ok(tokensCjs.includes('module.exports = {'), 'tokens/index.cjs must export via module.exports');
+  assert.ok(tokensCjs.includes('colors'), 'tokens/index.cjs must include colors');
+  assert.ok(tokensCjs.includes('spacing'), 'tokens/index.cjs must include spacing');
+  assert.ok(tokensCjs.includes('radii'), 'tokens/index.cjs must include radii');
+  assert.ok(tokensCjs.includes('shadows'), 'tokens/index.cjs must include shadows');
+  assert.ok(tokensCjs.includes('typography'), 'tokens/index.cjs must include typography');
+});

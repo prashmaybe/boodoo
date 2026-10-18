@@ -35,5 +35,5 @@ jobs:
       - name: Build framework (CSS + JS)
         run: npm run build
 
-      - name: Run unit tests
-        run: node --test tests/framework.test.mjs
+      - name: Run test suite with coverage
+        run: npm test
