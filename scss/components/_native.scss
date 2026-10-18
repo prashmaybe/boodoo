@@ -135,6 +135,7 @@
         background-color: #c42b1c;
         color: #ffffff;
       }
+
       &:active {
         background-color: #b82213;
         color: rgba(255, 255, 255, 0.85);
@@ -201,6 +202,7 @@
       &:hover {
         background-color: rgba(0, 0, 0, 0.05);
       }
+
       &:active {
         background-color: rgba(0, 0, 0, 0.08);
       }
@@ -302,10 +304,12 @@
         background-color: #ff5f57;
         border-color: #e0443e;
       }
+
       &.dot-minimize {
         background-color: #febc2e;
         border-color: #d89e24;
       }
+
       &.dot-maximize {
         background-color: #28c840;
         border-color: #1aab29;
@@ -488,7 +492,6 @@
 
   // iOS Grouped Inset List
   .native-list-grouped {
-    margin: 16px;
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
