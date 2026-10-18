@@ -33,7 +33,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 - **Unified Design Tokens** — Single unified brand palette across Sass, Less, tokens JSON, and React Native themes
 - **Sanitized Public APIs** — Zero-dependency HTML entity escaping across Toasts, Chip Input, and Command Palette
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or Popper required
-- **Developer Tooling & CLI** — `npx create-boodoo` project scaffolder (Vanilla, Vite, Next.js, Electron, Angular, Cordova, Meteor, Photon, React Native Web, React Native Expo) and official VS Code IntelliSense snippet suite
+- **Developer Tooling & CLI** — `npx boodoo add <component>` shadcn-style component injector, `npx boodoo migrate --from=bootstrap|tailwind` automated codemod, `npx boodoo create` instant multi-framework project scaffolder (Next.js, Vite, React Native, Electron, etc.), and official VS Code IntelliSense snippet suite
 - **Cross-Platform Mobile & Desktop** — Pure native components (`boodoo/react-native`), React Native Paper MD3 theme presets (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), and desktop window drag regions
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
 - **Rich components** — 44+ accessible components including Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons

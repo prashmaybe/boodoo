@@ -20,10 +20,10 @@ export class ChipInput extends BaseComponent {
   _bindEvents() {
     // 1. Remove chip click
     this._element.addEventListener('click', (e) => {
-      const removeBtn = e.target.closest('.chip-remove');
+      const removeBtn = e.target.closest('.chip-remove, .tag-remove');
       if (removeBtn) {
         e.preventDefault();
-        const chip = removeBtn.closest('.chip');
+        const chip = removeBtn.closest('.chip, .tag-item');
         if (chip) {
           const text = chip.querySelector('span') ? chip.querySelector('span').innerText : chip.innerText;
           chip.remove();
@@ -45,7 +45,7 @@ export class ChipInput extends BaseComponent {
             this._input.value = '';
           }
         } else if (e.key === 'Backspace' && !this._input.value) {
-          const chips = this._element.querySelectorAll('.chip');
+          const chips = this._element.querySelectorAll('.chip, .tag-item');
           if (chips.length > 0) {
             const lastChip = chips[chips.length - 1];
             lastChip.remove();
@@ -57,16 +57,17 @@ export class ChipInput extends BaseComponent {
   }
 
   addChip(text, variant = '') {
+    const isTagInput = this._element.classList.contains('tag-input');
     const chip = document.createElement('span');
-    chip.className = `chip ${variant}`.trim();
+    chip.className = isTagInput ? `tag-item ${variant}`.trim() : `chip ${variant}`.trim();
     
     const labelSpan = document.createElement('span');
     labelSpan.textContent = text;
 
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
-    removeBtn.className = 'chip-remove';
-    removeBtn.setAttribute('aria-label', 'Remove tag');
+    removeBtn.className = isTagInput ? 'tag-remove' : 'chip-remove';
+    removeBtn.setAttribute('aria-label', `Remove ${text}`);
     removeBtn.innerHTML = '&times;';
 
     chip.appendChild(labelSpan);
@@ -82,7 +83,7 @@ export class ChipInput extends BaseComponent {
   }
 
   getTags() {
-    const chips = Array.from(this._element.querySelectorAll('.chip'));
+    const chips = Array.from(this._element.querySelectorAll('.chip, .tag-item'));
     return chips.map((c) => {
       const span = c.querySelector('span');
       return span ? span.innerText.trim() : c.innerText.replace('×', '').trim();
