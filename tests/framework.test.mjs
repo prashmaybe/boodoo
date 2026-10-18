@@ -674,7 +674,7 @@ test('Universal design tokens CommonJS module export verification', () => {
 });
 
 test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (npx boodoo migrate)', async () => {
-  const { addComponent, listAvailableComponents, runMigration } = await import(
+  const { addComponent, listAvailableComponents, runMigration, handleAdd, handleMigrate, printHelp, runCli } = await import(
     pathToFileURL(resolve(rootDir, 'bin/boodoo.mjs')).href
   );
 
@@ -684,7 +684,7 @@ test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (
   assert.ok(available.includes('command-palette'), 'available components must include command-palette');
   assert.ok(available.includes('dropzone'), 'available components must include dropzone');
 
-  // 2. Verify addComponent extraction into temporary dir
+  // 2. Verify addComponent extraction into temporary dir & error branch
   const tempTestDir = resolve(rootDir, 'tests', 'temp_add_test');
   try {
     const result = addComponent('modal', tempTestDir);
@@ -693,6 +693,9 @@ test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (
     assert.equal(result.reactHook, 'useDisclosure');
     assert.ok(existsSync(resolve(tempTestDir, 'components/boodoo/_modal.scss')));
     assert.ok(existsSync(resolve(tempTestDir, 'components/boodoo/modal.js')));
+
+    // Error branch when component name is unknown
+    assert.throws(() => addComponent('non-existent-comp', tempTestDir), /not found/i);
   } finally {
     const { rmSync } = await import('node:fs');
     rmSync(tempTestDir, { recursive: true, force: true });
@@ -716,5 +719,84 @@ test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (
   assert.ok(twResult.output.includes('justify-content-between'), 'Should replace justify-between');
   assert.ok(twResult.output.includes('w-100'), 'Should replace w-full with w-100');
   assert.ok(twResult.output.includes('container'), 'Should replace max-w-7xl mx-auto with container');
+
+  // 5. Test CLI Runners & Handlers: handleAdd
+  const noCompRes = await handleAdd(['add']);
+  assert.equal(noCompRes, undefined, 'handleAdd without component name prints list');
+
+  const tempCliDir = resolve(rootDir, 'tests', 'temp_cli_test');
+  try {
+    const prevCwd = process.cwd();
+    const { mkdirSync, writeFileSync, rmSync } = await import('node:fs');
+    mkdirSync(tempCliDir, { recursive: true });
+    process.chdir(tempCliDir);
+
+    // Test successful handleAdd
+    const addSuccess = await handleAdd(['add', 'toast']);
+    assert.equal(addSuccess.name, 'toast');
+    assert.ok(existsSync(resolve(tempCliDir, 'components/boodoo/_toasts.scss')));
+
+    // Test handleAdd error branch
+    await assert.rejects(async () => {
+      await handleAdd(['add', 'invalid-widget']);
+    });
+
+    // Test handleMigrate empty directory
+    const emptyMigrate = await handleMigrate(['migrate', tempCliDir]);
+    assert.equal(emptyMigrate.filesScanned, 0);
+
+    // Test handleMigrate on files
+    const htmlFile = resolve(tempCliDir, 'index.html');
+    writeFileSync(htmlFile, '<button data-bs-toggle="collapse" class="fs-1 fw-bold">Toggle</button>', 'utf8');
+    const fileMigrate = await handleMigrate(['migrate', htmlFile, '--from=bootstrap']);
+    assert.ok(fileMigrate.totalReplacements > 0);
+    assert.ok(readFileSync(htmlFile, 'utf8').includes('data-boodoo-toggle="collapse"'));
+
+    // Test handleMigrate on directory with Tailwind
+    const twFile = resolve(tempCliDir, 'app.jsx');
+    writeFileSync(twFile, '<div className="flex flex-col w-full text-center"></div>', 'utf8');
+    const dirMigrate = await handleMigrate(['migrate', tempCliDir, '--from=tailwind']);
+    assert.ok(dirMigrate.totalReplacements > 0);
+    assert.ok(readFileSync(twFile, 'utf8').includes('flex-column'));
+
+    // Test runCli routing for add (with reactHook coverage) and migrate
+    const addViaRunCli = await runCli('add', ['add', 'modal']);
+    assert.equal(addViaRunCli.name, 'modal');
+    assert.equal(addViaRunCli.reactHook, 'useDisclosure');
+
+    const migrateViaRunCli = await runCli('migrate', ['migrate', tempCliDir, '--from=tailwind']);
+    assert.ok(migrateViaRunCli);
+
+    // Test runCli routing for create / init with spawn handler
+    let spawnCalled = false;
+    const mockSpawn = (cmd, args, opts) => {
+      spawnCalled = true;
+      return {
+        on(event, cb) {
+          if (event === 'exit') cb(0);
+        }
+      };
+    };
+    const createArgs = ['create', 'test-app'];
+    createArgs._spawnFn = mockSpawn;
+    const createChild = await runCli('create', createArgs);
+    assert.ok(spawnCalled);
+    assert.ok(createChild);
+
+    process.chdir(prevCwd);
+  } finally {
+    const { rmSync } = await import('node:fs');
+    rmSync(tempCliDir, { recursive: true, force: true });
+  }
+
+  // 6. Test printHelp and runCli routing
+  printHelp();
+  await runCli('help', ['help']);
+  await runCli('--help', ['--help']);
+  await runCli('-h', ['-h']);
+  const listRes = await runCli('list', ['list']);
+  assert.ok(Array.isArray(listRes) && listRes.length > 0);
 });
+
+
 

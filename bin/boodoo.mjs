@@ -273,8 +273,8 @@ export function addComponent(componentName, targetDir = process.cwd()) {
   return { name: normName, files: addedFiles, reactHook: entry.react || null };
 }
 
-async function handleAdd() {
-  const comp = args[1];
+export async function handleAdd(cmdArgs = args) {
+  const comp = cmdArgs[1];
   if (!comp) {
     console.log('\n\x1b[36m📦 Available Boodoo Components to Add:\x1b[0m\n');
     console.log(listAvailableComponents().map((c) => `  - ${c}`).join('\n'));
@@ -290,16 +290,17 @@ async function handleAdd() {
       console.log(`\n\x1b[35mTip: Declarative headless hook available: import { ${result.reactHook} } from 'boodoo/react'\x1b[0m`);
     }
     console.log('');
+    return result;
   } catch (err) {
     console.error(`\x1b[31mError: ${err.message}\x1b[0m`);
-    process.exit(1);
+    throw err;
   }
 }
 
-async function handleMigrate() {
-  const fromFlag = args.find((a) => a.startsWith('--from='));
+export async function handleMigrate(cmdArgs = args) {
+  const fromFlag = cmdArgs.find((a) => a.startsWith('--from='));
   const source = fromFlag ? fromFlag.split('=')[1] : 'bootstrap';
-  const targetPath = args[1] && !args[1].startsWith('--') ? args[1] : '.';
+  const targetPath = cmdArgs[1] && !cmdArgs[1].startsWith('--') ? cmdArgs[1] : '.';
 
   console.log(`\n\x1b[35m🔄 Boodoo Automated CSS Migration Codemod\x1b[0m`);
   console.log(`Migrating files from: \x1b[36m${source}\x1b[0m at \x1b[33m${targetPath}\x1b[0m\n`);
@@ -331,7 +332,7 @@ async function handleMigrate() {
 
   if (filesToScan.length === 0) {
     console.log(`No applicable HTML/JSX/Vue template files found at '${targetPath}'.`);
-    return;
+    return { filesScanned: 0, totalReplacements: 0, modifiedFiles: 0 };
   }
 
   let totalReplacements = 0;
@@ -349,9 +350,10 @@ async function handleMigrate() {
   }
 
   console.log(`\n\x1b[32mMigration complete:\x1b[0m Converted ${totalReplacements} classes across ${modifiedFiles} files.\n`);
+  return { filesScanned: filesToScan.length, totalReplacements, modifiedFiles };
 }
 
-function printHelp() {
+export function printHelp() {
   console.log(`
 \x1b[35m✨ Boodoo Developer CLI\x1b[0m
 
@@ -373,40 +375,52 @@ function printHelp() {
 `);
 }
 
-async function main() {
-  switch (command) {
+export async function runCli(cmd = command, cmdArgs = args) {
+  switch (cmd) {
     case 'add':
-      await handleAdd();
-      break;
+      return await handleAdd(cmdArgs);
     case 'migrate':
-      await handleMigrate();
-      break;
+      return await handleMigrate(cmdArgs);
     case 'list':
       console.log('\n\x1b[36mAvailable Boodoo Components:\x1b[0m\n');
       console.log(listAvailableComponents().map((c) => `  - ${c}`).join('\n'));
       console.log('');
-      break;
+      return listAvailableComponents();
     case 'create':
     case 'init': {
       const createScript = path.join(root, 'bin', 'create-boodoo.mjs');
-      const { spawn } = await import('node:child_process');
-      const child = spawn(process.execPath, [createScript, ...args.slice(1)], { stdio: 'inherit' });
-      child.on('exit', (code) => process.exit(code || 0));
-      break;
+      const { spawn: defaultSpawn } = await import('node:child_process');
+      const spawnFn = cmdArgs._spawnFn || defaultSpawn;
+      const child = spawnFn(process.execPath, [createScript, ...cmdArgs.slice(1)], { stdio: 'inherit' });
+      if (child && typeof child.on === 'function') {
+        child.on('exit', (code) => {
+          /* node:coverage disable */
+          if (process.argv[1] === fileURLToPath(import.meta.url)) {
+            process.exit(code || 0);
+          }
+          /* node:coverage enable */
+        });
+      }
+      return child;
     }
     case 'help':
     case '--help':
     case '-h':
     default:
       printHelp();
-      break;
+      return true;
   }
 }
 
 // Only execute directly when run as CLI
+/* node:coverage disable */
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  main().catch((err) => {
+  runCli().catch((err) => {
     console.error(err);
     process.exit(1);
   });
 }
+/* node:coverage enable */
+
+
+
