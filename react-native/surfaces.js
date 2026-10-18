@@ -256,6 +256,58 @@ export function Tile({
   );
 }
 
+export function StatWidget({
+  title,
+  value,
+  trend,
+  trendDirection = 'up',
+  icon,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  return (
+    <View
+      style={[
+        styles.cardBase,
+        {
+          backgroundColor: theme.colors.surface,
+          borderRadius: theme.radii.lg,
+          padding: theme.spacing[4],
+          borderWidth: 1,
+          borderColor: theme.colors.border,
+          ...theme.shadows.sm,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+        {title ? (
+          <Text style={{ fontSize: theme.typography.sizes.sm, color: theme.colors.textMuted || '#64748b', fontWeight: '500' }}>
+            {title}
+          </Text>
+        ) : null}
+        {icon ? <View>{icon}</View> : null}
+      </View>
+      <Text style={{ fontSize: 28, fontWeight: '700', color: theme.colors.text, marginBottom: 4 }}>
+        {value}
+      </Text>
+      {trend ? (
+        <Text
+          style={{
+            fontSize: theme.typography.sizes.xs,
+            fontWeight: '600',
+            color: trendDirection === 'up' ? theme.colors.success : theme.colors.danger,
+          }}
+        >
+          {trend}
+        </Text>
+      ) : null}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   cardBase: {
     overflow: 'hidden',

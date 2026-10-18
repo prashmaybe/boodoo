@@ -146,6 +146,27 @@ const COMPONENT_MAP = {
     scss: 'scss/components/_popover.scss',
     js: 'js/src/tooltip.js',
   },
+  'stat-widget': {
+    scss: 'scss/components/_extended-components.scss',
+  },
+  'activity-feed': {
+    scss: 'scss/components/_extended-components.scss',
+  },
+  'mega-menu': {
+    scss: 'scss/components/_extended-components.scss',
+  },
+  'fab-dock': {
+    scss: 'scss/components/_extended-components.scss',
+    js: 'js/src/fab-dock.js',
+  },
+  'dialog-fullscreen': {
+    scss: 'scss/components/_extended-components.scss',
+    js: 'js/src/dialog-fullscreen.js',
+  },
+  tour: {
+    scss: 'scss/components/_extended-components.scss',
+    js: 'js/src/tour.js',
+  },
 };
 
 const BOOTSTRAP_TO_BOODOO = [

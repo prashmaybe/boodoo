@@ -251,6 +251,7 @@ test('React Native adapter exports valid definitions without bundling errors', a
     'ActionSheet',
     'Toast',
     'Table',
+    'StatWidget',
   ];
 
   for (const exp of expectedExports) {
@@ -269,7 +270,7 @@ test('React Native modular submodules existence and exports verification', () =>
     { file: 'typography.js', expected: ['Text', 'Heading'] },
     { file: 'layout.js', expected: ['Box', 'HStack', 'XStack', 'VStack', 'YStack', 'Center', 'ZStack', 'Pressable', 'Grid'] },
     { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
-    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile'] },
+    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget'] },
     { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
     { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar'] },
     { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
@@ -412,7 +413,14 @@ test('SCSS and LESS full component & feature parity verification', () => {
     '.password-meter',
     '.image-compare',
     '.code-copy-box',
-    '.swipe-action-item'
+    '.swipe-action-item',
+    '.stat-widget',
+    '.activity-feed',
+    '.mega-menu',
+    '.breadcrumb-dropdown-toggle',
+    '.fab-dock',
+    '.dialog-fullscreen',
+    '.tour-popover'
   ];
 
   for (const cls of expectedClasses) {
@@ -849,6 +857,66 @@ test('Modern JS components (FloatingBar, ImageCompare, PasswordMeter) verificati
   assert.equal(scoreStrong, 4, 'Complex password returns 4');
   assert.equal(meterEl.attributes['data-strength'], '4');
 });
+
+test('Extended v1.1.8 components (FABDock, DialogFullscreen, Tour) verification', async () => {
+  const { FABDock } = await import(pathToFileURL(resolve(rootDir, 'js/src/fab-dock.js')).href);
+  const { DialogFullscreen } = await import(pathToFileURL(resolve(rootDir, 'js/src/dialog-fullscreen.js')).href);
+  const { Tour } = await import(pathToFileURL(resolve(rootDir, 'js/src/tour.js')).href);
+
+  class MockElement {
+    constructor() {
+      this.classList = {
+        _set: new Set(),
+        add(c) { this._set.add(c); },
+        remove(c) { this._set.delete(c); },
+        contains(c) { return this._set.has(c); }
+      };
+      this.attributes = {};
+      this.style = {};
+    }
+    querySelector() { return null; }
+    querySelectorAll() { return []; }
+    addEventListener() {}
+    removeEventListener() {}
+    dispatchEvent() { return true; }
+    setAttribute(k, v) { this.attributes[k] = v; }
+    getAttribute(k) { return this.attributes[k] || null; }
+    removeAttribute(k) { delete this.attributes[k]; }
+  }
+
+  // FABDock
+  const dockEl = new MockElement();
+  const dock = FABDock.getOrCreateInstance(dockEl);
+  dock.open();
+  assert.ok(dockEl.classList.contains('open'), 'FABDock open() adds open class');
+  dock.close();
+  assert.ok(!dockEl.classList.contains('open'), 'FABDock close() removes open class');
+  dock.toggle();
+  assert.ok(dockEl.classList.contains('open'), 'FABDock toggle() opens dock');
+  dock.dispose();
+
+  // DialogFullscreen
+  const dialogEl = new MockElement();
+  const dialog = DialogFullscreen.getOrCreateInstance(dialogEl);
+  dialog.show();
+  assert.ok(dialogEl.classList.contains('show'), 'DialogFullscreen show() adds show class');
+  assert.equal(dialogEl.attributes['aria-hidden'], 'false');
+  dialog.hide();
+  assert.ok(!dialogEl.classList.contains('show'), 'DialogFullscreen hide() removes show class');
+  assert.equal(dialogEl.attributes['aria-hidden'], 'true');
+  dialog.dispose();
+
+  // Tour
+  const tourEl = new MockElement();
+  const tour = Tour.getOrCreateInstance(tourEl);
+  tour.setSteps([
+    { title: 'Welcome', content: 'Explore the dashboard.' },
+    { title: 'Metrics', content: 'Track real-time stats.' }
+  ]);
+  assert.equal(tour._steps.length, 2);
+  tour.dispose();
+});
+
 
 
 
