@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.7] - 2026-10-18
+
+### Added
+- **Modern UI Component Suite (`scss/components/_modern-components.scss`, `less/boodoo.less`, `js/src/*`, `dist/`)**:
+  - **Tag / Token Input (`.tag-input`, `.tag-item`, `.tag-remove`, `ChipInput`)**: Interactive multi-token keyboard and mouse tag input with removable chips, backspace navigation, and autocomplete alignment.
+  - **Floating Bulk Action Bar (`.floating-bar`, `FloatingBar`)**: Contextual floating action bar anchored to the bottom viewport with transition animations, selected counter bindings, and dismiss actions for bulk data operations.
+  - **Image Comparison Slider (`.image-compare`, `ImageCompare`)**: High-performance touch and drag split slider allowing interactive side-by-side or overlaid comparison of images and graphic assets.
+  - **Password Strength Meter (`.password-meter`, `PasswordMeter`)**: Real-time password evaluation with dynamic score indicators, strength meters (Weak, Fair, Good, Strong), and custom target bindings.
+  - **Diff & Code Comparison Viewer (`.diff-viewer`, `.diff-table`, `.diff-add`, `.diff-del`)**: Monospace code diff layout with distinct line additions, deletions, hunk headers, and gutter line numbering.
+  - **Metric Sparkline & Micro-Charts (`.sparkline`, `.sparkline-bar`)**: CSS and SVG micro-trendline and inline bar sparklines for dashboard metrics and KPI cards.
+  - **Copy-to-Clipboard Code Snippet Box (`.code-copy-box`, `.code-copy-btn`)**: Dark-themed code presentation box with integrated floating copy button and syntax container.
+  - **Mobile Swipe-to-Action List Item (`.swipe-action-item`, `.swipe-action-reveal`)**: Native-feeling touch swipe actions reveal pattern for mobile web applications.
+- **SCSS and LESS Dual Preprocessor Parity**:
+  - Full functional and selector parity implemented across SCSS and LESS (`less/boodoo.less`) with zero syntax deprecations.
+- **TypeScript Definitions (`js/boodoo.d.ts`, `dist/js/boodoo.d.ts`)**:
+  - Added full typings for `FloatingBar`, `ImageCompare`, and `PasswordMeter`.
+
+---
+
 ## [1.1.6] - 2026-10-18
 
 ### Added

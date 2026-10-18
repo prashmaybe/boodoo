@@ -1,0 +1,396 @@
+// =====================================================================
+// BOODOO — Modern Component Suite (v1.1.7 additions)
+// Includes: DiffViewer, Sparkline, TagInput, PasswordMeter,
+// FilePreview, FloatingBar, ImageCompare, CodeCopyBox, SwipeAction
+// =====================================================================
+
+// 1. Tag / Token Input
+.tag-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  background-color: var(--boodoo-form-control-bg, var(--boodoo-body-bg));
+  border: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  min-height: calc(1.5em + 0.75rem + 2px);
+  cursor: text;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:focus-within {
+    border-color: var(--boodoo-primary);
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
+  }
+
+  .tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.25;
+    background-color: var(--boodoo-gray-200);
+    color: var(--boodoo-body-color);
+    border-radius: var(--boodoo-border-radius-pill, 50rem);
+    user-select: none;
+
+    .tag-remove {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      opacity: 0.6;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .tag-input-field {
+    flex: 1 1 auto;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0.125rem 0.25rem;
+    font-size: 0.875rem;
+    min-width: 6rem;
+    color: var(--boodoo-body-color);
+  }
+}
+
+// 2. Floating Bulk Action Bar
+.floating-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+  border: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius-pill, 50rem);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .floating-bar-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--boodoo-body-color);
+    white-space: nowrap;
+  }
+
+  .floating-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+// 3. Diff Viewer
+.diff-viewer {
+  font-family: var(--boodoo-font-monospace, monospace);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  border: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  overflow: hidden;
+  background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
+
+  .diff-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--boodoo-gray-100);
+    border-bottom: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color);
+    font-weight: 600;
+  }
+
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+
+    td {
+      padding: 0.125rem 0.5rem;
+      vertical-align: top;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .diff-line-num {
+      width: 1%;
+      min-width: 2.5rem;
+      text-align: right;
+      color: var(--boodoo-gray-500);
+      user-select: none;
+      border-right: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color);
+      padding-right: 0.5rem;
+    }
+
+    .diff-line-content {
+      padding-left: 0.75rem;
+    }
+
+    tr.diff-add {
+      background-color: rgba(28, 158, 80, 0.12);
+      color: var(--boodoo-body-color);
+      .diff-line-num {
+        background-color: rgba(28, 158, 80, 0.18);
+        color: var(--boodoo-success);
+      }
+    }
+
+    tr.diff-del {
+      background-color: rgba(225, 29, 72, 0.12);
+      color: var(--boodoo-body-color);
+      .diff-line-num {
+        background-color: rgba(225, 29, 72, 0.18);
+        color: var(--boodoo-danger);
+      }
+    }
+
+    tr.diff-hunk {
+      background-color: var(--boodoo-gray-100);
+      color: var(--boodoo-gray-600);
+      font-style: italic;
+    }
+  }
+}
+
+// 4. Sparkline & Mini Trendline
+.sparkline {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 1.5rem;
+  vertical-align: middle;
+
+  .sparkline-bar {
+    width: 4px;
+    background-color: var(--boodoo-primary);
+    border-radius: 1px;
+    transition: height 0.2s ease;
+
+    &.sparkline-up {
+      background-color: var(--boodoo-success);
+    }
+    &.sparkline-down {
+      background-color: var(--boodoo-danger);
+    }
+  }
+
+  svg.sparkline-chart {
+    overflow: visible;
+    stroke: var(--boodoo-primary);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// 5. Password Strength Meter
+.password-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+
+  .password-meter-bar {
+    height: 4px;
+    background-color: var(--boodoo-gray-200);
+    border-radius: var(--boodoo-border-radius-pill, 50rem);
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 0%;
+      background-color: var(--boodoo-danger);
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+  }
+
+  &[data-strength="1"] .password-meter-bar::after {
+    width: 25%;
+    background-color: var(--boodoo-danger);
+  }
+  &[data-strength="2"] .password-meter-bar::after {
+    width: 50%;
+    background-color: var(--boodoo-warning);
+  }
+  &[data-strength="3"] .password-meter-bar::after {
+    width: 75%;
+    background-color: var(--boodoo-info);
+  }
+  &[data-strength="4"] .password-meter-bar::after {
+    width: 100%;
+    background-color: var(--boodoo-success);
+  }
+
+  .password-meter-label {
+    font-size: 0.75rem;
+    color: var(--boodoo-gray-600);
+  }
+}
+
+// 6. Image Comparison Slider
+.image-compare {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  user-select: none;
+  max-width: 100%;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .image-compare-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: none;
+      height: 100%;
+    }
+  }
+
+  .image-compare-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #ffffff;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+
+    &::before {
+      content: "⟨⟩";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px;
+      height: 28px;
+      background-color: var(--boodoo-primary);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// 7. Copy Snippet Box
+.code-copy-box {
+  position: relative;
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  background-color: var(--boodoo-gray-900);
+  color: var(--boodoo-gray-100);
+  padding: 1rem 1.25rem;
+  font-family: var(--boodoo-font-monospace, monospace);
+  font-size: 0.875rem;
+
+  pre {
+    margin: 0;
+    overflow-x: auto;
+    color: inherit;
+  }
+
+  .code-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: var(--boodoo-border-radius-sm, 0.375rem);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
+
+// 8. Swipe Action Item (Mobile)
+.swipe-action-item {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--boodoo-body-bg);
+
+  .swipe-action-content {
+    position: relative;
+    z-index: 2;
+    background-color: var(--boodoo-body-bg);
+    transition: transform 0.2s ease-out;
+  }
+
+  .swipe-action-reveal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    .swipe-action-btn {
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.25rem;
+      border: none;
+      color: #ffffff;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}

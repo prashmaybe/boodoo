@@ -404,7 +404,15 @@ test('SCSS and LESS full component & feature parity verification', () => {
     '.native-ipados',
     '.native-android',
     '.native-linux',
-    '.native-photon'
+    '.native-photon',
+    '.tag-input',
+    '.floating-bar',
+    '.diff-viewer',
+    '.sparkline',
+    '.password-meter',
+    '.image-compare',
+    '.code-copy-box',
+    '.swipe-action-item'
   ];
 
   for (const cls of expectedClasses) {
@@ -659,6 +667,50 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(pkg.exports['./vue'], 'package.json must export ./vue subpath');
   assert.equal(pkg.exports['./vue'].types, './vue/index.d.ts');
   assert.equal(pkg.exports['./vue'].import, './vue/index.js');
+});
+
+test('Modern JS components (FloatingBar, ImageCompare, PasswordMeter) verification', async () => {
+  const { FloatingBar } = await import(pathToFileURL(resolve(rootDir, 'js/src/floating-bar.js')).href);
+  const { ImageCompare } = await import(pathToFileURL(resolve(rootDir, 'js/src/image-compare.js')).href);
+  const { PasswordMeter } = await import(pathToFileURL(resolve(rootDir, 'js/src/password-meter.js')).href);
+
+  class MockElement {
+    constructor() {
+      this.classList = {
+        _set: new Set(),
+        add(c) { this._set.add(c); },
+        remove(c) { this._set.delete(c); },
+        contains(c) { return this._set.has(c); }
+      };
+      this.attributes = {};
+      this.style = {};
+    }
+    querySelector() { return null; }
+    querySelectorAll() { return []; }
+    addEventListener() {}
+    removeEventListener() {}
+    dispatchEvent() { return true; }
+    setAttribute(k, v) { this.attributes[k] = v; }
+    getAttribute(k) { return this.attributes[k] || null; }
+    removeAttribute(k) { delete this.attributes[k]; }
+  }
+
+  // FloatingBar
+  const barEl = new MockElement();
+  const bar = FloatingBar.getOrCreateInstance(barEl);
+  bar.show();
+  assert.ok(barEl.classList.contains('show'), 'FloatingBar show() adds show class');
+  bar.hide();
+  assert.ok(!barEl.classList.contains('show'), 'FloatingBar hide() removes show class');
+
+  // PasswordMeter
+  const meterEl = new MockElement();
+  const meter = PasswordMeter.getOrCreateInstance(meterEl);
+  const scoreWeak = meter.evaluate('abc');
+  assert.equal(scoreWeak, 0, 'Weak password returns 0');
+  const scoreStrong = meter.evaluate('StrongP@ssw0rd!');
+  assert.equal(scoreStrong, 4, 'Complex password returns 4');
+  assert.equal(meterEl.attributes['data-strength'], '4');
 });
 
 
