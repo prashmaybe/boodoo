@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-tools-server": {
+      "command": "node",
+      "args": ["d:/apps/mcp/index.js"],
+      "cwd": "d:/apps/mcp",
+      "env": {
+        "NODE_ENV": "production",
+        "START_HTTP": "false"
+      }
+    }
+  }
+}

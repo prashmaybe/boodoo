@@ -1539,6 +1539,10 @@ code:not(pre code) {
   min-height: 220px;
 }
 
+.demo-min-h300 {
+  min-height: 300px;
+}
+
 .demo-overflow-box {
   max-width: 16rem;
   max-height: 6rem;
