@@ -16,14 +16,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `useCombobox`: Reactive autocomplete query and keyboard navigation (ArrowUp, ArrowDown, Enter, Escape) with W3C ARIA active-descendant support.
     - `useAccordion`: Single- and multi-panel reactive expand/collapse coordination with `getButtonProps()` and `getPanelProps()`.
   - Added full TypeScript definitions (`vue/index.d.ts`) and configured `./vue` subpath export in `package.json`.
+- **Continuous Integration Pipeline & README Status Badges (`.github/workflows/ci.yml`, `README.md`)**:
+  - Configured GitHub Actions matrix CI testing against Node.js 20 and 22 LTS on `push` and `pull_request` events.
+  - Validates full compilation (`npm run build`) and passes test suites (`npm run test:unit`) with zero regressions.
+  - Added official CI status badge, npm version, monthly downloads, and MIT license shields to the README.
+- **Native CSS Modern Primitives Polish (`scss/components/_native.scss`, `less/boodoo.less`, `site/src/components/native.html`)**:
+  - Expanded and refined native modern web primitives including CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline`), Container Queries (`@container`), and native Popover/Dialog transitions.
+  - Achieved strict feature parity across both SCSS and LESS preprocessor bundles (`less/boodoo.less`).
 
-### Improved
+### Fixed & Enhanced
+- **Global Ripple Event Delegation & Affordance (`js/src/ripple.js`, `scss/components/_ripple.scss`, `tests/framework.test.mjs`)**:
+  - Enhanced ripple effects to support global pointer delegation on surfaces with `data-boodoo-ripple` or `.has-ripple` across dynamically inserted DOM elements.
+  - Ensured explicit cursor and pointer affordances on interactive ripple triggers.
+- **Form Color Swatch Aspect Ratio (`scss/forms/_pickers.scss`, `less/boodoo.less`)**:
+  - Fixed color picker swatch items to strictly preserve a 1:1 circular aspect ratio with `border-radius: 50%` and `aspect-ratio: 1 / 1`.
+- **Documentation Container Boundaries & Overflow (`site/src/utilities/display.html`, `site/src/components/banner.html`, `site/src/components/toasts.html`, `scss/_animations.scss`)**:
+  - Fixed demo container height bounds for stacked toasts, centered announcement pills, and resolved container overflow in display utility previews.
+  - Fixed infinite spinning utility class styling and SCSS animation keyframe alignment.
 - **Build Pipeline Script Robustness (`package.json`)**:
   - Switched CSS build scripts from `npx --no-install sass` to standard npm binary execution `sass`. This eliminates unexpected npx interactive cancellation during fresh installs and CI pipelines.
 - **Scaffolding CLI Alignment (`bin/create-boodoo.mjs`)**:
   - Bumped `create-boodoo` project generator version default to `1.1.6`.
 - **Documentation & README Size Tracking**:
-  - Aligned static performance table in `README.md` to match actual compiled asset measurements (`~132 KB` minified JS / `~144 KB` raw JS).
+  - Aligned static performance table in `README.md` to match actual compiled asset measurements (`502 KB` / `~70 KB` gzip CSS, `~133 KB` / `~25 KB` gzip minified JS, `~145 KB` raw JS).
 
 ---
 

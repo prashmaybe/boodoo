@@ -48,13 +48,13 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~469 KB | ~65.3 KB | ~43.1 KB | Full framework (all 44 components + utilities) |
+| `boodoo.min.css` | ~502 KB | ~70.0 KB | ~47.4 KB | Full framework (all 44 components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.0 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~132 KB | ~25.4 KB | ~21.2 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
-| `boodoo.js` | ~144 KB | ~29.1 KB | ~24.5 KB | Pure vanilla JS unminified bundle |
+| `boodoo.min.js` | ~133 KB | ~25.5 KB | ~21.4 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
+| `boodoo.js` | ~145 KB | ~29.4 KB | ~24.6 KB | Pure vanilla JS unminified bundle |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
