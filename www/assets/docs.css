@@ -146,6 +146,130 @@
   border: 1px solid #d97706 !important;
 }
 
+/* Global Dark Mode Surface & Utility Overrides */
+[data-boodoo-theme="dark"] .bg-white {
+  background-color: var(--boodoo-card-bg) !important;
+  color: var(--boodoo-text-main) !important;
+}
+
+[data-boodoo-theme="dark"] .bg-light {
+  background-color: var(--boodoo-body-alt-bg) !important;
+  color: var(--boodoo-text-main) !important;
+}
+
+[data-boodoo-theme="dark"] .border {
+  border-color: var(--boodoo-border-subtle) !important;
+}
+
+[data-boodoo-theme="dark"] .card {
+  background-color: var(--boodoo-card-bg);
+  border-color: var(--boodoo-border-subtle);
+  color: var(--boodoo-text-main);
+}
+
+[data-boodoo-theme="dark"] .card-header,
+[data-boodoo-theme="dark"] .card-footer {
+  background-color: var(--boodoo-body-alt-bg);
+  border-color: var(--boodoo-border-subtle);
+  color: var(--boodoo-text-main);
+}
+
+[data-boodoo-theme="dark"] .list-group-item {
+  background-color: var(--boodoo-card-bg);
+  border-color: var(--boodoo-border-subtle);
+  color: var(--boodoo-text-main);
+}
+
+[data-boodoo-theme="dark"] .table {
+  --boodoo-table-color: var(--boodoo-text-main);
+  --boodoo-table-border-color: var(--boodoo-border-subtle);
+  --boodoo-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --boodoo-table-hover-bg: rgba(255, 255, 255, 0.05);
+  color: var(--boodoo-text-main);
+  border-color: var(--boodoo-border-subtle);
+}
+
+[data-boodoo-theme="dark"] .table-light {
+  background-color: var(--boodoo-body-alt-bg) !important;
+  color: var(--boodoo-text-main) !important;
+}
+
+[data-boodoo-theme="dark"] .table-light th,
+[data-boodoo-theme="dark"] .table-light td {
+  background-color: var(--boodoo-body-alt-bg) !important;
+  color: var(--boodoo-text-main) !important;
+  border-color: var(--boodoo-border-subtle) !important;
+}
+
+[data-boodoo-theme="dark"] .dropdown-menu {
+  background-color: var(--boodoo-card-bg);
+  border-color: var(--boodoo-border-subtle);
+  color: var(--boodoo-text-main);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+[data-boodoo-theme="dark"] .dropdown-item {
+  color: var(--boodoo-text-main);
+}
+
+[data-boodoo-theme="dark"] .dropdown-item:hover,
+[data-boodoo-theme="dark"] .dropdown-item:focus {
+  background-color: var(--boodoo-body-alt-bg);
+  color: var(--boodoo-primary);
+}
+
+[data-boodoo-theme="dark"] .dropdown-divider {
+  border-top-color: var(--boodoo-border-subtle);
+}
+
+[data-boodoo-theme="dark"] .navbar-light .navbar-nav .nav-link {
+  color: var(--boodoo-text-sub);
+}
+
+[data-boodoo-theme="dark"] .navbar-light .navbar-nav .nav-link:hover,
+[data-boodoo-theme="dark"] .navbar-light .navbar-nav .nav-link.active {
+  color: var(--boodoo-text-main);
+}
+
+[data-boodoo-theme="dark"] .navbar-toggler {
+  filter: invert(1);
+}
+
+[data-boodoo-theme="dark"] .bg-dark {
+  background-color: var(--boodoo-card-bg) !important;
+  border: 1px solid var(--boodoo-border-subtle);
+  color: var(--boodoo-text-main) !important;
+}
+
+[data-boodoo-theme="dark"] .bg-dark .text-white-50 {
+  color: var(--boodoo-text-sub) !important;
+}
+
+[data-boodoo-theme="dark"] .text-muted {
+  color: var(--boodoo-text-sub) !important;
+}
+
+/* Callout Source Card for Examples and Download Banners */
+.source-callout-card {
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.28) 0%, rgba(23, 19, 95, 0.95) 75%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.2);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-boodoo-theme="dark"] .source-callout-card {
+  background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.2) 0%, rgba(15, 23, 42, 0.98) 80%);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.25);
+  color: #ffffff;
+}
+
+.source-callout-card .lead {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
 body {
   background-color: var(--boodoo-body-bg) !important;
   color: var(--boodoo-text-main) !important;
