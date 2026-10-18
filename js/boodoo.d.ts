@@ -80,6 +80,23 @@ export declare class ImageCompare extends BaseComponent {
 export declare class PasswordMeter extends BaseComponent {
   evaluate(password?: string): number;
 }
+export declare class FABDock extends BaseComponent {
+  open(): void;
+  close(): void;
+  toggle(): void;
+}
+export declare class DialogFullscreen extends BaseComponent {
+  show(): void;
+  hide(): void;
+  toggle(): void;
+}
+export declare class Tour extends BaseComponent {
+  setSteps(steps: Array<{ target?: string | Element; title?: string; content?: string }>): void;
+  start(): void;
+  next(): void;
+  prev(): void;
+  end(): void;
+}
 
 export interface ToastOptions {
   title?: string;
@@ -128,6 +145,9 @@ export interface BoodooGlobal {
   FloatingBar: typeof FloatingBar;
   ImageCompare: typeof ImageCompare;
   PasswordMeter: typeof PasswordMeter;
+  FABDock: typeof FABDock;
+  DialogFullscreen: typeof DialogFullscreen;
+  Tour: typeof Tour;
   clipboard: any;
   theme: any;
   a11y: {
@@ -151,8 +171,10 @@ export {
   CommandPalette,
   ContextMenu,
   DataTable,
+  DialogFullscreen,
   Dropdown,
   Dropzone,
+  FABDock,
   FloatingBar,
   ImageCompare,
   Lightbox,
@@ -170,6 +192,7 @@ export {
   Tab,
   Toast,
   Tooltip,
+  Tour,
   TreeView,
   Carousel,
   clipboard,

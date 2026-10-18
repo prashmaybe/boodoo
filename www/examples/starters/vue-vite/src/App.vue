@@ -27,7 +27,7 @@ const count = ref(0);
           Count is: {{ count }}
         </button>
         <a
-          href="https://boodoo.dihadiwala.com/docs/getting-started/introduction.html"
+          href="https://boodooframework.com/docs/getting-started/introduction.html"
           target="_blank"
           rel="noreferrer"
           class="btn btn-outline-secondary btn-lg rounded-pill px-4"

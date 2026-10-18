@@ -10,11 +10,11 @@
   <meta property="og:site_name" content="boodoo">
   <meta property="og:title" content="Card · boodoo">
   <meta property="og:description" content="boodoo's cards provide a flexible and extensible content container.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/components/card.html">
-  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
+  <meta property="og:url" content="https://boodooframework.com/docs/components/card.html">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Card · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/components/card.html">
+  <link rel="canonical" href="https://boodooframework.com/docs/components/card.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -200,6 +200,10 @@
 <li><a href="../components/ripple.html">Ripple effect</a></li>
 <li><a href="../components/native.html">Native components</a></li>
 <li><a href="../components/modern-components.html">Modern components</a></li>
+<li><a href="../components/extended-components.html">Extended components</a></li>
+<li><a href="../components/ai-prompt.html">AI Prompt & Chat</a></li>
+<li><a href="../components/dock.html">Dock (App Shelf)</a></li>
+<li><a href="../components/kpi-card.html">KPI Stat Card</a></li>
 </ul>
 <h6 class="docs-nav-section">Helpers</h6>
 <ul class="docs-nav-list">
@@ -568,7 +572,7 @@
 <h2 id="container-queries">Container Queries (@container)</h2>
 <p>Unlike legacy frameworks that only adapt cards according to the browser viewport, boodoo features first-class CSS container queries. Wrap your card in <code>.card-container</code> and use <code>.card-responsive</code>: the card automatically reorganizes from vertical to horizontal based on its parent container's width.</p>
 <div class="bd-example">
-  <div class="card-container" style="max-width: 600px;">
+  <div class="card-container demo-max-w600">
     <div class="card card-responsive">
       <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='384' height='200'%3E%3Crect width='384' height='200' fill='%23ece6fd'/%3E%3C/svg%3E" class="card-img-top" alt="...">
       <div class="card-body">

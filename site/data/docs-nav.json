@@ -104,7 +104,11 @@
       { "route": "components/tree-view", "title": "Tree View" },
       { "route": "components/ripple", "title": "Ripple effect" },
       { "route": "components/native", "title": "Native components" },
-      { "route": "components/modern-components", "title": "Modern components" }
+      { "route": "components/modern-components", "title": "Modern components" },
+      { "route": "components/extended-components", "title": "Extended components" },
+      { "route": "components/ai-prompt", "title": "AI Prompt & Chat" },
+      { "route": "components/dock", "title": "Dock (App Shelf)" },
+      { "route": "components/kpi-card", "title": "KPI Stat Card" }
     ]
   },
 

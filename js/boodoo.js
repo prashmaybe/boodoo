@@ -40,6 +40,9 @@ import { a11y } from './a11y.js';
 import { FloatingBar } from './floating-bar.js';
 import { ImageCompare } from './image-compare.js';
 import { PasswordMeter } from './password-meter.js';
+import { FABDock } from './fab-dock.js';
+import { DialogFullscreen } from './dialog-fullscreen.js';
+import { Tour } from './tour.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -55,6 +58,11 @@ enableDismissTrigger(Banner, (instance, event, toggler) => {
 enableDismissTrigger(BottomSheet, (instance, event, toggler) => {
   const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'bottom-sheet') instance.hide();
+});
+
+enableDismissTrigger(DialogFullscreen, (instance, event, toggler) => {
+  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  if (type === 'dialog-fullscreen') instance.hide();
 });
 
 enableDismissTrigger(Toast, (instance, event, toggler) => {
@@ -99,6 +107,9 @@ const boodoo = {
   FloatingBar,
   ImageCompare,
   PasswordMeter,
+  FABDock,
+  DialogFullscreen,
+  Tour,
   a11y,
   registerCustomElements,
 };
@@ -223,8 +234,10 @@ export {
   CommandPalette,
   ContextMenu,
   DataTable,
+  DialogFullscreen,
   Dropdown,
   Dropzone,
+  FABDock,
   FloatingBar,
   ImageCompare,
   Lightbox,
@@ -242,6 +255,7 @@ export {
   Tab,
   Toast,
   Tooltip,
+  Tour,
   TreeView,
   Carousel,
   clipboard,

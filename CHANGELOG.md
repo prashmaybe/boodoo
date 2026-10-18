@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.8] - 2026-10-18
+
+### Added
+- **Extended Components Suite (`scss/components/_extended-components.scss`, `less/boodoo.less`, `js/src/*`, `dist/`)**:
+  - **Stat / Metric Widget (`.stat-widget`, `.stat-header`, `.stat-value`, `.stat-trend`)**: Modern dashboard metric card with customizable trend pill badges, icon containers, and interactive hover elevation states.
+  - **Activity Feed & Notification Center (`.activity-feed`, `.notification-feed`, `.feed-item`, `.unread`)**: Multi-item event stream and alert notification list with avatar slots, unread highlight bars, and action triggers.
+  - **Mega Menu Layout (`.mega-menu`, `.mega-menu-panel`, `.mega-menu-grid`)**: Full-width header navigation flyout with multi-column categorised link grids and header sections.
+  - **Breadcrumb with Nested Dropdown (`.breadcrumb-item.dropdown`, `.breadcrumb-dropdown-toggle`)**: Contextual breadcrumb navigation supporting inline popover and dropdown menus for hierarchy exploration.
+  - **Floating Action Button Dock (`.fab-dock`, `FABDock`)**: Fixed-position expandable multi-action dock with smooth stagger pop-in micro-animations, keyboard ESC navigation, and click-outside dismissal.
+  - **Fullscreen Immersive Dialog (`.dialog-fullscreen`, `DialogFullscreen`)**: Native mobile-style and desktop full-viewport modal dialogs with smooth sliding entrance, body scroll lock, and ESC key handling.
+  - **Guided Tour / Product Walkthrough (`.tour-popover`, `Tour`)**: Interactive step-by-step onboarding walkthroughs with target highlighting, step indicators, progress dots, and keyboard navigation.
+- **React Native Parity**:
+  - Exported `StatWidget` primitive in `react-native/surfaces.js` and `react-native/index.js` with pure native primitives and full theme integration.
+- **SCSS and LESS Dual Parity**:
+  - All new component styling primitives implemented across both SCSS (`scss/components/_extended-components.scss`) and LESS (`less/boodoo.less`) with zero syntax errors.
+- **CLI & TypeScript Declarations**:
+  - Registered components in Boodoo CLI (`npx boodoo add stat-widget`, `npx boodoo add fab-dock`, etc.).
+  - Added comprehensive TypeScript definitions (`FABDock`, `DialogFullscreen`, `Tour`) in `js/boodoo.d.ts` and `dist/js/boodoo.d.ts`.
+
+---
+
 ## [1.1.7] - 2026-10-18
 
 ### Added

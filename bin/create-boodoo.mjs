@@ -87,7 +87,7 @@ async function main() {
         <p class="text-muted">Built with boodoo design system and Vite.</p>
         <div class="d-flex justify-content-center gap-2 mt-3">
           <button type="button" class="btn btn-primary" id="btn-demo">Click Me</button>
-          <a href="https://boodoo.dihadiwala.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Documentation</a>
+          <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Documentation</a>
         </div>
       </div>
     </div>
@@ -328,7 +328,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
             <p class="text-muted">Test Boodoo's pure vanilla JS components directly inside your Electron renderer.</p>
             <div class="d-flex gap-2">
               <button type="button" class="btn btn-primary" id="btn-toast">Trigger Toast Notification</button>
-              <a href="https://boodoo.dihadiwala.com" target="_blank" rel="noopener" class="btn btn-outline-primary">Online Documentation</a>
+              <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-primary">Online Documentation</a>
             </div>
           </div>
         </div>
@@ -503,7 +503,7 @@ declare const boodoo: any;
         <p class="text-muted">Angular Standalone Component + boodoo design framework.</p>
         <div class="d-flex justify-content-center gap-2 mt-3">
           <button type="button" class="btn btn-primary" (click)="triggerToast()">Trigger Toast</button>
-          <a href="https://boodoo.dihadiwala.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Docs</a>
+          <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Docs</a>
         </div>
       </div>
     </div>
@@ -548,7 +548,7 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
 <widget id="com.boodoo.${projectName.replace(/[^a-zA-Z0-9]/g, '')}" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>${projectName}</name>
     <description>boodoo Cordova / PhoneGap Hybrid Mobile App</description>
-    <author email="info@boodoo.dihadiwala.com" href="https://boodoo.dihadiwala.com">boodoo Team</author>
+    <author email="info@boodooframework.com" href="https://boodooframework.com">boodoo Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -1171,7 +1171,7 @@ npm run dev # or npm start
 \`\`\`
 
 ## Documentation
-Visit [https://boodoo.dihadiwala.com](https://boodoo.dihadiwala.com) for components, utility classes, and theming guide.
+Visit [https://boodooframework.com](https://boodooframework.com) for components, utility classes, and theming guide.
 `;
   fs.writeFileSync(path.join(targetDir, 'README.md'), readme);
 

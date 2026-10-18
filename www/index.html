@@ -12,11 +12,11 @@
   <meta property="og:title" content="boodoo · Build fast, responsive sites">
   <meta property="og:description"
     content="A modular, mobile-first CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/">
-  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
+  <meta property="og:url" content="https://boodooframework.com/">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>boodoo · Build fast, responsive sites</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/">
+  <link rel="canonical" href="https://boodooframework.com/">
   <link rel="icon" type="image/svg+xml" href="assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/boodoo-icon-192.png">
@@ -97,7 +97,7 @@
           <a class="hero-pill-badge text-decoration-none" href="docs/about/changelog.html"
             title="View boodoo changelog">
             <span class="dot"></span>
-            <span>boodoo v1.1.7 • Now Available for Web &amp; React Native Mobile (iOS &amp; Android)</span>
+            <span>boodoo v1.1.8 • Now Available for Web &amp; React Native Mobile (iOS &amp; Android)</span>
           </a>
         </div>
         <h1 class="mb-3">
@@ -126,7 +126,7 @@
               <path
                 d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            <span>GitHub (v1.1.7)</span>
+            <span>GitHub (v1.1.8)</span>
           </a>
         </div>
 
@@ -156,7 +156,7 @@
             </div>
             <pre><code id="terminalCode"><span class="terminal-prompt">$</span> npm install boodoo
 <span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css
-<span class="terminal-success">✔ Bundled 510 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
+<span class="terminal-success">✔ Bundled 521 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span></code></pre>
           </div>
         </div>
 
@@ -172,7 +172,7 @@
           <div class="stat-item">
             <div class="stat-icon"><span>📦</span></div>
             <div>
-              <div class="stat-value"><span>~152 KB Minified</span></div>
+              <div class="stat-value"><span>~163 KB Minified</span></div>
               <div class="stat-label"><span>Ultra lightweight</span></div>
             </div>
           </div>
@@ -398,7 +398,7 @@
         <div class="text-center mb-5">
           <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2"><span>Cross-Platform Ready</span></span>
           <h2 class="fw-bold mb-2"><span>Now in React Native &amp; Mobile</span></h2>
-          <p class="text-muted mx-auto" style="max-width: 640px;">
+          <p class="text-muted mx-auto max-w-640">
             <span>Bring Boodoo's clean modern aesthetics to iOS and Android. Zero DOM, pure React Native StyleSheet
               engine, drop-in React Native Paper theme presets, and universal design tokens.</span>
           </p>
@@ -622,78 +622,111 @@
             <table class="table table-hover align-middle mb-0 comparison-table">
               <thead class="table-light">
                 <tr>
-                  <th scope="col" class="py-3 px-3"><span>Feature / Capability</span></th>
-                  <th scope="col" class="py-3 px-3 text-primary fw-bold"><span>boodoo 1.1.4</span></th>
-                  <th scope="col" class="py-3 px-3 text-muted"><span>Bootstrap 5</span></th>
-                  <th scope="col" class="py-3 px-3 text-muted"><span>Tailwind CSS</span></th>
-                  <th scope="col" class="py-3 px-3 text-muted"><span>Material UI / MUI</span></th>
-                  <th scope="col" class="py-3 px-3 text-muted"><span>Foundation</span></th>
+                  <th scope="col" class="py-1 px-1"><span>Feature / Capability</span></th>
+                  <th scope="col" class="py-1 px-1 text-primary fw-bold"><span>boodoo</span></th>
+                  <th scope="col" class="py-1 px-1 text-muted"><span>Bootstrap 5</span></th>
+                  <th scope="col" class="py-1 px-1 text-muted"><span>Tailwind CSS</span></th>
+                  <th scope="col" class="py-1 px-1 text-muted"><span>Material UI / MUI</span></th>
+                  <th scope="col" class="py-1 px-1 text-muted"><span>Foundation</span></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Runtime Dependencies</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>0 (Pure Vanilla JS)</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Popper.js required</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Requires headless UI lib</span></td>
-                  <td class="py-3 px-3 text-danger"><span>Heavy React + Emotion runtime</span></td>
-                  <td class="py-3 px-3 text-muted"><span>jQuery / legacy plugins</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Runtime Dependencies</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>0 (Pure Vanilla JS)</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Popper.js required</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Requires headless UI lib</span></td>
+                  <td class="py-1 px-1 text-danger"><span>Heavy React + Emotion runtime</span></td>
+                  <td class="py-1 px-1 text-muted"><span>jQuery / legacy plugins</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Dual Sass + LESS Parity</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ 100% Feature Parity</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Sass only</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ PostCSS / Engine only</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ CSS-in-JS only</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Sass only</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Extended &amp; Modern UI Components</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ 50+ (FAB Dock, Tour, Fullscreen Dialog, Stat
+                      Widgets, Mega Menu)</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Basic UI only (no Tour, Dock, Feeds)</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Zero pre-styled components</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Partial (Requires enterprise license)</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Legacy core set only</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Dynamic CSS Variables Theming</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Native CSS Custom Props</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Partial (requires recompile)</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Class-based generation</span></td>
-                  <td class="py-3 px-3 text-muted"><span>ThemeProvider context</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Static Sass variables</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Dual Sass + LESS Parity</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ 100% Feature Parity</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Sass only</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ PostCSS / Engine only</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ CSS-in-JS only</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Sass only</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Headless React Hooks</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Built-in (`boodoo/react`)</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Imperative DOM only</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Separate install (Headless UI)</span></td>
-                  <td class="py-3 px-3 text-success"><span>✔ Deep React hooks</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ jQuery DOM only</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Modern CSS Native Primitives</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Anchor Positioning, Scroll-Driven Motion, Container
+                      Queries &amp; Dialog</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Legacy JS-tethered positioning</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Plugin-dependent</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Heavy JS coordinate engines</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Outdated viewport queries</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>WAI-ARIA &amp; a11y Announcer Suite</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Combobox 1.2, Tree &amp; Trap</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Modal focus only</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Delegated to user</span></td>
-                  <td class="py-3 px-3 text-success"><span>✔ ARIA integrated</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Basic accessibility</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Dynamic CSS Variables Theming</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Native CSS Custom Props (Zero Recompile)</span>
+                  </td>
+                  <td class="py-1 px-1 text-muted"><span>Partial (requires recompile)</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Class-based generation</span></td>
+                  <td class="py-1 px-1 text-muted"><span>ThemeProvider context</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Static Sass variables</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Enterprise Components</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Palette, Dropzone, Chip, Table</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Requires extra plugins</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Requires extra packages</span></td>
-                  <td class="py-3 px-3 text-success"><span>✔ Broad components</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Legacy core components</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Headless React &amp; Vue 3 Support</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Built-in (`boodoo/react` &amp; `boodoo/vue`)</span>
+                  </td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Imperative DOM only</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Separate install (Headless UI)</span></td>
+                  <td class="py-1 px-1 text-success"><span>✔ React only (No Vue)</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ jQuery DOM only</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>Multi-Platform React Native</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Native Adapter + Paper Presets</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Web DOM only</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Via NativeWind</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Separate RNP library</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Web DOM only</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>WAI-ARIA &amp; a11y Announcer Suite</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Combobox 1.2, Live Announcer, Roving Tabindex &amp;
+                      Trap</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Modal focus only</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Delegated to user</span></td>
+                  <td class="py-1 px-1 text-success"><span>✔ ARIA integrated</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Basic accessibility</span></td>
                 </tr>
                 <tr>
-                  <td class="py-3 px-3 fw-semibold"><span>DOM XSS Sanitization Tested</span></td>
-                  <td class="py-3 px-3 text-success fw-bold"><span>✔ Enforced in CI suite</span></td>
-                  <td class="py-3 px-3 text-muted"><span>Manual sanitization required</span></td>
-                  <td class="py-3 px-3 text-muted"><span>N/A (Utility classes only)</span></td>
-                  <td class="py-3 px-3 text-muted"><span>JSX escaping</span></td>
-                  <td class="py-3 px-3 text-danger"><span>✖ Manual sanitization</span></td>
+                  <td class="py-1 px-1 fw-semibold"><span>Developer CLI &amp; Migration Codemods</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ `npx boodoo add`, `create` &amp; `migrate`</span>
+                  </td>
+                  <td class="py-1 px-1 text-danger"><span>✖ No CLI injector</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Build engine only</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ NPM package import only</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Deprecated CLI</span></td>
+                </tr>
+                <tr>
+                  <td class="py-1 px-1 fw-semibold"><span>Multi-Platform React Native &amp; Mobile</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Zero-DOM Native Primitives + MD3 Paper
+                      Presets</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Web DOM only</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Via NativeWind wrapper</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Separate Paper package</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Web DOM only</span></td>
+                </tr>
+                <tr>
+                  <td class="py-1 px-1 fw-semibold"><span>Built-in Material Touch Polish</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Ink Ripples, 0-24 Elevation Tokens &amp; Floating
+                      Labels</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Basic static box shadows</span></td>
+                  <td class="py-1 px-1 text-muted"><span>Static shadow utilities only</span></td>
+                  <td class="py-1 px-1 text-success"><span>✔ Deep Material design</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Flat styling</span></td>
+                </tr>
+                <tr>
+                  <td class="py-1 px-1 fw-semibold"><span>DOM XSS Sanitization Tested</span></td>
+                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Enforced in CI suite with Zero-dep Escaper</span>
+                  </td>
+                  <td class="py-1 px-1 text-muted"><span>Manual sanitization required</span></td>
+                  <td class="py-1 px-1 text-muted"><span>N/A (Utility classes only)</span></td>
+                  <td class="py-1 px-1 text-muted"><span>JSX escaping</span></td>
+                  <td class="py-1 px-1 text-danger"><span>✖ Manual sanitization</span></td>
                 </tr>
               </tbody>
             </table>
@@ -827,9 +860,9 @@
     // Terminal Tabs handler
     (function () {
       const codeSnippets = {
-        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 510 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
-        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 510 kB → boodoo.min.css</span>',
-        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 510 kB → boodoo.min.css</span>',
+        npm: '<span class="terminal-prompt">$</span> npm install boodoo\n<span class="terminal-prompt">$</span> sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 521 kB → boodoo.min.css</span>   <span class="terminal-comment"># 12 components · 100+ utilities</span>',
+        pnpm: '<span class="terminal-prompt">$</span> pnpm add boodoo\n<span class="terminal-prompt">$</span> pnpm exec sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 521 kB → boodoo.min.css</span>',
+        yarn: '<span class="terminal-prompt">$</span> yarn add boodoo\n<span class="terminal-prompt">$</span> yarn sass scss/boodoo.scss css/boodoo.css\n<span class="terminal-success">✔ Bundled 521 kB → boodoo.min.css</span>',
         cdn: '<span class="terminal-comment">&lt;!-- Drop CDN link into head --&gt;</span>\n<span class="terminal-prompt">&lt;link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css" rel="stylesheet"&gt;</span>\n<span class="terminal-prompt">&lt;script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-22f6ff5d.js"&gt;&lt;/script&gt;</span>'
       };
 

@@ -12,7 +12,7 @@ const navFile = path.join(root, 'site', 'data', 'docs-nav.json');
 const sitemapFile = path.join(root, 'site', 'sitemap.xml');
 const srcDir = path.join(root, 'site', 'src');
 
-const BASE_URL = 'https://boodoo.dihadiwala.com';
+const BASE_URL = 'https://boodooframework.com';
 const TODAY = new Date().toISOString().split('T')[0];
 
 function walkHtml(dir, base = '') {

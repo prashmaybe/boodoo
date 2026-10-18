@@ -13,7 +13,7 @@ export default function HomePage() {
         </p>
         <div className="d-flex justify-content-center gap-3">
           <a
-            href="https://boodoo.dihadiwala.com/docs/getting-started/introduction.html"
+            href="https://boodooframework.com/docs/getting-started/introduction.html"
             target="_blank"
             rel="noreferrer"
             className="btn btn-primary btn-lg rounded-pill px-2 shadow-sm"

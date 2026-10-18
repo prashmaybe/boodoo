@@ -10,11 +10,11 @@
   <meta property="og:site_name" content="boodoo">
   <meta property="og:title" content="Electron Desktop Apps · boodoo">
   <meta property="og:description" content="Build modern, cross-platform desktop applications with Electron and boodoo. Native titlebars, drag regions, platform tokens, and desktop UI components.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
-  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
+  <meta property="og:url" content="https://boodooframework.com/docs/getting-started/electron.html">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Electron Desktop Apps · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/electron.html">
+  <link rel="canonical" href="https://boodooframework.com/docs/getting-started/electron.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -200,6 +200,10 @@
 <li><a href="../components/ripple.html">Ripple effect</a></li>
 <li><a href="../components/native.html">Native components</a></li>
 <li><a href="../components/modern-components.html">Modern components</a></li>
+<li><a href="../components/extended-components.html">Extended components</a></li>
+<li><a href="../components/ai-prompt.html">AI Prompt & Chat</a></li>
+<li><a href="../components/dock.html">Dock (App Shelf)</a></li>
+<li><a href="../components/kpi-card.html">KPI Stat Card</a></li>
 </ul>
 <h6 class="docs-nav-section">Helpers</h6>
 <ul class="docs-nav-list">
@@ -394,7 +398,7 @@ app.whenReady().then(createWindow);</code></pre>
 
 <div class="bd-example">
   <div class="native-window border rounded shadow-sm overflow-hidden" data-boodoo-platform="windows"
-    style="height: 220px; background: #fff;">
+    class="native-window demo-min-h220 electron-window-bg">
     <header class="native-titlebar bg-white border-bottom">
       <span class="fw-semibold fs-7"><span>My Electron App</span></span>
       <div class="native-titlebar-controls">
@@ -404,8 +408,8 @@ app.whenReady().then(createWindow);</code></pre>
           id="demoWinClose"><span>✕</span></button>
       </div>
     </header>
-    <div class="native-window-content d-flex flex-grow-1" style="height: calc(100% - 33px);">
-      <aside class="sidebar p-05 border-end bg-light" style="width: 140px;">
+    <div class="native-window-content d-flex flex-grow-1 demo-h-calc-electron">
+      <aside class="sidebar p-05 border-end bg-light demo-w140">
         <ul class="sidebar-nav list-unstyled mb-0">
           <li class="sidebar-item"><a href="#"
               class="sidebar-link active text-primary fw-semibold text-decoration-none"><span>Dashboard</span></a></li>

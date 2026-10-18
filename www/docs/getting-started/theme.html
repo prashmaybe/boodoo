@@ -10,11 +10,11 @@
   <meta property="og:site_name" content="boodoo">
   <meta property="og:title" content="Dark Mode & Themes · boodoo">
   <meta property="og:description" content="Theme switching and dark mode persistence in boodoo.">
-  <meta property="og:url" content="https://boodoo.dihadiwala.com/docs/getting-started/theme.html">
-  <meta property="og:image" content="https://boodoo.dihadiwala.com/assets/brand/boodoo-og-image.png">
+  <meta property="og:url" content="https://boodooframework.com/docs/getting-started/theme.html">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Dark Mode & Themes · boodoo</title>
-  <link rel="canonical" href="https://boodoo.dihadiwala.com/docs/getting-started/theme.html">
+  <link rel="canonical" href="https://boodooframework.com/docs/getting-started/theme.html">
   <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
@@ -200,6 +200,10 @@
 <li><a href="../components/ripple.html">Ripple effect</a></li>
 <li><a href="../components/native.html">Native components</a></li>
 <li><a href="../components/modern-components.html">Modern components</a></li>
+<li><a href="../components/extended-components.html">Extended components</a></li>
+<li><a href="../components/ai-prompt.html">AI Prompt & Chat</a></li>
+<li><a href="../components/dock.html">Dock (App Shelf)</a></li>
+<li><a href="../components/kpi-card.html">KPI Stat Card</a></li>
 </ul>
 <h6 class="docs-nav-section">Helpers</h6>
 <ul class="docs-nav-list">
@@ -336,14 +340,14 @@ boodoo.theme.toggle();</code></pre>
     </div>
 
     <!-- Live Preview Sandbox -->
-    <div class="p-3 rounded border mb-3" id="themeSandbox" style="background-color: var(--boodoo-body-bg);">
+    <div class="p-3 rounded border mb-3" id="themeSandbox" class="p-3 rounded border mb-3 bg-body">
       <h5 class="mb-2"><span>Live Component Preview</span></h5>
       <div class="d-flex flex-wrap gap-1 mb-1">
         <button type="button" class="btn btn-primary" id="demoPrimaryBtn"><span>Primary Button</span></button>
         <button type="button" class="btn btn-outline-primary" id="demoOutlineBtn"><span>Outline Button</span></button>
         <button type="button" class="btn btn-soft-primary" id="demoSoftBtn"><span>Soft Accent</span></button>
       </div>
-      <div class="card p-3" id="demoCard" style="max-width: 320px;">
+      <div class="card p-3 demo-max-w320" id="demoCard">
         <h6 class="card-title"><span>Interactive Card</span></h6>
         <p class="card-text small text-muted"><span>Theme variables immediately update typography, border radii, and
             accent rings.</span></p>
