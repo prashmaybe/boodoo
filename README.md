@@ -265,7 +265,7 @@ Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with 
 
 ## 📄 Documentation & Changelog
 
-The full documentation site is in `site/` and deployed at **https://boodoo.dihadiwala.com**:
+The full documentation site is in `site/` and deployed at **https://boodooframework.com**:
 
 - **Getting started** · Installation · Usage & CDN · Theming · Starter template
 - **Layout** (containers, grid, columns, gutters, CSS grid, breakpoints)
@@ -273,7 +273,7 @@ The full documentation site is in `site/` and deployed at **https://boodoo.dihad
 - **Forms** · **Components** · **Helpers** · **Utilities** · **Motion**
 - **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](site/src/about/changelog.html) · [License](site/src/about/license.html)
 
-Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodoo.dihadiwala.com/docs/about/changelog.html).
+Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodooframework.com/docs/about/changelog.html).
 
 ## 🎨 Brand
 
@@ -294,7 +294,7 @@ Official brand assets (logo lockup, icon set, banner, OG image, color tokens) li
 ## 📦 Browser & Desktop Runtime Support
 
 - **Browsers**: Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen mobile browsers. Internet Explorer is not supported. Legacy CSS features degrade gracefully via `@supports`.
-- **Desktop & Hybrid Apps**: First-class compatibility with **Electron**, **Tauri**, and **Capacitor**. Zero-overhead runtime, built-in window drag regions, custom frameless titlebars, and native OS tokens (Windows Mica, macOS Aqua, Linux Adwaita). Check the [Electron Desktop Guide](https://boodoo.dihadiwala.com/docs/getting-started/electron.html).
+- **Desktop & Hybrid Apps**: First-class compatibility with **Electron**, **Tauri**, and **Capacitor**. Zero-overhead runtime, built-in window drag regions, custom frameless titlebars, and native OS tokens (Windows Mica, macOS Aqua, Linux Adwaita). Check the [Electron Desktop Guide](https://boodooframework.com/docs/getting-started/electron.html).
 
 ---
 
