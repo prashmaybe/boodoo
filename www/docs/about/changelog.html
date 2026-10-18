@@ -269,7 +269,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.1.5</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.1.6</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -292,7 +292,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.1.5</span></div>
+        <div class="stat-value"><span>v1.1.6</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -301,7 +301,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>⚡</span></div>
       <div>
-        <div class="stat-value"><span>469 KB / 130 KB</span></div>
+        <div class="stat-value"><span>469 KB / 132 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -328,16 +328,52 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.1.4 -->
+  <!-- Version 1.1.6 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-6">
+            <span>v1.1.6</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 18, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.6"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Feature</span></span>
+          <span>Headless Vue 3 / Nuxt Composables, Robust Sass Build Resolution &amp; Tooling Alignment</span>
+        </h3>
+        <p><span>boodoo <strong>v1.1.6</strong> expands first-party headless UI support to Vue 3 and Nuxt while hardening developer toolchains:</span></p>
+        <ul class="mb-3">
+          <li><span><strong>Headless Vue 3 &amp; Nuxt Composables</strong>: Introduced <code>useDisclosure</code>, <code>useCombobox</code>, and <code>useAccordion</code> via <code>boodoo/vue</code>, providing complete declarative reactivity and WAI-ARIA accessibility for Vue and Nuxt applications.</span></li>
+          <li><span><strong>Full Vue TypeScript Typing</strong>: Emitted <code>vue/index.d.ts</code> with comprehensive generic typings and reactive prop setters.</span></li>
+          <li><span><strong>Direct Binary Sass Resolution</strong>: Replaced <code>npx --no-install sass</code> with direct npm script binary execution, preventing interactive cancellation during fresh CI or local builds.</span></li>
+          <li><span><strong>create-boodoo Alignment</strong>: Updated scaffolding CLI default version target to v1.1.6.</span></li>
+          <li><span><strong>Asset Measurement Truthfulness</strong>: Synchronized all documentation and README metrics with compiled outputs.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.1.4 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-1-4">
             <span>v1.1.4</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

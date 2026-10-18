@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.6] - 2026-10-18
+
+### Added
+- **Headless Vue 3 & Nuxt Composables (`vue/composables.js`, `vue/index.js`, `vue/index.d.ts`, `boodoo/vue`)**:
+  - Implemented declarative Vue 3 / Nuxt composables mirroring `boodoo/react`:
+    - `useDisclosure`: Headless reactive dialog, drawer, and modal state management returning `isOpen`, `open()`, `close()`, `toggle()`, `getTriggerProps()`, and `getDialogProps()`.
+    - `useCombobox`: Reactive autocomplete query and keyboard navigation (ArrowUp, ArrowDown, Enter, Escape) with W3C ARIA active-descendant support.
+    - `useAccordion`: Single- and multi-panel reactive expand/collapse coordination with `getButtonProps()` and `getPanelProps()`.
+  - Added full TypeScript definitions (`vue/index.d.ts`) and configured `./vue` subpath export in `package.json`.
+
+### Improved
+- **Build Pipeline Script Robustness (`package.json`)**:
+  - Switched CSS build scripts from `npx --no-install sass` to standard npm binary execution `sass`. This eliminates unexpected npx interactive cancellation during fresh installs and CI pipelines.
+- **Scaffolding CLI Alignment (`bin/create-boodoo.mjs`)**:
+  - Bumped `create-boodoo` project generator version default to `1.1.6`.
+- **Documentation & README Size Tracking**:
+  - Aligned static performance table in `README.md` to match actual compiled asset measurements (`~132 KB` minified JS / `~144 KB` raw JS).
+
+---
+
 ## [1.1.5] - 2026-10-17
 
 ### Added

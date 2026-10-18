@@ -620,5 +620,40 @@ test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declaratio
   assert.equal(pkg.exports['./react'].import, './react/index.js');
 });
 
+test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordion) declarations and module', () => {
+  const composablesSrc = readFileSync(resolve(rootDir, 'vue/composables.js'), 'utf8');
+  assert.ok(composablesSrc.includes('export function useDisclosure'), 'useDisclosure composable must be exported');
+  assert.ok(composablesSrc.includes('export function useCombobox'), 'useCombobox composable must be exported');
+  assert.ok(composablesSrc.includes('export function useAccordion'), 'useAccordion composable must be exported');
+
+  // Verify disclosure logic and ARIA props
+  assert.ok(composablesSrc.includes('getTriggerProps'), 'useDisclosure must provide getTriggerProps');
+  assert.ok(composablesSrc.includes('getDialogProps'), 'useDisclosure must provide getDialogProps');
+  assert.ok(composablesSrc.includes("'aria-expanded': isOpen.value"), 'useDisclosure must set aria-expanded');
+
+  // Verify combobox logic and ARIA props
+  assert.ok(composablesSrc.includes('getInputProps'), 'useCombobox must provide getInputProps');
+  assert.ok(composablesSrc.includes('getListboxProps'), 'useCombobox must provide getListboxProps');
+  assert.ok(composablesSrc.includes('getOptionProps'), 'useCombobox must provide getOptionProps');
+  assert.ok(composablesSrc.includes("'aria-autocomplete': 'list'"), 'useCombobox must set aria-autocomplete');
+
+  // Verify accordion logic and ARIA props
+  assert.ok(composablesSrc.includes('getButtonProps'), 'useAccordion must provide getButtonProps');
+  assert.ok(composablesSrc.includes('getPanelProps'), 'useAccordion must provide getPanelProps');
+
+  // Test TypeScript declaration file for Vue composables
+  const vueDts = readFileSync(resolve(rootDir, 'vue/index.d.ts'), 'utf8');
+  assert.ok(vueDts.includes('useDisclosure'), 'vue/index.d.ts must type useDisclosure');
+  assert.ok(vueDts.includes('useCombobox'), 'vue/index.d.ts must type useCombobox');
+  assert.ok(vueDts.includes('useAccordion'), 'vue/index.d.ts must type useAccordion');
+
+  // Test package.json export mapping for vue subpath
+  const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));
+  assert.ok(pkg.exports['./vue'], 'package.json must export ./vue subpath');
+  assert.equal(pkg.exports['./vue'].types, './vue/index.d.ts');
+  assert.equal(pkg.exports['./vue'].import, './vue/index.js');
+});
+
+
 
 
