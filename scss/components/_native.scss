@@ -1,9 +1,9 @@
 // =====================================================================
 // BOODOO — Native Platform Component Styles
-// Specific design tokens & styling for Windows (Fluent Design / Acrylic / Mica),
-// macOS (Aqua / Vibrancy / SF Pro), iOS (Human Interface Guidelines),
-// iPadOS (Sidebar / Split view), Android (Material Design 3 / Dynamic Color),
-// and Linux (Adwaita / GTK4 / Libadwaita).
+// Specific design tokens & styling for Windows 11 (Fluent Design / Acrylic / Mica),
+// macOS Sonoma (Aqua / Vibrancy / SF Pro), iOS 17/18 (Human Interface Guidelines),
+// iPadOS (Sidebar / Split view), Android (Material Design 3 / Material You),
+// Linux (GNOME 40+ Adwaita / GTK4 / Libadwaita), and Photon Desktop.
 // =====================================================================
 
 // ---------------------------------------------------------------------
@@ -19,6 +19,8 @@
   overflow: hidden;
   user-select: none;
   font-synthesis: none;
+  position: relative;
+  border-radius: 8px;
 
   // Window Titlebar
   .native-titlebar {
@@ -29,12 +31,23 @@
     padding: 0 12px;
     -webkit-app-region: drag;
     user-select: none;
+    position: relative;
+    z-index: 2;
+
+    .native-titlebar-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .native-titlebar-controls {
       -webkit-app-region: no-drag;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
   }
 
@@ -42,187 +55,392 @@
     flex: 1;
     display: flex;
     overflow: hidden;
+    position: relative;
   }
 }
 
 // ---------------------------------------------------------------------
-// 2. WINDOWS (Fluent Design System)
+// 2. WINDOWS 11 (Fluent Design System 2 / Mica / Acrylic)
 // ---------------------------------------------------------------------
 .native-win,
 [data-boodoo-platform="windows"] {
-  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  font-family: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   color: var(--boodoo-win-fg, #1c1c1c);
   background-color: var(--boodoo-win-bg, #f3f3f3);
+
+  .native-window {
+    background-color: var(--boodoo-win-bg, #f3f3f3);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
 
   // Acrylic / Mica Background surface
   &.native-surface-mica,
   .native-surface-mica {
     background: rgba(243, 243, 243, 0.85);
     backdrop-filter: blur(30px) saturate(125%);
+    -webkit-backdrop-filter: blur(30px) saturate(125%);
   }
 
-  // Windows Fluent Button
+  // Titlebar
+  .native-titlebar {
+    height: 34px;
+    padding: 0 0 0 14px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    .native-titlebar-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .native-titlebar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 100%;
+    }
+  }
+
+  // Windows 11 Titlebar Caption Controls
+  .native-titlebar-btn {
+    width: 46px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    font-size: 11px;
+    color: #1a1a1a;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    cursor: default;
+    padding: 0;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.09);
+    }
+
+    &.native-titlebar-close {
+      &:hover {
+        background-color: #c42b1c;
+        color: #ffffff;
+      }
+      &:active {
+        background-color: #b82213;
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+
+  // Windows 11 Fluent Button
   .native-btn {
     font-family: inherit;
     font-size: 0.875rem;
     font-weight: 400;
-    padding: 5px 12px;
+    line-height: 1.4;
+    padding: 5px 14px;
     border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom-color: rgba(0, 0, 0, 0.16);
     background: #ffffff;
     color: #1a1a1a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: default;
 
     &:hover {
       background-color: #fbfbfb;
-      border-color: rgba(0, 0, 0, 0.12);
+      border-color: rgba(0, 0, 0, 0.14);
+      border-bottom-color: rgba(0, 0, 0, 0.2);
     }
 
     &:active {
-      background: #f5f5f5;
-      color: rgba(0, 0, 0, 0.6);
-      transform: scale(0.98);
+      background-color: #f5f5f5;
+      color: rgba(0, 0, 0, 0.7);
+      border-bottom-color: rgba(0, 0, 0, 0.14);
+      transform: scale(0.99);
     }
 
     &.native-btn-primary {
-      background: var(--boodoo-primary, #7c3aed);
+      background-color: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
-      border-color: transparent;
+      border: 1px solid transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.18);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 
       &:hover {
-        filter: brightness(1.08);
+        filter: brightness(1.06);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
       }
 
       &:active {
-        filter: brightness(0.92);
+        filter: brightness(0.94);
+        transform: scale(0.99);
+      }
+    }
+
+    &.native-btn-subtle {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      &:active {
+        background-color: rgba(0, 0, 0, 0.08);
       }
     }
   }
 
   // Windows Fluent Card
   .native-card {
-    background: #ffffff;
+    background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.08);
   }
 
-  // Windows Titlebar Controls
-  .native-titlebar-btn {
-    width: 46px;
+  // Windows 11 Text Input
+  .native-input {
+    font-family: inherit;
+    font-size: 0.875rem;
     height: 32px;
-    display: inline-flex;
+    padding: 0 10px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    outline: none;
+    color: #1a1a1a;
+    transition: border-bottom-color 0.15s ease;
+
+    &:focus {
+      border-bottom-color: var(--boodoo-primary, #7c3aed);
+    }
+  }
+
+  // Windows 11 Command Bar
+  .native-command-bar {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    font-size: 10px;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    &.native-titlebar-close:hover {
-      background: #c42b1c;
-      color: #ffffff;
-    }
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 }
 
 // ---------------------------------------------------------------------
-// 3. macOS (Aqua & macOS Vibrancy)
+// 3. macOS (Sonoma / Aqua & Vibrancy)
 // ---------------------------------------------------------------------
 .native-mac,
 [data-boodoo-platform="macos"] {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  color: var(--boodoo-mac-fg, #1d1d1f);
+  background-color: var(--boodoo-mac-bg, #ffffff);
+
+  .native-window {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0, 0, 0, 0.12);
+  }
 
   .native-titlebar {
-    height: 52px;
-    padding-left: 78px; // Leave room for traffic lights
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 40px;
+    padding: 0 14px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+
+    .native-titlebar-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #333336;
+      letter-spacing: -0.01em;
+    }
   }
 
   // macOS Traffic Light Dots
   .native-traffic-lights {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     gap: 8px;
-    position: absolute;
-    left: 13px;
-    top: 18px;
+    z-index: 3;
 
     .native-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      border: 0.5px solid rgba(0, 0, 0, 0.15);
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      position: relative;
+      cursor: default;
 
-      &.dot-close { background-color: #ff5f56; }
-      &.dot-minimize { background-color: #ffbd2e; }
-      &.dot-maximize { background-color: #27c93f; }
+      &.dot-close {
+        background-color: #ff5f57;
+        border-color: #e0443e;
+      }
+      &.dot-minimize {
+        background-color: #febc2e;
+        border-color: #d89e24;
+      }
+      &.dot-maximize {
+        background-color: #28c840;
+        border-color: #1aab29;
+      }
     }
   }
 
-  // macOS Push Button
+  // macOS System Push Button
   .native-btn {
     font-family: inherit;
     font-size: 0.8125rem;
     font-weight: 500;
+    line-height: 1.35;
     padding: 3px 12px;
     border-radius: 5px;
-    border: 0.5px solid rgba(0, 0, 0, 0.15);
-    background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
-    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgba(0, 0, 0, 0.18);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f6f7 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.8);
     color: #1d1d1f;
+    cursor: default;
+    transition: background 0.1s ease;
+
+    &:hover {
+      background: linear-gradient(180deg, #fefefe 0%, #ececec 100%);
+    }
 
     &:active {
-      background: #e5e5ea;
+      background: linear-gradient(180deg, #e4e4e7 0%, #dbdbe0 100%);
+      box-shadow: inset 0 1px 1.5px rgba(0, 0, 0, 0.12);
     }
 
     &.native-btn-primary {
       background: linear-gradient(180deg, #8b5cf6 0%, var(--boodoo-primary, #7c3aed) 100%);
       color: #ffffff;
       border-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.35);
+
+      &:hover {
+        filter: brightness(1.05);
+      }
+
+      &:active {
+        filter: brightness(0.92);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+      }
     }
   }
 
-  // macOS Sidebar View
+  // macOS Translucent Sidebar View
   .native-sidebar {
     width: 210px;
-    background: rgba(246, 246, 246, 0.75);
+    background: rgba(246, 246, 247, 0.82);
     backdrop-filter: blur(25px);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
     padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .native-sidebar-title {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #86868b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 6px 10px 2px 10px;
+      margin: 0;
+    }
 
     .native-sidebar-item {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 5px 10px;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 0.8125rem;
-      color: #1d1d1f;
+      font-weight: 500;
+      color: #272729;
       text-decoration: none;
+      cursor: default;
+      transition: background-color 0.1s ease, color 0.1s ease;
 
-      &.active,
       &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &.active {
         background: var(--boodoo-primary, #7c3aed);
         color: #ffffff;
+      }
+    }
+  }
+
+  // macOS Segmented Control
+  .native-segmented-control {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    padding: 2px;
+
+    .native-segment {
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: default;
+      color: #333336;
+
+      &.active {
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+        color: #000000;
       }
     }
   }
 }
 
 // ---------------------------------------------------------------------
-// 4. iOS (Human Interface Guidelines)
+// 4. iOS (Human Interface Guidelines / HIG)
 // ---------------------------------------------------------------------
 .native-ios,
 [data-boodoo-platform="ios"] {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-  background-color: #f2f2f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background-color: var(--boodoo-ios-bg, #f2f2f7);
+  color: var(--boodoo-ios-fg, #000000);
+
+  // iOS App Container Wrapper
+  .native-ios-container {
+    background-color: #f2f2f7;
+    border-radius: 38px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.2);
+    border: 4px solid #1a1a1a;
+  }
 
   // iOS Navigation Bar
   .native-navbar {
@@ -233,15 +451,39 @@
     padding: 0 16px;
     background: rgba(249, 249, 249, 0.94);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 0.5px solid rgba(60, 60, 67, 0.29);
     font-weight: 600;
+    font-size: 1.0625rem;
+
+    .native-nav-title {
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: #000000;
+    }
 
     .native-nav-link {
       color: var(--boodoo-primary, #7c3aed);
       font-weight: 400;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.0625rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+
+      &:active {
+        opacity: 0.5;
+      }
     }
+  }
+
+  // iOS Large Title
+  .native-ios-large-title {
+    padding: 12px 16px 4px 16px;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #000000;
   }
 
   // iOS Grouped Inset List
@@ -250,49 +492,76 @@
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+    .native-list-header {
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #6c6c70;
+      padding: 0 16px 6px 16px;
+      margin: 0;
+    }
 
     .native-list-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      min-height: 44px;
       padding: 11px 16px;
-      font-size: 1rem;
-      border-bottom: 0.5px solid #c6c6c8;
+      font-size: 1.0625rem;
+      border-bottom: 0.5px solid rgba(60, 60, 67, 0.18);
+      background: #ffffff;
+      color: #000000;
 
       &:last-child {
         border-bottom: none;
       }
+
+      .native-list-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .native-list-chevron {
+        color: #c7c7cc;
+        font-weight: 600;
+        font-size: 1.125rem;
+      }
     }
   }
 
-  // iOS Filled Button
+  // iOS Primary Filled Button
   .native-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 50px;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     font-weight: 600;
     border: none;
     background: #e5e5ea;
     color: var(--boodoo-primary, #7c3aed);
+    transition: opacity 0.15s ease;
+
+    &:active {
+      opacity: 0.65;
+    }
 
     &.native-btn-primary {
       background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
-    }
-
-    &:active {
-      opacity: 0.7;
     }
   }
 
   // iOS Segmented Control
   .native-segmented-control {
     display: flex;
-    background: #e3e3e8;
+    background: rgba(118, 118, 128, 0.12);
     padding: 2px;
     border-radius: 9px;
 
@@ -304,11 +573,47 @@
       font-weight: 500;
       border-radius: 7px;
       cursor: pointer;
+      color: #000000;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
 
       &.active {
         background: #ffffff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0.5px 1px rgba(0, 0, 0, 0.08);
       }
+    }
+  }
+
+  // iOS Switch Toggle
+  .native-switch {
+    width: 51px;
+    height: 31px;
+    background: #e9e9ea;
+    border-radius: 15.5px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+
+    &.active,
+    &:checked {
+      background: #34c759;
+
+      &::after {
+        transform: translateX(20px);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 27px;
+      height: 27px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
   }
 }
@@ -318,24 +623,85 @@
 // ---------------------------------------------------------------------
 .native-ipados,
 [data-boodoo-platform="ipados"] {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background-color: #f2f2f7;
+  color: #000000;
 
   .native-split-view {
     display: flex;
     height: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 
     .native-sidebar-col {
-      width: 320px;
+      width: 280px;
       background: #f2f2f7;
-      border-right: 0.5px solid rgba(60, 60, 67, 0.2);
+      border-right: 0.5px solid rgba(60, 60, 67, 0.18);
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .native-sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 0 8px;
+
+        .native-sidebar-title {
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: #000000;
+          margin: 0;
+        }
+
+        .native-sidebar-icon {
+          color: var(--boodoo-primary, #7c3aed);
+          font-size: 1.125rem;
+        }
+      }
+
+      .native-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #1c1c1e;
+        text-decoration: none;
+        cursor: default;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.04);
+        }
+
+        &.active {
+          background: rgba(124, 58, 237, 0.15);
+          color: var(--boodoo-primary, #7c3aed);
+          font-weight: 600;
+        }
+      }
     }
 
     .native-detail-col {
       flex: 1;
       background: #ffffff;
       padding: 24px;
+      overflow-y: auto;
+
+      .native-detail-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
     }
   }
 }
@@ -345,26 +711,55 @@
 // ---------------------------------------------------------------------
 .native-android,
 [data-boodoo-platform="android"] {
-  font-family: "Roboto", "Google Sans", sans-serif;
+  font-family: "Roboto", "Google Sans", system-ui, sans-serif;
   background-color: #fef7ff;
+  color: #1d1b20;
+
+  .native-android-container {
+    background-color: #fef7ff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cac4d0;
+  }
 
   // Material 3 Top App Bar
   .native-appbar {
     height: 64px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 16px;
     background: #f3edf7;
     color: #1d1b20;
     font-size: 1.375rem;
     font-weight: 400;
+
+    .native-appbar-leading {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .native-appbar-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1d1b20;
+    }
+
+    .native-appbar-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
   }
 
-  // Material 3 Filled Button
+  // Material 3 Pill Button
   .native-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     height: 40px;
     padding: 0 24px;
     border-radius: 20px;
@@ -375,6 +770,15 @@
     background: transparent;
     color: var(--boodoo-primary, #7c3aed);
     transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(124, 58, 237, 0.08);
+    }
+
+    &:active {
+      background: rgba(124, 58, 237, 0.12);
+    }
 
     &.native-btn-primary {
       background: var(--boodoo-primary, #7c3aed);
@@ -383,64 +787,156 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 
       &:hover {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+        filter: brightness(1.05);
+      }
+
+      &:active {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        filter: brightness(0.95);
+      }
+    }
+
+    &.native-btn-tonal {
+      background: #e8def8;
+      color: #1d192b;
+      border: none;
+
+      &:hover {
+        background: #dfd3f4;
       }
     }
   }
 
-  // Material 3 Card
+  // Material 3 Elevated Card
   .native-card {
     background: #f7f2fa;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e7e0ec;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  // Material 3 Floating Action Button (FAB)
+  .native-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #e8def8;
+    color: #1d192b;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-1px);
+    }
   }
 }
 
 // ---------------------------------------------------------------------
-// 7. LINUX (GNOME Adwaita / GTK4)
+// 7. LINUX (GNOME Adwaita / GTK4 / Libadwaita)
 // ---------------------------------------------------------------------
 .native-linux,
 [data-boodoo-platform="linux"] {
-  font-family: "Cantarell", "Inter", sans-serif;
+  font-family: "Cantarell", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #fafafa;
   color: #2e3436;
 
-  // Adwaita Header Bar
+  .native-window {
+    background-color: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  }
+
+  // Adwaita Libadwaita Header Bar
   .native-headerbar {
     height: 46px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 12px;
-    background: #f6f5f4;
-    border-bottom: 1px solid #d6d6d6;
+    background: #ebe8e5;
+    border-bottom: 1px solid #d5d0cb;
 
     .native-header-title {
-      font-weight: bold;
+      font-weight: 700;
       font-size: 0.9375rem;
+      color: #242424;
+      text-align: center;
+      flex: 1;
+    }
+
+    .native-header-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .native-window-close {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: #ded9d4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: default;
+
+      &:hover {
+        background: #e05b4c;
+        color: #ffffff;
+      }
     }
   }
 
   // Adwaita Button
   .native-btn {
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 8px;
-    border: 1px solid #cfcfcf;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     background: #ffffff;
     font-size: 0.875rem;
     font-weight: 500;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #2e3436;
+    transition: background 0.15s ease;
 
     &:hover {
-      background: #f4f4f4;
+      background: #f4f3f1;
+    }
+
+    &:active {
+      background: #e8e6e3;
     }
 
     &.native-btn-primary {
       background: var(--boodoo-primary, #7c3aed);
       color: #ffffff;
-      border-color: var(--boodoo-primary, #7c3aed);
+      border-color: rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        filter: brightness(1.08);
+      }
     }
+  }
+
+  // Adwaita Card Box
+  .native-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 16px;
   }
 }
 

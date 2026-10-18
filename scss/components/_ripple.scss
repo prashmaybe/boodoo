@@ -4,6 +4,8 @@
 .ripple {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  user-select: none;
 }
 
 .ripple-effect {

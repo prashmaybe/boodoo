@@ -397,7 +397,14 @@ test('SCSS and LESS full component & feature parity verification', () => {
     '.dock',
     '.kpi-card',
     '.ai-prompt-container',
-    '.chat-bubble'
+    '.chat-bubble',
+    '.native-win',
+    '.native-mac',
+    '.native-ios',
+    '.native-ipados',
+    '.native-android',
+    '.native-linux',
+    '.native-photon'
   ];
 
   for (const cls of expectedClasses) {
