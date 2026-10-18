@@ -42,6 +42,11 @@
     { title: 'Tooltips', category: 'Components', route: 'components/tooltips', desc: 'Hover informative tooltips with clean micro-animations.', keywords: 'tooltip hint hover info popup title helper', icon: '💡' },
     { title: 'Tree View', category: 'Components', route: 'components/tree-view', desc: 'Hierarchical file tree and directory navigator with collapsible nodes.', keywords: 'tree folders files directory hierarchy branches explorer', icon: '🌲' },
     { title: 'Native components', category: 'Components', route: 'components/native', desc: 'Native browser dialog, details/summary, and meter elements enhanced by boodoo.', keywords: 'dialog details summary native html5 elements meter', icon: '📦' },
+    { title: 'Modern components', category: 'Components', route: 'components/modern-components', desc: 'Modern components for SaaS: Glass Cards, Glow Effects, Floating Action Dock, Bento Grids, Pulse Badges, and Stats.', keywords: 'modern glass glow bento dock action bar stats saas modern-components', icon: '✨' },
+    { title: 'Extended components', category: 'Components', route: 'components/extended-components', desc: 'Extended enterprise components: Metric Stat Widgets, Activity Feeds, Mega Menus, Breadcrumb Dropdowns, FAB Docks, Fullscreen Dialogs, and Product Tours.', keywords: 'extended stat metric activity feed mega menu breadcrumb dropdown fab dock fullscreen dialog tour walkthrough', icon: '🚀' },
+    { title: 'AI Prompt & Chat', category: 'Components', route: 'components/ai-prompt', desc: 'Modern conversational AI prompt bar with token badges, quick chips, and model switcher.', keywords: 'ai prompt chat llm bot textarea composer generate', icon: '🤖' },
+    { title: 'Dock (App Shelf)', category: 'Components', route: 'components/dock', desc: 'macOS & iPadOS style interactive app icon shelf and floating launch dock with magnification.', keywords: 'dock app shelf launcher macos icons float bottom', icon: '🚢' },
+    { title: 'KPI Stat Card', category: 'Components', route: 'components/kpi-card', desc: 'Executive dashboard KPI metric card with trends, delta indicators, and sparklines.', keywords: 'kpi stat metric card dashboard analytics trend delta sparkline', icon: '📈' },
 
     // Forms
     { title: 'Forms Overview', category: 'Forms', route: 'forms/overview', desc: 'Form control styles, layout options, and custom form elements.', keywords: 'form inputs text input controls layout form fields', icon: '📝' },
@@ -137,7 +142,7 @@
               aria-autocomplete="list"
               aria-controls="boodooSearchResults"
             >
-            <button type="button" class="boodoo-search-clear" id="boodooSearchClear" aria-label="Clear search query" style="display: none;">
+            <button type="button" class="boodoo-search-clear d-none" id="boodooSearchClear" aria-label="Clear search query">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>

@@ -13,7 +13,12 @@ export class Dropdown extends BaseComponent {
 
   constructor(target, config = {}) {
     super(target, config);
-    this._menu = getElementFromSelector(target) || target.nextElementSibling;
+    const parent = getParent(target);
+    this._menu =
+      getElementFromSelector(target) ||
+      (target.nextElementSibling && target.nextElementSibling.classList && target.nextElementSibling.classList.contains('dropdown-menu') ? target.nextElementSibling : null) ||
+      (parent && parent.querySelector ? parent.querySelector('.dropdown-menu') : null) ||
+      target.nextElementSibling;
     this._popperElement = null;
   }
 
@@ -133,16 +138,5 @@ class DropdownOpener {
 }
 
 const DocumentDropdownOpener = new DropdownOpener();
-
-// Data API
-if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const toggler = event.target.closest(Dropdown.selector);
-    if (toggler) {
-      event.preventDefault();
-      Dropdown.toggleVia(toggler);
-    }
-  }, true);
-}
 
 export default Dropdown;

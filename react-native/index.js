@@ -43,6 +43,7 @@ export {
   Separator,
   PricingCard,
   Tile,
+  StatWidget,
 } from './surfaces.js';
 
 // Forms & Inputs

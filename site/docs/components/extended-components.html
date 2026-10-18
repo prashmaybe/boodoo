@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Extended UI components including Stat Widget, Activity Feed & Notification Center, Mega Menu, Breadcrumb Dropdown, FAB Dock, Fullscreen Dialog, and Guided Tour.">
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="boodoo">
+  <meta property="og:title" content="Extended components · boodoo">
+  <meta property="og:description" content="Extended UI components including Stat Widget, Activity Feed & Notification Center, Mega Menu, Breadcrumb Dropdown, FAB Dock, Fullscreen Dialog, and Guided Tour.">
+  <meta property="og:url" content="https://boodooframework.com/docs/components/extended-components.html">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Extended components · boodoo</title>
+  <link rel="canonical" href="https://boodooframework.com/docs/components/extended-components.html">
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/brand/boodoo-icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/brand/boodoo-icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../../assets/brand/boodoo-icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/boodoo-icon-180.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <meta name="msapplication-TileColor" content="#7c3aed">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
+  </noscript>
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+</head>
+
+<body>
+  <a class="visually-hidden-focusable" href="#docs-content">Skip to main content</a>
+
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+        <span class="fw-bold fs-5 text-gradient">boodoo</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
+        aria-controls="docsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="docsNav">
+        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
+          <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../index.html#installation">Installation</a></li>
+          <li class="nav-item"><a class="nav-link active"
+              href="../../docs/getting-started/introduction.html">Docs</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../examples/index.html">Examples</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
+          <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
+            aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
+            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="search-btn-text">Search</span>
+            <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
+          </button>
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
+            title="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
+            href="../../docs/getting-started/usage.html">CDN</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3"
+            href="../../docs/getting-started/download.html">Download</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid container-xl py-3">
+    <div class="row">
+      <aside class="col-lg-3 col-xl-2">
+        <button
+          class="btn btn-outline-primary btn-sm w-100 d-lg-none mb-3 d-flex align-items-center justify-content-between docs-menu-toggle"
+          type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false"
+          aria-controls="docsSidebarCollapse">
+          <span class="d-flex align-items-center gap-2">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span>Documentation Navigation</span>
+          </span>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
+          <nav aria-label="Docs navigation">
+            <h6 class="docs-nav-section">Getting started</h6>
+<ul class="docs-nav-list">
+<li><a href="../getting-started/introduction.html">Introduction</a></li>
+<li><a href="../getting-started/download.html">Download</a></li>
+<li><a href="../getting-started/contents.html">What's included</a></li>
+<li><a href="../getting-started/usage.html">Usage & CDN</a></li>
+<li><a href="../getting-started/npm.html">Install via npm</a></li>
+<li><a href="../getting-started/sass.html">Customize with Sass</a></li>
+<li><a href="../getting-started/less.html">Customize with Less</a></li>
+<li><a href="../getting-started/starter.html">Starter template</a></li>
+<li><a href="../getting-started/examples.html">Examples</a></li>
+<li><a href="../getting-started/browser-support.html">Browser support</a></li>
+<li><a href="../getting-started/accessibility.html">Accessibility</a></li>
+<li><a href="../getting-started/theme.html">Dark Mode & Themes</a></li>
+<li><a href="../getting-started/custom-elements.html">Custom Elements</a></li>
+<li><a href="../getting-started/electron.html">Electron Desktop Apps</a></li>
+<li><a href="../getting-started/platforms.html">Platforms & Frameworks</a></li>
+<li><a href="../getting-started/react-native-examples.html">React Native & Mobile</a></li>
+</ul>
+<h6 class="docs-nav-section">Layout</h6>
+<ul class="docs-nav-list">
+<li><a href="../layout/containers.html">Containers</a></li>
+<li><a href="../layout/grid.html">Grid system</a></li>
+<li><a href="../layout/columns.html">Columns</a></li>
+<li><a href="../layout/gutters.html">Gutters</a></li>
+<li><a href="../layout/css-grid.html">CSS Grid</a></li>
+<li><a href="../layout/breakpoints.html">Breakpoints</a></li>
+</ul>
+<h6 class="docs-nav-section">Content</h6>
+<ul class="docs-nav-list">
+<li><a href="../content/typography.html">Typography</a></li>
+<li><a href="../content/images.html">Images</a></li>
+<li><a href="../content/tables.html">Tables</a></li>
+<li><a href="../content/figures.html">Figures</a></li>
+</ul>
+<h6 class="docs-nav-section">Forms</h6>
+<ul class="docs-nav-list">
+<li><a href="../forms/overview.html">Overview</a></li>
+<li><a href="../forms/form-control.html">Form control</a></li>
+<li><a href="../forms/select.html">Select</a></li>
+<li><a href="../forms/checks.html">Checks & radios</a></li>
+<li><a href="../forms/range.html">Range</a></li>
+<li><a href="../forms/input-group.html">Input group</a></li>
+<li><a href="../forms/floating-labels.html">Floating labels</a></li>
+<li><a href="../forms/otp.html">OTP & PIN input</a></li>
+<li><a href="../forms/dropzone.html">Dropzone</a></li>
+<li><a href="../forms/pickers.html">Pickers (Color & Date)</a></li>
+<li><a href="../forms/validation.html">Validation</a></li>
+</ul>
+<h6 class="docs-nav-section">Components</h6>
+<ul class="docs-nav-list">
+<li><a href="../components/accordion.html">Accordion</a></li>
+<li><a href="../components/alerts.html">Alerts</a></li>
+<li><a href="../components/avatar.html">Avatar</a></li>
+<li><a href="../components/badge.html">Badge</a></li>
+<li><a href="../components/banner.html">Banners</a></li>
+<li><a href="../components/bottom-sheet.html">Bottom Sheet</a></li>
+<li><a href="../components/breadcrumb.html">Breadcrumb</a></li>
+<li><a href="../components/buttons.html">Buttons</a></li>
+<li><a href="../components/button-group.html">Button group</a></li>
+<li><a href="../components/card.html">Card</a></li>
+<li><a href="../components/carousel.html">Carousel</a></li>
+<li><a href="../components/chip.html">Chips & Tag Input</a></li>
+<li><a href="../components/collapse.html">Collapse</a></li>
+<li><a href="../components/combobox.html">Combobox</a></li>
+<li><a href="../components/command-palette.html">Command Palette</a></li>
+<li><a href="../components/context-menu.html">Context Menu</a></li>
+<li><a href="../components/data-table.html">Data Table</a></li>
+<li><a href="../components/dropdowns.html">Dropdowns</a></li>
+<li><a href="../components/empty-state.html">Empty State</a></li>
+<li><a href="../components/kbd.html">Kbd</a></li>
+<li><a href="../components/lightbox.html">Lightbox</a></li>
+<li><a href="../components/list-group.html">List group</a></li>
+<li><a href="../components/modal.html">Modal</a></li>
+<li><a href="../components/navs.html">Navs & tabs</a></li>
+<li><a href="../components/navbar.html">Navbar</a></li>
+<li><a href="../components/offcanvas.html">Offcanvas</a></li>
+<li><a href="../components/pagination.html">Pagination</a></li>
+<li><a href="../components/placeholder.html">Placeholders</a></li>
+<li><a href="../components/popovers.html">Popovers</a></li>
+<li><a href="../components/progress.html">Progress</a></li>
+<li><a href="../components/rating.html">Rating</a></li>
+<li><a href="../components/scrollspy.html">Scrollspy</a></li>
+<li><a href="../components/segmented-control.html">Segmented Control</a></li>
+<li><a href="../components/sidebar.html">Sidebar</a></li>
+<li><a href="../components/skeleton.html">Skeleton loaders</a></li>
+<li><a href="../components/speed-dial.html">Speed Dial</a></li>
+<li><a href="../components/spinners.html">Spinners</a></li>
+<li><a href="../components/splitter.html">Splitter</a></li>
+<li><a href="../components/stepper.html">Stepper</a></li>
+<li><a href="../components/timeline.html">Timeline</a></li>
+<li><a href="../components/toasts.html">Toasts</a></li>
+<li><a href="../components/tooltips.html">Tooltips</a></li>
+<li><a href="../components/tree-view.html">Tree View</a></li>
+<li><a href="../components/ripple.html">Ripple effect</a></li>
+<li><a href="../components/native.html">Native components</a></li>
+<li><a href="../components/modern-components.html">Modern components</a></li>
+<li><a href="../components/extended-components.html" class="active">Extended components</a></li>
+<li><a href="../components/ai-prompt.html">AI Prompt & Chat</a></li>
+<li><a href="../components/dock.html">Dock (App Shelf)</a></li>
+<li><a href="../components/kpi-card.html">KPI Stat Card</a></li>
+</ul>
+<h6 class="docs-nav-section">Helpers</h6>
+<ul class="docs-nav-list">
+<li><a href="../helpers/clearfix.html">Clearfix</a></li>
+<li><a href="../helpers/ratio.html">Ratio</a></li>
+<li><a href="../helpers/visually-hidden.html">Visually hidden</a></li>
+<li><a href="../helpers/stretched-link.html">Stretched link</a></li>
+<li><a href="../helpers/color-bg.html">Color & background</a></li>
+<li><a href="../helpers/elevation.html">Elevation (Material)</a></li>
+</ul>
+<h6 class="docs-nav-section">Utilities</h6>
+<ul class="docs-nav-list">
+<li><a href="../utilities/background.html">Background</a></li>
+<li><a href="../utilities/borders.html">Borders</a></li>
+<li><a href="../utilities/colors.html">Colors</a></li>
+<li><a href="../utilities/display.html">Display</a></li>
+<li><a href="../utilities/flex.html">Flex</a></li>
+<li><a href="../utilities/float.html">Float</a></li>
+<li><a href="../utilities/interactions.html">Interactions</a></li>
+<li><a href="../utilities/opacity.html">Opacity</a></li>
+<li><a href="../utilities/overflow.html">Overflow</a></li>
+<li><a href="../utilities/position.html">Position</a></li>
+<li><a href="../utilities/shadows.html">Shadows</a></li>
+<li><a href="../utilities/sizing.html">Sizing</a></li>
+<li><a href="../utilities/spacing.html">Spacing</a></li>
+<li><a href="../utilities/text.html">Text</a></li>
+<li><a href="../utilities/vertical-alignment.html">Vertical alignment</a></li>
+<li><a href="../utilities/z-index.html">Z-index</a></li>
+</ul>
+<h6 class="docs-nav-section">Motion</h6>
+<ul class="docs-nav-list">
+<li><a href="../motion/animations.html">Animations</a></li>
+<li><a href="../motion/transitions.html">Transitions</a></li>
+</ul>
+<h6 class="docs-nav-section">About</h6>
+<ul class="docs-nav-list">
+<li><a href="../about/overview.html">Overview</a></li>
+<li><a href="../about/design-principles.html">Design principles</a></li>
+<li><a href="../about/brand.html">Brand assets</a></li>
+<li><a href="../about/vs-bootstrap.html">boodoo vs Bootstrap</a></li>
+<li><a href="../about/migrate-from-bootstrap.html">Migrate from Bootstrap</a></li>
+<li><a href="../about/vs-foundation.html">boodoo vs Foundation</a></li>
+<li><a href="../about/migrate-from-foundation.html">Migrate from Foundation</a></li>
+<li><a href="../about/vs-tailwind.html">boodoo vs Tailwind</a></li>
+<li><a href="../about/migrate-from-tailwind.html">Migrate from Tailwind</a></li>
+<li><a href="../about/vs-material.html">boodoo vs Material</a></li>
+<li><a href="../about/migrate-from-material.html">Migrate from Material</a></li>
+<li><a href="../about/vs-react-native-paper.html">boodoo vs React Native Paper</a></li>
+<li><a href="../about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a></li>
+<li><a href="../about/changelog.html">Changelog</a></li>
+<li><a href="../about/license.html">License</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="col-lg-6 col-xl-7">
+        <div class="docs-main py-1" id="docs-content">
+          
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+        <li class="breadcrumb-item">Components</li>
+        <li class="breadcrumb-item active" aria-current="page">Extended components</li>
+      </ol>
+    </nav>
+          <h1 class="boodoo-title"><span>Extended components</span></h1>
+<p class="boodoo-lead">
+  <span>Discover boodoo v1.1.8's extended components designed for enterprise dashboards, multi-level navigation, rich notification streams, and interactive user onboarding tours.</span>
+</p>
+
+<hr class="my-2">
+
+<!-- 1. Stat / Metric Widget -->
+<h2 id="stat-widget"><span>Stat &amp; Metric Widget</span></h2>
+<p><span>The <code>.stat-widget</code> card highlights primary metrics, KPIs, and data trends with customizable icons, values, and percentage indicators.</span></p>
+
+<div class="bd-example">
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Total Revenue</span></h4>
+          <span class="stat-icon stat-icon-success"><span>$</span></span>
+        </div>
+        <p class="stat-value"><span>$128,450</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-up"><span>&uarr; 14.8%</span></span>
+          <span>vs last month</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Active Subscriptions</span></h4>
+          <span class="stat-icon stat-icon-info"><span>#</span></span>
+        </div>
+        <p class="stat-value"><span>3,420</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-up"><span>&uarr; 8.2%</span></span>
+          <span>new accounts</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Bounce Rate</span></h4>
+          <span class="stat-icon stat-icon-danger"><span>%</span></span>
+        </div>
+        <p class="stat-value"><span>24.3%</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-down"><span>&darr; 2.1%</span></span>
+          <span>improved retention</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="stat-widget stat-widget-interactive"&gt;
+  &lt;div class="stat-header"&gt;
+    &lt;h4 class="stat-title"&gt;&lt;span&gt;Total Revenue&lt;/span&gt;&lt;/h4&gt;
+    &lt;span class="stat-icon stat-icon-success"&gt;&lt;span&gt;{{content}}lt;/span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="stat-value"&gt;&lt;span&gt;$128,450&lt;/span&gt;&lt;/p&gt;
+  &lt;p class="stat-footer"&gt;
+    &lt;span class="stat-trend stat-trend-up"&gt;&lt;span&gt;&amp;uarr; 14.8%&lt;/span&gt;&lt;/span&gt;
+    &lt;span&gt;vs last month&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 2. Activity Feed & Notification Center -->
+<h2 id="activity-feed"><span>Activity Feed &amp; Notification Center</span></h2>
+<p><span>Use <code>.activity-feed</code> and <code>.notification-feed</code> to render real-time user activity logs, system alerts, and notification lists with unread indicators.</span></p>
+
+<div class="bd-example">
+  <ul class="activity-feed demo-max-w600">
+    <li class="feed-item unread">
+      <div class="feed-avatar">
+        <span class="avatar avatar-circle avatar-sm text-bg-primary"><span>JD</span></span>
+      </div>
+      <div class="feed-body">
+        <h5 class="feed-title"><span>New team invitation accepted</span></h5>
+        <p class="feed-text"><span>Jane Doe has accepted your invitation to join the design operations workspace.</span></p>
+        <p class="feed-meta"><span>10 minutes ago</span></p>
+      </div>
+      <div class="feed-action">
+        <span class="badge text-bg-primary"><span>New</span></span>
+      </div>
+    </li>
+    <li class="feed-item">
+      <div class="feed-avatar">
+        <span class="avatar avatar-circle avatar-sm text-bg-success"><span>DB</span></span>
+      </div>
+      <div class="feed-body">
+        <h5 class="feed-title"><span>Deployment successful</span></h5>
+        <p class="feed-text"><span>Production pipeline #184 completed with 100% test coverage.</span></p>
+        <p class="feed-meta"><span>2 hours ago</span></p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;ul class="activity-feed"&gt;
+  &lt;li class="feed-item unread"&gt;
+    &lt;div class="feed-avatar"&gt;
+      &lt;span class="avatar avatar-circle avatar-sm text-bg-primary"&gt;&lt;span&gt;JD&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="feed-body"&gt;
+      &lt;h5 class="feed-title"&gt;&lt;span&gt;New team invitation accepted&lt;/span&gt;&lt;/h5&gt;
+      &lt;p class="feed-text"&gt;&lt;span&gt;Jane Doe joined the workspace.&lt;/span&gt;&lt;/p&gt;
+      &lt;p class="feed-meta"&gt;&lt;span&gt;10 minutes ago&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+<!-- 3. Mega Menu -->
+<h2 id="mega-menu"><span>Mega Menu</span></h2>
+<p><span>Full-width categorised navigation drawer (<code>.mega-menu</code>) with responsive columns for large application headers.</span></p>
+
+<div class="bd-example">
+  <div class="position-relative p-3 bg-light rounded">
+    <button type="button" class="btn btn-outline-primary" onclick="const p = document.getElementById('demoMegaPanel'); p.classList.toggle('show');"><span>Toggle Mega Menu</span></button>
+
+    <div class="mega-menu">
+      <div class="mega-menu-panel" id="demoMegaPanel">
+        <div class="mega-menu-grid">
+          <div>
+            <h5 class="mega-menu-heading"><span>Products</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#analytics"><span>Analytics Cloud</span></a></li>
+              <li><a href="#security"><span>Enterprise Shield</span></a></li>
+              <li><a href="#automation"><span>Workflow Automator</span></a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="mega-menu-heading"><span>Developers</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#api"><span>API Documentation</span></a></li>
+              <li><a href="#sdk"><span>Client SDKs</span></a></li>
+              <li><a href="#webhooks"><span>Event Webhooks</span></a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="mega-menu-heading"><span>Solutions</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#ecommerce"><span>E-Commerce Engine</span></a></li>
+              <li><a href="#fintech"><span>FinTech Infrastructure</span></a></li>
+              <li><a href="#saas"><span>SaaS Boilerplates</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="mega-menu"&gt;
+  &lt;div class="mega-menu-panel show"&gt;
+    &lt;div class="mega-menu-grid"&gt;
+      &lt;div&gt;
+        &lt;h5 class="mega-menu-heading"&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/h5&gt;
+        &lt;ul class="mega-menu-list"&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Analytics Cloud&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 4. Breadcrumb with Dropdown -->
+<h2 id="breadcrumb-dropdown"><span>Breadcrumb with Dropdowns</span></h2>
+<p><span>Integrate inline dropdown selectors directly inside breadcrumbs to let users navigate parallel siblings or branch hierarchies.</span></p>
+
+<div class="bd-example">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+      <li class="breadcrumb-item"><a href="#"><span>Projects</span></a></li>
+      <li class="breadcrumb-item dropdown">
+        <button type="button" class="breadcrumb-dropdown-toggle dropdown-toggle" id="breadcrumbProjectsDropdown" data-boodoo-toggle="dropdown" aria-expanded="false">
+          <span>Boodoo App</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="breadcrumbProjectsDropdown">
+          <li><a class="dropdown-item" href="#"><span>Project Alpha</span></a></li>
+          <li><a class="dropdown-item" href="#"><span>Project Beta</span></a></li>
+          <li><a class="dropdown-item active" href="#"><span>Boodoo App</span></a></li>
+        </ul>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page"><span>Settings</span></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- 5. Floating Action Button Dock -->
+<h2 id="fab-dock"><span>Floating Action Button Dock</span></h2>
+<p><span>The <code>.fab-dock</code> component provides a fixed multi-action button with popup action links, keyboard ESC dismissal, and click-outside tracking.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-primary" onclick="const dock = boodoo.FABDock.getOrCreateInstance(document.getElementById('demoFabDock')); dock.toggle();"><span>Toggle Action Dock</span></button>
+
+  <div class="fab-dock" id="demoFabDock" class="fab-dock demo-fab-dock-static">
+    <button type="button" class="fab-dock-trigger" aria-label="Quick Actions">
+      <span class="fab-icon-open"><span>+</span></span>
+      <span class="fab-icon-close"><span>&times;</span></span>
+    </button>
+    <div class="fab-dock-items">
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>New Invoice</span></span>
+        <span class="fab-item-btn"><span>$</span></span>
+      </button>
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>Upload File</span></span>
+        <span class="fab-item-btn"><span>&uarr;</span></span>
+      </button>
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>Send Message</span></span>
+        <span class="fab-item-btn"><span>&commat;</span></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="fab-dock" id="myDock"&gt;
+  &lt;button type="button" class="fab-dock-trigger" aria-label="Quick Actions"&gt;
+    &lt;span class="fab-icon-open"&gt;&lt;span&gt;+&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="fab-icon-close"&gt;&lt;span&gt;&amp;times;&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="fab-dock-items"&gt;
+    &lt;button type="button" class="fab-dock-item"&gt;
+      &lt;span class="fab-item-label"&gt;&lt;span&gt;Upload File&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="fab-item-btn"&gt;&lt;span&gt;&amp;uarr;&lt;/span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 6. Fullscreen Dialog -->
+<h2 id="dialog-fullscreen"><span>Fullscreen Immersive Dialog</span></h2>
+<p><span><code>.dialog-fullscreen</code> creates a full-viewport modal interface optimal for intensive editor surfaces, multi-step forms, and focused tasks on mobile and desktop.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-secondary" onclick="const d = boodoo.DialogFullscreen.getOrCreateInstance(document.getElementById('demoFullscreenDialog')); d.show();"><span>Open Fullscreen Dialog</span></button>
+
+  <div class="dialog-fullscreen" id="demoFullscreenDialog">
+    <div class="dialog-fullscreen-header">
+      <h3 class="dialog-fullscreen-title" id=""><span>Full-Screen Workspace Editor</span></h3>
+      <button type="button" class="btn-close" data-boodoo-dismiss="dialog-fullscreen" aria-label="Close"></button>
+    </div>
+    <div class="dialog-fullscreen-body">
+      <h4><span>Immersive Viewport</span></h4>
+      <p><span>This dialog occupies the entire viewport, preventing background scrolling and providing maximal workspace area.</span></p>
+    </div>
+    <div class="dialog-fullscreen-footer">
+      <button type="button" class="btn btn-outline-secondary" data-boodoo-dismiss="dialog-fullscreen"><span>Cancel</span></button>
+      <button type="button" class="btn btn-primary" data-boodoo-dismiss="dialog-fullscreen"><span>Save changes</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Guided Tour / Walkthrough -->
+<h2 id="tour"><span>Guided Tour &amp; Walkthrough</span></h2>
+<p><span>The <code>boodoo.Tour</code> class generates popover guides that walk users step-by-step through features with target element anchoring, progress dots, and keyboard navigation.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-success" id="tourStartBtn" onclick="
+    const tour = new boodoo.Tour(document.body, {
+      steps: [
+        { target: '#stat-widget', title: 'Metric Widgets', content: 'Track your KPI statistics and real-time revenue.' },
+        { target: '#activity-feed', title: 'Activity Stream', content: 'Review notifications and incoming messages.' },
+        { target: '#fab-dock', title: 'Floating Actions', content: 'Quickly access common shortcuts anywhere.' }
+      ]
+    });
+    tour.start();
+  "><span>Start Guided Tour</span></button>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-javascript">const tour = new boodoo.Tour(document.body, {
+  steps: [
+    { target: '#statWidget', title: 'KPI Metrics', content: 'View real-time metrics and trends.' },
+    { target: '#notifications', title: 'Notifications', content: 'Stay on top of updates.' }
+  ]
+});
+tour.start();</code></pre>
+</div>
+          
+  <nav class="docs-pager" aria-label="Previous and next navigation">
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">Components</span>
+      <a class="docs-pager-link" href="../components/modern-components.html">Modern components</a>
+    </div>
+    
+    <div class="docs-pager-item">
+      <span class="docs-pager-label">Components</span>
+      <a class="docs-pager-link" href="../components/ai-prompt.html">AI Prompt & Chat</a>
+    </div>
+  </nav>
+
+        </div>
+      </main>
+
+      <aside class="col-lg-3 col-xl-3">
+
+    <div class="docs-toc d-none d-lg-block">
+      <h6 class="docs-toc-title">On this page</h6>
+      <ul><li class="toc-2"><a href="#stat-widget">Stat &amp; Metric Widget</a></li>
+<li class="toc-2"><a href="#activity-feed">Activity Feed &amp; Notification Center</a></li>
+<li class="toc-2"><a href="#mega-menu">Mega Menu</a></li>
+<li class="toc-2"><a href="#breadcrumb-dropdown">Breadcrumb with Dropdowns</a></li>
+<li class="toc-2"><a href="#fab-dock">Floating Action Button Dock</a></li>
+<li class="toc-2"><a href="#dialog-fullscreen">Fullscreen Immersive Dialog</a></li>
+<li class="toc-2"><a href="#tour">Guided Tour &amp; Walkthrough</a></li></ul>
+    </div>
+</aside>
+    </div>
+  </div>
+
+  <!-- Footer spanning the whole page -->
+  <footer class="py-1 border-top">
+    <div
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
+        <span>© 2026 Pebble Benders · MIT License</span>
+      </div>
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
+        <a class="text-muted text-decoration-none"
+          href="../../docs/getting-started/introduction.html">Documentation</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../examples/index.html">Examples</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
+      </div>
+    </div>
+    <div class="sub-footer border-top mt-1 pt-1 text-center small text-muted">
+      <div class="container">
+        <p class="mb-0"><span>Engineered and maintained by <a href="https://pebblebenders.com/" target="_blank"
+              rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>—Need a custom
+            web application built? <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
+              class="text-decoration-underline text-primary fw-semibold">Work with us</a>.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../dist/js/boodoo.js" defer></script>
+  <script src="../../assets/search.js" defer></script>
+  <script>
+    // Theme toggle logic
+    (function () {
+      var storedTheme = localStorage.getItem('boodoo-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-boodoo-theme', storedTheme);
+      var toggleBtn = document.getElementById('themeToggle');
+      function updateIcon(theme) {
+        if (toggleBtn) {
+          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+      updateIcon(storedTheme);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-boodoo-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-boodoo-theme', next);
+          localStorage.setItem('boodoo-theme', next);
+          updateIcon(next);
+        });
+      }
+    })();
+
+    // Auto-scroll the active documentation sidebar item into the visible viewport
+    (function () {
+      function scrollActiveNavIntoView() {
+        var sidebar = document.querySelector('.docs-sidebar');
+        if (!sidebar) return;
+        var activeLink = sidebar.querySelector('.docs-nav-list a.active');
+        if (!activeLink) return;
+
+        // Calculate offset relative to sidebar scroll container to center it precisely
+        var sidebarRect = sidebar.getBoundingClientRect();
+        var linkRect = activeLink.getBoundingClientRect();
+        var isVisible = (linkRect.top >= sidebarRect.top + 40 && linkRect.bottom <= sidebarRect.bottom - 40);
+
+        if (!isVisible) {
+          // Scroll active link to center of sidebar
+          var targetScrollTop = activeLink.offsetTop - (sidebar.clientHeight / 2) + (activeLink.clientHeight / 2);
+          sidebar.scrollTop = Math.max(0, targetScrollTop);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scrollActiveNavIntoView);
+      } else {
+        scrollActiveNavIntoView();
+      }
+
+      // Also ensure when mobile collapse is opened, the active link is visible
+      var collapseToggle = document.querySelector('[data-boodoo-target="#docsSidebarCollapse"]');
+      if (collapseToggle) {
+        collapseToggle.addEventListener('click', function () {
+          setTimeout(scrollActiveNavIntoView, 250);
+        });
+      }
+    })();
+
+    // Action buttons (Copy + CodePen) for code blocks
+    document.querySelectorAll('.highlight pre').forEach(function (pre) {
+      var container = pre.closest('.highlight') || pre.parentElement;
+      if (!container) return;
+
+      var actionsBar = document.createElement('div');
+      actionsBar.className = 'highlight-actions';
+
+      // 1. CodePen button
+      var penBtn = document.createElement('button');
+      penBtn.className = 'btn btn-sm highlight-codepen';
+      penBtn.type = 'button';
+      penBtn.title = 'Open example in CodePen';
+      penBtn.setAttribute('aria-label', 'Open example in CodePen');
+      penBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg><span>CodePen</span>';
+
+      penBtn.addEventListener('click', function () {
+        var rawCode = pre.innerText || '';
+        // Extract title from nearest heading or page
+        var heading = container.previousElementSibling;
+        while (heading && !/^H[1-6]$/i.test(heading.tagName)) {
+          heading = heading.previousElementSibling;
+        }
+        var pageTitle = document.querySelector('h1')?.innerText || document.title.split('·')[0].trim() || 'boodoo';
+        var demoTitle = (heading ? heading.innerText.trim() + ' - ' : '') + pageTitle + ' Example (boodoo)';
+
+        // Detect if snippet is pure CSS, JS, or HTML
+        var isCssOnly = /^\s*(\.|#|@|:root|--)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
+        var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
+
+        // Official high-speed CDN URLs hosted for boodoo CSS and JS
+        var cdnCss = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnJs = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-4741e069.js';
+
+        var htmlPayload = '';
+        var cssPayload = '';
+        var jsPayload = '';
+
+        if (isCssOnly) {
+          cssPayload = rawCode;
+          htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <p class="mb-0"><span>Apply your CSS classes or styles here</span></p>\n  </div>\n</div>';
+        } else if (isJsOnly) {
+          jsPayload = rawCode;
+          // Check if there is an associated interactive example right before the code block
+          var prevEx = container.previousElementSibling;
+          while (prevEx && !prevEx.classList.contains('bd-example') && !/^H[1-6]$/i.test(prevEx.tagName)) {
+            prevEx = prevEx.previousElementSibling;
+          }
+          if (prevEx && prevEx.classList.contains('bd-example')) {
+            htmlPayload = '<div class="container py-4">\n' + prevEx.innerHTML.trim() + '\n</div>';
+          } else {
+            htmlPayload = '<div class="container py-4">\n  <p class="text-muted"><span>Interactive JS demo &mdash; check developer console for logs.</span></p>\n</div>';
+          }
+        } else {
+          // If code snippet references an element by ID (e.g. data-boodoo-target="#exampleModal")
+          // that exists on the current page outside this snippet, include it so the interactive component renders properly.
+          var extraHtml = '';
+          var idMatches = rawCode.match(/(?:data-boodoo-target|data-target|href)=["']#([a-zA-Z0-9_-]+)["']/g) || [];
+          idMatches.forEach(function (match) {
+            var targetId = match.replace(/.*#([a-zA-Z0-9_-]+).*/, '$1');
+            if (targetId && !rawCode.includes('id="' + targetId + '"') && !rawCode.includes("id='" + targetId + "'")) {
+              var targetEl = document.getElementById(targetId);
+              if (targetEl && !container.contains(targetEl)) {
+                extraHtml += '\n\n<!-- Associated target element -->' + '\n' + targetEl.outerHTML;
+              }
+            }
+          });
+
+          htmlPayload = '<div class="container py-4">\n' + rawCode + extraHtml + '\n</div>';
+        }
+
+        var editorsMode = '100'; // HTML default
+        if (isCssOnly) {
+          editorsMode = '010'; // Open CSS editor
+        } else if (isJsOnly) {
+          editorsMode = '001'; // Open JS editor
+        }
+
+        var penData = {
+          title: demoTitle,
+          description: 'Interactive demo built with boodoo CSS & JS framework',
+          tags: ['boodoo', 'css-framework', 'responsive', 'ui-components'],
+          html: htmlPayload,
+          css: cssPayload,
+          js: jsPayload,
+          css_external: cdnCss,
+          js_external: cdnJs,
+          editors: editorsMode
+        };
+
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://codepen.io/pen/define';
+        form.target = '_blank';
+        form.style.display = 'none';
+
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'data';
+        input.id = 'codepen_data_' + Math.random().toString(36).substring(2, 9);
+        input.value = JSON.stringify(penData);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        setTimeout(function () {
+          if (form.parentNode) form.parentNode.removeChild(form);
+        }, 1000);
+      });
+
+      // 2. Copy button
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
+      copyBtn.innerHTML = '<span>Copy</span>';
+      copyBtn.type = 'button';
+      copyBtn.title = 'Copy code snippet';
+      copyBtn.setAttribute('aria-label', 'Copy code snippet');
+
+      copyBtn.addEventListener('click', function () {
+        var text = pre.innerText;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(function () {
+            copyBtn.innerHTML = '<span>Copied!</span>';
+            setTimeout(function () { copyBtn.innerHTML = '<span>Copy</span>'; }, 1500);
+          });
+        }
+      });
+
+      actionsBar.appendChild(penBtn);
+      actionsBar.appendChild(copyBtn);
+      container.appendChild(actionsBar);
+    });
+  </script>
+</body>
+
+</html>
