@@ -37,6 +37,9 @@ import { Lightbox } from './lightbox.js';
 import { Banner } from './banner.js';
 import { Dropzone } from './dropzone.js';
 import { a11y } from './a11y.js';
+import { FloatingBar } from './floating-bar.js';
+import { ImageCompare } from './image-compare.js';
+import { PasswordMeter } from './password-meter.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -93,6 +96,9 @@ const boodoo = {
   Lightbox,
   Banner,
   Dropzone,
+  FloatingBar,
+  ImageCompare,
+  PasswordMeter,
   a11y,
   registerCustomElements,
 };
@@ -219,10 +225,13 @@ export {
   DataTable,
   Dropdown,
   Dropzone,
+  FloatingBar,
+  ImageCompare,
   Lightbox,
   Modal,
   Offcanvas,
   OTP,
+  PasswordMeter,
   Popover,
   Rating,
   ScrollSpy,

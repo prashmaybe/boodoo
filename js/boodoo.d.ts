@@ -68,6 +68,18 @@ export declare class Stepper extends BaseComponent {}
 export declare class TreeView extends BaseComponent {}
 export declare class Banner extends BaseComponent {}
 export declare class Combobox extends BaseComponent {}
+export declare class FloatingBar extends BaseComponent {
+  show(count?: number): void;
+  hide(): void;
+  setCount(count: number): void;
+}
+export declare class ImageCompare extends BaseComponent {
+  setPosition(percentage: number): void;
+  getPosition(): number;
+}
+export declare class PasswordMeter extends BaseComponent {
+  evaluate(password?: string): number;
+}
 
 export interface ToastOptions {
   title?: string;
@@ -113,6 +125,9 @@ export interface BoodooGlobal {
   TreeView: typeof TreeView;
   Banner: typeof Banner;
   Combobox: typeof Combobox;
+  FloatingBar: typeof FloatingBar;
+  ImageCompare: typeof ImageCompare;
+  PasswordMeter: typeof PasswordMeter;
   clipboard: any;
   theme: any;
   a11y: {
@@ -138,10 +153,13 @@ export {
   DataTable,
   Dropdown,
   Dropzone,
+  FloatingBar,
+  ImageCompare,
   Lightbox,
   Modal,
   Offcanvas,
   OTP,
+  PasswordMeter,
   Popover,
   Rating,
   ScrollSpy,

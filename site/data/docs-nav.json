@@ -103,7 +103,8 @@
       { "route": "components/tooltips", "title": "Tooltips" },
       { "route": "components/tree-view", "title": "Tree View" },
       { "route": "components/ripple", "title": "Ripple effect" },
-      { "route": "components/native", "title": "Native components" }
+      { "route": "components/native", "title": "Native components" },
+      { "route": "components/modern-components", "title": "Modern components" }
     ]
   },
 

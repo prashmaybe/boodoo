@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.1.6';
+const BOODOO_VERSION = '1.1.7';
 
 function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
