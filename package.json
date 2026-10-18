@@ -84,8 +84,8 @@
   ],
   "scripts": {
     "test": "npm run build && npm run test:unit && npm run site",
-    "test:unit": "node --test tests/**/*.test.mjs",
-    "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/**/*.test.mjs",
+    "test:unit": "node --test tests/framework.test.mjs",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/framework.test.mjs",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
     "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim && npm run css:less",
