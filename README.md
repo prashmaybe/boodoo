@@ -6,6 +6,11 @@
 
 A modular, mobile-first CSS design framework — without JS framework lock-in. Built for developers who want pre-styled accessible UI components + utility-first power with zero build overhead.
 
+[![CI](https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml/badge.svg)](https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/boodoo.svg?style=flat)](https://www.npmjs.com/package/boodoo)
+[![npm downloads](https://img.shields.io/npm/dm/boodoo.svg?style=flat)](https://www.npmjs.com/package/boodoo)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7c3aed.svg)](https://github.com/prashmaybe/boodoo/blob/main/LICENSE)
+
 </div>
 
 ---
