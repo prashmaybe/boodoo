@@ -448,8 +448,10 @@
       <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
       <li class="breadcrumb-item"><a href="#"><span>Projects</span></a></li>
       <li class="breadcrumb-item dropdown">
-        <span class="breadcrumb-dropdown-toggle dropdown-toggle" data-boodoo-toggle="dropdown" aria-expanded="false"><span>Boodoo App</span></span>
-        <ul class="dropdown-menu">
+        <button type="button" class="breadcrumb-dropdown-toggle dropdown-toggle" id="breadcrumbProjectsDropdown" data-boodoo-toggle="dropdown" aria-expanded="false">
+          <span>Boodoo App</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="breadcrumbProjectsDropdown">
           <li><a class="dropdown-item" href="#"><span>Project Alpha</span></a></li>
           <li><a class="dropdown-item" href="#"><span>Project Beta</span></a></li>
           <li><a class="dropdown-item active" href="#"><span>Boodoo App</span></a></li>
