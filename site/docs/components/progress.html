@@ -404,25 +404,25 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
   <code>--circle-value</code> CSS variable.</p>
 
 <div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-light rounded">
-  <div class="progress-circle progress-circle-primary" style="--circle-value: 66;">
+  <div class="progress-circle progress-circle-primary demo-circle-val-66">
     <div class="progress-circle-body">
       <span class="progress-number">66%</span>
     </div>
   </div>
 
-  <div class="progress-circle progress-circle-danger" style="--circle-value: 45;">
+  <div class="progress-circle progress-circle-danger demo-circle-val-45">
     <div class="progress-circle-body">
       <span class="progress-number">45%</span>
     </div>
   </div>
 
-  <div class="progress-circle progress-circle-teal" style="--circle-value: 75;">
+  <div class="progress-circle progress-circle-teal demo-circle-val-75">
     <div class="progress-circle-body">
       <span class="progress-number">75%</span>
     </div>
   </div>
 
-  <div class="progress-circle progress-segmented progress-circle-danger" style="--circle-value: 40;">
+  <div class="progress-circle progress-segmented progress-circle-danger demo-circle-val-40">
     <div class="progress-circle-body">
       <span class="progress-number">40%</span>
     </div>
@@ -430,14 +430,14 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
 </div>
 <div class="highlight">
   <pre><code class="language-html">&lt;!-- Circular Doughnut Meter --&gt;
-&lt;div class="progress-circle progress-circle-primary" style="--circle-value: 66;"&gt;
+&lt;div class="progress-circle progress-circle-primary demo-circle-val-66"&gt;
   &lt;div class="progress-circle-body"&gt;
     &lt;span class="progress-number"&gt;66%&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Segmented Radial Notch Ring --&gt;
-&lt;div class="progress-circle progress-segmented progress-circle-danger" style="--circle-value: 40;"&gt;
+&lt;div class="progress-circle progress-segmented progress-circle-danger demo-circle-val-40"&gt;
   &lt;div class="progress-circle-body"&gt;
     &lt;span class="progress-number"&gt;40%&lt;/span&gt;
   &lt;/div&gt;
@@ -449,7 +449,7 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
 </p>
 
 <div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-white border rounded">
-  <div class="progress-circle progress-semicircle progress-circle-info" style="--circle-value: 37;">
+  <div class="progress-circle progress-semicircle progress-circle-info demo-circle-val-37">
     <div class="progress-gauge-indicator"></div>
     <div class="progress-circle-body">
       <span class="progress-number">37.05%</span>
@@ -457,7 +457,7 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
     </div>
   </div>
 
-  <div class="progress-circle progress-semicircle progress-circle-teal" style="--circle-value: 82;">
+  <div class="progress-circle progress-semicircle progress-circle-teal demo-circle-val-82">
     <div class="progress-gauge-indicator"></div>
     <div class="progress-circle-body">
       <span class="progress-number">82.05%</span>
@@ -465,7 +465,7 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
     </div>
   </div>
 
-  <div class="progress-circle progress-semicircle progress-circle-danger" style="--circle-value: 73;">
+  <div class="progress-circle progress-semicircle progress-circle-danger demo-circle-val-73">
     <div class="progress-gauge-indicator"></div>
     <div class="progress-circle-body">
       <span class="progress-number">73%</span>
@@ -475,7 +475,7 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
 </div>
 <div class="highlight">
   <pre><code class="language-html">&lt;!-- Semicircular Gauge with Indicator Dot --&gt;
-&lt;div class="progress-circle progress-semicircle progress-circle-info" style="--circle-value: 37;"&gt;
+&lt;div class="progress-circle progress-semicircle progress-circle-info demo-circle-val-37"&gt;
   &lt;div class="progress-gauge-indicator"&gt;&lt;/div&gt;
   &lt;div class="progress-circle-body"&gt;
     &lt;span class="progress-number"&gt;37.05%&lt;/span&gt;
@@ -489,19 +489,19 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
 </p>
 
 <div class="bd-example d-flex flex-wrap align-items-center justify-content-around gap-4 p-4 bg-light rounded">
-  <div class="progress-circle progress-circle-inset progress-circle-inset-blue" style="--circle-value: 30;">
+  <div class="progress-circle progress-circle-inset progress-circle-inset-blue demo-circle-val-30">
     <div class="progress-circle-body">
       <span class="progress-number">30%</span>
     </div>
   </div>
 
-  <div class="progress-circle progress-circle-inset progress-circle-inset-purple" style="--circle-value: 60;">
+  <div class="progress-circle progress-circle-inset progress-circle-inset-purple demo-circle-val-60">
     <div class="progress-circle-body">
       <span class="progress-number">60%</span>
     </div>
   </div>
 
-  <div class="progress-circle progress-circle-inset progress-circle-inset-orange" style="--circle-value: 90;">
+  <div class="progress-circle progress-circle-inset progress-circle-inset-orange demo-circle-val-90">
     <div class="progress-circle-body">
       <span class="progress-number">90%</span>
     </div>
@@ -547,14 +547,14 @@ bar.setAttribute('aria-valuenow', '75');</code></pre>
 <h2 id="task-ring">Circular Task Ring with Milestone Checkpoints</h2>
 <p>Comprehensive dark-mode process dial with perimeter checkpoint nodes.</p>
 
-<div class="bd-example p-4 rounded text-center" style="background-color: #1e293b;">
-  <div class="progress-circle-tasks" style="--task-ring-color: #14b8a6;">
-    <div class="task-node completed" style="top: 0%; left: 50%;">✓</div>
-    <div class="task-node completed" style="top: 25%; left: 93%;">✓</div>
-    <div class="task-node completed" style="top: 75%; left: 93%;">✓</div>
-    <div class="task-node completed" style="top: 100%; left: 50%;">✓</div>
-    <div class="task-node in-progress" style="top: 75%; left: 7%;">…</div>
-    <div class="task-node" style="top: 25%; left: 7%;"></div>
+<div class="bd-example p-4 rounded text-center demo-task-dark-wrap">
+  <div class="progress-circle-tasks demo-task-ring-teal">
+    <div class="task-node completed demo-task-pos-top">✓</div>
+    <div class="task-node completed demo-task-pos-right-top">✓</div>
+    <div class="task-node completed demo-task-pos-right-bottom">✓</div>
+    <div class="task-node completed demo-task-pos-bottom">✓</div>
+    <div class="task-node in-progress demo-task-pos-left-bottom">…</div>
+    <div class="task-node demo-task-pos-left-top"></div>
 
     <div class="task-ring-center">
       <h4 class="task-ring-title mb-1">Task 5</h4>
