@@ -7,34 +7,35 @@ order: 25
 
 <section class="docs-section">
   <h2><span>Overview</span></h2>
-  <p class="lead"><span>The Stepper component conveys progress through numbered or labeled steps in a multi-step form, wizard, or checkout experience.</span></p>
+  <p class="lead"><span>The Stepper component conveys progress through numbered or labeled steps in a multi-step form,
+      wizard, or checkout experience.</span></p>
 </section>
 
 <section class="docs-section">
   <h2><span>Horizontal Stepper</span></h2>
   <div class="bd-example p-4 border rounded">
     <ul class="stepper">
-       <li class="step-item completed">
-         <div class="step-circle"><span>✓</span></div>
-         <div class="step-content">
-           <div class="step-title"><span>Account</span></div>
-           <div class="step-subtitle"><span>Setup credentials</span></div>
-         </div>
-       </li>
-       <li class="step-item active">
-         <div class="step-circle"><span>2</span></div>
-         <div class="step-content">
-           <div class="step-title"><span>Profile</span></div>
-           <div class="step-subtitle"><span>Personal info</span></div>
-         </div>
-       </li>
-       <li class="step-item">
-         <div class="step-circle"><span>3</span></div>
-         <div class="step-content">
-           <div class="step-title"><span>Review</span></div>
-           <div class="step-subtitle"><span>Final confirmation</span></div>
-         </div>
-       </li>
+      <li class="step-item completed">
+        <div class="step-circle"><span>✓</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Account</span></div>
+          <div class="step-subtitle"><span>Setup credentials</span></div>
+        </div>
+      </li>
+      <li class="step-item active">
+        <div class="step-circle"><span>2</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Profile</span></div>
+          <div class="step-subtitle"><span>Personal info</span></div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-circle"><span>3</span></div>
+        <div class="step-content">
+          <div class="step-title"><span>Review</span></div>
+          <div class="step-subtitle"><span>Final confirmation</span></div>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -121,7 +122,8 @@ order: 25
 
 <section class="docs-section">
   <h2><span>Interactive Wizard with JavaScript &amp; Buttons</span></h2>
-  <p><span>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and <code>data-boodoo-stepper="next"</code>:</span></p>
+  <p><span>Wire previous and next buttons directly with <code>data-boodoo-stepper="prev"</code> and
+      <code>data-boodoo-stepper="next"</code>:</span></p>
   <div class="bd-example p-4 border rounded">
     <ul class="stepper" id="wizardStepper" data-boodoo-target="#wizardPanels">
       <li class="step-item active">
@@ -163,7 +165,8 @@ order: 25
     </div>
 
     <div class="d-flex justify-content-between">
-      <button type="button" class="btn btn-outline-secondary" data-boodoo-stepper="prev" data-boodoo-target="#wizardStepper">
+      <button type="button" class="btn btn-outline-secondary" data-boodoo-stepper="prev"
+        data-boodoo-target="#wizardStepper">
         <span>Previous</span>
       </button>
       <button type="button" class="btn btn-primary" data-boodoo-stepper="next" data-boodoo-target="#wizardStepper">
@@ -187,9 +190,10 @@ order: 25
 
 <section class="docs-section">
   <h2><span>Progress Stepper with Percentage Markers</span></h2>
-  <p><span>Conveys completion metrics at every stage with <code>.stepper-progress</code> and <code>.step-percent</code>:</span></p>
+  <p><span>Conveys completion metrics at every stage with <code>.stepper-progress</code> and
+      <code>.step-percent</code>:</span></p>
 
-  <div class="bd-example p-4 border rounded bg-white">
+  <div class="bd-example p-2 border rounded bg-white">
     <ul class="stepper stepper-progress mb-0">
       <li class="step-item completed">
         <div class="step-circle"><span>✓</span></div>
@@ -234,7 +238,8 @@ order: 25
 
 <section class="docs-section">
   <h2><span>Chevron Arrow Process Pipeline</span></h2>
-  <p><span>Interlocking arrow sequence for lead stages, CRM lifecycles, and deal tracking using <code>.process-flow</code>:</span></p>
+  <p><span>Interlocking arrow sequence for lead stages, CRM lifecycles, and deal tracking using
+      <code>.process-flow</code>:</span></p>
 
   <div class="bd-example p-4 border rounded bg-dark">
     <div class="process-flow">
@@ -267,7 +272,8 @@ order: 25
 
 <section class="docs-section">
   <h2><span>Illustrated Icon Timeline</span></h2>
-  <p><span>Multi-tier milestone flow with top artwork/icons, center timeline bullets, and descriptive labels using <code>.stepper-icons</code>:</span></p>
+  <p><span>Multi-tier milestone flow with top artwork/icons, center timeline bullets, and descriptive labels using
+      <code>.stepper-icons</code>:</span></p>
 
   <div class="bd-example p-4 border rounded bg-light">
     <ul class="stepper-icons mb-0">
@@ -314,7 +320,7 @@ order: 25
   <h2><span>Minimal Stepper Nodes &amp; Progress Step Cards</span></h2>
   <p><span>Clean bullet milestones and modular wizard cards for streamlined checkout panels:</span></p>
 
-  <div class="bd-example p-4 border rounded bg-white">
+  <div class="bd-example p-2 border rounded bg-white">
     <div class="row g-3">
       <div class="col-md-6">
         <div class="card-progress-step">
@@ -366,4 +372,3 @@ order: 25
 &lt;/ul&gt;</code></pre>
   </div>
 </section>
-

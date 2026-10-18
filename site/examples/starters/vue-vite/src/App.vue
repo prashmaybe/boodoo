@@ -21,7 +21,7 @@ const count = ref(0);
       <div class="d-flex justify-content-center gap-3">
         <button
           type="button"
-          class="btn btn-success btn-lg rounded-pill px-4 shadow-sm"
+          class="btn btn-success btn-lg rounded-pill px-2 shadow-sm"
           @click="count++"
         >
           Count is: {{ count }}

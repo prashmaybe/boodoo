@@ -7,13 +7,17 @@ order: 26
 
 <h1 class="boodoo-title"><span>Native components</span></h1>
 <p class="boodoo-lead">
-  <span>Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or Cordova/Capacitor) using platform-native visual conventions for Windows, macOS, iOS, iPadOS, Android, and Linux. For Electron configuration and titlebar drag mechanics, read the <a href="../getting-started/electron.html"><span>Electron Desktop guide</span></a>.</span>
+  <span>Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or
+    Cordova/Capacitor) using platform-native visual conventions for Windows, macOS, iOS, iPadOS, Android, and Linux. For
+    Electron configuration and titlebar drag mechanics, read the <a
+      href="../getting-started/electron.html"><span>Electron Desktop guide</span></a>.</span>
 </p>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="windows"><span>Windows (Fluent Design &amp; Mica)</span></h2>
-<p><span>Use <code>.native-win</code> or <code>[data-boodoo-platform="windows"]</code> to apply Windows 11 Fluent Design tokens, subtle acrylic/mica blurs, and standard titlebar controls.</span></p>
+<p><span>Use <code>.native-win</code> or <code>[data-boodoo-platform="windows"]</code> to apply Windows 11 Fluent Design
+    tokens, subtle acrylic/mica blurs, and standard titlebar controls.</span></p>
 
 <div class="bd-example">
   <div class="native-win">
@@ -60,11 +64,13 @@ order: 26
 </div>
 
 <h2 id="macos"><span>macOS (Aqua &amp; Vibrancy)</span></h2>
-<p><span>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography, window traffic lights, translucent sidebar navigation, and gradient push buttons.</span></p>
+<p><span>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography, window
+    traffic lights, translucent sidebar navigation, and gradient push buttons.</span></p>
 
 <div class="bd-example">
   <div class="native-mac">
-    <div class="native-window border rounded overflow-hidden shadow-sm position-relative" style="height: 240px; background: #fafafa;">
+    <div class="native-window border rounded overflow-hidden shadow-sm position-relative"
+      style="height: 240px; background: #fafafa;">
       <div class="native-traffic-lights">
         <div class="native-dot dot-close"></div>
         <div class="native-dot dot-minimize"></div>
@@ -113,7 +119,8 @@ order: 26
 </div>
 
 <h2 id="ios"><span>iOS (Human Interface Guidelines)</span></h2>
-<p><span>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars, segmented controls, grouped inset lists, and 50px touch-friendly action buttons.</span></p>
+<p><span>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars,
+    segmented controls, grouped inset lists, and 50px touch-friendly action buttons.</span></p>
 
 <div class="bd-example">
   <div class="native-ios" style="max-width: 400px; margin: 0 auto;">
@@ -164,7 +171,8 @@ order: 26
 </div>
 
 <h2 id="ipados"><span>iPadOS (Sidebar &amp; Split View)</span></h2>
-<p><span>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view layouts optimized for tablet touch &amp; pointer interaction.</span></p>
+<p><span>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view
+    layouts optimized for tablet touch &amp; pointer interaction.</span></p>
 
 <div class="bd-example">
   <div class="native-ipados">
@@ -199,7 +207,8 @@ order: 26
 </div>
 
 <h2 id="android"><span>Android (Material Design 3)</span></h2>
-<p><span>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated top app bars, pills, and 20px rounded pill buttons.</span></p>
+<p><span>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated
+    top app bars, pills, and 20px rounded pill buttons.</span></p>
 
 <div class="bd-example">
   <div class="native-android" style="max-width: 420px; margin: 0 auto;">
@@ -234,7 +243,8 @@ order: 26
 </div>
 
 <h2 id="linux"><span>Linux (GNOME Adwaita / GTK4)</span></h2>
-<p><span>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars and GTK4 rounded widget styling.</span></p>
+<p><span>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars and
+    GTK4 rounded widget styling.</span></p>
 
 <div class="bd-example">
   <div class="native-linux">
@@ -264,10 +274,13 @@ order: 26
 </div>
 
 <h2 id="photon"><span>Photon (Electron &amp; Classic Desktop UI)</span></h2>
-<p><span>Use <code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> to render classic macOS/Electron desktop chrome: native toolbars, segmented button groups, pane splitters, sidebars, and tab groups without external styling dependencies.</span></p>
+<p><span>Use <code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> to render classic
+    macOS/Electron desktop chrome: native toolbars, segmented button groups, pane splitters, sidebars, and tab groups
+    without external styling dependencies.</span></p>
 
 <div class="bd-example">
-  <div class="native-photon border rounded overflow-hidden shadow-sm" style="max-width: 650px; margin: 0 auto; height: 260px; display: flex; flex-direction: column;">
+  <div class="native-photon border rounded overflow-hidden shadow-sm"
+    style="max-width: 650px; margin: 0 auto; height: 260px; display: flex; flex-direction: column;">
     <div class="toolbar-header">
       <div class="toolbar-actions">
         <div class="btn-group">
@@ -300,7 +313,8 @@ order: 26
               <span>Settings</span>
             </div>
           </div>
-          <p class="text-muted small mb-2"><span>Classic desktop UI components styled with lightweight Boodoo tokens.</span></p>
+          <p class="text-muted small mb-2"><span>Classic desktop UI components styled with lightweight Boodoo
+              tokens.</span></p>
           <div class="btn-group">
             <button type="button" class="btn btn-positive"><span>Commit</span></button>
             <button type="button" class="btn btn-negative"><span>Revert</span></button>
@@ -336,4 +350,3 @@ order: 26
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
-

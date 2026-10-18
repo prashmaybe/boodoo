@@ -8,7 +8,8 @@ order: 5
 <section class="docs-section">
   <h2>Overview</h2>
   <p class="lead">boodoo comes with built-in dark mode support, automatic system scheme detection, and the
-    <code>boodoo.theme</code> JS module.</p>
+    <code>boodoo.theme</code> JS module.
+  </p>
 </section>
 
 <section class="docs-section">
@@ -43,7 +44,7 @@ boodoo.theme.toggle();</code></pre>
   <p>Customize primary colors, border radiuses, and base fonts in real time. Preview live components and export your
     custom CSS variables snippet:</p>
 
-  <div class="card p-4 shadow-sm border mb-4" id="themeBuilderApp">
+  <div class="card p-2 shadow-sm border mb-4" id="themeBuilderApp">
     <div class="row g-3 mb-4">
       <div class="col-md-4">
         <label for="tbPrimaryColor" class="form-label"><span>Primary Accent Color</span></label>
@@ -74,8 +75,8 @@ boodoo.theme.toggle();</code></pre>
     </div>
 
     <!-- Live Preview Sandbox -->
-    <div class="p-4 rounded border mb-3" id="themeSandbox" style="background-color: var(--boodoo-body-bg);">
-      <h5 class="mb-3"><span>Live Component Preview</span></h5>
+    <div class="p-3 rounded border mb-3" id="themeSandbox" style="background-color: var(--boodoo-body-bg);">
+      <h5 class="mb-2"><span>Live Component Preview</span></h5>
       <div class="d-flex flex-wrap gap-2 mb-2">
         <button type="button" class="btn btn-primary" id="demoPrimaryBtn"><span>Primary Button</span></button>
         <button type="button" class="btn btn-outline-primary" id="demoOutlineBtn"><span>Outline Button</span></button>
@@ -150,9 +151,10 @@ boodoo.theme.toggle();</code></pre>
 
   <div class="row g-4 mt-2">
     <div class="col-md-6">
-      <div class="card p-3 h-100 shadow-sm border">
+      <div class="card p-2 shadow-sm border">
         <h5><span>1. Pure CSS / CDN (Runtime)</span></h5>
-        <p class="text-muted small"><span>Override custom properties on <code>:root</code> to re-scale utilities on the fly without build tools:</span></p>
+        <p class="text-muted small"><span>Override custom properties on <code>:root</code> to re-scale utilities on the
+            fly without build tools:</span></p>
         <pre><code class="language-css">:root {
   --boodoo-spacer: 1rem;
   --boodoo-spacer-1: 1.25rem;
@@ -163,9 +165,10 @@ boodoo.theme.toggle();</code></pre>
     </div>
 
     <div class="col-md-6">
-      <div class="card p-3 h-100 shadow-sm border">
+      <div class="card p-2 shadow-sm border">
         <h5><span>2. Sass / SCSS Source</span></h5>
-        <p class="text-muted small"><span>Define <code>$boodoo-spacer</code> or a custom <code>$boodoo-spacers</code> map before importing:</span></p>
+        <p class="text-muted small"><span>Define <code>$boodoo-spacer</code> or a custom <code>$boodoo-spacers</code>
+            map before importing:</span></p>
         <pre><code class="language-scss">$boodoo-spacer: 1.125rem;
 $boodoo-spacers: (
   0: 0,
@@ -178,7 +181,7 @@ $boodoo-spacers: (
     </div>
 
     <div class="col-md-6">
-      <div class="card p-3 h-100 shadow-sm border">
+      <div class="card p-2 shadow-sm border">
         <h5><span>3. LESS Source</span></h5>
         <p class="text-muted small"><span>Override <code>@boodoo-spacer</code> in your Less configuration:</span></p>
         <pre><code class="language-less">@boodoo-spacer: 1.2rem;
@@ -187,9 +190,10 @@ $boodoo-spacers: (
     </div>
 
     <div class="col-md-6">
-      <div class="card p-3 h-100 shadow-sm border">
+      <div class="card p-2 shadow-sm border">
         <h5><span>4. React Native &amp; Design Tokens</span></h5>
-        <p class="text-muted small"><span>Use <code>createSpacing()</code> or pass custom spacing to <code>&lt;BoodooProvider&gt;</code>:</span></p>
+        <p class="text-muted small"><span>Use <code>createSpacing()</code> or pass custom spacing to
+            <code>&lt;BoodooProvider&gt;</code>:</span></p>
         <pre><code class="language-jsx">import { createSpacing } from 'boodoo/tokens';
 import { BoodooProvider } from 'boodoo/react-native';
 

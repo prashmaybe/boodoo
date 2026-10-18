@@ -1,16 +1,16 @@
 {
   "version": "1.1.6",
-  "generatedAt": "2026-10-18T05:30:36.058Z",
+  "generatedAt": "2026-10-18T06:05:46.347Z",
   "cdnBase": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives",
   "frameworkZip": "boodoo-v1.1.6.zip",
   "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.1.6.zip",
   "frameworkZipSizeKb": 536,
-  "frameworkZipBytes": 548372,
+  "frameworkZipBytes": 549157,
   "latestZip": "boodoo-latest.zip",
   "latestZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip",
   "examplesZip": "boodoo-examples-v1.1.6.zip",
   "examplesZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-examples-v1.1.6.zip",
-  "examplesZipSizeKb": 41,
+  "examplesZipSizeKb": 42,
   "starters": [
     {
       "id": "react-vite",
