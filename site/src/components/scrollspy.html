@@ -5,14 +5,16 @@ section: components
 order: 20
 -->
 <h1>Scrollspy</h1>
-<p class="lead">Automatically update boodoo navigation or list group components based on scroll position to indicate which
+<p class="lead">Automatically update boodoo navigation or list group components based on scroll position to indicate
+  which
   link is currently active in the viewport.</p>
 
 <h2 id="how">How it works</h2>
 <p>Scrollspy requires two things: a navigation, list group, or a simple set of links that point to <code>#id</code>s in
   the page, and a scrollable container. Add <code>data-boodoo-spy="scroll"</code> (with an optional
   <code>data-boodoo-offset</code> or <code>data-boodoo-target</code>) to the scroll container — typically
-  <code>&lt;body&gt;</code>.</p>
+  <code>&lt;body&gt;</code>.
+</p>
 
 <h2 id="navbar">Navbar example</h2>
 <p>Scroll the area below and watch the sidebar (or navbar) update. The current item is highlighted automatically.</p>
@@ -27,7 +29,7 @@ order: 20
     </div>
     <div class="col-8">
       <div data-boodoo-spy="scroll" data-boodoo-target="#spyNav" data-boodoo-offset="0" tabindex="0"
-        class="border rounded p-3 demo-scroll-box">
+        class="border rounded p-2 demo-scroll-box">
         <h6 id="spy-simple">Simple</h6>
         <p>This is some placeholder content for the scrollspy page.</p>
         <h6 id="spy-clicks">Click &amp; keyboard</h6>
@@ -72,5 +74,6 @@ order: 20
 </div>
 
 <p class="small text-muted">Note: the sample scrollspy demo above needs the scrolling container itself to be the spied
-  element with <code>data-boodoo-spy</code>; boodoo tracks <code>window</code> scroll by default, or the spied container's
+  element with <code>data-boodoo-spy</code>; boodoo tracks <code>window</code> scroll by default, or the spied
+  container's
   scroll position based on its offset.</p>

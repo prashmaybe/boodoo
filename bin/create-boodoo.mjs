@@ -47,7 +47,7 @@ async function main() {
   console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
   console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
   console.log(' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, Boodoo Native v' + BOODOO_VERSION + ')\x1b[0m');
-  
+
   const choice = await prompt('Choose template [1-10]', '1');
 
   fs.mkdirSync(targetDir, { recursive: true });
@@ -290,7 +290,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
       </aside>
 
       <!-- Main Panel -->
-      <main class="flex-grow-1 p-4 bg-light overflow-auto">
+      <main class="flex-grow-1 p-2 bg-light overflow-auto">
         <div class="container-fluid">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
