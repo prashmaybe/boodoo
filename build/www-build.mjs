@@ -1,5 +1,5 @@
 // boodoo deployable build.
-// Assembles everything needed to host at https://boodoo.dihadiwala.com into a
+// Assembles everything needed to host at https://boodooframework.com into a
 // single `www/` folder: landing page, docs pages, assets, and compiled dist.
 // Upload the CONTENTS of `www/` to your static host (root = domain root).
 //

@@ -9,7 +9,7 @@
   "bugs": {
     "url": "https://github.com/prashmaybe/boodoo/issues"
   },
-  "homepage": "https://boodoo.dihadiwala.com",
+  "homepage": "https://boodooframework.com",
   "bin": {
     "boodoo": "bin/boodoo.mjs",
     "create-boodoo": "bin/create-boodoo.mjs"

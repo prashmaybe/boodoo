@@ -329,7 +329,7 @@ const archiveUrls = getArchiveCdnUrls(VERSION);
     .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
     .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
     .replaceAll('{{docstitle}}', title)
-    .replaceAll('{{canonicalUrl}}', `https://boodoo.dihadiwala.com/docs/${route}.html`);
+    .replaceAll('{{canonicalUrl}}', `https://boodooframework.com/docs/${route}.html`);
 
   return html;
 }
