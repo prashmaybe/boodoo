@@ -914,8 +914,59 @@ test('Extended v1.1.8 components (FABDock, DialogFullscreen, Tour) verification'
     { title: 'Metrics', content: 'Track real-time stats.' }
   ]);
   assert.equal(tour._steps.length, 2);
+  assert.equal(tour._currentStepIndex, 0);
+  tour.next();
+  assert.equal(tour._currentStepIndex, 1);
+  tour.prev();
+  assert.equal(tour._currentStepIndex, 0);
   tour.dispose();
 });
+
+test('Extended v1.1.8 CSS class compilation and SCSS/LESS token integration', () => {
+  const css = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const minCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.min.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Verify StatWidget styling and trend classes
+  assert.ok(css.includes('.stat-widget'), 'CSS must contain .stat-widget');
+  assert.ok(css.includes('.stat-trend-up'), 'CSS must contain .stat-trend-up');
+  assert.ok(css.includes('.stat-trend-down'), 'CSS must contain .stat-trend-down');
+  assert.ok(minCss.includes('.stat-widget'), 'Compressed CSS must contain .stat-widget');
+  assert.ok(lessCss.includes('.stat-widget'), 'LESS CSS must compile .stat-widget');
+
+  // Verify ActivityFeed & NotificationCenter styling
+  assert.ok(css.includes('.activity-feed'), 'CSS must contain .activity-feed');
+  assert.ok(css.includes('.notification-feed'), 'CSS must contain .notification-feed');
+  assert.ok(css.includes('.feed-item.unread'), 'CSS must contain .feed-item.unread');
+  assert.ok(lessCss.includes('.activity-feed'), 'LESS CSS must compile .activity-feed');
+
+  // Verify MegaMenu
+  assert.ok(css.includes('.mega-menu'), 'CSS must contain .mega-menu');
+  assert.ok(css.includes('.mega-menu-panel'), 'CSS must contain .mega-menu-panel');
+  assert.ok(css.includes('.mega-menu-grid'), 'CSS must contain .mega-menu-grid');
+  assert.ok(lessCss.includes('.mega-menu'), 'LESS CSS must compile .mega-menu');
+
+  // Verify Breadcrumb with Dropdown
+  assert.ok(css.includes('.breadcrumb-dropdown-toggle'), 'CSS must contain .breadcrumb-dropdown-toggle');
+  assert.ok(lessCss.includes('.breadcrumb-dropdown-toggle'), 'LESS CSS must compile .breadcrumb-dropdown-toggle');
+
+  // Verify FABDock
+  assert.ok(css.includes('.fab-dock'), 'CSS must contain .fab-dock');
+  assert.ok(css.includes('.fab-dock-trigger'), 'CSS must contain .fab-dock-trigger');
+  assert.ok(css.includes('.fab-dock-items'), 'CSS must contain .fab-dock-items');
+  assert.ok(lessCss.includes('.fab-dock'), 'LESS CSS must compile .fab-dock');
+
+  // Verify Fullscreen Dialog
+  assert.ok(css.includes('.dialog-fullscreen'), 'CSS must contain .dialog-fullscreen');
+  assert.ok(css.includes('.dialog-fullscreen-header'), 'CSS must contain .dialog-fullscreen-header');
+  assert.ok(lessCss.includes('.dialog-fullscreen'), 'LESS CSS must compile .dialog-fullscreen');
+
+  // Verify Tour Popover
+  assert.ok(css.includes('.tour-popover'), 'CSS must contain .tour-popover');
+  assert.ok(css.includes('.tour-step-badge'), 'CSS must contain .tour-step-badge');
+  assert.ok(lessCss.includes('.tour-popover'), 'LESS CSS must compile .tour-popover');
+});
+
 
 
 

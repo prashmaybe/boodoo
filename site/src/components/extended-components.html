@@ -1,0 +1,294 @@
+<!--
+title: Extended components
+description: Extended UI components including Stat Widget, Activity Feed & Notification Center, Mega Menu, Breadcrumb Dropdown, FAB Dock, Fullscreen Dialog, and Guided Tour.
+section: components
+order: 28
+-->
+
+<h1 class="boodoo-title"><span>Extended components</span></h1>
+<p class="boodoo-lead">
+  <span>Discover boodoo v1.1.8's extended components designed for enterprise dashboards, multi-level navigation, rich notification streams, and interactive user onboarding tours.</span>
+</p>
+
+<hr class="my-2">
+
+<!-- 1. Stat / Metric Widget -->
+<h2 id="stat-widget"><span>Stat &amp; Metric Widget</span></h2>
+<p><span>The <code>.stat-widget</code> card highlights primary metrics, KPIs, and data trends with customizable icons, values, and percentage indicators.</span></p>
+
+<div class="bd-example">
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Total Revenue</span></h4>
+          <span class="stat-icon stat-icon-success"><span>$</span></span>
+        </div>
+        <p class="stat-value"><span>$128,450</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-up"><span>&uarr; 14.8%</span></span>
+          <span>vs last month</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Active Subscriptions</span></h4>
+          <span class="stat-icon stat-icon-info"><span>#</span></span>
+        </div>
+        <p class="stat-value"><span>3,420</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-up"><span>&uarr; 8.2%</span></span>
+          <span>new accounts</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="stat-widget stat-widget-interactive">
+        <div class="stat-header">
+          <h4 class="stat-title"><span>Bounce Rate</span></h4>
+          <span class="stat-icon stat-icon-danger"><span>%</span></span>
+        </div>
+        <p class="stat-value"><span>24.3%</span></p>
+        <p class="stat-footer">
+          <span class="stat-trend stat-trend-down"><span>&darr; 2.1%</span></span>
+          <span>improved retention</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="stat-widget stat-widget-interactive"&gt;
+  &lt;div class="stat-header"&gt;
+    &lt;h4 class="stat-title"&gt;&lt;span&gt;Total Revenue&lt;/span&gt;&lt;/h4&gt;
+    &lt;span class="stat-icon stat-icon-success"&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="stat-value"&gt;&lt;span&gt;$128,450&lt;/span&gt;&lt;/p&gt;
+  &lt;p class="stat-footer"&gt;
+    &lt;span class="stat-trend stat-trend-up"&gt;&lt;span&gt;&amp;uarr; 14.8%&lt;/span&gt;&lt;/span&gt;
+    &lt;span&gt;vs last month&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 2. Activity Feed & Notification Center -->
+<h2 id="activity-feed"><span>Activity Feed &amp; Notification Center</span></h2>
+<p><span>Use <code>.activity-feed</code> and <code>.notification-feed</code> to render real-time user activity logs, system alerts, and notification lists with unread indicators.</span></p>
+
+<div class="bd-example">
+  <ul class="activity-feed" style="max-width: 600px;">
+    <li class="feed-item unread">
+      <div class="feed-avatar">
+        <span class="avatar avatar-circle avatar-sm text-bg-primary"><span>JD</span></span>
+      </div>
+      <div class="feed-body">
+        <h5 class="feed-title"><span>New team invitation accepted</span></h5>
+        <p class="feed-text"><span>Jane Doe has accepted your invitation to join the design operations workspace.</span></p>
+        <p class="feed-meta"><span>10 minutes ago</span></p>
+      </div>
+      <div class="feed-action">
+        <span class="badge text-bg-primary"><span>New</span></span>
+      </div>
+    </li>
+    <li class="feed-item">
+      <div class="feed-avatar">
+        <span class="avatar avatar-circle avatar-sm text-bg-success"><span>DB</span></span>
+      </div>
+      <div class="feed-body">
+        <h5 class="feed-title"><span>Deployment successful</span></h5>
+        <p class="feed-text"><span>Production pipeline #184 completed with 100% test coverage.</span></p>
+        <p class="feed-meta"><span>2 hours ago</span></p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;ul class="activity-feed"&gt;
+  &lt;li class="feed-item unread"&gt;
+    &lt;div class="feed-avatar"&gt;
+      &lt;span class="avatar avatar-circle avatar-sm text-bg-primary"&gt;&lt;span&gt;JD&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="feed-body"&gt;
+      &lt;h5 class="feed-title"&gt;&lt;span&gt;New team invitation accepted&lt;/span&gt;&lt;/h5&gt;
+      &lt;p class="feed-text"&gt;&lt;span&gt;Jane Doe joined the workspace.&lt;/span&gt;&lt;/p&gt;
+      &lt;p class="feed-meta"&gt;&lt;span&gt;10 minutes ago&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+<!-- 3. Mega Menu -->
+<h2 id="mega-menu"><span>Mega Menu</span></h2>
+<p><span>Full-width categorised navigation drawer (<code>.mega-menu</code>) with responsive columns for large application headers.</span></p>
+
+<div class="bd-example">
+  <div class="position-relative p-3 bg-light rounded">
+    <button type="button" class="btn btn-outline-primary" onclick="const p = document.getElementById('demoMegaPanel'); p.classList.toggle('show');"><span>Toggle Mega Menu</span></button>
+
+    <div class="mega-menu">
+      <div class="mega-menu-panel" id="demoMegaPanel">
+        <div class="mega-menu-grid">
+          <div>
+            <h5 class="mega-menu-heading"><span>Products</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#analytics"><span>Analytics Cloud</span></a></li>
+              <li><a href="#security"><span>Enterprise Shield</span></a></li>
+              <li><a href="#automation"><span>Workflow Automator</span></a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="mega-menu-heading"><span>Developers</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#api"><span>API Documentation</span></a></li>
+              <li><a href="#sdk"><span>Client SDKs</span></a></li>
+              <li><a href="#webhooks"><span>Event Webhooks</span></a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="mega-menu-heading"><span>Solutions</span></h5>
+            <ul class="mega-menu-list">
+              <li><a href="#ecommerce"><span>E-Commerce Engine</span></a></li>
+              <li><a href="#fintech"><span>FinTech Infrastructure</span></a></li>
+              <li><a href="#saas"><span>SaaS Boilerplates</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="mega-menu"&gt;
+  &lt;div class="mega-menu-panel show"&gt;
+    &lt;div class="mega-menu-grid"&gt;
+      &lt;div&gt;
+        &lt;h5 class="mega-menu-heading"&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/h5&gt;
+        &lt;ul class="mega-menu-list"&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Analytics Cloud&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 4. Breadcrumb with Dropdown -->
+<h2 id="breadcrumb-dropdown"><span>Breadcrumb with Dropdowns</span></h2>
+<p><span>Integrate inline dropdown selectors directly inside breadcrumbs to let users navigate parallel siblings or branch hierarchies.</span></p>
+
+<div class="bd-example">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+      <li class="breadcrumb-item"><a href="#"><span>Projects</span></a></li>
+      <li class="breadcrumb-item dropdown">
+        <span class="breadcrumb-dropdown-toggle dropdown-toggle" data-boodoo-toggle="dropdown" aria-expanded="false"><span>Boodoo App</span></span>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#"><span>Project Alpha</span></a></li>
+          <li><a class="dropdown-item" href="#"><span>Project Beta</span></a></li>
+          <li><a class="dropdown-item active" href="#"><span>Boodoo App</span></a></li>
+        </ul>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page"><span>Settings</span></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- 5. Floating Action Button Dock -->
+<h2 id="fab-dock"><span>Floating Action Button Dock</span></h2>
+<p><span>The <code>.fab-dock</code> component provides a fixed multi-action button with popup action links, keyboard ESC dismissal, and click-outside tracking.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-primary" onclick="const dock = boodoo.FABDock.getOrCreateInstance(document.getElementById('demoFabDock')); dock.toggle();"><span>Toggle Action Dock</span></button>
+
+  <div class="fab-dock" id="demoFabDock" style="position: static; display: inline-flex; margin-top: 1rem;">
+    <button type="button" class="fab-dock-trigger" aria-label="Quick Actions">
+      <span class="fab-icon-open"><span>+</span></span>
+      <span class="fab-icon-close"><span>&times;</span></span>
+    </button>
+    <div class="fab-dock-items">
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>New Invoice</span></span>
+        <span class="fab-item-btn"><span>$</span></span>
+      </button>
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>Upload File</span></span>
+        <span class="fab-item-btn"><span>&uarr;</span></span>
+      </button>
+      <button type="button" class="fab-dock-item">
+        <span class="fab-item-label"><span>Send Message</span></span>
+        <span class="fab-item-btn"><span>&commat;</span></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="fab-dock" id="myDock"&gt;
+  &lt;button type="button" class="fab-dock-trigger" aria-label="Quick Actions"&gt;
+    &lt;span class="fab-icon-open"&gt;&lt;span&gt;+&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="fab-icon-close"&gt;&lt;span&gt;&amp;times;&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="fab-dock-items"&gt;
+    &lt;button type="button" class="fab-dock-item"&gt;
+      &lt;span class="fab-item-label"&gt;&lt;span&gt;Upload File&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="fab-item-btn"&gt;&lt;span&gt;&amp;uarr;&lt;/span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<!-- 6. Fullscreen Dialog -->
+<h2 id="dialog-fullscreen"><span>Fullscreen Immersive Dialog</span></h2>
+<p><span><code>.dialog-fullscreen</code> creates a full-viewport modal interface optimal for intensive editor surfaces, multi-step forms, and focused tasks on mobile and desktop.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-secondary" onclick="const d = boodoo.DialogFullscreen.getOrCreateInstance(document.getElementById('demoFullscreenDialog')); d.show();"><span>Open Fullscreen Dialog</span></button>
+
+  <div class="dialog-fullscreen" id="demoFullscreenDialog">
+    <div class="dialog-fullscreen-header">
+      <h3 class="dialog-fullscreen-title"><span>Full-Screen Workspace Editor</span></h3>
+      <button type="button" class="btn-close" data-boodoo-dismiss="dialog-fullscreen" aria-label="Close"></button>
+    </div>
+    <div class="dialog-fullscreen-body">
+      <h4><span>Immersive Viewport</span></h4>
+      <p><span>This dialog occupies the entire viewport, preventing background scrolling and providing maximal workspace area.</span></p>
+    </div>
+    <div class="dialog-fullscreen-footer">
+      <button type="button" class="btn btn-outline-secondary" data-boodoo-dismiss="dialog-fullscreen"><span>Cancel</span></button>
+      <button type="button" class="btn btn-primary" data-boodoo-dismiss="dialog-fullscreen"><span>Save changes</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Guided Tour / Walkthrough -->
+<h2 id="tour"><span>Guided Tour &amp; Walkthrough</span></h2>
+<p><span>The <code>boodoo.Tour</code> class generates popover guides that walk users step-by-step through features with target element anchoring, progress dots, and keyboard navigation.</span></p>
+
+<div class="bd-example text-center">
+  <button type="button" class="btn btn-success" id="tourStartBtn" onclick="
+    const tour = new boodoo.Tour(document.body, {
+      steps: [
+        { target: '#stat-widget', title: 'Metric Widgets', content: 'Track your KPI statistics and real-time revenue.' },
+        { target: '#activity-feed', title: 'Activity Stream', content: 'Review notifications and incoming messages.' },
+        { target: '#fab-dock', title: 'Floating Actions', content: 'Quickly access common shortcuts anywhere.' }
+      ]
+    });
+    tour.start();
+  "><span>Start Guided Tour</span></button>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-javascript">const tour = new boodoo.Tour(document.body, {
+  steps: [
+    { target: '#statWidget', title: 'KPI Metrics', content: 'View real-time metrics and trends.' },
+    { target: '#notifications', title: 'Notifications', content: 'Stay on top of updates.' }
+  ]
+});
+tour.start();</code></pre>
+</div>

@@ -235,6 +235,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://boodoo.dihadiwala.com/docs/components/extended-components.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boodoo.dihadiwala.com/docs/components/kbd.html</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
