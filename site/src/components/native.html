@@ -8,7 +8,8 @@ order: 26
 <h1 class="boodoo-title"><span>Native components</span></h1>
 <p class="boodoo-lead">
   <span>Style hybrid, desktop, or cross-platform web applications (such as Electron, Tauri, React Native Web, or
-    Cordova/Capacitor) using authentic platform-native visual conventions for Windows 11, macOS Sonoma, iOS 17/18, iPadOS, Android Material Design 3, Linux GNOME Adwaita, and classic Photon Desktop. For
+    Cordova/Capacitor) using authentic platform-native visual conventions for Windows 11, macOS Sonoma, iOS 17/18,
+    iPadOS, Android Material Design 3, Linux GNOME Adwaita, and classic Photon Desktop. For
     Electron configuration and titlebar drag mechanics, read the <a
       href="../getting-started/electron.html"><span>Electron Desktop guide</span></a>.</span>
 </p>
@@ -17,7 +18,8 @@ order: 26
 
 <h2 id="windows"><span>Windows 11 (Fluent Design &amp; Mica)</span></h2>
 <p><span>Use <code>.native-win</code> or <code>[data-boodoo-platform="windows"]</code> to apply Windows 11 Fluent Design
-    tokens, subtle acrylic/mica blurs, caption control titlebars, Segoe UI typography, and micro-elevated cards.</span></p>
+    tokens, subtle acrylic/mica blurs, caption control titlebars, Segoe UI typography, and micro-elevated cards.</span>
+</p>
 
 <div class="bd-example">
   <div class="native-win p-3" style="background: #e9e9e9; border-radius: 12px;">
@@ -27,7 +29,8 @@ order: 26
         <div class="native-titlebar-controls">
           <button type="button" class="native-titlebar-btn" aria-label="Minimize"><span>—</span></button>
           <button type="button" class="native-titlebar-btn" aria-label="Maximize"><span>▢</span></button>
-          <button type="button" class="native-titlebar-btn native-titlebar-close" aria-label="Close"><span>✕</span></button>
+          <button type="button" class="native-titlebar-btn native-titlebar-close"
+            aria-label="Close"><span>✕</span></button>
         </div>
       </header>
       <div class="native-command-bar">
@@ -38,9 +41,11 @@ order: 26
       <div class="p-3">
         <div class="native-card mb-3">
           <h5 class="fs-6 fw-semibold mb-1"><span>Fluent Surface Card</span></h5>
-          <p class="text-muted fs-7 mb-3"><span>Windows 11 layered acrylic surface with authentic elevation and focus border hierarchy.</span></p>
+          <p class="text-muted fs-7 mb-3"><span>Windows 11 layered acrylic surface with authentic elevation and focus
+              border hierarchy.</span></p>
           <div class="d-flex align-items-center gap-2">
-            <input type="text" id="winSearchInput" name="winSearchInput" class="native-input" placeholder="Search Windows..." style="width: 220px;">
+            <input type="text" id="winSearchInput" name="winSearchInput" class="native-input"
+              placeholder="Search Windows..." style="width: 220px;">
             <button type="button" class="native-btn native-btn-primary"><span>Primary Action</span></button>
             <button type="button" class="native-btn"><span>Standard</span></button>
           </div>
@@ -72,7 +77,8 @@ order: 26
 </div>
 
 <h2 id="macos"><span>macOS Sonoma (Aqua &amp; Vibrancy)</span></h2>
-<p><span>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography, authentic traffic light controls, translucent vibrancy sidebar navigation, and gradient push buttons.</span></p>
+<p><span>Use <code>.native-mac</code> or <code>[data-boodoo-platform="macos"]</code> to render SF Pro typography,
+    authentic traffic light controls, translucent vibrancy sidebar navigation, and gradient push buttons.</span></p>
 
 <div class="bd-example">
   <div class="native-mac p-3" style="background: #e3e3e8; border-radius: 12px;">
@@ -100,7 +106,8 @@ order: 26
         </aside>
         <main class="p-3 flex-fill bg-white">
           <h5 class="fs-6 fw-semibold mb-2"><span>macOS Push Buttons &amp; Surfaces</span></h5>
-          <p class="text-muted fs-7 mb-3"><span>Aqua styled gradient bevel buttons with native pressed states and SF Pro text.</span></p>
+          <p class="text-muted fs-7 mb-3"><span>Aqua styled gradient bevel buttons with native pressed states and SF Pro
+              text.</span></p>
           <div class="d-flex align-items-center gap-2">
             <button type="button" class="native-btn native-btn-primary"><span>Primary Action</span></button>
             <button type="button" class="native-btn"><span>Standard</span></button>
@@ -136,7 +143,8 @@ order: 26
 </div>
 
 <h2 id="ios"><span>iOS (Human Interface Guidelines)</span></h2>
-<p><span>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars, segmented controls, grouped inset lists with chevrons, and 50px touch-friendly action buttons.</span></p>
+<p><span>Use <code>.native-ios</code> or <code>[data-boodoo-platform="ios"]</code> to build iOS-style navigation bars,
+    segmented controls, grouped inset lists with chevrons, and 50px touch-friendly action buttons.</span></p>
 
 <div class="bd-example">
   <div class="native-ios p-3" style="max-width: 420px; margin: 0 auto; background: #e5e5ea; border-radius: 46px;">
@@ -149,13 +157,13 @@ order: 26
       <div class="native-ios-large-title">
         <span>Preferences</span>
       </div>
-      <div class="px-3 pb-3">
+      <div class="px-1 pb-3">
         <div class="native-segmented-control mb-3">
           <div class="native-segment active"><span>Profile</span></div>
           <div class="native-segment"><span>Security</span></div>
           <div class="native-segment"><span>Cloud</span></div>
         </div>
-        <div class="native-list-grouped mb-3">
+        <div class="native-list-grouped mb-1">
           <div class="native-list-item">
             <div class="native-list-label">
               <span>🔔 Notifications</span>
@@ -201,7 +209,8 @@ order: 26
 </div>
 
 <h2 id="ipados"><span>iPadOS (Sidebar &amp; Split View)</span></h2>
-<p><span>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view layouts optimized for tablet touch &amp; pointer interaction.</span></p>
+<p><span>Use <code>.native-ipados</code> or <code>[data-boodoo-platform="ipados"]</code> for multi-column split view
+    layouts optimized for tablet touch &amp; pointer interaction.</span></p>
 
 <div class="bd-example">
   <div class="native-ipados p-3" style="background: #e3e3e8; border-radius: 16px;">
@@ -221,7 +230,8 @@ order: 26
           <h5 class="fs-6 fw-bold mb-0"><span>All Documents</span></h5>
           <span class="text-muted fs-7"><span>12 items</span></span>
         </header>
-        <p class="text-muted fs-7 mb-3"><span>iPadOS multi-column split layout with comfortable touch targets and rounded visual surfaces.</span></p>
+        <p class="text-muted fs-7 mb-3"><span>iPadOS multi-column split layout with comfortable touch targets and
+            rounded visual surfaces.</span></p>
         <button type="button" class="btn btn-outline-primary btn-sm"><span>Create Folder</span></button>
       </main>
     </div>
@@ -243,7 +253,8 @@ order: 26
 </div>
 
 <h2 id="android"><span>Android (Material Design 3 / Material You)</span></h2>
-<p><span>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated top app bars, pill action buttons, and elevated tonal cards.</span></p>
+<p><span>Use <code>.native-android</code> or <code>[data-boodoo-platform="android"]</code> for Material You 3 elevated
+    top app bars, pill action buttons, and elevated tonal cards.</span></p>
 
 <div class="bd-example">
   <div class="native-android p-3" style="max-width: 440px; margin: 0 auto; background: #eadef7; border-radius: 36px;">
@@ -261,7 +272,8 @@ order: 26
       <div class="p-3">
         <div class="native-card mb-3">
           <h6 class="fw-bold mb-1"><span>Material 3 Elevated Card</span></h6>
-          <p class="fs-7 text-muted mb-0"><span>Dynamic Color surface styling with Google Sans/Roboto typography and 16px corner radius.</span></p>
+          <p class="fs-7 text-muted mb-0"><span>Dynamic Color surface styling with Google Sans/Roboto typography and
+              16px corner radius.</span></p>
         </div>
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center gap-2">
@@ -290,7 +302,8 @@ order: 26
 </div>
 
 <h2 id="linux"><span>Linux (GNOME Adwaita / GTK4)</span></h2>
-<p><span>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars, circular titlebar close controls, and GTK4 rounded widget styling.</span></p>
+<p><span>Use <code>.native-linux</code> or <code>[data-boodoo-platform="linux"]</code> for Libadwaita header bars,
+    circular titlebar close controls, and GTK4 rounded widget styling.</span></p>
 
 <div class="bd-example">
   <div class="native-linux p-3" style="background: #e1dedb; border-radius: 14px;">
@@ -306,7 +319,8 @@ order: 26
       </header>
       <div class="p-3">
         <div class="native-card mb-3">
-          <p class="fs-7 mb-0"><span>GNOME 40+ GTK4 desktop controls with Cantarell typography and soft Adwaita gray surfaces.</span></p>
+          <p class="fs-7 mb-0"><span>GNOME 40+ GTK4 desktop controls with Cantarell typography and soft Adwaita gray
+              surfaces.</span></p>
         </div>
         <button type="button" class="native-btn native-btn-primary"><span>Suggested Action</span></button>
         <button type="button" class="native-btn ms-2"><span>Cancel</span></button>
@@ -330,7 +344,9 @@ order: 26
 </div>
 
 <h2 id="photon"><span>Photon (Electron &amp; Classic Desktop UI)</span></h2>
-<p><span>Use <code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> to render classic macOS/Electron desktop chrome: native toolbars, segmented button groups, pane splitters, sidebars, and tab groups without external styling dependencies.</span></p>
+<p><span>Use <code>.native-photon</code> or <code>[data-boodoo-platform="photon"]</code> to render classic
+    macOS/Electron desktop chrome: native toolbars, segmented button groups, pane splitters, sidebars, and tab groups
+    without external styling dependencies.</span></p>
 
 <div class="bd-example">
   <div class="native-photon border rounded overflow-hidden shadow-sm"
@@ -367,7 +383,8 @@ order: 26
               <span>Settings</span>
             </div>
           </div>
-          <p class="text-muted small mb-2"><span>Classic desktop UI components styled with lightweight Boodoo tokens.</span></p>
+          <p class="text-muted small mb-2"><span>Classic desktop UI components styled with lightweight Boodoo
+              tokens.</span></p>
           <div class="btn-group">
             <button type="button" class="btn btn-positive"><span>Commit</span></button>
             <button type="button" class="btn btn-negative"><span>Revert</span></button>
