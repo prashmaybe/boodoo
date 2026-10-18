@@ -672,3 +672,49 @@ test('Universal design tokens CommonJS module export verification', () => {
   assert.ok(tokensCjs.includes('shadows'), 'tokens/index.cjs must include shadows');
   assert.ok(tokensCjs.includes('typography'), 'tokens/index.cjs must include typography');
 });
+
+test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (npx boodoo migrate)', async () => {
+  const { addComponent, listAvailableComponents, runMigration } = await import(
+    pathToFileURL(resolve(rootDir, 'bin/boodoo.mjs')).href
+  );
+
+  // 1. Verify listAvailableComponents
+  const available = listAvailableComponents();
+  assert.ok(available.includes('modal'), 'available components must include modal');
+  assert.ok(available.includes('command-palette'), 'available components must include command-palette');
+  assert.ok(available.includes('dropzone'), 'available components must include dropzone');
+
+  // 2. Verify addComponent extraction into temporary dir
+  const tempTestDir = resolve(rootDir, 'tests', 'temp_add_test');
+  try {
+    const result = addComponent('modal', tempTestDir);
+    assert.equal(result.name, 'modal');
+    assert.ok(result.files.length > 0, 'addComponent should copy files');
+    assert.equal(result.reactHook, 'useDisclosure');
+    assert.ok(existsSync(resolve(tempTestDir, 'components/boodoo/_modal.scss')));
+    assert.ok(existsSync(resolve(tempTestDir, 'components/boodoo/modal.js')));
+  } finally {
+    const { rmSync } = await import('node:fs');
+    rmSync(tempTestDir, { recursive: true, force: true });
+  }
+
+  // 3. Verify Bootstrap migration codemod
+  const bsSample = '<button data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary fs-2 fw-bold">Open</button>';
+  const bsResult = runMigration(bsSample, 'bootstrap');
+  assert.ok(bsResult.replacementsCount >= 4, 'Should replace multiple bootstrap attributes and classes');
+  assert.ok(bsResult.output.includes('data-boodoo-toggle="modal"'), 'Should replace data-bs-toggle');
+  assert.ok(bsResult.output.includes('data-boodoo-target="#myModal"'), 'Should replace data-bs-target');
+  assert.ok(bsResult.output.includes('display-2'), 'Should replace fs-2 with display-2');
+  assert.ok(bsResult.output.includes('font-weight-bold'), 'Should replace fw-bold with font-weight-bold');
+
+  // 4. Verify Tailwind migration codemod
+  const twSample = '<div class="flex flex-col items-center justify-between w-full font-bold max-w-7xl mx-auto"></div>';
+  const twResult = runMigration(twSample, 'tailwind');
+  assert.ok(twResult.replacementsCount >= 5, 'Should replace multiple tailwind utility chains');
+  assert.ok(twResult.output.includes('flex-column'), 'Should replace flex flex-col with flex-column');
+  assert.ok(twResult.output.includes('align-items-center'), 'Should replace items-center');
+  assert.ok(twResult.output.includes('justify-content-between'), 'Should replace justify-between');
+  assert.ok(twResult.output.includes('w-100'), 'Should replace w-full with w-100');
+  assert.ok(twResult.output.includes('container'), 'Should replace max-w-7xl mx-auto with container');
+});
+

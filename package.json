@@ -11,6 +11,7 @@
   },
   "homepage": "https://boodoo.dihadiwala.com",
   "bin": {
+    "boodoo": "bin/boodoo.mjs",
     "create-boodoo": "bin/create-boodoo.mjs"
   },
   "type": "module",
