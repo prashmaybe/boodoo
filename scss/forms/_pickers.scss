@@ -83,11 +83,17 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  flex: 0 0 2rem;
+  aspect-ratio: 1 / 1;
   padding: 0;
   border-radius: var(--boodoo-border-radius-sm, 0.25rem);
   border: 2px solid transparent;
   cursor: pointer;
   background-clip: padding-box;
+  box-sizing: border-box;
+  line-height: 1;
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 
   &:hover {
@@ -110,6 +116,7 @@
       color: #fff;
       font-size: 0.875rem;
       font-weight: bold;
+      line-height: 1;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
     }
   }
@@ -121,11 +128,17 @@
   &.swatch-sm {
     width: 1.5rem;
     height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    flex: 0 0 1.5rem;
   }
 
   &.swatch-lg {
     width: 2.5rem;
     height: 2.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    flex: 0 0 2.5rem;
   }
 }
 

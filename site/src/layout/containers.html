@@ -5,21 +5,23 @@ section: layout
 order: 0
 -->
 <h1><span>Containers</span></h1>
-<p class="lead"><span>Containers are a fundamental building block of boodoo that contain, pad, and (sometimes) center the
-  content within them. Use them to avoid awkward full-width horizontal layouts.</span></p>
+<p class="lead"><span>Containers are a fundamental building block of boodoo that contain, pad, and (sometimes) center
+    the
+    content within them. Use them to avoid awkward full-width horizontal layouts.</span></p>
 
 <h2 id="how-it-works"><span>How they work</span></h2>
 <p><span>Containers are the most basic layout element in boodoo and are <strong>required when using the default grid
-    system</strong>. Choose from a responsive, fixed-width container (meaning its <code>max-width</code> changes at each
-  breakpoint) or fluid-width (meaning it's <code>100%</code> wide all the time). While containers <em>can</em> be
-  nested, most layouts do not require a nested container.</span></p>
+      system</strong>. Choose from a responsive, fixed-width container (meaning its <code>max-width</code> changes at
+    each
+    breakpoint) or fluid-width (meaning it's <code>100%</code> wide all the time). While containers <em>can</em> be
+    nested, most layouts do not require a nested container.</span></p>
 
 <h2 id="default"><span>Default container</span></h2>
 <p><span>boodoo's default <code>.container</code> class is a responsive, fixed-width container, meaning its
-  <code>max-width</code> changes at each breakpoint.</span></p>
+    <code>max-width</code> changes at each breakpoint.</span></p>
 
 <div class="bd-example">
-  <div class="container p-3 bg-primary-soft text-primary border border-primary rounded text-center">
+  <div class="container px-2 py-1 bg-primary-soft text-primary border border-primary rounded text-center">
     <span>Responsive <code>.container</code> centered with horizontal padding</span>
   </div>
 </div>
@@ -30,10 +32,11 @@ order: 0
 </div>
 
 <h2 id="fluid"><span>Fluid container</span></h2>
-<p><span>Use <code>.container-fluid</code> for a full-width container, spanning the entire width of the viewport.</span></p>
+<p><span>Use <code>.container-fluid</code> for a full-width container, spanning the entire width of the viewport.</span>
+</p>
 
 <div class="bd-example">
-  <div class="container-fluid p-3 bg-info-soft text-info border border-info rounded text-center">
+  <div class="container-fluid px-2 py-1 bg-info-soft text-info border border-info rounded text-center">
     <span>Full-width <code>.container-fluid</code> spanning 100% of viewport</span>
   </div>
 </div>
@@ -47,9 +50,12 @@ order: 0
 <p><span>boodoo comes with responsive containers which change max-width at specific breakpoints.</span></p>
 
 <div class="bd-example d-flex flex-column gap-2">
-  <div class="container-sm p-2 bg-light border rounded text-center small"><span>100% wide until small (&ge;576px)</span></div>
-  <div class="container-md p-2 bg-light border rounded text-center small"><span>100% wide until medium (&ge;768px)</span></div>
-  <div class="container-lg p-2 bg-light border rounded text-center small"><span>100% wide until large (&ge;992px)</span></div>
+  <div class="container-sm p-2 bg-light border rounded text-center small"><span>100% wide until small (&ge;576px)</span>
+  </div>
+  <div class="container-md p-2 bg-light border rounded text-center small"><span>100% wide until medium
+      (&ge;768px)</span></div>
+  <div class="container-lg p-2 bg-light border rounded text-center small"><span>100% wide until large (&ge;992px)</span>
+  </div>
 </div>
 <div class="highlight">
   <pre><code>&lt;div class="container-sm"&gt;&lt;span&gt;100% wide until small breakpoint&lt;/span&gt;&lt;/div&gt;
@@ -131,25 +137,28 @@ order: 0
 </table>
 
 <h2 id="application-shell">Application Shell Chrome</h2>
-<p>For modern web applications, SaaS consoles, and enterprise portals, Boodoo provides dedicated layout chrome helpers that integrate seamlessly with grid and flexbox architectures.</p>
+<p>For modern web applications, SaaS consoles, and enterprise portals, Boodoo provides dedicated layout chrome helpers
+  that integrate seamlessly with grid and flexbox architectures.</p>
 <div class="bd-example">
   <div class="border rounded overflow-hidden">
-    <div class="shell-header p-3 bg-light border-bottom d-flex align-items-center justify-content-between">
+    <div class="shell-header p-1 bg-light border-bottom d-flex align-items-center justify-content-between">
       <span class="fw-semibold"><span>App Shell Header (.shell-header)</span></span>
       <span class="badge badge-primary"><span>Sticky Nav</span></span>
     </div>
     <div class="d-flex" style="min-height: 180px;">
-      <div class="shell-sidebar p-3 border-end bg-light" style="width: 200px; height: auto;">
+      <div class="shell-sidebar p-1 border-end bg-light" style="width: 200px; height: auto;">
         <p class="small text-muted mb-2"><span>.shell-sidebar</span></p>
         <ul class="nav flex-column gap-1">
-          <li class="nav-item"><a class="nav-link nav-active-bar nav-active-bar-start active py-1" href="#!"><span>Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link py-1" href="#!"><span>Projects</span></a></li>
+          <li class="nav-item"><a class="nav-link nav-active-bar nav-active-bar-start active"
+              href="#!"><span>Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#!"><span>Projects</span></a></li>
         </ul>
       </div>
       <div class="shell-pad flex-grow-1 bg-white">
         <div class="feature-card">
           <h4 class="h6 fw-bold mb-1"><span>Interactive Feature Card (.feature-card)</span></h4>
-          <p class="small text-muted mb-0"><span>Includes elevation hover effects and responsive border transitions.</span></p>
+          <p class="small text-muted mb-0"><span>Includes elevation hover effects and responsive border
+              transitions.</span></p>
         </div>
       </div>
     </div>

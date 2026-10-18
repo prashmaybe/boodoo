@@ -5,40 +5,46 @@ section: getting-started
 order: 16
 -->
 <h1><span>React Native &amp; Mobile Examples</span></h1>
-<p class="lead"><span>Explore complete, copy-pasteable examples for <strong>React Native Mobile (iOS &amp; Android)</strong>, <strong>Expo</strong>, <strong>React Native Paper theme skinning</strong>, and <strong>Universal Design Tokens</strong>.</span></p>
+<p class="lead"><span>Explore complete, copy-pasteable examples for <strong>React Native Mobile (iOS &amp;
+      Android)</strong>, <strong>Expo</strong>, <strong>React Native Paper theme skinning</strong>, and
+    <strong>Universal Design Tokens</strong>.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-2 shadow-sm">
       <div class="fs-3 mb-2"><span>📱</span></div>
       <h5><span>1. Native Mobile UI</span></h5>
-      <p class="text-muted fs-7 mb-0"><span>Zero DOM, zero external dependencies. Pure React Native <code>StyleSheet</code> primitives with auto-theming.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Zero DOM, zero external dependencies. Pure React Native
+          <code>StyleSheet</code> primitives with auto-theming.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-2 shadow-sm">
       <div class="fs-3 mb-2"><span>🔄</span></div>
       <h5><span>2. Paper Theme Adapter</span></h5>
-      <p class="text-muted fs-7 mb-0"><span>Drop-in Material Design 3 light &amp; dark themes for instant visual upgrades in existing Paper apps.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Drop-in Material Design 3 light &amp; dark themes for instant visual
+          upgrades in existing Paper apps.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-2 shadow-sm">
       <div class="fs-3 mb-2"><span>🎨</span></div>
       <h5><span>3. Universal Tokens</span></h5>
-      <p class="text-muted fs-7 mb-0"><span>Raw JSON and JS design tokens for custom StyleSheet creation across iOS, Android, and Web.</span></p>
+      <p class="text-muted fs-7 mb-0"><span>Raw JSON and JS design tokens for custom StyleSheet creation across iOS,
+          Android, and Web.</span></p>
     </div>
   </div>
 </div>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="native-components"><span>Example 1: Pure React Native Component Suite (`boodoo/react-native`)</span></h2>
-<p><span>Build beautiful iOS &amp; Android screens with tactile cards, buttons, badges, typography, and text inputs. Works seamlessly in both Expo and bare React Native:</span></p>
+<p><span>Build beautiful iOS &amp; Android screens with tactile cards, buttons, badges, typography, and text inputs.
+    Works seamlessly in both Expo and bare React Native:</span></p>
 
 <div class="bd-example">
-  <div class="d-flex flex-column gap-3" style="max-width: 480px; margin: 0 auto;">
-    <div class="card p-4 shadow-sm border">
+  <div class="d-flex flex-column gap-2" style="max-width: 480px; margin: 0 auto;">
+    <div class="card p-2 shadow-sm border">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <h5 class="mb-0"><span>Account Settings</span></h5>
         <span class="badge bg-primary"><span>iOS &amp; Android</span></span>
@@ -46,11 +52,13 @@ order: 16
       <p class="text-muted small mb-3"><span>Manage your profile and mobile notification preferences.</span></p>
       <div class="mb-3">
         <label class="form-label small fw-semibold" for="demo-name"><span>Display Name</span></label>
-        <input type="text" class="form-control form-control-sm" id="demo-name" name="demo-name" value="Alex Morgan" readonly>
+        <input type="text" class="form-control form-control-sm" id="demo-name" name="demo-name" value="Alex Morgan"
+          readonly>
       </div>
       <div class="d-flex gap-2 justify-content-end">
         <button type="button" class="btn btn-outline-secondary btn-sm" aria-label="Cancel"><span>Cancel</span></button>
-        <button type="button" class="btn btn-primary btn-sm" aria-label="Save Changes"><span>Save Changes</span></button>
+        <button type="button" class="btn btn-primary btn-sm" aria-label="Save Changes"><span>Save
+            Changes</span></button>
       </div>
     </div>
   </div>
@@ -129,10 +137,11 @@ const styles = StyleSheet.create({
 });</code></pre>
 </div>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="component-suite"><span>React Native Paper Component Parity in `boodoo/react-native`</span></h2>
-<p><span>All major components from <strong>React Native Paper</strong> are implemented as lightweight, pure native components with zero external dependencies and full theme support:</span></p>
+<p><span>All major components from <strong>React Native Paper</strong> are implemented as lightweight, pure native
+    components with zero external dependencies and full theme support:</span></p>
 
 <div class="table-responsive mb-4">
   <table class="table table-bordered table-striped">
@@ -147,12 +156,14 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>Text</code></td>
         <td><span>Typography</span></td>
-        <td><span>Supports MD3 variants (<code>displayLarge</code>, <code>headlineMedium</code>, <code>titleMedium</code>, <code>bodySmall</code>, etc.) and semantic scale.</span></td>
+        <td><span>Supports MD3 variants (<code>displayLarge</code>, <code>headlineMedium</code>,
+            <code>titleMedium</code>, <code>bodySmall</code>, etc.) and semantic scale.</span></td>
       </tr>
       <tr>
         <td><code>Button</code></td>
         <td><span>Buttons</span></td>
-        <td><span>Modes: <code>contained</code>, <code>outlined</code>, <code>text</code>, <code>elevated</code> with icon, loading, and size props.</span></td>
+        <td><span>Modes: <code>contained</code>, <code>outlined</code>, <code>text</code>, <code>elevated</code> with
+            icon, loading, and size props.</span></td>
       </tr>
       <tr>
         <td><code>IconButton</code></td>
@@ -187,7 +198,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>Avatar</code></td>
         <td><span>Data Display</span></td>
-        <td><span>Entity visuals with <code>Avatar.Text</code>, <code>Avatar.Icon</code>, and <code>Avatar.Image</code>.</span></td>
+        <td><span>Entity visuals with <code>Avatar.Text</code>, <code>Avatar.Icon</code>, and
+            <code>Avatar.Image</code>.</span></td>
       </tr>
       <tr>
         <td><code>Chip</code></td>
@@ -197,7 +209,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>Card</code></td>
         <td><span>Surfaces</span></td>
-        <td><span>Content container with <code>Card.Title</code>, <code>Card.Content</code>, <code>Card.Cover</code>, and <code>Card.Actions</code>.</span></td>
+        <td><span>Content container with <code>Card.Title</code>, <code>Card.Content</code>, <code>Card.Cover</code>,
+            and <code>Card.Actions</code>.</span></td>
       </tr>
       <tr>
         <td><code>Surface</code></td>
@@ -212,7 +225,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>TextInput</code></td>
         <td><span>Inputs</span></td>
-        <td><span>Inputs supporting <code>outlined</code> and <code>flat</code> modes with left/right accessories.</span></td>
+        <td><span>Inputs supporting <code>outlined</code> and <code>flat</code> modes with left/right
+            accessories.</span></td>
       </tr>
       <tr>
         <td><code>Searchbar</code></td>
@@ -232,7 +246,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>RadioButton</code></td>
         <td><span>Selection</span></td>
-        <td><span>Radio selection control with <code>RadioButton.Group</code> and <code>RadioButton.Item</code>.</span></td>
+        <td><span>Radio selection control with <code>RadioButton.Group</code> and <code>RadioButton.Item</code>.</span>
+        </td>
       </tr>
       <tr>
         <td><code>Switch</code></td>
@@ -247,12 +262,14 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>List</code></td>
         <td><span>Navigation &amp; Lists</span></td>
-        <td><span>Includes <code>List.Section</code>, <code>List.Subheader</code>, <code>List.Item</code>, <code>List.Icon</code>, and expandable <code>List.Accordion</code>.</span></td>
+        <td><span>Includes <code>List.Section</code>, <code>List.Subheader</code>, <code>List.Item</code>,
+            <code>List.Icon</code>, and expandable <code>List.Accordion</code>.</span></td>
       </tr>
       <tr>
         <td><code>Appbar</code></td>
         <td><span>Navigation</span></td>
-        <td><span>Header navigation with <code>Appbar.Header</code>, <code>Appbar.Content</code>, <code>Appbar.Action</code>, and <code>Appbar.BackAction</code>.</span></td>
+        <td><span>Header navigation with <code>Appbar.Header</code>, <code>Appbar.Content</code>,
+            <code>Appbar.Action</code>, and <code>Appbar.BackAction</code>.</span></td>
       </tr>
       <tr>
         <td><code>Drawer</code></td>
@@ -267,7 +284,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>Dialog</code></td>
         <td><span>Overlays</span></td>
-        <td><span>Modal dialog with <code>Dialog.Title</code>, <code>Dialog.Content</code>, <code>Dialog.Actions</code>, and <code>Dialog.ScrollArea</code>.</span></td>
+        <td><span>Modal dialog with <code>Dialog.Title</code>, <code>Dialog.Content</code>, <code>Dialog.Actions</code>,
+            and <code>Dialog.ScrollArea</code>.</span></td>
       </tr>
       <tr>
         <td><code>Modal</code></td>
@@ -297,7 +315,8 @@ const styles = StyleSheet.create({
       <tr>
         <td><code>DataTable</code></td>
         <td><span>Data Display</span></td>
-        <td><span>Tabular data presentation with <code>DataTable.Header</code>, <code>DataTable.Title</code>, <code>DataTable.Row</code>, <code>DataTable.Cell</code>, and <code>DataTable.Pagination</code>.</span></td>
+        <td><span>Tabular data presentation with <code>DataTable.Header</code>, <code>DataTable.Title</code>,
+            <code>DataTable.Row</code>, <code>DataTable.Cell</code>, and <code>DataTable.Pagination</code>.</span></td>
       </tr>
       <tr>
         <td><code>TouchableRipple</code></td>
@@ -313,8 +332,10 @@ const styles = StyleSheet.create({
   </table>
 </div>
 
-<h3 id="multi-library-parity"><span>Cross-Library Component Matrix (RNE UI, Gluestack, Tamagui, UI Kitten, Wix)</span></h3>
-<p><span>In addition to React Native Paper, <code>boodoo/react-native</code> includes zero-runtime-overhead equivalents and drop-in component aliases for the most popular React Native ecosystems:</span></p>
+<h3 id="multi-library-parity"><span>Cross-Library Component Matrix (RNE UI, Gluestack, Tamagui, UI Kitten, Wix)</span>
+</h3>
+<p><span>In addition to React Native Paper, <code>boodoo/react-native</code> includes zero-runtime-overhead equivalents
+    and drop-in component aliases for the most popular React Native ecosystems:</span></p>
 
 <div class="table-responsive mb-4">
   <table class="table table-bordered table-striped">
@@ -328,37 +349,58 @@ const styles = StyleSheet.create({
     <tbody>
       <tr>
         <td><strong>React Native Elements (RNE UI)</strong></td>
-        <td><span><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>, <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>, <code>Overlay</code>, <code>Input</code>, <code>ListItem</code></span></td>
-        <td><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>, <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>, <code>Overlay</code>, <code>Input</code>, <code>ListItem</code></td>
+        <td><span><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>,
+            <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>,
+            <code>Overlay</code>, <code>Input</code>, <code>ListItem</code></span></td>
+        <td><code>ButtonGroup</code>, <code>PricingCard</code>, <code>Tile</code>, <code>SearchBar</code>,
+          <code>CheckBox</code>, <code>Slider</code>, <code>Header</code>, <code>BottomSheet</code>,
+          <code>Overlay</code>, <code>Input</code>, <code>ListItem</code>
+        </td>
       </tr>
       <tr>
         <td><strong>gluestack-ui</strong></td>
-        <td><span><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>, <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>, <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code></span></td>
-        <td><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>, <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>, <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code></td>
+        <td><span><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>,
+            <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>,
+            <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code></span></td>
+        <td><code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code>,
+          <code>Heading</code>, <code>Pressable</code>, <code>Alert</code>, <code>AlertDialog</code>,
+          <code>Actionsheet</code>, <code>Skeleton</code>, <code>Textarea</code>
+        </td>
       </tr>
       <tr>
         <td><strong>Tamagui</strong></td>
-        <td><span><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>, <code>Spinner</code>, <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>, <code>Popover</code></span></td>
-        <td><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>, <code>Spinner</code>, <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>, <code>Popover</code></td>
+        <td><span><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>,
+            <code>Spinner</code>, <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>,
+            <code>Popover</code></span></td>
+        <td><code>XStack</code>, <code>YStack</code>, <code>ZStack</code>, <code>Separator</code>, <code>Spinner</code>,
+          <code>Progress</code>, <code>Sheet</code>, <code>TextArea</code>, <code>Popover</code>
+        </td>
       </tr>
       <tr>
         <td><strong>UI Kitten (Eva Design)</strong></td>
-        <td><span><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Card</code>, <code>Divider</code>, <code>Select</code></span></td>
-        <td><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Card</code>, <code>Divider</code>, <code>Select</code></td>
+        <td><span><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>,
+            <code>Card</code>, <code>Divider</code>, <code>Select</code></span></td>
+        <td><code>Toggle</code>, <code>TopNavigation</code>, <code>Radio</code>, <code>RadioGroup</code>,
+          <code>Card</code>, <code>Divider</code>, <code>Select</code>
+        </td>
       </tr>
       <tr>
         <td><strong>react-native-ui-lib (Wix)</strong></td>
-        <td><span><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>, <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code></span></td>
-        <td><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>, <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code></td>
+        <td><span><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>,
+            <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code></span></td>
+        <td><code>TextField</code>, <code>Stepper</code>, <code>Picker</code>, <code>PageControl</code>,
+          <code>ActionSheet</code>, <code>Toast</code>, <code>Table</code>, <code>Card.Section</code>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="paper-adapter"><span>Example 2: React Native Paper Integration (`boodoo/paper`)</span></h2>
-<p><span>If your project already uses <strong>react-native-paper</strong>, apply Boodoo's modern styling and color palette across all existing Material 3 components in just 2 lines:</span></p>
+<p><span>If your project already uses <strong>react-native-paper</strong>, apply Boodoo's modern styling and color
+    palette across all existing Material 3 components in just 2 lines:</span></p>
 
 <div class="highlight">
   <pre><code class="language-jsx">import React from 'react';
@@ -393,10 +435,11 @@ export default function App() {
 }</code></pre>
 </div>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="design-tokens"><span>Example 3: Custom StyleSheet with Design Tokens (`boodoo/tokens`)</span></h2>
-<p><span>Export and utilize raw tokens for custom native views, navigation bars, and gestures without any component abstraction:</span></p>
+<p><span>Export and utilize raw tokens for custom native views, navigation bars, and gestures without any component
+    abstraction:</span></p>
 
 <div class="highlight">
   <pre><code class="language-jsx">import React from 'react';
@@ -448,10 +491,11 @@ const styles = StyleSheet.create({
 });</code></pre>
 </div>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="cli-starter"><span>Example 4: Instant Expo Project Setup via CLI</span></h2>
-<p><span>Scaffold a production-ready Expo project configured with Boodoo Native components using a single terminal command:</span></p>
+<p><span>Scaffold a production-ready Expo project configured with Boodoo Native components using a single terminal
+    command:</span></p>
 
 <div class="highlight">
   <pre><code>npx create-boodoo my-mobile-app</code></pre>
@@ -465,17 +509,20 @@ npx expo start</code></pre>
 </div>
 <p><span>Scan the QR code with your iOS camera or Expo Go on Android to test live on your physical device.</span></p>
 
-<hr class="my-4">
+<hr class="my-2">
 
 <h2 id="download-starter-zip"><span>Download Standalone Mobile Starter Zip</span></h2>
-<p><span>Prefer a direct archive download? Grab the pre-packaged Expo &amp; Boodoo Native mobile starter bundle below:</span></p>
+<p><span>Prefer a direct archive download? Grab the pre-packaged Expo &amp; Boodoo Native mobile starter bundle
+    below:</span></p>
 
-<div class="card p-4 rounded-4 border bg-light">
+<div class="card p-2 rounded-4 border bg-light">
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
     <div>
       <h4 class="fw-bold mb-1"><span>React Native Mobile Starter .zip</span></h4>
-      <p class="text-muted small mb-0"><span>Includes Expo SDK 51 configuration, App.js with Boodoo UI components, package.json, and app.json.</span></p>
+      <p class="text-muted small mb-0"><span>Includes Expo SDK 51 configuration, App.js with Boodoo UI components,
+          package.json, and app.json.</span></p>
     </div>
-    <a class="btn btn-primary rounded-pill px-4 shadow-sm" href="{{archiveStarterReactNative}}" download><span>Download Starter .zip</span></a>
+    <a class="btn btn-primary rounded-pill px-2 shadow-sm" href="{{archiveStarterReactNative}}" download><span>Download
+        Starter .zip</span></a>
   </div>
 </div>

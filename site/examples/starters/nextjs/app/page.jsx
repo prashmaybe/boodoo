@@ -16,7 +16,7 @@ export default function HomePage() {
             href="https://boodoo.dihadiwala.com/docs/getting-started/introduction.html"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-primary btn-lg rounded-pill px-4 shadow-sm"
+            className="btn btn-primary btn-lg rounded-pill px-2 shadow-sm"
           >
             Explore Documentation
           </a>

@@ -9,7 +9,7 @@ export default function App() {
         <a href="/" className="d-flex align-items-center text-dark text-decoration-none gap-2">
           <span className="fs-4 fw-bold text-primary">boodoo + React</span>
         </a>
-        <span className="badge bg-primary-soft text-primary px-3 py-2 rounded-pill">Vite Starter</span>
+        <span className="badge bg-primary-soft px-3 py-2 rounded-pill">Vite Starter</span>
       </header>
 
       <main className="p-5 mb-4 bg-light rounded-4 shadow-sm border text-center">
@@ -20,7 +20,7 @@ export default function App() {
         <div className="d-flex justify-content-center gap-3">
           <button
             type="button"
-            className="btn btn-primary btn-lg rounded-pill px-4 shadow-sm"
+            className="btn btn-primary btn-lg rounded-pill px-2 shadow-sm"
             onClick={() => setCount((c) => c + 1)}
           >
             Count is: {count}

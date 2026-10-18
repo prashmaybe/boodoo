@@ -266,21 +266,26 @@
       </ol>
     </nav>
           <h1><span>boodoo vs React Native Paper</span></h1>
-<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>React Native Paper</strong> to discover how boodoo brings ultra-lightweight, modern mobile styling, universal design tokens, and drop-in React Native components to iOS and Android with zero bloated dependencies and complete visual freedom.</span></p>
+<p class="lead"><span>Compare <strong>boodoo</strong> and <strong>React Native Paper</strong> to discover how boodoo
+    brings ultra-lightweight, modern mobile styling, universal design tokens, and drop-in React Native components to iOS
+    and Android with zero bloated dependencies and complete visual freedom.</span></p>
 
 <h2 id="interactive-preview"><span>Modern Native Mobile Styling Preview</span></h2>
-<p><span>Experience clean cards, buttons, and badges that feel truly at home on iOS &amp; Android without rigid Google Material 3 conventions:</span></p>
+<p><span>Experience clean cards, buttons, and badges that feel truly at home on iOS &amp; Android without rigid Google
+    Material 3 conventions:</span></p>
 
 <div class="bd-example">
-  <div class="d-flex flex-column gap-3" style="max-width: 440px; margin: 0 auto;">
-    <div class="card p-4 shadow-sm border">
+  <div class="d-flex flex-column gap-2" style="max-width: 440px; margin: 0 auto;">
+    <div class="card p-2 shadow-sm border">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <h5 class="mb-0"><span>Boodoo Native Card</span></h5>
         <span class="badge bg-primary"><span>iOS &amp; Android</span></span>
       </div>
-      <p class="text-muted small mb-3"><span>Sleek purple/cyan aesthetics, refined borders, and native touch feedback with zero heavy runtime packages.</span></p>
+      <p class="text-muted small mb-3"><span>Sleek purple/cyan aesthetics, refined borders, and native touch feedback
+          with zero heavy runtime packages.</span></p>
       <div class="d-flex gap-2 justify-content-end">
-        <button type="button" class="btn btn-outline-secondary btn-sm" aria-label="Dismiss"><span>Dismiss</span></button>
+        <button type="button" class="btn btn-outline-secondary btn-sm"
+          aria-label="Dismiss"><span>Dismiss</span></button>
         <button type="button" class="btn btn-primary btn-sm" aria-label="Confirm"><span>Confirm</span></button>
       </div>
     </div>
@@ -321,32 +326,39 @@ export default function MobileScreen() {
   <tbody>
     <tr>
       <td><strong><span>Design Language</span></strong></td>
-      <td><span>Modern, balanced SaaS &amp; cross-platform aesthetic (customizable curves, purple/cyan palette, soft borders)</span></td>
+      <td><span>Modern, balanced SaaS &amp; cross-platform aesthetic (customizable curves, purple/cyan palette, soft
+          borders)</span></td>
       <td><span>Strict Material Design 3 (MD3) — looks heavily "Google/Android" by default</span></td>
     </tr>
     <tr>
       <td><strong><span>Bundle Overhead</span></strong></td>
-      <td><strong><span>Zero external runtime dependencies</span></strong> <span>(pure React Native StyleSheet engine)</span></td>
+      <td><strong><span>Zero external runtime dependencies</span></strong> <span>(pure React Native StyleSheet
+          engine)</span></td>
       <td><span>Heavy (~250+ KB JS, pulls in color, reanimated, safe-area-context, vector icons)</span></td>
     </tr>
     <tr>
       <td><strong><span>Icon / Font Setup Friction</span></strong></td>
-      <td><strong><span>Zero native linking required</span></strong> <span>(Works immediately in Expo Go and bare React Native)</span></td>
+      <td><strong><span>Zero native linking required</span></strong> <span>(Works immediately in Expo Go and bare React
+          Native)</span></td>
       <td><span>Requires <code>react-native-vector-icons</code> native CocoaPods/Gradle font asset linking</span></td>
     </tr>
     <tr>
       <td><strong><span>Styling &amp; Customization</span></strong></td>
-      <td><span>Intuitive variants (<code>solid</code>, <code>soft</code>, <code>outline</code>, <code>ghost</code>) and straightforward sizes (<code>sm</code>, <code>md</code>, <code>lg</code>)</span></td>
-      <td><span>Rigid MD3 props (<code>contained</code>, <code>elevated</code>, <code>text</code>); awkward overrides via nested style props</span></td>
+      <td><span>Intuitive variants (<code>solid</code>, <code>soft</code>, <code>outline</code>, <code>ghost</code>) and
+          straightforward sizes (<code>sm</code>, <code>md</code>, <code>lg</code>)</span></td>
+      <td><span>Rigid MD3 props (<code>contained</code>, <code>elevated</code>, <code>text</code>); awkward overrides
+          via nested style props</span></td>
     </tr>
     <tr>
       <td><strong><span>Web &amp; Landing Page Synergy</span></strong></td>
-      <td>✅ <strong><span>Full cross-platform parity</span></strong> <span>(Shares tokens with HTML, Next.js, Vite, and Electron)</span></td>
+      <td>✅ <strong><span>Full cross-platform parity</span></strong> <span>(Shares tokens with HTML, Next.js, Vite, and
+          Electron)</span></td>
       <td>❌ <span>Mobile-focused; RN Web output produces non-standard HTML with heavy CSS-in-JS runtimes</span></td>
     </tr>
     <tr>
       <td><strong><span>Drop-in Paper Compatibility</span></strong></td>
-      <td>✅ <strong><span>Includes <code>boodoo/paper</code> theme adapter</span></strong> <span>(Upgrade existing Paper apps without rewriting components)</span></td>
+      <td>✅ <strong><span>Includes <code>boodoo/paper</code> theme adapter</span></strong> <span>(Upgrade existing Paper
+          apps without rewriting components)</span></td>
       <td><span>N/A</span></td>
     </tr>
     <tr>
@@ -358,7 +370,8 @@ export default function MobileScreen() {
 </table>
 
 <h2 id="two-phase-migration"><span>Zero-Risk Adoption: From Paper to Boodoo</span></h2>
-<p><span>You don't need to rewrite your mobile codebase overnight. Boodoo provides two flexible adoption phases:</span></p>
+<p><span>You don't need to rewrite your mobile codebase overnight. Boodoo provides two flexible adoption phases:</span>
+</p>
 
 <h3 id=""><span>Phase 1: Skin your existing React Native Paper app with Boodoo's theme</span></h3>
 <p><span>If you already use React Native Paper, import Boodoo's ready-to-use MD3 theme preset:</span></p>
@@ -376,12 +389,18 @@ export default function App() {
 </div>
 
 <h3 id=""><span>Phase 2: Transition to pure Boodoo Native components</span></h3>
-<p><span>As you build new screens or refactor existing ones, swap Paper components with lightweight Boodoo components from <code>boodoo/react-native</code> to eliminate bloat, simplify styling, and achieve lightning-fast render performance.</span></p>
+<p><span>As you build new screens or refactor existing ones, swap Paper components with lightweight Boodoo components
+    from <code>boodoo/react-native</code> to eliminate bloat, simplify styling, and achieve lightning-fast render
+    performance.</span></p>
 
 <h2 id="why-choose-boodoo"><span>Why developers choose boodoo over React Native Paper</span></h2>
-<p><span>While React Native Paper is a capable library for Google Material Design implementations, modern mobile product teams often want an interface that feels clean, premium, and unified with their web apps rather than feeling like an Android utility. <strong>boodoo</strong> bridges that gap by offering lightweight native components, universal design tokens, and a shared visual language across Web, Desktop, and Mobile.</span></p>
+<p><span>While React Native Paper is a capable library for Google Material Design implementations, modern mobile product
+    teams often want an interface that feels clean, premium, and unified with their web apps rather than feeling like an
+    Android utility. <strong>boodoo</strong> bridges that gap by offering lightweight native components, universal
+    design tokens, and a shared visual language across Web, Desktop, and Mobile.</span></p>
 
-<p><span>Ready to migrate your mobile project? Follow our <a href="migrate-from-react-native-paper.html"><span>React Native Paper to boodoo Migration Guide</span></a>.</span></p>
+<p><span>Ready to migrate your mobile project? Follow our <a href="migrate-from-react-native-paper.html"><span>React
+        Native Paper to boodoo Migration Guide</span></a>.</span></p>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
     

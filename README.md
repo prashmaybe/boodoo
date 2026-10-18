@@ -27,9 +27,9 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 ## ✨ Highlights
 
 - **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
-- **Declarative Headless React Hooks** — First-party headless hooks (`boodoo/react`) including `useDisclosure`, `useCombobox`, and `useAccordion` for Next.js, Remix, and Vite
+- **Declarative Headless React & Vue 3 Hooks** — First-party headless hooks (`boodoo/react`) and composables (`boodoo/vue`) including `useDisclosure`, `useCombobox`, and `useAccordion` for Next.js, Remix, Vite, Nuxt, and Vue 3
 - **WAI-ARIA Accessibility Suite** — Screen-reader live region announcer (`a11y.announce`), roving tabindex coordinator (`a11y.setRovingTabindex`), and accessible focus trapping (`a11y.createFocusTrap`)
-- **Complete TypeScript Surface** — Full `.d.ts` type declarations across all entrypoints (`boodoo`, `boodoo/tokens`, `boodoo/react-native`, `boodoo/react`)
+- **Complete TypeScript Surface** — Full `.d.ts` type declarations across all entrypoints (`boodoo`, `boodoo/tokens`, `boodoo/react-native`, `boodoo/react`, `boodoo/vue`)
 - **Unified Design Tokens** — Single unified brand palette across Sass, Less, tokens JSON, and React Native themes
 - **Sanitized Public APIs** — Zero-dependency HTML entity escaping across Toasts, Chip Input, and Command Palette
 - **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or Popper required
@@ -48,13 +48,13 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~469 KB | ~65.3 KB | ~43.1 KB | Full framework (all 44 components + utilities) |
+| `boodoo.min.css` | ~502 KB | ~70.0 KB | ~47.4 KB | Full framework (all 44 components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.0 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~130 KB | ~25.4 KB | ~21.2 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
-| `boodoo.js` | ~142 KB | ~29.1 KB | ~24.5 KB | Pure vanilla JS unminified bundle |
+| `boodoo.min.js` | ~133 KB | ~25.5 KB | ~21.4 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
+| `boodoo.js` | ~145 KB | ~29.4 KB | ~24.6 KB | Pure vanilla JS unminified bundle |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
@@ -97,6 +97,9 @@ import 'boodoo/css';
 
 // Headless Declarative React Hooks (Next.js, Remix, Vite)
 import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
+
+// Headless Declarative Vue 3 Composables (Nuxt, Vite)
+import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion } from 'boodoo/vue';
 
 // React Native Mobile (iOS & Android)
 import { Button, Card, BoodooProvider } from 'boodoo/react-native';

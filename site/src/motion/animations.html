@@ -6,22 +6,33 @@ order: 0
 -->
 <h1>Animations</h1>
 <p class="lead">boodoo ships a small library of purposeful animation utilities, all of which respect
-  <code>prefers-reduced-motion</code>.</p>
+  <code>prefers-reduced-motion</code>.
+</p>
 
 <h2 id="utilities">Animation utilities</h2>
-<p>Hover or click each badge to replay the animation, or use the replay button to trigger all entrance effects simultaneously:</p>
+<p>Hover or click each badge to replay the animation, or use the replay button to trigger all entrance effects
+  simultaneously:</p>
 
 <div class="bd-example">
   <div class="d-flex flex-wrap gap-3 mb-3" id="animDemoBadges">
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-fade-in" data-anim="animate-fade-in"><span>fade-in</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-up" data-anim="animate-slide-up"><span>slide-up</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-down" data-anim="animate-slide-down"><span>slide-down</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-left" data-anim="animate-slide-left"><span>slide-left</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-right" data-anim="animate-slide-right"><span>slide-right</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-zoom-in" data-anim="animate-zoom-in"><span>zoom-in</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-pulse" data-anim="animate-pulse"><span>pulse (infinite)</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-shake" data-anim="animate-shake"><span>shake</span></button>
-    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-glow" data-anim="animate-glow"><span>glow (infinite)</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-fade-in"
+      data-anim="animate-fade-in"><span>fade-in</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-up"
+      data-anim="animate-slide-up"><span>slide-up</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-down"
+      data-anim="animate-slide-down"><span>slide-down</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-left"
+      data-anim="animate-slide-left"><span>slide-left</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-slide-right"
+      data-anim="animate-slide-right"><span>slide-right</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-zoom-in"
+      data-anim="animate-zoom-in"><span>zoom-in</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-pulse"
+      data-anim="animate-pulse"><span>pulse (infinite)</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-shake"
+      data-anim="animate-shake"><span>shake</span></button>
+    <button type="button" class="btn btn-outline-secondary demo-anim-badge animate-glow"
+      data-anim="animate-glow"><span>glow (infinite)</span></button>
   </div>
   <div class="d-flex align-items-center gap-2">
     <button type="button" class="btn btn-sm btn-primary" id="replayEntranceBtn">
@@ -45,12 +56,16 @@ order: 0
 
 <h2 id="delay-duration">Delay &amp; duration</h2>
 <p>Control timing with <code>.delay-{75|100|150|200|300|500}</code> and
-  <code>.duration-{75|100|150|200|300|500|1000|2000|3000}</code>.</p>
+  <code>.duration-{75|100|150|200|300|500|1000|2000|3000}</code>.
+</p>
 <div class="bd-example">
-  <div class="d-flex flex-wrap gap-2 mb-3" id="animTimingBoxes">
-    <span class="animate-fade-in delay-100 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay 100ms</span></span>
-    <span class="animate-fade-in delay-300 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay 300ms</span></span>
-    <span class="animate-fade-in delay-500 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay 500ms</span></span>
+  <div class="d-flex flex-wrap gap-1 mb-3" id="animTimingBoxes">
+    <span class="animate-fade-in delay-100 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay
+        100ms</span></span>
+    <span class="animate-fade-in delay-300 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay
+        300ms</span></span>
+    <span class="animate-fade-in delay-500 border rounded p-3 bg-light" data-anim="animate-fade-in"><span>delay
+        500ms</span></span>
   </div>
   <div>
     <button type="button" class="btn btn-sm btn-outline-primary" id="replayTimingBtn">
@@ -82,13 +97,15 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</cod
 </div>
 
 <h2 id="scroll-driven-animations"><span>Native Scroll-Driven Animations (CSS Timeline)</span></h2>
-<p><span>In modern browsers (Chrome, Edge 115+), boodoo supports native CSS Scroll-Driven Animations with <strong>zero JavaScript overhead</strong>:</span></p>
+<p><span>In modern browsers (Chrome, Edge 115+), boodoo supports native CSS Scroll-Driven Animations with <strong>zero
+      JavaScript overhead</strong>:</span></p>
 
 <div class="bd-example">
   <div class="p-3 border rounded bg-light">
     <p class="mb-2"><span>Scroll progress indicator:</span></p>
     <div class="progress" style="height: 6px;">
-      <div class="progress-bar scroll-progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+      <div class="progress-bar scroll-progress-bar bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+        aria-valuemax="100" style="width: 100%;"></div>
     </div>
   </div>
 </div>
@@ -127,7 +144,7 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));</cod
       // Force repaint to allow re-triggering CSS animation
       void el.offsetWidth;
       el.classList.add(animClass, 'is-animating');
-      
+
       // Clean up active highlight after duration
       var timeout = 600;
       if (animClass.indexOf('pulse') !== -1 || animClass.indexOf('glow') !== -1) {

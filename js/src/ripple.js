@@ -2,15 +2,42 @@
 // Creates ink ripples on elements with the `.ripple` class or [data-boodoo-ripple].
 
 export function initRipple(root = document) {
+  // Global delegated listener for all existing and dynamically inserted ripple elements
+  if (typeof document !== 'undefined' && root === document && !document._boodooRippleDelegated) {
+    document._boodooRippleDelegated = true;
+    document.addEventListener('pointerdown', (e) => {
+      const surface = e.target && e.target.closest ? e.target.closest('.ripple, [data-boodoo-ripple]') : null;
+      if (surface) {
+        createRipple(surface, e);
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const active = document.activeElement;
+        const surface = active && active.closest ? active.closest('.ripple, [data-boodoo-ripple]') : null;
+        if (surface) {
+          const rect = surface.getBoundingClientRect();
+          createRipple(surface, { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+        }
+      }
+    });
+  }
+
+  // Also bind directly to queried surfaces for scoped root calls or legacy wrappers
   const surfaces = Array.from(root.querySelectorAll ? root.querySelectorAll('.ripple, [data-boodoo-ripple]') : []);
   surfaces.forEach((surface) => {
     if (surface._boodooRippleBound) return;
     surface._boodooRippleBound = true;
     surface.addEventListener('pointerdown', (e) => {
+      // If delegated handler already created ripple for this event on document, avoid duplicate
+      if (e._boodooRippleHandled) return;
+      e._boodooRippleHandled = true;
       createRipple(surface, e);
     });
     surface.addEventListener('keydown', (e) => {
       if ((e.key === 'Enter' || e.key === ' ') && surface === document.activeElement) {
+        if (e._boodooRippleHandled) return;
+        e._boodooRippleHandled = true;
         const rect = surface.getBoundingClientRect();
         createRipple(surface, { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
       }

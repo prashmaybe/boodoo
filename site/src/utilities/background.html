@@ -5,57 +5,81 @@ section: utilities
 order: 0
 -->
 <h1>Background</h1>
-<p class="lead">A selection of background utilities: color classes, gradients, positions, sizes, and repeat controls.</p>
+<p class="lead">A selection of background utilities: color classes, gradients, positions, sizes, and repeat controls.
+</p>
 
 <h2 id="colors">Background colors</h2>
 <div class="bd-example d-flex flex-wrap gap-2">
-  <div class="bg-primary text-white p-4 rounded demo-box-w10"><span>bg-primary</span></div>
-  <div class="bg-secondary text-white p-4 rounded demo-box-w10"><span>bg-secondary</span></div>
-  <div class="bg-success text-white p-4 rounded demo-box-w10"><span>bg-success</span></div>
-  <div class="bg-danger text-white p-4 rounded demo-box-w10"><span>bg-danger</span></div>
-  <div class="bg-warning text-white p-4 rounded demo-box-w10"><span>bg-warning</span></div>
-  <div class="bg-info text-white p-4 rounded demo-box-w10"><span>bg-info</span></div>
-  <div class="bg-light border p-4 rounded demo-box-w10"><span>bg-light</span></div>
-  <div class="bg-dark text-white p-4 rounded demo-box-w10"><span>bg-dark</span></div>
+  <div class="bg-primary text-white p-2 rounded demo-box-w10"><span>bg-primary</span></div>
+  <div class="bg-secondary text-white p-2 rounded demo-box-w10"><span>bg-secondary</span></div>
+  <div class="bg-success text-white p-2 rounded demo-box-w10"><span>bg-success</span></div>
+  <div class="bg-danger text-white p-2 rounded demo-box-w10"><span>bg-danger</span></div>
+  <div class="bg-warning text-white p-2 rounded demo-box-w10"><span>bg-warning</span></div>
+  <div class="bg-info text-white p-2 rounded demo-box-w10"><span>bg-info</span></div>
+  <div class="bg-light border p-2 rounded demo-box-w10"><span>bg-light</span></div>
+  <div class="bg-dark text-white p-2 rounded demo-box-w10"><span>bg-dark</span></div>
 </div>
 <div class="highlight">
-  <pre><code>&lt;div class=&quot;bg-primary text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-primary&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-secondary text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-secondary&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-success text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-success&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-danger text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-danger&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-warning text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-warning&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-info text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-info&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-light border p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-light&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-dark text-white p-4 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-dark&lt;/span&gt;&lt;/div&gt;</code></pre>
+  <pre><code>&lt;div class=&quot;bg-primary text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-primary&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-secondary text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-secondary&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-success text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-success&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-danger text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-danger&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-warning text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-warning&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-info text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-info&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-light border p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-light&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-dark text-white p-2 rounded demo-box-w10&quot;&gt;&lt;span&gt;bg-dark&lt;/span&gt;&lt;/div&gt;</code></pre>
 </div>
-<p>When using a colored background, pair it with an appropriate text color (e.g. <code>.text-white</code> on <code>.bg-primary</code>).</p>
+<p>When using a colored background, pair it with an appropriate text color (e.g. <code>.text-white</code> on
+  <code>.bg-primary</code>).
+</p>
 
 <h2 id="gradients">Background gradients</h2>
-<p>Gradients are real images — use <code>.bg-gradient-{color}</code> helpers (see <a href="../helpers/color-bg.html">elevation/color helpers</a>) or these Tailwind-style options.</p>
+<p>Gradients are real images — use <code>.bg-gradient-{color}</code> helpers (see <a
+    href="../helpers/color-bg.html">elevation/color helpers</a>) or these Tailwind-style options.</p>
 
 <h2 id="position">Position, size, repeat</h2>
 <p>Control the background with utility classes:</p>
 <table class="table table-sm table-bordered">
-  <thead><tr><th>Utility</th><th>CSS property</th><th>Values</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Utility</th>
+      <th>CSS property</th>
+      <th>Values</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td><code>.bg-position-*</code></td><td>background-position</td><td>top · center · bottom · left · right</td></tr>
-    <tr><td><code>.bg-size-*</code></td><td>background-size</td><td>auto · cover · contain</td></tr>
-    <tr><td><code>.bg-repeat-*</code></td><td>background-repeat</td><td>no-repeat · repeat · repeat-x · repeat-y</td></tr>
+    <tr>
+      <td><code>.bg-position-*</code></td>
+      <td>background-position</td>
+      <td>top · center · bottom · left · right</td>
+    </tr>
+    <tr>
+      <td><code>.bg-size-*</code></td>
+      <td>background-size</td>
+      <td>auto · cover · contain</td>
+    </tr>
+    <tr>
+      <td><code>.bg-repeat-*</code></td>
+      <td>background-repeat</td>
+      <td>no-repeat · repeat · repeat-x · repeat-y</td>
+    </tr>
   </tbody>
 </table>
-<div class="highlight"><pre><code>&lt;div class="bg-size-cover bg-position-center p-5 bg-hero-pattern"&gt;&lt;/div&gt;</code></pre></div>
+<div class="highlight">
+  <pre><code>&lt;div class="bg-size-cover bg-position-center p-5 bg-hero-pattern"&gt;&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="opacity">Background opacity</h2>
 <p>Use <code>.bg-opacity-{10|25|50|75|100}</code> to layer alpha onto a primary-tinted background.</p>
 <div class="bd-example d-flex gap-2">
-  <div class="bg-opacity-25 rounded p-4 demo-box-w8"><span>25</span></div>
-  <div class="bg-opacity-50 rounded p-4 demo-box-w8"><span>50</span></div>
-  <div class="bg-opacity-75 rounded p-4 demo-box-w8"><span>75</span></div>
-  <div class="bg-opacity-100 rounded p-4 demo-box-w8"><span>100</span></div>
+  <div class="bg-opacity-25 rounded p-3 demo-box-w8"><span>25</span></div>
+  <div class="bg-opacity-50 rounded p-3 demo-box-w8"><span>50</span></div>
+  <div class="bg-opacity-75 rounded p-3 demo-box-w8"><span>75</span></div>
+  <div class="bg-opacity-100 rounded p-3 demo-box-w8"><span>100</span></div>
 </div>
 <div class="highlight">
-  <pre><code>&lt;div class=&quot;bg-opacity-25 rounded p-4 demo-box-w8&quot;&gt;&lt;span&gt;25&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-opacity-50 rounded p-4 demo-box-w8&quot;&gt;&lt;span&gt;50&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-opacity-75 rounded p-4 demo-box-w8&quot;&gt;&lt;span&gt;75&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;bg-opacity-100 rounded p-4 demo-box-w8&quot;&gt;&lt;span&gt;100&lt;/span&gt;&lt;/div&gt;</code></pre>
+  <pre><code>&lt;div class=&quot;bg-opacity-25 rounded p-3 demo-box-w8&quot;&gt;&lt;span&gt;25&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-opacity-50 rounded p-3 demo-box-w8&quot;&gt;&lt;span&gt;50&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-opacity-75 rounded p-3 demo-box-w8&quot;&gt;&lt;span&gt;75&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;bg-opacity-100 rounded p-3 demo-box-w8&quot;&gt;&lt;span&gt;100&lt;/span&gt;&lt;/div&gt;</code></pre>
 </div>
