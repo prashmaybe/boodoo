@@ -36,7 +36,7 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 - **Developer Tooling & CLI** — `npx boodoo add <component>` shadcn-style component injector, `npx boodoo migrate --from=bootstrap|tailwind` automated codemod, `npx boodoo create` instant multi-framework project scaffolder (Next.js, Vite, React Native, Electron, etc.), and official VS Code IntelliSense snippet suite
 - **Cross-Platform Mobile & Desktop** — Pure native components (`boodoo/react-native`), React Native Paper MD3 theme presets (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), and desktop window drag regions
 - **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
-- **Rich components** — 44+ accessible components including Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons
+- **Rich components** — 50+ accessible components including Stat / Metric Widgets, Activity Feed & Notifications, Mega Menu, Fullscreen Dialogs, Guided Tours, Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons (FAB Dock)
 - **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme dynamically via runtime CSS custom properties
 - **Accessible & touch-friendly** — `role="dialog"`, `aria-modal="true"`, focus-visible rings, `prefers-reduced-motion`, and 44px minimum touch targets
 - **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
@@ -48,13 +48,13 @@ boodoo is inspired by the best ideas in modern CSS frameworks:
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~502 KB | ~70.0 KB | ~47.4 KB | Full framework (all 44 components + utilities) |
+| `boodoo.min.css` | ~521 KB | ~72.6 KB | ~49.1 KB | Full framework (all 50+ components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.0 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~133 KB | ~25.5 KB | ~21.4 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
-| `boodoo.js` | ~145 KB | ~29.4 KB | ~24.6 KB | Pure vanilla JS unminified bundle |
+| `boodoo.min.js` | ~148 KB | ~28.3 KB | ~23.8 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
+| `boodoo.js` | ~163 KB | ~33.1 KB | ~27.7 KB | Pure vanilla JS unminified bundle |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
@@ -179,7 +179,7 @@ boodoo/
 
 ## 🧩 Components
 
-Accordion · AI Prompt & Chat · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb · Buttons · Button group · Card · Carousel · Chips & Tag Input · Collapse · Combobox / Autocomplete · Command Palette · Context Menu · Data Table · Dock (App Shelf) · Dropdowns · Empty State · Kbd · KPI Stat Card · Lightbox Gallery · List group · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Sidebar · Skeleton · Speed Dial (FAB) · Spinners · Splitter (Docking Panes) · Stepper · Timeline · Toasts · Tooltips · Tree View
+Accordion · Activity Feed & Notifications · AI Prompt & Chat · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb & Dropdown · Buttons · Button group · Card · Carousel · Chips & Tag Input · Collapse · Combobox / Autocomplete · Command Palette · Context Menu · Data Table · Dialog & Fullscreen Dialog · Dock (App Shelf) · Dropdowns · Empty State · Floating Action Button (FAB Dock) · Guided Tour · Kbd · KPI Stat Card · Lightbox Gallery · List group · Mega Menu · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Sidebar · Skeleton · Speed Dial (FAB) · Spinners · Splitter (Docking Panes) · Stat / Metric Widget · Stepper · Timeline · Toasts · Tooltips · Tree View
 
 
 Plus **forms** (control, select, checks/radios/switches, range, input group, floating labels, OTP & PIN, dropzone & file upload, color & date pickers, validation), **icon token helpers** (`.icon`, `.icon-sm`–`2xl`), and ~150 **utility classes** (spacing, flex, grid, display, position, text, borders, shadows, elevation, scroll-driven animations…).
