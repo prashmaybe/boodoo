@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.9] - 2026-10-19
+
+### Added
+- **Advanced Components Suite (`scss/components/_advanced-components.scss`, `less/boodoo.less`, `js/src/advanced-components.js`, `dist/`)**:
+  - **Chat Message Bubble & Streaming AI Container (`.chat-thread`, `.chat-bubble`, `.ai-stream`, `.ai-cursor`)**: Generative AI messaging container with incoming/outgoing bubbles, sender metadata, and animated stream cursor.
+  - **Filter Bar & Dimension Query Builder (`.filter-bar`, `.filter-pill`, `FilterBar`)**: Multi-dimensional search and tag filter bar with active/removable pills, reset triggers, and event callbacks.
+  - **Kanban / Pipeline Board (`.kanban-board`, `.kanban-column`, `.kanban-card`)**: Responsive multi-stage pipeline and task workflow board with column badges and priority chips.
+  - **Bento Grid Layout Presets (`.bento-grid`, `.bento-item`, `.bento-col-span-*`, `.bento-row-span-*`)**: Dynamic CSS Grid dashboard layout system for modern SaaS apps and KPI presentations.
+  - **Transfer List / Dual Listbox (`.transfer-list`, `.transfer-panel`, `.transfer-controls`, `TransferList`)**: Dual listbox selector for bidirectional item transfer with selection toggling and counter badges.
+  - **Audio Player Widget (`.audio-player`, `.audio-controls`, `.audio-waveform`, `.audio-wave-bar`)**: Media playback widget with interactive simulated waveform bars and elapsed time trackers.
+  - **Color Picker Popover (`.color-picker`, `.color-swatch-grid`, `.color-swatch`, `ColorPicker`)**: Compact swatch palette and hex color picker with dynamic color updates.
+  - **Scroll-to-Top Floating Button (`.back-to-top`, `BackToTop`)**: Viewport-aware scroll button with smooth deceleration back to top.
+- **CommonJS Distribution Parity**:
+  - Emitted `dist/js/boodoo.cjs` alongside ESM and UMD builds, resolving Yarn & CommonJS consumer import compatibility.
+- **React Native Parity**:
+  - Added `ChatBubble`, `AIStream`, and `FilterPill` primitives to `react-native/data-display.js` and `react-native/index.js` with TypeScript definitions in `react-native/index.d.ts`.
+- **SCSS and LESS Dual Parity**:
+  - Full parity implemented across both SCSS (`scss/components/_advanced-components.scss`) and LESS (`less/boodoo.less`).
+- **Boodoo CLI**:
+  - Registered all 8 new components in `COMPONENT_MAP` within `bin/boodoo.mjs`.
+  - Bumped CLI scaffolder version to `1.1.9` in `bin/create-boodoo.mjs`.
+
+---
+
 ## [1.1.8] - 2026-10-18
 
 ### Added

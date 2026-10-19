@@ -125,3 +125,8 @@ export declare const Popover: ComponentType<any>;
 export declare const Tooltip: ComponentType<any>;
 export declare const Portal: ComponentType<any>;
 export declare const TouchableRipple: ComponentType<any>;
+
+// Advanced components (v1.1.9)
+export declare const ChatBubble: ComponentType<any>;
+export declare const AIStream: ComponentType<any>;
+export declare const FilterPill: ComponentType<any>;

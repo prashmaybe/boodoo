@@ -193,6 +193,13 @@ export {
   initRipple,
   registerCustomElements,
   theme,
+  FABDock,
+  DialogFullscreen,
+  Tour,
+  FilterBar,
+  TransferList,
+  ColorPicker,
+  BackToTop,
 };
 `;
 fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);

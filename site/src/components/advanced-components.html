@@ -1,0 +1,428 @@
+<!--
+title: Advanced components
+description: Eight advanced UI components introduced in boodoo v1.1.9, including Chat & AI Streaming containers, Filter Bar, Kanban Board, Bento Grid, Transfer List, Audio Player, Color Picker, and Back-to-Top button.
+section: components
+order: 28
+-->
+
+<h1 class="boodoo-title"><span>Advanced components</span></h1>
+<p class="boodoo-lead">
+  <span>Discover boodoo v{{version}}'s advanced components engineered for generative AI interfaces, complex data filtering, task management workflows, interactive media, and modern web application layouts.</span>
+</p>
+
+<hr class="my-2">
+
+<!-- 1. Chat Message Bubble & Streaming AI Container -->
+<h2 id="chat-bubble"><span>Chat Bubble &amp; AI Stream</span></h2>
+<p><span>Build conversational AI interfaces and chat feeds using <code>.chat-thread</code>, <code>.chat-bubble</code>, and <code>.ai-stream</code>. Use <code>.incoming</code> and <code>.outgoing</code> modifiers to set message direction, and <code>.ai-cursor</code> to render an animated streaming text cursor.</span></p>
+
+<div class="bd-example">
+  <div class="chat-thread">
+    <div class="chat-bubble incoming">
+      <div class="chat-bubble-header">
+        <span class="chat-bubble-author"><span>Boodoo Assistant</span></span>
+        <span class="chat-bubble-time"><span>10:42 AM</span></span>
+      </div>
+      <div class="chat-bubble-body">
+        <p><span>Hello! How can I assist you with your design system or layouts today?</span></p>
+      </div>
+    </div>
+    
+    <div class="chat-bubble outgoing">
+      <div class="chat-bubble-header">
+        <span class="chat-bubble-author"><span>You</span></span>
+        <span class="chat-bubble-time"><span>10:43 AM</span></span>
+      </div>
+      <div class="chat-bubble-body">
+        <p><span>Can you explain how to build a responsive Bento grid?</span></p>
+      </div>
+    </div>
+
+    <div class="chat-bubble incoming">
+      <div class="chat-bubble-header">
+        <span class="chat-bubble-author"><span>Boodoo Assistant</span></span>
+        <span class="chat-bubble-time"><span>Just now</span></span>
+      </div>
+      <div class="chat-bubble-body">
+        <div class="ai-stream">
+          <p><span>Certainly! In Boodoo, you can apply <code>.bento-grid</code> to your container and combine items with <code>.bento-col-span-2</code> and <code>.bento-row-span-2</code>.</span><span class="ai-cursor"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="chat-thread"&gt;
+  &lt;div class="chat-bubble incoming"&gt;
+    &lt;div class="chat-bubble-header"&gt;
+      &lt;span class="chat-bubble-author"&gt;&lt;span&gt;AI Assistant&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="chat-bubble-time"&gt;&lt;span&gt;10:42 AM&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="chat-bubble-body"&gt;
+      &lt;p&gt;&lt;span&gt;Hello! How can I help you?&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="chat-bubble outgoing"&gt;
+    &lt;div class="chat-bubble-body"&gt;
+      &lt;p&gt;&lt;span&gt;Tell me more about Boodoo!&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 2. Filter Bar & Dimension Query Builder -->
+<h2 id="filter-bar"><span>Filter Bar &amp; Dimension Query Builder</span></h2>
+<p><span>The <code>.filter-bar</code> component organizes multi-dimensional filters, active selection pills (<code>.filter-pill</code>), and search controls. Initialized automatically with <code>data-boodoo="filter-bar"</code> or via <code>new boodoo.FilterBar(element)</code>.</span></p>
+
+<div class="bd-example">
+  <div class="filter-bar" data-boodoo="filter-bar" id="demoFilterBar">
+    <div class="filter-search">
+      <input type="text" id="filterSearchInput" name="filterSearchInput" class="form-control form-control-sm" placeholder="Search resources...">
+    </div>
+    <div class="filter-pills">
+      <span class="filter-pill active" data-filter="all"><span>All</span></span>
+      <span class="filter-pill" data-filter="draft"><span>Drafts</span><button type="button" class="filter-pill-remove" aria-label="Remove Drafts filter"><span>&times;</span></button></span>
+      <span class="filter-pill" data-filter="published"><span>Published</span><button type="button" class="filter-pill-remove" aria-label="Remove Published filter"><span>&times;</span></button></span>
+      <span class="filter-pill" data-filter="archived"><span>Archived</span><button type="button" class="filter-pill-remove" aria-label="Remove Archived filter"><span>&times;</span></button></span>
+    </div>
+    <div class="filter-actions">
+      <button type="button" class="btn btn-sm btn-outline-secondary filter-clear-btn"><span>Reset filters</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="filter-bar" data-boodoo="filter-bar"&gt;
+  &lt;div class="filter-search"&gt;
+    &lt;input type="text" id="searchField" name="searchField" class="form-control form-control-sm" placeholder="Search..."&gt;
+  &lt;/div&gt;
+  &lt;div class="filter-pills"&gt;
+    &lt;span class="filter-pill active" data-filter="all"&gt;&lt;span&gt;All&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filter-pill" data-filter="active"&gt;&lt;span&gt;Active&lt;/span&gt;&lt;button type="button" class="filter-pill-remove" aria-label="Remove"&gt;&lt;span&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 3. Kanban / Pipeline Board -->
+<h2 id="kanban-board"><span>Kanban / Pipeline Board</span></h2>
+<p><span>Organize workflows with <code>.kanban-board</code>, <code>.kanban-column</code>, and <code>.kanban-card</code>. Features horizontal scrolling, customizable column badges, and priority tags.</span></p>
+
+<div class="bd-example">
+  <div class="kanban-board">
+    <div class="kanban-column">
+      <div class="kanban-column-header">
+        <span class="kanban-column-title"><span>To Do</span></span>
+        <span class="badge badge-secondary"><span>2</span></span>
+      </div>
+      <div class="kanban-column-body">
+        <div class="kanban-card">
+          <div class="kanban-card-title"><p><span>Add Dark Mode Tokens</span></p></div>
+          <div class="kanban-card-meta">
+            <span class="badge badge-primary"><span>v1.2</span></span>
+            <span class="text-muted"><small><span>High</span></small></span>
+          </div>
+        </div>
+        <div class="kanban-card">
+          <div class="kanban-card-title"><p><span>Write API Documentation</span></p></div>
+          <div class="kanban-card-meta">
+            <span class="badge badge-secondary"><span>Docs</span></span>
+            <span class="text-muted"><small><span>Medium</span></small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kanban-column">
+      <div class="kanban-column-header">
+        <span class="kanban-column-title"><span>In Progress</span></span>
+        <span class="badge badge-primary"><span>1</span></span>
+      </div>
+      <div class="kanban-column-body">
+        <div class="kanban-card">
+          <div class="kanban-card-title"><p><span>Release v1.1.9 Components</span></p></div>
+          <div class="kanban-card-meta">
+            <span class="badge badge-success"><span>Core</span></span>
+            <span class="text-muted"><small><span>Urgent</span></small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kanban-column">
+      <div class="kanban-column-header">
+        <span class="kanban-column-title"><span>Completed</span></span>
+        <span class="badge badge-success"><span>1</span></span>
+      </div>
+      <div class="kanban-column-body">
+        <div class="kanban-card">
+          <div class="kanban-card-title"><p><span>CommonJS &amp; Dual Dist Entry</span></p></div>
+          <div class="kanban-card-meta">
+            <span class="badge badge-outline-secondary"><span>Packaging</span></span>
+            <span class="text-muted"><small><span>Done</span></small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="kanban-board"&gt;
+  &lt;div class="kanban-column"&gt;
+    &lt;div class="kanban-column-header"&gt;
+      &lt;span class="kanban-column-title"&gt;&lt;span&gt;To Do&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="badge badge-secondary"&gt;&lt;span&gt;3&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="kanban-column-body"&gt;
+      &lt;div class="kanban-card"&gt;
+        &lt;div class="kanban-card-title"&gt;&lt;p&gt;&lt;span&gt;Task title&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 4. Bento Grid Layout Presets -->
+<h2 id="bento-grid"><span>Bento Grid Layout Presets</span></h2>
+<p><span>Modern dashboard layout pattern powered by CSS Grid. Use <code>.bento-grid</code> along with span utilities like <code>.bento-col-span-2</code>, <code>.bento-col-span-3</code>, and <code>.bento-row-span-2</code>.</span></p>
+
+<div class="bd-example">
+  <div class="bento-grid">
+    <div class="bento-item bento-col-span-2">
+      <div class="bento-item-header">
+        <span class="bento-item-title"><span>Performance Analytics</span></span>
+      </div>
+      <div class="bento-item-body">
+        <p><span>Real-time throughput metrics across all operational regions with ultra-low latency monitoring.</span></p>
+      </div>
+    </div>
+
+    <div class="bento-item">
+      <div class="bento-item-header">
+        <span class="bento-item-title"><span>Active Users</span></span>
+      </div>
+      <div class="bento-item-body">
+        <p><strong class="display-5"><span>18.4k</span></strong></p>
+        <p class="text-success"><small><span>+14.2% this week</span></small></p>
+      </div>
+    </div>
+
+    <div class="bento-item">
+      <div class="bento-item-header">
+        <span class="bento-item-title"><span>Uptime</span></span>
+      </div>
+      <div class="bento-item-body">
+        <p><strong class="display-5"><span>99.99%</span></strong></p>
+        <p class="text-muted"><small><span>Zero incidents</span></small></p>
+      </div>
+    </div>
+
+    <div class="bento-item bento-col-span-2">
+      <div class="bento-item-header">
+        <span class="bento-item-title"><span>Cloud Infrastructure</span></span>
+      </div>
+      <div class="bento-item-body">
+        <p><span>Multi-cluster deployments orchestrated with automated failover and health detection.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="bento-grid"&gt;
+  &lt;div class="bento-item bento-col-span-2"&gt;
+    &lt;div class="bento-item-header"&gt;&lt;span class="bento-item-title"&gt;&lt;span&gt;Featured Tile&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="bento-item-body"&gt;&lt;p&gt;&lt;span&gt;Large span item&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bento-item"&gt;
+    &lt;div class="bento-item-header"&gt;&lt;span class="bento-item-title"&gt;&lt;span&gt;Compact Tile&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="bento-item-body"&gt;&lt;p&gt;&lt;span&gt;Regular item&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 5. Transfer List / Dual Listbox -->
+<h2 id="transfer-list"><span>Transfer List (Dual Listbox)</span></h2>
+<p><span>Allow users to move items between available and selected collections using <code>.transfer-list</code>, <code>.transfer-panel</code>, and <code>.transfer-controls</code>. Activated automatically via <code>data-boodoo="transfer-list"</code> or <code>new boodoo.TransferList(element)</code>.</span></p>
+
+<div class="bd-example">
+  <div class="transfer-list" data-boodoo="transfer-list" id="demoTransferList">
+    <div class="transfer-panel">
+      <div class="transfer-panel-header">
+        <span class="transfer-panel-title"><span>Available Skills</span></span>
+      </div>
+      <div class="transfer-panel-body">
+        <div class="transfer-item" data-value="react">
+          <input type="checkbox" id="chkSkillReact" name="chkSkillReact" class="form-check-input">
+          <label for="chkSkillReact"><span>React &amp; Next.js</span></label>
+        </div>
+        <div class="transfer-item" data-value="vue">
+          <input type="checkbox" id="chkSkillVue" name="chkSkillVue" class="form-check-input">
+          <label for="chkSkillVue"><span>Vue.js &amp; Nuxt</span></label>
+        </div>
+        <div class="transfer-item" data-value="svelte">
+          <input type="checkbox" id="chkSkillSvelte" name="chkSkillSvelte" class="form-check-input">
+          <label for="chkSkillSvelte"><span>SvelteKit</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="transfer-controls">
+      <button type="button" class="btn btn-sm btn-outline-primary transfer-btn-right" aria-label="Move selected right"><span>&rarr;</span></button>
+      <button type="button" class="btn btn-sm btn-outline-secondary transfer-btn-left" aria-label="Move selected left"><span>&larr;</span></button>
+    </div>
+
+    <div class="transfer-panel">
+      <div class="transfer-panel-header">
+        <span class="transfer-panel-title"><span>Selected Stack</span></span>
+      </div>
+      <div class="transfer-panel-body">
+        <div class="transfer-item" data-value="boodoo">
+          <input type="checkbox" id="chkSkillBoodoo" name="chkSkillBoodoo" class="form-check-input">
+          <label for="chkSkillBoodoo"><span>Boodoo Framework</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="transfer-list" data-boodoo="transfer-list"&gt;
+  &lt;div class="transfer-panel"&gt;
+    &lt;div class="transfer-panel-header"&gt;&lt;span class="transfer-panel-title"&gt;&lt;span&gt;Available&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="transfer-panel-body"&gt;
+      &lt;div class="transfer-item" data-value="item1"&gt;
+        &lt;input type="checkbox" id="item1" name="item1" class="form-check-input"&gt;
+        &lt;label for="item1"&gt;&lt;span&gt;Item 1&lt;/span&gt;&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="transfer-controls"&gt;
+    &lt;button type="button" class="btn btn-sm btn-outline-primary transfer-btn-right"&gt;&lt;span&gt;&amp;rarr;&lt;/span&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn btn-sm btn-outline-secondary transfer-btn-left"&gt;&lt;span&gt;&amp;larr;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="transfer-panel"&gt;
+    &lt;div class="transfer-panel-header"&gt;&lt;span class="transfer-panel-title"&gt;&lt;span&gt;Selected&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="transfer-panel-body"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 6. Audio Player Widget -->
+<h2 id="audio-player"><span>Audio Player Widget</span></h2>
+<p><span>Compact media control bar with simulated waveform visualization using <code>.audio-player</code>, <code>.audio-controls</code>, and <code>.audio-waveform</code>.</span></p>
+
+<div class="bd-example">
+  <div class="audio-player">
+    <div class="audio-controls">
+      <button type="button" class="btn btn-primary btn-sm rounded-circle" aria-label="Play audio">
+        <span>▶</span>
+      </button>
+      <div class="audio-meta">
+        <span class="audio-title"><span>Deep Focus Session #4</span></span>
+        <span class="audio-time"><span>01:24 / 04:30</span></span>
+      </div>
+    </div>
+    <div class="audio-waveform">
+      <span class="audio-wave-bar played" style="height: 45%;"></span>
+      <span class="audio-wave-bar played" style="height: 70%;"></span>
+      <span class="audio-wave-bar played" style="height: 90%;"></span>
+      <span class="audio-wave-bar played" style="height: 60%;"></span>
+      <span class="audio-wave-bar played" style="height: 35%;"></span>
+      <span class="audio-wave-bar" style="height: 80%;"></span>
+      <span class="audio-wave-bar" style="height: 50%;"></span>
+      <span class="audio-wave-bar" style="height: 65%;"></span>
+      <span class="audio-wave-bar" style="height: 40%;"></span>
+      <span class="audio-wave-bar" style="height: 85%;"></span>
+      <span class="audio-wave-bar" style="height: 55%;"></span>
+      <span class="audio-wave-bar" style="height: 30%;"></span>
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="audio-player"&gt;
+  &lt;div class="audio-controls"&gt;
+    &lt;button type="button" class="btn btn-primary btn-sm rounded-circle" aria-label="Play"&gt;&lt;span&gt;▶&lt;/span&gt;&lt;/button&gt;
+    &lt;div class="audio-meta"&gt;
+      &lt;span class="audio-title"&gt;&lt;span&gt;Track title&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="audio-time"&gt;&lt;span&gt;01:24 / 04:30&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="audio-waveform"&gt;
+    &lt;span class="audio-wave-bar played" style="height: 60%;"&gt;&lt;/span&gt;
+    &lt;span class="audio-wave-bar" style="height: 40%;"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 7. Color Picker Popover -->
+<h2 id="color-picker"><span>Color Picker Popover</span></h2>
+<p><span>Customizable swatch palette and custom color selector using <code>.color-picker</code>, <code>.color-swatch-grid</code>, and <code>.color-swatch</code>. Initialized via <code>data-boodoo="color-picker"</code> or <code>new boodoo.ColorPicker(element)</code>.</span></p>
+
+<div class="bd-example">
+  <div class="color-picker" data-boodoo="color-picker" id="demoColorPicker">
+    <div class="color-swatch-grid">
+      <button type="button" class="color-swatch selected" data-color="#7c3aed" style="background-color: #7c3aed;" aria-label="Color purple"></button>
+      <button type="button" class="color-swatch" data-color="#3b82f6" style="background-color: #3b82f6;" aria-label="Color blue"></button>
+      <button type="button" class="color-swatch" data-color="#10b981" style="background-color: #10b981;" aria-label="Color emerald"></button>
+      <button type="button" class="color-swatch" data-color="#f59e0b" style="background-color: #f59e0b;" aria-label="Color amber"></button>
+      <button type="button" class="color-swatch" data-color="#ef4444" style="background-color: #ef4444;" aria-label="Color red"></button>
+      <button type="button" class="color-swatch" data-color="#ec4899" style="background-color: #ec4899;" aria-label="Color pink"></button>
+      <button type="button" class="color-swatch" data-color="#14b8a6" style="background-color: #14b8a6;" aria-label="Color teal"></button>
+      <button type="button" class="color-swatch" data-color="#64748b" style="background-color: #64748b;" aria-label="Color slate"></button>
+    </div>
+    <div class="color-picker-input-group mt-2">
+      <input type="text" id="hexColorVal" name="hexColorVal" class="form-control form-control-sm color-picker-hex" value="#7c3aed">
+      <input type="color" id="nativeColorVal" name="nativeColorVal" class="color-picker-native" value="#7c3aed" aria-label="Pick custom color">
+    </div>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;div class="color-picker" data-boodoo="color-picker"&gt;
+  &lt;div class="color-swatch-grid"&gt;
+    &lt;button type="button" class="color-swatch selected" data-color="#7c3aed" style="background-color: #7c3aed;" aria-label="Purple"&gt;&lt;/button&gt;
+    &lt;button type="button" class="color-swatch" data-color="#3b82f6" style="background-color: #3b82f6;" aria-label="Blue"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="color-picker-input-group mt-2"&gt;
+    &lt;input type="text" id="colorHex" name="colorHex" class="form-control form-control-sm color-picker-hex" value="#7c3aed"&gt;
+    &lt;input type="color" id="colorNative" name="colorNative" class="color-picker-native" value="#7c3aed" aria-label="Color"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<!-- 8. Scroll-to-Top Floating Button -->
+<h2 id="back-to-top"><span>Scroll-to-Top Floating Button</span></h2>
+<p><span>Floating action button (<code>.back-to-top</code>) that listens to page scrolling and provides smooth deceleration back to top. Initialized with <code>data-boodoo="back-to-top"</code> or <code>new boodoo.BackToTop(button)</code>.</span></p>
+
+<div class="bd-example text-center">
+  <p><span>Scroll the window down or click below to preview the active floating button state:</span></p>
+  <button type="button" class="btn btn-outline-primary" onclick="const btn = document.getElementById('demoBackToTop'); btn.classList.toggle('visible');">
+    <span>Toggle Back to Top Button</span>
+  </button>
+  <button type="button" class="back-to-top" id="demoBackToTop" data-boodoo="back-to-top" aria-label="Back to top">
+    <span>&uarr;</span>
+  </button>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;button type="button" class="back-to-top" data-boodoo="back-to-top" aria-label="Back to top"&gt;
+  &lt;span&gt;&amp;uarr;&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>

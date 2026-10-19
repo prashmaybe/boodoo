@@ -75,6 +75,9 @@ export {
   Chip,
   Badge,
   Avatar,
+  ChatBubble,
+  AIStream,
+  FilterPill,
 } from './data-display.js';
 
 // Feedback & Status

@@ -105,6 +105,26 @@ export interface ToastOptions {
   container?: string | Element;
 }
 
+export declare class FilterBar extends BaseComponent {
+  addPill(label: string, value: string, key?: string): void;
+  removePill(key: string, value: string, pillElement?: HTMLElement): void;
+  clearAll(): void;
+}
+
+export declare class TransferList extends BaseComponent {
+  moveSelected(sourcePanel: HTMLElement, targetPanel: HTMLElement): void;
+  moveAll(sourcePanel: HTMLElement, targetPanel: HTMLElement): void;
+}
+
+export declare class ColorPicker extends BaseComponent {
+  setValue(color: string, updateInput?: boolean): void;
+  getValue(): string;
+}
+
+export declare class BackToTop extends BaseComponent {
+  dispose(): void;
+}
+
 export interface BoodooGlobal {
   toast: {
     (message: string, options?: ToastOptions): Toast;
@@ -148,6 +168,25 @@ export interface BoodooGlobal {
   FABDock: typeof FABDock;
   DialogFullscreen: typeof DialogFullscreen;
   Tour: typeof Tour;
+  FilterBar: typeof FilterBar;
+  TransferList: typeof TransferList;
+  ColorPicker: typeof ColorPicker;
+  BackToTop: typeof BackToTop;
+  clipboard: any;
+  theme: any;
+  a11y: {
+    announce(message: string, politeness?: 'polite' | 'assertive'): void;
+    setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
+    createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
+  };
+}
+  FABDock: typeof FABDock;
+  DialogFullscreen: typeof DialogFullscreen;
+  Tour: typeof Tour;
+  FilterBar: typeof FilterBar;
+  TransferList: typeof TransferList;
+  ColorPicker: typeof ColorPicker;
+  BackToTop: typeof BackToTop;
   clipboard: any;
   theme: any;
   a11y: {
@@ -198,4 +237,8 @@ export {
   clipboard,
   theme,
   a11y,
+  FilterBar,
+  TransferList,
+  ColorPicker,
+  BackToTop,
 };

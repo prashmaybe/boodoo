@@ -108,7 +108,8 @@
       { "route": "components/extended-components", "title": "Extended components" },
       { "route": "components/ai-prompt", "title": "AI Prompt & Chat" },
       { "route": "components/dock", "title": "Dock (App Shelf)" },
-      { "route": "components/kpi-card", "title": "KPI Stat Card" }
+      { "route": "components/kpi-card", "title": "KPI Stat Card" },
+      { "route": "components/advanced-components", "title": "Advanced components" }
     ]
   },
 
