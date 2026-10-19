@@ -689,6 +689,18 @@ test('Universal design tokens CommonJS module export verification', () => {
   assert.ok(tokensCjs.includes('typography'), 'tokens/index.cjs must include typography');
 });
 
+test('Boodoo framework CommonJS entry point and module export verification', () => {
+  const cjsPath = resolve(rootDir, 'dist/js/boodoo.cjs');
+  assert.ok(existsSync(cjsPath), 'dist/js/boodoo.cjs must exist');
+
+  const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));
+  assert.equal(pkg.main, 'dist/js/boodoo.cjs', 'package.json main must point to dist/js/boodoo.cjs');
+  assert.equal(pkg.exports['.'].require, './dist/js/boodoo.cjs', 'package.json exports["."].require must point to ./dist/js/boodoo.cjs');
+
+  const boodooCjs = readFileSync(cjsPath, 'utf8');
+  assert.ok(boodooCjs.includes('module.exports = factory()'), 'boodoo.cjs must support CommonJS export');
+});
+
 test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (npx boodoo migrate)', async () => {
   const { addComponent, listAvailableComponents, runMigration, handleAdd, handleMigrate, printHelp, runCli } = await import(
     pathToFileURL(resolve(rootDir, 'bin/boodoo.mjs')).href
