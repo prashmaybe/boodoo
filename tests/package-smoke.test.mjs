@@ -109,4 +109,25 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
       assert.ok(dtsContent.includes(`class ${c}`), `TypeScript definitions must declare class ${c}`);
     }
   });
+
+  await t.test('7. Modular CSS subpath exports exist on disk and resolve', () => {
+    const cssSubpaths = ['./css', './css/grid', './css/utilities', './css/reboot', './css/animations'];
+    for (const sub of cssSubpaths) {
+      assert.ok(pkg.exports[sub], `package.json exports must define ${sub}`);
+      const filePath = resolve(root, pkg.exports[sub]);
+      assert.ok(existsSync(filePath), `CSS bundle for ${sub} (${pkg.exports[sub]}) must exist`);
+    }
+  });
+
+  await t.test('8. Package hygiene: No stray artifacts in dist/css and tests/ excluded from files', () => {
+    assert.equal(existsSync(resolve(root, 'dist/css/test_out.css')), false, 'test_out.css must NOT exist in dist/css');
+    assert.equal(pkg.files.includes('tests/'), false, 'tests/ must NOT be included in package.json files array');
+  });
+
+  await t.test('9. Dynamic CSS custom property theming on alerts', () => {
+    const boodooCss = readFileSync(resolve(root, 'dist/css/boodoo.css'), 'utf8');
+    assert.ok(boodooCss.includes('--boodoo-alert-color: var(--boodoo-primary-text-emphasis,'), 'Alert colors must consume CSS custom properties with fallbacks');
+    assert.ok(boodooCss.includes('--boodoo-alert-bg: var(--boodoo-primary-bg-subtle,'), 'Alert bg must consume CSS custom properties with fallbacks');
+    assert.ok(boodooCss.includes('--boodoo-alert-border: var(--boodoo-primary-border-subtle,'), 'Alert border must consume CSS custom properties with fallbacks');
+  });
 });

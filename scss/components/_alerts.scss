@@ -34,12 +34,12 @@
 // Variants
 @each $name, $color in $boodoo-theme-colors {
   .alert-#{$name} {
-    --boodoo-alert-color: #{map.get($boodoo-text-emphasis-map, $name)};
-    --boodoo-alert-bg: #{map.get($boodoo-bg-subtle-map, $name)};
-    --boodoo-alert-border: #{map.get($boodoo-border-subtle-map, $name)};
+    --boodoo-alert-color: var(--boodoo-#{$name}-text-emphasis, #{map.get($boodoo-text-emphasis-map, $name)});
+    --boodoo-alert-bg: var(--boodoo-#{$name}-bg-subtle, #{map.get($boodoo-bg-subtle-map, $name)});
+    --boodoo-alert-border: var(--boodoo-#{$name}-border-subtle, #{map.get($boodoo-border-subtle-map, $name)});
 
     .alert-link {
-      color: map.get($boodoo-text-emphasis-map, $name);
+      color: var(--boodoo-#{$name}-text-emphasis, #{map.get($boodoo-text-emphasis-map, $name)});
       font-weight: 600;
     }
   }
