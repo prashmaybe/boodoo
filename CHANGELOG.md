@@ -19,6 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Audio Player Widget (`.audio-player`, `.audio-controls`, `.audio-waveform`, `.audio-wave-bar`)**: Media playback widget with interactive simulated waveform bars and elapsed time trackers.
   - **Color Picker Popover (`.color-picker`, `.color-swatch-grid`, `.color-swatch`, `ColorPicker`)**: Compact swatch palette and hex color picker with dynamic color updates.
   - **Scroll-to-Top Floating Button (`.back-to-top`, `BackToTop`)**: Viewport-aware scroll button with smooth deceleration back to top.
+- **Production Readiness & Enterprise Governance (Review Implementation)**:
+  - **Security Policy (`SECURITY.md`)**: Documented supported release windows, private reporting process (`security@boodooframework.com`), SLAs, and security design principles (DOM XSS prevention, protocol allowlist, zero runtime dependencies).
+  - **Contribution Standards & 14-Point Quality Checklist (`CONTRIBUTING.md`)**: Published the 14-point production component quality checklist across API & behavior, accessibility (WCAG 2.2 AA target), engineering safety, and multi-platform release criteria.
+  - **Automated Package Artifact Smoke Test (`tests/package-smoke.test.mjs`)**: Verified all package exports, CommonJS and ESM bundles, TypeScript definitions, and tokens mapping as a consumer smoke test in CI.
+  - **Production Readiness Dashboard (`site/src/about/production-readiness.html`)**: Interactive dashboard with multi-platform compatibility matrix, 14-point quality standards, exact verified bundle measurements, and Pebble Benders enterprise advisory support.
+  - **Positioning & Comparison Balance**: Reframed framework positioning to *"One design system. Multiple platforms. No unnecessary lock-in."* across `site/index.html`, `site/src/about/vs-bootstrap.html`, and `site/src/about/vs-tailwind.html`.
+- **Architectural Framework Governance Rules (`.agents/AGENTS.md`)**:
+  - Enforced permanent framework rules: **Production Component Quality Checklist Rule (14-Point Standard)**, **Zero Runtime Dependency Guarantee Rule**, **Single Design Token Source of Truth Rule**, and **Cross-Documentation Consistency & Production Parity Rule**.
 - **CommonJS Distribution Parity**:
   - Emitted `dist/js/boodoo.cjs` alongside ESM and UMD builds, resolving Yarn & CommonJS consumer import compatibility.
 - **React Native Parity**:

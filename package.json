@@ -83,8 +83,9 @@
     "README.md"
   ],
   "scripts": {
-    "test": "npm run build && npm run test:unit && npm run site",
+    "test": "npm run build && npm run test:unit && npm run test:smoke && npm run site",
     "test:unit": "node --test tests/framework.test.mjs",
+    "test:smoke": "node --test tests/package-smoke.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/framework.test.mjs",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",

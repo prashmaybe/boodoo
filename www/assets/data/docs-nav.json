@@ -157,6 +157,7 @@
     "title": "About",
     "pages": [
       { "route": "about/overview", "title": "Overview" },
+      { "route": "about/production-readiness", "title": "Production readiness" },
       { "route": "about/design-principles", "title": "Design principles" },
       { "route": "about/brand", "title": "Brand assets" },
       { "route": "about/vs-bootstrap", "title": "boodoo vs Bootstrap" },

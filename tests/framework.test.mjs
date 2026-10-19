@@ -1148,7 +1148,8 @@ test('Advanced v1.1.9 JavaScript components and full lifecycle execution', async
         return isLast && (!base || this.matches(base));
       }
       if (selector.startsWith('.')) {
-        return this.classList.contains(selector.slice(1));
+        const classes = selector.split('.').filter(Boolean);
+        return classes.every(c => this.classList.contains(c));
       }
       if (selector.startsWith('#')) {
         return this.attributes.id === selector.slice(1);
@@ -1401,9 +1402,10 @@ test('Advanced v1.1.9 JavaScript components and full lifecycle execution', async
   assert.equal(picker.getColor(), '#ff0000');
 
   let colorChangeFired = false;
+  const colorChanges = [];
   pickerRoot.addEventListener('change.boodoo.color', (e) => {
     colorChangeFired = true;
-    assert.equal(e.detail.color, '#00ff00');
+    colorChanges.push(e.detail.color);
   });
 
   // Click on swatch
@@ -1425,6 +1427,8 @@ test('Advanced v1.1.9 JavaScript components and full lifecycle execution', async
   hexInput.value = 'invalid';
   hexInput.listeners['input'].forEach(fn => fn({}));
   assert.equal(picker.getValue(), '#123456');
+
+  assert.deepEqual(colorChanges, ['#00ff00', '#123456']);
 
   picker.dispose();
 
