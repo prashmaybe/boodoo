@@ -252,6 +252,9 @@ test('React Native adapter exports valid definitions without bundling errors', a
     'Toast',
     'Table',
     'StatWidget',
+    'ChatBubble',
+    'AIStream',
+    'FilterPill',
   ];
 
   for (const exp of expectedExports) {
@@ -272,7 +275,7 @@ test('React Native modular submodules existence and exports verification', () =>
     { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
     { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget'] },
     { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
-    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar'] },
+    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill'] },
     { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
     { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table'] },
     { file: 'navigation.js', expected: ['Appbar', 'Header', 'TopNavigation', 'Drawer', 'BottomNavigation', 'Tabs', 'PageControl'] },
@@ -689,6 +692,18 @@ test('Universal design tokens CommonJS module export verification', () => {
   assert.ok(tokensCjs.includes('typography'), 'tokens/index.cjs must include typography');
 });
 
+test('Boodoo framework CommonJS entry point and module export verification', () => {
+  const cjsPath = resolve(rootDir, 'dist/js/boodoo.cjs');
+  assert.ok(existsSync(cjsPath), 'dist/js/boodoo.cjs must exist');
+
+  const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));
+  assert.equal(pkg.main, 'dist/js/boodoo.cjs', 'package.json main must point to dist/js/boodoo.cjs');
+  assert.equal(pkg.exports['.'].require, './dist/js/boodoo.cjs', 'package.json exports["."].require must point to ./dist/js/boodoo.cjs');
+
+  const boodooCjs = readFileSync(cjsPath, 'utf8');
+  assert.ok(boodooCjs.includes('module.exports = factory()'), 'boodoo.cjs must support CommonJS export');
+});
+
 test('Boodoo CLI component injector (npx boodoo add) and CSS migration codemod (npx boodoo migrate)', async () => {
   const { addComponent, listAvailableComponents, runMigration, handleAdd, handleMigrate, printHelp, runCli } = await import(
     pathToFileURL(resolve(rootDir, 'bin/boodoo.mjs')).href
@@ -965,6 +980,541 @@ test('Extended v1.1.8 CSS class compilation and SCSS/LESS token integration', ()
   assert.ok(css.includes('.tour-popover'), 'CSS must contain .tour-popover');
   assert.ok(css.includes('.tour-step-badge'), 'CSS must contain .tour-step-badge');
   assert.ok(lessCss.includes('.tour-popover'), 'LESS CSS must compile .tour-popover');
+});
+
+test('Advanced v1.1.9 CSS class compilation and SCSS/LESS token integration', () => {
+  const css = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const minCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.min.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // 1. ChatBubble & AIStream
+  assert.ok(css.includes('.chat-thread'), 'CSS must contain .chat-thread');
+  assert.ok(css.includes('.chat-bubble'), 'CSS must contain .chat-bubble');
+  assert.ok(css.includes('.chat-bubble.incoming'), 'CSS must contain .chat-bubble.incoming');
+  assert.ok(css.includes('.chat-bubble.outgoing'), 'CSS must contain .chat-bubble.outgoing');
+  assert.ok(css.includes('.ai-stream'), 'CSS must contain .ai-stream');
+  assert.ok(css.includes('.ai-cursor'), 'CSS must contain .ai-cursor');
+  assert.ok(lessCss.includes('.chat-thread'), 'LESS CSS must contain .chat-thread');
+  assert.ok(minCss.includes('.chat-bubble'), 'Minified CSS must contain .chat-bubble');
+
+  // 2. FilterBar
+  assert.ok(css.includes('.filter-bar'), 'CSS must contain .filter-bar');
+  assert.ok(css.includes('.filter-pill'), 'CSS must contain .filter-pill');
+  assert.ok(css.includes('.filter-pill.active'), 'CSS must contain .filter-pill.active');
+  assert.ok(lessCss.includes('.filter-bar'), 'LESS CSS must contain .filter-bar');
+
+  // 3. Kanban Board
+  assert.ok(css.includes('.kanban-board'), 'CSS must contain .kanban-board');
+  assert.ok(css.includes('.kanban-column'), 'CSS must contain .kanban-column');
+  assert.ok(css.includes('.kanban-card'), 'CSS must contain .kanban-card');
+  assert.ok(lessCss.includes('.kanban-board'), 'LESS CSS must contain .kanban-board');
+
+  // 4. Bento Grid
+  assert.ok(css.includes('.bento-grid'), 'CSS must contain .bento-grid');
+  assert.ok(css.includes('.bento-item'), 'CSS must contain .bento-item');
+  assert.ok(css.includes('.bento-col-span-2'), 'CSS must contain .bento-col-span-2');
+  assert.ok(lessCss.includes('.bento-grid'), 'LESS CSS must contain .bento-grid');
+
+  // 5. Transfer List
+  assert.ok(css.includes('.transfer-list'), 'CSS must contain .transfer-list');
+  assert.ok(css.includes('.transfer-panel'), 'CSS must contain .transfer-panel');
+  assert.ok(css.includes('.transfer-controls'), 'CSS must contain .transfer-controls');
+  assert.ok(lessCss.includes('.transfer-list'), 'LESS CSS must contain .transfer-list');
+
+  // 6. Audio Player
+  assert.ok(css.includes('.audio-player'), 'CSS must contain .audio-player');
+  assert.ok(css.includes('.audio-waveform'), 'CSS must contain .audio-waveform');
+  assert.ok(css.includes('.audio-wave-bar'), 'CSS must contain .audio-wave-bar');
+  assert.ok(lessCss.includes('.audio-player'), 'LESS CSS must contain .audio-player');
+
+  // 7. Color Picker
+  assert.ok(css.includes('.color-picker'), 'CSS must contain .color-picker');
+  assert.ok(css.includes('.color-swatch-grid'), 'CSS must contain .color-swatch-grid');
+  assert.ok(css.includes('.color-swatch'), 'CSS must contain .color-swatch');
+  assert.ok(lessCss.includes('.color-picker'), 'LESS CSS must contain .color-picker');
+
+  // 8. Back to Top
+  assert.ok(css.includes('.back-to-top'), 'CSS must contain .back-to-top');
+  assert.ok(css.includes('.back-to-top.visible'), 'CSS must contain .back-to-top.visible');
+  assert.ok(lessCss.includes('.back-to-top'), 'LESS CSS must contain .back-to-top');
+});
+
+test('Advanced v1.1.9 JavaScript components and full lifecycle execution', async () => {
+  const { FilterBar, TransferList, ColorPicker, BackToTop } = await import(pathToFileURL(resolve(rootDir, 'js/src/advanced-components.js')).href);
+
+  assert.equal(FilterBar.NAME, 'filter-bar');
+  assert.equal(TransferList.NAME, 'transfer-list');
+  assert.equal(ColorPicker.NAME, 'color-picker');
+  assert.equal(BackToTop.NAME, 'back-to-top');
+
+  class MockDOMNode {
+    constructor(tagName = 'div') {
+      this.tagName = tagName.toUpperCase();
+      this.classList = {
+        _set: new Set(),
+        add(...classes) { classes.forEach(c => this._set.add(c)); },
+        remove(...classes) { classes.forEach(c => this._set.delete(c)); },
+        contains(c) { return this._set.has(c); },
+        toggle(c) {
+          if (this._set.has(c)) { this._set.delete(c); return false; }
+          this._set.add(c); return true;
+        }
+      };
+      this.attributes = {};
+      this.style = {};
+      this.children = [];
+      this.parentNode = null;
+      this.listeners = {};
+      this.value = '';
+      this.textContent = '';
+    }
+
+    get className() {
+      return Array.from(this.classList._set).join(' ');
+    }
+
+    set className(val) {
+      this.classList._set.clear();
+      if (val) {
+        val.split(/\s+/).filter(Boolean).forEach(c => this.classList.add(c));
+      }
+    }
+
+    setAttribute(k, v) { this.attributes[k] = String(v); }
+    getAttribute(k) { return Object.prototype.hasOwnProperty.call(this.attributes, k) ? this.attributes[k] : null; }
+    removeAttribute(k) { delete this.attributes[k]; }
+
+    appendChild(child) {
+      if (child.parentNode) {
+        child.parentNode.removeChild(child);
+      }
+      child.parentNode = this;
+      this.children.push(child);
+      return child;
+    }
+
+    removeChild(child) {
+      const idx = this.children.indexOf(child);
+      if (idx !== -1) {
+        this.children.splice(idx, 1);
+        child.parentNode = null;
+      }
+      return child;
+    }
+
+    replaceChildren(...newChildren) {
+      this.children.forEach(c => { c.parentNode = null; });
+      this.children = [];
+      newChildren.forEach(c => this.appendChild(c));
+    }
+
+    addEventListener(event, fn) {
+      if (!this.listeners[event]) this.listeners[event] = [];
+      this.listeners[event].push(fn);
+    }
+
+    removeEventListener(event, fn) {
+      if (!this.listeners[event]) return;
+      this.listeners[event] = this.listeners[event].filter(h => h !== fn);
+    }
+
+    dispatchEvent(evt) {
+      const handlers = this.listeners[evt.type] || [];
+      handlers.forEach(fn => fn(evt));
+      return true;
+    }
+
+    closest(selector) {
+      let cur = this;
+      while (cur) {
+        if (cur.matches && cur.matches(selector)) return cur;
+        cur = cur.parentNode;
+      }
+      return null;
+    }
+
+    matches(selector) {
+      if (selector.includes(',')) {
+        return selector.split(',').some(sub => this.matches(sub.trim()));
+      }
+      if (selector.endsWith(':first-child')) {
+        const base = selector.replace(':first-child', '');
+        const isFirst = this.parentNode ? this.parentNode.children[0] === this : true;
+        return isFirst && (!base || this.matches(base));
+      }
+      if (selector.endsWith(':last-child')) {
+        const base = selector.replace(':last-child', '');
+        const isLast = this.parentNode ? this.parentNode.children[this.parentNode.children.length - 1] === this : true;
+        return isLast && (!base || this.matches(base));
+      }
+      if (selector.startsWith('.')) {
+        const classes = selector.split('.').filter(Boolean);
+        return classes.every(c => this.classList.contains(c));
+      }
+      if (selector.startsWith('#')) {
+        return this.attributes.id === selector.slice(1);
+      }
+      return this.tagName.toLowerCase() === selector.toLowerCase();
+    }
+
+    querySelector(selector) {
+      const parts = selector.split(',').map(s => s.trim());
+      for (const part of parts) {
+        const find = (node) => {
+          for (const child of node.children) {
+            if (child.matches(part)) return child;
+            const found = find(child);
+            if (found) return found;
+          }
+          return null;
+        };
+        const match = find(this);
+        if (match) return match;
+      }
+      return null;
+    }
+
+    querySelectorAll(selector) {
+      const parts = selector.split(',').map(s => s.trim());
+      const matches = [];
+      const walk = (node) => {
+        for (const child of node.children) {
+          if (parts.some(p => child.matches(p))) {
+            matches.push(child);
+          }
+          walk(child);
+        }
+      };
+      walk(this);
+      return matches;
+    }
+  }
+
+  // Set global document.createElement for addPill
+  const origCreateElement = globalThis.document?.createElement;
+  globalThis.document = globalThis.document || {};
+  globalThis.document.createElement = (tag) => new MockDOMNode(tag);
+
+  // -------------------------------------------------------------
+  // 1. FilterBar Full Coverage
+  // -------------------------------------------------------------
+  const filterRoot = new MockDOMNode('div');
+  const pillsWrap = new MockDOMNode('div');
+  pillsWrap.classList.add('filter-pills-wrap');
+  filterRoot.appendChild(pillsWrap);
+
+  const searchInput = new MockDOMNode('input');
+  searchInput.classList.add('filter-search');
+  searchInput.value = 'initial query';
+  filterRoot.appendChild(searchInput);
+
+  const filterBar = new FilterBar(filterRoot);
+
+  let searchEventFired = false;
+  let addEventFired = false;
+  let removeEventFired = false;
+  let clearEventFired = false;
+
+  filterRoot.addEventListener('search.boodoo.filter', (e) => {
+    searchEventFired = true;
+    assert.equal(e.detail.query, 'test search');
+  });
+  const addedDetails = [];
+  filterRoot.addEventListener('add.boodoo.filter', (e) => {
+    addEventFired = true;
+    addedDetails.push(e.detail);
+  });
+  filterRoot.addEventListener('remove.boodoo.filter', (e) => {
+    removeEventFired = true;
+    assert.equal(e.detail.key, 'category');
+  });
+  filterRoot.addEventListener('clear.boodoo.filter', () => {
+    clearEventFired = true;
+  });
+
+  // Test searchInput Enter keydown
+  searchInput.value = 'test search';
+  const enterEvt = { key: 'Enter', preventDefault() {} };
+  searchInput.listeners['keydown'].forEach(fn => fn(enterEvt));
+  assert.ok(searchEventFired, 'Enter on searchInput must fire search.boodoo.filter');
+
+  // Test addPill
+  filterBar.addPill('Frontend', 'frontend', 'category');
+  assert.ok(addEventFired, 'addPill must fire add.boodoo.filter');
+  assert.equal(pillsWrap.children.length, 1, 'Pill must be appended to wrap');
+  const addedPill = pillsWrap.children[0];
+  assert.equal(addedPill.getAttribute('data-filter-key'), 'category');
+  assert.equal(addedPill.getAttribute('data-filter-value'), 'frontend');
+
+  // Test click on filter-pill-remove
+  const removeBtn = addedPill.querySelector('.filter-pill-remove');
+  assert.ok(removeBtn, 'Pill must have remove button');
+  const clickRemoveEvt = {
+    target: removeBtn,
+    type: 'click'
+  };
+  filterRoot.listeners['click'].forEach(fn => fn(clickRemoveEvt));
+  assert.ok(removeEventFired, 'Clicking removeBtn must trigger removePill and event');
+  assert.equal(pillsWrap.children.length, 0, 'Pill should be removed from parent');
+
+  // Test add without key
+  filterBar.addPill('General', 'simple');
+  assert.equal(pillsWrap.children.length, 1);
+  assert.equal(addedDetails.length, 2);
+  assert.deepEqual(addedDetails[0], { key: 'category', value: 'frontend', label: 'Frontend' });
+  assert.deepEqual(addedDetails[1], { key: '', value: 'simple', label: 'General' });
+
+  // Test clearAll via clear-all button click
+  const clearBtn = new MockDOMNode('button');
+  clearBtn.classList.add('filter-clear-all');
+  filterRoot.appendChild(clearBtn);
+
+  const clickClearEvt = { target: clearBtn, type: 'click' };
+  filterRoot.listeners['click'].forEach(fn => fn(clickClearEvt));
+  assert.ok(clearEventFired, 'Clicking clear-all must fire clear.boodoo.filter');
+  assert.equal(pillsWrap.children.length, 0, 'Clear all must empty pillsWrap');
+  assert.equal(searchInput.value, '', 'Clear all must empty searchInput');
+
+  // Edge cases: addPill when wrap is absent
+  const filterEmpty = new FilterBar(new MockDOMNode('div'));
+  filterEmpty.addPill('Label', 'val'); // should not throw
+
+  filterBar.dispose();
+
+  // -------------------------------------------------------------
+  // 2. TransferList Full Coverage
+  // -------------------------------------------------------------
+  const transferRoot = new MockDOMNode('div');
+  const leftPanel = new MockDOMNode('div');
+  leftPanel.classList.add('transfer-panel', 'transfer-panel-source');
+  const leftList = new MockDOMNode('ul');
+  leftList.classList.add('transfer-items');
+  leftPanel.appendChild(leftList);
+
+  const rightPanel = new MockDOMNode('div');
+  rightPanel.classList.add('transfer-panel', 'transfer-panel-target');
+  const rightList = new MockDOMNode('ul');
+  rightList.classList.add('transfer-items');
+  rightPanel.appendChild(rightList);
+
+  const btnRight = new MockDOMNode('button');
+  btnRight.classList.add('transfer-btn-right');
+  const btnLeft = new MockDOMNode('button');
+  btnLeft.classList.add('transfer-btn-left');
+  const btnAllRight = new MockDOMNode('button');
+  btnAllRight.classList.add('transfer-btn-all-right');
+  const btnAllLeft = new MockDOMNode('button');
+  btnAllLeft.classList.add('transfer-btn-all-left');
+
+  const controls = new MockDOMNode('div');
+  controls.classList.add('transfer-controls');
+  controls.appendChild(btnRight);
+  controls.appendChild(btnLeft);
+  controls.appendChild(btnAllRight);
+  controls.appendChild(btnAllLeft);
+
+  transferRoot.appendChild(leftPanel);
+  transferRoot.appendChild(controls);
+  transferRoot.appendChild(rightPanel);
+
+  const item1 = new MockDOMNode('li');
+  item1.classList.add('transfer-item');
+  const item2 = new MockDOMNode('li');
+  item2.classList.add('transfer-item');
+  leftList.appendChild(item1);
+  leftList.appendChild(item2);
+
+  const transferList = new TransferList(transferRoot);
+
+  let transferEventCount = 0;
+  transferRoot.addEventListener('change.boodoo.transfer', (e) => {
+    transferEventCount++;
+  });
+
+  // Test item selection click
+  const clickItemEvt = { target: item1, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickItemEvt));
+  assert.ok(item1.classList.contains('selected'), 'Clicking item toggles selected');
+
+  // Test moveSelected right
+  const clickMoveRightEvt = { target: btnRight, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickMoveRightEvt));
+  assert.equal(leftList.children.length, 1);
+  assert.equal(rightList.children.length, 1);
+  assert.ok(!item1.classList.contains('selected'), 'Moved item must deselect');
+  assert.equal(transferEventCount, 1);
+
+  // Test moveSelected left
+  const clickItem2Evt = { target: item1, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickItem2Evt));
+  assert.ok(item1.classList.contains('selected'));
+  const clickMoveLeftEvt = { target: btnLeft, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickMoveLeftEvt));
+  assert.equal(leftList.children.length, 2);
+  assert.equal(rightList.children.length, 0);
+  assert.equal(transferEventCount, 2);
+
+  // Test moveAll right
+  const clickAllRightEvt = { target: btnAllRight, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickAllRightEvt));
+  assert.equal(leftList.children.length, 0);
+  assert.equal(rightList.children.length, 2);
+  assert.equal(transferEventCount, 3);
+
+  // Test moveAll left
+  const clickAllLeftEvt = { target: btnAllLeft, type: 'click' };
+  transferRoot.listeners['click'].forEach(fn => fn(clickAllLeftEvt));
+  assert.equal(leftList.children.length, 2);
+  assert.equal(rightList.children.length, 0);
+  assert.equal(transferEventCount, 4);
+
+  // Branch guards when panels are missing
+  transferList.moveSelected(null, null);
+  transferList.moveAll(null, null);
+
+  transferList.dispose();
+
+  // -------------------------------------------------------------
+  // 3. ColorPicker Full Coverage
+  // -------------------------------------------------------------
+  const pickerRoot = new MockDOMNode('div');
+  const swatch1 = new MockDOMNode('button');
+  swatch1.classList.add('color-swatch');
+  swatch1.setAttribute('data-color', '#ff0000');
+
+  const swatch2 = new MockDOMNode('button');
+  swatch2.classList.add('color-swatch');
+  swatch2.style.backgroundColor = '#00ff00';
+
+  const preview = new MockDOMNode('div');
+  preview.classList.add('color-preview');
+
+  const hexInput = new MockDOMNode('input');
+  hexInput.classList.add('color-hex-input');
+
+  pickerRoot.appendChild(swatch1);
+  pickerRoot.appendChild(swatch2);
+  pickerRoot.appendChild(preview);
+  pickerRoot.appendChild(hexInput);
+
+  const picker = new ColorPicker(pickerRoot, { value: '#ff0000' });
+  assert.equal(picker.getValue(), '#ff0000');
+  assert.equal(picker.getColor(), '#ff0000');
+
+  let colorChangeFired = false;
+  const colorChanges = [];
+  pickerRoot.addEventListener('change.boodoo.color', (e) => {
+    colorChangeFired = true;
+    colorChanges.push(e.detail.color);
+  });
+
+  // Click on swatch
+  const clickSwatchEvt = { target: swatch2, type: 'click' };
+  pickerRoot.listeners['click'].forEach(fn => fn(clickSwatchEvt));
+  assert.ok(colorChangeFired);
+  assert.equal(picker.getValue(), '#00ff00');
+  assert.ok(swatch2.classList.contains('active'));
+  assert.ok(!swatch1.classList.contains('active'));
+  assert.equal(preview.style.backgroundColor, '#00ff00');
+  assert.equal(hexInput.value, '#00ff00');
+
+  // Input event on hexInput
+  hexInput.value = '#123456';
+  hexInput.listeners['input'].forEach(fn => fn({}));
+  assert.equal(picker.getValue(), '#123456');
+
+  // Invalid hex should be ignored
+  hexInput.value = 'invalid';
+  hexInput.listeners['input'].forEach(fn => fn({}));
+  assert.equal(picker.getValue(), '#123456');
+
+  assert.deepEqual(colorChanges, ['#00ff00', '#123456']);
+
+  picker.dispose();
+
+  // -------------------------------------------------------------
+  // 4. BackToTop Full Coverage
+  // -------------------------------------------------------------
+  const bttBtn = new MockDOMNode('button');
+  let scrolledTo = null;
+  globalThis.window = {
+    scrollY: 100,
+    addEventListener(event, fn) {
+      if (!this._listeners) this._listeners = {};
+      if (!this._listeners[event]) this._listeners[event] = [];
+      this._listeners[event].push(fn);
+    },
+    removeEventListener(event, fn) {
+      if (!this._listeners || !this._listeners[event]) return;
+      this._listeners[event] = this._listeners[event].filter(h => h !== fn);
+    },
+    scrollTo(opts) {
+      scrolledTo = opts;
+    }
+  };
+
+  const btt = new BackToTop(bttBtn, { threshold: 200 });
+  assert.ok(!bttBtn.classList.contains('visible'), 'Should not be visible at scrollY 100 < 200');
+
+  // Scroll beyond threshold
+  globalThis.window.scrollY = 350;
+  globalThis.window._listeners['scroll'].forEach(fn => fn());
+  assert.ok(bttBtn.classList.contains('visible'), 'Should become visible when scrollY > threshold');
+
+  // Scroll back down
+  globalThis.window.scrollY = 50;
+  globalThis.window._listeners['scroll'].forEach(fn => fn());
+  assert.ok(!bttBtn.classList.contains('visible'), 'Should hide when scrollY <= threshold');
+
+  // Click to top
+  let scrollTopFired = false;
+  bttBtn.addEventListener('scrolltop.boodoo', () => { scrollTopFired = true; });
+  const clickBttEvt = { preventDefault() {}, type: 'click' };
+  bttBtn.listeners['click'].forEach(fn => fn(clickBttEvt));
+  assert.ok(scrollTopFired, 'Clicking BackToTop must fire scrolltop.boodoo event');
+  assert.deepEqual(scrolledTo, { top: 0, behavior: 'smooth' });
+
+  btt.dispose();
+  assert.equal(globalThis.window._listeners['scroll'].length, 0, 'Scroll listener must be removed on dispose');
+
+  // Restore global state
+  if (origCreateElement) {
+    globalThis.document.createElement = origCreateElement;
+  }
+});
+
+test('Boodoo CLI injector and migration coverage for all 8 v1.1.9 components', async () => {
+  const { addComponent, listAvailableComponents } = await import(
+    pathToFileURL(resolve(rootDir, 'bin/boodoo.mjs')).href
+  );
+
+  const available = listAvailableComponents();
+  const newV119Components = [
+    'chat-thread',
+    'filter-bar',
+    'kanban-board',
+    'bento-grid',
+    'transfer-list',
+    'audio-player',
+    'color-picker',
+    'back-to-top'
+  ];
+
+  for (const comp of newV119Components) {
+    assert.ok(available.includes(comp), `CLI must list ${comp} as available component`);
+  }
+
+  const tempDir = resolve(rootDir, 'tests', 'temp_v119_cli_test');
+  try {
+    for (const comp of newV119Components) {
+      const res = addComponent(comp, tempDir);
+      assert.equal(res.name, comp);
+      assert.ok(res.files.length > 0, `addComponent for ${comp} should inject files`);
+    }
+  } finally {
+    const { rmSync } = await import('node:fs');
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 });
 
 

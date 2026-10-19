@@ -204,6 +204,7 @@
 <li><a href="../components/ai-prompt.html">AI Prompt & Chat</a></li>
 <li><a href="../components/dock.html">Dock (App Shelf)</a></li>
 <li><a href="../components/kpi-card.html">KPI Stat Card</a></li>
+<li><a href="../components/advanced-components.html">Advanced components</a></li>
 </ul>
 <h6 class="docs-nav-section">Helpers</h6>
 <ul class="docs-nav-list">
@@ -241,6 +242,7 @@
 <h6 class="docs-nav-section">About</h6>
 <ul class="docs-nav-list">
 <li><a href="../about/overview.html">Overview</a></li>
+<li><a href="../about/production-readiness.html">Production readiness</a></li>
 <li><a href="../about/design-principles.html">Design principles</a></li>
 <li><a href="../about/brand.html">Brand assets</a></li>
 <li><a href="../about/vs-bootstrap.html">boodoo vs Bootstrap</a></li>
@@ -289,8 +291,15 @@
 │   │   ├── boodoo-animations.css <span class="text-muted"># motion utilities &amp; keyframes</span>
 │   │   └── boodoo.less.css       <span class="text-muted"># compiled from the Less build</span>
 │   └── js/
-│       ├── boodoo.js             <span class="text-muted"># UMD bundle (all components, ~163 KB)</span>
-│       └── boodoo.esm.js         <span class="text-muted"># ES module, tree-shakeable</span></code></pre>
+│       ├── boodoo.js             <span class="text-muted"># UMD bundle (all components, ~172 KB)</span>
+│       ├── boodoo.cjs            <span class="text-muted"># CommonJS bundle</span>
+│       ├── boodoo.esm.js         <span class="text-muted"># ES module, tree-shakeable</span>
+│       ├── boodoo.min.js         <span class="text-muted"># Minified JS runtime (~157 KB)</span>
+│       └── boodoo.d.ts           <span class="text-muted"># TypeScript definitions</span>
+├── tokens/                       <span class="text-muted"># Cross-platform design tokens (JSON, CJS, ESM)</span>
+├── react/                        <span class="text-muted"># Headless React hooks</span>
+├── vue/                          <span class="text-muted"># Headless Vue 3 / Nuxt composables</span>
+└── react-native/                 <span class="text-muted"># Pure native mobile primitives (zero DOM)</span></code></pre>
 </div>
 
 <h2 id="quick-example"><span>Included Components Preview</span></h2>
@@ -315,35 +324,31 @@
 <p><span>Build boodoo from source using the Sass and Less files in the <code>scss/</code> and <code>less/</code> folders. The
   Sass source is modular — override variables, mixins, and maps to create your perfect output.</span></p>
 
-<h2 id="js-components"><span>JavaScript components</span></h2>
-<p><span>Bring boodoo to life with our optional vanilla JavaScript plugins. Learn about each plugin and its data API below.</span></p>
+<h2 id="js-components"><span>JavaScript components &amp; interactive plugins</span></h2>
+<p><span>Bring boodoo to life with our vanilla JavaScript plugins (zero runtime dependencies, SSR safe). Learn about each component below:</span></p>
 <div class="row g-3">
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Alert</span> <span
-      class="text-muted small">dismiss</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Button</span> <span
-      class="text-muted small">toggle</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Carousel</span> <span
-      class="text-muted small">slide</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Collapse</span> <span
-      class="text-muted small">expand</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Dropdown</span> <span
-      class="text-muted small">menu</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Modal</span> <span
-      class="text-muted small">dialog</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Offcanvas</span> <span
-      class="text-muted small">panel</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Popover</span> <span
-      class="text-muted small">detail</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Scrollspy</span> <span
-      class="text-muted small">scroll</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Tab</span> <span
-      class="text-muted small">switch</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Toast</span> <span
-      class="text-muted small">notify</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Tooltip</span> <span
-      class="text-muted small">hint</span></div>
-  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Ripple</span> <span
-      class="text-muted small">material</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Alert</span> <span class="text-muted small">dismiss</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Button</span> <span class="text-muted small">toggle / loading</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Carousel</span> <span class="text-muted small">slide / touch</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Collapse</span> <span class="text-muted small">expand</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Dropdown</span> <span class="text-muted small">menu</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Modal</span> <span class="text-muted small">dialog &amp; focus</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Offcanvas</span> <span class="text-muted small">drawer panel</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Popover</span> <span class="text-muted small">detail popup</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Scrollspy</span> <span class="text-muted small">active scroll</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Tab</span> <span class="text-muted small">switch panel</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Toast</span> <span class="text-muted small">notify &amp; dismiss</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Tooltip</span> <span class="text-muted small">hover hint</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">CommandPalette</span> <span class="text-muted small">Ctrl+K search</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">DataTable</span> <span class="text-muted small">sort &amp; filter</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Dropzone</span> <span class="text-muted small">drag &amp; drop</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">FABDock</span> <span class="text-muted small">floating action</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">DialogFullscreen</span> <span class="text-muted small">takeover sheet</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">Tour</span> <span class="text-muted small">step walkthrough</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">FilterBar</span> <span class="text-muted small">tag query builder</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">TransferList</span> <span class="text-muted small">dual-column mover</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">ColorPicker</span> <span class="text-muted small">swatch selection</span></div>
+  <div class="col-6 col-md-4"><span class="badge bg-light text-dark border">BackToTop</span> <span class="text-muted small">scroll indicator</span></div>
 </div>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
@@ -369,7 +374,7 @@
       <ul><li class="toc-2"><a href="#precompiled">Precompiled</a></li>
 <li class="toc-2"><a href="#quick-example">Included Components Preview</a></li>
 <li class="toc-2"><a href="#source">Source code</a></li>
-<li class="toc-2"><a href="#js-components">JavaScript components</a></li></ul>
+<li class="toc-2"><a href="#js-components">JavaScript components &amp; interactive plugins</a></li></ul>
     </div>
 </aside>
     </div>

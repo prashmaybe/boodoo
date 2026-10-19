@@ -273,6 +273,165 @@ Avatar.Image = function AvatarImage({ source, size = 48, style }) {
   );
 };
 
+/**
+ * ChatBubble Primitive
+ */
+export function ChatBubble({
+  message,
+  outgoing = false,
+  timestamp,
+  style,
+  textStyle,
+  ...props
+}) {
+  const theme = useTheme();
+
+  return (
+    <View
+      style={[
+        styles.chatBubbleBase,
+        {
+          alignSelf: outgoing ? 'flex-end' : 'flex-start',
+          backgroundColor: outgoing
+            ? theme.colors.primary
+            : theme.dark
+            ? theme.colors.surface
+            : '#f1f5f9',
+          borderBottomRightRadius: outgoing ? 4 : 16,
+          borderBottomLeftRadius: outgoing ? 16 : 4,
+          borderWidth: outgoing ? 0 : 1,
+          borderColor: theme.colors.border,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      <RNText
+        style={[
+          styles.chatText,
+          {
+            color: outgoing ? '#ffffff' : theme.colors.text,
+          },
+          textStyle,
+        ]}
+      >
+        {message}
+      </RNText>
+      {timestamp ? (
+        <RNText
+          style={[
+            styles.chatTime,
+            {
+              color: outgoing ? 'rgba(255,255,255,0.7)' : theme.colors.textSecondary || '#64748b',
+            },
+          ]}
+        >
+          {timestamp}
+        </RNText>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * AIStream Primitive
+ */
+export function AIStream({
+  children,
+  streaming = false,
+  citations = [],
+  onCitationPress,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  return (
+    <View
+      style={[
+        styles.aiStreamBase,
+        {
+          backgroundColor: theme.colors.surface,
+          borderColor: theme.colors.border,
+          borderLeftColor: theme.colors.primary,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+        <RNText style={[styles.aiStreamText, { color: theme.colors.text }]}>
+          {children}
+        </RNText>
+        {streaming ? (
+          <View style={[styles.aiCursor, { backgroundColor: theme.colors.primary }]} />
+        ) : null}
+      </View>
+      {citations && citations.length > 0 ? (
+        <View style={styles.aiCitationsRow}>
+          {citations.map((cite, i) => (
+            <TouchableOpacity
+              key={i}
+              onPress={() => onCitationPress && onCitationPress(cite)}
+              style={[
+                styles.citationPill,
+                {
+                  backgroundColor: theme.dark ? 'rgba(124,58,237,0.2)' : 'rgba(124,58,237,0.08)',
+                },
+              ]}
+            >
+              <RNText style={[styles.citationText, { color: theme.colors.primary }]}>
+                {typeof cite === 'string' ? cite : cite.title || `[${i + 1}]`}
+              </RNText>
+            </TouchableOpacity>
+          ))}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * FilterPill Primitive
+ */
+export function FilterPill({
+  label,
+  value,
+  onRemove,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  return (
+    <View
+      style={[
+        styles.filterPillBase,
+        {
+          backgroundColor: theme.dark ? theme.colors.surface : '#f1f5f9',
+          borderColor: theme.colors.border,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      {label ? (
+        <RNText style={[styles.filterPillLabel, { color: theme.colors.textSecondary || '#64748b' }]}>
+          {label}:{' '}
+        </RNText>
+      ) : null}
+      <RNText style={[styles.filterPillValue, { color: theme.colors.text }]}>
+        {value}
+      </RNText>
+      {onRemove ? (
+        <TouchableOpacity onPress={onRemove} style={styles.filterPillClose}>
+          <RNText style={{ color: theme.colors.danger || '#e11d48', fontWeight: 'bold' }}>×</RNText>
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   chipBase: {
     flexDirection: 'row',
@@ -300,5 +459,76 @@ const styles = StyleSheet.create({
   avatarText: {
     fontWeight: '700',
     color: '#ffffff',
+  },
+  chatBubbleBase: {
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    maxWidth: '80%',
+    marginBottom: 6,
+  },
+  chatText: {
+    fontSize: 15,
+    lineHeight: 20,
+  },
+  chatTime: {
+    fontSize: 10,
+    marginTop: 4,
+    alignSelf: 'flex-end',
+  },
+  aiStreamBase: {
+    padding: 14,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderLeftWidth: 3,
+    marginVertical: 8,
+  },
+  aiStreamText: {
+    fontSize: 15,
+    lineHeight: 22,
+  },
+  aiCursor: {
+    width: 2,
+    height: 16,
+    marginLeft: 3,
+  },
+  aiCitationsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 10,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0,0,0,0.06)',
+  },
+  citationPill: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+  },
+  citationText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  filterPillBase: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 16,
+    borderWidth: 1,
+    marginRight: 6,
+    marginBottom: 6,
+  },
+  filterPillLabel: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  filterPillValue: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  filterPillClose: {
+    marginLeft: 6,
+    paddingHorizontal: 2,
   },
 });

@@ -37,3 +37,6 @@ jobs:
 
       - name: Run test suite with coverage
         run: npm test
+
+      - name: Verify package packaging (npm pack dry-run)
+        run: npm pack --dry-run

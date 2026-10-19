@@ -167,6 +167,34 @@ const COMPONENT_MAP = {
     scss: 'scss/components/_extended-components.scss',
     js: 'js/src/tour.js',
   },
+  'chat-thread': {
+    scss: 'scss/components/_advanced-components.scss',
+  },
+  'filter-bar': {
+    scss: 'scss/components/_advanced-components.scss',
+    js: 'js/src/advanced-components.js',
+  },
+  'kanban-board': {
+    scss: 'scss/components/_advanced-components.scss',
+  },
+  'bento-grid': {
+    scss: 'scss/components/_advanced-components.scss',
+  },
+  'transfer-list': {
+    scss: 'scss/components/_advanced-components.scss',
+    js: 'js/src/advanced-components.js',
+  },
+  'audio-player': {
+    scss: 'scss/components/_advanced-components.scss',
+  },
+  'color-picker': {
+    scss: 'scss/components/_advanced-components.scss',
+    js: 'js/src/advanced-components.js',
+  },
+  'back-to-top': {
+    scss: 'scss/components/_advanced-components.scss',
+    js: 'js/src/advanced-components.js',
+  },
 };
 
 const BOOTSTRAP_TO_BOODOO = [
