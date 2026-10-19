@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -17,14 +17,14 @@
   "type": "module",
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
-  "main": "dist/js/boodoo.js",
+  "main": "dist/js/boodoo.cjs",
   "module": "dist/js/boodoo.esm.js",
   "types": "dist/js/boodoo.d.ts",
   "exports": {
     ".": {
       "types": "./dist/js/boodoo.d.ts",
       "import": "./dist/js/boodoo.esm.js",
-      "require": "./dist/js/boodoo.js"
+      "require": "./dist/js/boodoo.cjs"
     },
     "./css": "./dist/css/boodoo.min.css",
     "./tokens": {
@@ -83,8 +83,9 @@
     "README.md"
   ],
   "scripts": {
-    "test": "npm run build && npm run test:unit && npm run site",
+    "test": "npm run build && npm run test:unit && npm run test:smoke && npm run site",
     "test:unit": "node --test tests/framework.test.mjs",
+    "test:smoke": "node --test tests/package-smoke.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/framework.test.mjs",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",

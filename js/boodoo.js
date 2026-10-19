@@ -43,6 +43,7 @@ import { PasswordMeter } from './password-meter.js';
 import { FABDock } from './fab-dock.js';
 import { DialogFullscreen } from './dialog-fullscreen.js';
 import { Tour } from './tour.js';
+import { FilterBar, TransferList, ColorPicker, BackToTop } from './advanced-components.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -112,6 +113,10 @@ const boodoo = {
   Tour,
   a11y,
   registerCustomElements,
+  FilterBar,
+  TransferList,
+  ColorPicker,
+  BackToTop,
 };
 
 
@@ -264,6 +269,10 @@ export {
   registerCustomElements,
   theme,
   a11y,
+  FilterBar,
+  TransferList,
+  ColorPicker,
+  BackToTop,
 };
 
 if (typeof window !== 'undefined') {

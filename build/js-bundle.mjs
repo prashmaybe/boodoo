@@ -147,9 +147,11 @@ ${bundledBodies.join('\n\n')}
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'boodoo.js'), bundle);
+fs.writeFileSync(path.join(outDir, 'boodoo.cjs'), bundle);
 const minBundle = simpleMinifyJs(bundle);
 fs.writeFileSync(path.join(outDir, 'boodoo.min.js'), minBundle);
 console.log('Bundled boodoo.js (' + Buffer.byteLength(bundle) + ' bytes)');
+console.log('Bundled boodoo.cjs (' + Buffer.byteLength(bundle) + ' bytes)');
 console.log('Bundled boodoo.min.js (' + Buffer.byteLength(minBundle) + ' bytes)');
 
 // ESM build (keeps exports)
@@ -191,6 +193,13 @@ export {
   initRipple,
   registerCustomElements,
   theme,
+  FABDock,
+  DialogFullscreen,
+  Tour,
+  FilterBar,
+  TransferList,
+  ColorPicker,
+  BackToTop,
 };
 `;
 fs.writeFileSync(path.join(outDir, 'boodoo.esm.js'), esmBundle);
