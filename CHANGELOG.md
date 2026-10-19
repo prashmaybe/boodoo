@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-10-19
+
+### Added
+- **Modular Subpath CSS Exports (`package.json`)**:
+  - Added dedicated subpath exports for standalone stylesheets: `"./css/grid"`, `"./css/utilities"`, `"./css/reboot"`, and `"./css/animations"` alongside `"./css"`.
+  - Enables consumers to import individual modules without loading the full framework stylesheet.
+- **Architectural Rules Governance (`.agents/AGENTS.md`)**:
+  - Enforced **Package Hygiene & Tarball Purity Rule**: Verified absence of stray build artifacts in `dist/css` and confirmed exclusion of internal test suites from published tarball.
+  - Enforced **Modular Subpath CSS Exports Rule**: Standardized first-class subpath imports for modular stylesheets.
+  - Enforced **Adaptive Spacing Scale Integrity Rule**: Codified adaptive spacer token overrides without mutating core framework step proportions.
+- **Dynamic CSS Custom Property Theming for Alerts (`scss/components/_alerts.scss`, `less/boodoo.less`)**:
+  - Upgraded alerts across SCSS and Less to dynamic CSS custom properties (`var(--boodoo-primary-text-emphasis, ...)`, `var(--boodoo-primary-bg-subtle, ...)`, `var(--boodoo-primary-border-subtle, ...)`) with backward-compatible fallbacks.
+  - Full parity implemented across all 8 theme color variants (`primary`, `secondary`, `success`, `info`, `warning`, `danger`, `light`, `dark`).
+- **Package Hygiene & Smoke Assertions (`tests/package-smoke.test.mjs`)**:
+  - Added automated CI assertions verifying all modular CSS subpath exports resolve on disk.
+  - Added verification that `dist/css/test_out.css` does not exist and `tests/` is excluded from `package.json` `files`.
+  - Added automated tests verifying alert variables consume dynamic CSS custom properties.
+
+### Changed
+- **Package Distribution Optimization**:
+  - Pruned `tests/` from `package.json` `files` array to ensure a pure, minimal distribution tarball.
+  - Updated CLI scaffolder version to `1.2.0` in `bin/create-boodoo.mjs`.
+
+---
+
 ## [1.1.9] - 2026-10-19
 
 ### Added
