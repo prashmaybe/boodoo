@@ -130,5 +130,24 @@ Design decisions across color, typography, elevation, spacing, and border radii 
 2. **Cross-Platform Generation**: Stylesheet variables in Sass (`scss/_variables.scss`), Less (`less/boodoo.less`), and mobile themes (`react-native/theme.js`, `react-native/paper.js`) must align with and inherit from this unified token palette.
 3. **Automated Token Assertion**: `tests/framework.test.mjs` must assert token parity across JSON, JavaScript, CSS custom properties, and React Native themes on every build.
 
+## Package Hygiene & Tarball Purity Rule
+All published packages and source tarballs must be strictly pruned of build artifacts, test suites, and temporary scratch files:
+
+1. **No Stray Output in Dist**: The compiled `dist/` directory must only contain public, validated framework distribution files. Stray compiler outputs, temporary bundles (such as `test_out.css`, `*.tmp`), or uncompressed scratch files are strictly prohibited.
+2. **Files Whitelist Hygiene**: Test files (`tests/`), internal build scripts (`build/`), and internal fixtures must never be listed in `package.json` `"files"` array. The tarball must remain minimal and strictly restricted to runtime distributions, source styles, and public token definitions.
+3. **Automated Smoke Assertion**: `tests/package-smoke.test.mjs` must assert the absence of stray artifacts in `dist/css` and verify that `tests/` is not part of `package.json` `"files"` on every build.
+
+## Modular Subpath CSS Exports Rule
+Boodoo package exports must support modular, subpath imports of independent CSS bundles in addition to the full bundle:
+
+1. **Subpath Declarations**: `package.json` `"exports"` must expose first-class subpaths for individual stylesheets: `"./css/grid"`, `"./css/utilities"`, `"./css/reboot"`, and `"./css/animations"`.
+2. **Consumer Lightweight Integration**: Consumers who only require the grid layout, reboot resets, or utility classes must be able to import the minimal bundle without being forced to load the full framework stylesheet.
+
+## Adaptive Spacing Scale Integrity Rule
+The framework spacing scale is designed around adaptive base spacer tokens and must preserve its foundational architecture:
+
+1. **Token Hierarchy**: Base spacing scales derive from `--boodoo-spacer` (`$boodoo-spacer: 1rem` / 16px) with intentional proportional steps (`0.5: 8px`, `1: 20px`, `2: 36px`, etc.).
+2. **Adaptive Override Pattern**: Applications requiring custom density (such as compact backoffice screens or dense mockup scales) must achieve density adjustments by customizing `--boodoo-spacer` or specific `--boodoo-spacer-*` custom properties at runtime, or via preprocessor `$boodoo-spacer` / `@boodoo-spacer` variables, rather than mutating core framework step proportions.
+
 
 

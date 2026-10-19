@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -27,6 +27,10 @@
       "require": "./dist/js/boodoo.cjs"
     },
     "./css": "./dist/css/boodoo.min.css",
+    "./css/grid": "./dist/css/boodoo-grid.min.css",
+    "./css/utilities": "./dist/css/boodoo-utilities.min.css",
+    "./css/reboot": "./dist/css/boodoo-reboot.min.css",
+    "./css/animations": "./dist/css/boodoo-animations.min.css",
     "./tokens": {
       "types": "./tokens/index.d.ts",
       "import": "./tokens/index.js",
@@ -77,7 +81,6 @@
     "react/",
     "vue/",
     "bin/",
-    "tests/",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
