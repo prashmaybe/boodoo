@@ -80,6 +80,7 @@ export {
   FilterPill,
   BarChart,
   DonutChart,
+  LineChart,
 } from './data-display.js';
 
 // Feedback & Status

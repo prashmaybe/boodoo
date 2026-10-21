@@ -1,6 +1,6 @@
 // =====================================================================
 // BOODOO JS — Chart Component (Native zero-dependency Canvas/SVG charts)
-// Supports: 'bar', 'line', 'pie', 'donut'
+// Supports: 'bar', 'line', 'area', 'pie', 'donut', 'radar', 'polarArea'
 // Features: Responsive scaling, interactive hover tooltips, CSS variable theming,
 // dark mode awareness, data-api initialization, programmatic updates.
 // =====================================================================
@@ -36,10 +36,14 @@ export class Chart extends BaseComponent {
     // Config options
     this._type = this._config.type || this._element.getAttribute('data-chart-type') || 'bar';
     this._data = this._config.data || this._parseDataFromDOM() || { labels: [], datasets: [] };
+
+    // Default aspect ratio: pie, donut, radar, polarArea look best square (1 or 1.25); line and bar look best at 2
+    const defaultAspectRatio = ['pie', 'donut', 'radar', 'polarArea'].includes(this._type) ? 1.2 : 2;
+
     this._options = {
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 2,
+      aspectRatio: this._config.options?.aspectRatio || defaultAspectRatio,
       animated: true,
       donutCutout: 0.55,
       showGrid: true,
@@ -118,7 +122,6 @@ export class Chart extends BaseComponent {
   }
 
   getColors() {
-    // Read live CSS custom properties from element or root
     const style = typeof window !== 'undefined' && window.getComputedStyle ? window.getComputedStyle(this._element) : null;
     const readVar = (name, fallback) => {
       if (!style) return fallback;
@@ -148,7 +151,7 @@ export class Chart extends BaseComponent {
     const width = rect.width || this._canvas.parentElement?.clientWidth || 400;
     const height = this._options.maintainAspectRatio
       ? width / (this._options.aspectRatio || 2)
-      : (rect.height || 200);
+      : (rect.height || 240);
 
     const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
     this._canvas.width = Math.floor(width * dpr);
@@ -164,7 +167,10 @@ export class Chart extends BaseComponent {
 
   update(data, options) {
     if (data) this._data = data;
-    if (options) this._options = { ...this._options, ...options };
+    if (options) {
+      if (options.type) this._type = options.type;
+      this._options = { ...this._options, ...options };
+    }
     this.render();
     triggerEvent(this._element, 'boodoo.chart.update', { data: this._data });
   }
@@ -184,10 +190,14 @@ export class Chart extends BaseComponent {
 
     if (this._type === 'bar') {
       this._renderBarChart(width, height, palette, text, grid);
-    } else if (this._type === 'line') {
+    } else if (this._type === 'line' || this._type === 'area') {
       this._renderLineChart(width, height, palette, text, grid);
     } else if (this._type === 'pie' || this._type === 'donut') {
       this._renderPieChart(width, height, palette, text);
+    } else if (this._type === 'polarArea') {
+      this._renderPolarAreaChart(width, height, palette, text, grid);
+    } else if (this._type === 'radar') {
+      this._renderRadarChart(width, height, palette, text, grid);
     }
   }
 
@@ -200,7 +210,6 @@ export class Chart extends BaseComponent {
     const datasets = this._data.datasets || [];
     if (!labels.length || !datasets.length) return;
 
-    // Find max value across datasets
     let maxVal = 0;
     datasets.forEach((ds) => {
       (ds.data || []).forEach((val) => {
@@ -208,7 +217,6 @@ export class Chart extends BaseComponent {
       });
     });
     if (maxVal <= 0) maxVal = 10;
-    // Round maxVal up to nice step
     const stepCount = 4;
     const niceMax = Math.ceil(maxVal / stepCount) * stepCount;
 
@@ -234,7 +242,6 @@ export class Chart extends BaseComponent {
       this._ctx.fillText(String(Math.round(yVal)), padding.left - 8, y);
     }
 
-    // Bars
     const groupWidth = chartW / labels.length;
     const barGap = 6;
     const barW = Math.max(4, (groupWidth - 20) / datasets.length - barGap);
@@ -259,7 +266,6 @@ export class Chart extends BaseComponent {
         }
         this._ctx.fill();
 
-        // Register hit region for tooltips
         this._hitRegions.push({
           x,
           y,
@@ -272,7 +278,6 @@ export class Chart extends BaseComponent {
         });
       });
 
-      // X label
       this._ctx.fillStyle = textColor;
       this._ctx.textAlign = 'center';
       this._ctx.textBaseline = 'top';
@@ -321,14 +326,31 @@ export class Chart extends BaseComponent {
       this._ctx.fillText(String(Math.round(yVal)), padding.left - 8, y);
     }
 
-    // X coordinates
     const getX = (idx) => padding.left + (idx / (labels.length - 1 || 1)) * chartW;
     const getY = (val) => padding.top + chartH - (val / niceMax) * chartH;
 
-    // Draw lines and areas
     datasets.forEach((ds, dsIdx) => {
       const color = ds.borderColor || palette[dsIdx % palette.length];
       const data = ds.data || [];
+      const isArea = this._type === 'area' || ds.fill;
+
+      // Fill area under line if area chart
+      if (isArea && data.length > 0) {
+        this._ctx.beginPath();
+        data.forEach((val, idx) => {
+          const x = getX(idx);
+          const y = getY(val);
+          if (idx === 0) this._ctx.moveTo(x, y);
+          else this._ctx.lineTo(x, y);
+        });
+        this._ctx.lineTo(getX(data.length - 1), padding.top + chartH);
+        this._ctx.lineTo(getX(0), padding.top + chartH);
+        this._ctx.closePath();
+
+        const areaBg = ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.15)');
+        this._ctx.fillStyle = areaBg;
+        this._ctx.fill();
+      }
 
       // Line path
       this._ctx.beginPath();
@@ -368,7 +390,6 @@ export class Chart extends BaseComponent {
       });
     });
 
-    // X Labels
     this._ctx.fillStyle = textColor;
     this._ctx.textAlign = 'center';
     this._ctx.textBaseline = 'top';
@@ -381,7 +402,8 @@ export class Chart extends BaseComponent {
     const isDonut = this._type === 'donut';
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = Math.min(centerX, centerY) - 20;
+    // Generous radius to make pie and donut prominently sized (fills 85% of available bounds)
+    const radius = Math.max(20, Math.min(centerX, centerY) - 12);
     const cutoutRadius = isDonut ? radius * (this._options.donutCutout || 0.55) : 0;
 
     const labels = this._data.labels || [];
@@ -415,7 +437,6 @@ export class Chart extends BaseComponent {
       this._ctx.strokeStyle = '#ffffff';
       this._ctx.stroke();
 
-      // Register hit slice
       this._hitRegions.push({
         type: 'arc',
         centerX,
@@ -431,6 +452,186 @@ export class Chart extends BaseComponent {
       });
 
       currentAngle = endAngle;
+    });
+
+    // Donut center label showing total
+    if (isDonut && cutoutRadius > 25) {
+      this._ctx.fillStyle = textColor;
+      this._ctx.textAlign = 'center';
+      this._ctx.textBaseline = 'middle';
+      this._ctx.font = 'bold 18px Inter, system-ui, sans-serif';
+      this._ctx.fillText(String(total), centerX, centerY - 6);
+      this._ctx.font = '11px Inter, system-ui, sans-serif';
+      this._ctx.fillText('TOTAL', centerX, centerY + 14);
+    }
+  }
+
+  _renderPolarAreaChart(width, height, palette, textColor, gridColor) {
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const maxRadius = Math.max(20, Math.min(centerX, centerY) - 16);
+
+    const labels = this._data.labels || [];
+    const dataset = (this._data.datasets && this._data.datasets[0]) || { data: [] };
+    const data = dataset.data || [];
+    if (!data.length) return;
+
+    const maxVal = Math.max(...data, 10);
+    const sliceAngle = (Math.PI * 2) / data.length;
+
+    // Draw concentric guide circles
+    this._ctx.strokeStyle = gridColor;
+    this._ctx.lineWidth = 1;
+    for (let i = 1; i <= 3; i++) {
+      this._ctx.beginPath();
+      this._ctx.arc(centerX, centerY, (maxRadius / 3) * i, 0, Math.PI * 2);
+      this._ctx.stroke();
+    }
+
+    let currentAngle = -Math.PI / 2;
+    data.forEach((val, idx) => {
+      const r = (val / maxVal) * maxRadius;
+      const endAngle = currentAngle + sliceAngle;
+      const color = (dataset.backgroundColor && dataset.backgroundColor[idx]) || palette[idx % palette.length];
+
+      this._ctx.beginPath();
+      this._ctx.arc(centerX, centerY, r, currentAngle, endAngle);
+      this._ctx.lineTo(centerX, centerY);
+      this._ctx.closePath();
+
+      this._ctx.fillStyle = color.startsWith('#') ? `${color}cc` : color;
+      this._ctx.fill();
+
+      this._ctx.lineWidth = 1.5;
+      this._ctx.strokeStyle = '#ffffff';
+      this._ctx.stroke();
+
+      this._hitRegions.push({
+        type: 'arc',
+        centerX,
+        centerY,
+        innerRadius: 0,
+        outerRadius: r,
+        startAngle: currentAngle,
+        endAngle,
+        label: labels[idx] || `Item ${idx + 1}`,
+        value: val,
+        color,
+      });
+
+      currentAngle = endAngle;
+    });
+  }
+
+  _renderRadarChart(width, height, palette, textColor, gridColor) {
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = Math.max(20, Math.min(centerX, centerY) - 30);
+
+    const labels = this._data.labels || [];
+    const datasets = this._data.datasets || [];
+    const count = labels.length;
+    if (count < 3 || !datasets.length) return;
+
+    let maxVal = 0;
+    datasets.forEach((ds) => {
+      (ds.data || []).forEach((val) => {
+        if (val > maxVal) maxVal = val;
+      });
+    });
+    if (maxVal <= 0) maxVal = 100;
+
+    const angleStep = (Math.PI * 2) / count;
+
+    // Draw concentric web rings
+    this._ctx.strokeStyle = gridColor;
+    this._ctx.lineWidth = 1;
+    const rings = 4;
+    for (let rIdx = 1; rIdx <= rings; rIdx++) {
+      const r = (radius / rings) * rIdx;
+      this._ctx.beginPath();
+      for (let i = 0; i < count; i++) {
+        const a = -Math.PI / 2 + i * angleStep;
+        const x = centerX + Math.cos(a) * r;
+        const y = centerY + Math.sin(a) * r;
+        if (i === 0) this._ctx.moveTo(x, y);
+        else this._ctx.lineTo(x, y);
+      }
+      this._ctx.closePath();
+      this._ctx.stroke();
+    }
+
+    // Spokes and labels
+    this._ctx.fillStyle = textColor;
+    this._ctx.font = '11px Inter, system-ui, sans-serif';
+    this._ctx.textAlign = 'center';
+    this._ctx.textBaseline = 'middle';
+
+    for (let i = 0; i < count; i++) {
+      const a = -Math.PI / 2 + i * angleStep;
+      const x = centerX + Math.cos(a) * radius;
+      const y = centerY + Math.sin(a) * radius;
+
+      this._ctx.beginPath();
+      this._ctx.moveTo(centerX, centerY);
+      this._ctx.lineTo(x, y);
+      this._ctx.stroke();
+
+      const labelX = centerX + Math.cos(a) * (radius + 16);
+      const labelY = centerY + Math.sin(a) * (radius + 16);
+      this._ctx.fillText(labels[i], labelX, labelY);
+    }
+
+    // Draw polygon datasets
+    datasets.forEach((ds, dsIdx) => {
+      const color = ds.borderColor || palette[dsIdx % palette.length];
+      const data = ds.data || [];
+
+      this._ctx.beginPath();
+      data.forEach((val, i) => {
+        const r = (val / maxVal) * radius;
+        const a = -Math.PI / 2 + i * angleStep;
+        const x = centerX + Math.cos(a) * r;
+        const y = centerY + Math.sin(a) * r;
+        if (i === 0) this._ctx.moveTo(x, y);
+        else this._ctx.lineTo(x, y);
+      });
+      this._ctx.closePath();
+
+      const areaBg = ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.2)');
+      this._ctx.fillStyle = areaBg;
+      this._ctx.fill();
+
+      this._ctx.strokeStyle = color;
+      this._ctx.lineWidth = 2;
+      this._ctx.stroke();
+
+      // Points and hit regions
+      data.forEach((val, i) => {
+        const r = (val / maxVal) * radius;
+        const a = -Math.PI / 2 + i * angleStep;
+        const x = centerX + Math.cos(a) * r;
+        const y = centerY + Math.sin(a) * r;
+
+        this._ctx.beginPath();
+        this._ctx.arc(x, y, 4, 0, Math.PI * 2);
+        this._ctx.fillStyle = color;
+        this._ctx.fill();
+        this._ctx.strokeStyle = '#ffffff';
+        this._ctx.lineWidth = 1.5;
+        this._ctx.stroke();
+
+        this._hitRegions.push({
+          x: x - 8,
+          y: y - 8,
+          w: 16,
+          h: 16,
+          label: labels[i],
+          datasetLabel: ds.label || `Dataset ${dsIdx + 1}`,
+          value: val,
+          color,
+        });
+      });
     });
   }
 
@@ -449,7 +650,6 @@ export class Chart extends BaseComponent {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist >= region.innerRadius && dist <= region.outerRadius) {
           let angle = Math.atan2(dy, dx);
-          // Normalize to [startAngle, startAngle + 2PI]
           while (angle < region.startAngle) angle += Math.PI * 2;
           while (angle > region.startAngle + Math.PI * 2) angle -= Math.PI * 2;
           if (angle >= region.startAngle && angle <= region.endAngle) {

@@ -1671,6 +1671,39 @@ test('Native zero-dependency Chart component functionality, rendering, and lifec
   chart._type = 'donut';
   chart.render();
 
+  // Test area chart type
+  chart.update(
+    {
+      labels: ['Mon', 'Tue', 'Wed'],
+      datasets: [{ label: 'Traffic', data: [100, 150, 200] }]
+    },
+    { type: 'area' }
+  );
+  chart._type = 'area';
+  chart.render();
+
+  // Test radar chart type
+  chart.update(
+    {
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      datasets: [{ label: 'Score', data: [80, 90, 70, 85, 95] }]
+    },
+    { type: 'radar' }
+  );
+  chart._type = 'radar';
+  chart.render();
+
+  // Test polarArea chart type
+  chart.update(
+    {
+      labels: ['North', 'South', 'East', 'West'],
+      datasets: [{ data: [50, 75, 40, 90] }]
+    },
+    { type: 'polarArea' }
+  );
+  chart._type = 'polarArea';
+  chart.render();
+
   // Test hover interaction and tooltip
   const mouseMoveHandler = container.canvas.listeners['mousemove']?.[0];
   if (mouseMoveHandler) {
@@ -1691,14 +1724,17 @@ test('React Native charts export and modularity verification', () => {
   const rnDataDisplay = readFileSync(resolve(rootDir, 'react-native/data-display.js'), 'utf8');
   assert.ok(rnDataDisplay.includes('export function BarChart'), 'React Native BarChart must be exported as a function');
   assert.ok(rnDataDisplay.includes('export function DonutChart'), 'React Native DonutChart must be exported as a function');
+  assert.ok(rnDataDisplay.includes('export function LineChart'), 'React Native LineChart must be exported as a function');
 
   const rnIndex = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
   assert.ok(rnIndex.includes('BarChart'), 'react-native/index.js must re-export BarChart');
   assert.ok(rnIndex.includes('DonutChart'), 'react-native/index.js must re-export DonutChart');
+  assert.ok(rnIndex.includes('LineChart'), 'react-native/index.js must re-export LineChart');
 
   const rnDts = readFileSync(resolve(rootDir, 'react-native/index.d.ts'), 'utf8');
   assert.ok(rnDts.includes('export declare const BarChart: ComponentType<any>;'), 'react-native/index.d.ts must declare BarChart');
   assert.ok(rnDts.includes('export declare const DonutChart: ComponentType<any>;'), 'react-native/index.d.ts must declare DonutChart');
+  assert.ok(rnDts.includes('export declare const LineChart: ComponentType<any>;'), 'react-native/index.d.ts must declare LineChart');
 });
 
 

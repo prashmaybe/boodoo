@@ -132,4 +132,5 @@ export declare const AIStream: ComponentType<any>;
 export declare const FilterPill: ComponentType<any>;
 export declare const BarChart: ComponentType<any>;
 export declare const DonutChart: ComponentType<any>;
+export declare const LineChart: ComponentType<any>;
 
