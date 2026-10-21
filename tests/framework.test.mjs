@@ -255,6 +255,8 @@ test('React Native adapter exports valid definitions without bundling errors', a
     'ChatBubble',
     'AIStream',
     'FilterPill',
+    'BarChart',
+    'DonutChart',
   ];
 
   for (const exp of expectedExports) {
@@ -275,7 +277,7 @@ test('React Native modular submodules existence and exports verification', () =>
     { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
     { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget'] },
     { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
-    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill'] },
+    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill', 'BarChart', 'DonutChart'] },
     { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
     { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table'] },
     { file: 'navigation.js', expected: ['Appbar', 'Header', 'TopNavigation', 'Drawer', 'BottomNavigation', 'Tabs', 'PageControl'] },
@@ -1516,6 +1518,189 @@ test('Boodoo CLI injector and migration coverage for all 8 v1.1.9 components', a
     rmSync(tempDir, { recursive: true, force: true });
   }
 });
+
+test('Native zero-dependency Chart component functionality, rendering, and lifecycle execution', async () => {
+  const { Chart } = await import(pathToFileURL(resolve(rootDir, 'js/src/chart.js')).href);
+  assert.equal(Chart.NAME, 'chart');
+
+  // Mock canvas and 2D context
+  const mockContext = {
+    clearRect: () => {},
+    beginPath: () => {},
+    moveTo: () => {},
+    lineTo: () => {},
+    stroke: () => {},
+    fill: () => {},
+    rect: () => {},
+    arc: () => {},
+    closePath: () => {},
+    setTransform: () => {},
+    scale: () => {},
+    fillText: () => {},
+  };
+
+  class MockChartCanvas {
+    constructor() {
+      this.tagName = 'CANVAS';
+      this.width = 400;
+      this.height = 200;
+      this.style = {};
+      this.listeners = {};
+    }
+    getContext() {
+      return mockContext;
+    }
+    addEventListener(event, fn) {
+      if (!this.listeners[event]) this.listeners[event] = [];
+      this.listeners[event].push(fn);
+    }
+    removeEventListener(event, fn) {
+      if (!this.listeners[event]) return;
+      this.listeners[event] = this.listeners[event].filter(h => h !== fn);
+    }
+    getBoundingClientRect() {
+      return { width: 400, height: 200, left: 0, top: 0, right: 400, bottom: 200 };
+    }
+    closest() {
+      return null;
+    }
+    matches() {
+      return false;
+    }
+  }
+
+  class MockChartContainer {
+    constructor() {
+      this.tagName = 'DIV';
+      this.style = {};
+      this.classList = {
+        add: () => {},
+        remove: () => {},
+        contains: () => false,
+      };
+      this.attributes = {};
+      this.children = [];
+      this.canvas = new MockChartCanvas();
+      this.children.push(this.canvas);
+      this.listeners = {};
+    }
+    getAttribute(name) {
+      return this.attributes[name] || null;
+    }
+    setAttribute(name, val) {
+      this.attributes[name] = val;
+    }
+    querySelector(sel) {
+      if (sel === 'canvas') return this.canvas;
+      if (sel === '.chart-tooltip') return null;
+      return null;
+    }
+    appendChild(child) {
+      this.children.push(child);
+      child.parentNode = this;
+      return child;
+    }
+    removeChild(child) {
+      this.children = this.children.filter(c => c !== child);
+      child.parentNode = null;
+      return child;
+    }
+    addEventListener(event, fn) {
+      if (!this.listeners[event]) this.listeners[event] = [];
+      this.listeners[event].push(fn);
+    }
+    removeEventListener(event, fn) {
+      if (!this.listeners[event]) return;
+      this.listeners[event] = this.listeners[event].filter(h => h !== fn);
+    }
+    dispatchEvent(evt) {
+      if (this.listeners[evt.type]) {
+        this.listeners[evt.type].forEach(fn => fn(evt));
+      }
+    }
+    getBoundingClientRect() {
+      return { width: 400, height: 200, left: 0, top: 0, right: 400, bottom: 200 };
+    }
+    closest() {
+      return null;
+    }
+    matches() {
+      return false;
+    }
+  }
+
+  const container = new MockChartContainer();
+  const chart = new Chart(container, {
+    type: 'bar',
+    data: {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+      datasets: [
+        { label: 'Revenue', data: [100, 200, 150, 300] }
+      ]
+    }
+  });
+
+  // Verify colors
+  const colors = chart.getColors();
+  assert.ok(Array.isArray(colors.palette), 'Chart colors must include palette');
+  assert.ok(colors.palette.length >= 6, 'Chart palette must contain at least 6 colors');
+
+  // Verify render and resize
+  chart.render();
+  chart.resize();
+
+  // Test line chart type
+  chart.update(
+    {
+      labels: ['Jan', 'Feb', 'Mar'],
+      datasets: [{ label: 'Signups', data: [10, 25, 40] }]
+    },
+    { type: 'line' }
+  );
+  chart._type = 'line';
+  chart.render();
+
+  // Test donut chart type
+  chart.update(
+    {
+      labels: ['Desktop', 'Mobile'],
+      datasets: [{ data: [70, 30] }]
+    },
+    { type: 'donut' }
+  );
+  chart._type = 'donut';
+  chart.render();
+
+  // Test hover interaction and tooltip
+  const mouseMoveHandler = container.canvas.listeners['mousemove']?.[0];
+  if (mouseMoveHandler) {
+    mouseMoveHandler({ clientX: 200, clientY: 100 });
+  }
+
+  const mouseLeaveHandler = container.canvas.listeners['mouseleave']?.[0];
+  if (mouseLeaveHandler) {
+    mouseLeaveHandler();
+  }
+
+  // Teardown
+  chart.dispose();
+  assert.equal(chart._resizeObserver, null, 'Chart resize observer must be cleaned up on dispose');
+});
+
+test('React Native charts export and modularity verification', () => {
+  const rnDataDisplay = readFileSync(resolve(rootDir, 'react-native/data-display.js'), 'utf8');
+  assert.ok(rnDataDisplay.includes('export function BarChart'), 'React Native BarChart must be exported as a function');
+  assert.ok(rnDataDisplay.includes('export function DonutChart'), 'React Native DonutChart must be exported as a function');
+
+  const rnIndex = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
+  assert.ok(rnIndex.includes('BarChart'), 'react-native/index.js must re-export BarChart');
+  assert.ok(rnIndex.includes('DonutChart'), 'react-native/index.js must re-export DonutChart');
+
+  const rnDts = readFileSync(resolve(rootDir, 'react-native/index.d.ts'), 'utf8');
+  assert.ok(rnDts.includes('export declare const BarChart: ComponentType<any>;'), 'react-native/index.d.ts must declare BarChart');
+  assert.ok(rnDts.includes('export declare const DonutChart: ComponentType<any>;'), 'react-native/index.d.ts must declare DonutChart');
+});
+
 
 
 

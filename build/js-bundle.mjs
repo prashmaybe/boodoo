@@ -196,6 +196,7 @@ export {
   FABDock,
   DialogFullscreen,
   Tour,
+  Chart,
   FilterBar,
   TransferList,
   ColorPicker,

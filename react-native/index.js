@@ -78,6 +78,8 @@ export {
   ChatBubble,
   AIStream,
   FilterPill,
+  BarChart,
+  DonutChart,
 } from './data-display.js';
 
 // Feedback & Status

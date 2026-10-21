@@ -1,0 +1,163 @@
+<!--
+title: Chart
+description: Zero-dependency responsive data charts including bar, line, and donut charts powered by HTML5 Canvas and CSS design tokens.
+section: components
+order: 14
+-->
+
+<section class="docs-section">
+  <h2><span>Overview</span></h2>
+  <p class="lead"><span>Boodoo Charts deliver zero-dependency, ultra-lightweight data visualizations inspired by Chart.js. Render bar charts, continuous line charts, and donut analytics that seamlessly bind to Boodoo theme tokens and dark mode.</span></p>
+</section>
+
+<section class="docs-section">
+  <h2><span>Interactive Bar Chart</span></h2>
+  <p><span>Bar charts display categorized numeric metrics with automated scaling, gridlines, and interactive hover tooltips.</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card p-3 shadow-sm">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="m-0"><span>Monthly Framework Downloads</span></h5>
+            <span class="badge badge-soft-primary"><span>2026 Metrics</span></span>
+          </div>
+          <div id="demoBarChart" class="chart-wrapper">
+            <canvas id="demoBarCanvas" aria-label="Monthly Downloads Bar Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight mt-3">
+    <pre><code class="language-html">&lt;div id="myBarChart" class="chart-wrapper"&gt;
+  &lt;canvas id="myBarCanvas" aria-label="Downloads Bar Chart"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const chart = new boodoo.Chart('#myBarChart', {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Downloads',
+        data: [12400, 19800, 24500, 31200, 42100, 58400]
+      }]
+    }
+  });
+&lt;/script&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Continuous Line Chart</span></h2>
+  <p><span>Continuous line charts visualize trends over chronological sequences with smoothed paths and responsive touch indicators.</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card p-3 shadow-sm">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="m-0"><span>API Response Latency (ms)</span></h5>
+            <span class="badge badge-soft-success"><span>99.9% Uptime</span></span>
+          </div>
+          <div id="demoLineChart" class="chart-wrapper">
+            <canvas id="demoLineCanvas" aria-label="API Latency Line Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight mt-3">
+    <pre><code class="language-javascript">const lineChart = new boodoo.Chart('#demoLineChart', {
+  type: 'line',
+  data: {
+    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+    datasets: [{
+      label: 'Latency (ms)',
+      data: [42, 38, 55, 62, 49, 36],
+      borderColor: 'var(--boodoo-info, #0ea5e9)'
+    }]
+  }
+});</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2><span>Donut & Pie Charts</span></h2>
+  <p><span>Donut charts offer proportional slice visualization with percentage calculations, hover tooltips, and centered counters.</span></p>
+
+  <div class="bd-example p-4 border rounded bg-white">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card p-3 shadow-sm text-center">
+          <h5 class="mb-3"><span>Traffic by Platform</span></h5>
+          <div id="demoDonutChart" class="chart-wrapper">
+            <canvas id="demoDonutCanvas" aria-label="Platform Share Donut Chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight mt-3">
+    <pre><code class="language-javascript">const donutChart = new boodoo.Chart('#demoDonutChart', {
+  type: 'donut',
+  data: {
+    labels: ['Desktop', 'Mobile', 'Tablet'],
+    datasets: [{
+      data: [58, 34, 8]
+    }]
+  }
+});</code></pre>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof boodoo !== 'undefined' && boodoo.Chart) {
+      const elBar = document.getElementById('demoBarChart');
+      if (elBar) {
+        new boodoo.Chart(elBar, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'Downloads',
+              data: [12, 19, 25, 32, 42, 58]
+            }]
+          }
+        });
+      }
+
+      const elLine = document.getElementById('demoLineChart');
+      if (elLine) {
+        new boodoo.Chart(elLine, {
+          type: 'line',
+          data: {
+            labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+            datasets: [{
+              label: 'Latency',
+              data: [42, 38, 55, 62, 49, 36]
+            }]
+          }
+        });
+      }
+
+      const elDonut = document.getElementById('demoDonutChart');
+      if (elDonut) {
+        new boodoo.Chart(elDonut, {
+          type: 'donut',
+          data: {
+            labels: ['Desktop', 'Mobile', 'Tablet'],
+            datasets: [{
+              data: [58, 34, 8]
+            }]
+          }
+        });
+      }
+    }
+  });
+</script>
