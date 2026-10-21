@@ -1,315 +1,290 @@
 <div align="center">
 
+<a href="https://boodooframework.com">
+  <img src="boodoo-brand-assets/boodoo-icon.png" alt="boodoo logo" width="108" height="152" style="max-width: 100%;">
+</a>
+
 # boodoo
 
 **The simplicity of Bootstrap. The flexibility of Tailwind. The structure of Foundation. The polish of Material.**
 
-A modular, mobile-first CSS design framework — without JS framework lock-in. Built for developers who want pre-styled accessible UI components + utility-first power with zero build overhead.
+*One design system. Multiple platforms. No unnecessary lock-in.*
 
-[![CI](https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml/badge.svg)](https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/boodoo.svg?style=flat)](https://www.npmjs.com/package/boodoo)
-[![npm downloads](https://img.shields.io/npm/dm/boodoo.svg?style=flat)](https://www.npmjs.com/package/boodoo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-7c3aed.svg)](https://github.com/prashmaybe/boodoo/blob/main/LICENSE)
+A modular, mobile-first CSS design framework built for developers who want battle-tested, accessible UI components with utility-first speed and zero runtime dependencies.
+
+<p align="center">
+  <a href="https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml"><img src="https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://www.npmjs.com/package/boodoo"><img src="https://img.shields.io/npm/v/boodoo.svg?style=flat&color=7c3aed" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/boodoo"><img src="https://img.shields.io/npm/dm/boodoo.svg?style=flat&color=5b21e6" alt="npm downloads"></a>
+  <a href="https://bundlephobia.com/package/boodoo"><img src="https://img.shields.io/bundlephobia/minzip/boodoo?color=10b981" alt="bundle size"></a>
+  <a href="https://github.com/prashmaybe/boodoo/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-7c3aed.svg" alt="License: MIT"></a>
+</p>
+
+[**Explore Documentation**](https://boodooframework.com) · [**Live Examples**](https://boodooframework.com/examples/) · [**Getting Started**](https://boodooframework.com/docs/getting-started/introduction.html) · [**Report Issue**](https://github.com/prashmaybe/boodoo/issues)
 
 </div>
 
 ---
 
-boodoo is inspired by the best ideas in modern CSS frameworks:
+## 💡 Why boodoo?
 
-- **Bootstrap** — 12-column mobile-first flexbox grid, battle-tested components, zero-dependency `data-*` JS API
-- **Foundation** — Tidy scaffolds, typography scales, clean layout helpers
-- **Tailwind CSS** — Functional utility classes with responsive breakpoint variants
-- **Material Design** — Elevation tokens, motion curves, touch ripple effects, floating labels
-
----
-
-## ✨ Highlights
-
-- **Modern CSS native primitives** — CSS Anchor Positioning (`anchor()`, `position-anchor`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent styling
-- **Declarative Headless React & Vue 3 Hooks** — First-party headless hooks (`boodoo/react`) and composables (`boodoo/vue`) including `useDisclosure`, `useCombobox`, and `useAccordion` for Next.js, Remix, Vite, Nuxt, and Vue 3
-- **WAI-ARIA Accessibility Suite** — Screen-reader live region announcer (`a11y.announce`), roving tabindex coordinator (`a11y.setRovingTabindex`), and accessible focus trapping (`a11y.createFocusTrap`)
-- **Complete TypeScript Surface** — Full `.d.ts` type declarations across all entrypoints (`boodoo`, `boodoo/tokens`, `boodoo/react-native`, `boodoo/react`, `boodoo/vue`)
-- **Unified Design Tokens** — Single unified brand palette across Sass, Less, tokens JSON, and React Native themes
-- **Sanitized Public APIs** — Zero-dependency HTML entity escaping across Toasts, Chip Input, and Command Palette
-- **Zero runtime dependencies** — Vanilla JS, tree-shakeable, SSR-safe, no jQuery or Popper required
-- **Developer Tooling & CLI** — `npx boodoo add <component>` shadcn-style component injector, `npx boodoo migrate --from=bootstrap|tailwind` automated codemod, `npx boodoo create` instant multi-framework project scaffolder (Next.js, Vite, React Native, Electron, etc.), and official VS Code IntelliSense snippet suite
-- **Cross-Platform Mobile & Desktop** — Pure native components (`boodoo/react-native`), React Native Paper MD3 theme presets (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), and desktop window drag regions
-- **Mobile-first architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite
-- **Rich components** — 50+ accessible components including Stat / Metric Widgets, Activity Feed & Notifications, Mega Menu, Fullscreen Dialogs, Guided Tours, Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons (FAB Dock)
-- **Source-first authoring** — Author in **Sass** (primary) or **Less**; retheme dynamically via runtime CSS custom properties
-- **Accessible & touch-friendly** — `role="dialog"`, `aria-modal="true"`, focus-visible rings, `prefers-reduced-motion`, and 44px minimum touch targets
-- **Multiple delivery methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS
-
+| Core Advantage | What It Delivers |
+| :--- | :--- |
+| 🚀 **Zero Runtime Dependencies** | Vanilla ES modules, SSR-safe, no jQuery, no Popper, zero supply-chain risk. |
+| 📱 **True Multi-Platform** | Web (HTML/CSS), React/Next.js, Vue 3/Nuxt, React Native (iOS/Android), and Electron. |
+| ♿ **WCAG 2.2 AA Standard** | Roving tabindex, focus traps, screen-reader live announcements, and touch target minimums. |
+| 🎨 **Dynamic CSS Theming** | Runtime custom properties (`var(--boodoo-*)`) for instant re-theming without stylesheet rebuilds. |
+| 🧩 **50+ Built-In Components** | Modal, Command Palette (`Ctrl+K`), Drawer, Mega Menu, Combobox, Toasts, Data Table, and more. |
+| ⚡ **Modular Subpath Imports** | Load only what you need: Grid (`~2.4 KB` gzip), Utilities (`~22 KB` gzip), or Reboot (`~3 KB` gzip). |
 
 ---
 
-## ⚡ Performance & Bundle Breakdown
+## ⚡ Quick Start
 
-| Asset | Minified | Gzip | Brotli | Description |
-| :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~538 KB | ~73.5 KB | ~49.8 KB | Full framework (all 50+ components + utilities) |
-| `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
-| `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
-| `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
-| `boodoo-animations.min.css` | ~5 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~157 KB | ~28.6 KB | ~23.9 KB | Pure vanilla JS minified with a11y suite (zero dependencies) |
-| `boodoo.js` | ~172 KB | ~33.1 KB | ~27.4 KB | Pure vanilla JS unminified bundle |
+### Option 1: Direct CDN (Zero Build Step)
 
-### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
-
-Standard modern front-end configurations (such as **vanilla React + Tailwind CSS**) often suffer from hidden payload compounding and runtime overhead:
-
-1. **Elimination of Utility Class Sprawl in the DOM & AST**: In typical Tailwind and React setups, structural scaffolding requires sprawling class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). In React JSX, these string-heavy attributes bloat the compiled JavaScript bundle, virtual DOM memory tree, and server-rendered HTML payloads. boodoo replaces this repetition with standardized structural scaffolding (`.container`, `.row`, `.col-*`) and 2D CSS Grid primitives, drastically reducing token duplication.
-2. **Tiny Modular Footprint (`boodoo-grid.min.css` is only ~2.2 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a complete 12-column mobile-first flexbox system alongside CSS Grid layout helpers at just **~2.2 KB gzipped / 1.5 KB brotli**. Compared to hauling hundreds of kilobytes of utility CSS parsers or runtime CSS-in-JS abstractions, boodoo loads instantaneously.
-3. **Zero JavaScript Runtime Tax**: React-based UI libraries (Tailwind UI component wrappers, Headless UI, Radix, shadcn) require React runtime reconciliation (`react`, `react-dom` adding 45+ KB gzip before application logic starts) just to manage basic grid transitions, collapsible layouts, and drawer states. boodoo’s scaffolding operates purely on native browser layout engines and zero-overhead declarative HTML primitives (`<dialog>`, `popover`, `@container`), completely eliminating layout-driven JavaScript execution.
-4. **Superior Caching & Zero Build Lock-In**: Unlike bundler-purged Tailwind setups where every slight markup tweak triggers unique CSS build outputs that invalidate client caches, boodoo’s clean grid scaffolding is cache-stable across all pages and subdomains.
-
-| Architectural Metric | Vanilla React + Tailwind Setup | boodoo Structural Grid Scaffolding |
-| :--- | :--- | :--- |
-| **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~2.2 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
-| **Runtime Engine Overhead** | 45+ KB gzip (React + ReactDOM + state hooks) | **0 KB** (Native browser flexbox & CSS Grid engine) |
-| **DOM / Markup Footprint** | Bloated inline class strings on every layout node | Semantic structural containers (`.container`, `.row`, `.col`) |
-| **Build Pipeline Dependency** | Mandatory (Node.js, PostCSS / Tailwind CLI, bundler) | **Zero build required** (Direct CDN or modular Sass/Less) |
-| **Cache Reusability** | Purged atomic CSS cache invalidated on markup changes | Persistent browser-cached global asset |
-
----
-
-## 🚀 Quick start
-
-### CDN
+Add the precompiled stylesheet and script directly to your HTML:
 
 ```html
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-0baa755e.css" rel="stylesheet">
-<script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-f57676e3.js"></script>
+<!-- boodoo Modern Responsive CSS -->
+<link rel="stylesheet" href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-0baa755e.css">
+
+<!-- Optional Vanilla JS runtime (data-* attributes, interactive modals, toasts, popovers) -->
+<script src="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-f57676e3.js" defer></script>
 ```
 
-### npm
+### Option 2: npm Package
+
+Install the core package in your project:
 
 ```bash
 npm install boodoo
 ```
 
-```js
-// Web & Modern Bundlers (Subpath imports)
-import boodoo, { Modal, Toast, Collapse, a11y } from 'boodoo';
+#### Modern Web Bundlers (Vite, Webpack, Rollup)
+
+```javascript
+// Import full stylesheet or modular subpaths
 import 'boodoo/css';
 
-// Headless Declarative React Hooks (Next.js, Remix, Vite)
+// Import components, controllers, and accessibility helpers
+import boodoo, { Modal, Toast, Collapse, a11y } from 'boodoo';
+```
+
+#### Headless React Hooks (Next.js, Remix, Vite)
+
+```jsx
 import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
 
-// Headless Declarative Vue 3 Composables (Nuxt, Vite)
-import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion } from 'boodoo/vue';
-
-// React Native Mobile (iOS & Android)
-import { Button, Card, BoodooProvider } from 'boodoo/react-native';
-
-// Universal Design Tokens
-import { colors, spacing, radii } from 'boodoo/tokens';
-
-// React Native Paper MD3 Theme Adapter
-import { boodooPaperLightTheme, boodooPaperDarkTheme } from 'boodoo/paper';
-```
-
-### Sass source
-
-```scss
-// Override any token before importing
-$boodoo-primary: #7C3AED;
-
-@import "node_modules/boodoo/scss/boodoo";
-```
-
-### Less source
-
-```less
-@import "node_modules/boodoo/less/boodoo";
-```
-
-### Lean builds
-
-```html
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-grid.min-03b6ee31.css"      rel="stylesheet"> <!-- grid only -->
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-utilities.min-cf761191.css" rel="stylesheet"> <!-- utilities only -->
-<link href="https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo-reboot.min-8f22f2db.css"    rel="stylesheet"> <!-- reset only -->
-```
-
----
-
-## 📦 What's included
-
-```
-boodoo/
-├── dist/
-│   ├── css/
-│   │   ├── boodoo.css / boodoo.min.css          # full framework
-│   │   ├── boodoo-grid.css / .min.css         # grid + containers
-│   │   ├── boodoo-reboot.css / .min.css       # normalize + base
-│   │   ├── boodoo-utilities.css / .min.css    # Tailwind-style utilities
-│   │   ├── boodoo-animations.css / .min.css   # motion
-│   │   └── boodoo.less.css                    # compiled from Less
-│   └── js/
-│       ├── boodoo.js                          # UMD bundle
-│       └── boodoo.esm.js                      # ES module (SSR-safe)
-├── react-native/                              # Pure React Native mobile components & theme provider
-│   ├── index.js                               # boodoo/react-native modular root re-export
-│   ├── layout.js                              # Box, HStack, XStack, VStack, YStack, Center, ZStack, Pressable, Grid
-│   ├── typography.js                          # Text, Heading
-│   ├── buttons.js                             # Button, ButtonGroup, IconButton, FAB, SegmentedButtons
-│   ├── surfaces.js                            # Card, Surface, Divider, Separator, PricingCard, Tile
-│   ├── inputs.js                              # TextInput, Input, TextField, Textarea, Searchbar, Checkbox, Radio, Switch, Slider
-│   ├── data-display.js                        # Chip, Badge, Avatar
-│   ├── feedback.js                            # ActivityIndicator, Spinner, ProgressBar, Progress, Skeleton, Alert, Banner, Toast, Snackbar
-│   ├── lists.js                               # List, ListItem, DataTable, Table
-│   ├── navigation.js                          # Appbar, Header, TopNavigation, Drawer, BottomNavigation, Tabs, PageControl
-│   ├── overlays.js                            # Dialog, AlertDialog, Modal, Overlay, BottomSheet, Actionsheet, Sheet, Menu, Popover, Tooltip
-│   ├── theme.js                               # BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme
-│   └── paper.js                               # boodoo/paper (React Native Paper MD3 theme presets)
-├── tokens/                                    # Universal design tokens
-│   ├── index.js                               # boodoo/tokens JS constants
-│   └── tokens.json                            # boodoo/tokens.json cross-platform tokens
-├── bin/                                       # Scaffolding CLI (npx create-boodoo)
-├── scss/                                      # Sass source
-├── less/                                      # Less build
-├── js/src/                                    # Vanilla JS modules
-└── site/                                      # Documentation (static)
-```
-
----
-
-## 🧩 Components
-
-Accordion · Activity Feed & Notifications · AI Prompt & Chat · Alerts · Avatar · Badge · Bottom Sheet · Breadcrumb & Dropdown · Buttons · Button group · Card · Carousel · Chips & Tag Input · Collapse · Combobox / Autocomplete · Command Palette · Context Menu · Data Table · Dialog & Fullscreen Dialog · Dock (App Shelf) · Dropdowns · Empty State · Floating Action Button (FAB Dock) · Guided Tour · Kbd · KPI Stat Card · Lightbox Gallery · List group · Mega Menu · Modal · Navs & tabs · Navbar · Offcanvas · Pagination · Placeholders · Popovers · Progress · Rating · Ripple (Material) · Scrollspy · Segmented Control · Sidebar · Skeleton · Speed Dial (FAB) · Spinners · Splitter (Docking Panes) · Stat / Metric Widget · Stepper · Timeline · Toasts · Tooltips · Tree View
-
-
-Plus **forms** (control, select, checks/radios/switches, range, input group, floating labels, OTP & PIN, dropzone & file upload, color & date pickers, validation), **icon token helpers** (`.icon`, `.icon-sm`–`2xl`), and ~150 **utility classes** (spacing, flex, grid, display, position, text, borders, shadows, elevation, scroll-driven animations…).
-
----
-
-## 🛠 Build from source
- 
-```bash
-npm run build       # compile all Sass, Less, and JS bundles into dist/
-npm run site        # generate static HTML documentation pages in site/docs/
-npm run sitemap     # generate dynamic sitemap.xml
-npm run www         # full deployable build into www/ (dist + docs + assets)
-npm run serve:site  # local live preview server at http://localhost:8080
-npm run watch       # watch SCSS source for live recompilation
-```
-
-Requirements: Node 18+, [Dart Sass](https://sass-lang.com/install), optionally [Less](https://lesscss.org/).
-
----
-
-## 🎨 Theming & Spacing Customization
-
-boodoo is token-driven and engineered for minimal customization effort across any consumption pattern (CSS, Sass, Less, npm/yarn packages, React Native):
-
-### 1. Pure CSS / CDN (Runtime Variables)
-Override CSS custom properties on `:root` or any element container:
-```css
-:root {
-  --boodoo-primary: #7c3aed;
-  /* Customize spacing scale dynamically */
-  --boodoo-spacer: 1rem;
-  --boodoo-spacer-1: 1.25rem;
-  --boodoo-spacer-2: 2.25rem;
-  --boodoo-spacer-3: 3.25rem;
+export function HeaderNav() {
+  const { isOpen, toggle, getDisclosureProps } = useDisclosure();
+  return (
+    <nav>
+      <button onClick={toggle}>Menu</button>
+      <div {...getDisclosureProps()} hidden={!isOpen}>Navigation Items</div>
+    </nav>
+  );
 }
 ```
 
-### 2. Sass / SCSS (npm / yarn / Vite / Next.js)
-Override `$boodoo-spacer` or provide your own `$boodoo-spacers` map before importing:
-```scss
-// Override base spacer or individual steps
-$boodoo-primary: #7C3AED;
-$boodoo-spacer: 1.125rem;
-$boodoo-spacers: (
-  0: 0,
-  1: 1rem,
-  2: 1.5rem,
-  3: 2rem,
-  4: 3rem,
-  5: 4rem
-);
+#### Headless Vue 3 / Nuxt Composables
 
-@import "node_modules/boodoo/scss/boodoo";
+```vue
+<script setup>
+import { useDisclosure } from 'boodoo/vue';
+const { isOpen, toggle, getDisclosureProps } = useDisclosure();
+</script>
+
+<template>
+  <button @click="toggle">Toggle Details</button>
+  <div v-bind="getDisclosureProps()" v-show="isOpen">Collapsible Content</div>
+</template>
 ```
 
-### 3. LESS Source
-```less
-@boodoo-spacer: 1.15rem;
-@import "node_modules/boodoo/less/boodoo";
-```
+#### React Native Mobile (iOS & Android)
 
-### 4. JavaScript / TypeScript & React Native
-Use `createSpacing()` from `boodoo/tokens` or provide a custom spacing object to `<BoodooProvider>`:
 ```jsx
-import { createSpacing } from 'boodoo/tokens';
-import { BoodooProvider, Button, Card } from 'boodoo/react-native';
+import { BoodooProvider, Button, Card, Text } from 'boodoo/react-native';
 
-const mySpacing = createSpacing(14); // Generates custom scale from 14px base
-
-export default function App() {
+export default function MobileScreen() {
   return (
-    <BoodooProvider customTheme={{ spacing: mySpacing }}>
-      <Card><Button title="Custom Spacing" /></Card>
+    <BoodooProvider>
+      <Card>
+        <Text variant="headline">Welcome to boodoo Mobile</Text>
+        <Button title="Get Started" variant="primary" />
+      </Card>
     </BoodooProvider>
   );
 }
 ```
 
-Dark mode is automatic via `prefers-color-scheme: dark`, and can be forced with `data-boodoo-theme="light|dark"` on `<html>`. All component colors adapt dynamically via runtime CSS custom properties.
+---
+
+## 🛠️ Developer CLI & Tooling
+
+Scaffold projects, add copy-paste components, or codemod existing codebases:
+
+```bash
+# Scaffold a full starter app (Next.js, Vite, React Native, Electron, HTML5)
+npx boodoo create my-app
+
+# Inject a component directly into your source (shadcn-style)
+npx boodoo add modal
+npx boodoo add command-palette
+
+# Automatically migrate classes from Bootstrap or Tailwind
+npx boodoo migrate --from=bootstrap ./src
+npx boodoo migrate --from=tailwind index.html
+
+# List all copy-pasteable components
+npx boodoo list
+```
 
 ---
 
-## 📄 Documentation & Changelog
+## 📊 Measured Performance & Bundles
 
-The full documentation site is in `site/` and deployed at **https://boodooframework.com**:
+All distribution assets are tested, minified, and verified on every release build:
 
-- **Getting started** · Installation · Usage & CDN · Theming · Starter template
-- **Layout** (containers, grid, columns, gutters, CSS grid, breakpoints)
-- **Content** (typography, images, tables, figures)
-- **Forms** · **Components** · **Helpers** · **Utilities** · **Motion**
-- **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](site/src/about/changelog.html) · [License](site/src/about/license.html)
-
-Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodooframework.com/docs/about/changelog.html).
-
-## 🎨 Brand
-
-Official brand assets (logo lockup, icon set, banner, OG image, color tokens) live in `boodoo-brand-assets/` and are mirrored into the docs site under `assets/brand/`. See the [Brand page](site/src/about/brand.html) for usage guidelines. The framework's default theme maps to the brand palette: primary `#7c3aed`, secondary `#5b21e6`, dark `#17135f`, ink `#11143d`, muted `#5c6280`.
+| Asset | Minified | Gzip | Brotli | Description |
+| :--- | :---: | :---: | :---: | :--- |
+| `boodoo.min.css` | ~538 KB | ~74.9 KB | ~50.7 KB | Complete framework (all 50+ components + utilities) |
+| `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
+| `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Mobile-first 12-column grid + CSS Grid containers |
+| `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base element styling |
+| `boodoo-animations.min.css` | ~5 KB | ~1.1 KB | ~0.9 KB | Motion curves, transitions & keyframes |
+| `boodoo.min.js` | ~156 KB | ~29.8 KB | ~24.9 KB | Pure vanilla JS minified with full a11y suite |
+| `boodoo.js` | ~171 KB | ~34.3 KB | ~28.6 KB | Pure vanilla JS unminified bundle with source maps |
 
 ---
 
-## ♿ Accessibility
+## 🧩 Comprehensive Component Suite (50+)
 
-- Focus ring shown only for keyboard users (`:focus-visible`)
-- All animations disable under `prefers-reduced-motion`
-- Modals trap focus · dropdowns close with `Esc` · carousels support arrow keys
-- 44px minimum touch-target sizes
-- Skip-links and correct ARIA roles/state across components
+Boodoo includes over 50 accessible, production-ready components:
 
----
+<details open>
+<summary><b>Click to expand full component directory</b></summary>
+<br>
 
-## 📦 Browser & Desktop Runtime Support
+* **Navigation & Structure**: Navbar, Mega Menu, Sidebar, Offcanvas, Breadcrumb, Tabs, Pagination, Dock (App Shelf), Fab Dock.
+* **Overlays & Dialogs**: Modal, Fullscreen Dialog, Bottom Sheet, Lightbox Gallery, Command Palette (`Ctrl+K`), Popovers, Tooltips, Context Menu.
+* **Data Display**: Card, KPI Stat Card, Data Table, Tree View, List Group, Avatar, Badge, Chip, Timeline, Empty State, Bento Grid.
+* **Interactive & Feedback**: Accordion, Collapse, Stepper, Guided Tour, Carousel, Rating, Progress Bar, Spinners, Skeleton, Toasts, Alerts, Banner, Ripple.
+* **Productivity & Advanced**: Combobox / Autocomplete, Splitter (Docking Panes), Speed Dial (FAB), Color Picker, Audio Player, AI Prompt & Chat Thread, Activity Feed.
+* **Forms & Validation**: Form Control, Floating Labels, Input Group, Select, Checkbox / Radio / Switch, Range Slider, OTP & PIN Input, Dropzone File Upload, Field Validation.
 
-- **Browsers**: Latest two stable versions of Chrome, Edge, Firefox, Safari, Opera + evergreen mobile browsers. Internet Explorer is not supported. Legacy CSS features degrade gracefully via `@supports`.
-- **Desktop & Hybrid Apps**: First-class compatibility with **Electron**, **Tauri**, and **Capacitor**. Zero-overhead runtime, built-in window drag regions, custom frameless titlebars, and native OS tokens (Windows Mica, macOS Aqua, Linux Adwaita). Check the [Electron Desktop Guide](https://boodooframework.com/docs/getting-started/electron.html).
-
----
-
-## 📄 License
-
-MIT License — see [LICENSE](site/src/about/license.html). Copyright © 2026 <a href="https://pebblebenders.com/" target="_blank" rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>.
+</details>
 
 ---
 
-<div align="center">
-  <sub>Engineered and maintained by <a href="https://pebblebenders.com/" target="_blank" rel="noopener">Pebble Benders</a>—Need a custom web application built? <a href="https://pebblebenders.com/" target="_blank" rel="noopener">Work with us</a>.</sub>
-</div>
+## 🎨 Dual-Source Authoring & Dynamic Theming
+
+### Sass / SCSS Source
+
+```scss
+// Override variables before importing
+$boodoo-primary: #7C3AED;
+$boodoo-border-radius: 0.75rem;
+
+@import "node_modules/boodoo/scss/boodoo";
+```
+
+### LESS Source
+
+```less
+@boodoo-primary: #7c3aed;
+
+@import "node_modules/boodoo/less/boodoo";
+```
+
+### Runtime Browser Theming (CSS Custom Properties)
+
+```css
+:root {
+  --boodoo-primary: #7c3aed;
+  --boodoo-secondary: #5b21e6;
+  --boodoo-spacer: 1rem;
+}
+
+/* Forced Theme Override */
+[data-boodoo-theme="dark"] {
+  --boodoo-card-bg: #17135f;
+}
+```
 
 ---
 
-<div align="center">
-  <sub>Built with ❤️ and boodoo itself (dogfooding).</sub>
-</div>
+## 📦 What's Included
+
+```
+boodoo/
+├── dist/
+│   ├── css/
+│   │   ├── boodoo.css / .min.css              # Full compiled CSS bundle
+│   │   ├── boodoo-grid.css / .min.css         # Flexbox + CSS Grid layout
+│   │   ├── boodoo-reboot.css / .min.css       # Clean element reset
+│   │   ├── boodoo-utilities.css / .min.css    # 150+ utility classes
+│   │   ├── boodoo-animations.css / .min.css   # Motion keyframes
+│   │   └── boodoo.less.css                    # Compiled from Less source
+│   └── js/
+│       ├── boodoo.js / .min.js                # UMD client runtime
+│       ├── boodoo.esm.js                      # ES Module (SSR-safe)
+│       └── boodoo.d.ts                        # TypeScript declarations
+├── react-native/                              # Pure React Native mobile components
+│   ├── index.js                               # Root re-export
+│   ├── layout.js                              # Box, HStack, VStack, Center, Grid
+│   ├── typography.js                          # Text, Heading
+│   ├── buttons.js                             # Button, IconButton, FAB
+│   ├── surfaces.js                            # Card, Surface, Divider
+│   ├── inputs.js                              # TextInput, Switch, Checkbox
+│   ├── data-display.js                        # Chip, Badge, Avatar
+│   ├── feedback.js                            # ProgressBar, Alert, Skeleton
+│   ├── navigation.js                          # Appbar, Drawer, Tabs
+│   ├── overlays.js                            # Modal, BottomSheet, Menu
+│   └── paper.js                               # React Native Paper MD3 adapters
+├── tokens/                                    # Universal design tokens (JSON, ESM, CJS)
+├── scss/                                      # Sass source architecture
+├── less/                                      # Less source stylesheet
+└── site/                                      # Documentation & examples site
+```
+
+---
+
+## 🛠️ Local Development & Scripts
+
+```bash
+# Install dependencies
+npm install
+
+# Compile all Sass, Less, JS bundles & TypeScript definitions
+npm run build
+
+# Run unit tests, smoke checks, and accessibility verification
+npm test
+
+# Build deployable documentation site to site/docs/
+npm run site
+
+# Full production build into www/ (dist + docs + assets)
+npm run www
+
+# Start local documentation server at http://localhost:8080
+npm run serve:site
+```
+
+---
+
+## ♿ Accessibility & Standards
+
+* **Keyboard Reachable**: Roving tabindex coordinators, focus trapping, and visible focus rings (`:focus-visible`).
+* **Motion Mindful**: Smooth transitions that automatically respect `prefers-reduced-motion`.
+* **Touch Ready**: Built-in 44px minimum touch targets across all mobile interactive controls.
+* **Sanitized APIs**: Safe DOM manipulation and HTML entity protection against untrusted user strings.
+
+---
+
+## 📄 License & Community
+
+MIT License — see [LICENSE](https://github.com/prashmaybe/boodoo/blob/main/LICENSE).
+
+Engineered and maintained by [Pebble Benders](https://pebblebenders.com/). Built with ❤️ and boodoo itself.
