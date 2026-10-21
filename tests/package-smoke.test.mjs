@@ -20,6 +20,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
       pkg.main,
       pkg.module,
       pkg.types,
+      pkg.typings,
       pkg.style,
       pkg.sass
     ];
