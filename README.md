@@ -189,6 +189,7 @@ Every component is fully accessible (WCAG 2.2 AA target), responsive, and suppor
 | Component | Description | Live Docs |
 | :--- | :--- | :--- |
 | **Card** | Flexible content container with headers, footers, and image overlays | [View Docs](https://boodooframework.com/docs/components/card.html) |
+| **Chart** | Zero-dependency responsive data charts (bar, line, donut, pie) with theme token styling | [View Docs](https://boodooframework.com/docs/components/chart.html) |
 | **KPI Stat Card** | Metrics display widget with trends, sparkline badges, and change indicators | [View Docs](https://boodooframework.com/docs/components/kpi-card.html) |
 | **Data Table** | Sortable, filterable tabular data display with sticky headers and pagination | [View Docs](https://boodooframework.com/docs/components/data-table.html) |
 | **Tree View** | Hierarchical expandable tree view for files and categorized directories | [View Docs](https://boodooframework.com/docs/components/tree-view.html) |
