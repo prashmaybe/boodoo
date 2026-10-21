@@ -143,6 +143,8 @@
   "author": "Pebble Benders",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "c8": "^10.1.2",
     "less": "^4.9.0",
     "sass": "^1.77.0"
   }
