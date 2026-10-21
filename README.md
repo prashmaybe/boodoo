@@ -47,7 +47,8 @@ boodoo combines the best architectural ideas across modern design frameworks:
 - **Developer Tooling & CLI** — `npx boodoo add <component>` shadcn-style component injector, `npx boodoo migrate --from=bootstrap|tailwind` automated codemod, `npx boodoo create` instant multi-framework project scaffolder (Next.js, Vite, React Native, Electron, etc.), and official VS Code IntelliSense snippet suite.
 - **Cross-Platform Mobile & Desktop** — Pure native components (`boodoo/react-native`), React Native Paper MD3 theme presets (`boodoo/paper`), Universal Tokens (`boodoo/tokens`), and desktop window drag regions.
 - **Mobile-First Architecture** — Responsive flexbox grid from 320px to 1400px+, plus 2D CSS Grid utility suite.
-- **Rich Components** — 50+ accessible components including Stat / Metric Widgets, Activity Feed & Notifications, Mega Menu, Fullscreen Dialogs, Guided Tours, Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons (FAB Dock).
+- **Zero-Dependency Native Charts** — Ultra-lightweight canvas visualizations inspired by Chart.js (Bar, Line, Donut, Pie) with high-DPI scaling, interactive tooltips, and theme token bindings — plus pure React Native mobile charts.
+- **Rich Components** — 50+ accessible components including Zero-Dependency Charts, Stat / Metric Widgets, Activity Feed & Notifications, Mega Menu, Fullscreen Dialogs, Guided Tours, Combobox, Splitter, Speed Dial, Lightbox, Command Palette (`Ctrl+K`), Bottom Sheet, Stepper, Toasts, and Floating Action Buttons (FAB Dock).
 - **Source-First Authoring** — Author in **Sass** (primary) or **Less**; retheme dynamically via runtime CSS custom properties.
 - **Accessible & Touch-Friendly** — `role="dialog"`, `aria-modal="true"`, focus-visible rings, `prefers-reduced-motion`, and 44px minimum touch targets.
 - **Multiple Delivery Methods** — High-speed CDN, npm package, Sass/Less source, or precompiled minified CSS.
@@ -60,13 +61,13 @@ All distribution assets are tested, minified, and verified on every release buil
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~538 KB | ~74.9 KB | ~50.7 KB | Full framework (all 50+ components + utilities) |
+| `boodoo.min.css` | ~539 KB | ~75.1 KB | ~51.1 KB | Full framework (all 50+ components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
-| `boodoo-animations.min.css` | ~5 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~156 KB | ~29.8 KB | ~24.9 KB | Pure vanilla JS minified with full a11y suite (zero dependencies) |
-| `boodoo.js` | ~171 KB | ~34.3 KB | ~28.6 KB | Pure vanilla JS unminified bundle with source maps |
+| `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
+| `boodoo.min.js` | ~178 KB | ~34.1 KB | ~28.5 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
+| `boodoo.js` | ~195 KB | ~39.2 KB | ~32.6 KB | Pure vanilla JS unminified bundle with source maps |
 
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 

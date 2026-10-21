@@ -27,6 +27,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Comprehensive Unit & Smoke Tests (`tests/framework.test.mjs`, `tests/package-smoke.test.mjs`)**:
   - Added unit test suite verifying canvas rendering, type transitions (bar, line, donut), hover hit testing, and lifecycle `dispose()` cleanup.
   - Added package smoke assertions verifying `Chart` constructor availability across CommonJS, ESM, and TypeScript declaration bundles.
+  - Upgraded test suite coverage to 37 passed tests.
+
+### Changed
+- **Consistent Brand Logo Identity**:
+  - Unified all brand icons, logos, banners, and Open Graph assets with the modern official Boodoo logo across all formats (`svg`, `png` at 16px, 32px, 48px, 64px, 128px, 180px, 192px, 256px, 512px, transparent, and dark variants).
+  - Synchronized brand assets across documentation sites, archive distributions, and repository root.
+- **NPM Package Health Score Enhancements**:
+  - Added `typings` field alias to `package.json` for enhanced compatibility with package health and quality analyzers.
+  - Declared `c8` and `@types/node` in `devDependencies` to optimize automated test discovery analyzers.
+  - Synchronized `package-lock.json` with active dependencies and verified clean security audit.
+
+### Fixed
+- **CodePen Interactive Example Guard (`site/layout.html`)**:
+  - Resolved `ReferenceError: boodoo is not defined` when opening documentation examples in CodePen by injecting resilient CDN script tags and attaching a DOMContentLoaded initialization guard.
 
 ---
 
