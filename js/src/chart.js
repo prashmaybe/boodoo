@@ -91,11 +91,6 @@ export class Chart extends BaseComponent {
     if (!tt) {
       tt = document.createElement('div');
       tt.className = 'chart-tooltip';
-      tt.style.position = 'absolute';
-      tt.style.pointerEvents = 'none';
-      tt.style.opacity = '0';
-      tt.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
-      this._element.style.position = this._element.style.position || 'relative';
       this._element.appendChild(tt);
     }
     this._tooltipEl = tt;
@@ -666,16 +661,16 @@ export class Chart extends BaseComponent {
     }
 
     if (match) {
-      this._canvas.style.cursor = 'pointer';
+      if (this._canvas.classList) this._canvas.classList.add('interactive');
       this._showTooltip(match, x, y);
     } else {
-      this._canvas.style.cursor = 'default';
+      if (this._canvas.classList) this._canvas.classList.remove('interactive');
       this._hideTooltip();
     }
   }
 
   _handleMouseLeave() {
-    this._canvas.style.cursor = 'default';
+    if (this._canvas && this._canvas.classList) this._canvas.classList.remove('interactive');
     this._hideTooltip();
   }
 
@@ -686,20 +681,20 @@ export class Chart extends BaseComponent {
 
     this._tooltipEl.innerHTML = `
       <div class="chart-tooltip-content">
-        <span class="chart-tooltip-indicator" style="background-color: ${item.color};"></span>
+        <span class="chart-tooltip-indicator" style="--indicator-color: ${escapeHtml(item.color)};"></span>
         <strong class="chart-tooltip-title">${title}</strong>
         <span class="chart-tooltip-value">${escapeHtml(valueStr)}</span>
       </div>
     `;
 
-    this._tooltipEl.style.opacity = '1';
+    if (this._tooltipEl.classList) this._tooltipEl.classList.add('show');
     this._tooltipEl.style.left = `${mouseX + 12}px`;
     this._tooltipEl.style.top = `${mouseY - 12}px`;
   }
 
   _hideTooltip() {
-    if (this._tooltipEl) {
-      this._tooltipEl.style.opacity = '0';
+    if (this._tooltipEl && this._tooltipEl.classList) {
+      this._tooltipEl.classList.remove('show');
     }
   }
 

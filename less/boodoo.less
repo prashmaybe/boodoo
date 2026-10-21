@@ -9618,6 +9618,7 @@ dialog.modal-dialog .modal-footer {
     height: 0.5rem;
     border-radius: var(--boodoo-border-radius-pill, 50rem);
     flex-shrink: 0;
+    background-color: var(--indicator-color, currentColor);
   }
 
   .chart-tooltip-title {
@@ -9627,6 +9628,14 @@ dialog.modal-dialog .modal-footer {
   .chart-tooltip-value {
     font-weight: 700;
   }
+}
+
+.chart-tooltip.show {
+  opacity: 1;
+}
+
+.chart-canvas.interactive {
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {

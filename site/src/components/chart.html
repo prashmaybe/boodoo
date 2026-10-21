@@ -7,13 +7,16 @@ order: 14
 
 <section class="docs-section">
   <h2><span>Overview</span></h2>
-  <p class="lead"><span>Boodoo Charts deliver zero-dependency, ultra-lightweight data visualizations inspired by Chart.js. Render bar charts, continuous line and area charts, full-size pie and donut analytics, polar area slices, and multi-axis radar charts that seamlessly bind to Boodoo theme tokens and dark mode.</span></p>
+  <p class="lead"><span>Boodoo Charts deliver zero-dependency, ultra-lightweight data visualizations inspired by
+      Chart.js. Render bar charts, continuous line and area charts, full-size pie and donut analytics, polar area
+      slices, and multi-axis radar charts that seamlessly bind to Boodoo theme tokens and dark mode.</span></p>
 </section>
 
 <!-- 1. Interactive Bar Chart -->
 <section class="docs-section">
   <h2><span>Interactive Bar Chart</span></h2>
-  <p><span>Bar charts display categorized numeric metrics with automated scaling, gridlines, and interactive hover tooltips.</span></p>
+  <p><span>Bar charts display categorized numeric metrics with automated scaling, gridlines, and interactive hover
+      tooltips.</span></p>
 
   <div class="bd-example p-4 border rounded bg-white">
     <div class="row">
@@ -53,7 +56,7 @@ order: 14
   <div class="bd-example p-4 border rounded bg-white">
     <div class="row g-4">
       <div class="col-lg-6">
-        <div class="card p-3 shadow-sm h-100">
+        <div class="card p-3 shadow-sm">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h5 class="m-0"><span>API Response Latency (Line)</span></h5>
             <span class="badge badge-soft-success"><span>99.9% Uptime</span></span>
@@ -64,7 +67,7 @@ order: 14
         </div>
       </div>
       <div class="col-lg-6">
-        <div class="card p-3 shadow-sm h-100">
+        <div class="card p-3 shadow-sm">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h5 class="m-0"><span>Server Bandwidth (Area)</span></h5>
             <span class="badge badge-soft-info"><span>Real-time</span></span>
@@ -95,22 +98,23 @@ const areaChart = new boodoo.Chart('#demoAreaChart', {
 <!-- 3. Prominent Donut & Pie Charts -->
 <section class="docs-section">
   <h2><span>Prominent Donut &amp; Pie Charts</span></h2>
-  <p><span>Full-sized proportional slices with percentage calculations, hover tooltips, and central metric readouts.</span></p>
+  <p><span>Full-sized proportional slices with percentage calculations, hover tooltips, and central metric
+      readouts.</span></p>
 
   <div class="bd-example p-4 border rounded bg-white">
-    <div class="row g-4 justify-content-center">
+    <div class="row justify-content-center">
       <div class="col-md-6 col-lg-5">
-        <div class="card p-3 shadow-sm text-center h-100">
+        <div class="card p-3 shadow-sm text-center">
           <h5 class="mb-3"><span>Traffic by Platform (Donut)</span></h5>
-          <div id="demoDonutChart" class="chart-wrapper" style="min-height: 280px;">
+          <div id="demoDonutChart" class="chart-wrapper">
             <canvas id="demoDonutCanvas" aria-label="Platform Share Donut Chart"></canvas>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-5">
-        <div class="card p-3 shadow-sm text-center h-100">
+        <div class="card p-3 shadow-sm text-center">
           <h5 class="mb-3"><span>Customer Segments (Pie)</span></h5>
-          <div id="demoPieChart" class="chart-wrapper" style="min-height: 280px;">
+          <div id="demoPieChart" class="chart-wrapper">
             <canvas id="demoPieCanvas" aria-label="Customer Segments Pie Chart"></canvas>
           </div>
         </div>
@@ -137,22 +141,23 @@ const areaChart = new boodoo.Chart('#demoAreaChart', {
 <!-- 4. Radar & Polar Area Charts -->
 <section class="docs-section">
   <h2><span>Radar &amp; Polar Area Charts</span></h2>
-  <p><span>Multi-axis evaluation radar grids and magnitude-scaled radial polar charts for skills assessment, system telemetry, and category benchmarking.</span></p>
+  <p><span>Multi-axis evaluation radar grids and magnitude-scaled radial polar charts for skills assessment, system
+      telemetry, and category benchmarking.</span></p>
 
   <div class="bd-example p-4 border rounded bg-white">
-    <div class="row g-4 justify-content-center">
+    <div class="row justify-content-center">
       <div class="col-md-6 col-lg-5">
-        <div class="card p-3 shadow-sm text-center h-100">
+        <div class="card p-3 shadow-sm text-center">
           <h5 class="mb-3"><span>Performance Radar</span></h5>
-          <div id="demoRadarChart" class="chart-wrapper" style="min-height: 280px;">
+          <div id="demoRadarChart" class="chart-wrapper">
             <canvas id="demoRadarCanvas" aria-label="Performance Radar Chart"></canvas>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-5">
-        <div class="card p-3 shadow-sm text-center h-100">
+        <div class="card p-3 shadow-sm text-center">
           <h5 class="mb-3"><span>Resource Distribution (Polar Area)</span></h5>
-          <div id="demoPolarChart" class="chart-wrapper" style="min-height: 280px;">
+          <div id="demoPolarChart" class="chart-wrapper">
             <canvas id="demoPolarCanvas" aria-label="Resource Distribution Polar Area Chart"></canvas>
           </div>
         </div>

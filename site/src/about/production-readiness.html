@@ -5,7 +5,8 @@ section: about
 order: 1
 -->
 <h1><span>Production Readiness Dashboard</span></h1>
-<p class="lead"><span>Boodoo is engineered as a dependable, multi-platform design system that teams can adopt in production with transparent guarantees, automated verification, and zero unnecessary lock-in.</span></p>
+<p class="lead"><span>Boodoo is engineered as a dependable, multi-platform design system that teams can adopt in
+    production with transparent guarantees, automated verification, and zero unnecessary lock-in.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-3">
@@ -55,31 +56,36 @@ order: 1
       <tr>
         <td><strong><span>Plain HTML / Vanilla JS</span></strong></td>
         <td><span class="badge bg-success"><span>Tier 1 Active</span></span></td>
-        <td><span>No build step required, CDN delivery, UMD/CJS/ESM formats, data-attribute auto-initialization.</span></td>
+        <td><span>No build step required, CDN delivery, UMD/CJS/ESM formats, data-attribute auto-initialization.</span>
+        </td>
         <td><span>CI build &amp; package-smoke tests.</span></td>
       </tr>
       <tr>
         <td><strong><span>React &amp; Vite</span></strong></td>
         <td><span class="badge bg-success"><span>Tier 1 Active</span></span></td>
-        <td><span>Custom React hooks (<code>useBoodooComponent</code>, <code>useTheme</code>, <code>useBreakpoint</code>), controlled/uncontrolled state.</span></td>
+        <td><span>Custom React hooks (<code>useBoodooComponent</code>, <code>useTheme</code>,
+            <code>useBreakpoint</code>), controlled/uncontrolled state.</span></td>
         <td><span>TypeScript declarations, Vite bundle test.</span></td>
       </tr>
       <tr>
         <td><strong><span>Next.js (App Router &amp; SSR)</span></strong></td>
         <td><span class="badge bg-success"><span>Tier 1 Active</span></span></td>
-        <td><span>Headless server-side rendering safe; zero DOM hydration mismatches; client boundary wrappers.</span></td>
+        <td><span>Headless server-side rendering safe; zero DOM hydration mismatches; client boundary wrappers.</span>
+        </td>
         <td><span>Node environment SSR tests.</span></td>
       </tr>
       <tr>
         <td><strong><span>Vue 3 &amp; Nuxt</span></strong></td>
         <td><span class="badge bg-success"><span>Tier 1 Active</span></span></td>
-        <td><span>Vue composables (<code>useBoodoo</code>, <code>useBoodooTheme</code>), reactive state integration.</span></td>
+        <td><span>Vue composables (<code>useBoodoo</code>, <code>useBoodooTheme</code>), reactive state
+            integration.</span></td>
         <td><span>Vue export tests, TypeScript mapping.</span></td>
       </tr>
       <tr>
         <td><strong><span>React Native &amp; Expo</span></strong></td>
         <td><span class="badge bg-success"><span>Tier 1 Active</span></span></td>
-        <td><span>100% pure native primitives (<code>View</code>, <code>Text</code>, <code>Pressable</code>), zero DOM access, shared tokens.</span></td>
+        <td><span>100% pure native primitives (<code>View</code>, <code>Text</code>, <code>Pressable</code>), zero DOM
+            access, shared tokens.</span></td>
         <td><span>Submodule unit tests, paper adapter tests.</span></td>
       </tr>
       <tr>
@@ -93,55 +99,71 @@ order: 1
 </div>
 
 <h2 id="checklist"><span>The 14-Point Production Component Quality Standard</span></h2>
-<p><span>Before any component is merged or published in Boodoo, it must satisfy all 14 criteria of our quality checklist:</span></p>
+<p><span>Before any component is merged or published in Boodoo, it must satisfy all 14 criteria of our quality
+    checklist:</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-6">
-    <div class="card h-100 p-3">
+    <div class="card p-3">
       <h3 class="h5 mb-3 text-primary"><span>1. API &amp; State Management</span></h3>
       <ul class="list-unstyled mb-0">
-        <li class="mb-2"><strong><span>1. Documented Props &amp; Events:</span></strong> <span>Complete typed options, event dispatches (e.g. <code>boodoo:change</code>), and defaults.</span></li>
-        <li class="mb-2"><strong><span>2. Controlled &amp; Uncontrolled:</span></strong> <span>Supports both automatic DOM updates and programmatic state binding.</span></li>
-        <li class="mb-0"><strong><span>3. Comprehensive State Handling:</span></strong> <span>Explicit designs for empty, loading, disabled, error, and boundary states.</span></li>
+        <li class="mb-2"><strong><span>1. Documented Props &amp; Events:</span></strong> <span>Complete typed options,
+            event dispatches (e.g. <code>boodoo:change</code>), and defaults.</span></li>
+        <li class="mb-2"><strong><span>2. Controlled &amp; Uncontrolled:</span></strong> <span>Supports both automatic
+            DOM updates and programmatic state binding.</span></li>
+        <li class="mb-0"><strong><span>3. Comprehensive State Handling:</span></strong> <span>Explicit designs for
+            empty, loading, disabled, error, and boundary states.</span></li>
       </ul>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card h-100 p-3">
+    <div class="card p-3">
       <h3 class="h5 mb-3 text-primary"><span>2. Accessibility &amp; Ergonomics</span></h3>
       <ul class="list-unstyled mb-0">
-        <li class="mb-2"><strong><span>4. Semantic Elements:</span></strong> <span>Mandatory form control identification (<code>id</code>/<code>name</code>) and strictly wrapped text nodes.</span></li>
-        <li class="mb-2"><strong><span>5. Keyboard Navigation:</span></strong> <span>Full focus rings, roving tabindex, and standard keyboard triggers (Tab, Arrows, Escape, Space).</span></li>
-        <li class="mb-2"><strong><span>6. ARIA Roles &amp; Live Announcements:</span></strong> <span>Polite/assertive screen-reader announcements for dynamic updates.</span></li>
-        <li class="mb-0"><strong><span>7. Reduced Motion &amp; Contrast:</span></strong> <span>Adheres to <code>prefers-reduced-motion</code> and WCAG AA 4.5:1 contrast ratios.</span></li>
+        <li class="mb-2"><strong><span>4. Semantic Elements:</span></strong> <span>Mandatory form control identification
+            (<code>id</code>/<code>name</code>) and strictly wrapped text nodes.</span></li>
+        <li class="mb-2"><strong><span>5. Keyboard Navigation:</span></strong> <span>Full focus rings, roving tabindex,
+            and standard keyboard triggers (Tab, Arrows, Escape, Space).</span></li>
+        <li class="mb-2"><strong><span>6. ARIA Roles &amp; Live Announcements:</span></strong> <span>Polite/assertive
+            screen-reader announcements for dynamic updates.</span></li>
+        <li class="mb-0"><strong><span>7. Reduced Motion &amp; Contrast:</span></strong> <span>Adheres to
+            <code>prefers-reduced-motion</code> and WCAG AA 4.5:1 contrast ratios.</span></li>
       </ul>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card h-100 p-3">
+    <div class="card p-3">
       <h3 class="h5 mb-3 text-primary"><span>3. Engineering &amp; Security</span></h3>
       <ul class="list-unstyled mb-0">
-        <li class="mb-2"><strong><span>8. Automated Coverage:</span></strong> <span>100% unit and interaction test coverage in continuous integration.</span></li>
-        <li class="mb-2"><strong><span>9. TypeScript Definitions:</span></strong> <span>Pre-compiled <code>.d.ts</code> declarations emitted alongside all public bundles.</span></li>
-        <li class="mb-2"><strong><span>10. DOM XSS Prevention:</span></strong> <span>Safe element construction via DOM APIs; zero unescaped HTML string interpolation.</span></li>
-        <li class="mb-0"><strong><span>11. Lifecycle Teardown:</span></strong> <span>Deterministic <code>dispose()</code> freeing document listeners and revoking object URLs.</span></li>
+        <li class="mb-2"><strong><span>8. Automated Coverage:</span></strong> <span>100% unit and interaction test
+            coverage in continuous integration.</span></li>
+        <li class="mb-2"><strong><span>9. TypeScript Definitions:</span></strong> <span>Pre-compiled <code>.d.ts</code>
+            declarations emitted alongside all public bundles.</span></li>
+        <li class="mb-2"><strong><span>10. DOM XSS Prevention:</span></strong> <span>Safe element construction via DOM
+            APIs; zero unescaped HTML string interpolation.</span></li>
+        <li class="mb-0"><strong><span>11. Lifecycle Teardown:</span></strong> <span>Deterministic
+            <code>dispose()</code> freeing document listeners and revoking object URLs.</span></li>
       </ul>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card h-100 p-3">
+    <div class="card p-3">
       <h3 class="h5 mb-3 text-primary"><span>4. Architecture &amp; Delivery</span></h3>
       <ul class="list-unstyled mb-0">
-        <li class="mb-2"><strong><span>12. Zero Global Pollution:</span></strong> <span>Scoped CSS variables (<code>--boodoo-*</code>) preventing namespace collisions.</span></li>
-        <li class="mb-2"><strong><span>13. Pure Mobile Primitives:</span></strong> <span>React Native components free of browser shims or uncompiled stylesheet dependencies.</span></li>
-        <li class="mb-0"><strong><span>14. Interactive Documentation:</span></strong> <span>Verified copy-paste snippets and migration pathways for every release.</span></li>
+        <li class="mb-2"><strong><span>12. Zero Global Pollution:</span></strong> <span>Scoped CSS variables
+            (<code>--boodoo-*</code>) preventing namespace collisions.</span></li>
+        <li class="mb-2"><strong><span>13. Pure Mobile Primitives:</span></strong> <span>React Native components free of
+            browser shims or uncompiled stylesheet dependencies.</span></li>
+        <li class="mb-0"><strong><span>14. Interactive Documentation:</span></strong> <span>Verified copy-paste snippets
+            and migration pathways for every release.</span></li>
       </ul>
     </div>
   </div>
 </div>
 
 <h2 id="fair-benchmarks"><span>Verified Performance &amp; Bundle Methodology</span></h2>
-<p><span>Unlike comparisons that measure arbitrary hello-world templates, Boodoo benchmarks compare equivalent production applications using exact measured artifact sizes:</span></p>
+<p><span>Unlike comparisons that measure arbitrary hello-world templates, Boodoo benchmarks compare equivalent
+    production applications using exact measured artifact sizes:</span></p>
 
 <div class="table-responsive mb-4">
   <table class="table table-bordered">
@@ -188,17 +210,25 @@ order: 1
 </div>
 
 <h2 id="enterprise"><span>Long-Term Maintenance &amp; Enterprise Support</span></h2>
-<p><span>Boodoo is open source software released under the permissive <a href="{{siteUrl}}/about/license.html">MIT License</a>. Teams have complete freedom to audit, fork, customize, or self-host without commercial license fees or vendor lock-in.</span></p>
+<p><span>Boodoo is open source software released under the permissive <a href="{{siteUrl}}/about/license.html">MIT
+      License</a>. Teams have complete freedom to audit, fork, customize, or self-host without commercial license fees
+    or vendor lock-in.</span></p>
 
-<p><span>For organizations requiring guaranteed enterprise support, custom design tokens, SLA remediation, or guided migration from Bootstrap or Tailwind, professional services are provided directly by the creators at <strong>Pebble Benders</strong>:</span></p>
+<p><span>For organizations requiring guaranteed enterprise support, custom design tokens, SLA remediation, or guided
+    migration from Bootstrap or Tailwind, professional services are provided directly by the creators at <strong>Pebble
+      Benders</strong>:</span></p>
 
 <div class="p-4 border rounded-3 bg-light">
   <h3 class="h5 mb-2"><span>Commercial Services &amp; Architecture Advisory</span></h3>
-  <p class="mb-3 text-muted"><span>Need assistance standardizing your multi-platform design system across web and native mobile?</span></p>
+  <p class="mb-3 text-muted"><span>Need assistance standardizing your multi-platform design system across web and native
+      mobile?</span></p>
   <ul class="mb-3">
-    <li><strong><span>Design System Audits &amp; Token Pipeline:</span></strong> <span>Exporting unified tokens from Figma into Boodoo CSS/JSON/React Native.</span></li>
-    <li><strong><span>Legacy Migration:</span></strong> <span>Phased migration roadmaps from Bootstrap, Tailwind, or Material UI to Boodoo.</span></li>
-    <li><strong><span>Custom Enterprise Components:</span></strong> <span>Bespoke components adhering to Boodoo's 14-point production quality checklist.</span></li>
+    <li><strong><span>Design System Audits &amp; Token Pipeline:</span></strong> <span>Exporting unified tokens from
+        Figma into Boodoo CSS/JSON/React Native.</span></li>
+    <li><strong><span>Legacy Migration:</span></strong> <span>Phased migration roadmaps from Bootstrap, Tailwind, or
+        Material UI to Boodoo.</span></li>
+    <li><strong><span>Custom Enterprise Components:</span></strong> <span>Bespoke components adhering to Boodoo's
+        14-point production quality checklist.</span></li>
   </ul>
   <a href="mailto:support@boodooframework.com" class="btn btn-primary"><span>Contact Pebble Benders</span></a>
 </div>

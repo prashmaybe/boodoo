@@ -46,6 +46,7 @@
     height: 0.5rem;
     border-radius: var(--boodoo-border-radius-pill, 50rem);
     flex-shrink: 0;
+    background-color: var(--indicator-color, currentColor);
   }
 
   .chart-tooltip-title {
@@ -75,3 +76,12 @@
     border: var(--boodoo-border-width, 1px) var(--boodoo-border-style, solid) var(--boodoo-border-color, #3f4463);
   }
 }
+
+.chart-tooltip.show {
+  opacity: 1;
+}
+
+.chart-canvas.interactive {
+  cursor: pointer;
+}
+

@@ -275,21 +275,29 @@
     </nav>
           <h1 class="boodoo-title"><span>Modern components</span></h1>
 <p class="boodoo-lead">
-  <span>Discover boodoo v1.2.1's modern components tailored for SaaS products, analytics dashboards, developer tools, and rich mobile web experiences. Built with pure CSS custom properties, responsive breakpoints, and zero required external runtime libraries.</span>
+  <span>Discover boodoo v1.2.1's modern components tailored for SaaS products, analytics dashboards, developer
+    tools, and rich mobile web experiences. Built with pure CSS custom properties, responsive breakpoints, and zero
+    required external runtime libraries.</span>
 </p>
 
 <hr class="my-2">
 
 <!-- 1. Tag & Token Input -->
 <h2 id="tag-input"><span>Tag &amp; Token Input</span></h2>
-<p><span>The <code>.tag-input</code> component manages multi-item token collection. Press <kbd>Enter</kbd> or <kbd>,</kbd> to insert tags, and click the close icon or hit <kbd>Backspace</kbd> on an empty input to delete them.</span></p>
+<p><span>The <code>.tag-input</code> component manages multi-item token collection. Press <kbd>Enter</kbd> or
+    <kbd>,</kbd> to insert tags, and click the close icon or hit <kbd>Backspace</kbd> on an empty input to delete
+    them.</span></p>
 
 <div class="bd-example">
   <div class="tag-input demo-max-w480" data-boodoo="chip-input">
-    <span class="tag-item"><span>JavaScript</span><button type="button" class="tag-remove" aria-label="Remove JavaScript"><span>&times;</span></button></span>
-    <span class="tag-item"><span>CSS3</span><button type="button" class="tag-remove" aria-label="Remove CSS3"><span>&times;</span></button></span>
-    <span class="tag-item"><span>TypeScript</span><button type="button" class="tag-remove" aria-label="Remove TypeScript"><span>&times;</span></button></span>
-    <input type="text" id="demoTagInput" name="demoTagInput" class="tag-input-field chip-input-field" placeholder="Add a framework or tag...">
+    <span class="tag-item"><span>JavaScript</span><button type="button" class="tag-remove"
+        aria-label="Remove JavaScript"><span>&times;</span></button></span>
+    <span class="tag-item"><span>CSS3</span><button type="button" class="tag-remove"
+        aria-label="Remove CSS3"><span>&times;</span></button></span>
+    <span class="tag-item"><span>TypeScript</span><button type="button" class="tag-remove"
+        aria-label="Remove TypeScript"><span>&times;</span></button></span>
+    <input type="text" id="demoTagInput" name="demoTagInput" class="tag-input-field chip-input-field"
+      placeholder="Add a framework or tag...">
   </div>
 </div>
 
@@ -305,17 +313,22 @@
 
 <!-- 2. Floating Action Bar -->
 <h2 id="floating-bar"><span>Floating Bulk Action Bar</span></h2>
-<p><span>Contextual bottom-docked action bar (<code>.floating-bar</code>) that smoothly animates into view when items are selected in a table, catalog, or list.</span></p>
+<p><span>Contextual bottom-docked action bar (<code>.floating-bar</code>) that smoothly animates into view when items
+    are selected in a table, catalog, or list.</span></p>
 
 <div class="bd-example text-center">
-  <button type="button" class="btn btn-primary" onclick="const fb = document.getElementById('demoFloatingBar'); fb.classList.toggle('show');"><span>Toggle Floating Bar</span></button>
-  
+  <button type="button" class="btn btn-primary"
+    onclick="const fb = document.getElementById('demoFloatingBar'); fb.classList.toggle('show');"><span>Toggle Floating
+      Bar</span></button>
+
   <div class="floating-bar" id="demoFloatingBar">
     <span class="floating-bar-label"><span><strong class="floating-bar-count">3</strong> items selected</span></span>
     <div class="floating-bar-actions">
       <button type="button" class="btn btn-sm btn-outline-danger"><span>Delete</span></button>
       <button type="button" class="btn btn-sm btn-outline-secondary"><span>Export</span></button>
-      <button type="button" class="btn btn-sm btn-light" data-boodoo-dismiss="floating-bar" onclick="document.getElementById('demoFloatingBar').classList.remove('show');" aria-label="Close"><span>✕</span></button>
+      <button type="button" class="btn btn-sm btn-light" data-boodoo-dismiss="floating-bar"
+        onclick="document.getElementById('demoFloatingBar').classList.remove('show');"
+        aria-label="Close"><span>✕</span></button>
     </div>
   </div>
 </div>
@@ -333,15 +346,18 @@
 
 <!-- 3. Image Comparison Slider -->
 <h2 id="image-compare"><span>Image Comparison Slider</span></h2>
-<p><span>Interactive before/after visual inspection tool with responsive mouse and touch drag support via <code>.image-compare</code>.</span></p>
+<p><span>Interactive before/after visual inspection tool with responsive mouse and touch drag support via
+    <code>.image-compare</code>.</span></p>
 
 <div class="bd-example">
   <div class="image-compare" data-boodoo="image-compare" class="image-compare demo-image-compare-box">
-    <div class="d-flex align-items-center justify-content-center text-muted fw-bold h-100" class="d-flex align-items-center justify-content-center text-muted fw-bold h-100 demo-image-compare-dark">
+    <div class="d-flex align-items-center justify-content-center text-muted fw-bold"
+      class="d-flex align-items-center justify-content-center text-muted fw-bold demo-image-compare-dark">
       <span class="fs-4"><span>AFTER (Theme Overhaul)</span></span>
     </div>
     <div class="image-compare-overlay" class="image-compare-overlay demo-image-compare-overlay">
-      <div class="d-flex align-items-center justify-content-center fw-bold h-100" class="d-flex align-items-center justify-content-center fw-bold h-100 demo-image-compare-brand">
+      <div class="d-flex align-items-center justify-content-center fw-bold"
+        class="d-flex align-items-center justify-content-center fw-bold demo-image-compare-brand">
         <span class="fs-4"><span>BEFORE (Legacy Design)</span></span>
       </div>
     </div>
@@ -361,11 +377,13 @@
 
 <!-- 4. Password Strength Meter -->
 <h2 id="password-meter"><span>Password Strength Meter</span></h2>
-<p><span>Provides instant user visual feedback on password complexity. Evaluates length, letter casing, numbers, and symbols.</span></p>
+<p><span>Provides instant user visual feedback on password complexity. Evaluates length, letter casing, numbers, and
+    symbols.</span></p>
 
 <div class="bd-example demo-max-w400">
   <label for="demoPasswordInput" class="form-label"><span>Enter Password</span></label>
-  <input type="password" id="demoPasswordInput" name="demoPasswordInput" class="form-control" placeholder="Type a password...">
+  <input type="password" id="demoPasswordInput" name="demoPasswordInput" class="form-control"
+    placeholder="Type a password...">
   <div class="password-meter mt-2" data-boodoo="password-meter" data-strength="3">
     <div class="password-meter-bar"></div>
     <span class="password-meter-label"><span>Good</span></span>
@@ -398,19 +416,19 @@
         </tr>
         <tr>
           <td class="diff-line-num"><span>24</span></td>
-          <td class="diff-line-content"><span>  setLoading(state) {</span></td>
+          <td class="diff-line-content"><span> setLoading(state) {</span></td>
         </tr>
         <tr class="diff-del">
           <td class="diff-line-num"><span>25</span></td>
-          <td class="diff-line-content"><span>-   this._element.disabled = false;</span></td>
+          <td class="diff-line-content"><span>- this._element.disabled = false;</span></td>
         </tr>
         <tr class="diff-add">
           <td class="diff-line-num"><span>25</span></td>
-          <td class="diff-line-content"><span>+   this._element.disabled = Boolean(state);</span></td>
+          <td class="diff-line-content"><span>+ this._element.disabled = Boolean(state);</span></td>
         </tr>
         <tr>
           <td class="diff-line-num"><span>26</span></td>
-          <td class="diff-line-content"><span>  }</span></td>
+          <td class="diff-line-content"><span> }</span></td>
         </tr>
       </tbody>
     </table>
@@ -453,7 +471,8 @@
 
 <div class="bd-example">
   <div class="code-copy-box">
-    <button type="button" class="code-copy-btn" onclick="navigator.clipboard.writeText('npm install boodoo@1.2.1'); this.innerText = 'Copied!'; setTimeout(() => this.innerText = 'Copy', 1500);"><span>Copy</span></button>
+    <button type="button" class="code-copy-btn"
+      onclick="navigator.clipboard.writeText('npm install boodoo@1.2.1'); this.innerText = 'Copied!'; setTimeout(() => this.innerText = 'Copy', 1500);"><span>Copy</span></button>
     <pre><code>npm install boodoo@1.2.1</code></pre>
   </div>
 </div>

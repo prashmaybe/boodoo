@@ -1545,6 +1545,11 @@ test('Native zero-dependency Chart component functionality, rendering, and lifec
       this.width = 400;
       this.height = 200;
       this.style = {};
+      this.classList = {
+        add: () => {},
+        remove: () => {},
+        contains: () => false,
+      };
       this.listeners = {};
     }
     getContext() {
