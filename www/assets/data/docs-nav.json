@@ -70,6 +70,7 @@
       { "route": "components/button-group", "title": "Button group" },
       { "route": "components/card", "title": "Card" },
       { "route": "components/carousel", "title": "Carousel" },
+      { "route": "components/chart", "title": "Chart" },
       { "route": "components/chip", "title": "Chips & Tag Input" },
       { "route": "components/collapse", "title": "Collapse" },
       { "route": "components/combobox", "title": "Combobox" },

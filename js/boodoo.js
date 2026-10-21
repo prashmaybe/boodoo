@@ -43,6 +43,7 @@ import { PasswordMeter } from './password-meter.js';
 import { FABDock } from './fab-dock.js';
 import { DialogFullscreen } from './dialog-fullscreen.js';
 import { Tour } from './tour.js';
+import { Chart } from './chart.js';
 import { FilterBar, TransferList, ColorPicker, BackToTop } from './advanced-components.js';
 
 // Wire up generic data-boodoo-dismiss triggers
@@ -111,6 +112,7 @@ const boodoo = {
   FABDock,
   DialogFullscreen,
   Tour,
+  Chart,
   a11y,
   registerCustomElements,
   FilterBar,
@@ -261,6 +263,7 @@ export {
   Toast,
   Tooltip,
   Tour,
+  Chart,
   TreeView,
   Carousel,
   clipboard,

@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2026-10-21
+
+### Added
+- **Native Zero-Dependency Chart Component (`js/src/chart.js`, `scss/components/_chart.scss`, `less/boodoo.less`, `dist/`)**:
+  - Ultra-lightweight data visualizations inspired by Chart.js with **zero external dependencies**.
+  - Supports **Bar Charts**, **Continuous Line Charts**, **Donut Charts**, and **Pie Charts**.
+  - Responsive canvas scaling with high-DPI (Retina) device pixel ratio awareness.
+  - Interactive hover tooltips with automatic dark mode awareness and token bindings.
+  - Direct integration with Boodoo theme color tokens (`--boodoo-primary`, `--boodoo-info`, `--boodoo-success`, `--boodoo-warning`, `--boodoo-danger`, `--boodoo-secondary`).
+  - TypeScript definitions added to `js/boodoo.d.ts` and emitted into `dist/js/boodoo.d.ts`.
+- **Pure React Native Chart Suite (`react-native/data-display.js`, `react-native/index.js`, `react-native/index.d.ts`)**:
+  - `BarChart`: Pure native mobile bar chart with responsive heights and theme palette styling.
+  - `DonutChart`: Pure native mobile donut / circular progress stat chart with segment legend.
+  - Zero DOM dependencies, complying with Boodoo React Native modular architecture rules.
+- **CLI & Documentation Support**:
+  - Added `chart` component to `npx boodoo add chart` in `bin/boodoo.mjs`.
+  - Added interactive documentation page `site/src/components/chart.html` with real-time rendered examples.
+- **Comprehensive Unit & Smoke Tests (`tests/framework.test.mjs`, `tests/package-smoke.test.mjs`)**:
+  - Added unit test suite verifying canvas rendering, type transitions (bar, line, donut), hover hit testing, and lifecycle `dispose()` cleanup.
+  - Added package smoke assertions verifying `Chart` constructor availability across CommonJS, ESM, and TypeScript declaration bundles.
+
+---
+
 ## [1.2.0] - 2026-10-19
 
 ### Added

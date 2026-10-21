@@ -195,6 +195,10 @@ const COMPONENT_MAP = {
     scss: 'scss/components/_advanced-components.scss',
     js: 'js/src/advanced-components.js',
   },
+  chart: {
+    scss: 'scss/components/_chart.scss',
+    js: 'js/src/chart.js',
+  },
 };
 
 const BOOTSTRAP_TO_BOODOO = [

@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.2.0';
+const BOODOO_VERSION = '1.2.1';
 
 function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -1127,7 +1127,7 @@ const styles = StyleSheet.create({
       <p class="lead text-muted">A clean, responsive web application powered by boodoo.</p>
     </header>
 
-    <div class="row g-4 justify-content-center">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h2 class="h5 mb-3">Quick Component Test</h2>

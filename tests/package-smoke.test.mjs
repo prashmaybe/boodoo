@@ -42,7 +42,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const expectedSymbols = [
       'Modal', 'Toast', 'Offcanvas', 'Tab', 'Collapse',
       'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop',
-      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable'
+      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable', 'Chart'
     ];
 
     for (const sym of expectedSymbols) {
@@ -55,6 +55,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const boodooEsm = await import(`file://${esmPath}`);
     assert.ok(boodooEsm, 'ESM bundle must import without error');
     assert.ok(typeof boodooEsm.Modal === 'function', 'ESM export Modal must be a constructor');
+    assert.ok(typeof boodooEsm.Chart === 'function', 'ESM export Chart must be a constructor');
     assert.ok(typeof boodooEsm.FilterBar === 'function', 'ESM export FilterBar must be a constructor');
     assert.ok(typeof boodooEsm.TransferList === 'function', 'ESM export TransferList must be a constructor');
     assert.ok(typeof boodooEsm.ColorPicker === 'function', 'ESM export ColorPicker must be a constructor');
@@ -103,7 +104,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const dtsContent = readFileSync(dtsPath, 'utf8');
 
     const newComponents = [
-      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop'
+      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop', 'Chart'
     ];
 
     for (const c of newComponents) {
