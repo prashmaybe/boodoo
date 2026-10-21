@@ -45,7 +45,8 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32"
+          loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -86,7 +87,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid container-xl py-3">
+  <div class="container-fluid container-xl py-2">
     <div class="row">
       <aside class="col-lg-3 col-xl-2">
         <button
@@ -165,6 +166,7 @@
 <li><a href="../components/button-group.html">Button group</a></li>
 <li><a href="../components/card.html">Card</a></li>
 <li><a href="../components/carousel.html">Carousel</a></li>
+<li><a href="../components/chart.html">Chart</a></li>
 <li><a href="../components/chip.html">Chips & Tag Input</a></li>
 <li><a href="../components/collapse.html">Collapse</a></li>
 <li><a href="../components/combobox.html">Combobox</a></li>
@@ -282,7 +284,7 @@
 <div class="bd-example">
   <div class="p-3 bg-light rounded-3 border elevation-2">
     <div class="d-flex align-items-center justify-content-between mb-2">
-      <span class="badge bg-primary"><span>boodoo v1.2.0</span></span>
+      <span class="badge bg-primary"><span>boodoo v1.2.1</span></span>
       <span class="badge bg-success"><span>Zero Dependencies</span></span>
     </div>
     <h4 class="h5 mb-2"><span>Modern UI Toolkit</span></h4>
@@ -296,7 +298,7 @@
 <div class="highlight">
   <pre><code class="language-html">&lt;div class="p-3 bg-light rounded-3 border elevation-2"&gt;
   &lt;div class="d-flex align-items-center justify-content-between mb-2"&gt;
-    &lt;span class="badge bg-primary"&gt;&lt;span&gt;boodoo v1.2.0&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="badge bg-primary"&gt;&lt;span&gt;boodoo v1.2.1&lt;/span&gt;&lt;/span&gt;
     &lt;span class="badge bg-success"&gt;&lt;span&gt;Zero Dependencies&lt;/span&gt;&lt;/span&gt;
   &lt;/div&gt;
   &lt;h4 class="h5 mb-2"&gt;&lt;span&gt;Modern UI Toolkit&lt;/span&gt;&lt;/h4&gt;
@@ -312,7 +314,7 @@
 <ul>
   <li><strong><span>Four roadmaps, one toolkit.</span></strong> <span>Get Bootstrap's battle-tested components and grid, Foundation's tidy
     scaffolds and helpers, Tailwind's utility classes, and Material's elevation and motion.</span></li>
-  <li><strong><span>Zero runtime dependencies.</span></strong> <span>The JavaScript is vanilla, ~172&nbsp;KB, tree-shakeable, SSR-safe.</span></li>
+  <li><strong><span>Zero runtime dependencies.</span></strong> <span>The JavaScript is vanilla, ~195&nbsp;KB, tree-shakeable, SSR-safe.</span></li>
   <li><strong><span>Source-first.</span></strong> <span>Author in Sass (primary) or Less; override a variable or a map to retheme the whole
     system.</span></li>
   <li><strong><span>Modern CSS, graceful fallbacks.</span></strong> <span>aspect-ratio, <code>text-wrap: balance</code>, CSS Grid
@@ -509,8 +511,8 @@
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
-        var cdnJs = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-4741e069.js';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
         var cssPayload = '';
@@ -520,7 +522,8 @@
           cssPayload = rawCode;
           htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <p class="mb-0"><span>Apply your CSS classes or styles here</span></p>\n  </div>\n</div>';
         } else if (isJsOnly) {
-          jsPayload = rawCode;
+          // Wrap JS in DOMContentLoaded guard to ensure external libraries and DOM elements are ready
+          jsPayload = 'document.addEventListener(\'DOMContentLoaded\', function () {\n  ' + rawCode.split('\n').join('\n  ') + '\n});';
           // Check if there is an associated interactive example right before the code block
           var prevEx = container.previousElementSibling;
           while (prevEx && !prevEx.classList.contains('bd-example') && !/^H[1-6]$/i.test(prevEx.tagName)) {

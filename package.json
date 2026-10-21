@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "main": "dist/js/boodoo.cjs",
   "module": "dist/js/boodoo.esm.js",
   "types": "dist/js/boodoo.d.ts",
+  "typings": "dist/js/boodoo.d.ts",
   "exports": {
     ".": {
       "types": "./dist/js/boodoo.d.ts",
@@ -142,6 +143,8 @@
   "author": "Pebble Benders",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "c8": "^10.1.2",
     "less": "^4.9.0",
     "sass": "^1.77.0"
   }

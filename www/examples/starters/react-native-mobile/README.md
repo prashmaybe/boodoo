@@ -1,6 +1,6 @@
 # Boodoo React Native Mobile Starter (Expo)
 
-Powered by **boodoo v1.2.0** for iOS and Android.
+Powered by **boodoo v1.2.1** for iOS and Android.
 
 ## Features
 - **Zero DOM / Pure Native**: Uses `boodoo/react-native` built on React Native `StyleSheet`.

@@ -531,4 +531,300 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     paddingHorizontal: 2,
   },
+  chartContainer: {
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  chartHeader: {
+    marginBottom: 12,
+  },
+  chartTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  chartSubtitle: {
+    fontSize: 12,
+    marginBottom: 8,
+  },
+  barChartTrack: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    paddingTop: 12,
+    borderBottomWidth: 1,
+    minHeight: 140,
+  },
+  barCol: {
+    flex: 1,
+    alignItems: 'center',
+    marginHorizontal: 3,
+  },
+  barValue: {
+    fontSize: 10,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  barPill: {
+    width: '100%',
+    minHeight: 4,
+  },
+  barLabel: {
+    fontSize: 11,
+    marginTop: 6,
+    textAlign: 'center',
+  },
+  legendRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+    marginTop: 12,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0,0,0,0.06)',
+  },
+  legendItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  legendDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginRight: 6,
+  },
+  legendText: {
+    fontSize: 12,
+  },
+  donutHole: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
+
+/**
+ * BarChart Component (Pure React Native)
+ */
+export function BarChart({
+  labels = [],
+  datasets = [],
+  title,
+  subtitle,
+  height = 140,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const dataset = datasets[0] || { data: [] };
+  const data = dataset.data || [];
+  const maxVal = Math.max(...data, 10);
+
+  return (
+    <View
+      style={[
+        styles.chartContainer,
+        {
+          backgroundColor: theme.colors.surface,
+          borderColor: theme.colors.border,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      {title ? (
+        <View style={styles.chartHeader}>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
+            {title}
+          </RNText>
+          {subtitle ? (
+            <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
+              {subtitle}
+            </RNText>
+          ) : null}
+        </View>
+      ) : null}
+
+      <View style={[styles.barChartTrack, { borderBottomColor: theme.colors.border, minHeight: height }]}>
+        {data.map((val, idx) => {
+          const pct = Math.max(0.04, val / maxVal);
+          const barH = pct * (height - 30);
+          const color = (dataset.colors && dataset.colors[idx]) || theme.colors.primary;
+
+          return (
+            <View key={idx} style={styles.barCol}>
+              <RNText style={[styles.barValue, { color: theme.colors.textSecondary }]}>
+                {val}
+              </RNText>
+              <View
+                style={[
+                  styles.barPill,
+                  {
+                    height: barH,
+                    backgroundColor: color,
+                    borderTopLeftRadius: theme.radii.sm,
+                    borderTopRightRadius: theme.radii.sm,
+                  },
+                ]}
+              />
+              <RNText style={[styles.barLabel, { color: theme.colors.textSecondary }]}>
+                {labels[idx] || ''}
+              </RNText>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+/**
+ * Donut / Pie Progress Stat Chart (Pure React Native)
+ */
+export function DonutChart({
+  title,
+  subtitle,
+  segments = [],
+  total,
+  size = 180,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const computedTotal = total || segments.reduce((acc, s) => acc + (s.value || 0), 0) || 1;
+
+  return (
+    <View
+      style={[
+        styles.chartContainer,
+        {
+          backgroundColor: theme.colors.surface,
+          borderColor: theme.colors.border,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      {title ? (
+        <View style={styles.chartHeader}>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
+            {title}
+          </RNText>
+          {subtitle ? (
+            <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
+              {subtitle}
+            </RNText>
+          ) : null}
+        </View>
+      ) : null}
+
+      <View style={{ alignItems: 'center', paddingVertical: 14 }}>
+        <View
+          style={{
+            width: size,
+            height: size,
+            borderRadius: size / 2,
+            borderWidth: 16,
+            borderColor: segments[0]?.color || theme.colors.primary,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <RNText style={{ fontSize: 24, fontWeight: '700', color: theme.colors.text }}>
+            {computedTotal}
+          </RNText>
+          <RNText style={{ fontSize: 12, color: theme.colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            Total
+          </RNText>
+        </View>
+      </View>
+
+      <View style={styles.legendRow}>
+        {segments.map((seg, idx) => (
+          <View key={idx} style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: seg.color || theme.colors.primary }]} />
+            <RNText style={[styles.legendText, { color: theme.colors.text }]}>
+              {seg.label}: {seg.value}
+            </RNText>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+/**
+ * LineChart Component (Pure React Native)
+ */
+export function LineChart({
+  labels = [],
+  datasets = [],
+  title,
+  subtitle,
+  height = 160,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const dataset = datasets[0] || { data: [] };
+  const data = dataset.data || [];
+  const maxVal = Math.max(...data, 10);
+
+  return (
+    <View
+      style={[
+        styles.chartContainer,
+        {
+          backgroundColor: theme.colors.surface,
+          borderColor: theme.colors.border,
+        },
+        style,
+      ]}
+      {...props}
+    >
+      {title ? (
+        <View style={styles.chartHeader}>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
+            {title}
+          </RNText>
+          {subtitle ? (
+            <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
+              {subtitle}
+            </RNText>
+          ) : null}
+        </View>
+      ) : null}
+
+      <View style={[styles.barChartTrack, { borderBottomColor: theme.colors.border, minHeight: height, alignItems: 'flex-end' }]}>
+        {data.map((val, idx) => {
+          const pct = Math.max(0.08, val / maxVal);
+          const dotBottom = pct * (height - 35);
+          const color = dataset.borderColor || theme.colors.primary;
+
+          return (
+            <View key={idx} style={[styles.barCol, { height: '100%', justifyContent: 'flex-end', position: 'relative' }]}>
+              <View
+                style={{
+                  position: 'absolute',
+                  bottom: dotBottom,
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  backgroundColor: color,
+                  borderWidth: 2,
+                  borderColor: '#fff',
+                }}
+              />
+              <RNText style={[styles.barLabel, { color: theme.colors.textSecondary }]}>
+                {labels[idx] || ''}
+              </RNText>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+

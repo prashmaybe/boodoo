@@ -45,7 +45,8 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32"
+          loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -86,7 +87,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid container-xl py-3">
+  <div class="container-fluid container-xl py-2">
     <div class="row">
       <aside class="col-lg-3 col-xl-2">
         <button
@@ -165,6 +166,7 @@
 <li><a href="../components/button-group.html">Button group</a></li>
 <li><a href="../components/card.html">Card</a></li>
 <li><a href="../components/carousel.html">Carousel</a></li>
+<li><a href="../components/chart.html">Chart</a></li>
 <li><a href="../components/chip.html">Chips & Tag Input</a></li>
 <li><a href="../components/collapse.html">Collapse</a></li>
 <li><a href="../components/combobox.html">Combobox</a></li>
@@ -299,8 +301,8 @@
         class="opacity-50" aria-hidden="true">
         <path d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6L16 6a5 5 0 0 1 0 10H7z" />
       </svg>
-      <span class="text-muted ms-2 small">Full version: <code>boodoo.css</code> (~538&nbsp;KB minified) +
-        <code>boodoo.js</code> (~172&nbsp;KB)</span>
+      <span class="text-muted ms-2 small">Full version: <code>boodoo.css</code> (~539&nbsp;KB minified) +
+        <code>boodoo.js</code> (~195&nbsp;KB)</span>
     </div>
   </div>
 </div>
@@ -314,8 +316,8 @@
             documentation, and starters.</span></p>
       </div>
       <div class="text-md-end flex-shrink-0">
-        <a class="btn btn-primary btn-lg mb-1" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.2.0.zip" download><span>Download
-            v1.2.0 (.zip)</span></a><br>
+        <a class="btn btn-primary btn-lg mb-1" href="https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.2.1.zip" download><span>Download
+            v1.2.1 (.zip)</span></a><br>
         <a class="btn btn-outline-secondary btn-sm mt-1" href="../../examples/index.html"><span>Browse
             Examples</span></a>
       </div>
@@ -332,14 +334,14 @@
     <button type="button" class="btn btn-primary"><span>Primary</span></button>
     <button type="button" class="btn btn-secondary"><span>Secondary</span></button>
     <button type="button" class="btn btn-outline-success"><span>Success Outline</span></button>
-    <span class="badge bg-info text-dark"><span>v1.2.0</span></span>
+    <span class="badge bg-info text-dark"><span>v1.2.1</span></span>
   </div>
 </div>
 <div class="highlight">
   <pre><code class="language-html">&lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;Primary&lt;/span&gt;&lt;/button&gt;
 &lt;button type="button" class="btn btn-secondary"&gt;&lt;span&gt;Secondary&lt;/span&gt;&lt;/button&gt;
 &lt;button type="button" class="btn btn-outline-success"&gt;&lt;span&gt;Success Outline&lt;/span&gt;&lt;/button&gt;
-&lt;span class="badge bg-info text-dark"&gt;&lt;span&gt;v1.2.0&lt;/span&gt;&lt;/span&gt;</code></pre>
+&lt;span class="badge bg-info text-dark"&gt;&lt;span&gt;v1.2.1&lt;/span&gt;&lt;/span&gt;</code></pre>
 </div>
 
 <h2 id="package-managers"><span>Package managers</span></h2>
@@ -544,8 +546,8 @@ npm install boodoo</code></pre>
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
-        var cdnJs = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-4741e069.js';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
         var cssPayload = '';
@@ -555,7 +557,8 @@ npm install boodoo</code></pre>
           cssPayload = rawCode;
           htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <p class="mb-0"><span>Apply your CSS classes or styles here</span></p>\n  </div>\n</div>';
         } else if (isJsOnly) {
-          jsPayload = rawCode;
+          // Wrap JS in DOMContentLoaded guard to ensure external libraries and DOM elements are ready
+          jsPayload = 'document.addEventListener(\'DOMContentLoaded\', function () {\n  ' + rawCode.split('\n').join('\n  ') + '\n});';
           // Check if there is an associated interactive example right before the code block
           var prevEx = container.previousElementSibling;
           while (prevEx && !prevEx.classList.contains('bd-example') && !/^H[1-6]$/i.test(prevEx.tagName)) {

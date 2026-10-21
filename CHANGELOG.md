@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2026-10-21
+
+### Added
+- **Native Zero-Dependency Chart Component (`js/src/chart.js`, `scss/components/_chart.scss`, `less/boodoo.less`, `dist/`)**:
+  - Ultra-lightweight data visualizations inspired by Chart.js with **zero external dependencies**.
+  - Supports **Bar Charts**, **Continuous Line Charts**, **Donut Charts**, and **Pie Charts**.
+  - Responsive canvas scaling with high-DPI (Retina) device pixel ratio awareness.
+  - Interactive hover tooltips with automatic dark mode awareness and token bindings.
+  - Direct integration with Boodoo theme color tokens (`--boodoo-primary`, `--boodoo-info`, `--boodoo-success`, `--boodoo-warning`, `--boodoo-danger`, `--boodoo-secondary`).
+  - TypeScript definitions added to `js/boodoo.d.ts` and emitted into `dist/js/boodoo.d.ts`.
+- **Pure React Native Chart Suite (`react-native/data-display.js`, `react-native/index.js`, `react-native/index.d.ts`)**:
+  - `BarChart`: Pure native mobile bar chart with responsive heights and theme palette styling.
+  - `DonutChart`: Pure native mobile donut / circular progress stat chart with segment legend.
+  - Zero DOM dependencies, complying with Boodoo React Native modular architecture rules.
+- **CLI & Documentation Support**:
+  - Added `chart` component to `npx boodoo add chart` in `bin/boodoo.mjs`.
+  - Added interactive documentation page `site/src/components/chart.html` with real-time rendered examples.
+- **Comprehensive Unit & Smoke Tests (`tests/framework.test.mjs`, `tests/package-smoke.test.mjs`)**:
+  - Added unit test suite verifying canvas rendering, type transitions (bar, line, donut), hover hit testing, and lifecycle `dispose()` cleanup.
+  - Added package smoke assertions verifying `Chart` constructor availability across CommonJS, ESM, and TypeScript declaration bundles.
+  - Upgraded test suite coverage to 37 passed tests.
+
+### Changed
+- **Consistent Brand Logo Identity**:
+  - Unified all brand icons, logos, banners, and Open Graph assets with the modern official Boodoo logo across all formats (`svg`, `png` at 16px, 32px, 48px, 64px, 128px, 180px, 192px, 256px, 512px, transparent, and dark variants).
+  - Synchronized brand assets across documentation sites, archive distributions, and repository root.
+- **NPM Package Health Score Enhancements**:
+  - Added `typings` field alias to `package.json` for enhanced compatibility with package health and quality analyzers.
+  - Declared `c8` and `@types/node` in `devDependencies` to optimize automated test discovery analyzers.
+  - Synchronized `package-lock.json` with active dependencies and verified clean security audit.
+
+### Fixed
+- **CodePen Interactive Example Guard (`site/layout.html`)**:
+  - Resolved `ReferenceError: boodoo is not defined` when opening documentation examples in CodePen by injecting resilient CDN script tags and attaching a DOMContentLoaded initialization guard.
+
+---
+
 ## [1.2.0] - 2026-10-19
 
 ### Added

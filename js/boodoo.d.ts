@@ -98,6 +98,37 @@ export declare class Tour extends BaseComponent {
   end(): void;
 }
 
+export interface ChartData {
+  labels?: string[];
+  datasets?: Array<{
+    label?: string;
+    data?: number[];
+    backgroundColor?: string | string[];
+    borderColor?: string;
+    borderWidth?: number;
+    colors?: string[];
+    pointBackgroundColor?: string;
+  }>;
+}
+
+export interface ChartOptions {
+  responsive?: boolean;
+  maintainAspectRatio?: boolean;
+  aspectRatio?: number;
+  donutCutout?: number;
+  showGrid?: boolean;
+  showLegend?: boolean;
+  showTooltips?: boolean;
+}
+
+export declare class Chart extends BaseComponent {
+  render(): void;
+  resize(): void;
+  update(data?: ChartData, options?: ChartOptions): void;
+  getColors(): { palette: string[]; text: string; grid: string };
+  dispose(): void;
+}
+
 export interface ToastOptions {
   title?: string;
   variant?: string;
@@ -168,21 +199,7 @@ export interface BoodooGlobal {
   FABDock: typeof FABDock;
   DialogFullscreen: typeof DialogFullscreen;
   Tour: typeof Tour;
-  FilterBar: typeof FilterBar;
-  TransferList: typeof TransferList;
-  ColorPicker: typeof ColorPicker;
-  BackToTop: typeof BackToTop;
-  clipboard: any;
-  theme: any;
-  a11y: {
-    announce(message: string, politeness?: 'polite' | 'assertive'): void;
-    setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
-    createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
-  };
-}
-  FABDock: typeof FABDock;
-  DialogFullscreen: typeof DialogFullscreen;
-  Tour: typeof Tour;
+  Chart: typeof Chart;
   FilterBar: typeof FilterBar;
   TransferList: typeof TransferList;
   ColorPicker: typeof ColorPicker;
@@ -232,6 +249,7 @@ export {
   Toast,
   Tooltip,
   Tour,
+  Chart,
   TreeView,
   Carousel,
   clipboard,
@@ -242,3 +260,4 @@ export {
   ColorPicker,
   BackToTop,
 };
+

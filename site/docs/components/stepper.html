@@ -45,7 +45,8 @@
     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-1" href="../../index.html">
-        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32"
+          loading="lazy">
         <span class="fw-bold fs-5 text-gradient">boodoo</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsNav"
@@ -86,7 +87,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid container-xl py-3">
+  <div class="container-fluid container-xl py-2">
     <div class="row">
       <aside class="col-lg-3 col-xl-2">
         <button
@@ -165,6 +166,7 @@
 <li><a href="../components/button-group.html">Button group</a></li>
 <li><a href="../components/card.html">Card</a></li>
 <li><a href="../components/carousel.html">Carousel</a></li>
+<li><a href="../components/chart.html">Chart</a></li>
 <li><a href="../components/chip.html">Chips & Tag Input</a></li>
 <li><a href="../components/collapse.html">Collapse</a></li>
 <li><a href="../components/combobox.html">Combobox</a></li>
@@ -782,8 +784,8 @@
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-f5986ea1.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
-        var cdnJs = 'https://cdn.dihadiwala.com/s/app_299a167f351ab3de/2026/09/boodoo.min-4741e069.js';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
         var cssPayload = '';
@@ -793,7 +795,8 @@
           cssPayload = rawCode;
           htmlPayload = '<div class="container py-4">\n  <div class="p-4 border rounded">\n    <p class="mb-0"><span>Apply your CSS classes or styles here</span></p>\n  </div>\n</div>';
         } else if (isJsOnly) {
-          jsPayload = rawCode;
+          // Wrap JS in DOMContentLoaded guard to ensure external libraries and DOM elements are ready
+          jsPayload = 'document.addEventListener(\'DOMContentLoaded\', function () {\n  ' + rawCode.split('\n').join('\n  ') + '\n});';
           // Check if there is an associated interactive example right before the code block
           var prevEx = container.previousElementSibling;
           while (prevEx && !prevEx.classList.contains('bd-example') && !/^H[1-6]$/i.test(prevEx.tagName)) {
