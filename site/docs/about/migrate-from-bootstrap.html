@@ -360,7 +360,61 @@
 &lt;/button&gt;</code></pre>
 </div>
 
-<h2 id="step-4"><span>Step 4: Unlock Modern boodoo Superpowers</span></h2>
+<h2 id="step-4"><span>Step 4: Automated CLI Migration Tooling</span></h2>
+<p><span>You can run the Boodoo migration codemod to automatically transform Bootstrap HTML classes and attributes across your templates:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-bash"># Automatically codemod files in ./src or a specific template
+npx boodoo migrate --from=bootstrap ./src
+npx boodoo migrate --from=bootstrap index.html</code></pre>
+</div>
+
+<h2 id="limitations"><span>Tested Compatibility &amp; Known Limitations</span></h2>
+<p><span>To ensure predictable adoption, here is what is tested and supported out-of-the-box, along with current boundaries:</span></p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Feature Area</span></th>
+      <th><span>Status</span></th>
+      <th><span>Behavior &amp; Guidance</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><span>Grid System</span></strong></td>
+      <td><span class="badge bg-success"><span>100% Compatible</span></span></td>
+      <td><span><code>.container</code>, <code>.row</code>, <code>.col-*</code>, responsive breakpoints (<code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>), and gutter utilities map 1:1.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Data Attributes</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span>Both <code>data-boodoo-*</code> and standard Bootstrap <code>data-bs-*</code> attributes are recognized by the JS runtime.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Core Components</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span>Buttons, cards, alerts, modals, dropdowns, navbars, offcanvas, toasts, badges, and forms work with matching semantic classes.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Floating Labels</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span><code>.form-floating</code> styling requires no JavaScript; powered purely by CSS <code>:placeholder-shown</code>.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>jQuery Plugins</span></strong></td>
+      <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
+      <td><span>Boodoo has zero jQuery dependencies. Custom jQuery plugins that monkey-patch Bootstrap internals (e.g. <code>$('#el').modal('toggle')</code>) must use <code>boodoo.Modal.getOrCreateInstance('#el').toggle()</code> or declarative HTML data attributes.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Custom Bootstrap Sass Functions</span></strong></td>
+      <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
+      <td><span>Proprietary Sass mixins like <code>rfs()</code> (Responsive Font Sizes) or internal <code>tint-color()</code> are replaced with Boodoo CSS custom properties (<code>var(--boodoo-*)</code>) and rem-based scales.</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="step-5"><span>Step 5: Unlock Modern boodoo Superpowers</span></h2>
 <p><span>Once migrated, you can immediately begin utilizing features Bootstrap doesn't provide natively:</span></p>
 <ul>
   <li><span><strong>150+ Functional Utility Classes:</strong> Precise gap, positioning, sizing, and typography utilities inspired by Tailwind.</span></li>
@@ -391,7 +445,9 @@
       <ul><li class="toc-2"><a href="#step-1">Step 1: Replace Stylesheet &amp; Script Imports</a></li>
 <li class="toc-2"><a href="#step-2">Step 2: Component &amp; Class Name Mapping</a></li>
 <li class="toc-2"><a href="#step-3">Step 3: Data Attribute JS API</a></li>
-<li class="toc-2"><a href="#step-4">Step 4: Unlock Modern boodoo Superpowers</a></li></ul>
+<li class="toc-2"><a href="#step-4">Step 4: Automated CLI Migration Tooling</a></li>
+<li class="toc-2"><a href="#limitations">Tested Compatibility &amp; Known Limitations</a></li>
+<li class="toc-2"><a href="#step-5">Step 5: Unlock Modern boodoo Superpowers</a></li></ul>
     </div>
 </aside>
     </div>
@@ -486,6 +542,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

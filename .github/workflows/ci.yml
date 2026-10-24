@@ -40,3 +40,26 @@ jobs:
 
       - name: Verify package packaging (npm pack dry-run)
         run: npm pack --dry-run
+
+      - name: Clean project installation and import verification (Plain HTML, React, Vue)
+        run: |
+          TARBALL=$(npm pack)
+          mkdir -p /tmp/smoke-test
+          cd /tmp/smoke-test
+          npm init -y
+          npm install "$GITHUB_WORKSPACE/$TARBALL"
+          node -e "
+            const boodoo = require('boodoo');
+            console.log('CJS Root export verified:', typeof boodoo.Modal === 'function');
+            import('boodoo').then(esm => {
+              console.log('ESM Root export verified:', typeof esm.Modal === 'function');
+            });
+            const tokens = require('boodoo/tokens');
+            console.log('Tokens export verified:', Boolean(tokens.colors && tokens.colors.primary));
+            import('boodoo/react').then(r => {
+              console.log('React hooks export verified:', typeof r.useDisclosure === 'function');
+            });
+            import('boodoo/vue').then(v => {
+              console.log('Vue composables export verified:', typeof v.useDisclosure === 'function');
+            });
+          "

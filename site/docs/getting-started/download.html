@@ -301,8 +301,8 @@
         class="opacity-50" aria-hidden="true">
         <path d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6L16 6a5 5 0 0 1 0 10H7z" />
       </svg>
-      <span class="text-muted ms-2 small">Full version: <code>boodoo.css</code> (~539&nbsp;KB minified) +
-        <code>boodoo.js</code> (~195&nbsp;KB)</span>
+      <span class="text-muted ms-2 small">Full version: <code>boodoo.min.css</code> (~539&nbsp;KB minified, ~75.1&nbsp;KB gzip) +
+        <code>boodoo.min.js</code> (~178&nbsp;KB minified, ~34.1&nbsp;KB gzip) or unminified <code>boodoo.js</code> (~195&nbsp;KB)</span>
     </div>
   </div>
 </div>
@@ -513,6 +513,21 @@ npm install boodoo</code></pre>
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

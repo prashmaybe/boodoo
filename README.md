@@ -69,6 +69,26 @@ All distribution assets are tested, minified, and verified on every release buil
 | `boodoo.min.js` | ~178 KB | ~34.1 KB | ~28.5 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
 | `boodoo.js` | ~195 KB | ~39.2 KB | ~32.6 KB | Pure vanilla JS unminified bundle with source maps |
 
+#### 🔬 Reproducible Benchmark Instructions
+
+Every measurement above is directly verifiable from the compiled distribution assets using Node.js standard compression modules (`zlib`):
+
+```bash
+# 1. Build the production distributions
+npm run build
+
+# 2. Verify exact byte sizes, gzip, and brotli compression:
+node -e "
+import('node:fs').then(fs => {
+  import('node:zlib').then(z => {
+    ['dist/css/boodoo.min.css', 'dist/css/boodoo-grid.min.css', 'dist/css/boodoo-utilities.min.css', 'dist/css/boodoo-reboot.min.css', 'dist/js/boodoo.min.js'].forEach(file => {
+      const buf = fs.readFileSync(file);
+      console.log(file.padEnd(34), 'Minified:', (buf.length / 1024).toFixed(1) + ' KB', 'Gzip:', (z.gzipSync(buf).length / 1024).toFixed(1) + ' KB', 'Brotli:', (z.brotliCompressSync(buf).length / 1024).toFixed(1) + ' KB');
+    });
+  });
+});"
+```
+
 ### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
 
 Standard modern front-end configurations (such as **vanilla React + Tailwind CSS**) often suffer from hidden payload compounding and runtime overhead:

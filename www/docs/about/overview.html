@@ -314,7 +314,7 @@
 <ul>
   <li><strong><span>Four roadmaps, one toolkit.</span></strong> <span>Get Bootstrap's battle-tested components and grid, Foundation's tidy
     scaffolds and helpers, Tailwind's utility classes, and Material's elevation and motion.</span></li>
-  <li><strong><span>Zero runtime dependencies.</span></strong> <span>The JavaScript is vanilla, ~195&nbsp;KB, tree-shakeable, SSR-safe.</span></li>
+  <li><strong><span>Zero runtime dependencies.</span></strong> <span>The JavaScript is vanilla, ~178&nbsp;KB minified (~34.1&nbsp;KB gzip), tree-shakeable, SSR-safe.</span></li>
   <li><strong><span>Source-first.</span></strong> <span>Author in Sass (primary) or Less; override a variable or a map to retheme the whole
     system.</span></li>
   <li><strong><span>Modern CSS, graceful fallbacks.</span></strong> <span>aspect-ratio, <code>text-wrap: balance</code>, CSS Grid
@@ -478,6 +478,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

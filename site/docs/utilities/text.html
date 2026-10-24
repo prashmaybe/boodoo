@@ -525,6 +525,21 @@
       }
     })();
 
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
+    })();
+
     // Action buttons (Copy + CodePen) for code blocks
     document.querySelectorAll('.highlight pre').forEach(function (pre) {
       var container = pre.closest('.highlight') || pre.parentElement;

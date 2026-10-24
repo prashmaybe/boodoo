@@ -24,6 +24,8 @@ const outDir = path.join(root, 'site', 'docs');
 const distDir = path.join(root, 'dist');
 
 // Helper to get formatted file sizes in KB
+import zlib from 'node:zlib';
+
 export function getDistSizes() {
   const getKb = (rel) => {
     const file = path.join(distDir, rel);
@@ -32,19 +34,46 @@ export function getDistSizes() {
     return Math.round(bytes / 1024).toString();
   };
 
+  const getGzKb = (rel) => {
+    const file = path.join(distDir, rel);
+    if (!fs.existsSync(file)) return '0';
+    const buf = fs.readFileSync(file);
+    return (zlib.gzipSync(buf).length / 1024).toFixed(1);
+  };
+
+  const getBrKb = (rel) => {
+    const file = path.join(distDir, rel);
+    if (!fs.existsSync(file)) return '0';
+    const buf = fs.readFileSync(file);
+    return (zlib.brotliCompressSync(buf).length / 1024).toFixed(1);
+  };
+
   return {
     cssRaw: getKb('css/boodoo.css'),
     cssMin: getKb('css/boodoo.min.css'),
+    cssGz: getGzKb('css/boodoo.min.css'),
+    cssBr: getBrKb('css/boodoo.min.css'),
     jsRaw: getKb('js/boodoo.js'),
     jsMin: getKb('js/boodoo.min.js'),
+    jsGz: getGzKb('js/boodoo.min.js'),
+    jsBr: getBrKb('js/boodoo.min.js'),
     jsEsm: getKb('js/boodoo.esm.js'),
     gridRaw: getKb('css/boodoo-grid.css'),
     gridMin: getKb('css/boodoo-grid.min.css'),
+    gridGz: getGzKb('css/boodoo-grid.min.css'),
+    gridBr: getBrKb('css/boodoo-grid.min.css'),
     rebootRaw: getKb('css/boodoo-reboot.css'),
     rebootMin: getKb('css/boodoo-reboot.min.css'),
+    rebootGz: getGzKb('css/boodoo-reboot.min.css'),
+    rebootBr: getBrKb('css/boodoo-reboot.min.css'),
     utilsRaw: getKb('css/boodoo-utilities.css'),
     utilsMin: getKb('css/boodoo-utilities.min.css'),
+    utilsGz: getGzKb('css/boodoo-utilities.min.css'),
+    utilsBr: getBrKb('css/boodoo-utilities.min.css'),
     animRaw: getKb('css/boodoo-animations.css'),
+    animMin: getKb('css/boodoo-animations.min.css'),
+    animGz: getGzKb('css/boodoo-animations.min.css'),
+    animBr: getBrKb('css/boodoo-animations.min.css'),
   };
 }
 
@@ -259,17 +288,29 @@ const archiveUrls = getArchiveCdnUrls(VERSION);
     .replaceAll('{{version}}', VERSION)
     .replaceAll('{{cssRawKb}}', sizes.cssRaw)
     .replaceAll('{{cssMinKb}}', sizes.cssMin)
+    .replaceAll('{{cssGzKb}}', sizes.cssGz)
+    .replaceAll('{{cssBrKb}}', sizes.cssBr)
     .replaceAll('{{jsRawKb}}', sizes.jsRaw)
     .replaceAll('{{jsMinKb}}', sizes.jsMin)
+    .replaceAll('{{jsGzKb}}', sizes.jsGz)
+    .replaceAll('{{jsBrKb}}', sizes.jsBr)
     .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
     .replaceAll('{{gridRawKb}}', sizes.gridRaw)
     .replaceAll('{{gridMinKb}}', sizes.gridMin)
+    .replaceAll('{{gridGzKb}}', sizes.gridGz)
+    .replaceAll('{{gridBrKb}}', sizes.gridBr)
     .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
     .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
+    .replaceAll('{{rebootGzKb}}', sizes.rebootGz)
+    .replaceAll('{{rebootBrKb}}', sizes.rebootBr)
     .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
     .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
+    .replaceAll('{{utilsGzKb}}', sizes.utilsGz)
+    .replaceAll('{{utilsBrKb}}', sizes.utilsBr)
     .replaceAll('{{animRawKb}}', sizes.animRaw)
     .replaceAll('{{animMinKb}}', sizes.animMin)
+    .replaceAll('{{animGzKb}}', sizes.animGz)
+    .replaceAll('{{animBrKb}}', sizes.animBr)
     .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
     .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
     .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
@@ -302,17 +343,29 @@ const archiveUrls = getArchiveCdnUrls(VERSION);
     .replaceAll('{{version}}', VERSION)
     .replaceAll('{{cssRawKb}}', sizes.cssRaw)
     .replaceAll('{{cssMinKb}}', sizes.cssMin)
+    .replaceAll('{{cssGzKb}}', sizes.cssGz)
+    .replaceAll('{{cssBrKb}}', sizes.cssBr)
     .replaceAll('{{jsRawKb}}', sizes.jsRaw)
     .replaceAll('{{jsMinKb}}', sizes.jsMin)
+    .replaceAll('{{jsGzKb}}', sizes.jsGz)
+    .replaceAll('{{jsBrKb}}', sizes.jsBr)
     .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
     .replaceAll('{{gridRawKb}}', sizes.gridRaw)
     .replaceAll('{{gridMinKb}}', sizes.gridMin)
+    .replaceAll('{{gridGzKb}}', sizes.gridGz)
+    .replaceAll('{{gridBrKb}}', sizes.gridBr)
     .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
     .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
+    .replaceAll('{{rebootGzKb}}', sizes.rebootGz)
+    .replaceAll('{{rebootBrKb}}', sizes.rebootBr)
     .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
     .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
+    .replaceAll('{{utilsGzKb}}', sizes.utilsGz)
+    .replaceAll('{{utilsBrKb}}', sizes.utilsBr)
     .replaceAll('{{animRawKb}}', sizes.animRaw)
     .replaceAll('{{animMinKb}}', sizes.animMin)
+    .replaceAll('{{animGzKb}}', sizes.animGz)
+    .replaceAll('{{animBrKb}}', sizes.animBr)
     .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
     .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
     .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
