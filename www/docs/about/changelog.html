@@ -278,7 +278,7 @@
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
     <h1 class="mb-0"><span>Changelog</span></h1>
     <div class="d-flex align-items-center gap-2">
-      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.2.1</span></span>
+      <span class="badge bg-primary rounded-pill p-1"><span>Latest: v1.2.2</span></span>
       <a class="btn btn-outline-secondary btn-sm rounded-pill d-inline-flex align-items-center gap-1"
         href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -301,7 +301,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>🏷️</span></div>
       <div>
-        <div class="stat-value"><span>v1.2.1</span></div>
+        <div class="stat-value"><span>v1.2.2</span></div>
         <div class="stat-label"><span>Current Release</span></div>
       </div>
     </div>
@@ -328,7 +328,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><span>📦</span></div>
       <div>
-        <div class="stat-value"><span>16 Milestones</span></div>
+        <div class="stat-value"><span>17 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -337,16 +337,59 @@
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.2.1 -->
+  <!-- Version 1.2.2 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-2">
+            <span>v1.2.2</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 24, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.2"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+          <span class="badge bg-soft-success text-success"><span>Release</span></span>
+          <span>Global Search Modal, Migration Guides, Benchmark Verification &amp; Docs Optimization</span>
+        </h3>
+        <p><span>boodoo <strong>v1.2.2</strong> introduces a fast interactive documentation search modal, migration guides for transitioning from other UI frameworks, reproducible performance benchmarks, and pipeline optimizations:</span></p>
+        <ul class="mb-3">
+          <li><span><strong>Global Documentation Search Modal</strong>: Added a fast, interactive search palette accessible via <code>Ctrl+K</code> / <code>Cmd+K</code> or the <code>/</code> key across all documentation pages, featuring real-time category filtering, title and keyword match highlighting, and full arrow-key keyboard navigation.</span></li>
+          <li><span><strong>Framework Migration Guides</strong>: Published dedicated migration documentation with comprehensive token and syntax comparison tables:</span>
+            <ul>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-bootstrap.html">Migrate from Bootstrap</a>: Breakpoints, flex grid, typography, alerts, and modal transitions.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-tailwind.html">Migrate from Tailwind CSS</a>: Utility class equivalency, custom property bindings, and zero-build workflow advantages.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a>: Native mobile primitive architecture and cross-platform token inheritance.</span></li>
+            </ul>
+          </li>
+          <li><span><strong>Reproducible Benchmark Verification</strong>: Added self-verifiable Node.js compression test commands and updated exact Brotli/Gzip measurements for standalone stylesheets (grid, reboot, animations) on the <a href="{{siteUrl}}/about/production-readiness.html">Production Readiness</a> dashboard.</span></li>
+          <li><span><strong>Site Build Generator Optimization</strong>: Hoisted page title map indexing, compiled distribution asset size calculations, and CDN archive URL resolution out of the per-page generator loop in <code>build/site-build.mjs</code>, cutting documentation rebuild times from seconds to sub-second execution.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.2 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+          <li><span><strong>CI &amp; Search Path Resiliency</strong>: Added automated peer dependency installation in CI smoke workflows and hardened relative path prefixes for cross-directory search link navigation.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.2.1 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-1">
             <span>v1.2.1</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
@@ -1526,6 +1569,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

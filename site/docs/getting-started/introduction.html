@@ -279,7 +279,7 @@
   open-source
   front-end toolkit built with Sass and vanilla JavaScript.</p>
 <div class="mb-3"><a class="text-decoration-none" href="../about/changelog.html" title="View changelog"><span
-      class="version-chip">v1.2.1 · Changelog</span></a></div>
+      class="version-chip">v1.2.2 · Changelog</span></a></div>
 
 <p>boodoo blends the best of the modern CSS ecosystems into one cohesive, dependency-free toolkit:</p>
 
@@ -468,6 +468,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

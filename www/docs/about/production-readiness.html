@@ -442,41 +442,76 @@
         <th scope="col"><span>Asset Bundle</span></th>
         <th scope="col"><span>Uncompressed</span></th>
         <th scope="col"><span>Minified</span></th>
-        <th scope="col"><span>Gzip Estimated</span></th>
+        <th scope="col"><span>Gzip (Measured)</span></th>
+        <th scope="col"><span>Brotli (Measured)</span></th>
         <th scope="col"><span>Delivery Characteristics</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong><span>boodoo.css (Complete framework)</span></strong></td>
-        <td><span>643 KB</span></td>
-        <td><span>539 KB</span></td>
-        <td><span>~14 KB</span></td>
+        <td><strong><span>boodoo.min.css (Complete framework)</span></strong></td>
+        <td><span>~643 KB</span></td>
+        <td><span>~539 KB</span></td>
+        <td><span>~75.1 KB</span></td>
+        <td><span>~51.1 KB</span></td>
         <td><span>All 50+ components, responsive grid, dark mode variables, utilities.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo.js (Vanilla interactive runtime)</span></strong></td>
-        <td><span>195 KB</span></td>
-        <td><span>178 KB</span></td>
-        <td><span>~10 KB</span></td>
-        <td><span>Zero runtime dependencies; tree-shakeable ESM or standalone UMD.</span></td>
+        <td><strong><span>boodoo-utilities.min.css (Utilities only)</span></strong></td>
+        <td><span>~245 KB</span></td>
+        <td><span>~193 KB</span></td>
+        <td><span>~22.2 KB</span></td>
+        <td><span>~11.7 KB</span></td>
+        <td><span>Tailwind-style functional utility classes only.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo-grid.css (Stand-alone grid)</span></strong></td>
-        <td><span>—</span></td>
-        <td><span>19 KB</span></td>
+        <td><strong><span>boodoo-grid.min.css (Stand-alone grid)</span></strong></td>
+        <td><span>~25 KB</span></td>
+        <td><span>~19 KB</span></td>
         <td><span>~2.4 KB</span></td>
+        <td><span>~1.6 KB</span></td>
         <td><span>12-column flexbox and CSS Grid layout system.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo-reboot.css (Normalized reset)</span></strong></td>
-        <td><span>—</span></td>
-        <td><span>12 KB</span></td>
-        <td><span>~1.8 KB</span></td>
+        <td><strong><span>boodoo-reboot.min.css (Normalized reset)</span></strong></td>
+        <td><span>~13 KB</span></td>
+        <td><span>~12 KB</span></td>
+        <td><span>~3.2 KB</span></td>
+        <td><span>~2.8 KB</span></td>
         <td><span>Cross-browser element normalization and typography baseline.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>boodoo-animations.min.css (Animations)</span></strong></td>
+        <td><span>~5 KB</span></td>
+        <td><span>~4 KB</span></td>
+        <td><span>~1.1 KB</span></td>
+        <td><span>~0.9 KB</span></td>
+        <td><span>Keyframe animations and motion utilities.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>boodoo.min.js (Vanilla interactive runtime)</span></strong></td>
+        <td><span>~195 KB</span></td>
+        <td><span>~178 KB</span></td>
+        <td><span>~34.1 KB</span></td>
+        <td><span>~28.5 KB</span></td>
+        <td><span>Zero runtime dependencies; tree-shakeable ESM or standalone UMD with charts &amp; a11y.</span></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<h3 class="h6 fw-bold mb-2" id=""><span>Reproducible Benchmark Verification</span></h3>
+<p class="small text-muted mb-4"><span>To verify these exact compression numbers independently in any clean environment, run:</span></p>
+<div class="highlight mb-4">
+  <pre><code class="language-bash">node -e "
+import('node:fs').then(fs => {
+  import('node:zlib').then(z => {
+    ['dist/css/boodoo.min.css', 'dist/css/boodoo-grid.min.css', 'dist/css/boodoo-utilities.min.css', 'dist/css/boodoo-reboot.min.css', 'dist/js/boodoo.min.js'].forEach(file => {
+      const buf = fs.readFileSync(file);
+      console.log(file.padEnd(34), 'Minified:', (buf.length / 1024).toFixed(1) + ' KB', 'Gzip:', (z.gzipSync(buf).length / 1024).toFixed(1) + ' KB', 'Brotli:', (z.brotliCompressSync(buf).length / 1024).toFixed(1) + ' KB');
+    });
+  });
+});"</code></pre>
 </div>
 
 <h2 id="enterprise"><span>Long-Term Maintenance &amp; Enterprise Support</span></h2>
@@ -621,6 +656,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

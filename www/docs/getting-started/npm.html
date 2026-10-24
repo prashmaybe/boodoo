@@ -292,13 +292,13 @@
   <div class="d-flex flex-wrap align-items-center gap-2">
     <button type="button" class="btn btn-primary"><span>npm Package Ready</span></button>
     <button type="button" class="btn btn-outline-dark"><span>Modular Import</span></button>
-    <span class="badge bg-success"><span>v1.2.1</span></span>
+    <span class="badge bg-success"><span>v1.2.2</span></span>
   </div>
 </div>
 <div class="highlight">
   <pre><code class="language-html">&lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;npm Package Ready&lt;/span&gt;&lt;/button&gt;
 &lt;button type="button" class="btn btn-outline-dark"&gt;&lt;span&gt;Modular Import&lt;/span&gt;&lt;/button&gt;
-&lt;span class="badge bg-success"&gt;&lt;span&gt;v1.2.1&lt;/span&gt;&lt;/span&gt;</code></pre>
+&lt;span class="badge bg-success"&gt;&lt;span&gt;v1.2.2&lt;/span&gt;&lt;/span&gt;</code></pre>
 </div>
 
 <h2 id="es-module"><span>ES modules</span></h2>
@@ -479,6 +479,21 @@ $boodoo-border-radius: 0.375rem;
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

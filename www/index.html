@@ -97,7 +97,7 @@
           <a class="hero-pill-badge text-decoration-none" href="docs/about/changelog.html"
             title="View boodoo changelog">
             <span class="dot"></span>
-            <span>boodoo v1.2.1 • Now Available for Web &amp; React Native Mobile (iOS &amp; Android)</span>
+            <span>boodoo v1.2.2 • Now Available for Web &amp; React Native Mobile (iOS &amp; Android)</span>
           </a>
         </div>
         <h1 class="mb-3">
@@ -125,7 +125,7 @@
               <path
                 d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            <span>GitHub (v1.2.1)</span>
+            <span>GitHub (v1.2.2)</span>
           </a>
         </div>
 
@@ -171,8 +171,8 @@
           <div class="stat-item">
             <div class="stat-icon"><span>📦</span></div>
             <div>
-              <div class="stat-value"><span>~195 KB Minified</span></div>
-              <div class="stat-label"><span>Ultra lightweight</span></div>
+              <div class="stat-value"><span>~178 KB Minified</span></div>
+              <div class="stat-label"><span>~34.1 KB gzip · 0 deps</span></div>
             </div>
           </div>
           <div class="stat-item">
@@ -218,7 +218,7 @@
               <div class="card-body p-0 d-flex flex-column">
                 <div class="card-icon-avatar bg-soft-success text-success mb-3"><span>⚡</span></div>
                 <h3 class="card-title h5 fw-bold mb-2">Fast &amp; zero-deps</h3>
-                <p class="card-text text-muted small mb-0 flex-grow-1">Vanilla JS, ~56&nbsp;KB bundle, zero runtime
+                <p class="card-text text-muted small mb-0 flex-grow-1">Vanilla JS (~178&nbsp;KB minified, ~34.1&nbsp;KB gzip), zero runtime
                   dependencies. Ships modular utility &amp; grid builds.</p>
               </div>
             </div>
@@ -247,9 +247,22 @@
       </div>
     </section>
 
-
-
-    <!-- Component preview showcase -->
+    <!-- Modular CSS Wedge / Standalone Grid & Utility Entry Point -->
+    <section class="py-4 bg-light border-top border-bottom">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="badge badge-soft-success badge-pill px-3 py-1 mb-2"><span>Start Small · Zero Lock-In</span></span>
+            <h3 class="fw-bold h4 mb-2"><span>Looking to test without replacing your entire framework?</span></h3>
+            <p class="text-muted mb-0"><span>Adopt Boodoo's standalone responsive grid (<code>~2.4 KB gzip</code>) or utility suite (<code>~22.2 KB gzip</code>) alongside your existing CSS or React app. Completely modular, build-free, and reversible.</span></p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="docs/layout/grid.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 me-2"><span>Explore Grid (~2.4 KB)</span></a>
+            <a href="docs/about/migrate-from-bootstrap.html" class="btn btn-primary btn-sm rounded-pill px-3"><span>CLI &amp; Compatibility</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="components" class="py-5 landing-section-alt">
       <div class="container py-2">
         <div class="text-center mb-5">
@@ -819,6 +832,21 @@
           updateIcon(next);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Terminal Tabs handler

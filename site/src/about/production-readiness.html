@@ -172,41 +172,76 @@ order: 1
         <th scope="col"><span>Asset Bundle</span></th>
         <th scope="col"><span>Uncompressed</span></th>
         <th scope="col"><span>Minified</span></th>
-        <th scope="col"><span>Gzip Estimated</span></th>
+        <th scope="col"><span>Gzip (Measured)</span></th>
+        <th scope="col"><span>Brotli (Measured)</span></th>
         <th scope="col"><span>Delivery Characteristics</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong><span>boodoo.css (Complete framework)</span></strong></td>
-        <td><span>{{cssRawKb}} KB</span></td>
-        <td><span>{{cssMinKb}} KB</span></td>
-        <td><span>~14 KB</span></td>
+        <td><strong><span>boodoo.min.css (Complete framework)</span></strong></td>
+        <td><span>~{{cssRawKb}} KB</span></td>
+        <td><span>~{{cssMinKb}} KB</span></td>
+        <td><span>~{{cssGzKb}} KB</span></td>
+        <td><span>~{{cssBrKb}} KB</span></td>
         <td><span>All 50+ components, responsive grid, dark mode variables, utilities.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo.js (Vanilla interactive runtime)</span></strong></td>
-        <td><span>{{jsRawKb}} KB</span></td>
-        <td><span>{{jsMinKb}} KB</span></td>
-        <td><span>~10 KB</span></td>
-        <td><span>Zero runtime dependencies; tree-shakeable ESM or standalone UMD.</span></td>
+        <td><strong><span>boodoo-utilities.min.css (Utilities only)</span></strong></td>
+        <td><span>~{{utilsRawKb}} KB</span></td>
+        <td><span>~{{utilsMinKb}} KB</span></td>
+        <td><span>~{{utilsGzKb}} KB</span></td>
+        <td><span>~{{utilsBrKb}} KB</span></td>
+        <td><span>Tailwind-style functional utility classes only.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo-grid.css (Stand-alone grid)</span></strong></td>
-        <td><span>—</span></td>
-        <td><span>{{gridMinKb}} KB</span></td>
-        <td><span>~2.4 KB</span></td>
+        <td><strong><span>boodoo-grid.min.css (Stand-alone grid)</span></strong></td>
+        <td><span>~{{gridRawKb}} KB</span></td>
+        <td><span>~{{gridMinKb}} KB</span></td>
+        <td><span>~{{gridGzKb}} KB</span></td>
+        <td><span>~{{gridBrKb}} KB</span></td>
         <td><span>12-column flexbox and CSS Grid layout system.</span></td>
       </tr>
       <tr>
-        <td><strong><span>boodoo-reboot.css (Normalized reset)</span></strong></td>
-        <td><span>—</span></td>
-        <td><span>{{rebootMinKb}} KB</span></td>
-        <td><span>~1.8 KB</span></td>
+        <td><strong><span>boodoo-reboot.min.css (Normalized reset)</span></strong></td>
+        <td><span>~{{rebootRawKb}} KB</span></td>
+        <td><span>~{{rebootMinKb}} KB</span></td>
+        <td><span>~{{rebootGzKb}} KB</span></td>
+        <td><span>~{{rebootBrKb}} KB</span></td>
         <td><span>Cross-browser element normalization and typography baseline.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>boodoo-animations.min.css (Animations)</span></strong></td>
+        <td><span>~{{animRawKb}} KB</span></td>
+        <td><span>~{{animMinKb}} KB</span></td>
+        <td><span>~{{animGzKb}} KB</span></td>
+        <td><span>~{{animBrKb}} KB</span></td>
+        <td><span>Keyframe animations and motion utilities.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>boodoo.min.js (Vanilla interactive runtime)</span></strong></td>
+        <td><span>~{{jsRawKb}} KB</span></td>
+        <td><span>~{{jsMinKb}} KB</span></td>
+        <td><span>~{{jsGzKb}} KB</span></td>
+        <td><span>~{{jsBrKb}} KB</span></td>
+        <td><span>Zero runtime dependencies; tree-shakeable ESM or standalone UMD with charts &amp; a11y.</span></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<h3 class="h6 fw-bold mb-2"><span>Reproducible Benchmark Verification</span></h3>
+<p class="small text-muted mb-4"><span>To verify these exact compression numbers independently in any clean environment, run:</span></p>
+<div class="highlight mb-4">
+  <pre><code class="language-bash">node -e "
+import('node:fs').then(fs => {
+  import('node:zlib').then(z => {
+    ['dist/css/boodoo.min.css', 'dist/css/boodoo-grid.min.css', 'dist/css/boodoo-utilities.min.css', 'dist/css/boodoo-reboot.min.css', 'dist/js/boodoo.min.js'].forEach(file => {
+      const buf = fs.readFileSync(file);
+      console.log(file.padEnd(34), 'Minified:', (buf.length / 1024).toFixed(1) + ' KB', 'Gzip:', (z.gzipSync(buf).length / 1024).toFixed(1) + ' KB', 'Brotli:', (z.brotliCompressSync(buf).length / 1024).toFixed(1) + ' KB');
+    });
+  });
+});"</code></pre>
 </div>
 
 <h2 id="enterprise"><span>Long-Term Maintenance &amp; Enterprise Support</span></h2>

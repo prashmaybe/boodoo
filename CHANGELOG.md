@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.2] - 2026-10-24
+
+### Added
+- **Global Documentation Search Modal (`site/assets/search.js`, `site/layout.html`, `build/site-build.mjs`)**:
+  - Implemented an interactive client-side documentation search dialog accessible via `Ctrl+K` / `Cmd+K` keyboard shortcuts or the `/` shortcut key.
+  - Category-based filtering across Components, Layout, Forms, Utilities, and Content with real-time keyword matching and title highlighting.
+  - Full keyboard navigation with `ArrowUp`, `ArrowDown`, `Enter`, and `Escape` support, plus auto-focus and mobile touch handling.
+- **Framework Migration & Adoption Guides**:
+  - Added dedicated, comprehensive migration documentation pages for developers transitioning to Boodoo:
+    - [Migrate from Bootstrap](site/src/about/migrate-from-bootstrap.html) (`site/src/about/migrate-from-bootstrap.html`): Direct mapping of grid, utility classes, buttons, modals, and responsive breakpoints.
+    - [Migrate from Tailwind CSS](site/src/about/migrate-from-tailwind.html) (`site/src/about/migrate-from-tailwind.html`): Class translation table, design token binding comparison, and zero-build workflow benefits.
+    - [Migrate from React Native Paper](site/src/about/migrate-from-react-native-paper.html) (`site/src/about/migrate-from-react-native-paper.html`): Mobile primitive mapping, pure native architecture, and cross-platform token sharing.
+- **Reproducible Performance & Compression Benchmarks (`site/src/about/production-readiness.html`)**:
+  - Added independent benchmark verification snippets and updated asset breakdown tables with verified Gzip and Brotli compression metrics across standalone stylesheets (`boodoo-grid`, `boodoo-reboot`, `boodoo-animations`, `boodoo.min.js`).
+
+### Changed
+- **Documentation Build Pipeline Optimization**:
+  - Hoisted title map construction, compiled asset size calculations, and CDN archive URL resolution outside per-page loop in `build/site-build.mjs`, dramatically accelerating full docs generation to sub-second execution.
+  - Dynamically injected active search index catalog generation directly into the site build artifact pipeline.
+- **Framework & Package Version Alignment**:
+  - Bumped latest framework version to v1.2.2 across package manifests, CLI scaffolders, starters, and documentation site.
+
+### Fixed
+- **CI Test Suite Peer Dependency Resolution (`.github/workflows/ci.yml`)**:
+  - Ensured automated installation of optional React and Vue peer dependencies before executing package smoke tests in CI environments.
+- **Search Catalog Route & Cross-Directory Prefix Resolution**:
+  - Fixed relative path calculation in `site/assets/search.js` so documentation links resolve reliably across root, nested subdirectories, and example pages.
+
+---
+
 ## [1.2.1] - 2026-10-21
 
 ### Added

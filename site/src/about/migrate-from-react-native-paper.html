@@ -102,3 +102,43 @@ export function ModernScreen() {
     </tr>
   </tbody>
 </table>
+
+<h2 id="cross-platform-tokens"><span>Cross-Platform Design Tokens Compatibility &amp; Limitations</span></h2>
+<p><span>Boodoo's design tokens (<code>boodoo/tokens</code>) provide a single source of truth across Web and React Native:</span></p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Token / Primitive Area</span></th>
+      <th><span>Cross-Platform Status</span></th>
+      <th><span>Compatibility Notes &amp; Known Boundaries</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><span>Color Palette</span></strong></td>
+      <td><span class="badge bg-success"><span>100% Shared</span></span></td>
+      <td><span>Hex values in <code>tokens/tokens.json</code> map directly to React Native styles and CSS custom properties (<code>--boodoo-*</code>).</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Border Radii &amp; Elevation</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span>Numerical border-radius and shadow tokens map directly into React Native <code>StyleSheet</code> (iOS shadow props &amp; Android elevation).</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Spacing Scale</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span>Pixel/number spacing values work seamlessly across <code>View</code> margins and paddings.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>DOM-Specific CSS Utilities</span></strong></td>
+      <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
+      <td><span>Web-specific CSS rules (e.g. <code>position: fixed</code>, <code>backdrop-filter: blur()</code>, CSS pseudo-selectors like <code>:hover</code>) cannot be consumed directly in React Native without platform wrappers. Use <code>Pressable</code> states or native modals instead.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Custom Mobile Icons</span></strong></td>
+      <td><span class="badge bg-info text-dark"><span>Recommendation</span></span></td>
+      <td><span>Boodoo native components intentionally do not bundle font assets or mandatory native dependencies. Teams can freely pair Boodoo with <code>@expo/vector-icons</code>, SVG icons, or Lucide React Native without conflict.</span></td>
+    </tr>
+  </tbody>
+</table>

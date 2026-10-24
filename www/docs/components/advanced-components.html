@@ -276,7 +276,7 @@
     </nav>
           <h1 class="boodoo-title"><span>Advanced components</span></h1>
 <p class="boodoo-lead">
-  <span>Discover boodoo v1.2.1's advanced components engineered for generative AI interfaces, complex data filtering, task management workflows, interactive media, and modern web application layouts.</span>
+  <span>Discover boodoo v1.2.2's advanced components engineered for generative AI interfaces, complex data filtering, task management workflows, interactive media, and modern web application layouts.</span>
 </p>
 
 <hr class="my-2">
@@ -818,6 +818,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks
