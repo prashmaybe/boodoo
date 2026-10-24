@@ -90,13 +90,23 @@ order: 7
 
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
-          <span class="badge bg-soft-success text-success"><span>Performance</span></span>
-          <span>Documentation Pipeline Optimization &amp; Release Maintenance</span>
+          <span class="badge bg-soft-success text-success"><span>Release</span></span>
+          <span>Global Search Modal, Migration Guides, Benchmark Verification &amp; Docs Optimization</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.2</strong> introduces significant performance optimizations to the static documentation generator and synchronizes release metadata across packages:</span></p>
+        <p><span>boodoo <strong>v1.2.2</strong> introduces a fast interactive documentation search modal, migration guides for transitioning from other UI frameworks, reproducible performance benchmarks, and pipeline optimizations:</span></p>
         <ul class="mb-3">
+          <li><span><strong>Global Documentation Search Modal</strong>: Added a fast, interactive search palette accessible via <code>Ctrl+K</code> / <code>Cmd+K</code> or the <code>/</code> key across all documentation pages, featuring real-time category filtering, title and keyword match highlighting, and full arrow-key keyboard navigation.</span></li>
+          <li><span><strong>Framework Migration Guides</strong>: Published dedicated migration documentation with comprehensive token and syntax comparison tables:</span>
+            <ul>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-bootstrap.html">Migrate from Bootstrap</a>: Breakpoints, flex grid, typography, alerts, and modal transitions.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-tailwind.html">Migrate from Tailwind CSS</a>: Utility class equivalency, custom property bindings, and zero-build workflow advantages.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a>: Native mobile primitive architecture and cross-platform token inheritance.</span></li>
+            </ul>
+          </li>
+          <li><span><strong>Reproducible Benchmark Verification</strong>: Added self-verifiable Node.js compression test commands and updated exact Brotli/Gzip measurements for standalone stylesheets (grid, reboot, animations) on the <a href="{{siteUrl}}/about/production-readiness.html">Production Readiness</a> dashboard.</span></li>
           <li><span><strong>Site Build Generator Optimization</strong>: Hoisted page title map indexing, compiled distribution asset size calculations, and CDN archive URL resolution out of the per-page generator loop in <code>build/site-build.mjs</code>, cutting documentation rebuild times from seconds to sub-second execution.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.2 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+          <li><span><strong>CI &amp; Search Path Resiliency</strong>: Added automated peer dependency installation in CI smoke workflows and hardened relative path prefixes for cross-directory search link navigation.</span></li>
         </ul>
       </div>
     </div>
