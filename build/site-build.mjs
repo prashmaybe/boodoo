@@ -230,6 +230,23 @@ function slugify(text) {
     .replace(/\s+/g, '-');
 }
 
+// Build full title map once from all pages
+const allPages = [];
+for (const s of nav) for (const p of s.pages) allPages.push(p);
+const fullTitleMap = {};
+allPages.forEach((p) => { fullTitleMap[p.route] = p.title; });
+for (const fileDef of walk(srcDir)) {
+  const data = parseFrontmatter(fs.readFileSync(fileDef.full, 'utf8'));
+  fullTitleMap[path.posix.join(path.relative(srcDir, fileDef.full)).replace(/\.html$/, '')] = data.meta.title;
+}
+
+const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+const VERSION = pkg.version;
+const sizes = getDistSizes();
+const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
+const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
+const archiveUrls = getArchiveCdnUrls(VERSION);
+
 // Build a page
 function buildPage(sectionDef, { route, full }) {
   const source = fs.readFileSync(full, 'utf8');
@@ -247,25 +264,6 @@ function buildPage(sectionDef, { route, full }) {
     }
   );
 
-  // title map for sidebar
-  const titleMap = { [route]: meta.title };
-  for (const s of nav) {
-    for (const p of s.pages) {
-      if (p.route === route) continue; // avoid overwrite of self; fine
-    }
-  }
-
-  // Build a full title map from all pages
-  const allPages = [];
-  for (const s of nav) for (const p of s.pages) allPages.push(p);
-  const fullTitleMap = {};
-  allPages.forEach((p) => { fullTitleMap[p.route] = p.title; });
-  // override with actual frontmatter where available
-  for (const fileDef of walk(srcDir)) {
-    const data = parseFrontmatter(fs.readFileSync(fileDef.full, 'utf8'));
-    fullTitleMap[path.posix.join(path.relative(srcDir, fileDef.full)).replace(/\.html$/, '')] = data.meta.title;
-  }
-
   const sidebar = renderSidebar(nav, route, fullTitleMap);
   const breadcrumb = renderBreadcrumb(nav, route, title);
   const pager = prevNext(nav, route, fullTitleMap);
@@ -276,13 +274,6 @@ function buildPage(sectionDef, { route, full }) {
 
   const activeDepth = route.split('/').length;
   const rootPrefix = '../'.repeat(activeDepth);
-
-const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-const VERSION = pkg.version;
-const sizes = getDistSizes();
-const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
-const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
-const archiveUrls = getArchiveCdnUrls(VERSION);
 
   let bodyRendered = bodyWithIds
     .replaceAll('{{version}}', VERSION)
