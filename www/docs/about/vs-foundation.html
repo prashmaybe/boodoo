@@ -324,7 +324,7 @@
     </tr>
     <tr>
       <td><strong><span>JS Bundle Footprint</span></strong></td>
-      <td><strong><span>~195 KB</span></strong> <span>pure vanilla JS (~16 KB gzip)</span></td>
+      <td><strong><span>~178 KB</span></strong> <span>minified pure vanilla JS (~34.1 KB gzip)</span></td>
       <td><span>~100+ KB (Foundation JS + jQuery dependency)</span></td>
     </tr>
     <tr>
@@ -472,6 +472,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks

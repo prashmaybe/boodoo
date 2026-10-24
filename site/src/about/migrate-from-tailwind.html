@@ -89,3 +89,52 @@ order: 11
     </tr>
   </tbody>
 </table>
+
+<h2 id="cli-codemod"><span>Automated CLI Codemod</span></h2>
+<p><span>Transform repetitive Tailwind class chains into clean Boodoo utilities and component classes using the built-in CLI:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-bash"># Codemod files in ./src or an HTML template
+npx boodoo migrate --from=tailwind ./src
+npx boodoo migrate --from=tailwind index.html</code></pre>
+</div>
+
+<h2 id="limitations"><span>Tested Compatibility &amp; Known Limitations</span></h2>
+<p><span>Here is what the Tailwind codemod supports and the boundaries of automatic translation:</span></p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><span>Utility / Pattern</span></th>
+      <th><span>Status</span></th>
+      <th><span>Behavior &amp; Guidance</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><span>Flexbox &amp; Alignment</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span><code>flex flex-col</code>, <code>items-center</code>, <code>justify-between</code> map cleanly to <code>.flex-column</code>, <code>.align-items-center</code>, <code>.justify-content-between</code>.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Spacing &amp; Padding</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span>Standard spacing scales (<code>p-1</code> to <code>p-5</code>, <code>m-1</code> to <code>m-5</code>, <code>gap-1</code> to <code>gap-5</code>) map to Boodoo's proportional spacing tokens.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Grid Containers</span></strong></td>
+      <td><span class="badge bg-success"><span>Supported</span></span></td>
+      <td><span><code>grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3</code> maps to <code>row row-cols-1 row-cols-md-2 row-cols-lg-3</code>.</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Arbitrary Values (`[#123456]`, `top-[17px]`)</span></strong></td>
+      <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
+      <td><span>Ad-hoc JIT bracket syntax (e.g., <code>w-[347px]</code>) cannot be guessed by static regex. Use scoped CSS custom properties or token variables (<code>--boodoo-spacer-*</code>).</span></td>
+    </tr>
+    <tr>
+      <td><strong><span>Dynamic State Modifiers (`group-hover:*`, `peer-*`)</span></strong></td>
+      <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
+      <td><span>Tailwind compound peer/group states require custom CSS rules or CSS <code>:has()</code> parent selectors supported natively in modern browsers.</span></td>
+    </tr>
+  </tbody>
+</table>

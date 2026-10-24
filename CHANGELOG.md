@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.2] - 2026-10-24
+
+### Changed
+- **Documentation Build Pipeline Optimization**:
+  - Hoisted title map construction, compiled asset size calculations, and CDN archive URL resolution outside per-page loop in `build/site-build.mjs`, dramatically accelerating full docs generation.
+- **Framework & Package Version Alignment**:
+  - Bumped latest framework version to v1.2.2 across package manifests, CLI scaffolders, starters, and documentation site.
+
+---
+
 ## [1.2.1] - 2026-10-21
 
 ### Added

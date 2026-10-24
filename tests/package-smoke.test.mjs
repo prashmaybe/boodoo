@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -131,5 +131,30 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.ok(boodooCss.includes('--boodoo-alert-color: var(--boodoo-primary-text-emphasis,'), 'Alert colors must consume CSS custom properties with fallbacks');
     assert.ok(boodooCss.includes('--boodoo-alert-bg: var(--boodoo-primary-bg-subtle,'), 'Alert bg must consume CSS custom properties with fallbacks');
     assert.ok(boodooCss.includes('--boodoo-alert-border: var(--boodoo-primary-border-subtle,'), 'Alert border must consume CSS custom properties with fallbacks');
+  });
+
+  await t.test('10. Clean entry-point subpath imports: Tokens and peer-wrapper modules', async () => {
+    // Tokens have zero external dependencies and should import cleanly
+    const tokenModule = await import(pathToFileURL(resolve(root, 'tokens/index.js')).href);
+    assert.ok(tokenModule.boodooTokens || tokenModule.default, 'Tokens module must export boodooTokens');
+    assert.ok(tokenModule.colors, 'Tokens must define color palette');
+
+    // React, Vue, and React Native wrappers are optional peer dependencies.
+    // Verify their entry files exist, are declared in package.json exports, and export the expected APIs.
+    const wrapperChecks = [
+      { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox'] },
+      { sub: './vue', file: 'vue/index.js', expected: ['useDisclosure', 'useCombobox'] },
+      { sub: './react-native', file: 'react-native/index.js', expected: ['BoodooProvider', 'Button'] },
+    ];
+
+    for (const { sub, file, expected } of wrapperChecks) {
+      assert.ok(pkg.exports[sub], `package.json exports must define ${sub}`);
+      const filePath = resolve(root, file);
+      assert.ok(existsSync(filePath), `Wrapper file ${file} must exist`);
+      const content = readFileSync(filePath, 'utf8');
+      for (const exp of expected) {
+        assert.ok(content.includes(exp), `${file} must export ${exp}`);
+      }
+    }
   });
 });

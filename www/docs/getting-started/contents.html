@@ -296,7 +296,7 @@
 │       ├── boodoo.js             <span class="text-muted"># UMD bundle (all components, ~195 KB)</span>
 │       ├── boodoo.cjs            <span class="text-muted"># CommonJS bundle</span>
 │       ├── boodoo.esm.js         <span class="text-muted"># ES module, tree-shakeable</span>
-│       ├── boodoo.min.js         <span class="text-muted"># Minified JS runtime (~178 KB)</span>
+│       ├── boodoo.min.js         <span class="text-muted"># Minified JS runtime (~178 KB, ~34.1 KB gzip)</span>
 │       └── boodoo.d.ts           <span class="text-muted"># TypeScript definitions</span>
 ├── tokens/                       <span class="text-muted"># Cross-platform design tokens (JSON, CJS, ESM)</span>
 ├── react/                        <span class="text-muted"># Headless React hooks</span>
@@ -472,6 +472,21 @@
           setTimeout(scrollActiveNavIntoView, 250);
         });
       }
+    })();
+
+    // First-party acquisition source attribution tracking (privacy-friendly, zero external deps)
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var source = params.get('utm_source') || params.get('ref') || (document.referrer ? new URL(document.referrer).hostname : 'direct');
+        if (!localStorage.getItem('boodoo_acquisition_source')) {
+          localStorage.setItem('boodoo_acquisition_source', JSON.stringify({
+            first_source: source,
+            first_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (e) {}
     })();
 
     // Action buttons (Copy + CodePen) for code blocks
