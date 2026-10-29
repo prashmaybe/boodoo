@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.3] - 2026-10-29
+
+### Changed
+- **Framework & Package Version Alignment**:
+  - Bumped latest framework version to v1.2.3 across package manifests, CLI scaffolders, starters, and documentation site.
+
+---
+
 ## [1.2.2] - 2026-10-24
 
 ### Added
