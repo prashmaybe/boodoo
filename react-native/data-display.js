@@ -42,8 +42,8 @@ export function Chip({
       ]}
       {...props}
     >
-      {avatar ? <View style={{ marginRight: 6 }}>{avatar}</View> : null}
-      {icon ? <View style={{ marginRight: 6 }}>{icon}</View> : null}
+      {avatar ? <View style={styles.chipMarginRight}>{avatar}</View> : null}
+      {icon ? <View style={styles.chipMarginRight}>{icon}</View> : null}
       <RNText
         style={[
           styles.chipText,
@@ -57,8 +57,8 @@ export function Chip({
         {children}
       </RNText>
       {onClose ? (
-        <TouchableOpacity onPress={onClose} style={{ marginLeft: 6 }}>
-          <RNText style={{ color: theme.colors.textMuted, fontSize: 13 }}>✕</RNText>
+        <TouchableOpacity onPress={onClose} style={styles.chipCloseBtn}>
+          <RNText style={[styles.chipCloseText, { color: theme.colors.textMuted }]}>✕</RNText>
         </TouchableOpacity>
       ) : null}
     </TouchableOpacity>
@@ -248,7 +248,7 @@ Avatar.Icon = function AvatarIcon({ icon, size = 48, color = '#ffffff', style })
       {typeof icon === 'function' ? (
         icon({ size: size * 0.5, color })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ fontSize: size * 0.45, color }}>{icon}</RNText>
+        <RNText style={[styles.avatarIconText, { fontSize: size * 0.45, color }]}>{icon}</RNText>
       ) : (
         icon
       )}
@@ -359,7 +359,7 @@ export function AIStream({
       ]}
       {...props}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+      <View style={styles.aiStreamRow}>
         <RNText style={[styles.aiStreamText, { color: theme.colors.text }]}>
           {children}
         </RNText>
@@ -425,7 +425,7 @@ export function FilterPill({
       </RNText>
       {onRemove ? (
         <TouchableOpacity onPress={onRemove} style={styles.filterPillClose}>
-          <RNText style={{ color: theme.colors.danger || '#e11d48', fontWeight: 'bold' }}>×</RNText>
+          <RNText style={[styles.filterPillCloseText, { color: theme.colors.danger || '#e11d48' }]}>×</RNText>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -602,6 +602,57 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  chipMarginRight: {
+    marginRight: 6,
+  },
+  chipCloseBtn: {
+    marginLeft: 6,
+  },
+  chipCloseText: {
+    fontSize: 13,
+  },
+  avatarIconText: {
+    textAlign: 'center',
+  },
+  aiStreamRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  filterPillCloseText: {
+    fontWeight: 'bold',
+  },
+  donutRingWrapper: {
+    alignItems: 'center',
+    paddingVertical: 14,
+  },
+  donutRingBase: {
+    borderWidth: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  donutTotalText: {
+    fontSize: 24,
+    fontWeight: '700',
+  },
+  donutTotalLabel: {
+    fontSize: 12,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  sparkCol: {
+    height: '100%',
+    justifyContent: 'flex-end',
+    position: 'relative',
+  },
+  sparkDot: {
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#fff',
+  },
 });
 
 /**
@@ -719,22 +770,22 @@ export function DonutChart({
         </View>
       ) : null}
 
-      <View style={{ alignItems: 'center', paddingVertical: 14 }}>
+      <View style={styles.donutRingWrapper}>
         <View
-          style={{
-            width: size,
-            height: size,
-            borderRadius: size / 2,
-            borderWidth: 16,
-            borderColor: segments[0]?.color || theme.colors.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          style={[
+            styles.donutRingBase,
+            {
+              width: size,
+              height: size,
+              borderRadius: size / 2,
+              borderColor: segments[0]?.color || theme.colors.primary,
+            },
+          ]}
         >
-          <RNText style={{ fontSize: 24, fontWeight: '700', color: theme.colors.text }}>
+          <RNText style={[styles.donutTotalText, { color: theme.colors.text }]}>
             {computedTotal}
           </RNText>
-          <RNText style={{ fontSize: 12, color: theme.colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+          <RNText style={[styles.donutTotalLabel, { color: theme.colors.textSecondary }]}>
             Total
           </RNText>
         </View>
@@ -803,18 +854,15 @@ export function LineChart({
           const color = dataset.borderColor || theme.colors.primary;
 
           return (
-            <View key={idx} style={[styles.barCol, { height: '100%', justifyContent: 'flex-end', position: 'relative' }]}>
+            <View key={idx} style={[styles.barCol, styles.sparkCol]}>
               <View
-                style={{
-                  position: 'absolute',
-                  bottom: dotBottom,
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
-                  backgroundColor: color,
-                  borderWidth: 2,
-                  borderColor: '#fff',
-                }}
+                style={[
+                  styles.sparkDot,
+                  {
+                    bottom: dotBottom,
+                    backgroundColor: color,
+                  },
+                ]}
               />
               <RNText style={[styles.barLabel, { color: theme.colors.textSecondary }]}>
                 {labels[idx] || ''}

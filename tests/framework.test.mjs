@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -300,6 +300,99 @@ test('React Native modular submodules existence and exports verification', () =>
       );
     }
   }
+});
+
+test('React Native component spacing and padding compactness verification', () => {
+  const buttonsCode = readFileSync(resolve(rootDir, 'react-native/buttons.js'), 'utf8');
+  const surfacesCode = readFileSync(resolve(rootDir, 'react-native/surfaces.js'), 'utf8');
+  const inputsCode = readFileSync(resolve(rootDir, 'react-native/inputs.js'), 'utf8');
+
+  // Verify buttons don't have bloated spacing
+  assert.ok(!buttonsCode.includes('theme.spacing[1] + 2'), 'Button should not have bloated spacing[1] + 2');
+  assert.ok(!buttonsCode.includes('theme.spacing[4]'), 'Button should not use expansive spacing[4]');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingVerticalMd'), 'Button default should support customizable vertical padding');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingHorizontalMd'), 'Button default should support customizable horizontal padding');
+  assert.ok(buttonsCode.includes('10'), 'Button default fallback must be 10px');
+  assert.ok(buttonsCode.includes('16'), 'Button default fallback must be 16px');
+
+  // Verify Card and Surface compactness
+  assert.ok(!surfacesCode.includes('padding: theme.spacing[4]'), 'Card must not have bloated 68px padding');
+  assert.ok(surfacesCode.includes('padding: cardPadding'), 'Card must use dynamic customizable cardPadding');
+  assert.ok(surfacesCode.includes('cs.cardTitleMarginBottom'), 'Card.Title must support custom bottom margin');
+
+  // Verify TextInput compactness
+  assert.ok(!inputsCode.includes('paddingVertical: theme.spacing[2] + 2'), 'TextInput must not have bloated 38px vertical padding');
+  assert.ok(inputsCode.includes('cs.inputPaddingVertical'), 'TextInput must support customizable vertical padding');
+  assert.ok(inputsCode.includes('cs.inputPaddingHorizontal'), 'TextInput must support customizable horizontal padding');
+  assert.ok(inputsCode.includes('cs.inputMarginBottom'), 'TextInput must support customizable bottom margin');
+});
+
+test('React Native component spacing customization and density configuration', () => {
+  const themeCode = readFileSync(resolve(rootDir, 'react-native/theme.js'), 'utf8');
+  assert.ok(themeCode.includes('export const createComponentSpacing'), 'createComponentSpacing must be exported');
+  assert.ok(themeCode.includes('export const defaultComponentSpacing'), 'defaultComponentSpacing must be exported');
+  assert.ok(themeCode.includes('componentSpacing: defaultComponentSpacing'), 'themes must include componentSpacing');
+
+  // Verify function logic by extracting createComponentSpacing without react dependency
+  const startIndex = themeCode.indexOf('export const createComponentSpacing = (baseSpacer = 16');
+  const endIndex = themeCode.indexOf('export const defaultComponentSpacing');
+  assert.ok(startIndex !== -1 && endIndex !== -1, 'createComponentSpacing implementation must be found');
+  const fnCode = themeCode.slice(startIndex + 'export const createComponentSpacing = '.length, endIndex).trim().replace(/;$/, '');
+  const createComponentSpacing = new Function('return ' + fnCode)();
+
+  const defaultSpacing = createComponentSpacing(16);
+  assert.equal(defaultSpacing.card, 16);
+  assert.equal(defaultSpacing.cardTitleMarginBottom, 8);
+  assert.equal(defaultSpacing.buttonPaddingVerticalMd, 10);
+  assert.equal(defaultSpacing.buttonPaddingHorizontalMd, 16);
+  assert.equal(defaultSpacing.inputPaddingVertical, 10);
+  assert.equal(defaultSpacing.inputPaddingHorizontal, 12);
+
+  // Test dynamic density creation (e.g. compact scale with baseSpacer = 12)
+  const compact = createComponentSpacing(12);
+  assert.equal(compact.card, 12);
+  assert.equal(compact.buttonPaddingVerticalMd, 8);
+  assert.equal(compact.inputPaddingVertical, 8);
+
+  // Test custom overrides
+  const custom = createComponentSpacing(16, { card: 24, buttonPaddingVerticalMd: 14 });
+  assert.equal(custom.card, 24);
+  assert.equal(custom.buttonPaddingVerticalMd, 14);
+
+  // Verify components read from theme.componentSpacing, theme.spacing, and props
+  const surfacesCode = readFileSync(resolve(rootDir, 'react-native/surfaces.js'), 'utf8');
+  assert.ok(surfacesCode.includes('cs.card'), 'Card must read custom spacing from theme.componentSpacing');
+  assert.ok(surfacesCode.includes('padding ??'), 'Card must allow padding prop customization');
+
+  const buttonsCode = readFileSync(resolve(rootDir, 'react-native/buttons.js'), 'utf8');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingVerticalMd'), 'Button must read from theme.componentSpacing');
+  assert.ok(buttonsCode.includes('paddingVertical ??'), 'Button must allow paddingVertical prop customization');
+
+  const inputsCode = readFileSync(resolve(rootDir, 'react-native/inputs.js'), 'utf8');
+  assert.ok(inputsCode.includes('cs.inputPaddingVertical'), 'TextInput must read from theme.componentSpacing');
+  assert.ok(inputsCode.includes('paddingVertical ??'), 'TextInput must allow paddingVertical prop customization');
+});
+
+test('React Native zero inline styles and StyleSheet-only architecture enforcement', () => {
+  const rnDir = resolve(rootDir, 'react-native');
+  const files = readdirSync(rnDir).filter(f => f.endsWith('.js'));
+  const violations = [];
+
+  for (const file of files) {
+    const content = readFileSync(resolve(rnDir, file), 'utf8');
+    const lines = content.split('\n');
+    lines.forEach((line, idx) => {
+      if (/style\s*=\s*\{\{/.test(line)) {
+        violations.push(`${file}:${idx + 1}: ${line.trim()}`);
+      }
+    });
+  }
+
+  assert.strictEqual(
+    violations.length,
+    0,
+    `React Native components must not contain inline style object literals (style={{...}}). Found:\n${violations.join('\n')}`
+  );
 });
 
 test('React Native Paper theme presets verification', async () => {
@@ -1741,6 +1834,91 @@ test('React Native charts export and modularity verification', () => {
   assert.ok(rnDts.includes('export declare const DonutChart: ComponentType<any>;'), 'react-native/index.d.ts must declare DonutChart');
   assert.ok(rnDts.includes('export declare const LineChart: ComponentType<any>;'), 'react-native/index.d.ts must declare LineChart');
 });
+
+test('create-boodoo CLI scaffolder supports JS and TS options across templates', async () => {
+  const { parseArgs, scaffoldProject } = await import(pathToFileURL(resolve(rootDir, 'bin/create-boodoo.mjs')).href);
+  const os = await import('node:os');
+  const fs = await import('node:fs');
+
+  // Test argument parser
+  const p1 = parseArgs(['my-electron-app', '--template=electron', '--ts']);
+  assert.equal(p1.projectName, 'my-electron-app');
+  assert.equal(p1.template, '4');
+  assert.equal(p1.isTs, true);
+
+  const p2 = parseArgs(['my-react-app', '-t', 'react', '--js']);
+  assert.equal(p2.projectName, 'my-react-app');
+  assert.equal(p2.template, '3');
+  assert.equal(p2.isTs, false);
+
+  const tmpBase = fs.mkdtempSync(resolve(os.tmpdir(), 'boodoo-scaffold-test-'));
+
+  try {
+    // 1. Electron TS & JS
+    const elTsDir = resolve(tmpBase, 'el-ts');
+    scaffoldProject({ targetDir: elTsDir, projectName: 'el-ts', choice: '4', isTs: true });
+    assert.ok(fs.existsSync(resolve(elTsDir, 'tsconfig.json')), 'Electron TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/main.ts')), 'Electron TS must have src/main.ts');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/preload.ts')), 'Electron TS must have src/preload.ts');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/renderer.ts')), 'Electron TS must have src/renderer.ts');
+
+    const elJsDir = resolve(tmpBase, 'el-js');
+    scaffoldProject({ targetDir: elJsDir, projectName: 'el-js', choice: '4', isTs: false });
+    assert.ok(fs.existsSync(resolve(elJsDir, 'main.js')), 'Electron JS must have main.js');
+    assert.ok(fs.existsSync(resolve(elJsDir, 'preload.js')), 'Electron JS must have preload.js');
+    assert.ok(fs.existsSync(resolve(elJsDir, 'renderer.js')), 'Electron JS must have renderer.js');
+
+    // 2. React / Next.js TS & JS
+    const reactTsDir = resolve(tmpBase, 'react-ts');
+    scaffoldProject({ targetDir: reactTsDir, projectName: 'react-ts', choice: '3', isTs: true });
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'tsconfig.json')), 'React TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'app/layout.tsx')), 'React TS must have app/layout.tsx');
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'app/page.tsx')), 'React TS must have app/page.tsx');
+
+    const reactJsDir = resolve(tmpBase, 'react-js');
+    scaffoldProject({ targetDir: reactJsDir, projectName: 'react-js', choice: '3', isTs: false });
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'jsconfig.json')), 'React JS must have jsconfig.json');
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'app/layout.jsx')), 'React JS must have app/layout.jsx');
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'app/page.jsx')), 'React JS must have app/page.jsx');
+
+    // 3. Angular TS & JS
+    const ngTsDir = resolve(tmpBase, 'ng-ts');
+    scaffoldProject({ targetDir: ngTsDir, projectName: 'ng-ts', choice: '5', isTs: true });
+    assert.ok(fs.existsSync(resolve(ngTsDir, 'src/main.ts')), 'Angular TS must have src/main.ts');
+    const ngTsConfig = JSON.parse(fs.readFileSync(resolve(ngTsDir, 'angular.json'), 'utf8'));
+    assert.equal(ngTsConfig.projects['ng-ts'].architect.build.options.browser, 'src/main.ts');
+
+    const ngJsDir = resolve(tmpBase, 'ng-js');
+    scaffoldProject({ targetDir: ngJsDir, projectName: 'ng-js', choice: '5', isTs: false });
+    assert.ok(fs.existsSync(resolve(ngJsDir, 'src/main.js')), 'Angular JS must have src/main.js');
+    const ngJsConfig = JSON.parse(fs.readFileSync(resolve(ngJsDir, 'angular.json'), 'utf8'));
+    assert.equal(ngJsConfig.projects['ng-js'].architect.build.options.browser, 'src/main.js');
+
+    // 4. React Native Mobile (Expo) TS & JS
+    const expoTsDir = resolve(tmpBase, 'expo-ts');
+    scaffoldProject({ targetDir: expoTsDir, projectName: 'expo-ts', choice: '10', isTs: true });
+    assert.ok(fs.existsSync(resolve(expoTsDir, 'tsconfig.json')), 'Expo TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(expoTsDir, 'App.tsx')), 'Expo TS must have App.tsx');
+
+    const expoJsDir = resolve(tmpBase, 'expo-js');
+    scaffoldProject({ targetDir: expoJsDir, projectName: 'expo-js', choice: '10', isTs: false });
+    assert.ok(fs.existsSync(resolve(expoJsDir, 'App.js')), 'Expo JS must have App.js');
+
+    // 5. React Native Web TS & JS
+    const rnwTsDir = resolve(tmpBase, 'rnw-ts');
+    scaffoldProject({ targetDir: rnwTsDir, projectName: 'rnw-ts', choice: '9', isTs: true });
+    assert.ok(fs.existsSync(resolve(rnwTsDir, 'src/App.tsx')), 'RNW TS must have src/App.tsx');
+    assert.ok(fs.existsSync(resolve(rnwTsDir, 'vite.config.ts')), 'RNW TS must have vite.config.ts');
+
+    const rnwJsDir = resolve(tmpBase, 'rnw-js');
+    scaffoldProject({ targetDir: rnwJsDir, projectName: 'rnw-js', choice: '9', isTs: false });
+    assert.ok(fs.existsSync(resolve(rnwJsDir, 'src/App.jsx')), 'RNW JS must have src/App.jsx');
+    assert.ok(fs.existsSync(resolve(rnwJsDir, 'vite.config.js')), 'RNW JS must have vite.config.js');
+  } finally {
+    fs.rmSync(tmpBase, { recursive: true, force: true });
+  }
+});
+
 
 
 

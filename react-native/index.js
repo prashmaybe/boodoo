@@ -4,7 +4,7 @@
  */
 
 // Theme Context & Presets
-export { BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme } from './theme.js';
+export { BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme, createComponentSpacing, defaultComponentSpacing } from './theme.js';
 export { boodooPaperLightTheme, boodooPaperDarkTheme } from './paper.js';
 
 // Typography

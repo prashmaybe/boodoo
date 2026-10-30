@@ -16,10 +16,18 @@ export function Dialog({
   visible = false,
   onDismiss,
   dismissable = true,
+  padding,
   children,
   style,
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPadding =
+    padding ??
+    cs.dialogPadding ??
+    sp.dialogPadding ??
+    20;
 
   return (
     <RNModal
@@ -57,13 +65,18 @@ export function Dialog({
 }
 export const AlertDialog = Dialog;
 
-Dialog.Title = function DialogTitle({ children, style }) {
+Dialog.Title = function DialogTitle({ children, style, marginBottom }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const effMarginBottom =
+    marginBottom ??
+    cs.dialogTitleMarginBottom ??
+    8;
   return (
     <RNText
       style={[
         styles.dialogTitle,
-        { color: theme.colors.text, fontSize: theme.typography.sizes.xl },
+        { color: theme.colors.text, fontSize: theme.typography.sizes.xl, marginBottom: effMarginBottom },
         style,
       ]}
     >
@@ -76,8 +89,14 @@ Dialog.Content = function DialogContent({ children, style }) {
   return <View style={[styles.dialogContent, style]}>{children}</View>;
 };
 
-Dialog.Actions = function DialogActions({ children, style }) {
-  return <View style={[styles.dialogActions, style]}>{children}</View>;
+Dialog.Actions = function DialogActions({ children, style, marginTop }) {
+  const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const effMarginTop =
+    marginTop ??
+    cs.dialogActionsMarginTop ??
+    12;
+  return <View style={[styles.dialogActions, { marginTop: effMarginTop }, style]}>{children}</View>;
 };
 
 Dialog.ScrollArea = function DialogScrollArea({ children, style }) {
@@ -96,11 +115,19 @@ export function Modal({
   onDismiss,
   onRequestClose,
   dismissable = true,
+  padding,
   contentContainerStyle,
   children,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPadding =
+    padding ??
+    cs.modalPadding ??
+    sp.modalPadding ??
+    16;
   const handleClose = () => {
     if (dismissable) {
       if (onDismiss) onDismiss();
@@ -149,10 +176,18 @@ export function BottomSheet({
   visible = false,
   onBackdropPress,
   onClose,
+  padding,
   children,
   style,
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPadding =
+    padding ??
+    cs.bottomSheetPadding ??
+    sp.bottomSheetPadding ??
+    16;
   const isShow = isVisible || visible;
   const close = onBackdropPress || onClose;
 
@@ -247,7 +282,7 @@ Menu.Item = function MenuItem({
         style,
       ]}
     >
-      {icon ? <View style={{ marginRight: 10 }}>{icon}</View> : null}
+      {icon ? <View style={styles.menuItemIcon}>{icon}</View> : null}
       <RNText
         style={[
           styles.menuItemTitle,
@@ -347,29 +382,29 @@ const styles = StyleSheet.create({
   dialogContainer: {
     width: '100%',
     maxWidth: 400,
-    padding: 24,
+    padding: 20,
   },
   dialogTitle: {
     fontWeight: '700',
-    marginBottom: 12,
+    marginBottom: 8,
   },
   dialogContent: {
-    marginVertical: 8,
+    marginVertical: 6,
   },
   dialogActions: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     gap: 8,
-    marginTop: 16,
+    marginTop: 12,
   },
   dialogScrollArea: {
     maxHeight: 240,
-    marginVertical: 8,
+    marginVertical: 6,
   },
   modalContent: {
     width: '100%',
     maxWidth: 420,
-    padding: 20,
+    padding: 16,
   },
   sheetBackdrop: {
     flex: 1,
@@ -378,8 +413,8 @@ const styles = StyleSheet.create({
   },
   sheetContainer: {
     width: '100%',
-    padding: 20,
-    paddingBottom: 36,
+    padding: 16,
+    paddingBottom: 28,
   },
   sheetHandle: {
     width: 36,
@@ -387,7 +422,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     backgroundColor: '#cbd5e1',
     alignSelf: 'center',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   menuCard: {
     paddingVertical: 6,
@@ -415,5 +450,8 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 11,
     fontWeight: '600',
+  },
+  menuItemIcon: {
+    marginRight: 10,
   },
 });

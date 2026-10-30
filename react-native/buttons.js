@@ -25,11 +25,15 @@ export function Button({
   iconRight,
   onPress,
   children,
+  paddingVertical,
+  paddingHorizontal,
   style,
   textStyle,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
 
   const effectiveVariant =
     status ||
@@ -41,23 +45,57 @@ export function Button({
       case 'sm':
       case 'small':
         return {
-          paddingVertical: theme.spacing[1] + 2,
-          paddingHorizontal: theme.spacing[3],
+          paddingVertical:
+            paddingVertical ??
+            cs.buttonPaddingVerticalSm ??
+            cs.buttonSmY ??
+            sp.buttonSmY ??
+            7,
+          paddingHorizontal:
+            paddingHorizontal ??
+            cs.buttonPaddingHorizontalSm ??
+            cs.buttonSmX ??
+            sp.buttonSmX ??
+            12,
           borderRadius: theme.radii.md,
           fontSize: theme.typography.sizes.sm,
         };
       case 'lg':
       case 'large':
         return {
-          paddingVertical: theme.spacing[3] + 2,
-          paddingHorizontal: theme.spacing[5],
+          paddingVertical:
+            paddingVertical ??
+            cs.buttonPaddingVerticalLg ??
+            cs.buttonLgY ??
+            sp.buttonLgY ??
+            13,
+          paddingHorizontal:
+            paddingHorizontal ??
+            cs.buttonPaddingHorizontalLg ??
+            cs.buttonLgX ??
+            sp.buttonLgX ??
+            22,
           borderRadius: theme.radii.lg,
           fontSize: theme.typography.sizes.lg,
         };
       default:
         return {
-          paddingVertical: theme.spacing[2] + 3,
-          paddingHorizontal: theme.spacing[4],
+          paddingVertical:
+            paddingVertical ??
+            cs.buttonPaddingVerticalMd ??
+            cs.buttonPaddingY ??
+            cs.buttonMdY ??
+            sp.buttonMdY ??
+            sp.buttonPaddingY ??
+            10,
+          paddingHorizontal:
+            paddingHorizontal ??
+            cs.buttonPaddingHorizontalMd ??
+            cs.buttonPaddingX ??
+            cs.buttonMdX ??
+            sp.buttonMdX ??
+            sp.buttonPaddingX ??
+            16,
           borderRadius: theme.radii.md,
           fontSize: theme.typography.sizes.base,
         };
@@ -122,7 +160,7 @@ export function Button({
         <RNActivityIndicator size="small" color={variantCfg.text} />
       ) : (
         <View style={styles.rowCentered}>
-          {icon && !iconRight ? <View style={{ marginRight: 6 }}>{icon}</View> : null}
+          {icon && !iconRight ? <View style={styles.iconMarginRight}>{icon}</View> : null}
           <RNText
             style={[
               styles.buttonText,
@@ -135,7 +173,7 @@ export function Button({
           >
             {labelContent}
           </RNText>
-          {icon && iconRight ? <View style={{ marginLeft: 6 }}>{icon}</View> : null}
+          {icon && iconRight ? <View style={styles.iconMarginLeft}>{icon}</View> : null}
         </View>
       )}
     </TouchableOpacity>
@@ -248,7 +286,7 @@ export function IconButton({
       {typeof icon === 'function' ? (
         icon({ size, color })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ fontSize: size * 0.75, color, fontWeight: '700' }}>{icon}</RNText>
+        <RNText style={[styles.iconButtonText, { fontSize: size * 0.75, color }]}>{icon}</RNText>
       ) : (
         icon
       )}
@@ -264,12 +302,27 @@ export function FAB({
   label,
   small = false,
   color,
+  paddingVertical,
+  paddingHorizontal,
   onPress,
   style,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
   const textColor = color || '#ffffff';
+
+  const effPaddingVertical =
+    paddingVertical ??
+    (small
+      ? cs.fabPaddingVerticalSm ?? sp.fabPaddingVerticalSm ?? 8
+      : cs.fabPaddingVertical ?? sp.fabPaddingVertical ?? 12);
+  const effPaddingHorizontal =
+    paddingHorizontal ??
+    (small
+      ? cs.fabPaddingHorizontalSm ?? sp.fabPaddingHorizontalSm ?? 12
+      : cs.fabPaddingHorizontal ?? sp.fabPaddingHorizontal ?? 18);
 
   return (
     <TouchableOpacity
@@ -279,8 +332,8 @@ export function FAB({
         styles.fabBase,
         {
           backgroundColor: theme.colors.primary,
-          paddingVertical: small ? 8 : 14,
-          paddingHorizontal: small ? 14 : 20,
+          paddingVertical: effPaddingVertical,
+          paddingHorizontal: effPaddingHorizontal,
           borderRadius: theme.radii.full,
           ...theme.shadows.md,
         },
@@ -289,7 +342,7 @@ export function FAB({
       {...props}
     >
       <View style={styles.rowCentered}>
-        {icon ? <View style={{ marginRight: label ? 8 : 0 }}>{icon}</View> : null}
+        {icon ? <View style={label ? styles.fabIconMargin : null}>{icon}</View> : null}
         {label ? (
           <RNText style={[styles.fabText, { color: textColor }]}>{label}</RNText>
         ) : null}
@@ -380,7 +433,7 @@ export function SegmentedButtons({
             ]}
           >
             <View style={styles.rowCentered}>
-              {btn.icon ? <View style={{ marginRight: 6 }}>{btn.icon}</View> : null}
+              {btn.icon ? <View style={styles.iconMarginRight}>{btn.icon}</View> : null}
               <RNText
                 style={[
                   styles.segmentedLabel,
@@ -461,5 +514,17 @@ const styles = StyleSheet.create({
   },
   segmentedLabel: {
     fontSize: 13,
+  },
+  iconMarginRight: {
+    marginRight: 6,
+  },
+  iconMarginLeft: {
+    marginLeft: 6,
+  },
+  iconButtonText: {
+    fontWeight: '700',
+  },
+  fabIconMargin: {
+    marginRight: 8,
   },
 });

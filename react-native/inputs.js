@@ -25,18 +25,47 @@ export function TextInput({
   placeholder,
   value,
   onChangeText,
+  paddingVertical,
+  paddingHorizontal,
+  marginBottom,
   style,
   inputStyle,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
   const isFlat = mode === 'flat';
   const errText = error || errorMessage;
 
+  const effMarginBottom =
+    marginBottom ??
+    cs.inputMarginBottom ??
+    cs.inputBottom ??
+    sp.inputMarginBottom ??
+    sp.inputBottom ??
+    14;
+
+  const effPaddingVertical =
+    paddingVertical ??
+    cs.inputPaddingVertical ??
+    cs.inputY ??
+    sp.inputPaddingVertical ??
+    sp.inputY ??
+    10;
+
+  const effPaddingHorizontal =
+    paddingHorizontal ??
+    cs.inputPaddingHorizontal ??
+    cs.inputX ??
+    sp.inputPaddingHorizontal ??
+    sp.inputX ??
+    12;
+
   return (
-    <View style={[{ marginBottom: theme.spacing[3] }, style]}>
+    <View style={[{ marginBottom: effMarginBottom }, style]}>
       {label ? (
-        <Text style={{ fontSize: theme.typography.sizes.sm, fontWeight: '600', marginBottom: 6 }}>
+        <Text style={[styles.inputLabel, { fontSize: theme.typography.sizes.sm }]}>
           {label}
         </Text>
       ) : null}
@@ -53,7 +82,7 @@ export function TextInput({
           },
         ]}
       >
-        {left || leftIcon ? <View style={{ paddingLeft: 12 }}>{left || leftIcon}</View> : null}
+        {left || leftIcon ? <View style={styles.inputLeftIcon}>{left || leftIcon}</View> : null}
         <RNTextInput
           placeholder={placeholder}
           value={value}
@@ -64,17 +93,17 @@ export function TextInput({
             {
               color: theme.colors.text,
               fontSize: theme.typography.sizes.base,
-              paddingHorizontal: theme.spacing[3],
-              paddingVertical: theme.spacing[2] + 2,
+              paddingHorizontal: effPaddingHorizontal,
+              paddingVertical: effPaddingVertical,
             },
             inputStyle,
           ]}
           {...props}
         />
-        {right || rightIcon ? <View style={{ paddingRight: 12 }}>{right || rightIcon}</View> : null}
+        {right || rightIcon ? <View style={styles.inputRightIcon}>{right || rightIcon}</View> : null}
       </View>
       {errText ? (
-        <Text style={{ color: theme.colors.danger, fontSize: theme.typography.sizes.xs, marginTop: 4 }}>
+        <Text style={[styles.inputError, { color: theme.colors.danger, fontSize: theme.typography.sizes.xs }]}>
           {errText}
         </Text>
       ) : null}
@@ -128,8 +157,8 @@ export function Searchbar({
         style,
       ]}
     >
-      <View style={{ marginLeft: 12 }}>
-        {icon || <RNText style={{ color: theme.colors.textMuted }}>🔍</RNText>}
+      <View style={styles.searchbarIconWrapper}>
+        {icon || <RNText style={[styles.searchbarDefaultIcon, { color: theme.colors.textMuted }]}>🔍</RNText>}
       </View>
       <RNTextInput
         placeholder={placeholder}
@@ -152,9 +181,9 @@ export function Searchbar({
             if (onClearIconPress) onClearIconPress();
             if (onChangeText) onChangeText('');
           }}
-          style={{ marginRight: 12 }}
+          style={styles.searchbarClearBtn}
         >
-          <RNText style={{ color: theme.colors.textMuted, fontSize: 16 }}>✕</RNText>
+          <RNText style={[styles.searchbarClearIcon, { color: theme.colors.textMuted }]}>✕</RNText>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -513,10 +542,10 @@ export function Select({
           },
         ]}
       >
-        <RNText style={{ color: selectedValue ? theme.colors.text : theme.colors.textMuted }}>
+        <RNText style={[styles.selectValueText, { color: selectedValue ? theme.colors.text : theme.colors.textMuted }]}>
           {labelText}
         </RNText>
-        <RNText style={{ color: theme.colors.textMuted, fontSize: 12 }}>▼</RNText>
+        <RNText style={[styles.selectArrowText, { color: theme.colors.textMuted }]}>▼</RNText>
       </TouchableOpacity>
       {open ? (
         <View
@@ -548,10 +577,13 @@ export function Select({
                 ]}
               >
                 <RNText
-                  style={{
-                    color: isSelected ? theme.colors.primary : theme.colors.text,
-                    fontWeight: isSelected ? '700' : '400',
-                  }}
+                  style={[
+                    styles.selectOptionText,
+                    {
+                      color: isSelected ? theme.colors.primary : theme.colors.text,
+                      fontWeight: isSelected ? '700' : '400',
+                    },
+                  ]}
                 >
                   {lbl}
                 </RNText>
@@ -611,7 +643,7 @@ export function ToggleButton({
       {typeof icon === 'function' ? (
         icon({ color: isChecked ? theme.colors.primary : theme.colors.text })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ color: isChecked ? theme.colors.primary : theme.colors.text, fontWeight: '600' }}>
+        <RNText style={[styles.toggleIconText, { color: isChecked ? theme.colors.primary : theme.colors.text }]}>
           {icon}
         </RNText>
       ) : (
@@ -775,5 +807,36 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+  },
+  inputLabel: {
+    fontWeight: '600',
+    marginBottom: 6,
+  },
+  inputLeftIcon: {
+    paddingLeft: 12,
+  },
+  inputRightIcon: {
+    paddingRight: 12,
+  },
+  inputError: {
+    marginTop: 4,
+  },
+  searchbarIconWrapper: {
+    marginLeft: 12,
+  },
+  searchbarDefaultIcon: {},
+  searchbarClearBtn: {
+    marginRight: 12,
+  },
+  searchbarClearIcon: {
+    fontSize: 16,
+  },
+  selectValueText: {},
+  selectArrowText: {
+    fontSize: 12,
+  },
+  selectOptionText: {},
+  toggleIconText: {
+    fontWeight: '600',
   },
 });

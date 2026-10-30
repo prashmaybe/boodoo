@@ -9,10 +9,19 @@ import { useTheme } from './theme.js';
 
 export const List = {};
 
-List.Section = function ListSection({ title, children, style, titleStyle }) {
+List.Section = function ListSection({ title, children, style, titleStyle, marginVertical }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effMarginVertical =
+    marginVertical ??
+    cs.listSectionMarginVertical ??
+    cs.listSectionY ??
+    sp.listSectionMarginVertical ??
+    sp.listSectionY ??
+    8;
   return (
-    <View style={[{ marginVertical: theme.spacing[2] }, style]}>
+    <View style={[{ marginVertical: effMarginVertical }, style]}>
       {title ? (
         <RNText
           style={[
@@ -53,12 +62,26 @@ List.Item = function ListItem({
   chevron = false,
   onPress,
   disabled = false,
+  paddingVertical,
+  paddingHorizontal,
   style,
   titleStyle,
   descriptionStyle,
   children,
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPaddingVertical =
+    paddingVertical ??
+    cs.listItemPaddingVertical ??
+    sp.listItemPaddingVertical ??
+    12;
+  const effPaddingHorizontal =
+    paddingHorizontal ??
+    cs.listItemPaddingHorizontal ??
+    sp.listItemPaddingHorizontal ??
+    16;
   const desc = description || subtitle;
 
   return (
@@ -72,12 +95,14 @@ List.Item = function ListItem({
           backgroundColor: theme.colors.surface,
           borderBottomColor: theme.colors.border,
           opacity: disabled ? 0.5 : 1,
+          paddingVertical: effPaddingVertical,
+          paddingHorizontal: effPaddingHorizontal,
         },
         style,
       ]}
     >
-      {left ? <View style={{ marginRight: 14 }}>{typeof left === 'function' ? left() : left}</View> : null}
-      <View style={{ flex: 1, justifyContent: 'center' }}>
+      {left ? <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View> : null}
+      <View style={styles.itemContentFlex}>
         {children ? (
           children
         ) : (
@@ -105,8 +130,8 @@ List.Item = function ListItem({
           </>
         )}
       </View>
-      {right ? <View style={{ marginLeft: 14 }}>{typeof right === 'function' ? right() : right}</View> : null}
-      {chevron ? <RNText style={{ color: theme.colors.textMuted, fontSize: 16, marginLeft: 8 }}>›</RNText> : null}
+      {right ? <View style={styles.itemRightMargin}>{typeof right === 'function' ? right() : right}</View> : null}
+      {chevron ? <RNText style={[styles.chevronIcon, { color: theme.colors.textMuted }]}>›</RNText> : null}
     </TouchableOpacity>
   );
 };
@@ -119,7 +144,7 @@ List.Icon = function ListIcon({ icon, color, style }) {
       {typeof icon === 'function' ? (
         icon({ color: color || theme.colors.primary })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ fontSize: 20, color: color || theme.colors.primary }}>{icon}</RNText>
+        <RNText style={[styles.listIconGlyph, { color: color || theme.colors.primary }]}>{icon}</RNText>
       ) : (
         icon
       )}
@@ -162,8 +187,8 @@ List.Accordion = function ListAccordion({
           },
         ]}
       >
-        {left ? <View style={{ marginRight: 14 }}>{typeof left === 'function' ? left() : left}</View> : null}
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        {left ? <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View> : null}
+        <View style={styles.itemContentFlex}>
           <RNText
             style={[
               styles.listItemTitle,
@@ -184,14 +209,14 @@ List.Accordion = function ListAccordion({
           ) : null}
         </View>
         {right ? (
-          <View style={{ marginLeft: 14 }}>{right({ isExpanded: isOpen })}</View>
+          <View style={styles.itemRightMargin}>{right({ isExpanded: isOpen })}</View>
         ) : (
-          <RNText style={{ color: theme.colors.textMuted, fontSize: 16 }}>
+          <RNText style={[styles.accordionChevron, { color: theme.colors.textMuted }]}>
             {isOpen ? '▲' : '▼'}
           </RNText>
         )}
       </TouchableOpacity>
-      {isOpen ? <View style={{ paddingLeft: 16 }}>{children}</View> : null}
+      {isOpen ? <View style={styles.accordionBody}>{children}</View> : null}
     </View>
   );
 };
@@ -313,23 +338,23 @@ DataTable.Pagination = function DataTablePagination({
   const theme = useTheme();
   return (
     <View style={[styles.dataTablePagination, style]}>
-      <RNText style={{ color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs }}>
+      <RNText style={[styles.paginationCount, { color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs }]}>
         {label || `${page + 1} of ${numberOfPages}`}
       </RNText>
-      <View style={{ flexDirection: 'row', marginLeft: 16 }}>
+      <View style={styles.paginationControls}>
         <TouchableOpacity
           disabled={page <= 0}
           onPress={() => onPageChange && onPageChange(page - 1)}
-          style={{ padding: 6, opacity: page <= 0 ? 0.3 : 1 }}
+          style={[styles.paginationBtn, { opacity: page <= 0 ? 0.3 : 1 }]}
         >
-          <RNText style={{ color: theme.colors.text }}>◀</RNText>
+          <RNText style={[styles.paginationBtnText, { color: theme.colors.text }]}>◀</RNText>
         </TouchableOpacity>
         <TouchableOpacity
           disabled={page >= numberOfPages - 1}
           onPress={() => onPageChange && onPageChange(page + 1)}
-          style={{ padding: 6, opacity: page >= numberOfPages - 1 ? 0.3 : 1 }}
+          style={[styles.paginationBtn, { opacity: page >= numberOfPages - 1 ? 0.3 : 1 }]}
         >
-          <RNText style={{ color: theme.colors.text }}>▶</RNText>
+          <RNText style={[styles.paginationBtnText, { color: theme.colors.text }]}>▶</RNText>
         </TouchableOpacity>
       </View>
     </View>
@@ -352,7 +377,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 14,
+    paddingVertical: 12,
     borderBottomWidth: StyleSheet.hairlineWidth || 1,
   },
   listItemTitle: {
@@ -392,4 +417,36 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
   },
+  itemLeftMargin: {
+    marginRight: 14,
+  },
+  itemContentFlex: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  itemRightMargin: {
+    marginLeft: 14,
+  },
+  chevronIcon: {
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  listIconGlyph: {
+    fontSize: 20,
+  },
+  accordionChevron: {
+    fontSize: 16,
+  },
+  accordionBody: {
+    paddingLeft: 16,
+  },
+  paginationCount: {},
+  paginationControls: {
+    flexDirection: 'row',
+    marginLeft: 16,
+  },
+  paginationBtn: {
+    padding: 6,
+  },
+  paginationBtnText: {},
 });

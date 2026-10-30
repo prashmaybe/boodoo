@@ -1,14 +1,42 @@
 import type { ComponentType, ReactNode } from 'react';
 import type { BoodooColorTokens, BoodooSpacingScale, BoodooRadiiScale, BoodooTypographyTokens, BoodooShadowTokens } from '../tokens/index.d.ts';
 
+export interface BoodooComponentSpacing {
+  baseSpacer?: number;
+  card?: number;
+  cardPadding?: number;
+  cardTitleMarginBottom?: number;
+  cardContentMarginVertical?: number;
+  cardActionsMarginTop?: number;
+  cardActionsGap?: number;
+  surface?: number;
+  surfacePadding?: number;
+  statWidgetPadding?: number;
+  pricingCardPadding?: number;
+  buttonPaddingVerticalSm?: number;
+  buttonPaddingHorizontalSm?: number;
+  buttonPaddingVerticalMd?: number;
+  buttonPaddingHorizontalMd?: number;
+  buttonPaddingVerticalLg?: number;
+  buttonPaddingHorizontalLg?: number;
+  inputMarginBottom?: number;
+  inputPaddingVertical?: number;
+  inputPaddingHorizontal?: number;
+  [key: string]: number | undefined;
+}
+
 export interface BoodooTheme {
   dark: boolean;
   colors: Record<string, string>;
-  spacing: BoodooSpacingScale;
+  spacing: BoodooSpacingScale & Record<string, any>;
+  componentSpacing: BoodooComponentSpacing;
   radii: BoodooRadiiScale;
   typography: BoodooTypographyTokens;
   shadows: BoodooShadowTokens;
 }
+
+export declare const createComponentSpacing: (baseSpacer?: number, overrides?: Partial<BoodooComponentSpacing>) => BoodooComponentSpacing;
+export declare const defaultComponentSpacing: BoodooComponentSpacing;
 
 export declare const defaultLightTheme: BoodooTheme;
 export declare const defaultDarkTheme: BoodooTheme;

@@ -10,12 +10,23 @@ import { useTheme } from './theme.js';
 export function Card({
   mode = 'elevated',
   variant = 'elevated',
+  padding,
   children,
   style,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
   const effectiveMode = mode || variant;
+
+  const cardPadding =
+    padding ??
+    cs.card ??
+    cs.cardPadding ??
+    sp.card ??
+    sp.cardPadding ??
+    16;
 
   const getCardStyle = () => {
     switch (effectiveMode) {
@@ -44,7 +55,7 @@ export function Card({
         styles.cardBase,
         {
           borderRadius: theme.radii.lg,
-          padding: theme.spacing[4],
+          padding: cardPadding,
         },
         getCardStyle(),
         style,
@@ -56,33 +67,65 @@ export function Card({
   );
 }
 
-Card.Title = function CardTitle({ title, subtitle, left, right, style }) {
+Card.Title = function CardTitle({ title, subtitle, left, right, style, marginBottom }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effMarginBottom =
+    marginBottom ??
+    cs.cardTitleMarginBottom ??
+    cs.cardTitleBottom ??
+    sp.cardTitleMarginBottom ??
+    sp.cardTitleBottom ??
+    8;
   return (
-    <View style={[styles.cardTitleRow, { marginBottom: theme.spacing[2] }, style]}>
-      {left ? <View style={{ marginRight: 12 }}>{left()}</View> : null}
-      <View style={{ flex: 1 }}>
-        <Text variant="h4" style={{ fontWeight: '700' }}>{title}</Text>
-        {subtitle ? <Text variant="muted" style={{ marginTop: 2 }}>{subtitle}</Text> : null}
+    <View style={[styles.cardTitleRow, { marginBottom: effMarginBottom }, style]}>
+      {left ? <View style={styles.cardTitleSideLeft}>{left()}</View> : null}
+      <View style={styles.cardTitleCenter}>
+        <Text variant="h4" style={styles.cardTitleText}>{title}</Text>
+        {subtitle ? <Text variant="muted" style={styles.cardSubtitleText}>{subtitle}</Text> : null}
       </View>
-      {right ? <View style={{ marginLeft: 12 }}>{right()}</View> : null}
+      {right ? <View style={styles.cardTitleSideRight}>{right()}</View> : null}
     </View>
   );
 };
 
-Card.Content = function CardContent({ children, style }) {
+Card.Content = function CardContent({ children, style, marginVertical }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effMarginVertical =
+    marginVertical ??
+    cs.cardContentMarginVertical ??
+    cs.cardContentY ??
+    sp.cardContentMarginVertical ??
+    sp.cardContentY ??
+    4;
   return (
-    <View style={[{ marginVertical: theme.spacing[2] }, style]}>
+    <View style={[{ marginVertical: effMarginVertical }, style]}>
       {children}
     </View>
   );
 };
 
-Card.Actions = function CardActions({ children, style }) {
+Card.Actions = function CardActions({ children, style, marginTop, gap }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effMarginTop =
+    marginTop ??
+    cs.cardActionsMarginTop ??
+    cs.cardActionsTop ??
+    sp.cardActionsMarginTop ??
+    sp.cardActionsTop ??
+    12;
+  const effGap =
+    gap ??
+    cs.cardActionsGap ??
+    sp.cardActionsGap ??
+    8;
   return (
-    <View style={[styles.cardActions, { marginTop: theme.spacing[3] }, style]}>
+    <View style={[styles.cardActions, { marginTop: effMarginTop, gap: effGap }, style]}>
       {children}
     </View>
   );
@@ -115,11 +158,21 @@ Card.Section = function CardSection({ children, style }) {
  */
 export function Surface({
   elevation = 1,
+  padding,
   children,
   style,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPadding =
+    padding ??
+    cs.surface ??
+    cs.surfacePadding ??
+    sp.surface ??
+    sp.surfacePadding ??
+    16;
   const shadowStyle =
     elevation >= 4
       ? theme.shadows.lg
@@ -135,7 +188,7 @@ export function Surface({
         {
           backgroundColor: theme.colors.surface,
           borderRadius: theme.radii.md,
-          padding: theme.spacing[3],
+          padding: effPadding,
         },
         shadowStyle,
         style,
@@ -183,10 +236,18 @@ export function PricingCard({
   button,
   color,
   onButtonPress,
+  padding,
   containerStyle,
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
   const brandColor = color || theme.colors.primary;
+  const effPadding =
+    padding ??
+    cs.pricingCardPadding ??
+    sp.pricingCardPadding ??
+    20;
 
   return (
     <View
@@ -195,6 +256,7 @@ export function PricingCard({
         {
           backgroundColor: theme.colors.surface,
           borderColor: theme.colors.border,
+          padding: effPadding,
           ...theme.shadows.md,
         },
         containerStyle,
@@ -212,7 +274,7 @@ export function PricingCard({
       <Button
         title={button?.title || 'Get Started'}
         onPress={onButtonPress || button?.onPress}
-        style={{ backgroundColor: brandColor, marginTop: 16 }}
+        style={[styles.pricingCardButton, { backgroundColor: brandColor }]}
       />
     </View>
   );
@@ -248,7 +310,7 @@ export function Tile({
         <View style={[StyleSheet.absoluteFill, { backgroundColor: theme.colors.darkCard }]} />
       )}
       <View style={styles.tileOverlay}>
-        {icon ? <View style={{ marginBottom: 8 }}>{icon}</View> : null}
+        {icon ? <View style={styles.tileIconMargin}>{icon}</View> : null}
         {title ? <Text style={styles.tileTitle}>{title}</Text> : null}
         {caption ? <Text style={styles.tileCaption}>{caption}</Text> : null}
       </View>
@@ -262,10 +324,20 @@ export function StatWidget({
   trend,
   trendDirection = 'up',
   icon,
+  padding,
   style,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effPadding =
+    padding ??
+    cs.statWidgetPadding ??
+    cs.statWidget ??
+    sp.statWidgetPadding ??
+    sp.statWidget ??
+    16;
   return (
     <View
       style={[
@@ -273,7 +345,7 @@ export function StatWidget({
         {
           backgroundColor: theme.colors.surface,
           borderRadius: theme.radii.lg,
-          padding: theme.spacing[4],
+          padding: effPadding,
           borderWidth: 1,
           borderColor: theme.colors.border,
           ...theme.shadows.sm,
@@ -282,24 +354,26 @@ export function StatWidget({
       ]}
       {...props}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+      <View style={styles.statHeaderRow}>
         {title ? (
-          <Text style={{ fontSize: theme.typography.sizes.sm, color: theme.colors.textMuted || '#64748b', fontWeight: '500' }}>
+          <Text style={[styles.statTitle, { fontSize: theme.typography.sizes.sm, color: theme.colors.textMuted || '#64748b' }]}>
             {title}
           </Text>
         ) : null}
         {icon ? <View>{icon}</View> : null}
       </View>
-      <Text style={{ fontSize: 28, fontWeight: '700', color: theme.colors.text, marginBottom: 4 }}>
+      <Text style={[styles.statValue, { color: theme.colors.text }]}>
         {value}
       </Text>
       {trend ? (
         <Text
-          style={{
-            fontSize: theme.typography.sizes.xs,
-            fontWeight: '600',
-            color: trendDirection === 'up' ? theme.colors.success : theme.colors.danger,
-          }}
+          style={[
+            styles.statTrend,
+            {
+              fontSize: theme.typography.sizes.xs,
+              color: trendDirection === 'up' ? theme.colors.success : theme.colors.danger,
+            },
+          ]}
         >
           {trend}
         </Text>
@@ -331,7 +405,7 @@ const styles = StyleSheet.create({
   pricingCard: {
     borderRadius: 16,
     borderWidth: 1,
-    padding: 24,
+    padding: 20,
     alignItems: 'center',
   },
   pricingTitle: {
@@ -342,12 +416,12 @@ const styles = StyleSheet.create({
   pricingPrice: {
     fontSize: 32,
     fontWeight: '800',
-    marginVertical: 12,
+    marginVertical: 8,
   },
   pricingInfoList: {
     width: '100%',
-    marginVertical: 12,
-    gap: 8,
+    marginVertical: 8,
+    gap: 6,
   },
   pricingInfoItem: {
     fontSize: 14,
@@ -370,5 +444,43 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.85)',
     fontSize: 13,
     marginTop: 2,
+  },
+  cardTitleSideLeft: {
+    marginRight: 12,
+  },
+  cardTitleCenter: {
+    flex: 1,
+  },
+  cardTitleText: {
+    fontWeight: '700',
+  },
+  cardSubtitleText: {
+    marginTop: 2,
+  },
+  cardTitleSideRight: {
+    marginLeft: 12,
+  },
+  pricingCardButton: {
+    marginTop: 16,
+  },
+  tileIconMargin: {
+    marginBottom: 8,
+  },
+  statHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  statTitle: {
+    fontWeight: '500',
+  },
+  statValue: {
+    fontSize: 28,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  statTrend: {
+    fontWeight: '600',
   },
 });
