@@ -311,6 +311,14 @@
     height: 100%;
     display: block;
   }
+
+  &[class*=" hi-"],
+  &[class^="hi-"],
+  > [class*=" hi-"],
+  > [class^="hi-"] {
+    line-height: 1;
+    font-style: normal;
+  }
 }
 
 .icon-xs { width: 0.75rem; height: 0.75rem; font-size: 0.75rem; }

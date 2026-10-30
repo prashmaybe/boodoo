@@ -37,6 +37,7 @@
       rel="stylesheet">
   </noscript>
   <link rel="stylesheet" href="dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
   <link rel="stylesheet" href="assets/docs.css">
 </head>
 
@@ -61,6 +62,7 @@
         <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
           <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
+          <li class="nav-item"><a class="nav-link" href="#icons">Icons</a></li>
           <li class="nav-item"><a class="nav-link" href="#mobile">React Native</a></li>
           <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
           <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html">Docs</a></li>
@@ -69,17 +71,13 @@
         <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
-            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
             <span class="search-btn-text">Search</span>
             <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode"
             title="Toggle theme">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
           <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="docs/getting-started/usage.html">CDN</a>
           <a class="btn btn-primary btn-sm rounded-pill px-3" href="docs/getting-started/download.html">Download</a>
@@ -145,11 +143,7 @@
                 <button class="terminal-tab-btn" data-tab="cdn">cdn</button>
               </div>
               <button class="copy-btn" id="copyCodeBtn">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
-                  </path>
-                </svg>
+                <i class="hi-copy me-1" aria-hidden="true"></i>
                 <span>Copy</span>
               </button>
             </div>
@@ -162,28 +156,28 @@
         <!-- Stats Bar -->
         <div class="stats-banner">
           <div class="stat-item">
-            <div class="stat-icon"><span>⚡</span></div>
+            <div class="stat-icon"><i class="hi-bolt" aria-hidden="true"></i></div>
             <div>
               <div class="stat-value"><span>Zero Runtime Deps</span></div>
               <div class="stat-label"><span>Pure Vanilla JS</span></div>
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-icon"><span>📦</span></div>
+            <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
             <div>
               <div class="stat-value"><span>~{{jsMinKb}} KB Minified</span></div>
               <div class="stat-label"><span>~{{jsGzKb}} KB gzip · 0 deps</span></div>
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-icon"><span>📱</span></div>
+            <div class="stat-icon"><i class="hi-phone" aria-hidden="true"></i></div>
             <div>
               <div class="stat-value"><span>100% Mobile-First</span></div>
               <div class="stat-label"><span>Flexbox &amp; CSS Grid</span></div>
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-icon"><span>🎨</span></div>
+            <div class="stat-icon"><i class="hi-paintbox" aria-hidden="true"></i></div>
             <div>
               <div class="stat-value"><span>Source Theming</span></div>
               <div class="stat-label"><span>Sass &amp; Less Tokens</span></div>
@@ -206,7 +200,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-3 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-primary text-primary mb-3"><span>📱</span></div>
+                <div class="card-icon-avatar bg-soft-primary text-primary mb-3"><i class="hi-phone" aria-hidden="true"></i></div>
                 <h3 class="card-title h5 fw-bold mb-2">Mobile first</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">12-column flexbox grid from 320px to 1400px+,
                   plus a complete 2D CSS Grid utility suite.</p>
@@ -216,7 +210,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-3 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-success text-success mb-3"><span>⚡</span></div>
+                <div class="card-icon-avatar bg-soft-success text-success mb-3"><i class="hi-bolt" aria-hidden="true"></i></div>
                 <h3 class="card-title h5 fw-bold mb-2">Fast &amp; zero-deps</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">Vanilla JS (~{{jsMinKb}}&nbsp;KB minified, ~{{jsGzKb}}&nbsp;KB gzip), zero runtime
                   dependencies. Ships modular utility &amp; grid builds.</p>
@@ -226,7 +220,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-3 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-danger text-danger mb-3"><span>🛡️</span></div>
+                <div class="card-icon-avatar bg-soft-danger text-danger mb-3"><i class="hi-shield-check" aria-hidden="true"></i></div>
                 <h3 class="card-title h5 fw-bold mb-2">Accessible &amp; touch</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">44px touch targets, focus-visible outlines, ARIA
                   wiring, and swipe gesture support out of the box.</p>
@@ -236,7 +230,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-3 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-warning text-warning mb-2"><span>🎨</span></div>
+                <div class="card-icon-avatar bg-soft-warning text-warning mb-2"><i class="hi-paintbox" aria-hidden="true"></i></div>
                 <h3 class="card-title h5 fw-bold mb-2">Source-first tokens</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">Every color, radius, and shadow is a token.
                   Compile custom themes with Sass or Less in seconds.</p>
@@ -421,7 +415,7 @@
             <div class="d-flex flex-column gap-2">
               <div class="card p-3 shadow-sm border-0">
                 <div class="d-flex align-items-start gap-3">
-                  <div class="card-icon-avatar bg-soft-primary text-primary flex-shrink-0"><span>📱</span></div>
+                  <div class="card-icon-avatar bg-soft-primary text-primary flex-shrink-0"><i class="hi-phone" aria-hidden="true"></i></div>
                   <div>
                     <h3 class="h6 fw-bold mb-1"><span>Native Mobile Components (`boodoo/react-native`)</span></h3>
                     <p class="text-muted small mb-0"><span>Drop-in `Button`, `Card`, `Badge`, `Text`, and `TextInput`
@@ -432,7 +426,7 @@
 
               <div class="card p-3 shadow-sm border-0">
                 <div class="d-flex align-items-start gap-3">
-                  <div class="card-icon-avatar bg-soft-info text-info flex-shrink-0"><span>🔄</span></div>
+                  <div class="card-icon-avatar bg-soft-info text-info flex-shrink-0"><i class="hi-refresh" aria-hidden="true"></i></div>
                   <div>
                     <h3 class="h6 fw-bold mb-1"><span>React Native Paper Theme Adapter (`boodoo/paper`)</span></h3>
                     <p class="text-muted small mb-0"><span>Skin your existing React Native Paper app in 2 lines with
@@ -443,7 +437,7 @@
 
               <div class="card p-3 shadow-sm border-0">
                 <div class="d-flex align-items-start gap-3">
-                  <div class="card-icon-avatar bg-soft-success text-success flex-shrink-0"><span>🎨</span></div>
+                  <div class="card-icon-avatar bg-soft-success text-success flex-shrink-0"><i class="hi-paintbox" aria-hidden="true"></i></div>
                   <div>
                     <h3 class="h6 fw-bold mb-1"><span>Universal Design Tokens (`boodoo/tokens`)</span></h3>
                     <p class="text-muted small mb-0"><span>Shared brand palettes, spacing units, border radii,
@@ -504,6 +498,165 @@
     </section>
 
     <!-- Installation -->
+    
+    <!-- Haticons Official Icon Suite Promotion Section -->
+    <section id="icons" class="py-5 landing-section-alt position-relative border-top border-bottom">
+      <div class="container py-3">
+        <div class="text-center mb-5">
+          <div class="d-inline-flex align-items-center gap-2 badge badge-soft-primary badge-pill px-3 py-1 mb-2">
+            <i class="hi-haticons" aria-hidden="true"></i>
+            <span>Official Companion Suite</span>
+          </div>
+          <h2 class="fw-bold mb-2"><span>First-Class Icon Support with Haticons</span></h2>
+          <p class="text-muted mx-auto max-w-640">
+            <span>Boodoo officially pairs with <a href="https://haticons.com/" target="_blank" rel="noopener" class="fw-semibold text-primary">Haticons</a>—an open-source icon suite by Pebble Benders featuring over 2,500+ modular, performance-engineered vector &amp; font icons.</span>
+          </p>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5">
+            <div class="d-flex flex-column gap-3">
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-primary text-primary flex-shrink-0">
+                    <i class="hi-stack" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>14 Modular Category Stylesheets</span></h3>
+                    <p class="text-muted small mb-0"><span>Zero bloated monolithic bundles. Load only what you need (UI, Brands, Commerce, Media, Devices, Navigation) to keep CSS weight ultralight.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-success text-success flex-shrink-0">
+                    <i class="hi-bolt" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>Retina-Crisp Vector &amp; Font Icons</span></h3>
+                    <p class="text-muted small mb-0"><span>Scales effortlessly with Boodoo typography and <code>.icon-xs</code> to <code>.icon-2xl</code> tokens. Inherits <code>currentColor</code> and dynamic CSS theme variables.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="card-icon-avatar bg-soft-info text-info flex-shrink-0">
+                    <i class="hi-shield-check" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1"><span>Zero Runtime JavaScript Dependencies</span></h3>
+                    <p class="text-muted small mb-0"><span>Pure CSS/font rendering. Works across plain HTML, React, Vue, Next.js, Electron desktop apps, and responsive mobile web.</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap mt-2">
+                <a href="https://haticons.com/" target="_blank" rel="noopener" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                  <span>Browse 2,500+ Icons at haticons.com →</span>
+                </a>
+                <a href="docs/content/icons.html" class="btn btn-outline-primary rounded-pill px-4">
+                  <span>View Documentation</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="card shadow-sm border-0 p-4 bg-white">
+              <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                <span class="fw-semibold text-muted small"><span>Interactive Haticons Palette</span></span>
+                <span class="badge bg-soft-success text-success"><span>v1.0.1 CDN Ready</span></span>
+              </div>
+              <div class="row g-2 text-center">
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-primary d-block mx-auto mb-1"><i class="hi-haticons" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">haticons</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-warning d-block mx-auto mb-1"><i class="hi-bolt" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">bolt</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-success d-block mx-auto mb-1"><i class="hi-shield-check" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">shield-check</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-info d-block mx-auto mb-1"><i class="hi-cart" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">cart</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-danger d-block mx-auto mb-1"><i class="hi-heart-fill" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">heart-fill</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-primary d-block mx-auto mb-1"><i class="hi-phone" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">phone</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-secondary d-block mx-auto mb-1"><i class="hi-calendar" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">calendar</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-warning d-block mx-auto mb-1"><i class="hi-folder" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">folder</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-success d-block mx-auto mb-1"><i class="hi-chart" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">chart</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-info d-block mx-auto mb-1"><i class="hi-settings" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">settings</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-dark d-block mx-auto mb-1"><i class="hi-github" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">github</small>
+                  </div>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <div class="p-2 border rounded hover-lift">
+                    <span class="icon icon-lg text-primary d-block mx-auto mb-1"><i class="hi-react" aria-hidden="true"></i></span>
+                    <small class="d-block text-truncate text-muted fs-8">react</small>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3 pt-3 border-top bg-light p-3 rounded">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span class="small fw-semibold text-muted"><span>Drop into your project:</span></span>
+                  <span class="small text-muted"><span>HTML snippet</span></span>
+                </div>
+                <pre class="mb-0 text-start"><code class="small text-dark">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css"&gt;
+&lt;i class="hi-bolt text-warning icon-lg"&gt;&lt;/i&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="installation" class="py-5 position-relative">
       <div class="container py-2 install-container">
         <div class="text-center mb-4">
@@ -573,7 +726,7 @@
             <a href="docs/about/vs-bootstrap.html" class="text-decoration-none">
               <div class="card pillar-card bootstrap-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3"><span>🅱️</span></div>
+                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3"><i class="hi-bootstrap" aria-hidden="true"></i></div>
                   <h3 class="card-title h6 fw-bold text-primary">Bootstrap</h3>
                   <p class="card-text small text-muted mb-0">Component structure, 12-col grid flex, modal overlays,
                     data-*
@@ -586,7 +739,7 @@
             <a href="docs/about/vs-foundation.html" class="text-decoration-none">
               <div class="card pillar-card foundation-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-success text-success mx-auto mb-3"><span>🏛️</span></div>
+                  <div class="card-icon-avatar bg-soft-success text-success mx-auto mb-3"><i class="hi-home" aria-hidden="true"></i></div>
                   <h3 class="card-title h6 fw-bold text-success">Foundation</h3>
                   <p class="card-text small text-muted mb-0">Clean structural scaffolding, rich typography scales, and
                     subtle gray scales.</p>
@@ -598,7 +751,7 @@
             <a href="docs/about/vs-tailwind.html" class="text-decoration-none">
               <div class="card pillar-card tailwind-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-info text-info mx-auto mb-3"><span>🌀</span></div>
+                  <div class="card-icon-avatar bg-soft-info text-info mx-auto mb-3"><i class="hi-tailwind" aria-hidden="true"></i></div>
                   <h3 class="card-title h6 fw-bold text-info">Tailwind</h3>
                   <p class="card-text small text-muted mb-0">Functional utility classes, responsive variants, precise
                     spacing scales.</p>
@@ -610,7 +763,7 @@
             <a href="docs/about/vs-material.html" class="text-decoration-none">
               <div class="card pillar-card material-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-warning text-warning mx-auto mb-3"><span>💎</span></div>
+                  <div class="card-icon-avatar bg-soft-warning text-warning mx-auto mb-3"><i class="hi-diamonds" aria-hidden="true"></i></div>
                   <h3 class="card-title h6 fw-bold text-warning">Material</h3>
                   <p class="card-text small text-muted mb-0">Elevation shadows, motion curves, touch ripple effects,
                     floating form labels.</p>
@@ -823,7 +976,7 @@
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
-          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+          var themeIconEl = toggleBtn.querySelector('.theme-icon'); if (themeIconEl) themeIconEl.innerHTML = theme === 'dark' ? '<i class="hi-sun" aria-hidden="true"></i>' : '<i class="hi-moon" aria-hidden="true"></i>';
         }
       }
       updateIcon(storedTheme);
@@ -882,7 +1035,7 @@
       navigator.clipboard.writeText(text).then(function () {
         if (btnEl) {
           const originalText = btnEl.innerHTML;
-          btnEl.innerHTML = '<span>Copied! ✔</span>';
+          btnEl.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
           setTimeout(function () { btnEl.innerHTML = originalText; }, 2000);
         }
       });
