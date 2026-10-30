@@ -1,0 +1,174 @@
+// =====================================================================
+// BOODOO LESS — Motion & Keyframe Animations
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// 9. Motion
+// ---------------------------------------------------------------------
+
+.animate-fade-in {
+  animation: boodoo-less-fadein 0.4s ease both;
+}
+
+@keyframes boodoo-less-fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: boodoo-less-slideup 0.5s ease both;
+}
+
+@keyframes boodoo-less-slideup {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Transitions & Motion Utilities
+.transition {
+  transition: var(--boodoo-transition) !important;
+}
+
+.transition-none {
+  transition: none !important;
+}
+
+.transition-all {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.transition-colors {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, fill 0.2s ease-in-out, stroke 0.2s ease-in-out !important;
+}
+
+.transition-opacity {
+  transition: opacity 0.2s ease-in-out !important;
+}
+
+.transition-shadow {
+  transition: box-shadow 0.2s ease-in-out !important;
+}
+
+.transition-transform {
+  transition: transform 0.2s ease-in-out !important;
+}
+
+.duration-75,
+.animate-duration-75 {
+  transition-duration: 75ms !important;
+  animation-duration: 75ms;
+}
+
+.duration-100,
+.animate-duration-100 {
+  transition-duration: 100ms !important;
+  animation-duration: 100ms;
+}
+
+.duration-150,
+.animate-duration-150 {
+  transition-duration: 150ms !important;
+  animation-duration: 150ms;
+}
+
+.duration-200,
+.animate-duration-200 {
+  transition-duration: 200ms !important;
+  animation-duration: 200ms;
+}
+
+.duration-300,
+.animate-duration-300 {
+  transition-duration: 300ms !important;
+  animation-duration: 300ms;
+}
+
+.duration-500,
+.animate-duration-500 {
+  transition-duration: 500ms !important;
+  animation-duration: 500ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms !important;
+}
+
+.duration-1000,
+.animate-duration-1000 {
+  transition-duration: 1000ms !important;
+  animation-duration: 1000ms;
+}
+
+.duration-2000,
+.animate-duration-2000 {
+  animation-duration: 2000ms;
+}
+
+.duration-3000,
+.animate-duration-3000 {
+  animation-duration: 3000ms;
+}
+
+.delay-75,
+.animate-delay-75 {
+  transition-delay: 75ms !important;
+  animation-delay: 75ms;
+}
+
+.delay-100,
+.animate-delay-100 {
+  transition-delay: 100ms !important;
+  animation-delay: 100ms;
+}
+
+.delay-150,
+.animate-delay-150 {
+  transition-delay: 150ms !important;
+  animation-delay: 150ms;
+}
+
+.delay-200,
+.animate-delay-200 {
+  transition-delay: 200ms !important;
+  animation-delay: 200ms;
+}
+
+.delay-300,
+.animate-delay-300 {
+  transition-delay: 300ms !important;
+  animation-delay: 300ms;
+}
+
+.delay-500,
+.animate-delay-500 {
+  transition-delay: 500ms !important;
+  animation-delay: 500ms;
+}
+
+.ease-linear {
+  transition-timing-function: linear !important;
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1) !important;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

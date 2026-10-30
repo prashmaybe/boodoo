@@ -1,8 +1,8 @@
 node_modules/
 dist/
+www/
 *.log
 .DS_Store
 Thumbs.db
 *.zip
 site/archives/*.zip
-www/archives/*.zip

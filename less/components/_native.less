@@ -1,0 +1,1190 @@
+// =====================================================================
+// BOODOO LESS — Native Platform Component Styles
+// =====================================================================
+
+// =====================================================================
+// BOODOO — Native Platform Component Styles (LESS Parity)
+// Specific design tokens & styling for Windows 11 (Fluent Design / Acrylic / Mica),
+// macOS Sonoma (Aqua / Vibrancy / SF Pro), iOS 17/18 (Human Interface Guidelines),
+// iPadOS (Sidebar / Split view), Android (Material Design 3 / Material You),
+// Linux (GNOME 40+ Adwaita / GTK4 / Libadwaita), and Photon Desktop.
+// =====================================================================
+
+.native-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  font-synthesis: none;
+  position: relative;
+  border-radius: 8px;
+
+  .native-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+    padding: 0 12px;
+    -webkit-app-region: drag;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+
+    .native-titlebar-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .native-titlebar-controls {
+      -webkit-app-region: no-drag;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  .native-window-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+// Windows 11 (Fluent)
+.native-win,
+[data-boodoo-platform="windows"] {
+  font-family: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  color: var(--boodoo-win-fg, #1c1c1c);
+  background-color: var(--boodoo-win-bg, #f3f3f3);
+
+  .native-window {
+    background-color: var(--boodoo-win-bg, #f3f3f3);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  &.native-surface-mica,
+  .native-surface-mica {
+    background: rgba(243, 243, 243, 0.85);
+    backdrop-filter: blur(30px) saturate(125%);
+    -webkit-backdrop-filter: blur(30px) saturate(125%);
+  }
+
+  .native-titlebar {
+    height: 34px;
+    padding: 0 0 0 14px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    .native-titlebar-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .native-titlebar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 100%;
+    }
+  }
+
+  .native-titlebar-btn {
+    width: 46px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    font-size: 11px;
+    color: #1a1a1a;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    cursor: default;
+    padding: 0;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.09);
+    }
+
+    &.native-titlebar-close {
+      &:hover {
+        background-color: #c42b1c;
+        color: #ffffff;
+      }
+
+      &:active {
+        background-color: #b82213;
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+
+  .native-btn {
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom-color: rgba(0, 0, 0, 0.16);
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: default;
+
+    &:hover {
+      background-color: #fbfbfb;
+      border-color: rgba(0, 0, 0, 0.14);
+      border-bottom-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      background-color: #f5f5f5;
+      color: rgba(0, 0, 0, 0.7);
+      border-bottom-color: rgba(0, 0, 0, 0.14);
+      transform: scale(0.99);
+    }
+
+    &.native-btn-primary {
+      background-color: var(--boodoo-primary, #7c3aed);
+      color: #ffffff;
+      border: 1px solid transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.18);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+
+      &:hover {
+        filter: brightness(1.06);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+      }
+
+      &:active {
+        filter: brightness(0.94);
+        transform: scale(0.99);
+      }
+    }
+
+    &.native-btn-subtle {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &:active {
+        background-color: rgba(0, 0, 0, 0.08);
+      }
+    }
+  }
+
+  .native-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  .native-input {
+    font-family: inherit;
+    font-size: 0.875rem;
+    height: 32px;
+    padding: 0 10px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    outline: none;
+    color: #1a1a1a;
+    transition: border-bottom-color 0.15s ease;
+
+    &:focus {
+      border-bottom-color: var(--boodoo-primary, #7c3aed);
+    }
+  }
+
+  .native-command-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+}
+
+// macOS (Sonoma / Aqua & Vibrancy)
+.native-mac,
+[data-boodoo-platform="macos"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  color: var(--boodoo-mac-fg, #1d1d1f);
+  background-color: var(--boodoo-mac-bg, #ffffff);
+
+  .native-window {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .native-titlebar {
+    height: 40px;
+    padding: 0 14px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+
+    .native-titlebar-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #333336;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .native-traffic-lights {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+
+    .native-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(0, 0, 0, 0.12);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      position: relative;
+      cursor: default;
+
+      &.dot-close {
+        background-color: #ff5f57;
+        border-color: #e0443e;
+      }
+
+      &.dot-minimize {
+        background-color: #febc2e;
+        border-color: #d89e24;
+      }
+
+      &.dot-maximize {
+        background-color: #28c840;
+        border-color: #1aab29;
+      }
+    }
+  }
+
+  .native-btn {
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.35;
+    padding: 3px 12px;
+    border-radius: 5px;
+    border: 0.5px solid rgba(0, 0, 0, 0.18);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f6f7 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.8);
+    color: #1d1d1f;
+    cursor: default;
+    transition: background 0.1s ease;
+
+    &:hover {
+      background: linear-gradient(180deg, #fefefe 0%, #ececec 100%);
+    }
+
+    &:active {
+      background: linear-gradient(180deg, #e4e4e7 0%, #dbdbe0 100%);
+      box-shadow: inset 0 1px 1.5px rgba(0, 0, 0, 0.12);
+    }
+
+    &.native-btn-primary {
+      background: linear-gradient(180deg, #8b5cf6 0%, var(--boodoo-primary, #7c3aed) 100%);
+      color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.35);
+
+      &:hover {
+        filter: brightness(1.05);
+      }
+
+      &:active {
+        filter: brightness(0.92);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+
+  .native-sidebar {
+    width: 210px;
+    background: rgba(246, 246, 247, 0.82);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .native-sidebar-title {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #86868b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 6px 10px 2px 10px;
+      margin: 0;
+    }
+
+    .native-sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #272729;
+      text-decoration: none;
+      cursor: default;
+      transition: background-color 0.1s ease, color 0.1s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &.active {
+        background: var(--boodoo-primary, #7c3aed);
+        color: #ffffff;
+      }
+    }
+  }
+
+  .native-segmented-control {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    padding: 2px;
+
+    .native-segment {
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: default;
+      color: #333336;
+
+      &.active {
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+        color: #000000;
+      }
+    }
+  }
+}
+
+// iOS (Human Interface Guidelines / HIG)
+.native-ios,
+[data-boodoo-platform="ios"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background-color: var(--boodoo-ios-bg, #f2f2f7);
+  color: var(--boodoo-ios-fg, #000000);
+
+  .native-ios-container {
+    background-color: #f2f2f7;
+    border-radius: 38px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.2);
+    border: 4px solid #1a1a1a;
+  }
+
+  .native-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    padding: 0 16px;
+    background: rgba(249, 249, 249, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(60, 60, 67, 0.29);
+    font-weight: 600;
+    font-size: 1.0625rem;
+
+    .native-nav-title {
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: #000000;
+    }
+
+    .native-nav-link {
+      color: var(--boodoo-primary, #7c3aed);
+      font-weight: 400;
+      text-decoration: none;
+      font-size: 1.0625rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .native-ios-large-title {
+    padding: 12px 16px 4px 16px;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #000000;
+  }
+
+  .native-list-grouped {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+    .native-list-header {
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #6c6c70;
+      padding: 0 16px 6px 16px;
+      margin: 0;
+    }
+
+    .native-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding: 11px 16px;
+      font-size: 1.0625rem;
+      border-bottom: 0.5px solid rgba(60, 60, 67, 0.18);
+      background: #ffffff;
+      color: #000000;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .native-list-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .native-list-chevron {
+        color: #c7c7cc;
+        font-weight: 600;
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .native-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    border: none;
+    background: #e5e5ea;
+    color: var(--boodoo-primary, #7c3aed);
+    transition: opacity 0.15s ease;
+
+    &:active {
+      opacity: 0.65;
+    }
+
+    &.native-btn-primary {
+      background: var(--boodoo-primary, #7c3aed);
+      color: #ffffff;
+    }
+  }
+
+  .native-segmented-control {
+    display: flex;
+    background: rgba(118, 118, 128, 0.12);
+    padding: 2px;
+    border-radius: 9px;
+
+    .native-segment {
+      flex: 1;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      border-radius: 7px;
+      cursor: pointer;
+      color: #000000;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+
+      &.active {
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0.5px 1px rgba(0, 0, 0, 0.08);
+      }
+    }
+  }
+
+  .native-switch {
+    width: 51px;
+    height: 31px;
+    background: #e9e9ea;
+    border-radius: 15.5px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+
+    &.active,
+    &:checked {
+      background: #34c759;
+
+      &::after {
+        transform: translateX(20px);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 27px;
+      height: 27px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+  }
+}
+
+// iPadOS (Sidebar & Split View)
+.native-ipados,
+[data-boodoo-platform="ipados"] {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background-color: #f2f2f7;
+  color: #000000;
+
+  .native-split-view {
+    display: flex;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    .native-sidebar-col {
+      width: 280px;
+      background: #f2f2f7;
+      border-right: 0.5px solid rgba(60, 60, 67, 0.18);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .native-sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 0 8px;
+
+        .native-sidebar-title {
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: #000000;
+          margin: 0;
+        }
+
+        .native-sidebar-icon {
+          color: var(--boodoo-primary, #7c3aed);
+          font-size: 1.125rem;
+        }
+      }
+
+      .native-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #1c1c1e;
+        text-decoration: none;
+        cursor: default;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.04);
+        }
+
+        &.active {
+          background: rgba(124, 58, 237, 0.15);
+          color: var(--boodoo-primary, #7c3aed);
+          font-weight: 600;
+        }
+      }
+    }
+
+    .native-detail-col {
+      flex: 1;
+      background: #ffffff;
+      padding: 24px;
+      overflow-y: auto;
+
+      .native-detail-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+    }
+  }
+}
+
+// Android (Material Design 3 / Material You)
+.native-android,
+[data-boodoo-platform="android"] {
+  font-family: "Roboto", "Google Sans", system-ui, sans-serif;
+  background-color: #fef7ff;
+  color: #1d1b20;
+
+  .native-android-container {
+    background-color: #fef7ff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cac4d0;
+  }
+
+  .native-appbar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: #f3edf7;
+    color: #1d1b20;
+    font-size: 1.375rem;
+    font-weight: 400;
+
+    .native-appbar-leading {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .native-appbar-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1d1b20;
+    }
+
+    .native-appbar-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .native-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    border: 1px solid #79747e;
+    background: transparent;
+    color: var(--boodoo-primary, #7c3aed);
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(124, 58, 237, 0.08);
+    }
+
+    &:active {
+      background: rgba(124, 58, 237, 0.12);
+    }
+
+    &.native-btn-primary {
+      background: var(--boodoo-primary, #7c3aed);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+        filter: brightness(1.05);
+      }
+
+      &:active {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        filter: brightness(0.95);
+      }
+    }
+
+    &.native-btn-tonal {
+      background: #e8def8;
+      color: #1d192b;
+      border: none;
+
+      &:hover {
+        background: #dfd3f4;
+      }
+    }
+  }
+
+  .native-card {
+    background: #f7f2fa;
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid #e7e0ec;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .native-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #e8def8;
+    color: #1d192b;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Linux (GNOME Adwaita / GTK4 / Libadwaita)
+.native-linux,
+[data-boodoo-platform="linux"] {
+  font-family: "Cantarell", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fafafa;
+  color: #2e3436;
+
+  .native-window {
+    background-color: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  }
+
+  .native-headerbar {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    background: #ebe8e5;
+    border-bottom: 1px solid #d5d0cb;
+
+    .native-header-title {
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: #242424;
+      text-align: center;
+      flex: 1;
+    }
+
+    .native-header-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .native-window-close {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: #ded9d4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: default;
+
+      &:hover {
+        background: #e05b4c;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .native-btn {
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #2e3436;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: #f4f3f1;
+    }
+
+    &:active {
+      background: #e8e6e3;
+    }
+
+    &.native-btn-primary {
+      background: var(--boodoo-primary, #7c3aed);
+      color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        filter: brightness(1.08);
+      }
+    }
+  }
+
+  .native-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+  }
+}
+
+// Photon (Classic Electron Desktop UI)
+.native-photon,
+[data-boodoo-platform="photon"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333333;
+  background-color: #ffffff;
+
+  .toolbar-header,
+  .native-photon-header {
+    min-height: 38px;
+    background: linear-gradient(to bottom, #ececec 0%, #e1e1e1 100%);
+    border-bottom: 1px solid #c2c0c2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    -webkit-app-region: drag;
+
+    .title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #555555;
+      text-align: center;
+      flex: 1;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      -webkit-app-region: no-drag;
+    }
+  }
+
+  .toolbar-footer,
+  .native-photon-footer {
+    min-height: 28px;
+    background: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+    border-top: 1px solid #c2c0c2;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    color: #666666;
+  }
+
+  .window-content {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .pane-group {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .pane {
+    position: relative;
+    overflow-y: auto;
+    flex: 1;
+    border-left: 1px solid #c2c0c2;
+
+    &:first-child {
+      border-left: none;
+    }
+
+    &.pane-sm {
+      max-width: 200px;
+      min-width: 150px;
+    }
+
+    &.pane-one-third {
+      flex: 0 0 33.3333%;
+    }
+
+    &.pane-sidebar {
+      background-color: #f5f5f4;
+      max-width: 220px;
+      min-width: 160px;
+    }
+  }
+
+  .btn,
+  .native-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 3px 10px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: default;
+    background: linear-gradient(to bottom, #ffffff 0%, #f3f3f3 100%);
+    border: 1px solid #c2c0c2;
+    border-top-color: #c2c0c2;
+    border-bottom-color: #ababab;
+    border-radius: 4px;
+    color: #333333;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);
+    user-select: none;
+    transition: none;
+
+    &:hover {
+      background: linear-gradient(to bottom, #fcfcfc 0%, #ebebeb 100%);
+    }
+
+    &:active,
+    &.active {
+      background: linear-gradient(to bottom, #dcdcdc 0%, #e4e4e4 100%);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &.btn-primary,
+    &.native-btn-primary {
+      background: linear-gradient(to bottom, #6eb6ff 0%, #1e87f0 100%);
+      border-color: #1a75d2;
+      color: #ffffff;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: linear-gradient(to bottom, #7fc0ff 0%, #268ef6 100%);
+      }
+
+      &:active {
+        background: linear-gradient(to bottom, #196fca 0%, #1765b8 100%);
+      }
+    }
+
+    &.btn-positive {
+      background: linear-gradient(to bottom, #5cd384 0%, #34c759 100%);
+      border-color: #2ca649;
+      color: #ffffff;
+    }
+
+    &.btn-negative {
+      background: linear-gradient(to bottom, #ff6961 0%, #ff3b30 100%);
+      border-color: #d32f2f;
+      color: #ffffff;
+    }
+
+    &.btn-mini {
+      padding: 1px 6px;
+      font-size: 10px;
+      border-radius: 3px;
+    }
+
+    &.btn-large {
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+  }
+
+  .btn-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    .btn,
+    .native-btn {
+      position: relative;
+      border-radius: 0;
+      margin-left: -1px;
+
+      &:first-child {
+        margin-left: 0;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
+  .nav-group {
+    font-size: 12px;
+
+    .nav-group-title {
+      margin: 0;
+      padding: 10px 10px 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8c8c8c;
+    }
+
+    .nav-group-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px 4px 18px;
+      color: #333333;
+      text-decoration: none;
+      cursor: default;
+      user-select: none;
+      border-radius: 0;
+
+      &:hover {
+        background-color: #e8e8e8;
+      }
+
+      &.active {
+        background-color: #dcdcdc;
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .tab-group {
+    position: relative;
+    display: flex;
+    background-color: #dcdcdc;
+    border-bottom: 1px solid #b3b3b3;
+
+    .tab-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #666666;
+      background: #e6e6e6;
+      border-right: 1px solid #c8c8c8;
+      cursor: default;
+
+      &.active {
+        background: #ffffff;
+        color: #333333;
+        font-weight: 500;
+      }
+
+      .icon-close-tab {
+        font-size: 11px;
+        color: #888888;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: #c8c8c8;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  .form-control,
+  input[type="text"],
+  input[type="search"] {
+    font-size: 12px;
+    height: 24px;
+    padding: 2px 6px;
+    border: 1px solid #c2c0c2;
+    border-radius: 3px;
+    outline: none;
+
+    &:focus {
+      border-color: #6eb6ff;
+      box-shadow: 0 0 0 2px rgba(110, 182, 255, 0.3);
+    }
+  }
+}

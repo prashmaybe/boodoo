@@ -1,0 +1,19 @@
+// =====================================================================
+// BOODOO LESS — Mixins
+// =====================================================================
+
+.clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+.box-shadow(@shadow) {
+  box-shadow: @shadow;
+}
+
+.transition(@transition) {
+  transition: @transition;
+}

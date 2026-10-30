@@ -42,8 +42,8 @@ export function Chip({
       ]}
       {...props}
     >
-      {avatar ? <View style={{ marginRight: 6 }}>{avatar}</View> : null}
-      {icon ? <View style={{ marginRight: 6 }}>{icon}</View> : null}
+      {avatar ? <View style={styles.chipMarginRight}>{avatar}</View> : null}
+      {icon ? <View style={styles.chipMarginRight}>{icon}</View> : null}
       <RNText
         style={[
           styles.chipText,
@@ -57,8 +57,8 @@ export function Chip({
         {children}
       </RNText>
       {onClose ? (
-        <TouchableOpacity onPress={onClose} style={{ marginLeft: 6 }}>
-          <RNText style={{ color: theme.colors.textMuted, fontSize: 13 }}>✕</RNText>
+        <TouchableOpacity onPress={onClose} style={styles.chipCloseBtn}>
+          <RNText style={[styles.chipCloseText, { color: theme.colors.textMuted }]}>✕</RNText>
         </TouchableOpacity>
       ) : null}
     </TouchableOpacity>
@@ -248,7 +248,7 @@ Avatar.Icon = function AvatarIcon({ icon, size = 48, color = '#ffffff', style })
       {typeof icon === 'function' ? (
         icon({ size: size * 0.5, color })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ fontSize: size * 0.45, color }}>{icon}</RNText>
+        <RNText style={[styles.avatarIconText, { fontSize: size * 0.45, color }]}>{icon}</RNText>
       ) : (
         icon
       )}
@@ -359,7 +359,7 @@ export function AIStream({
       ]}
       {...props}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+      <View style={styles.aiStreamRow}>
         <RNText style={[styles.aiStreamText, { color: theme.colors.text }]}>
           {children}
         </RNText>
@@ -425,7 +425,7 @@ export function FilterPill({
       </RNText>
       {onRemove ? (
         <TouchableOpacity onPress={onRemove} style={styles.filterPillClose}>
-          <RNText style={{ color: theme.colors.danger || '#e11d48', fontWeight: 'bold' }}>×</RNText>
+          <RNText style={[styles.filterPillCloseText, { color: theme.colors.danger || '#e11d48' }]}>×</RNText>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -602,6 +602,173 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  chipMarginRight: {
+    marginRight: 6,
+  },
+  chipCloseBtn: {
+    marginLeft: 6,
+  },
+  chipCloseText: {
+    fontSize: 13,
+  },
+  avatarIconText: {
+    textAlign: 'center',
+  },
+  aiStreamRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  filterPillCloseText: {
+    fontWeight: 'bold',
+  },
+  donutRingWrapper: {
+    alignItems: 'center',
+    paddingVertical: 14,
+  },
+  donutRingBase: {
+    borderWidth: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  donutTotalText: {
+    fontSize: 24,
+    fontWeight: '700',
+  },
+  donutTotalLabel: {
+    fontSize: 12,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  sparkCol: {
+    height: '100%',
+    justifyContent: 'flex-end',
+    position: 'relative',
+  },
+  sparkDot: {
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#fff',
+  },
+  emptyStateBase: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyStateIconCircle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+  },
+  emptyStateGlyph: {
+    fontSize: 28,
+  },
+  emptyStateTitle: {
+    fontWeight: '700',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  emptyStateDescription: {
+    lineHeight: 20,
+    textAlign: 'center',
+    marginBottom: 20,
+    maxWidth: 280,
+  },
+  emptyStateActionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  emptyStateActionItem: {
+    minWidth: 100,
+  },
+  timelineContainer: {
+    paddingVertical: 12,
+  },
+  timelineItemRow: {
+    flexDirection: 'row',
+  },
+  timelineLeftTrack: {
+    alignItems: 'center',
+    width: 32,
+  },
+  timelineDot: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 2,
+  },
+  timelineDotIcon: {
+    fontSize: 11,
+    color: '#ffffff',
+  },
+  timelineCheckIcon: {
+    fontSize: 12,
+    color: '#ffffff',
+    fontWeight: '700',
+  },
+  timelineLine: {
+    width: 2,
+    flex: 1,
+    minHeight: 24,
+    marginVertical: 2,
+  },
+  timelineContentWrap: {
+    flex: 1,
+    paddingLeft: 12,
+    paddingBottom: 20,
+  },
+  timelineHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  timelineTitle: {
+    fontWeight: '600',
+  },
+  timelineTime: {},
+  timelineDescription: {
+    lineHeight: 18,
+  },
+  stepIndicatorContainer: {
+    paddingVertical: 14,
+    paddingHorizontal: 8,
+  },
+  stepIndicatorTrackRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  stepItem: {
+    alignItems: 'center',
+    minWidth: 50,
+  },
+  stepCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 6,
+  },
+  stepNumberText: {
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  stepLabelText: {
+    textAlign: 'center',
+  },
+  stepConnectingLine: {
+    flex: 1,
+    height: 2,
+    marginHorizontal: 4,
+    marginBottom: 20,
+  },
 });
 
 /**
@@ -680,6 +847,271 @@ export function BarChart({
 }
 
 /**
+ * EmptyState
+ * Zero-data illustration, title, description, and primary/secondary actions.
+ */
+export function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  secondaryAction,
+  compact = false,
+  style,
+  titleStyle,
+  descriptionStyle,
+  ...props
+}) {
+  const theme = useTheme();
+  const containerPadding = compact ? 20 : 36;
+  const iconSize = compact ? 48 : 64;
+
+  const containerDynamic = {
+    padding: containerPadding,
+    backgroundColor: theme.colors.surface,
+    borderRadius: theme.radii.lg,
+  };
+
+  const iconCircleDynamic = {
+    width: iconSize,
+    height: iconSize,
+    borderRadius: iconSize / 2,
+    backgroundColor: theme.dark ? 'rgba(124, 58, 237, 0.15)' : '#ede9fe',
+  };
+
+  return (
+    <View style={[styles.emptyStateBase, containerDynamic, style]} {...props}>
+      {icon ? (
+        <View style={[styles.emptyStateIconCircle, iconCircleDynamic]}>
+          {typeof icon === 'string' ? (
+            <RNText style={styles.emptyStateGlyph}>{icon}</RNText>
+          ) : (
+            icon
+          )}
+        </View>
+      ) : null}
+      {title ? (
+        <RNText
+          style={[
+            styles.emptyStateTitle,
+            { color: theme.colors.text, fontSize: theme.typography.sizes.lg },
+            titleStyle,
+          ]}
+        >
+          {title}
+        </RNText>
+      ) : null}
+      {description ? (
+        <RNText
+          style={[
+            styles.emptyStateDescription,
+            { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
+            descriptionStyle,
+          ]}
+        >
+          {description}
+        </RNText>
+      ) : null}
+      {action || secondaryAction ? (
+        <View style={styles.emptyStateActionsRow}>
+          {action ? <View style={styles.emptyStateActionItem}>{action}</View> : null}
+          {secondaryAction ? <View style={styles.emptyStateActionItem}>{secondaryAction}</View> : null}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * Timeline & TimelineItem
+ * Activity history and progress milestones.
+ */
+export function TimelineItem({
+  title,
+  description,
+  timestamp,
+  status = 'completed',
+  icon,
+  isLast = false,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  const getStatusColor = () => {
+    switch (status) {
+      case 'active':
+        return theme.colors.primary;
+      case 'completed':
+        return theme.colors.success || '#1c9e50';
+      case 'error':
+        return theme.colors.danger || '#e11d48';
+      default:
+        return theme.colors.textMuted;
+    }
+  };
+
+  const dotColor = getStatusColor();
+  const dotDynamic = {
+    backgroundColor: dotColor,
+    borderColor: status === 'active' ? theme.colors.surface : dotColor,
+    borderWidth: status === 'active' ? 2 : 0,
+    shadowColor: status === 'active' ? dotColor : 'transparent',
+    shadowOpacity: status === 'active' ? 0.4 : 0,
+    shadowRadius: status === 'active' ? 4 : 0,
+    elevation: status === 'active' ? 2 : 0,
+  };
+
+  const lineDynamic = {
+    backgroundColor: theme.colors.border,
+  };
+
+  return (
+    <View style={[styles.timelineItemRow, style]} {...props}>
+      <View style={styles.timelineLeftTrack}>
+        <View style={[styles.timelineDot, dotDynamic]}>
+          {icon ? (
+            typeof icon === 'string' ? (
+              <RNText style={styles.timelineDotIcon}>{icon}</RNText>
+            ) : (
+              icon
+            )
+          ) : status === 'completed' ? (
+            <RNText style={styles.timelineCheckIcon}>✓</RNText>
+          ) : null}
+        </View>
+        {!isLast ? <View style={[styles.timelineLine, lineDynamic]} /> : null}
+      </View>
+      <View style={styles.timelineContentWrap}>
+        <View style={styles.timelineHeaderRow}>
+          <RNText
+            style={[
+              styles.timelineTitle,
+              { color: theme.colors.text, fontSize: theme.typography.sizes.base },
+            ]}
+          >
+            {title}
+          </RNText>
+          {timestamp ? (
+            <RNText
+              style={[
+                styles.timelineTime,
+                { color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs },
+              ]}
+            >
+              {timestamp}
+            </RNText>
+          ) : null}
+        </View>
+        {description ? (
+          <RNText
+            style={[
+              styles.timelineDescription,
+              { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
+            ]}
+          >
+            {description}
+          </RNText>
+        ) : null}
+      </View>
+    </View>
+  );
+}
+
+export function Timeline({ children, style, ...props }) {
+  const count = React.Children.count(children);
+  return (
+    <View style={[styles.timelineContainer, style]} {...props}>
+      {React.Children.map(children, (child, idx) => {
+        if (!React.isValidElement(child)) return child;
+        return React.cloneElement(child, {
+          isLast: child.props.isLast !== undefined ? child.props.isLast : idx === count - 1,
+        });
+      })}
+    </View>
+  );
+}
+
+/**
+ * StepIndicator / StepperWizard
+ * Multi-step form and wizard progress indicator.
+ */
+export function StepIndicator({
+  steps = [],
+  currentStep = 0,
+  onStepPress,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  return (
+    <View style={[styles.stepIndicatorContainer, style]} {...props}>
+      <View style={styles.stepIndicatorTrackRow}>
+        {steps.map((step, idx) => {
+          const isCompleted = idx < currentStep;
+          const isActive = idx === currentStep;
+          const isLast = idx === steps.length - 1;
+
+          const circleColor = isCompleted
+            ? (theme.colors.success || '#1c9e50')
+            : isActive
+            ? theme.colors.primary
+            : theme.colors.border;
+
+          const textColor = isCompleted || isActive ? '#ffffff' : theme.colors.textMuted;
+
+          const circleDynamic = {
+            backgroundColor: circleColor,
+            borderColor: isActive ? theme.colors.primary : 'transparent',
+          };
+
+          const lineDynamic = {
+            backgroundColor: isCompleted ? (theme.colors.success || '#1c9e50') : theme.colors.border,
+          };
+
+          const label = typeof step === 'string' ? step : (step.title || step.label);
+
+          return (
+            <React.Fragment key={idx}>
+              <TouchableOpacity
+                disabled={!onStepPress}
+                activeOpacity={0.8}
+                onPress={() => onStepPress?.(idx)}
+                style={styles.stepItem}
+              >
+                <View style={[styles.stepCircle, circleDynamic]}>
+                  <RNText style={[styles.stepNumberText, { color: textColor }]}>
+                    {isCompleted ? '✓' : idx + 1}
+                  </RNText>
+                </View>
+                {label ? (
+                  <RNText
+                    style={[
+                      styles.stepLabelText,
+                      {
+                        color: isActive ? theme.colors.primary : theme.colors.textMuted,
+                        fontWeight: isActive ? '600' : '400',
+                        fontSize: theme.typography.sizes.xs,
+                      },
+                    ]}
+                    numberOfLines={1}
+                  >
+                    {label}
+                  </RNText>
+                ) : null}
+              </TouchableOpacity>
+              {!isLast ? <View style={[styles.stepConnectingLine, lineDynamic]} /> : null}
+            </React.Fragment>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+export const StepperWizard = StepIndicator;
+
+/**
  * Donut / Pie Progress Stat Chart (Pure React Native)
  */
 export function DonutChart({
@@ -719,22 +1151,22 @@ export function DonutChart({
         </View>
       ) : null}
 
-      <View style={{ alignItems: 'center', paddingVertical: 14 }}>
+      <View style={styles.donutRingWrapper}>
         <View
-          style={{
-            width: size,
-            height: size,
-            borderRadius: size / 2,
-            borderWidth: 16,
-            borderColor: segments[0]?.color || theme.colors.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          style={[
+            styles.donutRingBase,
+            {
+              width: size,
+              height: size,
+              borderRadius: size / 2,
+              borderColor: segments[0]?.color || theme.colors.primary,
+            },
+          ]}
         >
-          <RNText style={{ fontSize: 24, fontWeight: '700', color: theme.colors.text }}>
+          <RNText style={[styles.donutTotalText, { color: theme.colors.text }]}>
             {computedTotal}
           </RNText>
-          <RNText style={{ fontSize: 12, color: theme.colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+          <RNText style={[styles.donutTotalLabel, { color: theme.colors.textSecondary }]}>
             Total
           </RNText>
         </View>
@@ -803,18 +1235,15 @@ export function LineChart({
           const color = dataset.borderColor || theme.colors.primary;
 
           return (
-            <View key={idx} style={[styles.barCol, { height: '100%', justifyContent: 'flex-end', position: 'relative' }]}>
+            <View key={idx} style={[styles.barCol, styles.sparkCol]}>
               <View
-                style={{
-                  position: 'absolute',
-                  bottom: dotBottom,
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
-                  backgroundColor: color,
-                  borderWidth: 2,
-                  borderColor: '#fff',
-                }}
+                style={[
+                  styles.sparkDot,
+                  {
+                    bottom: dotBottom,
+                    backgroundColor: color,
+                  },
+                ]}
               />
               <RNText style={[styles.barLabel, { color: theme.colors.textSecondary }]}>
                 {labels[idx] || ''}
@@ -826,5 +1255,270 @@ export function LineChart({
     </View>
   );
 }
+
+/**
+ * EmptyState
+ * Zero-data illustration, title, description, and primary/secondary actions.
+ */
+export function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  secondaryAction,
+  compact = false,
+  style,
+  titleStyle,
+  descriptionStyle,
+  ...props
+}) {
+  const theme = useTheme();
+  const containerPadding = compact ? 20 : 36;
+  const iconSize = compact ? 48 : 64;
+
+  const containerDynamic = {
+    padding: containerPadding,
+    backgroundColor: theme.colors.surface,
+    borderRadius: theme.radii.lg,
+  };
+
+  const iconCircleDynamic = {
+    width: iconSize,
+    height: iconSize,
+    borderRadius: iconSize / 2,
+    backgroundColor: theme.dark ? 'rgba(124, 58, 237, 0.15)' : '#ede9fe',
+  };
+
+  return (
+    <View style={[styles.emptyStateBase, containerDynamic, style]} {...props}>
+      {icon ? (
+        <View style={[styles.emptyStateIconCircle, iconCircleDynamic]}>
+          {typeof icon === 'string' ? (
+            <RNText style={styles.emptyStateGlyph}>{icon}</RNText>
+          ) : (
+            icon
+          )}
+        </View>
+      ) : null}
+      {title ? (
+        <RNText
+          style={[
+            styles.emptyStateTitle,
+            { color: theme.colors.text, fontSize: theme.typography.sizes.lg },
+            titleStyle,
+          ]}
+        >
+          {title}
+        </RNText>
+      ) : null}
+      {description ? (
+        <RNText
+          style={[
+            styles.emptyStateDescription,
+            { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
+            descriptionStyle,
+          ]}
+        >
+          {description}
+        </RNText>
+      ) : null}
+      {action || secondaryAction ? (
+        <View style={styles.emptyStateActionsRow}>
+          {action ? <View style={styles.emptyStateActionItem}>{action}</View> : null}
+          {secondaryAction ? <View style={styles.emptyStateActionItem}>{secondaryAction}</View> : null}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * Timeline & TimelineItem
+ * Activity history and progress milestones.
+ */
+export function TimelineItem({
+  title,
+  description,
+  timestamp,
+  status = 'completed',
+  icon,
+  isLast = false,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  const getStatusColor = () => {
+    switch (status) {
+      case 'active':
+        return theme.colors.primary;
+      case 'completed':
+        return theme.colors.success || '#1c9e50';
+      case 'error':
+        return theme.colors.danger || '#e11d48';
+      default:
+        return theme.colors.textMuted;
+    }
+  };
+
+  const dotColor = getStatusColor();
+  const dotDynamic = {
+    backgroundColor: dotColor,
+    borderColor: status === 'active' ? theme.colors.surface : dotColor,
+    borderWidth: status === 'active' ? 2 : 0,
+    shadowColor: status === 'active' ? dotColor : 'transparent',
+    shadowOpacity: status === 'active' ? 0.4 : 0,
+    shadowRadius: status === 'active' ? 4 : 0,
+    elevation: status === 'active' ? 2 : 0,
+  };
+
+  const lineDynamic = {
+    backgroundColor: theme.colors.border,
+  };
+
+  return (
+    <View style={[styles.timelineItemRow, style]} {...props}>
+      <View style={styles.timelineLeftTrack}>
+        <View style={[styles.timelineDot, dotDynamic]}>
+          {icon ? (
+            typeof icon === 'string' ? (
+              <RNText style={styles.timelineDotIcon}>{icon}</RNText>
+            ) : (
+              icon
+            )
+          ) : status === 'completed' ? (
+            <RNText style={styles.timelineCheckIcon}>✓</RNText>
+          ) : null}
+        </View>
+        {!isLast ? <View style={[styles.timelineLine, lineDynamic]} /> : null}
+      </View>
+      <View style={styles.timelineContentWrap}>
+        <View style={styles.timelineHeaderRow}>
+          <RNText
+            style={[
+              styles.timelineTitle,
+              { color: theme.colors.text, fontSize: theme.typography.sizes.base },
+            ]}
+          >
+            {title}
+          </RNText>
+          {timestamp ? (
+            <RNText
+              style={[
+                styles.timelineTime,
+                { color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs },
+              ]}
+            >
+              {timestamp}
+            </RNText>
+          ) : null}
+        </View>
+        {description ? (
+          <RNText
+            style={[
+              styles.timelineDescription,
+              { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
+            ]}
+          >
+            {description}
+          </RNText>
+        ) : null}
+      </View>
+    </View>
+  );
+}
+
+export function Timeline({ children, style, ...props }) {
+  const count = React.Children.count(children);
+  return (
+    <View style={[styles.timelineContainer, style]} {...props}>
+      {React.Children.map(children, (child, idx) => {
+        if (!React.isValidElement(child)) return child;
+        return React.cloneElement(child, {
+          isLast: child.props.isLast !== undefined ? child.props.isLast : idx === count - 1,
+        });
+      })}
+    </View>
+  );
+}
+
+/**
+ * StepIndicator / StepperWizard
+ * Multi-step form and wizard progress indicator.
+ */
+export function StepIndicator({
+  steps = [],
+  currentStep = 0,
+  onStepPress,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+
+  return (
+    <View style={[styles.stepIndicatorContainer, style]} {...props}>
+      <View style={styles.stepIndicatorTrackRow}>
+        {steps.map((step, idx) => {
+          const isCompleted = idx < currentStep;
+          const isActive = idx === currentStep;
+          const isLast = idx === steps.length - 1;
+
+          const circleColor = isCompleted
+            ? (theme.colors.success || '#1c9e50')
+            : isActive
+            ? theme.colors.primary
+            : theme.colors.border;
+
+          const textColor = isCompleted || isActive ? '#ffffff' : theme.colors.textMuted;
+
+          const circleDynamic = {
+            backgroundColor: circleColor,
+            borderColor: isActive ? theme.colors.primary : 'transparent',
+          };
+
+          const lineDynamic = {
+            backgroundColor: isCompleted ? (theme.colors.success || '#1c9e50') : theme.colors.border,
+          };
+
+          const label = typeof step === 'string' ? step : (step.title || step.label);
+
+          return (
+            <React.Fragment key={idx}>
+              <TouchableOpacity
+                disabled={!onStepPress}
+                activeOpacity={0.8}
+                onPress={() => onStepPress?.(idx)}
+                style={styles.stepItem}
+              >
+                <View style={[styles.stepCircle, circleDynamic]}>
+                  <RNText style={[styles.stepNumberText, { color: textColor }]}>
+                    {isCompleted ? '✓' : idx + 1}
+                  </RNText>
+                </View>
+                {label ? (
+                  <RNText
+                    style={[
+                      styles.stepLabelText,
+                      {
+                        color: isActive ? theme.colors.primary : theme.colors.textMuted,
+                        fontWeight: isActive ? '600' : '400',
+                        fontSize: theme.typography.sizes.xs,
+                      },
+                    ]}
+                    numberOfLines={1}
+                  >
+                    {label}
+                  </RNText>
+                ) : null}
+              </TouchableOpacity>
+              {!isLast ? <View style={[styles.stepConnectingLine, lineDynamic]} /> : null}
+            </React.Fragment>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+export const StepperWizard = StepIndicator;
 
 

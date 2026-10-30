@@ -1,0 +1,113 @@
+// =====================================================================
+// BOODOO LESS — Typography
+// =====================================================================
+
+// Display headings
+.display-1 { font-size: 5rem; font-weight: 300; line-height: 1.2; }
+.display-2 { font-size: 4.5rem; font-weight: 300; line-height: 1.2; }
+.display-3 { font-size: 4rem; font-weight: 300; line-height: 1.2; }
+.display-4 { font-size: 3.5rem; font-weight: 300; line-height: 1.2; }
+.display-5 { font-size: 3rem; font-weight: 300; line-height: 1.2; }
+.display-6 { font-size: 2.5rem; font-weight: 300; line-height: 1.2; }
+
+// Lead
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+// Inline text elements
+.small {
+  font-size: 0.875em;
+  font-weight: 400;
+}
+
+.mark {
+  padding: 0.2em;
+  background-color: #fcf8e3;
+}
+
+.initialism {
+  font-size: 0.875em;
+  text-transform: uppercase;
+}
+
+// Blockquote
+.blockquote {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border-left: 4px solid var(--boodoo-border-color);
+  padding-left: 1rem;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.blockquote-footer {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875em;
+  color: var(--boodoo-body-secondary-color);
+
+  &::before {
+    content: "\2014\00A0";
+  }
+}
+
+// Fluid display
+.display-fluid {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.text-heading {
+  color: var(--boodoo-heading-color, inherit);
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline-item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.dl-horizontal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+
+  @media (min-width: 576px) {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+}
+
+.text-hyphenate {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+::selection {
+  color: var(--boodoo-white, #fff);
+  background-color: var(--boodoo-primary, #7c3aed);
+}

@@ -1,0 +1,201 @@
+// =====================================================================
+// BOODOO LESS — Banner & Announcement Bar
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: banner
+// ---------------------------------------------------------------------
+.banner,
+.announcement-bar {
+  --boodoo-banner-bg: var(--boodoo-tertiary-bg, #f8f9fa);
+  --boodoo-banner-color: var(--boodoo-body-color, #212529);
+  --boodoo-banner-border: var(--boodoo-border-color, #dee2e6);
+  --boodoo-banner-padding-y: 0.75rem;
+  --boodoo-banner-padding-x: 1rem;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: var(--boodoo-banner-padding-y) var(--boodoo-banner-padding-x);
+  background-color: var(--boodoo-banner-bg);
+  color: var(--boodoo-banner-color);
+  border-bottom: 1px solid var(--boodoo-banner-border);
+  font-size: 0.9375rem;
+  z-index: var(--boodoo-zindex-sticky, 1020);
+  transition: opacity 0.25s ease, transform 0.25s ease, margin 0.25s ease;
+}
+
+.banner .banner-content,
+.announcement-bar .banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.banner .banner-content .banner-icon,
+.announcement-bar .banner-content .banner-icon {
+  flex-shrink: 0;
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.banner .banner-content .banner-text,
+.announcement-bar .banner-content .banner-text {
+  flex-grow: 1;
+  margin: 0;
+}
+
+.banner .banner-actions,
+.announcement-bar .banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.banner .btn-close,
+.announcement-bar .btn-close {
+  padding: 0.5rem;
+  margin-left: 0.25rem;
+}
+
+.banner.banner-sticky-top,
+.announcement-bar.banner-sticky-top {
+  position: sticky;
+  top: 0;
+}
+
+.banner.banner-sticky-bottom,
+.announcement-bar.banner-sticky-bottom {
+  position: sticky;
+  bottom: 0;
+  border-top: 1px solid var(--boodoo-banner-border);
+  border-bottom: none;
+}
+
+.banner.banner-floating,
+.announcement-bar.banner-floating {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100% - 2rem, 960px);
+  border-radius: var(--boodoo-border-radius-lg, 0.5rem);
+  border: 1px solid var(--boodoo-banner-border);
+  box-shadow: var(--boodoo-box-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+  z-index: var(--boodoo-zindex-modal, 1055);
+}
+
+.banner.banner-floating.banner-floating-bottom,
+.announcement-bar.banner-floating.banner-floating-bottom {
+  top: auto;
+  bottom: 1rem;
+}
+
+.banner.banner-dismissed,
+.announcement-bar.banner-dismissed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  margin-top: calc(-1 * var(--boodoo-banner-height, 3.5rem));
+}
+
+.banner-primary {
+  --boodoo-banner-color: rgb(34.0392156863%, 15.9215686275%, 65.0588235294%);
+  --boodoo-banner-bg: rgb(95.8901960784%, 93.8196078431%, 99.4352941176%);
+  --boodoo-banner-border: rgb(87.1568627451%, 80.6862745098%, 98.2352941176%);
+}
+
+.banner-primary .banner-link {
+  color: rgb(34.0392156863%, 15.9215686275%, 65.0588235294%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-secondary {
+  --boodoo-banner-color: rgb(24.9803921569%, 9.0588235294%, 63.137254902%);
+  --boodoo-banner-bg: rgb(94.8549019608%, 93.0352941176%, 99.2156862745%);
+  --boodoo-banner-border: rgb(83.9215686275%, 78.2352941176%, 97.5490196078%);
+}
+
+.banner-secondary .banner-link {
+  color: rgb(24.9803921569%, 9.0588235294%, 63.137254902%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-success {
+  --boodoo-banner-color: rgb(7.6862745098%, 43.3725490196%, 21.9607843137%);
+  --boodoo-banner-bg: rgb(92.8784313725%, 96.9568627451%, 94.5098039216%);
+  --boodoo-banner-border: rgb(77.7450980392%, 90.4901960784%, 82.8431372549%);
+}
+
+.banner-success .banner-link {
+  color: rgb(7.6862745098%, 43.3725490196%, 21.9607843137%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-info {
+  --boodoo-banner-color: rgb(3.2941176471%, 38.8235294118%, 54.8235294118%);
+  --boodoo-banner-bg: rgb(90.5490196078%, 96.4705882353%, 99.137254902%);
+  --boodoo-banner-border: rgb(71.6470588235%, 89.4117647059%, 97.4117647059%);
+}
+
+.banner-info .banner-link {
+  color: rgb(3.2941176471%, 38.8235294118%, 54.8235294118%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-warning {
+  --boodoo-banner-color: rgb(57.6470588235%, 37.1764705882%, 2.5882352941%);
+  --boodoo-banner-bg: rgb(99.5294117647%, 95.4352941176%, 88.5176470588%);
+  --boodoo-banner-border: rgb(98.6274509804%, 86.6862745098%, 66.5098039216%);
+}
+
+.banner-warning .banner-link {
+  color: rgb(57.6470588235%, 37.1764705882%, 2.5882352941%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-danger {
+  --boodoo-banner-color: rgb(61.7647058824%, 7.9607843137%, 19.7647058824%);
+  --boodoo-banner-bg: rgb(98.8235294118%, 91.137254902%, 92.8235294118%);
+  --boodoo-banner-border: rgb(96.4705882353%, 73.4117647059%, 78.4705882353%);
+}
+
+.banner-danger .banner-link {
+  color: rgb(61.7647058824%, 7.9607843137%, 19.7647058824%);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-light {
+  --boodoo-banner-color: #3f4463;
+  --boodoo-banner-bg: rgb(98.2352941176%, 98.0392156863%, 99.2156862745%);
+  --boodoo-banner-border: #dedfec;
+}
+
+.banner-light .banner-link {
+  color: #3f4463;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.banner-dark {
+  --boodoo-banner-color: #3f4463;
+  --boodoo-banner-bg: rgb(89.0823529412%, 88.8941176471%, 92.4705882353%);
+  --boodoo-banner-border: rgb(63.6078431373%, 62.9803921569%, 74.9019607843%);
+}
+
+.banner-dark .banner-link {
+  color: #3f4463;
+  font-weight: 600;
+  text-decoration: underline;
+}

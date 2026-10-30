@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { resolve, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const rootDir = resolve(import.meta.dirname, '..');
@@ -274,12 +274,12 @@ test('React Native modular submodules existence and exports verification', () =>
   const modules = [
     { file: 'typography.js', expected: ['Text', 'Heading'] },
     { file: 'layout.js', expected: ['Box', 'HStack', 'XStack', 'VStack', 'YStack', 'Center', 'ZStack', 'Pressable', 'Grid'] },
-    { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
-    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget'] },
-    { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
-    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill', 'BarChart', 'DonutChart'] },
+    { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons', 'SpeedDial', 'SpeedDialAction'] },
+    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget', 'BentoGrid', 'BentoItem'] },
+    { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton', 'OtpInput', 'PinInput', 'Rating', 'StarRating', 'ChipInput', 'TagInput'] },
+    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill', 'BarChart', 'DonutChart', 'EmptyState', 'Timeline', 'TimelineItem', 'StepIndicator', 'StepperWizard'] },
     { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
-    { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table'] },
+    { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table', 'Accordion', 'AccordionItem', 'SwipeActionItem', 'SwipeableRow'] },
     { file: 'navigation.js', expected: ['Appbar', 'Header', 'TopNavigation', 'Drawer', 'BottomNavigation', 'Tabs', 'PageControl'] },
     { file: 'overlays.js', expected: ['Dialog', 'AlertDialog', 'Modal', 'Overlay', 'BottomSheet', 'Actionsheet', 'ActionSheet', 'Sheet', 'Menu', 'Popover', 'Tooltip', 'Portal', 'TouchableRipple'] },
     { file: 'theme.js', expected: ['defaultLightTheme', 'defaultDarkTheme', 'BoodooProvider', 'useTheme'] },
@@ -300,6 +300,99 @@ test('React Native modular submodules existence and exports verification', () =>
       );
     }
   }
+});
+
+test('React Native component spacing and padding compactness verification', () => {
+  const buttonsCode = readFileSync(resolve(rootDir, 'react-native/buttons.js'), 'utf8');
+  const surfacesCode = readFileSync(resolve(rootDir, 'react-native/surfaces.js'), 'utf8');
+  const inputsCode = readFileSync(resolve(rootDir, 'react-native/inputs.js'), 'utf8');
+
+  // Verify buttons don't have bloated spacing
+  assert.ok(!buttonsCode.includes('theme.spacing[1] + 2'), 'Button should not have bloated spacing[1] + 2');
+  assert.ok(!buttonsCode.includes('theme.spacing[4]'), 'Button should not use expansive spacing[4]');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingVerticalMd'), 'Button default should support customizable vertical padding');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingHorizontalMd'), 'Button default should support customizable horizontal padding');
+  assert.ok(buttonsCode.includes('10'), 'Button default fallback must be 10px');
+  assert.ok(buttonsCode.includes('16'), 'Button default fallback must be 16px');
+
+  // Verify Card and Surface compactness
+  assert.ok(!surfacesCode.includes('padding: theme.spacing[4]'), 'Card must not have bloated 68px padding');
+  assert.ok(surfacesCode.includes('padding: cardPadding'), 'Card must use dynamic customizable cardPadding');
+  assert.ok(surfacesCode.includes('cs.cardTitleMarginBottom'), 'Card.Title must support custom bottom margin');
+
+  // Verify TextInput compactness
+  assert.ok(!inputsCode.includes('paddingVertical: theme.spacing[2] + 2'), 'TextInput must not have bloated 38px vertical padding');
+  assert.ok(inputsCode.includes('cs.inputPaddingVertical'), 'TextInput must support customizable vertical padding');
+  assert.ok(inputsCode.includes('cs.inputPaddingHorizontal'), 'TextInput must support customizable horizontal padding');
+  assert.ok(inputsCode.includes('cs.inputMarginBottom'), 'TextInput must support customizable bottom margin');
+});
+
+test('React Native component spacing customization and density configuration', () => {
+  const themeCode = readFileSync(resolve(rootDir, 'react-native/theme.js'), 'utf8');
+  assert.ok(themeCode.includes('export const createComponentSpacing'), 'createComponentSpacing must be exported');
+  assert.ok(themeCode.includes('export const defaultComponentSpacing'), 'defaultComponentSpacing must be exported');
+  assert.ok(themeCode.includes('componentSpacing: defaultComponentSpacing'), 'themes must include componentSpacing');
+
+  // Verify function logic by extracting createComponentSpacing without react dependency
+  const startIndex = themeCode.indexOf('export const createComponentSpacing = (baseSpacer = 16');
+  const endIndex = themeCode.indexOf('export const defaultComponentSpacing');
+  assert.ok(startIndex !== -1 && endIndex !== -1, 'createComponentSpacing implementation must be found');
+  const fnCode = themeCode.slice(startIndex + 'export const createComponentSpacing = '.length, endIndex).trim().replace(/;$/, '');
+  const createComponentSpacing = new Function('return ' + fnCode)();
+
+  const defaultSpacing = createComponentSpacing(16);
+  assert.equal(defaultSpacing.card, 16);
+  assert.equal(defaultSpacing.cardTitleMarginBottom, 8);
+  assert.equal(defaultSpacing.buttonPaddingVerticalMd, 10);
+  assert.equal(defaultSpacing.buttonPaddingHorizontalMd, 16);
+  assert.equal(defaultSpacing.inputPaddingVertical, 10);
+  assert.equal(defaultSpacing.inputPaddingHorizontal, 12);
+
+  // Test dynamic density creation (e.g. compact scale with baseSpacer = 12)
+  const compact = createComponentSpacing(12);
+  assert.equal(compact.card, 12);
+  assert.equal(compact.buttonPaddingVerticalMd, 8);
+  assert.equal(compact.inputPaddingVertical, 8);
+
+  // Test custom overrides
+  const custom = createComponentSpacing(16, { card: 24, buttonPaddingVerticalMd: 14 });
+  assert.equal(custom.card, 24);
+  assert.equal(custom.buttonPaddingVerticalMd, 14);
+
+  // Verify components read from theme.componentSpacing, theme.spacing, and props
+  const surfacesCode = readFileSync(resolve(rootDir, 'react-native/surfaces.js'), 'utf8');
+  assert.ok(surfacesCode.includes('cs.card'), 'Card must read custom spacing from theme.componentSpacing');
+  assert.ok(surfacesCode.includes('padding ??'), 'Card must allow padding prop customization');
+
+  const buttonsCode = readFileSync(resolve(rootDir, 'react-native/buttons.js'), 'utf8');
+  assert.ok(buttonsCode.includes('cs.buttonPaddingVerticalMd'), 'Button must read from theme.componentSpacing');
+  assert.ok(buttonsCode.includes('paddingVertical ??'), 'Button must allow paddingVertical prop customization');
+
+  const inputsCode = readFileSync(resolve(rootDir, 'react-native/inputs.js'), 'utf8');
+  assert.ok(inputsCode.includes('cs.inputPaddingVertical'), 'TextInput must read from theme.componentSpacing');
+  assert.ok(inputsCode.includes('paddingVertical ??'), 'TextInput must allow paddingVertical prop customization');
+});
+
+test('React Native zero inline styles and StyleSheet-only architecture enforcement', () => {
+  const rnDir = resolve(rootDir, 'react-native');
+  const files = readdirSync(rnDir).filter(f => f.endsWith('.js'));
+  const violations = [];
+
+  for (const file of files) {
+    const content = readFileSync(resolve(rnDir, file), 'utf8');
+    const lines = content.split('\n');
+    lines.forEach((line, idx) => {
+      if (/style\s*=\s*\{\{/.test(line)) {
+        violations.push(`${file}:${idx + 1}: ${line.trim()}`);
+      }
+    });
+  }
+
+  assert.strictEqual(
+    violations.length,
+    0,
+    `React Native components must not contain inline style object literals (style={{...}}). Found:\n${violations.join('\n')}`
+  );
 });
 
 test('React Native Paper theme presets verification', async () => {
@@ -380,9 +473,93 @@ test('React Native default themes data integrity', () => {
   assert.ok(themeSource.includes('dark: true'), 'defaultDarkTheme must have dark: true');
 });
 
+test('Extended React Native components suite (Accordion, OtpInput, Rating, EmptyState, Timeline, StepIndicator, SpeedDial, BentoGrid)', () => {
+  const indexJs = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
+  const indexDts = readFileSync(resolve(rootDir, 'react-native/index.d.ts'), 'utf8');
+
+  const newComponents = [
+    'SpeedDial',
+    'SpeedDialAction',
+    'BentoGrid',
+    'BentoItem',
+    'OtpInput',
+    'PinInput',
+    'Rating',
+    'StarRating',
+    'ChipInput',
+    'TagInput',
+    'EmptyState',
+    'Timeline',
+    'TimelineItem',
+    'StepIndicator',
+    'StepperWizard',
+    'Accordion',
+    'AccordionItem',
+    'SwipeActionItem',
+    'SwipeableRow',
+  ];
+
+  for (const comp of newComponents) {
+    assert.ok(indexJs.includes(comp), `react-native/index.js must re-export ${comp}`);
+    assert.ok(indexDts.includes(comp), `react-native/index.d.ts must declare ${comp}`);
+  }
+});
+
 test('SCSS and LESS full component & feature parity verification', () => {
-  const lessSource = readFileSync(resolve(rootDir, 'less/boodoo.less'), 'utf8');
+  // Aggregate all modular LESS sources across less/ directory
+  const getLessSource = () => {
+    let src = '';
+    const readDirRec = (dir) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const full = resolve(dir, entry.name);
+        if (entry.isDirectory()) readDirRec(full);
+        else if (entry.name.endsWith('.less')) src += '\n' + readFileSync(full, 'utf8');
+      }
+    };
+    readDirRec(resolve(rootDir, 'less'));
+    return src;
+  };
+  const lessSource = getLessSource();
   const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Verify modular architecture of LESS mirroring SCSS
+  const expectedModularFiles = [
+    'less/_variables.less',
+    'less/_root.less',
+    'less/_mixins.less',
+    'less/_reboot.less',
+    'less/_grid.less',
+    'less/_helpers.less',
+    'less/_utilities.less',
+    'less/_animations.less',
+    'less/boodoo-grid.less',
+    'less/boodoo-reboot.less',
+    'less/boodoo-utilities.less',
+    'less/boodoo-animations.less',
+    'less/content/_typography.less',
+    'less/content/_images.less',
+    'less/content/_tables.less',
+    'less/content/_figures.less',
+    'less/forms/_control.less',
+    'less/forms/_select.less',
+    'less/forms/_layout.less',
+    'less/forms/_checks.less',
+    'less/forms/_range.less',
+    'less/forms/_range-dual.less',
+    'less/forms/_input-group.less',
+    'less/forms/_floating-labels.less',
+    'less/forms/_otp.less',
+    'less/forms/_dropzone.less',
+    'less/forms/_pickers.less',
+    'less/forms/_validation.less',
+    'less/components/_accordion.less',
+    'less/components/_modal.less',
+    'less/components/_buttons.less',
+    'less/components/_card.less'
+  ];
+  for (const relPath of expectedModularFiles) {
+    assert.ok(existsSync(resolve(rootDir, relPath)), `Modular LESS file must exist: ${relPath}`);
+  }
 
   // Verify core missing components are now present in LESS source and compiled CSS
   const expectedClasses = [
@@ -1741,6 +1918,223 @@ test('React Native charts export and modularity verification', () => {
   assert.ok(rnDts.includes('export declare const DonutChart: ComponentType<any>;'), 'react-native/index.d.ts must declare DonutChart');
   assert.ok(rnDts.includes('export declare const LineChart: ComponentType<any>;'), 'react-native/index.d.ts must declare LineChart');
 });
+
+test('create-boodoo CLI scaffolder supports JS and TS options across templates', async () => {
+  const { parseArgs, scaffoldProject } = await import(pathToFileURL(resolve(rootDir, 'bin/create-boodoo.mjs')).href);
+  const os = await import('node:os');
+  const fs = await import('node:fs');
+
+  // Test argument parser
+  const p1 = parseArgs(['my-electron-app', '--template=electron', '--ts']);
+  assert.equal(p1.projectName, 'my-electron-app');
+  assert.equal(p1.template, '4');
+  assert.equal(p1.isTs, true);
+
+  const p2 = parseArgs(['my-react-app', '-t', 'react', '--js']);
+  assert.equal(p2.projectName, 'my-react-app');
+  assert.equal(p2.template, '3');
+  assert.equal(p2.isTs, false);
+
+  const tmpBase = fs.mkdtempSync(resolve(os.tmpdir(), 'boodoo-scaffold-test-'));
+
+  try {
+    // 1. Electron TS & JS
+    const elTsDir = resolve(tmpBase, 'el-ts');
+    scaffoldProject({ targetDir: elTsDir, projectName: 'el-ts', choice: '4', isTs: true });
+    assert.ok(fs.existsSync(resolve(elTsDir, 'tsconfig.json')), 'Electron TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/main.ts')), 'Electron TS must have src/main.ts');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/preload.ts')), 'Electron TS must have src/preload.ts');
+    assert.ok(fs.existsSync(resolve(elTsDir, 'src/renderer.ts')), 'Electron TS must have src/renderer.ts');
+
+    const elJsDir = resolve(tmpBase, 'el-js');
+    scaffoldProject({ targetDir: elJsDir, projectName: 'el-js', choice: '4', isTs: false });
+    assert.ok(fs.existsSync(resolve(elJsDir, 'main.js')), 'Electron JS must have main.js');
+    assert.ok(fs.existsSync(resolve(elJsDir, 'preload.js')), 'Electron JS must have preload.js');
+    assert.ok(fs.existsSync(resolve(elJsDir, 'renderer.js')), 'Electron JS must have renderer.js');
+
+    // 2. React / Next.js TS & JS
+    const reactTsDir = resolve(tmpBase, 'react-ts');
+    scaffoldProject({ targetDir: reactTsDir, projectName: 'react-ts', choice: '3', isTs: true });
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'tsconfig.json')), 'React TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'app/layout.tsx')), 'React TS must have app/layout.tsx');
+    assert.ok(fs.existsSync(resolve(reactTsDir, 'app/page.tsx')), 'React TS must have app/page.tsx');
+
+    const reactJsDir = resolve(tmpBase, 'react-js');
+    scaffoldProject({ targetDir: reactJsDir, projectName: 'react-js', choice: '3', isTs: false });
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'jsconfig.json')), 'React JS must have jsconfig.json');
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'app/layout.jsx')), 'React JS must have app/layout.jsx');
+    assert.ok(fs.existsSync(resolve(reactJsDir, 'app/page.jsx')), 'React JS must have app/page.jsx');
+
+    // 3. Angular TS & JS
+    const ngTsDir = resolve(tmpBase, 'ng-ts');
+    scaffoldProject({ targetDir: ngTsDir, projectName: 'ng-ts', choice: '5', isTs: true });
+    assert.ok(fs.existsSync(resolve(ngTsDir, 'src/main.ts')), 'Angular TS must have src/main.ts');
+    const ngTsConfig = JSON.parse(fs.readFileSync(resolve(ngTsDir, 'angular.json'), 'utf8'));
+    assert.equal(ngTsConfig.projects['ng-ts'].architect.build.options.browser, 'src/main.ts');
+
+    const ngJsDir = resolve(tmpBase, 'ng-js');
+    scaffoldProject({ targetDir: ngJsDir, projectName: 'ng-js', choice: '5', isTs: false });
+    assert.ok(fs.existsSync(resolve(ngJsDir, 'src/main.js')), 'Angular JS must have src/main.js');
+    const ngJsConfig = JSON.parse(fs.readFileSync(resolve(ngJsDir, 'angular.json'), 'utf8'));
+    assert.equal(ngJsConfig.projects['ng-js'].architect.build.options.browser, 'src/main.js');
+
+    // 4. React Native Mobile (Expo) TS & JS
+    const expoTsDir = resolve(tmpBase, 'expo-ts');
+    scaffoldProject({ targetDir: expoTsDir, projectName: 'expo-ts', choice: '10', isTs: true });
+    assert.ok(fs.existsSync(resolve(expoTsDir, 'tsconfig.json')), 'Expo TS must have tsconfig.json');
+    assert.ok(fs.existsSync(resolve(expoTsDir, 'App.tsx')), 'Expo TS must have App.tsx');
+
+    const expoJsDir = resolve(tmpBase, 'expo-js');
+    scaffoldProject({ targetDir: expoJsDir, projectName: 'expo-js', choice: '10', isTs: false });
+    assert.ok(fs.existsSync(resolve(expoJsDir, 'App.js')), 'Expo JS must have App.js');
+
+    // 5. React Native Web TS & JS
+    const rnwTsDir = resolve(tmpBase, 'rnw-ts');
+    scaffoldProject({ targetDir: rnwTsDir, projectName: 'rnw-ts', choice: '9', isTs: true });
+    assert.ok(fs.existsSync(resolve(rnwTsDir, 'src/App.tsx')), 'RNW TS must have src/App.tsx');
+    assert.ok(fs.existsSync(resolve(rnwTsDir, 'vite.config.ts')), 'RNW TS must have vite.config.ts');
+
+    const rnwJsDir = resolve(tmpBase, 'rnw-js');
+    scaffoldProject({ targetDir: rnwJsDir, projectName: 'rnw-js', choice: '9', isTs: false });
+    assert.ok(fs.existsSync(resolve(rnwJsDir, 'src/App.jsx')), 'RNW JS must have src/App.jsx');
+    assert.ok(fs.existsSync(resolve(rnwJsDir, 'vite.config.js')), 'RNW JS must have vite.config.js');
+  } finally {
+    fs.rmSync(tmpBase, { recursive: true, force: true });
+  }
+});
+
+test('Boodoo website www to non-www redirection and canonical URL integrity', () => {
+  // 1. Verify .htaccess contains www-to-non-www 301 redirection
+  // 1. Verify .htaccess contains www-to-non-www 301 redirection and HTTPS enforcement
+  const htaccessPath = resolve(rootDir, 'site/.htaccess');
+  assert.ok(existsSync(htaccessPath), 'site/.htaccess must exist');
+  const htaccess = readFileSync(htaccessPath, 'utf8');
+  assert.ok(htaccess.includes('RewriteCond %{HTTP_HOST} ^www\\.'), '.htaccess must match www host condition');
+  assert.ok(htaccess.includes('RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]'), '.htaccess must redirect www to non-www via 301');
+  assert.ok(htaccess.includes('RewriteCond %{HTTPS} off'), '.htaccess must enforce HTTPS');
+  assert.ok(htaccess.includes('RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]'), '.htaccess must redirect HTTP to HTTPS via 301');
+
+  // 2. Verify _redirects contains www-to-non-www rules
+  const redirectsPath = resolve(rootDir, 'site/_redirects');
+  assert.ok(existsSync(redirectsPath), 'site/_redirects must exist');
+  const redirects = readFileSync(redirectsPath, 'utf8');
+  assert.ok(redirects.includes('https://www.boodooframework.com/* https://boodooframework.com/:splat 301!'), '_redirects must redirect www to non-www');
+
+  // 3. Verify canonical tags across all HTML pages in site/
+  function walkHtml(dir) {
+    const results = [];
+    if (!existsSync(dir)) return results;
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('_')) continue;
+      const full = resolve(dir, entry.name);
+      if (entry.isDirectory()) {
+        results.push(...walkHtml(full));
+      } else if (entry.name.endsWith('.html')) {
+        results.push(full);
+      }
+    }
+    return results;
+  }
+
+  const siteHtml = walkHtml(resolve(rootDir, 'site'));
+  const checkedPages = [];
+
+  for (const file of siteHtml) {
+    // Skip template layout and src fragments (they are compiled into site/docs)
+    const rel = relative(resolve(rootDir, 'site'), file).replace(/\\/g, '/');
+    if (rel === 'layout.html' || rel.startsWith('src/')) continue;
+
+    const content = readFileSync(file, 'utf8');
+
+    // Canonical link tag must be present
+    const canonicalMatch = content.match(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i);
+    assert.ok(canonicalMatch, `${rel} must have a <link rel="canonical"> tag`);
+    const hrefMatch = canonicalMatch[0].match(/href=["']([^"']+)["']/i);
+    assert.ok(hrefMatch, `${rel} canonical tag must contain href`);
+    const canonicalUrl = hrefMatch[1];
+
+    // Canonical URL must be HTTPS and non-www
+    const parsedCanonical = new URL(canonicalUrl);
+    assert.strictEqual(parsedCanonical.protocol, 'https:', `${rel} canonical URL must use HTTPS: ${canonicalUrl}`);
+    assert.strictEqual(parsedCanonical.hostname, 'boodooframework.com', `${rel} canonical URL hostname must be boodooframework.com: ${canonicalUrl}`);
+
+    // og:url meta tag must match canonical URL
+    const ogMatch = content.match(/<meta\s+[^>]*property=["']og:url["'][^>]*>/i);
+    assert.ok(ogMatch, `${rel} must have a <meta property="og:url"> tag`);
+    const ogHrefMatch = ogMatch[0].match(/content=["']([^"']+)["']/i);
+    assert.ok(ogHrefMatch, `${rel} og:url must contain content attribute`);
+    assert.equal(ogHrefMatch[1], canonicalUrl, `${rel} og:url must match canonical URL`);
+
+    checkedPages.push(rel);
+  }
+
+  assert.ok(checkedPages.length >= 140, `Must verify canonicals across all site pages (checked ${checkedPages.length})`);
+});
+
+test('Privacy Policy and Terms and Conditions pages integrity and navigation', () => {
+  // 1. Verify source fragments exist
+  const privacySrc = resolve(rootDir, 'site/src/about/privacy.html');
+  const termsSrc = resolve(rootDir, 'site/src/about/terms.html');
+  assert.ok(existsSync(privacySrc), 'site/src/about/privacy.html must exist');
+  assert.ok(existsSync(termsSrc), 'site/src/about/terms.html must exist');
+
+  const privacyContent = readFileSync(privacySrc, 'utf8');
+  const termsContent = readFileSync(termsSrc, 'utf8');
+
+  // Verify titles and key sections
+  assert.ok(privacyContent.includes('title: Privacy policy'), 'Privacy policy must declare title');
+  assert.ok(privacyContent.includes('Core Privacy Philosophy'), 'Privacy policy must cover core philosophy');
+  assert.ok(privacyContent.includes('Zero Framework Telemetry'), 'Privacy policy must affirm zero telemetry');
+  assert.ok(privacyContent.includes('Cookies and Local Browser Storage'), 'Privacy policy must detail cookies and local storage');
+
+  assert.ok(termsContent.includes('title: Terms and conditions'), 'Terms must declare title');
+  assert.ok(termsContent.includes('Acceptance of Terms'), 'Terms must include Acceptance of Terms');
+  assert.ok(termsContent.includes('Open-Source Software vs. Website Terms'), 'Terms must distinguish MIT license vs website terms');
+  assert.ok(termsContent.includes('Disclaimer of Warranties'), 'Terms must include warranty disclaimer');
+
+  // 2. Verify compiled pages exist
+  const privacyCompiled = resolve(rootDir, 'site/docs/about/privacy.html');
+  const termsCompiled = resolve(rootDir, 'site/docs/about/terms.html');
+  assert.ok(existsSync(privacyCompiled), 'Compiled site/docs/about/privacy.html must exist');
+  assert.ok(existsSync(termsCompiled), 'Compiled site/docs/about/terms.html must exist');
+
+  const compiledPrivacyHtml = readFileSync(privacyCompiled, 'utf8');
+  assert.ok(compiledPrivacyHtml.includes('<title>Privacy policy · boodoo</title>'), 'Compiled privacy page must have title');
+  assert.ok(compiledPrivacyHtml.includes('https://boodooframework.com/docs/about/privacy.html'), 'Compiled privacy page must have canonical URL');
+
+  const compiledTermsHtml = readFileSync(termsCompiled, 'utf8');
+  assert.ok(compiledTermsHtml.includes('<title>Terms and conditions · boodoo</title>'), 'Compiled terms page must have title');
+  assert.ok(compiledTermsHtml.includes('https://boodooframework.com/docs/about/terms.html'), 'Compiled terms page must have canonical URL');
+
+  // 3. Verify docs-nav.json includes both routes
+  const navPath = resolve(rootDir, 'site/data/docs-nav.json');
+  const nav = JSON.parse(readFileSync(navPath, 'utf8'));
+  const aboutSection = nav.find((s) => s.title === 'About');
+  assert.ok(aboutSection, 'docs-nav.json must have About section');
+  assert.ok(aboutSection.pages.some((p) => p.route === 'about/privacy'), 'docs-nav.json must include about/privacy');
+  assert.ok(aboutSection.pages.some((p) => p.route === 'about/terms'), 'docs-nav.json must include about/terms');
+
+  // 4. Verify footer links in layout and landing page
+  const layoutHtml = readFileSync(resolve(rootDir, 'site/layout.html'), 'utf8');
+  assert.ok(layoutHtml.includes('about/privacy.html'), 'site/layout.html footer must link to privacy.html');
+  assert.ok(layoutHtml.includes('about/terms.html'), 'site/layout.html footer must link to terms.html');
+
+  const indexHtml = readFileSync(resolve(rootDir, 'site/index.html'), 'utf8');
+  assert.ok(indexHtml.includes('docs/about/privacy.html'), 'site/index.html footer must link to privacy.html');
+  assert.ok(indexHtml.includes('docs/about/terms.html'), 'site/index.html footer must link to terms.html');
+
+  // 5. Verify redirects in _redirects and .htaccess
+  const redirects = readFileSync(resolve(rootDir, 'site/_redirects'), 'utf8');
+  assert.ok(redirects.includes('/privacy'), '_redirects must redirect /privacy');
+  assert.ok(redirects.includes('/terms'), '_redirects must redirect /terms');
+
+  const htaccess = readFileSync(resolve(rootDir, 'site/.htaccess'), 'utf8');
+  assert.ok(htaccess.includes('privacy'), '.htaccess must include privacy rule');
+  assert.ok(htaccess.includes('terms'), '.htaccess must include terms rule');
+});
+
+
+
 
 
 

@@ -1,0 +1,10 @@
+// =====================================================================
+// BOODOO LESS — Utility API Mixins
+// =====================================================================
+
+// Utility generator helper
+.generate-utility(@property, @class-prefix, @value) {
+  .@{class-prefix} {
+    @{property}: @value;
+  }
+}

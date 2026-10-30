@@ -259,6 +259,8 @@
 <li><a href="../about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a></li>
 <li><a href="../about/changelog.html">Changelog</a></li>
 <li><a href="../about/license.html">License</a></li>
+<li><a href="../about/privacy.html">Privacy policy</a></li>
+<li><a href="../about/terms.html">Terms and conditions</a></li>
 </ul>
           </nav>
         </div>
@@ -390,17 +392,32 @@ $boodoo-spacers: (
 </div>
 
 <h3 id=""><span>4. JavaScript / TypeScript &amp; React Native Mobile</span></h3>
-<p><span>Use <code>createSpacing()</code> or pass a customized spacing map into <code>&lt;BoodooProvider&gt;</code>:</span></p>
+<p><span>Customize mobile component spacing and density dynamically across React Native, just like CSS variables in web:</span></p>
 <div class="highlight">
   <pre><code>import { createSpacing } from 'boodoo/tokens';
-import { BoodooProvider } from 'boodoo/react-native';
+import { BoodooProvider, createComponentSpacing, Card, Button } from 'boodoo/react-native';
 
-const mySpacing = createSpacing(14); // Generates custom scale from 14px base
+// Option A: Adapt scale proportionally using custom baseSpacer (e.g. 14px)
+const mySpacing = createSpacing(14);
+
+// Option B: Customize individual component spacing directly (like CSS vars)
+const customDensity = createComponentSpacing(16, {
+  card: 20,
+  cardTitleMarginBottom: 10,
+  buttonPaddingVerticalMd: 12,
+  buttonPaddingHorizontalMd: 18,
+  inputPaddingVertical: 12,
+});
 
 function App() {
   return (
-    &lt;BoodooProvider customTheme={{ spacing: mySpacing }}&gt;
-      {/* App components */}
+    &lt;BoodooProvider customTheme={{ componentSpacing: customDensity }}&gt;
+      {/* Or override inline on specific components */}
+      &lt;Card padding={24}&gt;
+        &lt;Button paddingVertical={12} paddingHorizontal={20}&gt;
+          Action
+        &lt;/Button&gt;
+      &lt;/Card&gt;
     &lt;/BoodooProvider&gt;
   );
 }</code></pre>
@@ -455,6 +472,10 @@ function App() {
         <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/privacy.html">Privacy</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../../docs/about/terms.html">Terms</a>
       </div>
     </div>
     <div class="sub-footer border-top mt-1 pt-1 text-center small text-muted">

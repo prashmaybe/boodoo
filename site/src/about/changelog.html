@@ -68,6 +68,44 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
+  <!-- Version 1.2.3 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-3">
+            <span>v1.2.3</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <span>📅 October 30, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.3"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
+          <span>Version 1.2.3 Release — Modular LESS &amp; Mobile Density</span>
+        </h3>
+        <p><span>boodoo <strong>v1.2.3</strong> modularizes the LESS source architecture with 1:1 SCSS parity, refines mobile React Native spacing with dynamic density customization, enforces zero inline styles, and adds TypeScript/JavaScript scaffolding options.</span></p>
+        <ul class="mb-3">
+          <li><span><strong>Modular LESS Architecture</strong>: Restructured <code>less/</code> from a single file into a comprehensive partial architecture (<code>less/forms/*</code>, <code>less/components/*</code>, <code>less/content/*</code>, <code>less/mixins/*</code>) with standalone subpath entry points (<code>boodoo-grid.less</code>, <code>boodoo-reboot.less</code>, <code>boodoo-utilities.less</code>, <code>boodoo-animations.less</code>) and 100% SCSS feature parity.</span></li>
+          <li><span><strong>React Native Spacing &amp; Density Engine</strong>: Resolved bloated padding across mobile components and introduced multi-density spacing configurations via <code>setThemeSpacing()</code> and <code>createSpacing()</code> with zero inline styles.</span></li>
+          <li><span><strong>create-boodoo TypeScript/JavaScript Choice</strong>: Added full TypeScript and JavaScript template selection (<code>--ts</code> and <code>--js</code> flags) across all 10 starter frameworks.</span></li>
+          <li><span><strong>Server-Side www Redirection &amp; Canonical URL Standardization</strong>: Implemented permanent 301 rewrite rules in <code>.htaccess</code> and <code>_redirects</code> to redirect all <code>www.*</code> domains to canonical non-www, standardized canonical and Open Graph tags across 100% of website pages (146 total routes including all example templates and 404 page), and updated dynamic sitemap generation.</span></li>
+          <li><span><strong>Repository Hygiene &amp; Build Artifact Exclusion</strong>: Removed the compiled <code>www/</code> distribution from repository source control and added <code>www/</code> to <code>.gitignore</code> to keep the repository lean and source-only.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.3 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
   <!-- Version 1.2.2 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
@@ -77,7 +115,6 @@ order: 7
         <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-2">
             <span>v1.2.2</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

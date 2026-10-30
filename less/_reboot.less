@@ -1,0 +1,91 @@
+// =====================================================================
+// BOODOO LESS — Reboot & Base Resets
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// 2. Reboot / reset
+// ---------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-family: var(--boodoo-font-family-base);
+  font-size: var(--boodoo-font-size-base);
+  line-height: var(--boodoo-line-height-base);
+  color: var(--boodoo-body-color);
+  background-color: var(--boodoo-body-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.625rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--boodoo-h1-font-size, 2.5rem);
+}
+
+h2 {
+  font-size: var(--boodoo-h2-font-size, 2rem);
+}
+
+h3 {
+  font-size: var(--boodoo-h3-font-size, 1.75rem);
+}
+
+h4 {
+  font-size: var(--boodoo-h4-font-size, 1.5rem);
+}
+
+h5 {
+  font-size: var(--boodoo-h5-font-size, 1.25rem);
+}
+
+h6 {
+  font-size: var(--boodoo-h6-font-size, 1rem);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--boodoo-link-color);
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    color: var(--boodoo-link-hover-color);
+    text-decoration: underline;
+  }
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--boodoo-primary);
+  outline-offset: 2px;
+}

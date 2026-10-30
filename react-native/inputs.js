@@ -25,18 +25,47 @@ export function TextInput({
   placeholder,
   value,
   onChangeText,
+  paddingVertical,
+  paddingHorizontal,
+  marginBottom,
   style,
   inputStyle,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
   const isFlat = mode === 'flat';
   const errText = error || errorMessage;
 
+  const effMarginBottom =
+    marginBottom ??
+    cs.inputMarginBottom ??
+    cs.inputBottom ??
+    sp.inputMarginBottom ??
+    sp.inputBottom ??
+    14;
+
+  const effPaddingVertical =
+    paddingVertical ??
+    cs.inputPaddingVertical ??
+    cs.inputY ??
+    sp.inputPaddingVertical ??
+    sp.inputY ??
+    10;
+
+  const effPaddingHorizontal =
+    paddingHorizontal ??
+    cs.inputPaddingHorizontal ??
+    cs.inputX ??
+    sp.inputPaddingHorizontal ??
+    sp.inputX ??
+    12;
+
   return (
-    <View style={[{ marginBottom: theme.spacing[3] }, style]}>
+    <View style={[{ marginBottom: effMarginBottom }, style]}>
       {label ? (
-        <Text style={{ fontSize: theme.typography.sizes.sm, fontWeight: '600', marginBottom: 6 }}>
+        <Text style={[styles.inputLabel, { fontSize: theme.typography.sizes.sm }]}>
           {label}
         </Text>
       ) : null}
@@ -53,7 +82,7 @@ export function TextInput({
           },
         ]}
       >
-        {left || leftIcon ? <View style={{ paddingLeft: 12 }}>{left || leftIcon}</View> : null}
+        {left || leftIcon ? <View style={styles.inputLeftIcon}>{left || leftIcon}</View> : null}
         <RNTextInput
           placeholder={placeholder}
           value={value}
@@ -64,17 +93,17 @@ export function TextInput({
             {
               color: theme.colors.text,
               fontSize: theme.typography.sizes.base,
-              paddingHorizontal: theme.spacing[3],
-              paddingVertical: theme.spacing[2] + 2,
+              paddingHorizontal: effPaddingHorizontal,
+              paddingVertical: effPaddingVertical,
             },
             inputStyle,
           ]}
           {...props}
         />
-        {right || rightIcon ? <View style={{ paddingRight: 12 }}>{right || rightIcon}</View> : null}
+        {right || rightIcon ? <View style={styles.inputRightIcon}>{right || rightIcon}</View> : null}
       </View>
       {errText ? (
-        <Text style={{ color: theme.colors.danger, fontSize: theme.typography.sizes.xs, marginTop: 4 }}>
+        <Text style={[styles.inputError, { color: theme.colors.danger, fontSize: theme.typography.sizes.xs }]}>
           {errText}
         </Text>
       ) : null}
@@ -128,8 +157,8 @@ export function Searchbar({
         style,
       ]}
     >
-      <View style={{ marginLeft: 12 }}>
-        {icon || <RNText style={{ color: theme.colors.textMuted }}>🔍</RNText>}
+      <View style={styles.searchbarIconWrapper}>
+        {icon || <RNText style={[styles.searchbarDefaultIcon, { color: theme.colors.textMuted }]}>🔍</RNText>}
       </View>
       <RNTextInput
         placeholder={placeholder}
@@ -152,9 +181,9 @@ export function Searchbar({
             if (onClearIconPress) onClearIconPress();
             if (onChangeText) onChangeText('');
           }}
-          style={{ marginRight: 12 }}
+          style={styles.searchbarClearBtn}
         >
-          <RNText style={{ color: theme.colors.textMuted, fontSize: 16 }}>✕</RNText>
+          <RNText style={[styles.searchbarClearIcon, { color: theme.colors.textMuted }]}>✕</RNText>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -513,10 +542,10 @@ export function Select({
           },
         ]}
       >
-        <RNText style={{ color: selectedValue ? theme.colors.text : theme.colors.textMuted }}>
+        <RNText style={[styles.selectValueText, { color: selectedValue ? theme.colors.text : theme.colors.textMuted }]}>
           {labelText}
         </RNText>
-        <RNText style={{ color: theme.colors.textMuted, fontSize: 12 }}>▼</RNText>
+        <RNText style={[styles.selectArrowText, { color: theme.colors.textMuted }]}>▼</RNText>
       </TouchableOpacity>
       {open ? (
         <View
@@ -548,10 +577,13 @@ export function Select({
                 ]}
               >
                 <RNText
-                  style={{
-                    color: isSelected ? theme.colors.primary : theme.colors.text,
-                    fontWeight: isSelected ? '700' : '400',
-                  }}
+                  style={[
+                    styles.selectOptionText,
+                    {
+                      color: isSelected ? theme.colors.primary : theme.colors.text,
+                      fontWeight: isSelected ? '700' : '400',
+                    },
+                  ]}
                 >
                   {lbl}
                 </RNText>
@@ -611,7 +643,7 @@ export function ToggleButton({
       {typeof icon === 'function' ? (
         icon({ color: isChecked ? theme.colors.primary : theme.colors.text })
       ) : typeof icon === 'string' ? (
-        <RNText style={{ color: isChecked ? theme.colors.primary : theme.colors.text, fontWeight: '600' }}>
+        <RNText style={[styles.toggleIconText, { color: isChecked ? theme.colors.primary : theme.colors.text }]}>
           {icon}
         </RNText>
       ) : (
@@ -636,6 +668,257 @@ ToggleButton.Row = function ToggleButtonRow({ value, onValueChange, children, st
     </ToggleButton.Group>
   );
 };
+
+/**
+ * OtpInput / PinInput
+ * Verification code input with individual character boxes.
+ */
+export function OtpInput({
+  length = 4,
+  value = '',
+  onChangeOtp,
+  onComplete,
+  secureTextEntry = false,
+  autoFocus = false,
+  disabled = false,
+  error = false,
+  boxSize = 48,
+  style,
+  boxStyle,
+  textStyle,
+  ...props
+}) {
+  const theme = useTheme();
+  const [internalValue, setInternalValue] = useState(value || '');
+  const [isFocused, setIsFocused] = useState(false);
+  const inputRef = React.useRef(null);
+
+  const currentValue = value !== undefined ? value : internalValue;
+
+  const handleChange = (text) => {
+    const cleaned = text.replace(/[^0-9a-zA-Z]/g, '').slice(0, length);
+    if (onChangeOtp) onChangeOtp(cleaned);
+    else setInternalValue(cleaned);
+    if (cleaned.length === length && onComplete) {
+      onComplete(cleaned);
+    }
+  };
+
+  const digits = [];
+  for (let i = 0; i < length; i++) {
+    const char = currentValue[i] || '';
+    const isCurrent = isFocused && i === currentValue.length;
+    const isFilled = Boolean(char);
+
+    const boxDynamic = {
+      width: boxSize,
+      height: boxSize,
+      borderRadius: theme.radii.md,
+      backgroundColor: theme.colors.surface,
+      borderColor: error
+        ? (theme.colors.danger || '#e11d48')
+        : isCurrent
+        ? theme.colors.primary
+        : isFilled
+        ? theme.colors.primary
+        : theme.colors.border,
+      borderWidth: isCurrent || isFilled ? 2 : 1,
+    };
+
+    digits.push(
+      <TouchableOpacity
+        key={i}
+        activeOpacity={0.8}
+        disabled={disabled}
+        onPress={() => inputRef.current?.focus()}
+        style={[styles.otpBox, boxDynamic, boxStyle]}
+      >
+        <RNText
+          style={[
+            styles.otpText,
+            {
+              color: error
+                ? (theme.colors.danger || '#e11d48')
+                : theme.colors.text,
+              fontSize: theme.typography.sizes.lg,
+            },
+            textStyle,
+          ]}
+        >
+          {secureTextEntry && char ? '●' : char}
+        </RNText>
+      </TouchableOpacity>
+    );
+  }
+
+  return (
+    <View style={[styles.otpContainer, style]} {...props}>
+      <View style={styles.otpBoxesRow}>{digits}</View>
+      <RNTextInput
+        ref={inputRef}
+        value={currentValue}
+        onChangeText={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        keyboardType="number-pad"
+        maxLength={length}
+        autoFocus={autoFocus}
+        editable={!disabled}
+        style={styles.otpHiddenInput}
+        caretHidden
+      />
+    </View>
+  );
+}
+export const PinInput = OtpInput;
+
+/**
+ * Rating / StarRating
+ * Interactive or read-only star score selector.
+ */
+export function Rating({
+  value = 0,
+  max = 5,
+  onChange,
+  readonly = false,
+  size = 24,
+  color,
+  inactiveColor,
+  showLabel = false,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const [internalVal, setInternalVal] = useState(value);
+  const currentVal = value !== undefined ? value : internalVal;
+  const activeColor = color || '#f59e0b';
+  const emptyColor = inactiveColor || (theme.dark ? 'rgba(255,255,255,0.2)' : '#dedfec');
+
+  const handlePress = (rating) => {
+    if (readonly) return;
+    if (onChange) onChange(rating);
+    else setInternalVal(rating);
+  };
+
+  const stars = [];
+  for (let i = 1; i <= max; i++) {
+    const isFilled = i <= currentVal;
+    const starColor = isFilled ? activeColor : emptyColor;
+    const starDynamic = { fontSize: size, color: starColor };
+    stars.push(
+      <TouchableOpacity
+        key={i}
+        disabled={readonly}
+        activeOpacity={0.7}
+        onPress={() => handlePress(i)}
+        style={styles.ratingStarBtn}
+      >
+        <RNText style={[styles.ratingStar, starDynamic]}>
+          {isFilled ? '★' : '☆'}
+        </RNText>
+      </TouchableOpacity>
+    );
+  }
+
+  return (
+    <View style={[styles.ratingContainer, style]} {...props}>
+      <View style={styles.ratingStarsRow}>{stars}</View>
+      {showLabel ? (
+        <RNText
+          style={[
+            styles.ratingLabel,
+            { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
+          ]}
+        >
+          {`${currentVal} / ${max}`}
+        </RNText>
+      ) : null}
+    </View>
+  );
+}
+export const StarRating = Rating;
+
+/**
+ * ChipInput / TagInput
+ * Dynamic multi-tag input with chips.
+ */
+export function ChipInput({
+  tags = [],
+  onChangeTags,
+  placeholder = 'Add tag...',
+  maxTags,
+  disabled = false,
+  style,
+  inputStyle,
+  chipStyle,
+  ...props
+}) {
+  const theme = useTheme();
+  const [text, setText] = useState('');
+
+  const handleAdd = () => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    if (maxTags && tags.length >= maxTags) return;
+    if (!tags.includes(trimmed)) {
+      const next = [...tags, trimmed];
+      onChangeTags?.(next);
+    }
+    setText('');
+  };
+
+  const handleRemove = (index) => {
+    const next = tags.filter((_, i) => i !== index);
+    onChangeTags?.(next);
+  };
+
+  const inputDynamic = {
+    color: theme.colors.text,
+    fontSize: theme.typography.sizes.sm,
+  };
+
+  const containerDynamic = {
+    borderColor: theme.colors.border,
+    backgroundColor: theme.colors.surface,
+  };
+
+  const pillDynamic = {
+    backgroundColor: theme.dark ? 'rgba(124,58,237,0.2)' : '#ede9fe',
+    borderRadius: theme.radii.full,
+  };
+
+  return (
+    <View style={[styles.chipInputContainer, containerDynamic, style]} {...props}>
+      <View style={styles.chipInputPillsWrap}>
+        {tags.map((tag, i) => (
+          <View
+            key={i}
+            style={[styles.chipInputPill, pillDynamic, chipStyle]}
+          >
+            <RNText style={[styles.chipInputPillText, { color: theme.colors.primary }]}>{tag}</RNText>
+            {!disabled ? (
+              <TouchableOpacity onPress={() => handleRemove(i)} style={styles.chipInputRemoveBtn}>
+                <RNText style={[styles.chipInputRemoveText, { color: theme.colors.primary }]}>✕</RNText>
+              </TouchableOpacity>
+            ) : null}
+          </View>
+        ))}
+        {!disabled && (!maxTags || tags.length < maxTags) ? (
+          <RNTextInput
+            value={text}
+            onChangeText={setText}
+            onSubmitEditing={handleAdd}
+            placeholder={tags.length === 0 ? placeholder : '+ Add'}
+            placeholderTextColor={theme.colors.textMuted}
+            style={[styles.chipInputInnerField, inputDynamic, inputStyle]}
+            returnKeyType="done"
+          />
+        ) : null}
+      </View>
+    </View>
+  );
+}
+export const TagInput = ChipInput;
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -775,5 +1058,116 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+  },
+  inputLabel: {
+    fontWeight: '600',
+    marginBottom: 6,
+  },
+  inputLeftIcon: {
+    paddingLeft: 12,
+  },
+  inputRightIcon: {
+    paddingRight: 12,
+  },
+  inputError: {
+    marginTop: 4,
+  },
+  searchbarIconWrapper: {
+    marginLeft: 12,
+  },
+  searchbarDefaultIcon: {},
+  searchbarClearBtn: {
+    marginRight: 12,
+  },
+  searchbarClearIcon: {
+    fontSize: 16,
+  },
+  selectValueText: {},
+  selectArrowText: {
+    fontSize: 12,
+  },
+  selectOptionText: {},
+  toggleIconText: {
+    fontWeight: '600',
+  },
+  otpContainer: {
+    alignItems: 'center',
+    marginVertical: 10,
+    position: 'relative',
+  },
+  otpBoxesRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 10,
+  },
+  otpBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  otpText: {
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  otpHiddenInput: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    opacity: 0.01,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  ratingStarsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  ratingStarBtn: {
+    padding: 2,
+  },
+  ratingStar: {
+    textAlign: 'center',
+  },
+  ratingLabel: {
+    fontWeight: '600',
+    marginLeft: 4,
+  },
+  chipInputContainer: {
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 8,
+    minHeight: 46,
+  },
+  chipInputPillsWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: 6,
+  },
+  chipInputPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+  },
+  chipInputPillText: {
+    fontWeight: '600',
+    fontSize: 13,
+  },
+  chipInputRemoveBtn: {
+    marginLeft: 6,
+    padding: 2,
+  },
+  chipInputRemoveText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  chipInputInnerField: {
+    flex: 1,
+    minWidth: 90,
+    paddingVertical: 4,
+    paddingHorizontal: 6,
   },
 });

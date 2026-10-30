@@ -1,0 +1,36 @@
+// =====================================================================
+// BOODOO LESS — Images & Thumbnails
+// =====================================================================
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: var(--boodoo-body-bg);
+  border: var(--boodoo-border-width) solid var(--boodoo-border-color);
+  border-radius: var(--boodoo-border-radius);
+  max-width: 100%;
+  height: auto;
+}
+
+.img-rounded {
+  border-radius: var(--boodoo-border-radius-lg);
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-blur-up {
+  filter: blur(8px);
+  transition: filter 0.4s ease;
+}
+
+.img-loading {
+  background: linear-gradient(90deg, var(--boodoo-gray-200) 25%, var(--boodoo-gray-100) 37%, var(--boodoo-gray-200) 63%);
+  background-size: 400% 100%;
+  animation: boodoo-shine 1.4s ease infinite;
+}

@@ -2,16 +2,16 @@
 
 /**
  * create-boodoo CLI
- * Instant project scaffolder with boodoo pre-configured
+ * Instant project scaffolder with boodoo pre-configured (JS & TS supported)
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.2.2';
+const BOODOO_VERSION = '1.2.3';
 
-function prompt(question, defaultVal = '') {
+export function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -25,35 +25,61 @@ function prompt(question, defaultVal = '') {
   });
 }
 
-async function main() {
-  console.log(`\n\x1b[35m✨ create-boodoo v${BOODOO_VERSION}\x1b[0m — Instant Boodoo Project Scaffolder\n`);
+export function parseArgs(rawArgs = []) {
+  let projectName = '';
+  let template = '';
+  let lang = ''; // 'js' | 'ts'
 
-  const projectName = await prompt('Project name', 'my-boodoo-app');
-  const targetDir = path.resolve(process.cwd(), projectName);
-
-  if (fs.existsSync(targetDir) && fs.readdirSync(targetDir).length > 0) {
-    console.error(`\x1b[31mError: Target directory '${projectName}' already exists and is not empty.\x1b[0m`);
-    process.exit(1);
+  for (let i = 0; i < rawArgs.length; i++) {
+    const arg = rawArgs[i];
+    if (arg === '--ts' || arg === '--typescript') {
+      lang = 'ts';
+    } else if (arg === '--js' || arg === '--javascript') {
+      lang = 'js';
+    } else if (arg.startsWith('--template=')) {
+      template = arg.split('=')[1];
+    } else if (arg === '-t' || arg === '--template') {
+      template = rawArgs[++i] || '';
+    } else if (!arg.startsWith('-') && !projectName) {
+      projectName = arg;
+    }
   }
 
-  console.log('\nSelect a template:');
-  console.log('  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, Vanilla JS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, Node.js, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TypeScript ~5.4.2, RxJS ~7.8.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, Blaze ReactiveVar, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, React Native Web ^0.19.0, Vite ^5.0.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-  console.log(' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, Boodoo Native v' + BOODOO_VERSION + ')\x1b[0m');
+  // Normalize template name/alias to option number '1'-'10'
+  const tMap = {
+    '1': '1', 'html': '1', 'sass': '1', 'html5': '1',
+    '2': '2', 'vite': '2', 'vanilla': '2',
+    '3': '3', 'next': '3', 'nextjs': '3', 'react': '3',
+    '4': '4', 'electron': '4', 'desktop': '4',
+    '5': '5', 'angular': '5', 'ng': '5',
+    '6': '6', 'cordova': '6', 'phonegap': '6',
+    '7': '7', 'meteor': '7', 'meteorjs': '7',
+    '8': '8', 'photon': '8',
+    '9': '9', 'rnw': '9', 'react-native-web': '9',
+    '10': '10', 'expo': '10', 'rn': '10', 'react-native': '10', 'mobile': '10',
+  };
 
-  const choice = await prompt('Choose template [1-10]', '1');
+  const normalizedTemplate = template ? (tMap[template.toLowerCase()] || template) : '';
 
+  return {
+    projectName,
+    template: normalizedTemplate,
+    lang,
+    isTs: lang === 'ts' ? true : (lang === 'js' ? false : null),
+  };
+}
+
+export function scaffoldProject({ targetDir, projectName, choice = '1', isTs = false }) {
   fs.mkdirSync(targetDir, { recursive: true });
 
+  let templateName = 'HTML5 + Sass Starter';
+  let startCmd = 'npm start';
+
   if (choice === '2') {
-    // Vite template
+    // 2) Vite + Vanilla
+    templateName = 'Vite + Vanilla';
+    startCmd = 'npm run dev';
+
     const pkg = {
       name: projectName,
       private: true,
@@ -61,7 +87,7 @@ async function main() {
       type: 'module',
       scripts: {
         dev: 'vite',
-        build: 'vite build',
+        build: isTs ? 'tsc && vite build' : 'vite build',
         preview: 'vite preview',
       },
       dependencies: {
@@ -69,11 +95,74 @@ async function main() {
       },
       devDependencies: {
         vite: '^5.0.0',
+        ...(isTs ? { typescript: '^5.4.2' } : {}),
       },
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
-    const html = `<!DOCTYPE html>
+    if (isTs) {
+      fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          useDefineForClassFields: true,
+          module: 'ESNext',
+          lib: ['ES2022', 'DOM', 'DOM.Iterable'],
+          skipLibCheck: true,
+          moduleResolution: 'bundler',
+          resolveJsonModule: true,
+          isolatedModules: true,
+          noEmit: true,
+          strict: true,
+          noUnusedLocals: true,
+          noUnusedParameters: true,
+          noFallthroughCasesInSwitch: true,
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      fs.writeFileSync(
+        path.join(targetDir, 'src', 'vite-env.d.ts'),
+        `/// <reference types="vite/client" />\n`
+      );
+
+      const mainTs = `import 'boodoo/css';
+import boodoo from 'boodoo';
+
+document.getElementById('btn-demo')?.addEventListener('click', () => {
+  boodoo.toast('Hello from boodoo TypeScript!', { title: 'Notification', variant: 'primary' });
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), mainTs);
+
+      const html = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${projectName}</title>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="card p-4 shadow-sm text-center">
+        <h1 class="text-primary mb-3">Welcome to ${projectName}!</h1>
+        <p class="text-muted">Built with boodoo design system, Vite &amp; TypeScript.</p>
+        <div class="d-flex justify-content-center gap-2 mt-3">
+          <button type="button" class="btn btn-primary" id="btn-demo">Click Me</button>
+          <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Documentation</a>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>`;
+      fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+
+    } else {
+      // JavaScript
+      const html = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -94,19 +183,23 @@ async function main() {
     <script type="module" src="/main.js"></script>
   </body>
 </html>`;
-    fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+      fs.writeFileSync(path.join(targetDir, 'index.html'), html);
 
-    const mainJs = `import 'boodoo/css';
+      const mainJs = `import 'boodoo/css';
 import boodoo from 'boodoo';
 
 document.getElementById('btn-demo')?.addEventListener('click', () => {
   boodoo.toast('Hello from boodoo!', { title: 'Notification', variant: 'primary' });
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'main.js'), mainJs);
+      fs.writeFileSync(path.join(targetDir, 'main.js'), mainJs);
+    }
 
   } else if (choice === '3') {
-    // Next.js template config
+    // 3) Next.js / React
+    templateName = 'Next.js / React';
+    startCmd = 'npm run dev';
+
     const pkg = {
       name: projectName,
       version: '0.1.0',
@@ -122,11 +215,97 @@ document.getElementById('btn-demo')?.addEventListener('click', () => {
         react: '^18.3.0',
         'react-dom': '^18.3.0',
       },
+      ...(isTs
+        ? {
+            devDependencies: {
+              typescript: '^5.4.2',
+              '@types/node': '^20.0.0',
+              '@types/react': '^18.3.0',
+              '@types/react-dom': '^18.3.0',
+            },
+          }
+        : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
     fs.mkdirSync(path.join(targetDir, 'app'), { recursive: true });
 
-    const layout = `import 'boodoo/css';
+    if (isTs) {
+      const tsconfig = {
+        compilerOptions: {
+          lib: ['dom', 'dom.iterable', 'esnext'],
+          allowJs: true,
+          skipLibCheck: true,
+          strict: true,
+          noEmit: true,
+          esModuleInterop: true,
+          module: 'esnext',
+          moduleResolution: 'bundler',
+          resolveJsonModule: true,
+          isolatedModules: true,
+          jsx: 'preserve',
+          incremental: true,
+          plugins: [{ name: 'next' }],
+          paths: {
+            '@/*': ['./*'],
+          },
+        },
+        include: ['next-env.d.ts', '**/*.ts', '**/*.tsx', '.next/types/**/*.ts'],
+        exclude: ['node_modules'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      fs.writeFileSync(
+        path.join(targetDir, 'next-env.d.ts'),
+        '/// <reference types="next" />\n/// <reference types="next/image-types/global" />\n'
+      );
+
+      const layout = `import 'boodoo/css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '${projectName}',
+  description: 'Built with boodoo framework and TypeScript',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'app', 'layout.tsx'), layout);
+
+      const page = `export default function Home() {
+  return (
+    <main className="container py-5">
+      <div className="card p-5 text-center shadow-sm">
+        <h1 className="text-primary mb-3">${projectName}</h1>
+        <p className="text-muted">Next.js + TypeScript + boodoo UI framework</p>
+      </div>
+    </main>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'app', 'page.tsx'), page);
+
+    } else {
+      // JavaScript
+      const jsconfig = {
+        compilerOptions: {
+          paths: {
+            '@/*': ['./*'],
+          },
+        },
+      };
+      fs.writeFileSync(path.join(targetDir, 'jsconfig.json'), JSON.stringify(jsconfig, null, 2));
+
+      const layout = `import 'boodoo/css';
 
 export const metadata = {
   title: '${projectName}',
@@ -141,9 +320,9 @@ export default function RootLayout({ children }) {
   );
 }
 `;
-    fs.writeFileSync(path.join(targetDir, 'app', 'layout.jsx'), layout);
+      fs.writeFileSync(path.join(targetDir, 'app', 'layout.jsx'), layout);
 
-    const page = `export default function Home() {
+      const page = `export default function Home() {
   return (
     <main className="container py-5">
       <div className="card p-5 text-center shadow-sm">
@@ -154,29 +333,158 @@ export default function RootLayout({ children }) {
   );
 }
 `;
-    fs.writeFileSync(path.join(targetDir, 'app', 'page.jsx'), page);
+      fs.writeFileSync(path.join(targetDir, 'app', 'page.jsx'), page);
+    }
 
   } else if (choice === '4') {
-    // Electron Desktop App template
+    // 4) Electron Desktop App
+    templateName = 'Electron Desktop App';
+    startCmd = isTs ? 'npm run build && npm start' : 'npm start';
+
     const pkg = {
       name: projectName,
       version: '1.0.0',
       description: 'Cross-platform Electron desktop app powered by Boodoo design framework',
-      main: 'main.js',
-      scripts: {
-        start: 'electron .',
-        dev: 'electron .',
-      },
+      main: isTs ? 'dist/main.js' : 'main.js',
+      scripts: isTs
+        ? {
+            build: 'tsc',
+            start: 'tsc && electron .',
+            dev: 'tsc && electron .',
+            watch: 'tsc -w',
+          }
+        : {
+            start: 'electron .',
+            dev: 'electron .',
+          },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
       devDependencies: {
         electron: '^32.0.0',
+        ...(isTs
+          ? {
+              typescript: '^5.4.2',
+              '@types/node': '^20.0.0',
+            }
+          : {}),
       },
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
-    const mainJs = `const { app, BrowserWindow, ipcMain } = require('electron');
+    if (isTs) {
+      fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          module: 'CommonJS',
+          lib: ['ES2022', 'DOM'],
+          outDir: './dist',
+          rootDir: './src',
+          strict: true,
+          esModuleInterop: true,
+          skipLibCheck: true,
+          forceConsistentCasingInFileNames: true,
+        },
+        include: ['src/**/*'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const mainTs = `import { app, BrowserWindow, ipcMain } from 'electron';
+import path from 'node:path';
+
+function createWindow(): void {
+  const win = new BrowserWindow({
+    width: 1040,
+    height: 720,
+    minWidth: 800,
+    minHeight: 500,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: false,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
+    },
+  });
+
+  win.loadFile(path.join(__dirname, '../index.html'));
+
+  ipcMain.on('window-minimize', () => win.minimize());
+  ipcMain.on('window-maximize', () => {
+    if (win.isMaximized()) {
+      win.unmaximize();
+    } else {
+      win.maximize();
+    }
+  });
+  ipcMain.on('window-close', () => win.close());
+}
+
+app.whenReady().then(() => {
+  createWindow();
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), mainTs);
+
+      const preloadTs = `import { contextBridge, ipcRenderer } from 'electron';
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  minimize: () => ipcRenderer.send('window-minimize'),
+  maximize: () => ipcRenderer.send('window-maximize'),
+  close: () => ipcRenderer.send('window-close'),
+  platform: process.platform,
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'preload.ts'), preloadTs);
+
+      const rendererTs = `declare global {
+  interface Window {
+    electronAPI?: {
+      minimize: () => void;
+      maximize: () => void;
+      close: () => void;
+      platform: string;
+    };
+    boodoo?: any;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.electronAPI?.platform) {
+    const platform = window.electronAPI.platform === 'darwin' ? 'macos' : (window.electronAPI.platform === 'win32' ? 'windows' : 'linux');
+    document.getElementById('app-window')?.setAttribute('data-boodoo-platform', platform);
+  }
+
+  document.getElementById('btn-win-min')?.addEventListener('click', () => {
+    window.electronAPI?.minimize();
+  });
+  document.getElementById('btn-win-max')?.addEventListener('click', () => {
+    window.electronAPI?.maximize();
+  });
+  document.getElementById('btn-win-close')?.addEventListener('click', () => {
+    window.electronAPI?.close();
+  });
+
+  document.getElementById('btn-toast')?.addEventListener('click', () => {
+    window.boodoo?.toast?.success?.('Electron TypeScript desktop app connected to Boodoo UI!', { title: 'Desktop Event' });
+  });
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'renderer.ts'), rendererTs);
+
+    } else {
+      // JavaScript
+      const mainJs = `const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 
 function createWindow() {
@@ -219,9 +527,9 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'main.js'), mainJs);
+      fs.writeFileSync(path.join(targetDir, 'main.js'), mainJs);
 
-    const preloadJs = `const { contextBridge, ipcRenderer } = require('electron');
+      const preloadJs = `const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
   minimize: () => ipcRenderer.send('window-minimize'),
@@ -230,8 +538,34 @@ contextBridge.exposeInMainWorld('electronAPI', {
   platform: process.platform,
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'preload.js'), preloadJs);
+      fs.writeFileSync(path.join(targetDir, 'preload.js'), preloadJs);
 
+      const rendererJs = `// Electron Desktop Renderer
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.electronAPI?.platform) {
+    const platform = window.electronAPI.platform === 'darwin' ? 'macos' : (window.electronAPI.platform === 'win32' ? 'windows' : 'linux');
+    document.getElementById('app-window')?.setAttribute('data-boodoo-platform', platform);
+  }
+
+  document.getElementById('btn-win-min')?.addEventListener('click', () => {
+    window.electronAPI?.minimize();
+  });
+  document.getElementById('btn-win-max')?.addEventListener('click', () => {
+    window.electronAPI?.maximize();
+  });
+  document.getElementById('btn-win-close')?.addEventListener('click', () => {
+    window.electronAPI?.close();
+  });
+
+  document.getElementById('btn-toast')?.addEventListener('click', () => {
+    window.boodoo?.toast?.success?.('Electron desktop app connected to Boodoo UI!', { title: 'Desktop Event' });
+  });
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'renderer.js'), rendererJs);
+    }
+
+    const scriptSrc = isTs ? 'dist/renderer.js' : 'renderer.js';
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -295,7 +629,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
           <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
               <h1 class="h4 fw-bold mb-1">Welcome to ${projectName}</h1>
-              <p class="text-muted mb-0">Cross-platform desktop application built with Electron &amp; Boodoo UI.</p>
+              <p class="text-muted mb-0">Cross-platform desktop application built with Electron, ${isTs ? 'TypeScript' : 'JavaScript'} &amp; Boodoo UI.</p>
             </div>
             <div class="d-flex gap-2">
               <button type="button" class="btn btn-sm btn-outline-secondary" data-boodoo-theme-toggle>Toggle Theme</button>
@@ -317,8 +651,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
             </div>
             <div class="col-md-4">
               <div class="card p-3 shadow-sm">
-                <span class="text-muted fs-7">Native Tokens</span>
-                <h5 class="fw-bold mt-1 mb-0">Mica &amp; Fluent Design</h5>
+                <span class="text-muted fs-7">Language Stack</span>
+                <h5 class="fw-bold mt-1 mb-0">${isTs ? 'TypeScript ~5.4' : 'Modern JavaScript'}</h5>
               </div>
             </div>
           </div>
@@ -338,41 +672,16 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   <!-- Boodoo JS -->
   <script src="node_modules/boodoo/dist/js/boodoo.js"></script>
-  <script src="renderer.js"></script>
+  <script src="${scriptSrc}"></script>
 </body>
-</html>
-`;
+</html>`;
     fs.writeFileSync(path.join(targetDir, 'index.html'), html);
 
-    const rendererJs = `// Electron Desktop Renderer
-document.addEventListener('DOMContentLoaded', () => {
-  // Sync detected platform attribute with OS
-  if (window.electronAPI?.platform) {
-    const platform = window.electronAPI.platform === 'darwin' ? 'macos' : (window.electronAPI.platform === 'win32' ? 'windows' : 'linux');
-    document.getElementById('app-window')?.setAttribute('data-boodoo-platform', platform);
-  }
-
-  // Titlebar window controls
-  document.getElementById('btn-win-min')?.addEventListener('click', () => {
-    window.electronAPI?.minimize();
-  });
-  document.getElementById('btn-win-max')?.addEventListener('click', () => {
-    window.electronAPI?.maximize();
-  });
-  document.getElementById('btn-win-close')?.addEventListener('click', () => {
-    window.electronAPI?.close();
-  });
-
-  // Toast trigger demo
-  document.getElementById('btn-toast')?.addEventListener('click', () => {
-    window.boodoo?.toast?.success?.('Electron desktop app connected to Boodoo UI!', { title: 'Desktop Event' });
-  });
-});
-`;
-    fs.writeFileSync(path.join(targetDir, 'renderer.js'), rendererJs);
-
   } else if (choice === '5') {
-    // Angular Starter template
+    // 5) Angular Starter
+    templateName = 'Angular Starter';
+    startCmd = 'npm start';
+
     const pkg = {
       name: projectName,
       version: '0.0.0',
@@ -406,6 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
     fs.mkdirSync(path.join(targetDir, 'src', 'app'), { recursive: true });
 
+    const mainFile = isTs ? 'src/main.ts' : 'src/main.js';
     const angularJson = {
       $schema: './node_modules/@angular/cli/lib/config/schema.json',
       version: 1,
@@ -422,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
               options: {
                 outputPath: 'dist',
                 index: 'src/index.html',
-                browser: 'src/main.ts',
+                browser: mainFile,
                 styles: [
                   'node_modules/boodoo/dist/css/boodoo.min.css',
                   'src/styles.css',
@@ -451,10 +761,12 @@ document.addEventListener('DOMContentLoaded', () => {
       compileOnSave: false,
       compilerOptions: {
         outDir: './dist/out-tsc',
-        strict: true,
-        noImplicitOverride: true,
-        noPropertyAccessFromIndexSignature: true,
-        noImplicitReturns: true,
+        strict: isTs,
+        allowJs: !isTs,
+        checkJs: false,
+        noImplicitOverride: isTs,
+        noPropertyAccessFromIndexSignature: isTs,
+        noImplicitReturns: isTs,
         noFallthroughCasesInSwitch: true,
         skipLibCheck: true,
         isolatedModules: true,
@@ -468,8 +780,8 @@ document.addEventListener('DOMContentLoaded', () => {
       angularCompilerOptions: {
         enableI18nLegacyMessageIdFormat: false,
         strictInjectionParameters: true,
-        strictInputAccessModifiers: true,
-        strictTemplates: true,
+        strictInputAccessModifiers: isTs,
+        strictTemplates: isTs,
       },
     };
     fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
@@ -488,7 +800,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </html>`;
     fs.writeFileSync(path.join(targetDir, 'src', 'index.html'), indexHtml);
 
-    const mainTs = `import { bootstrapApplication } from '@angular/platform-browser';
+    if (isTs) {
+      const mainTs = `import { bootstrapApplication } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 
 declare const boodoo: any;
@@ -500,7 +813,7 @@ declare const boodoo: any;
     <div class="container py-5">
       <div class="card p-5 text-center shadow-sm">
         <h1 class="text-primary mb-3">{{ title }}</h1>
-        <p class="text-muted">Angular Standalone Component + boodoo design framework.</p>
+        <p class="text-muted">Angular Standalone Component (TypeScript) + boodoo design framework.</p>
         <div class="d-flex justify-content-center gap-2 mt-3">
           <button type="button" class="btn btn-primary" (click)="triggerToast()">Trigger Toast</button>
           <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Docs</a>
@@ -523,31 +836,79 @@ export class AppComponent {
 
 bootstrapApplication(AppComponent).catch((err) => console.error(err));
 `;
-    fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), mainTs);
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), mainTs);
+    } else {
+      const mainJs = `import { bootstrapApplication } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: \`
+    <div class="container py-5">
+      <div class="card p-5 text-center shadow-sm">
+        <h1 class="text-primary mb-3">{{ title }}</h1>
+        <p class="text-muted">Angular Standalone Component (JavaScript) + boodoo design framework.</p>
+        <div class="d-flex justify-content-center gap-2 mt-3">
+          <button type="button" class="btn btn-primary" (click)="triggerToast()">Trigger Toast</button>
+          <a href="https://boodooframework.com" target="_blank" rel="noopener" class="btn btn-outline-secondary">Docs</a>
+        </div>
+      </div>
+    </div>
+  \`,
+})
+export class AppComponent {
+  title = '${projectName}';
+
+  triggerToast() {
+    if (typeof window !== 'undefined' && window.boodoo) {
+      window.boodoo.toast('Hello from Angular JavaScript & boodoo!', { title: 'Angular App', variant: 'primary' });
+    } else {
+      alert('Hello from Angular JavaScript & boodoo!');
+    }
+  }
+}
+
+bootstrapApplication(AppComponent).catch((err) => console.error(err));
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.js'), mainJs);
+    }
+
     fs.writeFileSync(path.join(targetDir, 'src', 'styles.css'), `/* App styles */\n`);
 
   } else if (choice === '6') {
-    // Cordova & PhoneGap Hybrid Mobile App template
+    // 6) Cordova & PhoneGap Hybrid Mobile App
+    templateName = 'Cordova & PhoneGap Mobile';
+    startCmd = isTs ? 'npm run build && npm start' : 'npm start';
+
     const pkg = {
       name: projectName,
       version: '1.0.0',
       description: 'Hybrid mobile app for Cordova & PhoneGap powered by boodoo',
       main: 'index.js',
-      scripts: {
-        start: 'npx serve www',
-        'build:android': 'cordova build android',
-        'build:ios': 'cordova build ios',
-      },
+      scripts: isTs
+        ? {
+            build: 'tsc',
+            start: 'tsc && npx serve www',
+            'build:android': 'tsc && cordova build android',
+            'build:ios': 'tsc && cordova build ios',
+          }
+        : {
+            start: 'npx serve www',
+            'build:android': 'cordova build android',
+            'build:ios': 'cordova build ios',
+          },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
+      ...(isTs ? { devDependencies: { typescript: '^5.4.2' } } : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
     const configXml = `<?xml version='1.0' encoding='utf-8'?>
 <widget id="com.boodoo.${projectName.replace(/[^a-zA-Z0-9]/g, '')}" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>${projectName}</name>
-    <description>boodoo Cordova / PhoneGap Hybrid Mobile App</description>
+    <description>boodoo Cordova / PhoneGap Hybrid Mobile App (${isTs ? 'TypeScript' : 'JavaScript'})</description>
     <author email="info@boodooframework.com" href="https://boodooframework.com">boodoo Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -560,6 +921,49 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
 
     fs.mkdirSync(path.join(targetDir, 'www', 'css'), { recursive: true });
     fs.mkdirSync(path.join(targetDir, 'www', 'js'), { recursive: true });
+
+    if (isTs) {
+      fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          module: 'ESNext',
+          outDir: './www/js',
+          rootDir: './src',
+          strict: true,
+          skipLibCheck: true,
+        },
+        include: ['src/**/*'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const srcTs = `declare global {
+  interface Window {
+    boodoo?: any;
+  }
+}
+
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady(): void {
+  const statusEl = document.getElementById('device-status');
+  if (statusEl) statusEl.textContent = 'Device Ready (TS)';
+
+  document.getElementById('btn-notify')?.addEventListener('click', () => {
+    window.boodoo?.toast?.success?.('Cordova TypeScript device bridges ready!', { title: 'Mobile Event' });
+  });
+
+  document.getElementById('btn-vibrate')?.addEventListener('click', () => {
+    if (navigator.vibrate) {
+      navigator.vibrate([100, 50, 100]);
+    }
+    window.boodoo?.toast?.('Haptic pulse sent!', { variant: 'info' });
+  });
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'index.ts'), srcTs);
+    }
 
     const cordovaHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -583,7 +987,7 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
 
   <div class="container py-4">
     <div class="card p-3 shadow-sm mb-3">
-      <h5 class="fw-semibold mb-1">Cordova & PhoneGap Hybrid</h5>
+      <h5 class="fw-semibold mb-1">Cordova &amp; PhoneGap Hybrid (${isTs ? 'TypeScript' : 'JavaScript'})</h5>
       <p class="text-muted small">Cross-platform mobile web app running inside WebViews with Boodoo UI styling.</p>
       <button type="button" class="btn btn-primary w-100 rounded-pill mb-2" id="btn-notify">Show Native Toast</button>
       <button type="button" class="btn btn-outline-secondary w-100 rounded-pill" id="btn-vibrate">Haptic Feedback</button>
@@ -597,7 +1001,8 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
 </html>`;
     fs.writeFileSync(path.join(targetDir, 'www', 'index.html'), cordovaHtml);
 
-    const cordovaJs = `document.addEventListener('deviceready', onDeviceReady, false);
+    if (!isTs) {
+      const cordovaJs = `document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
   const statusEl = document.getElementById('device-status');
@@ -615,10 +1020,14 @@ function onDeviceReady() {
   });
 }
 `;
-    fs.writeFileSync(path.join(targetDir, 'www', 'js', 'index.js'), cordovaJs);
+      fs.writeFileSync(path.join(targetDir, 'www', 'js', 'index.js'), cordovaJs);
+    }
 
   } else if (choice === '7') {
-    // Meteor.js Full-Stack App template
+    // 7) Meteor.js Full-Stack App
+    templateName = 'Meteor.js Full-Stack App';
+    startCmd = 'npm start';
+
     const pkg = {
       name: projectName,
       private: true,
@@ -630,11 +1039,32 @@ function onDeviceReady() {
         meteor: '^2.0.0',
         boodoo: `^${BOODOO_VERSION}`,
       },
+      ...(isTs
+        ? {
+            devDependencies: {
+              typescript: '^5.4.2',
+              '@types/meteor': '^2.9.0',
+            },
+          }
+        : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
     fs.mkdirSync(path.join(targetDir, 'client'), { recursive: true });
     fs.mkdirSync(path.join(targetDir, 'server'), { recursive: true });
+
+    if (isTs) {
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          strict: true,
+          skipLibCheck: true,
+        },
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+    }
 
     const meteorHtml = `<head>
   <title>${projectName}</title>
@@ -649,7 +1079,7 @@ function onDeviceReady() {
   <div class="container py-5">
     <div class="card p-4 shadow-sm text-center">
       <h1 class="text-primary mb-3">${projectName}</h1>
-      <p class="text-muted">Meteor Full-Stack Reactive App + boodoo UI framework</p>
+      <p class="text-muted">Meteor Full-Stack Reactive App (${isTs ? 'TypeScript' : 'JavaScript'}) + boodoo UI framework</p>
       <div class="d-flex justify-content-center align-items-center gap-3 my-3">
         <button type="button" class="btn btn-primary" id="counter-btn">Clicks: {{counter}}</button>
         <button type="button" class="btn btn-outline-secondary" id="toast-btn">Trigger Toast</button>
@@ -659,7 +1089,7 @@ function onDeviceReady() {
 </template>`;
     fs.writeFileSync(path.join(targetDir, 'client', 'main.html'), meteorHtml);
 
-    const clientJs = `import { Template } from 'meteor/templating';
+    const clientCode = `import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import 'boodoo/css';
 import boodoo from 'boodoo';
@@ -685,37 +1115,99 @@ Template.app.events({
   },
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'client', 'main.js'), clientJs);
+    const clientFileName = isTs ? 'client/main.ts' : 'client/main.js';
+    fs.writeFileSync(path.join(targetDir, clientFileName), clientCode);
 
-    const serverJs = `import { Meteor } from 'meteor/meteor';
+    const serverCode = `import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   console.log('${projectName} started with Boodoo framework.');
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'server', 'main.js'), serverJs);
+    const serverFileName = isTs ? 'server/main.ts' : 'server/main.js';
+    fs.writeFileSync(path.join(targetDir, serverFileName), serverCode);
 
   } else if (choice === '8') {
-    // Photon Desktop UI template
+    // 8) Photon Desktop UI
+    templateName = 'Photon Desktop UI';
+    startCmd = isTs ? 'npm run build && npm start' : 'npm start';
+
     const pkg = {
       name: projectName,
       version: '1.0.0',
       description: 'Desktop application with Photon UI & Boodoo framework',
-      main: 'main.js',
-      scripts: {
-        start: 'electron .',
-        dev: 'electron .',
-      },
+      main: isTs ? 'dist/main.js' : 'main.js',
+      scripts: isTs
+        ? {
+            build: 'tsc',
+            start: 'tsc && electron .',
+            dev: 'tsc && electron .',
+          }
+        : {
+            start: 'electron .',
+            dev: 'electron .',
+          },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
       devDependencies: {
         electron: '^32.0.0',
+        ...(isTs
+          ? {
+              typescript: '^5.4.2',
+              '@types/node': '^20.0.0',
+            }
+          : {}),
       },
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
-    const photonMainJs = `const { app, BrowserWindow } = require('electron');
+    if (isTs) {
+      fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          module: 'CommonJS',
+          lib: ['ES2022', 'DOM'],
+          outDir: './dist',
+          rootDir: './src',
+          strict: true,
+          esModuleInterop: true,
+          skipLibCheck: true,
+        },
+        include: ['src/**/*'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const photonMainTs = `import { app, BrowserWindow } from 'electron';
+import path from 'node:path';
+
+function createWindow(): void {
+  const win = new BrowserWindow({
+    width: 960,
+    height: 600,
+    minWidth: 700,
+    minHeight: 400,
+    titleBarStyle: 'hiddenInset',
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+
+  win.loadFile(path.join(__dirname, '../index.html'));
+}
+
+app.whenReady().then(createWindow);
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), photonMainTs);
+
+    } else {
+      const photonMainJs = `const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
 function createWindow() {
@@ -739,7 +1231,8 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'main.js'), photonMainJs);
+      fs.writeFileSync(path.join(targetDir, 'main.js'), photonMainJs);
+    }
 
     const photonHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -761,7 +1254,7 @@ app.on('window-all-closed', () => {
           <button type="button" class="btn" title="Forward"><span>▶</span></button>
         </div>
       </div>
-      <span class="title">${projectName}</span>
+      <span class="title">${projectName} (${isTs ? 'TS' : 'JS'})</span>
       <div class="toolbar-actions">
         <button type="button" class="btn btn-primary" id="btn-save"><span>Save</span></button>
       </div>
@@ -788,7 +1281,7 @@ app.on('window-all-closed', () => {
             </div>
           </div>
           <h5 class="fw-semibold mb-2">Photon Desktop Pane</h5>
-          <p class="text-muted small">Classic Electron & macOS desktop interface powered by Boodoo Photon styles.</p>
+          <p class="text-muted small">Classic Electron &amp; macOS desktop interface powered by Boodoo Photon styles in ${isTs ? 'TypeScript' : 'JavaScript'}.</p>
           <div class="btn-group mt-2">
             <button type="button" class="btn btn-positive" id="btn-commit">Commit</button>
             <button type="button" class="btn btn-negative" id="btn-revert">Revert</button>
@@ -816,7 +1309,10 @@ app.on('window-all-closed', () => {
     fs.writeFileSync(path.join(targetDir, 'index.html'), photonHtml);
 
   } else if (choice === '9') {
-    // React Native Web template
+    // 9) React Native Web
+    templateName = 'React Native Web';
+    startCmd = 'npm run dev';
+
     const pkg = {
       name: projectName,
       version: '0.1.0',
@@ -824,7 +1320,7 @@ app.on('window-all-closed', () => {
       scripts: {
         start: 'expo start --web',
         dev: 'vite',
-        build: 'vite build',
+        build: isTs ? 'tsc && vite build' : 'vite build',
       },
       dependencies: {
         react: '^18.3.0',
@@ -835,10 +1331,18 @@ app.on('window-all-closed', () => {
       devDependencies: {
         '@vitejs/plugin-react': '^4.3.0',
         vite: '^5.0.0',
+        ...(isTs
+          ? {
+              typescript: '^5.4.2',
+              '@types/react': '^18.3.0',
+              '@types/react-dom': '^18.3.0',
+            }
+          : {}),
       },
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
+    const viteConfigFile = isTs ? 'vite.config.ts' : 'vite.config.js';
     const viteConfig = `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -851,9 +1355,96 @@ export default defineConfig({
   },
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'vite.config.js'), viteConfig);
+    fs.writeFileSync(path.join(targetDir, viteConfigFile), viteConfig);
 
-    const rnIndexHtml = `<!DOCTYPE html>
+    fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+    if (isTs) {
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          useDefineForClassFields: true,
+          module: 'ESNext',
+          lib: ['ES2022', 'DOM', 'DOM.Iterable'],
+          skipLibCheck: true,
+          moduleResolution: 'bundler',
+          resolveJsonModule: true,
+          isolatedModules: true,
+          noEmit: true,
+          jsx: 'react-jsx',
+          strict: true,
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const appTsx = `import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import 'boodoo/css';
+import boodoo from 'boodoo';
+
+export default function App(): React.JSX.Element {
+  const [count, setCount] = useState<number>(0);
+
+  const handlePress = () => {
+    setCount(count + 1);
+    boodoo.toast(\`Universal click count: \${count + 1}\`, { title: 'React Native Web (TS)', variant: 'primary' });
+  };
+
+  return (
+    <View style={styles.container}>
+      <div className="card p-5 text-center shadow-sm" style={{ maxWidth: 480, width: '100%' }}>
+        <h1 className="text-primary mb-2">${projectName}</h1>
+        <p className="text-muted mb-4">React Native Web with TypeScript &amp; Boodoo Design System.</p>
+        <TouchableOpacity style={styles.button} onPress={handlePress}>
+          <Text style={styles.buttonText}>Increment Count: {count}</Text>
+        </TouchableOpacity>
+      </div>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    minHeight: '100vh',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#f8fafc',
+  },
+  button: {
+    backgroundColor: '#7c3aed',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#ffffff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src/App.tsx'), appTsx);
+
+      const mainTsx = `import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const rootEl = document.getElementById('root');
+if (rootEl) {
+  ReactDOM.createRoot(rootEl).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src/main.tsx'), mainTsx);
+
+      const rnIndexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -862,14 +1453,14 @@ export default defineConfig({
 </head>
 <body class="bg-light">
   <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>`;
-    fs.writeFileSync(path.join(targetDir, 'index.html'), rnIndexHtml);
+      fs.writeFileSync(path.join(targetDir, 'index.html'), rnIndexHtml);
 
-    fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
-
-    const appJsx = `import React, { useState } from 'react';
+    } else {
+      // JavaScript
+      const appJsx = `import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import 'boodoo/css';
 import boodoo from 'boodoo';
@@ -918,9 +1509,9 @@ const styles = StyleSheet.create({
   },
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'src/App.jsx'), appJsx);
+      fs.writeFileSync(path.join(targetDir, 'src/App.jsx'), appJsx);
 
-    const mainJsx = `import React from 'react';
+      const mainJsx = `import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
@@ -930,10 +1521,28 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 `;
-    fs.writeFileSync(path.join(targetDir, 'src/main.jsx'), mainJsx);
+      fs.writeFileSync(path.join(targetDir, 'src/main.jsx'), mainJsx);
+
+      const rnIndexHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${projectName}</title>
+</head>
+<body class="bg-light">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>`;
+      fs.writeFileSync(path.join(targetDir, 'index.html'), rnIndexHtml);
+    }
 
   } else if (choice === '10') {
-    // React Native Mobile (Expo + Boodoo UI)
+    // 10) React Native Mobile (Expo + Boodoo UI)
+    templateName = 'React Native Mobile (Expo)';
+    startCmd = 'npx expo start';
+
     const pkg = {
       name: projectName,
       version: '1.0.0',
@@ -953,6 +1562,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       },
       devDependencies: {
         '@babel/core': '^7.20.0',
+        ...(isTs
+          ? {
+              typescript: '^5.3.0',
+              '@types/react': '~18.2.79',
+            }
+          : {}),
       },
       private: true,
     };
@@ -980,7 +1595,135 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     };
     fs.writeFileSync(path.join(targetDir, 'app.json'), JSON.stringify(appJson, null, 2));
 
-    const appJs = `import React, { useState } from 'react';
+    if (isTs) {
+      const tsconfig = {
+        extends: 'expo/tsconfig.base',
+        compilerOptions: {
+          strict: true,
+        },
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const appTsx = `import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import {
+  BoodooProvider,
+  Card,
+  Button,
+  Badge,
+  Text,
+  TextInput,
+  useTheme,
+} from 'boodoo/react-native';
+
+function HomeScreen(): React.JSX.Element {
+  const [name, setName] = useState<string>('');
+  const [likes, setLikes] = useState<number>(0);
+  const theme = useTheme();
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.colors.background }]}>
+      <StatusBar style="auto" />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.header}>
+          <Badge variant="soft" style={styles.badge}>
+            boodoo v${BOODOO_VERSION} Native (TS)
+          </Badge>
+          <Text variant="h2" style={styles.title}>
+            Mobile Design System
+          </Text>
+          <Text variant="lead" style={styles.subtitle}>
+            Lightweight, native components for iOS & Android without Material Design 3 bloat.
+          </Text>
+        </View>
+
+        <Card variant="elevated" style={styles.card}>
+          <Card.Title
+            title="Interactive Component Demo"
+            subtitle="Drop-in replacement & alternative to RN Paper"
+          />
+          <Card.Content>
+            <TextInput
+              label="Developer Name"
+              placeholder="e.g. Satoshi"
+              value={name}
+              onChangeText={setName}
+            />
+            <View style={styles.badgeRow}>
+              <Badge variant="primary">iOS & Android</Badge>
+              <Badge variant="success">Zero Bloat</Badge>
+              <Badge variant="secondary">Likes: {likes}</Badge>
+            </View>
+          </Card.Content>
+          <Card.Actions>
+            <Button
+              variant="outline"
+              size="sm"
+              onPress={() => setLikes(0)}
+            >
+              Reset
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              onPress={() => setLikes(likes + 1)}
+            >
+              Like App 👍
+            </Button>
+          </Card.Actions>
+        </Card>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+export default function App(): React.JSX.Element {
+  return (
+    <BoodooProvider theme="light">
+      <HomeScreen />
+    </BoodooProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    padding: 20,
+  },
+  header: {
+    marginBottom: 24,
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  badge: {
+    marginBottom: 12,
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  subtitle: {
+    textAlign: 'center',
+  },
+  card: {
+    marginBottom: 16,
+  },
+  badgeRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 8,
+    flexWrap: 'wrap',
+  },
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'App.tsx'), appTsx);
+
+    } else {
+      // JavaScript
+      const appJs = `import React, { useState } from 'react';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {
@@ -1095,23 +1838,101 @@ const styles = StyleSheet.create({
   },
 });
 `;
-    fs.writeFileSync(path.join(targetDir, 'App.js'), appJs);
+      fs.writeFileSync(path.join(targetDir, 'App.js'), appJs);
+    }
 
   } else {
-    // Vanilla HTML + CDN / NPM Starter
+    // 1) HTML5 + Sass Starter / Default
+    templateName = 'HTML5 + Sass Starter';
+    startCmd = isTs ? 'npm run build && npm start' : 'npm start';
+
     const pkg = {
       name: projectName,
       version: '1.0.0',
-      scripts: {
-        start: 'npx serve .',
-      },
+      scripts: isTs
+        ? {
+            build: 'tsc',
+            start: 'tsc && npx serve .',
+            dev: 'tsc --watch',
+          }
+        : {
+            start: 'npx serve .',
+          },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
+      ...(isTs ? { devDependencies: { typescript: '^5.4.2' } } : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
-    const html = `<!DOCTYPE html>
+    if (isTs) {
+      fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2022',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          strict: true,
+          skipLibCheck: true,
+          outDir: './dist-ts',
+        },
+        include: ['src/**/*'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const mainTs = `import 'boodoo/css';
+import boodoo from 'boodoo';
+
+document.getElementById('toast-trigger')?.addEventListener('click', () => {
+  boodoo.toast?.('Welcome to your new boodoo TypeScript application!', { title: 'Success', variant: 'success' });
+});
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), mainTs);
+
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${projectName}</title>
+  <!-- boodoo CSS -->
+  <link rel="stylesheet" href="node_modules/boodoo/dist/css/boodoo.min.css">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <header class="text-center mb-5">
+      <h1 class="display-4 fw-bold text-primary">${projectName}</h1>
+      <p class="lead text-muted">A clean, responsive web application powered by boodoo &amp; TypeScript.</p>
+    </header>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+          <h2 class="h5 mb-3">Quick Component Test</h2>
+          <div class="mb-3">
+            <label class="form-label" for="sample-input">Sample Input</label>
+            <input type="text" class="form-control" id="sample-input" name="sample-input" placeholder="Type something...">
+          </div>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-primary" id="toast-trigger">Trigger Toast</button>
+            <button type="button" class="btn btn-outline-secondary" data-boodoo-theme-toggle>Toggle Theme</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- boodoo JS -->
+  <script src="node_modules/boodoo/dist/js/boodoo.js"></script>
+  <script type="module" src="dist-ts/main.js"></script>
+</body>
+</html>`;
+      fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+
+    } else {
+      // JavaScript
+      const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1152,22 +1973,22 @@ const styles = StyleSheet.create({
     });
   </script>
 </body>
-</html>
-`;
-    fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+</html>`;
+      fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+    }
   }
 
-  // Create README
+  // Create README.md
   const readme = `# ${projectName}
 
-Powered by **boodoo v${BOODOO_VERSION}**.
+Powered by **boodoo v${BOODOO_VERSION}** (${templateName} - ${isTs ? 'TypeScript' : 'JavaScript'}).
 
 ## Getting Started
 
 \`\`\`bash
 cd ${projectName}
 npm install
-npm run dev # or npm start
+${startCmd}
 \`\`\`
 
 ## Documentation
@@ -1175,21 +1996,72 @@ Visit [https://boodooframework.com](https://boodooframework.com) for components,
 `;
   fs.writeFileSync(path.join(targetDir, 'README.md'), readme);
 
-  console.log(`\n\x1b[32m✔ Project successfully created at ${targetDir}\x1b[0m\n`);
-  console.log('Next steps:');
+  return {
+    templateName,
+    startCmd,
+    isTs,
+  };
+}
+
+export async function main() {
+  console.log(`\n\x1b[35m✨ create-boodoo v${BOODOO_VERSION}\x1b[0m — Instant Boodoo Project Scaffolder\n`);
+
+  const parsed = parseArgs(process.argv.slice(2));
+
+  let projectName = parsed.projectName;
+  if (!projectName) {
+    projectName = await prompt('Project name', 'my-boodoo-app');
+  }
+
+  const targetDir = path.resolve(process.cwd(), projectName);
+
+  if (fs.existsSync(targetDir) && fs.readdirSync(targetDir).length > 0) {
+    console.error(`\x1b[31mError: Target directory '${projectName}' already exists and is not empty.\x1b[0m`);
+    process.exit(1);
+  }
+
+  let choice = parsed.template;
+  if (!choice) {
+    console.log('\nSelect a template:');
+    console.log('  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TS / JS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, RN Web ^0.19.0, Vite ^5.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log(' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, JS / TS, Boodoo Native v' + BOODOO_VERSION + ')\x1b[0m');
+
+    choice = await prompt('Choose template [1-10]', '1');
+  }
+
+  let isTs = parsed.isTs;
+  if (isTs === null) {
+    console.log('\nSelect language:');
+    console.log('  1) JavaScript (JS)');
+    console.log('  2) TypeScript (TS)');
+    const defaultLang = choice === '5' ? '2' : '1';
+    const langChoice = await prompt('Choose language [1-2]', defaultLang);
+    isTs = langChoice === '2' || langChoice.toLowerCase() === 'ts' || langChoice.toLowerCase() === 'typescript';
+  }
+
+  const result = scaffoldProject({ targetDir, projectName, choice, isTs });
+
+  console.log(`\n\x1b[32m✔ Project successfully created at ${targetDir}\x1b[0m`);
+  console.log(`Template: ${result.templateName} (${isTs ? 'TypeScript' : 'JavaScript'})`);
+  console.log('\nNext steps:');
   console.log(`  cd ${projectName}`);
   console.log('  npm install');
-  let startCmd = '  npm start';
-  if (choice === '2' || choice === '3' || choice === '9') {
-    startCmd = '  npm run dev';
-  } else if (choice === '10') {
-    startCmd = '  npx expo start';
-  }
-  console.log(startCmd);
+  console.log(`  ${result.startCmd}`);
   console.log('');
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only invoke main when run directly as CLI
+if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

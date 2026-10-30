@@ -1,0 +1,112 @@
+// =====================================================================
+// BOODOO LESS — Form Pickers (Color & Date Wrappers & Swatches)
+// =====================================================================
+
+// Color and Date Wrappers
+.form-color-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--boodoo-border-color, #dfe3ee);
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  background-color: var(--boodoo-card-bg, #fff);
+
+  .form-control-color {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+  }
+}
+
+.form-picker-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .form-picker-icon {
+    position: absolute;
+    left: 0.875rem;
+    pointer-events: none;
+  }
+
+  .form-control {
+    padding-left: 2.5rem;
+  }
+}
+
+// Swatch Group & Swatch Items
+.swatch-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  flex: 0 0 2rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+  border: 2px solid transparent;
+  cursor: pointer;
+  background-clip: padding-box;
+  box-sizing: border-box;
+  line-height: 1;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &.active,
+  &:focus-visible,
+  &[aria-checked="true"] {
+    outline: none;
+    border-color: var(--boodoo-body-color);
+    box-shadow: 0 0 0 2px var(--boodoo-body-bg, #fff), 0 0 0 4px var(--boodoo-primary);
+    transform: scale(1.1);
+    z-index: 2;
+
+    &::after {
+      content: "✓";
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: bold;
+      line-height: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &.swatch-circle {
+    border-radius: 50%;
+  }
+
+  &.swatch-sm {
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    flex: 0 0 1.5rem;
+  }
+
+  &.swatch-lg {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    flex: 0 0 2.5rem;
+  }
+}

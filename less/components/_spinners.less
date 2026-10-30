@@ -1,0 +1,43 @@
+// =====================================================================
+// BOODOO LESS — Spinners
+// =====================================================================
+
+// Spinners
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+  border: 0.25em solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: boodoo-spin 0.75s linear infinite;
+}
+
+.spinner-grow {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+  background-color: currentcolor;
+  border-radius: 50%;
+  opacity: 0;
+  animation: boodoo-grow 0.75s linear infinite;
+}
+
+@keyframes boodoo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes boodoo-grow {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}

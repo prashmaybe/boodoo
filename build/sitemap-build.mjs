@@ -1,5 +1,5 @@
 // boodoo sitemap generator
-// Generates site/sitemap.xml dynamically from docs-nav.json and site pages
+// Generates site/sitemap.xml dynamically from docs-nav.json, site pages, and examples
 // Run: node build/sitemap-build.mjs
 
 import fs from 'node:fs';
@@ -11,12 +11,14 @@ const root = path.resolve(__dirname, '..');
 const navFile = path.join(root, 'site', 'data', 'docs-nav.json');
 const sitemapFile = path.join(root, 'site', 'sitemap.xml');
 const srcDir = path.join(root, 'site', 'src');
+const examplesDir = path.join(root, 'site', 'examples');
 
 const BASE_URL = 'https://boodooframework.com';
 const TODAY = new Date().toISOString().split('T')[0];
 
 function walkHtml(dir, base = '') {
   const results = [];
+  if (!fs.existsSync(dir)) return results;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith('_')) continue;
     const full = path.join(dir, entry.name);
@@ -31,12 +33,22 @@ function walkHtml(dir, base = '') {
 }
 
 const docsPages = walkHtml(srcDir);
+const examplePages = walkHtml(examplesDir);
 
 const urls = [
   { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'weekly' },
   { loc: `${BASE_URL}/examples/index.html`, priority: '0.9', changefreq: 'weekly' },
   { loc: `${BASE_URL}/llms.txt`, priority: '0.5', changefreq: 'monthly' }
 ];
+
+for (const relPath of examplePages) {
+  if (relPath === 'index.html') continue;
+  urls.push({
+    loc: `${BASE_URL}/examples/${relPath}`,
+    priority: '0.8',
+    changefreq: 'monthly'
+  });
+}
 
 for (const relPath of docsPages) {
   let priority = '0.7';

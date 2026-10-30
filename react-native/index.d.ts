@@ -1,14 +1,42 @@
 import type { ComponentType, ReactNode } from 'react';
 import type { BoodooColorTokens, BoodooSpacingScale, BoodooRadiiScale, BoodooTypographyTokens, BoodooShadowTokens } from '../tokens/index.d.ts';
 
+export interface BoodooComponentSpacing {
+  baseSpacer?: number;
+  card?: number;
+  cardPadding?: number;
+  cardTitleMarginBottom?: number;
+  cardContentMarginVertical?: number;
+  cardActionsMarginTop?: number;
+  cardActionsGap?: number;
+  surface?: number;
+  surfacePadding?: number;
+  statWidgetPadding?: number;
+  pricingCardPadding?: number;
+  buttonPaddingVerticalSm?: number;
+  buttonPaddingHorizontalSm?: number;
+  buttonPaddingVerticalMd?: number;
+  buttonPaddingHorizontalMd?: number;
+  buttonPaddingVerticalLg?: number;
+  buttonPaddingHorizontalLg?: number;
+  inputMarginBottom?: number;
+  inputPaddingVertical?: number;
+  inputPaddingHorizontal?: number;
+  [key: string]: number | undefined;
+}
+
 export interface BoodooTheme {
   dark: boolean;
   colors: Record<string, string>;
-  spacing: BoodooSpacingScale;
+  spacing: BoodooSpacingScale & Record<string, any>;
+  componentSpacing: BoodooComponentSpacing;
   radii: BoodooRadiiScale;
   typography: BoodooTypographyTokens;
   shadows: BoodooShadowTokens;
 }
+
+export declare const createComponentSpacing: (baseSpacer?: number, overrides?: Partial<BoodooComponentSpacing>) => BoodooComponentSpacing;
+export declare const defaultComponentSpacing: BoodooComponentSpacing;
 
 export declare const defaultLightTheme: BoodooTheme;
 export declare const defaultDarkTheme: BoodooTheme;
@@ -133,4 +161,29 @@ export declare const FilterPill: ComponentType<any>;
 export declare const BarChart: ComponentType<any>;
 export declare const DonutChart: ComponentType<any>;
 export declare const LineChart: ComponentType<any>;
+
+// Extended Mobile Components (v1.2.3)
+export declare const SpeedDial: ComponentType<any> & {
+  Action: ComponentType<any>;
+};
+export declare const SpeedDialAction: ComponentType<any>;
+export declare const BentoGrid: ComponentType<any>;
+export declare const BentoItem: ComponentType<any>;
+export declare const OtpInput: ComponentType<any>;
+export declare const PinInput: ComponentType<any>;
+export declare const Rating: ComponentType<any>;
+export declare const StarRating: ComponentType<any>;
+export declare const ChipInput: ComponentType<any>;
+export declare const TagInput: ComponentType<any>;
+export declare const EmptyState: ComponentType<any>;
+export declare const Timeline: ComponentType<any>;
+export declare const TimelineItem: ComponentType<any>;
+export declare const StepIndicator: ComponentType<any>;
+export declare const StepperWizard: ComponentType<any>;
+export declare const Accordion: ComponentType<any> & {
+  Item: ComponentType<any>;
+};
+export declare const AccordionItem: ComponentType<any>;
+export declare const SwipeActionItem: ComponentType<any>;
+export declare const SwipeableRow: ComponentType<any>;
 

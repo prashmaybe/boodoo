@@ -1,0 +1,66 @@
+// =====================================================================
+// BOODOO LESS — Segmented Control
+// =====================================================================
+
+// Segmented Control
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--boodoo-gray-200, #e2e8f0);
+  border-radius: 9999px;
+  padding: 0.25rem;
+  user-select: none;
+  border: 1px solid var(--boodoo-border-color, rgba(0, 0, 0, 0.06));
+
+  &.segmented-control-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &.segmented-control-sm {
+    padding: 0.15rem;
+    font-size: 0.875rem;
+
+    .segmented-item {
+      padding: 0.25rem 0.65rem;
+    }
+  }
+
+  &.segmented-control-lg {
+    padding: 0.35rem;
+    font-size: 1.125rem;
+
+    .segmented-item {
+      padding: 0.5rem 1.25rem;
+    }
+  }
+}
+
+.segmented-item {
+  flex: 1 1 0;
+  text-align: center;
+  padding: 0.35rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  outline: none;
+
+  &:hover {
+    color: var(--boodoo-primary, #7c3aed);
+  }
+
+  &.active,
+  &[aria-selected="true"] {
+    background-color: #ffffff;
+    color: var(--boodoo-primary, #7c3aed);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+  }
+}

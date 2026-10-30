@@ -54,15 +54,15 @@ export function Header({
       ]}
       {...props}
     >
-      <View style={{ minWidth: 40, alignItems: 'flex-start' }}>{leftComponent}</View>
-      <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={styles.headerSideLeft}>{leftComponent}</View>
+      <View style={styles.headerCenter}>
         {typeof centerComponent === 'string' ? (
-          <Text variant="h4" style={{ fontWeight: '700' }}>{centerComponent}</Text>
+          <Text variant="h4" style={styles.headerTitleText}>{centerComponent}</Text>
         ) : (
           centerComponent
         )}
       </View>
-      <View style={{ minWidth: 40, alignItems: 'flex-end' }}>{rightComponent}</View>
+      <View style={styles.headerSideRight}>{rightComponent}</View>
     </View>
   );
 }
@@ -147,10 +147,17 @@ Appbar.BackAction = function AppbarBackAction({ onPress, color, style, ...props 
  */
 export const Drawer = {};
 
-Drawer.Section = function DrawerSection({ title, children, style }) {
+Drawer.Section = function DrawerSection({ title, children, style, marginVertical }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const sp = theme.spacing || {};
+  const effMarginVertical =
+    marginVertical ??
+    cs.drawerSectionMarginVertical ??
+    sp.drawerSectionMarginVertical ??
+    8;
   return (
-    <View style={[{ marginVertical: theme.spacing[2] }, style]}>
+    <View style={[{ marginVertical: effMarginVertical }, style]}>
       {title ? (
         <RNText
           style={[
@@ -171,11 +178,22 @@ Drawer.Item = function DrawerItem({
   icon,
   active = false,
   onPress,
+  paddingVertical,
+  paddingHorizontal,
   style,
   labelStyle,
   ...props
 }) {
   const theme = useTheme();
+  const cs = theme.componentSpacing || {};
+  const effPaddingVertical =
+    paddingVertical ??
+    cs.drawerItemPaddingVertical ??
+    10;
+  const effPaddingHorizontal =
+    paddingHorizontal ??
+    cs.drawerItemPaddingHorizontal ??
+    16;
 
   return (
     <TouchableOpacity
@@ -190,12 +208,14 @@ Drawer.Item = function DrawerItem({
               : '#ede9fe'
             : 'transparent',
           borderRadius: theme.radii.full,
+          paddingVertical: effPaddingVertical,
+          paddingHorizontal: effPaddingHorizontal,
         },
         style,
       ]}
       {...props}
     >
-      {icon ? <View style={{ marginRight: 12 }}>{icon}</View> : null}
+      {icon ? <View style={styles.drawerIconMargin}>{icon}</View> : null}
       <RNText
         style={[
           styles.drawerLabel,
@@ -228,7 +248,7 @@ export function BottomNavigation({
 
   return (
     <View style={[styles.bottomNavContainer, style]}>
-      <View style={{ flex: 1 }}>
+      <View style={styles.bottomNavScene}>
         {renderScene ? renderScene({ route: activeRoute, jumpTo: onIndexChange }) : null}
       </View>
       <View
@@ -252,7 +272,7 @@ export function BottomNavigation({
               style={styles.bottomNavItem}
             >
               {route.icon ? (
-                <View style={{ marginBottom: 4 }}>
+                <View style={styles.bottomNavIconWrapper}>
                   {typeof route.icon === 'function'
                     ? route.icon({ color: isActive ? theme.colors.primary : theme.colors.textMuted })
                     : route.icon}
@@ -349,8 +369,8 @@ const styles = StyleSheet.create({
   drawerItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
     marginHorizontal: 12,
     marginVertical: 4,
   },
@@ -382,5 +402,29 @@ const styles = StyleSheet.create({
   pageControlDot: {
     height: 8,
     borderRadius: 4,
+  },
+  headerSideLeft: {
+    minWidth: 40,
+    alignItems: 'flex-start',
+  },
+  headerCenter: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  headerTitleText: {
+    fontWeight: '700',
+  },
+  headerSideRight: {
+    minWidth: 40,
+    alignItems: 'flex-end',
+  },
+  drawerIconMargin: {
+    marginRight: 12,
+  },
+  bottomNavScene: {
+    flex: 1,
+  },
+  bottomNavIconWrapper: {
+    marginBottom: 4,
   },
 });

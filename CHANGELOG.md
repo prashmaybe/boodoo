@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.3] - 2026-10-30
+
+### Added
+- **Modular LESS Architecture & 1:1 SCSS Feature Parity (`less/`)**:
+  - Restructured the Less preprocessor distribution from a single monolithic file into a fully modular partial architecture mirroring `scss/` 1:1.
+  - Core partials: `less/_variables.less`, `less/_mixins.less`, `less/_root.less`, `less/_reboot.less`, `less/_grid.less`, `less/_helpers.less`, `less/_utilities.less`, `less/_animations.less`, and `less/mixins/_utility-api.less`.
+  - Content partials: `less/content/` (`_typography.less`, `_images.less`, `_tables.less`, `_figures.less`).
+  - Forms partials: `less/forms/` (`_control.less`, `_select.less`, `_layout.less`, `_checks.less`, `_range.less`, `_range-dual.less`, `_input-group.less`, `_floating-labels.less`, `_otp.less`, `_dropzone.less`, `_pickers.less`, `_validation.less`).
+  - Components partials: 52 modular partials in `less/components/` encompassing all framework components (accordion, modal, buttons, card, navbar, offcanvas, alerts, badge, dropdown, etc.).
+  - Standalone modular subpath entry points: `less/boodoo-grid.less`, `less/boodoo-reboot.less`, `less/boodoo-utilities.less`, and `less/boodoo-animations.less`.
+  - Master entry point `less/boodoo.less` cleanly orchestrates all modules with zero syntax deprecations and compiles to `dist/css/boodoo.less.css`.
+- **React Native Spacing Customization & Multi-Density Engine (`react-native/`)**:
+  - Resolved bloated mobile padding and margins across all React Native primitives (`buttons.js`, `inputs.js`, `surfaces.js`, `lists.js`, `feedback.js`, `data-display.js`, `navigation.js`, `overlays.js`).
+  - Added runtime density customization via `setThemeSpacing()` and `createSpacing()` for compact, default, and expansive layouts.
+  - Enforced zero inline style literals (`style={{`) with 100% `StyleSheet.create()` encapsulation across all mobile components.
+- **create-boodoo TypeScript & JavaScript Starter Scaffolding (`bin/create-boodoo.mjs`)**:
+  - Added interactive and CLI flag (`--ts` / `--js`) choice across all 10 starter app templates (Next.js, Vite React, Vue, Svelte, Angular, Astro, Solid, Electron, React Native, HTML5).
+- **Server-Side `www` to non-`www` Redirection (`site/.htaccess`, `site/_redirects`)**:
+  - Implemented permanent 301 rewrite rules in `.htaccess` and `_redirects` to redirect all incoming `www.*` requests and insecure HTTP traffic directly to canonical non-www `https://boodooframework.com`.
+- **Comprehensive Canonical URL & Open Graph Standardization (`site/`, `site/examples/`, `site/404.html`)**:
+  - Standardized `<link rel="canonical">` and `<meta property="og:url">` across 100% of website pages (146 deployable routes total: landing page, 404 page, all 129 docs pages, and all 15 example pages).
+  - Added full Open Graph metadata and valid canonical tags to all standalone example templates (`album`, `blog`, `checkout`, `cover`, `dashboard`, `features`, `heroes`, `navbar-fixed`, `pricing`, `sign-in`, `starter`, `html-starter`, `react-vite`, `vue-vite`).
+  - Updated `build/sitemap-build.mjs` to dynamically index all example pages alongside documentation pages with exact 1:1 canonical parity.
+- **Repository Hygiene & Deployment Build Output Exclusion (`.gitignore`)**:
+  - Removed the compiled `www/` distribution directory from repository source control and added `www/` to `.gitignore` to keep the codebase lean and free of redundant static build output.
+- **Automated Redirection & Canonical Testing (`tests/framework.test.mjs`)**:
+  - Added test assertions enforcing 100% canonical URL coverage, non-www canonical format, HTTPS protocol enforcement, and web-server rewrite rules on every build.
+
+### Changed
+- **Framework & Package Version Alignment**:
+  - Bumped latest framework version to v1.2.3 across package manifests, CLI scaffolders, starters, and documentation site.
+
+---
+
 ## [1.2.2] - 2026-10-24
 
 ### Added

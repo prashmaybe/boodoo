@@ -147,9 +147,9 @@ export function Alert({
         style,
       ]}
     >
-      {icon ? <View style={{ marginRight: 10 }}>{icon}</View> : null}
-      <View style={{ flex: 1 }}>
-        {title ? <Text style={{ fontWeight: '700', marginBottom: 2 }}>{title}</Text> : null}
+      {icon ? <View style={styles.alertIconMargin}>{icon}</View> : null}
+      <View style={styles.flexOne}>
+        {title ? <Text style={styles.alertTitle}>{title}</Text> : null}
         {typeof children === 'string' ? <Text variant="muted">{children}</Text> : children}
       </View>
     </View>
@@ -184,8 +184,8 @@ export function Banner({
       {...props}
     >
       <View style={styles.bannerRow}>
-        {icon ? <View style={{ marginRight: 12 }}>{icon}</View> : null}
-        <View style={{ flex: 1 }}>
+        {icon ? <View style={styles.bannerIconMargin}>{icon}</View> : null}
+        <View style={styles.flexOne}>
           <RNText style={[styles.bannerText, { color: theme.colors.text }]}>
             {children}
           </RNText>
@@ -197,7 +197,7 @@ export function Banner({
             <TouchableOpacity
               key={act.label || idx}
               onPress={act.onPress}
-              style={{ marginLeft: 16 }}
+              style={styles.bannerActionItem}
             >
               <RNText style={[styles.bannerActionText, { color: theme.colors.primary }]}>
                 {act.label}
@@ -254,7 +254,7 @@ export function Toast({
             if (action.onPress) action.onPress();
             if (onClose) onClose();
           }}
-          style={{ marginLeft: 12 }}
+          style={styles.snackbarActionBtn}
         >
           <RNText style={[styles.snackbarAction, { color: theme.colors.primary }]}>
             {action.label}
@@ -321,5 +321,24 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 13,
     textTransform: 'uppercase',
+  },
+  flexOne: {
+    flex: 1,
+  },
+  alertIconMargin: {
+    marginRight: 10,
+  },
+  alertTitle: {
+    fontWeight: '700',
+    marginBottom: 2,
+  },
+  bannerIconMargin: {
+    marginRight: 12,
+  },
+  bannerActionItem: {
+    marginLeft: 16,
+  },
+  snackbarActionBtn: {
+    marginLeft: 12,
   },
 });

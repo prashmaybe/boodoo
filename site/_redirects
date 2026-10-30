@@ -1,0 +1,17 @@
+# BOODOO Static Hosting Redirects (_redirects)
+# Redirect www to non-www domain
+https://www.boodooframework.com/* https://boodooframework.com/:splat 301!
+http://www.boodooframework.com/*  https://boodooframework.com/:splat 301!
+http://boodooframework.com/*      https://boodooframework.com/:splat 301!
+
+# Docs redirect to introduction
+/docs  /docs/getting-started/introduction.html 301
+/docs/ /docs/getting-started/introduction.html 301
+
+# Privacy & Terms redirects
+/privacy      /docs/about/privacy.html 301
+/privacy.html /docs/about/privacy.html 301
+/terms        /docs/about/terms.html 301
+/terms.html   /docs/about/terms.html 301
+/terms-and-conditions /docs/about/terms.html 301
+

@@ -4,7 +4,7 @@
  */
 
 // Theme Context & Presets
-export { BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme } from './theme.js';
+export { BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme, createComponentSpacing, defaultComponentSpacing } from './theme.js';
 export { boodooPaperLightTheme, boodooPaperDarkTheme } from './paper.js';
 
 // Typography
@@ -33,6 +33,8 @@ export {
   IconButton,
   FAB,
   SegmentedButtons,
+  SpeedDial,
+  SpeedDialAction,
 } from './buttons.js';
 
 // Surfaces & Cards
@@ -44,6 +46,8 @@ export {
   PricingCard,
   Tile,
   StatWidget,
+  BentoGrid,
+  BentoItem,
 } from './surfaces.js';
 
 // Forms & Inputs
@@ -68,6 +72,12 @@ export {
   Select,
   Picker,
   ToggleButton,
+  OtpInput,
+  PinInput,
+  Rating,
+  StarRating,
+  ChipInput,
+  TagInput,
 } from './inputs.js';
 
 // Data Display
@@ -81,6 +91,11 @@ export {
   BarChart,
   DonutChart,
   LineChart,
+  EmptyState,
+  Timeline,
+  TimelineItem,
+  StepIndicator,
+  StepperWizard,
 } from './data-display.js';
 
 // Feedback & Status
@@ -102,6 +117,10 @@ export {
   ListItem,
   DataTable,
   Table,
+  Accordion,
+  AccordionItem,
+  SwipeActionItem,
+  SwipeableRow,
 } from './lists.js';
 
 // Navigation & Headers

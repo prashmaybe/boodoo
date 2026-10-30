@@ -85,19 +85,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    padding: 20,
+    padding: 16,
   },
   header: {
-    marginBottom: 24,
+    marginBottom: 20,
     alignItems: 'center',
     textAlign: 'center',
   },
   badge: {
-    marginBottom: 12,
+    marginBottom: 10,
   },
   title: {
     textAlign: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   subtitle: {
     textAlign: 'center',

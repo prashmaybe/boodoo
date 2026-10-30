@@ -1,0 +1,96 @@
+// =====================================================================
+// BOODOO LESS — Tables
+// =====================================================================
+
+.table {
+  --boodoo-table-bg: transparent;
+  --boodoo-table-color: var(--boodoo-body-color);
+  --boodoo-table-border-color: var(--boodoo-border-color);
+  --boodoo-table-accent-bg: transparent;
+  --boodoo-table-striped-color: var(--boodoo-body-color);
+  --boodoo-table-striped-bg: rgba(0, 0, 0, 0.04);
+  --boodoo-table-active-color: var(--boodoo-body-color);
+  --boodoo-table-active-bg: rgba(124, 58, 237, 0.08);
+  --boodoo-table-hover-color: var(--boodoo-body-color);
+  --boodoo-table-hover-bg: rgba(0, 0, 0, 0.06);
+
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--boodoo-table-color);
+  vertical-align: top;
+  border-color: var(--boodoo-table-border-color);
+
+  > :not(caption) > * > * {
+    padding: 0.75rem 0.75rem;
+    background-color: var(--boodoo-table-bg);
+    border-bottom-width: var(--boodoo-border-width, 1px);
+    box-shadow: inset 0 0 0 9999px var(--boodoo-table-accent-bg);
+  }
+
+  > tbody {
+    vertical-align: inherit;
+  }
+
+  > thead {
+    vertical-align: bottom;
+  }
+
+  > :not(:first-child) {
+    border-top: 2px solid currentcolor;
+  }
+
+  th {
+    font-weight: 600;
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+  }
+
+  > caption {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: var(--boodoo-body-secondary-color);
+    text-align: left;
+  }
+}
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) > * {
+    --boodoo-table-accent-bg: var(--boodoo-table-striped-bg);
+    color: var(--boodoo-table-striped-color);
+  }
+}
+
+.table-hover {
+  > tbody > tr:hover > * {
+    --boodoo-table-accent-bg: var(--boodoo-table-hover-bg);
+    color: var(--boodoo-table-hover-color);
+  }
+}
+
+.table-bordered {
+  border: 1px solid var(--boodoo-table-border-color);
+
+  > :not(caption) > * > * {
+    border-width: 1px;
+  }
+}
+
+.table-borderless {
+  > :not(caption) > * > * {
+    border-bottom-width: 0;
+  }
+  > :not(:first-child) {
+    border-top-width: 0;
+  }
+}
+
+.table-sm {
+  > :not(caption) > * > * {
+    padding: 0.25rem 0.25rem;
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

@@ -67,6 +67,13 @@ React Native mobile components (`react-native/`) must remain modular and strictl
 1. **Submodule Architecture**: Components must be organized into dedicated, cohesive submodules (`typography.js`, `layout.js`, `buttons.js`, `surfaces.js`, `inputs.js`, `data-display.js`, `feedback.js`, `lists.js`, `navigation.js`, `overlays.js`, `theme.js`, `paper.js`) re-exported via `react-native/index.js`. Never collapse all components into a single giant monolithic file.
 2. **Pure Primitives**: Mobile components must rely exclusively on core React Native primitives (`View`, `Text`, `StyleSheet`, `Pressable`, `TextInput`, `Modal`) — zero DOM access, zero uncompiled CSS, and zero mandatory external native dependencies.
 
+## React Native StyleSheet-Only & Zero Inline Styles Rule
+React Native mobile components (`react-native/`) and starter applications must define all styling and layout rules via `StyleSheet.create()` and strictly avoid inline style literals:
+
+1. **Zero Inline Style Objects in JSX**: Never pass inline style object literals (`style={{ ... }}`) into React Native component render functions or JSX markup. Inline object literals allocate new memory references on every render cycle, triggering unnecessary re-renders in children and generating garbage collection pressure.
+2. **StyleSheet Encapsulation & Composition**: All static layout, dimensions, alignments, and typography rules must be declared outside render functions via `StyleSheet.create({ ... })`. Dynamic values derived from props, theme tokens, or density spacing helpers must compose via array references (`[styles.base, dynamicStyle]`) or computed style functions, keeping component code declarative, maintainable, and performant.
+3. **Automated Zero Inline Styles Enforcement**: `tests/framework.test.mjs` must enforce zero inline style occurrences (`style={{`) across all production React Native components (`react-native/**/*.js`), preventing styling regressions and guaranteeing optimal mobile runtime performance.
+
 ## DOM XSS Prevention & Safe Insertion Rule
 Untrusted or runtime user data (such as file names, labels, user input strings, and query parameters) must never be directly interpolated into HTML strings or assigned via `innerHTML`:
 
@@ -114,7 +121,7 @@ Every component added or modified in Boodoo must pass all 14 criteria of the pro
 1. **API & Behavior**: Documented props, variants, defaults, and custom event dispatches (`boodoo:*`). Supports both controlled (programmatic) and uncontrolled modes. Full state handling for loading, empty, disabled, error, active, and boundary conditions.
 2. **Accessibility Standards (WCAG 2.2 AA Target)**: Semantic HTML tags (`<button>`, `<dialog>`, `<nav>`, `<input>`) with mandatory `id` and/or `name` attributes for form controls. Text nodes must be wrapped in semantic text elements, never raw container blocks. Keyboard reachable with visible focus indicators, roving tabindex, ARIA roles/states, polite/assertive live announcements, and `prefers-reduced-motion` compliance.
 3. **Engineering & Security**: 100% automated test coverage in `tests/framework.test.mjs`. Dual TypeScript definitions emitted in `dist/js/boodoo.d.ts`. Safe DOM construction with zero unescaped HTML interpolation. Synchronous lifecycle teardown with `dispose()`, event listener dereferencing, and object URL revocation.
-4. **Multi-Platform Validation**: Verified cross-browser and mobile responsive. React Native components must rely strictly on core native primitives (`View`, `Text`, `Pressable`, `StyleSheet`) with zero DOM access.
+4. **Multi-Platform Validation**: Verified cross-browser and mobile responsive. React Native components must rely strictly on core native primitives (`View`, `Text`, `Pressable`, `StyleSheet`) with zero DOM access, and use `StyleSheet.create()` exclusively with zero inline style literals (`style={{`).
 
 ## Zero Runtime Dependency Guarantee Rule
 Boodoo core and its client runtime must remain 100% free of external runtime npm dependencies:
