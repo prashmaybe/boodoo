@@ -2054,8 +2054,9 @@ test('Boodoo website www to non-www redirection and canonical URL integrity', ()
     const canonicalUrl = hrefMatch[1];
 
     // Canonical URL must be HTTPS and non-www
-    assert.ok(canonicalUrl.startsWith('https://boodooframework.com'), `${rel} canonical URL must start with https://boodooframework.com: ${canonicalUrl}`);
-    assert.ok(!canonicalUrl.includes('www.boodooframework.com'), `${rel} canonical URL must not contain www: ${canonicalUrl}`);
+    const parsedCanonical = new URL(canonicalUrl);
+    assert.strictEqual(parsedCanonical.protocol, 'https:', `${rel} canonical URL must use HTTPS: ${canonicalUrl}`);
+    assert.strictEqual(parsedCanonical.hostname, 'boodooframework.com', `${rel} canonical URL hostname must be boodooframework.com: ${canonicalUrl}`);
 
     // og:url meta tag must match canonical URL
     const ogMatch = content.match(/<meta\s+[^>]*property=["']og:url["'][^>]*>/i);
