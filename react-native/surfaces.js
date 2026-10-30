@@ -382,6 +382,50 @@ export function StatWidget({
   );
 }
 
+/**
+ * BentoGrid & BentoItem
+ * Modern dashboard responsive mosaic grid layout.
+ */
+export function BentoItem({
+  span = 1,
+  children,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const isFull = span === 2;
+
+  const dynamicItem = {
+    width: isFull ? '100%' : '48%',
+    backgroundColor: theme.colors.surface,
+    borderColor: theme.colors.border,
+    borderRadius: theme.radii.lg,
+  };
+
+  return (
+    <View style={[styles.bentoItemBase, dynamicItem, style]} {...props}>
+      {children}
+    </View>
+  );
+}
+
+export function BentoGrid({
+  children,
+  gap = 12,
+  style,
+  ...props
+}) {
+  const dynamicGrid = {
+    gap: gap,
+  };
+
+  return (
+    <View style={[styles.bentoGridBase, dynamicGrid, style]} {...props}>
+      {children}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   cardBase: {
     overflow: 'hidden',
@@ -482,5 +526,16 @@ const styles = StyleSheet.create({
   },
   statTrend: {
     fontWeight: '600',
+  },
+  bentoGridBase: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  bentoItemBase: {
+    padding: 16,
+    borderWidth: 1,
+    overflow: 'hidden',
   },
 });

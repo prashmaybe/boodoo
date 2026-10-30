@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text as RNText,
@@ -453,6 +453,101 @@ export function SegmentedButtons({
   );
 }
 
+/**
+ * SpeedDial & SpeedDialAction
+ * Expanding floating action button menu with labeled sub-actions.
+ */
+export function SpeedDialAction({
+  icon,
+  title,
+  onPress,
+  color,
+  style,
+  ...props
+}) {
+  const theme = useTheme();
+  const bg = color || theme.colors.surface;
+  const textColor = theme.colors.text;
+
+  const dynamicLabel = {
+    backgroundColor: theme.colors.surface,
+    borderColor: theme.colors.border,
+  };
+
+  const dynamicBtn = {
+    backgroundColor: bg,
+    borderColor: theme.colors.border,
+  };
+
+  return (
+    <View style={[styles.speedDialActionRow, style]} {...props}>
+      {title ? (
+        <View style={[styles.speedDialActionLabelBox, dynamicLabel]}>
+          <RNText style={[styles.speedDialActionLabelText, { color: textColor }]}>{title}</RNText>
+        </View>
+      ) : null}
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={onPress}
+        style={[styles.speedDialActionBtn, dynamicBtn]}
+      >
+        {typeof icon === 'string' ? (
+          <RNText style={[styles.speedDialActionIcon, { color: theme.colors.primary }]}>{icon}</RNText>
+        ) : icon}
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+export function SpeedDial({
+  open,
+  defaultOpen = false,
+  onOpen,
+  onClose,
+  icon = '+',
+  openIcon = '✕',
+  color,
+  style,
+  children,
+  ...props
+}) {
+  const theme = useTheme();
+  const [internalOpen, setInternalOpen] = useState(defaultOpen);
+  const isOpen = open !== undefined ? open : internalOpen;
+
+  const toggle = () => {
+    if (isOpen) {
+      if (onClose) onClose();
+      else setInternalOpen(false);
+    } else {
+      if (onOpen) onOpen();
+      else setInternalOpen(true);
+    }
+  };
+
+  const fabColor = color || theme.colors.primary;
+
+  return (
+    <View style={[styles.speedDialWrapper, style]} pointerEvents="box-none" {...props}>
+      {isOpen ? (
+        <View style={styles.speedDialActionsContainer} pointerEvents="box-none">
+          {children}
+        </View>
+      ) : null}
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={toggle}
+        style={[styles.speedDialMainFab, { backgroundColor: fabColor }]}
+      >
+        <RNText style={styles.speedDialMainIcon}>
+          {isOpen ? openIcon : icon}
+        </RNText>
+      </TouchableOpacity>
+    </View>
+  );
+}
+SpeedDial.Action = SpeedDialAction;
+
 const styles = StyleSheet.create({
   rowCentered: {
     flexDirection: 'row',
@@ -526,5 +621,72 @@ const styles = StyleSheet.create({
   },
   fabIconMargin: {
     marginRight: 8,
+  },
+  speedDialWrapper: {
+    position: 'absolute',
+    bottom: 24,
+    right: 24,
+    alignItems: 'flex-end',
+    zIndex: 1000,
+  },
+  speedDialActionsContainer: {
+    alignItems: 'flex-end',
+    marginBottom: 12,
+    gap: 10,
+  },
+  speedDialActionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  speedDialActionLabelBox: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    marginRight: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  speedDialActionLabelText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  speedDialActionBtn: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  speedDialActionIcon: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  speedDialMainFab: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 6,
+    elevation: 6,
+  },
+  speedDialMainIcon: {
+    color: '#ffffff',
+    fontSize: 24,
+    fontWeight: '700',
   },
 });

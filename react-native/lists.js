@@ -152,21 +152,77 @@ List.Icon = function ListIcon({ icon, color, style }) {
   );
 };
 
-List.Accordion = function ListAccordion({
-  title,
-  description,
-  left,
-  right,
-  expanded = false,
-  onPress,
+export function Accordion({
+  expandedIndex,
+  defaultExpandedIndex = null,
+  onIndexChange,
+  allowMultiple = false,
   children,
   style,
+  ...props
 }) {
-  const [internalOpen, setInternalOpen] = useState(false);
+  const [internalIndices, setInternalIndices] = useState(
+    defaultExpandedIndex !== null ? [defaultExpandedIndex] : []
+  );
+
+  const activeIndices = expandedIndex !== undefined
+    ? (Array.isArray(expandedIndex) ? expandedIndex : [expandedIndex])
+    : internalIndices;
+
+  const handleToggle = (idx) => {
+    let next;
+    if (activeIndices.includes(idx)) {
+      next = allowMultiple ? activeIndices.filter(i => i !== idx) : [];
+    } else {
+      next = allowMultiple ? [...activeIndices, idx] : [idx];
+    }
+    if (onIndexChange) onIndexChange(allowMultiple ? next : (next[0] ?? null));
+    else setInternalIndices(next);
+  };
+
+  return (
+    <View style={[styles.accordionContainer, style]} {...props}>
+      {React.Children.map(children, (child, idx) => {
+        if (!React.isValidElement(child)) return child;
+        const isChildExpanded = child.props.expanded !== undefined
+          ? child.props.expanded
+          : activeIndices.includes(idx);
+        return React.cloneElement(child, {
+          expanded: isChildExpanded,
+          onPress: () => {
+            child.props.onPress?.();
+            handleToggle(idx);
+          },
+        });
+      })}
+    </View>
+  );
+}
+
+export function AccordionItem({
+  title,
+  subtitle,
+  description,
+  expanded = false,
+  defaultExpanded = false,
+  onPress,
+  left,
+  right,
+  children,
+  style,
+  headerStyle,
+  titleStyle,
+  contentStyle,
+  disabled = false,
+  ...props
+}) {
+  const [internalOpen, setInternalOpen] = useState(defaultExpanded);
   const theme = useTheme();
   const isOpen = onPress !== undefined ? expanded : internalOpen;
+  const desc = description || subtitle;
 
   const toggle = () => {
+    if (disabled) return;
     if (onPress) {
       onPress();
     } else {
@@ -174,17 +230,23 @@ List.Accordion = function ListAccordion({
     }
   };
 
+  const headerDynamic = {
+    backgroundColor: theme.colors.surface,
+    borderBottomColor: theme.colors.border,
+  };
+
   return (
-    <View style={[{ overflow: 'hidden' }, style]}>
+    <View style={[styles.accordionItemWrapper, style]} {...props}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={toggle}
+        disabled={disabled}
+        accessibilityRole="button"
+        accessibilityState={{ expanded: isOpen }}
         style={[
           styles.listItem,
-          {
-            backgroundColor: theme.colors.surface,
-            borderBottomColor: theme.colors.border,
-          },
+          headerDynamic,
+          headerStyle,
         ]}
       >
         {left ? <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View> : null}
@@ -193,37 +255,123 @@ List.Accordion = function ListAccordion({
             style={[
               styles.listItemTitle,
               { color: theme.colors.text, fontSize: theme.typography.sizes.base },
+              titleStyle,
             ]}
           >
             {title}
           </RNText>
-          {description ? (
+          {desc ? (
             <RNText
               style={[
                 styles.listItemDescription,
                 { color: theme.colors.textMuted, fontSize: theme.typography.sizes.sm },
               ]}
             >
-              {description}
+              {desc}
             </RNText>
           ) : null}
         </View>
         {right ? (
-          <View style={styles.itemRightMargin}>{right({ isExpanded: isOpen })}</View>
+          <View style={styles.itemRightMargin}>{typeof right === 'function' ? right({ isExpanded: isOpen }) : right}</View>
         ) : (
           <RNText style={[styles.accordionChevron, { color: theme.colors.textMuted }]}>
             {isOpen ? '▲' : '▼'}
           </RNText>
         )}
       </TouchableOpacity>
-      {isOpen ? <View style={styles.accordionBody}>{children}</View> : null}
+      {isOpen ? <View style={[styles.accordionBody, contentStyle]}>{children}</View> : null}
     </View>
   );
-};
+}
 
-List.AccordionGroup = function ListAccordionGroup({ children }) {
-  return <View>{children}</View>;
-};
+Accordion.Item = AccordionItem;
+List.Accordion = AccordionItem;
+List.AccordionGroup = Accordion;
+
+export function SwipeActionItem({
+  children,
+  leftActions = [],
+  rightActions = [],
+  style,
+  contentStyle,
+  ...props
+}) {
+  const theme = useTheme();
+  const [openSide, setOpenSide] = useState(null);
+
+  const containerDynamic = {
+    backgroundColor: theme.colors.surface,
+    borderColor: theme.colors.border,
+  };
+
+  return (
+    <View style={[styles.swipeContainer, containerDynamic, style]} {...props}>
+      {openSide === 'left' && leftActions.length > 0 ? (
+        <View style={styles.swipeLeftRow}>
+          {leftActions.map((act, i) => {
+            const btnDynamic = {
+              backgroundColor: act.color || theme.colors.primary,
+            };
+            return (
+              <TouchableOpacity
+                key={i}
+                onPress={() => { act.onPress?.(); setOpenSide(null); }}
+                style={[styles.swipeActionBtn, btnDynamic]}
+              >
+                {typeof act.icon === 'string' ? (
+                  <RNText style={styles.swipeActionText}>{act.icon}</RNText>
+                ) : act.icon}
+                {act.label ? (
+                  <RNText style={styles.swipeActionLabel}>{act.label}</RNText>
+                ) : null}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      ) : null}
+
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => {
+          if (openSide) setOpenSide(null);
+          else if (rightActions.length > 0) setOpenSide('right');
+        }}
+        onLongPress={() => {
+          if (rightActions.length > 0) setOpenSide(openSide === 'right' ? null : 'right');
+          else if (leftActions.length > 0) setOpenSide(openSide === 'left' ? null : 'left');
+        }}
+        style={[styles.swipeContent, contentStyle]}
+      >
+        {children}
+      </TouchableOpacity>
+
+      {openSide === 'right' && rightActions.length > 0 ? (
+        <View style={styles.swipeRightRow}>
+          {rightActions.map((act, i) => {
+            const btnDynamic = {
+              backgroundColor: act.color || (theme.colors.danger || '#e11d48'),
+            };
+            return (
+              <TouchableOpacity
+                key={i}
+                onPress={() => { act.onPress?.(); setOpenSide(null); }}
+                style={[styles.swipeActionBtn, btnDynamic]}
+              >
+                {typeof act.icon === 'string' ? (
+                  <RNText style={styles.swipeActionText}>{act.icon}</RNText>
+                ) : act.icon}
+                {act.label ? (
+                  <RNText style={styles.swipeActionLabel}>{act.label}</RNText>
+                ) : null}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+export const SwipeableRow = SwipeActionItem;
 
 /**
  * DataTable / Table
@@ -437,8 +585,54 @@ const styles = StyleSheet.create({
   accordionChevron: {
     fontSize: 16,
   },
+  accordionContainer: {
+    overflow: 'hidden',
+  },
+  accordionItemWrapper: {
+    overflow: 'hidden',
+  },
   accordionBody: {
     paddingLeft: 16,
+  },
+  swipeContainer: {
+    position: 'relative',
+    overflow: 'hidden',
+    borderBottomWidth: StyleSheet.hairlineWidth || 1,
+  },
+  swipeContent: {
+    width: '100%',
+  },
+  swipeLeftRow: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    flexDirection: 'row',
+    zIndex: 10,
+  },
+  swipeRightRow: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    flexDirection: 'row',
+    zIndex: 10,
+  },
+  swipeActionBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    minWidth: 64,
+  },
+  swipeActionText: {
+    color: '#ffffff',
+    fontSize: 18,
+  },
+  swipeActionLabel: {
+    color: '#ffffff',
+    fontSize: 12,
+    marginTop: 2,
+    fontWeight: '600',
   },
   paginationCount: {},
   paginationControls: {

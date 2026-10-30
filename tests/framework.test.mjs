@@ -274,12 +274,12 @@ test('React Native modular submodules existence and exports verification', () =>
   const modules = [
     { file: 'typography.js', expected: ['Text', 'Heading'] },
     { file: 'layout.js', expected: ['Box', 'HStack', 'XStack', 'VStack', 'YStack', 'Center', 'ZStack', 'Pressable', 'Grid'] },
-    { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons'] },
-    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget'] },
-    { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton'] },
-    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill', 'BarChart', 'DonutChart'] },
+    { file: 'buttons.js', expected: ['Button', 'ButtonGroup', 'IconButton', 'FAB', 'SegmentedButtons', 'SpeedDial', 'SpeedDialAction'] },
+    { file: 'surfaces.js', expected: ['Card', 'Surface', 'Divider', 'Separator', 'PricingCard', 'Tile', 'StatWidget', 'BentoGrid', 'BentoItem'] },
+    { file: 'inputs.js', expected: ['TextInput', 'Input', 'TextField', 'Textarea', 'TextArea', 'Searchbar', 'SearchBar', 'HelperText', 'Checkbox', 'CheckBox', 'RadioButton', 'Radio', 'RadioGroup', 'Switch', 'Toggle', 'Slider', 'Stepper', 'Select', 'Picker', 'ToggleButton', 'OtpInput', 'PinInput', 'Rating', 'StarRating', 'ChipInput', 'TagInput'] },
+    { file: 'data-display.js', expected: ['Chip', 'Badge', 'Avatar', 'ChatBubble', 'AIStream', 'FilterPill', 'BarChart', 'DonutChart', 'EmptyState', 'Timeline', 'TimelineItem', 'StepIndicator', 'StepperWizard'] },
     { file: 'feedback.js', expected: ['ActivityIndicator', 'Spinner', 'ProgressBar', 'Progress', 'Skeleton', 'Alert', 'Banner', 'Toast', 'Snackbar'] },
-    { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table'] },
+    { file: 'lists.js', expected: ['List', 'ListItem', 'DataTable', 'Table', 'Accordion', 'AccordionItem', 'SwipeActionItem', 'SwipeableRow'] },
     { file: 'navigation.js', expected: ['Appbar', 'Header', 'TopNavigation', 'Drawer', 'BottomNavigation', 'Tabs', 'PageControl'] },
     { file: 'overlays.js', expected: ['Dialog', 'AlertDialog', 'Modal', 'Overlay', 'BottomSheet', 'Actionsheet', 'ActionSheet', 'Sheet', 'Menu', 'Popover', 'Tooltip', 'Portal', 'TouchableRipple'] },
     { file: 'theme.js', expected: ['defaultLightTheme', 'defaultDarkTheme', 'BoodooProvider', 'useTheme'] },
@@ -471,6 +471,38 @@ test('React Native default themes data integrity', () => {
   assert.ok(themeSource.includes('export const defaultDarkTheme'), 'defaultDarkTheme must be declared');
   assert.ok(themeSource.includes('dark: false'), 'defaultLightTheme must have dark: false');
   assert.ok(themeSource.includes('dark: true'), 'defaultDarkTheme must have dark: true');
+});
+
+test('Extended React Native components suite (Accordion, OtpInput, Rating, EmptyState, Timeline, StepIndicator, SpeedDial, BentoGrid)', () => {
+  const indexJs = readFileSync(resolve(rootDir, 'react-native/index.js'), 'utf8');
+  const indexDts = readFileSync(resolve(rootDir, 'react-native/index.d.ts'), 'utf8');
+
+  const newComponents = [
+    'SpeedDial',
+    'SpeedDialAction',
+    'BentoGrid',
+    'BentoItem',
+    'OtpInput',
+    'PinInput',
+    'Rating',
+    'StarRating',
+    'ChipInput',
+    'TagInput',
+    'EmptyState',
+    'Timeline',
+    'TimelineItem',
+    'StepIndicator',
+    'StepperWizard',
+    'Accordion',
+    'AccordionItem',
+    'SwipeActionItem',
+    'SwipeableRow',
+  ];
+
+  for (const comp of newComponents) {
+    assert.ok(indexJs.includes(comp), `react-native/index.js must re-export ${comp}`);
+    assert.ok(indexDts.includes(comp), `react-native/index.d.ts must declare ${comp}`);
+  }
 });
 
 test('SCSS and LESS full component & feature parity verification', () => {
