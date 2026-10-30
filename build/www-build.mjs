@@ -165,6 +165,7 @@ copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
 copy(path.join(root, 'site', '404.html'), '404.html');
 copy(path.join(root, 'site', '404.html'), 'error.html');
 copy(path.join(root, 'site', '.htaccess'), '.htaccess');
+copy(path.join(root, 'site', '_redirects'), '_redirects');
 
 // 6. Write site webmanifest
 fs.writeFileSync(

@@ -2,7 +2,17 @@
 
 RewriteEngine On
 
-# 1. Custom Error Pages for 4xx and 5xx status codes
+# 1. Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# 2. Enforce HTTPS (except local dev)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# 3. Custom Error Pages for 4xx and 5xx status codes
 ErrorDocument 400 /404.html
 ErrorDocument 401 /404.html
 ErrorDocument 403 /404.html
@@ -15,31 +25,31 @@ ErrorDocument 502 /404.html
 ErrorDocument 503 /404.html
 ErrorDocument 504 /404.html
 
-# 2. Redirect /docs or /docs/ to /docs/getting-started/introduction.html
+# 4. Redirect /docs or /docs/ to /docs/getting-started/introduction.html
 RewriteRule ^docs/?$ /docs/getting-started/introduction.html [R=301,L]
 
-# 3. Canonical index.html redirect to root
+# 5. Canonical index.html redirect to root
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
 
-# 4. Redirect non-existent files or directories to custom error page
+# 6. Redirect non-existent files or directories to custom error page
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ - [L,R=404]
 
-# 3. Enable GZIP compression for faster loading
+# 7. Enable GZIP compression for faster loading
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
 </IfModule>
 
-# 4. Security Headers
+# 8. Security Headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
 </IfModule>
 
-# 5. Leverage Browser Caching (mod_expires & mod_headers)
+# 9. Leverage Browser Caching (mod_expires & mod_headers)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"

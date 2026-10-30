@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { resolve, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const rootDir = resolve(import.meta.dirname, '..');
@@ -2002,6 +2002,74 @@ test('create-boodoo CLI scaffolder supports JS and TS options across templates',
     fs.rmSync(tmpBase, { recursive: true, force: true });
   }
 });
+
+test('Boodoo website www to non-www redirection and canonical URL integrity', () => {
+  // 1. Verify .htaccess contains www-to-non-www 301 redirection
+  // 1. Verify .htaccess contains www-to-non-www 301 redirection and HTTPS enforcement
+  const htaccessPath = resolve(rootDir, 'site/.htaccess');
+  assert.ok(existsSync(htaccessPath), 'site/.htaccess must exist');
+  const htaccess = readFileSync(htaccessPath, 'utf8');
+  assert.ok(htaccess.includes('RewriteCond %{HTTP_HOST} ^www\\.'), '.htaccess must match www host condition');
+  assert.ok(htaccess.includes('RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]'), '.htaccess must redirect www to non-www via 301');
+  assert.ok(htaccess.includes('RewriteCond %{HTTPS} off'), '.htaccess must enforce HTTPS');
+  assert.ok(htaccess.includes('RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]'), '.htaccess must redirect HTTP to HTTPS via 301');
+
+  // 2. Verify _redirects contains www-to-non-www rules
+  const redirectsPath = resolve(rootDir, 'site/_redirects');
+  assert.ok(existsSync(redirectsPath), 'site/_redirects must exist');
+  const redirects = readFileSync(redirectsPath, 'utf8');
+  assert.ok(redirects.includes('https://www.boodooframework.com/* https://boodooframework.com/:splat 301!'), '_redirects must redirect www to non-www');
+
+  // 3. Verify canonical tags across all HTML pages in site/
+  function walkHtml(dir) {
+    const results = [];
+    if (!existsSync(dir)) return results;
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('_')) continue;
+      const full = resolve(dir, entry.name);
+      if (entry.isDirectory()) {
+        results.push(...walkHtml(full));
+      } else if (entry.name.endsWith('.html')) {
+        results.push(full);
+      }
+    }
+    return results;
+  }
+
+  const siteHtml = walkHtml(resolve(rootDir, 'site'));
+  const checkedPages = [];
+
+  for (const file of siteHtml) {
+    // Skip template layout and src fragments (they are compiled into site/docs)
+    const rel = relative(resolve(rootDir, 'site'), file).replace(/\\/g, '/');
+    if (rel === 'layout.html' || rel.startsWith('src/')) continue;
+
+    const content = readFileSync(file, 'utf8');
+
+    // Canonical link tag must be present
+    const canonicalMatch = content.match(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i);
+    assert.ok(canonicalMatch, `${rel} must have a <link rel="canonical"> tag`);
+    const hrefMatch = canonicalMatch[0].match(/href=["']([^"']+)["']/i);
+    assert.ok(hrefMatch, `${rel} canonical tag must contain href`);
+    const canonicalUrl = hrefMatch[1];
+
+    // Canonical URL must be HTTPS and non-www
+    assert.ok(canonicalUrl.startsWith('https://boodooframework.com'), `${rel} canonical URL must start with https://boodooframework.com: ${canonicalUrl}`);
+    assert.ok(!canonicalUrl.includes('www.boodooframework.com'), `${rel} canonical URL must not contain www: ${canonicalUrl}`);
+
+    // og:url meta tag must match canonical URL
+    const ogMatch = content.match(/<meta\s+[^>]*property=["']og:url["'][^>]*>/i);
+    assert.ok(ogMatch, `${rel} must have a <meta property="og:url"> tag`);
+    const ogHrefMatch = ogMatch[0].match(/content=["']([^"']+)["']/i);
+    assert.ok(ogHrefMatch, `${rel} og:url must contain content attribute`);
+    assert.equal(ogHrefMatch[1], canonicalUrl, `${rel} og:url must match canonical URL`);
+
+    checkedPages.push(rel);
+  }
+
+  assert.ok(checkedPages.length >= 140, `Must verify canonicals across all site pages (checked ${checkedPages.length})`);
+});
+
 
 
 
