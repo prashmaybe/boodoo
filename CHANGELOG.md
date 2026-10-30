@@ -24,6 +24,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enforced zero inline style literals (`style={{`) with 100% `StyleSheet.create()` encapsulation across all mobile components.
 - **create-boodoo TypeScript & JavaScript Starter Scaffolding (`bin/create-boodoo.mjs`)**:
   - Added interactive and CLI flag (`--ts` / `--js`) choice across all 10 starter app templates (Next.js, Vite React, Vue, Svelte, Angular, Astro, Solid, Electron, React Native, HTML5).
+- **Server-Side `www` to non-`www` Redirection (`site/.htaccess`, `site/_redirects`)**:
+  - Implemented permanent 301 rewrite rules in `.htaccess` and `_redirects` to redirect all incoming `www.*` requests and insecure HTTP traffic directly to canonical non-www `https://boodooframework.com`.
+- **Comprehensive Canonical URL & Open Graph Standardization (`site/`, `site/examples/`, `site/404.html`)**:
+  - Standardized `<link rel="canonical">` and `<meta property="og:url">` across 100% of website pages (146 deployable routes total: landing page, 404 page, all 129 docs pages, and all 15 example pages).
+  - Added full Open Graph metadata and valid canonical tags to all standalone example templates (`album`, `blog`, `checkout`, `cover`, `dashboard`, `features`, `heroes`, `navbar-fixed`, `pricing`, `sign-in`, `starter`, `html-starter`, `react-vite`, `vue-vite`).
+  - Updated `build/sitemap-build.mjs` to dynamically index all example pages alongside documentation pages with exact 1:1 canonical parity.
+- **Repository Hygiene & Deployment Build Output Exclusion (`.gitignore`)**:
+  - Removed the compiled `www/` distribution directory from repository source control and added `www/` to `.gitignore` to keep the codebase lean and free of redundant static build output.
+- **Automated Redirection & Canonical Testing (`tests/framework.test.mjs`)**:
+  - Added test assertions enforcing 100% canonical URL coverage, non-www canonical format, HTTPS protocol enforcement, and web-server rewrite rules on every build.
 
 ### Changed
 - **Framework & Package Version Alignment**:

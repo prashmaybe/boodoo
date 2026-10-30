@@ -81,7 +81,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 29, 2026</span>
+          <span>📅 October 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -98,6 +98,8 @@ order: 7
           <li><span><strong>Modular LESS Architecture</strong>: Restructured <code>less/</code> from a single file into a comprehensive partial architecture (<code>less/forms/*</code>, <code>less/components/*</code>, <code>less/content/*</code>, <code>less/mixins/*</code>) with standalone subpath entry points (<code>boodoo-grid.less</code>, <code>boodoo-reboot.less</code>, <code>boodoo-utilities.less</code>, <code>boodoo-animations.less</code>) and 100% SCSS feature parity.</span></li>
           <li><span><strong>React Native Spacing &amp; Density Engine</strong>: Resolved bloated padding across mobile components and introduced multi-density spacing configurations via <code>setThemeSpacing()</code> and <code>createSpacing()</code> with zero inline styles.</span></li>
           <li><span><strong>create-boodoo TypeScript/JavaScript Choice</strong>: Added full TypeScript and JavaScript template selection (<code>--ts</code> and <code>--js</code> flags) across all 10 starter frameworks.</span></li>
+          <li><span><strong>Server-Side www Redirection &amp; Canonical URL Standardization</strong>: Implemented permanent 301 rewrite rules in <code>.htaccess</code> and <code>_redirects</code> to redirect all <code>www.*</code> domains to canonical non-www, standardized canonical and Open Graph tags across 100% of website pages (146 total routes including all example templates and 404 page), and updated dynamic sitemap generation.</span></li>
+          <li><span><strong>Repository Hygiene &amp; Build Artifact Exclusion</strong>: Removed the compiled <code>www/</code> distribution from repository source control and added <code>www/</code> to <code>.gitignore</code> to keep the repository lean and source-only.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.3 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
         </ul>
       </div>
