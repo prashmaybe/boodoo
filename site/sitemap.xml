@@ -163,7 +163,19 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://boodooframework.com/docs/about/privacy.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://boodooframework.com/docs/about/production-readiness.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://boodooframework.com/docs/about/terms.html</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

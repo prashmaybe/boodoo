@@ -172,7 +172,9 @@
       { "route": "about/vs-react-native-paper", "title": "boodoo vs React Native Paper" },
       { "route": "about/migrate-from-react-native-paper", "title": "Migrate from React Native Paper" },
       { "route": "about/changelog", "title": "Changelog" },
-      { "route": "about/license", "title": "License" }
+      { "route": "about/license", "title": "License" },
+      { "route": "about/privacy", "title": "Privacy policy" },
+      { "route": "about/terms", "title": "Terms and conditions" }
     ]
   }
 ]

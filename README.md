@@ -396,7 +396,7 @@ The full documentation site is in `site/` and deployed at **https://boodooframew
 - **Layout** (containers, grid, columns, gutters, CSS grid, breakpoints)
 - **Content** (typography, images, tables, figures)
 - **Forms** · **Components** · **Helpers** · **Utilities** · **Motion**
-- **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](https://boodooframework.com/docs/about/changelog.html) · [License](https://boodooframework.com/docs/about/license.html)
+- **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](https://boodooframework.com/docs/about/changelog.html) · [License](https://boodooframework.com/docs/about/license.html) · [Privacy](https://boodooframework.com/docs/about/privacy.html) · [Terms](https://boodooframework.com/docs/about/terms.html)
 
 Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodooframework.com/docs/about/changelog.html).
 

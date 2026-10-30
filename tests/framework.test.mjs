@@ -2070,6 +2070,69 @@ test('Boodoo website www to non-www redirection and canonical URL integrity', ()
   assert.ok(checkedPages.length >= 140, `Must verify canonicals across all site pages (checked ${checkedPages.length})`);
 });
 
+test('Privacy Policy and Terms and Conditions pages integrity and navigation', () => {
+  // 1. Verify source fragments exist
+  const privacySrc = resolve(rootDir, 'site/src/about/privacy.html');
+  const termsSrc = resolve(rootDir, 'site/src/about/terms.html');
+  assert.ok(existsSync(privacySrc), 'site/src/about/privacy.html must exist');
+  assert.ok(existsSync(termsSrc), 'site/src/about/terms.html must exist');
+
+  const privacyContent = readFileSync(privacySrc, 'utf8');
+  const termsContent = readFileSync(termsSrc, 'utf8');
+
+  // Verify titles and key sections
+  assert.ok(privacyContent.includes('title: Privacy policy'), 'Privacy policy must declare title');
+  assert.ok(privacyContent.includes('Core Privacy Philosophy'), 'Privacy policy must cover core philosophy');
+  assert.ok(privacyContent.includes('Zero Framework Telemetry'), 'Privacy policy must affirm zero telemetry');
+  assert.ok(privacyContent.includes('Cookies and Local Browser Storage'), 'Privacy policy must detail cookies and local storage');
+
+  assert.ok(termsContent.includes('title: Terms and conditions'), 'Terms must declare title');
+  assert.ok(termsContent.includes('Acceptance of Terms'), 'Terms must include Acceptance of Terms');
+  assert.ok(termsContent.includes('Open-Source Software vs. Website Terms'), 'Terms must distinguish MIT license vs website terms');
+  assert.ok(termsContent.includes('Disclaimer of Warranties'), 'Terms must include warranty disclaimer');
+
+  // 2. Verify compiled pages exist
+  const privacyCompiled = resolve(rootDir, 'site/docs/about/privacy.html');
+  const termsCompiled = resolve(rootDir, 'site/docs/about/terms.html');
+  assert.ok(existsSync(privacyCompiled), 'Compiled site/docs/about/privacy.html must exist');
+  assert.ok(existsSync(termsCompiled), 'Compiled site/docs/about/terms.html must exist');
+
+  const compiledPrivacyHtml = readFileSync(privacyCompiled, 'utf8');
+  assert.ok(compiledPrivacyHtml.includes('<title>Privacy policy · boodoo</title>'), 'Compiled privacy page must have title');
+  assert.ok(compiledPrivacyHtml.includes('https://boodooframework.com/docs/about/privacy.html'), 'Compiled privacy page must have canonical URL');
+
+  const compiledTermsHtml = readFileSync(termsCompiled, 'utf8');
+  assert.ok(compiledTermsHtml.includes('<title>Terms and conditions · boodoo</title>'), 'Compiled terms page must have title');
+  assert.ok(compiledTermsHtml.includes('https://boodooframework.com/docs/about/terms.html'), 'Compiled terms page must have canonical URL');
+
+  // 3. Verify docs-nav.json includes both routes
+  const navPath = resolve(rootDir, 'site/data/docs-nav.json');
+  const nav = JSON.parse(readFileSync(navPath, 'utf8'));
+  const aboutSection = nav.find((s) => s.title === 'About');
+  assert.ok(aboutSection, 'docs-nav.json must have About section');
+  assert.ok(aboutSection.pages.some((p) => p.route === 'about/privacy'), 'docs-nav.json must include about/privacy');
+  assert.ok(aboutSection.pages.some((p) => p.route === 'about/terms'), 'docs-nav.json must include about/terms');
+
+  // 4. Verify footer links in layout and landing page
+  const layoutHtml = readFileSync(resolve(rootDir, 'site/layout.html'), 'utf8');
+  assert.ok(layoutHtml.includes('about/privacy.html'), 'site/layout.html footer must link to privacy.html');
+  assert.ok(layoutHtml.includes('about/terms.html'), 'site/layout.html footer must link to terms.html');
+
+  const indexHtml = readFileSync(resolve(rootDir, 'site/index.html'), 'utf8');
+  assert.ok(indexHtml.includes('docs/about/privacy.html'), 'site/index.html footer must link to privacy.html');
+  assert.ok(indexHtml.includes('docs/about/terms.html'), 'site/index.html footer must link to terms.html');
+
+  // 5. Verify redirects in _redirects and .htaccess
+  const redirects = readFileSync(resolve(rootDir, 'site/_redirects'), 'utf8');
+  assert.ok(redirects.includes('/privacy'), '_redirects must redirect /privacy');
+  assert.ok(redirects.includes('/terms'), '_redirects must redirect /terms');
+
+  const htaccess = readFileSync(resolve(rootDir, 'site/.htaccess'), 'utf8');
+  assert.ok(htaccess.includes('privacy'), '.htaccess must include privacy rule');
+  assert.ok(htaccess.includes('terms'), '.htaccess must include terms rule');
+});
+
+
 
 
 

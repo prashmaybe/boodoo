@@ -28,6 +28,10 @@ ErrorDocument 504 /404.html
 # 4. Redirect /docs or /docs/ to /docs/getting-started/introduction.html
 RewriteRule ^docs/?$ /docs/getting-started/introduction.html [R=301,L]
 
+# 4b. Redirect /privacy and /terms shortcuts to docs pages
+RewriteRule ^privacy(\.html)?$ /docs/about/privacy.html [R=301,L]
+RewriteRule ^terms(-and-conditions)?(\.html)?$ /docs/about/terms.html [R=301,L]
+
 # 5. Canonical index.html redirect to root
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
