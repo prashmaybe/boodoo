@@ -1,0 +1,129 @@
+// =====================================================================
+// BOODOO LESS — Data Table
+// =====================================================================
+
+// Data Table
+.data-table-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--boodoo-border-color, #dfe3ee);
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+  background-color: var(--boodoo-card-bg, #fff);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+
+  .data-table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--boodoo-border-color, #dfe3ee);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .data-table-container {
+    overflow-x: auto;
+  }
+
+  .data-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--boodoo-border-color, #dfe3ee);
+    background-color: rgba(0, 0, 0, 0.02);
+    font-size: 0.875rem;
+  }
+}
+
+.table.data-table {
+  margin-bottom: 0;
+  width: 100%;
+
+  thead th {
+    background-color: #f8fafc;
+    color: var(--boodoo-body-color, #29314d);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 2px solid var(--boodoo-border-color, #dfe3ee);
+    white-space: nowrap;
+    user-select: none;
+    padding: 0.75rem 1rem;
+
+    &.sortable {
+      cursor: pointer;
+      position: relative;
+      padding-right: 1.75rem;
+
+      &::after {
+        content: "⇅";
+        position: absolute;
+        right: 0.65rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.875rem;
+        opacity: 0.35;
+      }
+
+      &.sort-asc::after {
+        content: "↑";
+        opacity: 1;
+        color: var(--boodoo-primary, #7c3aed);
+      }
+
+      &.sort-desc::after {
+        content: "↓";
+        opacity: 1;
+        color: var(--boodoo-primary, #7c3aed);
+      }
+    }
+  }
+
+  tbody td {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--boodoo-border-color, #dfe3ee);
+    font-size: 0.875rem;
+  }
+
+  tbody tr.selected,
+  tbody tr.is-selected {
+    background-color: rgba(124, 58, 237, 0.08) !important;
+  }
+
+  .data-table-row-detail {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.02);
+
+    &.show {
+      display: table-row;
+    }
+
+    >td {
+      padding: 1.25rem;
+      border-top: 1px dashed var(--boodoo-border-color, #dfe3ee);
+    }
+  }
+
+  &.data-table-sticky thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  &.data-table-compact {
+
+    thead th,
+    tbody td {
+      padding: 0.45rem 0.65rem;
+      font-size: 0.8125rem;
+    }
+  }
+}

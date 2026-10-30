@@ -1,0 +1,63 @@
+// =====================================================================
+// BOODOO LESS — Chip & Tag Input
+// =====================================================================
+
+// Chips & Tag Input
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background-color: #ececf4;
+  border-radius: 50rem;
+  user-select: none;
+
+  .chip-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.125rem;
+    min-height: 1.125rem;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin-left: 0.25rem;
+    margin-right: -0.25rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    border-radius: 50%;
+    opacity: 0.65;
+    transition: opacity var(--boodoo-transition-duration, 0.15s) ease, background-color var(--boodoo-transition-duration, 0.15s) ease;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &.chip-primary {
+    background-color: rgba(124, 58, 237, 0.12);
+    color: var(--boodoo-primary, #7c3aed);
+  }
+}
+
+.chip-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--boodoo-border-color, #dfe3ee);
+  border-radius: var(--boodoo-border-radius, 0.5rem);
+
+  .chip-input-field {
+    flex: 1 1 6rem;
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding: 0.25rem;
+  }
+}

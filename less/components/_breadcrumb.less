@@ -1,0 +1,63 @@
+// =====================================================================
+// BOODOO LESS — Breadcrumb
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: breadcrumb
+// ---------------------------------------------------------------------
+.breadcrumb {
+  --boodoo-breadcrumb-divider: "/";
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.breadcrumb .breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb .breadcrumb-item a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.breadcrumb .breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-item.active {
+  color: var(--boodoo-body-secondary-color);
+}
+
+.breadcrumb .breadcrumb-item+.breadcrumb-item {
+  padding-left: 0.5rem;
+}
+
+.breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  color: var(--boodoo-body-tertiary-color);
+  content: var(--boodoo-breadcrumb-divider);
+}
+
+.breadcrumb-icon {
+  --boodoo-breadcrumb-divider: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3e%3cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%2396a0bd'/%3e%3c/svg%3e");
+}
+
+.breadcrumb-icon .breadcrumb-item+.breadcrumb-item::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  align-self: center;
+  background: var(--boodoo-breadcrumb-divider) no-repeat center/contain;
+  float: none;
+}
+
+.breadcrumb-bg {
+  padding: 0.75rem 1rem;
+  background-color: var(--boodoo-body-tertiary-bg);
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,41 @@
+// =====================================================================
+// BOODOO LESS — Splitter
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Splitter
+// ---------------------------------------------------------------------
+.splitter-container,
+.split-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &.splitter-vertical {
+    flex-direction: column;
+
+    >.splitter-gutter {
+      width: 100%;
+      height: 8px;
+      cursor: row-resize;
+    }
+  }
+
+  >.splitter-pane {
+    overflow: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  >.splitter-gutter {
+    flex: 0 0 8px;
+    width: 8px;
+    background-color: var(--boodoo-gray-200, #ececf4);
+    cursor: col-resize;
+    position: relative;
+    user-select: none;
+    touch-action: none;
+  }
+}

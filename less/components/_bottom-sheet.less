@@ -1,0 +1,104 @@
+// =====================================================================
+// BOODOO LESS — Bottom Sheet
+// =====================================================================
+
+// Bottom Sheet
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1040;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  max-height: 90vh;
+  background-color: var(--boodoo-card-bg, #ffffff);
+  color: var(--boodoo-body-color, #1e293b);
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  &.bottom-sheet-full {
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  &.bottom-sheet-half {
+    max-height: 50vh;
+  }
+}
+
+.bottom-sheet-handle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0 0.25rem;
+  cursor: grab;
+  user-select: none;
+}
+
+.bottom-sheet-handle {
+  width: 38px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #cbd5e1;
+}
+
+.bottom-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--boodoo-border-color, #e2e8f0);
+
+  .bottom-sheet-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+}
+
+.bottom-sheet-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.bottom-sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--boodoo-border-color, #e2e8f0);
+}

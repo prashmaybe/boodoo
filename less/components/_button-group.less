@@ -1,0 +1,25 @@
+// =====================================================================
+// BOODOO LESS — Button Group
+// =====================================================================
+
+.btn-group {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.btn-group>.btn {
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.btn-group>.btn:not(:first-child) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group>.btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

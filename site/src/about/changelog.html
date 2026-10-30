@@ -90,11 +90,14 @@ order: 7
 
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
-          <span class="badge bg-soft-success text-success"><span>Maintenance</span></span>
-          <span>Version 1.2.3 Release &amp; Metadata Synchronization</span>
+          <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
+          <span>Version 1.2.3 Release — Modular LESS &amp; Mobile Density</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.3</strong> synchronizes framework package configurations, distribution manifests, CLI scaffolders, mobile starters, and documentation portal resources.</span></p>
+        <p><span>boodoo <strong>v1.2.3</strong> modularizes the LESS source architecture with 1:1 SCSS parity, refines mobile React Native spacing with dynamic density customization, enforces zero inline styles, and adds TypeScript/JavaScript scaffolding options.</span></p>
         <ul class="mb-3">
+          <li><span><strong>Modular LESS Architecture</strong>: Restructured <code>less/</code> from a single file into a comprehensive partial architecture (<code>less/forms/*</code>, <code>less/components/*</code>, <code>less/content/*</code>, <code>less/mixins/*</code>) with standalone subpath entry points (<code>boodoo-grid.less</code>, <code>boodoo-reboot.less</code>, <code>boodoo-utilities.less</code>, <code>boodoo-animations.less</code>) and 100% SCSS feature parity.</span></li>
+          <li><span><strong>React Native Spacing &amp; Density Engine</strong>: Resolved bloated padding across mobile components and introduced multi-density spacing configurations via <code>setThemeSpacing()</code> and <code>createSpacing()</code> with zero inline styles.</span></li>
+          <li><span><strong>create-boodoo TypeScript/JavaScript Choice</strong>: Added full TypeScript and JavaScript template selection (<code>--ts</code> and <code>--js</code> flags) across all 10 starter frameworks.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.3 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
         </ul>
       </div>

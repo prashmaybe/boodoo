@@ -474,8 +474,60 @@ test('React Native default themes data integrity', () => {
 });
 
 test('SCSS and LESS full component & feature parity verification', () => {
-  const lessSource = readFileSync(resolve(rootDir, 'less/boodoo.less'), 'utf8');
+  // Aggregate all modular LESS sources across less/ directory
+  const getLessSource = () => {
+    let src = '';
+    const readDirRec = (dir) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const full = resolve(dir, entry.name);
+        if (entry.isDirectory()) readDirRec(full);
+        else if (entry.name.endsWith('.less')) src += '\n' + readFileSync(full, 'utf8');
+      }
+    };
+    readDirRec(resolve(rootDir, 'less'));
+    return src;
+  };
+  const lessSource = getLessSource();
   const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Verify modular architecture of LESS mirroring SCSS
+  const expectedModularFiles = [
+    'less/_variables.less',
+    'less/_root.less',
+    'less/_mixins.less',
+    'less/_reboot.less',
+    'less/_grid.less',
+    'less/_helpers.less',
+    'less/_utilities.less',
+    'less/_animations.less',
+    'less/boodoo-grid.less',
+    'less/boodoo-reboot.less',
+    'less/boodoo-utilities.less',
+    'less/boodoo-animations.less',
+    'less/content/_typography.less',
+    'less/content/_images.less',
+    'less/content/_tables.less',
+    'less/content/_figures.less',
+    'less/forms/_control.less',
+    'less/forms/_select.less',
+    'less/forms/_layout.less',
+    'less/forms/_checks.less',
+    'less/forms/_range.less',
+    'less/forms/_range-dual.less',
+    'less/forms/_input-group.less',
+    'less/forms/_floating-labels.less',
+    'less/forms/_otp.less',
+    'less/forms/_dropzone.less',
+    'less/forms/_pickers.less',
+    'less/forms/_validation.less',
+    'less/components/_accordion.less',
+    'less/components/_modal.less',
+    'less/components/_buttons.less',
+    'less/components/_card.less'
+  ];
+  for (const relPath of expectedModularFiles) {
+    assert.ok(existsSync(resolve(rootDir, relPath)), `Modular LESS file must exist: ${relPath}`);
+  }
 
   // Verify core missing components are now present in LESS source and compiled CSS
   const expectedClasses = [

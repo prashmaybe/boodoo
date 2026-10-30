@@ -1,0 +1,77 @@
+// =====================================================================
+// BOODOO LESS — Badge & Role Badges
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// 7. Core components (essential subset)
+// ---------------------------------------------------------------------
+
+// Badge
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--boodoo-border-radius);
+  background-color: var(--boodoo-primary);
+}
+
+.badge-pill {
+  padding-right: 0.75em;
+  padding-left: 0.75em;
+  border-radius: var(--boodoo-border-radius-pill);
+}
+
+// Role badges (8 distinct enterprise & SaaS role status badges)
+.badge-role-admin {
+  background-color: rgba(225, 29, 72, 0.12);
+  color: var(--boodoo-danger, #e11d48);
+  border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+.badge-role-member {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: var(--boodoo-primary, #7c3aed);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+}
+
+.badge-role-viewer {
+  background-color: var(--boodoo-gray-200, #ececf4);
+  color: var(--boodoo-gray-700, #3f4463);
+  border: 1px solid var(--boodoo-gray-400, #c2c4d8);
+}
+
+.badge-role-owner {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-role-billing {
+  background-color: rgba(28, 158, 80, 0.12);
+  color: var(--boodoo-success, #1c9e50);
+  border: 1px solid rgba(28, 158, 80, 0.25);
+}
+
+.badge-role-guest {
+  background-color: rgba(14, 165, 233, 0.12);
+  color: var(--boodoo-info, #0ea5e9);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.badge-role-developer {
+  background-color: rgba(91, 33, 230, 0.12);
+  color: var(--boodoo-secondary, #5b21e6);
+  border: 1px solid rgba(91, 33, 230, 0.25);
+}
+
+.badge-role-security {
+  background-color: rgba(244, 63, 94, 0.12);
+  color: var(--boodoo-accent, #f43f5e);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}

@@ -1,0 +1,180 @@
+// =====================================================================
+// BOODOO LESS — Avatar
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: avatar
+// ---------------------------------------------------------------------
+.avatar {
+  --boodoo-avatar-size: 2.5rem;
+  --boodoo-avatar-bg: #7c3aed;
+  --boodoo-avatar-color: #ffffff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--boodoo-avatar-size);
+  height: var(--boodoo-avatar-size);
+  border-radius: 50%;
+  background-color: var(--boodoo-avatar-bg);
+  color: var(--boodoo-avatar-color);
+  font-size: calc(var(--boodoo-avatar-size) * 0.4);
+  font-weight: 600;
+  line-height: 1;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-xs {
+  --boodoo-avatar-size: 1.75rem;
+  font-size: 0.7rem;
+}
+
+.avatar-sm {
+  --boodoo-avatar-size: 2rem;
+  font-size: 0.8rem;
+}
+
+.avatar-md {
+  --boodoo-avatar-size: 2.5rem;
+}
+
+.avatar-lg {
+  --boodoo-avatar-size: 3.5rem;
+}
+
+.avatar-xl {
+  --boodoo-avatar-size: 4.5rem;
+}
+
+.avatar-xxl {
+  --boodoo-avatar-size: 6rem;
+}
+
+.avatar-square {
+  border-radius: 0.5rem;
+}
+
+.avatar-rounded {
+  border-radius: 50rem;
+}
+
+.avatar-primary {
+  --boodoo-avatar-bg: #7c3aed;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-secondary {
+  --boodoo-avatar-bg: #5b21e6;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-success {
+  --boodoo-avatar-bg: #1c9e50;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-info {
+  --boodoo-avatar-bg: #0ea5e9;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-warning {
+  --boodoo-avatar-bg: #f59e0b;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-danger {
+  --boodoo-avatar-bg: #e11d48;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-light {
+  --boodoo-avatar-bg: #f6f5fb;
+  --boodoo-avatar-color: #17135f;
+}
+
+.avatar-dark {
+  --boodoo-avatar-bg: #17135f;
+  --boodoo-avatar-color: #ffffff;
+}
+
+.avatar-soft-primary {
+  --boodoo-avatar-bg: rgb(93.8352941176%, 90.7294117647%, 99.1529411765%);
+  --boodoo-avatar-color: #7c3aed;
+}
+
+.avatar-soft-secondary {
+  --boodoo-avatar-bg: rgb(92.2823529412%, 89.5529411765%, 98.8235294118%);
+  --boodoo-avatar-color: #5b21e6;
+}
+
+.avatar-soft-success {
+  --boodoo-avatar-bg: rgb(89.3176470588%, 95.4352941176%, 91.7647058824%);
+  --boodoo-avatar-color: #1c9e50;
+}
+
+.avatar-soft-danger {
+  --boodoo-avatar-bg: rgb(98.5882352941%, 89.3647058824%, 91.3882352941%);
+  --boodoo-avatar-color: #e11d48;
+}
+
+.avatar-soft-warning {
+  --boodoo-avatar-bg: rgb(99.5294117647%, 95.4352941176%, 88.5176470588%);
+  --boodoo-avatar-color: #f59e0b;
+}
+
+.avatar-soft-info {
+  --boodoo-avatar-bg: rgb(88.6588235294%, 95.7647058824%, 98.9647058824%);
+  --boodoo-avatar-color: #0ea5e9;
+}
+
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.avatar-group .avatar {
+  margin-left: -0.625rem;
+  border: 2px solid var(--boodoo-body-bg);
+}
+
+.avatar-group .avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar-group .avatar-more {
+  background-color: var(--boodoo-gray-300);
+  color: var(--boodoo-gray-700);
+}
+
+.avatar-status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22%;
+  height: 22%;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  background-color: var(--boodoo-success);
+  border: 2px solid var(--boodoo-body-bg);
+  border-radius: 50%;
+}
+
+.avatar-status-offline {
+  background-color: var(--boodoo-gray-400);
+}
+
+.avatar-status-busy {
+  background-color: var(--boodoo-danger);
+}
+
+.avatar-status-away {
+  background-color: #f59e0b;
+}

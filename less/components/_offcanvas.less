@@ -1,0 +1,120 @@
+// =====================================================================
+// BOODOO LESS — Offcanvas
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: offcanvas
+// ---------------------------------------------------------------------
+.offcanvas {
+  --boodoo-offcanvas-width: 400px;
+  --boodoo-offcanvas-height: 30vh;
+  --boodoo-offcanvas-padding: 1.25rem;
+  --boodoo-offcanvas-bg: var(--boodoo-body-bg);
+  position: fixed;
+  bottom: 0;
+  z-index: 1045;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  color: var(--boodoo-body-color);
+  visibility: hidden;
+  background-color: var(--boodoo-offcanvas-bg);
+  background-clip: padding-box;
+  outline: 0;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.offcanvas.show:not(.hiding),
+.offcanvas.showing {
+  transform: none;
+  visibility: visible;
+}
+
+.offcanvas.hiding {
+  visibility: visible;
+}
+
+.offcanvas-start {
+  top: 0;
+  left: 0;
+  width: var(--boodoo-offcanvas-width);
+  border-right: 1px solid var(--boodoo-border-color-translucent);
+  transform: translateX(-100%);
+}
+
+.offcanvas-end {
+  top: 0;
+  right: 0;
+  width: var(--boodoo-offcanvas-width);
+  border-left: 1px solid var(--boodoo-border-color-translucent);
+  transform: translateX(100%);
+}
+
+.offcanvas-top {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--boodoo-offcanvas-height);
+  max-height: 100%;
+  border-bottom: 1px solid var(--boodoo-border-color-translucent);
+  transform: translateY(-100%);
+}
+
+.offcanvas-bottom {
+  right: 0;
+  left: 0;
+  height: var(--boodoo-offcanvas-height);
+  max-height: 100%;
+  border-top: 1px solid var(--boodoo-border-color-translucent);
+  transform: translateY(100%);
+}
+
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.offcanvas-backdrop.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0.5;
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--boodoo-offcanvas-padding);
+}
+
+.offcanvas-header .offcanvas-title {
+  margin-bottom: 0;
+}
+
+.offcanvas-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: var(--boodoo-offcanvas-padding);
+  overflow-y: auto;
+}
+
+.offcanvas-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: var(--boodoo-offcanvas-padding);
+  border-top: 1px solid var(--boodoo-border-color);
+}

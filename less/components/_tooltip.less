@@ -1,0 +1,149 @@
+// =====================================================================
+// BOODOO LESS — Tooltip
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: tooltip
+// ---------------------------------------------------------------------
+.tooltip {
+  --boodoo-tooltip-bg: #11143d;
+  --boodoo-tooltip-color: #ffffff;
+  --boodoo-tooltip-border-radius: 0.375rem;
+  --boodoo-tooltip-opacity: 0.9;
+  --boodoo-tooltip-padding-y: 0.375rem;
+  --boodoo-tooltip-padding-x: 0.625rem;
+  position: absolute;
+  z-index: 1080;
+  display: block;
+  margin: 0;
+  font-family: var(--boodoo-font-sans-serif);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+  opacity: 0;
+}
+
+.tooltip.show {
+  opacity: var(--boodoo-tooltip-opacity);
+  animation: boodoo-fade-in 0.15s ease;
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  padding: var(--boodoo-tooltip-padding-y) var(--boodoo-tooltip-padding-x);
+  color: var(--boodoo-tooltip-color);
+  text-align: center;
+  background-color: var(--boodoo-tooltip-bg);
+  border-radius: var(--boodoo-tooltip-border-radius);
+}
+
+.tooltip-arrow {
+  position: absolute;
+  display: block;
+  width: 0.8rem;
+  height: 0.4rem;
+}
+
+.tooltip-arrow::before {
+  position: absolute;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+}
+
+.bs-tooltip-top,
+.bs-tooltip-auto[data-popper-placement^=top] {
+  padding: 0.4rem 0;
+}
+
+.bs-tooltip-top .tooltip-arrow,
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow {
+  bottom: 0;
+}
+
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+  top: -1px;
+  border-width: 0.4rem 0.4rem 0;
+  border-top-color: var(--boodoo-tooltip-bg);
+}
+
+.bs-tooltip-end,
+.bs-tooltip-auto[data-popper-placement^=right] {
+  padding: 0 0.4rem;
+}
+
+.bs-tooltip-end .tooltip-arrow,
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow {
+  left: 0;
+  width: 0.4rem;
+  height: 0.8rem;
+}
+
+.bs-tooltip-end .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+  right: -1px;
+  border-width: 0.4rem 0.4rem 0.4rem 0;
+  border-right-color: var(--boodoo-tooltip-bg);
+}
+
+.bs-tooltip-bottom,
+.bs-tooltip-auto[data-popper-placement^=bottom] {
+  padding: 0.4rem 0;
+}
+
+.bs-tooltip-bottom .tooltip-arrow,
+.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow {
+  top: 0;
+}
+
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+  bottom: -1px;
+  border-width: 0 0.4rem 0.4rem;
+  border-bottom-color: var(--boodoo-tooltip-bg);
+}
+
+.bs-tooltip-start,
+.bs-tooltip-auto[data-popper-placement^=left] {
+  padding: 0 0.4rem;
+}
+
+.bs-tooltip-start .tooltip-arrow,
+.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow {
+  right: 0;
+  width: 0.4rem;
+  height: 0.8rem;
+}
+
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+  left: -1px;
+  border-width: 0.4rem 0 0.4rem 0.4rem;
+  border-left-color: var(--boodoo-tooltip-bg);
+}
+
+@supports (anchor-name: --anchor-target) {
+
+  .tooltip-anchor,
+  [data-tooltip-anchor] {
+    position-anchor: var(--anchor-target, --boodoo-anchor);
+    bottom: anchor(top);
+    left: anchor(center);
+    transform: translateX(-50%);
+    position-try-fallbacks: flip-block, flip-inline;
+    margin: 0.4rem 0;
+  }
+}

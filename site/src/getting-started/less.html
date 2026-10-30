@@ -5,28 +5,41 @@ section: getting-started
 order: 6
 -->
 <h1>Customize with Less</h1>
-<p class="lead">Prefer Less over Sass? boodoo ships a maintained Less build in the <code>less/</code> folder covering the
-  design tokens, mobile-first grid, core components, and utilities.</p>
+<p class="lead">Prefer Less over Sass? boodoo ships a fully modular Less architecture in the <code>less/</code> folder mirroring the Sass build, covering design tokens, the mobile-first grid, core and advanced components, forms, and utilities.</p>
 
-<p>The Less build exposes the same public API as the Sass build — it declares the CSS custom properties (design tokens)
-  on <code>:root</code>, then provides the grid, typography, buttons, cards, forms, and a core component set. You can
-  import it and extend it with your own Less.</p>
+<p>The Less build exposes the exact same public API as the Sass build — it declares CSS custom properties on <code>:root</code>, supports dark mode theme inversion, and organizes styles into modular partials (<code>_variables.less</code>, <code>_root.less</code>, <code>_reboot.less</code>, <code>_grid.less</code>, <code>forms/*</code>, <code>components/*</code>, and <code>_utilities.less</code>).</p>
 
 <h2 id="usage">Usage</h2>
+<p>Import the full framework bundle:</p>
 <div class="highlight">
   <pre><code>@import "node_modules/boodoo/less/boodoo";</code></pre>
 </div>
 
-<p>Or compile it directly with the Less CLI:</p>
+<p>Or import individual modular subpaths or partials for leaner builds:</p>
+<div class="highlight">
+  <pre><code>// Standalone subpath builds
+@import "node_modules/boodoo/less/boodoo-grid";
+@import "node_modules/boodoo/less/boodoo-reboot";
+@import "node_modules/boodoo/less/boodoo-utilities";
+@import "node_modules/boodoo/less/boodoo-animations";
+
+// Or cherry-pick specific components
+@import "node_modules/boodoo/less/_variables";
+@import "node_modules/boodoo/less/_root";
+@import "node_modules/boodoo/less/components/_modal";
+@import "node_modules/boodoo/less/components/_buttons";
+@import "node_modules/boodoo/less/forms/_control";</code></pre>
+</div>
+
+<p>Compile your Less directly with the Less CLI:</p>
 <div class="highlight">
   <pre><code>lessc less/boodoo.less css/boodoo.css</code></pre>
 </div>
 
-<p>The compiled output is also available prebuilt as <code>dist/css/boodoo.less.css</code> if you just want the CSS.</p>
+<p>The compiled output is also available prebuilt as <code>dist/css/boodoo.less.css</code> if you prefer precompiled CSS.</p>
 
-<h2 id="variables">Variables</h2>
-<p>At the top of <code>less/boodoo.less</code> you'll find the design tokens as CSS custom properties. Override any of
-  them to retheme the framework:</p>
+<h2 id="variables">Variables &amp; Theming</h2>
+<p>Design tokens are defined in <code>less/_variables.less</code> and bound to CSS custom properties in <code>less/_root.less</code>. Override them in Less or at runtime in CSS:</p>
 <div class="highlight">
   <pre><code>:root {
   --boodoo-primary: #7C3AED;
@@ -34,10 +47,8 @@ order: 6
 }</code></pre>
 </div>
 
-<div class="bd-callout bd-callout-warning">
-  <p class="mb-0"><strong>Sass is the primary source.</strong> For the full, every-component-feature set (all CSS Grid utilities,
-  Material elevation, extended components), use the <a href="./sass.html">Sass build</a> or the precompiled
-  <code>dist/css</code>. The Less build is intentionally a well-rounded subset.</p>
+<div class="bd-callout bd-callout-info">
+  <p class="mb-0"><strong>Full Modular Parity.</strong> The Less source features a 1:1 modular architecture with Sass, organizing 50+ components, forms, and layout utilities into dedicated partials for tree-shaking and custom pipeline integration.</p>
 </div>
 
 <h2 id="example">Example</h2>

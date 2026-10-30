@@ -1,0 +1,100 @@
+// =====================================================================
+// BOODOO LESS — Pagination
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Component: pagination
+// ---------------------------------------------------------------------
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pagination .page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.875rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--boodoo-link-color);
+  text-decoration: none;
+  background-color: var(--boodoo-body-bg);
+  border: 1px solid var(--boodoo-border-color);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.pagination .page-link:hover {
+  z-index: 2;
+  color: var(--boodoo-link-hover-color);
+  background-color: var(--boodoo-body-tertiary-bg);
+  border-color: var(--boodoo-border-color);
+}
+
+.pagination .page-link:focus {
+  z-index: 3;
+  color: var(--boodoo-link-hover-color);
+  background-color: var(--boodoo-body-tertiary-bg);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.25);
+}
+
+.pagination .page-item:not(:first-child) .page-link {
+  margin-left: calc(1px * -1);
+}
+
+.pagination .page-item:first-child .page-link {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.pagination .page-item:last-child .page-link {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.pagination .page-item.active .page-link {
+  z-index: 3;
+  color: var(--boodoo-white);
+  background-color: var(--boodoo-primary);
+  border-color: var(--boodoo-primary);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: var(--boodoo-body-tertiary-color);
+  pointer-events: none;
+  background-color: var(--boodoo-body-bg);
+  border-color: var(--boodoo-border-color);
+}
+
+.pagination-lg .page-link {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+}
+
+.pagination-sm .page-link {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.pagination-pill .page-link {
+  border-radius: 50rem;
+  margin: 0 0.125rem;
+}
+
+.pagination-simple .page-link {
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+.pagination-simple .page-link:hover {
+  background-color: var(--boodoo-body-tertiary-bg);
+}
+
+.pagination-simple .page-item:not(:first-child) .page-link {
+  margin-left: 0.125rem;
+}
+
+.pagination-simple .page-item.active .page-link {
+  background-color: #7c3aed;
+}

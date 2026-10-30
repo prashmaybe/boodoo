@@ -546,22 +546,29 @@ const styles = StyleSheet.create({
 <hr class="my-2">
 
 <h2 id="cli-scaffold"><span>7. Instant Scaffolding via create-boodoo</span></h2>
-<p><span>Run the official CLI scaffolder to generate a configured starter for any platform:</span></p>
+<p><span>Run the official CLI scaffolder to generate a configured starter for any platform with full <strong>JavaScript (JS)</strong> and <strong>TypeScript (TS)</strong> support:</span></p>
 <div class="highlight">
-  <pre><code>npx create-boodoo my-new-project</code></pre>
+  <pre><code># Interactive wizard (prompts for template &amp; language)
+npx create-boodoo my-new-project
+
+# Or scaffold unattended with flags (--ts or --js)
+npx create-boodoo my-desktop-app --template=electron --ts
+npx create-boodoo my-react-app --template=react --ts
+npx create-boodoo my-angular-app --template=angular --ts
+npx create-boodoo my-mobile-app --template=expo --ts</code></pre>
 </div>
-<p><span>Choose from 10 curated templates:</span></p>
+<p><span>Choose from 10 curated templates available in both JavaScript and TypeScript:</span></p>
 <ol>
-  <li><strong>HTML5 + Sass Starter</strong> (Vanilla, Fast &amp; Clean)</li>
-  <li><strong>Vite + Vanilla</strong> (Modern dev server &amp; HMR)</li>
-  <li><strong>Next.js / React</strong> (App Router + Boodoo CSS)</li>
-  <li><strong>Electron Desktop App</strong> (Cross-Platform Native UI)</li>
-  <li><strong>Angular Starter</strong> (Standalone Components + Boodoo)</li>
-  <li><strong>Cordova &amp; PhoneGap</strong> (Hybrid Mobile App)</li>
-  <li><strong>Meteor.js</strong> (Full-Stack Reactive App)</li>
-  <li><strong>Photon Desktop UI</strong> (Classic macOS / Electron Pane layout)</li>
-  <li><strong>React Native Web</strong> (Universal Web &amp; Mobile)</li>
-  <li><strong>React Native Mobile (Expo)</strong> (Expo SDK 51, iOS &amp; Android, Boodoo Native UI)</li>
+  <li><strong><span>HTML5 + Sass Starter</span></strong> <span>(Vanilla, Fast &amp; Clean, JS/TS)</span></li>
+  <li><strong><span>Vite + Vanilla</span></strong> <span>(Modern dev server &amp; HMR, JS/TS)</span></li>
+  <li><strong><span>Next.js / React</span></strong> <span>(App Router + Boodoo CSS, JS/TS)</span></li>
+  <li><strong><span>Electron Desktop App</span></strong> <span>(Cross-Platform Native UI, JS/TS)</span></li>
+  <li><strong><span>Angular Starter</span></strong> <span>(Standalone Components + Boodoo, TS/JS)</span></li>
+  <li><strong><span>Cordova &amp; PhoneGap</span></strong> <span>(Hybrid Mobile App, JS/TS)</span></li>
+  <li><strong><span>Meteor.js</span></strong> <span>(Full-Stack Reactive App, JS/TS)</span></li>
+  <li><strong><span>Photon Desktop UI</span></strong> <span>(Classic macOS / Electron Pane layout, JS/TS)</span></li>
+  <li><strong><span>React Native Web</span></strong> <span>(Universal Web &amp; Mobile, JS/TS)</span></li>
+  <li><strong><span>React Native Mobile (Expo)</span></strong> <span>(Expo SDK 51, iOS &amp; Android, Boodoo Native UI, JS/TS)</span></li>
 </ol>
           
   <nav class="docs-pager" aria-label="Previous and next navigation">
