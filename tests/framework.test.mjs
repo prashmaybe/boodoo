@@ -302,6 +302,31 @@ test('React Native modular submodules existence and exports verification', () =>
   }
 });
 
+test('React Native submodules syntax and duplicate export prevention', () => {
+  const rnDir = resolve(rootDir, 'react-native');
+  const files = readdirSync(rnDir).filter(f => f.endsWith('.js'));
+  assert.ok(files.length >= 13, 'Expected at least 13 React Native submodules');
+
+  for (const file of files) {
+    const code = readFileSync(resolve(rnDir, file), 'utf8');
+    const lines = code.split('\n');
+    const declaredExports = new Map();
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const match = line.match(/^export\s+(?:function|const|let|var|class)\s+([A-Za-z0-9_]+)/);
+      if (match) {
+        const name = match[1];
+        assert.ok(
+          !declaredExports.has(name),
+          `Duplicate export '${name}' detected in react-native/${file} at line ${i + 1} (previously declared at line ${declaredExports.get(name)})`
+        );
+        declaredExports.set(name, i + 1);
+      }
+    }
+  }
+});
+
 test('React Native component spacing and padding compactness verification', () => {
   const buttonsCode = readFileSync(resolve(rootDir, 'react-native/buttons.js'), 'utf8');
   const surfacesCode = readFileSync(resolve(rootDir, 'react-native/surfaces.js'), 'utf8');

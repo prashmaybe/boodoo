@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.4] - 2026-10-30
+
+### Fixed
+- **React Native Data Display Metro Bundling Deduplication (`react-native/data-display.js`)**:
+  - Removed redundant duplicate component declarations (`EmptyState`, `TimelineItem`, `Timeline`, `StepIndicator`, and `StepperWizard`) appended after `LineChart`.
+  - Resolved Metro/Babel bundling error (`SyntaxError: Identifier 'EmptyState' has already been declared`) encountered during Android and iOS Hermes bytecode compilation (`npx expo export`).
+- **React Native Submodules Syntax & Duplicate Export Validation (`tests/framework.test.mjs`)**:
+  - Added automated test assertion verifying zero duplicate top-level exports and clean declarations across all 13 React Native submodules.
+
+### Changed
+- **Framework & Package Version Alignment**:
+  - Bumped latest framework version to v1.2.4 across package manifests, CLI scaffolders, starters, and documentation site.
+
+---
+
 ## [1.2.3] - 2026-10-30
 
 ### Added

@@ -74,6 +74,13 @@ React Native mobile components (`react-native/`) and starter applications must d
 2. **StyleSheet Encapsulation & Composition**: All static layout, dimensions, alignments, and typography rules must be declared outside render functions via `StyleSheet.create({ ... })`. Dynamic values derived from props, theme tokens, or density spacing helpers must compose via array references (`[styles.base, dynamicStyle]`) or computed style functions, keeping component code declarative, maintainable, and performant.
 3. **Automated Zero Inline Styles Enforcement**: `tests/framework.test.mjs` must enforce zero inline style occurrences (`style={{`) across all production React Native components (`react-native/**/*.js`), preventing styling regressions and guaranteeing optimal mobile runtime performance.
 
+## React Native Export Deduplication & Bundler Integrity Rule
+React Native mobile modules (`react-native/`) must maintain strict export uniqueness and bundler-clean syntax:
+
+1. **Zero Duplicate Declarations or Exports**: Every component, utility, hook, and constant across `react-native/*.js` must be declared and exported exactly once per submodule. Appending duplicate trailing export blocks (such as redundant `EmptyState`, `TimelineItem`, `Timeline`, `StepIndicator`, or `StepperWizard` definitions) triggers Babel parser syntax collisions (`SyntaxError: Identifier '<name>' has already been declared`) and crashes React Native Metro / Hermes bytecode bundling.
+2. **Bundler & Metro Compatibility**: All mobile submodules must remain 100% compatible with Metro bundler, Expo (`expo export`), and Hermes bytecode compilation (`.hbc`), ensuring error-free mobile builds on both iOS and Android.
+3. **Automated Export & Syntax Assertion**: `tests/framework.test.mjs` must enforce zero duplicate export or top-level declaration occurrences across all production React Native submodules (`react-native/*.js`) on every build and release run.
+
 ## DOM XSS Prevention & Safe Insertion Rule
 Untrusted or runtime user data (such as file names, labels, user input strings, and query parameters) must never be directly interpolated into HTML strings or assigned via `innerHTML`:
 
