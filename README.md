@@ -66,8 +66,8 @@ All distribution assets are tested, minified, and verified on every release buil
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~178 KB | ~34.1 KB | ~28.5 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
-| `boodoo.js` | ~195 KB | ~39.2 KB | ~32.6 KB | Pure vanilla JS unminified bundle with source maps |
+| `boodoo.min.js` | ~179 KB | ~34.3 KB | ~28.7 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
+| `boodoo.js` | ~196 KB | ~39.4 KB | ~32.8 KB | Pure vanilla JS unminified bundle with source maps |
 
 #### 🔬 Reproducible Benchmark Instructions
 

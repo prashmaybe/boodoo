@@ -448,22 +448,24 @@
           const highlightedDesc = this.highlightMatch(item.desc, query);
 
           html += `
-            <li class="boodoo-search-item" data-index="${globalIndex}" data-href="${itemHref}" role="option">
-              <div class="boodoo-search-item-icon">
-                <span>${item.icon || '📄'}</span>
-              </div>
-              <div class="boodoo-search-item-info">
-                <div class="boodoo-search-item-head">
-                  <span class="boodoo-search-item-title">${highlightedTitle}</span>
-                  <span class="boodoo-search-badge">${item.category}</span>
+            <li role="none">
+              <a class="boodoo-search-item" href="${itemHref}" data-index="${globalIndex}" role="option">
+                <div class="boodoo-search-item-icon">
+                  <span>${item.icon || '📄'}</span>
                 </div>
-                <p class="boodoo-search-item-desc">${highlightedDesc}</p>
-              </div>
-              <div class="boodoo-search-item-arrow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
+                <div class="boodoo-search-item-info">
+                  <div class="boodoo-search-item-head">
+                    <span class="boodoo-search-item-title">${highlightedTitle}</span>
+                    <span class="boodoo-search-badge">${item.category}</span>
+                  </div>
+                  <p class="boodoo-search-item-desc">${highlightedDesc}</p>
+                </div>
+                <div class="boodoo-search-item-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </a>
             </li>
           `;
           globalIndex++;
@@ -474,12 +476,10 @@
 
       // Click event delegation on results
       this.resultsContainer.querySelectorAll('.boodoo-search-item').forEach((el) => {
-        el.addEventListener('click', () => {
-          const href = el.getAttribute('data-href');
-          if (href) {
-            window.location.href = href;
+        el.addEventListener('click', (e) => {
+          if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+            this.close();
           }
-          this.close();
         });
       });
 

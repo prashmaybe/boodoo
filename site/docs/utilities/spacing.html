@@ -371,7 +371,7 @@
 <h2 id="customization"><span>Customizing the spacing scale</span></h2>
 <p><span>boodoo provides zero-effort customization of the spacing scale across any tech stack:</span></p>
 
-<h3 id=""><span>1. Pure CSS / CDN / Runtime Custom Properties</span></h3>
+<h3 id="1-pure-css-cdn-runtime-custom-properties"><span>1. Pure CSS / CDN / Runtime Custom Properties</span></h3>
 <p><span>Override CSS custom properties on <code>:root</code> or any container element to reshape spacing dynamically:</span></p>
 <div class="highlight">
   <pre><code>:root {
@@ -384,7 +384,7 @@
 }</code></pre>
 </div>
 
-<h3 id=""><span>2. Sass / SCSS (npm / yarn / Vite / Next.js)</span></h3>
+<h3 id="2-sass-scss-npm-yarn-vite-nextjs"><span>2. Sass / SCSS (npm / yarn / Vite / Next.js)</span></h3>
 <p><span>Override <code>$boodoo-spacer</code> or merge custom steps into <code>$boodoo-spacers</code> before importing boodoo:</span></p>
 <div class="highlight">
   <pre><code>// Custom base spacer
@@ -403,14 +403,14 @@ $boodoo-spacers: (
 @import "boodoo/scss/boodoo";</code></pre>
 </div>
 
-<h3 id=""><span>3. LESS</span></h3>
+<h3 id="3-less"><span>3. LESS</span></h3>
 <p><span>Override <code>@boodoo-spacer</code> in your Less configuration:</span></p>
 <div class="highlight">
   <pre><code>@boodoo-spacer: 1.2rem;
 @import "boodoo/less/boodoo.less";</code></pre>
 </div>
 
-<h3 id=""><span>4. JavaScript / TypeScript &amp; React Native Mobile</span></h3>
+<h3 id="4-javascript-typescript-amp-react-native-mobile"><span>4. JavaScript / TypeScript &amp; React Native Mobile</span></h3>
 <p><span>Customize mobile component spacing and density dynamically across React Native, just like CSS variables in web:</span></p>
 <div class="highlight">
   <pre><code>import { createSpacing } from 'boodoo/tokens';
@@ -466,7 +466,11 @@ function App() {
 <li class="toc-2"><a href="#negative">Negative margin</a></li>
 <li class="toc-2"><a href="#responsive">Responsive</a></li>
 <li class="toc-2"><a href="#scale">The scale</a></li>
-<li class="toc-2"><a href="#customization">Customizing the spacing scale</a></li></ul>
+<li class="toc-2"><a href="#customization">Customizing the spacing scale</a></li>
+<li class="toc-3"><a href="#1-pure-css-cdn-runtime-custom-properties">1. Pure CSS / CDN / Runtime Custom Properties</a></li>
+<li class="toc-3"><a href="#2-sass-scss-npm-yarn-vite-nextjs">2. Sass / SCSS (npm / yarn / Vite / Next.js)</a></li>
+<li class="toc-3"><a href="#3-less">3. LESS</a></li>
+<li class="toc-3"><a href="#4-javascript-typescript-amp-react-native-mobile">4. JavaScript / TypeScript &amp;amp; React Native Mobile</a></li></ul>
     </div>
 </aside>
     </div>

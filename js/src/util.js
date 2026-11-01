@@ -178,3 +178,11 @@ export const escapeHtml = (str) => {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 };
+/**
+ * Safely sanitizes HTML content by entity-encoding meta-characters.
+ * @param {string|unknown} html
+ * @returns {string}
+ */
+export const sanitizeHtml = (html) => {
+  return escapeHtml(html);
+};

@@ -202,17 +202,40 @@ function prevNext(sections, activeRoute, titleMap) {
   </nav>`;
 }
 
+// Safely strip HTML tags recursively until none remain
+function stripHtml(str) {
+  if (!str) return '';
+  let prev;
+  let clean = String(str);
+  do {
+    prev = clean;
+    clean = clean.replace(/<[^>]*>/g, '');
+  } while (clean !== prev);
+  return clean.trim();
+}
+
+// Safely escape HTML characters
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // Build table of contents from headings in body
 function renderToc(body) {
   const headings = [];
   const re = /<h([23])\s+id="([^"]+)"[^>]*>(.*?)<\/h\1>/g;
   let m;
   while ((m = re.exec(body)) !== null) {
-    headings.push({ level: Number(m[1]), id: m[2], text: m[3].replace(/<[^>]+>/g, '') });
+    headings.push({ level: Number(m[1]), id: m[2], text: stripHtml(m[3]) });
   }
   if (!headings.length) return '';
   const items = headings
-    .map((h) => `<li class="toc-${h.level}"><a href="#${h.id}">${h.text}</a></li>`)
+    .map((h) => `<li class="toc-${h.level}"><a href="#${h.id}">${escapeHtml(h.text)}</a></li>`)
     .join('\n');
   return `
     <div class="docs-toc d-none d-lg-block">
@@ -255,12 +278,13 @@ function buildPage(sectionDef, { route, full }) {
 
   // Ensure headings have ids for TOC + anchor links
   const bodyWithIds = body.replace(
-    /<(h[23])([^>]*)>/g,
-    (fullTag, tag, attrs) => {
+    /<(h[23])(\s+[^>]*)?>(.*?)<\/\1>/gis,
+    (fullTag, tag, attrs = '', inner) => {
       if (/\sid=/.test(attrs)) return fullTag;
-      const text = (fullTag.replace(/<[^>]+>/g, '') || '').trim();
+      const text = stripHtml(inner);
       const id = slugify(text);
-      return `<${tag}${attrs} id="${id}">`;
+      if (!id) return fullTag;
+      return `<${tag}${attrs} id="${id}">${inner}</${tag}>`;
     }
   );
 

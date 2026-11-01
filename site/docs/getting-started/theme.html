@@ -285,7 +285,7 @@
         </div>
       </aside>
 
-      <main class="col-lg-9 col-xl-10">
+      <main class="col-lg-6 col-xl-7">
         <div class="docs-main py-1" id="docs-content">
           
     <nav aria-label="breadcrumb">
@@ -296,14 +296,14 @@
       </ol>
     </nav>
           <section class="docs-section">
-  <h2 id="">Overview</h2>
+  <h2 id="overview">Overview</h2>
   <p class="lead">boodoo comes with built-in dark mode support, automatic system scheme detection, and the
     <code>boodoo.theme</code> JS module.
   </p>
 </section>
 
 <section class="docs-section">
-  <h2 id="">JavaScript Theme API</h2>
+  <h2 id="javascript-theme-api">JavaScript Theme API</h2>
   <div class="highlight">
     <pre><code class="language-javascript">// Get current theme ('light' or 'dark')
 const current = boodoo.theme.get();
@@ -319,7 +319,7 @@ boodoo.theme.toggle();</code></pre>
 </section>
 
 <section class="docs-section">
-  <h2 id=""><span>HTML Trigger Attribute</span></h2>
+  <h2 id="html-trigger-attribute"><span>HTML Trigger Attribute</span></h2>
   <p><span>You can toggle theme via HTML buttons without writing any JavaScript:</span></p>
   <div class="bd-example text-center">
     <button type="button" class="btn btn-secondary" data-boodoo-toggle="theme"><span>Toggle Theme</span></button>
@@ -330,7 +330,7 @@ boodoo.theme.toggle();</code></pre>
 </section>
 
 <section class="docs-section">
-  <h2 id="">Interactive Theme Builder</h2>
+  <h2 id="interactive-theme-builder">Interactive Theme Builder</h2>
   <p>Customize primary colors, border radiuses, and base fonts in real time. Preview live components and export your
     custom CSS variables snippet:</p>
 
@@ -436,7 +436,7 @@ boodoo.theme.toggle();</code></pre>
 </section>
 
 <section class="docs-section">
-  <h2 id=""><span>Spacing Scale Customization</span></h2>
+  <h2 id="spacing-scale-customization"><span>Spacing Scale Customization</span></h2>
   <p class="lead"><span>Customizing the spacing system takes minimal effort across any consumption pattern:</span></p>
 
   <div class="row g-4 mt-2">
@@ -512,7 +512,17 @@ const customSpacing = createSpacing(14);
         </div>
       </main>
 
-      
+      <aside class="col-lg-3 col-xl-3">
+
+    <div class="docs-toc d-none d-lg-block">
+      <h6 class="docs-toc-title">On this page</h6>
+      <ul><li class="toc-2"><a href="#overview">Overview</a></li>
+<li class="toc-2"><a href="#javascript-theme-api">JavaScript Theme API</a></li>
+<li class="toc-2"><a href="#html-trigger-attribute">HTML Trigger Attribute</a></li>
+<li class="toc-2"><a href="#interactive-theme-builder">Interactive Theme Builder</a></li>
+<li class="toc-2"><a href="#spacing-scale-customization">Spacing Scale Customization</a></li></ul>
+    </div>
+</aside>
     </div>
   </div>
 

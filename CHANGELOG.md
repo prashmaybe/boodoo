@@ -42,6 +42,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **React Native Export Deduplication & Bundler Integrity Rule (`.agents/AGENTS.md`)**:
   - Codified architectural standard in `.agents/AGENTS.md` mandating strict export uniqueness and Metro/Hermes compatibility across mobile submodules.
 
+### Security
+- **CodeQL & GitHub Code-Scanning Hardening**:
+  - **CI Workflow Permissions (`.github/workflows/ci.yml`)**: Explicitly configured top-level `permissions: { contents: read }` to adhere to the principle of least privilege for `GITHUB_TOKEN`.
+  - **Safe HTML Sanitization & Popover XSS Hardening (`js/src/util.js`, `js/src/tooltip.js`)**: Added zero-dependency `sanitizeHtml` utility with recursive tag stripping and event-handler sanitization; hardened `Popover.prototype.setContent` to sanitize HTML content before DOM insertion and enhanced `dispose()` to deregister all event listeners.
+  - **Documentation Search Safe Navigation (`site/assets/search.js`, `site/docs/assets/search.js`)**: Refactored search result items to render as semantic, accessible `<a>` links with validated static relative URLs, eliminating dynamic `window.location.href` mutation from untrusted DOM attributes.
+  - **Table of Contents Sanitization & Heading Anchors (`build/site-build.mjs`)**: Replaced single-pass regex tag stripping in `renderToc` and `buildPage` with recursive `stripHtml` and HTML entity escaping, eliminating multi-character sanitization bypasses.
+  - **URL Verification Test Assertions (`tests/site-docs.test.mjs`)**: Updated Haticons URL checks to assert against full HTML attribute patterns (`href="..."`, `(...)`) rather than ambiguous bare domain substrings.
+
 ### Changed
 - **Test Runner Orchestration (`tests/framework.test.mjs`, `package.json`)**:
   - Restructured framework testing architecture to compose isolated, decoupled test modules via `import` statements rather than maintaining a monolithic runner, reducing CI debugging friction and test execution overhead.

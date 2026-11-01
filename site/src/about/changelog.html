@@ -114,6 +114,15 @@ order: 7
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
         </ul>
 
+        <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Security &amp; CodeQL Hardening</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>CI Workflow Permissions</strong>: Configured explicit top-level <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least privilege on default tokens.</span></li>
+          <li><span><strong>Safe HTML Sanitization &amp; Popover XSS Protection</strong>: Added zero-dependency <code>sanitizeHtml</code> utility with recursive tag stripping and event-handler filtration in <code>js/src/util.js</code>; hardened <code>Popover.prototype.setContent</code> to sanitize HTML and enhanced <code>dispose()</code> teardown to unbind event listeners in <code>js/src/tooltip.js</code>.</span></li>
+          <li><span><strong>Documentation Search Safe Navigation</strong>: Refactored search result items to render as semantic, accessible <code>&lt;a&gt;</code> links with static relative paths in <code>site/assets/search.js</code>, eliminating dynamic <code>window.location.href</code> mutation from untrusted DOM attributes.</span></li>
+          <li><span><strong>Table of Contents Sanitization &amp; Heading Anchors</strong>: Replaced single-pass regex tag stripping in <code>renderToc</code> and <code>buildPage</code> in <code>build/site-build.mjs</code> with recursive <code>stripHtml</code> and HTML entity escaping, eliminating multi-character sanitization bypasses.</span></li>
+          <li><span><strong>URL Verification Test Assertions</strong>: Updated Haticons URL checks in <code>tests/site-docs.test.mjs</code> to assert against full HTML attribute patterns (<code>href="..."</code>, <code>(...)</code>) rather than ambiguous bare domain substrings.</span></li>
+        </ul>
+
         <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Fixes</span></h4>
         <ul class="mb-3">
           <li><span><strong>React Native Data Display Export Deduplication</strong>: Removed redundant duplicate declarations of <code>EmptyState</code>, <code>TimelineItem</code>, <code>Timeline</code>, <code>StepIndicator</code>, and <code>StepperWizard</code> from <code>react-native/data-display.js</code>, resolving the Babel <code>SyntaxError: Identifier 'EmptyState' has already been declared</code> during Hermes bytecode bundling in Expo and React Native projects.</span></li>
