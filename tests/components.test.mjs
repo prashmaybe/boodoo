@@ -123,6 +123,9 @@ test('Dropzone safe DOM creation, XSS prevention, and URL revocation', async () 
   assert.ok(!dropzoneSrc.includes('<span>${file.name}</span>'), 'Dropzone must not interpolate file.name into HTML span');
   assert.ok(dropzoneSrc.includes('nameSpan.textContent = file.name'), 'Dropzone must assign file name using textContent');
   assert.ok(dropzoneSrc.includes('previewEl.alt = file.name'), 'Dropzone must assign alt safely via property setter');
+  assert.ok(dropzoneSrc.includes("startsWith('blob:')"), 'Dropzone must validate blob: URL scheme before assignment');
+  assert.ok(dropzoneSrc.includes('encodeURI'), 'Dropzone must sanitize object URL with encodeURI');
+  assert.ok(dropzoneSrc.includes('previewEl.src = safeUrl'), 'Dropzone must assign sanitized URL to image src');
 
   // Verify URL.revokeObjectURL tracking
   const removeSrc = Dropzone.prototype.removeFile.toString();
