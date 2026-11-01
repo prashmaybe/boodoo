@@ -127,35 +127,54 @@
   <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
-  <!-- Sticky Glass Navbar -->
-  <nav
-    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
-    <div class="d-flex container">
-      <a class="navbar-brand d-flex align-items-center gap-1" href="/index.html">
-        <img src="/assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
-        <span class="fw-bold fs-5 text-gradient">boodoo</span>
-      </a>
-      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#errorNav"
-        aria-controls="errorNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="errorNav">
-        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
-          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/docs/getting-started/introduction.html">Docs</a></li>
-          <li class="nav-item"><a class="nav-link" href="/docs/components/buttons.html">Components</a></li>
-          <li class="nav-item"><a class="nav-link" href="/docs/getting-started/usage.html">CDN</a></li>
-        </ul>
+  <!-- Sticky Glass 2-Row Navbar -->
+  <header
+    class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
+    <!-- Row 1: Brand & Actions -->
+    <div class="navbar-row-primary">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center gap-1" href="/index.html">
+          <img src="/assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+          <span class="fw-bold fs-5 text-gradient">boodoo</span>
+        </a>
+
         <div class="d-flex align-items-center gap-2">
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode"
             title="Toggle theme">
             <span class="theme-icon">🌙</span>
           </button>
-          <a class="btn btn-primary btn-sm rounded-pill px-3" href="/docs/getting-started/download.html">Download</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="/docs/getting-started/download.html"><span>Download</span></a>
+          <button class="navbar-toggler border-0 d-lg-none" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#errorNav"
+            aria-controls="errorNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
       </div>
     </div>
-  </nav>
+
+    <!-- Row 2: Secondary / Main Navigation Links -->
+    <nav class="navbar navbar-expand-lg navbar-row-secondary py-0" aria-label="Main navigation">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="errorNav">
+          <ul class="navbar-nav me-auto mb-0 fw-medium">
+            <li class="nav-item"><a class="nav-link" href="/index.html"><span>Home</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/docs/getting-started/introduction.html"><span>Docs</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/docs/components/buttons.html"><span>Components</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/docs/getting-started/usage.html"><span>CDN</span></a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
+              <i class="hi-github fs-6" aria-hidden="true"></i>
+              <span>GitHub</span>
+            </a>
+            <div class="d-flex d-sm-none align-items-center gap-2 pt-2 border-top w-100 mt-2">
+              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="/docs/getting-started/download.html"><span>Download</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <!-- Main Error Content -->
   <main id="main" class="error-hero">

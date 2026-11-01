@@ -108,12 +108,21 @@ export class Dropzone extends BaseComponent {
     let previewEl;
 
     if (isImage) {
-      const url = URL.createObjectURL(file);
-      li.dataset.previewUrl = url;
-      previewEl = document.createElement('img');
-      previewEl.src = url;
-      previewEl.className = 'file-item-preview';
-      previewEl.alt = file.name;
+      const rawUrl = URL.createObjectURL(file);
+      const safeUrl = typeof rawUrl === 'string' && rawUrl.startsWith('blob:') && !/[<>"']/.test(rawUrl)
+        ? encodeURI(rawUrl)
+        : '';
+      if (safeUrl) {
+        li.dataset.previewUrl = safeUrl;
+        previewEl = document.createElement('img');
+        previewEl.src = safeUrl;
+        previewEl.className = 'file-item-preview';
+        previewEl.alt = file.name;
+      } else {
+        previewEl = document.createElement('span');
+        previewEl.className = 'file-item-icon';
+        previewEl.textContent = '📄';
+      }
     } else {
       previewEl = document.createElement('span');
       previewEl.className = 'file-item-icon';

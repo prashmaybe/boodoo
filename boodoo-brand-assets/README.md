@@ -3,12 +3,11 @@
 ## Included
 - `boodoo-logo.svg` — primary vector logo lockup
 - `boodoo-icon.svg` — icon-only vector mark
-- `boodoo-logo-primary.png` — primary logo on white
-- `boodoo-logo-primary-transparent.png` — transparent primary logo
+- `boodoo-logo-primary.png` / `boodoo-logo-primary-transparent.png` — primary logo lockup (transparent)
 - `boodoo-logo-primary-dark.png` — primary logo on dark
-- `boodoo-icon.png` / `boodoo-icon-transparent.png` / `boodoo-icon-dark.png` — icon variants
-- `boodoo-icon-16.png` through `boodoo-icon-512.png` — favicon/app icon sizes
-- `boodoo-banner.png` — 1600×400 brand banner
+- `boodoo-icon.png` / `boodoo-icon-transparent.png` / `boodoo-icon-dark.png` — icon variants (transparent & dark)
+- `boodoo-icon-16.png` through `boodoo-icon-512.png` — favicon/app icon sizes (transparent)
+- `boodoo-banner.png` — 1600×400 brand banner (transparent)
 - `boodoo-og-image.png` — 1200×630 Open Graph / social preview
 
 ## Suggested brand colors

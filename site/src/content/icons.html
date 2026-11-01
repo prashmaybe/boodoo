@@ -1,0 +1,432 @@
+<!--
+title: Icons (Haticons)
+description: Official support for Haticons by Pebble Benders — 569+ modular, performance-optimized vector and font icons designed for Boodoo.
+section: content
+order: 2
+-->
+
+<section class="docs-section">
+  <h1><span>Icons (Haticons)</span></h1>
+  <p class="lead"><span>Boodoo officially pairs with and supports <strong><a href="https://haticons.com/"
+          target="_blank" rel="noopener">Haticons</a></strong>—an open-source, modular vector and font icon library
+      crafted by Pebble Benders with 569+ icons, zero runtime dependencies, and category-first stylesheets.</span></p>
+
+  <div class="p-2 mb-4 rounded-3 border bg-soft-primary border-primary-subtle shadow-sm">
+    <div class="d-flex flex-column flex-sm-row align-items-start gap-3">
+      <span class="icon icon-2xl text-primary flex-shrink-0"><i class="hi-haticons" aria-hidden="true"></i></span>
+      <div class="flex-grow-1">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-1">
+          <h5 class="h6 fw-bold mb-0 text-primary"><span>Official Pebble Benders Companion Library</span></h5>
+          <span class="badge badge-primary badge-pill"><span>569+ Icons</span></span>
+        </div>
+        <p class="small text-muted mb-3"><span>Haticons was engineered alongside Boodoo to provide seamless responsive
+            sizing, CSS custom property theming, and modular category loading.</span></p>
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <a class="btn btn-primary btn-sm rounded-pill px-3" href="https://haticons.com/" target="_blank"
+            rel="noopener">
+            <i class="hi-globe me-1" aria-hidden="true"></i><span>haticons.com</span>
+          </a>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="https://github.com/pebblebenders"
+            target="_blank" rel="noopener">
+            <i class="hi-github me-1" aria-hidden="true"></i><span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="quick-start"><span>Quick Installation</span></h2>
+  <p><span>You can load Haticons via high-speed CDN or install it locally through your preferred package manager.</span>
+  </p>
+
+  <h3 class="h5 fw-bold mt-3"><span>1. CDN (Drop into HTML &lt;head&gt;)</span></h3>
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Drop Haticons stylesheet in your &lt;head&gt; alongside Boodoo --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css"&gt;</code></pre>
+  </div>
+
+  <h3 class="h5 fw-bold mt-4"><span>2. Package Manager (npm / yarn / pnpm)</span></h3>
+  <div class="highlight">
+    <pre><code class="language-bash"># Install via npm
+npm install haticons
+
+# Or via pnpm
+pnpm add haticons
+
+# Or via yarn
+yarn add haticons</code></pre>
+  </div>
+
+  <h3 class="h5 fw-bold mt-4"><span>3. Importing in JavaScript / Bundlers</span></h3>
+  <div class="highlight">
+    <pre><code class="language-javascript">// In main.js / index.js / App.jsx
+import 'haticons/dist/css/haticons.min.css';</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="modular-categories"><span>Modular Category Stylesheets</span></h2>
+  <p><span>Unlike monolithic icon libraries that force you to ship hundreds of kilobytes of unused glyphs, Haticons
+      provides individual category stylesheets so you only download what you use:</span></p>
+
+  <div class="table-responsive border rounded mb-4">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th scope="col"><span>Category</span></th>
+          <th scope="col"><span>Description</span></th>
+          <th scope="col"><span>Example Icons</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><span>UI &amp; Interface</span></strong></td>
+          <td><span>Navigation, toggles, controls, layouts, and menus</span></td>
+          <td><code>hi-search</code>, <code>hi-menu</code>, <code>hi-close</code>, <code>hi-settings</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Brands &amp; Social</span></strong></td>
+          <td><span>Logos, tech stacks, developer tools, and networks</span></td>
+          <td><code>hi-github</code>, <code>hi-react</code>, <code>hi-vue-js</code>, <code>hi-bootstrap</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Commerce &amp; Payments</span></strong></td>
+          <td><span>Carts, checkout, wallets, receipts, and currencies</span></td>
+          <td><code>hi-cart</code>, <code>hi-credit-card</code>, <code>hi-wallet</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Feedback &amp; Status</span></strong></td>
+          <td><span>Checkmarks, warnings, shields, notifications, and alerts</span></td>
+          <td><code>hi-check</code>, <code>hi-warning</code>, <code>hi-shield-check</code>, <code>hi-bell</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Directional &amp; Arrows</span></strong></td>
+          <td><span>Chevrons, carets, arrows, and directional indicators</span></td>
+          <td><code>hi-arrow-right</code>, <code>hi-chevron-down</code>, <code>hi-chevron-left</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Files &amp; Folders</span></strong></td>
+          <td><span>Documents, folders, uploads, and file management</span></td>
+          <td><code>hi-file</code>, <code>hi-folder</code>, <code>hi-download</code>, <code>hi-trash</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Time &amp; Calendar</span></strong></td>
+          <td><span>Clocks, dates, stopwatches, and scheduling</span></td>
+          <td><code>hi-calendar</code>, <code>hi-clock</code></td>
+        </tr>
+        <tr>
+          <td><strong><span>Users &amp; People</span></strong></td>
+          <td><span>User profiles, accounts, groups, and identities</span></td>
+          <td><code>hi-user</code>, <code>hi-users</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="syntax-and-variants"><span>Icon Syntax &amp; Variants</span></h2>
+  <p><span>Render icons using an <code>&lt;i&gt;</code> or <code>&lt;span&gt;</code> tag with the <code>hi-[name]</code>
+      class identifier. Haticons provides base, fill, outline, and sharp variants:</span></p>
+
+  <div class="bd-example d-flex flex-wrap align-items-center gap-4 py-3">
+    <div class="text-center">
+      <span class="icon icon-xl text-primary"><i class="hi-star" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-star</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl text-primary"><i class="hi-star-fill" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-star-fill</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl text-primary"><i class="hi-star-outline" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-star-outline</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl text-primary"><i class="hi-star-sharp" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-star-sharp</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl text-danger"><i class="hi-heart-fill" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-heart-fill</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl text-success"><i class="hi-check-circle-fill" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>hi-check-circle-fill</code></p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Standard icons --&gt;
+&lt;i class="hi-star"&gt;&lt;/i&gt;
+&lt;i class="hi-star-fill"&gt;&lt;/i&gt;
+&lt;i class="hi-star-outline"&gt;&lt;/i&gt;
+&lt;i class="hi-star-sharp"&gt;&lt;/i&gt;
+&lt;i class="hi-heart-fill text-danger"&gt;&lt;/i&gt;
+&lt;i class="hi-check-circle-fill text-success"&gt;&lt;/i&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="sizing-tokens"><span>Responsive Sizing with Boodoo</span></h2>
+  <p><span>Haticons integrates seamlessly with Boodoo's <code>.icon</code> token hierarchy, scaling proportionally with
+      typography or fixed token sizes from <code>.icon-xs</code> (12px) to <code>.icon-2xl</code> (48px):</span></p>
+
+  <div class="bd-example d-flex flex-wrap align-items-end gap-3 py-3">
+    <div class="text-center">
+      <span class="icon icon-xs"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-xs</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-sm"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-sm</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-md"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-md</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-lg"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-lg</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-xl"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-xl</code></p>
+    </div>
+    <div class="text-center">
+      <span class="icon icon-2xl"><i class="hi-bolt" aria-hidden="true"></i></span>
+      <p class="small text-muted mt-1 mb-0"><code>.icon-2xl</code></p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;i class="hi-bolt icon-xs"&gt;&lt;/i&gt;   &lt;!-- 0.75rem / 12px --&gt;
+&lt;i class="hi-bolt icon-sm"&gt;&lt;/i&gt;   &lt;!-- 1rem / 16px --&gt;
+&lt;i class="hi-bolt icon-md"&gt;&lt;/i&gt;   &lt;!-- 1.25rem / 20px --&gt;
+&lt;i class="hi-bolt icon-lg"&gt;&lt;/i&gt;   &lt;!-- 1.75rem / 28px --&gt;
+&lt;i class="hi-bolt icon-xl"&gt;&lt;/i&gt;   &lt;!-- 2.25rem / 36px --&gt;
+&lt;i class="hi-bolt icon-2xl"&gt;&lt;/i&gt;  &lt;!-- 3rem / 48px --&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="color-theming"><span>Dynamic Color Theming</span></h2>
+  <p><span>Because Haticons consumes <code>currentColor</code>, applying any Boodoo contextual color utility immediately
+      styles the icon while remaining fully reactive to runtime theme switching:</span></p>
+
+  <div class="bd-example d-flex flex-wrap align-items-center gap-3 py-3">
+    <span class="icon icon-lg text-primary"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-secondary"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-success"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-danger"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-warning"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-info"><i class="hi-shield-check" aria-hidden="true"></i></span>
+    <span class="icon icon-lg text-muted"><i class="hi-shield-check" aria-hidden="true"></i></span>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;i class="hi-shield-check text-primary icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-secondary icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-success icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-danger icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-warning icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-info icon-lg"&gt;&lt;/i&gt;
+&lt;i class="hi-shield-check text-muted icon-lg"&gt;&lt;/i&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="component-pairings"><span>Component Integrations</span></h2>
+  <p><span>Haticons is engineered to integrate naturally across all Boodoo components:</span></p>
+
+  <h3 class="h5 fw-bold mt-4"><span>Buttons &amp; Icon Links</span></h3>
+  <div class="bd-example d-flex flex-wrap align-items-center gap-2 py-2">
+    <button type="button" class="btn btn-primary d-inline-flex align-items-center gap-2">
+      <i class="hi-download" aria-hidden="true"></i>
+      <span>Download</span>
+    </button>
+    <button type="button" class="btn btn-outline-primary d-inline-flex align-items-center gap-2">
+      <i class="hi-settings" aria-hidden="true"></i>
+      <span>Settings</span>
+    </button>
+    <button type="button" class="btn btn-soft-danger d-inline-flex align-items-center gap-2">
+      <i class="hi-trash" aria-hidden="true"></i>
+      <span>Delete</span>
+    </button>
+    <a href="#" class="icon-link ms-2">
+      <span>Learn more</span>
+      <i class="hi-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;button type="button" class="btn btn-primary d-inline-flex align-items-center gap-2"&gt;
+  &lt;i class="hi-download" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span&gt;Download&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;a href="#" class="icon-link"&gt;
+  &lt;span&gt;Learn more&lt;/span&gt;
+  &lt;i class="hi-arrow-right" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;/a&gt;</code></pre>
+  </div>
+
+  <h3 class="h5 fw-bold mt-4"><span>Form Controls &amp; Input Groups</span></h3>
+  <div class="bd-example p-2 border rounded bg-white">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="demoSearchField" class="form-label"><span>Search Products</span></label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="hi-search" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" id="demoSearchField" name="demoSearchField"
+            placeholder="Type to search...">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="demoDateField" class="form-label"><span>Appointment Date</span></label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="hi-calendar" aria-hidden="true"></i></span>
+          <input type="date" class="form-control" id="demoDateField" name="demoDateField" value="2026-10-30">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="input-group"&gt;
+  &lt;span class="input-group-text"&gt;&lt;i class="hi-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;input type="text" class="form-control" id="demoSearchField" name="demoSearchField" placeholder="Type to search..."&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+
+  <h3 class="h5 fw-bold mt-4"><span>Alerts with Icons</span></h3>
+  <div class="bd-example">
+    <div class="alert alert-info d-flex align-items-center" role="alert">
+      <i class="hi-info-alt alert-icon me-2" aria-hidden="true"></i>
+      <div><span>A new version of Boodoo and Haticons is available for download.</span></div>
+    </div>
+    <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
+      <i class="hi-check-circle-fill alert-icon me-2" aria-hidden="true"></i>
+      <div><span>All dependencies and stylesheets compiled with zero errors.</span></div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;div class="alert alert-info d-flex align-items-center" role="alert"&gt;
+  &lt;i class="hi-info-alt alert-icon me-2" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;div&gt;&lt;span&gt;A new version of Boodoo and Haticons is available for download.&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>
+
+<section class="docs-section">
+  <h2 id="popular-icons"><span>Popular Haticons Showcase</span></h2>
+  <p><span>Click any card below to copy the HTML icon class to your clipboard:</span></p>
+
+  <div class="row g-3" id="iconShowcaseGrid">
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-haticons\'></i>'); boodoo.toast('Copied <i class=\'hi-haticons\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-primary mx-auto mb-2"><i class="hi-haticons" aria-hidden="true"></i></span>
+        <code class="small">hi-haticons</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-bolt\'></i>'); boodoo.toast('Copied <i class=\'hi-bolt\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-warning mx-auto mb-2"><i class="hi-bolt" aria-hidden="true"></i></span>
+        <code class="small">hi-bolt</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-shield-check\'></i>'); boodoo.toast('Copied <i class=\'hi-shield-check\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-success mx-auto mb-2"><i class="hi-shield-check" aria-hidden="true"></i></span>
+        <code class="small">hi-shield-check</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-cart\'></i>'); boodoo.toast('Copied <i class=\'hi-cart\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-info mx-auto mb-2"><i class="hi-cart" aria-hidden="true"></i></span>
+        <code class="small">hi-cart</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-phone\'></i>'); boodoo.toast('Copied <i class=\'hi-phone\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-primary mx-auto mb-2"><i class="hi-phone" aria-hidden="true"></i></span>
+        <code class="small">hi-phone</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-paintbox\'></i>'); boodoo.toast('Copied <i class=\'hi-paintbox\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-danger mx-auto mb-2"><i class="hi-paintbox" aria-hidden="true"></i></span>
+        <code class="small">hi-paintbox</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-calendar\'></i>'); boodoo.toast('Copied <i class=\'hi-calendar\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-secondary mx-auto mb-2"><i class="hi-calendar" aria-hidden="true"></i></span>
+        <code class="small">hi-calendar</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-clock\'></i>'); boodoo.toast('Copied <i class=\'hi-clock\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-muted mx-auto mb-2"><i class="hi-clock" aria-hidden="true"></i></span>
+        <code class="small">hi-clock</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-folder\'></i>'); boodoo.toast('Copied <i class=\'hi-folder\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-warning mx-auto mb-2"><i class="hi-folder" aria-hidden="true"></i></span>
+        <code class="small">hi-folder</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-file\'></i>'); boodoo.toast('Copied <i class=\'hi-file\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-info mx-auto mb-2"><i class="hi-file" aria-hidden="true"></i></span>
+        <code class="small">hi-file</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-chart\'></i>'); boodoo.toast('Copied <i class=\'hi-chart\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-success mx-auto mb-2"><i class="hi-chart" aria-hidden="true"></i></span>
+        <code class="small">hi-chart</code>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="card p-1 text-center border feature-card cursor-pointer"
+        onclick="navigator.clipboard.writeText('<i class=\'hi-github\'></i>'); boodoo.toast('Copied <i class=\'hi-github\'></i> to clipboard!', { delay: 2000 });"
+        role="button" tabindex="0">
+        <span class="icon icon-xl text-dark mx-auto mb-2"><i class="hi-github" aria-hidden="true"></i></span>
+        <code class="small">hi-github</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-2 pt-2">
+    <a class="btn btn-primary rounded-pill px-4" href="https://haticons.com/" target="_blank" rel="noopener">
+      <span>Explore All 569+ Icons on haticons.com →</span>
+    </a>
+  </div>
+</section>

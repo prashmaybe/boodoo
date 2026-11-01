@@ -61,7 +61,7 @@ All distribution assets are tested, minified, and verified on every release buil
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~539 KB | ~75.1 KB | ~51.1 KB | Full framework (all 50+ components + utilities) |
+| `boodoo.min.css` | ~539 KB | ~75.1 KB | ~50.8 KB | Full framework (all 50+ components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
@@ -264,6 +264,33 @@ All form controls feature built-in validation states, accessibility labels, and 
 - [**Form Validation**](https://boodooframework.com/docs/forms/validation.html) — Browser-native HTML5 validation styles with accessible feedback tooltips
 
 Explore fully assembled templates in the [**Live Examples Gallery**](https://boodooframework.com/examples/) (Dashboard, Checkout, Sign-in, Pricing, Heroes, Blog, Album, and Cover).
+
+---
+
+## 💎 Official Icon Suite — Haticons
+
+Boodoo officially pairs with and supports **[Haticons](https://haticons.com/)** by Pebble Benders. Haticons is an open-source, modular vector and font icon library engineered for performance with 569+ icons and zero runtime dependencies.
+
+- **Modular Category Stylesheets**: Load only what you need (UI, Brands, Commerce, Feedback, Directional, Media, Files, Navigation) or the full suite via CDN.
+- **Retina-Crisp Font & Vector Glyphs**: Automatically inherits `currentColor` and works out of the box with Boodoo's dynamic theme tokens.
+- **Responsive Sizing Integration**: Native support for Boodoo's `.icon` token system (`.icon-xs` through `.icon-2xl`).
+
+### Quick Start with Haticons
+```html
+<!-- Load Haticons via CDN alongside Boodoo -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
+
+<!-- Use icons in buttons, badges, links, and alerts -->
+<button class="btn btn-primary d-inline-flex align-items-center gap-2">
+  <i class="hi-download" aria-hidden="true"></i>
+  <span>Download</span>
+</button>
+
+<i class="hi-bolt text-warning icon-lg"></i>
+<i class="hi-shield-check text-success icon-md"></i>
+<a href="#" class="icon-link"><span>Learn more</span><i class="hi-arrow-right"></i></a>
+```
+Explore the full icon catalog and cheatsheet at **[haticons.com](https://haticons.com/)** or read the [Boodoo Haticons Guide](https://boodooframework.com/docs/content/icons.html).
 
 ---
 

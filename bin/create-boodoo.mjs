@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.2.3';
+const BOODOO_VERSION = '1.2.4';
 
 export function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -575,6 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <title>${projectName}</title>
   <!-- Boodoo CSS -->
   <link rel="stylesheet" href="node_modules/boodoo/dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
 </head>
 <body class="bg-light">
 
@@ -603,20 +604,20 @@ document.addEventListener('DOMContentLoaded', () => {
           <li class="sidebar-heading"><span>Overview</span></li>
           <li class="sidebar-item">
             <a href="#" class="sidebar-link active">
-              <span class="sidebar-icon">📊</span>
+              <span class="sidebar-icon"><i class="hi-chart" aria-hidden="true"></i></span>
               <span class="sidebar-text">Dashboard</span>
             </a>
           </li>
           <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-              <span class="sidebar-icon">📁</span>
+              <span class="sidebar-icon"><i class="hi-folder" aria-hidden="true"></i></span>
               <span class="sidebar-text">Projects</span>
             </a>
           </li>
           <li class="sidebar-heading"><span>Preferences</span></li>
           <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-              <span class="sidebar-icon">⚙️</span>
+              <span class="sidebar-icon"><i class="hi-settings" aria-hidden="true"></i></span>
               <span class="sidebar-text">Settings</span>
             </a>
           </li>
@@ -1265,16 +1266,16 @@ app.on('window-all-closed', () => {
         <div class="pane pane-sidebar">
           <nav class="nav-group">
             <h6 class="nav-group-title">Navigation</h6>
-            <a href="#" class="nav-group-item active"><span>🏠 Dashboard</span></a>
-            <a href="#" class="nav-group-item"><span>📁 Projects</span></a>
-            <a href="#" class="nav-group-item"><span>⚙️ Preferences</span></a>
+            <a href="#" class="nav-group-item active"><i class="hi-home me-1" aria-hidden="true"></i><span>Dashboard</span></a>
+            <a href="#" class="nav-group-item"><i class="hi-folder me-1" aria-hidden="true"></i><span>Projects</span></a>
+            <a href="#" class="nav-group-item"><i class="hi-settings me-1" aria-hidden="true"></i><span>Preferences</span></a>
           </nav>
         </div>
         <div class="pane p-3">
           <div class="tab-group mb-3">
             <div class="tab-item active">
               <span>Overview</span>
-              <span class="icon-close-tab">✕</span>
+              <span class="icon-close-tab"><i class="hi-close" aria-hidden="true"></i></span>
             </div>
             <div class="tab-item">
               <span>Inspector</span>
@@ -2059,9 +2060,11 @@ export async function main() {
 }
 
 // Only invoke main when run directly as CLI
+/* node:coverage disable */
 if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);
   });
 }
+/* node:coverage enable */

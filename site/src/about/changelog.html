@@ -30,7 +30,7 @@ order: 7
 <div class="row g-3 mb-4">
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>🏷️</span></div>
+      <div class="stat-icon"><i class="hi-tag" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>v{{version}}</span></div>
         <div class="stat-label"><span>Current Release</span></div>
@@ -39,7 +39,7 @@ order: 7
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>⚡</span></div>
+      <div class="stat-icon"><i class="hi-bolt" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>{{cssMinKb}} KB / {{jsMinKb}} KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
@@ -48,7 +48,7 @@ order: 7
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>🚀</span></div>
+      <div class="stat-icon"><i class="hi-launchpad" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>0 Dependencies</span></div>
         <div class="stat-label"><span>Pure Vanilla ES / CSS</span></div>
@@ -57,9 +57,9 @@ order: 7
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>📦</span></div>
+      <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>17 Milestones</span></div>
+        <div class="stat-value"><span>18 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -68,20 +68,76 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
+  <!-- Version 1.2.4 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-4">
+            <span>v1.2.4</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 1, 2026</span>
+          <span class="footer-dot">·</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.4"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
+          <span>Version 1.2.4 Release — Official Haticons Suite, Modular Test Suites, 100% Code Coverage &amp; Metro Bundler Fix</span>
+        </h3>
+        <p><span>boodoo <strong>v1.2.4</strong> adopts Haticons as the official 569+ icon suite across website, docs, and templates with an interactive explorer, refactors the test runner into 6 modular test suites, achieves 100% code coverage across CLI and runtime modules, deduplicates React Native mobile exports resolving Metro bundling errors, aligns icon count references, and introduces automated syntax verification tests.</span></p>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>Official Haticons Suite Adoption</strong>: Adopted Haticons as the framework's official vector icon suite (569+ icons), loaded via CDN across website and documentation, with native font-icon support and zero external runtime dependencies.</span></li>
+          <li><span><strong>Dedicated Icons Documentation &amp; Explorer</strong>: Added <a href="../content/icons.html"><span>Icons Documentation</span></a> featuring an interactive icon catalog with real-time search, category filtering, copy-to-clipboard HTML/SVG snippets, sizing utilities (<code>icon-xs</code> to <code>icon-2xl</code>), and CSS token styling guides.</span></li>
+          <li><span><strong>Modular Test Suite Architecture</strong>: Refactored the monolithic 2,216-line test suite into 6 isolated, focused test modules under <code>tests/</code> (<code>css-tokens</code>, <code>react-native</code>, <code>components</code>, <code>framework-adapters</code>, <code>cli</code>, and <code>site-docs</code>) orchestrated by <code>tests/framework.test.mjs</code>.</span></li>
+          <li><span><strong>100% Code Coverage Achievement</strong>: Achieved 100.00% line coverage and 100.00% function coverage across CLI and core modules (<code>bin/boodoo.mjs</code>, <code>bin/create-boodoo.mjs</code>, <code>tokens/index.js</code>, and <code>react-native/paper.js</code>) with comprehensive edge, template, and error handling coverage.</span></li>
+          <li><span><strong>SCSS &amp; LESS Icon Helper Parity</strong>: Added prefix rules in <code>scss/_helpers.scss</code> and <code>less/_helpers.less</code> ensuring <code>hi-*</code> font icons render with proper line-height and font-style, plus <code>.alert-icon</code> flex centering parity in LESS.</span></li>
+          <li><span><strong>Automated Haticons &amp; React Native Verification</strong>: Enforced comprehensive automated tests in <code>tests/site-docs.test.mjs</code> and <code>tests/react-native.test.mjs</code> validating Haticons SCSS/LESS parity, sizing tokens, docs route, navigation, and zero duplicate exports across all 13 React Native submodules.</span></li>
+          <li><span><strong>React Native Export Deduplication Rule</strong>: Codified architectural standard in <code>.agents/AGENTS.md</code> mandating strict export uniqueness and Metro/Hermes bundling compatibility for mobile primitives.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-info mt-3 mb-2"><span>Changes</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>Test Runner Orchestration</strong>: Restructured framework testing architecture to compose isolated, decoupled test modules via <code>import</code> statements rather than maintaining a monolithic runner, reducing CI debugging friction and test execution overhead.</span></li>
+          <li><span><strong>Universal Documentation &amp; Landing Page Icon Modernization</strong>: Upgraded all component documentation pages (alerts, KPI cards, sidebar, steppers, timelines, tree-views, dropzones, pickers, electron, and platforms), landing page showcase section, and global footer to use official semantic Haticons.</span></li>
+          <li><span><strong>Template &amp; Starter Modernization</strong>: Updated Electron and web starters in <code>bin/create-boodoo.mjs</code> to embed Haticons CDN and semantic icon classes (<code>hi-chart</code>, <code>hi-folder</code>, <code>hi-settings</code>, <code>hi-home</code>, <code>hi-close</code>), and updated mobile starter documentation.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Fixes</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>React Native Data Display Export Deduplication</strong>: Removed redundant duplicate declarations of <code>EmptyState</code>, <code>TimelineItem</code>, <code>Timeline</code>, <code>StepIndicator</code>, and <code>StepperWizard</code> from <code>react-native/data-display.js</code>, resolving the Babel <code>SyntaxError: Identifier 'EmptyState' has already been declared</code> during Hermes bytecode bundling in Expo and React Native projects.</span></li>
+          <li><span><strong>CLI Direct Execution &amp; Scaffolding Test Isolation</strong>: Fixed premature process termination in test environments by isolating direct CLI execution behind Node coverage pragmas in <code>bin/create-boodoo.mjs</code> and parameterizing child process spawning in <code>bin/boodoo.mjs</code>.</span></li>
+          <li><span><strong>Official Haticons Count Alignment</strong>: Corrected icon count references across <code>README.md</code>, documentation pages, and website copy to strictly reflect the official 569+ icons in the suite.</span></li>
+          <li><span><strong>Dropzone File Line Ending Normalization</strong>: Normalized line endings and sanitized preview element text interpolation in <code>js/src/dropzone.js</code>.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
   <!-- Version 1.2.3 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-3">
             <span>v1.2.3</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -108,7 +164,7 @@ order: 7
 
   <!-- Version 1.2.2 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -118,7 +174,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 24, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 24, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -151,7 +207,7 @@ order: 7
 
   <!-- Version 1.2.1 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -161,7 +217,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 21, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 21, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -188,7 +244,7 @@ order: 7
 
   <!-- Version 1.2.0 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -198,7 +254,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -224,7 +280,7 @@ order: 7
 
   <!-- Version 1.1.9 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -234,7 +290,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.9"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -266,7 +322,7 @@ order: 7
 
   <!-- Version 1.1.8 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -276,7 +332,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.8"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -304,7 +360,7 @@ order: 7
 
   <!-- Version 1.1.7 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -314,7 +370,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.7"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -343,7 +399,7 @@ order: 7
 
   <!-- Version 1.1.6 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -353,7 +409,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.6"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -383,7 +439,7 @@ order: 7
 
   <!-- Version 1.1.5 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -393,7 +449,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 17, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 17, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.5"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -419,7 +475,7 @@ order: 7
 
   <!-- Version 1.1.4 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -429,7 +485,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -457,7 +513,7 @@ order: 7
 
   <!-- Version 1.1.3 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -467,7 +523,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -519,7 +575,7 @@ order: 7
 
   <!-- Version 1.1.2 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -529,7 +585,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -577,7 +633,7 @@ order: 7
 
   <!-- Version 1.1.1 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -587,7 +643,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 13, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 13, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -622,7 +678,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 11, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 11, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -665,7 +721,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 6, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 6, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.9"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -699,7 +755,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.8"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -756,7 +812,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.7"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -819,7 +875,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 27, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 27, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.6"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -889,7 +945,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 26, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 26, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.5"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -959,7 +1015,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 26, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 26, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1046,7 +1102,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1137,7 +1193,7 @@ order: 7
           <h4 class="border-0 mb-0 fw-bold mt-0" id="v1-0-2"><span>v1.0.2</span></h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1169,7 +1225,7 @@ order: 7
           <h4 class="border-0 mb-0 fw-bold mt-0" id="v1-0-1"><span>v1.0.1</span></h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1192,7 +1248,7 @@ order: 7
 
   <!-- Version 1.0.0 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-success"><span>🎉</span></div>
+    <div class="timeline-badge timeline-badge-success"><i class="hi-launchpad" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -1203,7 +1259,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>

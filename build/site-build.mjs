@@ -398,3 +398,20 @@ if (fs.existsSync(staticSrc)) {
   fs.cpSync(staticSrc, staticDst, { recursive: true });
   console.log('Copied site assets');
 }
+
+// Validate search catalog completeness across all documentation pages
+const searchJsFile = path.join(staticSrc, 'search.js');
+if (fs.existsSync(searchJsFile)) {
+  const searchContent = fs.readFileSync(searchJsFile, 'utf8');
+  const catalogMatch = searchContent.match(/const CATALOG = (\[[\s\S]*?\n  \];)/);
+  if (catalogMatch) {
+    const catalog = (new Function(`return ${catalogMatch[1]}`))();
+    const catalogRoutes = new Set(catalog.map((c) => c.route));
+    const missing = files.filter((f) => !catalogRoutes.has(f.route));
+    if (missing.length) {
+      console.warn(`⚠️ Warning: ${missing.length} docs pages missing from search catalog:`, missing.map((f) => f.route).join(', '));
+    } else {
+      console.log(`✅ Verified search catalog contains all ${catalogRoutes.size} documentation pages`);
+    }
+  }
+}

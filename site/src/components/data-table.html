@@ -7,18 +7,21 @@ order: 15
 
 <section class="docs-section">
   <h2>Overview</h2>
-  <p class="lead">The <code>.data-table</code> component turns standard tables into interactive data grids equipped with column sorting, batch row selection, sticky headers, expandable details, and responsive toolbar controls.</p>
+  <p class="lead">The <code>.data-table</code> component turns standard tables into interactive data grids equipped with
+    column sorting, batch row selection, sticky headers, expandable details, and responsive toolbar controls.</p>
 </section>
 
 <section class="docs-section">
   <h2>Interactive Data Table Example</h2>
-  <p>Click any column header to sort in ascending or descending order. Click the header checkbox to select all rows. Click row toggle arrows to reveal nested drawer details.</p>
+  <p>Click any column header to sort in ascending or descending order. Click the header checkbox to select all rows.
+    Click row toggle arrows to reveal nested drawer details.</p>
 
-  <div class="bd-example p-3 border rounded bg-white">
+  <div class="bd-example p-2 border rounded bg-white">
     <div class="data-table-wrapper" data-boodoo="datatable">
       <div class="data-table-toolbar">
         <div class="d-flex align-items-center gap-2">
-          <input type="text" class="form-control form-control-sm" id="tableFilterInput" name="tableFilter" placeholder="Filter rows..." class="form-control form-control-sm demo-input-w200">
+          <input type="text" class="form-control form-control-sm" id="tableFilterInput" name="tableFilter"
+            placeholder="Filter rows..." class="form-control form-control-sm demo-input-w200">
           <span class="badge badge-soft-primary">3 Users</span>
         </div>
         <div class="d-flex align-items-center gap-2">
@@ -32,7 +35,8 @@ order: 15
           <thead>
             <tr>
               <th scope="col" class="data-table-select-col">
-                <input type="checkbox" class="form-check-input" id="tableSelectAll" name="selectAll" aria-label="Select all rows">
+                <input type="checkbox" class="form-check-input" id="tableSelectAll" name="selectAll"
+                  aria-label="Select all rows">
               </th>
               <th scope="col" class="sortable"><span>User</span></th>
               <th scope="col" class="sortable"><span>Role</span></th>
@@ -44,7 +48,8 @@ order: 15
           <tbody>
             <tr class="data-table-expandable-row">
               <td class="data-table-select-col">
-                <input type="checkbox" class="form-check-input" id="userCheck1" name="userCheck1" aria-label="Select user 1">
+                <input type="checkbox" class="form-check-input" id="userCheck1" name="userCheck1"
+                  aria-label="Select user 1">
               </td>
               <td>
                 <div class="d-flex align-items-center">
@@ -67,14 +72,16 @@ order: 15
               <td colspan="6">
                 <div class="p-2">
                   <h6 class="mb-1"><span>Jane Doe's Activity History</span></h6>
-                  <p class="text-muted small mb-0"><span>Last login: 10 minutes ago from San Francisco, CA. Has access to 8 repository projects.</span></p>
+                  <p class="text-muted small mb-0"><span>Last login: 10 minutes ago from San Francisco, CA. Has access
+                      to 8 repository projects.</span></p>
                 </div>
               </td>
             </tr>
 
             <tr class="data-table-expandable-row">
               <td class="data-table-select-col">
-                <input type="checkbox" class="form-check-input" id="userCheck2" name="userCheck2" aria-label="Select user 2">
+                <input type="checkbox" class="form-check-input" id="userCheck2" name="userCheck2"
+                  aria-label="Select user 2">
               </td>
               <td>
                 <div class="d-flex align-items-center">
@@ -97,14 +104,16 @@ order: 15
               <td colspan="6">
                 <div class="p-2">
                   <h6 class="mb-1"><span>Alex Smith's Activity History</span></h6>
-                  <p class="text-muted small mb-0"><span>Invitation pending verification. Member since Sept 2026.</span></p>
+                  <p class="text-muted small mb-0"><span>Invitation pending verification. Member since Sept 2026.</span>
+                  </p>
                 </div>
               </td>
             </tr>
 
             <tr class="data-table-expandable-row">
               <td class="data-table-select-col">
-                <input type="checkbox" class="form-check-input" id="userCheck3" name="userCheck3" aria-label="Select user 3">
+                <input type="checkbox" class="form-check-input" id="userCheck3" name="userCheck3"
+                  aria-label="Select user 3">
               </td>
               <td>
                 <div class="d-flex align-items-center">
@@ -127,7 +136,8 @@ order: 15
               <td colspan="6">
                 <div class="p-2">
                   <h6 class="mb-1"><span>Marcus Roy's Activity History</span></h6>
-                  <p class="text-muted small mb-0"><span>Active in Frontend Engineering and Design Systems teams.</span></p>
+                  <p class="text-muted small mb-0"><span>Active in Frontend Engineering and Design Systems teams.</span>
+                  </p>
                 </div>
               </td>
             </tr>
@@ -177,5 +187,6 @@ order: 15
 
 <section class="docs-section">
   <h2>Compact & Dense Grids</h2>
-  <p>Add <code>.data-table-compact</code> or <code>.data-table-dense</code> to maximize information density for administrative dashboards.</p>
+  <p>Add <code>.data-table-compact</code> or <code>.data-table-dense</code> to maximize information density for
+    administrative dashboards.</p>
 </section>
