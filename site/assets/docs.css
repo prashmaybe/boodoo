@@ -1688,6 +1688,11 @@ code:not(pre code) {
   background-color: #5C6280;
 }
 
+.brand-logo-preview {
+  max-width: 420px;
+  background-color: transparent;
+}
+
 .swatch-white {
   background-color: #FFFFFF;
   border: 1px solid var(--boodoo-gray-200);
