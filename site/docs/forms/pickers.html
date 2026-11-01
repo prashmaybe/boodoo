@@ -35,6 +35,7 @@
       rel="stylesheet">
   </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
 
@@ -66,17 +67,13 @@
         <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
-            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
             <span class="search-btn-text">Search</span>
             <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
             title="Toggle theme">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
           <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
             href="../../docs/getting-started/usage.html">CDN</a>
@@ -95,12 +92,10 @@
           type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false"
           aria-controls="docsSidebarCollapse">
           <span class="d-flex align-items-center gap-2">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            <i class="hi-menu fs-5" aria-hidden="true"></i>
             <span>Documentation Navigation</span>
           </span>
-          <span class="chevron">▼</span>
+          <i class="hi-chevron-down" aria-hidden="true"></i>
         </button>
         <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
           <nav aria-label="Docs navigation">
@@ -136,6 +131,7 @@
 <ul class="docs-nav-list">
 <li><a href="../content/typography.html">Typography</a></li>
 <li><a href="../content/images.html">Images</a></li>
+<li><a href="../content/icons.html">Icons (Haticons)</a></li>
 <li><a href="../content/tables.html">Tables</a></li>
 <li><a href="../content/figures.html">Figures</a></li>
 </ul>
@@ -345,14 +341,14 @@
       <div class="col-md-6">
         <label class="form-label" for="pickerDate"><span>Appointment Date</span></label>
         <div class="form-picker-group">
-          <span class="form-picker-icon"><span>📅</span></span>
+          <span class="form-picker-icon"><i class="hi-calendar" aria-hidden="true"></i></span>
           <input type="date" class="form-control" id="pickerDate" name="appointmentDate" value="2026-09-26">
         </div>
       </div>
       <div class="col-md-6">
         <label class="form-label" for="pickerTime"><span>Meeting Time</span></label>
         <div class="form-picker-group">
-          <span class="form-picker-icon"><span>⏰</span></span>
+          <span class="form-picker-icon"><i class="hi-clock" aria-hidden="true"></i></span>
           <input type="time" class="form-control" id="pickerTime" name="meetingTime" value="09:00">
         </div>
       </div>
@@ -361,7 +357,7 @@
 
   <div class="highlight">
     <pre><code class="language-html">&lt;div class="form-picker-group"&gt;
-  &lt;span class="form-picker-icon"&gt;&lt;span&gt;📅&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="form-picker-icon"&gt;&lt;i class="hi-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
   &lt;input type="date" class="form-control" id="pickerDate" name="appointmentDate"&gt;
 &lt;/div&gt;</code></pre>
   </div>
@@ -373,12 +369,12 @@
     <label class="form-label" for="rangeStartDate"><span>Booking Period</span></label>
     <div class="form-date-range">
       <div class="form-picker-group flex-grow-1">
-        <span class="form-picker-icon"><span>📅</span></span>
+        <span class="form-picker-icon"><i class="hi-calendar" aria-hidden="true"></i></span>
         <input type="date" class="form-control" id="rangeStartDate" name="startDate" value="2026-10-01">
       </div>
       <span class="form-date-separator"><span>to</span></span>
       <div class="form-picker-group flex-grow-1">
-        <span class="form-picker-icon"><span>📅</span></span>
+        <span class="form-picker-icon"><i class="hi-calendar" aria-hidden="true"></i></span>
         <input type="date" class="form-control" id="rangeEndDate" name="endDate" value="2026-10-15">
       </div>
     </div>
@@ -387,12 +383,12 @@
     <pre><code>&lt;label class=&quot;form-label&quot; for=&quot;rangeStartDate&quot;&gt;&lt;span&gt;Booking Period&lt;/span&gt;&lt;/label&gt;
 &lt;div class=&quot;form-date-range&quot;&gt;
   &lt;div class=&quot;form-picker-group flex-grow-1&quot;&gt;
-    &lt;span class=&quot;form-picker-icon&quot;&gt;&lt;span&gt;📅&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="form-picker-icon"&gt;&lt;i class="hi-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
     &lt;input type=&quot;date&quot; class=&quot;form-control&quot; id=&quot;rangeStartDate&quot; name=&quot;startDate&quot; value=&quot;2026-10-01&quot;&gt;
   &lt;/div&gt;
   &lt;span class=&quot;form-date-separator&quot;&gt;&lt;span&gt;to&lt;/span&gt;&lt;/span&gt;
   &lt;div class=&quot;form-picker-group flex-grow-1&quot;&gt;
-    &lt;span class=&quot;form-picker-icon&quot;&gt;&lt;span&gt;📅&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="form-picker-icon"&gt;&lt;i class="hi-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
     &lt;input type=&quot;date&quot; class=&quot;form-control&quot; id=&quot;rangeEndDate&quot; name=&quot;endDate&quot; value=&quot;2026-10-15&quot;&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -435,6 +431,8 @@
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
         <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i class="hi-haticons me-1" aria-hidden="true"></i>Haticons</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
@@ -464,7 +462,7 @@
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
-          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+          var themeIconEl = toggleBtn.querySelector('.theme-icon'); if (themeIconEl) themeIconEl.innerHTML = theme === 'dark' ? '<i class="hi-sun" aria-hidden="true"></i>' : '<i class="hi-moon" aria-hidden="true"></i>';
         }
       }
       updateIcon(storedTheme);
@@ -560,7 +558,7 @@
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
         var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
@@ -643,7 +641,7 @@
       // 2. Copy button
       var copyBtn = document.createElement('button');
       copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
-      copyBtn.innerHTML = '<span>Copy</span>';
+      copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>';
       copyBtn.type = 'button';
       copyBtn.title = 'Copy code snippet';
       copyBtn.setAttribute('aria-label', 'Copy code snippet');
@@ -652,8 +650,8 @@
         var text = pre.innerText;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(text).then(function () {
-            copyBtn.innerHTML = '<span>Copied!</span>';
-            setTimeout(function () { copyBtn.innerHTML = '<span>Copy</span>'; }, 1500);
+            copyBtn.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+            setTimeout(function () { copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>'; }, 1500);
           });
         }
       });

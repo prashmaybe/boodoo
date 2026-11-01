@@ -2158,11 +2158,58 @@ test('Privacy Policy and Terms and Conditions pages integrity and navigation', (
   assert.ok(htaccess.includes('terms'), '.htaccess must include terms rule');
 });
 
+test('Official Haticons integration, SCSS/LESS parity, and docs verification', () => {
+  // 1. Verify SCSS & LESS compilation parity for .icon and .alert-icon
+  const mainCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
 
+  // .icon token rules
+  assert.ok(mainCss.includes('.icon'), 'dist/css/boodoo.css must define .icon');
+  assert.ok(lessCss.includes('.icon'), 'dist/css/boodoo.less.css must define .icon');
+  assert.match(mainCss, /\.icon\s*\{[^}]*display:\s*inline-flex/);
+  assert.match(lessCss, /\.icon\s*\{[^}]*display:\s*inline-flex/);
 
+  // Sizing tokens
+  ['icon-xs', 'icon-sm', 'icon-md', 'icon-lg', 'icon-xl', 'icon-2xl'].forEach(token => {
+    assert.ok(mainCss.includes(`.${token}`), `dist/css/boodoo.css must define .${token}`);
+    assert.ok(lessCss.includes(`.${token}`), `dist/css/boodoo.less.css must define .${token}`);
+  });
 
+  // .alert-icon
+  assert.ok(mainCss.includes('.alert-icon'), 'dist/css/boodoo.css must define .alert-icon');
+  assert.ok(lessCss.includes('.alert-icon'), 'dist/css/boodoo.less.css must define .alert-icon');
 
+  // 2. Verify compiled Haticons documentation page
+  const iconsCompiled = resolve(rootDir, 'site/docs/content/icons.html');
+  assert.ok(existsSync(iconsCompiled), 'Compiled site/docs/content/icons.html must exist');
+  const compiledIconsHtml = readFileSync(iconsCompiled, 'utf8');
+  assert.ok(compiledIconsHtml.includes('Haticons'), 'Icons page must reference Haticons');
+  assert.ok(compiledIconsHtml.includes('https://haticons.com/'), 'Icons page must link to haticons.com');
+  assert.ok(compiledIconsHtml.includes('hi-haticons'), 'Icons page must showcase hi-haticons');
+  assert.ok(compiledIconsHtml.includes('569+'), 'Icons page must state official 569+ icon count');
 
+  // 3. Verify docs-nav.json includes content/icons
+  const nav = JSON.parse(readFileSync(resolve(rootDir, 'site/data/docs-nav.json'), 'utf8'));
+  const contentSection = nav.find(s => s.title === 'Content');
+  assert.ok(contentSection, 'docs-nav.json must have Content section');
+  assert.ok(contentSection.pages.some(p => p.route === 'content/icons'), 'docs-nav.json must include content/icons');
 
+  // 4. Verify landing page promotion
+  const indexHtml = readFileSync(resolve(rootDir, 'site/index.html'), 'utf8');
+  assert.ok(indexHtml.includes('https://cdn.jsdelivr.net/npm/haticons'), 'site/index.html must load Haticons CDN');
+  assert.ok(indexHtml.includes('id="icons"'), 'site/index.html must include #icons showcase section');
+  assert.ok(indexHtml.includes('https://haticons.com/'), 'site/index.html must link to haticons.com');
+  assert.ok(indexHtml.includes('hi-bolt'), 'site/index.html must use Haticons icon classes');
+  assert.ok(indexHtml.includes('569+'), 'site/index.html must state official 569+ icon count');
 
+  // 5. Verify layout.html integration
+  const layoutHtml = readFileSync(resolve(rootDir, 'site/layout.html'), 'utf8');
+  assert.ok(layoutHtml.includes('https://cdn.jsdelivr.net/npm/haticons'), 'site/layout.html must load Haticons CDN');
+  assert.ok(layoutHtml.includes('https://haticons.com'), 'site/layout.html footer must link to haticons.com');
 
+  // 6. Verify README.md documentation
+  const readme = readFileSync(resolve(rootDir, 'README.md'), 'utf8');
+  assert.ok(readme.includes('Haticons'), 'README.md must document Haticons support');
+  assert.ok(readme.includes('https://haticons.com/'), 'README.md must link to haticons.com');
+  assert.ok(readme.includes('569+'), 'README.md must state official 569+ icon count');
+});

@@ -35,6 +35,7 @@
       rel="stylesheet">
   </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
 
@@ -66,17 +67,13 @@
         <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
-            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
             <span class="search-btn-text">Search</span>
             <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
             title="Toggle theme">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
           <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
             href="../../docs/getting-started/usage.html">CDN</a>
@@ -95,12 +92,10 @@
           type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false"
           aria-controls="docsSidebarCollapse">
           <span class="d-flex align-items-center gap-2">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            <i class="hi-menu fs-5" aria-hidden="true"></i>
             <span>Documentation Navigation</span>
           </span>
-          <span class="chevron">▼</span>
+          <i class="hi-chevron-down" aria-hidden="true"></i>
         </button>
         <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
           <nav aria-label="Docs navigation">
@@ -136,6 +131,7 @@
 <ul class="docs-nav-list">
 <li><a href="../content/typography.html">Typography</a></li>
 <li><a href="../content/images.html">Images</a></li>
+<li><a href="../content/icons.html">Icons (Haticons)</a></li>
 <li><a href="../content/tables.html">Tables</a></li>
 <li><a href="../content/figures.html">Figures</a></li>
 </ul>
@@ -325,6 +321,13 @@
     support.</span></li>
 </ul>
 
+<h2 id="ecosystem"><span>Official Ecosystem &amp; Companion Libraries</span></h2>
+<p><span>Boodoo is part of an integrated, modern frontend ecosystem engineered by <a href="https://pebblebenders.com/" target="_blank" rel="noopener">Pebble Benders</a>:</span></p>
+<ul>
+  <li><strong><a href="https://haticons.com/" target="_blank" rel="noopener">Haticons</a></strong>: <span>The official companion icon suite featuring 569+ modular vector &amp; font icons, 14 category-based stylesheets, and zero runtime dependencies.</span></li>
+  <li><strong><span>Universal Design Tokens</span></strong>: <span>Shared JSON, CJS, and ESM token scales powering web, React Native mobile, and desktop application chrome.</span></li>
+</ul>
+
 <h2 id="philosophy"><span>Philosophy</span></h2>
 <p><span>boodoo believes a design system should be a <strong>spark</strong> — a small, opinionated seed you can grow. Start from
   the tokens, compose with utilities, and reach for a component only when it earns its keep. Every piece is measurable,
@@ -356,6 +359,10 @@
       <td><span>Vanilla ES modules → UMD &amp; ESM bundles</span></td>
     </tr>
     <tr>
+      <td><span>Icons</span></td>
+      <td><span><a href="https://haticons.com/" target="_blank" rel="noopener">Haticons</a> (569+ modular vector &amp; font icons by Pebble Benders)</span></td>
+    </tr>
+    <tr>
       <td><span>Docs</span></td>
       <td><span>Static site built with boodoo itself (dogfooding)</span></td>
     </tr>
@@ -384,6 +391,7 @@
       <h6 class="docs-toc-title">On this page</h6>
       <ul><li class="toc-2"><a href="#interactive-demo">Framework Interactive Preview</a></li>
 <li class="toc-2"><a href="#why">Why boodoo?</a></li>
+<li class="toc-2"><a href="#ecosystem">Official Ecosystem &amp; Companion Libraries</a></li>
 <li class="toc-2"><a href="#philosophy">Philosophy</a></li>
 <li class="toc-2"><a href="#tech">Technology</a></li></ul>
     </div>
@@ -406,6 +414,8 @@
         <a class="text-muted text-decoration-none" href="../../examples/index.html">Examples</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i class="hi-haticons me-1" aria-hidden="true"></i>Haticons</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
@@ -436,7 +446,7 @@
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
-          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+          var themeIconEl = toggleBtn.querySelector('.theme-icon'); if (themeIconEl) themeIconEl.innerHTML = theme === 'dark' ? '<i class="hi-sun" aria-hidden="true"></i>' : '<i class="hi-moon" aria-hidden="true"></i>';
         }
       }
       updateIcon(storedTheme);
@@ -532,7 +542,7 @@
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
         var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
@@ -615,7 +625,7 @@
       // 2. Copy button
       var copyBtn = document.createElement('button');
       copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
-      copyBtn.innerHTML = '<span>Copy</span>';
+      copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>';
       copyBtn.type = 'button';
       copyBtn.title = 'Copy code snippet';
       copyBtn.setAttribute('aria-label', 'Copy code snippet');
@@ -624,8 +634,8 @@
         var text = pre.innerText;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(text).then(function () {
-            copyBtn.innerHTML = '<span>Copied!</span>';
-            setTimeout(function () { copyBtn.innerHTML = '<span>Copy</span>'; }, 1500);
+            copyBtn.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+            setTimeout(function () { copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>'; }, 1500);
           });
         }
       });

@@ -35,6 +35,7 @@
       rel="stylesheet">
   </noscript>
   <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
   <link rel="stylesheet" href="../../assets/docs.css">
 </head>
 
@@ -66,17 +67,13 @@
         <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
-            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
             <span class="search-btn-text">Search</span>
             <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
           <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
             title="Toggle theme">
-            <span class="theme-icon">🌙</span>
+            <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
           <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
             href="../../docs/getting-started/usage.html">CDN</a>
@@ -95,12 +92,10 @@
           type="button" data-boodoo-toggle="collapse" data-boodoo-target="#docsSidebarCollapse" aria-expanded="false"
           aria-controls="docsSidebarCollapse">
           <span class="d-flex align-items-center gap-2">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            <i class="hi-menu fs-5" aria-hidden="true"></i>
             <span>Documentation Navigation</span>
           </span>
-          <span class="chevron">▼</span>
+          <i class="hi-chevron-down" aria-hidden="true"></i>
         </button>
         <div class="docs-sidebar collapse d-lg-block" id="docsSidebarCollapse">
           <nav aria-label="Docs navigation">
@@ -136,6 +131,7 @@
 <ul class="docs-nav-list">
 <li><a href="../content/typography.html">Typography</a></li>
 <li><a href="../content/images.html">Images</a></li>
+<li><a href="../content/icons.html">Icons (Haticons)</a></li>
 <li><a href="../content/tables.html">Tables</a></li>
 <li><a href="../content/figures.html">Figures</a></li>
 </ul>
@@ -301,7 +297,7 @@
 <div class="row g-3 mb-4">
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>🏷️</span></div>
+      <div class="stat-icon"><i class="hi-tag" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>v1.2.4</span></div>
         <div class="stat-label"><span>Current Release</span></div>
@@ -310,7 +306,7 @@
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>⚡</span></div>
+      <div class="stat-icon"><i class="hi-bolt" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>539 KB / 178 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
@@ -319,7 +315,7 @@
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>🚀</span></div>
+      <div class="stat-icon"><i class="hi-launchpad" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>0 Dependencies</span></div>
         <div class="stat-label"><span>Pure Vanilla ES / CSS</span></div>
@@ -328,7 +324,7 @@
   </div>
   <div class="col-sm-6">
     <div class="stat-item p-1">
-      <div class="stat-icon"><span>📦</span></div>
+      <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
         <div class="stat-value"><span>18 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
@@ -341,7 +337,7 @@
 
   <!-- Version 1.2.4 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -352,7 +348,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -376,7 +372,7 @@
 
   <!-- Version 1.2.3 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -386,7 +382,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -413,7 +409,7 @@
 
   <!-- Version 1.2.2 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-primary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -423,7 +419,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 24, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 24, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -456,7 +452,7 @@
 
   <!-- Version 1.2.1 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -466,7 +462,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 21, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 21, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -493,7 +489,7 @@
 
   <!-- Version 1.2.0 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -503,7 +499,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -529,7 +525,7 @@
 
   <!-- Version 1.1.9 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -539,7 +535,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.9"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -571,7 +567,7 @@
 
   <!-- Version 1.1.8 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -581,7 +577,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.8"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -609,7 +605,7 @@
 
   <!-- Version 1.1.7 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -619,7 +615,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.7"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -648,7 +644,7 @@
 
   <!-- Version 1.1.6 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -658,7 +654,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 18, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 18, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.6"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -688,7 +684,7 @@
 
   <!-- Version 1.1.5 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -698,7 +694,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 17, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 17, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.5"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -724,7 +720,7 @@
 
   <!-- Version 1.1.4 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -734,7 +730,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -762,7 +758,7 @@
 
   <!-- Version 1.1.3 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -772,7 +768,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -824,7 +820,7 @@
 
   <!-- Version 1.1.2 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -834,7 +830,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 16, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 16, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -882,7 +878,7 @@
 
   <!-- Version 1.1.1 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-secondary"><span>★</span></div>
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -892,7 +888,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 13, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 13, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -927,7 +923,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 11, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 11, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.1.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -970,7 +966,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 October 6, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 6, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.9"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1004,7 +1000,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.8"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1061,7 +1057,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 30, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.7"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1124,7 +1120,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 27, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 27, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.6"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1194,7 +1190,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 26, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 26, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.5"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1264,7 +1260,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 26, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 26, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1351,7 +1347,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 September 19, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>September 19, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.3"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1442,7 +1438,7 @@
           <h4 class="border-0 mb-0 fw-bold mt-0" id="v1-0-2"><span>v1.0.2</span></h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.2"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1474,7 +1470,7 @@
           <h4 class="border-0 mb-0 fw-bold mt-0" id="v1-0-1"><span>v1.0.1</span></h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.1"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1497,7 +1493,7 @@
 
   <!-- Version 1.0.0 -->
   <li class="timeline-item">
-    <div class="timeline-badge timeline-badge-success"><span>🎉</span></div>
+    <div class="timeline-badge timeline-badge-success"><i class="hi-launchpad" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
@@ -1508,7 +1504,7 @@
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <span>📅 August 25, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>August 25, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.0.0"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -1569,6 +1565,8 @@
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/getting-started/download.html">Download</a>
         <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i class="hi-haticons me-1" aria-hidden="true"></i>Haticons</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../../docs/about/license.html">License</a>
@@ -1598,7 +1596,7 @@
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
-          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+          var themeIconEl = toggleBtn.querySelector('.theme-icon'); if (themeIconEl) themeIconEl.innerHTML = theme === 'dark' ? '<i class="hi-sun" aria-hidden="true"></i>' : '<i class="hi-moon" aria-hidden="true"></i>';
         }
       }
       updateIcon(storedTheme);
@@ -1694,7 +1692,7 @@
         var isJsOnly = /^\s*(const|let|var|function|import|document\.|window\.|boodoo\.)/.test(rawCode) && !/<[a-z][\s\S]*>/i.test(rawCode);
 
         // Official high-speed CDN URLs hosted for boodoo CSS and JS
-        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+        var cdnCss = 'https://cdn.jsdelivr.net/npm/boodoo/dist/css/boodoo.min.css;https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
         var cdnJs = 'https://cdn.jsdelivr.net/npm/boodoo/dist/js/boodoo.min.js';
 
         var htmlPayload = '';
@@ -1777,7 +1775,7 @@
       // 2. Copy button
       var copyBtn = document.createElement('button');
       copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
-      copyBtn.innerHTML = '<span>Copy</span>';
+      copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>';
       copyBtn.type = 'button';
       copyBtn.title = 'Copy code snippet';
       copyBtn.setAttribute('aria-label', 'Copy code snippet');
@@ -1786,8 +1784,8 @@
         var text = pre.innerText;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(text).then(function () {
-            copyBtn.innerHTML = '<span>Copied!</span>';
-            setTimeout(function () { copyBtn.innerHTML = '<span>Copy</span>'; }, 1500);
+            copyBtn.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+            setTimeout(function () { copyBtn.innerHTML = '<i class="hi-copy me-1" aria-hidden="true"></i><span>Copy</span>'; }, 1500);
           });
         }
       });
