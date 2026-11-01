@@ -2060,9 +2060,11 @@ export async function main() {
 }
 
 // Only invoke main when run directly as CLI
+/* node:coverage disable */
 if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);
   });
 }
+/* node:coverage enable */
