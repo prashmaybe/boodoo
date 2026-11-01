@@ -331,7 +331,7 @@
     <div class="stat-item p-1">
       <div class="stat-icon"><i class="hi-bolt" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>539 KB / 179 KB</span></div>
+        <div class="stat-value"><span>539 KB / 181 KB</span></div>
         <div class="stat-label"><span>Minified CSS / JS</span></div>
       </div>
     </div>
@@ -379,7 +379,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-amp-maintenance-version-124-release-official-haticons-suite-modular-test-suites-100-code-coverage-amp-metro-bundler-fix">
           <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
           <span>Version 1.2.4 Release — Official Haticons Suite, Modular Test Suites, 100% Code Coverage &amp; Metro Bundler Fix</span>
         </h3>
@@ -402,6 +402,15 @@
           <li><span><strong>Universal Documentation &amp; Landing Page Icon Modernization</strong>: Upgraded all component documentation pages (alerts, KPI cards, sidebar, steppers, timelines, tree-views, dropzones, pickers, electron, and platforms), landing page showcase section, and global footer to use official semantic Haticons.</span></li>
           <li><span><strong>Template &amp; Starter Modernization</strong>: Updated Electron and web starters in <code>bin/create-boodoo.mjs</code> to embed Haticons CDN and semantic icon classes (<code>hi-chart</code>, <code>hi-folder</code>, <code>hi-settings</code>, <code>hi-home</code>, <code>hi-close</code>), and updated mobile starter documentation.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Security &amp; CodeQL Hardening</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>CI Workflow Permissions</strong>: Configured explicit top-level <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least privilege on default tokens.</span></li>
+          <li><span><strong>Safe HTML Sanitization &amp; Popover XSS Protection</strong>: Added zero-dependency <code>sanitizeHtml</code> utility with recursive tag stripping and event-handler filtration in <code>js/src/util.js</code>; hardened <code>Popover.prototype.setContent</code> to sanitize HTML and enhanced <code>dispose()</code> teardown to unbind event listeners in <code>js/src/tooltip.js</code>.</span></li>
+          <li><span><strong>Documentation Search Safe Navigation</strong>: Refactored search result items to render as semantic, accessible <code>&lt;a&gt;</code> links with static relative paths in <code>site/assets/search.js</code>, eliminating dynamic <code>window.location.href</code> mutation from untrusted DOM attributes.</span></li>
+          <li><span><strong>Table of Contents Sanitization &amp; Heading Anchors</strong>: Replaced single-pass regex tag stripping in <code>renderToc</code> and <code>buildPage</code> in <code>build/site-build.mjs</code> with recursive <code>stripHtml</code> and HTML entity escaping, eliminating multi-character sanitization bypasses.</span></li>
+          <li><span><strong>URL Verification Test Assertions</strong>: Updated Haticons URL checks in <code>tests/site-docs.test.mjs</code> to assert against full HTML attribute patterns (<code>href="..."</code>, <code>(...)</code>) rather than ambiguous bare domain substrings.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Fixes</span></h4>
@@ -435,7 +444,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-amp-maintenance-version-123-release-modular-less-amp-mobile-density">
           <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
           <span>Version 1.2.3 Release — Modular LESS &amp; Mobile Density</span>
         </h3>
@@ -472,7 +481,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="release-global-search-modal-migration-guides-benchmark-verification-amp-docs-optimization">
           <span class="badge bg-soft-success text-success"><span>Release</span></span>
           <span>Global Search Modal, Migration Guides, Benchmark Verification &amp; Docs Optimization</span>
         </h3>
@@ -515,7 +524,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-zero-dependency-native-charts-consistent-brand-assets-npm-health-score-amp-codepen-guard">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Zero-Dependency Native Charts, Consistent Brand Assets, NPM Health Score &amp; CodePen Guard</span>
         </h3>
@@ -552,7 +561,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-modular-subpath-css-exports-dynamic-alert-theming-amp-package-hygiene">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Modular Subpath CSS Exports, Dynamic Alert Theming &amp; Package Hygiene</span>
         </h3>
@@ -588,7 +597,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-advanced-component-pack-chat-amp-ai-streams-filter-bar-kanban-board-bento-grid-transfer-list-audio-player-color-picker-amp-back-to-top">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Advanced Component Pack: Chat &amp; AI Streams, Filter Bar, Kanban Board, Bento Grid, Transfer List, Audio Player, Color Picker &amp; Back to Top</span>
         </h3>
@@ -630,7 +639,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-extended-component-pack-metric-stat-widgets-activity-feeds-mega-menu-fab-dock-fullscreen-dialogs-amp-product-tours">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Extended Component Pack: Metric Stat Widgets, Activity Feeds, Mega Menu, FAB Dock, Fullscreen Dialogs &amp; Product Tours</span>
         </h3>
@@ -668,7 +677,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-modern-ui-component-suite-tag-input-floating-action-bar-image-comparison-slider-amp-diff-viewer">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Modern UI Component Suite: Tag Input, Floating Action Bar, Image Comparison Slider &amp; Diff Viewer</span>
         </h3>
@@ -707,7 +716,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-headless-vue-3-nuxt-composables-ci-automation-native-css-primitives-amp-global-ripple-delegation">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Headless Vue 3 / Nuxt Composables, CI Automation, Native CSS Primitives &amp; Global Ripple Delegation</span>
         </h3>
@@ -747,7 +756,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="feature-headless-react-hooks-wai-aria-screen-reader-accessibility-suite-amp-competitive-architectural-matrix">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Headless React Hooks, WAI-ARIA Screen-Reader Accessibility Suite &amp; Competitive Architectural Matrix</span>
         </h3>
@@ -783,7 +792,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="security-zero-dependency-html-sanitization-dependabot-resolutions-amp-typescript-declaration-surface">
           <span class="badge bg-soft-danger text-danger"><span>Security</span></span>
           <span>Zero-Dependency HTML Sanitization, Dependabot Resolutions &amp; TypeScript Declaration Surface</span>
         </h3>
@@ -821,7 +830,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-modular-react-native-ui-suite-enterprise-layout-chrome-auto-grids-amp-role-badges">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Modular React Native UI Suite, Enterprise Layout Chrome, Auto Grids &amp; Role Badges</span>
         </h3>
@@ -848,7 +857,7 @@
           <li><span><strong>Dynamic CodePen Snippets</strong>: Dynamically sets CodePen editor pane (JS for script demos, CSS for styling overrides, HTML for component markup).</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2" id="fixed-standards-compliance-theme-inversion-amp-css-variable-theming">
           <span class="badge bg-soft-info text-info"><span>Fixed</span></span>
           <span>Standards Compliance, Theme Inversion &amp; CSS Variable Theming</span>
         </h3>
@@ -883,7 +892,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-brand-new-components-dock-kpi-stat-card-and-ai-prompt-interface">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Brand-New Components: Dock, KPI Stat Card, and AI Prompt Interface</span>
         </h3>
@@ -893,7 +902,7 @@
           <li><span><strong>AI Prompt &amp; Chat Input (<code>.ai-prompt</code>):</strong> Generative AI conversational interface with auto-expanding textarea, send/stop streaming action buttons (<code>.ai-prompt-btn-stop</code>), prompt suggestion chips, token counter, and model selector slot.</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-full-scss-amp-less-parity-navigation-auto-focus-and-framework-tests">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Full SCSS &amp; LESS Parity, Navigation Auto-Focus, and Framework Tests</span>
         </h3>
@@ -903,7 +912,7 @@
           <li><span><strong>Automated Framework Testing Suite:</strong> Added <code>tests/framework.test.mjs</code> validating bundle sizes, layer omission, spacing consistency, runtime CSS color variables, and dual SCSS/LESS parity.</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-warning d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-warning d-flex align-items-center gap-1 mb-2" id="fixed-spacing-scale-normalization-amp-runtime-css-variable-architecture">
           <span class="badge bg-soft-warning text-warning"><span>Fixed</span></span>
           <span>Spacing Scale Normalization &amp; Runtime CSS Variable Architecture</span>
         </h3>
@@ -941,7 +950,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-react-native-mobile-suite-amp-full-migration-center">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>React Native Mobile Suite &amp; Full Migration Center</span>
         </h3>
@@ -976,7 +985,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-motion-utilities-banner-component-amp-architecture-enhancements">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Motion Utilities, Banner Component &amp; Architecture Enhancements</span>
         </h3>
@@ -988,7 +997,7 @@
           <li><strong><span>create-boodoo Tech Stack Visibility</span></strong>: <span>Enhanced <code>npx create-boodoo</code> CLI with real-time version badges.</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-primary d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-primary d-flex align-items-center gap-1 mb-2" id="improved-standards-amp-cleanliness">
           <span class="badge bg-soft-primary text-primary"><span>Improved</span></span>
           <span>Standards &amp; Cleanliness</span>
         </h3>
@@ -1019,7 +1028,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-multi-platform-expansion-angular-cordova-phonegap-meteor-photon-react-native">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Multi-Platform Expansion (Angular, Cordova, PhoneGap, Meteor, Photon, React Native)</span>
         </h3>
@@ -1053,7 +1062,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-electron-desktop-integration-amp-tooling">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Electron Desktop Integration &amp; Tooling</span>
         </h3>
@@ -1068,7 +1077,7 @@
                 href="../getting-started/browser-support.html"><span>Browser Support</span></a>.</span></li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="performance-performance-caching-amp-pagespeed-optimizations">
           <span class="badge bg-soft-success text-success"><span>Performance</span></span>
           <span>Performance, Caching &amp; PageSpeed Optimizations</span>
         </h3>
@@ -1110,7 +1119,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-components">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -1173,7 +1182,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-components">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -1191,7 +1200,7 @@
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="fixed-bug-fixes-amp-stability">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
@@ -1243,7 +1252,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-components">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -1275,7 +1284,7 @@
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="fixed-bug-fixes-amp-stability">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
@@ -1313,7 +1322,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-components">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -1364,7 +1373,7 @@
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-danger d-flex align-items-center gap-1 mb-2" id="fixed-bug-fixes-amp-stability">
           <span class="badge bg-soft-danger text-danger"><span>Fixed</span></span>
           <span>Bug Fixes &amp; Stability</span>
         </h3>
@@ -1400,7 +1409,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-components">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
@@ -1439,7 +1448,7 @@
           </li>
         </ul>
 
-        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2" id="changed-enhancements-amp-standards-compliance">
           <span class="badge bg-soft-info text-info"><span>Changed</span></span>
           <span>Enhancements &amp; Standards Compliance</span>
         </h3>
@@ -1491,7 +1500,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-new-features-amp-documentation">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Documentation</span>
         </h3>
@@ -1523,7 +1532,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-tooling-amp-brand-assets">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Tooling &amp; Brand Assets</span>
         </h3>
@@ -1557,7 +1566,7 @@
       </div>
 
       <div class="timeline-body">
-        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2" id="added-foundation-amp-architecture">
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Foundation &amp; Architecture</span>
         </h3>

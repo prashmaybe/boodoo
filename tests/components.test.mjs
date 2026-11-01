@@ -72,7 +72,7 @@ test('Modal focus management, Data API, and dispose() lifecycle verification', a
 
 
 test('XSS sanitization regression tests across Toast, ChipInput, and CommandPalette', async () => {
-  const { escapeHtml } = await import(pathToFileURL(resolve(rootDir, 'js/src/util.js')).href);
+  const { escapeHtml, sanitizeHtml } = await import(pathToFileURL(resolve(rootDir, 'js/src/util.js')).href);
 
   // 1. Direct utility testing
   const malicious = '<script>alert("xss")</script><img src="x" onerror="alert(1)">';
@@ -86,6 +86,20 @@ test('XSS sanitization regression tests across Toast, ChipInput, and CommandPale
   // Null & undefined handling
   assert.equal(escapeHtml(null), '');
   assert.equal(escapeHtml(undefined), '');
+
+  // 1b. sanitizeHtml utility testing
+  const safeSanitized = sanitizeHtml(malicious);
+  assert.ok(!safeSanitized.includes('<script>'), 'sanitizeHtml must eliminate script tags');
+  assert.ok(!safeSanitized.includes('onerror='), 'sanitizeHtml must eliminate event handlers');
+  assert.equal(sanitizeHtml(null), '');
+  assert.equal(sanitizeHtml(undefined), '');
+
+  // 1c. Popover safe DOM creation and XSS prevention
+  const { Popover } = await import(pathToFileURL(resolve(rootDir, 'js/src/tooltip.js')).href);
+  const setContentSrc = Popover.prototype.setContent.toString();
+  assert.ok(setContentSrc.includes('this._sanitize(content)'), 'Popover setContent must sanitize HTML before assigning to innerHTML');
+  const disposeSrc = Popover.prototype.dispose.toString();
+  assert.ok(disposeSrc.includes('removeEventListener'), 'Popover dispose must clean up window and element event listeners');
 
   // 2. ChipInput safe DOM creation
   const { ChipInput } = await import(pathToFileURL(resolve(rootDir, 'js/src/chip-input.js')).href);

@@ -2,7 +2,7 @@
 // Lightweight positioning (no Popper dependency) with arrow support.
 
 import { BaseComponent } from './base-component.js';
-import { triggerEvent, getTransitionDuration, emulateTransitionEnd, throttle } from './util.js';
+import { triggerEvent, getTransitionDuration, emulateTransitionEnd, throttle, sanitizeHtml } from './util.js';
 
 const ARROW_SHIFT = 8;
 
@@ -35,7 +35,8 @@ class AbstractTrigger extends BaseComponent {
       offset: [0, 6],
       container: null,
       boundary: 'clippingParents',
-      sanitize: false,
+      sanitize: true,
+      sanitizeFn: null,
     };
   }
 
@@ -57,6 +58,13 @@ class AbstractTrigger extends BaseComponent {
     }
   }
 
+  _sanitize(content) {
+    if (typeof this._config.sanitizeFn === 'function') {
+      return this._config.sanitizeFn(content);
+    }
+    return sanitizeHtml(content);
+  }
+
   setContent(tip) {
     const title = this._getTitle();
     if (this.constructor.NAME === 'tooltip') {
@@ -72,8 +80,11 @@ class AbstractTrigger extends BaseComponent {
       }
       const content = this._getContent();
       if (body && content) {
-        if (this._config.html) {
-          body.innerHTML = content;
+        if (typeof content === 'object' && content !== null && content.nodeType) {
+          body.textContent = '';
+          body.appendChild(content);
+        } else if (this._config.html) {
+          body.innerHTML = this._sanitize(content);
         } else {
           body.textContent = content;
         }
@@ -256,6 +267,15 @@ class AbstractTrigger extends BaseComponent {
     }
     clearTimeout(this._showTimeout);
     clearTimeout(this._hideTimeout);
+    window.removeEventListener('scroll', this._bound.onScroll, true);
+    window.removeEventListener('resize', this._bound.onResize);
+    if (this._element) {
+      this._element.removeEventListener('mouseenter', this._bound.show);
+      this._element.removeEventListener('mouseleave', this._bound.hide);
+      this._element.removeEventListener('focusin', this._bound.show);
+      this._element.removeEventListener('focusout', this._bound.hide);
+      this._element.removeEventListener('click', this._bound.toggle);
+    }
     super.dispose();
   }
 }

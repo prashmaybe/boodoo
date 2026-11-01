@@ -178,3 +178,44 @@ export const escapeHtml = (str) => {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 };
+/**
+ * Safely sanitizes HTML content by removing executable scripts, dangerous elements, and event handlers.
+ * Falls back to entity escaping when DOMParser is unavailable.
+ * @param {string|unknown} html
+ * @returns {string}
+ */
+export const sanitizeHtml = (html) => {
+  if (html === null || html === undefined) return '';
+  const str = String(html);
+  if (typeof window === 'undefined' || typeof DOMParser === 'undefined') {
+    let clean = str;
+    let prev;
+    do {
+      prev = clean;
+      clean = clean.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+      clean = clean.replace(/<[^>]*\bon\w+\s*=[^>]*>/gi, '');
+    } while (clean !== prev);
+    return escapeHtml(clean);
+  }
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(str, 'text/html');
+    const disallowedTags = ['script', 'iframe', 'object', 'embed', 'link', 'style', 'base', 'meta', 'applet', 'svg', 'canvas', 'form'];
+    disallowedTags.forEach((tag) => {
+      doc.querySelectorAll(tag).forEach((el) => el.remove());
+    });
+    const elements = doc.body.querySelectorAll('*');
+    for (const el of elements) {
+      for (const attr of Array.from(el.attributes || [])) {
+        const name = attr.name.toLowerCase();
+        const val = (attr.value || '').trim().toLowerCase();
+        if (name.startsWith('on') || val.startsWith('javascript:') || val.startsWith('data:') || val.startsWith('vbscript:')) {
+          el.removeAttribute(attr.name);
+        }
+      }
+    }
+    return doc.body.innerHTML;
+  } catch {
+    return escapeHtml(str);
+  }
+};
