@@ -1,11 +1,11 @@
 {
   "version": "1.2.4",
-  "generatedAt": "2026-10-30T12:53:32.905Z",
+  "generatedAt": "2026-11-01T10:44:49.479Z",
   "cdnBase": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives",
   "frameworkZip": "boodoo-v1.2.4.zip",
   "frameworkZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-v1.2.4.zip",
   "frameworkZipSizeKb": 728,
-  "frameworkZipBytes": 745137,
+  "frameworkZipBytes": 745133,
   "latestZip": "boodoo-latest.zip",
   "latestZipCdnUrl": "https://cdn.jsdelivr.net/gh/prashmaybe/budu@main/site/archives/boodoo-latest.zip",
   "examplesZip": "boodoo-examples-v1.2.4.zip",

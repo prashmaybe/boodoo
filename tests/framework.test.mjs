@@ -2186,6 +2186,7 @@ test('Official Haticons integration, SCSS/LESS parity, and docs verification', (
   assert.ok(compiledIconsHtml.includes('Haticons'), 'Icons page must reference Haticons');
   assert.ok(compiledIconsHtml.includes('https://haticons.com/'), 'Icons page must link to haticons.com');
   assert.ok(compiledIconsHtml.includes('hi-haticons'), 'Icons page must showcase hi-haticons');
+  assert.ok(compiledIconsHtml.includes('569+'), 'Icons page must state official 569+ icon count');
 
   // 3. Verify docs-nav.json includes content/icons
   const nav = JSON.parse(readFileSync(resolve(rootDir, 'site/data/docs-nav.json'), 'utf8'));
@@ -2199,6 +2200,7 @@ test('Official Haticons integration, SCSS/LESS parity, and docs verification', (
   assert.ok(indexHtml.includes('id="icons"'), 'site/index.html must include #icons showcase section');
   assert.ok(indexHtml.includes('https://haticons.com/'), 'site/index.html must link to haticons.com');
   assert.ok(indexHtml.includes('hi-bolt'), 'site/index.html must use Haticons icon classes');
+  assert.ok(indexHtml.includes('569+'), 'site/index.html must state official 569+ icon count');
 
   // 5. Verify layout.html integration
   const layoutHtml = readFileSync(resolve(rootDir, 'site/layout.html'), 'utf8');
@@ -2209,4 +2211,5 @@ test('Official Haticons integration, SCSS/LESS parity, and docs verification', (
   const readme = readFileSync(resolve(rootDir, 'README.md'), 'utf8');
   assert.ok(readme.includes('Haticons'), 'README.md must document Haticons support');
   assert.ok(readme.includes('https://haticons.com/'), 'README.md must link to haticons.com');
+  assert.ok(readme.includes('569+'), 'README.md must state official 569+ icon count');
 });

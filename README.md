@@ -269,7 +269,7 @@ Explore fully assembled templates in the [**Live Examples Gallery**](https://boo
 
 ## 💎 Official Icon Suite — Haticons
 
-Boodoo officially pairs with and supports **[Haticons](https://haticons.com/)** by Pebble Benders. Haticons is an open-source, modular vector and font icon library engineered for performance with over 2,500+ icons and zero runtime dependencies.
+Boodoo officially pairs with and supports **[Haticons](https://haticons.com/)** by Pebble Benders. Haticons is an open-source, modular vector and font icon library engineered for performance with 569+ icons and zero runtime dependencies.
 
 - **Modular Category Stylesheets**: Load only what you need (UI, Brands, Commerce, Feedback, Directional, Media, Files, Navigation) or the full suite via CDN.
 - **Retina-Crisp Font & Vector Glyphs**: Automatically inherits `currentColor` and works out of the box with Boodoo's dynamic theme tokens.
