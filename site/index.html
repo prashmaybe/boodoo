@@ -46,29 +46,18 @@
   <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
-  <!-- Sticky Glass Navbar -->
-  <nav
-    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm navbar-docs position-sticky sticky-top top-0 z-30">
-    <div class="container d-flex flex-wrap align-items-center justify-content-between">
-      <a class="navbar-brand d-flex align-items-center gap-1" href="index.html">
-        <img src="assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
-        <span class="fw-bold fs-5 text-gradient">boodoo</span>
-      </a>
-      <button class="navbar-toggler border-0" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#homeNav"
-        aria-controls="homeNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="homeNav">
-        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fw-medium">
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
-          <li class="nav-item"><a class="nav-link" href="#icons">Icons</a></li>
-          <li class="nav-item"><a class="nav-link" href="#mobile">React Native</a></li>
-          <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
-          <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html">Docs</a></li>
-          <li class="nav-item"><a class="nav-link" href="examples/index.html">Examples</a></li>
-        </ul>
-        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
+  <!-- Sticky Glass 2-Row Navbar -->
+  <header
+    class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
+    <!-- Row 1: Brand & Actions -->
+    <div class="navbar-row-primary">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center gap-1" href="index.html">
+          <img src="assets/brand/boodoo-icon.svg" alt="boodoo Framework" width="32" height="32" loading="lazy">
+          <span class="fw-bold fs-5 text-gradient">boodoo</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-2 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
             aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
             <i class="hi-search search-btn-icon" aria-hidden="true"></i>
@@ -79,12 +68,43 @@
             title="Toggle theme">
             <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
-          <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="docs/getting-started/usage.html">CDN</a>
-          <a class="btn btn-primary btn-sm rounded-pill px-3" href="docs/getting-started/download.html">Download</a>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="docs/getting-started/usage.html"><span>CDN</span></a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="docs/getting-started/download.html"><span>Download</span></a>
+          <button class="navbar-toggler border-0 d-lg-none" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#homeNav"
+            aria-controls="homeNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
       </div>
     </div>
-  </nav>
+
+    <!-- Row 2: Secondary / Main Navigation Links -->
+    <nav class="navbar navbar-expand-lg navbar-row-secondary py-0" aria-label="Main navigation">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="homeNav">
+          <ul class="navbar-nav me-auto mb-0 fw-medium">
+            <li class="nav-item"><a class="nav-link" href="#features"><span>Features</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#components"><span>Components</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#icons"><span>Icons</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#mobile"><span>React Native</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#installation"><span>Installation</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html"><span>Docs</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="examples/index.html"><span>Examples</span></a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
+              <i class="hi-github fs-6" aria-hidden="true"></i>
+              <span>GitHub</span>
+            </a>
+            <div class="d-flex d-sm-none align-items-center gap-2 pt-2 border-top w-100 mt-2">
+              <a class="btn btn-outline-primary btn-sm rounded-pill px-3 flex-fill text-center" href="docs/getting-started/usage.html"><span>CDN</span></a>
+              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="docs/getting-started/download.html"><span>Download</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <!-- Main content area -->
   <main id="main">
