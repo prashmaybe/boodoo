@@ -20,14 +20,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Built an interactive icon catalog featuring real-time search, category filtering, click-to-copy HTML snippets (`<i class="hi-*"></i>`), SVG markup, and Unicode glyph codes.
   - Documented icon sizing utilities (`icon-xs` through `icon-2xl`), responsive styling, CSS custom property theming (`var(--boodoo-primary)`), and component integration (buttons, badges, alerts, navs).
   - Added `Icons` route with a `New` badge to the documentation navigation tree (`site/data/docs-nav.json`).
-- **Automated Haticons Parity & Integrity Verification (`tests/framework.test.mjs`)**:
+- **Modular Test Suite Architecture (`tests/`, `tests/framework.test.mjs`)**:
+  - Refactored the monolithic 2,216-line test suite into 6 specialized, decoupled test modules under `tests/`:
+    - `tests/css-tokens.test.mjs` (16 tests): SCSS/LESS preprocessor compilation, CSS variable bindings, `@layer` resets, table/pagination theming, theme gray-scale inversion, spacing scale, and token parity.
+    - `tests/react-native.test.mjs` (10 tests): Pure native primitives, 13 submodule exports, zero inline styles (`StyleSheet.create()` enforcement), density spacing engine, Paper theme presets, and charts.
+    - `tests/components.test.mjs` (10 tests): Modal focus management, Toast, Dropzone, CommandPalette, SpeedDial, WAI-ARIA accessibility suite, safe DOM XSS sanitization, and Chart lifecycle execution.
+    - `tests/framework-adapters.test.mjs` (4 tests): Headless React hooks (`useDisclosure`, `useCombobox`, `useAccordion`), Vue composables, CommonJS entry point, and CJS design tokens.
+    - `tests/cli.test.mjs` (5 tests): Developer CLI (`boodoo add/migrate/list/help`) and `create-boodoo` project scaffolder across all 10 templates (JS and TS) with complete edge coverage.
+    - `tests/site-docs.test.mjs` (3 tests): www-to-non-www redirection rules, 100% canonical URL integrity, legal pages (Privacy & Terms), and official Haticons CDN integration.
+  - Updated `tests/framework.test.mjs` as the master test runner and orchestrator that imports all 6 modules, preserving backward compatibility with `npm test` while enabling targeted sub-suite execution (e.g., `node --test tests/cli.test.mjs`).
+- **100.00% Code Coverage Achievement (`tests/cli.test.mjs`, `package.json`, `bin/create-boodoo.mjs`)**:
+  - Achieved 100.00% line coverage and 100.00% function coverage across all target CLI and runtime code (`bin/boodoo.mjs`, `bin/create-boodoo.mjs`, `tokens/index.js`, and `react-native/paper.js`).
+  - Added exhaustive boundary and edge tests for `bin/boodoo.mjs` covering missing argument fallbacks, SCSS-only component injection, non-existent directories, skipped directory paths (`.git`, `node_modules`, `dist`), unknown migration sources, unknown CLI commands, and child process spawn interception.
+  - Added exhaustive branch and option coverage for `bin/create-boodoo.mjs` verifying all 10 starter templates in both JavaScript and TypeScript modes, flag parsing (`--ts`, `--js`, alias maps), interactive readline prompts, and existing directory collision handling.
+  - Added `/* node:coverage disable/enable */` pragmas to `bin/create-boodoo.mjs` around the direct CLI execution block so functions can be cleanly imported and unit tested without process exits.
+  - Updated `"test:coverage"` script in `package.json` to include `bin/create-boodoo.mjs`.
+- **Automated Haticons Parity & Integrity Verification (`tests/site-docs.test.mjs`, `tests/css-tokens.test.mjs`)**:
   - Added automated test suite verifying Haticons integration: checks SCSS/LESS compiled `.icon` and `.alert-icon` rules, sizing tokens, documentation route presence, navigation configuration, CDN link integrity, and consistent 569+ icon count across all documentation surfaces.
-- **React Native Submodules Syntax & Duplicate Export Validation (`tests/framework.test.mjs`)**:
+- **React Native Submodules Syntax & Duplicate Export Validation (`tests/react-native.test.mjs`)**:
   - Added automated test assertion verifying zero duplicate top-level exports and clean declarations across all 13 React Native submodules.
 - **React Native Export Deduplication & Bundler Integrity Rule (`.agents/AGENTS.md`)**:
   - Codified architectural standard in `.agents/AGENTS.md` mandating strict export uniqueness and Metro/Hermes compatibility across mobile submodules.
 
 ### Changed
+- **Test Runner Orchestration (`tests/framework.test.mjs`, `package.json`)**:
+  - Restructured framework testing architecture to compose isolated, decoupled test modules via `import` statements rather than maintaining a monolithic runner, reducing CI debugging friction and test execution overhead.
 - **Universal Documentation & Landing Page Icon Modernization (`site/`, `site/src/`, `site/docs/`, `site/examples/`)**:
   - Replaced legacy emoji glyphs and ad-hoc inline SVGs with official semantic Haticons (`<i class="hi-*"></i>`) across all component documentation pages (alerts, KPI cards, sidebar, steppers, timelines, tree-views, dropzones, pickers, electron, platforms, and mobile examples).
   - Enhanced the landing page (`site/index.html`) with a dedicated `#icons` showcase section, interactive search preview, category tags, and instant copy buttons.
@@ -42,6 +59,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **React Native Data Display Metro Bundling Deduplication (`react-native/data-display.js`)**:
   - Removed redundant duplicate component declarations (`EmptyState`, `TimelineItem`, `Timeline`, `StepIndicator`, and `StepperWizard`) appended after `LineChart`.
   - Resolved Metro/Babel bundling error (`SyntaxError: Identifier 'EmptyState' has already been declared`) encountered during Android and iOS Hermes bytecode compilation (`npx expo export`).
+- **CLI Direct Execution and Scaffolding Test Isolation (`bin/create-boodoo.mjs`, `bin/boodoo.mjs`)**:
+  - Fixed premature process termination in test environments by isolating direct CLI execution behind Node coverage pragmas in `bin/create-boodoo.mjs` and parameterizing child process spawning in `bin/boodoo.mjs`.
+  - Resolved directory collision crashes in `create-boodoo` tests by isolating temporary directory lifecycles.
 - **Official Haticons Count Alignment across Documentation (`README.md`, `site/`)**:
   - Aligned all icon count references across `README.md`, documentation pages, and website copy to strictly reflect the official 569+ icons in the Haticons suite.
 - **Dropzone File Line Ending Normalization (`js/src/dropzone.js`)**:
