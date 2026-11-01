@@ -34,6 +34,7 @@
 
     // Content
     { title: 'Typography', category: 'Content', route: 'content/typography', desc: 'Headings, display headings, body copy, lead text, blockquotes, and lists.', keywords: 'font heading text lead paragraph display copy type font-size', icon: '🔤' },
+    { title: 'Icons (Haticons)', category: 'Content', route: 'content/icons', desc: 'Official support for Haticons by Pebble Benders — 569+ modular, performance-optimized vector and font icons designed for Boodoo.', keywords: 'icons haticons vector font glyph symbols hi- pebble benders ui icons icon alert-icon icon-sm icon-lg', icon: '💎' },
     { title: 'Images', category: 'Content', route: 'content/images', desc: 'Responsive images, image thumbnails, and rounded picture helpers.', keywords: 'img picture responsive thumbnail rounded fluid cover', icon: '🖼️' },
     { title: 'Tables', category: 'Content', route: 'content/tables', desc: 'Customizable data tables with striped rows, hoverable rows, borders, and dark mode.', keywords: 'table data grid rows columns striped border hover compact', icon: '📊' },
     { title: 'Figures', category: 'Content', route: 'content/figures', desc: 'Display related images and text with the figure and figcaption elements.', keywords: 'figure caption image illustration label quote', icon: '🖼️' },
@@ -151,7 +152,9 @@
     { title: 'boodoo vs React Native Paper', category: 'About', route: 'about/vs-react-native-paper', desc: 'Compare boodoo and React Native Paper for mobile and cross-platform UI. Discover why developers choose boodoo for modern, lightweight iOS & Android design without Material Design 3 bloat.', keywords: 'vs react native paper mobile comparison differences benchmarks cross platform flutter expo', icon: '⚖️' },
     { title: 'Migrate from React Native Paper', category: 'About', route: 'about/migrate-from-react-native-paper', desc: 'Step-by-step migration guide from React Native Paper to boodoo. Two-phase migration roadmap, Paper theme skinning, and lightweight native mobile components.', keywords: 'migrate react native paper mobile migration skinning theme tokens adapter', icon: '🔄' },
     { title: 'Changelog', category: 'About', route: 'about/changelog', desc: 'Release history and updates across all boodoo versions.', keywords: 'changelog history versions release updates notes commits', icon: '📜' },
-    { title: 'License', category: 'About', route: 'about/license', desc: 'boodoo is released under the MIT License.', keywords: 'license mit open source legal rights permissions commercial use software boodoo', icon: '📜' }
+    { title: 'License', category: 'About', route: 'about/license', desc: 'boodoo is released under the MIT License.', keywords: 'license mit open source legal rights permissions commercial use software boodoo', icon: '📜' },
+    { title: 'Privacy policy', category: 'About', route: 'about/privacy', desc: 'Privacy policy and data handling practices for the boodoo CSS and UI framework and its official website.', keywords: 'privacy policy data telemetry cookies local storage security gdpr compliance pebble benders', icon: '🔒' },
+    { title: 'Terms and conditions', category: 'About', route: 'about/terms', desc: 'Terms and conditions governing the use of the boodoo framework documentation website, brand assets, and services.', keywords: 'terms conditions legal agreement website rules copyright warranty pebble benders mit license', icon: '⚖️' }
   ];
 
   // Helper to determine the path prefix to the root directory
@@ -160,6 +163,10 @@
     const path = window.location.pathname.replace(/\\/g, '/');
     if (path.includes('/docs/')) {
       const parts = path.split('/docs/')[1].split('/');
+      return '../'.repeat(parts.length);
+    }
+    if (path.includes('/examples/')) {
+      const parts = path.split('/examples/')[1].split('/');
       return '../'.repeat(parts.length);
     }
     return '';
@@ -215,6 +222,8 @@
           <button type="button" class="boodoo-category-pill" data-category="Layout"><span>Layout</span></button>
           <button type="button" class="boodoo-category-pill" data-category="Utilities"><span>Utilities</span></button>
           <button type="button" class="boodoo-category-pill" data-category="Getting Started"><span>Guides</span></button>
+          <button type="button" class="boodoo-category-pill" data-category="Content"><span>Content</span></button>
+          <button type="button" class="boodoo-category-pill" data-category="About"><span>About</span></button>
         </div>
 
         <ul class="boodoo-search-results" id="boodooSearchResults" role="listbox"></ul>

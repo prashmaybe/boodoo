@@ -193,3 +193,91 @@ test('Official Haticons integration, SCSS/LESS parity, and docs verification', (
   assert.ok(readme.includes('569+'), 'README.md must state official 569+ icon count');
 });
 
+test('Sitewide documentation search catalog completeness and route integrity', () => {
+  const searchJsPath = resolve(rootDir, 'site/assets/search.js');
+  assert.ok(existsSync(searchJsPath), 'site/assets/search.js must exist');
+  const searchContent = readFileSync(searchJsPath, 'utf8');
+
+  // 1. Extract and validate CATALOG from search.js
+  const catalogMatch = searchContent.match(/const CATALOG = (\[[\s\S]*?\n  \];)/);
+  assert.ok(catalogMatch, 'CATALOG array must be defined in site/assets/search.js');
+
+  const catalog = (new Function(`return ${catalogMatch[1]}`))();
+  assert.ok(Array.isArray(catalog), 'CATALOG must be an array');
+  assert.ok(catalog.length >= 132, `CATALOG must contain at least 132 documentation pages (found ${catalog.length})`);
+
+  // 2. Load docs navigation structure
+  const navPath = resolve(rootDir, 'site/data/docs-nav.json');
+  assert.ok(existsSync(navPath), 'site/data/docs-nav.json must exist');
+  const nav = JSON.parse(readFileSync(navPath, 'utf8'));
+
+  // 3. Validate every item in search catalog
+  const catalogRouteMap = new Map();
+  for (const item of catalog) {
+    assert.ok(item.title, `Catalog item ${item.route} must have a non-empty title`);
+    assert.ok(item.category, `Catalog item ${item.route} must have a non-empty category`);
+    assert.ok(item.route, `Catalog item must have a route`);
+    assert.ok(item.desc, `Catalog item ${item.route} must have a description`);
+    assert.ok(item.keywords, `Catalog item ${item.route} must have keywords`);
+    assert.ok(item.icon, `Catalog item ${item.route} must have an icon`);
+
+    // Verify source html fragment exists
+    const srcHtmlPath = resolve(rootDir, `site/src/${item.route}.html`);
+    assert.ok(existsSync(srcHtmlPath), `Source HTML for catalog route ${item.route} must exist at ${srcHtmlPath}`);
+
+    // Verify compiled html page exists
+    const compiledHtmlPath = resolve(rootDir, `site/docs/${item.route}.html`);
+    assert.ok(existsSync(compiledHtmlPath), `Compiled HTML for catalog route ${item.route} must exist at ${compiledHtmlPath}`);
+
+    assert.ok(!catalogRouteMap.has(item.route), `Duplicate route in search catalog: ${item.route}`);
+    catalogRouteMap.set(item.route, item);
+  }
+
+  // 4. Ensure every single page defined in docs-nav.json exists in search CATALOG
+  for (const section of nav) {
+    for (const page of section.pages) {
+      assert.ok(
+        catalogRouteMap.has(page.route),
+        `Page '${page.route}' (${page.title}) from docs-nav.json section '${section.title}' is missing in site/assets/search.js CATALOG`
+      );
+    }
+  }
+
+  // 5. Ensure all source files in site/src are registered in search CATALOG
+  function walkHtml(dir, base = '') {
+    const results = [];
+    if (!existsSync(dir)) return results;
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('_')) continue;
+      const full = resolve(dir, entry.name);
+      if (entry.isDirectory()) {
+        results.push(...walkHtml(full, `${base ? base + '/' : ''}${entry.name}`));
+      } else if (entry.name.endsWith('.html')) {
+        const route = `${base ? base + '/' : ''}${entry.name.replace(/\.html$/, '')}`;
+        results.push(route);
+      }
+    }
+    return results;
+  }
+
+  const srcDir = resolve(rootDir, 'site/src');
+  const allSrcRoutes = walkHtml(srcDir);
+  for (const route of allSrcRoutes) {
+    assert.ok(
+      catalogRouteMap.has(route),
+      `Source page '${route}' from site/src is missing in site/assets/search.js CATALOG`
+    );
+  }
+
+  // 6. Verify compiled site/docs/assets/search.js matches source site/assets/search.js
+  const compiledSearchJs = resolve(rootDir, 'site/docs/assets/search.js');
+  if (existsSync(compiledSearchJs)) {
+    assert.strictEqual(
+      readFileSync(compiledSearchJs, 'utf8'),
+      searchContent,
+      'Compiled site/docs/assets/search.js must match source site/assets/search.js'
+    );
+  }
+});
+
+
