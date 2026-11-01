@@ -7,18 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.2.4] - 2026-10-30
+## [1.2.4] - 2026-11-01
+
+### Added
+- **Official Haticons Suite Adoption (`site/`, `scss/_helpers.scss`, `less/_helpers.less`, `README.md`)**:
+  - Adopted Haticons as the official icon toolkit companion for Boodoo, providing 569+ pixel-crafted, high-fidelity vector icons with zero external runtime dependencies.
+  - Embedded official Haticons stylesheet CDN (`https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css`) and font preloads across documentation layout, landing page, and starters.
+  - Enhanced SCSS (`scss/_helpers.scss`) and LESS (`less/_helpers.less`) with automatic styling support for `hi-*` font icon classes (`line-height: 1`, `font-style: normal`) via `.icon` prefix and child selectors.
+  - Added `.alert-icon` flex layout and vertical centering parity in LESS (`less/components/_alerts.less`) mirroring SCSS.
+- **Dedicated Icons Documentation & Interactive Explorer (`site/src/content/icons.html`, `site/docs/content/icons.html`)**:
+  - Published comprehensive Icons documentation under Content section (`/docs/content/icons.html`).
+  - Built an interactive icon catalog featuring real-time search, category filtering, click-to-copy HTML snippets (`<i class="hi-*"></i>`), SVG markup, and Unicode glyph codes.
+  - Documented icon sizing utilities (`icon-xs` through `icon-2xl`), responsive styling, CSS custom property theming (`var(--boodoo-primary)`), and component integration (buttons, badges, alerts, navs).
+  - Added `Icons` route with a `New` badge to the documentation navigation tree (`site/data/docs-nav.json`).
+- **Template & Starter Icon Modernization (`bin/create-boodoo.mjs`, `site/examples/`, `site/index.html`)**:
+  - Modernized starter templates in `bin/create-boodoo.mjs` (Electron and web starters) to embed Haticons CDN and utilize modern semantic icon classes (`hi-chart`, `hi-folder`, `hi-settings`, `hi-home`, `hi-close`).
+  - Upgraded documentation examples, landing page feature sections, KPI cards, steppers, timelines, tree-views, dropzones, and sidebar navigation across the site to use official Haticons.
+- **Automated Haticons Parity & Integrity Verification (`tests/framework.test.mjs`)**:
+  - Added automated test suite verifying Haticons integration: checks SCSS/LESS compiled `.icon` and `.alert-icon` rules, sizing tokens, documentation route presence, navigation configuration, CDN link integrity, and consistent 569+ icon count across all documentation surfaces.
+- **React Native Submodules Syntax & Duplicate Export Validation (`tests/framework.test.mjs`)**:
+  - Added automated test assertion verifying zero duplicate top-level exports and clean declarations across all 13 React Native submodules.
+- **React Native Export Deduplication & Bundler Integrity Rule (`.agents/AGENTS.md`)**:
+  - Codified architectural standard mandating strict export uniqueness and Metro/Hermes compatibility across mobile submodules.
 
 ### Fixed
 - **React Native Data Display Metro Bundling Deduplication (`react-native/data-display.js`)**:
   - Removed redundant duplicate component declarations (`EmptyState`, `TimelineItem`, `Timeline`, `StepIndicator`, and `StepperWizard`) appended after `LineChart`.
   - Resolved Metro/Babel bundling error (`SyntaxError: Identifier 'EmptyState' has already been declared`) encountered during Android and iOS Hermes bytecode compilation (`npx expo export`).
-- **React Native Submodules Syntax & Duplicate Export Validation (`tests/framework.test.mjs`)**:
-  - Added automated test assertion verifying zero duplicate top-level exports and clean declarations across all 13 React Native submodules.
 
 ### Changed
 - **Framework & Package Version Alignment**:
-  - Bumped latest framework version to v1.2.4 across package manifests, CLI scaffolders, starters, and documentation site.
+  - Bumped latest framework version to v1.2.4 across package manifests, CLI scaffolders, starters, and documentation portal.
 
 ---
 

@@ -81,7 +81,7 @@ order: 7
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <i class="hi-calendar me-1" aria-hidden="true"></i><span>October 30, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 1, 2026</span>
           <span class="footer-dot">·</span>
           <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.4"
             target="_blank" rel="noopener"><span>Release Notes</span></a>
@@ -90,13 +90,18 @@ order: 7
 
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
-          <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
-          <span>Version 1.2.4 Release — React Native Metro Bundler Fix</span>
+          <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
+          <span>Version 1.2.4 Release — Official Haticons Suite &amp; Metro Bundler Fix</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.4</strong> deduplicates component exports in the React Native mobile data-display module, resolving Hermes/Babel bundling errors during Metro builds, and introduces automated duplicate export tests across all mobile submodules.</span></p>
+        <p><span>boodoo <strong>v1.2.4</strong> adopts Haticons as the official 569+ icon suite across website, docs, and templates with an interactive explorer, adds SCSS/LESS icon helpers and alert parity, deduplicates React Native mobile exports resolving Metro bundling errors, and introduces automated syntax verification tests.</span></p>
         <ul class="mb-3">
+          <li><span><strong>Official Haticons Suite Adoption</strong>: Adopted Haticons as the framework's official vector icon suite (569+ icons), loaded via CDN across website and documentation, with native font-icon support and zero external runtime dependencies.</span></li>
+          <li><span><strong>Dedicated Icons Documentation &amp; Explorer</strong>: Added <a href="../content/icons.html"><span>Icons Documentation</span></a> featuring an interactive icon catalog with real-time search, category filtering, copy-to-clipboard HTML/SVG snippets, sizing utilities (<code>icon-xs</code> to <code>icon-2xl</code>), and CSS token styling guides.</span></li>
+          <li><span><strong>SCSS &amp; LESS Icon Helper Parity</strong>: Added prefix rules in <code>scss/_helpers.scss</code> and <code>less/_helpers.less</code> ensuring <code>hi-*</code> font icons render with proper line-height and font-style, plus <code>.alert-icon</code> flex centering parity in LESS.</span></li>
+          <li><span><strong>Template &amp; Starter Modernization</strong>: Updated Electron and web starters in <code>bin/create-boodoo.mjs</code> to embed Haticons CDN and semantic icon classes, and upgraded icons across alerts, KPI cards, sidebar, steppers, and timelines.</span></li>
           <li><span><strong>React Native Data Display Export Deduplication</strong>: Removed redundant duplicate declarations of <code>EmptyState</code>, <code>TimelineItem</code>, <code>Timeline</code>, <code>StepIndicator</code>, and <code>StepperWizard</code> from <code>react-native/data-display.js</code>, resolving the Babel <code>SyntaxError: Identifier 'EmptyState' has already been declared</code> during Hermes bytecode bundling in Expo and React Native projects.</span></li>
-          <li><span><strong>Automated React Native Syntax &amp; Export Verification</strong>: Enforced automated duplicate export checks across all 13 React Native submodules in <code>tests/framework.test.mjs</code> to guarantee clean parsing and zero redeclaration regressions.</span></li>
+          <li><span><strong>Automated Haticons &amp; React Native Verification</strong>: Enforced comprehensive automated tests in <code>tests/framework.test.mjs</code> validating Haticons SCSS/LESS parity, sizing tokens, docs route, navigation, and zero duplicate exports across all 13 React Native submodules.</span></li>
+          <li><span><strong>React Native Export Deduplication Rule</strong>: Codified architectural standard in <code>.agents/AGENTS.md</code> mandating strict export uniqueness and Metro/Hermes bundling compatibility for mobile primitives.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
         </ul>
       </div>
