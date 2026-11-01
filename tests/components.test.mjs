@@ -89,8 +89,9 @@ test('XSS sanitization regression tests across Toast, ChipInput, and CommandPale
 
   // 1b. sanitizeHtml utility testing
   const safeSanitized = sanitizeHtml(malicious);
-  assert.ok(!safeSanitized.includes('<script>'), 'sanitizeHtml must eliminate script tags');
-  assert.ok(!safeSanitized.includes('onerror='), 'sanitizeHtml must eliminate event handlers');
+  assert.ok(!safeSanitized.includes('<script>'), 'sanitizeHtml must eliminate executable script tags');
+  assert.ok(!safeSanitized.includes('<img'), 'sanitizeHtml must eliminate executable img tags');
+  assert.ok(safeSanitized.includes('&lt;script&gt;'), 'sanitizeHtml must entity-encode < and >');
   assert.equal(sanitizeHtml(null), '');
   assert.equal(sanitizeHtml(undefined), '');
 
