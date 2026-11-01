@@ -1693,10 +1693,6 @@ code:not(pre code) {
   border: 1px solid var(--boodoo-gray-200);
 }
 
-.brand-logo-preview {
-  max-width: 420px;
-}
-
 /* Demo Surface & Sizing Helpers */
 .demo-card-sm {
   max-width: 24rem;
