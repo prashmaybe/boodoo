@@ -2,13 +2,12 @@
 // BOODOO JS — OTP / PIN Code Input
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 
 export class OTP extends BaseComponent {
   static get NAME() {
     return 'otp';
   }
-
 
   constructor(element, config = {}) {
     super(element, config);
@@ -90,10 +89,4 @@ export class OTP extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.form-otp, [data-boodoo="otp"]').forEach((el) => {
-      OTP.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(OTP, '.form-otp, [data-boodoo="otp"]');

@@ -3,7 +3,7 @@
 // Sortable columns, select-all checkboxes, expandable row details.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class DataTable extends BaseComponent {
@@ -133,10 +133,4 @@ export class DataTable extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.data-table-wrapper, table.data-table, [data-boodoo="datatable"]').forEach((el) => {
-      DataTable.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(DataTable, '.data-table-wrapper, table.data-table, [data-boodoo="datatable"]');

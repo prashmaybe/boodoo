@@ -1,50 +1,49 @@
 // =====================================================================
 // BOODOO JS — Main entry (bundle)
 // =====================================================================
-import './base-component.js';
-import { Alert } from './alert.js';
-import { Button } from './button.js';
-import { Collapse } from './collapse.js';
-import './accordion.js';
-import { Dropdown } from './dropdown.js';
-import { Modal } from './modal.js';
-import { Offcanvas } from './offcanvas.js';
-import { Tab } from './tab.js';
-import { Toast } from './toast.js';
-import { Tooltip, Popover } from './tooltip.js';
-import { Carousel } from './carousel.js';
-import { ScrollSpy } from './scrollspy.js';
-import { initRipple } from './ripple.js';
-import { initDataApi } from './base-component.js';
-import { enableDismissTrigger, escapeHtml } from './util.js';
-import { theme } from './theme.js';
-import { OTP } from './otp.js';
-import { Rating } from './rating.js';
-import { TreeView } from './tree-view.js';
-import { clipboard } from './clipboard.js';
-import { CommandPalette } from './command-palette.js';
-import { BottomSheet } from './bottom-sheet.js';
-import { registerCustomElements } from './custom-elements.js';
-import { DataTable } from './data-table.js';
-import { Sidebar } from './sidebar.js';
-import { ContextMenu } from './context-menu.js';
-import { ChipInput } from './chip-input.js';
-import { Stepper } from './stepper.js';
-import { Combobox } from './combobox.js';
-import { Splitter } from './splitter.js';
-import { SpeedDial } from './speed-dial.js';
-import { Lightbox } from './lightbox.js';
-import { Banner } from './banner.js';
-import { Dropzone } from './dropzone.js';
-import { a11y } from './a11y.js';
-import { FloatingBar } from './floating-bar.js';
-import { ImageCompare } from './image-compare.js';
-import { PasswordMeter } from './password-meter.js';
-import { FABDock } from './fab-dock.js';
-import { DialogFullscreen } from './dialog-fullscreen.js';
-import { Tour } from './tour.js';
-import { Chart } from './chart.js';
-import { FilterBar, TransferList, ColorPicker, BackToTop } from './advanced-components.js';
+import { Alert } from './src/alert.js';
+import { Button } from './src/button.js';
+import { Collapse } from './src/collapse.js';
+import './src/accordion.js';
+import { Dropdown } from './src/dropdown.js';
+import { Modal } from './src/modal.js';
+import { Offcanvas } from './src/offcanvas.js';
+import { Tab } from './src/tab.js';
+import { Toast } from './src/toast.js';
+import { Tooltip, Popover } from './src/tooltip.js';
+import { Carousel } from './src/carousel.js';
+import { ScrollSpy } from './src/scrollspy.js';
+import { initRipple } from './src/ripple.js';
+import { initDataApi } from './src/base-component.js';
+import { enableDismissTrigger, escapeHtml } from './src/util.js';
+import { theme } from './src/theme.js';
+import { OTP } from './src/otp.js';
+import { Rating } from './src/rating.js';
+import { TreeView } from './src/tree-view.js';
+import { clipboard } from './src/clipboard.js';
+import { CommandPalette } from './src/command-palette.js';
+import { BottomSheet } from './src/bottom-sheet.js';
+import { registerCustomElements } from './src/custom-elements.js';
+import { DataTable } from './src/data-table.js';
+import { Sidebar } from './src/sidebar.js';
+import { ContextMenu } from './src/context-menu.js';
+import { ChipInput } from './src/chip-input.js';
+import { Stepper } from './src/stepper.js';
+import { Combobox } from './src/combobox.js';
+import { Splitter } from './src/splitter.js';
+import { SpeedDial } from './src/speed-dial.js';
+import { Lightbox } from './src/lightbox.js';
+import { Banner } from './src/banner.js';
+import { Dropzone } from './src/dropzone.js';
+import { a11y } from './src/a11y.js';
+import { FloatingBar } from './src/floating-bar.js';
+import { ImageCompare } from './src/image-compare.js';
+import { PasswordMeter } from './src/password-meter.js';
+import { FABDock } from './src/fab-dock.js';
+import { DialogFullscreen } from './src/dialog-fullscreen.js';
+import { Tour } from './src/tour.js';
+import { Chart } from './src/chart.js';
+import { FilterBar, TransferList, ColorPicker, BackToTop } from './src/advanced-components.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -277,6 +276,10 @@ export {
   ColorPicker,
   BackToTop,
 };
+
+if (typeof globalThis !== 'undefined') {
+  globalThis.__boodoo_export = boodoo;
+}
 
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;

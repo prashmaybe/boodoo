@@ -3,7 +3,7 @@
 // Enables interactive before/after image comparison with drag/touch.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class ImageCompare extends BaseComponent {
@@ -89,10 +89,4 @@ export class ImageCompare extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.image-compare, [data-boodoo="image-compare"]').forEach((el) => {
-      ImageCompare.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(ImageCompare, '.image-compare, [data-boodoo="image-compare"]');

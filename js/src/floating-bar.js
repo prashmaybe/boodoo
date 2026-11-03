@@ -3,7 +3,7 @@
 // Controls the display and dismissal of contextual floating action bars.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class FloatingBar extends BaseComponent {
@@ -57,10 +57,4 @@ export class FloatingBar extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.floating-bar, [data-boodoo="floating-bar"]').forEach((el) => {
-      FloatingBar.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(FloatingBar, '.floating-bar, [data-boodoo="floating-bar"]');

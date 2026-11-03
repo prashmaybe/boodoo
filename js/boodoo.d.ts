@@ -156,6 +156,10 @@ export declare class BackToTop extends BaseComponent {
   dispose(): void;
 }
 
+export declare function initDataApi(component?: any, selector?: string): void;
+export declare function initRipple(target?: any): void;
+export declare function registerCustomElements(): void;
+
 export interface BoodooGlobal {
   toast: {
     (message: string, options?: ToastOptions): Toast;
@@ -211,6 +215,9 @@ export interface BoodooGlobal {
     setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
     createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
   };
+  initDataApi: (component?: any, selector?: string) => void;
+  initRipple: (target?: any) => void;
+  registerCustomElements: () => void;
 }
 
 declare const boodoo: BoodooGlobal;
@@ -253,6 +260,9 @@ export {
   TreeView,
   Carousel,
   clipboard,
+  initDataApi,
+  initRipple,
+  registerCustomElements,
   theme,
   a11y,
   FilterBar,
@@ -260,4 +270,3 @@ export {
   ColorPicker,
   BackToTop,
 };
-

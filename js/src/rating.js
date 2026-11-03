@@ -2,13 +2,12 @@
 // BOODOO JS — Rating Component
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 
 export class Rating extends BaseComponent {
   static get NAME() {
     return 'rating';
   }
-
 
   constructor(element, config = {}) {
     super(element, config);
@@ -69,10 +68,4 @@ export class Rating extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.rating, [data-boodoo="rating"]').forEach((el) => {
-      Rating.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(Rating, '.rating, [data-boodoo="rating"]');

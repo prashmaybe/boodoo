@@ -53,14 +53,21 @@
   --boodoo-gutter-y: 0;
 
   // Spacing
-  --boodoo-spacer: @boodoo-spacer;
+  @_sp05: (@boodoo-spacer * 0.5);
+  @_sp1: (@boodoo-spacer * 1.25);
+  @_sp2: (@boodoo-spacer * 2.25);
+  @_sp3: (@boodoo-spacer * 3.25);
+  @_sp4: (@boodoo-spacer * 4.25);
+  @_sp5: (@boodoo-spacer * 5.25);
+
+  --boodoo-spacer: @{boodoo-spacer};
   --boodoo-spacer-0: 0;
-  --boodoo-spacer-0-5: (@boodoo-spacer * 0.5);
-  --boodoo-spacer-1: (@boodoo-spacer * 1.25);
-  --boodoo-spacer-2: (@boodoo-spacer * 2.25);
-  --boodoo-spacer-3: (@boodoo-spacer * 3.25);
-  --boodoo-spacer-4: (@boodoo-spacer * 4.25);
-  --boodoo-spacer-5: (@boodoo-spacer * 5.25);
+  --boodoo-spacer-0-5: @{_sp05};
+  --boodoo-spacer-1: @{_sp1};
+  --boodoo-spacer-2: @{_sp2};
+  --boodoo-spacer-3: @{_sp3};
+  --boodoo-spacer-4: @{_sp4};
+  --boodoo-spacer-5: @{_sp5};
 
   // Shadows
   --boodoo-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);

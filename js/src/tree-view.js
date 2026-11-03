@@ -2,13 +2,12 @@
 // BOODOO JS — Tree View Component
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 
 export class TreeView extends BaseComponent {
   static get NAME() {
     return 'treeview';
   }
-
 
   constructor(element, config = {}) {
     super(element, config);
@@ -101,10 +100,4 @@ export class TreeView extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.tree-view, [data-boodoo="tree"]').forEach((el) => {
-      TreeView.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(TreeView, '.tree-view, [data-boodoo="tree"]');

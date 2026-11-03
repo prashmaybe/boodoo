@@ -97,18 +97,22 @@ export class BaseComponent {
 // Auto-bind data-api initializers per component
 export function initDataApi(component, selector) {
   if (typeof document === 'undefined') return;
-  if (!document.body) {
-    document.addEventListener('DOMContentLoaded', () => initDataApi(component, selector));
-    return;
-  }
-  const els = Array.from(document.querySelectorAll(selector));
-  for (const el of els) {
-    if (!component.getInstance(el)) {
-      try {
-        component.getOrCreateInstance(el);
-      } catch (e) {
-        // ignore — some components need explicit config
+  const init = () => {
+    const els = Array.from(document.querySelectorAll(selector));
+    for (const el of els) {
+      if (!component.getInstance(el)) {
+        try {
+          component.getOrCreateInstance(el);
+        } catch (e) {
+          // ignore — some components need explicit config
+        }
       }
     }
+  };
+
+  if (!document.body || document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 }

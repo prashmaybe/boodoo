@@ -3,7 +3,7 @@
 // Right-click or trigger-based floating context menu.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 let activeContextMenu = null;
@@ -106,10 +106,4 @@ export class ContextMenu extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-boodoo-toggle="context-menu"]').forEach((el) => {
-      ContextMenu.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(ContextMenu, '[data-boodoo-toggle="context-menu"]');

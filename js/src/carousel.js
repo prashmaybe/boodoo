@@ -205,13 +205,6 @@ function offsetRemove(el, classes) {
   classes.forEach((c) => el.classList.remove(c));
 }
 
-// Data API
-if (typeof document !== 'undefined') {
-  document.addEventListener('click', () => {
-    // handled in instance setup
-  }, true);
-}
-
 // Auto-init carousels marked with data-boodoo-ride
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {

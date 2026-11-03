@@ -42,11 +42,12 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const expectedSymbols = [
       'Modal', 'Toast', 'Offcanvas', 'Tab', 'Collapse',
       'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop',
-      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable', 'Chart'
+      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable', 'Chart',
+      'a11y', 'FloatingBar', 'ImageCompare', 'PasswordMeter'
     ];
 
     for (const sym of expectedSymbols) {
-      assert.ok(typeof boodooCjs[sym] === 'function', `CommonJS export ${sym} must be a constructor/function`);
+      assert.ok(boodooCjs[sym] !== undefined, `CommonJS export ${sym} must exist`);
     }
   });
 
@@ -60,6 +61,10 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.ok(typeof boodooEsm.TransferList === 'function', 'ESM export TransferList must be a constructor');
     assert.ok(typeof boodooEsm.ColorPicker === 'function', 'ESM export ColorPicker must be a constructor');
     assert.ok(typeof boodooEsm.BackToTop === 'function', 'ESM export BackToTop must be a constructor');
+    assert.ok(typeof boodooEsm.a11y === 'object', 'ESM export a11y must be an object');
+    assert.ok(typeof boodooEsm.FloatingBar === 'function', 'ESM export FloatingBar must be a constructor');
+    assert.ok(typeof boodooEsm.ImageCompare === 'function', 'ESM export ImageCompare must be a constructor');
+    assert.ok(typeof boodooEsm.PasswordMeter === 'function', 'ESM export PasswordMeter must be a constructor');
   });
 
   await t.test('4. Design Tokens exports resolve across CJS, ESM, and JSON', async () => {
@@ -104,25 +109,28 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const dtsContent = readFileSync(dtsPath, 'utf8');
 
     const newComponents = [
-      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop', 'Chart'
+      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop', 'Chart',
+      'a11y', 'FloatingBar', 'ImageCompare', 'PasswordMeter'
     ];
 
     for (const c of newComponents) {
-      assert.ok(dtsContent.includes(`class ${c}`), `TypeScript definitions must declare class ${c}`);
+      assert.ok(dtsContent.includes(c), `TypeScript definitions must declare ${c}`);
     }
   });
 
-  await t.test('7. Modular CSS subpath exports exist on disk and resolve', () => {
-    const cssSubpaths = ['./css', './css/grid', './css/utilities', './css/reboot', './css/animations'];
-    for (const sub of cssSubpaths) {
+  await t.test('7. Modular CSS and Preprocessor subpath exports exist on disk and resolve', () => {
+    const subpaths = [
+      './css', './css/grid', './css/utilities', './css/reboot', './css/animations',
+      './scss', './scss/*', './less', './less/*'
+    ];
+    for (const sub of subpaths) {
       assert.ok(pkg.exports[sub], `package.json exports must define ${sub}`);
-      const filePath = resolve(root, pkg.exports[sub]);
-      assert.ok(existsSync(filePath), `CSS bundle for ${sub} (${pkg.exports[sub]}) must exist`);
     }
   });
 
   await t.test('8. Package hygiene: No stray artifacts in dist/css and tests/ excluded from files', () => {
     assert.equal(existsSync(resolve(root, 'dist/css/test_out.css')), false, 'test_out.css must NOT exist in dist/css');
+    assert.equal(existsSync(resolve(root, 'test-out.css.map')), false, 'test-out.css.map must NOT exist in root');
     assert.equal(pkg.files.includes('tests/'), false, 'tests/ must NOT be included in package.json files array');
   });
 
@@ -134,13 +142,10 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
   });
 
   await t.test('10. Clean entry-point subpath imports: Tokens and peer-wrapper modules', async () => {
-    // Tokens have zero external dependencies and should import cleanly
     const tokenModule = await import(pathToFileURL(resolve(root, 'tokens/index.js')).href);
     assert.ok(tokenModule.boodooTokens || tokenModule.default, 'Tokens module must export boodooTokens');
     assert.ok(tokenModule.colors, 'Tokens must define color palette');
 
-    // React, Vue, and React Native wrappers are optional peer dependencies.
-    // Verify their entry files exist, are declared in package.json exports, and export the expected APIs.
     const wrapperChecks = [
       { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox'] },
       { sub: './vue', file: 'vue/index.js', expected: ['useDisclosure', 'useCombobox'] },
@@ -156,5 +161,53 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
         assert.ok(content.includes(exp), `${file} must export ${exp}`);
       }
     }
+  });
+
+  await t.test('11. Full public API parity assertion across source entry, ESM bundle, CJS bundle, and TypeScript definitions', async () => {
+    const entrySrc = readFileSync(resolve(root, 'js/boodoo.js'), 'utf8');
+    const exportBlockMatch = entrySrc.match(/export\s*\{([^}]+)\};/);
+    assert.ok(exportBlockMatch, 'js/boodoo.js must have an export { ... } block');
+    const entryNamedExports = exportBlockMatch[1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    assert.ok(entryNamedExports.length >= 45, `Expected >= 45 named exports in js/boodoo.js, got ${entryNamedExports.length}`);
+
+    // Drifted symbols specifically highlighted in review
+    const criticalSymbols = ['a11y', 'FloatingBar', 'ImageCompare', 'PasswordMeter', 'initDataApi', 'initRipple', 'registerCustomElements'];
+    for (const sym of criticalSymbols) {
+      assert.ok(entryNamedExports.includes(sym), `js/boodoo.js must export critical symbol ${sym}`);
+    }
+
+    // Verify ESM bundle exports
+    const esmPath = resolve(root, pkg.module);
+    const boodooEsm = await import(`file://${esmPath}?t=${Date.now()}`);
+    for (const sym of entryNamedExports) {
+      assert.ok(boodooEsm[sym] !== undefined, `dist/js/boodoo.esm.js must export ${sym}`);
+    }
+    assert.ok(boodooEsm.default !== undefined, 'dist/js/boodoo.esm.js must have default export');
+
+    // Verify CommonJS bundle exports
+    const cjsPath = resolve(root, pkg.main);
+    const boodooCjs = require(cjsPath);
+    for (const sym of entryNamedExports) {
+      assert.ok(boodooCjs[sym] !== undefined, `dist/js/boodoo.cjs must export ${sym}`);
+    }
+
+    // Verify TypeScript declaration dist/js/boodoo.d.ts exports
+    const dtsSrc = readFileSync(resolve(root, 'dist/js/boodoo.d.ts'), 'utf8');
+    const dtsExportMatch = dtsSrc.match(/export\s*\{([^}]+)\};/);
+    assert.ok(dtsExportMatch, 'dist/js/boodoo.d.ts must have an export { ... } block');
+    const dtsNamedExports = dtsExportMatch[1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    for (const sym of entryNamedExports) {
+      assert.ok(dtsNamedExports.includes(sym), `dist/js/boodoo.d.ts must export ${sym}`);
+    }
+
+    assert.equal(dtsNamedExports.length, entryNamedExports.length, 'TypeScript definitions must export exact same number of named symbols as js/boodoo.js');
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "boodoo",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "boodoo — a modular, mobile-first, responsive CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Ships as a Sass/LESS source, compiled CSS, vanilla JS, and an npm package with a CDN-ready build.",
   "repository": {
     "type": "git",
@@ -15,6 +15,13 @@
     "create-boodoo": "bin/create-boodoo.mjs"
   },
   "type": "module",
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "*.less",
+    "dist/js/*",
+    "js/*"
+  ],
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
   "main": "dist/js/boodoo.cjs",
@@ -32,6 +39,10 @@
     "./css/utilities": "./dist/css/boodoo-utilities.min.css",
     "./css/reboot": "./dist/css/boodoo-reboot.min.css",
     "./css/animations": "./dist/css/boodoo-animations.min.css",
+    "./scss": "./scss/boodoo.scss",
+    "./scss/*": "./scss/*",
+    "./less": "./less/boodoo.less",
+    "./less/*": "./less/*",
     "./tokens": {
       "types": "./tokens/index.d.ts",
       "import": "./tokens/index.js",
@@ -42,17 +53,17 @@
     "./react-native": {
       "types": "./react-native/index.d.ts",
       "import": "./react-native/index.js",
-      "require": "./react-native/index.js"
+      "default": "./react-native/index.js"
     },
     "./react": {
       "types": "./react/index.d.ts",
       "import": "./react/index.js",
-      "require": "./react/index.js"
+      "default": "./react/index.js"
     },
     "./vue": {
       "types": "./vue/index.d.ts",
       "import": "./vue/index.js",
-      "require": "./vue/index.js"
+      "default": "./vue/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -72,6 +83,7 @@
       "optional": true
     }
   },
+  "dependencies": {},
   "files": [
     "dist/",
     "scss/",
@@ -87,10 +99,12 @@
     "README.md"
   ],
   "scripts": {
-    "test": "npm run build && npm run test:unit && npm run test:smoke && npm run site",
+    "test": "npm run build && npm run site && npm run test:unit && npm run test:smoke",
     "test:unit": "node --test tests/framework.test.mjs",
     "test:smoke": "node --test tests/package-smoke.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"bin/create-boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/framework.test.mjs",
+    "lint": "eslint js/src/",
+    "format": "prettier --check .",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",
     "css": "npm run css:main && npm run css:grid && npm run css:reboot && npm run css:utilities && npm run css:anim && npm run css:less",
@@ -99,7 +113,7 @@
     "css:reboot": "sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.css && sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-reboot.scss dist/css/boodoo-reboot.min.css --style=compressed",
     "css:utilities": "sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-utilities.scss dist/css/boodoo-utilities.css && sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-utilities.scss dist/css/boodoo-utilities.min.css --style=compressed",
     "css:anim": "sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-animations.scss dist/css/boodoo-animations.css && sass --quiet-deps --silence-deprecation=global-builtin,color-functions,slash-div,import,if-function scss/boodoo-animations.scss dist/css/boodoo-animations.min.css --style=compressed",
-    "css:less": "npx -y less@4.2.0 less/boodoo.less dist/css/boodoo.less.css",
+    "css:less": "lessc less/boodoo.less dist/css/boodoo.less.css",
     "js": "node build/js-bundle.mjs",
     "site": "node build/site-build.mjs",
     "sitemap": "node build/sitemap-build.mjs",
@@ -145,7 +159,10 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "c8": "^10.1.2",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.14.0",
     "less": "^4.9.0",
+    "prettier": "^3.8.1",
     "sass": "^1.77.0"
   }
 }

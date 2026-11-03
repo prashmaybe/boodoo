@@ -3,7 +3,7 @@
 // Persistent sidebar toggling, collapse/expand mode, submenu handling.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class Sidebar extends BaseComponent {
@@ -64,10 +64,4 @@ export class Sidebar extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.sidebar, [data-boodoo="sidebar"]').forEach((el) => {
-      Sidebar.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(Sidebar, '.sidebar, [data-boodoo="sidebar"]');

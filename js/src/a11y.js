@@ -18,7 +18,7 @@ export function announce(message, politeness = 'polite') {
   if (!liveRegion) {
     liveRegion = document.createElement('div');
     liveRegion.id = id;
-    liveRegion.setAttribute('role', 'status');
+    liveRegion.setAttribute('role', politeness === 'assertive' ? 'alert' : 'status');
     liveRegion.setAttribute('aria-live', politeness);
     liveRegion.setAttribute('aria-atomic', 'true');
     // Visually hidden CSS properties

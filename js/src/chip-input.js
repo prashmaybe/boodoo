@@ -3,7 +3,7 @@
 // Handles removable chips and tag creation upon Enter or comma.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class ChipInput extends BaseComponent {
@@ -91,14 +91,10 @@ export class ChipInput extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    // Interactive tag input containers
-    document.querySelectorAll('.chip-input-container, [data-boodoo="chip-input"]').forEach((el) => {
-      ChipInput.getOrCreateInstance(el);
-    });
+initDataApi(ChipInput, '.chip-input-container, [data-boodoo="chip-input"]');
 
-    // Standalone removable chips
+if (typeof document !== 'undefined') {
+  const initChipRemove = () => {
     document.addEventListener('click', (e) => {
       const removeBtn = e.target.closest('.chip .chip-remove');
       if (removeBtn && !removeBtn.closest('.chip-input-container')) {
@@ -106,5 +102,11 @@ if (typeof document !== 'undefined') {
         if (chip) chip.remove();
       }
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChipRemove);
+  } else {
+    initChipRemove();
+  }
 }
