@@ -1,5 +1,11 @@
 import type { ComponentType, ReactNode } from 'react';
-import type { BoodooColorTokens, BoodooSpacingScale, BoodooRadiiScale, BoodooTypographyTokens, BoodooShadowTokens } from '../tokens/index.d.ts';
+import type {
+  BoodooColorTokens,
+  BoodooSpacingScale,
+  BoodooRadiiScale,
+  BoodooTypographyTokens,
+  BoodooShadowTokens,
+} from '../tokens/index.d.ts';
 
 export interface BoodooComponentSpacing {
   baseSpacer?: number;
@@ -35,7 +41,10 @@ export interface BoodooTheme {
   shadows: BoodooShadowTokens;
 }
 
-export declare const createComponentSpacing: (baseSpacer?: number, overrides?: Partial<BoodooComponentSpacing>) => BoodooComponentSpacing;
+export declare const createComponentSpacing: (
+  baseSpacer?: number,
+  overrides?: Partial<BoodooComponentSpacing>
+) => BoodooComponentSpacing;
 export declare const defaultComponentSpacing: BoodooComponentSpacing;
 
 export declare const defaultLightTheme: BoodooTheme;
@@ -186,4 +195,3 @@ export declare const Accordion: ComponentType<any> & {
 export declare const AccordionItem: ComponentType<any>;
 export declare const SwipeActionItem: ComponentType<any>;
 export declare const SwipeableRow: ComponentType<any>;
-

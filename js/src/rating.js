@@ -13,7 +13,9 @@ export class Rating extends BaseComponent {
     super(element, config);
     this._stars = Array.from(this._element.querySelectorAll('.rating-star, [data-rating-value]'));
     this._value = parseInt(this._element.getAttribute('data-rating-value') || '0', 10);
-    this._isReadonly = this._element.classList.contains('rating-readonly') || this._element.hasAttribute('data-readonly');
+    this._isReadonly =
+      this._element.classList.contains('rating-readonly') ||
+      this._element.hasAttribute('data-readonly');
     this._init();
   }
 
@@ -35,10 +37,12 @@ export class Rating extends BaseComponent {
         this._value = val;
         this._renderStars(this._value);
         this._element.setAttribute('data-rating-value', this._value);
-        this._element.dispatchEvent(new CustomEvent('boodoo.rating.change', {
-          bubbles: true,
-          detail: { value: this._value }
-        }));
+        this._element.dispatchEvent(
+          new CustomEvent('boodoo.rating.change', {
+            bubbles: true,
+            detail: { value: this._value },
+          })
+        );
       });
     });
 

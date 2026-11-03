@@ -3,6 +3,11 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       globals: {
         window: 'readonly',
         document: 'readonly',
@@ -28,6 +33,20 @@ export default [
         FormData: 'readonly',
         URL: 'readonly',
         ResizeObserver: 'readonly',
+        IntersectionObserver: 'readonly',
+        getComputedStyle: 'readonly',
+        matchMedia: 'readonly',
+        getSelection: 'readonly',
+        Image: 'readonly',
+        fetch: 'readonly',
+        AbortController: 'readonly',
+        DOMParser: 'readonly',
+        TextEncoder: 'readonly',
+        TextDecoder: 'readonly',
+        queueMicrotask: 'readonly',
+        sessionStorage: 'readonly',
+        performance: 'readonly',
+        crypto: 'readonly',
         navigator: 'readonly',
         customElements: 'readonly',
         localStorage: 'readonly',
@@ -40,7 +59,7 @@ export default [
       },
     },
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^(_|React)' }],
       'no-empty': ['error', { allowEmptyCatch: true }],
       'no-unreachable': 'error',
       'no-dupe-keys': 'error',
@@ -51,12 +70,12 @@ export default [
   {
     ignores: [
       'dist/**',
-      'site/docs/**',
-      'site/assets/**',
+      'site/**',
       'www/**',
       'node_modules/**',
       'scratch/**',
       '*.min.js',
+      '.commandcode/**',
     ],
   },
 ];

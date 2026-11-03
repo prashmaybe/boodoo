@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **esbuild Build Pipeline & Real JavaScript Minification (`build/js-bundle.mjs`, `README.md`)**:
   - Replaced legacy regex-based bundle concatenator with `esbuild`, producing production-grade ESM, CommonJS, and browser UMD distributions.
-  - Built native CommonJS distribution (`boodoo.cjs`) with `format: 'cjs'`, exposing standard `__esModule`, named exports, and `default` without global `__boodoo_export` pollution in ESM/SSR environments.
+  - Built native CommonJS distribution (`boodoo.cjs`) and pure ESM distribution (`boodoo.esm.js`) with zero `window` global side effects, reserving `window.boodoo` exposure strictly for the browser UMD bundle.
   - Generated real source maps (`.map`) across JavaScript distribution bundles.
   - Achieved real JavaScript minification: reduced `dist/js/boodoo.min.js` from ~179 KB to ~113 KB (~27.1 KB gzip / ~23.4 KB brotli), a 35% reduction in production transfer footprint.
   - Updated performance benchmark tables and reproducible validation commands in `README.md`.
@@ -28,10 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Package Manifest & Module Resolution Improvements (`package.json`)**:
   - Exposed modular preprocessor subpaths (`./scss`, `./scss/*`, `./less`, `./less/*`) in `package.json` `"exports"` to support standard package-specifier imports (e.g. `@use "boodoo/scss/boodoo"`).
   - Hardened headless subpath exports (`./react`, `./vue`, `./react-native`) as ESM-only entry points with TypeScript declarations, removing invalid CJS require / default fallbacks.
-  - Added recursive `"sideEffects"` declaration in `package.json` covering style sheets and component source trees.
+  - Streamlined `"sideEffects"` in `package.json` to style sheets (`*.css`, `*.scss`, `*.less`), ensuring complete tree-shaking purity for the ESM distribution.
   - Replaced network `npx` fetch in `css:less` script with local `lessc` compiler, matching devDependency `less ^4.9.0`.
   - Fixed Less 4.9.0 variable deprecation warnings in `less/_root.less`.
-  - Added ESLint flat config (`eslint.config.js`), Prettier configuration (`.prettierrc`), `"lint"` / `"format"` npm scripts, and CI workflow verification.
+  - Added ESLint flat config (`eslint.config.js`) covering all maintained source directories (`js`, `bin`, `build`, `tokens`, `react`, `vue`, `react-native`), Prettier configuration (`.prettierrc`), `"lint"` / `"format"` npm scripts, and automated CI workflow verification.
 - **Accessibility & Quality Hygiene (`js/src/a11y.js`, `js/src/carousel.js`, `js/boodoo.js`)**:
   - Assertive screen-reader announcements in `a11y.announce` now use `role="alert"`.
   - Removed dead code (empty global click listener in `carousel.js` and redundant `base-component.js` import in `boodoo.js`).

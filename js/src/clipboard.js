@@ -64,15 +64,17 @@ export const clipboard = {
               if (icon) icon.textContent = '';
             }, 2000);
 
-            btn.dispatchEvent(new CustomEvent('boodoo.clipboard.copied', {
-              bubbles: true,
-              detail: { text }
-            }));
+            btn.dispatchEvent(
+              new CustomEvent('boodoo.clipboard.copied', {
+                bubbles: true,
+                detail: { text },
+              })
+            );
           }
         }
       }
     });
-  }
+  },
 };
 
 if (typeof document !== 'undefined') {

@@ -25,7 +25,9 @@ export class ChipInput extends BaseComponent {
         e.preventDefault();
         const chip = removeBtn.closest('.chip, .tag-item');
         if (chip) {
-          const text = chip.querySelector('span') ? chip.querySelector('span').innerText : chip.innerText;
+          const text = chip.querySelector('span')
+            ? chip.querySelector('span').innerText
+            : chip.innerText;
           chip.remove();
           triggerEvent(this._element, 'boodoo.chip.remove', { text, chip });
         }
@@ -60,7 +62,7 @@ export class ChipInput extends BaseComponent {
     const isTagInput = this._element.classList.contains('tag-input');
     const chip = document.createElement('span');
     chip.className = isTagInput ? `tag-item ${variant}`.trim() : `chip ${variant}`.trim();
-    
+
     const labelSpan = document.createElement('span');
     labelSpan.textContent = text;
 

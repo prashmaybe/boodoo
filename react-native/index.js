@@ -4,27 +4,21 @@
  */
 
 // Theme Context & Presets
-export { BoodooProvider, useTheme, defaultLightTheme, defaultDarkTheme, createComponentSpacing, defaultComponentSpacing } from './theme.js';
+export {
+  BoodooProvider,
+  useTheme,
+  defaultLightTheme,
+  defaultDarkTheme,
+  createComponentSpacing,
+  defaultComponentSpacing,
+} from './theme.js';
 export { boodooPaperLightTheme, boodooPaperDarkTheme } from './paper.js';
 
 // Typography
-export {
-  Text,
-  Heading,
-} from './typography.js';
+export { Text, Heading } from './typography.js';
 
 // Layout Primitives (Gluestack / Tamagui)
-export {
-  Box,
-  HStack,
-  XStack,
-  VStack,
-  YStack,
-  Center,
-  ZStack,
-  Pressable,
-  Grid,
-} from './layout.js';
+export { Box, HStack, XStack, VStack, YStack, Center, ZStack, Pressable, Grid } from './layout.js';
 
 // Buttons & Actions
 export {

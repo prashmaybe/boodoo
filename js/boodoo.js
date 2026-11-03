@@ -47,27 +47,37 @@ import { FilterBar, TransferList, ColorPicker, BackToTop } from './src/advanced-
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'alert') instance.hide();
 });
 
 enableDismissTrigger(Banner, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'banner') instance.hide();
 });
 
 enableDismissTrigger(BottomSheet, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'bottom-sheet') instance.hide();
 });
 
 enableDismissTrigger(DialogFullscreen, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'dialog-fullscreen') instance.hide();
 });
 
 enableDismissTrigger(Toast, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'toast') instance.hide();
 });
 
@@ -120,7 +130,6 @@ const boodoo = {
   BackToTop,
 };
 
-
 // Programmatic Toast API: boodoo.toast(message, options) / boodoo.toast.show() / .success() / etc.
 function createToast(message, options = {}) {
   const opts = {
@@ -131,7 +140,9 @@ function createToast(message, options = {}) {
     ...options,
   };
 
-  let container = opts.container ? document.querySelector(opts.container) : (document.querySelector('#landingToasts') || document.querySelector('.toast-container'));
+  let container = opts.container
+    ? document.querySelector(opts.container)
+    : document.querySelector('#landingToasts') || document.querySelector('.toast-container');
   if (!container) {
     container = document.createElement('div');
     container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
@@ -193,24 +204,31 @@ boodoo.toast = function toast(message, options) {
   return createToast(message, options);
 };
 boodoo.toast.show = (message, options) => createToast(message, options);
-boodoo.toast.success = (message, options = {}) => createToast(message, { ...options, variant: 'success' });
-boodoo.toast.danger = (message, options = {}) => createToast(message, { ...options, variant: 'danger' });
+boodoo.toast.success = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'success' });
+boodoo.toast.danger = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'danger' });
 boodoo.toast.error = boodoo.toast.danger;
-boodoo.toast.warning = (message, options = {}) => createToast(message, { ...options, variant: 'warning' });
-boodoo.toast.info = (message, options = {}) => createToast(message, { ...options, variant: 'info' });
-
+boodoo.toast.warning = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'warning' });
+boodoo.toast.info = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'info' });
 
 // Auto-initialize common data-api components
 function autoInit() {
   if (typeof document === 'undefined') return;
   // Buttons
-  document.addEventListener('click', (event) => {
-    const btn = event.target.closest('[data-boodoo-toggle="button"]');
-    if (btn) {
-      const instance = Button.getOrCreateInstance(btn);
-      instance.toggle();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const btn = event.target.closest('[data-boodoo-toggle="button"]');
+      if (btn) {
+        const instance = Button.getOrCreateInstance(btn);
+        instance.toggle();
+      }
+    },
+    true
+  );
   // Ripple on dynamic content is initialized on DOM mutations
 }
 
@@ -276,7 +294,3 @@ export {
   ColorPicker,
   BackToTop,
 };
-
-if (typeof window !== 'undefined') {
-  window.boodoo = boodoo;
-}

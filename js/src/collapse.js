@@ -3,14 +3,22 @@
 
 import { BaseComponent, initDataApi } from './base-component.js';
 import {
-  reflow, getTransitionDuration, emulateTransitionEnd,
-  getElementFromSelector, triggerEvent, elements,
+  reflow,
+  getTransitionDuration,
+  emulateTransitionEnd,
+  getElementFromSelector,
+  triggerEvent,
+  elements,
 } from './util.js';
 
 export class Collapse extends BaseComponent {
-  static get NAME() { return 'collapse'; }
+  static get NAME() {
+    return 'collapse';
+  }
 
-  static get selector() { return '[data-boodoo-toggle="collapse"]'; }
+  static get selector() {
+    return '[data-boodoo-toggle="collapse"]';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -115,13 +123,17 @@ export class Collapse extends BaseComponent {
 initDataApi(Collapse, Collapse.selector);
 
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const toggler = event.target.closest(Collapse.selector);
-    if (toggler) {
-      event.preventDefault();
-      Collapse.toggleVia(toggler);
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const toggler = event.target.closest(Collapse.selector);
+      if (toggler) {
+        event.preventDefault();
+        Collapse.toggleVia(toggler);
+      }
+    },
+    true
+  );
 }
 
 export default Collapse;

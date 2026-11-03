@@ -8,7 +8,6 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const navFile = path.join(root, 'site', 'data', 'docs-nav.json');
 const sitemapFile = path.join(root, 'site', 'sitemap.xml');
 const srcDir = path.join(root, 'site', 'src');
 const examplesDir = path.join(root, 'site', 'examples');
@@ -38,7 +37,7 @@ const examplePages = walkHtml(examplesDir);
 const urls = [
   { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'weekly' },
   { loc: `${BASE_URL}/examples/index.html`, priority: '0.9', changefreq: 'weekly' },
-  { loc: `${BASE_URL}/llms.txt`, priority: '0.5', changefreq: 'monthly' }
+  { loc: `${BASE_URL}/llms.txt`, priority: '0.5', changefreq: 'monthly' },
 ];
 
 for (const relPath of examplePages) {
@@ -46,7 +45,7 @@ for (const relPath of examplePages) {
   urls.push({
     loc: `${BASE_URL}/examples/${relPath}`,
     priority: '0.8',
-    changefreq: 'monthly'
+    changefreq: 'monthly',
   });
 }
 
@@ -60,7 +59,7 @@ for (const relPath of docsPages) {
   urls.push({
     loc: `${BASE_URL}/docs/${relPath}`,
     priority,
-    changefreq: 'monthly'
+    changefreq: 'monthly',
   });
 }
 

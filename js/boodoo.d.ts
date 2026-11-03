@@ -8,7 +8,10 @@ export interface BoodooComponent {
 export declare class BaseComponent implements BoodooComponent {
   constructor(target: string | Element, config?: Record<string, unknown>);
   static getInstance(target: string | Element): BaseComponent | null;
-  static getOrCreateInstance(target: string | Element, config?: Record<string, unknown>): BaseComponent;
+  static getOrCreateInstance(
+    target: string | Element,
+    config?: Record<string, unknown>
+  ): BaseComponent;
   static getAll(): BaseComponent[];
   dispose(): void;
   hide(): void;
@@ -50,7 +53,15 @@ declare class ChipInput extends BaseComponent {
 declare class CommandPalette extends BaseComponent {
   open(): void;
   close(): void;
-  static initDefault(options?: { items?: Array<{ title: string; href?: string; action?: () => void; icon?: string; shortcut?: string }> }): void;
+  static initDefault(options?: {
+    items?: Array<{
+      title: string;
+      href?: string;
+      action?: () => void;
+      icon?: string;
+      shortcut?: string;
+    }>;
+  }): void;
 }
 declare class ContextMenu extends BaseComponent {}
 declare class DataTable extends BaseComponent {}

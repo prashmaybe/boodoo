@@ -2,12 +2,22 @@
 // Slide-in panel (top/end/bottom/start) with backdrop.
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent, getTransitionDuration, emulateTransitionEnd, reflow } from './util.js';
+import {
+  getElementFromSelector,
+  triggerEvent,
+  getTransitionDuration,
+  emulateTransitionEnd,
+  reflow,
+} from './util.js';
 
 export class Offcanvas extends BaseComponent {
-  static get NAME() { return 'offcanvas'; }
+  static get NAME() {
+    return 'offcanvas';
+  }
 
-  static get selector() { return '.offcanvas'; }
+  static get selector() {
+    return '.offcanvas';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -119,18 +129,22 @@ export class Offcanvas extends BaseComponent {
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-boodoo-toggle="offcanvas"]');
-    if (source) {
-      event.preventDefault();
-      Offcanvas.toggleVia(source);
-    }
-    const closer = event.target.closest('[data-boodoo-dismiss="offcanvas"]');
-    if (closer) {
-      const offcanvas = Offcanvas.getInstance(closer.closest('.offcanvas'));
-      if (offcanvas) offcanvas.hide();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const source = event.target.closest('[data-boodoo-toggle="offcanvas"]');
+      if (source) {
+        event.preventDefault();
+        Offcanvas.toggleVia(source);
+      }
+      const closer = event.target.closest('[data-boodoo-dismiss="offcanvas"]');
+      if (closer) {
+        const offcanvas = Offcanvas.getInstance(closer.closest('.offcanvas'));
+        if (offcanvas) offcanvas.hide();
+      }
+    },
+    true
+  );
 }
 
 export default Offcanvas;

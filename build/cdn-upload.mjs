@@ -39,7 +39,7 @@ const items = [
   { key: 'brandPng180', file: 'site/assets/brand/boodoo-icon-180.png', type: 'image/png' },
   { key: 'brandPng192', file: 'site/assets/brand/boodoo-icon-192.png', type: 'image/png' },
   { key: 'brandPng512', file: 'site/assets/brand/boodoo-icon-512.png', type: 'image/png' },
-  { key: 'brandOg', file: 'site/assets/brand/boodoo-og-image.png', type: 'image/png' }
+  { key: 'brandOg', file: 'site/assets/brand/boodoo-og-image.png', type: 'image/png' },
 ];
 
 async function uploadFile(item) {
@@ -57,9 +57,9 @@ async function uploadFile(item) {
     method: 'POST',
     headers: {
       'X-App-Id': APP_ID,
-      'X-App-Secret': APP_SECRET
+      'X-App-Secret': APP_SECRET,
     },
-    body: form
+    body: form,
   });
 
   const json = await res.json();

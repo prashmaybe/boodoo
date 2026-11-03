@@ -10,7 +10,6 @@ export class CommandPalette extends BaseComponent {
     return 'commandPalette';
   }
 
-
   constructor(element, config = {}) {
     super(element, config);
     this._items = config.items || [];
@@ -81,7 +80,10 @@ export class CommandPalette extends BaseComponent {
   _filter(query = '') {
     const q = query.toLowerCase().trim();
     const filtered = this._items.filter((item) => {
-      return item.title.toLowerCase().includes(q) || (item.subtitle && item.subtitle.toLowerCase().includes(q));
+      return (
+        item.title.toLowerCase().includes(q) ||
+        (item.subtitle && item.subtitle.toLowerCase().includes(q))
+      );
     });
 
     this._renderResults(filtered);
@@ -96,11 +98,12 @@ export class CommandPalette extends BaseComponent {
       return;
     }
 
-    this._results.innerHTML = items.map((item, index) => {
-      const safeTitle = escapeHtml(item.title);
-      const safeShortcut = item.shortcut ? escapeHtml(item.shortcut) : '';
-      const iconHtml = item.icon ? `<span>${escapeHtml(item.icon)}</span>` : '';
-      return `
+    this._results.innerHTML = items
+      .map((item, index) => {
+        const safeTitle = escapeHtml(item.title);
+        const safeShortcut = item.shortcut ? escapeHtml(item.shortcut) : '';
+        const iconHtml = item.icon ? `<span>${escapeHtml(item.icon)}</span>` : '';
+        return `
       <li class="command-palette-item" data-index="${index}">
         <div class="command-palette-item-title">
           ${iconHtml}
@@ -109,7 +112,8 @@ export class CommandPalette extends BaseComponent {
         ${safeShortcut ? `<span class="command-palette-item-shortcut"><kbd>${safeShortcut}</kbd></span>` : ''}
       </li>
     `;
-    }).join('');
+      })
+      .join('');
 
     this._results.querySelectorAll('.command-palette-item').forEach((el, index) => {
       el.addEventListener('click', () => {
@@ -174,10 +178,13 @@ export class CommandPalette extends BaseComponent {
 if (typeof document !== 'undefined') {
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      const modal = document.querySelector('.command-palette-backdrop, [data-boodoo="command-palette"]');
+      const modal = document.querySelector(
+        '.command-palette-backdrop, [data-boodoo="command-palette"]'
+      );
       if (modal) {
         e.preventDefault();
-        const instance = CommandPalette.getInstance(modal) || CommandPalette.getOrCreateInstance(modal);
+        const instance =
+          CommandPalette.getInstance(modal) || CommandPalette.getOrCreateInstance(modal);
         instance.toggle();
       }
     }

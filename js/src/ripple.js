@@ -6,7 +6,8 @@ export function initRipple(root = document) {
   if (typeof document !== 'undefined' && root === document && !document._boodooRippleDelegated) {
     document._boodooRippleDelegated = true;
     document.addEventListener('pointerdown', (e) => {
-      const surface = e.target && e.target.closest ? e.target.closest('.ripple, [data-boodoo-ripple]') : null;
+      const surface =
+        e.target && e.target.closest ? e.target.closest('.ripple, [data-boodoo-ripple]') : null;
       if (surface) {
         createRipple(surface, e);
       }
@@ -14,17 +15,23 @@ export function initRipple(root = document) {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         const active = document.activeElement;
-        const surface = active && active.closest ? active.closest('.ripple, [data-boodoo-ripple]') : null;
+        const surface =
+          active && active.closest ? active.closest('.ripple, [data-boodoo-ripple]') : null;
         if (surface) {
           const rect = surface.getBoundingClientRect();
-          createRipple(surface, { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+          createRipple(surface, {
+            clientX: rect.left + rect.width / 2,
+            clientY: rect.top + rect.height / 2,
+          });
         }
       }
     });
   }
 
   // Also bind directly to queried surfaces for scoped root calls or legacy wrappers
-  const surfaces = Array.from(root.querySelectorAll ? root.querySelectorAll('.ripple, [data-boodoo-ripple]') : []);
+  const surfaces = Array.from(
+    root.querySelectorAll ? root.querySelectorAll('.ripple, [data-boodoo-ripple]') : []
+  );
   surfaces.forEach((surface) => {
     if (surface._boodooRippleBound) return;
     surface._boodooRippleBound = true;
@@ -39,7 +46,10 @@ export function initRipple(root = document) {
         if (e._boodooRippleHandled) return;
         e._boodooRippleHandled = true;
         const rect = surface.getBoundingClientRect();
-        createRipple(surface, { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+        createRipple(surface, {
+          clientX: rect.left + rect.width / 2,
+          clientY: rect.top + rect.height / 2,
+        });
       }
     });
   });

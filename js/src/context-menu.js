@@ -21,7 +21,8 @@ export class ContextMenu extends BaseComponent {
   }
 
   _resolveMenu() {
-    const targetSelector = this._element.getAttribute('data-boodoo-target') || this._element.getAttribute('href');
+    const targetSelector =
+      this._element.getAttribute('data-boodoo-target') || this._element.getAttribute('href');
     if (targetSelector) {
       return document.querySelector(targetSelector);
     }

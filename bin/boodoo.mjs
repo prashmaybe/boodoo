@@ -247,7 +247,10 @@ const TAILWIND_TO_BOODOO = [
   { regex: /\bjustify-center\b/g, replace: 'justify-content-center' },
   { regex: /\bjustify-end\b/g, replace: 'justify-content-end' },
   { regex: /\bjustify-start\b/g, replace: 'justify-content-start' },
-  { regex: /\bgrid grid-cols-1 md:grid-cols-2 lg:grid-cols-3\b/g, replace: 'row row-cols-1 row-cols-md-2 row-cols-lg-3' },
+  {
+    regex: /\bgrid grid-cols-1 md:grid-cols-2 lg:grid-cols-3\b/g,
+    replace: 'row row-cols-1 row-cols-md-2 row-cols-lg-3',
+  },
   { regex: /\bgrid grid-cols-1 md:grid-cols-3\b/g, replace: 'row row-cols-1 row-cols-md-3' },
   { regex: /\bgrid grid-cols-2\b/g, replace: 'row row-cols-2' },
   { regex: /\bgrid grid-cols-3\b/g, replace: 'row row-cols-3' },
@@ -272,7 +275,8 @@ const TAILWIND_TO_BOODOO = [
 
 export function runMigration(inputContent, sourceFramework = 'bootstrap') {
   let output = inputContent;
-  const mappings = sourceFramework.toLowerCase() === 'tailwind' ? TAILWIND_TO_BOODOO : BOOTSTRAP_TO_BOODOO;
+  const mappings =
+    sourceFramework.toLowerCase() === 'tailwind' ? TAILWIND_TO_BOODOO : BOOTSTRAP_TO_BOODOO;
   let replacementsCount = 0;
 
   for (const { regex, replace } of mappings) {
@@ -295,7 +299,9 @@ export function addComponent(componentName, targetDir = process.cwd()) {
   const entry = COMPONENT_MAP[normName];
 
   if (!entry) {
-    throw new Error(`Component '${componentName}' not found. Available components: ${listAvailableComponents().join(', ')}`);
+    throw new Error(
+      `Component '${componentName}' not found. Available components: ${listAvailableComponents().join(', ')}`
+    );
   }
 
   const outComponentsDir = path.join(targetDir, 'components', 'boodoo');
@@ -330,7 +336,11 @@ export async function handleAdd(cmdArgs = args) {
   const comp = cmdArgs[1];
   if (!comp) {
     console.log('\n\x1b[36m📦 Available Boodoo Components to Add:\x1b[0m\n');
-    console.log(listAvailableComponents().map((c) => `  - ${c}`).join('\n'));
+    console.log(
+      listAvailableComponents()
+        .map((c) => `  - ${c}`)
+        .join('\n')
+    );
     console.log('\n\x1b[90mUsage: npx boodoo add <component-name>\x1b[0m\n');
     return;
   }
@@ -340,7 +350,9 @@ export async function handleAdd(cmdArgs = args) {
     console.log(`\n\x1b[32m✔ Added '${result.name}' into components/boodoo/\x1b[0m`);
     result.files.forEach((f) => console.log(`  + ${f}`));
     if (result.reactHook) {
-      console.log(`\n\x1b[35mTip: Declarative headless hook available: import { ${result.reactHook} } from 'boodoo/react'\x1b[0m`);
+      console.log(
+        `\n\x1b[35mTip: Declarative headless hook available: import { ${result.reactHook} } from 'boodoo/react'\x1b[0m`
+      );
     }
     console.log('');
     return result;
@@ -396,13 +408,17 @@ export async function handleMigrate(cmdArgs = args) {
     const { output, replacementsCount } = runMigration(raw, source);
     if (replacementsCount > 0) {
       fs.writeFileSync(file, output, 'utf8');
-      console.log(`  \x1b[32m✔\x1b[0m ${path.relative(process.cwd(), file)} (${replacementsCount} classes converted)`);
+      console.log(
+        `  \x1b[32m✔\x1b[0m ${path.relative(process.cwd(), file)} (${replacementsCount} classes converted)`
+      );
       totalReplacements += replacementsCount;
       modifiedFiles++;
     }
   }
 
-  console.log(`\n\x1b[32mMigration complete:\x1b[0m Converted ${totalReplacements} classes across ${modifiedFiles} files.\n`);
+  console.log(
+    `\n\x1b[32mMigration complete:\x1b[0m Converted ${totalReplacements} classes across ${modifiedFiles} files.\n`
+  );
   return { filesScanned: filesToScan.length, totalReplacements, modifiedFiles };
 }
 
@@ -436,7 +452,11 @@ export async function runCli(cmd = command, cmdArgs = args) {
       return await handleMigrate(cmdArgs);
     case 'list':
       console.log('\n\x1b[36mAvailable Boodoo Components:\x1b[0m\n');
-      console.log(listAvailableComponents().map((c) => `  - ${c}`).join('\n'));
+      console.log(
+        listAvailableComponents()
+          .map((c) => `  - ${c}`)
+          .join('\n')
+      );
       console.log('');
       return listAvailableComponents();
     case 'create':
@@ -444,7 +464,9 @@ export async function runCli(cmd = command, cmdArgs = args) {
       const createScript = path.join(root, 'bin', 'create-boodoo.mjs');
       const { spawn: defaultSpawn } = await import('node:child_process');
       const spawnFn = cmdArgs._spawnFn || defaultSpawn;
-      const child = spawnFn(process.execPath, [createScript, ...cmdArgs.slice(1)], { stdio: 'inherit' });
+      const child = spawnFn(process.execPath, [createScript, ...cmdArgs.slice(1)], {
+        stdio: 'inherit',
+      });
       if (child && typeof child.on === 'function') {
         child.on('exit', (code) => {
           /* node:coverage disable */
@@ -474,6 +496,3 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   });
 }
 /* node:coverage enable */
-
-
-

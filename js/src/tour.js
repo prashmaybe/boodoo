@@ -122,7 +122,8 @@ export class Tour extends BaseComponent {
 
   _positionAt(targetSelector) {
     if (!this._popoverEl || typeof document === 'undefined') return;
-    const target = typeof targetSelector === 'string' ? document.querySelector(targetSelector) : targetSelector;
+    const target =
+      typeof targetSelector === 'string' ? document.querySelector(targetSelector) : targetSelector;
     if (target && typeof window !== 'undefined') {
       const rect = target.getBoundingClientRect();
       const top = rect.bottom + window.scrollY + 10;

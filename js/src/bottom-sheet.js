@@ -5,9 +5,13 @@ import { BaseComponent } from './base-component.js';
 import { getElementFromSelector, triggerEvent, reflow } from './util.js';
 
 export class BottomSheet extends BaseComponent {
-  static get NAME() { return 'bottomSheet'; }
+  static get NAME() {
+    return 'bottomSheet';
+  }
 
-  static get selector() { return '.bottom-sheet'; }
+  static get selector() {
+    return '.bottom-sheet';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -91,7 +95,8 @@ export class BottomSheet extends BaseComponent {
   }
 
   _initGestures() {
-    const handle = this._handle || this._element.querySelector('.bottom-sheet-header') || this._element;
+    const handle =
+      this._handle || this._element.querySelector('.bottom-sheet-header') || this._element;
 
     const onStart = (clientY) => {
       this._startY = clientY;
@@ -120,15 +125,23 @@ export class BottomSheet extends BaseComponent {
       }
     };
 
-    handle.addEventListener('touchstart', (e) => {
-      if (e.touches && e.touches[0]) onStart(e.touches[0].clientY);
-    }, { passive: true });
+    handle.addEventListener(
+      'touchstart',
+      (e) => {
+        if (e.touches && e.touches[0]) onStart(e.touches[0].clientY);
+      },
+      { passive: true }
+    );
 
-    window.addEventListener('touchmove', (e) => {
-      if (this._isDragging && e.touches && e.touches[0]) {
-        onMove(e.touches[0].clientY);
-      }
-    }, { passive: true });
+    window.addEventListener(
+      'touchmove',
+      (e) => {
+        if (this._isDragging && e.touches && e.touches[0]) {
+          onMove(e.touches[0].clientY);
+        }
+      },
+      { passive: true }
+    );
 
     window.addEventListener('touchend', (e) => {
       if (this._isDragging) {
@@ -153,19 +166,22 @@ export class BottomSheet extends BaseComponent {
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-boodoo-toggle="bottom-sheet"]');
-    if (source) {
-      event.preventDefault();
-      BottomSheet.toggleVia(source);
-    }
-    const closer = event.target.closest('[data-boodoo-dismiss="bottom-sheet"]');
-    if (closer) {
-      const sheet = BottomSheet.getInstance(closer.closest('.bottom-sheet'));
-      if (sheet) sheet.hide();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const source = event.target.closest('[data-boodoo-toggle="bottom-sheet"]');
+      if (source) {
+        event.preventDefault();
+        BottomSheet.toggleVia(source);
+      }
+      const closer = event.target.closest('[data-boodoo-dismiss="bottom-sheet"]');
+      if (closer) {
+        const sheet = BottomSheet.getInstance(closer.closest('.bottom-sheet'));
+        if (sheet) sheet.hide();
+      }
+    },
+    true
+  );
 }
 
 export default BottomSheet;
-

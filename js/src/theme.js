@@ -19,15 +19,20 @@ export const theme = {
 
   set(val) {
     if (typeof document === 'undefined') return;
-    const resolved = val === 'auto'
-      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-      : val;
+    const resolved =
+      val === 'auto'
+        ? window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        : val;
 
     document.documentElement.setAttribute('data-boodoo-theme', resolved);
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(STORAGE_KEY, val);
     }
-    document.dispatchEvent(new CustomEvent('boodoo.theme.change', { detail: { theme: val, resolved } }));
+    document.dispatchEvent(
+      new CustomEvent('boodoo.theme.change', { detail: { theme: val, resolved } })
+    );
   },
 
   toggle() {
@@ -67,7 +72,7 @@ export const theme = {
         }
       });
     }
-  }
+  },
 };
 
 if (typeof document !== 'undefined') {

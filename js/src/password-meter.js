@@ -14,8 +14,12 @@ export class PasswordMeter extends BaseComponent {
   constructor(element, config = {}) {
     super(element, config);
     this._targetInput = this._config.target
-      ? (typeof document !== 'undefined' ? document.querySelector(this._config.target) : null)
-      : (this._element.parentElement ? this._element.parentElement.querySelector('input[type="password"]') : null);
+      ? typeof document !== 'undefined'
+        ? document.querySelector(this._config.target)
+        : null
+      : this._element.parentElement
+        ? this._element.parentElement.querySelector('input[type="password"]')
+        : null;
 
     this._onInput = this._onInput.bind(this);
     if (this._targetInput) {

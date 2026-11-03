@@ -3,8 +3,12 @@ export interface DisclosureReturn {
   open: () => void;
   close: () => void;
   toggle: () => void;
-  getTriggerProps: <T extends Record<string, any>>(props?: T) => T & { 'aria-expanded': boolean; onClick: (e: any) => void };
-  getDialogProps: <T extends Record<string, any>>(props?: T) => T & { role: string; 'aria-modal': string; style: any };
+  getTriggerProps: <T extends Record<string, any>>(
+    props?: T
+  ) => T & { 'aria-expanded': boolean; onClick: (e: any) => void };
+  getDialogProps: <T extends Record<string, any>>(
+    props?: T
+  ) => T & { role: string; 'aria-modal': string; style: any };
 }
 
 export interface DisclosureOptions {
@@ -38,7 +42,11 @@ export interface ComboboxReturn {
   selectItem: (item: ComboboxItem) => void;
   getInputProps: <T extends Record<string, any>>(props?: T) => T & Record<string, any>;
   getListboxProps: <T extends Record<string, any>>(props?: T) => T & Record<string, any>;
-  getOptionProps: <T extends Record<string, any>>(item: ComboboxItem, index: number, props?: T) => T & Record<string, any>;
+  getOptionProps: <T extends Record<string, any>>(
+    item: ComboboxItem,
+    index: number,
+    props?: T
+  ) => T & Record<string, any>;
 }
 
 export declare function useCombobox(options?: ComboboxOptions): ComboboxReturn;
@@ -52,7 +60,10 @@ export interface AccordionReturn {
   expandedKeys: string[];
   toggle: (key: string) => void;
   isExpanded: (key: string) => boolean;
-  getButtonProps: <T extends Record<string, any>>(key: string, props?: T) => T & Record<string, any>;
+  getButtonProps: <T extends Record<string, any>>(
+    key: string,
+    props?: T
+  ) => T & Record<string, any>;
   getPanelProps: <T extends Record<string, any>>(key: string, props?: T) => T & Record<string, any>;
 }
 

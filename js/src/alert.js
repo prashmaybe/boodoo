@@ -5,9 +5,13 @@ import { BaseComponent, initDataApi } from './base-component.js';
 import { getTransitionDuration, emulateTransitionEnd, triggerEvent } from './util.js';
 
 export class Alert extends BaseComponent {
-  static get NAME() { return 'alert'; }
+  static get NAME() {
+    return 'alert';
+  }
 
-  static get selector() { return '[data-boodoo-alert], .alert'; }
+  static get selector() {
+    return '[data-boodoo-alert], .alert';
+  }
 
   hide() {
     const el = this._element;

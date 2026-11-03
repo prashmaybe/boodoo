@@ -21,9 +21,7 @@
     "*.less",
     "dist/css/**",
     "scss/**",
-    "less/**",
-    "js/**",
-    "dist/js/**"
+    "less/**"
   ],
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
@@ -102,7 +100,7 @@
     "test:unit": "node --test tests/framework.test.mjs",
     "test:smoke": "node --test tests/package-smoke.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage --test-coverage-include=\"bin/boodoo.mjs\" --test-coverage-include=\"bin/create-boodoo.mjs\" --test-coverage-include=\"tokens/index.js\" --test-coverage-include=\"react-native/paper.js\" tests/framework.test.mjs",
-    "lint": "eslint js/src/",
+    "lint": "eslint js bin build tokens react vue react-native",
     "format": "prettier --check .",
     "prepublishOnly": "npm run build",
     "build": "npm run css && npm run js",

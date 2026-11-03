@@ -13,7 +13,9 @@ export class DataTable extends BaseComponent {
 
   constructor(element, config = {}) {
     super(element, config);
-    this._table = this._element.matches('table') ? this._element : this._element.querySelector('table');
+    this._table = this._element.matches('table')
+      ? this._element
+      : this._element.querySelector('table');
     if (!this._table) return;
 
     this._sortColIndex = null;
@@ -31,11 +33,15 @@ export class DataTable extends BaseComponent {
     });
 
     // 2. Select all checkbox
-    const selectAll = this._table.querySelector('thead th.data-table-select-col input[type="checkbox"]');
+    const selectAll = this._table.querySelector(
+      'thead th.data-table-select-col input[type="checkbox"]'
+    );
     if (selectAll) {
       selectAll.addEventListener('change', (e) => {
         const checked = e.target.checked;
-        const rowChecks = this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]');
+        const rowChecks = this._table.querySelectorAll(
+          'tbody td.data-table-select-col input[type="checkbox"]'
+        );
         rowChecks.forEach((cb) => {
           cb.checked = checked;
           const tr = cb.closest('tr');
@@ -55,7 +61,9 @@ export class DataTable extends BaseComponent {
 
         // Update selectAll indeterminate / checked
         if (selectAll) {
-          const rowChecks = Array.from(this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]'));
+          const rowChecks = Array.from(
+            this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]')
+          );
           const selected = rowChecks.filter((c) => c.checked);
           selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
           selectAll.indeterminate = selected.length > 0 && selected.length < rowChecks.length;
@@ -70,7 +78,9 @@ export class DataTable extends BaseComponent {
 
     // 4. Expandable rows
     this._table.addEventListener('click', (e) => {
-      const toggle = e.target.closest('[data-boodoo-toggle="row-detail"], .data-table-expandable-row');
+      const toggle = e.target.closest(
+        '[data-boodoo-toggle="row-detail"], .data-table-expandable-row'
+      );
       if (toggle && !e.target.matches('input[type="checkbox"], a, button')) {
         const row = toggle.closest('tr');
         const detailRow = row ? row.nextElementSibling : null;

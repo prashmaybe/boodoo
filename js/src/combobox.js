@@ -9,7 +9,8 @@ import { triggerEvent } from './util.js';
 
 const COMBOBOX_SELECTOR_INPUT = '.combobox-input, [data-boodoo-combobox-input]';
 const COMBOBOX_SELECTOR_MENU = '.combobox-menu, [data-boodoo-combobox-menu]';
-const COMBOBOX_SELECTOR_ITEM = '.combobox-item:not(.disabled), [data-boodoo-combobox-item]:not([disabled])';
+const COMBOBOX_SELECTOR_ITEM =
+  '.combobox-item:not(.disabled), [data-boodoo-combobox-item]:not([disabled])';
 const COMBOBOX_SELECTOR_CLEAR = '[data-boodoo-combobox-clear]';
 
 export class Combobox extends BaseComponent {
@@ -35,7 +36,8 @@ export class Combobox extends BaseComponent {
 
   _setupAria() {
     const id = this._input.id || `boodoo-combobox-input-${Math.random().toString(36).substr(2, 9)}`;
-    const menuId = this._menu.id || `boodoo-combobox-menu-${Math.random().toString(36).substr(2, 9)}`;
+    const menuId =
+      this._menu.id || `boodoo-combobox-menu-${Math.random().toString(36).substr(2, 9)}`;
     this._input.id = id;
     this._menu.id = menuId;
 
@@ -180,7 +182,7 @@ export class Combobox extends BaseComponent {
     this._element.setAttribute('data-selected-value', value);
 
     for (const el of this._items) {
-      const isSelected = (el === item);
+      const isSelected = el === item;
       el.classList.toggle('selected', isSelected);
       el.setAttribute('aria-selected', isSelected ? 'true' : 'false');
     }

@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text as RNText,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text as RNText, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from './theme.js';
 
 export const List = {};
@@ -73,15 +68,9 @@ List.Item = function ListItem({
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
   const effPaddingVertical =
-    paddingVertical ??
-    cs.listItemPaddingVertical ??
-    sp.listItemPaddingVertical ??
-    12;
+    paddingVertical ?? cs.listItemPaddingVertical ?? sp.listItemPaddingVertical ?? 12;
   const effPaddingHorizontal =
-    paddingHorizontal ??
-    cs.listItemPaddingHorizontal ??
-    sp.listItemPaddingHorizontal ??
-    16;
+    paddingHorizontal ?? cs.listItemPaddingHorizontal ?? sp.listItemPaddingHorizontal ?? 16;
   const desc = description || subtitle;
 
   return (
@@ -101,7 +90,9 @@ List.Item = function ListItem({
         style,
       ]}
     >
-      {left ? <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View> : null}
+      {left ? (
+        <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View>
+      ) : null}
       <View style={styles.itemContentFlex}>
         {children ? (
           children
@@ -130,8 +121,12 @@ List.Item = function ListItem({
           </>
         )}
       </View>
-      {right ? <View style={styles.itemRightMargin}>{typeof right === 'function' ? right() : right}</View> : null}
-      {chevron ? <RNText style={[styles.chevronIcon, { color: theme.colors.textMuted }]}>›</RNText> : null}
+      {right ? (
+        <View style={styles.itemRightMargin}>{typeof right === 'function' ? right() : right}</View>
+      ) : null}
+      {chevron ? (
+        <RNText style={[styles.chevronIcon, { color: theme.colors.textMuted }]}>›</RNText>
+      ) : null}
     </TouchableOpacity>
   );
 };
@@ -144,7 +139,9 @@ List.Icon = function ListIcon({ icon, color, style }) {
       {typeof icon === 'function' ? (
         icon({ color: color || theme.colors.primary })
       ) : typeof icon === 'string' ? (
-        <RNText style={[styles.listIconGlyph, { color: color || theme.colors.primary }]}>{icon}</RNText>
+        <RNText style={[styles.listIconGlyph, { color: color || theme.colors.primary }]}>
+          {icon}
+        </RNText>
       ) : (
         icon
       )}
@@ -165,14 +162,17 @@ export function Accordion({
     defaultExpandedIndex !== null ? [defaultExpandedIndex] : []
   );
 
-  const activeIndices = expandedIndex !== undefined
-    ? (Array.isArray(expandedIndex) ? expandedIndex : [expandedIndex])
-    : internalIndices;
+  const activeIndices =
+    expandedIndex !== undefined
+      ? Array.isArray(expandedIndex)
+        ? expandedIndex
+        : [expandedIndex]
+      : internalIndices;
 
   const handleToggle = (idx) => {
     let next;
     if (activeIndices.includes(idx)) {
-      next = allowMultiple ? activeIndices.filter(i => i !== idx) : [];
+      next = allowMultiple ? activeIndices.filter((i) => i !== idx) : [];
     } else {
       next = allowMultiple ? [...activeIndices, idx] : [idx];
     }
@@ -184,9 +184,8 @@ export function Accordion({
     <View style={[styles.accordionContainer, style]} {...props}>
       {React.Children.map(children, (child, idx) => {
         if (!React.isValidElement(child)) return child;
-        const isChildExpanded = child.props.expanded !== undefined
-          ? child.props.expanded
-          : activeIndices.includes(idx);
+        const isChildExpanded =
+          child.props.expanded !== undefined ? child.props.expanded : activeIndices.includes(idx);
         return React.cloneElement(child, {
           expanded: isChildExpanded,
           onPress: () => {
@@ -243,13 +242,11 @@ export function AccordionItem({
         disabled={disabled}
         accessibilityRole="button"
         accessibilityState={{ expanded: isOpen }}
-        style={[
-          styles.listItem,
-          headerDynamic,
-          headerStyle,
-        ]}
+        style={[styles.listItem, headerDynamic, headerStyle]}
       >
-        {left ? <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View> : null}
+        {left ? (
+          <View style={styles.itemLeftMargin}>{typeof left === 'function' ? left() : left}</View>
+        ) : null}
         <View style={styles.itemContentFlex}>
           <RNText
             style={[
@@ -272,7 +269,9 @@ export function AccordionItem({
           ) : null}
         </View>
         {right ? (
-          <View style={styles.itemRightMargin}>{typeof right === 'function' ? right({ isExpanded: isOpen }) : right}</View>
+          <View style={styles.itemRightMargin}>
+            {typeof right === 'function' ? right({ isExpanded: isOpen }) : right}
+          </View>
         ) : (
           <RNText style={[styles.accordionChevron, { color: theme.colors.textMuted }]}>
             {isOpen ? '▲' : '▼'}
@@ -315,15 +314,18 @@ export function SwipeActionItem({
             return (
               <TouchableOpacity
                 key={i}
-                onPress={() => { act.onPress?.(); setOpenSide(null); }}
+                onPress={() => {
+                  act.onPress?.();
+                  setOpenSide(null);
+                }}
                 style={[styles.swipeActionBtn, btnDynamic]}
               >
                 {typeof act.icon === 'string' ? (
                   <RNText style={styles.swipeActionText}>{act.icon}</RNText>
-                ) : act.icon}
-                {act.label ? (
-                  <RNText style={styles.swipeActionLabel}>{act.label}</RNText>
-                ) : null}
+                ) : (
+                  act.icon
+                )}
+                {act.label ? <RNText style={styles.swipeActionLabel}>{act.label}</RNText> : null}
               </TouchableOpacity>
             );
           })}
@@ -349,20 +351,23 @@ export function SwipeActionItem({
         <View style={styles.swipeRightRow}>
           {rightActions.map((act, i) => {
             const btnDynamic = {
-              backgroundColor: act.color || (theme.colors.danger || '#e11d48'),
+              backgroundColor: act.color || theme.colors.danger || '#e11d48',
             };
             return (
               <TouchableOpacity
                 key={i}
-                onPress={() => { act.onPress?.(); setOpenSide(null); }}
+                onPress={() => {
+                  act.onPress?.();
+                  setOpenSide(null);
+                }}
                 style={[styles.swipeActionBtn, btnDynamic]}
               >
                 {typeof act.icon === 'string' ? (
                   <RNText style={styles.swipeActionText}>{act.icon}</RNText>
-                ) : act.icon}
-                {act.label ? (
-                  <RNText style={styles.swipeActionLabel}>{act.label}</RNText>
-                ) : null}
+                ) : (
+                  act.icon
+                )}
+                {act.label ? <RNText style={styles.swipeActionLabel}>{act.label}</RNText> : null}
               </TouchableOpacity>
             );
           })}
@@ -486,7 +491,12 @@ DataTable.Pagination = function DataTablePagination({
   const theme = useTheme();
   return (
     <View style={[styles.dataTablePagination, style]}>
-      <RNText style={[styles.paginationCount, { color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs }]}>
+      <RNText
+        style={[
+          styles.paginationCount,
+          { color: theme.colors.textMuted, fontSize: theme.typography.sizes.xs },
+        ]}
+      >
         {label || `${page + 1} of ${numberOfPages}`}
       </RNText>
       <View style={styles.paginationControls}>

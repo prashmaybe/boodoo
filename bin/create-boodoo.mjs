@@ -47,25 +47,48 @@ export function parseArgs(rawArgs = []) {
 
   // Normalize template name/alias to option number '1'-'10'
   const tMap = {
-    '1': '1', 'html': '1', 'sass': '1', 'html5': '1',
-    '2': '2', 'vite': '2', 'vanilla': '2',
-    '3': '3', 'next': '3', 'nextjs': '3', 'react': '3',
-    '4': '4', 'electron': '4', 'desktop': '4',
-    '5': '5', 'angular': '5', 'ng': '5',
-    '6': '6', 'cordova': '6', 'phonegap': '6',
-    '7': '7', 'meteor': '7', 'meteorjs': '7',
-    '8': '8', 'photon': '8',
-    '9': '9', 'rnw': '9', 'react-native-web': '9',
-    '10': '10', 'expo': '10', 'rn': '10', 'react-native': '10', 'mobile': '10',
+    1: '1',
+    html: '1',
+    sass: '1',
+    html5: '1',
+    2: '2',
+    vite: '2',
+    vanilla: '2',
+    3: '3',
+    next: '3',
+    nextjs: '3',
+    react: '3',
+    4: '4',
+    electron: '4',
+    desktop: '4',
+    5: '5',
+    angular: '5',
+    ng: '5',
+    6: '6',
+    cordova: '6',
+    phonegap: '6',
+    7: '7',
+    meteor: '7',
+    meteorjs: '7',
+    8: '8',
+    photon: '8',
+    9: '9',
+    rnw: '9',
+    'react-native-web': '9',
+    10: '10',
+    expo: '10',
+    rn: '10',
+    'react-native': '10',
+    mobile: '10',
   };
 
-  const normalizedTemplate = template ? (tMap[template.toLowerCase()] || template) : '';
+  const normalizedTemplate = template ? tMap[template.toLowerCase()] || template : '';
 
   return {
     projectName,
     template: normalizedTemplate,
     lang,
-    isTs: lang === 'ts' ? true : (lang === 'js' ? false : null),
+    isTs: lang === 'ts' ? true : lang === 'js' ? false : null,
   };
 }
 
@@ -159,7 +182,6 @@ document.getElementById('btn-demo')?.addEventListener('click', () => {
   </body>
 </html>`;
       fs.writeFileSync(path.join(targetDir, 'index.html'), html);
-
     } else {
       // JavaScript
       const html = `<!DOCTYPE html>
@@ -194,7 +216,6 @@ document.getElementById('btn-demo')?.addEventListener('click', () => {
 `;
       fs.writeFileSync(path.join(targetDir, 'main.js'), mainJs);
     }
-
   } else if (choice === '3') {
     // 3) Next.js / React
     templateName = 'Next.js / React';
@@ -293,7 +314,6 @@ export default function RootLayout({
 }
 `;
       fs.writeFileSync(path.join(targetDir, 'app', 'page.tsx'), page);
-
     } else {
       // JavaScript
       const jsconfig = {
@@ -335,7 +355,6 @@ export default function RootLayout({ children }) {
 `;
       fs.writeFileSync(path.join(targetDir, 'app', 'page.jsx'), page);
     }
-
   } else if (choice === '4') {
     // 4) Electron Desktop App
     templateName = 'Electron Desktop App';
@@ -481,7 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 `;
       fs.writeFileSync(path.join(targetDir, 'src', 'renderer.ts'), rendererTs);
-
     } else {
       // JavaScript
       const mainJs = `const { app, BrowserWindow, ipcMain } = require('electron');
@@ -677,7 +695,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 </html>`;
     fs.writeFileSync(path.join(targetDir, 'index.html'), html);
-
   } else if (choice === '5') {
     // 5) Angular Starter
     templateName = 'Angular Starter';
@@ -734,13 +751,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 outputPath: 'dist',
                 index: 'src/index.html',
                 browser: mainFile,
-                styles: [
-                  'node_modules/boodoo/dist/css/boodoo.min.css',
-                  'src/styles.css',
-                ],
-                scripts: [
-                  'node_modules/boodoo/dist/js/boodoo.js',
-                ],
+                styles: ['node_modules/boodoo/dist/css/boodoo.min.css', 'src/styles.css'],
+                scripts: ['node_modules/boodoo/dist/js/boodoo.js'],
               },
             },
             serve: {
@@ -876,7 +888,6 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
     }
 
     fs.writeFileSync(path.join(targetDir, 'src', 'styles.css'), `/* App styles */\n`);
-
   } else if (choice === '6') {
     // 6) Cordova & PhoneGap Hybrid Mobile App
     templateName = 'Cordova & PhoneGap Mobile';
@@ -1023,7 +1034,6 @@ function onDeviceReady() {
 `;
       fs.writeFileSync(path.join(targetDir, 'www', 'js', 'index.js'), cordovaJs);
     }
-
   } else if (choice === '7') {
     // 7) Meteor.js Full-Stack App
     templateName = 'Meteor.js Full-Stack App';
@@ -1127,7 +1137,6 @@ Meteor.startup(() => {
 `;
     const serverFileName = isTs ? 'server/main.ts' : 'server/main.js';
     fs.writeFileSync(path.join(targetDir, serverFileName), serverCode);
-
   } else if (choice === '8') {
     // 8) Photon Desktop UI
     templateName = 'Photon Desktop UI';
@@ -1206,7 +1215,6 @@ app.on('window-all-closed', () => {
 });
 `;
       fs.writeFileSync(path.join(targetDir, 'src', 'main.ts'), photonMainTs);
-
     } else {
       const photonMainJs = `const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
@@ -1308,7 +1316,6 @@ app.on('window-all-closed', () => {
 </body>
 </html>`;
     fs.writeFileSync(path.join(targetDir, 'index.html'), photonHtml);
-
   } else if (choice === '9') {
     // 9) React Native Web
     templateName = 'React Native Web';
@@ -1458,7 +1465,6 @@ if (rootEl) {
 </body>
 </html>`;
       fs.writeFileSync(path.join(targetDir, 'index.html'), rnIndexHtml);
-
     } else {
       // JavaScript
       const appJsx = `import React, { useState } from 'react';
@@ -1538,7 +1544,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 </html>`;
       fs.writeFileSync(path.join(targetDir, 'index.html'), rnIndexHtml);
     }
-
   } else if (choice === '10') {
     // 10) React Native Mobile (Expo + Boodoo UI)
     templateName = 'React Native Mobile (Expo)';
@@ -1721,7 +1726,6 @@ const styles = StyleSheet.create({
 });
 `;
       fs.writeFileSync(path.join(targetDir, 'App.tsx'), appTsx);
-
     } else {
       // JavaScript
       const appJs = `import React, { useState } from 'react';
@@ -1841,7 +1845,6 @@ const styles = StyleSheet.create({
 `;
       fs.writeFileSync(path.join(targetDir, 'App.js'), appJs);
     }
-
   } else {
     // 1) HTML5 + Sass Starter / Default
     templateName = 'HTML5 + Sass Starter';
@@ -1930,7 +1933,6 @@ document.getElementById('toast-trigger')?.addEventListener('click', () => {
 </body>
 </html>`;
       fs.writeFileSync(path.join(targetDir, 'index.html'), html);
-
     } else {
       // JavaScript
       const html = `<!DOCTYPE html>
@@ -2005,7 +2007,9 @@ Visit [https://boodooframework.com](https://boodooframework.com) for components,
 }
 
 export async function main() {
-  console.log(`\n\x1b[35m✨ create-boodoo v${BOODOO_VERSION}\x1b[0m — Instant Boodoo Project Scaffolder\n`);
+  console.log(
+    `\n\x1b[35m✨ create-boodoo v${BOODOO_VERSION}\x1b[0m — Instant Boodoo Project Scaffolder\n`
+  );
 
   const parsed = parseArgs(process.argv.slice(2));
 
@@ -2017,23 +2021,65 @@ export async function main() {
   const targetDir = path.resolve(process.cwd(), projectName);
 
   if (fs.existsSync(targetDir) && fs.readdirSync(targetDir).length > 0) {
-    console.error(`\x1b[31mError: Target directory '${projectName}' already exists and is not empty.\x1b[0m`);
+    console.error(
+      `\x1b[31mError: Target directory '${projectName}' already exists and is not empty.\x1b[0m`
+    );
     process.exit(1);
   }
 
   let choice = parsed.template;
   if (!choice) {
     console.log('\nSelect a template:');
-    console.log('  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TS / JS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log('  9) React Native Web            \x1b[90m(React ^18.3.0, RN Web ^0.19.0, Vite ^5.0.0, JS / TS, Boodoo v' + BOODOO_VERSION + ')\x1b[0m');
-    console.log(' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, JS / TS, Boodoo Native v' + BOODOO_VERSION + ')\x1b[0m');
+    console.log(
+      '  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TS / JS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      '  9) React Native Web            \x1b[90m(React ^18.3.0, RN Web ^0.19.0, Vite ^5.0.0, JS / TS, Boodoo v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
+    console.log(
+      ' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, JS / TS, Boodoo Native v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
 
     choice = await prompt('Choose template [1-10]', '1');
   }
@@ -2045,7 +2091,10 @@ export async function main() {
     console.log('  2) TypeScript (TS)');
     const defaultLang = choice === '5' ? '2' : '1';
     const langChoice = await prompt('Choose language [1-2]', defaultLang);
-    isTs = langChoice === '2' || langChoice.toLowerCase() === 'ts' || langChoice.toLowerCase() === 'typescript';
+    isTs =
+      langChoice === '2' ||
+      langChoice.toLowerCase() === 'ts' ||
+      langChoice.toLowerCase() === 'typescript';
   }
 
   const result = scaffoldProject({ targetDir, projectName, choice, isTs });

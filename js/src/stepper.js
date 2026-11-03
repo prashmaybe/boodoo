@@ -35,7 +35,11 @@ export class Stepper extends BaseComponent {
 
       const targetIndex = this._items.indexOf(stepItem);
       // Allow jumping to previously completed steps or if linear is false
-      if (this._config.linear === false || targetIndex <= this._currentStep || stepItem.classList.contains('completed')) {
+      if (
+        this._config.linear === false ||
+        targetIndex <= this._currentStep ||
+        stepItem.classList.contains('completed')
+      ) {
         this.goTo(targetIndex);
       }
     });
@@ -109,7 +113,9 @@ if (typeof document !== 'undefined') {
     const nextTrigger = e.target.closest('[data-boodoo-stepper="next"]');
     if (nextTrigger) {
       const targetSelector = nextTrigger.getAttribute('data-boodoo-target');
-      const stepperEl = targetSelector ? document.querySelector(targetSelector) : document.querySelector('.stepper');
+      const stepperEl = targetSelector
+        ? document.querySelector(targetSelector)
+        : document.querySelector('.stepper');
       if (stepperEl) {
         const instance = Stepper.getOrCreateInstance(stepperEl);
         instance.next();
@@ -119,7 +125,9 @@ if (typeof document !== 'undefined') {
     const prevTrigger = e.target.closest('[data-boodoo-stepper="prev"]');
     if (prevTrigger) {
       const targetSelector = prevTrigger.getAttribute('data-boodoo-target');
-      const stepperEl = targetSelector ? document.querySelector(targetSelector) : document.querySelector('.stepper');
+      const stepperEl = targetSelector
+        ? document.querySelector(targetSelector)
+        : document.querySelector('.stepper');
       if (stepperEl) {
         const instance = Stepper.getOrCreateInstance(stepperEl);
         instance.prev();

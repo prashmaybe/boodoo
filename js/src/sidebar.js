@@ -39,7 +39,9 @@ export class Sidebar extends BaseComponent {
       const toggler = e.target.closest('[data-boodoo-toggle="sidebar"]');
       if (toggler) {
         const targetId = toggler.getAttribute('data-boodoo-target') || toggler.getAttribute('href');
-        const target = targetId ? document.querySelector(targetId) : document.querySelector('.sidebar');
+        const target = targetId
+          ? document.querySelector(targetId)
+          : document.querySelector('.sidebar');
         if (target === this._element) {
           e.preventDefault();
           this.toggleCollapse();

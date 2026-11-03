@@ -116,8 +116,12 @@ export class TransferList extends BaseComponent {
 
   constructor(element, config = {}) {
     super(element, config);
-    this._leftPanel = this._element.querySelector('.transfer-panel-source, .transfer-panel:first-child');
-    this._rightPanel = this._element.querySelector('.transfer-panel-target, .transfer-panel:last-child');
+    this._leftPanel = this._element.querySelector(
+      '.transfer-panel-source, .transfer-panel:first-child'
+    );
+    this._rightPanel = this._element.querySelector(
+      '.transfer-panel-target, .transfer-panel:last-child'
+    );
     this._initEvents();
   }
 

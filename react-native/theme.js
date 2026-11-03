@@ -162,11 +162,7 @@ export function BoodooProvider({ theme = 'light', customTheme = {}, children }) 
     };
   }, [theme, customTheme]);
 
-  return React.createElement(
-    BoodooThemeContext.Provider,
-    { value: activeTheme },
-    children
-  );
+  return React.createElement(BoodooThemeContext.Provider, { value: activeTheme }, children);
 }
 
 export function useTheme() {

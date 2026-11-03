@@ -5,9 +5,13 @@ import { BaseComponent } from './base-component.js';
 import { triggerEvent, getNextElement } from './util.js';
 
 export class Carousel extends BaseComponent {
-  static get NAME() { return 'carousel'; }
+  static get NAME() {
+    return 'carousel';
+  }
 
-  static get selector() { return '[data-boodoo-ride="carousel"]'; }
+  static get selector() {
+    return '[data-boodoo-ride="carousel"]';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -37,7 +41,9 @@ export class Carousel extends BaseComponent {
   }
 
   _setup() {
-    this._indicatorButtons = Array.from(this._element.querySelectorAll('.carousel-indicators [data-boodoo-target]'));
+    this._indicatorButtons = Array.from(
+      this._element.querySelectorAll('.carousel-indicators [data-boodoo-target]')
+    );
     this._container = this._element.querySelector('.carousel-inner');
     const intervalAttr = this._element.getAttribute('data-boodoo-interval');
     if (intervalAttr !== null) this._config.interval = Number(intervalAttr) || false;
@@ -52,10 +58,16 @@ export class Carousel extends BaseComponent {
 
     // controls
     this._element.querySelectorAll('.carousel-control-prev').forEach((c) => {
-      c.addEventListener('click', (e) => { e.preventDefault(); if (!this._isSliding) this.prev(); });
+      c.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!this._isSliding) this.prev();
+      });
     });
     this._element.querySelectorAll('.carousel-control-next').forEach((c) => {
-      c.addEventListener('click', (e) => { e.preventDefault(); if (!this._isSliding) this.next(); });
+      c.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!this._isSliding) this.next();
+      });
     });
 
     // pause on hover
@@ -74,22 +86,34 @@ export class Carousel extends BaseComponent {
 
     // touch swipe
     if (this._config.touch) {
-      this._container.addEventListener('touchstart', (e) => {
-        this._touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-      this._container.addEventListener('touchend', (e) => {
-        const dx = e.changedTouches[0].clientX - this._touchStartX;
-        if (Math.abs(dx) > 40 && !this._isSliding) {
-          if (dx < 0) this.next();
-          else this.prev();
-        }
-      }, { passive: true });
+      this._container.addEventListener(
+        'touchstart',
+        (e) => {
+          this._touchStartX = e.touches[0].clientX;
+        },
+        { passive: true }
+      );
+      this._container.addEventListener(
+        'touchend',
+        (e) => {
+          const dx = e.changedTouches[0].clientX - this._touchStartX;
+          if (Math.abs(dx) > 40 && !this._isSliding) {
+            if (dx < 0) this.next();
+            else this.prev();
+          }
+        },
+        { passive: true }
+      );
     }
   }
 
   _getItems() {
     if (!this._items) {
-      this._items = this._container ? Array.from(this._container.children).filter((el) => el.classList.contains('carousel-item')) : [];
+      this._items = this._container
+        ? Array.from(this._container.children).filter((el) =>
+            el.classList.contains('carousel-item')
+          )
+        : [];
     }
     return this._items;
   }
@@ -128,12 +152,21 @@ export class Carousel extends BaseComponent {
     }
     const next = getNextElement(this._container, this._activeElement, direction);
     if (!next || next === this._activeElement) return;
-    if (!this._config.wrap && (next.classList.contains('carousel-item') && this._getActiveIndex() === this._getItems().length - 1 && direction === 'next')) return;
+    if (
+      !this._config.wrap &&
+      next.classList.contains('carousel-item') &&
+      this._getActiveIndex() === this._getItems().length - 1 &&
+      direction === 'next'
+    )
+      return;
     this._doSlide(next, direction);
   }
 
   _doSlide(next, order) {
-    const ev = triggerEvent(this._element, 'boodoo.slide.carousel', { relatedTarget: next, direction: order });
+    const ev = triggerEvent(this._element, 'boodoo.slide.carousel', {
+      relatedTarget: next,
+      direction: order,
+    });
     if (!ev) return;
 
     this._isSliding = true;
@@ -145,7 +178,10 @@ export class Carousel extends BaseComponent {
       next.classList.add('carousel-item-next', 'carousel-item-start', 'active');
       next.style.opacity = 0;
       void next.offsetWidth;
-      requestAnimationFrame(() => { next.style.transition = 'opacity .6s ease'; next.style.opacity = 1; });
+      requestAnimationFrame(() => {
+        next.style.transition = 'opacity .6s ease';
+        next.style.opacity = 1;
+      });
       setTimeout(() => this._finishSlide(next, current), 600);
     } else {
       const prevClass = order === 'next' ? 'carousel-item-start' : 'carousel-item-end';
@@ -162,7 +198,12 @@ export class Carousel extends BaseComponent {
 
   _finishSlide(next, current) {
     if (current) current.classList.remove('active');
-    offsetRemove(next, ['carousel-item-next', 'carousel-item-prev', 'carousel-item-start', 'carousel-item-end']);
+    offsetRemove(next, [
+      'carousel-item-next',
+      'carousel-item-prev',
+      'carousel-item-start',
+      'carousel-item-end',
+    ]);
     next.style.transition = '';
     next.style.opacity = '';
     this._activeElement = next;

@@ -1,8 +1,8 @@
 dist/**
-site/docs/**
-site/assets/**
-site/archives/**
+site/**
 www/**
+scss/**
+less/**
 node_modules/**
 scratch/**
 *.min.js
@@ -11,4 +11,7 @@ scratch/**
 package-lock.json
 .git/**
 .commandcode/**
+*.md
+tests/**
+tools/**
 

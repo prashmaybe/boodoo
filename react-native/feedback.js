@@ -12,13 +12,7 @@ import { useTheme } from './theme.js';
 /**
  * ActivityIndicator / Spinner
  */
-export function ActivityIndicator({
-  animating = true,
-  color,
-  size = 'small',
-  style,
-  ...props
-}) {
+export function ActivityIndicator({ animating = true, color, size = 'small', style, ...props }) {
   const theme = useTheme();
   if (!animating) return null;
   return (
@@ -81,12 +75,7 @@ export const Progress = ProgressBar;
 /**
  * Skeleton Loader
  */
-export function Skeleton({
-  width = '100%',
-  height = 20,
-  borderRadius = 4,
-  style,
-}) {
+export function Skeleton({ width = '100%', height = 20, borderRadius = 4, style }) {
   const theme = useTheme();
   return (
     <View
@@ -106,14 +95,7 @@ export function Skeleton({
 /**
  * Alert
  */
-export function Alert({
-  action = 'info',
-  variant = 'info',
-  title,
-  icon,
-  children,
-  style,
-}) {
+export function Alert({ action = 'info', variant = 'info', title, icon, children, style }) {
   const theme = useTheme();
   const effective = action || variant;
 
@@ -159,14 +141,7 @@ export function Alert({
 /**
  * Banner
  */
-export function Banner({
-  visible = true,
-  actions = [],
-  icon,
-  children,
-  style,
-  ...props
-}) {
+export function Banner({ visible = true, actions = [], icon, children, style, ...props }) {
   const theme = useTheme();
   if (!visible) return null;
 
@@ -186,9 +161,7 @@ export function Banner({
       <View style={styles.bannerRow}>
         {icon ? <View style={styles.bannerIconMargin}>{icon}</View> : null}
         <View style={styles.flexOne}>
-          <RNText style={[styles.bannerText, { color: theme.colors.text }]}>
-            {children}
-          </RNText>
+          <RNText style={[styles.bannerText, { color: theme.colors.text }]}>{children}</RNText>
         </View>
       </View>
       {actions.length > 0 ? (

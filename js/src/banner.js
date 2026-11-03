@@ -7,9 +7,13 @@ import { BaseComponent, initDataApi } from './base-component.js';
 import { getTransitionDuration, emulateTransitionEnd, triggerEvent } from './util.js';
 
 export class Banner extends BaseComponent {
-  static get NAME() { return 'banner'; }
+  static get NAME() {
+    return 'banner';
+  }
 
-  static get selector() { return '[data-boodoo-banner], .banner, .announcement-bar'; }
+  static get selector() {
+    return '[data-boodoo-banner], .banner, .announcement-bar';
+  }
 
   hide() {
     const el = this._element;
