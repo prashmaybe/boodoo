@@ -53,7 +53,8 @@ export class Offcanvas extends BaseComponent {
 
     this._createBackdrop();
     this._addKeydownListener();
-    setTimeout(() => {
+    this._showTimeout = setTimeout(() => {
+      if (!this._element) return;
       const focusable = this._element.querySelector('input, button, [tabindex]');
       if (focusable) focusable.focus();
       triggerEvent(this._element, 'boodoo.shown.offcanvas');
@@ -70,11 +71,15 @@ export class Offcanvas extends BaseComponent {
     this._element.classList.remove('show');
     const duration = getTransitionDuration(this._element);
     emulateTransitionEnd(this._element, duration).then(() => {
-      this._element.classList.remove('hiding');
+      if (this._element) {
+        this._element.classList.remove('hiding');
+        triggerEvent(this._element, 'boodoo.hidden.offcanvas');
+      }
       this._removeBackdrop();
-      document.body.classList.remove('modal-open', 'offcanvas-open');
-      document.body.style.overflow = '';
-      triggerEvent(this._element, 'boodoo.hidden.offcanvas');
+      if (typeof document !== 'undefined' && document.body) {
+        document.body.classList.remove('modal-open', 'offcanvas-open');
+        document.body.style.overflow = '';
+      }
     });
   }
 
@@ -114,6 +119,10 @@ export class Offcanvas extends BaseComponent {
   }
 
   dispose() {
+    if (this._showTimeout) {
+      clearTimeout(this._showTimeout);
+      this._showTimeout = null;
+    }
     this._removeKeydownListener();
     this._removeBackdrop();
     if (this._element) {

@@ -49,61 +49,65 @@ export class Carousel extends BaseComponent {
     if (intervalAttr !== null) this._config.interval = Number(intervalAttr) || false;
 
     // indicators
-    this._indicatorButtons.forEach((btn, i) => {
-      btn.addEventListener('click', (e) => {
+    this._indicatorHandlers = this._indicatorButtons.map((btn, i) => {
+      const handler = (e) => {
         e.preventDefault();
         this.to(i);
-      });
+      };
+      btn.addEventListener('click', handler);
+      return { btn, handler };
     });
 
     // controls
+    this._controlHandlers = [];
     this._element.querySelectorAll('.carousel-control-prev').forEach((c) => {
-      c.addEventListener('click', (e) => {
+      const handler = (e) => {
         e.preventDefault();
         if (!this._isSliding) this.prev();
-      });
+      };
+      c.addEventListener('click', handler);
+      this._controlHandlers.push({ el: c, handler });
     });
     this._element.querySelectorAll('.carousel-control-next').forEach((c) => {
-      c.addEventListener('click', (e) => {
+      const handler = (e) => {
         e.preventDefault();
         if (!this._isSliding) this.next();
-      });
+      };
+      c.addEventListener('click', handler);
+      this._controlHandlers.push({ el: c, handler });
     });
 
     // pause on hover
     if (this._config.pause === 'hover') {
-      this._element.addEventListener('mouseenter', () => this.pause());
-      this._element.addEventListener('mouseleave', () => this.cycle());
+      this._onMouseEnter = () => this.pause();
+      this._onMouseLeave = () => this.cycle();
+      this._element.addEventListener('mouseenter', this._onMouseEnter);
+      this._element.addEventListener('mouseleave', this._onMouseLeave);
     }
 
     // keyboard
     if (this._config.keyboard) {
-      this._element.addEventListener('keydown', (e) => {
+      this._onKeydown = (e) => {
         if (e.key === 'ArrowLeft') this.prev();
         else if (e.key === 'ArrowRight') this.next();
-      });
+      };
+      this._element.addEventListener('keydown', this._onKeydown);
     }
 
     // touch swipe
     if (this._config.touch && this._container) {
-      this._container.addEventListener(
-        'touchstart',
-        (e) => {
-          this._touchStartX = e.touches[0].clientX;
-        },
-        { passive: true }
-      );
-      this._container.addEventListener(
-        'touchend',
-        (e) => {
-          const dx = e.changedTouches[0].clientX - this._touchStartX;
-          if (Math.abs(dx) > 40 && !this._isSliding) {
-            if (dx < 0) this.next();
-            else this.prev();
-          }
-        },
-        { passive: true }
-      );
+      this._onTouchStart = (e) => {
+        this._touchStartX = e.touches[0].clientX;
+      };
+      this._onTouchEnd = (e) => {
+        const dx = e.changedTouches[0].clientX - this._touchStartX;
+        if (Math.abs(dx) > 40 && !this._isSliding) {
+          if (dx < 0) this.next();
+          else this.prev();
+        }
+      };
+      this._container.addEventListener('touchstart', this._onTouchStart, { passive: true });
+      this._container.addEventListener('touchend', this._onTouchEnd, { passive: true });
     }
   }
 
@@ -182,7 +186,7 @@ export class Carousel extends BaseComponent {
         next.style.transition = 'opacity .6s ease';
         next.style.opacity = 1;
       });
-      setTimeout(() => this._finishSlide(next, current), 600);
+      this._slideTimeout = setTimeout(() => this._finishSlide(next, current), 600);
     } else {
       const prevClass = order === 'next' ? 'carousel-item-start' : 'carousel-item-end';
       const nextClass = order === 'next' ? 'carousel-item-next' : 'carousel-item-prev';
@@ -192,11 +196,13 @@ export class Carousel extends BaseComponent {
       next.classList.remove(nextClass);
       next.classList.add(order === 'next' ? 'carousel-item-end' : 'carousel-item-start');
       next.classList.add('active');
-      setTimeout(() => this._finishSlide(next, current), 600);
+      this._slideTimeout = setTimeout(() => this._finishSlide(next, current), 600);
     }
   }
 
   _finishSlide(next, current) {
+    if (!this._element) return;
+    this._slideTimeout = null;
     if (current) current.classList.remove('active');
     offsetRemove(next, [
       'carousel-item-next',
@@ -222,6 +228,7 @@ export class Carousel extends BaseComponent {
 
   cycle() {
     this._clearInterval();
+    if (!this._element) return;
     if (this._config.interval && this._config.interval !== false) {
       this._interval = setInterval(() => {
         if (this._element && !this._element.matches(':hover')) this.next();
@@ -242,6 +249,39 @@ export class Carousel extends BaseComponent {
 
   dispose() {
     this._clearInterval();
+    if (this._slideTimeout) {
+      clearTimeout(this._slideTimeout);
+      this._slideTimeout = null;
+    }
+    if (this._indicatorHandlers) {
+      this._indicatorHandlers.forEach(({ btn, handler }) => {
+        if (typeof btn.removeEventListener === 'function') {
+          btn.removeEventListener('click', handler);
+        }
+      });
+      this._indicatorHandlers = [];
+    }
+    if (this._controlHandlers) {
+      this._controlHandlers.forEach(({ el, handler }) => {
+        if (typeof el.removeEventListener === 'function') {
+          el.removeEventListener('click', handler);
+        }
+      });
+      this._controlHandlers = [];
+    }
+    if (this._element && typeof this._element.removeEventListener === 'function') {
+      if (this._onMouseEnter) this._element.removeEventListener('mouseenter', this._onMouseEnter);
+      if (this._onMouseLeave) this._element.removeEventListener('mouseleave', this._onMouseLeave);
+      if (this._onKeydown) this._element.removeEventListener('keydown', this._onKeydown);
+    }
+    if (this._container && typeof this._container.removeEventListener === 'function') {
+      if (this._onTouchStart) this._container.removeEventListener('touchstart', this._onTouchStart);
+      if (this._onTouchEnd) this._container.removeEventListener('touchend', this._onTouchEnd);
+    }
+    this._indicatorButtons = [];
+    this._container = null;
+    this._activeElement = null;
+    this._items = null;
     super.dispose();
   }
 }

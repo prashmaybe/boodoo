@@ -25,19 +25,22 @@ export class DataTable extends BaseComponent {
 
   _bindEvents() {
     // 1. Sortable column headers
+    this._headerHandlers = [];
     const sortHeaders = this._table.querySelectorAll('thead th.sortable');
     sortHeaders.forEach((th) => {
-      th.addEventListener('click', () => {
+      const handler = () => {
         this.sortBy(th);
-      });
+      };
+      th.addEventListener('click', handler);
+      this._headerHandlers.push({ th, handler });
     });
 
     // 2. Select all checkbox
-    const selectAll = this._table.querySelector(
+    this._selectAll = this._table.querySelector(
       'thead th.data-table-select-col input[type="checkbox"]'
     );
-    if (selectAll) {
-      selectAll.addEventListener('change', (e) => {
+    if (this._selectAll) {
+      this._onSelectAllChange = (e) => {
         const checked = e.target.checked;
         const rowChecks = this._table.querySelectorAll(
           'tbody td.data-table-select-col input[type="checkbox"]'
@@ -50,23 +53,25 @@ export class DataTable extends BaseComponent {
         triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
           selectedCount: checked ? rowChecks.length : 0,
         });
-      });
+      };
+      this._selectAll.addEventListener('change', this._onSelectAllChange);
     }
 
     // 3. Individual row checkbox change
-    this._table.addEventListener('change', (e) => {
+    this._onTableChange = (e) => {
       if (e.target.matches('tbody td.data-table-select-col input[type="checkbox"]')) {
         const tr = e.target.closest('tr');
         if (tr) tr.classList.toggle('selected', e.target.checked);
 
         // Update selectAll indeterminate / checked
-        if (selectAll) {
+        if (this._selectAll) {
           const rowChecks = Array.from(
             this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]')
           );
           const selected = rowChecks.filter((c) => c.checked);
-          selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
-          selectAll.indeterminate = selected.length > 0 && selected.length < rowChecks.length;
+          this._selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
+          this._selectAll.indeterminate =
+            selected.length > 0 && selected.length < rowChecks.length;
         }
 
         triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
@@ -74,10 +79,11 @@ export class DataTable extends BaseComponent {
           checked: e.target.checked,
         });
       }
-    });
+    };
+    this._table.addEventListener('change', this._onTableChange);
 
     // 4. Expandable rows
-    this._table.addEventListener('click', (e) => {
+    this._onTableClick = (e) => {
       const toggle = e.target.closest(
         '[data-boodoo-toggle="row-detail"], .data-table-expandable-row'
       );
@@ -91,7 +97,38 @@ export class DataTable extends BaseComponent {
           triggerEvent(this._element, 'boodoo.datatable.rowToggle', { row, detailRow, isShown });
         }
       }
-    });
+    };
+    this._table.addEventListener('click', this._onTableClick);
+  }
+
+  dispose() {
+    if (this._headerHandlers) {
+      this._headerHandlers.forEach(({ th, handler }) => {
+        if (typeof th.removeEventListener === 'function') {
+          th.removeEventListener('click', handler);
+        }
+      });
+      this._headerHandlers = [];
+    }
+    if (this._selectAll && this._onSelectAllChange) {
+      if (typeof this._selectAll.removeEventListener === 'function') {
+        this._selectAll.removeEventListener('change', this._onSelectAllChange);
+      }
+      this._selectAll = null;
+      this._onSelectAllChange = null;
+    }
+    if (this._table) {
+      if (this._onTableChange && typeof this._table.removeEventListener === 'function') {
+        this._table.removeEventListener('change', this._onTableChange);
+        this._onTableChange = null;
+      }
+      if (this._onTableClick && typeof this._table.removeEventListener === 'function') {
+        this._table.removeEventListener('click', this._onTableClick);
+        this._onTableClick = null;
+      }
+      this._table = null;
+    }
+    super.dispose();
   }
 
   sortBy(headerEl) {
@@ -117,9 +154,14 @@ export class DataTable extends BaseComponent {
     // Capture companion detail rows before any DOM reordering
     const rowDetails = new Map();
     rows.forEach((row) => {
-      const next = row.nextElementSibling;
-      if (next && next.classList.contains('data-table-row-detail')) {
-        rowDetails.set(row, next);
+      const details = [];
+      let next = row.nextElementSibling;
+      while (next && next.classList && next.classList.contains('data-table-row-detail')) {
+        details.push(next);
+        next = next.nextElementSibling;
+      }
+      if (details.length > 0) {
+        rowDetails.set(row, details);
       }
     });
 
@@ -141,10 +183,10 @@ export class DataTable extends BaseComponent {
     });
 
     rows.forEach((row) => {
-      const detailRow = rowDetails.get(row);
+      const details = rowDetails.get(row);
       tbody.appendChild(row);
-      if (detailRow) {
-        tbody.appendChild(detailRow);
+      if (details) {
+        details.forEach((d) => tbody.appendChild(d));
       }
     });
 

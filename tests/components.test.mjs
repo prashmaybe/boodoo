@@ -1072,12 +1072,16 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
   const dt = new DataTable(mockTable);
   dt.sortBy(mockTh);
   assert.deepEqual(appended.map(r => r.id), ['row2', 'detail2', 'row1', 'detail1'], 'DataTable must preserve companion detail row following parent row');
+  dt.dispose();
+  assert.equal(dt._element, null, 'DataTable element reference should be nulled on dispose');
+  assert.equal(dt._table, null, 'DataTable table reference should be nulled on dispose');
 
   // 5. Missing dispose overrides
   assert.equal(typeof ContextMenu.prototype.dispose, 'function', 'ContextMenu must have dispose() override');
   assert.equal(typeof Sidebar.prototype.dispose, 'function', 'Sidebar must have dispose() override');
   assert.equal(typeof BottomSheet.prototype.dispose, 'function', 'BottomSheet must have dispose() override');
   assert.equal(typeof ChipInput.prototype.dispose, 'function', 'ChipInput must have dispose() override');
+  assert.equal(typeof DataTable.prototype.dispose, 'function', 'DataTable must have dispose() override');
 
   let cmListeners = {};
   const mockCmEl = {
