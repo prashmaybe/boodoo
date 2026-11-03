@@ -1,22 +1,30 @@
 // BOODOO — Dropdown
 // Toggle dropdown menus, handle outside clicks & Escape.
 
-import { BaseComponent, initDataApi } from './base-component.js';
-import { getElementFromSelector, triggerEvent, isVisible } from './util.js';
+import { BaseComponent } from './base-component.js';
+import { getElementFromSelector, triggerEvent } from './util.js';
 
 const getParent = (el) => el.closest('.dropdown') || el.parentElement;
 
 export class Dropdown extends BaseComponent {
-  static get NAME() { return 'dropdown'; }
+  static get NAME() {
+    return 'dropdown';
+  }
 
-  static get selector() { return '[data-boodoo-toggle="dropdown"]'; }
+  static get selector() {
+    return '[data-boodoo-toggle="dropdown"]';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
     const parent = getParent(target);
     this._menu =
       getElementFromSelector(target) ||
-      (target.nextElementSibling && target.nextElementSibling.classList && target.nextElementSibling.classList.contains('dropdown-menu') ? target.nextElementSibling : null) ||
+      (target.nextElementSibling &&
+      target.nextElementSibling.classList &&
+      target.nextElementSibling.classList.contains('dropdown-menu')
+        ? target.nextElementSibling
+        : null) ||
       (parent && parent.querySelector ? parent.querySelector('.dropdown-menu') : null) ||
       target.nextElementSibling;
     this._popperElement = null;
@@ -107,8 +115,8 @@ class DropdownOpener {
     }
     // Outside click closes
     if (this._openDropdowns.length) {
-      const clickedInside = this._openDropdowns.some((d) =>
-        d._element.contains(event.target) || (d._menu && d._menu.contains(event.target))
+      const clickedInside = this._openDropdowns.some(
+        (d) => d._element.contains(event.target) || (d._menu && d._menu.contains(event.target))
       );
       if (!clickedInside) {
         this._openDropdowns.slice().forEach((d) => d.hide());
@@ -124,13 +132,15 @@ class DropdownOpener {
     }
   }
 
-  _onTouch() {
+  _onTouch(event) {
     // close menus when tapping outside on touch devices
     const active = this._openDropdowns[0];
     if (active) {
       const touch = event.touches[0];
-      const x = touch.clientX, y = touch.clientY;
-      const inside = active._element.contains(document.elementFromPoint(x, y)) ||
+      const x = touch.clientX,
+        y = touch.clientY;
+      const inside =
+        active._element.contains(document.elementFromPoint(x, y)) ||
         (active._menu && active._menu.contains(document.elementFromPoint(x, y)));
       if (!inside) active.hide();
     }

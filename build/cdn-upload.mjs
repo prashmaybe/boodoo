@@ -9,9 +9,14 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
-const APP_ID = process.env.CDN_APP_ID || 'app_299a167f351ab3de';
-const APP_SECRET = process.env.CDN_APP_SECRET || 'sec_951a8d64f7c0e490d2bd2110e1dc913b';
+const APP_ID = process.env.CDN_APP_ID;
+const APP_SECRET = process.env.CDN_APP_SECRET;
 const CDN_UPLOAD_URL = process.env.CDN_UPLOAD_URL || 'https://cdn.dihadiwala.com/api/v1/upload';
+
+if (!APP_ID || !APP_SECRET) {
+  console.error('Error: CDN_APP_ID and CDN_APP_SECRET environment variables are required.');
+  process.exit(1);
+}
 
 const items = [
   { key: 'cssRaw', file: 'dist/css/boodoo.css', type: 'text/css' },
@@ -34,7 +39,7 @@ const items = [
   { key: 'brandPng180', file: 'site/assets/brand/boodoo-icon-180.png', type: 'image/png' },
   { key: 'brandPng192', file: 'site/assets/brand/boodoo-icon-192.png', type: 'image/png' },
   { key: 'brandPng512', file: 'site/assets/brand/boodoo-icon-512.png', type: 'image/png' },
-  { key: 'brandOg', file: 'site/assets/brand/boodoo-og-image.png', type: 'image/png' }
+  { key: 'brandOg', file: 'site/assets/brand/boodoo-og-image.png', type: 'image/png' },
 ];
 
 async function uploadFile(item) {
@@ -52,9 +57,9 @@ async function uploadFile(item) {
     method: 'POST',
     headers: {
       'X-App-Id': APP_ID,
-      'X-App-Secret': APP_SECRET
+      'X-App-Secret': APP_SECRET,
     },
-    body: form
+    body: form,
   });
 
   const json = await res.json();

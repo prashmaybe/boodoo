@@ -65,9 +65,7 @@ export function TextInput({
   return (
     <View style={[{ marginBottom: effMarginBottom }, style]}>
       {label ? (
-        <Text style={[styles.inputLabel, { fontSize: theme.typography.sizes.sm }]}>
-          {label}
-        </Text>
+        <Text style={[styles.inputLabel, { fontSize: theme.typography.sizes.sm }]}>{label}</Text>
       ) : null}
       <View
         style={[
@@ -77,7 +75,11 @@ export function TextInput({
             borderColor: errText ? theme.colors.danger : theme.colors.border,
             borderWidth: isFlat ? 0 : 1,
             borderBottomWidth: isFlat ? 2 : 1,
-            borderBottomColor: errText ? theme.colors.danger : isFlat ? theme.colors.primary : theme.colors.border,
+            borderBottomColor: errText
+              ? theme.colors.danger
+              : isFlat
+                ? theme.colors.primary
+                : theme.colors.border,
             borderRadius: isFlat ? 0 : theme.radii.md,
           },
         ]}
@@ -100,10 +102,17 @@ export function TextInput({
           ]}
           {...props}
         />
-        {right || rightIcon ? <View style={styles.inputRightIcon}>{right || rightIcon}</View> : null}
+        {right || rightIcon ? (
+          <View style={styles.inputRightIcon}>{right || rightIcon}</View>
+        ) : null}
       </View>
       {errText ? (
-        <Text style={[styles.inputError, { color: theme.colors.danger, fontSize: theme.typography.sizes.xs }]}>
+        <Text
+          style={[
+            styles.inputError,
+            { color: theme.colors.danger, fontSize: theme.typography.sizes.xs },
+          ]}
+        >
           {errText}
         </Text>
       ) : null}
@@ -158,7 +167,11 @@ export function Searchbar({
       ]}
     >
       <View style={styles.searchbarIconWrapper}>
-        {icon || <RNText style={[styles.searchbarDefaultIcon, { color: theme.colors.textMuted }]}>🔍</RNText>}
+        {icon || (
+          <RNText style={[styles.searchbarDefaultIcon, { color: theme.colors.textMuted }]}>
+            🔍
+          </RNText>
+        )}
       </View>
       <RNTextInput
         placeholder={placeholder}
@@ -194,13 +207,7 @@ export const SearchBar = Searchbar;
 /**
  * HelperText
  */
-export function HelperText({
-  type = 'info',
-  visible = true,
-  children,
-  style,
-  ...props
-}) {
+export function HelperText({ type = 'info', visible = true, children, style, ...props }) {
   const theme = useTheme();
   if (!visible) return null;
 
@@ -285,7 +292,15 @@ export function Checkbox({
 }
 export const CheckBox = Checkbox;
 
-Checkbox.Item = function CheckboxItem({ label, status, checked, onPress, disabled, style, labelStyle }) {
+Checkbox.Item = function CheckboxItem({
+  label,
+  status,
+  checked,
+  onPress,
+  disabled,
+  style,
+  labelStyle,
+}) {
   const theme = useTheme();
   return (
     <TouchableOpacity
@@ -350,9 +365,7 @@ export function RadioButton({
         style,
       ]}
     >
-      {isChecked ? (
-        <View style={[styles.radioInner, { backgroundColor: activeColor }]} />
-      ) : null}
+      {isChecked ? <View style={[styles.radioInner, { backgroundColor: activeColor }]} /> : null}
     </TouchableOpacity>
   );
 }
@@ -367,7 +380,15 @@ RadioButton.Group = function RadioButtonGroup({ value, onValueChange, children }
 };
 export const RadioGroup = RadioButton.Group;
 
-RadioButton.Item = function RadioButtonItem({ label, value, status, onPress, disabled, style, labelStyle }) {
+RadioButton.Item = function RadioButtonItem({
+  label,
+  value,
+  status,
+  onPress,
+  disabled,
+  style,
+  labelStyle,
+}) {
   const theme = useTheme();
   const groupCtx = useContext(RadioGroupContext);
   const isChecked = groupCtx ? groupCtx.value === value : status === 'checked';
@@ -397,7 +418,12 @@ RadioButton.Item = function RadioButtonItem({ label, value, status, onPress, dis
       >
         {label}
       </RNText>
-      <RadioButton value={value} status={isChecked ? 'checked' : 'unchecked'} disabled={disabled} onPress={handlePress} />
+      <RadioButton
+        value={value}
+        status={isChecked ? 'checked' : 'unchecked'}
+        disabled={disabled}
+        onPress={handlePress}
+      />
     </TouchableOpacity>
   );
 };
@@ -443,8 +469,8 @@ export function Slider({
   value = 0,
   minimumValue = 0,
   maximumValue = 100,
-  step = 1,
-  onValueChange,
+  step: _step = 1,
+  onValueChange: _onValueChange,
   thumbTintColor,
   minimumTrackTintColor,
   maximumTrackTintColor,
@@ -452,7 +478,10 @@ export function Slider({
   style,
 }) {
   const theme = useTheme();
-  const ratio = Math.min(Math.max((value - minimumValue) / (maximumValue - minimumValue || 1), 0), 1);
+  const ratio = Math.min(
+    Math.max((value - minimumValue) / (maximumValue - minimumValue || 1), 0),
+    1
+  );
   const activeTrack = minimumTrackTintColor || theme.colors.primary;
   const inactiveTrack = maximumTrackTintColor || theme.colors.border;
   const thumbColor = thumbTintColor || theme.colors.primary;
@@ -460,7 +489,9 @@ export function Slider({
   return (
     <View style={[styles.sliderContainer, style]}>
       <View style={[styles.sliderTrack, { backgroundColor: inactiveTrack }]}>
-        <View style={[styles.sliderFill, { width: `${ratio * 100}%`, backgroundColor: activeTrack }]} />
+        <View
+          style={[styles.sliderFill, { width: `${ratio * 100}%`, backgroundColor: activeTrack }]}
+        />
       </View>
       <View
         style={[
@@ -480,14 +511,7 @@ export function Slider({
 /**
  * Stepper (Wix)
  */
-export function Stepper({
-  value = 0,
-  min = 0,
-  max = 100,
-  step = 1,
-  onValueChange,
-  style,
-}) {
+export function Stepper({ value = 0, min = 0, max = 100, step = 1, onValueChange, style }) {
   const theme = useTheme();
 
   return (
@@ -526,7 +550,8 @@ export function Select({
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const selectedLabel = options.find((o) => (o.value || o) === selectedValue);
-  const labelText = typeof selectedLabel === 'object' ? selectedLabel.label : selectedLabel || placeholder;
+  const labelText =
+    typeof selectedLabel === 'object' ? selectedLabel.label : selectedLabel || placeholder;
 
   return (
     <View style={[{ position: 'relative' }, style]}>
@@ -542,7 +567,12 @@ export function Select({
           },
         ]}
       >
-        <RNText style={[styles.selectValueText, { color: selectedValue ? theme.colors.text : theme.colors.textMuted }]}>
+        <RNText
+          style={[
+            styles.selectValueText,
+            { color: selectedValue ? theme.colors.text : theme.colors.textMuted },
+          ]}
+        >
           {labelText}
         </RNText>
         <RNText style={[styles.selectArrowText, { color: theme.colors.textMuted }]}>▼</RNText>
@@ -573,7 +603,13 @@ export function Select({
                 }}
                 style={[
                   styles.selectOption,
-                  { backgroundColor: isSelected ? (theme.dark ? '#334155' : '#ede9fe') : 'transparent' },
+                  {
+                    backgroundColor: isSelected
+                      ? theme.dark
+                        ? '#334155'
+                        : '#ede9fe'
+                      : 'transparent',
+                  },
                 ]}
               >
                 <RNText
@@ -602,15 +638,7 @@ export const Picker = Select;
  */
 const ToggleGroupContext = createContext(null);
 
-export function ToggleButton({
-  icon,
-  value,
-  status,
-  disabled = false,
-  onPress,
-  style,
-  ...props
-}) {
+export function ToggleButton({ icon, value, status, disabled = false, onPress, style, ...props }) {
   const theme = useTheme();
   const groupCtx = useContext(ToggleGroupContext);
   const isChecked = groupCtx ? groupCtx.value === value : status === 'checked';
@@ -632,7 +660,11 @@ export function ToggleButton({
       style={[
         styles.toggleButton,
         {
-          backgroundColor: isChecked ? (theme.dark ? 'rgba(124, 58, 237, 0.25)' : '#ede9fe') : 'transparent',
+          backgroundColor: isChecked
+            ? theme.dark
+              ? 'rgba(124, 58, 237, 0.25)'
+              : '#ede9fe'
+            : 'transparent',
           borderColor: theme.colors.border,
           opacity: disabled ? 0.5 : 1,
         },
@@ -643,7 +675,12 @@ export function ToggleButton({
       {typeof icon === 'function' ? (
         icon({ color: isChecked ? theme.colors.primary : theme.colors.text })
       ) : typeof icon === 'string' ? (
-        <RNText style={[styles.toggleIconText, { color: isChecked ? theme.colors.primary : theme.colors.text }]}>
+        <RNText
+          style={[
+            styles.toggleIconText,
+            { color: isChecked ? theme.colors.primary : theme.colors.text },
+          ]}
+        >
           {icon}
         </RNText>
       ) : (
@@ -716,12 +753,12 @@ export function OtpInput({
       borderRadius: theme.radii.md,
       backgroundColor: theme.colors.surface,
       borderColor: error
-        ? (theme.colors.danger || '#e11d48')
+        ? theme.colors.danger || '#e11d48'
         : isCurrent
-        ? theme.colors.primary
-        : isFilled
-        ? theme.colors.primary
-        : theme.colors.border,
+          ? theme.colors.primary
+          : isFilled
+            ? theme.colors.primary
+            : theme.colors.border,
       borderWidth: isCurrent || isFilled ? 2 : 1,
     };
 
@@ -737,9 +774,7 @@ export function OtpInput({
           style={[
             styles.otpText,
             {
-              color: error
-                ? (theme.colors.danger || '#e11d48')
-                : theme.colors.text,
+              color: error ? theme.colors.danger || '#e11d48' : theme.colors.text,
               fontSize: theme.typography.sizes.lg,
             },
             textStyle,
@@ -813,9 +848,7 @@ export function Rating({
         onPress={() => handlePress(i)}
         style={styles.ratingStarBtn}
       >
-        <RNText style={[styles.ratingStar, starDynamic]}>
-          {isFilled ? '★' : '☆'}
-        </RNText>
+        <RNText style={[styles.ratingStar, starDynamic]}>{isFilled ? '★' : '☆'}</RNText>
       </TouchableOpacity>
     );
   }
@@ -891,14 +924,15 @@ export function ChipInput({
     <View style={[styles.chipInputContainer, containerDynamic, style]} {...props}>
       <View style={styles.chipInputPillsWrap}>
         {tags.map((tag, i) => (
-          <View
-            key={i}
-            style={[styles.chipInputPill, pillDynamic, chipStyle]}
-          >
-            <RNText style={[styles.chipInputPillText, { color: theme.colors.primary }]}>{tag}</RNText>
+          <View key={i} style={[styles.chipInputPill, pillDynamic, chipStyle]}>
+            <RNText style={[styles.chipInputPillText, { color: theme.colors.primary }]}>
+              {tag}
+            </RNText>
             {!disabled ? (
               <TouchableOpacity onPress={() => handleRemove(i)} style={styles.chipInputRemoveBtn}>
-                <RNText style={[styles.chipInputRemoveText, { color: theme.colors.primary }]}>✕</RNText>
+                <RNText style={[styles.chipInputRemoveText, { color: theme.colors.primary }]}>
+                  ✕
+                </RNText>
               </TouchableOpacity>
             ) : null}
           </View>

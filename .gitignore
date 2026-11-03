@@ -6,3 +6,7 @@ www/
 Thumbs.db
 *.zip
 site/archives/*.zip
+site/docs/
+scratch/
+*.css.map
+test-out*

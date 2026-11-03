@@ -23,11 +23,7 @@ export function Dialog({
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
-  const effPadding =
-    padding ??
-    cs.dialogPadding ??
-    sp.dialogPadding ??
-    20;
+  const effPadding = padding ?? cs.dialogPadding ?? sp.dialogPadding ?? 20;
 
   return (
     <RNModal
@@ -52,6 +48,7 @@ export function Dialog({
             {
               backgroundColor: theme.colors.surface,
               borderRadius: theme.radii.xl,
+              padding: effPadding,
               ...theme.shadows.lg,
             },
             style,
@@ -68,15 +65,16 @@ export const AlertDialog = Dialog;
 Dialog.Title = function DialogTitle({ children, style, marginBottom }) {
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
-  const effMarginBottom =
-    marginBottom ??
-    cs.dialogTitleMarginBottom ??
-    8;
+  const effMarginBottom = marginBottom ?? cs.dialogTitleMarginBottom ?? 8;
   return (
     <RNText
       style={[
         styles.dialogTitle,
-        { color: theme.colors.text, fontSize: theme.typography.sizes.xl, marginBottom: effMarginBottom },
+        {
+          color: theme.colors.text,
+          fontSize: theme.typography.sizes.xl,
+          marginBottom: effMarginBottom,
+        },
         style,
       ]}
     >
@@ -92,19 +90,12 @@ Dialog.Content = function DialogContent({ children, style }) {
 Dialog.Actions = function DialogActions({ children, style, marginTop }) {
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
-  const effMarginTop =
-    marginTop ??
-    cs.dialogActionsMarginTop ??
-    12;
+  const effMarginTop = marginTop ?? cs.dialogActionsMarginTop ?? 12;
   return <View style={[styles.dialogActions, { marginTop: effMarginTop }, style]}>{children}</View>;
 };
 
 Dialog.ScrollArea = function DialogScrollArea({ children, style }) {
-  return (
-    <ScrollView style={[styles.dialogScrollArea, style]}>
-      {children}
-    </ScrollView>
-  );
+  return <ScrollView style={[styles.dialogScrollArea, style]}>{children}</ScrollView>;
 };
 
 /**
@@ -123,11 +114,7 @@ export function Modal({
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
-  const effPadding =
-    padding ??
-    cs.modalPadding ??
-    sp.modalPadding ??
-    16;
+  const effPadding = padding ?? cs.modalPadding ?? sp.modalPadding ?? 16;
   const handleClose = () => {
     if (dismissable) {
       if (onDismiss) onDismiss();
@@ -143,11 +130,7 @@ export function Modal({
       onRequestClose={handleClose}
       {...props}
     >
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={handleClose}
-        style={styles.modalBackdrop}
-      >
+      <TouchableOpacity activeOpacity={1} onPress={handleClose} style={styles.modalBackdrop}>
         <TouchableOpacity
           activeOpacity={1}
           style={[
@@ -155,6 +138,7 @@ export function Modal({
             {
               backgroundColor: theme.colors.surface,
               borderRadius: theme.radii.lg,
+              padding: effPadding,
               ...theme.shadows.lg,
             },
             contentContainerStyle,
@@ -183,11 +167,7 @@ export function BottomSheet({
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
-  const effPadding =
-    padding ??
-    cs.bottomSheetPadding ??
-    sp.bottomSheetPadding ??
-    16;
+  const effPadding = padding ?? cs.bottomSheetPadding ?? sp.bottomSheetPadding ?? 16;
   const isShow = isVisible || visible;
   const close = onBackdropPress || onClose;
 
@@ -202,6 +182,7 @@ export function BottomSheet({
               backgroundColor: theme.colors.surface,
               borderTopLeftRadius: theme.radii.xl,
               borderTopRightRadius: theme.radii.xl,
+              padding: effPadding,
               ...theme.shadows.lg,
             },
             style,
@@ -221,14 +202,7 @@ export const Sheet = BottomSheet;
 /**
  * Menu / Dropdown / Popover
  */
-export function Menu({
-  visible = false,
-  onDismiss,
-  anchor,
-  children,
-  contentStyle,
-  style,
-}) {
+export function Menu({ visible = false, onDismiss, anchor, children, contentStyle, style }) {
   const theme = useTheme();
 
   return (
@@ -261,14 +235,7 @@ export function Menu({
 }
 export const Popover = Menu;
 
-Menu.Item = function MenuItem({
-  title,
-  icon,
-  disabled = false,
-  onPress,
-  style,
-  titleStyle,
-}) {
+Menu.Item = function MenuItem({ title, icon, disabled = false, onPress, style, titleStyle }) {
   const theme = useTheme();
 
   return (
@@ -276,11 +243,7 @@ Menu.Item = function MenuItem({
       activeOpacity={0.7}
       disabled={disabled}
       onPress={onPress}
-      style={[
-        styles.menuItem,
-        { opacity: disabled ? 0.4 : 1 },
-        style,
-      ]}
+      style={[styles.menuItem, { opacity: disabled ? 0.4 : 1 }, style]}
     >
       {icon ? <View style={styles.menuItemIcon}>{icon}</View> : null}
       <RNText
@@ -299,13 +262,7 @@ Menu.Item = function MenuItem({
 /**
  * Tooltip
  */
-export function Tooltip({
-  title,
-  popover,
-  children,
-  leaveTouchDelay = 1500,
-  style,
-}) {
+export function Tooltip({ title, popover, children, leaveTouchDelay = 1500, style }) {
   const [show, setShow] = useState(false);
   const theme = useTheme();
   const label = title || popover;
@@ -327,11 +284,7 @@ export function Tooltip({
             },
           ]}
         >
-          {typeof label === 'string' ? (
-            <RNText style={styles.tooltipText}>{label}</RNText>
-          ) : (
-            label
-          )}
+          {typeof label === 'string' ? <RNText style={styles.tooltipText}>{label}</RNText> : label}
         </View>
       ) : null}
       <TouchableOpacity activeOpacity={0.8} onLongPress={handleLongPress}>
@@ -351,13 +304,7 @@ Portal.Host = function PortalHost({ children }) {
   return <>{children}</>;
 };
 
-export function TouchableRipple({
-  children,
-  onPress,
-  disabled = false,
-  style,
-  ...props
-}) {
+export function TouchableRipple({ children, onPress, disabled = false, style, ...props }) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}

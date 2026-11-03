@@ -2,12 +2,16 @@
 // Toggle active/loading states on buttons and checkbox/radio groups.
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent } from './util.js';
+import { triggerEvent } from './util.js';
 
 export class Button extends BaseComponent {
-  static get NAME() { return 'button'; }
+  static get NAME() {
+    return 'button';
+  }
 
-  static get selector() { return '[data-boodoo-toggle="button"]'; }
+  static get selector() {
+    return '[data-boodoo-toggle="button"]';
+  }
 
   toggle() {
     const button = this._element;
@@ -26,7 +30,13 @@ export class Button extends BaseComponent {
       const input = button.querySelector('input[type="checkbox"]');
       if (input) input.checked = !input.checked;
     } else if (isRadio || group) {
-      const buttons = Array.from(group ? group.querySelectorAll(':scope > [data-boodoo-toggle="button"], :scope > .btn-check + [data-boodoo-toggle="button"]') : [button]);
+      const buttons = Array.from(
+        group
+          ? group.querySelectorAll(
+              ':scope > [data-boodoo-toggle="button"], :scope > .btn-check + [data-boodoo-toggle="button"]'
+            )
+          : [button]
+      );
       buttons.forEach((b) => {
         b.classList.remove('active');
         const input = b.querySelector('input[type="radio"], input[type="checkbox"]');

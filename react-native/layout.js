@@ -5,7 +5,11 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
  * Universal Box component (Gluestack / Tamagui / Wix View)
  */
 export function Box({ children, style, ...props }) {
-  return <View style={style} {...props}>{children}</View>;
+  return (
+    <View style={style} {...props}>
+      {children}
+    </View>
+  );
 }
 
 /**
@@ -96,7 +100,7 @@ export function Pressable({ children, onPress, style, disabled, ...props }) {
 /**
  * Responsive Grid container (Gluestack / Wix UI Lib)
  */
-export function Grid({ numColumns = 2, gap = 8, children, style, ...props }) {
+export function Grid({ numColumns: _numColumns = 2, gap = 8, children, style, ...props }) {
   return (
     <View style={[styles.grid, { gap }, style]} {...props}>
       {children}

@@ -1,74 +1,83 @@
 // =====================================================================
 // BOODOO JS — Main entry (bundle)
 // =====================================================================
-import './base-component.js';
-import { Alert } from './alert.js';
-import { Button } from './button.js';
-import { Collapse } from './collapse.js';
-import './accordion.js';
-import { Dropdown } from './dropdown.js';
-import { Modal } from './modal.js';
-import { Offcanvas } from './offcanvas.js';
-import { Tab } from './tab.js';
-import { Toast } from './toast.js';
-import { Tooltip, Popover } from './tooltip.js';
-import { Carousel } from './carousel.js';
-import { ScrollSpy } from './scrollspy.js';
-import { initRipple } from './ripple.js';
-import { initDataApi } from './base-component.js';
-import { enableDismissTrigger, escapeHtml } from './util.js';
-import { theme } from './theme.js';
-import { OTP } from './otp.js';
-import { Rating } from './rating.js';
-import { TreeView } from './tree-view.js';
-import { clipboard } from './clipboard.js';
-import { CommandPalette } from './command-palette.js';
-import { BottomSheet } from './bottom-sheet.js';
-import { registerCustomElements } from './custom-elements.js';
-import { DataTable } from './data-table.js';
-import { Sidebar } from './sidebar.js';
-import { ContextMenu } from './context-menu.js';
-import { ChipInput } from './chip-input.js';
-import { Stepper } from './stepper.js';
-import { Combobox } from './combobox.js';
-import { Splitter } from './splitter.js';
-import { SpeedDial } from './speed-dial.js';
-import { Lightbox } from './lightbox.js';
-import { Banner } from './banner.js';
-import { Dropzone } from './dropzone.js';
-import { a11y } from './a11y.js';
-import { FloatingBar } from './floating-bar.js';
-import { ImageCompare } from './image-compare.js';
-import { PasswordMeter } from './password-meter.js';
-import { FABDock } from './fab-dock.js';
-import { DialogFullscreen } from './dialog-fullscreen.js';
-import { Tour } from './tour.js';
-import { Chart } from './chart.js';
-import { FilterBar, TransferList, ColorPicker, BackToTop } from './advanced-components.js';
+import { Alert } from './src/alert.js';
+import { Button } from './src/button.js';
+import { Collapse } from './src/collapse.js';
+import './src/accordion.js';
+import { Dropdown } from './src/dropdown.js';
+import { Modal } from './src/modal.js';
+import { Offcanvas } from './src/offcanvas.js';
+import { Tab } from './src/tab.js';
+import { Toast } from './src/toast.js';
+import { Tooltip, Popover } from './src/tooltip.js';
+import { Carousel } from './src/carousel.js';
+import { ScrollSpy } from './src/scrollspy.js';
+import { initRipple } from './src/ripple.js';
+import { initDataApi } from './src/base-component.js';
+import { enableDismissTrigger, escapeHtml } from './src/util.js';
+import { theme } from './src/theme.js';
+import { OTP } from './src/otp.js';
+import { Rating } from './src/rating.js';
+import { TreeView } from './src/tree-view.js';
+import { clipboard } from './src/clipboard.js';
+import { CommandPalette } from './src/command-palette.js';
+import { BottomSheet } from './src/bottom-sheet.js';
+import { registerCustomElements } from './src/custom-elements.js';
+import { DataTable } from './src/data-table.js';
+import { Sidebar } from './src/sidebar.js';
+import { ContextMenu } from './src/context-menu.js';
+import { ChipInput } from './src/chip-input.js';
+import { Stepper } from './src/stepper.js';
+import { Combobox } from './src/combobox.js';
+import { Splitter } from './src/splitter.js';
+import { SpeedDial } from './src/speed-dial.js';
+import { Lightbox } from './src/lightbox.js';
+import { Banner } from './src/banner.js';
+import { Dropzone } from './src/dropzone.js';
+import { a11y } from './src/a11y.js';
+import { FloatingBar } from './src/floating-bar.js';
+import { ImageCompare } from './src/image-compare.js';
+import { PasswordMeter } from './src/password-meter.js';
+import { FABDock } from './src/fab-dock.js';
+import { DialogFullscreen } from './src/dialog-fullscreen.js';
+import { Tour } from './src/tour.js';
+import { Chart } from './src/chart.js';
+import { FilterBar, TransferList, ColorPicker, BackToTop } from './src/advanced-components.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'alert') instance.hide();
 });
 
 enableDismissTrigger(Banner, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'banner') instance.hide();
 });
 
 enableDismissTrigger(BottomSheet, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'bottom-sheet') instance.hide();
 });
 
 enableDismissTrigger(DialogFullscreen, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'dialog-fullscreen') instance.hide();
 });
 
 enableDismissTrigger(Toast, (instance, event, toggler) => {
-  const type = toggler ? toggler.getAttribute('data-boodoo-dismiss') : instance._element.getAttribute('data-boodoo-dismiss');
+  const type = toggler
+    ? toggler.getAttribute('data-boodoo-dismiss')
+    : instance._element.getAttribute('data-boodoo-dismiss');
   if (type === 'toast') instance.hide();
 });
 
@@ -121,7 +130,6 @@ const boodoo = {
   BackToTop,
 };
 
-
 // Programmatic Toast API: boodoo.toast(message, options) / boodoo.toast.show() / .success() / etc.
 function createToast(message, options = {}) {
   const opts = {
@@ -132,7 +140,9 @@ function createToast(message, options = {}) {
     ...options,
   };
 
-  let container = opts.container ? document.querySelector(opts.container) : (document.querySelector('#landingToasts') || document.querySelector('.toast-container'));
+  let container = opts.container
+    ? document.querySelector(opts.container)
+    : document.querySelector('#landingToasts') || document.querySelector('.toast-container');
   if (!container) {
     container = document.createElement('div');
     container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
@@ -194,24 +204,33 @@ boodoo.toast = function toast(message, options) {
   return createToast(message, options);
 };
 boodoo.toast.show = (message, options) => createToast(message, options);
-boodoo.toast.success = (message, options = {}) => createToast(message, { ...options, variant: 'success' });
-boodoo.toast.danger = (message, options = {}) => createToast(message, { ...options, variant: 'danger' });
+boodoo.toast.success = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'success' });
+boodoo.toast.danger = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'danger' });
 boodoo.toast.error = boodoo.toast.danger;
-boodoo.toast.warning = (message, options = {}) => createToast(message, { ...options, variant: 'warning' });
-boodoo.toast.info = (message, options = {}) => createToast(message, { ...options, variant: 'info' });
-
+boodoo.toast.warning = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'warning' });
+boodoo.toast.info = (message, options = {}) =>
+  createToast(message, { ...options, variant: 'info' });
 
 // Auto-initialize common data-api components
 function autoInit() {
   if (typeof document === 'undefined') return;
+  if (document._boodooAutoInit) return;
+  document._boodooAutoInit = true;
   // Buttons
-  document.addEventListener('click', (event) => {
-    const btn = event.target.closest('[data-boodoo-toggle="button"]');
-    if (btn) {
-      const instance = Button.getOrCreateInstance(btn);
-      instance.toggle();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const btn = event.target.closest('[data-boodoo-toggle="button"]');
+      if (btn) {
+        const instance = Button.getOrCreateInstance(btn);
+        instance.toggle();
+      }
+    },
+    true
+  );
   // Ripple on dynamic content is initialized on DOM mutations
 }
 
@@ -277,7 +296,3 @@ export {
   ColorPicker,
   BackToTop,
 };
-
-if (typeof window !== 'undefined') {
-  window.boodoo = boodoo;
-}

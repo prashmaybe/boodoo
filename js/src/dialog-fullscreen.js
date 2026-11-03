@@ -14,7 +14,9 @@ export class DialogFullscreen extends BaseComponent {
   constructor(element, config = {}) {
     super(element, config);
     this._isOpen = this._element.classList.contains('show');
-    this._closeButtons = this._element.querySelectorAll('[data-boodoo-dismiss="dialog-fullscreen"], .btn-close');
+    this._closeButtons = this._element.querySelectorAll(
+      '[data-boodoo-dismiss="dialog-fullscreen"], .btn-close'
+    );
     this._onKeyDown = this._onKeyDown.bind(this);
 
     this._bindEvents();

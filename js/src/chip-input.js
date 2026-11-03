@@ -3,7 +3,7 @@
 // Handles removable chips and tag creation upon Enter or comma.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class ChipInput extends BaseComponent {
@@ -19,24 +19,27 @@ export class ChipInput extends BaseComponent {
 
   _bindEvents() {
     // 1. Remove chip click
-    this._element.addEventListener('click', (e) => {
+    this._onClick = (e) => {
       const removeBtn = e.target.closest('.chip-remove, .tag-remove');
       if (removeBtn) {
         e.preventDefault();
         const chip = removeBtn.closest('.chip, .tag-item');
         if (chip) {
-          const text = chip.querySelector('span') ? chip.querySelector('span').innerText : chip.innerText;
+          const text = chip.querySelector('span')
+            ? chip.querySelector('span').innerText
+            : chip.innerText;
           chip.remove();
           triggerEvent(this._element, 'boodoo.chip.remove', { text, chip });
         }
       } else if (this._input && e.target === this._element) {
         this._input.focus();
       }
-    });
+    };
+    this._element.addEventListener('click', this._onClick);
 
     // 2. Add chip on Enter or comma
     if (this._input) {
-      this._input.addEventListener('keydown', (e) => {
+      this._onKeydown = (e) => {
         if (e.key === 'Enter' || e.key === ',') {
           e.preventDefault();
           const val = this._input.value.trim().replace(/^,+|,+$/g, '');
@@ -52,15 +55,29 @@ export class ChipInput extends BaseComponent {
             triggerEvent(this._element, 'boodoo.chip.remove', { chip: lastChip });
           }
         }
-      });
+      };
+      this._input.addEventListener('keydown', this._onKeydown);
     }
+  }
+
+  dispose() {
+    if (this._onClick && this._element) {
+      this._element.removeEventListener('click', this._onClick);
+      this._onClick = null;
+    }
+    if (this._onKeydown && this._input) {
+      this._input.removeEventListener('keydown', this._onKeydown);
+      this._onKeydown = null;
+    }
+    this._input = null;
+    super.dispose();
   }
 
   addChip(text, variant = '') {
     const isTagInput = this._element.classList.contains('tag-input');
     const chip = document.createElement('span');
     chip.className = isTagInput ? `tag-item ${variant}`.trim() : `chip ${variant}`.trim();
-    
+
     const labelSpan = document.createElement('span');
     labelSpan.textContent = text;
 
@@ -91,20 +108,27 @@ export class ChipInput extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    // Interactive tag input containers
-    document.querySelectorAll('.chip-input-container, [data-boodoo="chip-input"]').forEach((el) => {
-      ChipInput.getOrCreateInstance(el);
-    });
+initDataApi(ChipInput, '.chip-input-container, [data-boodoo="chip-input"]');
 
-    // Standalone removable chips
-    document.addEventListener('click', (e) => {
-      const removeBtn = e.target.closest('.chip .chip-remove');
-      if (removeBtn && !removeBtn.closest('.chip-input-container')) {
-        const chip = removeBtn.closest('.chip');
-        if (chip) chip.remove();
-      }
-    });
-  });
+let chipRemoveHandler = null;
+
+export function initChipRemove() {
+  if (typeof document === 'undefined' || document._boodooChipRemoveBound) return;
+  document._boodooChipRemoveBound = true;
+  chipRemoveHandler = (e) => {
+    const removeBtn = e.target.closest('.chip .chip-remove');
+    if (removeBtn && !removeBtn.closest('.chip-input-container')) {
+      const chip = removeBtn.closest('.chip');
+      if (chip) chip.remove();
+    }
+  };
+  document.addEventListener('click', chipRemoveHandler);
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChipRemove);
+  } else {
+    initChipRemove();
+  }
 }

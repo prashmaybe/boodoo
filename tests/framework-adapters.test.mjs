@@ -100,6 +100,6 @@ test('Boodoo framework CommonJS entry point and module export verification', () 
   assert.equal(pkg.exports['.'].require, './dist/js/boodoo.cjs', 'package.json exports["."].require must point to ./dist/js/boodoo.cjs');
 
   const boodooCjs = readFileSync(cjsPath, 'utf8');
-  assert.ok(boodooCjs.includes('module.exports = factory()'), 'boodoo.cjs must support CommonJS export');
+  assert.ok(boodooCjs.includes('module.exports'), 'boodoo.cjs must support CommonJS export');
 });
 

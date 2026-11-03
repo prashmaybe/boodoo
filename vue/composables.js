@@ -153,7 +153,8 @@ export function useCombobox(options = {}) {
     id: `boodoo-opt-${item.id || index}`,
     role: 'option',
     'aria-selected': selectedValue.value === item.value,
-    class: `${props.class || props.className || ''} ${index === activeIndex.value ? 'active' : ''}`.trim(),
+    class:
+      `${props.class || props.className || ''} ${index === activeIndex.value ? 'active' : ''}`.trim(),
     onClick: (e) => {
       selectItem(item);
       props.onClick?.(e);

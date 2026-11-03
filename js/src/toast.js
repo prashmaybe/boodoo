@@ -5,9 +5,13 @@ import { BaseComponent } from './base-component.js';
 import { triggerEvent, getTransitionDuration, emulateTransitionEnd } from './util.js';
 
 export class Toast extends BaseComponent {
-  static get NAME() { return 'toast'; }
+  static get NAME() {
+    return 'toast';
+  }
 
-  static get selector() { return '.toast'; }
+  static get selector() {
+    return '.toast';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -15,7 +19,10 @@ export class Toast extends BaseComponent {
     if (target.hasAttribute('data-boodoo-delay')) {
       this._config.delay = Number(target.getAttribute('data-boodoo-delay')) || 5000;
     }
-    if (target.hasAttribute('data-boodoo-autohide') && target.getAttribute('data-boodoo-autohide') === 'false') {
+    if (
+      target.hasAttribute('data-boodoo-autohide') &&
+      target.getAttribute('data-boodoo-autohide') === 'false'
+    ) {
       this._config.autohide = false;
     }
     this._timeout = null;
@@ -60,7 +67,6 @@ export class Toast extends BaseComponent {
     }, 10);
   }
 
-
   hide() {
     const el = this._element;
     if (!this._isShown && !el.classList.contains('show')) return;
@@ -90,16 +96,20 @@ export class Toast extends BaseComponent {
 
 // Data API: dismiss handling and autohide on load
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const closer = event.target.closest('[data-boodoo-dismiss="toast"]');
-    if (closer) {
-      const toastEl = closer.closest('.toast');
-      if (toastEl) {
-        const toast = Toast.getOrCreateInstance(toastEl);
-        if (toast) toast.hide();
+  document.addEventListener(
+    'click',
+    (event) => {
+      const closer = event.target.closest('[data-boodoo-dismiss="toast"]');
+      if (closer) {
+        const toastEl = closer.closest('.toast');
+        if (toastEl) {
+          const toast = Toast.getOrCreateInstance(toastEl);
+          if (toast) toast.hide();
+        }
       }
-    }
-  }, true);
+    },
+    true
+  );
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initToasts);
@@ -109,7 +119,9 @@ if (typeof document !== 'undefined') {
 }
 
 function initToasts() {
-  const autohideToasts = document.querySelectorAll('.toast[data-boodoo-autohide="true"], .toast.show[data-boodoo-delay]');
+  const autohideToasts = document.querySelectorAll(
+    '.toast[data-boodoo-autohide="true"], .toast.show[data-boodoo-delay]'
+  );
   autohideToasts.forEach((el) => {
     Toast.getOrCreateInstance(el);
   });

@@ -1,0 +1,17 @@
+dist/**
+site/**
+www/**
+scss/**
+less/**
+node_modules/**
+scratch/**
+*.min.js
+*.min.css
+*.map
+package-lock.json
+.git/**
+.commandcode/**
+*.md
+tests/**
+tools/**
+

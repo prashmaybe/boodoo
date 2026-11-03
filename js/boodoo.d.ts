@@ -8,7 +8,10 @@ export interface BoodooComponent {
 export declare class BaseComponent implements BoodooComponent {
   constructor(target: string | Element, config?: Record<string, unknown>);
   static getInstance(target: string | Element): BaseComponent | null;
-  static getOrCreateInstance(target: string | Element, config?: Record<string, unknown>): BaseComponent;
+  static getOrCreateInstance(
+    target: string | Element,
+    config?: Record<string, unknown>
+  ): BaseComponent;
   static getAll(): BaseComponent[];
   dispose(): void;
   hide(): void;
@@ -16,81 +19,89 @@ export declare class BaseComponent implements BoodooComponent {
   toggle(): void;
 }
 
-export declare class Alert extends BaseComponent {
+declare class Alert extends BaseComponent {
   close(): void;
 }
 
-export declare class Button extends BaseComponent {
+declare class Button extends BaseComponent {
   setLoading(loading: boolean): void;
 }
 
-export declare class Modal extends BaseComponent {
+declare class Modal extends BaseComponent {
   static toggleVia(source: Element): void;
 }
 
-export declare class Toast extends BaseComponent {
+declare class Toast extends BaseComponent {
   static showToast(el: Element): void;
   static showAll(container?: Element): void;
 }
 
-export declare class Tooltip extends BaseComponent {}
-export declare class Popover extends BaseComponent {}
-export declare class Collapse extends BaseComponent {}
-export declare class Dropdown extends BaseComponent {}
-export declare class Offcanvas extends BaseComponent {}
-export declare class Tab extends BaseComponent {}
-export declare class Carousel extends BaseComponent {}
-export declare class ScrollSpy extends BaseComponent {}
-export declare class Sidebar extends BaseComponent {}
-export declare class BottomSheet extends BaseComponent {}
-export declare class ChipInput extends BaseComponent {
+declare class Tooltip extends BaseComponent {}
+declare class Popover extends BaseComponent {}
+declare class Collapse extends BaseComponent {}
+declare class Dropdown extends BaseComponent {}
+declare class Offcanvas extends BaseComponent {}
+declare class Tab extends BaseComponent {}
+declare class Carousel extends BaseComponent {}
+declare class ScrollSpy extends BaseComponent {}
+declare class Sidebar extends BaseComponent {}
+declare class BottomSheet extends BaseComponent {}
+declare class ChipInput extends BaseComponent {
   addChip(text: string, variant?: string): void;
   getTags(): string[];
 }
-export declare class CommandPalette extends BaseComponent {
+declare class CommandPalette extends BaseComponent {
   open(): void;
   close(): void;
-  static initDefault(options?: { items?: Array<{ title: string; href?: string; action?: () => void; icon?: string; shortcut?: string }> }): void;
+  static initDefault(options?: {
+    items?: Array<{
+      title: string;
+      href?: string;
+      action?: () => void;
+      icon?: string;
+      shortcut?: string;
+    }>;
+  }): void;
 }
-export declare class ContextMenu extends BaseComponent {}
-export declare class DataTable extends BaseComponent {}
-export declare class Dropzone extends BaseComponent {
+declare class ContextMenu extends BaseComponent {}
+declare class DataTable extends BaseComponent {}
+declare class Dropzone extends BaseComponent {
   removeFile(file: File, elementNode?: Element): void;
   clear(): void;
   getFiles(): File[];
 }
-export declare class Lightbox extends BaseComponent {}
-export declare class OTP extends BaseComponent {}
-export declare class Rating extends BaseComponent {}
-export declare class SpeedDial extends BaseComponent {}
-export declare class Splitter extends BaseComponent {}
-export declare class Stepper extends BaseComponent {}
-export declare class TreeView extends BaseComponent {}
-export declare class Banner extends BaseComponent {}
-export declare class Combobox extends BaseComponent {}
-export declare class FloatingBar extends BaseComponent {
+declare class Lightbox extends BaseComponent {}
+declare class OTP extends BaseComponent {}
+declare class Rating extends BaseComponent {}
+declare class SpeedDial extends BaseComponent {}
+declare class Splitter extends BaseComponent {}
+declare class Stepper extends BaseComponent {}
+declare class TreeView extends BaseComponent {}
+declare class Banner extends BaseComponent {}
+declare class Combobox extends BaseComponent {}
+declare class FloatingBar extends BaseComponent {
   show(count?: number): void;
   hide(): void;
   setCount(count: number): void;
 }
-export declare class ImageCompare extends BaseComponent {
+declare class ImageCompare extends BaseComponent {
   setPosition(percentage: number): void;
   getPosition(): number;
 }
-export declare class PasswordMeter extends BaseComponent {
+declare class PasswordMeter extends BaseComponent {
   evaluate(password?: string): number;
 }
-export declare class FABDock extends BaseComponent {
+declare class FABDock extends BaseComponent {
   open(): void;
   close(): void;
   toggle(): void;
 }
-export declare class DialogFullscreen extends BaseComponent {
+declare class DialogFullscreen extends BaseComponent {
   show(): void;
   hide(): void;
   toggle(): void;
 }
-export declare class Tour extends BaseComponent {
+declare class Tour extends BaseComponent {
   setSteps(steps: Array<{ target?: string | Element; title?: string; content?: string }>): void;
   start(): void;
   next(): void;
@@ -121,7 +132,7 @@ export interface ChartOptions {
   showTooltips?: boolean;
 }
 
-export declare class Chart extends BaseComponent {
+declare class Chart extends BaseComponent {
   render(): void;
   resize(): void;
   update(data?: ChartData, options?: ChartOptions): void;
@@ -136,25 +147,43 @@ export interface ToastOptions {
   container?: string | Element;
 }
 
-export declare class FilterBar extends BaseComponent {
+declare class FilterBar extends BaseComponent {
   addPill(label: string, value: string, key?: string): void;
   removePill(key: string, value: string, pillElement?: HTMLElement): void;
   clearAll(): void;
 }
 
-export declare class TransferList extends BaseComponent {
+declare class TransferList extends BaseComponent {
   moveSelected(sourcePanel: HTMLElement, targetPanel: HTMLElement): void;
   moveAll(sourcePanel: HTMLElement, targetPanel: HTMLElement): void;
 }
 
-export declare class ColorPicker extends BaseComponent {
+declare class ColorPicker extends BaseComponent {
   setValue(color: string, updateInput?: boolean): void;
   getValue(): string;
 }
 
-export declare class BackToTop extends BaseComponent {
+declare class BackToTop extends BaseComponent {
   dispose(): void;
 }
+
+declare function initDataApi(component?: any, selector?: string): void;
+declare function initRipple(target?: any): void;
+declare function registerCustomElements(): void;
+
+declare const clipboard: {
+  copy(text: string): Promise<boolean>;
+};
+declare const theme: {
+  get(): string;
+  set(theme: string): void;
+  toggle(): string;
+};
+declare const a11y: {
+  announce(message: string, politeness?: 'polite' | 'assertive'): void;
+  setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
+  createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
+};
 
 export interface BoodooGlobal {
   toast: {
@@ -211,6 +240,9 @@ export interface BoodooGlobal {
     setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
     createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
   };
+  initDataApi: (component?: any, selector?: string) => void;
+  initRipple: (target?: any) => void;
+  registerCustomElements: () => void;
 }
 
 declare const boodoo: BoodooGlobal;
@@ -253,6 +285,9 @@ export {
   TreeView,
   Carousel,
   clipboard,
+  initDataApi,
+  initRipple,
+  registerCustomElements,
   theme,
   a11y,
   FilterBar,
@@ -260,4 +295,3 @@ export {
   ColorPicker,
   BackToTop,
 };
-

@@ -29,7 +29,9 @@ console.log('Hint: run `node build/www-build.mjs` once before serving.');
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   // Prefer serving from www/ (deploy root), fall back to site/ for source docs
-  const docRoot = fs.existsSync(path.join(root, 'www')) ? path.join(root, 'www') : path.join(root, 'site');
+  const docRoot = fs.existsSync(path.join(root, 'www'))
+    ? path.join(root, 'www')
+    : path.join(root, 'site');
   if (urlPath === '/') urlPath = '/index.html';
   if (!path.extname(urlPath)) {
     // prettify doc routes
@@ -42,7 +44,9 @@ const server = http.createServer((req, res) => {
   }
   const file = path.join(docRoot, urlPath);
   if (!file.startsWith(root)) {
-    res.writeHead(403); res.end('Forbidden'); return;
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
   }
   fs.readFile(file, (err, data) => {
     if (err) {

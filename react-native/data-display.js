@@ -95,7 +95,10 @@ export function Badge({
       case 'secondary':
         return { bg: theme.colors.secondary, text: '#ffffff' };
       case 'soft':
-        return { bg: theme.dark ? 'rgba(124, 58, 237, 0.2)' : '#ede9fe', text: theme.colors.primary };
+        return {
+          bg: theme.dark ? 'rgba(124, 58, 237, 0.2)' : '#ede9fe',
+          text: theme.colors.primary,
+        };
       default:
         return { bg: theme.colors.primary, text: '#ffffff' };
     }
@@ -140,15 +143,7 @@ export function Badge({
 /**
  * Avatar
  */
-export function Avatar({
-  size = 48,
-  source,
-  title,
-  rounded = true,
-  style,
-  children,
-  ...props
-}) {
+export function Avatar({ size = 48, source, title, rounded = true, style, children, ...props }) {
   const theme = useTheme();
   const radius = rounded ? size / 2 : theme.radii.md;
 
@@ -156,11 +151,7 @@ export function Avatar({
     return (
       <Image
         source={source}
-        style={[
-          styles.avatarBase,
-          { width: size, height: size, borderRadius: radius },
-          style,
-        ]}
+        style={[styles.avatarBase, { width: size, height: size, borderRadius: radius }, style]}
       />
     );
   }
@@ -202,7 +193,14 @@ export function Avatar({
   );
 }
 
-Avatar.Text = function AvatarText({ label, title, size = 48, color = '#ffffff', style, labelStyle }) {
+Avatar.Text = function AvatarText({
+  label,
+  title,
+  size = 48,
+  color = '#ffffff',
+  style,
+  labelStyle,
+}) {
   const theme = useTheme();
   return (
     <View
@@ -217,13 +215,7 @@ Avatar.Text = function AvatarText({ label, title, size = 48, color = '#ffffff', 
         style,
       ]}
     >
-      <RNText
-        style={[
-          styles.avatarText,
-          { color, fontSize: size * 0.4 },
-          labelStyle,
-        ]}
-      >
+      <RNText style={[styles.avatarText, { color, fontSize: size * 0.4 }, labelStyle]}>
         {label || title}
       </RNText>
     </View>
@@ -276,14 +268,7 @@ Avatar.Image = function AvatarImage({ source, size = 48, style }) {
 /**
  * ChatBubble Primitive
  */
-export function ChatBubble({
-  message,
-  outgoing = false,
-  timestamp,
-  style,
-  textStyle,
-  ...props
-}) {
+export function ChatBubble({ message, outgoing = false, timestamp, style, textStyle, ...props }) {
   const theme = useTheme();
 
   return (
@@ -295,8 +280,8 @@ export function ChatBubble({
           backgroundColor: outgoing
             ? theme.colors.primary
             : theme.dark
-            ? theme.colors.surface
-            : '#f1f5f9',
+              ? theme.colors.surface
+              : '#f1f5f9',
           borderBottomRightRadius: outgoing ? 4 : 16,
           borderBottomLeftRadius: outgoing ? 16 : 4,
           borderWidth: outgoing ? 0 : 1,
@@ -360,9 +345,7 @@ export function AIStream({
       {...props}
     >
       <View style={styles.aiStreamRow}>
-        <RNText style={[styles.aiStreamText, { color: theme.colors.text }]}>
-          {children}
-        </RNText>
+        <RNText style={[styles.aiStreamText, { color: theme.colors.text }]}>{children}</RNText>
         {streaming ? (
           <View style={[styles.aiCursor, { backgroundColor: theme.colors.primary }]} />
         ) : null}
@@ -394,13 +377,7 @@ export function AIStream({
 /**
  * FilterPill Primitive
  */
-export function FilterPill({
-  label,
-  value,
-  onRemove,
-  style,
-  ...props
-}) {
+export function FilterPill({ label, value, onRemove, style, ...props }) {
   const theme = useTheme();
 
   return (
@@ -416,16 +393,18 @@ export function FilterPill({
       {...props}
     >
       {label ? (
-        <RNText style={[styles.filterPillLabel, { color: theme.colors.textSecondary || '#64748b' }]}>
+        <RNText
+          style={[styles.filterPillLabel, { color: theme.colors.textSecondary || '#64748b' }]}
+        >
           {label}:{' '}
         </RNText>
       ) : null}
-      <RNText style={[styles.filterPillValue, { color: theme.colors.text }]}>
-        {value}
-      </RNText>
+      <RNText style={[styles.filterPillValue, { color: theme.colors.text }]}>{value}</RNText>
       {onRemove ? (
         <TouchableOpacity onPress={onRemove} style={styles.filterPillClose}>
-          <RNText style={[styles.filterPillCloseText, { color: theme.colors.danger || '#e11d48' }]}>×</RNText>
+          <RNText style={[styles.filterPillCloseText, { color: theme.colors.danger || '#e11d48' }]}>
+            ×
+          </RNText>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -802,9 +781,7 @@ export function BarChart({
     >
       {title ? (
         <View style={styles.chartHeader}>
-          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
-            {title}
-          </RNText>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>{title}</RNText>
           {subtitle ? (
             <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
               {subtitle}
@@ -813,7 +790,12 @@ export function BarChart({
         </View>
       ) : null}
 
-      <View style={[styles.barChartTrack, { borderBottomColor: theme.colors.border, minHeight: height }]}>
+      <View
+        style={[
+          styles.barChartTrack,
+          { borderBottomColor: theme.colors.border, minHeight: height },
+        ]}
+      >
         {data.map((val, idx) => {
           const pct = Math.max(0.04, val / maxVal);
           const barH = pct * (height - 30);
@@ -883,11 +865,7 @@ export function EmptyState({
     <View style={[styles.emptyStateBase, containerDynamic, style]} {...props}>
       {icon ? (
         <View style={[styles.emptyStateIconCircle, iconCircleDynamic]}>
-          {typeof icon === 'string' ? (
-            <RNText style={styles.emptyStateGlyph}>{icon}</RNText>
-          ) : (
-            icon
-          )}
+          {typeof icon === 'string' ? <RNText style={styles.emptyStateGlyph}>{icon}</RNText> : icon}
         </View>
       ) : null}
       {title ? (
@@ -915,7 +893,9 @@ export function EmptyState({
       {action || secondaryAction ? (
         <View style={styles.emptyStateActionsRow}>
           {action ? <View style={styles.emptyStateActionItem}>{action}</View> : null}
-          {secondaryAction ? <View style={styles.emptyStateActionItem}>{secondaryAction}</View> : null}
+          {secondaryAction ? (
+            <View style={styles.emptyStateActionItem}>{secondaryAction}</View>
+          ) : null}
         </View>
       ) : null}
     </View>
@@ -1036,13 +1016,7 @@ export function Timeline({ children, style, ...props }) {
  * StepIndicator / StepperWizard
  * Multi-step form and wizard progress indicator.
  */
-export function StepIndicator({
-  steps = [],
-  currentStep = 0,
-  onStepPress,
-  style,
-  ...props
-}) {
+export function StepIndicator({ steps = [], currentStep = 0, onStepPress, style, ...props }) {
   const theme = useTheme();
 
   return (
@@ -1054,10 +1028,10 @@ export function StepIndicator({
           const isLast = idx === steps.length - 1;
 
           const circleColor = isCompleted
-            ? (theme.colors.success || '#1c9e50')
+            ? theme.colors.success || '#1c9e50'
             : isActive
-            ? theme.colors.primary
-            : theme.colors.border;
+              ? theme.colors.primary
+              : theme.colors.border;
 
           const textColor = isCompleted || isActive ? '#ffffff' : theme.colors.textMuted;
 
@@ -1067,10 +1041,10 @@ export function StepIndicator({
           };
 
           const lineDynamic = {
-            backgroundColor: isCompleted ? (theme.colors.success || '#1c9e50') : theme.colors.border,
+            backgroundColor: isCompleted ? theme.colors.success || '#1c9e50' : theme.colors.border,
           };
 
-          const label = typeof step === 'string' ? step : (step.title || step.label);
+          const label = typeof step === 'string' ? step : step.title || step.label;
 
           return (
             <React.Fragment key={idx}>
@@ -1114,15 +1088,7 @@ export const StepperWizard = StepIndicator;
 /**
  * Donut / Pie Progress Stat Chart (Pure React Native)
  */
-export function DonutChart({
-  title,
-  subtitle,
-  segments = [],
-  total,
-  size = 180,
-  style,
-  ...props
-}) {
+export function DonutChart({ title, subtitle, segments = [], total, size = 180, style, ...props }) {
   const theme = useTheme();
   const computedTotal = total || segments.reduce((acc, s) => acc + (s.value || 0), 0) || 1;
 
@@ -1140,9 +1106,7 @@ export function DonutChart({
     >
       {title ? (
         <View style={styles.chartHeader}>
-          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
-            {title}
-          </RNText>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>{title}</RNText>
           {subtitle ? (
             <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
               {subtitle}
@@ -1175,7 +1139,9 @@ export function DonutChart({
       <View style={styles.legendRow}>
         {segments.map((seg, idx) => (
           <View key={idx} style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: seg.color || theme.colors.primary }]} />
+            <View
+              style={[styles.legendDot, { backgroundColor: seg.color || theme.colors.primary }]}
+            />
             <RNText style={[styles.legendText, { color: theme.colors.text }]}>
               {seg.label}: {seg.value}
             </RNText>
@@ -1217,9 +1183,7 @@ export function LineChart({
     >
       {title ? (
         <View style={styles.chartHeader}>
-          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>
-            {title}
-          </RNText>
+          <RNText style={[styles.chartTitle, { color: theme.colors.text }]}>{title}</RNText>
           {subtitle ? (
             <RNText style={[styles.chartSubtitle, { color: theme.colors.textSecondary }]}>
               {subtitle}
@@ -1228,7 +1192,12 @@ export function LineChart({
         </View>
       ) : null}
 
-      <View style={[styles.barChartTrack, { borderBottomColor: theme.colors.border, minHeight: height, alignItems: 'flex-end' }]}>
+      <View
+        style={[
+          styles.barChartTrack,
+          { borderBottomColor: theme.colors.border, minHeight: height, alignItems: 'flex-end' },
+        ]}
+      >
         {data.map((val, idx) => {
           const pct = Math.max(0.08, val / maxVal);
           const dotBottom = pct * (height - 35);

@@ -2,13 +2,12 @@
 // BOODOO JS — OTP / PIN Code Input
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 
 export class OTP extends BaseComponent {
   static get NAME() {
     return 'otp';
   }
-
 
   constructor(element, config = {}) {
     super(element, config);
@@ -50,11 +49,14 @@ export class OTP extends BaseComponent {
         const pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
         if (!pasteData) return;
 
-        pasteData.split('').slice(0, this._inputs.length).forEach((char, i) => {
-          if (this._inputs[i]) {
-            this._inputs[i].value = char;
-          }
-        });
+        pasteData
+          .split('')
+          .slice(0, this._inputs.length)
+          .forEach((char, i) => {
+            if (this._inputs[i]) {
+              this._inputs[i].value = char;
+            }
+          });
 
         const nextIndex = Math.min(pasteData.length, this._inputs.length - 1);
         this._inputs[nextIndex].focus();
@@ -65,10 +67,12 @@ export class OTP extends BaseComponent {
 
   _triggerChange() {
     const value = this.getValue();
-    this._element.dispatchEvent(new CustomEvent('boodoo.otp.change', {
-      bubbles: true,
-      detail: { value, isComplete: value.length === this._inputs.length }
-    }));
+    this._element.dispatchEvent(
+      new CustomEvent('boodoo.otp.change', {
+        bubbles: true,
+        detail: { value, isComplete: value.length === this._inputs.length },
+      })
+    );
   }
 
   getValue() {
@@ -84,16 +88,12 @@ export class OTP extends BaseComponent {
   }
 
   clear() {
-    this._inputs.forEach((input) => { input.value = ''; });
+    this._inputs.forEach((input) => {
+      input.value = '';
+    });
     if (this._inputs[0]) this._inputs[0].focus();
     this._triggerChange();
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.form-otp, [data-boodoo="otp"]').forEach((el) => {
-      OTP.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(OTP, '.form-otp, [data-boodoo="otp"]');

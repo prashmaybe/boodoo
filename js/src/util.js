@@ -97,7 +97,11 @@ function handleGlobalDismiss(event) {
   const dismissType = toggler.getAttribute('data-boodoo-dismiss');
   for (const [component, onToggle] of dismissComponents.entries()) {
     const compName = (component.NAME || '').toLowerCase();
-    if (dismissType && dismissType !== compName && !toggler.closest(component.selector || `.${compName}`)) {
+    if (
+      dismissType &&
+      dismissType !== compName &&
+      !toggler.closest(component.selector || `.${compName}`)
+    ) {
       continue;
     }
     const selector = component.selector || `.${compName}`;
@@ -133,7 +137,10 @@ export const disableDismissTrigger = (component) => {
 export const DATA_PREFIX = 'boodoo';
 export const eventName = (suffix) => `${DATA_PREFIX}.${suffix}`;
 export const toType = (obj) =>
-  ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+  ({}).toString
+    .call(obj)
+    .match(/\s([a-zA-Z]+)/)[1]
+    .toLowerCase();
 
 // Simple throttling for scroll/resize handlers
 export const throttle = (fn, wait = 100) => {
@@ -143,7 +150,10 @@ export const throttle = (fn, wait = 100) => {
     const now = Date.now();
     const remaining = wait - (now - last);
     if (remaining <= 0) {
-      if (timer) { clearTimeout(timer); timer = null; }
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
       last = now;
       fn.apply(this, args);
     } else if (!timer) {

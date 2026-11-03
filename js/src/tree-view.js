@@ -2,13 +2,12 @@
 // BOODOO JS — Tree View Component
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 
 export class TreeView extends BaseComponent {
   static get NAME() {
     return 'treeview';
   }
-
 
   constructor(element, config = {}) {
     super(element, config);
@@ -51,14 +50,18 @@ export class TreeView extends BaseComponent {
     });
 
     this._element.addEventListener('keydown', (e) => {
-      const activeLi = document.activeElement ? document.activeElement.closest('li[role="treeitem"]') : null;
+      const activeLi = document.activeElement
+        ? document.activeElement.closest('li[role="treeitem"]')
+        : null;
       if (!activeLi || !this._element.contains(activeLi)) return;
 
-      const visibleItems = Array.from(this._element.querySelectorAll('li[role="treeitem"]')).filter((li) => {
-        const parentUl = li.parentElement.closest('ul');
-        if (!parentUl || parentUl === this._element) return true;
-        return parentUl.style.display !== 'none';
-      });
+      const visibleItems = Array.from(this._element.querySelectorAll('li[role="treeitem"]')).filter(
+        (li) => {
+          const parentUl = li.parentElement.closest('ul');
+          if (!parentUl || parentUl === this._element) return true;
+          return parentUl.style.display !== 'none';
+        }
+      );
 
       const currentIndex = visibleItems.indexOf(activeLi);
       if (currentIndex === -1) return;
@@ -101,10 +104,4 @@ export class TreeView extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.tree-view, [data-boodoo="tree"]').forEach((el) => {
-      TreeView.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(TreeView, '.tree-view, [data-boodoo="tree"]');

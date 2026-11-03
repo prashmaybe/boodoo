@@ -1,5 +1,11 @@
-import type { ComponentType, ReactNode } from 'react';
-import type { BoodooColorTokens, BoodooSpacingScale, BoodooRadiiScale, BoodooTypographyTokens, BoodooShadowTokens } from '../tokens/index.d.ts';
+import type { ComponentType, ReactNode, ReactElement } from 'react';
+import type {
+  BoodooColorTokens,
+  BoodooSpacingScale,
+  BoodooRadiiScale,
+  BoodooTypographyTokens,
+  BoodooShadowTokens,
+} from '../tokens';
 
 export interface BoodooComponentSpacing {
   baseSpacer?: number;
@@ -27,7 +33,7 @@ export interface BoodooComponentSpacing {
 
 export interface BoodooTheme {
   dark: boolean;
-  colors: Record<string, string>;
+  colors: BoodooColorTokens & Record<string, string>;
   spacing: BoodooSpacingScale & Record<string, any>;
   componentSpacing: BoodooComponentSpacing;
   radii: BoodooRadiiScale;
@@ -35,7 +41,10 @@ export interface BoodooTheme {
   shadows: BoodooShadowTokens;
 }
 
-export declare const createComponentSpacing: (baseSpacer?: number, overrides?: Partial<BoodooComponentSpacing>) => BoodooComponentSpacing;
+export declare const createComponentSpacing: (
+  baseSpacer?: number,
+  overrides?: Partial<BoodooComponentSpacing>
+) => BoodooComponentSpacing;
 export declare const defaultComponentSpacing: BoodooComponentSpacing;
 
 export declare const defaultLightTheme: BoodooTheme;
@@ -47,7 +56,7 @@ export interface BoodooProviderProps {
   children: ReactNode;
 }
 
-export declare function BoodooProvider(props: BoodooProviderProps): JSX.Element;
+export declare function BoodooProvider(props: BoodooProviderProps): ReactElement;
 export declare function useTheme(): BoodooTheme;
 
 export declare const boodooPaperLightTheme: Record<string, unknown>;
@@ -81,6 +90,7 @@ export declare const Divider: ComponentType<any>;
 export declare const Separator: ComponentType<any>;
 export declare const PricingCard: ComponentType<any>;
 export declare const Tile: ComponentType<any>;
+export declare const StatWidget: ComponentType<any>;
 export declare const TextInput: ComponentType<any>;
 export declare const Input: ComponentType<any>;
 export declare const TextField: ComponentType<any>;
@@ -186,4 +196,3 @@ export declare const Accordion: ComponentType<any> & {
 export declare const AccordionItem: ComponentType<any>;
 export declare const SwipeActionItem: ComponentType<any>;
 export declare const SwipeableRow: ComponentType<any>;
-

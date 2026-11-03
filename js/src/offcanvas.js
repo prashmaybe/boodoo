@@ -2,12 +2,22 @@
 // Slide-in panel (top/end/bottom/start) with backdrop.
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent, getTransitionDuration, emulateTransitionEnd, reflow } from './util.js';
+import {
+  getElementFromSelector,
+  triggerEvent,
+  getTransitionDuration,
+  emulateTransitionEnd,
+  reflow,
+} from './util.js';
 
 export class Offcanvas extends BaseComponent {
-  static get NAME() { return 'offcanvas'; }
+  static get NAME() {
+    return 'offcanvas';
+  }
 
-  static get selector() { return '.offcanvas'; }
+  static get selector() {
+    return '.offcanvas';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -42,7 +52,9 @@ export class Offcanvas extends BaseComponent {
     this._element.classList.remove('showing');
 
     this._createBackdrop();
-    setTimeout(() => {
+    this._addKeydownListener();
+    this._showTimeout = setTimeout(() => {
+      if (!this._element) return;
       const focusable = this._element.querySelector('input, button, [tabindex]');
       if (focusable) focusable.focus();
       triggerEvent(this._element, 'boodoo.shown.offcanvas');
@@ -53,16 +65,21 @@ export class Offcanvas extends BaseComponent {
     if (!this._isShown) return;
     if (!triggerEvent(this._element, 'boodoo.hide.offcanvas')) return;
     this._isShown = false;
+    this._removeKeydownListener();
 
     this._element.classList.add('hiding');
     this._element.classList.remove('show');
     const duration = getTransitionDuration(this._element);
     emulateTransitionEnd(this._element, duration).then(() => {
-      this._element.classList.remove('hiding');
+      if (this._element) {
+        this._element.classList.remove('hiding');
+        triggerEvent(this._element, 'boodoo.hidden.offcanvas');
+      }
       this._removeBackdrop();
-      document.body.classList.remove('modal-open', 'offcanvas-open');
-      document.body.style.overflow = '';
-      triggerEvent(this._element, 'boodoo.hidden.offcanvas');
+      if (typeof document !== 'undefined' && document.body) {
+        document.body.classList.remove('modal-open', 'offcanvas-open');
+        document.body.style.overflow = '';
+      }
     });
   }
 
@@ -102,6 +119,10 @@ export class Offcanvas extends BaseComponent {
   }
 
   dispose() {
+    if (this._showTimeout) {
+      clearTimeout(this._showTimeout);
+      this._showTimeout = null;
+    }
     this._removeKeydownListener();
     this._removeBackdrop();
     if (this._element) {
@@ -119,18 +140,22 @@ export class Offcanvas extends BaseComponent {
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-boodoo-toggle="offcanvas"]');
-    if (source) {
-      event.preventDefault();
-      Offcanvas.toggleVia(source);
-    }
-    const closer = event.target.closest('[data-boodoo-dismiss="offcanvas"]');
-    if (closer) {
-      const offcanvas = Offcanvas.getInstance(closer.closest('.offcanvas'));
-      if (offcanvas) offcanvas.hide();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const source = event.target.closest('[data-boodoo-toggle="offcanvas"]');
+      if (source) {
+        event.preventDefault();
+        Offcanvas.toggleVia(source);
+      }
+      const closer = event.target.closest('[data-boodoo-dismiss="offcanvas"]');
+      if (closer) {
+        const offcanvas = Offcanvas.getInstance(closer.closest('.offcanvas'));
+        if (offcanvas) offcanvas.hide();
+      }
+    },
+    true
+  );
 }
 
 export default Offcanvas;

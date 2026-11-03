@@ -88,7 +88,7 @@ export function getArchiveCdnUrls(version) {
     starterVue: `${cdnBase}/boodoo-vue-vite-starter.zip`,
     starterNext: `${cdnBase}/boodoo-nextjs-starter.zip`,
     starterHtml: `${cdnBase}/boodoo-html-starter.zip`,
-    starterReactNative: `${cdnBase}/boodoo-react-native-starter.zip`
+    starterReactNative: `${cdnBase}/boodoo-react-native-starter.zip`,
   };
 }
 
@@ -148,7 +148,8 @@ function renderSidebar(sections, activeRoute, titleMap) {
     parts.push(`<h6 class="docs-nav-section">${section.title}</h6>`);
     parts.push(`<ul class="docs-nav-list">`);
     for (const item of items) {
-      const href = item.route === 'index' ? prefix + '../index.html' : prefix + item.route + '.html';
+      const href =
+        item.route === 'index' ? prefix + '../index.html' : prefix + item.route + '.html';
       const active = item.route === activeRoute ? ' class="active"' : '';
       parts.push(`<li><a href="${href}"${active}>${titleMap[item.route]}</a></li>`);
     }
@@ -190,11 +191,13 @@ function prevNext(sections, activeRoute, titleMap) {
   const prev = idx > 0 ? flat[idx - 1] : null;
   const next = idx < flat.length - 1 ? flat[idx + 1] : null;
   const link = (item) =>
-    item ? `
+    item
+      ? `
     <div class="docs-pager-item">
       <span class="docs-pager-label">${item.section}</span>
       <a class="docs-pager-link" href="${item.route === 'index' ? prefix + '../index.html' : prefix + item.route + '.html'}">${item.title}</a>
-    </div>` : '<div></div>';
+    </div>`
+      : '<div></div>';
   return `
   <nav class="docs-pager" aria-label="Previous and next navigation">
     ${link(prev)}
@@ -257,10 +260,13 @@ function slugify(text) {
 const allPages = [];
 for (const s of nav) for (const p of s.pages) allPages.push(p);
 const fullTitleMap = {};
-allPages.forEach((p) => { fullTitleMap[p.route] = p.title; });
+allPages.forEach((p) => {
+  fullTitleMap[p.route] = p.title;
+});
 for (const fileDef of walk(srcDir)) {
   const data = parseFrontmatter(fs.readFileSync(fileDef.full, 'utf8'));
-  fullTitleMap[path.posix.join(path.relative(srcDir, fileDef.full)).replace(/\.html$/, '')] = data.meta.title;
+  fullTitleMap[path.posix.join(path.relative(srcDir, fileDef.full)).replace(/\.html$/, '')] =
+    data.meta.title;
 }
 
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
@@ -429,13 +435,18 @@ if (fs.existsSync(searchJsFile)) {
   const searchContent = fs.readFileSync(searchJsFile, 'utf8');
   const catalogMatch = searchContent.match(/const CATALOG = (\[[\s\S]*?\n  \];)/);
   if (catalogMatch) {
-    const catalog = (new Function(`return ${catalogMatch[1]}`))();
+    const catalog = new Function(`return ${catalogMatch[1]}`)();
     const catalogRoutes = new Set(catalog.map((c) => c.route));
     const missing = files.filter((f) => !catalogRoutes.has(f.route));
     if (missing.length) {
-      console.warn(`⚠️ Warning: ${missing.length} docs pages missing from search catalog:`, missing.map((f) => f.route).join(', '));
+      console.warn(
+        `⚠️ Warning: ${missing.length} docs pages missing from search catalog:`,
+        missing.map((f) => f.route).join(', ')
+      );
     } else {
-      console.log(`✅ Verified search catalog contains all ${catalogRoutes.size} documentation pages`);
+      console.log(
+        `✅ Verified search catalog contains all ${catalogRoutes.size} documentation pages`
+      );
     }
   }
 }

@@ -4,7 +4,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent, element, elements } from './util.js';
+import { triggerEvent } from './util.js';
 
 export class Lightbox extends BaseComponent {
   static get NAME() {
@@ -88,9 +88,15 @@ export class Lightbox extends BaseComponent {
   }
 
   _findGallery() {
-    const galleryName = this._element.getAttribute('data-boodoo-gallery') || this._element.getAttribute('data-gallery');
+    const galleryName =
+      this._element.getAttribute('data-boodoo-gallery') ||
+      this._element.getAttribute('data-gallery');
     if (galleryName) {
-      this._galleryItems = Array.from(document.querySelectorAll(`[data-boodoo-gallery="${galleryName}"], [data-gallery="${galleryName}"]`));
+      this._galleryItems = Array.from(
+        document.querySelectorAll(
+          `[data-boodoo-gallery="${galleryName}"], [data-gallery="${galleryName}"]`
+        )
+      );
       this._currentIndex = this._galleryItems.indexOf(this._element);
     } else {
       this._galleryItems = [this._element];
@@ -123,7 +129,8 @@ export class Lightbox extends BaseComponent {
 
   prev() {
     if (this._galleryItems.length <= 1) return;
-    this._currentIndex = (this._currentIndex - 1 + this._galleryItems.length) % this._galleryItems.length;
+    this._currentIndex =
+      (this._currentIndex - 1 + this._galleryItems.length) % this._galleryItems.length;
     this._updateMedia();
   }
 
@@ -140,7 +147,11 @@ export class Lightbox extends BaseComponent {
   _updateMedia() {
     const item = this._galleryItems[this._currentIndex];
     const src = item.getAttribute('href') || item.getAttribute('data-src') || item.src || '';
-    const captionText = item.getAttribute('data-caption') || item.getAttribute('alt') || item.getAttribute('title') || '';
+    const captionText =
+      item.getAttribute('data-caption') ||
+      item.getAttribute('alt') ||
+      item.getAttribute('title') ||
+      '';
 
     this._activeImg.src = src;
     this._caption.textContent = captionText;

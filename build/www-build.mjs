@@ -119,8 +119,8 @@ indexContent = indexContent
   .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
-copy(path.join(root, 'site', 'docs'), 'docs');                   // Docs pages
-copy(path.join(root, 'site', 'examples'), 'examples');           // Examples & templates
+copy(path.join(root, 'site', 'docs'), 'docs'); // Docs pages
+copy(path.join(root, 'site', 'examples'), 'examples'); // Examples & templates
 // Copy archives metadata (JSON manifest only, exclude local zip files)
 const archivesOutDir = path.join(www, 'archives');
 fs.mkdirSync(archivesOutDir, { recursive: true });
@@ -128,8 +128,8 @@ const manifestFile = path.join(root, 'site', 'archives', 'archives.json');
 if (fs.existsSync(manifestFile)) {
   fs.copyFileSync(manifestFile, path.join(archivesOutDir, 'archives.json'));
 }
-copy(path.join(root, 'site', 'assets'), 'assets');               // docs.css & brand assets
-copy(path.join(root, 'dist'), 'dist');                           // Compiled framework dist
+copy(path.join(root, 'site', 'assets'), 'assets'); // docs.css & brand assets
+copy(path.join(root, 'dist'), 'dist'); // Compiled framework dist
 
 // Also inject dynamic version and archive CDN URLs into all example HTML pages
 function injectArchiveUrlsInDir(dirPath) {
@@ -158,7 +158,7 @@ function injectArchiveUrlsInDir(dirPath) {
   }
 }
 injectArchiveUrlsInDir(path.join(www, 'examples'));
-copy(path.join(root, 'site', 'data'), 'assets/data');            // Navigation data
+copy(path.join(root, 'site', 'data'), 'assets/data'); // Navigation data
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');
 copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
@@ -198,4 +198,6 @@ let total = 0;
   }
 })(www);
 
-console.log(`✅ Build complete! www/ is ready to deploy (${total} files). Upload contents to static host.`);
+console.log(
+  `✅ Build complete! www/ is ready to deploy (${total} files). Upload contents to static host.`
+);

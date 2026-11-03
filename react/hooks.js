@@ -4,7 +4,7 @@
 // Accordions, and Comboboxes in Next.js, Remix, Vite, and React apps.
 // =====================================================================
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 /**
  * Headless disclosure hook (Modal, Drawer, Dialog, Offcanvas)

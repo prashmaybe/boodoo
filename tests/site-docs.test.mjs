@@ -191,6 +191,11 @@ test('Official Haticons integration, SCSS/LESS parity, and docs verification', (
   assert.ok(readme.includes('Haticons'), 'README.md must document Haticons support');
   assert.ok(readme.includes('(https://haticons.com/)'), 'README.md must link to haticons.com');
   assert.ok(readme.includes('569+'), 'README.md must state official 569+ icon count');
+
+  // 7. Verify production readiness stat-widget icons use valid Haticons classes
+  const prodReadinessSrc = readFileSync(resolve(rootDir, 'site/src/about/production-readiness.html'), 'utf8');
+  assert.ok(!prodReadinessSrc.includes('hi-award'), 'production-readiness.html must not contain non-existent hi-award icon');
+  assert.ok(prodReadinessSrc.includes('hi-document'), 'production-readiness.html Software License must use hi-document icon');
 });
 
 test('Sitewide documentation search catalog completeness and route integrity', () => {

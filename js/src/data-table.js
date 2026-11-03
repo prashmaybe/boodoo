@@ -3,7 +3,7 @@
 // Sortable columns, select-all checkboxes, expandable row details.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class DataTable extends BaseComponent {
@@ -13,7 +13,9 @@ export class DataTable extends BaseComponent {
 
   constructor(element, config = {}) {
     super(element, config);
-    this._table = this._element.matches('table') ? this._element : this._element.querySelector('table');
+    this._table = this._element.matches('table')
+      ? this._element
+      : this._element.querySelector('table');
     if (!this._table) return;
 
     this._sortColIndex = null;
@@ -23,19 +25,26 @@ export class DataTable extends BaseComponent {
 
   _bindEvents() {
     // 1. Sortable column headers
+    this._headerHandlers = [];
     const sortHeaders = this._table.querySelectorAll('thead th.sortable');
-    sortHeaders.forEach((th, idx) => {
-      th.addEventListener('click', () => {
+    sortHeaders.forEach((th) => {
+      const handler = () => {
         this.sortBy(th);
-      });
+      };
+      th.addEventListener('click', handler);
+      this._headerHandlers.push({ th, handler });
     });
 
     // 2. Select all checkbox
-    const selectAll = this._table.querySelector('thead th.data-table-select-col input[type="checkbox"]');
-    if (selectAll) {
-      selectAll.addEventListener('change', (e) => {
+    this._selectAll = this._table.querySelector(
+      'thead th.data-table-select-col input[type="checkbox"]'
+    );
+    if (this._selectAll) {
+      this._onSelectAllChange = (e) => {
         const checked = e.target.checked;
-        const rowChecks = this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]');
+        const rowChecks = this._table.querySelectorAll(
+          'tbody td.data-table-select-col input[type="checkbox"]'
+        );
         rowChecks.forEach((cb) => {
           cb.checked = checked;
           const tr = cb.closest('tr');
@@ -44,21 +53,24 @@ export class DataTable extends BaseComponent {
         triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
           selectedCount: checked ? rowChecks.length : 0,
         });
-      });
+      };
+      this._selectAll.addEventListener('change', this._onSelectAllChange);
     }
 
     // 3. Individual row checkbox change
-    this._table.addEventListener('change', (e) => {
+    this._onTableChange = (e) => {
       if (e.target.matches('tbody td.data-table-select-col input[type="checkbox"]')) {
         const tr = e.target.closest('tr');
         if (tr) tr.classList.toggle('selected', e.target.checked);
 
         // Update selectAll indeterminate / checked
-        if (selectAll) {
-          const rowChecks = Array.from(this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]'));
+        if (this._selectAll) {
+          const rowChecks = Array.from(
+            this._table.querySelectorAll('tbody td.data-table-select-col input[type="checkbox"]')
+          );
           const selected = rowChecks.filter((c) => c.checked);
-          selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
-          selectAll.indeterminate = selected.length > 0 && selected.length < rowChecks.length;
+          this._selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
+          this._selectAll.indeterminate = selected.length > 0 && selected.length < rowChecks.length;
         }
 
         triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
@@ -66,11 +78,14 @@ export class DataTable extends BaseComponent {
           checked: e.target.checked,
         });
       }
-    });
+    };
+    this._table.addEventListener('change', this._onTableChange);
 
     // 4. Expandable rows
-    this._table.addEventListener('click', (e) => {
-      const toggle = e.target.closest('[data-boodoo-toggle="row-detail"], .data-table-expandable-row');
+    this._onTableClick = (e) => {
+      const toggle = e.target.closest(
+        '[data-boodoo-toggle="row-detail"], .data-table-expandable-row'
+      );
       if (toggle && !e.target.matches('input[type="checkbox"], a, button')) {
         const row = toggle.closest('tr');
         const detailRow = row ? row.nextElementSibling : null;
@@ -81,7 +96,38 @@ export class DataTable extends BaseComponent {
           triggerEvent(this._element, 'boodoo.datatable.rowToggle', { row, detailRow, isShown });
         }
       }
-    });
+    };
+    this._table.addEventListener('click', this._onTableClick);
+  }
+
+  dispose() {
+    if (this._headerHandlers) {
+      this._headerHandlers.forEach(({ th, handler }) => {
+        if (typeof th.removeEventListener === 'function') {
+          th.removeEventListener('click', handler);
+        }
+      });
+      this._headerHandlers = [];
+    }
+    if (this._selectAll && this._onSelectAllChange) {
+      if (typeof this._selectAll.removeEventListener === 'function') {
+        this._selectAll.removeEventListener('change', this._onSelectAllChange);
+      }
+      this._selectAll = null;
+      this._onSelectAllChange = null;
+    }
+    if (this._table) {
+      if (this._onTableChange && typeof this._table.removeEventListener === 'function') {
+        this._table.removeEventListener('change', this._onTableChange);
+        this._onTableChange = null;
+      }
+      if (this._onTableClick && typeof this._table.removeEventListener === 'function') {
+        this._table.removeEventListener('click', this._onTableClick);
+        this._onTableClick = null;
+      }
+      this._table = null;
+    }
+    super.dispose();
   }
 
   sortBy(headerEl) {
@@ -103,14 +149,31 @@ export class DataTable extends BaseComponent {
     headerEl.classList.add(this._sortAsc ? 'sort-asc' : 'sort-desc');
 
     const rows = Array.from(tbody.querySelectorAll('tr:not(.data-table-row-detail)'));
+
+    // Capture companion detail rows before any DOM reordering
+    const rowDetails = new Map();
+    rows.forEach((row) => {
+      const details = [];
+      let next = row.nextElementSibling;
+      while (next && next.classList && next.classList.contains('data-table-row-detail')) {
+        details.push(next);
+        next = next.nextElementSibling;
+      }
+      if (details.length > 0) {
+        rowDetails.set(row, details);
+      }
+    });
+
     rows.sort((a, b) => {
       const aText = (a.children[colIndex] ? a.children[colIndex].innerText : '').trim();
       const bText = (b.children[colIndex] ? b.children[colIndex].innerText : '').trim();
 
-      const aNum = Number(aText.replace(/[^0-9.-]+/g, ''));
-      const bNum = Number(bText.replace(/[^0-9.-]+/g, ''));
+      const aClean = aText.replace(/[^0-9.-]+/g, '');
+      const bClean = bText.replace(/[^0-9.-]+/g, '');
+      const aNum = aClean !== '' ? Number(aClean) : NaN;
+      const bNum = bClean !== '' ? Number(bClean) : NaN;
 
-      if (!isNaN(aNum) && !isNaN(bNum) && aText !== '' && bText !== '') {
+      if (!isNaN(aNum) && !isNaN(bNum)) {
         return this._sortAsc ? aNum - bNum : bNum - aNum;
       }
       return this._sortAsc
@@ -119,10 +182,10 @@ export class DataTable extends BaseComponent {
     });
 
     rows.forEach((row) => {
+      const details = rowDetails.get(row);
       tbody.appendChild(row);
-      const detailRow = row.nextElementSibling;
-      if (detailRow && detailRow.classList.contains('data-table-row-detail')) {
-        tbody.appendChild(detailRow);
+      if (details) {
+        details.forEach((d) => tbody.appendChild(d));
       }
     });
 
@@ -133,10 +196,4 @@ export class DataTable extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.data-table-wrapper, table.data-table, [data-boodoo="datatable"]').forEach((el) => {
-      DataTable.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(DataTable, '.data-table-wrapper, table.data-table, [data-boodoo="datatable"]');

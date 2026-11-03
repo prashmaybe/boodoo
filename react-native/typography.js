@@ -42,7 +42,12 @@ export function Text({
         return { fontSize: theme.typography.sizes.xl, fontWeight: '600', lineHeight: 26 };
       case 'titleMedium':
       case 'lead':
-        return { fontSize: theme.typography.sizes.lg, fontWeight: '500', lineHeight: 26, color: theme.colors.textMuted };
+        return {
+          fontSize: theme.typography.sizes.lg,
+          fontWeight: '500',
+          lineHeight: 26,
+          color: theme.colors.textMuted,
+        };
       case 'bodySmall':
       case 'c1':
       case 'muted':
@@ -57,14 +62,7 @@ export function Text({
   };
 
   return (
-    <RNText
-      style={[
-        { color: color || theme.colors.text },
-        getVariantStyle(),
-        style,
-      ]}
-      {...props}
-    >
+    <RNText style={[{ color: color || theme.colors.text }, getVariantStyle(), style]} {...props}>
       {children}
     </RNText>
   );

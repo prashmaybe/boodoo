@@ -2,7 +2,13 @@
 // Lightweight positioning (no Popper dependency) with arrow support.
 
 import { BaseComponent } from './base-component.js';
-import { triggerEvent, getTransitionDuration, emulateTransitionEnd, throttle, sanitizeHtml } from './util.js';
+import {
+  triggerEvent,
+  getTransitionDuration,
+  emulateTransitionEnd,
+  throttle,
+  sanitizeHtml,
+} from './util.js';
 
 const ARROW_SHIFT = 8;
 
@@ -15,6 +21,7 @@ class AbstractTrigger extends BaseComponent {
     this._popper = null;
     this._hideTimeout = null;
     this._showTimeout = null;
+    this._originalTitle = this._element.getAttribute('title') || '';
     this._bound = {
       show: this.show.bind(this),
       hide: this.hide.bind(this),
@@ -94,8 +101,15 @@ class AbstractTrigger extends BaseComponent {
 
   _getTitle() {
     const element = this._element;
-    const title = this._config.title || element.getAttribute('data-boodoo-title') || element.getAttribute('title') || '';
-    if (element.title === title && element.removeAttribute) element.removeAttribute('title');
+    if (element && element.hasAttribute && element.hasAttribute('title')) {
+      this._originalTitle = element.getAttribute('title') || this._originalTitle;
+      element.removeAttribute('title');
+    }
+    const title =
+      this._config.title ||
+      (element && element.getAttribute ? element.getAttribute('data-boodoo-title') : null) ||
+      this._originalTitle ||
+      '';
     return title;
   }
 
@@ -151,6 +165,9 @@ class AbstractTrigger extends BaseComponent {
       this._tip = null;
       this._isShown = false;
       this._popper = null;
+      if (this._originalTitle && this._element && !this._element.hasAttribute('title')) {
+        this._element.setAttribute('title', this._originalTitle);
+      }
       triggerEvent(this._element, 'boodoo.hidden.' + this.constructor.NAME);
     });
   }
@@ -166,7 +183,8 @@ class AbstractTrigger extends BaseComponent {
       this._tip = document.createElement('div');
       this._tip.className = 'popover';
       this._tip.setAttribute('role', 'tooltip');
-      this._tip.innerHTML = '<div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div>';
+      this._tip.innerHTML =
+        '<div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div>';
     }
     this.setContent(this._tip);
     this._tip.classList.add('bs-popover-auto', 'bs-tooltip-auto');
@@ -187,38 +205,61 @@ class AbstractTrigger extends BaseComponent {
     // Resolve 'auto' to a concrete placement
     const spaceTop = rect.top;
     const spaceBottom = window.innerHeight - rect.bottom;
-    const spaceStart = rect.left;
-    const spaceEnd = window.innerWidth - rect.right;
+
     let resolved = placement;
     if (placement === 'auto' || placement === 'auto-start' || placement === 'auto-end') {
-      resolved = spaceTop >= spaceBottom ? (rect.left + rect.width / 2 < window.innerWidth / 2 ? (placement.includes('start') ? 'bottom-start' : 'bottom') : (placement.includes('end') ? 'bottom-end' : 'bottom')) : (rect.left + rect.width / 2 < window.innerWidth / 2 ? (placement.includes('start') ? 'top-start' : 'top') : (placement.includes('end') ? 'top-end' : 'top'));
+      resolved =
+        spaceTop >= spaceBottom
+          ? rect.left + rect.width / 2 < window.innerWidth / 2
+            ? placement.includes('start')
+              ? 'bottom-start'
+              : 'bottom'
+            : placement.includes('end')
+              ? 'bottom-end'
+              : 'bottom'
+          : rect.left + rect.width / 2 < window.innerWidth / 2
+            ? placement.includes('start')
+              ? 'top-start'
+              : 'top'
+            : placement.includes('end')
+              ? 'top-end'
+              : 'top';
     }
 
     const tipWidth = tip.offsetWidth;
     const tipHeight = tip.offsetHeight;
-    const gap = (offset[1] || 6);
-    let left = 0, top = 0;
+    const gap = offset[1] || 6;
+    let left = 0,
+      top = 0;
 
     switch (resolved) {
-      case 'top': case 'top-start': case 'top-end':
+      case 'top':
+      case 'top-start':
+      case 'top-end':
         left = rect.left + rect.width / 2 - tipWidth / 2;
         top = rect.top - tipHeight - gap;
         if (resolved === 'top-start') left = rect.left;
         if (resolved === 'top-end') left = rect.right - tipWidth;
         break;
-      case 'bottom': case 'bottom-start': case 'bottom-end':
+      case 'bottom':
+      case 'bottom-start':
+      case 'bottom-end':
         left = rect.left + rect.width / 2 - tipWidth / 2;
         top = rect.bottom + gap;
         if (resolved === 'bottom-start') left = rect.left;
         if (resolved === 'bottom-end') left = rect.right - tipWidth;
         break;
-      case 'start': case 'start-top': case 'start-bottom':
+      case 'start':
+      case 'start-top':
+      case 'start-bottom':
         left = rect.left - tipWidth - gap;
         top = rect.top + rect.height / 2 - tipHeight / 2;
         if (resolved === 'start-top') top = rect.top;
         if (resolved === 'start-bottom') top = rect.bottom - tipHeight;
         break;
-      case 'end': case 'end-top': case 'end-bottom':
+      case 'end':
+      case 'end-top':
+      case 'end-bottom':
         left = rect.right + gap;
         top = rect.top + rect.height / 2 - tipHeight / 2;
         if (resolved === 'end-top') top = rect.top;
@@ -230,8 +271,8 @@ class AbstractTrigger extends BaseComponent {
     left = Math.max(8, Math.min(window.innerWidth - tipWidth - 8, left));
     top = Math.max(8, Math.min(window.innerHeight - tipHeight - 8, top));
 
-    tip.style.left = (left + scrollX) + 'px';
-    tip.style.top = (top + scrollY) + 'px';
+    tip.style.left = left + scrollX + 'px';
+    tip.style.top = top + scrollY + 'px';
     tip.setAttribute('data-popper-placement', resolved);
 
     // Position the arrow
@@ -242,25 +283,35 @@ class AbstractTrigger extends BaseComponent {
     arrow.style.margin = '0';
 
     // Reset arrow classes
-    tip.className = tip.className.replace(/\bbs-(tooltip|popover)-(top|end|bottom|start)[^\s]*/g, '');
+    tip.className = tip.className.replace(
+      /\bbs-(tooltip|popover)-(top|end|bottom|start)[^\s]*/g,
+      ''
+    );
     tip.className += ' bs-' + prefix + '-' + resolved.split('-')[0];
 
     if (resolved.startsWith('top') || resolved.startsWith('bottom')) {
-      arrow.style.left = (rect.left + rect.width / 2 - left - scrollX) + 'px';
+      arrow.style.left = rect.left + rect.width / 2 - left - scrollX + 'px';
       arrow.style.top = 'auto';
       arrow.style.right = 'auto';
-      if (resolved.includes('-start')) arrow.style.left = (rect.left - left - scrollX + ARROW_SHIFT) + 'px';
-      else if (resolved.includes('-end')) arrow.style.right = (left + tipWidth - rect.right - scrollX + ARROW_SHIFT) + 'px';
+      if (resolved.includes('-start'))
+        arrow.style.left = rect.left - left - scrollX + ARROW_SHIFT + 'px';
+      else if (resolved.includes('-end'))
+        arrow.style.right = left + tipWidth - rect.right - scrollX + ARROW_SHIFT + 'px';
     } else {
-      arrow.style.top = (rect.top + rect.height / 2 - top - scrollY) + 'px';
+      arrow.style.top = rect.top + rect.height / 2 - top - scrollY + 'px';
       arrow.style.left = 'auto';
       arrow.style.bottom = 'auto';
-      if (resolved.includes('-top')) arrow.style.top = (rect.top - top - scrollY + ARROW_SHIFT) + 'px';
-      else if (resolved.includes('-bottom')) arrow.style.bottom = (top + tipHeight - rect.bottom - scrollY + ARROW_SHIFT) + 'px';
+      if (resolved.includes('-top'))
+        arrow.style.top = rect.top - top - scrollY + ARROW_SHIFT + 'px';
+      else if (resolved.includes('-bottom'))
+        arrow.style.bottom = top + tipHeight - rect.bottom - scrollY + ARROW_SHIFT + 'px';
     }
   }
 
   dispose() {
+    if (this._originalTitle && this._element && !this._element.hasAttribute('title')) {
+      this._element.setAttribute('title', this._originalTitle);
+    }
     if (this._tip) {
       this._tip.parentNode && this._tip.parentNode.removeChild(this._tip);
       this._tip = null;
@@ -282,33 +333,45 @@ class AbstractTrigger extends BaseComponent {
 
 // ---- Tooltip ----
 export class Tooltip extends AbstractTrigger {
-  static get NAME() { return 'tooltip'; }
-  static get selector() { return '[data-boodoo-toggle="tooltip"]'; }
+  static get NAME() {
+    return 'tooltip';
+  }
+  static get selector() {
+    return '[data-boodoo-toggle="tooltip"]';
+  }
 }
 
 // ---- Popover ----
 export class Popover extends AbstractTrigger {
-  static get NAME() { return 'popover'; }
-  static get selector() { return '[data-boodoo-toggle="popover"]'; }
+  static get NAME() {
+    return 'popover';
+  }
+  static get selector() {
+    return '[data-boodoo-toggle="popover"]';
+  }
 }
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const tooltipToggler = event.target.closest(Tooltip.selector);
-    if (tooltipToggler) {
-      event.preventDefault();
-      const tt = Tooltip.getOrCreateInstance(tooltipToggler);
-      tt.toggle();
-      return;
-    }
-    const popoverToggler = event.target.closest(Popover.selector);
-    if (popoverToggler) {
-      event.preventDefault();
-      const pp = Popover.getOrCreateInstance(popoverToggler);
-      pp.toggle();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const tooltipToggler = event.target.closest(Tooltip.selector);
+      if (tooltipToggler) {
+        event.preventDefault();
+        const tt = Tooltip.getOrCreateInstance(tooltipToggler);
+        tt.toggle();
+        return;
+      }
+      const popoverToggler = event.target.closest(Popover.selector);
+      if (popoverToggler) {
+        event.preventDefault();
+        const pp = Popover.getOrCreateInstance(popoverToggler);
+        pp.toggle();
+      }
+    },
+    true
+  );
 }
 
 // Auto-init hover/focus triggers from data attributes

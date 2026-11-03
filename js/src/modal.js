@@ -2,12 +2,22 @@
 // Modal dialog with backdrop, Escape/backdrop dismissal, scroll locking.
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent, getTransitionDuration, emulateTransitionEnd, reflow } from './util.js';
+import {
+  getElementFromSelector,
+  triggerEvent,
+  getTransitionDuration,
+  emulateTransitionEnd,
+  reflow,
+} from './util.js';
 
 export class Modal extends BaseComponent {
-  static get NAME() { return 'modal'; }
+  static get NAME() {
+    return 'modal';
+  }
 
-  static get selector() { return '.modal'; }
+  static get selector() {
+    return '.modal';
+  }
 
   constructor(target, config = {}) {
     super(target, config);
@@ -191,7 +201,8 @@ export class Modal extends BaseComponent {
 
   _scrollBarWidth() {
     const scrollDiv = document.createElement('div');
-    scrollDiv.style.cssText = 'width:100px;height:100px;overflow:scroll;position:absolute;top:-9999px;';
+    scrollDiv.style.cssText =
+      'width:100px;height:100px;overflow:scroll;position:absolute;top:-9999px;';
     document.body.appendChild(scrollDiv);
     const width = scrollDiv.offsetWidth - scrollDiv.clientWidth;
     document.body.removeChild(scrollDiv);
@@ -209,23 +220,28 @@ export class Modal extends BaseComponent {
   }
 }
 
-const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const focusableSelector =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const source = event.target.closest('[data-boodoo-toggle="modal"]');
-    if (source) {
-      event.preventDefault();
-      Modal.toggleVia(source);
-    }
-    // close bound via [data-boodoo-dismiss="modal"]
-    const closer = event.target.closest('[data-boodoo-dismiss="modal"]');
-    if (closer) {
-      const modal = Modal.getInstance(closer.closest('.modal'));
-      if (modal) modal.hide();
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const source = event.target.closest('[data-boodoo-toggle="modal"]');
+      if (source) {
+        event.preventDefault();
+        Modal.toggleVia(source);
+      }
+      // close bound via [data-boodoo-dismiss="modal"]
+      const closer = event.target.closest('[data-boodoo-dismiss="modal"]');
+      if (closer) {
+        const modal = Modal.getInstance(closer.closest('.modal'));
+        if (modal) modal.hide();
+      }
+    },
+    true
+  );
 }
 
 export default Modal;

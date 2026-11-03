@@ -3,7 +3,7 @@
 // Persistent sidebar toggling, collapse/expand mode, submenu handling.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class Sidebar extends BaseComponent {
@@ -18,7 +18,7 @@ export class Sidebar extends BaseComponent {
 
   _bindEvents() {
     // 1. Submenu toggles
-    this._element.addEventListener('click', (e) => {
+    this._onSubmenuClick = (e) => {
       const toggle = e.target.closest('[data-boodoo-toggle="sidebar-submenu"]');
       if (toggle) {
         e.preventDefault();
@@ -32,20 +32,36 @@ export class Sidebar extends BaseComponent {
           }
         }
       }
-    });
+    };
+    this._element.addEventListener('click', this._onSubmenuClick);
 
     // 2. Global toggler buttons targeting this sidebar
-    document.addEventListener('click', (e) => {
+    this._onDocClick = (e) => {
       const toggler = e.target.closest('[data-boodoo-toggle="sidebar"]');
       if (toggler) {
         const targetId = toggler.getAttribute('data-boodoo-target') || toggler.getAttribute('href');
-        const target = targetId ? document.querySelector(targetId) : document.querySelector('.sidebar');
+        const target = targetId
+          ? document.querySelector(targetId)
+          : document.querySelector('.sidebar');
         if (target === this._element) {
           e.preventDefault();
           this.toggleCollapse();
         }
       }
-    });
+    };
+    document.addEventListener('click', this._onDocClick);
+  }
+
+  dispose() {
+    if (this._onSubmenuClick && this._element) {
+      this._element.removeEventListener('click', this._onSubmenuClick);
+      this._onSubmenuClick = null;
+    }
+    if (this._onDocClick) {
+      document.removeEventListener('click', this._onDocClick);
+      this._onDocClick = null;
+    }
+    super.dispose();
   }
 
   toggleCollapse() {
@@ -64,10 +80,4 @@ export class Sidebar extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.sidebar, [data-boodoo="sidebar"]').forEach((el) => {
-      Sidebar.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(Sidebar, '.sidebar, [data-boodoo="sidebar"]');

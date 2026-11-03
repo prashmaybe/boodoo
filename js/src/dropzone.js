@@ -7,9 +7,13 @@ import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class Dropzone extends BaseComponent {
-  static get NAME() { return 'dropzone'; }
+  static get NAME() {
+    return 'dropzone';
+  }
 
-  static get selector() { return '[data-boodoo-dropzone], .dropzone, .form-dropzone'; }
+  static get selector() {
+    return '[data-boodoo-dropzone], .dropzone, .form-dropzone';
+  }
 
   constructor(element, config = {}) {
     super(element, config);
@@ -25,17 +29,22 @@ export class Dropzone extends BaseComponent {
       this._element.appendChild(this._input);
     }
 
-    const listSelector = this._element.getAttribute('data-boodoo-target-list') || this._config.listTarget;
-    this._listContainer = listSelector ? document.querySelector(listSelector) : this._element.parentElement.querySelector('.file-list');
+    const listSelector =
+      this._element.getAttribute('data-boodoo-target-list') || this._config.listTarget;
+    this._listContainer = listSelector
+      ? document.querySelector(listSelector)
+      : this._element.parentElement.querySelector('.file-list');
 
-    this._maxSize = Number(this._element.getAttribute('data-boodoo-max-size') || this._config.maxSize || 0); // In MB, 0 = unlimited
+    this._maxSize = Number(
+      this._element.getAttribute('data-boodoo-max-size') || this._config.maxSize || 0
+    ); // In MB, 0 = unlimited
     this._files = [];
 
     this._bindEvents();
   }
 
   _bindEvents() {
-    ['dragenter', 'dragover'].forEach(name => {
+    ['dragenter', 'dragover'].forEach((name) => {
       this._element.addEventListener(name, (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -43,7 +52,7 @@ export class Dropzone extends BaseComponent {
       });
     });
 
-    ['dragleave', 'drop'].forEach(name => {
+    ['dragleave', 'drop'].forEach((name) => {
       this._element.addEventListener(name, (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -74,7 +83,7 @@ export class Dropzone extends BaseComponent {
       if (this._maxSize > 0 && file.size > this._maxSize * 1024 * 1024) {
         triggerEvent(this._element, 'boodoo.dropzone.error', {
           file,
-          message: `File exceeds maximum size of ${this._maxSize} MB.`
+          message: `File exceeds maximum size of ${this._maxSize} MB.`,
         });
         continue;
       }
@@ -86,7 +95,7 @@ export class Dropzone extends BaseComponent {
 
     triggerEvent(this._element, 'boodoo.dropzone.change', {
       files: this._files,
-      added
+      added,
     });
   }
 
@@ -109,9 +118,10 @@ export class Dropzone extends BaseComponent {
 
     if (isImage) {
       const rawUrl = URL.createObjectURL(file);
-      const safeUrl = typeof rawUrl === 'string' && rawUrl.startsWith('blob:') && !/[<>"']/.test(rawUrl)
-        ? encodeURI(rawUrl)
-        : '';
+      const safeUrl =
+        typeof rawUrl === 'string' && rawUrl.startsWith('blob:') && !/[<>"']/.test(rawUrl)
+          ? encodeURI(rawUrl)
+          : '';
       if (safeUrl) {
         li.dataset.previewUrl = safeUrl;
         previewEl = document.createElement('img');
@@ -180,7 +190,7 @@ export class Dropzone extends BaseComponent {
     }
     triggerEvent(this._element, 'boodoo.dropzone.remove', {
       file,
-      remaining: this._files
+      remaining: this._files,
     });
   }
 

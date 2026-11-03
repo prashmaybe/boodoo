@@ -3,7 +3,7 @@
 // Evaluates password strength and updates visual indicators dynamically.
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
 export class PasswordMeter extends BaseComponent {
@@ -14,8 +14,12 @@ export class PasswordMeter extends BaseComponent {
   constructor(element, config = {}) {
     super(element, config);
     this._targetInput = this._config.target
-      ? (typeof document !== 'undefined' ? document.querySelector(this._config.target) : null)
-      : (this._element.parentElement ? this._element.parentElement.querySelector('input[type="password"]') : null);
+      ? typeof document !== 'undefined'
+        ? document.querySelector(this._config.target)
+        : null
+      : this._element.parentElement
+        ? this._element.parentElement.querySelector('input[type="password"]')
+        : null;
 
     this._onInput = this._onInput.bind(this);
     if (this._targetInput) {
@@ -61,10 +65,4 @@ export class PasswordMeter extends BaseComponent {
   }
 }
 
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.password-meter, [data-boodoo="password-meter"]').forEach((el) => {
-      PasswordMeter.getOrCreateInstance(el);
-    });
-  });
-}
+initDataApi(PasswordMeter, '.password-meter, [data-boodoo="password-meter"]');

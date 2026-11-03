@@ -25,7 +25,7 @@ const makeCrcTable = () => {
   for (let n = 0; n < 256; n++) {
     c = n;
     for (let k = 0; k < 8; k++) {
-      c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
     }
     table[n] = c >>> 0;
   }
@@ -35,16 +35,17 @@ const makeCrcTable = () => {
 const CRC_TABLE = makeCrcTable();
 
 function crc32(buffer) {
-  let crc = 0 ^ (-1);
+  let crc = 0 ^ -1;
   for (let i = 0; i < buffer.length; i++) {
-    crc = (crc >>> 8) ^ CRC_TABLE[(crc ^ buffer[i]) & 0xFF];
+    crc = (crc >>> 8) ^ CRC_TABLE[(crc ^ buffer[i]) & 0xff];
   }
-  return (crc ^ (-1)) >>> 0;
+  return (crc ^ -1) >>> 0;
 }
 
 // Convert Date to DOS time/date format
 function dosDateTime(date = new Date()) {
-  const time = (date.getHours() << 11) | (date.getMinutes() << 5) | Math.floor(date.getSeconds() / 2);
+  const time =
+    (date.getHours() << 11) | (date.getMinutes() << 5) | Math.floor(date.getSeconds() / 2);
   const d = ((date.getFullYear() - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate();
   return { time, date: d };
 }
@@ -62,7 +63,7 @@ class ZipArchive {
     const normName = name.replace(/\\/g, '/').replace(/^\/+/, '');
     const deflated = zlib.deflateRawSync(dataBuf, { level: 9 });
     const useDeflate = deflated.length < dataBuf.length;
-    
+
     this.entries.push({
       name: normName,
       compressed: useDeflate ? deflated : dataBuf,
@@ -70,7 +71,7 @@ class ZipArchive {
       compressedSize: useDeflate ? deflated.length : dataBuf.length,
       method: useDeflate ? 8 : 0,
       crc: crc32(dataBuf),
-      mtime
+      mtime,
     });
   }
 
@@ -86,8 +87,8 @@ class ZipArchive {
       // Local file header (30 bytes + nameBuf.length)
       const lh = Buffer.alloc(30 + nameBuf.length);
       lh.writeUInt32LE(0x04034b50, 0); // signature
-      lh.writeUInt16LE(20, 4);         // version needed to extract (2.0)
-      lh.writeUInt16LE(0x0800, 6);     // flags (UTF-8)
+      lh.writeUInt16LE(20, 4); // version needed to extract (2.0)
+      lh.writeUInt16LE(0x0800, 6); // flags (UTF-8)
       lh.writeUInt16LE(entry.method, 8); // compression method
       lh.writeUInt16LE(time, 10);
       lh.writeUInt16LE(date, 12);
@@ -104,9 +105,9 @@ class ZipArchive {
       // Central directory header (46 bytes + nameBuf.length)
       const cd = Buffer.alloc(46 + nameBuf.length);
       cd.writeUInt32LE(0x02014b50, 0); // signature
-      cd.writeUInt16LE(20, 4);         // version made by
-      cd.writeUInt16LE(20, 6);         // version needed to extract
-      cd.writeUInt16LE(0x0800, 8);     // flags (UTF-8)
+      cd.writeUInt16LE(20, 4); // version made by
+      cd.writeUInt16LE(20, 6); // version needed to extract
+      cd.writeUInt16LE(0x0800, 8); // flags (UTF-8)
       cd.writeUInt16LE(entry.method, 10);
       cd.writeUInt16LE(time, 12);
       cd.writeUInt16LE(date, 14);
@@ -133,13 +134,13 @@ class ZipArchive {
     // End of central directory record (22 bytes)
     const eocd = Buffer.alloc(22);
     eocd.writeUInt32LE(0x06054b50, 0); // signature
-    eocd.writeUInt16LE(0, 4);          // disk number
-    eocd.writeUInt16LE(0, 6);          // disk where cd starts
-    eocd.writeUInt16LE(this.entries.length, 8);  // entries on disk
+    eocd.writeUInt16LE(0, 4); // disk number
+    eocd.writeUInt16LE(0, 6); // disk where cd starts
+    eocd.writeUInt16LE(this.entries.length, 8); // entries on disk
     eocd.writeUInt16LE(this.entries.length, 10); // total entries
-    eocd.writeUInt32LE(cdSize, 12);    // cd size
-    eocd.writeUInt32LE(cdOffset, 16);  // offset of cd
-    eocd.writeUInt16LE(0, 20);         // comment length
+    eocd.writeUInt32LE(cdSize, 12); // cd size
+    eocd.writeUInt32LE(cdOffset, 16); // offset of cd
+    eocd.writeUInt16LE(0, 20); // comment length
 
     return Buffer.concat([...localHeaders, ...centralHeaders, eocd]);
   }
@@ -150,7 +151,13 @@ function addDirectoryToZip(zip, srcDir, zipPrefix = '') {
   if (!fs.existsSync(srcDir)) return;
   const entries = fs.readdirSync(srcDir, { withFileTypes: true });
   for (const entry of entries) {
-    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === '.DS_Store' || entry.name.endsWith('.zip')) continue;
+    if (
+      entry.name === 'node_modules' ||
+      entry.name === '.git' ||
+      entry.name === '.DS_Store' ||
+      entry.name.endsWith('.zip')
+    )
+      continue;
     const fullPath = path.join(srcDir, entry.name);
     const zipPath = path.posix.join(zipPrefix, entry.name);
     if (entry.isDirectory()) {
@@ -186,7 +193,9 @@ const versionedZipFile = path.join(outDir, `boodoo-v${version}.zip`);
 const latestZipFile = path.join(outDir, 'boodoo-latest.zip');
 fs.writeFileSync(versionedZipFile, fullZipBuffer);
 fs.writeFileSync(latestZipFile, fullZipBuffer);
-console.log(`✔ Framework source archive created: boodoo-v${version}.zip (${Math.round(fullZipBuffer.length / 1024)} KB)`);
+console.log(
+  `✔ Framework source archive created: boodoo-v${version}.zip (${Math.round(fullZipBuffer.length / 1024)} KB)`
+);
 
 // 2. All Examples Archive (contains all HTML templates and starters)
 const examplesZip = new ZipArchive();
@@ -194,31 +203,53 @@ addDirectoryToZip(examplesZip, path.join(root, 'site', 'examples'), `boodoo-exam
 const examplesZipBuffer = examplesZip.toBuffer();
 fs.writeFileSync(path.join(outDir, `boodoo-examples-v${version}.zip`), examplesZipBuffer);
 fs.writeFileSync(path.join(outDir, 'boodoo-examples.zip'), examplesZipBuffer);
-console.log(`✔ Examples archive created: boodoo-examples-v${version}.zip (${Math.round(examplesZipBuffer.length / 1024)} KB)`);
+console.log(
+  `✔ Examples archive created: boodoo-examples-v${version}.zip (${Math.round(examplesZipBuffer.length / 1024)} KB)`
+);
 
 // 3. React Starter Zip
 const reactZip = new ZipArchive();
-addDirectoryToZip(reactZip, path.join(root, 'site', 'examples', 'starters', 'react-vite'), 'boodoo-react-vite-starter');
+addDirectoryToZip(
+  reactZip,
+  path.join(root, 'site', 'examples', 'starters', 'react-vite'),
+  'boodoo-react-vite-starter'
+);
 fs.writeFileSync(path.join(outDir, 'boodoo-react-vite-starter.zip'), reactZip.toBuffer());
 
 // 4. Vue Starter Zip
 const vueZip = new ZipArchive();
-addDirectoryToZip(vueZip, path.join(root, 'site', 'examples', 'starters', 'vue-vite'), 'boodoo-vue-vite-starter');
+addDirectoryToZip(
+  vueZip,
+  path.join(root, 'site', 'examples', 'starters', 'vue-vite'),
+  'boodoo-vue-vite-starter'
+);
 fs.writeFileSync(path.join(outDir, 'boodoo-vue-vite-starter.zip'), vueZip.toBuffer());
 
 // 5. Next.js Starter Zip
 const nextZip = new ZipArchive();
-addDirectoryToZip(nextZip, path.join(root, 'site', 'examples', 'starters', 'nextjs'), 'boodoo-nextjs-starter');
+addDirectoryToZip(
+  nextZip,
+  path.join(root, 'site', 'examples', 'starters', 'nextjs'),
+  'boodoo-nextjs-starter'
+);
 fs.writeFileSync(path.join(outDir, 'boodoo-nextjs-starter.zip'), nextZip.toBuffer());
 
 // 6. HTML5 Starter Zip
 const htmlZip = new ZipArchive();
-addDirectoryToZip(htmlZip, path.join(root, 'site', 'examples', 'starters', 'html-starter'), 'boodoo-html-starter');
+addDirectoryToZip(
+  htmlZip,
+  path.join(root, 'site', 'examples', 'starters', 'html-starter'),
+  'boodoo-html-starter'
+);
 fs.writeFileSync(path.join(outDir, 'boodoo-html-starter.zip'), htmlZip.toBuffer());
 
 // 7. React Native Mobile (Expo) Starter Zip
 const rnZip = new ZipArchive();
-addDirectoryToZip(rnZip, path.join(root, 'site', 'examples', 'starters', 'react-native-mobile'), 'boodoo-react-native-starter');
+addDirectoryToZip(
+  rnZip,
+  path.join(root, 'site', 'examples', 'starters', 'react-native-mobile'),
+  'boodoo-react-native-starter'
+);
 fs.writeFileSync(path.join(outDir, 'boodoo-react-native-starter.zip'), rnZip.toBuffer());
 console.log(`✔ React Native Mobile starter archive created: boodoo-react-native-starter.zip`);
 
@@ -238,13 +269,37 @@ const archiveManifest = {
   examplesZipCdnUrl: `${cdnBase}/boodoo-examples-v${version}.zip`,
   examplesZipSizeKb: Math.round(examplesZipBuffer.length / 1024),
   starters: [
-    { id: 'react-vite', file: 'boodoo-react-vite-starter.zip', cdnUrl: `${cdnBase}/boodoo-react-vite-starter.zip` },
-    { id: 'vue-vite', file: 'boodoo-vue-vite-starter.zip', cdnUrl: `${cdnBase}/boodoo-vue-vite-starter.zip` },
-    { id: 'nextjs', file: 'boodoo-nextjs-starter.zip', cdnUrl: `${cdnBase}/boodoo-nextjs-starter.zip` },
-    { id: 'html-starter', file: 'boodoo-html-starter.zip', cdnUrl: `${cdnBase}/boodoo-html-starter.zip` },
-    { id: 'react-native', file: 'boodoo-react-native-starter.zip', cdnUrl: `${cdnBase}/boodoo-react-native-starter.zip` }
-  ]
+    {
+      id: 'react-vite',
+      file: 'boodoo-react-vite-starter.zip',
+      cdnUrl: `${cdnBase}/boodoo-react-vite-starter.zip`,
+    },
+    {
+      id: 'vue-vite',
+      file: 'boodoo-vue-vite-starter.zip',
+      cdnUrl: `${cdnBase}/boodoo-vue-vite-starter.zip`,
+    },
+    {
+      id: 'nextjs',
+      file: 'boodoo-nextjs-starter.zip',
+      cdnUrl: `${cdnBase}/boodoo-nextjs-starter.zip`,
+    },
+    {
+      id: 'html-starter',
+      file: 'boodoo-html-starter.zip',
+      cdnUrl: `${cdnBase}/boodoo-html-starter.zip`,
+    },
+    {
+      id: 'react-native',
+      file: 'boodoo-react-native-starter.zip',
+      cdnUrl: `${cdnBase}/boodoo-react-native-starter.zip`,
+    },
+  ],
 };
-fs.writeFileSync(path.join(outDir, 'archives.json'), JSON.stringify(archiveManifest, null, 2), 'utf8');
+fs.writeFileSync(
+  path.join(outDir, 'archives.json'),
+  JSON.stringify(archiveManifest, null, 2),
+  'utf8'
+);
 
 export { ZipArchive, addDirectoryToZip };

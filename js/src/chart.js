@@ -26,7 +26,8 @@ export class Chart extends BaseComponent {
 
   constructor(element, config = {}) {
     super(element, config);
-    this._canvas = this._element.tagName === 'CANVAS' ? this._element : this._element.querySelector('canvas');
+    this._canvas =
+      this._element.tagName === 'CANVAS' ? this._element : this._element.querySelector('canvas');
     if (!this._canvas) {
       this._canvas = document.createElement('canvas');
       this._canvas.className = 'chart-canvas';
@@ -38,7 +39,9 @@ export class Chart extends BaseComponent {
     this._data = this._config.data || this._parseDataFromDOM() || { labels: [], datasets: [] };
 
     // Default aspect ratio: pie, donut, radar, polarArea look best square (1 or 1.25); line and bar look best at 2
-    const defaultAspectRatio = ['pie', 'donut', 'radar', 'polarArea'].includes(this._type) ? 1.2 : 2;
+    const defaultAspectRatio = ['pie', 'donut', 'radar', 'polarArea'].includes(this._type)
+      ? 1.2
+      : 2;
 
     this._options = {
       responsive: true,
@@ -117,7 +120,10 @@ export class Chart extends BaseComponent {
   }
 
   getColors() {
-    const style = typeof window !== 'undefined' && window.getComputedStyle ? window.getComputedStyle(this._element) : null;
+    const style =
+      typeof window !== 'undefined' && window.getComputedStyle
+        ? window.getComputedStyle(this._element)
+        : null;
     const readVar = (name, fallback) => {
       if (!style) return fallback;
       const v = style.getPropertyValue(name).trim();
@@ -134,7 +140,16 @@ export class Chart extends BaseComponent {
     const grid = readVar('--boodoo-border-color', '#dfe3ee');
 
     return {
-      palette: [primary, info, success, warning, danger, secondary, PALETTE_FALLBACKS[6], PALETTE_FALLBACKS[7]],
+      palette: [
+        primary,
+        info,
+        success,
+        warning,
+        danger,
+        secondary,
+        PALETTE_FALLBACKS[6],
+        PALETTE_FALLBACKS[7],
+      ],
       text,
       grid,
     };
@@ -146,9 +161,9 @@ export class Chart extends BaseComponent {
     const width = rect.width || this._canvas.parentElement?.clientWidth || 400;
     const height = this._options.maintainAspectRatio
       ? width / (this._options.aspectRatio || 2)
-      : (rect.height || 240);
+      : rect.height || 240;
 
-    const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
+    const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
     this._canvas.width = Math.floor(width * dpr);
     this._canvas.height = Math.floor(height * dpr);
     this._canvas.style.width = `${Math.floor(width)}px`;
@@ -172,7 +187,7 @@ export class Chart extends BaseComponent {
 
   render() {
     if (!this._ctx) return;
-    const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
+    const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
     const width = this._canvas.width / dpr;
     const height = this._canvas.height / dpr;
 
@@ -245,12 +260,14 @@ export class Chart extends BaseComponent {
       const groupX = padding.left + labelIdx * groupWidth + 10;
 
       datasets.forEach((ds, dsIdx) => {
-        const val = (ds.data && ds.data[labelIdx] !== undefined) ? ds.data[labelIdx] : 0;
+        const val = ds.data && ds.data[labelIdx] !== undefined ? ds.data[labelIdx] : 0;
         const barH = (val / niceMax) * chartH;
         const x = groupX + dsIdx * (barW + barGap);
         const y = padding.top + chartH - barH;
 
-        const color = ds.backgroundColor || (Array.isArray(ds.colors) ? ds.colors[labelIdx] : palette[dsIdx % palette.length]);
+        const color =
+          ds.backgroundColor ||
+          (Array.isArray(ds.colors) ? ds.colors[labelIdx] : palette[dsIdx % palette.length]);
 
         this._ctx.fillStyle = color;
         this._ctx.beginPath();
@@ -276,7 +293,11 @@ export class Chart extends BaseComponent {
       this._ctx.fillStyle = textColor;
       this._ctx.textAlign = 'center';
       this._ctx.textBaseline = 'top';
-      this._ctx.fillText(label, groupX + (datasets.length * (barW + barGap)) / 2 - barGap / 2, padding.top + chartH + 10);
+      this._ctx.fillText(
+        label,
+        groupX + (datasets.length * (barW + barGap)) / 2 - barGap / 2,
+        padding.top + chartH + 10
+      );
     });
   }
 
@@ -342,7 +363,8 @@ export class Chart extends BaseComponent {
         this._ctx.lineTo(getX(0), padding.top + chartH);
         this._ctx.closePath();
 
-        const areaBg = ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.15)');
+        const areaBg =
+          ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.15)');
         this._ctx.fillStyle = areaBg;
         this._ctx.fill();
       }
@@ -414,7 +436,8 @@ export class Chart extends BaseComponent {
     data.forEach((val, idx) => {
       const sliceAngle = (val / total) * Math.PI * 2;
       const endAngle = currentAngle + sliceAngle;
-      const color = (dataset.backgroundColor && dataset.backgroundColor[idx]) || palette[idx % palette.length];
+      const color =
+        (dataset.backgroundColor && dataset.backgroundColor[idx]) || palette[idx % palette.length];
 
       this._ctx.beginPath();
       this._ctx.arc(centerX, centerY, radius, currentAngle, endAngle);
@@ -487,7 +510,8 @@ export class Chart extends BaseComponent {
     data.forEach((val, idx) => {
       const r = (val / maxVal) * maxRadius;
       const endAngle = currentAngle + sliceAngle;
-      const color = (dataset.backgroundColor && dataset.backgroundColor[idx]) || palette[idx % palette.length];
+      const color =
+        (dataset.backgroundColor && dataset.backgroundColor[idx]) || palette[idx % palette.length];
 
       this._ctx.beginPath();
       this._ctx.arc(centerX, centerY, r, currentAngle, endAngle);
@@ -593,7 +617,8 @@ export class Chart extends BaseComponent {
       });
       this._ctx.closePath();
 
-      const areaBg = ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.2)');
+      const areaBg =
+        ds.backgroundColor || (color.startsWith('#') ? `${color}33` : 'rgba(124, 58, 237, 0.2)');
       this._ctx.fillStyle = areaBg;
       this._ctx.fill();
 
@@ -653,7 +678,12 @@ export class Chart extends BaseComponent {
           }
         }
       } else {
-        if (x >= region.x && x <= region.x + region.w && y >= region.y && y <= region.y + region.h) {
+        if (
+          x >= region.x &&
+          x <= region.x + region.w &&
+          y >= region.y &&
+          y <= region.y + region.h
+        ) {
           match = region;
           break;
         }
@@ -676,7 +706,9 @@ export class Chart extends BaseComponent {
 
   _showTooltip(item, mouseX, mouseY) {
     if (!this._tooltipEl) return;
-    const title = item.datasetLabel ? `${escapeHtml(item.datasetLabel)}: ${escapeHtml(item.label)}` : escapeHtml(item.label);
+    const title = item.datasetLabel
+      ? `${escapeHtml(item.datasetLabel)}: ${escapeHtml(item.label)}`
+      : escapeHtml(item.label);
     const valueStr = item.percentage ? `${item.value} (${item.percentage}%)` : String(item.value);
 
     this._tooltipEl.innerHTML = `

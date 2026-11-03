@@ -20,13 +20,7 @@ export function Card({
   const sp = theme.spacing || {};
   const effectiveMode = mode || variant;
 
-  const cardPadding =
-    padding ??
-    cs.card ??
-    cs.cardPadding ??
-    sp.card ??
-    sp.cardPadding ??
-    16;
+  const cardPadding = padding ?? cs.card ?? cs.cardPadding ?? sp.card ?? sp.cardPadding ?? 16;
 
   const getCardStyle = () => {
     switch (effectiveMode) {
@@ -82,8 +76,14 @@ Card.Title = function CardTitle({ title, subtitle, left, right, style, marginBot
     <View style={[styles.cardTitleRow, { marginBottom: effMarginBottom }, style]}>
       {left ? <View style={styles.cardTitleSideLeft}>{left()}</View> : null}
       <View style={styles.cardTitleCenter}>
-        <Text variant="h4" style={styles.cardTitleText}>{title}</Text>
-        {subtitle ? <Text variant="muted" style={styles.cardSubtitleText}>{subtitle}</Text> : null}
+        <Text variant="h4" style={styles.cardTitleText}>
+          {title}
+        </Text>
+        {subtitle ? (
+          <Text variant="muted" style={styles.cardSubtitleText}>
+            {subtitle}
+          </Text>
+        ) : null}
       </View>
       {right ? <View style={styles.cardTitleSideRight}>{right()}</View> : null}
     </View>
@@ -101,11 +101,7 @@ Card.Content = function CardContent({ children, style, marginVertical }) {
     sp.cardContentMarginVertical ??
     sp.cardContentY ??
     4;
-  return (
-    <View style={[{ marginVertical: effMarginVertical }, style]}>
-      {children}
-    </View>
-  );
+  return <View style={[{ marginVertical: effMarginVertical }, style]}>{children}</View>;
 };
 
 Card.Actions = function CardActions({ children, style, marginTop, gap }) {
@@ -119,11 +115,7 @@ Card.Actions = function CardActions({ children, style, marginTop, gap }) {
     sp.cardActionsMarginTop ??
     sp.cardActionsTop ??
     12;
-  const effGap =
-    gap ??
-    cs.cardActionsGap ??
-    sp.cardActionsGap ??
-    8;
+  const effGap = gap ?? cs.cardActionsGap ?? sp.cardActionsGap ?? 8;
   return (
     <View style={[styles.cardActions, { marginTop: effMarginTop, gap: effGap }, style]}>
       {children}
@@ -156,31 +148,20 @@ Card.Section = function CardSection({ children, style }) {
 /**
  * Surface Component
  */
-export function Surface({
-  elevation = 1,
-  padding,
-  children,
-  style,
-  ...props
-}) {
+export function Surface({ elevation = 1, padding, children, style, ...props }) {
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
   const effPadding =
-    padding ??
-    cs.surface ??
-    cs.surfacePadding ??
-    sp.surface ??
-    sp.surfacePadding ??
-    16;
+    padding ?? cs.surface ?? cs.surfacePadding ?? sp.surface ?? sp.surfacePadding ?? 16;
   const shadowStyle =
     elevation >= 4
       ? theme.shadows.lg
       : elevation >= 2
-      ? theme.shadows.md
-      : elevation >= 1
-      ? theme.shadows.sm
-      : theme.shadows.none;
+        ? theme.shadows.md
+        : elevation >= 1
+          ? theme.shadows.sm
+          : theme.shadows.none;
 
   return (
     <View
@@ -203,12 +184,7 @@ export function Surface({
 /**
  * Divider / Separator
  */
-export function Divider({
-  bold = false,
-  inset = false,
-  style,
-  ...props
-}) {
+export function Divider({ bold = false, inset = false, style, ...props }) {
   const theme = useTheme();
   return (
     <View
@@ -243,11 +219,7 @@ export function PricingCard({
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
   const brandColor = color || theme.colors.primary;
-  const effPadding =
-    padding ??
-    cs.pricingCardPadding ??
-    sp.pricingCardPadding ??
-    20;
+  const effPadding = padding ?? cs.pricingCardPadding ?? sp.pricingCardPadding ?? 20;
 
   return (
     <View
@@ -305,7 +277,10 @@ export function Tile({
       ]}
     >
       {imageSrc ? (
-        <Image source={imageSrc} style={[StyleSheet.absoluteFill, { borderRadius: theme.radii.lg }]} />
+        <Image
+          source={imageSrc}
+          style={[StyleSheet.absoluteFill, { borderRadius: theme.radii.lg }]}
+        />
       ) : (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: theme.colors.darkCard }]} />
       )}
@@ -332,12 +307,7 @@ export function StatWidget({
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
   const effPadding =
-    padding ??
-    cs.statWidgetPadding ??
-    cs.statWidget ??
-    sp.statWidgetPadding ??
-    sp.statWidget ??
-    16;
+    padding ?? cs.statWidgetPadding ?? cs.statWidget ?? sp.statWidgetPadding ?? sp.statWidget ?? 16;
   return (
     <View
       style={[
@@ -356,15 +326,18 @@ export function StatWidget({
     >
       <View style={styles.statHeaderRow}>
         {title ? (
-          <Text style={[styles.statTitle, { fontSize: theme.typography.sizes.sm, color: theme.colors.textMuted || '#64748b' }]}>
+          <Text
+            style={[
+              styles.statTitle,
+              { fontSize: theme.typography.sizes.sm, color: theme.colors.textMuted || '#64748b' },
+            ]}
+          >
             {title}
           </Text>
         ) : null}
         {icon ? <View>{icon}</View> : null}
       </View>
-      <Text style={[styles.statValue, { color: theme.colors.text }]}>
-        {value}
-      </Text>
+      <Text style={[styles.statValue, { color: theme.colors.text }]}>{value}</Text>
       {trend ? (
         <Text
           style={[
@@ -386,12 +359,7 @@ export function StatWidget({
  * BentoGrid & BentoItem
  * Modern dashboard responsive mosaic grid layout.
  */
-export function BentoItem({
-  span = 1,
-  children,
-  style,
-  ...props
-}) {
+export function BentoItem({ span = 1, children, style, ...props }) {
   const theme = useTheme();
   const isFull = span === 2;
 
@@ -409,12 +377,7 @@ export function BentoItem({
   );
 }
 
-export function BentoGrid({
-  children,
-  gap = 12,
-  style,
-  ...props
-}) {
+export function BentoGrid({ children, gap = 12, style, ...props }) {
   const dynamicGrid = {
     gap: gap,
   };

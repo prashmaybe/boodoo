@@ -2,12 +2,16 @@
 // Tab & pill switching (nav-tabs, nav-pills, nav-underline).
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent, getNextElement } from './util.js';
+import { getElementFromSelector, triggerEvent } from './util.js';
 
 export class Tab extends BaseComponent {
-  static get NAME() { return 'tab'; }
+  static get NAME() {
+    return 'tab';
+  }
 
-  static get selector() { return '[data-boodoo-toggle="tab"], [data-boodoo-toggle="pill"]'; }
+  static get selector() {
+    return '[data-boodoo-toggle="tab"], [data-boodoo-toggle="pill"]';
+  }
 
   static toggleVia(source) {
     const instance = Tab.getOrCreateInstance(source);
@@ -53,13 +57,17 @@ export class Tab extends BaseComponent {
 
 // Data API
 if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    const tab = event.target.closest(Tab.selector);
-    if (tab) {
-      event.preventDefault();
-      Tab.toggleVia(tab);
-    }
-  }, true);
+  document.addEventListener(
+    'click',
+    (event) => {
+      const tab = event.target.closest(Tab.selector);
+      if (tab) {
+        event.preventDefault();
+        Tab.toggleVia(tab);
+      }
+    },
+    true
+  );
 }
 
 export default Tab;

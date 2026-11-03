@@ -2,7 +2,7 @@
 // BOODOO JS — Command Palette
 // =====================================================================
 
-import { BaseComponent } from './base-component.js';
+import { BaseComponent, initDataApi } from './base-component.js';
 import { escapeHtml } from './util.js';
 
 export class CommandPalette extends BaseComponent {
@@ -10,14 +10,20 @@ export class CommandPalette extends BaseComponent {
     return 'commandPalette';
   }
 
-
   constructor(element, config = {}) {
     super(element, config);
-    this._items = config.items || [];
+    this._config = this._getConfig(config, {
+      hotkey: true,
+      items: config.items || [],
+    });
+    this._items = this._config.items || [];
     this._isOpen = false;
     this._selectedIndex = 0;
     this._buildUI();
     this._bindEvents();
+    if (this._config.hotkey !== false) {
+      this._bindShortcut();
+    }
   }
 
   _buildUI() {
@@ -44,19 +50,21 @@ export class CommandPalette extends BaseComponent {
 
   _bindEvents() {
     // Backdrop click
-    this._element.addEventListener('click', (e) => {
+    this._onBackdropClick = (e) => {
       if (e.target === this._element) {
         this.close();
       }
-    });
+    };
+    this._element.addEventListener('click', this._onBackdropClick);
 
     // Input filter
-    this._input.addEventListener('input', (e) => {
+    this._onInput = (e) => {
       this._filter(e.target.value);
-    });
+    };
+    this._input.addEventListener('input', this._onInput);
 
     // Keyboard navigation
-    this._input.addEventListener('keydown', (e) => {
+    this._onInputKeydown = (e) => {
       const items = Array.from(this._results.querySelectorAll('.command-palette-item'));
       if (e.key === 'ArrowDown') {
         e.preventDefault();
@@ -75,13 +83,17 @@ export class CommandPalette extends BaseComponent {
       } else if (e.key === 'Escape') {
         this.close();
       }
-    });
+    };
+    this._input.addEventListener('keydown', this._onInputKeydown);
   }
 
   _filter(query = '') {
     const q = query.toLowerCase().trim();
     const filtered = this._items.filter((item) => {
-      return item.title.toLowerCase().includes(q) || (item.subtitle && item.subtitle.toLowerCase().includes(q));
+      return (
+        item.title.toLowerCase().includes(q) ||
+        (item.subtitle && item.subtitle.toLowerCase().includes(q))
+      );
     });
 
     this._renderResults(filtered);
@@ -96,11 +108,12 @@ export class CommandPalette extends BaseComponent {
       return;
     }
 
-    this._results.innerHTML = items.map((item, index) => {
-      const safeTitle = escapeHtml(item.title);
-      const safeShortcut = item.shortcut ? escapeHtml(item.shortcut) : '';
-      const iconHtml = item.icon ? `<span>${escapeHtml(item.icon)}</span>` : '';
-      return `
+    this._results.innerHTML = items
+      .map((item, index) => {
+        const safeTitle = escapeHtml(item.title);
+        const safeShortcut = item.shortcut ? escapeHtml(item.shortcut) : '';
+        const iconHtml = item.icon ? `<span>${escapeHtml(item.icon)}</span>` : '';
+        return `
       <li class="command-palette-item" data-index="${index}">
         <div class="command-palette-item-title">
           ${iconHtml}
@@ -109,7 +122,8 @@ export class CommandPalette extends BaseComponent {
         ${safeShortcut ? `<span class="command-palette-item-shortcut"><kbd>${safeShortcut}</kbd></span>` : ''}
       </li>
     `;
-    }).join('');
+      })
+      .join('');
 
     this._results.querySelectorAll('.command-palette-item').forEach((el, index) => {
       el.addEventListener('click', () => {
@@ -159,9 +173,52 @@ export class CommandPalette extends BaseComponent {
     if (this._isOpen) this._filter(this._input.value);
   }
 
+  _bindShortcut() {
+    this._onShortcutKeydown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        const modal = document.querySelector(
+          '.command-palette-backdrop, [data-boodoo="command-palette"]'
+        );
+        if (modal === this._element) {
+          e.preventDefault();
+          this.toggle();
+        }
+      }
+    };
+    document.addEventListener('keydown', this._onShortcutKeydown);
+  }
+
+  _unbindShortcut() {
+    if (this._onShortcutKeydown) {
+      document.removeEventListener('keydown', this._onShortcutKeydown);
+      this._onShortcutKeydown = null;
+    }
+  }
+
+  dispose() {
+    this._unbindShortcut();
+    if (this._onBackdropClick && this._element) {
+      this._element.removeEventListener('click', this._onBackdropClick);
+      this._onBackdropClick = null;
+    }
+    if (this._onInput && this._input) {
+      this._input.removeEventListener('input', this._onInput);
+      this._onInput = null;
+    }
+    if (this._onInputKeydown && this._input) {
+      this._input.removeEventListener('keydown', this._onInputKeydown);
+      this._onInputKeydown = null;
+    }
+    this._input = null;
+    this._results = null;
+    super.dispose();
+  }
+
   static initDefault(options = {}) {
     if (typeof document === 'undefined') return;
-    let modal = document.querySelector('.command-palette-backdrop');
+    let modal = document.querySelector(
+      '.command-palette-backdrop, [data-boodoo="command-palette"]'
+    );
     if (!modal) {
       modal = document.createElement('div');
       document.body.appendChild(modal);
@@ -170,16 +227,4 @@ export class CommandPalette extends BaseComponent {
   }
 }
 
-// Opt-in keyboard shortcut: only intercepts Ctrl+K / Cmd+K if an element has [data-boodoo-hotkey="true"] or .command-palette-backdrop exists
-if (typeof document !== 'undefined') {
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      const modal = document.querySelector('.command-palette-backdrop, [data-boodoo="command-palette"]');
-      if (modal) {
-        e.preventDefault();
-        const instance = CommandPalette.getInstance(modal) || CommandPalette.getOrCreateInstance(modal);
-        instance.toggle();
-      }
-    }
-  });
-}
+initDataApi(CommandPalette, '.command-palette-backdrop, [data-boodoo="command-palette"]');

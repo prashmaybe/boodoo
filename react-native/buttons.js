@@ -46,17 +46,9 @@ export function Button({
       case 'small':
         return {
           paddingVertical:
-            paddingVertical ??
-            cs.buttonPaddingVerticalSm ??
-            cs.buttonSmY ??
-            sp.buttonSmY ??
-            7,
+            paddingVertical ?? cs.buttonPaddingVerticalSm ?? cs.buttonSmY ?? sp.buttonSmY ?? 7,
           paddingHorizontal:
-            paddingHorizontal ??
-            cs.buttonPaddingHorizontalSm ??
-            cs.buttonSmX ??
-            sp.buttonSmX ??
-            12,
+            paddingHorizontal ?? cs.buttonPaddingHorizontalSm ?? cs.buttonSmX ?? sp.buttonSmX ?? 12,
           borderRadius: theme.radii.md,
           fontSize: theme.typography.sizes.sm,
         };
@@ -64,17 +56,9 @@ export function Button({
       case 'large':
         return {
           paddingVertical:
-            paddingVertical ??
-            cs.buttonPaddingVerticalLg ??
-            cs.buttonLgY ??
-            sp.buttonLgY ??
-            13,
+            paddingVertical ?? cs.buttonPaddingVerticalLg ?? cs.buttonLgY ?? sp.buttonLgY ?? 13,
           paddingHorizontal:
-            paddingHorizontal ??
-            cs.buttonPaddingHorizontalLg ??
-            cs.buttonLgX ??
-            sp.buttonLgX ??
-            22,
+            paddingHorizontal ?? cs.buttonPaddingHorizontalLg ?? cs.buttonLgX ?? sp.buttonLgX ?? 22,
           borderRadius: theme.radii.lg,
           fontSize: theme.typography.sizes.lg,
         };
@@ -316,13 +300,13 @@ export function FAB({
   const effPaddingVertical =
     paddingVertical ??
     (small
-      ? cs.fabPaddingVerticalSm ?? sp.fabPaddingVerticalSm ?? 8
-      : cs.fabPaddingVertical ?? sp.fabPaddingVertical ?? 12);
+      ? (cs.fabPaddingVerticalSm ?? sp.fabPaddingVerticalSm ?? 8)
+      : (cs.fabPaddingVertical ?? sp.fabPaddingVertical ?? 12));
   const effPaddingHorizontal =
     paddingHorizontal ??
     (small
-      ? cs.fabPaddingHorizontalSm ?? sp.fabPaddingHorizontalSm ?? 12
-      : cs.fabPaddingHorizontal ?? sp.fabPaddingHorizontal ?? 18);
+      ? (cs.fabPaddingHorizontalSm ?? sp.fabPaddingHorizontalSm ?? 12)
+      : (cs.fabPaddingHorizontal ?? sp.fabPaddingHorizontal ?? 18));
 
   return (
     <TouchableOpacity
@@ -343,9 +327,7 @@ export function FAB({
     >
       <View style={styles.rowCentered}>
         {icon ? <View style={label ? styles.fabIconMargin : null}>{icon}</View> : null}
-        {label ? (
-          <RNText style={[styles.fabText, { color: textColor }]}>{label}</RNText>
-        ) : null}
+        {label ? <RNText style={[styles.fabText, { color: textColor }]}>{label}</RNText> : null}
       </View>
     </TouchableOpacity>
   );
@@ -376,21 +358,12 @@ FAB.Group = function FABGroup({ open = false, onStateChange, icon, actions = [],
           ))}
         </View>
       ) : null}
-      <FAB
-        icon={icon}
-        onPress={() => onStateChange && onStateChange({ open: !open })}
-      />
+      <FAB icon={icon} onPress={() => onStateChange && onStateChange({ open: !open })} />
     </View>
   );
 };
 
-export function SegmentedButtons({
-  value,
-  onValueChange,
-  buttons = [],
-  style,
-  ...props
-}) {
+export function SegmentedButtons({ value, onValueChange, buttons = [], style, ...props }) {
   const theme = useTheme();
 
   return (
@@ -457,14 +430,7 @@ export function SegmentedButtons({
  * SpeedDial & SpeedDialAction
  * Expanding floating action button menu with labeled sub-actions.
  */
-export function SpeedDialAction({
-  icon,
-  title,
-  onPress,
-  color,
-  style,
-  ...props
-}) {
+export function SpeedDialAction({ icon, title, onPress, color, style, ...props }) {
   const theme = useTheme();
   const bg = color || theme.colors.surface;
   const textColor = theme.colors.text;
@@ -492,8 +458,12 @@ export function SpeedDialAction({
         style={[styles.speedDialActionBtn, dynamicBtn]}
       >
         {typeof icon === 'string' ? (
-          <RNText style={[styles.speedDialActionIcon, { color: theme.colors.primary }]}>{icon}</RNText>
-        ) : icon}
+          <RNText style={[styles.speedDialActionIcon, { color: theme.colors.primary }]}>
+            {icon}
+          </RNText>
+        ) : (
+          icon
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -539,9 +509,7 @@ export function SpeedDial({
         onPress={toggle}
         style={[styles.speedDialMainFab, { backgroundColor: fabColor }]}
       >
-        <RNText style={styles.speedDialMainIcon}>
-          {isOpen ? openIcon : icon}
-        </RNText>
+        <RNText style={styles.speedDialMainIcon}>{isOpen ? openIcon : icon}</RNText>
       </TouchableOpacity>
     </View>
   );

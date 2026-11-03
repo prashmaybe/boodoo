@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text as RNText,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text as RNText, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton } from './buttons.js';
 import { Text } from './typography.js';
 import { useTheme } from './theme.js';
@@ -57,7 +52,9 @@ export function Header({
       <View style={styles.headerSideLeft}>{leftComponent}</View>
       <View style={styles.headerCenter}>
         {typeof centerComponent === 'string' ? (
-          <Text variant="h4" style={styles.headerTitleText}>{centerComponent}</Text>
+          <Text variant="h4" style={styles.headerTitleText}>
+            {centerComponent}
+          </Text>
         ) : (
           centerComponent
         )}
@@ -152,10 +149,7 @@ Drawer.Section = function DrawerSection({ title, children, style, marginVertical
   const cs = theme.componentSpacing || {};
   const sp = theme.spacing || {};
   const effMarginVertical =
-    marginVertical ??
-    cs.drawerSectionMarginVertical ??
-    sp.drawerSectionMarginVertical ??
-    8;
+    marginVertical ?? cs.drawerSectionMarginVertical ?? sp.drawerSectionMarginVertical ?? 8;
   return (
     <View style={[{ marginVertical: effMarginVertical }, style]}>
       {title ? (
@@ -186,14 +180,8 @@ Drawer.Item = function DrawerItem({
 }) {
   const theme = useTheme();
   const cs = theme.componentSpacing || {};
-  const effPaddingVertical =
-    paddingVertical ??
-    cs.drawerItemPaddingVertical ??
-    10;
-  const effPaddingHorizontal =
-    paddingHorizontal ??
-    cs.drawerItemPaddingHorizontal ??
-    16;
+  const effPaddingVertical = paddingVertical ?? cs.drawerItemPaddingVertical ?? 10;
+  const effPaddingHorizontal = paddingHorizontal ?? cs.drawerItemPaddingHorizontal ?? 16;
 
   return (
     <TouchableOpacity
@@ -274,7 +262,9 @@ export function BottomNavigation({
               {route.icon ? (
                 <View style={styles.bottomNavIconWrapper}>
                   {typeof route.icon === 'function'
-                    ? route.icon({ color: isActive ? theme.colors.primary : theme.colors.textMuted })
+                    ? route.icon({
+                        color: isActive ? theme.colors.primary : theme.colors.textMuted,
+                      })
                     : route.icon}
                 </View>
               ) : null}
