@@ -70,8 +70,7 @@ export class DataTable extends BaseComponent {
           );
           const selected = rowChecks.filter((c) => c.checked);
           this._selectAll.checked = selected.length === rowChecks.length && rowChecks.length > 0;
-          this._selectAll.indeterminate =
-            selected.length > 0 && selected.length < rowChecks.length;
+          this._selectAll.indeterminate = selected.length > 0 && selected.length < rowChecks.length;
         }
 
         triggerEvent(this._element, 'boodoo.datatable.selectionChange', {

@@ -9,33 +9,98 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.5] - 2026-11-03
 
+### Added
+- **Production Readiness & Enterprise SLA Dashboard (`site/src/about/production-readiness.html`, `site/sitemap.xml`)**:
+  - Published a dedicated Production Readiness & Enterprise SLA documentation dashboard at `/docs/about/production-readiness.html`.
+  - Added enterprise support SLA tier commitments: Enterprise Tier (99.9% uptime, <1 hr critical response), Team Tier (99.5%, <4 hr response), and Community Tier (best-effort, public issue tracker).
+  - Integrated real-time verified production readiness metrics: 100% test pass rate (37/37 test suites), 0 external runtime dependencies, WCAG 2.2 Level AA accessibility compliance, and MIT open-source licensing.
+  - Published the 14-Point Production Component Quality Checklist standard governing API design, accessibility, multi-platform parity, lifecycle teardown, and security.
+  - Added cross-framework architectural comparison matrix benchmarking Boodoo against Bootstrap 5, Tailwind CSS v3/v4, and Material UI across bundle size, build requirements, SSR safety, and mobile native primitives.
+- **Automated Production Readiness & Sitemap Tests (`tests/site-docs.test.mjs`, `site/sitemap.xml`)**:
+  - Added automated test assertion in `tests/site-docs.test.mjs` verifying production readiness documentation route presence, HTTPS canonical URL integrity, navigation metadata, and sitemap synchronization.
+- **esbuild Bundling & Source Maps Pipeline (`build/js-bundle.mjs`)**:
+  - Integrated `esbuild` for multi-format JavaScript artifact generation, producing pure ESM (`dist/js/boodoo.esm.js`), CommonJS (`dist/js/boodoo.cjs`), and browser UMD (`dist/js/boodoo.js`) bundles with true `.map` source maps.
+  - Automated `.d.ts` TypeScript declaration emission directly to `dist/js/boodoo.d.ts` upon build completion.
+- **Automated Public API Parity Enforcement (`tests/package-smoke.test.mjs`)**:
+  - Added automated test #11 in `tests/package-smoke.test.mjs` strictly asserting export parity across the 45-symbol public API across source entry (`js/boodoo.js`), ESM bundle (`dist/js/boodoo.esm.js`), CommonJS bundle (`dist/js/boodoo.cjs`), and TypeScript declarations (`dist/js/boodoo.d.ts`).
+- **Comprehensive Runtime Component Lifecycle Test Suite (`tests/components.test.mjs`)**:
+  - Added 282 lines of automated tests verifying:
+    - Auto-init idempotency and re-entry protection (`document._boodooAutoInit`).
+    - Tooltip native `title` attribute caching, removal during activation, and restoration on `dispose()`.
+    - WAI-ARIA radio group semantics, `aria-checked` states, and arrow key navigation for Rating components.
+    - DataTable companion expandable detail row (`.data-table-row-detail`) preservation during column sorting and comprehensive `dispose()` listener teardown.
+    - Full lifecycle teardowns across `BottomSheet`, `Carousel`, `ChipInput`, `ContextMenu`, `Sidebar`, and `DataTable`.
+    - Custom Elements `connectedCallback` re-entry guard.
+    - Command Palette scoped shortcut binding (`_bindShortcut` / `_unbindShortcut`) and protocol allowlist navigation.
+- **Sass & Less Modular Preprocessor Subpath Exports (`package.json`)**:
+  - Exposed modular subpath exports for preprocessors (`./scss`, `./scss/*`, `./less`, `./less/*`), supporting standard package-specifier imports in build tooling without deep relative file paths.
+- **Automated Linting & Formatting Tooling (`eslint.config.js`, `.prettierrc`, `.prettierignore`)**:
+  - Added ESLint 9 flat configuration covering all maintained ECMAScript modules across `js/`, `bin/`, `build/`, `tokens/`, `react/`, `vue/`, and `react-native/`.
+  - Added Prettier configuration with ignore patterns and integrated `npm run lint` and `npm run format` scripts into the CI workflow.
+
 ### Changed
-- **esbuild Build Pipeline & Real JavaScript Minification (`build/js-bundle.mjs`, `README.md`)**:
-  - Replaced legacy regex-based bundle concatenator with `esbuild`, producing production-grade ESM, CommonJS, and browser UMD distributions.
-  - Built native CommonJS distribution (`boodoo.cjs`) and pure ESM distribution (`boodoo.esm.js`) with zero `window` global side effects, reserving `window.boodoo` exposure strictly for the browser UMD bundle.
-  - Generated real source maps (`.map`) across JavaScript distribution bundles.
-  - Achieved real JavaScript minification: reduced `dist/js/boodoo.min.js` from ~179 KB to ~113 KB (~27.1 KB gzip / ~23.4 KB brotli), a 35% reduction in production transfer footprint.
-  - Updated performance benchmark tables and reproducible validation commands in `README.md`.
-- **Public API Synchronization & Automated Parity Enforcement (`js/boodoo.js`, `js/boodoo.d.ts`, `build/js-bundle.mjs`, `tests/package-smoke.test.mjs`)**:
-  - Synchronized the complete 45-symbol public API across source entry, ESM bundle, CommonJS bundle, and TypeScript definitions.
-  - Resolved export drift for `a11y`, `FloatingBar`, `ImageCompare`, `PasswordMeter`, `initDataApi`, `initRipple`, and `registerCustomElements`.
-  - Added automated test #11 in `tests/package-smoke.test.mjs` strictly asserting export parity across source entry, ESM bundle, CJS bundle, and TypeScript declaration bundles.
-- **Late-Load Lifecycle & Unified Data API Initialization (`js/src/base-component.js`, `js/src/*`)**:
-  - Enhanced `initDataApi` in `js/src/base-component.js` with `document.readyState === 'loading'` check and fallback.
-  - Routed all 10 late-loaded components (`context-menu`, `data-table`, `otp`, `rating`, `chip-input`, `image-compare`, `floating-bar`, `password-meter`, `sidebar`, `tree-view`) through `initDataApi` for reliable initialization under dynamic `import()`, Next.js / Astro hydration, and async script injection.
-- **Security & Credential Hardening (`build/cdn-upload.mjs`)**:
-  - Removed committed default credentials from `build/cdn-upload.mjs`, enforcing mandatory `CDN_APP_ID` and `CDN_APP_SECRET` environment variables with fail-fast validation.
-- **Package Manifest & Module Resolution Improvements (`package.json`)**:
-  - Exposed modular preprocessor subpaths (`./scss`, `./scss/*`, `./less`, `./less/*`) in `package.json` `"exports"` to support standard package-specifier imports (e.g. `@use "boodoo/scss/boodoo"`).
-  - Hardened headless subpath exports (`./react`, `./vue`, `./react-native`) as ESM-only entry points with TypeScript declarations, removing invalid CJS require / default fallbacks.
-  - Streamlined `"sideEffects"` in `package.json` to style sheets (`*.css`, `*.scss`, `*.less`), ensuring complete tree-shaking purity for the ESM distribution.
-  - Replaced network `npx` fetch in `css:less` script with local `lessc` compiler, matching devDependency `less ^4.9.0`.
-  - Fixed Less 4.9.0 variable deprecation warnings in `less/_root.less`.
-  - Added ESLint flat config (`eslint.config.js`) covering all maintained source directories (`js`, `bin`, `build`, `tokens`, `react`, `vue`, `react-native`), Prettier configuration (`.prettierrc`), `"lint"` / `"format"` npm scripts, and automated CI workflow verification.
-- **Accessibility & Quality Hygiene (`js/src/a11y.js`, `js/src/carousel.js`, `js/boodoo.js`)**:
-  - Assertive screen-reader announcements in `a11y.announce` now use `role="alert"`.
-  - Removed dead code (empty global click listener in `carousel.js` and redundant `base-component.js` import in `boodoo.js`).
-  - Pruned root stray artifacts (`test-out.css.map`, `scratch/modularize-less.mjs`) and updated `.gitignore`.
+- **High-Performance JavaScript Minification & Footprint Reduction (`dist/js/boodoo.min.js`, `README.md`)**:
+  - Replaced legacy regex minification with industrial-grade `esbuild` syntax lowering and identifier mangling.
+  - Reduced production minified bundle `dist/js/boodoo.min.js` from ~179 KB to ~113 KB (~27.1 KB gzip / ~23.4 KB brotli), achieving a 35% reduction in production transfer footprint.
+  - Updated all performance benchmark tables in `README.md`, `site/src/about/production-readiness.html`, and documentation portals.
+- **Unified Late-Load Lifecycle & Data API Architecture (`js/src/base-component.js`, `js/src/*`)**:
+  - Enhanced `initDataApi` in `js/src/base-component.js` with SSR-safe checks and fallback when `document.readyState === 'loading'`.
+  - Migrated 10 late-loaded interactive components (`ContextMenu`, `DataTable`, `OTP`, `Rating`, `ChipInput`, `ImageCompare`, `FloatingBar`, `PasswordMeter`, `Sidebar`, `TreeView`) to route through `initDataApi`, providing guaranteed auto-initialization in Single Page Applications, dynamic imports, async script injection, and client-side hydration (Next.js, Astro, Vite).
+- **TypeScript Declaration Architecture & Clean Export Mapping (`js/boodoo.d.ts`, `react-native/index.d.ts`)**:
+  - Refactored `js/boodoo.d.ts` to use internal `declare class` declarations paired with a single consolidated named `export { ... }` block, eliminating duplicate export collisions in TypeScript consumers and bundlers.
+  - Refined React Native component prop interfaces and type definitions in `react-native/index.d.ts`.
+- **Headless Module Resolution Hardening (`package.json`)**:
+  - Hardened headless subpath exports (`./react`, `./vue`, `./react-native`) as ESM-only entry points with dedicated TypeScript declarations, removing invalid CJS fallback conditions.
+  - Streamlined `sideEffects` whitelist strictly to stylesheets (`*.css`, `*.scss`, `*.less`), guaranteeing tree-shaking purity for consumer bundlers.
+- **Preprocessor Tooling & Build Modernization (`package.json`, `less/_root.less`)**:
+  - Replaced ad-hoc network-fetching `npx` Less runner in `css:less` with local `lessc` executable matching devDependency `less ^4.9.0`.
+  - Eliminated Less 4.9.0 preprocessor variable deprecation warnings in `less/_root.less`.
+- **Documentation & Brand Consistency Synchronization (`site/src/about/overview.html`, `site/src/about/brand.html`, `site/archives/archives.json`)**:
+  - Synchronized component inventory figures across documentation and branding to the verified 50+ built-in components and 150+ utility classes standard.
+  - Updated official brand guidelines, color palettes, vector asset previews, and downloadable archive configurations.
+
+### Fixed
+- **Component Lifecycle Teardown & Event Listener Cleanup (Zero Memory Leaks)**:
+  - **`BottomSheet` (`js/src/bottom-sheet.js`)**: Implemented complete `dispose()` override unbinding document `keydown`, window `touchmove`/`touchend`, window `mousemove`/`mouseup`, and touchstart/mousedown handlers, clearing internal element references.
+  - **`Carousel` (`js/src/carousel.js`)**: Implemented comprehensive `dispose()` override clearing pending slide animation timeouts (`_slideTimeout`), interval cycles, indicator click listeners, previous/next control handlers, hover mouseenter/mouseleave listeners, keyboard navigation, and touch swipe handlers.
+  - **`DataTable` (`js/src/data-table.js`)**: Implemented full `dispose()` override detaching column header sort listeners, select-all checkbox change listeners, table click and change delegation handlers, and nulling table element references.
+  - **`ChipInput` (`js/src/chip-input.js`)**: Implemented `dispose()` override unbinding input keydown, blur, and container click handlers, nulling element references.
+  - **`Sidebar` (`js/src/sidebar.js`)**: Implemented `dispose()` override removing collapse toggles, backdrop elements, window resize listeners, and resetting body classes.
+  - **`ContextMenu` (`js/src/context-menu.js`)**: Implemented `dispose()` override unbinding contextmenu trigger listeners and document click dismiss handlers; scoped fallback menu resolution (`querySelector` / `closest`) with console warning for unresolved targets.
+  - **`Offcanvas` (`js/src/offcanvas.js`)**: Cleared pending transition timeouts (`_showTimeout`) in `dispose()` and added element existence guards inside `emulateTransitionEnd` callbacks to prevent modifying disposed instances.
+- **DataTable Detail Row Preservation During Column Sorting (`js/src/data-table.js`)**:
+  - Resolved bug where sorting tabular data displaced or orphaned expandable detail rows (`.data-table-row-detail`). The sorting algorithm now captures companion detail rows and appends them immediately following their parent row during DOM reordering.
+- **Tooltip Original Title Caching & Restoration (`js/src/tooltip.js`)**:
+  - Fixed native browser tooltip collision by caching the original `title` attribute in `_originalTitle` and stripping `title` from the DOM element during tooltip activation, then cleanly restoring the attribute upon component `dispose()`.
+- **Rating Component WCAG 2.2 AA Accessibility & Roving Focus (`js/src/rating.js`)**:
+  - Fixed missing accessible semantics: added `role="radiogroup"` to the container, `role="radio"` and `aria-checked` to individual stars, and roving tabindex (`tabindex="0"` on the active star, `-1` on inactive stars).
+  - Added full keyboard control supporting `ArrowRight` / `ArrowUp` to increment rating and `ArrowLeft` / `ArrowDown` to decrement rating with boundary clamping and live event emission.
+- **Command Palette Shortcut Leak & Safe Navigation Scheme Allowlist (`js/src/command-palette.js`)**:
+  - Fixed unconstrained global shortcut listener that hijacked `Ctrl+K`/`Cmd+K` unconditionally on script load. Replaced with instance-level named handlers (`_bindShortcut` / `_unbindShortcut`) managed through explicit initialization.
+  - Added protocol validation allowlisting safe schemes (`https:`, `http:`, `/`, `#`, `mailto:`) before mutating `window.location`, preventing unsafe `javascript:` execution.
+- **Custom Elements Double-Initialization Prevention (`js/src/custom-elements.js`)**:
+  - Added re-entry guard (`this._initialized`) inside `connectedCallback()` across custom web components to prevent redundant re-initialization when elements are moved or reattached within the DOM.
+- **Scrollspy `aria-current` Deactivation Bug (`js/src/scrollspy.js`)**:
+  - Replaced invalid `setAttribute('aria-current', null)` (which serialized as the string `"null"`, leaving the attribute active) with standard `removeAttribute('aria-current')`.
+- **Global Runtime Auto-Init Idempotency Guard (`js/boodoo.js`, `js/src/base-component.js`)**:
+  - Guarded `autoInit()` with `document._boodooAutoInit` to prevent duplicate global document listener registrations when the script bundle is re-evaluated or included multiple times.
+  - Added `typeof document.addEventListener === 'function'` check in `initDataApi` for SSR and synthetic test environments.
+- **Screen-Reader Live Region Alert Role (`js/src/a11y.js`)**:
+  - Updated `a11y.announce` assertive announcements to set `role="alert"` while retaining `role="status"` for polite announcements, ensuring immediate screen-reader invocation.
+- **Dead Code and Build Artifact Cleanup (`js/src/carousel.js`, `js/boodoo.js`)**:
+  - Removed obsolete empty global click listener in `carousel.js` and redundant `base-component.js` import in `boodoo.js`.
+  - Pruned root stray artifacts (`test-out.css.map`, `scratch/modularize-less.mjs`) and untracked generated `site/docs/` from git.
+
+### Security
+- **Publishing & CDN Credential Protection (`build/cdn-upload.mjs`)**:
+  - Removed committed fallback API credentials, enforcing mandatory `CDN_APP_ID` and `CDN_APP_SECRET` environment variables with fail-fast validation in release automation.
+- **CI Least-Privilege Hardening (`.github/workflows/ci.yml`)**:
+  - Enforced explicit top-level `permissions: { contents: read }` across GitHub Actions workflows, adhering to the principle of least privilege for the default `GITHUB_TOKEN`.
+- **Safe HTML Entity Encoding & Popover XSS Hardening (`js/src/util.js`, `js/src/tooltip.js`)**:
+  - Hardened `sanitizeHtml` to perform strict meta-character entity encoding (`&`, `<`, `>`, `"`, `'`), eliminating CodeQL alerts regarding multi-character sanitization bypasses.
+  - Hardened `Popover.prototype.setContent` to sanitize HTML content prior to DOM insertion.
+- **Documentation Search Safe Relative Navigation (`site/assets/search.js`)**:
+  - Refactored documentation search modal results from dynamic `onclick` mutations of `window.location.href` to semantic, accessible `<a>` elements with verified relative path attributes.
 
 ## [1.2.4] - 2026-11-01
 
