@@ -103,7 +103,7 @@ export function initDataApi(component, selector) {
       if (!component.getInstance(el)) {
         try {
           component.getOrCreateInstance(el);
-        } catch (e) {
+        } catch {
           // ignore — some components need explicit config
         }
       }

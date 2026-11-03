@@ -2,7 +2,7 @@
 // Sliding/fading carousel with controls, indicators, autoplay, swipe.
 
 import { BaseComponent } from './base-component.js';
-import { triggerEvent, getElementFromSelector, getNextElement, getTransitionDuration, emulateTransitionEnd } from './util.js';
+import { triggerEvent, getNextElement } from './util.js';
 
 export class Carousel extends BaseComponent {
   static get NAME() { return 'carousel'; }
@@ -138,7 +138,6 @@ export class Carousel extends BaseComponent {
 
     this._isSliding = true;
     const current = this._activeElement;
-    const duration = this._config.slideDuration;
 
     // crossfade approach (carousel-fade) or translate
     if (this._element.classList.contains('carousel-fade')) {

@@ -19,8 +19,11 @@
     "*.css",
     "*.scss",
     "*.less",
-    "dist/js/*",
-    "js/*"
+    "dist/css/**",
+    "scss/**",
+    "less/**",
+    "js/**",
+    "dist/js/**"
   ],
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
@@ -52,18 +55,15 @@
     "./paper": "./react-native/paper.js",
     "./react-native": {
       "types": "./react-native/index.d.ts",
-      "import": "./react-native/index.js",
-      "default": "./react-native/index.js"
+      "import": "./react-native/index.js"
     },
     "./react": {
       "types": "./react/index.d.ts",
-      "import": "./react/index.js",
-      "default": "./react/index.js"
+      "import": "./react/index.js"
     },
     "./vue": {
       "types": "./vue/index.d.ts",
-      "import": "./vue/index.js",
-      "default": "./vue/index.js"
+      "import": "./vue/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -83,7 +83,6 @@
       "optional": true
     }
   },
-  "dependencies": {},
   "files": [
     "dist/",
     "scss/",

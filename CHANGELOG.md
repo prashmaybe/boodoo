@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **esbuild Build Pipeline & Real JavaScript Minification (`build/js-bundle.mjs`, `README.md`)**:
   - Replaced legacy regex-based bundle concatenator with `esbuild`, producing production-grade ESM, CommonJS, and browser UMD distributions.
-  - Generated real source maps (`.map`) across all JavaScript distribution bundles (`boodoo.esm.js.map`, `boodoo.js.map`, `boodoo.cjs.map`, `boodoo.min.js.map`).
+  - Built native CommonJS distribution (`boodoo.cjs`) with `format: 'cjs'`, exposing standard `__esModule`, named exports, and `default` without global `__boodoo_export` pollution in ESM/SSR environments.
+  - Generated real source maps (`.map`) across JavaScript distribution bundles.
   - Achieved real JavaScript minification: reduced `dist/js/boodoo.min.js` from ~179 KB to ~113 KB (~27.1 KB gzip / ~23.4 KB brotli), a 35% reduction in production transfer footprint.
   - Updated performance benchmark tables and reproducible validation commands in `README.md`.
 - **Public API Synchronization & Automated Parity Enforcement (`js/boodoo.js`, `js/boodoo.d.ts`, `build/js-bundle.mjs`, `tests/package-smoke.test.mjs`)**:
@@ -26,8 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed committed default credentials from `build/cdn-upload.mjs`, enforcing mandatory `CDN_APP_ID` and `CDN_APP_SECRET` environment variables with fail-fast validation.
 - **Package Manifest & Module Resolution Improvements (`package.json`)**:
   - Exposed modular preprocessor subpaths (`./scss`, `./scss/*`, `./less`, `./less/*`) in `package.json` `"exports"` to support standard package-specifier imports (e.g. `@use "boodoo/scss/boodoo"`).
-  - Fixed CJS `require` condition on ESM-only subpaths (`./react`, `./vue`, `./react-native`) by replacing invalid `require` pointers with `default`.
-  - Added explicit `"sideEffects": ["*.css", "*.scss", "*.less", "dist/js/*", "js/*"]` in `package.json`.
+  - Hardened headless subpath exports (`./react`, `./vue`, `./react-native`) as ESM-only entry points with TypeScript declarations, removing invalid CJS require / default fallbacks.
+  - Added recursive `"sideEffects"` declaration in `package.json` covering style sheets and component source trees.
   - Replaced network `npx` fetch in `css:less` script with local `lessc` compiler, matching devDependency `less ^4.9.0`.
   - Fixed Less 4.9.0 variable deprecation warnings in `less/_root.less`.
   - Added ESLint flat config (`eslint.config.js`), Prettier configuration (`.prettierrc`), `"lint"` / `"format"` npm scripts, and CI workflow verification.

@@ -1,8 +1,8 @@
 // BOODOO — Dropdown
 // Toggle dropdown menus, handle outside clicks & Escape.
 
-import { BaseComponent, initDataApi } from './base-component.js';
-import { getElementFromSelector, triggerEvent, isVisible } from './util.js';
+import { BaseComponent } from './base-component.js';
+import { getElementFromSelector, triggerEvent } from './util.js';
 
 const getParent = (el) => el.closest('.dropdown') || el.parentElement;
 
@@ -124,7 +124,7 @@ class DropdownOpener {
     }
   }
 
-  _onTouch() {
+  _onTouch(event) {
     // close menus when tapping outside on touch devices
     const active = this._openDropdowns[0];
     if (active) {

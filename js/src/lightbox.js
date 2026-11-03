@@ -4,7 +4,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent, element, elements } from './util.js';
+import { triggerEvent } from './util.js';
 
 export class Lightbox extends BaseComponent {
   static get NAME() {

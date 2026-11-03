@@ -15,7 +15,7 @@ export const clipboard = {
         document.execCommand('copy');
         document.body.removeChild(textarea);
         return true;
-      } catch (err) {
+      } catch {
         document.body.removeChild(textarea);
         return false;
       }
@@ -23,7 +23,7 @@ export const clipboard = {
     try {
       await navigator.clipboard.writeText(text);
       return true;
-    } catch (err) {
+    } catch {
       return false;
     }
   },
@@ -52,6 +52,7 @@ export const clipboard = {
             btn.classList.add('copied');
 
             const feedback = btn.getAttribute('data-boodoo-copy-feedback') || 'Copied!';
+            btn.setAttribute('title', feedback);
             const icon = btn.querySelector('.copy-icon');
             if (icon) {
               icon.textContent = '✓';
@@ -59,6 +60,7 @@ export const clipboard = {
 
             setTimeout(() => {
               btn.classList.remove('copied');
+              btn.setAttribute('title', originalText);
               if (icon) icon.textContent = '';
             }, 2000);
 

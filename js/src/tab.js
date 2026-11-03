@@ -2,7 +2,7 @@
 // Tab & pill switching (nav-tabs, nav-pills, nav-underline).
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent, getNextElement } from './util.js';
+import { getElementFromSelector, triggerEvent } from './util.js';
 
 export class Tab extends BaseComponent {
   static get NAME() { return 'tab'; }

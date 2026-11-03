@@ -4,7 +4,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent, element } from './util.js';
+import { triggerEvent } from './util.js';
 
 export class Splitter extends BaseComponent {
   static get NAME() {
@@ -32,9 +32,7 @@ export class Splitter extends BaseComponent {
     this._gutter.setAttribute('role', 'separator');
     this._gutter.setAttribute('aria-orientation', this._isVertical ? 'vertical' : 'horizontal');
 
-    const onPointerMove = (e) => this._onPointerMove(e);
-    const onPointerUp = () => this._onPointerUp(onPointerMove, onPointerUp);
-
+    
     this._gutter.addEventListener('pointerdown', (e) => {
       e.preventDefault();
       this._isDragging = true;
@@ -49,7 +47,7 @@ export class Splitter extends BaseComponent {
         this._element.classList.remove('splitter-resizing');
         try {
           this._gutter.releasePointerCapture(upEvent.pointerId);
-        } catch (_) {}
+        } catch {}
         window.removeEventListener('pointermove', moveHandler);
         window.removeEventListener('pointerup', upHandler);
         triggerEvent(this._element, 'boodoo.splitter.dragend');

@@ -4,7 +4,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent, element } from './util.js';
+import { triggerEvent } from './util.js';
 
 const FAB_SELECTOR_TRIGGER = '.fab-trigger, [data-boodoo-fab-trigger], .btn-fab';
 const FAB_SELECTOR_ACTIONS = '.fab-actions, [data-boodoo-fab-actions]';

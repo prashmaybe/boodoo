@@ -67,8 +67,6 @@ export class ScrollSpy extends BaseComponent {
         const li = link.parentElement;
         if (li && li.classList.contains('nav-item')) {
           // scroll the nav into view (for sidebar)
-          const parentList = li.closest('.nav');
-          const parentNav = li.parentElement.closest('.nav-item')?.querySelector('.nav') || null;
           if (link.scrollIntoViewIfNeeded) link.scrollIntoViewIfNeeded({ behavior: 'smooth', block: 'nearest' });
         }
       }

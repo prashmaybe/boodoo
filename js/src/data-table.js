@@ -24,7 +24,7 @@ export class DataTable extends BaseComponent {
   _bindEvents() {
     // 1. Sortable column headers
     const sortHeaders = this._table.querySelectorAll('thead th.sortable');
-    sortHeaders.forEach((th, idx) => {
+    sortHeaders.forEach((th) => {
       th.addEventListener('click', () => {
         this.sortBy(th);
       });

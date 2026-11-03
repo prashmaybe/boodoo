@@ -187,8 +187,8 @@ class AbstractTrigger extends BaseComponent {
     // Resolve 'auto' to a concrete placement
     const spaceTop = rect.top;
     const spaceBottom = window.innerHeight - rect.bottom;
-    const spaceStart = rect.left;
-    const spaceEnd = window.innerWidth - rect.right;
+
+
     let resolved = placement;
     if (placement === 'auto' || placement === 'auto-start' || placement === 'auto-end') {
       resolved = spaceTop >= spaceBottom ? (rect.left + rect.width / 2 < window.innerWidth / 2 ? (placement.includes('start') ? 'bottom-start' : 'bottom') : (placement.includes('end') ? 'bottom-end' : 'bottom')) : (rect.left + rect.width / 2 < window.innerWidth / 2 ? (placement.includes('start') ? 'top-start' : 'top') : (placement.includes('end') ? 'top-end' : 'top'));

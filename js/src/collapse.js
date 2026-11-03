@@ -3,7 +3,7 @@
 
 import { BaseComponent, initDataApi } from './base-component.js';
 import {
-  isVisible, reflow, getTransitionDuration, emulateTransitionEnd,
+  reflow, getTransitionDuration, emulateTransitionEnd,
   getElementFromSelector, triggerEvent, elements,
 } from './util.js';
 
@@ -96,7 +96,7 @@ export class Collapse extends BaseComponent {
     });
   }
 
-  static collapseAll(root, targetSelector, doTransition = true) {
+  static collapseAll(root, targetSelector, _doTransition = true) {
     const collapsibles = elements(`${root} [data-boodoo-toggle="collapse"]`).filter((t) => {
       const target = getElementFromSelector(t);
       return target && target.matches(targetSelector);

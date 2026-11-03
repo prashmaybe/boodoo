@@ -20,25 +20,20 @@ const banner = `/*!
 const umdBanner = `${banner}
 (function (global, factory) {
   "use strict";
-  if (typeof module === "object" && typeof module.exports !== "undefined") {
+  if (typeof exports === "object" && typeof module !== "undefined") {
     module.exports = factory();
+  } else if (typeof define === "function" && define.amd) {
+    define([], factory);
   } else {
     global = typeof globalThis !== "undefined" ? globalThis : global || self;
-    const api = factory();
-    global.boodoo = api;
+    global.boodoo = factory();
   }
 })(this, (function () {
   "use strict";
 `;
 
 const umdFooter = `
-  var res = (typeof globalThis !== "undefined" && globalThis.__boodoo_export)
-    || (typeof window !== "undefined" && window.boodoo)
-    || (typeof __boodoo_lib !== "undefined" ? __boodoo_lib : {});
-  if (typeof globalThis !== "undefined" && globalThis.__boodoo_export) {
-    try { delete globalThis.__boodoo_export; } catch (e) { globalThis.__boodoo_export = undefined; }
-  }
-  return res;
+  return typeof __boodoo_lib !== "undefined" ? __boodoo_lib : {};
 }));
 `;
 
@@ -71,15 +66,13 @@ async function build() {
   const jsSize = fs.statSync(path.join(outDir, 'boodoo.js')).size;
   console.log('Bundled boodoo.js (' + jsSize + ' bytes)');
 
-  // 3. CommonJS bundle (format: 'iife' with UMD factory export)
+  // 3. CommonJS bundle (format: 'cjs')
   await esbuild.build({
     entryPoints: [entry],
     bundle: true,
-    format: 'iife',
-    globalName: '__boodoo_lib',
+    format: 'cjs',
     outfile: path.join(outDir, 'boodoo.cjs'),
-    banner: { js: umdBanner },
-    footer: { js: umdFooter },
+    banner: { js: banner },
     sourcemap: true,
   });
   const cjsSize = fs.statSync(path.join(outDir, 'boodoo.cjs')).size;

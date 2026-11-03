@@ -5,7 +5,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent, element, elements } from './util.js';
+import { triggerEvent } from './util.js';
 
 const COMBOBOX_SELECTOR_INPUT = '.combobox-input, [data-boodoo-combobox-input]';
 const COMBOBOX_SELECTOR_MENU = '.combobox-menu, [data-boodoo-combobox-menu]';

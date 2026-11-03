@@ -2,7 +2,7 @@
 // Toggle active/loading states on buttons and checkbox/radio groups.
 
 import { BaseComponent } from './base-component.js';
-import { getElementFromSelector, triggerEvent } from './util.js';
+import { triggerEvent } from './util.js';
 
 export class Button extends BaseComponent {
   static get NAME() { return 'button'; }

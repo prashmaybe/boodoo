@@ -277,10 +277,6 @@ export {
   BackToTop,
 };
 
-if (typeof globalThis !== 'undefined') {
-  globalThis.__boodoo_export = boodoo;
-}
-
 if (typeof window !== 'undefined') {
   window.boodoo = boodoo;
 }
