@@ -63,7 +63,7 @@ export class ScrollSpy extends BaseComponent {
     // Deactivate all
     this._links.forEach((a) => {
       a.classList.remove('active');
-      a.setAttribute('aria-current', null);
+      a.removeAttribute('aria-current');
     });
 
     if (current) {
@@ -84,6 +84,13 @@ export class ScrollSpy extends BaseComponent {
 
   dispose() {
     window.removeEventListener('scroll', this._bound);
+    this._links.forEach((a) => {
+      a.classList.remove('active');
+      a.removeAttribute('aria-current');
+    });
+    this._links = [];
+    this._sections = [];
+    this._active = null;
     super.dispose();
   }
 }

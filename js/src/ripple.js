@@ -6,18 +6,22 @@ export function initRipple(root = document) {
   if (typeof document !== 'undefined' && root === document && !document._boodooRippleDelegated) {
     document._boodooRippleDelegated = true;
     document.addEventListener('pointerdown', (e) => {
+      if (e._boodooRippleHandled) return;
       const surface =
         e.target && e.target.closest ? e.target.closest('.ripple, [data-boodoo-ripple]') : null;
       if (surface) {
+        e._boodooRippleHandled = true;
         createRipple(surface, e);
       }
     });
     document.addEventListener('keydown', (e) => {
+      if (e._boodooRippleHandled) return;
       if (e.key === 'Enter' || e.key === ' ') {
         const active = document.activeElement;
         const surface =
           active && active.closest ? active.closest('.ripple, [data-boodoo-ripple]') : null;
         if (surface) {
+          e._boodooRippleHandled = true;
           const rect = surface.getBoundingClientRect();
           createRipple(surface, {
             clientX: rect.left + rect.width / 2,

@@ -113,14 +113,26 @@ export class DataTable extends BaseComponent {
     headerEl.classList.add(this._sortAsc ? 'sort-asc' : 'sort-desc');
 
     const rows = Array.from(tbody.querySelectorAll('tr:not(.data-table-row-detail)'));
+
+    // Capture companion detail rows before any DOM reordering
+    const rowDetails = new Map();
+    rows.forEach((row) => {
+      const next = row.nextElementSibling;
+      if (next && next.classList.contains('data-table-row-detail')) {
+        rowDetails.set(row, next);
+      }
+    });
+
     rows.sort((a, b) => {
       const aText = (a.children[colIndex] ? a.children[colIndex].innerText : '').trim();
       const bText = (b.children[colIndex] ? b.children[colIndex].innerText : '').trim();
 
-      const aNum = Number(aText.replace(/[^0-9.-]+/g, ''));
-      const bNum = Number(bText.replace(/[^0-9.-]+/g, ''));
+      const aClean = aText.replace(/[^0-9.-]+/g, '');
+      const bClean = bText.replace(/[^0-9.-]+/g, '');
+      const aNum = aClean !== '' ? Number(aClean) : NaN;
+      const bNum = bClean !== '' ? Number(bClean) : NaN;
 
-      if (!isNaN(aNum) && !isNaN(bNum) && aText !== '' && bText !== '') {
+      if (!isNaN(aNum) && !isNaN(bNum)) {
         return this._sortAsc ? aNum - bNum : bNum - aNum;
       }
       return this._sortAsc
@@ -129,9 +141,9 @@ export class DataTable extends BaseComponent {
     });
 
     rows.forEach((row) => {
+      const detailRow = rowDetails.get(row);
       tbody.appendChild(row);
-      const detailRow = row.nextElementSibling;
-      if (detailRow && detailRow.classList.contains('data-table-row-detail')) {
+      if (detailRow) {
         tbody.appendChild(detailRow);
       }
     });

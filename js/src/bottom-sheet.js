@@ -95,8 +95,9 @@ export class BottomSheet extends BaseComponent {
   }
 
   _initGestures() {
-    const handle =
+    this._handleEl =
       this._handle || this._element.querySelector('.bottom-sheet-header') || this._element;
+    const handle = this._handleEl;
 
     const onStart = (clientY) => {
       this._startY = clientY;
@@ -125,42 +126,84 @@ export class BottomSheet extends BaseComponent {
       }
     };
 
-    handle.addEventListener(
-      'touchstart',
-      (e) => {
-        if (e.touches && e.touches[0]) onStart(e.touches[0].clientY);
-      },
-      { passive: true }
-    );
+    this._onTouchStart = (e) => {
+      if (e.touches && e.touches[0]) onStart(e.touches[0].clientY);
+    };
 
-    window.addEventListener(
-      'touchmove',
-      (e) => {
-        if (this._isDragging && e.touches && e.touches[0]) {
-          onMove(e.touches[0].clientY);
-        }
-      },
-      { passive: true }
-    );
+    this._onTouchMove = (e) => {
+      if (this._isDragging && e.touches && e.touches[0]) {
+        onMove(e.touches[0].clientY);
+      }
+    };
 
-    window.addEventListener('touchend', (e) => {
+    this._onTouchEnd = (e) => {
       if (this._isDragging) {
         const touch = e.changedTouches && e.changedTouches[0];
         onEnd(touch ? touch.clientY : this._startY);
       }
-    });
+    };
 
-    handle.addEventListener('mousedown', (e) => {
+    this._onMouseDown = (e) => {
       onStart(e.clientY);
-      const moveHandler = (moveEvent) => onMove(moveEvent.clientY);
-      const upHandler = (upEvent) => {
-        window.removeEventListener('mousemove', moveHandler);
-        window.removeEventListener('mouseup', upHandler);
+      this._moveHandler = (moveEvent) => onMove(moveEvent.clientY);
+      this._upHandler = (upEvent) => {
+        window.removeEventListener('mousemove', this._moveHandler);
+        window.removeEventListener('mouseup', this._upHandler);
+        this._moveHandler = null;
+        this._upHandler = null;
         onEnd(upEvent.clientY);
       };
-      window.addEventListener('mousemove', moveHandler);
-      window.addEventListener('mouseup', upHandler);
-    });
+      window.addEventListener('mousemove', this._moveHandler);
+      window.addEventListener('mouseup', this._upHandler);
+    };
+
+    if (handle && typeof handle.addEventListener === 'function') {
+      handle.addEventListener('touchstart', this._onTouchStart, { passive: true });
+      handle.addEventListener('mousedown', this._onMouseDown);
+    }
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      window.addEventListener('touchmove', this._onTouchMove, { passive: true });
+      window.addEventListener('touchend', this._onTouchEnd);
+    }
+  }
+
+  dispose() {
+    if (this._isShown) {
+      this.hide();
+    }
+    if (this._onKeydown) {
+      document.removeEventListener('keydown', this._onKeydown);
+      this._onKeydown = null;
+    }
+    if (this._handleEl) {
+      if (this._onTouchStart) this._handleEl.removeEventListener('touchstart', this._onTouchStart);
+      if (this._onMouseDown) this._handleEl.removeEventListener('mousedown', this._onMouseDown);
+      this._handleEl = null;
+    }
+    if (this._onTouchMove) {
+      window.removeEventListener('touchmove', this._onTouchMove);
+      this._onTouchMove = null;
+    }
+    if (this._onTouchEnd) {
+      window.removeEventListener('touchend', this._onTouchEnd);
+      this._onTouchEnd = null;
+    }
+    if (this._moveHandler) {
+      window.removeEventListener('mousemove', this._moveHandler);
+      this._moveHandler = null;
+    }
+    if (this._upHandler) {
+      window.removeEventListener('mouseup', this._upHandler);
+      this._upHandler = null;
+    }
+    if (this._backdrop && this._backdrop.parentNode) {
+      this._backdrop.parentNode.removeChild(this._backdrop);
+      this._backdrop = null;
+    }
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.style.overflow = '';
+    }
+    super.dispose();
   }
 }
 

@@ -21,6 +21,7 @@ class AbstractTrigger extends BaseComponent {
     this._popper = null;
     this._hideTimeout = null;
     this._showTimeout = null;
+    this._originalTitle = this._element.getAttribute('title') || '';
     this._bound = {
       show: this.show.bind(this),
       hide: this.hide.bind(this),
@@ -100,12 +101,15 @@ class AbstractTrigger extends BaseComponent {
 
   _getTitle() {
     const element = this._element;
+    if (element && element.hasAttribute && element.hasAttribute('title')) {
+      this._originalTitle = element.getAttribute('title') || this._originalTitle;
+      element.removeAttribute('title');
+    }
     const title =
       this._config.title ||
-      element.getAttribute('data-boodoo-title') ||
-      element.getAttribute('title') ||
+      (element && element.getAttribute ? element.getAttribute('data-boodoo-title') : null) ||
+      this._originalTitle ||
       '';
-    if (element.title === title && element.removeAttribute) element.removeAttribute('title');
     return title;
   }
 
@@ -161,6 +165,9 @@ class AbstractTrigger extends BaseComponent {
       this._tip = null;
       this._isShown = false;
       this._popper = null;
+      if (this._originalTitle && this._element && !this._element.hasAttribute('title')) {
+        this._element.setAttribute('title', this._originalTitle);
+      }
       triggerEvent(this._element, 'boodoo.hidden.' + this.constructor.NAME);
     });
   }
@@ -302,6 +309,9 @@ class AbstractTrigger extends BaseComponent {
   }
 
   dispose() {
+    if (this._originalTitle && this._element && !this._element.hasAttribute('title')) {
+      this._element.setAttribute('title', this._originalTitle);
+    }
     if (this._tip) {
       this._tip.parentNode && this._tip.parentNode.removeChild(this._tip);
       this._tip = null;

@@ -18,7 +18,7 @@ export class Sidebar extends BaseComponent {
 
   _bindEvents() {
     // 1. Submenu toggles
-    this._element.addEventListener('click', (e) => {
+    this._onSubmenuClick = (e) => {
       const toggle = e.target.closest('[data-boodoo-toggle="sidebar-submenu"]');
       if (toggle) {
         e.preventDefault();
@@ -32,10 +32,11 @@ export class Sidebar extends BaseComponent {
           }
         }
       }
-    });
+    };
+    this._element.addEventListener('click', this._onSubmenuClick);
 
     // 2. Global toggler buttons targeting this sidebar
-    document.addEventListener('click', (e) => {
+    this._onDocClick = (e) => {
       const toggler = e.target.closest('[data-boodoo-toggle="sidebar"]');
       if (toggler) {
         const targetId = toggler.getAttribute('data-boodoo-target') || toggler.getAttribute('href');
@@ -47,7 +48,20 @@ export class Sidebar extends BaseComponent {
           this.toggleCollapse();
         }
       }
-    });
+    };
+    document.addEventListener('click', this._onDocClick);
+  }
+
+  dispose() {
+    if (this._onSubmenuClick && this._element) {
+      this._element.removeEventListener('click', this._onSubmenuClick);
+      this._onSubmenuClick = null;
+    }
+    if (this._onDocClick) {
+      document.removeEventListener('click', this._onDocClick);
+      this._onDocClick = null;
+    }
+    super.dispose();
   }
 
   toggleCollapse() {

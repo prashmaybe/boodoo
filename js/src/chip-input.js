@@ -19,7 +19,7 @@ export class ChipInput extends BaseComponent {
 
   _bindEvents() {
     // 1. Remove chip click
-    this._element.addEventListener('click', (e) => {
+    this._onClick = (e) => {
       const removeBtn = e.target.closest('.chip-remove, .tag-remove');
       if (removeBtn) {
         e.preventDefault();
@@ -34,11 +34,12 @@ export class ChipInput extends BaseComponent {
       } else if (this._input && e.target === this._element) {
         this._input.focus();
       }
-    });
+    };
+    this._element.addEventListener('click', this._onClick);
 
     // 2. Add chip on Enter or comma
     if (this._input) {
-      this._input.addEventListener('keydown', (e) => {
+      this._onKeydown = (e) => {
         if (e.key === 'Enter' || e.key === ',') {
           e.preventDefault();
           const val = this._input.value.trim().replace(/^,+|,+$/g, '');
@@ -54,8 +55,22 @@ export class ChipInput extends BaseComponent {
             triggerEvent(this._element, 'boodoo.chip.remove', { chip: lastChip });
           }
         }
-      });
+      };
+      this._input.addEventListener('keydown', this._onKeydown);
     }
+  }
+
+  dispose() {
+    if (this._onClick && this._element) {
+      this._element.removeEventListener('click', this._onClick);
+      this._onClick = null;
+    }
+    if (this._onKeydown && this._input) {
+      this._input.removeEventListener('keydown', this._onKeydown);
+      this._onKeydown = null;
+    }
+    this._input = null;
+    super.dispose();
   }
 
   addChip(text, variant = '') {
@@ -95,17 +110,22 @@ export class ChipInput extends BaseComponent {
 
 initDataApi(ChipInput, '.chip-input-container, [data-boodoo="chip-input"]');
 
-if (typeof document !== 'undefined') {
-  const initChipRemove = () => {
-    document.addEventListener('click', (e) => {
-      const removeBtn = e.target.closest('.chip .chip-remove');
-      if (removeBtn && !removeBtn.closest('.chip-input-container')) {
-        const chip = removeBtn.closest('.chip');
-        if (chip) chip.remove();
-      }
-    });
-  };
+let chipRemoveHandler = null;
 
+export function initChipRemove() {
+  if (typeof document === 'undefined' || document._boodooChipRemoveBound) return;
+  document._boodooChipRemoveBound = true;
+  chipRemoveHandler = (e) => {
+    const removeBtn = e.target.closest('.chip .chip-remove');
+    if (removeBtn && !removeBtn.closest('.chip-input-container')) {
+      const chip = removeBtn.closest('.chip');
+      if (chip) chip.remove();
+    }
+  };
+  document.addEventListener('click', chipRemoveHandler);
+}
+
+if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initChipRemove);
   } else {

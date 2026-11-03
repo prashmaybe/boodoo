@@ -217,6 +217,8 @@ boodoo.toast.info = (message, options = {}) =>
 // Auto-initialize common data-api components
 function autoInit() {
   if (typeof document === 'undefined') return;
+  if (document._boodooAutoInit) return;
+  document._boodooAutoInit = true;
   // Buttons
   document.addEventListener(
     'click',

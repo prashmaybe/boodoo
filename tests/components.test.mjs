@@ -967,3 +967,285 @@ test('Native zero-dependency Chart component functionality, rendering, and lifec
   assert.equal(chart._resizeObserver, null, 'Chart resize observer must be cleaned up on dispose');
 });
 
+
+test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction correctness, and accessibility', async () => {
+  const origDoc = globalThis.document;
+  if (!globalThis.document) globalThis.document = {};
+  if (!globalThis.document.addEventListener) globalThis.document.addEventListener = () => {};
+  if (!globalThis.document.removeEventListener) globalThis.document.removeEventListener = () => {};
+  if (!globalThis.document.querySelector) globalThis.document.querySelector = () => null;
+  if (!globalThis.document.querySelectorAll) globalThis.document.querySelectorAll = () => [];
+
+  const { Carousel } = await import(pathToFileURL(resolve(rootDir, 'js/src/carousel.js')).href);
+  const { DataTable } = await import(pathToFileURL(resolve(rootDir, 'js/src/data-table.js')).href);
+  const { ContextMenu } = await import(pathToFileURL(resolve(rootDir, 'js/src/context-menu.js')).href);
+  const { Sidebar } = await import(pathToFileURL(resolve(rootDir, 'js/src/sidebar.js')).href);
+  const { BottomSheet } = await import(pathToFileURL(resolve(rootDir, 'js/src/bottom-sheet.js')).href);
+  const { ChipInput } = await import(pathToFileURL(resolve(rootDir, 'js/src/chip-input.js')).href);
+  const { Tooltip } = await import(pathToFileURL(resolve(rootDir, 'js/src/tooltip.js')).href);
+  const { Rating } = await import(pathToFileURL(resolve(rootDir, 'js/src/rating.js')).href);
+
+  // 1. Carousel dispose clears interval
+  let mockCarouselListeners = {};
+  const mockCarouselEl = {
+    classList: { contains: () => false, add() {}, remove() {} },
+    getAttribute: () => null,
+    hasAttribute: () => false,
+    querySelector: () => null,
+    querySelectorAll: () => [],
+    addEventListener: (evt, fn) => { mockCarouselListeners[evt] = fn; },
+    removeEventListener: (evt) => { delete mockCarouselListeners[evt]; },
+    matches: () => false
+  };
+  const carousel = new Carousel(mockCarouselEl, { interval: 100 });
+  assert.ok(carousel._interval !== null, 'Carousel should have active interval');
+  carousel.dispose();
+  assert.equal(carousel._interval, null, 'Carousel interval must be cleared on dispose');
+  assert.equal(carousel._element, null, 'Carousel _element must be nulled on dispose');
+
+  // 2. Offcanvas Escape keydown listener
+  const offcanvasSrc = readFileSync(resolve(rootDir, 'js/src/offcanvas.js'), 'utf8');
+  assert.ok(offcanvasSrc.includes('this._addKeydownListener()'), 'Offcanvas show() must invoke _addKeydownListener()');
+  assert.ok(offcanvasSrc.includes('this._removeKeydownListener()'), 'Offcanvas hide() must invoke _removeKeydownListener()');
+
+  // 3. Ripple checks and sets e._boodooRippleHandled
+  const rippleSrc = readFileSync(resolve(rootDir, 'js/src/ripple.js'), 'utf8');
+  assert.ok(
+    rippleSrc.includes('if (e._boodooRippleHandled) return;') &&
+    rippleSrc.includes('e._boodooRippleHandled = true;'),
+    'Ripple delegated listener must check and set _boodooRippleHandled'
+  );
+
+  // 4. DataTable sortBy preserves companion .data-table-row-detail rows
+  class MockTableRow {
+    constructor(id, text, isDetail = false) {
+      this.id = id;
+      this.children = [{ innerText: text }];
+      this.classList = {
+        contains: (c) => (isDetail ? c === 'data-table-row-detail' : false)
+      };
+      this.nextElementSibling = null;
+    }
+  }
+
+  const row1 = new MockTableRow('row1', 'Beta');
+  const detail1 = new MockTableRow('detail1', 'Beta Detail', true);
+  const row2 = new MockTableRow('row2', 'Alpha');
+  const detail2 = new MockTableRow('detail2', 'Alpha Detail', true);
+
+  row1.nextElementSibling = detail1;
+  detail1.nextElementSibling = row2;
+  row2.nextElementSibling = detail2;
+
+  const mockTh = {
+    classList: { remove() {}, add() {} },
+    addEventListener() {},
+    parentElement: null
+  };
+  mockTh.parentElement = { children: [mockTh] };
+
+  const tbodyRows = [row1, detail1, row2, detail2];
+  const appended = [];
+  const mockTable = {
+    classList: { contains: () => true },
+    matches: () => true,
+    querySelector: (sel) => {
+      if (sel === 'tbody') {
+        return {
+          querySelectorAll: (s) => (s === 'tr:not(.data-table-row-detail)' ? [row1, row2] : tbodyRows),
+          appendChild: (node) => { appended.push(node); }
+        };
+      }
+      return null;
+    },
+    querySelectorAll: (sel) => {
+      if (sel.includes('thead th')) {
+        return [mockTh];
+      }
+      return [];
+    },
+    addEventListener() {},
+    removeEventListener() {},
+    dispatchEvent() { return true; }
+  };
+
+  const dt = new DataTable(mockTable);
+  dt.sortBy(mockTh);
+  assert.deepEqual(appended.map(r => r.id), ['row2', 'detail2', 'row1', 'detail1'], 'DataTable must preserve companion detail row following parent row');
+
+  // 5. Missing dispose overrides
+  assert.equal(typeof ContextMenu.prototype.dispose, 'function', 'ContextMenu must have dispose() override');
+  assert.equal(typeof Sidebar.prototype.dispose, 'function', 'Sidebar must have dispose() override');
+  assert.equal(typeof BottomSheet.prototype.dispose, 'function', 'BottomSheet must have dispose() override');
+  assert.equal(typeof ChipInput.prototype.dispose, 'function', 'ChipInput must have dispose() override');
+
+  let cmListeners = {};
+  const mockCmEl = {
+    classList: { contains: () => true },
+    getAttribute: () => null,
+    addEventListener: (evt, fn) => { cmListeners[evt] = fn; },
+    removeEventListener: (evt) => { delete cmListeners[evt]; },
+    querySelector: () => null,
+    style: {}
+  };
+  const cm = new ContextMenu(mockCmEl);
+  cm.dispose();
+  assert.equal(cm._menu, null, 'ContextMenu menu reference should be nulled on dispose');
+  assert.equal(cm._element, null, 'ContextMenu element reference should be nulled on dispose');
+
+  let sbListeners = {};
+  const mockSbEl = {
+    classList: { contains: () => false, toggle: () => false },
+    addEventListener: (evt, fn) => { sbListeners[evt] = fn; },
+    removeEventListener: (evt) => { delete sbListeners[evt]; },
+    querySelector: () => null
+  };
+  const sb = new Sidebar(mockSbEl);
+  sb.dispose();
+  assert.equal(sb._element, null);
+
+  let bsListeners = {};
+  const mockBsEl = {
+    classList: { contains: () => false, add() {}, remove() {} },
+    querySelector: () => null,
+    addEventListener: (evt, fn) => { bsListeners[evt] = fn; },
+    removeEventListener: (evt) => { delete bsListeners[evt]; },
+    style: {}
+  };
+  const bs = new BottomSheet(mockBsEl);
+  bs.dispose();
+  assert.equal(bs._element, null);
+
+  let ciListeners = {};
+  const mockCiInput = {
+    addEventListener: (evt, fn) => { ciListeners['input:' + evt] = fn; },
+    removeEventListener: (evt) => { delete ciListeners['input:' + evt]; },
+    value: ''
+  };
+  const mockCiEl = {
+    classList: { contains: () => false },
+    querySelector: (sel) => (sel === '.chip-input-field' ? mockCiInput : null),
+    querySelectorAll: () => [],
+    addEventListener: (evt, fn) => { ciListeners['el:' + evt] = fn; },
+    removeEventListener: (evt) => { delete ciListeners['el:' + evt]; }
+  };
+  const ci = new ChipInput(mockCiEl);
+  ci.dispose();
+  assert.equal(ci._input, null);
+  assert.equal(ci._element, null);
+
+  // 6. ContextMenu _resolveMenu scoped fallback
+  const cmSrc = readFileSync(resolve(rootDir, 'js/src/context-menu.js'), 'utf8');
+  assert.ok(
+    cmSrc.includes('this._element.querySelector(\'.context-menu\')') ||
+    cmSrc.includes('this._element.closest(\'.context-menu\')'),
+    'ContextMenu must scope fallback menu resolution to trigger context'
+  );
+  assert.ok(
+    cmSrc.includes('console.warn'),
+    'ContextMenu must warn when target menu cannot be resolved'
+  );
+
+  // 7. CustomElements connectedCallback guard
+  const ceSrc = readFileSync(resolve(rootDir, 'js/src/custom-elements.js'), 'utf8');
+  assert.ok(
+    ceSrc.includes('if (this._initialized) return;') || ceSrc.includes('if (this._initialized)'),
+    'CustomElements connectedCallback must guard against re-entry'
+  );
+
+  // 8. Tooltip restores original title
+  const mockTipAttrs = { title: 'Native Tooltip Label' };
+  const mockTipEl = {
+    attributes: mockTipAttrs,
+    getAttribute: (k) => mockTipAttrs[k] || null,
+    setAttribute: (k, v) => { mockTipAttrs[k] = v; },
+    removeAttribute: (k) => { delete mockTipAttrs[k]; },
+    hasAttribute: (k) => k in mockTipAttrs,
+    title: 'Native Tooltip Label',
+    addEventListener() {},
+    removeEventListener() {}
+  };
+  const tooltip = new Tooltip(mockTipEl);
+  assert.equal(tooltip._originalTitle, 'Native Tooltip Label');
+  const title = tooltip._getTitle();
+  assert.equal(title, 'Native Tooltip Label');
+  assert.equal(mockTipAttrs.title, undefined, 'Title attribute should be removed while tooltip is active');
+  tooltip.dispose();
+  assert.equal(mockTipAttrs.title, 'Native Tooltip Label', 'Original title must be restored on dispose');
+
+  // 9. Rating WCAG 2.2 AA accessibility
+  const starAttrs = [{}, {}, {}, {}, {}];
+  const starElements = starAttrs.map((attrs, idx) => ({
+    classList: {
+      _classes: new Set(),
+      add(c) { this._classes.add(c); },
+      remove(c) { this._classes.delete(c); },
+      contains(c) { return this._classes.has(c); }
+    },
+    setAttribute: (k, v) => { attrs[k] = v; },
+    getAttribute: (k) => attrs[k] || null,
+    addEventListener: (evt, fn) => { attrs['on_' + evt] = fn; },
+    removeEventListener: (evt) => { delete attrs['on_' + evt]; },
+    focus() {}
+  }));
+
+  const ratingAttrs = { 'data-rating-value': '2' };
+  const mockRatingEl = {
+    getAttribute: (k) => ratingAttrs[k] || null,
+    setAttribute: (k, v) => { ratingAttrs[k] = String(v); },
+    classList: { contains: () => false },
+    hasAttribute: (k) => k in ratingAttrs,
+    querySelectorAll: () => starElements,
+    addEventListener() {},
+    removeEventListener() {},
+    dispatchEvent: () => true
+  };
+
+  const rating = new Rating(mockRatingEl);
+  assert.equal(mockRatingEl.getAttribute('role'), 'radiogroup', 'Rating container must declare role="radiogroup"');
+  starAttrs.forEach((attrs, i) => {
+    assert.equal(attrs.role, 'radio', 'Each star must declare role="radio"');
+    assert.equal(attrs['aria-checked'], i === 1 ? 'true' : 'false');
+    assert.equal(attrs.tabindex, i === 1 ? '0' : '-1');
+  });
+
+  const keydownFn = starAttrs[1]['on_keydown'];
+  assert.equal(typeof keydownFn, 'function', 'Star must have keydown listener for keyboard navigation');
+  keydownFn({ key: 'ArrowRight', preventDefault() {} });
+  assert.equal(rating.getValue(), 3, 'ArrowRight must advance rating value');
+  assert.equal(starAttrs[2]['aria-checked'], 'true');
+
+  rating.dispose();
+  assert.equal(rating._stars.length, 0);
+
+  // 10. CommandPalette shortcut opt-in and teardown
+  const cpSrc = readFileSync(resolve(rootDir, 'js/src/command-palette.js'), 'utf8');
+  assert.ok(
+    cpSrc.includes('_bindShortcut') && cpSrc.includes('_unbindShortcut'),
+    'CommandPalette must manage shortcut via per-instance named handlers'
+  );
+  assert.ok(
+    !cpSrc.includes("document.addEventListener('keydown', (e) =>"),
+    'CommandPalette must not register anonymous document keydown at module load'
+  );
+
+  // 11. boodoo.js autoInit idempotency guard
+  const boodooSrc = readFileSync(resolve(rootDir, 'js/boodoo.js'), 'utf8');
+  assert.ok(
+    boodooSrc.includes('if (document._boodooAutoInit) return;') &&
+    boodooSrc.includes('document._boodooAutoInit = true;'),
+    'boodoo.js autoInit must be guarded with document._boodooAutoInit idempotency flag'
+  );
+
+  // 12. Scrollspy removeAttribute aria-current
+  const scrollspySrc = readFileSync(resolve(rootDir, 'js/src/scrollspy.js'), 'utf8');
+  assert.ok(
+    scrollspySrc.includes("a.removeAttribute('aria-current')"),
+    'Scrollspy must remove aria-current using removeAttribute'
+  );
+  assert.ok(
+    !scrollspySrc.includes("setAttribute('aria-current', null)"),
+    'Scrollspy must not use setAttribute(\'aria-current\', null)'
+  );
+});
+

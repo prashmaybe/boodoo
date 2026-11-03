@@ -52,6 +52,7 @@ export class Offcanvas extends BaseComponent {
     this._element.classList.remove('showing');
 
     this._createBackdrop();
+    this._addKeydownListener();
     setTimeout(() => {
       const focusable = this._element.querySelector('input, button, [tabindex]');
       if (focusable) focusable.focus();
@@ -63,6 +64,7 @@ export class Offcanvas extends BaseComponent {
     if (!this._isShown) return;
     if (!triggerEvent(this._element, 'boodoo.hide.offcanvas')) return;
     this._isShown = false;
+    this._removeKeydownListener();
 
     this._element.classList.add('hiding');
     this._element.classList.remove('show');

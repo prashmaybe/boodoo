@@ -110,9 +110,11 @@ export function initDataApi(component, selector) {
     }
   };
 
-  if (!document.body || document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
+  if (typeof document.addEventListener === 'function') {
+    if (!document.body || document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   }
 }

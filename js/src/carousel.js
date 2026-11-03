@@ -36,7 +36,7 @@ export class Carousel extends BaseComponent {
     const alreadyActive = this._element.querySelector('.carousel-item.active');
     if (alreadyActive) this._activeElement = alreadyActive;
     if (this._config.interval !== false && !this._element.hasAttribute('data-boodoo-interval')) {
-      this._startAutoPlay();
+      this.cycle();
     }
   }
 
@@ -85,7 +85,7 @@ export class Carousel extends BaseComponent {
     }
 
     // touch swipe
-    if (this._config.touch) {
+    if (this._config.touch && this._container) {
       this._container.addEventListener(
         'touchstart',
         (e) => {
@@ -224,7 +224,7 @@ export class Carousel extends BaseComponent {
     this._clearInterval();
     if (this._config.interval && this._config.interval !== false) {
       this._interval = setInterval(() => {
-        if (!this._element.matches(':hover')) this.next();
+        if (this._element && !this._element.matches(':hover')) this.next();
       }, this._config.interval);
     }
   }
@@ -238,6 +238,11 @@ export class Carousel extends BaseComponent {
       clearInterval(this._interval);
       this._interval = null;
     }
+  }
+
+  dispose() {
+    this._clearInterval();
+    super.dispose();
   }
 }
 
@@ -255,6 +260,7 @@ if (typeof document !== 'undefined') {
 }
 
 function initCarousels() {
+  if (typeof document === 'undefined' || !document.querySelectorAll) return;
   document.querySelectorAll(Carousel.selector).forEach((el) => {
     if (!Carousel.getInstance(el)) Carousel.getOrCreateInstance(el);
   });
