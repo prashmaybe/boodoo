@@ -4,7 +4,22 @@
 // Accordions, and Comboboxes in Next.js, Remix, Vite, and React apps.
 // =====================================================================
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+
+/**
+ * Normalizes text for accent-insensitive search
+ * @param {string} str
+ * @returns {string}
+ */
+export function foldAccents(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[øØ]/g, 'o')
+    .replace(/[æÆ]/g, 'ae')
+    .toLowerCase();
+}
 
 /**
  * Headless disclosure hook (Modal, Drawer, Dialog, Offcanvas)
@@ -62,33 +77,48 @@ export function useDisclosure(options = {}) {
 }
 
 /**
- * Headless combobox / autocomplete hook
+ * Headless combobox / autocomplete hook with accent-folding and context meta support
  * @param {Object} options
- * @param {Array<{ id?: string, label: string, value: any }>} [options.items=[]]
- * @param {string} [options.defaultValue='']
+ * @param {Array<{ id?: string, label: string, value: any, meta?: string }>} [options.items=[]]
+ * @param {any} [options.value]
+ * @param {any} [options.defaultValue]
  * @param {(value: any) => void} [options.onChange]
+ * @param {(item: any) => string} [options.getOptionMeta]
  */
 export function useCombobox(options = {}) {
-  const { items = [], defaultValue = '', onChange } = options;
-  const [query, setQuery] = useState(defaultValue);
+  const { items = [], value: controlledValue, defaultValue = '', onChange, getOptionMeta } = options;
+  const isControlled = controlledValue !== undefined;
+
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const selectedValue = isControlled ? controlledValue : internalValue;
+
+  const currentItem = items.find((it) => it.value === selectedValue);
+  const [query, setQuery] = useState(currentItem ? currentItem.label : (typeof defaultValue === 'string' ? defaultValue : ''));
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [selectedValue, setSelectedValue] = useState(null);
 
-  const filteredItems = items.filter((item) => {
-    if (!query) return true;
-    return item.label.toLowerCase().includes(query.toLowerCase());
-  });
+  const filteredItems = useMemo(() => {
+    if (!query) return items;
+    const foldedQuery = foldAccents(query);
+    return items.filter((item) => {
+      const foldedLabel = foldAccents(item.label);
+      const meta = getOptionMeta ? getOptionMeta(item) : (item.meta || '');
+      const foldedMeta = foldAccents(meta);
+      return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);
+    });
+  }, [items, query, getOptionMeta]);
 
   const selectItem = useCallback(
     (item) => {
-      setSelectedValue(item.value);
+      if (!isControlled) {
+        setInternalValue(item.value);
+      }
       setQuery(item.label);
       setIsOpen(false);
       setActiveIndex(-1);
       onChange?.(item.value);
     },
-    [onChange]
+    [isControlled, onChange]
   );
 
   const handleKeyDown = useCallback(
@@ -205,10 +235,10 @@ export function useAccordion(options = {}) {
     isExpanded,
     getButtonProps: (key, props = {}) => ({
       ...props,
-      'aria-expanded': expandedKeys.has(key),
+      'aria-expanded': isExpanded(key),
       onClick: (e) => {
         props.onClick?.(e);
-        toggle(key);
+        if (!e.defaultPrevented) toggle(key);
       },
     }),
     getPanelProps: (key, props = {}) => ({
@@ -216,7 +246,7 @@ export function useAccordion(options = {}) {
       role: 'region',
       style: {
         ...(props.style || {}),
-        display: expandedKeys.has(key) ? 'block' : 'none',
+        display: isExpanded(key) ? 'block' : 'none',
       },
     }),
   };

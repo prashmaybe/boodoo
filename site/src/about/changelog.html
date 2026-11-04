@@ -59,7 +59,7 @@ order: 7
     <div class="stat-item p-1">
       <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>26 Milestones</span></div>
+        <div class="stat-value"><span>27 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -67,6 +67,47 @@ order: 7
 </div>
 
 <ul class="timeline changelog-timeline mt-4">
+
+  <!-- Version 1.2.6 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-6">
+            <span>v1.2.6</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 4, 2026</span>
+          <span class="footer-dot">&bull;</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.6"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Feature Release</span></span>
+          <span>Version 1.2.6 Release &mdash; DOM React Components Suite, Scoped Styles, Controlled Tables &amp; Combobox</span>
+        </h3>
+        <p><span>boodoo <strong>v1.2.6</strong> delivers a full DOM React component kit on <code>boodoo/react</code> (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, Accordion, Nav, StickyHeader), scoped CSS builds under <code>boodoo/css/react</code> with zero reboot side-effects, host CSS variable bridging for non-invasive theming, accent-folded search and context metadata for Combobox, controlled column sorting and child row rendering for Table, and compact density support.</span></p>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>DOM React Components Suite</strong>: Exported pure DOM React components on <code>boodoo/react</code> sharing clean APIs with React Native without DOM-hijacking data attributes or foreign native dependencies.</span></li>
+          <li><span><strong>Scoped React Stylesheet</strong>: Published <code>dist/css/boodoo-react.min.css</code> namespaced under <code>@layer boodoo</code> and <code>.boodoo</code> without global reboot element resets.</span></li>
+          <li><span><strong>Host CSS Variable Bridging</strong>: Added automatic fallback bridging in <code>BoodooProvider</code> mapping host CSS variables (<code>--bo-brand</code>, <code>--bo-surface</code>, <code>--bo-text</code>, <code>--bo-radius</code>) directly into Boodoo tokens.</span></li>
+          <li><span><strong>Controlled Table Component</strong>: Implemented pure React state column sorting with ARIA sort semantics and companion detail rows directly inside the React render tree.</span></li>
+          <li><span><strong>Accent-Insensitive Combobox</strong>: Enhanced Combobox and <code>useCombobox</code> with diacritic-folding search (<code>foldAccents</code>) and secondary context metadata (<code>getOptionMeta</code>).</span></li>
+          <li><span><strong>Compact Density Mode</strong>: Added compact density spacing (<code>density="compact"</code>) for high-density tables, form controls, and enterprise backoffice layouts.</span></li>
+          <li><span><strong>Generic Admin Primitives</strong>: Introduced <code>Field</code> (with Learn more disclosure slot), <code>ConfirmDialog</code> (with type-to-confirm barrier), and <code>StickyHeader</code>.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
 
   <!-- Version 1.2.5 -->
   <li class="timeline-item">
@@ -77,7 +118,7 @@ order: 7
         <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-5">
             <span>v1.2.5</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+            <span class="badge bg-soft-secondary text-secondary fs-6"><span>Maintenance</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">

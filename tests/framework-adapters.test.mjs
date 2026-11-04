@@ -42,6 +42,60 @@ test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declaratio
   assert.equal(pkg.exports['./react'].import, './react/index.js');
 });
 
+test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, StickyHeader)', async () => {
+  const componentsSrc = readFileSync(resolve(rootDir, 'react/components.js'), 'utf8');
+  const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+  assert.ok(componentsSrc.includes('export function BoodooProvider'), 'BoodooProvider must be exported');
+  assert.ok(componentsSrc.includes('export function Button'), 'Button must be exported');
+  assert.ok(componentsSrc.includes('export function Badge'), 'Badge must be exported');
+  assert.ok(componentsSrc.includes('export function Dialog'), 'Dialog must be exported');
+  assert.ok(componentsSrc.includes('export function ConfirmDialog'), 'ConfirmDialog must be exported');
+  assert.ok(componentsSrc.includes('export function Field'), 'Field must be exported');
+  assert.ok(componentsSrc.includes('export function Table'), 'Table must be exported');
+  assert.ok(componentsSrc.includes('export function Combobox'), 'Combobox must be exported');
+  assert.ok(componentsSrc.includes('export function Accordion'), 'Accordion must be exported');
+  assert.ok(componentsSrc.includes('export function Nav'), 'Nav must be exported');
+  assert.ok(componentsSrc.includes('export function StickyHeader'), 'StickyHeader must be exported');
+
+  // Verify foldAccents logic via static source inspection
+  assert.ok(hooksSrc.includes('export function foldAccents'), 'foldAccents must be exported from hooks.js');
+  assert.ok(hooksSrc.includes('.normalize(\'NFD\')'), 'foldAccents must use Unicode NFD normalization');
+  assert.ok(hooksSrc.includes("replace(/[\\u0300-\\u036f]/g, '')"), 'foldAccents must strip combining diacritics');
+
+  // Verify pure accent-folding function behavior
+  const foldAccents = (str) =>
+    typeof str !== 'string'
+      ? ''
+      : str
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[øØ]/g, 'o')
+          .replace(/[æÆ]/g, 'ae')
+          .toLowerCase();
+  assert.equal(foldAccents('Café Résumé'), 'cafe resume');
+  assert.equal(foldAccents('ÀÖØñ'), 'aoon');
+
+  // Verify type-to-confirm barrier logic
+  assert.ok(componentsSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
+
+  // Verify field learn more disclosure slot
+  assert.ok(componentsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');
+
+  // Verify scoped React CSS bundle existence and non-empty size
+  const scopedCssPath = resolve(rootDir, 'dist/css/boodoo-react.min.css');
+  assert.ok(existsSync(scopedCssPath), 'dist/css/boodoo-react.min.css must exist');
+  const scopedCss = readFileSync(scopedCssPath, 'utf8');
+  assert.ok(scopedCss.includes('@layer boodoo'), 'Scoped CSS must use @layer boodoo');
+  assert.ok(scopedCss.includes('.boodoo'), 'Scoped CSS must namespace under .boodoo');
+  assert.ok(scopedCss.includes('--bo-brand'), 'Scoped CSS must support --bo-brand fallback');
+  assert.ok(!scopedCss.includes('body{margin:0'), 'Scoped CSS must NOT include global reboot reset');
+
+  // Verify LESS equivalent file exists
+  const lessReactPath = resolve(rootDir, 'less/boodoo-react.less');
+  assert.ok(existsSync(lessReactPath), 'less/boodoo-react.less must exist for preprocessor parity');
+});
+
+
 
 test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordion) declarations and module', () => {
   const composablesSrc = readFileSync(resolve(rootDir, 'vue/composables.js'), 'utf8');

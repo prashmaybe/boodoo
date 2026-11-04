@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.6] - 2026-11-04
+
+### Added
+- **DOM React Component Suite (`boodoo/react`, `react/components.js`, `react/index.d.ts`)**:
+  - Exported standard DOM React components sharing clean APIs with React Native: `BoodooProvider`, `Button`, `Badge`, `Dialog`, `ConfirmDialog`, `Field`, `Table`, `Combobox`, `Accordion`, `Nav`, and `StickyHeader`.
+  - Native DOM rendering: Zero React Native primitives required on web, pure React elements (`<button>`, `<div>`, `<table>`, `<header>`, `<dialog>`), controlled/uncontrolled state support, and zero vanilla DOM-hijacking `data-*` scripts on the React path.
+- **Controlled `Table` Component (`react/components.js`)**:
+  - Pure React column sorting via state (`sortColumn`, `sortDirection`, `onSort`), aria-sort attributes, and expandable detail rows (`expandedRowRender`, `expandedKeys`) rendered directly into the React tree without DOM reordering.
+- **Enhanced `Combobox` Component & `useCombobox` Hook (`react/components.js`, `react/hooks.js`)**:
+  - Controlled & uncontrolled `value` support.
+  - Accent-insensitive filtering via `foldAccents()`.
+  - Secondary context line support per option via `getOptionMeta()` and `item.meta` (`combobox-item-meta`).
+  - Full keyboard navigation (`ArrowUp`, `ArrowDown`, `Enter`, `Escape`) and ARIA listbox semantics.
+- **Compact Density Scale (`data-density="compact"`, `scss/boodoo-react.scss`, `less/boodoo-react.less`)**:
+  - Added compact density mode via `density="compact"` on `BoodooProvider` or `[data-density="compact"]`, tightening row height, field padding, font sizes, and spacers for dense backoffices and data-heavy views.
+- **Generic Admin Primitives (`react/components.js`)**:
+  - `Field`: Supports `label`, `description`, `error`, `required`, and expandable "Learn more" disclosure slot.
+  - `ConfirmDialog`: Action barrier dialog requiring user to type a matching confirmation phrase (`mustMatch`) before enabling confirmation.
+  - `StickyHeader`: Sticky page header that compacts on scroll and provides title, description, and action button slots.
+- **Scoped Stylesheet & Host Variable Bridging (`boodoo/css/react`, `scss/boodoo-react.scss`, `less/boodoo-react.less`)**:
+  - Shipped scoped stylesheets `dist/css/boodoo-react.min.css` under `@layer boodoo` and `.boodoo` namespace without reboot resets, preventing interference with host application styles.
+  - Dynamic host CSS variable theming bridging host variables (`--bo-brand`, `--bo-surface`, `--bo-text`, `--bo-radius`) into Boodoo tokens without recompilation.
+
+---
+
 ## [1.2.5] - 2026-11-03
 
 ### Added
