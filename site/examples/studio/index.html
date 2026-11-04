@@ -12,7 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="boodoo">
   <meta property="og:title" content="boodoo · Component Studio">
-  <meta property="og:description" content="Interactive Component Studio and Storybook MVP for testing and previewing Boodoo UI components.">
+  <meta property="og:description"
+    content="Interactive Component Studio and Storybook MVP for testing and previewing Boodoo UI components.">
   <meta property="og:url" content="https://boodooframework.com/examples/studio/index.html">
   <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,22 +27,26 @@
     .studio-viewport {
       min-height: calc(100vh - 60px);
     }
+
     .studio-sidebar {
       background-color: var(--boodoo-card-bg);
       border-right: 1px solid var(--boodoo-border-subtle);
       height: calc(100vh - 60px);
       overflow-y: auto;
     }
+
     .studio-canvas {
       background-color: var(--boodoo-body-alt-bg);
       height: calc(100vh - 60px);
       overflow-y: auto;
     }
+
     .preview-box {
       background-color: var(--boodoo-card-bg);
       border: 1px solid var(--boodoo-border-subtle);
       border-radius: var(--boodoo-border-radius-lg);
     }
+
     .code-preview-pane {
       background-color: #1e1e2e;
       color: #cdd6f4;
@@ -69,7 +74,8 @@
         <button type="button" class="btn btn-outline-light active" id="btnDensityNormal"><span>Normal</span></button>
         <button type="button" class="btn btn-outline-light" id="btnDensityCompact"><span>Compact</span></button>
       </div>
-      <button class="btn btn-sm btn-outline-light d-flex align-items-center gap-1" id="themeToggleBtn" type="button" aria-label="Toggle theme">
+      <button class="btn btn-sm btn-outline-light d-flex align-items-center gap-1" id="themeToggleBtn" type="button"
+        aria-label="Toggle theme">
         <i class="hi-sun text-warning" aria-hidden="true" id="themeIcon"></i>
       </button>
       <a href="../../docs/getting-started/react.html" class="btn btn-sm btn-primary rounded-pill px-3">
@@ -81,23 +87,24 @@
   <div class="container-fluid">
     <div class="row studio-viewport">
       <!-- Left Sidebar Nav -->
-      <aside class="col-md-3 col-lg-2 studio-sidebar p-3">
+      <aside class="col-md-3 studio-sidebar p-2 mt-0">
         <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-3"><span>Component Library</span></h6>
-        <div class="list-group list-group-flush mb-4" id="componentNavList">
-          <button type="button" class="list-group-item list-group-item-action active rounded-2 mb-1" data-component="buttons">
-            <i class="hi-cursor-click me-2" aria-hidden="true"></i><span>Buttons &amp; Badges</span>
+        <div class="list-group list-group-flush mb-2" id="componentNavList">
+          <button type="button" class="list-group-item list-group-item-action active rounded-2 mb-1"
+            data-component="buttons">
+            <i class="hi-cursor me-0.5" aria-hidden="true"></i><span>Buttons &amp; Badges</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="forms">
-            <i class="hi-form me-2" aria-hidden="true"></i><span>Form Controls &amp; Fields</span>
+            <i class="hi-edit me-0.5" aria-hidden="true"></i><span>Form Controls &amp; Fields</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="combobox">
-            <i class="hi-search me-2" aria-hidden="true"></i><span>Combobox &amp; Autocomplete</span>
+            <i class="hi-search me-0.5" aria-hidden="true"></i><span>Combobox &amp; Autocomplete</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="table">
-            <i class="hi-table me-2" aria-hidden="true"></i><span>Table &amp; Data Display</span>
+            <i class="hi-bullet-list me-0.5" aria-hidden="true"></i><span>Table &amp; Data Display</span>
           </button>
           <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="dialogs">
-            <i class="hi-window me-2" aria-hidden="true"></i><span>Dialogs &amp; Barriers</span>
+            <i class="hi-shield-check me-0.5" aria-hidden="true"></i><span>Dialogs &amp; Barriers</span>
           </button>
         </div>
 
@@ -129,19 +136,20 @@
       </aside>
 
       <!-- Main Canvas -->
-      <main class="col-md-9 col-lg-10 studio-canvas p-4" id="studioMainCanvas">
+      <main class="col-md-9 studio-canvas p-2" id="studioMainCanvas">
         <div class="d-flex align-items-center justify-content-between mb-3">
           <div>
-            <h2 class="h4 fw-bold mb-1" id="sectionTitle"><span>Buttons &amp; Badges</span></h2>
-            <p class="text-muted fs-7 mb-0" id="sectionDesc"><span>Modular button controls and count tags matching React &amp; CSS tokens.</span></p>
+            <h2 class="fw-bold" id="sectionTitle"><span>Buttons &amp; Badges</span></h2>
+            <p class="text-muted fs-7 mb-0" id="sectionDesc"><span>Modular button controls and count tags matching React
+                &amp; CSS tokens.</span></p>
           </div>
           <button type="button" class="btn btn-outline-secondary btn-sm" id="btnCopyCode">
-            <i class="hi-clipboard me-1" aria-hidden="true"></i><span>Copy React Code</span>
+            <i class="hi-copy me-1" aria-hidden="true"></i><span>Copy React Code</span>
           </button>
         </div>
 
         <!-- Live Preview Stage -->
-        <div class="preview-box p-4 mb-4 shadow-sm" id="previewContainer">
+        <div class="preview-box p-2 mb-2 shadow-sm" id="previewContainer">
           <div id="liveStage" class="d-flex flex-wrap align-items-center gap-3">
             <!-- Dynamically injected live controls -->
           </div>
@@ -149,7 +157,7 @@
 
         <!-- Live Code Inspector -->
         <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-2"><span>JSX Code Representation</span></h6>
-        <div class="code-preview-pane mb-4">
+        <div class="code-preview-pane mb-2">
           <pre class="mb-0"><code id="codeSnippetPane">// JSX code will update here dynamically</code></pre>
         </div>
       </main>
@@ -186,6 +194,8 @@
 
         const sizeClass = currentSize === 'sm' ? ' btn-sm' : currentSize === 'lg' ? ' btn-lg' : '';
         const badgeSizeClass = currentSize === 'sm' ? ' fs-8' : currentSize === 'lg' ? ' fs-6' : '';
+        const inputSizeClass = currentSize === 'sm' ? ' form-control-sm' : currentSize === 'lg' ? ' form-control-lg' : '';
+        const tableSizeClass = currentSize === 'sm' ? ' table-sm' : '';
         const disabledAttr = isDisabled ? ' disabled' : '';
 
         if (currentCategory === 'buttons') {
@@ -221,46 +231,47 @@
 
           const field1 = document.createElement('div');
           field1.className = 'boodoo-field';
-          field1.innerHTML = `<label class="boodoo-field-label" for="studioEmailInput"><span>Email Address *</span></label><input type="email" id="studioEmailInput" name="studioEmailInput" class="form-control" placeholder="user@company.com"${disabledAttr}><p class="boodoo-field-description" id="studioEmailInput-desc"><span>We will never share your personal email with anyone.</span></p>`;
+          field1.innerHTML = `<label class="boodoo-field-label" for="studioEmailInput"><span>Email Address *</span></label><input type="email" id="studioEmailInput" name="studioEmailInput" class="form-control${inputSizeClass}" placeholder="user@company.com"${disabledAttr}><p class="boodoo-field-description" id="studioEmailInput-desc"><span>We will never share your personal email with anyone.</span></p>`;
           wrapper.appendChild(field1);
 
           stage.appendChild(wrapper);
 
-          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input type="email" placeholder="user@company.com"${isDisabled ? ' disabled' : ''} />\n    </Field>\n  );\n}`;
+          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input type="email" size="${currentSize}" placeholder="user@company.com"${isDisabled ? ' disabled' : ''} />\n    </Field>\n  );\n}`;
         } else if (currentCategory === 'combobox') {
           sectionTitle.innerHTML = '<span>Combobox &amp; Autocomplete</span>';
           sectionDesc.innerHTML = '<span>Fuzzy accent-insensitive filtering with secondary metadata and keyboard navigation.</span>';
 
           const wrapper = document.createElement('div');
           wrapper.className = 'w-100 max-w-md';
-          wrapper.innerHTML = `<div class="combobox"><div class="combobox-input-wrapper"><input type="text" id="studioComboboxInput" name="studioComboboxInput" class="form-control combobox-input" placeholder="Search developer (try 'Rene')..."${disabledAttr}></div></div>`;
+          wrapper.innerHTML = `<div class="combobox"><div class="combobox-input-wrapper"><input type="text" id="studioComboboxInput" name="studioComboboxInput" class="form-control combobox-input${inputSizeClass}" placeholder="Search developer (try 'Rene')..."${disabledAttr}></div></div>`;
           stage.appendChild(wrapper);
 
-          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      placeholder="Search developer (try 'Rene')..."\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
+          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
         } else if (currentCategory === 'table') {
           sectionTitle.innerHTML = '<span>Table &amp; Data Display</span>';
           sectionDesc.innerHTML = '<span>Declarative data tables with controlled column sorting and expandable row records.</span>';
 
           const wrapper = document.createElement('div');
           wrapper.className = 'table-responsive w-100';
-          wrapper.innerHTML = `<table class="table table-hover align-middle mb-0"><thead class="table-light"><tr><th scope="col"><span>Name</span></th><th scope="col"><span>Role</span></th><th scope="col"><span>Status</span></th></tr></thead><tbody><tr><td><strong><span>Auth Microservice</span></strong></td><td><span>Security</span></td><td><span class="badge bg-success"><span>Active</span></span></td></tr><tr><td><strong><span>Worker Queue</span></strong></td><td><span>Async Jobs</span></td><td><span class="badge bg-warning"><span>Idle</span></span></td></tr></tbody></table>`;
+          wrapper.innerHTML = `<table class="table table-hover align-middle mb-0${tableSizeClass}"><thead class="table-light"><tr><th scope="col"><span>Name</span></th><th scope="col"><span>Role</span></th><th scope="col"><span>Status</span></th></tr></thead><tbody><tr><td><strong><span>Auth Microservice</span></strong></td><td><span>Security</span></td><td><span class="badge bg-${currentVariant}"><span>Active</span></span></td></tr><tr><td><strong><span>Worker Queue</span></strong></td><td><span>Async Jobs</span></td><td><span class="badge bg-secondary"><span>Idle</span></span></td></tr></tbody></table>`;
           stage.appendChild(wrapper);
 
-          code = `import { Table, Badge } from 'boodoo/react';\n\nconst columns = [\n  { key: 'name', title: 'Name', sortable: true },\n  { key: 'role', title: 'Role' },\n  { key: 'status', title: 'Status', render: (val) => <Badge variant={val === 'Active' ? 'success' : 'warning'}>{val}</Badge> },\n];\n\nconst data = [\n  { id: '1', name: 'Auth Microservice', role: 'Security', status: 'Active' },\n  { id: '2', name: 'Worker Queue', role: 'Async Jobs', status: 'Idle' },\n];\n\nexport function TableDemo() {\n  return (\n    <Table columns={columns} data={data} keyField="id" />\n  );\n}`;
+          code = `import { Table, Badge } from 'boodoo/react';\n\nconst columns = [\n  { key: 'name', title: 'Name', sortable: true },\n  { key: 'role', title: 'Role' },\n  { key: 'status', title: 'Status', render: (val) => <Badge variant={val === 'Active' ? '${currentVariant}' : 'secondary'}>{val}</Badge> },\n];\n\nconst data = [\n  { id: '1', name: 'Auth Microservice', role: 'Security', status: 'Active' },\n  { id: '2', name: 'Worker Queue', role: 'Async Jobs', status: 'Idle' },\n];\n\nexport function TableDemo() {\n  return (\n    <Table columns={columns} data={data} keyField="id"${currentSize === 'sm' ? ' dense' : ''} />\n  );\n}`;
         } else if (currentCategory === 'dialogs') {
           sectionTitle.innerHTML = '<span>Dialogs &amp; Barriers</span>';
           sectionDesc.innerHTML = '<span>Modal dialogs and type-to-confirm barrier overlays for destructive actions.</span>';
 
           const btnLaunch = document.createElement('button');
           btnLaunch.type = 'button';
-          btnLaunch.className = 'btn btn-danger' + sizeClass;
+          btnLaunch.className = 'btn btn-' + currentVariant + sizeClass;
+          if (isDisabled) btnLaunch.disabled = true;
           btnLaunch.innerHTML = '<span>Launch Confirm Barrier Dialog</span>';
           btnLaunch.onclick = () => {
             alert('ConfirmDialog barrier active: Type "DELETE DATABASE" to confirm deletion.');
           };
           stage.appendChild(btnLaunch);
 
-          code = `import { useState } from 'react';\nimport { ConfirmDialog, Button } from 'boodoo/react';\n\nexport function BarrierDemo() {\n  const [isOpen, setIsOpen] = useState(false);\n  return (\n    <>\n      <Button variant="danger" onClick={() => setIsOpen(true)}>\n        Delete Database\n      </Button>\n      <ConfirmDialog\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={() => setIsOpen(false)}\n        title="Delete Production Database"\n        message="This operation cannot be undone."\n        mustMatch="DELETE DATABASE"\n      />\n    </>\n  );\n}`;
+          code = `import { useState } from 'react';\nimport { ConfirmDialog, Button } from 'boodoo/react';\n\nexport function BarrierDemo() {\n  const [isOpen, setIsOpen] = useState(false);\n  return (\n    <>\n      <Button variant="${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''} onClick={() => setIsOpen(true)}>\n        Launch Dialog\n      </Button>\n      <ConfirmDialog\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={() => setIsOpen(false)}\n        title="Delete Production Database"\n        message="This operation cannot be undone."\n        mustMatch="DELETE DATABASE"\n      />\n    </>\n  );\n}`;
         }
 
         snippet.textContent = code;
@@ -311,13 +322,41 @@
         themeIcon.className = next === 'dark' ? 'hi-moon text-info' : 'hi-sun text-warning';
       });
 
+      function copyCode(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text);
+        } else {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-999999px';
+          textArea.style.top = '-999999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          return new Promise((resolve, reject) => {
+            try {
+              const successful = document.execCommand('copy');
+              textArea.remove();
+              if (successful) resolve();
+              else reject(new Error('execCommand copy failed'));
+            } catch (err) {
+              textArea.remove();
+              reject(err);
+            }
+          });
+        }
+      }
+
       btnCopyCode.addEventListener('click', () => {
-        navigator.clipboard.writeText(snippet.textContent).then(() => {
+        copyCode(snippet.textContent).then(() => {
           const original = btnCopyCode.innerHTML;
           btnCopyCode.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
           setTimeout(() => {
             btnCopyCode.innerHTML = original;
           }, 2000);
+        }).catch((err) => {
+          console.error('Failed to copy snippet:', err);
         });
       });
 
@@ -325,5 +364,5 @@
     })();
   </script>
 </body>
-</html>
 
+</html>
