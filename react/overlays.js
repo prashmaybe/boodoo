@@ -133,6 +133,7 @@ export function ConfirmDialog({
         ),
         React.createElement('input', {
           id: 'boodoo-confirm-match-input',
+          name: 'boodoo-confirm-match-input',
           type: 'text',
           className: 'form-control',
           value: typed,

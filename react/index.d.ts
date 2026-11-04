@@ -79,6 +79,10 @@ export interface BoodooProviderProps extends React.HTMLAttributes<HTMLDivElement
     radius?: string;
   };
 }
+export declare const ThemeContext: React.Context<{
+  density: 'normal' | 'compact' | string;
+  theme: Record<string, string>;
+}>;
 export declare const BoodooProvider: React.FC<BoodooProviderProps>;
 export declare function useBoodooTheme(): { density: string; theme: Record<string, string> };
 
@@ -207,7 +211,7 @@ export interface DividerProps extends React.HTMLAttributes<HTMLElement> {
 export declare const Divider: React.FC<DividerProps>;
 export declare const Separator: React.FC<DividerProps>;
 
-export interface StatWidgetProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatWidgetProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   title: React.ReactNode;
   value: React.ReactNode;
   change?: React.ReactNode;
@@ -228,7 +232,7 @@ export interface BentoItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare const BentoItem: React.FC<BentoItemProps>;
 
 // --- Forms & Inputs ---
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: 'sm' | 'lg' | string;
 }
 export declare const Input: React.FC<InputProps>;
@@ -241,7 +245,7 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 export declare const Textarea: React.FC<TextareaProps>;
 export declare const TextArea: React.FC<TextareaProps>;
 
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   options?: Array<{ label: string; value: any; disabled?: boolean }>;
   size?: 'sm' | 'lg' | string;
 }
@@ -272,7 +276,7 @@ export interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
 }
 export declare const Slider: React.FC<SliderProps>;
 
-export interface RatingProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RatingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   max?: number;
   value?: number;
   onChange?: (val: number) => void;
@@ -330,7 +334,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export declare const Avatar: React.FC<AvatarProps>;
 
-export interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface EmptyStateProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   title?: React.ReactNode;
   description?: React.ReactNode;
   icon?: React.ReactNode;
@@ -339,7 +343,7 @@ export interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare const EmptyState: React.FC<EmptyStateProps>;
 
 export declare const Timeline: React.FC<React.HTMLAttributes<HTMLUListElement>>;
-export interface TimelineItemProps extends React.HTMLAttributes<HTMLLIElement> {
+export interface TimelineItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>, 'title'> {
   title?: React.ReactNode;
   time?: React.ReactNode;
   badge?: React.ReactNode;
@@ -354,7 +358,7 @@ export interface StepIndicatorProps extends React.HTMLAttributes<HTMLDivElement>
 export declare const StepIndicator: React.FC<StepIndicatorProps>;
 
 // --- Feedback ---
-export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   variant?: string;
   dismissible?: boolean;
   onDismiss?: () => void;
@@ -369,7 +373,7 @@ export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export declare const Banner: React.FC<BannerProps>;
 
-export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   open?: boolean;
   onClose?: () => void;
   title?: React.ReactNode;
@@ -451,7 +455,7 @@ export interface NavItem {
   label: React.ReactNode;
   disabled?: boolean;
 }
-export interface NavProps extends React.HTMLAttributes<HTMLUListElement> {
+export interface NavProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'onSelect'> {
   items: NavItem[];
   activeKey?: string;
   onSelect?: (key: string) => void;
@@ -477,7 +481,7 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLElement> {
 }
 export declare const Pagination: React.FC<PaginationProps>;
 
-export interface StickyHeaderProps extends React.HTMLAttributes<HTMLElement> {
+export interface StickyHeaderProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   title: React.ReactNode;
   description?: React.ReactNode;
   actions?: React.ReactNode;
@@ -486,7 +490,7 @@ export interface StickyHeaderProps extends React.HTMLAttributes<HTMLElement> {
 export declare const StickyHeader: React.FC<StickyHeaderProps>;
 
 // --- Overlays ---
-export interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DialogProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   open: boolean;
   onClose?: () => void;
   title?: React.ReactNode;
@@ -506,7 +510,7 @@ export interface ConfirmDialogProps extends Omit<DialogProps, 'title'> {
 }
 export declare const ConfirmDialog: React.FC<ConfirmDialogProps>;
 
-export interface OffcanvasProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface OffcanvasProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   open: boolean;
   onClose?: () => void;
   title?: React.ReactNode;
@@ -522,7 +526,7 @@ export interface DropdownItem {
   disabled?: boolean;
   onClick?: () => void;
 }
-export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onToggle'> {
   trigger: React.ReactNode;
   items: DropdownItem[];
   open?: boolean;
@@ -530,7 +534,7 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export declare const Dropdown: React.FC<DropdownProps>;
 
-export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
   content: React.ReactNode;
   placement?: 'top' | 'bottom' | 'start' | 'end';
 }

@@ -247,6 +247,17 @@ test('create-boodoo CLI scaffolder supports JS and TS options across templates',
     scaffoldProject({ targetDir: rnwJsDir, projectName: 'rnw-js', choice: '9', isTs: false });
     assert.ok(fs.existsSync(resolve(rnwJsDir, 'src/App.jsx')), 'RNW JS must have src/App.jsx');
     assert.ok(fs.existsSync(resolve(rnwJsDir, 'vite.config.js')), 'RNW JS must have vite.config.js');
+
+    // 6. React Admin Dashboard (Boodoo DOM Kit) TS & JS
+    const adminTsDir = resolve(tmpBase, 'admin-ts');
+    scaffoldProject({ targetDir: adminTsDir, projectName: 'admin-ts', choice: '11', isTs: true });
+    assert.ok(fs.existsSync(resolve(adminTsDir, 'src/App.tsx')), 'Admin TS must have src/App.tsx');
+    assert.ok(fs.existsSync(resolve(adminTsDir, 'vite.config.ts')), 'Admin TS must have vite.config.ts');
+
+    const adminJsDir = resolve(tmpBase, 'admin-js');
+    scaffoldProject({ targetDir: adminJsDir, projectName: 'admin-js', choice: '11', isTs: false });
+    assert.ok(fs.existsSync(resolve(adminJsDir, 'src/App.jsx')), 'Admin JS must have src/App.jsx');
+    assert.ok(fs.existsSync(resolve(adminJsDir, 'vite.config.js')), 'Admin JS must have vite.config.js');
   } finally {
     fs.rmSync(tmpBase, { recursive: true, force: true });
   }
@@ -332,13 +343,13 @@ test('bin/create-boodoo.mjs comprehensive edge, template, and interactive covera
   assert.equal(parseArgs(['--template=custom']).template, 'custom');
   assert.equal(parseArgs([]).projectName, '');
 
-  // 2. scaffoldProject across all 10 templates in both JS and TS
+  // 2. scaffoldProject across all 11 templates in both JS and TS
   const tempScaffold = resolve(rootDir, 'tests/temp_scaffold_test');
   rmSync(tempScaffold, { recursive: true, force: true });
   mkdirSync(tempScaffold, { recursive: true });
 
   try {
-    for (let c = 1; c <= 10; c++) {
+    for (let c = 1; c <= 11; c++) {
       const choice = String(c);
       const dirJs = join(tempScaffold, `t_${c}_js`);
       const dirTs = join(tempScaffold, `t_${c}_ts`);
