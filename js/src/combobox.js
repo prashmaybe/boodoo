@@ -5,7 +5,7 @@
 // =====================================================================
 
 import { BaseComponent, initDataApi } from './base-component.js';
-import { triggerEvent } from './util.js';
+import { triggerEvent, foldAccents } from './util.js';
 
 const COMBOBOX_SELECTOR_INPUT = '.combobox-input, [data-boodoo-combobox-input]';
 const COMBOBOX_SELECTOR_MENU = '.combobox-menu, [data-boodoo-combobox-menu]';
@@ -94,14 +94,16 @@ export class Combobox extends BaseComponent {
   }
 
   _handleInput() {
-    const query = this._input.value.trim().toLowerCase();
+    const query = foldAccents(this._input.value.trim());
     this.show();
     this._refreshItems();
 
     let hasMatches = false;
     let matchCount = 0;
     for (const item of this._items) {
-      const val = (item.getAttribute('data-value') || item.textContent || '').trim().toLowerCase();
+      const val = foldAccents(
+        (item.getAttribute('data-value') || '') + ' ' + (item.textContent || '')
+      ).trim();
       const matches = !query || val.includes(query);
       item.style.display = matches ? '' : 'none';
       if (matches) {
@@ -118,6 +120,7 @@ export class Combobox extends BaseComponent {
     this._activeIndex = -1;
     this._updateActive();
     triggerEvent(this._element, 'boodoo.combobox.change', { query, matchCount });
+    triggerEvent(this._element, 'change.boodoo.combobox', { query, matchCount });
   }
 
   _handleKeyDown(e) {
@@ -188,6 +191,7 @@ export class Combobox extends BaseComponent {
     }
 
     triggerEvent(this._element, 'boodoo.combobox.select', { value, label, item });
+    triggerEvent(this._element, 'select.boodoo.combobox', { value, label, item });
     this.hide();
     this._input.focus();
   }
@@ -205,6 +209,7 @@ export class Combobox extends BaseComponent {
     this._activeIndex = -1;
     this._updateActive();
     triggerEvent(this._element, 'boodoo.combobox.change', { query: '', cleared: true });
+    triggerEvent(this._element, 'change.boodoo.combobox', { query: '', cleared: true });
     this._input.focus();
   }
 

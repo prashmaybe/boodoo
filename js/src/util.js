@@ -196,3 +196,19 @@ export const escapeHtml = (str) => {
 export const sanitizeHtml = (html) => {
   return escapeHtml(html);
 };
+
+/**
+ * Normalizes text for accent-insensitive search by stripping combining diacritics.
+ * @param {string} str
+ * @returns {string}
+ */
+export const foldAccents = (str) => {
+  if (typeof str !== 'string') return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[øØ]/g, 'o')
+    .replace(/[æÆ]/g, 'ae')
+    .toLowerCase();
+};
+

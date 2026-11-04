@@ -25,12 +25,14 @@ export interface ComboboxItem {
   id?: string;
   label: string;
   value: any;
+  meta?: string;
 }
 
 export interface ComboboxOptions {
   items?: ComboboxItem[];
   defaultValue?: string;
   onChange?: (value: any) => void;
+  getOptionMeta?: (item: ComboboxItem) => string;
 }
 
 export interface ComboboxReturn {
@@ -48,6 +50,8 @@ export interface ComboboxReturn {
     props?: T
   ) => T & Record<string, any>;
 }
+
+export declare function foldAccents(str: string): string;
 
 export declare function useCombobox(options?: ComboboxOptions): ComboboxReturn;
 
