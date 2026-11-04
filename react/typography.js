@@ -43,3 +43,4 @@ export function Heading({
   const Component = as || `h${level}`;
   return React.createElement(Component, { className: className || undefined, ...props }, children);
 }
+
