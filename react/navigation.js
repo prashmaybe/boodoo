@@ -14,12 +14,7 @@ export function Nav({
   className = '',
   ...props
 }) {
-  const navClass = [
-    'nav',
-    pills ? 'nav-pills' : '',
-    vertical ? 'flex-column' : '',
-    className,
-  ]
+  const navClass = ['nav', pills ? 'nav-pills' : '', vertical ? 'flex-column' : '', className]
     .filter(Boolean)
     .join(' ');
 
@@ -48,12 +43,7 @@ export function Nav({
   );
 }
 
-export function Navbar({
-  brand,
-  className = '',
-  children,
-  ...props
-}) {
+export function Navbar({ brand, className = '', children, ...props }) {
   return React.createElement(
     'nav',
     {
@@ -69,11 +59,7 @@ export function Navbar({
   );
 }
 
-export function Breadcrumb({
-  items = [],
-  className = '',
-  ...props
-}) {
+export function Breadcrumb({ items = [], className = '', ...props }) {
   return React.createElement(
     'nav',
     { 'aria-label': 'breadcrumb', className: className || undefined, ...props },
@@ -147,7 +133,11 @@ export function Pagination({
       }),
       React.createElement(
         'li',
-        { className: ['page-item', currentPage >= totalPages ? 'disabled' : ''].filter(Boolean).join(' ') },
+        {
+          className: ['page-item', currentPage >= totalPages ? 'disabled' : '']
+            .filter(Boolean)
+            .join(' '),
+        },
         React.createElement(
           'button',
           {
@@ -195,4 +185,3 @@ export function StickyHeader({
     children
   );
 }
-

@@ -57,15 +57,7 @@ export function Chip({
   );
 }
 
-export function Avatar({
-  src,
-  alt = '',
-  initials,
-  size = 'md',
-  status,
-  className = '',
-  ...props
-}) {
+export function Avatar({ src, alt = '', initials, size = 'md', status, className = '', ...props }) {
   return React.createElement(
     'div',
     {
@@ -83,33 +75,27 @@ export function Avatar({
   );
 }
 
-export function EmptyState({
-  title,
-  description,
-  icon,
-  action,
-  className = '',
-  ...props
-}) {
+export function EmptyState({ title, description, icon, action, className = '', ...props }) {
   return React.createElement(
     'div',
     {
       className: ['empty-state', 'text-center', 'p-4', className].filter(Boolean).join(' '),
       ...props,
     },
-    icon && React.createElement('div', { className: 'empty-state-icon fs-1 mb-3 text-muted' }, icon),
+    icon &&
+      React.createElement('div', { className: 'empty-state-icon fs-1 mb-3 text-muted' }, icon),
     title && React.createElement('h4', { className: 'empty-state-title mb-2' }, title),
     description &&
-      React.createElement('p', { className: 'empty-state-description text-muted mb-3' }, description),
+      React.createElement(
+        'p',
+        { className: 'empty-state-description text-muted mb-3' },
+        description
+      ),
     action && React.createElement('div', { className: 'empty-state-action' }, action)
   );
 }
 
-export function Timeline({
-  className = '',
-  children,
-  ...props
-}) {
+export function Timeline({ className = '', children, ...props }) {
   return React.createElement(
     'ul',
     {
@@ -120,14 +106,7 @@ export function Timeline({
   );
 }
 
-export function TimelineItem({
-  title,
-  time,
-  badge,
-  className = '',
-  children,
-  ...props
-}) {
+export function TimelineItem({ title, time, badge, className = '', children, ...props }) {
   return React.createElement(
     'li',
     {
@@ -170,23 +149,14 @@ export function StepIndicator({
         'div',
         {
           key: step.key || idx,
-          className: [
-            'step-item',
-            isCompleted ? 'completed' : '',
-            isCurrent ? 'active' : '',
-          ]
+          className: ['step-item', isCompleted ? 'completed' : '', isCurrent ? 'active' : '']
             .filter(Boolean)
             .join(' '),
           onClick: () => onStepClick?.(idx),
         },
-        React.createElement(
-          'div',
-          { className: 'step-circle' },
-          isCompleted ? '✓' : idx + 1
-        ),
+        React.createElement('div', { className: 'step-circle' }, isCompleted ? '✓' : idx + 1),
         React.createElement('div', { className: 'step-label' }, step.title || step.label)
       );
     })
   );
 }
-

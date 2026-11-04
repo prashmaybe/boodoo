@@ -94,8 +94,11 @@ test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmD
   // Verify type-to-confirm barrier logic
   assert.ok(overlaysSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
 
-  // Verify field learn more disclosure slot
+  // Verify field learn more disclosure slot and accessible wiring
   assert.ok(inputsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');
+  assert.ok(inputsSrc.includes('React.cloneElement'), 'Field must enhance child form elements');
+  assert.ok(inputsSrc.includes('aria-describedby'), 'Field must wire aria-describedby');
+  assert.ok(inputsSrc.includes('aria-invalid'), 'Field must wire aria-invalid');
 
   // Verify scoped React CSS bundle existence and non-empty size
   const scopedCssPath = resolve(rootDir, 'dist/css/boodoo-react.min.css');

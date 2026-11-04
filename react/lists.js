@@ -61,7 +61,11 @@ export function Table({
                 width: col.width,
               },
               onClick: () => handleHeaderClick(col),
-              'aria-sort': isSorted ? (sortDirection === 'asc' ? 'ascending' : 'descending') : undefined,
+              'aria-sort': isSorted
+                ? sortDirection === 'asc'
+                  ? 'ascending'
+                  : 'descending'
+                : undefined,
             },
             col.title,
             sortIndicator
@@ -129,7 +133,7 @@ export function Accordion({
   className = '',
   ...props
 }) {
-  const { toggle, isExpanded, getButtonProps, getPanelProps } = useAccordion({
+  const { isExpanded, getButtonProps, getPanelProps } = useAccordion({
     allowMultiple,
     defaultExpanded,
   });
@@ -152,7 +156,9 @@ export function Accordion({
             'button',
             getButtonProps(item.key, {
               type: 'button',
-              className: ['accordion-button', !expanded ? 'collapsed' : ''].filter(Boolean).join(' '),
+              className: ['accordion-button', !expanded ? 'collapsed' : '']
+                .filter(Boolean)
+                .join(' '),
             }),
             item.title
           )
@@ -169,18 +175,17 @@ export function Accordion({
   );
 }
 
-export function List({
-  flush = false,
-  numbered = false,
-  className = '',
-  children,
-  ...props
-}) {
+export function List({ flush = false, numbered = false, className = '', children, ...props }) {
   const Component = numbered ? 'ol' : 'ul';
   return React.createElement(
     Component,
     {
-      className: ['list-group', flush ? 'list-group-flush' : '', numbered ? 'list-group-numbered' : '', className]
+      className: [
+        'list-group',
+        flush ? 'list-group-flush' : '',
+        numbered ? 'list-group-numbered' : '',
+        className,
+      ]
         .filter(Boolean)
         .join(' '),
       ...props,
@@ -218,4 +223,3 @@ export function ListItem({
     children
   );
 }
-

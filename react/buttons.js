@@ -37,18 +37,17 @@ export function Button({
       onClick,
       ...props,
     },
-    loading && React.createElement('span', { className: 'spinner-border spinner-border-sm me-2', role: 'status', 'aria-hidden': 'true' }),
+    loading &&
+      React.createElement('span', {
+        className: 'spinner-border spinner-border-sm me-2',
+        role: 'status',
+        'aria-hidden': 'true',
+      }),
     children
   );
 }
 
-export function ButtonGroup({
-  vertical = false,
-  size,
-  className = '',
-  children,
-  ...props
-}) {
+export function ButtonGroup({ vertical = false, size, className = '', children, ...props }) {
   const prefix = vertical ? 'btn-group-vertical' : 'btn-group';
   const sizeClass = size ? `btn-group-${size}` : '';
 
@@ -108,13 +107,7 @@ export function FAB({
   );
 }
 
-export function SegmentedButtons({
-  options = [],
-  value,
-  onChange,
-  className = '',
-  ...props
-}) {
+export function SegmentedButtons({ options = [], value, onChange, className = '', ...props }) {
   return React.createElement(
     'div',
     {
@@ -140,4 +133,3 @@ export function SegmentedButtons({
     })
   );
 }
-

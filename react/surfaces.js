@@ -5,14 +5,7 @@
 
 import React from 'react';
 
-export function Card({
-  className = '',
-  children,
-  header,
-  footer,
-  image,
-  ...props
-}) {
+export function Card({ className = '', children, header, footer, image, ...props }) {
   return React.createElement(
     'div',
     { className: ['card', className].filter(Boolean).join(' '), ...props },
@@ -23,12 +16,7 @@ export function Card({
   );
 }
 
-export function Surface({
-  elevation = 1,
-  className = '',
-  children,
-  ...props
-}) {
+export function Surface({ elevation = 1, className = '', children, ...props }) {
   return React.createElement(
     'div',
     {
@@ -39,11 +27,7 @@ export function Surface({
   );
 }
 
-export function Divider({
-  vertical = false,
-  className = '',
-  ...props
-}) {
+export function Divider({ vertical = false, className = '', ...props }) {
   if (vertical) {
     return React.createElement('div', {
       className: ['vr', className].filter(Boolean).join(' '),
@@ -60,15 +44,7 @@ export function Divider({
 
 export const Separator = Divider;
 
-export function StatWidget({
-  title,
-  value,
-  change,
-  trend = 'up',
-  icon,
-  className = '',
-  ...props
-}) {
+export function StatWidget({ title, value, change, trend = 'up', icon, className = '', ...props }) {
   return React.createElement(
     'div',
     { className: ['card', 'stat-widget', className].filter(Boolean).join(' '), ...props },
@@ -83,7 +59,14 @@ export function StatWidget({
         change &&
           React.createElement(
             'p',
-            { className: [`text-${trend === 'up' ? 'success' : 'danger'}`, 'small', 'mb-0', 'mt-1'].join(' ') },
+            {
+              className: [
+                `text-${trend === 'up' ? 'success' : 'danger'}`,
+                'small',
+                'mb-0',
+                'mt-1',
+              ].join(' '),
+            },
             trend === 'up' ? '↑ ' : '↓ ',
             change
           )
@@ -93,12 +76,7 @@ export function StatWidget({
   );
 }
 
-export function BentoGrid({
-  columns = 3,
-  className = '',
-  children,
-  ...props
-}) {
+export function BentoGrid({ columns = 3, className = '', children, ...props }) {
   return React.createElement(
     'div',
     {
@@ -136,4 +114,3 @@ export function BentoItem({
     React.createElement('div', { className: 'card-body' }, children)
   );
 }
-

@@ -5,24 +5,16 @@
 
 import React from 'react';
 
-export function Box({
-  as = 'div',
-  className = '',
-  children,
-  style,
-  ...props
-}) {
+export function Box({ as = 'div', className = '', children, style, ...props }) {
   const Component = as;
-  return React.createElement(Component, { className: className || undefined, style, ...props }, children);
+  return React.createElement(
+    Component,
+    { className: className || undefined, style, ...props },
+    children
+  );
 }
 
-export function Container({
-  fluid = false,
-  breakpoint,
-  className = '',
-  children,
-  ...props
-}) {
+export function Container({ fluid = false, breakpoint, className = '', children, ...props }) {
   let prefix = 'container';
   if (fluid) prefix = 'container-fluid';
   else if (breakpoint) prefix = `container-${breakpoint}`;
@@ -34,12 +26,7 @@ export function Container({
   );
 }
 
-export function Row({
-  gap,
-  className = '',
-  children,
-  ...props
-}) {
+export function Row({ gap, className = '', children, ...props }) {
   const gapClass = gap !== undefined ? `g-${gap}` : '';
   return React.createElement(
     'div',
@@ -48,19 +35,7 @@ export function Row({
   );
 }
 
-export function Col({
-  span,
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
-  xxl,
-  offset,
-  className = '',
-  children,
-  ...props
-}) {
+export function Col({ span, xs, sm, md, lg, xl, xxl, offset, className = '', children, ...props }) {
   const classes = ['col'];
   if (span) classes[0] = `col-${span}`;
   if (xs) classes.push(`col-xs-${xs}`);
@@ -101,14 +76,7 @@ export function HStack({
 
 export const XStack = HStack;
 
-export function VStack({
-  spacing = 2,
-  align,
-  justify,
-  className = '',
-  children,
-  ...props
-}) {
+export function VStack({ spacing = 2, align, justify, className = '', children, ...props }) {
   const classes = [
     'd-flex',
     'flex-column',
@@ -125,11 +93,7 @@ export function VStack({
 
 export const YStack = VStack;
 
-export function Center({
-  className = '',
-  children,
-  ...props
-}) {
+export function Center({ className = '', children, ...props }) {
   return React.createElement(
     'div',
     {
@@ -142,14 +106,7 @@ export function Center({
   );
 }
 
-export function Grid({
-  columns = 12,
-  gap = 3,
-  className = '',
-  children,
-  style = {},
-  ...props
-}) {
+export function Grid({ columns = 12, gap = 3, className = '', children, style = {}, ...props }) {
   return React.createElement(
     'div',
     {
@@ -166,13 +123,7 @@ export function Grid({
   );
 }
 
-export function Splitter({
-  vertical = false,
-  minSize = 50,
-  className = '',
-  children,
-  ...props
-}) {
+export function Splitter({ vertical = false, minSize = 50, className = '', children, ...props }) {
   return React.createElement(
     'div',
     {
@@ -185,4 +136,3 @@ export function Splitter({
     children
   );
 }
-

@@ -165,7 +165,9 @@ export function Offcanvas({
     React.createElement(
       'div',
       {
-        className: ['offcanvas', `offcanvas-${placement}`, 'show', className].filter(Boolean).join(' '),
+        className: ['offcanvas', `offcanvas-${placement}`, 'show', className]
+          .filter(Boolean)
+          .join(' '),
         tabIndex: -1,
         role: 'dialog',
         'aria-modal': 'true',
@@ -191,14 +193,7 @@ export function Offcanvas({
 
 export const Drawer = Offcanvas;
 
-export function Dropdown({
-  trigger,
-  items = [],
-  open,
-  onToggle,
-  className = '',
-  ...props
-}) {
+export function Dropdown({ trigger, items = [], open, onToggle, className = '', ...props }) {
   const [internalOpen, setInternalOpen] = useState(false);
   const isOpen = open !== undefined ? open : internalOpen;
 
@@ -228,7 +223,11 @@ export function Dropdown({
         { className: 'dropdown-menu show' },
         items.map((item, idx) =>
           item.divider
-            ? React.createElement('li', { key: idx }, React.createElement('hr', { className: 'dropdown-divider' }))
+            ? React.createElement(
+                'li',
+                { key: idx },
+                React.createElement('hr', { className: 'dropdown-divider' })
+              )
             : React.createElement(
                 'li',
                 { key: item.key || idx },
@@ -237,7 +236,9 @@ export function Dropdown({
                   {
                     type: 'button',
                     disabled: item.disabled,
-                    className: ['dropdown-item', item.disabled ? 'disabled' : ''].filter(Boolean).join(' '),
+                    className: ['dropdown-item', item.disabled ? 'disabled' : '']
+                      .filter(Boolean)
+                      .join(' '),
                     onClick: () => {
                       item.onClick?.();
                       toggle();
@@ -251,19 +252,15 @@ export function Dropdown({
   );
 }
 
-export function Tooltip({
-  content,
-  children,
-  placement = 'top',
-  className = '',
-  ...props
-}) {
+export function Tooltip({ content, children, placement = 'top', className = '', ...props }) {
   const [visible, setVisible] = useState(false);
 
   return React.createElement(
     'div',
     {
-      className: ['tooltip-wrapper', 'position-relative', 'd-inline-block', className].filter(Boolean).join(' '),
+      className: ['tooltip-wrapper', 'position-relative', 'd-inline-block', className]
+        .filter(Boolean)
+        .join(' '),
       onMouseEnter: () => setVisible(true),
       onMouseLeave: () => setVisible(false),
       onFocus: () => setVisible(true),
@@ -291,4 +288,3 @@ export function Tooltip({
       )
   );
 }
-

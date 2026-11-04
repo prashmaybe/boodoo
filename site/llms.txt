@@ -29,6 +29,7 @@
 - [Starter Template](https://boodooframework.com/docs/getting-started/starter.html): Ready-to-use HTML template structure.
 - [Browser Support](https://boodooframework.com/docs/getting-started/browser-support.html): Supported browsers and target compatibility.
 - [Accessibility](https://boodooframework.com/docs/getting-started/accessibility.html): ARIA attributes, keyboard focus management, and WCAG compliance.
+- [React Component Kit](https://boodooframework.com/docs/getting-started/react.html): Pure DOM React components, scoped stylesheets, and accessible controls.
 
 ### Layout & Grid System
 - [Containers](https://boodooframework.com/docs/layout/containers.html): Fixed and responsive container wrappers (`.container`, `.container-fluid`).

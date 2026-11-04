@@ -52,20 +52,19 @@ export function Alert({
   );
 }
 
-export function Banner({
-  variant = 'primary',
-  onClose,
-  className = '',
-  children,
-  ...props
-}) {
+export function Banner({ variant = 'primary', onClose, className = '', children, ...props }) {
   return React.createElement(
     'div',
     {
       className: ['banner', `banner-${variant}`, className].filter(Boolean).join(' '),
       ...props,
     },
-    React.createElement('div', { className: 'banner-content container d-flex align-items-center justify-content-between py-2' },
+    React.createElement(
+      'div',
+      {
+        className:
+          'banner-content container d-flex align-items-center justify-content-between py-2',
+      },
       React.createElement('div', { className: 'banner-text' }, children),
       onClose &&
         React.createElement('button', {
@@ -78,15 +77,7 @@ export function Banner({
   );
 }
 
-export function Toast({
-  open = true,
-  onClose,
-  title,
-  time,
-  className = '',
-  children,
-  ...props
-}) {
+export function Toast({ open = true, onClose, title, time, className = '', children, ...props }) {
   if (!open) return null;
 
   return React.createElement(
@@ -116,13 +107,7 @@ export function Toast({
   );
 }
 
-export function Spinner({
-  variant,
-  size = 'md',
-  grow = false,
-  className = '',
-  ...props
-}) {
+export function Spinner({ variant, size = 'md', grow = false, className = '', ...props }) {
   const prefix = grow ? 'spinner-grow' : 'spinner-border';
   const sizeClass = size === 'sm' ? `${prefix}-sm` : '';
   const variantClass = variant ? `text-${variant}` : '';
@@ -180,4 +165,3 @@ export function ProgressBar({
 }
 
 export const Progress = ProgressBar;
-

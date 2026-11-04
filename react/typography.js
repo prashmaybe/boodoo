@@ -33,14 +33,7 @@ export function Text({
   return React.createElement(Component, { className: classes || undefined, ...props }, children);
 }
 
-export function Heading({
-  level = 2,
-  as,
-  className = '',
-  children,
-  ...props
-}) {
+export function Heading({ level = 2, as, className = '', children, ...props }) {
   const Component = as || `h${level}`;
   return React.createElement(Component, { className: className || undefined, ...props }, children);
 }
-

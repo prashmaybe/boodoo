@@ -6,14 +6,7 @@
 import React, { useId, useState } from 'react';
 import { useCombobox } from './hooks.js';
 
-export function Input({
-  id: customId,
-  name,
-  type = 'text',
-  size,
-  className = '',
-  ...props
-}) {
+export function Input({ id: customId, name, type = 'text', size, className = '', ...props }) {
   const generatedId = useId();
   const id = customId || name || generatedId;
   const sizeClass = size ? `form-control-${size}` : '';
@@ -30,13 +23,7 @@ export function Input({
 export const TextInput = Input;
 export const TextField = Input;
 
-export function Textarea({
-  id: customId,
-  name,
-  rows = 3,
-  className = '',
-  ...props
-}) {
+export function Textarea({ id: customId, name, rows = 3, className = '', ...props }) {
   const generatedId = useId();
   const id = customId || name || generatedId;
 
@@ -112,8 +99,7 @@ export function Checkbox({
       className: 'form-check-input',
       ...props,
     }),
-    label &&
-      React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
+    label && React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
   );
 }
 
@@ -149,8 +135,7 @@ export function Radio({
       className: 'form-check-input',
       ...props,
     }),
-    label &&
-      React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
+    label && React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
   );
 }
 
@@ -185,8 +170,7 @@ export function Switch({
       className: 'form-check-input',
       ...props,
     }),
-    label &&
-      React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
+    label && React.createElement('label', { className: 'form-check-label', htmlFor: id }, label)
   );
 }
 
@@ -275,6 +259,26 @@ export function Field({
   const id = customId || generatedId;
   const [showLearnMore, setShowLearnMore] = useState(false);
 
+  const descId = description ? `${id}-desc` : undefined;
+  const errorId = error ? `${id}-error` : undefined;
+  const describedBy = [descId, errorId].filter(Boolean).join(' ') || undefined;
+
+  let enhancedChildren = children;
+  if (React.isValidElement(children)) {
+    const childProps = children.props || {};
+    enhancedChildren = React.cloneElement(children, {
+      id: childProps.id || id,
+      'aria-describedby':
+        [childProps['aria-describedby'], describedBy].filter(Boolean).join(' ') || undefined,
+      'aria-invalid':
+        childProps['aria-invalid'] !== undefined ? childProps['aria-invalid'] : Boolean(error),
+      'aria-required':
+        childProps['aria-required'] !== undefined
+          ? childProps['aria-required']
+          : required || undefined,
+    });
+  }
+
   return React.createElement(
     'div',
     { className: ['boodoo-field', className].filter(Boolean).join(' ') },
@@ -303,11 +307,11 @@ export function Field({
     showLearnMore &&
       learnMore &&
       React.createElement('div', { className: 'boodoo-field-learn-more-content' }, learnMore),
-    children,
+    enhancedChildren,
     description &&
       !error &&
-      React.createElement('p', { className: 'boodoo-field-description' }, description),
-    error && React.createElement('p', { className: 'boodoo-field-error' }, error)
+      React.createElement('p', { id: descId, className: 'boodoo-field-description' }, description),
+    error && React.createElement('p', { id: errorId, className: 'boodoo-field-error' }, error)
   );
 }
 
@@ -327,23 +331,14 @@ export function Combobox({
   const generatedId = useId();
   const inputId = customId || name || generatedId;
 
-  const {
-    query,
-    setQuery,
-    isOpen,
-    activeIndex,
-    filteredItems,
-    selectItem,
-    getInputProps,
-    getListboxProps,
-    getOptionProps,
-  } = useCombobox({
-    items,
-    value,
-    defaultValue,
-    onChange,
-    getOptionMeta,
-  });
+  const { query, setQuery, isOpen, filteredItems, getInputProps, getListboxProps, getOptionProps } =
+    useCombobox({
+      items,
+      value,
+      defaultValue,
+      onChange,
+      getOptionMeta,
+    });
 
   return React.createElement(
     'div',
@@ -410,4 +405,3 @@ export function Combobox({
       )
   );
 }
-

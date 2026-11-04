@@ -86,14 +86,22 @@ export function useDisclosure(options = {}) {
  * @param {(item: any) => string} [options.getOptionMeta]
  */
 export function useCombobox(options = {}) {
-  const { items = [], value: controlledValue, defaultValue = '', onChange, getOptionMeta } = options;
+  const {
+    items = [],
+    value: controlledValue,
+    defaultValue = '',
+    onChange,
+    getOptionMeta,
+  } = options;
   const isControlled = controlledValue !== undefined;
 
   const [internalValue, setInternalValue] = useState(defaultValue);
   const selectedValue = isControlled ? controlledValue : internalValue;
 
   const currentItem = items.find((it) => it.value === selectedValue);
-  const [query, setQuery] = useState(currentItem ? currentItem.label : (typeof defaultValue === 'string' ? defaultValue : ''));
+  const [query, setQuery] = useState(
+    currentItem ? currentItem.label : typeof defaultValue === 'string' ? defaultValue : ''
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -102,7 +110,7 @@ export function useCombobox(options = {}) {
     const foldedQuery = foldAccents(query);
     return items.filter((item) => {
       const foldedLabel = foldAccents(item.label);
-      const meta = getOptionMeta ? getOptionMeta(item) : (item.meta || '');
+      const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
       const foldedMeta = foldAccents(meta);
       return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);
     });
