@@ -211,4 +211,3 @@ export const foldAccents = (str) => {
     .replace(/[æÆ]/g, 'ae')
     .toLowerCase();
 };
-
