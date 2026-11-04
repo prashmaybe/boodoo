@@ -243,13 +243,13 @@ document.getElementById('btn-demo')?.addEventListener('click', () => {
       },
       ...(isTs
         ? {
-            devDependencies: {
-              typescript: '^5.4.2',
-              '@types/node': '^20.0.0',
-              '@types/react': '^18.3.0',
-              '@types/react-dom': '^18.3.0',
-            },
-          }
+          devDependencies: {
+            typescript: '^5.4.2',
+            '@types/node': '^20.0.0',
+            '@types/react': '^18.3.0',
+            '@types/react-dom': '^18.3.0',
+          },
+        }
         : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
@@ -372,15 +372,15 @@ export default function RootLayout({ children }) {
       main: isTs ? 'dist/main.js' : 'main.js',
       scripts: isTs
         ? {
-            build: 'tsc',
-            start: 'tsc && electron .',
-            dev: 'tsc && electron .',
-            watch: 'tsc -w',
-          }
+          build: 'tsc',
+          start: 'tsc && electron .',
+          dev: 'tsc && electron .',
+          watch: 'tsc -w',
+        }
         : {
-            start: 'electron .',
-            dev: 'electron .',
-          },
+          start: 'electron .',
+          dev: 'electron .',
+        },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
@@ -388,9 +388,9 @@ export default function RootLayout({ children }) {
         electron: '^32.0.0',
         ...(isTs
           ? {
-              typescript: '^5.4.2',
-              '@types/node': '^20.0.0',
-            }
+            typescript: '^5.4.2',
+            '@types/node': '^20.0.0',
+          }
           : {}),
       },
     };
@@ -905,16 +905,16 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
       main: 'index.js',
       scripts: isTs
         ? {
-            build: 'tsc',
-            start: 'tsc && npx serve www',
-            'build:android': 'tsc && cordova build android',
-            'build:ios': 'tsc && cordova build ios',
-          }
+          build: 'tsc',
+          start: 'tsc && npx serve www',
+          'build:android': 'tsc && cordova build android',
+          'build:ios': 'tsc && cordova build ios',
+        }
         : {
-            start: 'npx serve www',
-            'build:android': 'cordova build android',
-            'build:ios': 'cordova build ios',
-          },
+          start: 'npx serve www',
+          'build:android': 'cordova build android',
+          'build:ios': 'cordova build ios',
+        },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
@@ -1057,11 +1057,11 @@ function onDeviceReady() {
       },
       ...(isTs
         ? {
-            devDependencies: {
-              typescript: '^5.4.2',
-              '@types/meteor': '^2.9.0',
-            },
-          }
+          devDependencies: {
+            typescript: '^5.4.2',
+            '@types/meteor': '^2.9.0',
+          },
+        }
         : {}),
     };
     fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
@@ -1154,14 +1154,14 @@ Meteor.startup(() => {
       main: isTs ? 'dist/main.js' : 'main.js',
       scripts: isTs
         ? {
-            build: 'tsc',
-            start: 'tsc && electron .',
-            dev: 'tsc && electron .',
-          }
+          build: 'tsc',
+          start: 'tsc && electron .',
+          dev: 'tsc && electron .',
+        }
         : {
-            start: 'electron .',
-            dev: 'electron .',
-          },
+          start: 'electron .',
+          dev: 'electron .',
+        },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
@@ -1169,9 +1169,9 @@ Meteor.startup(() => {
         electron: '^32.0.0',
         ...(isTs
           ? {
-              typescript: '^5.4.2',
-              '@types/node': '^20.0.0',
-            }
+            typescript: '^5.4.2',
+            '@types/node': '^20.0.0',
+          }
           : {}),
       },
     };
@@ -1346,10 +1346,10 @@ app.on('window-all-closed', () => {
         vite: '^5.0.0',
         ...(isTs
           ? {
-              typescript: '^5.4.2',
-              '@types/react': '^18.3.0',
-              '@types/react-dom': '^18.3.0',
-            }
+            typescript: '^5.4.2',
+            '@types/react': '^18.3.0',
+            '@types/react-dom': '^18.3.0',
+          }
           : {}),
       },
     };
@@ -1575,9 +1575,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         '@babel/core': '^7.20.0',
         ...(isTs
           ? {
-              typescript: '^5.3.0',
-              '@types/react': '~18.2.79',
-            }
+            typescript: '^5.3.0',
+            '@types/react': '~18.2.79',
+          }
           : {}),
       },
       private: true,
@@ -1875,10 +1875,10 @@ const styles = StyleSheet.create({
         vite: '^5.4.0',
         ...(isTs
           ? {
-              typescript: '^5.4.0',
-              '@types/react': '^18.3.0',
-              '@types/react-dom': '^18.3.0',
-            }
+            typescript: '^5.4.0',
+            '@types/react': '^18.3.0',
+            '@types/react-dom': '^18.3.0',
+          }
           : {}),
       },
     };
@@ -2295,10 +2295,10 @@ export default function App() {
         vite: '^5.4.0',
         ...(isTs
           ? {
-              typescript: '^5.4.0',
-              '@types/react': '^18.3.0',
-              '@types/react-dom': '^18.3.0',
-            }
+            typescript: '^5.4.0',
+            '@types/react': '^18.3.0',
+            '@types/react-dom': '^18.3.0',
+          }
           : {}),
       },
     };
@@ -2700,13 +2700,13 @@ export default function App() {
       version: '1.0.0',
       scripts: isTs
         ? {
-            build: 'tsc',
-            start: 'tsc && npx serve .',
-            dev: 'tsc --watch',
-          }
+          build: 'tsc',
+          start: 'tsc && npx serve .',
+          dev: 'tsc --watch',
+        }
         : {
-            start: 'npx serve .',
-          },
+          start: 'npx serve .',
+        },
       dependencies: {
         boodoo: `^${BOODOO_VERSION}`,
       },
@@ -2759,7 +2759,7 @@ document.getElementById('toast-trigger')?.addEventListener('click', () => {
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h2 class="h5 mb-3">Quick Component Test</h2>
-          <div class="mb-3">
+          <div class="mb-2">
             <label class="form-label" for="sample-input">Sample Input</label>
             <input type="text" class="form-control" id="sample-input" name="sample-input" placeholder="Type something...">
           </div>
@@ -2800,7 +2800,7 @@ document.getElementById('toast-trigger')?.addEventListener('click', () => {
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h2 class="h5 mb-3">Quick Component Test</h2>
-          <div class="mb-3">
+          <div class="mb-2">
             <label class="form-label" for="sample-input">Sample Input</label>
             <input type="text" class="form-control" id="sample-input" name="sample-input" placeholder="Type something...">
           </div>
@@ -2877,58 +2877,58 @@ export async function main() {
     console.log('\nSelect a template:');
     console.log(
       '  1) HTML5 + Sass Starter        \x1b[90m(HTML5, Sass ^1.77.0, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  2) Vite + Vanilla              \x1b[90m(Vite ^5.0.0, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  3) Next.js / React             \x1b[90m(Next.js ^14.2.0, React ^18.3.0, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  4) Electron Desktop App        \x1b[90m(Electron ^32.0.0, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  5) Angular Starter             \x1b[90m(Angular ^18.0.0, TS / JS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  6) Cordova & PhoneGap Mobile   \x1b[90m(Cordova Hybrid, Mobile WebView, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  7) Meteor.js Full-Stack App    \x1b[90m(Meteor.js ^2.0.0, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  8) Photon Desktop UI           \x1b[90m(Electron ^32.0.0, Photon UI CSS, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       '  9) React Native Web            \x1b[90m(React ^18.3.0, RN Web ^0.19.0, Vite ^5.0.0, JS / TS, Boodoo v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       ' 10) React Native Mobile (Expo)  \x1b[90m(Expo SDK ^51.0.0, React Native ^0.74.0, JS / TS, Boodoo Native v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
     console.log(
       ' 11) React Admin Dashboard       \x1b[90m(Vite ^5.4.0, React ^18.3.0, JS / TS, Boodoo DOM Kit v' +
-        BOODOO_VERSION +
-        ')\x1b[0m'
+      BOODOO_VERSION +
+      ')\x1b[0m'
     );
 
     choice = await prompt('Choose template [1-11]', '1');
