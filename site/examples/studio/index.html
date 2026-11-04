@@ -229,14 +229,30 @@
           const wrapper = document.createElement('div');
           wrapper.className = 'w-100 max-w-md d-flex flex-column gap-3';
 
+          const isValidation = currentVariant === 'danger' || currentVariant === 'success';
+          const validationClass = currentVariant === 'danger' ? ' is-invalid' : currentVariant === 'success' ? ' is-valid' : '';
+          const borderClass = !isValidation && currentVariant !== 'primary' ? ` border border-${currentVariant}` : '';
+
           const field1 = document.createElement('div');
           field1.className = 'boodoo-field';
-          field1.innerHTML = `<label class="boodoo-field-label" for="studioEmailInput"><span>Email Address *</span></label><input type="email" id="studioEmailInput" name="studioEmailInput" class="form-control${inputSizeClass}" placeholder="user@company.com"${disabledAttr}><p class="boodoo-field-description" id="studioEmailInput-desc"><span>We will never share your personal email with anyone.</span></p>`;
+          field1.style.setProperty('--boodoo-primary', `var(--boodoo-${currentVariant})`);
+          field1.style.setProperty('--boodoo-focus-ring-color', `rgba(var(--boodoo-${currentVariant}-rgb, var(--boodoo-${currentVariant})), 0.25)`);
+
+          let feedbackHtml = '';
+          if (currentVariant === 'danger') {
+            feedbackHtml = '<p class="boodoo-field-error" id="studioEmailInput-error"><span>Please enter a valid work email address.</span></p>';
+          } else if (currentVariant === 'success') {
+            feedbackHtml = '<p class="text-success fs-8 mt-1 mb-0" id="studioEmailInput-success"><span>Email address is available and valid!</span></p>';
+          } else {
+            feedbackHtml = '<p class="boodoo-field-description" id="studioEmailInput-desc"><span>We will never share your personal email with anyone.</span></p>';
+          }
+
+          field1.innerHTML = `<div class="boodoo-field-label-row"><label class="boodoo-field-label" for="studioEmailInput"><span>Email Address *</span></label><span class="badge bg-${currentVariant} badge-sm"><span>${currentVariant}</span></span></div><input type="email" id="studioEmailInput" name="studioEmailInput" class="form-control${inputSizeClass}${validationClass}${borderClass}" placeholder="user@company.com"${disabledAttr}>${feedbackHtml}`;
           wrapper.appendChild(field1);
 
           stage.appendChild(wrapper);
 
-          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input type="email" size="${currentSize}" placeholder="user@company.com"${isDisabled ? ' disabled' : ''} />\n    </Field>\n  );\n}`;
+          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      variant="${currentVariant}"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input\n        type="email"\n        size="${currentSize}"\n        variant="${currentVariant}"\n        placeholder="user@company.com"${isDisabled ? '\n        disabled' : ''}\n      />\n    </Field>\n  );\n}`;
         } else if (currentCategory === 'combobox') {
           sectionTitle.innerHTML = '<span>Combobox &amp; Autocomplete</span>';
           sectionDesc.innerHTML = '<span>Fuzzy accent-insensitive filtering with secondary metadata and keyboard navigation.</span>';
