@@ -309,7 +309,94 @@
           sectionDesc.innerHTML = '<span>Declarative data tables with controlled column sorting and expandable row records.</span>';
 
           const wrapper = document.createElement('div');
-          wrapper.className = 'table-responsive w-100';
+          const table = document.createElement('table');
+          table.className = 'table table-hover align-middle mb-0' + tableSizeClass;
+
+          const thead = document.createElement('thead');
+          thead.className = 'table-light';
+          const headRow = document.createElement('tr');
+
+          const nameHead = document.createElement('th');
+          nameHead.scope = 'col';
+          const nameHeadSpan = document.createElement('span');
+          nameHeadSpan.textContent = 'Name';
+          nameHead.appendChild(nameHeadSpan);
+
+          const roleHead = document.createElement('th');
+          roleHead.scope = 'col';
+          const roleHeadSpan = document.createElement('span');
+          roleHeadSpan.textContent = 'Role';
+          roleHead.appendChild(roleHeadSpan);
+
+          const statusHead = document.createElement('th');
+          statusHead.scope = 'col';
+          const statusHeadSpan = document.createElement('span');
+          statusHeadSpan.textContent = 'Status';
+          statusHead.appendChild(statusHeadSpan);
+
+          headRow.appendChild(nameHead);
+          headRow.appendChild(roleHead);
+          headRow.appendChild(statusHead);
+          thead.appendChild(headRow);
+
+          const tbody = document.createElement('tbody');
+
+          const row1 = document.createElement('tr');
+          const row1Name = document.createElement('td');
+          const row1Strong = document.createElement('strong');
+          const row1NameSpan = document.createElement('span');
+          row1NameSpan.textContent = 'Auth Microservice';
+          row1Strong.appendChild(row1NameSpan);
+          row1Name.appendChild(row1Strong);
+
+          const row1Role = document.createElement('td');
+          const row1RoleSpan = document.createElement('span');
+          row1RoleSpan.textContent = 'Security';
+          row1Role.appendChild(row1RoleSpan);
+
+          const row1Status = document.createElement('td');
+          const row1Badge = document.createElement('span');
+          row1Badge.className = 'badge bg-' + currentVariant;
+          const row1BadgeText = document.createElement('span');
+          row1BadgeText.textContent = 'Active';
+          row1Badge.appendChild(row1BadgeText);
+          row1Status.appendChild(row1Badge);
+
+          row1.appendChild(row1Name);
+          row1.appendChild(row1Role);
+          row1.appendChild(row1Status);
+
+          const row2 = document.createElement('tr');
+          const row2Name = document.createElement('td');
+          const row2Strong = document.createElement('strong');
+          const row2NameSpan = document.createElement('span');
+          row2NameSpan.textContent = 'Worker Queue';
+          row2Strong.appendChild(row2NameSpan);
+          row2Name.appendChild(row2Strong);
+
+          const row2Role = document.createElement('td');
+          const row2RoleSpan = document.createElement('span');
+          row2RoleSpan.textContent = 'Async Jobs';
+          row2Role.appendChild(row2RoleSpan);
+
+          const row2Status = document.createElement('td');
+          const row2Badge = document.createElement('span');
+          row2Badge.className = 'badge bg-secondary';
+          const row2BadgeText = document.createElement('span');
+          row2BadgeText.textContent = 'Idle';
+          row2Badge.appendChild(row2BadgeText);
+          row2Status.appendChild(row2Badge);
+
+          row2.appendChild(row2Name);
+          row2.appendChild(row2Role);
+          row2.appendChild(row2Status);
+
+          tbody.appendChild(row1);
+          tbody.appendChild(row2);
+
+          table.appendChild(thead);
+          table.appendChild(tbody);
+          wrapper.appendChild(table);
           wrapper.innerHTML = `<table class="table table-hover align-middle mb-0${tableSizeClass}"><thead class="table-light"><tr><th scope="col"><span>Name</span></th><th scope="col"><span>Role</span></th><th scope="col"><span>Status</span></th></tr></thead><tbody><tr><td><strong><span>Auth Microservice</span></strong></td><td><span>Security</span></td><td><span class="badge bg-${currentVariant}"><span>Active</span></span></td></tr><tr><td><strong><span>Worker Queue</span></strong></td><td><span>Async Jobs</span></td><td><span class="badge bg-secondary"><span>Idle</span></span></td></tr></tbody></table>`;
           stage.appendChild(wrapper);
 
