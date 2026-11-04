@@ -91,35 +91,70 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature Release</span></span>
-          <span>Version 1.2.6 Release &mdash; DOM React Components Suite, Scoped Styles, Controlled Tables &amp; Combobox</span>
+          <span>Version 1.2.6 Release &mdash; DOM React Components Suite, Scoped Styles, Controlled Tables &amp;
+            Combobox</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.6</strong> delivers a full DOM React component kit on <code>boodoo/react</code> (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, Accordion, Nav, StickyHeader), scoped CSS builds under <code>boodoo/css/react</code> with zero reboot side-effects, host CSS variable bridging for non-invasive theming, accent-folded search and context metadata for Combobox, controlled column sorting and child row rendering for Table, and compact density support.</span></p>
+        <p><span>boodoo <strong>v1.2.6</strong> delivers a full DOM React component kit on <code>boodoo/react</code>
+            (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, Accordion, Nav,
+            StickyHeader), scoped CSS builds under <code>boodoo/css/react</code> with zero reboot side-effects, host CSS
+            variable bridging for non-invasive theming, accent-folded search and context metadata for Combobox,
+            controlled column sorting and child row rendering for Table, and compact density support.</span></p>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Modular DOM React Components Suite</strong>: Exported pure DOM React components on <code>boodoo/react</code> across modular submodules (<code>buttons</code>, <code>data-display</code>, <code>feedback</code>, <code>inputs</code>, <code>layout</code>, <code>lists</code>, <code>navigation</code>, <code>overlays</code>, <code>surfaces</code>, <code>theme</code>, <code>typography</code>) sharing unified design tokens with zero DOM-hijacking scripts or mandatory native dependencies.</span></li>
-          <li><span><strong>Admin &amp; Enterprise Primitives</strong>: Introduced accessible <code>Field</code> (with description, error, and disclosure slots), type-to-confirm <code>ConfirmDialog</code> barrier, and compacting <code>StickyHeader</code>.</span></li>
-          <li><span><strong>Controlled &amp; Expandable Table</strong>: Implemented pure React state column sorting with WAI-ARIA <code>aria-sort</code> indicators and companion expandable detail rows (<code>expandedRowRender</code>).</span></li>
-          <li><span><strong>Accent-Insensitive Combobox &amp; Meta</strong>: Enhanced Combobox and <code>useCombobox</code> with diacritic-folding search (<code>foldAccents</code>) and secondary subtitle context lines (<code>getOptionMeta</code>).</span></li>
-          <li><span><strong>Scoped React Stylesheets</strong>: Published <code>dist/css/boodoo-react.min.css</code> (and <code>boodoo/css/react</code> subpath) namespaced under <code>@layer boodoo</code> and <code>.boodoo</code> without global reboot element resets.</span></li>
-          <li><span><strong>Host CSS Variable Bridging</strong>: Added automatic fallback bridging in <code>BoodooProvider</code> mapping host CSS variables (<code>--bo-brand</code>, <code>--bo-surface</code>, <code>--bo-text</code>, <code>--bo-radius</code>, <code>--bo-border</code>) directly into Boodoo tokens.</span></li>
-          <li><span><strong>Compact Density Mode</strong>: Added compact density spacing (<code>density="compact"</code>) for high-density tables, form controls, and enterprise backoffice layouts.</span></li>
-          <li><span><strong>CLI Template 11 (React Admin Dashboard)</strong>: Added interactive Vite + React Admin Dashboard starter scaffold supporting both TypeScript (<code>--ts</code>) and JavaScript in <code>create-boodoo</code>.</span></li>
-          <li><span><strong>Interactive Studio &amp; React Docs</strong>: Published interactive Component Studio preview at <code>/examples/studio/</code> and full React integration documentation at <code>/docs/getting-started/react.html</code>.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Modular DOM React Components Suite</strong>: Exported pure DOM React components on
+              <code>boodoo/react</code> across modular submodules (<code>buttons</code>, <code>data-display</code>,
+              <code>feedback</code>, <code>inputs</code>, <code>layout</code>, <code>lists</code>,
+              <code>navigation</code>, <code>overlays</code>, <code>surfaces</code>, <code>theme</code>,
+              <code>typography</code>) sharing unified design tokens with zero DOM-hijacking scripts or mandatory native
+              dependencies.</span></li>
+          <li><span><strong>Admin &amp; Enterprise Primitives</strong>: Introduced accessible <code>Field</code> (with
+              description, error, and disclosure slots), type-to-confirm <code>ConfirmDialog</code> barrier, and
+              compacting <code>StickyHeader</code>.</span></li>
+          <li><span><strong>Controlled &amp; Expandable Table</strong>: Implemented pure React state column sorting with
+              WAI-ARIA <code>aria-sort</code> indicators and companion expandable detail rows
+              (<code>expandedRowRender</code>).</span></li>
+          <li><span><strong>Accent-Insensitive Combobox &amp; Meta</strong>: Enhanced Combobox and
+              <code>useCombobox</code> with diacritic-folding search (<code>foldAccents</code>) and secondary subtitle
+              context lines (<code>getOptionMeta</code>).</span></li>
+          <li><span><strong>Scoped React Stylesheets</strong>: Published <code>dist/css/boodoo-react.min.css</code> (and
+              <code>boodoo/css/react</code> subpath) namespaced under <code>@layer boodoo</code> and
+              <code>.boodoo</code> without global reboot element resets.</span></li>
+          <li><span><strong>Host CSS Variable Bridging</strong>: Added automatic fallback bridging in
+              <code>BoodooProvider</code> mapping host CSS variables (<code>--bo-brand</code>,
+              <code>--bo-surface</code>, <code>--bo-text</code>, <code>--bo-radius</code>, <code>--bo-border</code>)
+              directly into Boodoo tokens.</span></li>
+          <li><span><strong>Compact Density Mode</strong>: Added compact density spacing
+              (<code>density="compact"</code>) for high-density tables, form controls, and enterprise backoffice
+              layouts.</span></li>
+          <li><span><strong>CLI Template 11 (React Admin Dashboard)</strong>: Added interactive Vite + React Admin
+              Dashboard starter scaffold supporting both TypeScript (<code>--ts</code>) and JavaScript in
+              <code>create-boodoo</code>.</span></li>
+          <li><span><strong>Interactive Studio &amp; React Docs</strong>: Published interactive Component Studio preview
+              at <code>/examples/studio/</code> and full React integration documentation at
+              <code>/docs/getting-started/react.html</code>.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Changes &amp; Improvements</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Subpath Exports</strong>: Exposed <code>./css/react</code> in <code>package.json</code> pointing directly to scoped React stylesheet distributions.</span></li>
-          <li><span><strong>Build Pipeline</strong>: Integrated automated <code>css:react</code> Sass and Less build compilation steps for scoped distributions.</span></li>
-          <li><span><strong>Sitewide Search &amp; Sitemap</strong>: Indexed new React documentation and example pages across documentation navigation, modal search, sitemap, and LLM text specs.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Subpath Exports</strong>: Exposed <code>./css/react</code> in <code>package.json</code>
+              pointing directly to scoped React stylesheet distributions.</span></li>
+          <li><span><strong>Build Pipeline</strong>: Integrated automated <code>css:react</code> Sass and Less build
+              compilation steps for scoped distributions.</span></li>
+          <li><span><strong>Sitewide Search &amp; Sitemap</strong>: Indexed new React documentation and example pages
+              across documentation navigation, modal search, sitemap, and LLM text specs.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Bug Fixes</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Form Control Unique Identifiers</strong>: Enforced auto-generated IDs via <code>useId()</code> across all React input primitives when <code>id</code> is omitted, preventing orphaned labels and ensuring WCAG compliance.</span></li>
-          <li><span><strong>Accordion Toggle Protection</strong>: Guarded accordion toggles with <code>e.defaultPrevented</code> checks and purified active panel state resolution via <code>isExpanded(key)</code>.</span></li>
-          <li><span><strong>Combobox Controlled Sync</strong>: Corrected query display synchronization when <code>value</code> prop is controlled from external React state.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Form Control Unique Identifiers</strong>: Enforced auto-generated IDs via
+              <code>useId()</code> across all React input primitives when <code>id</code> is omitted, preventing
+              orphaned labels and ensuring WCAG compliance.</span></li>
+          <li><span><strong>Accordion Toggle Protection</strong>: Guarded accordion toggles with
+              <code>e.defaultPrevented</code> checks and purified active panel state resolution via
+              <code>isExpanded(key)</code>.</span></li>
+          <li><span><strong>Combobox Controlled Sync</strong>: Corrected query display synchronization when
+              <code>value</code> prop is controlled from external React state.</span></li>
         </ul>
       </div>
     </div>
@@ -148,51 +183,138 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Performance &amp; Reliability</span></span>
-          <span>Version 1.2.5 Release &mdash; esbuild Pipeline, API Parity, Production Readiness &amp; Lifecycle Hardening</span>
+          <span>Version 1.2.5 Release &mdash; esbuild Pipeline, API Parity, Production Readiness &amp; Lifecycle
+            Hardening</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.5</strong> introduces a high-performance esbuild bundling and minification pipeline (reducing bundle size by 35% with complete source maps), establishes strict automated API parity across ESM, CJS, and TypeScript definitions, publishes a dedicated Production Readiness &amp; Enterprise SLA dashboard, implements comprehensive memory-leak teardown and event listener cleanup across interactive components, overhauls Rating accessibility to WCAG 2.2 AA standards, preserves DataTable detail rows during column sorting, secures CDN publishing scripts against credential leaks, and exposes granular Sass/Less subpath exports.</span></p>
+        <p><span>boodoo <strong>v1.2.5</strong> introduces a high-performance esbuild bundling and minification pipeline
+            (reducing bundle size by 35% with complete source maps), establishes strict automated API parity across ESM,
+            CJS, and TypeScript definitions, publishes a dedicated Production Readiness &amp; Enterprise SLA dashboard,
+            implements comprehensive memory-leak teardown and event listener cleanup across interactive components,
+            overhauls Rating accessibility to WCAG 2.2 AA standards, preserves DataTable detail rows during column
+            sorting, secures CDN publishing scripts against credential leaks, and exposes granular Sass/Less subpath
+            exports.</span></p>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Production Readiness &amp; Enterprise SLA Dashboard</strong>: Published a comprehensive <a href="production-readiness.html"><span>Production Readiness &amp; SLA Dashboard</span></a> documenting enterprise support SLA tier commitments (Enterprise 99.9%, Team 99.5%, Community best-effort), live verified production readiness benchmarks (37/37 tests passed, 0 runtime dependencies, WCAG 2.2 AA compliance), the 14-Point Production Component Quality Checklist, and cross-framework architectural comparisons against Bootstrap 5, Tailwind CSS, and Material UI.</span></li>
-          <li><span><strong>Automated Production Readiness &amp; Sitemap Verification</strong>: Added automated test assertions in <code>tests/site-docs.test.mjs</code> validating production readiness documentation route presence, canonical HTTPS non-www URL integrity, navigation metadata, and sitemap synchronization.</span></li>
-          <li><span><strong>esbuild Bundling &amp; Minification Pipeline</strong>: Replaced legacy regex-based bundle assembly with industrial-grade <code>esbuild</code>, generating true minified production bundles, robust ESM/CommonJS/browser distributions, and source maps (<code>.map</code>) across all JavaScript distributions.</span></li>
-          <li><span><strong>Automated Public API Parity Enforcement</strong>: Added automated test #11 in <code>tests/package-smoke.test.mjs</code> enforcing complete parity across all 45 public symbols in <code>js/boodoo.js</code> source exports, compiled ESM distribution, CommonJS bundle, and <code>js/boodoo.d.ts</code> TypeScript definitions (including <code>a11y</code>, <code>FloatingBar</code>, <code>ImageCompare</code>, <code>PasswordMeter</code>, <code>initDataApi</code>, <code>initRipple</code>, and <code>registerCustomElements</code>).</span></li>
-          <li><span><strong>Comprehensive Runtime Component Lifecycle Test Suite</strong>: Added 282 lines of automated tests in <code>tests/components.test.mjs</code> verifying auto-init idempotency, tooltip title restoration, Rating keyboard navigation and WAI-ARIA states, DataTable detail row preservation and teardown, custom elements re-entry guards, command palette shortcut lifecycle, and full DOM teardown across interactive components.</span></li>
-          <li><span><strong>Sass &amp; Less Subpath Package Exports</strong>: Added explicit <code>./scss</code>, <code>./scss/*</code>, <code>./less</code>, and <code>./less/*</code> subpath exports to <code>package.json</code>, enabling seamless package-specifier imports in modern build tools and bundlers without hardcoding relative <code>node_modules</code> paths.</span></li>
-          <li><span><strong>Automated Linting Pipeline</strong>: Configured ESLint (flat config) and Prettier with npm scripts (<code>npm run lint</code>, <code>npm run format</code>) and integrated automated linting directly into GitHub Actions CI.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Production Readiness &amp; Enterprise SLA Dashboard</strong>: Published a comprehensive <a
+                href="production-readiness.html"><span>Production Readiness &amp; SLA Dashboard</span></a> documenting
+              enterprise support SLA tier commitments (Enterprise 99.9%, Team 99.5%, Community best-effort), live
+              verified production readiness benchmarks (37/37 tests passed, 0 runtime dependencies, WCAG 2.2 AA
+              compliance), the 14-Point Production Component Quality Checklist, and cross-framework architectural
+              comparisons against Bootstrap 5, Tailwind CSS, and Material UI.</span></li>
+          <li><span><strong>Automated Production Readiness &amp; Sitemap Verification</strong>: Added automated test
+              assertions in <code>tests/site-docs.test.mjs</code> validating production readiness documentation route
+              presence, canonical HTTPS non-www URL integrity, navigation metadata, and sitemap synchronization.</span>
+          </li>
+          <li><span><strong>esbuild Bundling &amp; Minification Pipeline</strong>: Replaced legacy regex-based bundle
+              assembly with industrial-grade <code>esbuild</code>, generating true minified production bundles, robust
+              ESM/CommonJS/browser distributions, and source maps (<code>.map</code>) across all JavaScript
+              distributions.</span></li>
+          <li><span><strong>Automated Public API Parity Enforcement</strong>: Added automated test #11 in
+              <code>tests/package-smoke.test.mjs</code> enforcing complete parity across all 45 public symbols in
+              <code>js/boodoo.js</code> source exports, compiled ESM distribution, CommonJS bundle, and
+              <code>js/boodoo.d.ts</code> TypeScript definitions (including <code>a11y</code>, <code>FloatingBar</code>,
+              <code>ImageCompare</code>, <code>PasswordMeter</code>, <code>initDataApi</code>, <code>initRipple</code>,
+              and <code>registerCustomElements</code>).</span></li>
+          <li><span><strong>Comprehensive Runtime Component Lifecycle Test Suite</strong>: Added 282 lines of automated
+              tests in <code>tests/components.test.mjs</code> verifying auto-init idempotency, tooltip title
+              restoration, Rating keyboard navigation and WAI-ARIA states, DataTable detail row preservation and
+              teardown, custom elements re-entry guards, command palette shortcut lifecycle, and full DOM teardown
+              across interactive components.</span></li>
+          <li><span><strong>Sass &amp; Less Subpath Package Exports</strong>: Added explicit <code>./scss</code>,
+              <code>./scss/*</code>, <code>./less</code>, and <code>./less/*</code> subpath exports to
+              <code>package.json</code>, enabling seamless package-specifier imports in modern build tools and bundlers
+              without hardcoding relative <code>node_modules</code> paths.</span></li>
+          <li><span><strong>Automated Linting Pipeline</strong>: Configured ESLint (flat config) and Prettier with npm
+              scripts (<code>npm run lint</code>, <code>npm run format</code>) and integrated automated linting directly
+              into GitHub Actions CI.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-info mt-3 mb-2"><span>Improvements &amp; Performance</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>35% Bundle Size Reduction</strong>: Production minified bundle <code>boodoo.min.js</code> shrunk from ~179 KB to ~113 KB (~27.1 KB gzipped / ~23.4 KB brotli) with real identifier mangling and dead-code elimination.</span></li>
-          <li><span><strong>Unified Late-Load Lifecycle Architecture</strong>: Replaced unhandled <code>DOMContentLoaded</code> listeners across 10 interactive components (<code>ContextMenu</code>, <code>DataTable</code>, <code>OTP</code>, <code>Rating</code>, <code>ChipInput</code>, <code>ImageCompare</code>, <code>FloatingBar</code>, <code>PasswordMeter</code>, <code>Sidebar</code>, and <code>TreeView</code>) with <code>initDataApi</code>, providing guaranteed initialization in SPAs, async script tags, dynamic <code>import()</code>, and hydration contexts.</span></li>
-          <li><span><strong>TypeScript Declaration Clean Mapping</strong>: Refactored <code>js/boodoo.d.ts</code> to declare component classes once using internal <code>declare class</code> definitions paired with a consolidated named export block, resolving duplicate export collision warnings, and refined <code>react-native/index.d.ts</code> prop interfaces.</span></li>
-          <li><span><strong>Headless Module Resolution Hardening</strong>: Hardened headless subpath exports (<code>./react</code>, <code>./vue</code>, <code>./react-native</code>) as ESM-only entry points with dedicated TypeScript definitions, removing invalid CJS fallback conditions and restricting <code>sideEffects</code> strictly to stylesheets.</span></li>
-          <li><span><strong>Sass &amp; Less Compiler Tooling Alignment</strong>: Replaced on-the-fly npx Less runner with local <code>lessc</code> compiler and eliminated Less 4.9.0 variable deprecation warnings in <code>less/_root.less</code>.</span></li>
-          <li><span><strong>Documentation &amp; Brand Consistency Synchronization</strong>: Synchronized component inventory figures across documentation and branding to the verified 50+ built-in components and 150+ utility classes standard.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>35% Bundle Size Reduction</strong>: Production minified bundle <code>boodoo.min.js</code>
+              shrunk from ~179 KB to ~113 KB (~27.1 KB gzipped / ~23.4 KB brotli) with real identifier mangling and
+              dead-code elimination.</span></li>
+          <li><span><strong>Unified Late-Load Lifecycle Architecture</strong>: Replaced unhandled
+              <code>DOMContentLoaded</code> listeners across 10 interactive components (<code>ContextMenu</code>,
+              <code>DataTable</code>, <code>OTP</code>, <code>Rating</code>, <code>ChipInput</code>,
+              <code>ImageCompare</code>, <code>FloatingBar</code>, <code>PasswordMeter</code>, <code>Sidebar</code>, and
+              <code>TreeView</code>) with <code>initDataApi</code>, providing guaranteed initialization in SPAs, async
+              script tags, dynamic <code>import()</code>, and hydration contexts.</span></li>
+          <li><span><strong>TypeScript Declaration Clean Mapping</strong>: Refactored <code>js/boodoo.d.ts</code> to
+              declare component classes once using internal <code>declare class</code> definitions paired with a
+              consolidated named export block, resolving duplicate export collision warnings, and refined
+              <code>react-native/index.d.ts</code> prop interfaces.</span></li>
+          <li><span><strong>Headless Module Resolution Hardening</strong>: Hardened headless subpath exports
+              (<code>./react</code>, <code>./vue</code>, <code>./react-native</code>) as ESM-only entry points with
+              dedicated TypeScript definitions, removing invalid CJS fallback conditions and restricting
+              <code>sideEffects</code> strictly to stylesheets.</span></li>
+          <li><span><strong>Sass &amp; Less Compiler Tooling Alignment</strong>: Replaced on-the-fly npx Less runner
+              with local <code>lessc</code> compiler and eliminated Less 4.9.0 variable deprecation warnings in
+              <code>less/_root.less</code>.</span></li>
+          <li><span><strong>Documentation &amp; Brand Consistency Synchronization</strong>: Synchronized component
+              inventory figures across documentation and branding to the verified 50+ built-in components and 150+
+              utility classes standard.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Fixes &amp; Lifecycle Hardening</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Interactive Component Lifecycle Teardown (Zero Memory Leaks)</strong>: Implemented comprehensive <code>dispose()</code> overrides across <code>BottomSheet</code>, <code>Carousel</code>, <code>DataTable</code>, <code>ChipInput</code>, <code>Sidebar</code>, <code>ContextMenu</code>, and <code>Offcanvas</code>, detaching all document/window keydown, resize, scroll, touch, mouse, and header sort listeners, canceling pending timeouts, and nulling DOM element references.</span></li>
-          <li><span><strong>DataTable Companion Detail Row Preservation</strong>: Fixed column sorting in <code>DataTable</code> to capture companion expandable detail rows (<code>.data-table-row-detail</code>) and maintain their placement immediately following their respective parent row during DOM reordering.</span></li>
-          <li><span><strong>Tooltip Native Title Caching &amp; Restoration</strong>: Resolved browser tooltip collisions by caching native <code>title</code> in <code>_originalTitle</code> and stripping it while the tooltip is active, cleanly restoring the original attribute upon <code>dispose()</code>.</span></li>
-          <li><span><strong>Rating Component WCAG 2.2 AA Accessibility &amp; Keyboard Navigation</strong>: Overhauled Rating with full WAI-ARIA radio group semantics (<code>role="radiogroup"</code> on container, <code>role="radio"</code> and <code>aria-checked</code> on stars, roving <code>tabindex</code>), and added complete keyboard arrow navigation (<code>ArrowRight</code>/<code>ArrowUp</code> to increment, <code>ArrowLeft</code>/<code>ArrowDown</code> to decrement).</span></li>
-          <li><span><strong>Command Palette Shortcut Isolation &amp; Safe Navigation</strong>: Eliminated unconditional global keyboard shortcut registration on script load in favor of instance-managed handlers (<code>_bindShortcut</code> / <code>_unbindShortcut</code>), and hardened item navigation with strict URL scheme allowlisting (<code>https:</code>, <code>http:</code>, <code>/</code>, <code>#</code>, <code>mailto:</code>).</span></li>
-          <li><span><strong>Custom Elements Double-Initialization Guard</strong>: Added <code>this._initialized</code> re-entry guards in <code>connectedCallback()</code> across custom web components to prevent duplicate setup when elements are relocated in the DOM.</span></li>
-          <li><span><strong>Scrollspy Attribute Cleanup Correction</strong>: Replaced invalid <code>setAttribute('aria-current', null)</code> with standard <code>removeAttribute('aria-current')</code> during section deactivation.</span></li>
-          <li><span><strong>Global Runtime Auto-Init Idempotency Guard</strong>: Guarded <code>autoInit()</code> with <code>document._boodooAutoInit</code> to prevent duplicate global delegation listeners when the framework script is loaded or evaluated multiple times.</span></li>
-          <li><span><strong>Accessible Live Region Alert Semantics</strong>: Updated <code>a11y.announce</code> in <code>js/src/a11y.js</code> to set <code>role="alert"</code> on assertive announcements while preserving <code>role="status"</code> for polite announcements in accordance with WAI-ARIA guidelines.</span></li>
-          <li><span><strong>Repository &amp; Build Hygiene</strong>: Untracked generated <code>site/docs/</code> from version control, removed dead event handlers in <code>js/src/carousel.js</code>, and cleaned up temporary compiler artifacts.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Interactive Component Lifecycle Teardown (Zero Memory Leaks)</strong>: Implemented
+              comprehensive <code>dispose()</code> overrides across <code>BottomSheet</code>, <code>Carousel</code>,
+              <code>DataTable</code>, <code>ChipInput</code>, <code>Sidebar</code>, <code>ContextMenu</code>, and
+              <code>Offcanvas</code>, detaching all document/window keydown, resize, scroll, touch, mouse, and header
+              sort listeners, canceling pending timeouts, and nulling DOM element references.</span></li>
+          <li><span><strong>DataTable Companion Detail Row Preservation</strong>: Fixed column sorting in
+              <code>DataTable</code> to capture companion expandable detail rows (<code>.data-table-row-detail</code>)
+              and maintain their placement immediately following their respective parent row during DOM
+              reordering.</span></li>
+          <li><span><strong>Tooltip Native Title Caching &amp; Restoration</strong>: Resolved browser tooltip collisions
+              by caching native <code>title</code> in <code>_originalTitle</code> and stripping it while the tooltip is
+              active, cleanly restoring the original attribute upon <code>dispose()</code>.</span></li>
+          <li><span><strong>Rating Component WCAG 2.2 AA Accessibility &amp; Keyboard Navigation</strong>: Overhauled
+              Rating with full WAI-ARIA radio group semantics (<code>role="radiogroup"</code> on container,
+              <code>role="radio"</code> and <code>aria-checked</code> on stars, roving <code>tabindex</code>), and added
+              complete keyboard arrow navigation (<code>ArrowRight</code>/<code>ArrowUp</code> to increment,
+              <code>ArrowLeft</code>/<code>ArrowDown</code> to decrement).</span></li>
+          <li><span><strong>Command Palette Shortcut Isolation &amp; Safe Navigation</strong>: Eliminated unconditional
+              global keyboard shortcut registration on script load in favor of instance-managed handlers
+              (<code>_bindShortcut</code> / <code>_unbindShortcut</code>), and hardened item navigation with strict URL
+              scheme allowlisting (<code>https:</code>, <code>http:</code>, <code>/</code>, <code>#</code>,
+              <code>mailto:</code>).</span></li>
+          <li><span><strong>Custom Elements Double-Initialization Guard</strong>: Added <code>this._initialized</code>
+              re-entry guards in <code>connectedCallback()</code> across custom web components to prevent duplicate
+              setup when elements are relocated in the DOM.</span></li>
+          <li><span><strong>Scrollspy Attribute Cleanup Correction</strong>: Replaced invalid
+              <code>setAttribute('aria-current', null)</code> with standard <code>removeAttribute('aria-current')</code>
+              during section deactivation.</span></li>
+          <li><span><strong>Global Runtime Auto-Init Idempotency Guard</strong>: Guarded <code>autoInit()</code> with
+              <code>document._boodooAutoInit</code> to prevent duplicate global delegation listeners when the framework
+              script is loaded or evaluated multiple times.</span></li>
+          <li><span><strong>Accessible Live Region Alert Semantics</strong>: Updated <code>a11y.announce</code> in
+              <code>js/src/a11y.js</code> to set <code>role="alert"</code> on assertive announcements while preserving
+              <code>role="status"</code> for polite announcements in accordance with WAI-ARIA guidelines.</span></li>
+          <li><span><strong>Repository &amp; Build Hygiene</strong>: Untracked generated <code>site/docs/</code> from
+              version control, removed dead event handlers in <code>js/src/carousel.js</code>, and cleaned up temporary
+              compiler artifacts.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Security &amp; Hardening</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>CDN Publishing Credential Protection</strong>: Removed hardcoded API secrets from <code>build/cdn-upload.mjs</code>, requiring explicit environment variables (<code>CDN_APP_ID</code> and <code>CDN_APP_SECRET</code>) and failing fast if omitted.</span></li>
-          <li><span><strong>CI Workflow Least-Privilege Permissions</strong>: Configured explicit top-level <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least privilege on default tokens.</span></li>
-          <li><span><strong>Safe HTML Entity Encoding &amp; Popover XSS Hardening</strong>: Hardened <code>sanitizeHtml</code> to perform strict meta-character entity encoding (<code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>, <code>&#39;</code>) in <code>js/src/util.js</code>, and hardened <code>Popover.prototype.setContent</code> to sanitize HTML before DOM insertion.</span></li>
-          <li><span><strong>Documentation Search Safe Relative Navigation</strong>: Refactored search result items in <code>site/assets/search.js</code> to render as semantic, accessible <code>&lt;a&gt;</code> links with static relative paths, eliminating dynamic <code>window.location.href</code> mutation from untrusted DOM attributes.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>CDN Publishing Credential Protection</strong>: Removed hardcoded API secrets from
+              <code>build/cdn-upload.mjs</code>, requiring explicit environment variables (<code>CDN_APP_ID</code> and
+              <code>CDN_APP_SECRET</code>) and failing fast if omitted.</span></li>
+          <li><span><strong>CI Workflow Least-Privilege Permissions</strong>: Configured explicit top-level
+              <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least
+              privilege on default tokens.</span></li>
+          <li><span><strong>Safe HTML Entity Encoding &amp; Popover XSS Hardening</strong>: Hardened
+              <code>sanitizeHtml</code> to perform strict meta-character entity encoding (<code>&amp;</code>,
+              <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>, <code>&#39;</code>) in
+              <code>js/src/util.js</code>, and hardened <code>Popover.prototype.setContent</code> to sanitize HTML
+              before DOM insertion.</span></li>
+          <li><span><strong>Documentation Search Safe Relative Navigation</strong>: Refactored search result items in
+              <code>site/assets/search.js</code> to render as semantic, accessible <code>&lt;a&gt;</code> links with
+              static relative paths, eliminating dynamic <code>window.location.href</code> mutation from untrusted DOM
+              attributes.</span></li>
         </ul>
       </div>
     </div>
@@ -220,44 +342,102 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
-          <span>Version 1.2.4 Release — Official Haticons Suite, Modular Test Suites, 100% Code Coverage &amp; Metro Bundler Fix</span>
+          <span>Version 1.2.4 Release — Official Haticons Suite, Modular Test Suites, 100% Code Coverage &amp; Metro
+            Bundler Fix</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.4</strong> adopts Haticons as the official 569+ icon suite across website, docs, and templates with an interactive explorer, refactors the test runner into 6 modular test suites, achieves 100% code coverage across CLI and runtime modules, deduplicates React Native mobile exports resolving Metro bundling errors, aligns icon count references, and introduces automated syntax verification tests.</span></p>
+        <p><span>boodoo <strong>v1.2.4</strong> adopts Haticons as the official 569+ icon suite across website, docs,
+            and templates with an interactive explorer, refactors the test runner into 6 modular test suites, achieves
+            100% code coverage across CLI and runtime modules, deduplicates React Native mobile exports resolving Metro
+            bundling errors, aligns icon count references, and introduces automated syntax verification tests.</span>
+        </p>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Official Haticons Suite Adoption</strong>: Adopted Haticons as the framework's official vector icon suite (569+ icons), loaded via CDN across website and documentation, with native font-icon support and zero external runtime dependencies.</span></li>
-          <li><span><strong>Dedicated Icons Documentation &amp; Explorer</strong>: Added <a href="../content/icons.html"><span>Icons Documentation</span></a> featuring an interactive icon catalog with real-time search, category filtering, copy-to-clipboard HTML/SVG snippets, sizing utilities (<code>icon-xs</code> to <code>icon-2xl</code>), and CSS token styling guides.</span></li>
-          <li><span><strong>Modular Test Suite Architecture</strong>: Refactored the monolithic 2,216-line test suite into 6 isolated, focused test modules under <code>tests/</code> (<code>css-tokens</code>, <code>react-native</code>, <code>components</code>, <code>framework-adapters</code>, <code>cli</code>, and <code>site-docs</code>) orchestrated by <code>tests/framework.test.mjs</code>.</span></li>
-          <li><span><strong>100% Code Coverage Achievement</strong>: Achieved 100.00% line coverage and 100.00% function coverage across CLI and core modules (<code>bin/boodoo.mjs</code>, <code>bin/create-boodoo.mjs</code>, <code>tokens/index.js</code>, and <code>react-native/paper.js</code>) with comprehensive edge, template, and error handling coverage.</span></li>
-          <li><span><strong>SCSS &amp; LESS Icon Helper Parity</strong>: Added prefix rules in <code>scss/_helpers.scss</code> and <code>less/_helpers.less</code> ensuring <code>hi-*</code> font icons render with proper line-height and font-style, plus <code>.alert-icon</code> flex centering parity in LESS.</span></li>
-          <li><span><strong>Automated Haticons &amp; React Native Verification</strong>: Enforced comprehensive automated tests in <code>tests/site-docs.test.mjs</code> and <code>tests/react-native.test.mjs</code> validating Haticons SCSS/LESS parity, sizing tokens, docs route, navigation, and zero duplicate exports across all 13 React Native submodules.</span></li>
-          <li><span><strong>React Native Export Deduplication Rule</strong>: Codified architectural standard in <code>.agents/AGENTS.md</code> mandating strict export uniqueness and Metro/Hermes bundling compatibility for mobile primitives.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Official Haticons Suite Adoption</strong>: Adopted Haticons as the framework's official
+              vector icon suite (569+ icons), loaded via CDN across website and documentation, with native font-icon
+              support and zero external runtime dependencies.</span></li>
+          <li><span><strong>Dedicated Icons Documentation &amp; Explorer</strong>: Added <a
+                href="../content/icons.html"><span>Icons Documentation</span></a> featuring an interactive icon catalog
+              with real-time search, category filtering, copy-to-clipboard HTML/SVG snippets, sizing utilities
+              (<code>icon-xs</code> to <code>icon-2xl</code>), and CSS token styling guides.</span></li>
+          <li><span><strong>Modular Test Suite Architecture</strong>: Refactored the monolithic 2,216-line test suite
+              into 6 isolated, focused test modules under <code>tests/</code> (<code>css-tokens</code>,
+              <code>react-native</code>, <code>components</code>, <code>framework-adapters</code>, <code>cli</code>, and
+              <code>site-docs</code>) orchestrated by <code>tests/framework.test.mjs</code>.</span></li>
+          <li><span><strong>100% Code Coverage Achievement</strong>: Achieved 100.00% line coverage and 100.00% function
+              coverage across CLI and core modules (<code>bin/boodoo.mjs</code>, <code>bin/create-boodoo.mjs</code>,
+              <code>tokens/index.js</code>, and <code>react-native/paper.js</code>) with comprehensive edge, template,
+              and error handling coverage.</span></li>
+          <li><span><strong>SCSS &amp; LESS Icon Helper Parity</strong>: Added prefix rules in
+              <code>scss/_helpers.scss</code> and <code>less/_helpers.less</code> ensuring <code>hi-*</code> font icons
+              render with proper line-height and font-style, plus <code>.alert-icon</code> flex centering parity in
+              LESS.</span></li>
+          <li><span><strong>Automated Haticons &amp; React Native Verification</strong>: Enforced comprehensive
+              automated tests in <code>tests/site-docs.test.mjs</code> and <code>tests/react-native.test.mjs</code>
+              validating Haticons SCSS/LESS parity, sizing tokens, docs route, navigation, and zero duplicate exports
+              across all 13 React Native submodules.</span></li>
+          <li><span><strong>React Native Export Deduplication Rule</strong>: Codified architectural standard in
+              <code>.agents/AGENTS.md</code> mandating strict export uniqueness and Metro/Hermes bundling compatibility
+              for mobile primitives.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-info mt-3 mb-2"><span>Changes</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>Test Runner Orchestration</strong>: Restructured framework testing architecture to compose isolated, decoupled test modules via <code>import</code> statements rather than maintaining a monolithic runner, reducing CI debugging friction and test execution overhead.</span></li>
-          <li><span><strong>Universal Documentation &amp; Landing Page Icon Modernization</strong>: Upgraded all component documentation pages (alerts, KPI cards, sidebar, steppers, timelines, tree-views, dropzones, pickers, electron, and platforms), landing page showcase section, and global footer to use official semantic Haticons.</span></li>
-          <li><span><strong>Template &amp; Starter Modernization</strong>: Updated Electron and web starters in <code>bin/create-boodoo.mjs</code> to embed Haticons CDN and semantic icon classes (<code>hi-chart</code>, <code>hi-folder</code>, <code>hi-settings</code>, <code>hi-home</code>, <code>hi-close</code>), and updated mobile starter documentation.</span></li>
-          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>Test Runner Orchestration</strong>: Restructured framework testing architecture to compose
+              isolated, decoupled test modules via <code>import</code> statements rather than maintaining a monolithic
+              runner, reducing CI debugging friction and test execution overhead.</span></li>
+          <li><span><strong>Universal Documentation &amp; Landing Page Icon Modernization</strong>: Upgraded all
+              component documentation pages (alerts, KPI cards, sidebar, steppers, timelines, tree-views, dropzones,
+              pickers, electron, and platforms), landing page showcase section, and global footer to use official
+              semantic Haticons.</span></li>
+          <li><span><strong>Template &amp; Starter Modernization</strong>: Updated Electron and web starters in
+              <code>bin/create-boodoo.mjs</code> to embed Haticons CDN and semantic icon classes (<code>hi-chart</code>,
+              <code>hi-folder</code>, <code>hi-settings</code>, <code>hi-home</code>, <code>hi-close</code>), and
+              updated mobile starter documentation.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.4 release manifests
+              across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation
+              portal.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Security &amp; CodeQL Hardening</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>CI Workflow Permissions</strong>: Configured explicit top-level <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least privilege on default tokens.</span></li>
-          <li><span><strong>Safe HTML Sanitization &amp; Popover XSS Protection</strong>: Added zero-dependency <code>sanitizeHtml</code> utility with recursive tag stripping and event-handler filtration in <code>js/src/util.js</code>; hardened <code>Popover.prototype.setContent</code> to sanitize HTML and enhanced <code>dispose()</code> teardown to unbind event listeners in <code>js/src/tooltip.js</code>.</span></li>
-          <li><span><strong>Documentation Search Safe Navigation</strong>: Refactored search result items to render as semantic, accessible <code>&lt;a&gt;</code> links with static relative paths in <code>site/assets/search.js</code>, eliminating dynamic <code>window.location.href</code> mutation from untrusted DOM attributes.</span></li>
-          <li><span><strong>Table of Contents Sanitization &amp; Heading Anchors</strong>: Replaced single-pass regex tag stripping in <code>renderToc</code> and <code>buildPage</code> in <code>build/site-build.mjs</code> with recursive <code>stripHtml</code> and HTML entity escaping, eliminating multi-character sanitization bypasses.</span></li>
-          <li><span><strong>URL Verification Test Assertions</strong>: Updated Haticons URL checks in <code>tests/site-docs.test.mjs</code> to assert against full HTML attribute patterns (<code>href="..."</code>, <code>(...)</code>) rather than ambiguous bare domain substrings.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>CI Workflow Permissions</strong>: Configured explicit top-level
+              <code>permissions: { contents: read }</code> in <code>.github/workflows/ci.yml</code> enforcing least
+              privilege on default tokens.</span></li>
+          <li><span><strong>Safe HTML Sanitization &amp; Popover XSS Protection</strong>: Added zero-dependency
+              <code>sanitizeHtml</code> utility with recursive tag stripping and event-handler filtration in
+              <code>js/src/util.js</code>; hardened <code>Popover.prototype.setContent</code> to sanitize HTML and
+              enhanced <code>dispose()</code> teardown to unbind event listeners in
+              <code>js/src/tooltip.js</code>.</span></li>
+          <li><span><strong>Documentation Search Safe Navigation</strong>: Refactored search result items to render as
+              semantic, accessible <code>&lt;a&gt;</code> links with static relative paths in
+              <code>site/assets/search.js</code>, eliminating dynamic <code>window.location.href</code> mutation from
+              untrusted DOM attributes.</span></li>
+          <li><span><strong>Table of Contents Sanitization &amp; Heading Anchors</strong>: Replaced single-pass regex
+              tag stripping in <code>renderToc</code> and <code>buildPage</code> in <code>build/site-build.mjs</code>
+              with recursive <code>stripHtml</code> and HTML entity escaping, eliminating multi-character sanitization
+              bypasses.</span></li>
+          <li><span><strong>URL Verification Test Assertions</strong>: Updated Haticons URL checks in
+              <code>tests/site-docs.test.mjs</code> to assert against full HTML attribute patterns
+              (<code>href="..."</code>, <code>(...)</code>) rather than ambiguous bare domain substrings.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Fixes</span></h4>
-        <ul class="mb-3">
-          <li><span><strong>React Native Data Display Export Deduplication</strong>: Removed redundant duplicate declarations of <code>EmptyState</code>, <code>TimelineItem</code>, <code>Timeline</code>, <code>StepIndicator</code>, and <code>StepperWizard</code> from <code>react-native/data-display.js</code>, resolving the Babel <code>SyntaxError: Identifier 'EmptyState' has already been declared</code> during Hermes bytecode bundling in Expo and React Native projects.</span></li>
-          <li><span><strong>CLI Direct Execution &amp; Scaffolding Test Isolation</strong>: Fixed premature process termination in test environments by isolating direct CLI execution behind Node coverage pragmas in <code>bin/create-boodoo.mjs</code> and parameterizing child process spawning in <code>bin/boodoo.mjs</code>.</span></li>
-          <li><span><strong>Official Haticons Count Alignment</strong>: Corrected icon count references across <code>README.md</code>, documentation pages, and website copy to strictly reflect the official 569+ icons in the suite.</span></li>
-          <li><span><strong>Dropzone File Line Ending Normalization</strong>: Normalized line endings and sanitized preview element text interpolation in <code>js/src/dropzone.js</code>.</span></li>
+        <ul class="mb-2">
+          <li><span><strong>React Native Data Display Export Deduplication</strong>: Removed redundant duplicate
+              declarations of <code>EmptyState</code>, <code>TimelineItem</code>, <code>Timeline</code>,
+              <code>StepIndicator</code>, and <code>StepperWizard</code> from <code>react-native/data-display.js</code>,
+              resolving the Babel <code>SyntaxError: Identifier 'EmptyState' has already been declared</code> during
+              Hermes bytecode bundling in Expo and React Native projects.</span></li>
+          <li><span><strong>CLI Direct Execution &amp; Scaffolding Test Isolation</strong>: Fixed premature process
+              termination in test environments by isolating direct CLI execution behind Node coverage pragmas in
+              <code>bin/create-boodoo.mjs</code> and parameterizing child process spawning in
+              <code>bin/boodoo.mjs</code>.</span></li>
+          <li><span><strong>Official Haticons Count Alignment</strong>: Corrected icon count references across
+              <code>README.md</code>, documentation pages, and website copy to strictly reflect the official 569+ icons
+              in the suite.</span></li>
+          <li><span><strong>Dropzone File Line Ending Normalization</strong>: Normalized line endings and sanitized
+              preview element text interpolation in <code>js/src/dropzone.js</code>.</span></li>
         </ul>
       </div>
     </div>
@@ -287,14 +467,32 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Feature &amp; Maintenance</span></span>
           <span>Version 1.2.3 Release — Modular LESS &amp; Mobile Density</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.3</strong> modularizes the LESS source architecture with 1:1 SCSS parity, refines mobile React Native spacing with dynamic density customization, enforces zero inline styles, and adds TypeScript/JavaScript scaffolding options.</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Modular LESS Architecture</strong>: Restructured <code>less/</code> from a single file into a comprehensive partial architecture (<code>less/forms/*</code>, <code>less/components/*</code>, <code>less/content/*</code>, <code>less/mixins/*</code>) with standalone subpath entry points (<code>boodoo-grid.less</code>, <code>boodoo-reboot.less</code>, <code>boodoo-utilities.less</code>, <code>boodoo-animations.less</code>) and 100% SCSS feature parity.</span></li>
-          <li><span><strong>React Native Spacing &amp; Density Engine</strong>: Resolved bloated padding across mobile components and introduced multi-density spacing configurations via <code>setThemeSpacing()</code> and <code>createSpacing()</code> with zero inline styles.</span></li>
-          <li><span><strong>create-boodoo TypeScript/JavaScript Choice</strong>: Added full TypeScript and JavaScript template selection (<code>--ts</code> and <code>--js</code> flags) across all 10 starter frameworks.</span></li>
-          <li><span><strong>Server-Side www Redirection &amp; Canonical URL Standardization</strong>: Implemented permanent 301 rewrite rules in <code>.htaccess</code> and <code>_redirects</code> to redirect all <code>www.*</code> domains to canonical non-www, standardized canonical and Open Graph tags across 100% of website pages (146 total routes including all example templates and 404 page), and updated dynamic sitemap generation.</span></li>
-          <li><span><strong>Repository Hygiene &amp; Build Artifact Exclusion</strong>: Removed the compiled <code>www/</code> distribution from repository source control and added <code>www/</code> to <code>.gitignore</code> to keep the repository lean and source-only.</span></li>
-          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.3 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
+        <p><span>boodoo <strong>v1.2.3</strong> modularizes the LESS source architecture with 1:1 SCSS parity, refines
+            mobile React Native spacing with dynamic density customization, enforces zero inline styles, and adds
+            TypeScript/JavaScript scaffolding options.</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Modular LESS Architecture</strong>: Restructured <code>less/</code> from a single file into
+              a comprehensive partial architecture (<code>less/forms/*</code>, <code>less/components/*</code>,
+              <code>less/content/*</code>, <code>less/mixins/*</code>) with standalone subpath entry points
+              (<code>boodoo-grid.less</code>, <code>boodoo-reboot.less</code>, <code>boodoo-utilities.less</code>,
+              <code>boodoo-animations.less</code>) and 100% SCSS feature parity.</span></li>
+          <li><span><strong>React Native Spacing &amp; Density Engine</strong>: Resolved bloated padding across mobile
+              components and introduced multi-density spacing configurations via <code>setThemeSpacing()</code> and
+              <code>createSpacing()</code> with zero inline styles.</span></li>
+          <li><span><strong>create-boodoo TypeScript/JavaScript Choice</strong>: Added full TypeScript and JavaScript
+              template selection (<code>--ts</code> and <code>--js</code> flags) across all 10 starter
+              frameworks.</span></li>
+          <li><span><strong>Server-Side www Redirection &amp; Canonical URL Standardization</strong>: Implemented
+              permanent 301 rewrite rules in <code>.htaccess</code> and <code>_redirects</code> to redirect all
+              <code>www.*</code> domains to canonical non-www, standardized canonical and Open Graph tags across 100% of
+              website pages (146 total routes including all example templates and 404 page), and updated dynamic sitemap
+              generation.</span></li>
+          <li><span><strong>Repository Hygiene &amp; Build Artifact Exclusion</strong>: Removed the compiled
+              <code>www/</code> distribution from repository source control and added <code>www/</code> to
+              <code>.gitignore</code> to keep the repository lean and source-only.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.3 release manifests
+              across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation
+              portal.</span></li>
         </ul>
       </div>
     </div>
@@ -324,20 +522,39 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Release</span></span>
           <span>Global Search Modal, Migration Guides, Benchmark Verification &amp; Docs Optimization</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.2</strong> introduces a fast interactive documentation search modal, migration guides for transitioning from other UI frameworks, reproducible performance benchmarks, and pipeline optimizations:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Global Documentation Search Modal</strong>: Added a fast, interactive search palette accessible via <code>Ctrl+K</code> / <code>Cmd+K</code> or the <code>/</code> key across all documentation pages, featuring real-time category filtering, title and keyword match highlighting, and full arrow-key keyboard navigation.</span></li>
-          <li><span><strong>Framework Migration Guides</strong>: Published dedicated migration documentation with comprehensive token and syntax comparison tables:</span>
+        <p><span>boodoo <strong>v1.2.2</strong> introduces a fast interactive documentation search modal, migration
+            guides for transitioning from other UI frameworks, reproducible performance benchmarks, and pipeline
+            optimizations:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Global Documentation Search Modal</strong>: Added a fast, interactive search palette
+              accessible via <code>Ctrl+K</code> / <code>Cmd+K</code> or the <code>/</code> key across all documentation
+              pages, featuring real-time category filtering, title and keyword match highlighting, and full arrow-key
+              keyboard navigation.</span></li>
+          <li><span><strong>Framework Migration Guides</strong>: Published dedicated migration documentation with
+              comprehensive token and syntax comparison tables:</span>
             <ul>
-              <li><span><a href="{{siteUrl}}/about/migrate-from-bootstrap.html">Migrate from Bootstrap</a>: Breakpoints, flex grid, typography, alerts, and modal transitions.</span></li>
-              <li><span><a href="{{siteUrl}}/about/migrate-from-tailwind.html">Migrate from Tailwind CSS</a>: Utility class equivalency, custom property bindings, and zero-build workflow advantages.</span></li>
-              <li><span><a href="{{siteUrl}}/about/migrate-from-react-native-paper.html">Migrate from React Native Paper</a>: Native mobile primitive architecture and cross-platform token inheritance.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-bootstrap.html">Migrate from Bootstrap</a>: Breakpoints,
+                  flex grid, typography, alerts, and modal transitions.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-tailwind.html">Migrate from Tailwind CSS</a>: Utility
+                  class equivalency, custom property bindings, and zero-build workflow advantages.</span></li>
+              <li><span><a href="{{siteUrl}}/about/migrate-from-react-native-paper.html">Migrate from React Native
+                    Paper</a>: Native mobile primitive architecture and cross-platform token inheritance.</span></li>
             </ul>
           </li>
-          <li><span><strong>Reproducible Benchmark Verification</strong>: Added self-verifiable Node.js compression test commands and updated exact Brotli/Gzip measurements for standalone stylesheets (grid, reboot, animations) on the <a href="{{siteUrl}}/about/production-readiness.html">Production Readiness</a> dashboard.</span></li>
-          <li><span><strong>Site Build Generator Optimization</strong>: Hoisted page title map indexing, compiled distribution asset size calculations, and CDN archive URL resolution out of the per-page generator loop in <code>build/site-build.mjs</code>, cutting documentation rebuild times from seconds to sub-second execution.</span></li>
-          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.2 release manifests across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation portal.</span></li>
-          <li><span><strong>CI &amp; Search Path Resiliency</strong>: Added automated peer dependency installation in CI smoke workflows and hardened relative path prefixes for cross-directory search link navigation.</span></li>
+          <li><span><strong>Reproducible Benchmark Verification</strong>: Added self-verifiable Node.js compression test
+              commands and updated exact Brotli/Gzip measurements for standalone stylesheets (grid, reboot, animations)
+              on the <a href="{{siteUrl}}/about/production-readiness.html">Production Readiness</a> dashboard.</span>
+          </li>
+          <li><span><strong>Site Build Generator Optimization</strong>: Hoisted page title map indexing, compiled
+              distribution asset size calculations, and CDN archive URL resolution out of the per-page generator loop in
+              <code>build/site-build.mjs</code>, cutting documentation rebuild times from seconds to sub-second
+              execution.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.2.2 release manifests
+              across npm configurations, lockfiles, CLI project templates, mobile starters, and the documentation
+              portal.</span></li>
+          <li><span><strong>CI &amp; Search Path Resiliency</strong>: Added automated peer dependency installation in CI
+              smoke workflows and hardened relative path prefixes for cross-directory search link navigation.</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -367,14 +584,27 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Zero-Dependency Native Charts, Consistent Brand Assets, NPM Health Score &amp; CodePen Guard</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.1</strong> introduces native zero-dependency data visualizations inspired by Chart.js, mobile React Native charts, a unified brand logo identity suite, npm analyzer enhancements, and CodePen interactive guards:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Native Zero-Dependency Chart Component</strong>: Canvas-rendered bar, continuous line, donut, and pie charts with high-DPI scaling, interactive hover tooltips, and dynamic theme token integration (<code>--boodoo-primary</code>, <code>--boodoo-info</code>, <code>--boodoo-success</code>, <code>--boodoo-warning</code>, <code>--boodoo-danger</code>, <code>--boodoo-secondary</code>).</span></li>
-          <li><span><strong>Pure React Native Mobile Charts</strong>: Native <code>BarChart</code> and <code>DonutChart</code> primitives for iOS and Android with theme-aware styling and zero DOM dependencies.</span></li>
-          <li><span><strong>Consistent Brand Identity</strong>: Synchronized official high-resolution logo, icons (16px to 512px), banner, and Open Graph assets across documentation and packaging.</span></li>
-          <li><span><strong>NPM Package Health Score Enhancements</strong>: Added <code>typings</code> field alias to <code>package.json</code> and declared <code>c8</code> and <code>@types/node</code> for automated discovery and scoring algorithms.</span></li>
-          <li><span><strong>CodePen Interactive Example Guard</strong>: Resolved runtime ReferenceErrors when launching documentation snippets into CodePen via resilient CDN loading and DOMContentLoaded guards.</span></li>
-          <li><span><strong>CLI &amp; Testing Suite Expansion</strong>: Added <code>npx boodoo add chart</code> to CLI injector, extended automated tests to 37 passed assertions, and added real-time chart documentation.</span></li>
+        <p><span>boodoo <strong>v1.2.1</strong> introduces native zero-dependency data visualizations inspired by
+            Chart.js, mobile React Native charts, a unified brand logo identity suite, npm analyzer enhancements, and
+            CodePen interactive guards:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Native Zero-Dependency Chart Component</strong>: Canvas-rendered bar, continuous line,
+              donut, and pie charts with high-DPI scaling, interactive hover tooltips, and dynamic theme token
+              integration (<code>--boodoo-primary</code>, <code>--boodoo-info</code>, <code>--boodoo-success</code>,
+              <code>--boodoo-warning</code>, <code>--boodoo-danger</code>, <code>--boodoo-secondary</code>).</span></li>
+          <li><span><strong>Pure React Native Mobile Charts</strong>: Native <code>BarChart</code> and
+              <code>DonutChart</code> primitives for iOS and Android with theme-aware styling and zero DOM
+              dependencies.</span></li>
+          <li><span><strong>Consistent Brand Identity</strong>: Synchronized official high-resolution logo, icons (16px
+              to 512px), banner, and Open Graph assets across documentation and packaging.</span></li>
+          <li><span><strong>NPM Package Health Score Enhancements</strong>: Added <code>typings</code> field alias to
+              <code>package.json</code> and declared <code>c8</code> and <code>@types/node</code> for automated
+              discovery and scoring algorithms.</span></li>
+          <li><span><strong>CodePen Interactive Example Guard</strong>: Resolved runtime ReferenceErrors when launching
+              documentation snippets into CodePen via resilient CDN loading and DOMContentLoaded guards.</span></li>
+          <li><span><strong>CLI &amp; Testing Suite Expansion</strong>: Added <code>npx boodoo add chart</code> to CLI
+              injector, extended automated tests to 37 passed assertions, and added real-time chart
+              documentation.</span></li>
         </ul>
       </div>
     </div>
@@ -404,13 +634,24 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
           <span>Modular Subpath CSS Exports, Dynamic Alert Theming &amp; Package Hygiene</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.0</strong> delivers modular CSS package subpaths, runtime CSS variable theming across all alert variants, distribution tarball pruning, and comprehensive package smoke testing:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Modular Subpath CSS Exports</strong>: Package exports now support granular subpath imports for <code>boodoo/css/grid</code>, <code>boodoo/css/utilities</code>, <code>boodoo/css/reboot</code>, and <code>boodoo/css/animations</code> without requiring consumers to load the full framework bundle.</span></li>
-          <li><span><strong>Dynamic CSS Custom Property Theming for Alerts</strong>: Alert components in both SCSS and LESS now dynamically consume theme tokens via CSS custom properties (<code>--boodoo-*-text-emphasis</code>, <code>--boodoo-*-bg-subtle</code>, <code>--boodoo-*-border-subtle</code>) with robust backward-compatible fallbacks.</span></li>
-          <li><span><strong>Package Distribution Hygiene</strong>: Pruned internal test files from published npm distribution tarballs and eliminated stray build artifacts in <code>dist/css</code>.</span></li>
-          <li><span><strong>Automated Package Smoke Testing</strong>: Added CI verification for subpath resolution, tarball purity, and alert CSS custom property emission.</span></li>
-          <li><span><strong>Architectural Governance</strong>: Codified and enforced permanent rules for Package Hygiene &amp; Tarball Purity, Modular Subpath CSS Exports, and Adaptive Spacing Scale Integrity in <code>.agents/AGENTS.md</code>.</span></li>
+        <p><span>boodoo <strong>v1.2.0</strong> delivers modular CSS package subpaths, runtime CSS variable theming
+            across all alert variants, distribution tarball pruning, and comprehensive package smoke testing:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Modular Subpath CSS Exports</strong>: Package exports now support granular subpath imports
+              for <code>boodoo/css/grid</code>, <code>boodoo/css/utilities</code>, <code>boodoo/css/reboot</code>, and
+              <code>boodoo/css/animations</code> without requiring consumers to load the full framework bundle.</span>
+          </li>
+          <li><span><strong>Dynamic CSS Custom Property Theming for Alerts</strong>: Alert components in both SCSS and
+              LESS now dynamically consume theme tokens via CSS custom properties
+              (<code>--boodoo-*-text-emphasis</code>, <code>--boodoo-*-bg-subtle</code>,
+              <code>--boodoo-*-border-subtle</code>) with robust backward-compatible fallbacks.</span></li>
+          <li><span><strong>Package Distribution Hygiene</strong>: Pruned internal test files from published npm
+              distribution tarballs and eliminated stray build artifacts in <code>dist/css</code>.</span></li>
+          <li><span><strong>Automated Package Smoke Testing</strong>: Added CI verification for subpath resolution,
+              tarball purity, and alert CSS custom property emission.</span></li>
+          <li><span><strong>Architectural Governance</strong>: Codified and enforced permanent rules for Package Hygiene
+              &amp; Tarball Purity, Modular Subpath CSS Exports, and Adaptive Spacing Scale Integrity in
+              <code>.agents/AGENTS.md</code>.</span></li>
         </ul>
       </div>
     </div>
@@ -438,21 +679,39 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
-          <span>Advanced Component Pack: Chat &amp; AI Streams, Filter Bar, Kanban Board, Bento Grid, Transfer List, Audio Player, Color Picker &amp; Back to Top</span>
+          <span>Advanced Component Pack: Chat &amp; AI Streams, Filter Bar, Kanban Board, Bento Grid, Transfer List,
+            Audio Player, Color Picker &amp; Back to Top</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.9</strong> introduces eight modern enterprise and generative AI components with SCSS/LESS dual parity, CommonJS bundle support, and React Native primitives:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Chat &amp; AI Streaming Container</strong>: Conversational bubbles with direction modifiers (<code>.incoming</code> / <code>.outgoing</code>) and pulsing typing cursor (<code>.ai-stream</code>, <code>.ai-cursor</code>).</span></li>
-          <li><span><strong>Filter Bar &amp; Query Builder (<code>FilterBar</code>)</strong>: Multi-tag filter bar with removable pills, keyboard inputs, and callback hooks.</span></li>
-          <li><span><strong>Kanban / Pipeline Board</strong>: Horizontal stage board with task cards, badges, and metadata tags.</span></li>
-          <li><span><strong>Bento Grid Layout</strong>: CSS Grid layout presets (<code>.bento-grid</code>, <code>.bento-col-span-2</code>, <code>.bento-row-span-2</code>) for SaaS dashboards.</span></li>
-          <li><span><strong>Transfer List / Dual Listbox (<code>TransferList</code>)</strong>: Bi-directional collection transfer controls with counter badges.</span></li>
-          <li><span><strong>Audio Player Widget</strong>: Waveform visualization bars with play controls and duration counters.</span></li>
-          <li><span><strong>Color Picker Popover (<code>ColorPicker</code>)</strong>: Palette swatches and hex inputs with interactive selection states.</span></li>
-          <li><span><strong>Back to Top Button (<code>BackToTop</code>)</strong>: Smooth viewport scrolling floating action button.</span></li>
-          <li><span><strong>CommonJS Distribution</strong>: Added <code>dist/js/boodoo.cjs</code> alongside ESM and UMD builds.</span></li>
-          <li><span><strong>Production Readiness &amp; Governance</strong>: Added official <a href="production-readiness.html"><span>Production Readiness Dashboard</span></a>, <code>SECURITY.md</code> vulnerability disclosures, <code>CONTRIBUTING.md</code> 14-point quality standards, and automated package smoke test suite.</span></li>
-          <li><span><strong>Architectural Rules Enforcement</strong>: Codified strict framework rules in <code>.agents/AGENTS.md</code> enforcing the 14-point quality checklist, zero external runtime dependencies guarantee, single design token source of truth, and cross-documentation consistency.</span></li>
+        <p><span>boodoo <strong>v1.1.9</strong> introduces eight modern enterprise and generative AI components with
+            SCSS/LESS dual parity, CommonJS bundle support, and React Native primitives:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Chat &amp; AI Streaming Container</strong>: Conversational bubbles with direction modifiers
+              (<code>.incoming</code> / <code>.outgoing</code>) and pulsing typing cursor (<code>.ai-stream</code>,
+              <code>.ai-cursor</code>).</span></li>
+          <li><span><strong>Filter Bar &amp; Query Builder (<code>FilterBar</code>)</strong>: Multi-tag filter bar with
+              removable pills, keyboard inputs, and callback hooks.</span></li>
+          <li><span><strong>Kanban / Pipeline Board</strong>: Horizontal stage board with task cards, badges, and
+              metadata tags.</span></li>
+          <li><span><strong>Bento Grid Layout</strong>: CSS Grid layout presets (<code>.bento-grid</code>,
+              <code>.bento-col-span-2</code>, <code>.bento-row-span-2</code>) for SaaS dashboards.</span></li>
+          <li><span><strong>Transfer List / Dual Listbox (<code>TransferList</code>)</strong>: Bi-directional collection
+              transfer controls with counter badges.</span></li>
+          <li><span><strong>Audio Player Widget</strong>: Waveform visualization bars with play controls and duration
+              counters.</span></li>
+          <li><span><strong>Color Picker Popover (<code>ColorPicker</code>)</strong>: Palette swatches and hex inputs
+              with interactive selection states.</span></li>
+          <li><span><strong>Back to Top Button (<code>BackToTop</code>)</strong>: Smooth viewport scrolling floating
+              action button.</span></li>
+          <li><span><strong>CommonJS Distribution</strong>: Added <code>dist/js/boodoo.cjs</code> alongside ESM and UMD
+              builds.</span></li>
+          <li><span><strong>Production Readiness &amp; Governance</strong>: Added official <a
+                href="production-readiness.html"><span>Production Readiness Dashboard</span></a>,
+              <code>SECURITY.md</code> vulnerability disclosures, <code>CONTRIBUTING.md</code> 14-point quality
+              standards, and automated package smoke test suite.</span></li>
+          <li><span><strong>Architectural Rules Enforcement</strong>: Codified strict framework rules in
+              <code>.agents/AGENTS.md</code> enforcing the 14-point quality checklist, zero external runtime
+              dependencies guarantee, single design token source of truth, and cross-documentation consistency.</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -480,17 +739,26 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
-          <span>Extended Component Pack: Metric Stat Widgets, Activity Feeds, Mega Menu, FAB Dock, Fullscreen Dialogs &amp; Product Tours</span>
+          <span>Extended Component Pack: Metric Stat Widgets, Activity Feeds, Mega Menu, FAB Dock, Fullscreen Dialogs
+            &amp; Product Tours</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.8</strong> delivers a major expansion of enterprise UI and modern SaaS components across SCSS, LESS, React Native, and Vanilla JS:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Stat / Metric Widget</strong>: Dashboard metric cards with trend indicators, icon containers, and interactive elevation hover effects (Web &amp; React Native).</span></li>
-          <li><span><strong>Activity Feed &amp; Notification Center</strong>: Timeline event streams with avatar slots, unread status indicators, and timestamp tags.</span></li>
-          <li><span><strong>Mega Menu Layout</strong>: Full-width responsive header navigation flyout with multi-column categorised link grids.</span></li>
-          <li><span><strong>Breadcrumb Dropdowns</strong>: Contextual breadcrumb navigation supporting inline popover and dropdown menus.</span></li>
-          <li><span><strong>FAB Dock (<code>FABDock</code>)</strong>: Fixed-position expandable multi-action dock with stagger pop-in animations and keyboard navigation.</span></li>
-          <li><span><strong>Fullscreen Dialog (<code>DialogFullscreen</code>)</strong>: Immersive full-viewport modal dialogs with smooth sliding entrance and scroll lock.</span></li>
-          <li><span><strong>Product Tour (<code>Tour</code>)</strong>: Step-by-step interactive onboarding walkthroughs with spotlight target highlighting and progress tracking.</span></li>
+        <p><span>boodoo <strong>v1.1.8</strong> delivers a major expansion of enterprise UI and modern SaaS components
+            across SCSS, LESS, React Native, and Vanilla JS:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Stat / Metric Widget</strong>: Dashboard metric cards with trend indicators, icon
+              containers, and interactive elevation hover effects (Web &amp; React Native).</span></li>
+          <li><span><strong>Activity Feed &amp; Notification Center</strong>: Timeline event streams with avatar slots,
+              unread status indicators, and timestamp tags.</span></li>
+          <li><span><strong>Mega Menu Layout</strong>: Full-width responsive header navigation flyout with multi-column
+              categorised link grids.</span></li>
+          <li><span><strong>Breadcrumb Dropdowns</strong>: Contextual breadcrumb navigation supporting inline popover
+              and dropdown menus.</span></li>
+          <li><span><strong>FAB Dock (<code>FABDock</code>)</strong>: Fixed-position expandable multi-action dock with
+              stagger pop-in animations and keyboard navigation.</span></li>
+          <li><span><strong>Fullscreen Dialog (<code>DialogFullscreen</code>)</strong>: Immersive full-viewport modal
+              dialogs with smooth sliding entrance and scroll lock.</span></li>
+          <li><span><strong>Product Tour (<code>Tour</code>)</strong>: Step-by-step interactive onboarding walkthroughs
+              with spotlight target highlighting and progress tracking.</span></li>
         </ul>
       </div>
     </div>
@@ -518,18 +786,27 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
-          <span>Modern UI Component Suite: Tag Input, Floating Action Bar, Image Comparison Slider &amp; Diff Viewer</span>
+          <span>Modern UI Component Suite: Tag Input, Floating Action Bar, Image Comparison Slider &amp; Diff
+            Viewer</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.7</strong> introduces a suite of modern enterprise and SaaS UI components across SCSS, LESS, and Vanilla JavaScript:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Tag / Token Input</strong>: Removable tag tokens with keyboard backspace navigation, custom remove triggers, and form input integration.</span></li>
-          <li><span><strong>Floating Bulk Action Bar</strong>: Bottom-anchored contextual action bar for data table and bulk selection workflows.</span></li>
-          <li><span><strong>Image Comparison Slider</strong>: Interactive draggable before/after image split view.</span></li>
-          <li><span><strong>Password Strength Meter</strong>: Real-time complexity evaluation and responsive indicator styling.</span></li>
-          <li><span><strong>Diff Viewer</strong>: Monospace side-by-side or unified addition/deletion split lines with line numbers.</span></li>
-          <li><span><strong>Sparkline Micro-Charts</strong>: Compact trendline and bar sparklines for KPI metrics.</span></li>
+        <p><span>boodoo <strong>v1.1.7</strong> introduces a suite of modern enterprise and SaaS UI components across
+            SCSS, LESS, and Vanilla JavaScript:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Tag / Token Input</strong>: Removable tag tokens with keyboard backspace navigation, custom
+              remove triggers, and form input integration.</span></li>
+          <li><span><strong>Floating Bulk Action Bar</strong>: Bottom-anchored contextual action bar for data table and
+              bulk selection workflows.</span></li>
+          <li><span><strong>Image Comparison Slider</strong>: Interactive draggable before/after image split
+              view.</span></li>
+          <li><span><strong>Password Strength Meter</strong>: Real-time complexity evaluation and responsive indicator
+              styling.</span></li>
+          <li><span><strong>Diff Viewer</strong>: Monospace side-by-side or unified addition/deletion split lines with
+              line numbers.</span></li>
+          <li><span><strong>Sparkline Micro-Charts</strong>: Compact trendline and bar sparklines for KPI
+              metrics.</span></li>
           <li><span><strong>Copy Snippet Box</strong>: Monospace code box with floating copy action button.</span></li>
-          <li><span><strong>Mobile Swipe Actions</strong>: Touch swipe action reveals for mobile web applications.</span></li>
+          <li><span><strong>Mobile Swipe Actions</strong>: Touch swipe action reveals for mobile web
+              applications.</span></li>
         </ul>
       </div>
     </div>
@@ -557,19 +834,34 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
-          <span>Headless Vue 3 / Nuxt Composables, CI Automation, Native CSS Primitives &amp; Global Ripple Delegation</span>
+          <span>Headless Vue 3 / Nuxt Composables, CI Automation, Native CSS Primitives &amp; Global Ripple
+            Delegation</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.6</strong> expands headless UI support to Vue 3 and Nuxt, introduces GitHub Actions CI automation, refines native CSS primitives, and hardens developer toolchains:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Headless Vue 3 &amp; Nuxt Composables</strong>: Introduced <code>useDisclosure</code>, <code>useCombobox</code>, and <code>useAccordion</code> via <code>boodoo/vue</code>, providing complete declarative reactivity and WAI-ARIA accessibility for Vue and Nuxt applications.</span></li>
-          <li><span><strong>Full Vue TypeScript Typing</strong>: Emitted <code>vue/index.d.ts</code> with comprehensive generic typings and reactive prop setters.</span></li>
-          <li><span><strong>Automated CI Workflows</strong>: Configured GitHub Actions matrix testing against Node.js 20 and 22 LTS with README status badges and health score enhancements.</span></li>
-          <li><span><strong>Modern CSS Native Primitives &amp; Parity</strong>: Refined CSS Anchor Positioning, Scroll-Driven Animations, Container Queries, and Popovers across both SCSS and LESS distributions.</span></li>
-          <li><span><strong>Global Ripple Delegation &amp; Affordance</strong>: Pointer event delegation for <code>data-boodoo-ripple</code> and <code>.has-ripple</code> dynamic surfaces with explicit interaction affordances.</span></li>
-          <li><span><strong>Form Color Swatch Aspect Ratio</strong>: Enforced 1:1 circular aspect ratio on color picker items.</span></li>
-          <li><span><strong>Direct Binary Sass Resolution</strong>: Replaced <code>npx --no-install sass</code> with direct npm script binary execution, preventing interactive cancellation during fresh CI or local builds.</span></li>
-          <li><span><strong>create-boodoo Alignment</strong>: Updated scaffolding CLI default version target to v1.1.6.</span></li>
-          <li><span><strong>Asset Measurement Truthfulness</strong>: Synchronized all documentation and README metrics with compiled outputs.</span></li>
+        <p><span>boodoo <strong>v1.1.6</strong> expands headless UI support to Vue 3 and Nuxt, introduces GitHub Actions
+            CI automation, refines native CSS primitives, and hardens developer toolchains:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Headless Vue 3 &amp; Nuxt Composables</strong>: Introduced <code>useDisclosure</code>,
+              <code>useCombobox</code>, and <code>useAccordion</code> via <code>boodoo/vue</code>, providing complete
+              declarative reactivity and WAI-ARIA accessibility for Vue and Nuxt applications.</span></li>
+          <li><span><strong>Full Vue TypeScript Typing</strong>: Emitted <code>vue/index.d.ts</code> with comprehensive
+              generic typings and reactive prop setters.</span></li>
+          <li><span><strong>Automated CI Workflows</strong>: Configured GitHub Actions matrix testing against Node.js 20
+              and 22 LTS with README status badges and health score enhancements.</span></li>
+          <li><span><strong>Modern CSS Native Primitives &amp; Parity</strong>: Refined CSS Anchor Positioning,
+              Scroll-Driven Animations, Container Queries, and Popovers across both SCSS and LESS distributions.</span>
+          </li>
+          <li><span><strong>Global Ripple Delegation &amp; Affordance</strong>: Pointer event delegation for
+              <code>data-boodoo-ripple</code> and <code>.has-ripple</code> dynamic surfaces with explicit interaction
+              affordances.</span></li>
+          <li><span><strong>Form Color Swatch Aspect Ratio</strong>: Enforced 1:1 circular aspect ratio on color picker
+              items.</span></li>
+          <li><span><strong>Direct Binary Sass Resolution</strong>: Replaced <code>npx --no-install sass</code> with
+              direct npm script binary execution, preventing interactive cancellation during fresh CI or local
+              builds.</span></li>
+          <li><span><strong>create-boodoo Alignment</strong>: Updated scaffolding CLI default version target to
+              v1.1.6.</span></li>
+          <li><span><strong>Asset Measurement Truthfulness</strong>: Synchronized all documentation and README metrics
+              with compiled outputs.</span></li>
         </ul>
       </div>
     </div>
@@ -597,15 +889,24 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Feature</span></span>
-          <span>Headless React Hooks, WAI-ARIA Screen-Reader Accessibility Suite &amp; Competitive Architectural Matrix</span>
+          <span>Headless React Hooks, WAI-ARIA Screen-Reader Accessibility Suite &amp; Competitive Architectural
+            Matrix</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.5</strong> introduces first-party declarative headless React hooks, a dedicated screen-reader accessibility toolkit, and full ARIA 1.2 patterns:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Headless React Hooks</strong>: Introduced <code>useDisclosure</code>, <code>useCombobox</code>, and <code>useAccordion</code> via <code>boodoo/react</code> with first-class TypeScript declarations.</span></li>
-          <li><span><strong>WAI-ARIA Accessibility Suite</strong>: Added <code>a11y.announce()</code> live screen-reader regions, <code>a11y.setRovingTabindex()</code> coordinator, and <code>a11y.createFocusTrap()</code> for accessible overlays.</span></li>
-          <li><span><strong>Complex Component ARIA Refinement</strong>: Upgraded Combobox to W3C ARIA 1.2 Combobox pattern and TreeView to full multi-level tree semantics with keyboard roving focus.</span></li>
-          <li><span><strong>Competitive Architecture Matrix</strong>: Added multi-point comparison matrix contrasting Boodoo against Bootstrap 5, Tailwind CSS, Material UI (MUI), and Foundation.</span></li>
-          <li><span><strong>Protected Main Governance</strong>: Enforced branch protection rules and PR workflow across the project.</span></li>
+        <p><span>boodoo <strong>v1.1.5</strong> introduces first-party declarative headless React hooks, a dedicated
+            screen-reader accessibility toolkit, and full ARIA 1.2 patterns:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Headless React Hooks</strong>: Introduced <code>useDisclosure</code>,
+              <code>useCombobox</code>, and <code>useAccordion</code> via <code>boodoo/react</code> with first-class
+              TypeScript declarations.</span></li>
+          <li><span><strong>WAI-ARIA Accessibility Suite</strong>: Added <code>a11y.announce()</code> live screen-reader
+              regions, <code>a11y.setRovingTabindex()</code> coordinator, and <code>a11y.createFocusTrap()</code> for
+              accessible overlays.</span></li>
+          <li><span><strong>Complex Component ARIA Refinement</strong>: Upgraded Combobox to W3C ARIA 1.2 Combobox
+              pattern and TreeView to full multi-level tree semantics with keyboard roving focus.</span></li>
+          <li><span><strong>Competitive Architecture Matrix</strong>: Added multi-point comparison matrix contrasting
+              Boodoo against Bootstrap 5, Tailwind CSS, Material UI (MUI), and Foundation.</span></li>
+          <li><span><strong>Protected Main Governance</strong>: Enforced branch protection rules and PR workflow across
+              the project.</span></li>
         </ul>
       </div>
     </div>
@@ -635,15 +936,33 @@ order: 7
           <span class="badge bg-soft-danger text-danger"><span>Security</span></span>
           <span>Zero-Dependency HTML Sanitization, Dependabot Resolutions &amp; TypeScript Declaration Surface</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.4</strong> hardens all public DOM APIs, resolves all starter dependencies, and unifies design system tokens:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Dependabot Security Resolutions</strong>: Upgraded Next.js in starters to <code>^15.5.28</code> (with React 19) and Vite to <code>^6.4.4</code>, successfully eliminating all 58 repository Dependabot security advisories.</span></li>
-          <li><span><strong>Public API Sanitization</strong>: Added <code>escapeHtml()</code> utility. Toasts (<code>boodoo.toast</code>), chip inputs (<code>ChipInput.addChip</code>), command palettes (<code>CommandPalette</code>), dropzones (<code>Dropzone</code>), and popovers now safely escape untrusted markup and validate URI schemes before DOM insertion.</span></li>
-          <li><span><strong>Complete TypeScript Surface</strong>: Added first-class <code>.d.ts</code> declarations across all package exports: <code>dist/js/boodoo.d.ts</code>, <code>tokens/index.d.ts</code>, and <code>react-native/index.d.ts</code>, plus CommonJS token support (<code>tokens/index.cjs</code>).</span></li>
-          <li><span><strong>Lifecycle Teardown &amp; Cleanup</strong>: Full <code>dispose()</code> lifecycle implementations across <code>Modal</code>, <code>Offcanvas</code>, <code>SpeedDial</code>, and <code>Dropzone</code> (automatic <code>URL.revokeObjectURL</code> cleanup).</span></li>
-          <li><span><strong>Isolated Component Registry</strong>: Re-engineered <code>BaseComponent</code> registry to namespace by component class, preventing element collision when multiple plugins attach to the same node.</span></li>
-          <li><span><strong>Unified Brand Palette</strong>: Aligned <code>tokens/tokens.json</code>, <code>tokens/index.js</code>, and React Native themes with the official brand palette (secondary indigo <code>#5b21e6</code>, success <code>#1c9e50</code>, info <code>#0ea5e9</code>, dark <code>#17135f</code>).</span></li>
-          <li><span><strong>CLI &amp; Bundler Enhancements</strong>: Dynamic version banners in <code>js-bundle.mjs</code>, true minification for <code>boodoo.min.js</code>, and updated <code>create-boodoo</code> scaffolding.</span></li>
+        <p><span>boodoo <strong>v1.1.4</strong> hardens all public DOM APIs, resolves all starter dependencies, and
+            unifies design system tokens:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Dependabot Security Resolutions</strong>: Upgraded Next.js in starters to
+              <code>^15.5.28</code> (with React 19) and Vite to <code>^6.4.4</code>, successfully eliminating all 58
+              repository Dependabot security advisories.</span></li>
+          <li><span><strong>Public API Sanitization</strong>: Added <code>escapeHtml()</code> utility. Toasts
+              (<code>boodoo.toast</code>), chip inputs (<code>ChipInput.addChip</code>), command palettes
+              (<code>CommandPalette</code>), dropzones (<code>Dropzone</code>), and popovers now safely escape untrusted
+              markup and validate URI schemes before DOM insertion.</span></li>
+          <li><span><strong>Complete TypeScript Surface</strong>: Added first-class <code>.d.ts</code> declarations
+              across all package exports: <code>dist/js/boodoo.d.ts</code>, <code>tokens/index.d.ts</code>, and
+              <code>react-native/index.d.ts</code>, plus CommonJS token support (<code>tokens/index.cjs</code>).</span>
+          </li>
+          <li><span><strong>Lifecycle Teardown &amp; Cleanup</strong>: Full <code>dispose()</code> lifecycle
+              implementations across <code>Modal</code>, <code>Offcanvas</code>, <code>SpeedDial</code>, and
+              <code>Dropzone</code> (automatic <code>URL.revokeObjectURL</code> cleanup).</span></li>
+          <li><span><strong>Isolated Component Registry</strong>: Re-engineered <code>BaseComponent</code> registry to
+              namespace by component class, preventing element collision when multiple plugins attach to the same
+              node.</span></li>
+          <li><span><strong>Unified Brand Palette</strong>: Aligned <code>tokens/tokens.json</code>,
+              <code>tokens/index.js</code>, and React Native themes with the official brand palette (secondary indigo
+              <code>#5b21e6</code>, success <code>#1c9e50</code>, info <code>#0ea5e9</code>, dark
+              <code>#17135f</code>).</span></li>
+          <li><span><strong>CLI &amp; Bundler Enhancements</strong>: Dynamic version banners in
+              <code>js-bundle.mjs</code>, true minification for <code>boodoo.min.js</code>, and updated
+              <code>create-boodoo</code> scaffolding.</span></li>
         </ul>
       </div>
     </div>
@@ -673,27 +992,73 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Modular React Native UI Suite, Enterprise Layout Chrome, Auto Grids &amp; Role Badges</span>
         </h3>
-        <p><span>boodoo <strong>v1.1.3</strong> delivers a major expansion to mobile and enterprise web architecture:</span></p>
-        <ul class="mb-3">
-          <li><span><strong>Modular Native Mobile Suite</strong>: Re-architected native mobile framework into 12 dedicated, tree-shakeable submodules under <code>boodoo/react-native</code> with zero DOM dependencies:</span>
+        <p><span>boodoo <strong>v1.1.3</strong> delivers a major expansion to mobile and enterprise web
+            architecture:</span></p>
+        <ul class="mb-2">
+          <li><span><strong>Modular Native Mobile Suite</strong>: Re-architected native mobile framework into 12
+              dedicated, tree-shakeable submodules under <code>boodoo/react-native</code> with zero DOM
+              dependencies:</span>
             <ul class="mt-1">
-              <li><span><strong>Typography</strong> (<code>typography.js</code>): <code>Text</code> (with Paper variants, RNE UI <code>h1</code>–<code>h4</code>, UI Kitten categories), <code>Heading</code>.</span></li>
-              <li><span><strong>Layout</strong> (<code>layout.js</code>): <code>Box</code>, <code>HStack</code>, <code>XStack</code>, <code>VStack</code>, <code>YStack</code>, <code>Center</code>, <code>ZStack</code>, <code>Pressable</code>, <code>Grid</code>.</span></li>
-              <li><span><strong>Buttons</strong> (<code>buttons.js</code>): <code>Button</code> (with Paper modes, RNE types, UI Kitten status), <code>ButtonGroup</code>, <code>IconButton</code>, <code>FAB</code>, <code>SegmentedButtons</code>.</span></li>
-              <li><span><strong>Surfaces</strong> (<code>surfaces.js</code>): <code>Card</code> (with <code>.Content</code>, <code>.Cover</code>, <code>.Actions</code>, <code>.Title</code>), <code>Surface</code>, <code>Divider</code>, <code>Separator</code>, <code>PricingCard</code>, <code>Tile</code>.</span></li>
-              <li><span><strong>Inputs &amp; Forms</strong> (<code>inputs.js</code>): <code>TextInput</code>, <code>Input</code>, <code>TextField</code>, <code>Textarea</code>, <code>TextArea</code>, <code>Searchbar</code>, <code>SearchBar</code>, <code>HelperText</code>, <code>Checkbox</code>, <code>CheckBox</code>, <code>RadioButton</code>, <code>Radio</code>, <code>RadioGroup</code>, <code>Switch</code>, <code>Toggle</code>, <code>Slider</code>, <code>Stepper</code>, <code>Select</code>, <code>Picker</code>, <code>ToggleButton</code>.</span></li>
-              <li><span><strong>Data Display</strong> (<code>data-display.js</code>): <code>Chip</code>, <code>Badge</code>, <code>Avatar</code> (with <code>.Image</code>, <code>.Text</code>, <code>.Icon</code>).</span></li>
-              <li><span><strong>Feedback</strong> (<code>feedback.js</code>): <code>ActivityIndicator</code>, <code>Spinner</code>, <code>ProgressBar</code>, <code>Progress</code>, <code>Skeleton</code>, <code>Alert</code>, <code>Banner</code>, <code>Toast</code>, <code>Snackbar</code>.</span></li>
-              <li><span><strong>Lists &amp; Tables</strong> (<code>lists.js</code>): <code>List</code> (with <code>.Section</code>, <code>.Subheader</code>, <code>.Accordion</code>), <code>ListItem</code>, <code>DataTable</code> (with <code>.Header</code>, <code>.Row</code>, <code>.Cell</code>, <code>.Pagination</code>), <code>Table</code>.</span></li>
-              <li><span><strong>Navigation</strong> (<code>navigation.js</code>): <code>Appbar</code> (with <code>.BackAction</code>, <code>.Action</code>), <code>Header</code>, <code>TopNavigation</code>, <code>Drawer</code>, <code>BottomNavigation</code>, <code>Tabs</code>, <code>PageControl</code>.</span></li>
-              <li><span><strong>Overlays &amp; Sheets</strong> (<code>overlays.js</code>): <code>Dialog</code>, <code>AlertDialog</code>, <code>Modal</code>, <code>Overlay</code>, <code>BottomSheet</code>, <code>Actionsheet</code>, <code>ActionSheet</code>, <code>Sheet</code>, <code>Menu</code>, <code>Popover</code>, <code>Tooltip</code>, <code>Portal</code>, <code>TouchableRipple</code>.</span></li>
-              <li><span><strong>Themes &amp; Paper Adapters</strong> (<code>theme.js</code>, <code>paper.js</code>): <code>BoodooProvider</code>, <code>useTheme</code>, <code>defaultLightTheme</code>, <code>defaultDarkTheme</code>, <code>boodooPaperLightTheme</code>, <code>boodooPaperDarkTheme</code>.</span></li>
+              <li><span><strong>Typography</strong> (<code>typography.js</code>): <code>Text</code> (with Paper
+                  variants, RNE UI <code>h1</code>–<code>h4</code>, UI Kitten categories), <code>Heading</code>.</span>
+              </li>
+              <li><span><strong>Layout</strong> (<code>layout.js</code>): <code>Box</code>, <code>HStack</code>,
+                  <code>XStack</code>, <code>VStack</code>, <code>YStack</code>, <code>Center</code>,
+                  <code>ZStack</code>, <code>Pressable</code>, <code>Grid</code>.</span></li>
+              <li><span><strong>Buttons</strong> (<code>buttons.js</code>): <code>Button</code> (with Paper modes, RNE
+                  types, UI Kitten status), <code>ButtonGroup</code>, <code>IconButton</code>, <code>FAB</code>,
+                  <code>SegmentedButtons</code>.</span></li>
+              <li><span><strong>Surfaces</strong> (<code>surfaces.js</code>): <code>Card</code> (with
+                  <code>.Content</code>, <code>.Cover</code>, <code>.Actions</code>, <code>.Title</code>),
+                  <code>Surface</code>, <code>Divider</code>, <code>Separator</code>, <code>PricingCard</code>,
+                  <code>Tile</code>.</span></li>
+              <li><span><strong>Inputs &amp; Forms</strong> (<code>inputs.js</code>): <code>TextInput</code>,
+                  <code>Input</code>, <code>TextField</code>, <code>Textarea</code>, <code>TextArea</code>,
+                  <code>Searchbar</code>, <code>SearchBar</code>, <code>HelperText</code>, <code>Checkbox</code>,
+                  <code>CheckBox</code>, <code>RadioButton</code>, <code>Radio</code>, <code>RadioGroup</code>,
+                  <code>Switch</code>, <code>Toggle</code>, <code>Slider</code>, <code>Stepper</code>,
+                  <code>Select</code>, <code>Picker</code>, <code>ToggleButton</code>.</span></li>
+              <li><span><strong>Data Display</strong> (<code>data-display.js</code>): <code>Chip</code>,
+                  <code>Badge</code>, <code>Avatar</code> (with <code>.Image</code>, <code>.Text</code>,
+                  <code>.Icon</code>).</span></li>
+              <li><span><strong>Feedback</strong> (<code>feedback.js</code>): <code>ActivityIndicator</code>,
+                  <code>Spinner</code>, <code>ProgressBar</code>, <code>Progress</code>, <code>Skeleton</code>,
+                  <code>Alert</code>, <code>Banner</code>, <code>Toast</code>, <code>Snackbar</code>.</span></li>
+              <li><span><strong>Lists &amp; Tables</strong> (<code>lists.js</code>): <code>List</code> (with
+                  <code>.Section</code>, <code>.Subheader</code>, <code>.Accordion</code>), <code>ListItem</code>,
+                  <code>DataTable</code> (with <code>.Header</code>, <code>.Row</code>, <code>.Cell</code>,
+                  <code>.Pagination</code>), <code>Table</code>.</span></li>
+              <li><span><strong>Navigation</strong> (<code>navigation.js</code>): <code>Appbar</code> (with
+                  <code>.BackAction</code>, <code>.Action</code>), <code>Header</code>, <code>TopNavigation</code>,
+                  <code>Drawer</code>, <code>BottomNavigation</code>, <code>Tabs</code>,
+                  <code>PageControl</code>.</span></li>
+              <li><span><strong>Overlays &amp; Sheets</strong> (<code>overlays.js</code>): <code>Dialog</code>,
+                  <code>AlertDialog</code>, <code>Modal</code>, <code>Overlay</code>, <code>BottomSheet</code>,
+                  <code>Actionsheet</code>, <code>ActionSheet</code>, <code>Sheet</code>, <code>Menu</code>,
+                  <code>Popover</code>, <code>Tooltip</code>, <code>Portal</code>, <code>TouchableRipple</code>.</span>
+              </li>
+              <li><span><strong>Themes &amp; Paper Adapters</strong> (<code>theme.js</code>, <code>paper.js</code>):
+                  <code>BoodooProvider</code>, <code>useTheme</code>, <code>defaultLightTheme</code>,
+                  <code>defaultDarkTheme</code>, <code>boodooPaperLightTheme</code>,
+                  <code>boodooPaperDarkTheme</code>.</span></li>
             </ul>
           </li>
-          <li><span><strong>Enterprise Application Shell</strong>: Added <code>.shell-header</code> (sticky header), <code>.shell-sidebar</code> (100vh scrolling sidebar), <code>.shell-pad</code> / <code>sm</code> / <code>lg</code> (responsive padding), <code>.bg-login-gradient</code>, <code>.bg-hero-gradient</code>, <code>.feature-card</code> (hover elevation), <code>.table-scroll-max</code> (max-height scrolling), and <code>.form-section</code> (grouped card forms).</span></li>
-          <li><span><strong>CSS Grid Auto Columns &amp; Gutter Bridge</strong>: Gutter bridge support for <code>.grid</code> (<code>--boodoo-gutter-x</code>, <code>--boodoo-gutter-y</code>), auto-fill / auto-fit layouts (<code>.grid-auto-fill</code>, <code>.grid-auto-fit</code>), and <code>.grid-cols-tier</code> / <code>search</code> / <code>line</code> / <code>simulation</code> templates.</span></li>
-          <li><span><strong>SaaS Role Status Badges &amp; Active Indicators</strong>: 8 role status badges (<code>.badge-role-admin</code>, <code>member</code>, <code>viewer</code>, <code>owner</code>, <code>billing</code>, <code>guest</code>, <code>developer</code>, <code>security</code>) and <code>.nav-active-bar</code> (<code>.nav-active-bar-start</code>, <code>.nav-active-bar-bottom</code>).</span></li>
-          <li><span><strong>Dynamic CodePen Snippets</strong>: Dynamically sets CodePen editor pane (JS for script demos, CSS for styling overrides, HTML for component markup).</span></li>
+          <li><span><strong>Enterprise Application Shell</strong>: Added <code>.shell-header</code> (sticky header),
+              <code>.shell-sidebar</code> (100vh scrolling sidebar), <code>.shell-pad</code> / <code>sm</code> /
+              <code>lg</code> (responsive padding), <code>.bg-login-gradient</code>, <code>.bg-hero-gradient</code>,
+              <code>.feature-card</code> (hover elevation), <code>.table-scroll-max</code> (max-height scrolling), and
+              <code>.form-section</code> (grouped card forms).</span></li>
+          <li><span><strong>CSS Grid Auto Columns &amp; Gutter Bridge</strong>: Gutter bridge support for
+              <code>.grid</code> (<code>--boodoo-gutter-x</code>, <code>--boodoo-gutter-y</code>), auto-fill / auto-fit
+              layouts (<code>.grid-auto-fill</code>, <code>.grid-auto-fit</code>), and <code>.grid-cols-tier</code> /
+              <code>search</code> / <code>line</code> / <code>simulation</code> templates.</span></li>
+          <li><span><strong>SaaS Role Status Badges &amp; Active Indicators</strong>: 8 role status badges
+              (<code>.badge-role-admin</code>, <code>member</code>, <code>viewer</code>, <code>owner</code>,
+              <code>billing</code>, <code>guest</code>, <code>developer</code>, <code>security</code>) and
+              <code>.nav-active-bar</code> (<code>.nav-active-bar-start</code>,
+              <code>.nav-active-bar-bottom</code>).</span></li>
+          <li><span><strong>Dynamic CodePen Snippets</strong>: Dynamically sets CodePen editor pane (JS for script
+              demos, CSS for styling overrides, HTML for component markup).</span></li>
         </ul>
 
         <h3 class="h6 text-uppercase fw-bold text-info d-flex align-items-center gap-1 mb-2">
@@ -701,11 +1066,20 @@ order: 7
           <span>Standards Compliance, Theme Inversion &amp; CSS Variable Theming</span>
         </h3>
         <ul class="mb-0">
-          <li><span><strong>Cross-Browser Standard Property</strong>: Added standard <code>appearance: none;</code> alongside <code>-webkit-appearance: none;</code> in reboot rules.</span></li>
-          <li><span><strong>Dark Mode Gray Scale Step Flattening</strong>: Fixed dark inversion scale ensuring <code>--boodoo-gray-800</code> (<code>#ececf4</code>) and <code>--boodoo-gray-900</code> (<code>#f7f8fb</code>) remain distinct across media queries and <code>[data-boodoo-theme="dark"]</code>.</span></li>
-          <li><span><strong>Runtime CSS Variable Theming</strong>: <code>.text-primary</code>, <code>.text-muted</code>, <code>a</code>, <code>h1</code>–<code>h6</code>, solid <code>.btn-primary</code>, avatar, badge, nav, and card clickable hover states now dynamically consume CSS custom properties.</span></li>
-          <li><span><strong>Sticky Helpers Flexibility</strong>: <code>.sticky-top</code>, <code>.sticky-bottom</code>, and <code>.sticky-lg-top</code> now respect <code>var(--boodoo-zindex-sticky, 1020)</code>.</span></li>
-          <li><span><strong>Spacing Scale Truthfulness</strong>: Corrected spacing scale docs, changelogs, and tests to accurately reflect the compiled modern scale (0.5 = 8px, 1 = 20px, 2 = 36px, 3 = 52px, 4 = 68px, 5 = 84px) with <code>createSpacing()</code> for compact scales.</span></li>
+          <li><span><strong>Cross-Browser Standard Property</strong>: Added standard <code>appearance: none;</code>
+              alongside <code>-webkit-appearance: none;</code> in reboot rules.</span></li>
+          <li><span><strong>Dark Mode Gray Scale Step Flattening</strong>: Fixed dark inversion scale ensuring
+              <code>--boodoo-gray-800</code> (<code>#ececf4</code>) and <code>--boodoo-gray-900</code>
+              (<code>#f7f8fb</code>) remain distinct across media queries and
+              <code>[data-boodoo-theme="dark"]</code>.</span></li>
+          <li><span><strong>Runtime CSS Variable Theming</strong>: <code>.text-primary</code>, <code>.text-muted</code>,
+              <code>a</code>, <code>h1</code>–<code>h6</code>, solid <code>.btn-primary</code>, avatar, badge, nav, and
+              card clickable hover states now dynamically consume CSS custom properties.</span></li>
+          <li><span><strong>Sticky Helpers Flexibility</strong>: <code>.sticky-top</code>, <code>.sticky-bottom</code>,
+              and <code>.sticky-lg-top</code> now respect <code>var(--boodoo-zindex-sticky, 1020)</code>.</span></li>
+          <li><span><strong>Spacing Scale Truthfulness</strong>: Corrected spacing scale docs, changelogs, and tests to
+              accurately reflect the compiled modern scale (0.5 = 8px, 1 = 20px, 2 = 36px, 3 = 52px, 4 = 68px, 5 = 84px)
+              with <code>createSpacing()</code> for compact scales.</span></li>
         </ul>
       </div>
     </div>
@@ -736,9 +1110,18 @@ order: 7
           <span>Brand-New Components: Dock, KPI Stat Card, and AI Prompt Interface</span>
         </h3>
         <ul class="changelog-list mb-3">
-          <li><span><strong>Dock / App Shelf (<code>.dock</code>):</strong> macOS/iPadOS-inspired floating app shelf and persistent bottom navigation bar featuring glassmorphic backgrounds, icon magnification, active app dots (<code>.dock-dot</code>), badge indicators, dividers, and orientation controls (<code>.dock-bottom</code>, <code>.dock-top</code>, <code>.dock-start</code>, <code>.dock-end</code>).</span></li>
-          <li><span><strong>KPI Stat Card (<code>.kpi-card</code>):</strong> Modern dashboard analytics cards with formatted metric values, category labels, trend badges (<code>.kpi-trend-up</code>, <code>.kpi-trend-down</code>), icon wrappers, and micro progress bars with seamless dark mode support.</span></li>
-          <li><span><strong>AI Prompt &amp; Chat Input (<code>.ai-prompt</code>):</strong> Generative AI conversational interface with auto-expanding textarea, send/stop streaming action buttons (<code>.ai-prompt-btn-stop</code>), prompt suggestion chips, token counter, and model selector slot.</span></li>
+          <li><span><strong>Dock / App Shelf (<code>.dock</code>):</strong> macOS/iPadOS-inspired floating app shelf and
+              persistent bottom navigation bar featuring glassmorphic backgrounds, icon magnification, active app dots
+              (<code>.dock-dot</code>), badge indicators, dividers, and orientation controls (<code>.dock-bottom</code>,
+              <code>.dock-top</code>, <code>.dock-start</code>, <code>.dock-end</code>).</span></li>
+          <li><span><strong>KPI Stat Card (<code>.kpi-card</code>):</strong> Modern dashboard analytics cards with
+              formatted metric values, category labels, trend badges (<code>.kpi-trend-up</code>,
+              <code>.kpi-trend-down</code>), icon wrappers, and micro progress bars with seamless dark mode
+              support.</span></li>
+          <li><span><strong>AI Prompt &amp; Chat Input (<code>.ai-prompt</code>):</strong> Generative AI conversational
+              interface with auto-expanding textarea, send/stop streaming action buttons
+              (<code>.ai-prompt-btn-stop</code>), prompt suggestion chips, token counter, and model selector
+              slot.</span></li>
         </ul>
 
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
@@ -746,24 +1129,41 @@ order: 7
           <span>Full SCSS &amp; LESS Parity, Navigation Auto-Focus, and Framework Tests</span>
         </h3>
         <ul class="changelog-list mb-3">
-          <li><span><strong>100% SCSS &amp; LESS Parity:</strong> Implemented full LESS equivalents across all 44 components (including <code>.dock</code>, <code>.kpi-card</code>, <code>.ai-prompt</code>, <code>.bottom-sheet</code>, <code>.command-palette</code>, <code>.splitter</code>, <code>.stepper</code>, and <code>.tree-view</code>) backed by dual-preprocessor verification tests.</span></li>
-          <li><span><strong>Documentation Navigation Auto-Focus:</strong> Active documentation sidebar navigation items now automatically scroll and center within the visible viewport on load, with distinct high-contrast active state indicators and focus-visible styling.</span></li>
-          <li><span><strong>Automated Framework Testing Suite:</strong> Added <code>tests/framework.test.mjs</code> validating bundle sizes, layer omission, spacing consistency, runtime CSS color variables, and dual SCSS/LESS parity.</span></li>
+          <li><span><strong>100% SCSS &amp; LESS Parity:</strong> Implemented full LESS equivalents across all 44
+              components (including <code>.dock</code>, <code>.kpi-card</code>, <code>.ai-prompt</code>,
+              <code>.bottom-sheet</code>, <code>.command-palette</code>, <code>.splitter</code>, <code>.stepper</code>,
+              and <code>.tree-view</code>) backed by dual-preprocessor verification tests.</span></li>
+          <li><span><strong>Documentation Navigation Auto-Focus:</strong> Active documentation sidebar navigation items
+              now automatically scroll and center within the visible viewport on load, with distinct high-contrast
+              active state indicators and focus-visible styling.</span></li>
+          <li><span><strong>Automated Framework Testing Suite:</strong> Added <code>tests/framework.test.mjs</code>
+              validating bundle sizes, layer omission, spacing consistency, runtime CSS color variables, and dual
+              SCSS/LESS parity.</span></li>
         </ul>
 
         <h3 class="h6 text-uppercase fw-bold text-warning d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-warning text-warning"><span>Fixed</span></span>
           <span>Spacing Scale Normalization &amp; Runtime CSS Variable Architecture</span>
         </h3>
-        <p class="text-muted mb-2"><span>Resolved critical framework architectural issues across spacing consistency, component-level dark mode variables, and CSS cascade layer inheritance:</span></p>
+        <p class="text-muted mb-2"><span>Resolved critical framework architectural issues across spacing consistency,
+            component-level dark mode variables, and CSS cascade layer inheritance:</span></p>
         <ul class="changelog-list mb-3">
-          <li><span><strong>Normalized Spacing Scale:</strong> Restored consistent Bootstrap-aligned 5-step spacing scale (0=0, 1=0.25rem, 2=0.5rem, 3=1rem, 4=1.5rem, 5=3rem) alongside fractional and extended steps, with cross-stack customization support (CSS variables, SCSS, LESS, tokens).</span></li>
-          <li><span><strong>Material Preview FAB Fix:</strong> Fixed floating action button escaping the preview container on the Material comparison page by adding <code>.position-static</code>.</span></li>
-          <li><span><strong>Dynamic Component CSS Variable Theming:</strong> Converted tables, outline buttons, pagination, list groups, and avatars from compile-time Sass literals to dynamic <code>var(--boodoo-...)</code> custom properties and <code>color-mix(...)</code>.</span></li>
-          <li><span><strong>Dark Mode Palette Inversion:</strong> Enhanced dark mode theme blocks to dynamically invert the full gray-scale palette and surface tokens at runtime.</span></li>
-          <li><span><strong>SVG Mask Carets:</strong> Refactored accordion carets to CSS <code>mask-image</code> with currentColor, eliminating hardcoded hex color fills.</span></li>
-          <li><span><strong>Layer Specificity Trap Removed:</strong> Dropped empty <code>@layer</code> declaration to protect downstream layered consumer stylesheets from specificity fights.</span></li>
-          <li><span><strong>Modular Core CSS Bundle:</strong> Excluded uncompiled native platform skins from the core stylesheet distribution.</span></li>
+          <li><span><strong>Normalized Spacing Scale:</strong> Restored consistent Bootstrap-aligned 5-step spacing
+              scale (0=0, 1=0.25rem, 2=0.5rem, 3=1rem, 4=1.5rem, 5=3rem) alongside fractional and extended steps, with
+              cross-stack customization support (CSS variables, SCSS, LESS, tokens).</span></li>
+          <li><span><strong>Material Preview FAB Fix:</strong> Fixed floating action button escaping the preview
+              container on the Material comparison page by adding <code>.position-static</code>.</span></li>
+          <li><span><strong>Dynamic Component CSS Variable Theming:</strong> Converted tables, outline buttons,
+              pagination, list groups, and avatars from compile-time Sass literals to dynamic
+              <code>var(--boodoo-...)</code> custom properties and <code>color-mix(...)</code>.</span></li>
+          <li><span><strong>Dark Mode Palette Inversion:</strong> Enhanced dark mode theme blocks to dynamically invert
+              the full gray-scale palette and surface tokens at runtime.</span></li>
+          <li><span><strong>SVG Mask Carets:</strong> Refactored accordion carets to CSS <code>mask-image</code> with
+              currentColor, eliminating hardcoded hex color fills.</span></li>
+          <li><span><strong>Layer Specificity Trap Removed:</strong> Dropped empty <code>@layer</code> declaration to
+              protect downstream layered consumer stylesheets from specificity fights.</span></li>
+          <li><span><strong>Modular Core CSS Bundle:</strong> Excluded uncompiled native platform skins from the core
+              stylesheet distribution.</span></li>
         </ul>
       </div>
     </div>
@@ -793,12 +1193,22 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>React Native Mobile Suite &amp; Full Migration Center</span>
         </h3>
-        <ul class="mb-3">
-          <li><strong><span>React Native Mobile Primitives (`boodoo/react-native`)</span></strong>: <span>Shipped pure native components for iOS &amp; Android (<code>BoodooProvider</code>, <code>Button</code>, <code>Card</code>, <code>Badge</code>, <code>Text</code>, <code>TextInput</code>, <code>useTheme</code>) with zero DOM, zero external dependencies, and Expo Go support.</span></li>
-          <li><strong><span>React Native Paper Adapter (`boodoo/paper`)</span></strong>: <span>Pre-configured Material Design 3 light &amp; dark themes for zero-downtime styling upgrades in existing React Native Paper apps.</span></li>
-          <li><strong><span>Universal Design Tokens (`boodoo/tokens`)</span></strong>: <span>Exported colors, typography, spacing, border radii, and shadows for seamless cross-platform sharing.</span></li>
-          <li><strong><span>Complete "Migrate from..." Suite</span></strong>: <span>Published dedicated migration guides with component &amp; utility mappings for Bootstrap, Tailwind CSS, Foundation, Material Design, and React Native Paper.</span></li>
-          <li><strong><span>Expo Mobile Starter Scaffold</span></strong>: <span>Added Template 10 to <code>npx create-boodoo</code> CLI and standalone <code>boodoo-react-native-starter.zip</code> archive.</span></li>
+        <ul class="mb-2">
+          <li><strong><span>React Native Mobile Primitives (`boodoo/react-native`)</span></strong>: <span>Shipped pure
+              native components for iOS &amp; Android (<code>BoodooProvider</code>, <code>Button</code>,
+              <code>Card</code>, <code>Badge</code>, <code>Text</code>, <code>TextInput</code>, <code>useTheme</code>)
+              with zero DOM, zero external dependencies, and Expo Go support.</span></li>
+          <li><strong><span>React Native Paper Adapter (`boodoo/paper`)</span></strong>: <span>Pre-configured Material
+              Design 3 light &amp; dark themes for zero-downtime styling upgrades in existing React Native Paper
+              apps.</span></li>
+          <li><strong><span>Universal Design Tokens (`boodoo/tokens`)</span></strong>: <span>Exported colors,
+              typography, spacing, border radii, and shadows for seamless cross-platform sharing.</span></li>
+          <li><strong><span>Complete "Migrate from..." Suite</span></strong>: <span>Published dedicated migration guides
+              with component &amp; utility mappings for Bootstrap, Tailwind CSS, Foundation, Material Design, and React
+              Native Paper.</span></li>
+          <li><strong><span>Expo Mobile Starter Scaffold</span></strong>: <span>Added Template 10 to
+              <code>npx create-boodoo</code> CLI and standalone <code>boodoo-react-native-starter.zip</code>
+              archive.</span></li>
         </ul>
       </div>
     </div>
@@ -828,20 +1238,29 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Motion Utilities, Banner Component &amp; Architecture Enhancements</span>
         </h3>
-        <ul class="mb-3">
-          <li><strong><span>Motion &amp; Animations Suite</span></strong>: <span>Expanded CSS animation utilities (<code>.anim-pulse</code>, <code>.anim-bounce</code>, <code>.anim-ping</code>, <code>.anim-spin</code>, <code>.anim-fade-in</code>, <code>.anim-slide-up</code>) and launched interactive documentation page.</span></li>
-          <li><strong><span>Banner Component</span></strong>: <span>Added <code>.banner</code> layout primitive with auto-dismiss JavaScript, sticky/fixed variants, and multi-color support.</span></li>
-          <li><strong><span>Drag-and-Drop Dropzone</span></strong>: <span>Added modern file upload component with visual feedback, drag highlights, and thumbnail previews.</span></li>
-          <li><strong><span>Dynamic Dist Asset Sizing</span></strong>: <span>Replaced hardcoded download sizes with dynamic template injection matching exact compiled asset weights.</span></li>
-          <li><strong><span>create-boodoo Tech Stack Visibility</span></strong>: <span>Enhanced <code>npx create-boodoo</code> CLI with real-time version badges.</span></li>
+        <ul class="mb-2">
+          <li><strong><span>Motion &amp; Animations Suite</span></strong>: <span>Expanded CSS animation utilities
+              (<code>.anim-pulse</code>, <code>.anim-bounce</code>, <code>.anim-ping</code>, <code>.anim-spin</code>,
+              <code>.anim-fade-in</code>, <code>.anim-slide-up</code>) and launched interactive documentation
+              page.</span></li>
+          <li><strong><span>Banner Component</span></strong>: <span>Added <code>.banner</code> layout primitive with
+              auto-dismiss JavaScript, sticky/fixed variants, and multi-color support.</span></li>
+          <li><strong><span>Drag-and-Drop Dropzone</span></strong>: <span>Added modern file upload component with visual
+              feedback, drag highlights, and thumbnail previews.</span></li>
+          <li><strong><span>Dynamic Dist Asset Sizing</span></strong>: <span>Replaced hardcoded download sizes with
+              dynamic template injection matching exact compiled asset weights.</span></li>
+          <li><strong><span>create-boodoo Tech Stack Visibility</span></strong>: <span>Enhanced
+              <code>npx create-boodoo</code> CLI with real-time version badges.</span></li>
         </ul>
 
         <h3 class="h6 text-uppercase fw-bold text-primary d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-primary text-primary"><span>Improved</span></span>
           <span>Standards &amp; Cleanliness</span>
         </h3>
-        <ul class="mb-3">
-          <li><strong><span>Semantic Text Wrapping &amp; Inline Style Clean-up</span></strong>: <span>Refactored all documentation code examples and UI components to eliminate naked text inside container elements and prohibit inline styles.</span></li>
+        <ul class="mb-2">
+          <li><strong><span>Semantic Text Wrapping &amp; Inline Style Clean-up</span></strong>: <span>Refactored all
+              documentation code examples and UI components to eliminate naked text inside container elements and
+              prohibit inline styles.</span></li>
         </ul>
       </div>
     </div>
@@ -871,11 +1290,20 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Multi-Platform Expansion (Angular, Cordova, PhoneGap, Meteor, Photon, React Native)</span>
         </h3>
-        <ul class="mb-3">
-          <li><strong><span>create-boodoo Multi-Platform Scaffolder</span></strong>: <span>Expanded <code>npx create-boodoo</code> with 9 complete templates including <code>Angular</code>, <code>Cordova &amp; PhoneGap</code>, <code>Meteor.js</code>, <code>Photon Desktop UI</code>, and <code>React Native Web</code>.</span></li>
-          <li><strong><span>Photon Desktop UI Primitives</span></strong>: <span>Added <code>.native-photon</code> styling suite for macOS &amp; Electron desktop applications, including native toolbar headers, footers, split pane groups, nav group lists, and tab groups.</span></li>
-          <li><strong><span>Hybrid Mobile &amp; Cordova/PhoneGap Lifecycle</span></strong>: <span>Added <code>deviceready</code> auto-initialization hooks to Boodoo JS and safe-area inset container ergonomics.</span></li>
-          <li><strong><span>Platforms &amp; Frameworks Guide</span></strong>: <span>Added dedicated guide at <a href="../getting-started/platforms.html"><span>Platforms &amp; Frameworks</span></a> covering Angular, Cordova, PhoneGap, Meteor, Photon, and React Native Web.</span></li>
+        <ul class="mb-2">
+          <li><strong><span>create-boodoo Multi-Platform Scaffolder</span></strong>: <span>Expanded
+              <code>npx create-boodoo</code> with 9 complete templates including <code>Angular</code>,
+              <code>Cordova &amp; PhoneGap</code>, <code>Meteor.js</code>, <code>Photon Desktop UI</code>, and
+              <code>React Native Web</code>.</span></li>
+          <li><strong><span>Photon Desktop UI Primitives</span></strong>: <span>Added <code>.native-photon</code>
+              styling suite for macOS &amp; Electron desktop applications, including native toolbar headers, footers,
+              split pane groups, nav group lists, and tab groups.</span></li>
+          <li><strong><span>Hybrid Mobile &amp; Cordova/PhoneGap Lifecycle</span></strong>: <span>Added
+              <code>deviceready</code> auto-initialization hooks to Boodoo JS and safe-area inset container
+              ergonomics.</span></li>
+          <li><strong><span>Platforms &amp; Frameworks Guide</span></strong>: <span>Added dedicated guide at <a
+                href="../getting-started/platforms.html"><span>Platforms &amp; Frameworks</span></a> covering Angular,
+              Cordova, PhoneGap, Meteor, Photon, and React Native Web.</span></li>
         </ul>
       </div>
     </div>
@@ -905,8 +1333,10 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>Electron Desktop Integration &amp; Tooling</span>
         </h3>
-        <ul class="mb-3">
-          <li><strong><span>Electron Desktop Scaffolder</span></strong>: <span>Added option <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>.</span></li>
+        <ul class="mb-2">
+          <li><strong><span>Electron Desktop Scaffolder</span></strong>: <span>Added option
+              <code>4) Electron Desktop App (Cross-Platform Native UI)</code> to <code>npx create-boodoo</code>.</span>
+          </li>
           <li><strong><span>Electron Integration Documentation</span></strong>: <span>Published complete guide at <a
                 href="../getting-started/electron.html"><span>Getting started / Electron Desktop Apps</span></a>
               detailing frameless window mechanics, <code>-webkit-app-region: drag</code> titlebars, IPC controls, CSP,
@@ -920,7 +1350,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Performance</span></span>
           <span>Performance, Caching &amp; PageSpeed Optimizations</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li><strong><span>Leverage Browser Caching</span></strong>: <span>Implemented comprehensive
               <code>mod_expires</code> and <code>mod_headers</code> caching directives in <code>.htaccess</code>,
               configuring 1-year immutable caching for CSS, JS, SVGs, WebP/PNG, icons, and web fonts.</span></li>
@@ -962,7 +1392,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li>
             <strong>Combobox / Autocomplete Select</strong>:
             <span>Added accessible combobox (<code>Combobox</code>, <code>[data-boodoo="combobox"]</code>) with dynamic
@@ -1025,7 +1455,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li>
             <strong>Complete JavaScript Component Exports</strong>:
             <span>Extended ESM bundle (<code>boodoo.esm.js</code>) and UMD core entry to export all individual
@@ -1095,7 +1525,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li>
             <strong>Modern CSS Native Primitives</strong>:
             <span>Integrated Container Queries (<code>@container</code>, <code>@mixin container-up</code>,
@@ -1165,7 +1595,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li>
             <strong>Data Table / Data Grid Component (<code>DataTable</code>)</strong>:
             <span>Interactive table suite supporting sortable column headers (<code>.sortable</code>,
@@ -1252,7 +1682,7 @@ order: 7
           <span class="badge bg-soft-success text-success"><span>Added</span></span>
           <span>New Features &amp; Components</span>
         </h3>
-        <ul class="mb-3">
+        <ul class="mb-2">
           <li>
             <strong>Bottom Sheet Component (<code>BottomSheet</code>)</strong>:
             <span>Full mobile-first sliding drawer sheet with drag/swipe-down-to-dismiss touch gestures, spring physics,

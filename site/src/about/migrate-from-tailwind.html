@@ -5,23 +5,30 @@ section: about
 order: 11
 -->
 <h1><span>Migrate from Tailwind CSS to boodoo</span></h1>
-<p class="lead"><span>Tired of huge PostCSS compiler build steps, 40-character class chains in your HTML, or complex Tailwind purging bugs? Learn how to migrate to <strong>boodoo</strong> for clean semantic markup while keeping the power of functional utilities.</span></p>
+<p class="lead"><span>Tired of huge PostCSS compiler build steps, 40-character class chains in your HTML, or complex
+    Tailwind purging bugs? Learn how to migrate to <strong>boodoo</strong> for clean semantic markup while keeping the
+    power of functional utilities.</span></p>
 
 <div class="card p-3 border-0 bg-light shadow-sm rounded-4 mb-4">
   <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
     <div>
       <h5 class="mb-1"><span>Want to compare philosophy &amp; bundle sizes first?</span></h5>
-      <p class="text-muted small mb-0"><span>Read our direct head-to-head comparison between boodoo and Tailwind CSS.</span></p>
+      <p class="text-muted small mb-0"><span>Read our direct head-to-head comparison between boodoo and Tailwind
+          CSS.</span></p>
     </div>
-    <a href="vs-tailwind.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs Tailwind →</span></a>
+    <a href="vs-tailwind.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>View boodoo vs Tailwind
+        →</span></a>
   </div>
 </div>
 
 <h2 id="why-migrate"><span>Why Migrate from Tailwind to boodoo?</span></h2>
 <ul>
-  <li><span><strong>No Build Tool Lock-In:</strong> Works instantly with vanilla HTML, PHP, Rails, or Next.js without PostCSS, npm watcher pipelines, or complex configuration files.</span></li>
-  <li><span><strong>Clean Readable Markup:</strong> Replace 15 repetitive atomic classes on cards and buttons with semantic primitives like <code>.card</code>, <code>.btn</code>, and <code>.badge</code>.</span></li>
-  <li><span><strong>Zero-Config JS Included:</strong> Built-in modals, tooltips, collapse, command palette, and drawer menus without needing Headless UI or external React dependencies.</span></li>
+  <li><span><strong>No Build Tool Lock-In:</strong> Works instantly with vanilla HTML, PHP, Rails, or Next.js without
+      PostCSS, npm watcher pipelines, or complex configuration files.</span></li>
+  <li><span><strong>Clean Readable Markup:</strong> Replace 15 repetitive atomic classes on cards and buttons with
+      semantic primitives like <code>.card</code>, <code>.btn</code>, and <code>.badge</code>.</span></li>
+  <li><span><strong>Zero-Config JS Included:</strong> Built-in modals, tooltips, collapse, command palette, and drawer
+      menus without needing Headless UI or external React dependencies.</span></li>
 </ul>
 
 <h2 id="syntax-comparison"><span>Side-by-Side Markup Comparison</span></h2>
@@ -36,7 +43,7 @@ order: 11
 
 &lt;!-- After: boodoo (Clean semantic hierarchy) --&gt;
 &lt;div class="card p-4 shadow-sm" style="max-width: 380px;"&gt;
-  &lt;h3 class="h5 fw-bold mb-2"&gt;Account Details&lt;/h3&gt;
+  &lt;h3 class="fw-bold mb-2"&gt;Account Details&lt;/h3&gt;
   &lt;p class="text-muted small mb-0"&gt;Manage your team settings and preferences.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 </div>
@@ -65,7 +72,8 @@ order: 11
   <tbody>
     <tr>
       <td><code>flex</code>, <code>flex-col</code>, <code>items-center</code>, <code>justify-between</code></td>
-      <td><code>.d-flex</code>, <code>.flex-column</code>, <code>.align-items-center</code>, <code>.justify-content-between</code></td>
+      <td><code>.d-flex</code>, <code>.flex-column</code>, <code>.align-items-center</code>,
+        <code>.justify-content-between</code></td>
     </tr>
     <tr>
       <td><code>gap-2</code>, <code>gap-4</code>, <code>gap-6</code></td>
@@ -91,7 +99,8 @@ order: 11
 </table>
 
 <h2 id="cli-codemod"><span>Automated CLI Codemod</span></h2>
-<p><span>Transform repetitive Tailwind class chains into clean Boodoo utilities and component classes using the built-in CLI:</span></p>
+<p><span>Transform repetitive Tailwind class chains into clean Boodoo utilities and component classes using the built-in
+    CLI:</span></p>
 
 <div class="highlight">
   <pre><code class="language-bash"># Codemod files in ./src or an HTML template
@@ -114,27 +123,33 @@ npx boodoo migrate --from=tailwind index.html</code></pre>
     <tr>
       <td><strong><span>Flexbox &amp; Alignment</span></strong></td>
       <td><span class="badge bg-success"><span>Supported</span></span></td>
-      <td><span><code>flex flex-col</code>, <code>items-center</code>, <code>justify-between</code> map cleanly to <code>.flex-column</code>, <code>.align-items-center</code>, <code>.justify-content-between</code>.</span></td>
+      <td><span><code>flex flex-col</code>, <code>items-center</code>, <code>justify-between</code> map cleanly to
+          <code>.flex-column</code>, <code>.align-items-center</code>, <code>.justify-content-between</code>.</span>
+      </td>
     </tr>
     <tr>
       <td><strong><span>Spacing &amp; Padding</span></strong></td>
       <td><span class="badge bg-success"><span>Supported</span></span></td>
-      <td><span>Standard spacing scales (<code>p-1</code> to <code>p-5</code>, <code>m-1</code> to <code>m-5</code>, <code>gap-1</code> to <code>gap-5</code>) map to Boodoo's proportional spacing tokens.</span></td>
+      <td><span>Standard spacing scales (<code>p-1</code> to <code>p-5</code>, <code>m-1</code> to <code>m-5</code>,
+          <code>gap-1</code> to <code>gap-5</code>) map to Boodoo's proportional spacing tokens.</span></td>
     </tr>
     <tr>
       <td><strong><span>Grid Containers</span></strong></td>
       <td><span class="badge bg-success"><span>Supported</span></span></td>
-      <td><span><code>grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3</code> maps to <code>row row-cols-1 row-cols-md-2 row-cols-lg-3</code>.</span></td>
+      <td><span><code>grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3</code> maps to
+          <code>row row-cols-1 row-cols-md-2 row-cols-lg-3</code>.</span></td>
     </tr>
     <tr>
       <td><strong><span>Arbitrary Values (`[#123456]`, `top-[17px]`)</span></strong></td>
       <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
-      <td><span>Ad-hoc JIT bracket syntax (e.g., <code>w-[347px]</code>) cannot be guessed by static regex. Use scoped CSS custom properties or token variables (<code>--boodoo-spacer-*</code>).</span></td>
+      <td><span>Ad-hoc JIT bracket syntax (e.g., <code>w-[347px]</code>) cannot be guessed by static regex. Use scoped
+          CSS custom properties or token variables (<code>--boodoo-spacer-*</code>).</span></td>
     </tr>
     <tr>
       <td><strong><span>Dynamic State Modifiers (`group-hover:*`, `peer-*`)</span></strong></td>
       <td><span class="badge bg-warning text-dark"><span>Limitation</span></span></td>
-      <td><span>Tailwind compound peer/group states require custom CSS rules or CSS <code>:has()</code> parent selectors supported natively in modern browsers.</span></td>
+      <td><span>Tailwind compound peer/group states require custom CSS rules or CSS <code>:has()</code> parent selectors
+          supported natively in modern browsers.</span></td>
     </tr>
   </tbody>
 </table>

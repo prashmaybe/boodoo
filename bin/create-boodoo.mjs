@@ -2759,7 +2759,7 @@ document.getElementById('toast-trigger')?.addEventListener('click', () => {
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h2 class="h5 mb-3">Quick Component Test</h2>
-          <div class="mb-3">
+          <div class="mb-2">
             <label class="form-label" for="sample-input">Sample Input</label>
             <input type="text" class="form-control" id="sample-input" name="sample-input" placeholder="Type something...">
           </div>
@@ -2800,7 +2800,7 @@ document.getElementById('toast-trigger')?.addEventListener('click', () => {
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h2 class="h5 mb-3">Quick Component Test</h2>
-          <div class="mb-3">
+          <div class="mb-2">
             <label class="form-label" for="sample-input">Sample Input</label>
             <input type="text" class="form-control" id="sample-input" name="sample-input" placeholder="Type something...">
           </div>

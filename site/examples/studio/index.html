@@ -61,13 +61,13 @@
 
 <body>
   <!-- Header Bar -->
-  <header class="navbar navbar-dark sticky-top bg-dark flex-nowrap py-2 px-3 shadow">
+  <header class="navbar navbar-dark sticky-top bg-dark flex-nowrap py-1 px-2 shadow">
     <div class="d-flex align-items-center gap-2">
       <a class="navbar-brand me-0 fs-6 fw-bold text-white d-flex align-items-center gap-2" href="../index.html">
         <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="22" width="22">
         <span>Boodoo Component Studio</span>
       </a>
-      <span class="badge bg-primary-soft text-primary rounded-pill px-2">MVP</span>
+      <span class="badge bg-primary-soft rounded-pill px-2">MVP</span>
     </div>
     <div class="d-flex align-items-center gap-2">
       <div class="btn-group btn-group-sm" role="group" aria-label="Density selector">
@@ -78,7 +78,7 @@
         aria-label="Toggle theme">
         <i class="hi-sun text-warning" aria-hidden="true" id="themeIcon"></i>
       </button>
-      <a href="../../docs/getting-started/react.html" class="btn btn-sm btn-primary rounded-pill px-3">
+      <a href="../../docs/getting-started/react.html" class="btn btn-sm btn-primary rounded-pill px-2">
         <span>React Kit Docs</span>
       </a>
     </div>
@@ -87,8 +87,8 @@
   <div class="container-fluid">
     <div class="row studio-viewport">
       <!-- Left Sidebar Nav -->
-      <aside class="col-md-3 studio-sidebar p-2 mt-0">
-        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-3"><span>Component Library</span></h6>
+      <aside class="col-md-3 studio-sidebar px-1 py-2 mt-0">
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider"><span>Component Library</span></h6>
         <div class="list-group list-group-flush mb-2" id="componentNavList">
           <button type="button" class="list-group-item list-group-item-action active rounded-2 mb-1"
             data-component="buttons">
@@ -108,8 +108,8 @@
           </button>
         </div>
 
-        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-2"><span>Interactive Props</span></h6>
-        <div class="mb-3">
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider"><span>Interactive Props</span></h6>
+        <div class="mb-2">
           <label class="form-label fs-7 fw-medium" for="variantPicker"><span>Variant</span></label>
           <select class="form-select form-select-sm" id="variantPicker" name="variantPicker">
             <option value="primary"><span>primary</span></option>
@@ -121,7 +121,7 @@
             <option value="dark"><span>dark</span></option>
           </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label class="form-label fs-7 fw-medium" for="sizePicker"><span>Size</span></label>
           <select class="form-select form-select-sm" id="sizePicker" name="sizePicker">
             <option value="sm"><span>sm (Small)</span></option>
@@ -136,8 +136,8 @@
       </aside>
 
       <!-- Main Canvas -->
-      <main class="col-md-9 studio-canvas p-2" id="studioMainCanvas">
-        <div class="d-flex align-items-center justify-content-between mb-3">
+      <main class="col-md-9 studio-canvas p-2 mt-0" id="studioMainCanvas">
+        <div class="d-flex align-items-center justify-content-between mb-2">
           <div>
             <h2 class="fw-bold" id="sectionTitle"><span>Buttons &amp; Badges</span></h2>
             <p class="text-muted fs-7 mb-0" id="sectionDesc"><span>Modular button controls and count tags matching React
@@ -149,14 +149,14 @@
         </div>
 
         <!-- Live Preview Stage -->
-        <div class="preview-box p-2 mb-2 shadow-sm" id="previewContainer">
-          <div id="liveStage" class="d-flex flex-wrap align-items-center gap-3">
+        <div class="preview-box p-2 mb-2 shadow-sm boodoo" id="previewContainer">
+          <div id="liveStage" class="d-flex flex-wrap align-items-center gap-2">
             <!-- Dynamically injected live controls -->
           </div>
         </div>
 
         <!-- Live Code Inspector -->
-        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-2"><span>JSX Code Representation</span></h6>
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider"><span>JSX Code Representation</span></h6>
         <div class="code-preview-pane mb-2">
           <pre class="mb-0"><code id="codeSnippetPane">// JSX code will update here dynamically</code></pre>
         </div>
@@ -174,6 +174,7 @@
       let isDisabled = false;
       let currentDensity = 'normal';
 
+      const previewContainer = document.getElementById('previewContainer');
       const stage = document.getElementById('liveStage');
       const snippet = document.getElementById('codeSnippetPane');
       const sectionTitle = document.getElementById('sectionTitle');
@@ -222,7 +223,7 @@
           badge.innerHTML = '<span>Badge Tag</span>';
           stage.appendChild(badge);
 
-          code = `import { Button, Badge } from 'boodoo/react';\n\nexport function Demo() {\n  return (\n    <div className="d-flex align-items-center gap-2">\n      <Button variant="${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''}>\n        Solid Button\n      </Button>\n      <Button variant="outline-${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''}>\n        Outline Button\n      </Button>\n      <Badge variant="${currentVariant}">\n        Badge Tag\n      </Badge>\n    </div>\n  );\n}`;
+          code = `import { Button, Badge } from 'boodoo/react';\n\nexport function Demo() {\n  return (\n    <div className="d-flex align-items-center gap-2">\n      <Button variant="${currentVariant}" size="${currentSize}"${currentDensity === 'compact' ? ' density="compact"' : ''}${isDisabled ? ' disabled' : ''}>\n        Solid Button\n      </Button>\n      <Button variant="outline-${currentVariant}" size="${currentSize}"${currentDensity === 'compact' ? ' density="compact"' : ''}${isDisabled ? ' disabled' : ''}>\n        Outline Button\n      </Button>\n      <Badge variant="${currentVariant}">\n        Badge Tag\n      </Badge>\n    </div>\n  );\n}`;
         } else if (currentCategory === 'forms') {
           sectionTitle.innerHTML = '<span>Form Controls &amp; Fields</span>';
           sectionDesc.innerHTML = '<span>Accessible form fields with automatic label, ID, aria-describedby and validation binding.</span>';
@@ -254,7 +255,7 @@
 
           stage.appendChild(wrapper);
 
-          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      variant="${safeVariant}"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input\n        type="email"\n        size="${currentSize}"\n        variant="${safeVariant}"\n        placeholder="user@company.com"${isDisabled ? '\n        disabled' : ''}\n      />\n    </Field>\n  );\n}`;
+          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      variant="${safeVariant}"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input\n        type="email"\n        size="${currentSize}"\n        variant="${safeVariant}"${currentDensity === 'compact' ? '\n        density="compact"' : ''}\n        placeholder="user@company.com"${isDisabled ? '\n        disabled' : ''}\n      />\n    </Field>\n  );\n}`;
         } else if (currentCategory === 'combobox') {
           sectionTitle.innerHTML = '<span>Combobox &amp; Autocomplete</span>';
           sectionDesc.innerHTML = '<span>Fuzzy accent-insensitive filtering with secondary metadata and keyboard navigation.</span>';
@@ -303,7 +304,7 @@
             window.boodoo.Combobox.getOrCreateInstance(cbEl);
           }
 
-          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n  { label: 'Marie Curie', value: 'curie', meta: 'Poland / France' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
+          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n  { label: 'Marie Curie', value: 'curie', meta: 'Poland / France' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"${currentDensity === 'compact' ? '\n      density="compact"' : ''}\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
         } else if (currentCategory === 'table') {
           sectionTitle.innerHTML = '<span>Table &amp; Data Display</span>';
           sectionDesc.innerHTML = '<span>Declarative data tables with controlled column sorting and expandable row records.</span>';
@@ -400,7 +401,7 @@
           wrapper.innerHTML = `<table class="table table-hover align-middle mb-0${tableSizeClass}"><thead class="table-light"><tr><th scope="col"><span>Name</span></th><th scope="col"><span>Role</span></th><th scope="col"><span>Status</span></th></tr></thead><tbody><tr><td><strong><span>Auth Microservice</span></strong></td><td><span>Security</span></td><td><span class="badge bg-${currentVariant}"><span>Active</span></span></td></tr><tr><td><strong><span>Worker Queue</span></strong></td><td><span>Async Jobs</span></td><td><span class="badge bg-secondary"><span>Idle</span></span></td></tr></tbody></table>`;
           stage.appendChild(wrapper);
 
-          code = `import { Table, Badge } from 'boodoo/react';\n\nconst columns = [\n  { key: 'name', title: 'Name', sortable: true },\n  { key: 'role', title: 'Role' },\n  { key: 'status', title: 'Status', render: (val) => <Badge variant={val === 'Active' ? '${currentVariant}' : 'secondary'}>{val}</Badge> },\n];\n\nconst data = [\n  { id: '1', name: 'Auth Microservice', role: 'Security', status: 'Active' },\n  { id: '2', name: 'Worker Queue', role: 'Async Jobs', status: 'Idle' },\n];\n\nexport function TableDemo() {\n  return (\n    <Table columns={columns} data={data} keyField="id"${currentSize === 'sm' ? ' dense' : ''} />\n  );\n}`;
+          code = `import { Table, Badge } from 'boodoo/react';\n\nconst columns = [\n  { key: 'name', title: 'Name', sortable: true },\n  { key: 'role', title: 'Role' },\n  { key: 'status', title: 'Status', render: (val) => <Badge variant={val === 'Active' ? '${currentVariant}' : 'secondary'}>{val}</Badge> },\n];\n\nconst data = [\n  { id: '1', name: 'Auth Microservice', role: 'Security', status: 'Active' },\n  { id: '2', name: 'Worker Queue', role: 'Async Jobs', status: 'Idle' },\n];\n\nexport function TableDemo() {\n  return (\n    <Table columns={columns} data={data} keyField="id"${currentSize === 'sm' ? ' dense' : ''}${currentDensity === 'compact' ? ' density="compact"' : ''} />\n  );\n}`;
         } else if (currentCategory === 'dialogs') {
           sectionTitle.innerHTML = '<span>Dialogs &amp; Barriers</span>';
           sectionDesc.innerHTML = '<span>Modal dialogs and type-to-confirm barrier overlays for destructive actions.</span>';
@@ -415,7 +416,7 @@
           };
           stage.appendChild(btnLaunch);
 
-          code = `import { useState } from 'react';\nimport { ConfirmDialog, Button } from 'boodoo/react';\n\nexport function BarrierDemo() {\n  const [isOpen, setIsOpen] = useState(false);\n  return (\n    <>\n      <Button variant="${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''} onClick={() => setIsOpen(true)}>\n        Launch Dialog\n      </Button>\n      <ConfirmDialog\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={() => setIsOpen(false)}\n        title="Delete Production Database"\n        message="This operation cannot be undone."\n        mustMatch="DELETE DATABASE"\n      />\n    </>\n  );\n}`;
+          code = `import { useState } from 'react';\nimport { ConfirmDialog, Button } from 'boodoo/react';\n\nexport function BarrierDemo() {\n  const [isOpen, setIsOpen] = useState(false);\n  return (\n    <>\n      <Button variant="${currentVariant}" size="${currentSize}"${currentDensity === 'compact' ? ' density="compact"' : ''}${isDisabled ? ' disabled' : ''} onClick={() => setIsOpen(true)}>\n        Launch Dialog\n      </Button>\n      <ConfirmDialog\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={() => setIsOpen(false)}\n        title="Delete Production Database"\n        message="This operation cannot be undone."\n        mustMatch="DELETE DATABASE"\n      />\n    </>\n  );\n}`;
         }
 
         snippet.textContent = code;
@@ -454,14 +455,20 @@
         btnDensityNormal.classList.add('active');
         btnDensityCompact.classList.remove('active');
         document.documentElement.removeAttribute('data-density');
+        previewContainer.removeAttribute('data-density');
+        previewContainer.classList.remove('boodoo-density-compact');
         currentDensity = 'normal';
+        updateStage();
       });
 
       btnDensityCompact.addEventListener('click', () => {
         btnDensityCompact.classList.add('active');
         btnDensityNormal.classList.remove('active');
         document.documentElement.setAttribute('data-density', 'compact');
+        previewContainer.setAttribute('data-density', 'compact');
+        previewContainer.classList.add('boodoo-density-compact');
         currentDensity = 'compact';
+        updateStage();
       });
 
       themeToggleBtn.addEventListener('click', () => {
