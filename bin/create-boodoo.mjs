@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.2.5';
+const BOODOO_VERSION = '1.2.6';
 
 export function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -80,6 +80,11 @@ export function parseArgs(rawArgs = []) {
     rn: '10',
     'react-native': '10',
     mobile: '10',
+    11: '11',
+    admin: '11',
+    dashboard: '11',
+    'react-admin': '11',
+    'admin-dashboard': '11',
   };
 
   const normalizedTemplate = template ? tMap[template.toLowerCase()] || template : '';
@@ -1845,6 +1850,846 @@ const styles = StyleSheet.create({
 `;
       fs.writeFileSync(path.join(targetDir, 'App.js'), appJs);
     }
+  } else if (choice === '11') {
+    // 11) React + Vite Admin Dashboard (Boodoo DOM Kit MVP)
+    templateName = 'React Admin Dashboard (Boodoo DOM Kit)';
+    startCmd = 'npm run dev';
+
+    const pkg = {
+      name: projectName,
+      version: '0.1.0',
+      private: true,
+      type: 'module',
+      scripts: {
+        dev: 'vite',
+        build: isTs ? 'tsc && vite build' : 'vite build',
+        preview: 'vite preview',
+      },
+      dependencies: {
+        boodoo: `^${BOODOO_VERSION}`,
+        react: '^18.3.0',
+        'react-dom': '^18.3.0',
+      },
+      devDependencies: {
+        '@vitejs/plugin-react': '^4.3.0',
+        vite: '^5.4.0',
+        ...(isTs
+          ? {
+              typescript: '^5.4.0',
+              '@types/react': '^18.3.0',
+              '@types/react-dom': '^18.3.0',
+            }
+          : {}),
+      },
+    };
+    fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
+
+    const viteConfig = `import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\n\nexport default defineConfig({\n  plugins: [react()],\n});\n`;
+    fs.writeFileSync(path.join(targetDir, isTs ? 'vite.config.ts' : 'vite.config.js'), viteConfig);
+
+    const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${projectName} · Boodoo React Admin</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.${isTs ? 'tsx' : 'jsx'}"></script>
+  </body>
+</html>`;
+    fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+
+    fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+    if (isTs) {
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2020',
+          useDefineForClassFields: true,
+          lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+          module: 'ESNext',
+          skipLibCheck: true,
+          moduleResolution: 'bundler',
+          resolveJsonModule: true,
+          isolatedModules: true,
+          noEmit: true,
+          jsx: 'react-jsx',
+          strict: true,
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const mainTsx = `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport 'boodoo/css';\nimport 'boodoo/css/react';\nimport App from './App.tsx';\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.tsx'), mainTsx);
+
+      const appTsx = `import React, { useState } from 'react';
+import {
+  BoodooProvider,
+  Button,
+  Badge,
+  Card,
+  Table,
+  Combobox,
+  StatWidget,
+  StickyHeader,
+  ConfirmDialog,
+} from 'boodoo/react';
+
+interface MetricItem {
+  id: string;
+  name: string;
+  role: string;
+  status: 'active' | 'pending';
+  requests: number;
+}
+
+const initialData: MetricItem[] = [
+  { id: '1', name: 'Auth Gateway', role: 'Security', status: 'active', requests: 142000 },
+  { id: '2', name: 'Billing Worker', role: 'Payments', status: 'active', requests: 58400 },
+  { id: '3', name: 'Notification Hub', role: 'Messaging', status: 'pending', requests: 12890 },
+  { id: '4', name: 'Telemetry Collector', role: 'Observability', status: 'active', requests: 890400 },
+];
+
+export default function App(): React.JSX.Element {
+  const [data, setData] = useState<MetricItem[]>(initialData);
+  const [density, setDensity] = useState<'normal' | 'compact'>('normal');
+  const [sortCol, setSortCol] = useState<string>('name');
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
+  const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(false);
+
+  return (
+    <BoodooProvider density={density}>
+      <div className="min-vh-100 bg-light">
+        <StickyHeader
+          title="${projectName}"
+          subtitle="Boodoo React DOM Component Kit Admin Dashboard"
+          actions={
+            <div className="d-flex align-items-center gap-2">
+              <Button
+                variant={density === 'compact' ? 'primary' : 'outline-secondary'}
+                size="sm"
+                onClick={() => setDensity((d) => (d === 'compact' ? 'normal' : 'compact'))}
+              >
+                {density === 'compact' ? 'Compact Mode' : 'Normal Density'}
+              </Button>
+              <Button variant="danger" size="sm" onClick={() => setIsConfirmOpen(true)}>
+                Purge Cache
+              </Button>
+            </div>
+          }
+        />
+
+        <div className="container py-4">
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <StatWidget
+                title="Total Requests"
+                value="1,103,690"
+                change="+14.2% this week"
+                trend="up"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Active Microservices"
+                value="4 Clusters"
+                change="99.99% uptime SLA"
+                trend="neutral"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Security Verification"
+                value="Zero Violations"
+                change="Checked 2m ago"
+                trend="up"
+              />
+            </div>
+          </div>
+
+          <Card className="mb-4">
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-0"><span>Cluster Services Overview</span></h5>
+                <small className="text-muted"><span>Live microservices running under Boodoo DOM Kit</span></small>
+              </div>
+              <div style={{ width: 260 }}>
+                <Combobox
+                  items={[
+                    { label: 'All Clusters', value: 'all' },
+                    { label: 'Security & Auth', value: 'auth' },
+                    { label: 'Payments', value: 'payments' },
+                    { label: 'Observability', value: 'telemetry' },
+                  ]}
+                  placeholder="Filter service type..."
+                  onChange={(val) => console.log('Selected:', val)}
+                />
+              </div>
+            </Card.Header>
+
+            <Card.Body>
+              <Table<MetricItem>
+                keyField="id"
+                columns={[
+                  { key: 'name', title: 'Service Name', sortable: true },
+                  { key: 'role', title: 'Category', sortable: true },
+                  {
+                    key: 'status',
+                    title: 'Status',
+                    render: (val: string) => (
+                      <Badge variant={val === 'active' ? 'success' : 'warning'}>
+                        {val}
+                      </Badge>
+                    ),
+                  },
+                  {
+                    key: 'requests',
+                    title: 'Requests / 24h',
+                    sortable: true,
+                    render: (val: number) => val.toLocaleString(),
+                  },
+                ]}
+                data={data}
+                sortColumn={sortCol}
+                sortDirection={sortDir}
+                onSort={(col, dir) => {
+                  setSortCol(col);
+                  setSortDir(dir);
+                  setData((prev) =>
+                    [...prev].sort((a: any, b: any) =>
+                      dir === 'asc'
+                        ? a[col] > b[col] ? 1 : -1
+                        : a[col] < b[col] ? 1 : -1
+                    )
+                  );
+                }}
+                expandedRowRender={(row) => (
+                  <div className="p-3 bg-light rounded text-muted fs-7">
+                    <strong>Service Diagnostic:</strong> {row.name} operates in category {row.role} with zero anomalies recorded.
+                  </div>
+                )}
+              />
+            </Card.Body>
+          </Card>
+        </div>
+
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          onClose={() => setIsConfirmOpen(false)}
+          onConfirm={() => {
+            setIsConfirmOpen(false);
+          }}
+          title="Purge Telemetry Cache"
+          message="This operation clears warm in-memory cache buffers across all active clusters."
+          mustMatch="PURGE CACHE"
+          confirmLabel="Purge Everything"
+        />
+      </div>
+    </BoodooProvider>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'App.tsx'), appTsx);
+    } else {
+      // JavaScript
+      const jsconfig = {
+        compilerOptions: {
+          target: 'ES2020',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          jsx: 'react-jsx',
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'jsconfig.json'), JSON.stringify(jsconfig, null, 2));
+
+      const mainJsx = `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport 'boodoo/css';\nimport 'boodoo/css/react';\nimport App from './App.jsx';\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.jsx'), mainJsx);
+
+      const appJsx = `import React, { useState } from 'react';
+import {
+  BoodooProvider,
+  Button,
+  Badge,
+  Card,
+  Table,
+  Combobox,
+  StatWidget,
+  StickyHeader,
+  ConfirmDialog,
+} from 'boodoo/react';
+
+const initialData = [
+  { id: '1', name: 'Auth Gateway', role: 'Security', status: 'active', requests: 142000 },
+  { id: '2', name: 'Billing Worker', role: 'Payments', status: 'active', requests: 58400 },
+  { id: '3', name: 'Notification Hub', role: 'Messaging', status: 'pending', requests: 12890 },
+  { id: '4', name: 'Telemetry Collector', role: 'Observability', status: 'active', requests: 890400 },
+];
+
+export default function App() {
+  const [data, setData] = useState(initialData);
+  const [density, setDensity] = useState('normal');
+  const [sortCol, setSortCol] = useState('name');
+  const [sortDir, setSortDir] = useState('asc');
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+  return (
+    <BoodooProvider density={density}>
+      <div className="min-vh-100 bg-light">
+        <StickyHeader
+          title="${projectName}"
+          subtitle="Boodoo React DOM Component Kit Admin Dashboard"
+          actions={
+            <div className="d-flex align-items-center gap-2">
+              <Button
+                variant={density === 'compact' ? 'primary' : 'outline-secondary'}
+                size="sm"
+                onClick={() => setDensity((d) => (d === 'compact' ? 'normal' : 'compact'))}
+              >
+                {density === 'compact' ? 'Compact Mode' : 'Normal Density'}
+              </Button>
+              <Button variant="danger" size="sm" onClick={() => setIsConfirmOpen(true)}>
+                Purge Cache
+              </Button>
+            </div>
+          }
+        />
+
+        <div className="container py-4">
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <StatWidget
+                title="Total Requests"
+                value="1,103,690"
+                change="+14.2% this week"
+                trend="up"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Active Microservices"
+                value="4 Clusters"
+                change="99.99% uptime SLA"
+                trend="neutral"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Security Verification"
+                value="Zero Violations"
+                change="Checked 2m ago"
+                trend="up"
+              />
+            </div>
+          </div>
+
+          <Card className="mb-4">
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-0"><span>Cluster Services Overview</span></h5>
+                <small className="text-muted"><span>Live microservices running under Boodoo DOM Kit</span></small>
+              </div>
+              <div style={{ width: 260 }}>
+                <Combobox
+                  items={[
+                    { label: 'All Clusters', value: 'all' },
+                    { label: 'Security & Auth', value: 'auth' },
+                    { label: 'Payments', value: 'payments' },
+                    { label: 'Observability', value: 'telemetry' },
+                  ]}
+                  placeholder="Filter service type..."
+                  onChange={(val) => console.log('Selected:', val)}
+                />
+              </div>
+            </Card.Header>
+
+            <Card.Body>
+              <Table
+                keyField="id"
+                columns={[
+                  { key: 'name', title: 'Service Name', sortable: true },
+                  { key: 'role', title: 'Category', sortable: true },
+                  {
+                    key: 'status',
+                    title: 'Status',
+                    render: (val) => (
+                      <Badge variant={val === 'active' ? 'success' : 'warning'}>
+                        {val}
+                      </Badge>
+                    ),
+                  },
+                  {
+                    key: 'requests',
+                    title: 'Requests / 24h',
+                    sortable: true,
+                    render: (val) => val.toLocaleString(),
+                  },
+                ]}
+                data={data}
+                sortColumn={sortCol}
+                sortDirection={sortDir}
+                onSort={(col, dir) => {
+                  setSortCol(col);
+                  setSortDir(dir);
+                  setData((prev) =>
+                    [...prev].sort((a, b) =>
+                      dir === 'asc'
+                        ? a[col] > b[col] ? 1 : -1
+                        : a[col] < b[col] ? 1 : -1
+                    )
+                  );
+                }}
+                expandedRowRender={(row) => (
+                  <div className="p-3 bg-light rounded text-muted fs-7">
+                    <strong>Service Diagnostic:</strong> {row.name} operates in category {row.role} with zero anomalies recorded.
+                  </div>
+                )}
+              />
+            </Card.Body>
+          </Card>
+        </div>
+
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          onClose={() => setIsConfirmOpen(false)}
+          onConfirm={() => {
+            setIsConfirmOpen(false);
+          }}
+          title="Purge Telemetry Cache"
+          message="This operation clears warm in-memory cache buffers across all active clusters."
+          mustMatch="PURGE CACHE"
+          confirmLabel="Purge Everything"
+        />
+      </div>
+    </BoodooProvider>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'App.jsx'), appJsx);
+    }
+  } else if (choice === '11') {
+    // 11) React + Vite Admin Dashboard (Boodoo DOM Kit MVP)
+    templateName = 'React Admin Dashboard (Boodoo DOM Kit)';
+    startCmd = 'npm run dev';
+
+    const pkg = {
+      name: projectName,
+      version: '0.1.0',
+      private: true,
+      type: 'module',
+      scripts: {
+        dev: 'vite',
+        build: isTs ? 'tsc && vite build' : 'vite build',
+        preview: 'vite preview',
+      },
+      dependencies: {
+        boodoo: `^${BOODOO_VERSION}`,
+        react: '^18.3.0',
+        'react-dom': '^18.3.0',
+      },
+      devDependencies: {
+        '@vitejs/plugin-react': '^4.3.0',
+        vite: '^5.4.0',
+        ...(isTs
+          ? {
+              typescript: '^5.4.0',
+              '@types/react': '^18.3.0',
+              '@types/react-dom': '^18.3.0',
+            }
+          : {}),
+      },
+    };
+    fs.writeFileSync(path.join(targetDir, 'package.json'), JSON.stringify(pkg, null, 2));
+
+    const viteConfig = `import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\n\nexport default defineConfig({\n  plugins: [react()],\n});\n`;
+    fs.writeFileSync(path.join(targetDir, isTs ? 'vite.config.ts' : 'vite.config.js'), viteConfig);
+
+    const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${projectName} · Boodoo React Admin</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.${isTs ? 'tsx' : 'jsx'}"></script>
+  </body>
+</html>`;
+    fs.writeFileSync(path.join(targetDir, 'index.html'), html);
+
+    fs.mkdirSync(path.join(targetDir, 'src'), { recursive: true });
+
+    if (isTs) {
+      const tsconfig = {
+        compilerOptions: {
+          target: 'ES2020',
+          useDefineForClassFields: true,
+          lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+          module: 'ESNext',
+          skipLibCheck: true,
+          moduleResolution: 'bundler',
+          resolveJsonModule: true,
+          isolatedModules: true,
+          noEmit: true,
+          jsx: 'react-jsx',
+          strict: true,
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+
+      const mainTsx = `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport 'boodoo/css';\nimport 'boodoo/css/react';\nimport App from './App.tsx';\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.tsx'), mainTsx);
+
+      const appTsx = `import React, { useState } from 'react';
+import {
+  BoodooProvider,
+  Button,
+  Badge,
+  Card,
+  Table,
+  Combobox,
+  StatWidget,
+  StickyHeader,
+  ConfirmDialog,
+} from 'boodoo/react';
+
+interface MetricItem {
+  id: string;
+  name: string;
+  role: string;
+  status: 'active' | 'pending';
+  requests: number;
+}
+
+const initialData: MetricItem[] = [
+  { id: '1', name: 'Auth Gateway', role: 'Security', status: 'active', requests: 142000 },
+  { id: '2', name: 'Billing Worker', role: 'Payments', status: 'active', requests: 58400 },
+  { id: '3', name: 'Notification Hub', role: 'Messaging', status: 'pending', requests: 12890 },
+  { id: '4', name: 'Telemetry Collector', role: 'Observability', status: 'active', requests: 890400 },
+];
+
+export default function App(): React.JSX.Element {
+  const [data, setData] = useState<MetricItem[]>(initialData);
+  const [density, setDensity] = useState<'normal' | 'compact'>('normal');
+  const [sortCol, setSortCol] = useState<string>('name');
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
+  const [isConfirmOpen, setIsConfirmOpen] = useState<boolean>(false);
+
+  return (
+    <BoodooProvider density={density}>
+      <div className="min-vh-100 bg-light">
+        <StickyHeader
+          title="${projectName}"
+          subtitle="Boodoo React DOM Component Kit Admin Dashboard"
+          actions={
+            <div className="d-flex align-items-center gap-2">
+              <Button
+                variant={density === 'compact' ? 'primary' : 'outline-secondary'}
+                size="sm"
+                onClick={() => setDensity((d) => (d === 'compact' ? 'normal' : 'compact'))}
+              >
+                {density === 'compact' ? 'Compact Mode' : 'Normal Density'}
+              </Button>
+              <Button variant="danger" size="sm" onClick={() => setIsConfirmOpen(true)}>
+                Purge Cache
+              </Button>
+            </div>
+          }
+        />
+
+        <div className="container py-4">
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <StatWidget
+                title="Total Requests"
+                value="1,103,690"
+                change="+14.2% this week"
+                trend="up"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Active Microservices"
+                value="4 Clusters"
+                change="99.99% uptime SLA"
+                trend="neutral"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Security Verification"
+                value="Zero Violations"
+                change="Checked 2m ago"
+                trend="up"
+              />
+            </div>
+          </div>
+
+          <Card className="mb-4">
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-0"><span>Cluster Services Overview</span></h5>
+                <small className="text-muted"><span>Live microservices running under Boodoo DOM Kit</span></small>
+              </div>
+              <div style={{ width: 260 }}>
+                <Combobox
+                  items={[
+                    { label: 'All Clusters', value: 'all' },
+                    { label: 'Security & Auth', value: 'auth' },
+                    { label: 'Payments', value: 'payments' },
+                    { label: 'Observability', value: 'telemetry' },
+                  ]}
+                  placeholder="Filter service type..."
+                  onChange={(val) => console.log('Selected:', val)}
+                />
+              </div>
+            </Card.Header>
+
+            <Card.Body>
+              <Table<MetricItem>
+                keyField="id"
+                columns={[
+                  { key: 'name', title: 'Service Name', sortable: true },
+                  { key: 'role', title: 'Category', sortable: true },
+                  {
+                    key: 'status',
+                    title: 'Status',
+                    render: (val: string) => (
+                      <Badge variant={val === 'active' ? 'success' : 'warning'}>
+                        {val}
+                      </Badge>
+                    ),
+                  },
+                  {
+                    key: 'requests',
+                    title: 'Requests / 24h',
+                    sortable: true,
+                    render: (val: number) => val.toLocaleString(),
+                  },
+                ]}
+                data={data}
+                sortColumn={sortCol}
+                sortDirection={sortDir}
+                onSort={(col, dir) => {
+                  setSortCol(col);
+                  setSortDir(dir);
+                  setData((prev) =>
+                    [...prev].sort((a: any, b: any) =>
+                      dir === 'asc'
+                        ? a[col] > b[col] ? 1 : -1
+                        : a[col] < b[col] ? 1 : -1
+                    )
+                  );
+                }}
+                expandedRowRender={(row) => (
+                  <div className="p-3 bg-light rounded text-muted fs-7">
+                    <strong>Service Diagnostic:</strong> {row.name} operates in category {row.role} with zero anomalies recorded.
+                  </div>
+                )}
+              />
+            </Card.Body>
+          </Card>
+        </div>
+
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          onClose={() => setIsConfirmOpen(false)}
+          onConfirm={() => {
+            setIsConfirmOpen(false);
+          }}
+          title="Purge Telemetry Cache"
+          message="This operation clears warm in-memory cache buffers across all active clusters."
+          mustMatch="PURGE CACHE"
+          confirmLabel="Purge Everything"
+        />
+      </div>
+    </BoodooProvider>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'App.tsx'), appTsx);
+    } else {
+      // JavaScript
+      const jsconfig = {
+        compilerOptions: {
+          target: 'ES2020',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          jsx: 'react-jsx',
+        },
+        include: ['src'],
+      };
+      fs.writeFileSync(path.join(targetDir, 'jsconfig.json'), JSON.stringify(jsconfig, null, 2));
+
+      const mainJsx = `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport 'boodoo/css';\nimport 'boodoo/css/react';\nimport App from './App.jsx';\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'main.jsx'), mainJsx);
+
+      const appJsx = `import React, { useState } from 'react';
+import {
+  BoodooProvider,
+  Button,
+  Badge,
+  Card,
+  Table,
+  Combobox,
+  StatWidget,
+  StickyHeader,
+  ConfirmDialog,
+} from 'boodoo/react';
+
+const initialData = [
+  { id: '1', name: 'Auth Gateway', role: 'Security', status: 'active', requests: 142000 },
+  { id: '2', name: 'Billing Worker', role: 'Payments', status: 'active', requests: 58400 },
+  { id: '3', name: 'Notification Hub', role: 'Messaging', status: 'pending', requests: 12890 },
+  { id: '4', name: 'Telemetry Collector', role: 'Observability', status: 'active', requests: 890400 },
+];
+
+export default function App() {
+  const [data, setData] = useState(initialData);
+  const [density, setDensity] = useState('normal');
+  const [sortCol, setSortCol] = useState('name');
+  const [sortDir, setSortDir] = useState('asc');
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+  return (
+    <BoodooProvider density={density}>
+      <div className="min-vh-100 bg-light">
+        <StickyHeader
+          title="${projectName}"
+          subtitle="Boodoo React DOM Component Kit Admin Dashboard"
+          actions={
+            <div className="d-flex align-items-center gap-2">
+              <Button
+                variant={density === 'compact' ? 'primary' : 'outline-secondary'}
+                size="sm"
+                onClick={() => setDensity((d) => (d === 'compact' ? 'normal' : 'compact'))}
+              >
+                {density === 'compact' ? 'Compact Mode' : 'Normal Density'}
+              </Button>
+              <Button variant="danger" size="sm" onClick={() => setIsConfirmOpen(true)}>
+                Purge Cache
+              </Button>
+            </div>
+          }
+        />
+
+        <div className="container py-4">
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <StatWidget
+                title="Total Requests"
+                value="1,103,690"
+                change="+14.2% this week"
+                trend="up"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Active Microservices"
+                value="4 Clusters"
+                change="99.99% uptime SLA"
+                trend="neutral"
+              />
+            </div>
+            <div className="col-md-4">
+              <StatWidget
+                title="Security Verification"
+                value="Zero Violations"
+                change="Checked 2m ago"
+                trend="up"
+              />
+            </div>
+          </div>
+
+          <Card className="mb-4">
+            <Card.Header className="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-0"><span>Cluster Services Overview</span></h5>
+                <small className="text-muted"><span>Live microservices running under Boodoo DOM Kit</span></small>
+              </div>
+              <div style={{ width: 260 }}>
+                <Combobox
+                  items={[
+                    { label: 'All Clusters', value: 'all' },
+                    { label: 'Security & Auth', value: 'auth' },
+                    { label: 'Payments', value: 'payments' },
+                    { label: 'Observability', value: 'telemetry' },
+                  ]}
+                  placeholder="Filter service type..."
+                  onChange={(val) => console.log('Selected:', val)}
+                />
+              </div>
+            </Card.Header>
+
+            <Card.Body>
+              <Table
+                keyField="id"
+                columns={[
+                  { key: 'name', title: 'Service Name', sortable: true },
+                  { key: 'role', title: 'Category', sortable: true },
+                  {
+                    key: 'status',
+                    title: 'Status',
+                    render: (val) => (
+                      <Badge variant={val === 'active' ? 'success' : 'warning'}>
+                        {val}
+                      </Badge>
+                    ),
+                  },
+                  {
+                    key: 'requests',
+                    title: 'Requests / 24h',
+                    sortable: true,
+                    render: (val) => val.toLocaleString(),
+                  },
+                ]}
+                data={data}
+                sortColumn={sortCol}
+                sortDirection={sortDir}
+                onSort={(col, dir) => {
+                  setSortCol(col);
+                  setSortDir(dir);
+                  setData((prev) =>
+                    [...prev].sort((a, b) =>
+                      dir === 'asc'
+                        ? a[col] > b[col] ? 1 : -1
+                        : a[col] < b[col] ? 1 : -1
+                    )
+                  );
+                }}
+                expandedRowRender={(row) => (
+                  <div className="p-3 bg-light rounded text-muted fs-7">
+                    <strong>Service Diagnostic:</strong> {row.name} operates in category {row.role} with zero anomalies recorded.
+                  </div>
+                )}
+              />
+            </Card.Body>
+          </Card>
+        </div>
+
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          onClose={() => setIsConfirmOpen(false)}
+          onConfirm={() => {
+            setIsConfirmOpen(false);
+          }}
+          title="Purge Telemetry Cache"
+          message="This operation clears warm in-memory cache buffers across all active clusters."
+          mustMatch="PURGE CACHE"
+          confirmLabel="Purge Everything"
+        />
+      </div>
+    </BoodooProvider>
+  );
+}
+`;
+      fs.writeFileSync(path.join(targetDir, 'src', 'App.jsx'), appJsx);
+    }
   } else {
     // 1) HTML5 + Sass Starter / Default
     templateName = 'HTML5 + Sass Starter';
@@ -2080,8 +2925,13 @@ export async function main() {
         BOODOO_VERSION +
         ')\x1b[0m'
     );
+    console.log(
+      ' 11) React Admin Dashboard       \x1b[90m(Vite ^5.4.0, React ^18.3.0, JS / TS, Boodoo DOM Kit v' +
+        BOODOO_VERSION +
+        ')\x1b[0m'
+    );
 
-    choice = await prompt('Choose template [1-10]', '1');
+    choice = await prompt('Choose template [1-11]', '1');
   }
 
   let isTs = parsed.isTs;

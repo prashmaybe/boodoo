@@ -196,6 +196,8 @@ test('WAI-ARIA accessibility suite (announcer, roving tabindex, focus trap, comb
   assert.ok(comboboxSrc.includes("aria-activedescendant"), 'Combobox must manage aria-activedescendant');
   assert.ok(comboboxSrc.includes("role', 'listbox'"), 'Combobox menu must have role="listbox"');
   assert.ok(comboboxSrc.includes("role', 'option'"), 'Combobox items must have role="option"');
+  assert.ok(comboboxSrc.includes("foldAccents"), 'Combobox must use foldAccents for accent-folding search');
+  assert.ok(comboboxSrc.includes("select.boodoo.combobox"), 'Combobox must dispatch select.boodoo.combobox event');
 
   // TreeView WAI-ARIA patterns
   const treeViewSrc = readFileSync(resolve(rootDir, 'js/src/tree-view.js'), 'utf8');

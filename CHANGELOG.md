@@ -7,6 +7,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.6] - 2026-11-04
+
+### Added
+- **Modular DOM React Component Kit (`boodoo/react`, `react/*`, `react/index.d.ts`)**:
+  - Published pure DOM React component architecture structured into dedicated modular submodules mirroring mobile counterparts:
+    - `react/buttons.js`: `Button`, `IconButton`, `ButtonGroup`.
+    - `react/data-display.js`: `Badge`, `Avatar`, `Chip`, `Tag`, `Divider`, `Kbd`.
+    - `react/feedback.js`: `Alert`, `Spinner`, `Progress`, `Skeleton`.
+    - `react/inputs.js`: `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Field`, `Combobox`, `OtpInput`, `RatingInput`.
+    - `react/layout.js`: `Container`, `Row`, `Col`, `Stack`, `Grid`.
+    - `react/lists.js`: `ListGroup`, `Table`.
+    - `react/navigation.js`: `Nav`, `Tabs`, `Pagination`, `Breadcrumb`, `StickyHeader`.
+    - `react/overlays.js`: `Dialog`, `ConfirmDialog`, `Modal`, `Drawer`, `Tooltip`, `Popover`.
+    - `react/surfaces.js`: `Card`, `Accordion`.
+    - `react/theme.js`: `BoodooProvider`, `useTheme`, `useDensity`.
+    - `react/typography.js`: `Heading`, `Text`.
+  - Zero React Native or DOM-hijacking script dependencies on the React web path: pure React rendering with full support for controlled and uncontrolled patterns.
+  - Complete TypeScript declarations emitted in `react/index.d.ts` covering all components, props, hooks, and context utilities.
+- **Admin & Enterprise Primitives (`react/inputs.js`, `react/overlays.js`, `react/navigation.js`)**:
+  - `Field`: Accessible form control wrapper supporting `label`, `description`, `error`, `required` indicator, and expandable "Learn more" disclosure slot with full `<label for>` association.
+  - `ConfirmDialog`: Action barrier dialog requiring user input matching a confirmation phrase (`mustMatch`) before confirming destructive workflows.
+  - `StickyHeader`: Responsive top banner that docks and compacts on scroll, providing slots for title, description, badge metadata, and action triggers.
+- **Controlled & Expandable Table Component (`react/lists.js`)**:
+  - Implemented declarative column sorting via React state (`sortColumn`, `sortDirection`, `onSort`) with WAI-ARIA `aria-sort` indicators.
+  - Added expandable companion detail rows (`expandedRowRender`, `expandedKeys`) rendered directly within the virtual React DOM tree without DOM manipulation.
+- **Accent-Insensitive Combobox & Context Meta (`react/hooks.js`, `react/inputs.js`)**:
+  - Added diacritic-folding search via `foldAccents()` for accent-insensitive search queries (e.g. searching "jose" matches "José").
+  - Added secondary context subtitle line support via `getOptionMeta()` and `item.meta` (`combobox-item-meta`).
+  - Implemented controlled and uncontrolled selection modes, ARIA listbox semantics, and keyboard navigation (`ArrowUp`, `ArrowDown`, `Enter`, `Escape`).
+- **Scoped React Stylesheets (`boodoo/css/react`, `scss/boodoo-react.scss`, `less/boodoo-react.less`)**:
+  - Generated scoped stylesheet `dist/css/boodoo-react.min.css` namespaced under `@layer boodoo` and `.boodoo`.
+  - Excludes root/element reboot resets to allow safe drop-in embedding within existing host web apps (Next.js, Vite, Remix, CRA, Astro) without style bleeding.
+- **Dynamic Host Variable Bridging (`react/theme.js`, `scss/boodoo-react.scss`, `less/boodoo-react.less`)**:
+  - Bridged host application CSS variables (`--bo-brand`, `--bo-surface`, `--bo-text`, `--bo-radius`, `--bo-border`) into Boodoo theme tokens without stylesheet recompilation.
+- **Compact Density Scale (`data-density="compact"`, `scss/boodoo-react.scss`, `less/boodoo-react.less`)**:
+  - Added compact density mode via `density="compact"` on `BoodooProvider` or `[data-density="compact"]`, tightening row heights, form padding, font sizes, and spacing for data-dense backoffices and analytics screens.
+- **Interactive Component Studio & Documentation (`site/examples/studio/index.html`, `site/src/getting-started/react.html`)**:
+  - Built interactive live Component Studio demo page showcasing React buttons, forms, tables, comboboxes, cards, and modal dialogs with real-time theme and density switching.
+  - Added official React Component Kit documentation guide at `/docs/getting-started/react.html` with Next.js App Router and Vite integration walkthroughs.
+- **CLI Starter Template 11: React Admin Dashboard (`bin/create-boodoo.mjs`)**:
+  - Added template option `11) React Admin Dashboard` supporting both TypeScript (`--ts`) and JavaScript scaffolds powered by Vite ^5.4, React ^18.3, and Boodoo DOM Kit.
+
+### Changed
+- **Modular Subpath Package Export (`package.json`)**:
+  - Added `"./css/react"` package subpath export pointing to `dist/css/boodoo-react.min.css`.
+  - Re-exported all modular React submodules from `boodoo/react` (`react/index.js`).
+- **Build Pipeline Optimization (`package.json`)**:
+  - Added `css:react` compilation tasks across Sass and Less to compile `scss/boodoo-react.scss` and `less/boodoo-react.less`.
+- **Documentation Navigation & Search Index (`site/data/docs-nav.json`, `site/assets/search.js`, `site/sitemap.xml`)**:
+  - Indexed React Component Kit documentation in navigation sidebar, sitewide modal search catalog, sitemap, and LLM reference docs (`site/llms.txt`).
+
+### Fixed
+- **Form Field Accessibility Compliance (`react/inputs.js`)**:
+  - Enforced automatic unique ID generation via React `useId()` when `id` is omitted across `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, and `Switch`, guaranteeing strict adherence to the form control identification and `<label for>` association rules.
+- **Accordion Toggle Event Cancellation Guard (`react/hooks.js`)**:
+  - Fixed `useAccordion` button handler to respect `e.defaultPrevented` before toggling expanded state, preventing unintentional collapses when child controls are clicked.
+- **Accordion State Evaluation Purity (`react/hooks.js`)**:
+  - Resolved stale panel display evaluation by reading from active helper `isExpanded(key)` rather than direct set references.
+- **Combobox Controlled Selection Sync (`react/hooks.js`)**:
+  - Corrected internal state synchronization when `value` prop is controlled externally, ensuring input display query matches selected option labels dynamically.
+
+---
+
 ## [1.2.5] - 2026-11-03
 
 ### Added

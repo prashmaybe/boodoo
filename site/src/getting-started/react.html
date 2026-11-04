@@ -1,0 +1,224 @@
+<!--
+title: React DOM Component Kit
+description: Modern, modular DOM React components for web applications with scoped stylesheets, accessible forms, tables, comboboxes, and dark mode.
+section: getting-started
+order: 17
+-->
+<h1><span>React DOM Component Kit</span></h1>
+<p class="lead"><span>Build performant, accessible web applications with <strong>@boodoo/react</strong> (<code>boodoo/react</code>). Pure React components designed specifically for web and Next.js, featuring zero DOM-hijacking scripts, native semantic HTML elements, accessible form fields, expandable tables, and scoped CSS layer integration.</span></p>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100 border">
+      <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
+        <i class="hi-code" aria-hidden="true"></i>
+      </div>
+      <h5 class="fw-bold mb-2"><span>Pure DOM Components</span></h5>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Zero React Native primitives on web. Direct semantic rendering into <code>&lt;button&gt;</code>, <code>&lt;dialog&gt;</code>, <code>&lt;table&gt;</code>, and <code>&lt;input&gt;</code>.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100 border">
+      <div class="card-icon-avatar bg-soft-info text-info mb-3">
+        <i class="hi-stack" aria-hidden="true"></i>
+      </div>
+      <h5 class="fw-bold mb-2"><span>Scoped CSS &amp; Host Theming</span></h5>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Ships under <code>@layer boodoo</code> and <code>.boodoo</code> namespace without reboot resets, avoiding style leaks into host apps.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm h-100 border">
+      <div class="card-icon-avatar bg-soft-success text-success mb-3">
+        <i class="hi-refresh" aria-hidden="true"></i>
+      </div>
+      <h5 class="fw-bold mb-2"><span>Multi-Platform Parity</span></h5>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Shares identical component names and prop mental models with <code>boodoo/react-native</code> for seamless cross-platform teams.</span></p>
+    </div>
+  </div>
+</div>
+
+<hr class="my-2">
+
+<h2 id="installation"><span>1. Installation &amp; Setup</span></h2>
+<p><span>Install Boodoo and peer dependencies into your React 18+ or Next.js 14+ project:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-bash">npm install boodoo react react-dom</code></pre>
+</div>
+
+<p><span>Import the scoped React stylesheet in your application root (e.g. <code>app/layout.tsx</code>, <code>src/main.jsx</code>, or <code>_app.tsx</code>):</span></p>
+
+<div class="highlight">
+  <pre><code class="language-typescript">import 'boodoo/css/react';
+// Or if you want the full global utility classes:
+// import 'boodoo/css';</code></pre>
+</div>
+
+<hr class="my-2">
+
+<h2 id="provider"><span>2. BoodooProvider &amp; Density</span></h2>
+<p><span>Wrap your application root with <code>BoodooProvider</code> to control themes and UI density:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { BoodooProvider, Button } from 'boodoo/react';
+
+export default function App() {
+  return (
+    &lt;BoodooProvider theme="auto" density="compact"&gt;
+      &lt;div className="p-4"&gt;
+        &lt;Button variant="primary"&gt;Compact Theme Button&lt;/Button&gt;
+      &lt;/div&gt;
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-2">
+
+<h2 id="accessible-forms"><span>3. Accessible Form Controls (`Field`)</span></h2>
+<p><span>The <code>Field</code> wrapper automatically wires <code>id</code>, <code>htmlFor</code>, <code>aria-describedby</code>, and <code>aria-invalid</code> down to form inputs:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { Field, Input, Select } from 'boodoo/react';
+
+export function UserForm() {
+  return (
+    &lt;form className="d-flex flex-column gap-3 max-w-md"&gt;
+      &lt;Field
+        label="Work Email"
+        required
+        description="We will send your verification token here."
+        learnMore="We respect your privacy. No marketing emails without consent."
+      &gt;
+        &lt;Input type="email" placeholder="alex@company.com" /&gt;
+      &lt;/Field&gt;
+
+      &lt;Field label="Account Role"&gt;
+        &lt;Select
+          options={[
+            { label: 'Administrator', value: 'admin' },
+            { label: 'Editor', value: 'editor' },
+            { label: 'Viewer', value: 'viewer' },
+          ]}
+        /&gt;
+      &lt;/Field&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-2">
+
+<h2 id="combobox"><span>4. Combobox with Accent-Folding</span></h2>
+<p><span>Keyboard-accessible autocomplete with fuzzy search and subtitle metadata:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { Combobox } from 'boodoo/react';
+
+const users = [
+  { label: 'René Descartes', value: 'rene', meta: 'Philosophy / Paris' },
+  { label: 'Søren Kierkegaard', value: 'soren', meta: 'Theology / Copenhagen' },
+  { label: 'Ada Lovelace', value: 'ada', meta: 'Computing / London' },
+];
+
+export function UserSearch() {
+  return (
+    &lt;Combobox
+      items={users}
+      placeholder="Search philosopher (try 'Rene' or 'Soren')..."
+      onChange={(val) =&gt; console.log('Selected:', val)}
+    /&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-2">
+
+<h2 id="data-table"><span>5. Controlled Data Table</span></h2>
+<p><span>Sort columns and expand rows declaratively without DOM manipulation:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { useState } from 'react';
+import { Table, Badge } from 'boodoo/react';
+
+const columns = [
+  { key: 'name', title: 'Service Name', sortable: true },
+  {
+    key: 'status',
+    title: 'Health',
+    render: (val) =&gt; (
+      &lt;Badge variant={val === 'active' ? 'success' : 'warning'}&gt;
+        {val}
+      &lt;/Badge&gt;
+    ),
+  },
+  { key: 'latency', title: 'Latency (ms)', sortable: true },
+];
+
+const data = [
+  { id: '1', name: 'API Gateway', status: 'active', latency: 42, details: 'v2.4.1 deployed in us-east-1' },
+  { id: '2', name: 'Auth Service', status: 'active', latency: 19, details: 'Session cache warm, 0 failures' },
+];
+
+export function MetricsTable() {
+  const [sortCol, setSortCol] = useState('name');
+  const [sortDir, setSortDir] = useState('asc');
+  const [expanded, setExpanded] = useState(['1']);
+
+  return (
+    &lt;Table
+      columns={columns}
+      data={data}
+      keyField="id"
+      sortColumn={sortCol}
+      sortDirection={sortDir}
+      onSort={(key, dir) =&gt; {
+        setSortCol(key);
+        setSortDir(dir);
+      }}
+      expandedKeys={expanded}
+      expandedRowRender={(row) =&gt; (
+        &lt;div className="p-3 bg-light rounded text-muted fs-7"&gt;
+          &lt;strong&gt;Telemetry Details:&lt;/strong&gt; {row.details}
+        &lt;/div&gt;
+      )}
+    /&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-2">
+
+<h2 id="confirm-dialog"><span>6. Action Barrier ConfirmDialog</span></h2>
+<p><span>Prevent destructive accidents by requiring matching confirmation strings:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { useState } from 'react';
+import { ConfirmDialog, Button } from 'boodoo/react';
+
+export function ProjectSettings() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    &lt;&gt;
+      &lt;Button variant="danger" onClick={() =&gt; setIsOpen(true)}&gt;
+        Delete Workspace
+      &lt;/Button&gt;
+
+      &lt;ConfirmDialog
+        isOpen={isOpen}
+        onClose={() =&gt; setIsOpen(false)}
+        onConfirm={() =&gt; {
+          console.log('Deleted workspace');
+          setIsOpen(false);
+        }}
+        title="Delete Workspace"
+        message="This action is irreversible. All associated metrics, API keys, and databases will be purged."
+        mustMatch="DELETE WORKSPACE"
+        confirmLabel="Permanently Delete"
+      /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+</div>
+

@@ -65,6 +65,10 @@
       {
         "route": "getting-started/react-native-examples",
         "title": "React Native & Mobile"
+      },
+      {
+        "route": "getting-started/react",
+        "title": "React Component Kit"
       }
     ]
   },

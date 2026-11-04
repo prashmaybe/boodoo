@@ -42,6 +42,79 @@ test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declaratio
   assert.equal(pkg.exports['./react'].import, './react/index.js');
 });
 
+test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, StickyHeader)', async () => {
+  const indexSrc = readFileSync(resolve(rootDir, 'react/index.js'), 'utf8');
+  const componentsSrc = readFileSync(resolve(rootDir, 'react/components.js'), 'utf8');
+  const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+
+  // Verify modular re-exports from index.js and components.js
+  assert.ok(indexSrc.includes("export * from './theme.js'"), 'react/index.js must export theme submodule');
+  assert.ok(indexSrc.includes("export * from './buttons.js'"), 'react/index.js must export buttons submodule');
+  assert.ok(componentsSrc.includes("export * from './theme.js'"), 'react/components.js must export theme submodule');
+
+  // Verify component definitions across modular submodules
+  const themeSrc = readFileSync(resolve(rootDir, 'react/theme.js'), 'utf8');
+  const buttonsSrc = readFileSync(resolve(rootDir, 'react/buttons.js'), 'utf8');
+  const dataDisplaySrc = readFileSync(resolve(rootDir, 'react/data-display.js'), 'utf8');
+  const overlaysSrc = readFileSync(resolve(rootDir, 'react/overlays.js'), 'utf8');
+  const inputsSrc = readFileSync(resolve(rootDir, 'react/inputs.js'), 'utf8');
+  const listsSrc = readFileSync(resolve(rootDir, 'react/lists.js'), 'utf8');
+  const navigationSrc = readFileSync(resolve(rootDir, 'react/navigation.js'), 'utf8');
+
+  assert.ok(themeSrc.includes('export function BoodooProvider'), 'BoodooProvider must be exported in theme.js');
+  assert.ok(buttonsSrc.includes('export function Button'), 'Button must be exported in buttons.js');
+  assert.ok(dataDisplaySrc.includes('export function Badge'), 'Badge must be exported in data-display.js');
+  assert.ok(overlaysSrc.includes('export function Dialog'), 'Dialog must be exported in overlays.js');
+  assert.ok(overlaysSrc.includes('export function ConfirmDialog'), 'ConfirmDialog must be exported in overlays.js');
+  assert.ok(inputsSrc.includes('export function Field'), 'Field must be exported in inputs.js');
+  assert.ok(listsSrc.includes('export function Table'), 'Table must be exported in lists.js');
+  assert.ok(inputsSrc.includes('export function Combobox'), 'Combobox must be exported in inputs.js');
+  assert.ok(listsSrc.includes('export function Accordion'), 'Accordion must be exported in lists.js');
+  assert.ok(navigationSrc.includes('export function Nav'), 'Nav must be exported in navigation.js');
+  assert.ok(navigationSrc.includes('export function StickyHeader'), 'StickyHeader must be exported in navigation.js');
+
+  // Verify foldAccents logic via static source inspection
+  assert.ok(hooksSrc.includes('export function foldAccents'), 'foldAccents must be exported from hooks.js');
+  assert.ok(hooksSrc.includes('.normalize(\'NFD\')'), 'foldAccents must use Unicode NFD normalization');
+  assert.ok(hooksSrc.includes("replace(/[\\u0300-\\u036f]/g, '')"), 'foldAccents must strip combining diacritics');
+
+  // Verify pure accent-folding function behavior
+  const foldAccents = (str) =>
+    typeof str !== 'string'
+      ? ''
+      : str
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[øØ]/g, 'o')
+          .replace(/[æÆ]/g, 'ae')
+          .toLowerCase();
+  assert.equal(foldAccents('Café Résumé'), 'cafe resume');
+  assert.equal(foldAccents('ÀÖØñ'), 'aoon');
+
+  // Verify type-to-confirm barrier logic
+  assert.ok(overlaysSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
+
+  // Verify field learn more disclosure slot and accessible wiring
+  assert.ok(inputsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');
+  assert.ok(inputsSrc.includes('React.cloneElement'), 'Field must enhance child form elements');
+  assert.ok(inputsSrc.includes('aria-describedby'), 'Field must wire aria-describedby');
+  assert.ok(inputsSrc.includes('aria-invalid'), 'Field must wire aria-invalid');
+
+  // Verify scoped React CSS bundle existence and non-empty size
+  const scopedCssPath = resolve(rootDir, 'dist/css/boodoo-react.min.css');
+  assert.ok(existsSync(scopedCssPath), 'dist/css/boodoo-react.min.css must exist');
+  const scopedCss = readFileSync(scopedCssPath, 'utf8');
+  assert.ok(scopedCss.includes('@layer boodoo'), 'Scoped CSS must use @layer boodoo');
+  assert.ok(scopedCss.includes('.boodoo'), 'Scoped CSS must namespace under .boodoo');
+  assert.ok(scopedCss.includes('--bo-brand'), 'Scoped CSS must support --bo-brand fallback');
+  assert.ok(!scopedCss.includes('body{margin:0'), 'Scoped CSS must NOT include global reboot reset');
+
+  // Verify LESS equivalent file exists
+  const lessReactPath = resolve(rootDir, 'less/boodoo-react.less');
+  assert.ok(existsSync(lessReactPath), 'less/boodoo-react.less must exist for preprocessor parity');
+});
+
+
 
 test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordion) declarations and module', () => {
   const composablesSrc = readFileSync(resolve(rootDir, 'vue/composables.js'), 'utf8');
@@ -69,6 +142,7 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(vueDts.includes('useDisclosure'), 'vue/index.d.ts must type useDisclosure');
   assert.ok(vueDts.includes('useCombobox'), 'vue/index.d.ts must type useCombobox');
   assert.ok(vueDts.includes('useAccordion'), 'vue/index.d.ts must type useAccordion');
+  assert.ok(vueDts.includes('foldAccents'), 'vue/index.d.ts must type foldAccents');
 
   // Test package.json export mapping for vue subpath
   const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));

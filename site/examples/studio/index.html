@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en" data-boodoo-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Interactive Component Studio and Storybook MVP for testing and previewing Boodoo UI components.">
+  <title>boodoo · Component Studio</title>
+
+  <meta name="theme-color" content="#7c3aed">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="boodoo">
+  <meta property="og:title" content="boodoo · Component Studio">
+  <meta property="og:description"
+    content="Interactive Component Studio and Storybook MVP for testing and previewing Boodoo UI components.">
+  <meta property="og:url" content="https://boodooframework.com/examples/studio/index.html">
+  <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://boodooframework.com/examples/studio/index.html">
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/boodoo-icon.svg">
+  <link rel="stylesheet" href="../../dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="../../dist/css/boodoo-react.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
+  <link rel="stylesheet" href="../../assets/docs.css">
+  <style>
+    .studio-viewport {
+      min-height: calc(100vh - 60px);
+    }
+
+    .studio-sidebar {
+      background-color: var(--boodoo-card-bg);
+      border-right: 1px solid var(--boodoo-border-subtle);
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+    }
+
+    .studio-canvas {
+      background-color: var(--boodoo-body-alt-bg);
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+    }
+
+    .preview-box {
+      background-color: var(--boodoo-card-bg);
+      border: 1px solid var(--boodoo-border-subtle);
+      border-radius: var(--boodoo-border-radius-lg);
+    }
+
+    .code-preview-pane {
+      background-color: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: var(--boodoo-border-radius);
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Bar -->
+  <header class="navbar navbar-dark sticky-top bg-dark flex-nowrap py-2 px-3 shadow">
+    <div class="d-flex align-items-center gap-2">
+      <a class="navbar-brand me-0 fs-6 fw-bold text-white d-flex align-items-center gap-2" href="../index.html">
+        <img src="../../assets/brand/boodoo-icon.svg" alt="boodoo" height="22" width="22">
+        <span>Boodoo Component Studio</span>
+      </a>
+      <span class="badge bg-primary-soft text-primary rounded-pill px-2">MVP</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Density selector">
+        <button type="button" class="btn btn-outline-light active" id="btnDensityNormal"><span>Normal</span></button>
+        <button type="button" class="btn btn-outline-light" id="btnDensityCompact"><span>Compact</span></button>
+      </div>
+      <button class="btn btn-sm btn-outline-light d-flex align-items-center gap-1" id="themeToggleBtn" type="button"
+        aria-label="Toggle theme">
+        <i class="hi-sun text-warning" aria-hidden="true" id="themeIcon"></i>
+      </button>
+      <a href="../../docs/getting-started/react.html" class="btn btn-sm btn-primary rounded-pill px-3">
+        <span>React Kit Docs</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row studio-viewport">
+      <!-- Left Sidebar Nav -->
+      <aside class="col-md-3 studio-sidebar p-2 mt-0">
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-3"><span>Component Library</span></h6>
+        <div class="list-group list-group-flush mb-2" id="componentNavList">
+          <button type="button" class="list-group-item list-group-item-action active rounded-2 mb-1"
+            data-component="buttons">
+            <i class="hi-cursor me-0.5" aria-hidden="true"></i><span>Buttons &amp; Badges</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="forms">
+            <i class="hi-edit me-0.5" aria-hidden="true"></i><span>Form Controls &amp; Fields</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="combobox">
+            <i class="hi-search me-0.5" aria-hidden="true"></i><span>Combobox &amp; Autocomplete</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="table">
+            <i class="hi-bullet-list me-0.5" aria-hidden="true"></i><span>Table &amp; Data Display</span>
+          </button>
+          <button type="button" class="list-group-item list-group-item-action rounded-2 mb-1" data-component="dialogs">
+            <i class="hi-shield-check me-0.5" aria-hidden="true"></i><span>Dialogs &amp; Barriers</span>
+          </button>
+        </div>
+
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-2"><span>Interactive Props</span></h6>
+        <div class="mb-3">
+          <label class="form-label fs-7 fw-medium" for="variantPicker"><span>Variant</span></label>
+          <select class="form-select form-select-sm" id="variantPicker" name="variantPicker">
+            <option value="primary"><span>primary</span></option>
+            <option value="secondary"><span>secondary</span></option>
+            <option value="success"><span>success</span></option>
+            <option value="danger"><span>danger</span></option>
+            <option value="warning"><span>warning</span></option>
+            <option value="info"><span>info</span></option>
+            <option value="dark"><span>dark</span></option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fs-7 fw-medium" for="sizePicker"><span>Size</span></label>
+          <select class="form-select form-select-sm" id="sizePicker" name="sizePicker">
+            <option value="sm"><span>sm (Small)</span></option>
+            <option value="md" selected><span>md (Medium)</span></option>
+            <option value="lg"><span>lg (Large)</span></option>
+          </select>
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" id="disabledSwitch" name="disabledSwitch">
+          <label class="form-check-label fs-7" for="disabledSwitch"><span>Disabled state</span></label>
+        </div>
+      </aside>
+
+      <!-- Main Canvas -->
+      <main class="col-md-9 studio-canvas p-2" id="studioMainCanvas">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <div>
+            <h2 class="fw-bold" id="sectionTitle"><span>Buttons &amp; Badges</span></h2>
+            <p class="text-muted fs-7 mb-0" id="sectionDesc"><span>Modular button controls and count tags matching React
+                &amp; CSS tokens.</span></p>
+          </div>
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="btnCopyCode">
+            <i class="hi-copy me-1" aria-hidden="true"></i><span>Copy React Code</span>
+          </button>
+        </div>
+
+        <!-- Live Preview Stage -->
+        <div class="preview-box p-2 mb-2 shadow-sm" id="previewContainer">
+          <div id="liveStage" class="d-flex flex-wrap align-items-center gap-3">
+            <!-- Dynamically injected live controls -->
+          </div>
+        </div>
+
+        <!-- Live Code Inspector -->
+        <h6 class="text-uppercase text-muted fw-bold fs-8 tracking-wider mb-2"><span>JSX Code Representation</span></h6>
+        <div class="code-preview-pane mb-2">
+          <pre class="mb-0"><code id="codeSnippetPane">// JSX code will update here dynamically</code></pre>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../dist/js/boodoo.js"></script>
+  <script src="../../dist/js/boodoo.min.js"></script>
+  <script>
+    (function () {
+      let currentCategory = 'buttons';
+      let currentVariant = 'primary';
+      let currentSize = 'md';
+      let isDisabled = false;
+      let currentDensity = 'normal';
+
+      const stage = document.getElementById('liveStage');
+      const snippet = document.getElementById('codeSnippetPane');
+      const sectionTitle = document.getElementById('sectionTitle');
+      const sectionDesc = document.getElementById('sectionDesc');
+      const navButtons = document.querySelectorAll('#componentNavList button');
+
+      const variantPicker = document.getElementById('variantPicker');
+      const sizePicker = document.getElementById('sizePicker');
+      const disabledSwitch = document.getElementById('disabledSwitch');
+      const btnDensityNormal = document.getElementById('btnDensityNormal');
+      const btnDensityCompact = document.getElementById('btnDensityCompact');
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const btnCopyCode = document.getElementById('btnCopyCode');
+
+      function updateStage() {
+        stage.innerHTML = '';
+        let code = '';
+
+        const sizeClass = currentSize === 'sm' ? ' btn-sm' : currentSize === 'lg' ? ' btn-lg' : '';
+        const badgeSizeClass = currentSize === 'sm' ? ' fs-8' : currentSize === 'lg' ? ' fs-6' : '';
+        const inputSizeClass = currentSize === 'sm' ? ' form-control-sm' : currentSize === 'lg' ? ' form-control-lg' : '';
+        const tableSizeClass = currentSize === 'sm' ? ' table-sm' : '';
+        const disabledAttr = isDisabled ? ' disabled' : '';
+
+        if (currentCategory === 'buttons') {
+          sectionTitle.innerHTML = '<span>Buttons &amp; Badges</span>';
+          sectionDesc.innerHTML = '<span>Modular button controls and count tags matching React &amp; CSS tokens.</span>';
+
+          const btnSolid = document.createElement('button');
+          btnSolid.type = 'button';
+          btnSolid.className = 'btn btn-' + currentVariant + sizeClass;
+          if (isDisabled) btnSolid.disabled = true;
+          btnSolid.innerHTML = '<span>Solid Button</span>';
+          stage.appendChild(btnSolid);
+
+          const btnOutline = document.createElement('button');
+          btnOutline.type = 'button';
+          btnOutline.className = 'btn btn-outline-' + currentVariant + sizeClass;
+          if (isDisabled) btnOutline.disabled = true;
+          btnOutline.innerHTML = '<span>Outline Button</span>';
+          stage.appendChild(btnOutline);
+
+          const badge = document.createElement('span');
+          badge.className = 'badge bg-' + currentVariant + badgeSizeClass;
+          badge.innerHTML = '<span>Badge Tag</span>';
+          stage.appendChild(badge);
+
+          code = `import { Button, Badge } from 'boodoo/react';\n\nexport function Demo() {\n  return (\n    <div className="d-flex align-items-center gap-2">\n      <Button variant="${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''}>\n        Solid Button\n      </Button>\n      <Button variant="outline-${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''}>\n        Outline Button\n      </Button>\n      <Badge variant="${currentVariant}">\n        Badge Tag\n      </Badge>\n    </div>\n  );\n}`;
+        } else if (currentCategory === 'forms') {
+          sectionTitle.innerHTML = '<span>Form Controls &amp; Fields</span>';
+          sectionDesc.innerHTML = '<span>Accessible form fields with automatic label, ID, aria-describedby and validation binding.</span>';
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'w-100 max-w-md d-flex flex-column gap-3';
+
+          const safeVariant = sanitizeVariant(currentVariant);
+          const isValidation = safeVariant === 'danger' || safeVariant === 'success';
+          const validationClass = safeVariant === 'danger' ? ' is-invalid' : safeVariant === 'success' ? ' is-valid' : '';
+          const borderClass = !isValidation && safeVariant !== 'primary' ? ` border border-${safeVariant}` : '';
+
+          const field1 = document.createElement('div');
+          field1.className = 'boodoo-field';
+          field1.style.setProperty('--boodoo-primary', `var(--boodoo-${safeVariant})`);
+          field1.style.setProperty('--boodoo-focus-ring-color', `rgba(var(--boodoo-${safeVariant}-rgb, var(--boodoo-${safeVariant})), 0.25)`);
+
+          let feedbackHtml = '';
+          if (safeVariant === 'danger') {
+            feedbackHtml = '<p class="boodoo-field-error" id="studioEmailInput-error"><span>Please enter a valid work email address.</span></p>';
+          } else if (safeVariant === 'success') {
+            feedbackHtml = '<p class="text-success fs-8 mt-1 mb-0" id="studioEmailInput-success"><span>Email address is available and valid!</span></p>';
+          } else {
+            feedbackHtml = '<p class="boodoo-field-description" id="studioEmailInput-desc"><span>We will never share your personal email with anyone.</span></p>';
+          }
+
+          field1.innerHTML = `<div class="boodoo-field-label-row"><label class="boodoo-field-label" for="studioEmailInput"><span>Email Address *</span></label><span class="badge bg-${safeVariant} badge-sm"><span>${safeVariant}</span></span></div><input type="email" id="studioEmailInput" name="studioEmailInput" class="form-control${inputSizeClass}${validationClass}${borderClass}" placeholder="user@company.com"${disabledAttr}>${feedbackHtml}`;
+          wrapper.appendChild(field1);
+
+          stage.appendChild(wrapper);
+
+          code = `import { Field, Input } from 'boodoo/react';\n\nexport function FormDemo() {\n  return (\n    <Field\n      label="Email Address"\n      variant="${safeVariant}"\n      required\n      description="We will never share your personal email with anyone."\n    >\n      <Input\n        type="email"\n        size="${currentSize}"\n        variant="${safeVariant}"\n        placeholder="user@company.com"${isDisabled ? '\n        disabled' : ''}\n      />\n    </Field>\n  );\n}`;
+        } else if (currentCategory === 'combobox') {
+          sectionTitle.innerHTML = '<span>Combobox &amp; Autocomplete</span>';
+          sectionDesc.innerHTML = '<span>Fuzzy accent-insensitive filtering with secondary metadata and keyboard navigation.</span>';
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'w-100 max-w-md';
+          wrapper.innerHTML = `
+            <div class="combobox" data-boodoo="combobox" id="studioCombobox">
+              <div class="combobox-input-wrapper">
+                <input type="text" id="studioComboboxInput" name="studioComboboxInput" class="form-control combobox-input${inputSizeClass}" placeholder="Search developer (try 'Rene')..." autocomplete="off"${disabledAttr}>
+                <button type="button" class="combobox-clear" data-boodoo-combobox-clear aria-label="Clear input"><span>&times;</span></button>
+              </div>
+              <ul class="combobox-menu" data-boodoo-combobox-menu>
+                <li class="combobox-item" data-value="descartes">
+                  <div>
+                    <span class="combobox-item-label">René Descartes</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">France</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="ada">
+                  <div>
+                    <span class="combobox-item-label">Ada Lovelace</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">United Kingdom</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="turing">
+                  <div>
+                    <span class="combobox-item-label">Alan Turing</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">United Kingdom</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="curie">
+                  <div>
+                    <span class="combobox-item-label">Marie Curie</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">Poland / France</span>
+                  </div>
+                </li>
+                <li class="combobox-empty"><span>No developers found</span></li>
+              </ul>
+            </div>
+          `;
+          stage.appendChild(wrapper);
+
+          if (window.boodoo && window.boodoo.Combobox && !isDisabled) {
+            const cbEl = wrapper.querySelector('[data-boodoo="combobox"]');
+            window.boodoo.Combobox.getOrCreateInstance(cbEl);
+          }
+
+          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n  { label: 'Marie Curie', value: 'curie', meta: 'Poland / France' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
+        } else if (currentCategory === 'table') {
+          sectionTitle.innerHTML = '<span>Table &amp; Data Display</span>';
+          sectionDesc.innerHTML = '<span>Declarative data tables with controlled column sorting and expandable row records.</span>';
+
+          const wrapper = document.createElement('div');
+          const table = document.createElement('table');
+          table.className = 'table table-hover align-middle mb-0' + tableSizeClass;
+
+          const thead = document.createElement('thead');
+          thead.className = 'table-light';
+          const headRow = document.createElement('tr');
+
+          const nameHead = document.createElement('th');
+          nameHead.scope = 'col';
+          const nameHeadSpan = document.createElement('span');
+          nameHeadSpan.textContent = 'Name';
+          nameHead.appendChild(nameHeadSpan);
+
+          const roleHead = document.createElement('th');
+          roleHead.scope = 'col';
+          const roleHeadSpan = document.createElement('span');
+          roleHeadSpan.textContent = 'Role';
+          roleHead.appendChild(roleHeadSpan);
+
+          const statusHead = document.createElement('th');
+          statusHead.scope = 'col';
+          const statusHeadSpan = document.createElement('span');
+          statusHeadSpan.textContent = 'Status';
+          statusHead.appendChild(statusHeadSpan);
+
+          headRow.appendChild(nameHead);
+          headRow.appendChild(roleHead);
+          headRow.appendChild(statusHead);
+          thead.appendChild(headRow);
+
+          const tbody = document.createElement('tbody');
+
+          const row1 = document.createElement('tr');
+          const row1Name = document.createElement('td');
+          const row1Strong = document.createElement('strong');
+          const row1NameSpan = document.createElement('span');
+          row1NameSpan.textContent = 'Auth Microservice';
+          row1Strong.appendChild(row1NameSpan);
+          row1Name.appendChild(row1Strong);
+
+          const row1Role = document.createElement('td');
+          const row1RoleSpan = document.createElement('span');
+          row1RoleSpan.textContent = 'Security';
+          row1Role.appendChild(row1RoleSpan);
+
+          const row1Status = document.createElement('td');
+          const row1Badge = document.createElement('span');
+          row1Badge.className = 'badge bg-' + currentVariant;
+          const row1BadgeText = document.createElement('span');
+          row1BadgeText.textContent = 'Active';
+          row1Badge.appendChild(row1BadgeText);
+          row1Status.appendChild(row1Badge);
+
+          row1.appendChild(row1Name);
+          row1.appendChild(row1Role);
+          row1.appendChild(row1Status);
+
+          const row2 = document.createElement('tr');
+          const row2Name = document.createElement('td');
+          const row2Strong = document.createElement('strong');
+          const row2NameSpan = document.createElement('span');
+          row2NameSpan.textContent = 'Worker Queue';
+          row2Strong.appendChild(row2NameSpan);
+          row2Name.appendChild(row2Strong);
+
+          const row2Role = document.createElement('td');
+          const row2RoleSpan = document.createElement('span');
+          row2RoleSpan.textContent = 'Async Jobs';
+          row2Role.appendChild(row2RoleSpan);
+
+          const row2Status = document.createElement('td');
+          const row2Badge = document.createElement('span');
+          row2Badge.className = 'badge bg-secondary';
+          const row2BadgeText = document.createElement('span');
+          row2BadgeText.textContent = 'Idle';
+          row2Badge.appendChild(row2BadgeText);
+          row2Status.appendChild(row2Badge);
+
+          row2.appendChild(row2Name);
+          row2.appendChild(row2Role);
+          row2.appendChild(row2Status);
+
+          tbody.appendChild(row1);
+          tbody.appendChild(row2);
+
+          table.appendChild(thead);
+          table.appendChild(tbody);
+          wrapper.appendChild(table);
+          wrapper.innerHTML = `<table class="table table-hover align-middle mb-0${tableSizeClass}"><thead class="table-light"><tr><th scope="col"><span>Name</span></th><th scope="col"><span>Role</span></th><th scope="col"><span>Status</span></th></tr></thead><tbody><tr><td><strong><span>Auth Microservice</span></strong></td><td><span>Security</span></td><td><span class="badge bg-${currentVariant}"><span>Active</span></span></td></tr><tr><td><strong><span>Worker Queue</span></strong></td><td><span>Async Jobs</span></td><td><span class="badge bg-secondary"><span>Idle</span></span></td></tr></tbody></table>`;
+          stage.appendChild(wrapper);
+
+          code = `import { Table, Badge } from 'boodoo/react';\n\nconst columns = [\n  { key: 'name', title: 'Name', sortable: true },\n  { key: 'role', title: 'Role' },\n  { key: 'status', title: 'Status', render: (val) => <Badge variant={val === 'Active' ? '${currentVariant}' : 'secondary'}>{val}</Badge> },\n];\n\nconst data = [\n  { id: '1', name: 'Auth Microservice', role: 'Security', status: 'Active' },\n  { id: '2', name: 'Worker Queue', role: 'Async Jobs', status: 'Idle' },\n];\n\nexport function TableDemo() {\n  return (\n    <Table columns={columns} data={data} keyField="id"${currentSize === 'sm' ? ' dense' : ''} />\n  );\n}`;
+        } else if (currentCategory === 'dialogs') {
+          sectionTitle.innerHTML = '<span>Dialogs &amp; Barriers</span>';
+          sectionDesc.innerHTML = '<span>Modal dialogs and type-to-confirm barrier overlays for destructive actions.</span>';
+
+          const btnLaunch = document.createElement('button');
+          btnLaunch.type = 'button';
+          btnLaunch.className = 'btn btn-' + currentVariant + sizeClass;
+          if (isDisabled) btnLaunch.disabled = true;
+          btnLaunch.innerHTML = '<span>Launch Confirm Barrier Dialog</span>';
+          btnLaunch.onclick = () => {
+            alert('ConfirmDialog barrier active: Type "DELETE DATABASE" to confirm deletion.');
+          };
+          stage.appendChild(btnLaunch);
+
+          code = `import { useState } from 'react';\nimport { ConfirmDialog, Button } from 'boodoo/react';\n\nexport function BarrierDemo() {\n  const [isOpen, setIsOpen] = useState(false);\n  return (\n    <>\n      <Button variant="${currentVariant}" size="${currentSize}"${isDisabled ? ' disabled' : ''} onClick={() => setIsOpen(true)}>\n        Launch Dialog\n      </Button>\n      <ConfirmDialog\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={() => setIsOpen(false)}\n        title="Delete Production Database"\n        message="This operation cannot be undone."\n        mustMatch="DELETE DATABASE"\n      />\n    </>\n  );\n}`;
+        }
+
+        snippet.textContent = code;
+      }
+
+      navButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          navButtons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.dataset.component;
+          updateStage();
+        });
+      });
+
+      const ALLOWED_VARIANTS = new Set(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']);
+      function sanitizeVariant(value) {
+        return ALLOWED_VARIANTS.has(value) ? value : 'primary';
+      }
+
+      variantPicker.addEventListener('change', (e) => {
+        currentVariant = sanitizeVariant(e.target.value);
+        updateStage();
+      });
+
+      sizePicker.addEventListener('change', (e) => {
+        currentSize = e.target.value;
+        updateStage();
+      });
+
+      disabledSwitch.addEventListener('change', (e) => {
+        isDisabled = e.target.checked;
+        updateStage();
+      });
+
+      btnDensityNormal.addEventListener('click', () => {
+        btnDensityNormal.classList.add('active');
+        btnDensityCompact.classList.remove('active');
+        document.documentElement.removeAttribute('data-density');
+        currentDensity = 'normal';
+      });
+
+      btnDensityCompact.addEventListener('click', () => {
+        btnDensityCompact.classList.add('active');
+        btnDensityNormal.classList.remove('active');
+        document.documentElement.setAttribute('data-density', 'compact');
+        currentDensity = 'compact';
+      });
+
+      themeToggleBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-boodoo-theme') || 'light';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-boodoo-theme', next);
+        themeIcon.className = next === 'dark' ? 'hi-moon text-info' : 'hi-sun text-warning';
+      });
+
+      function copyCode(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text);
+        } else {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-999999px';
+          textArea.style.top = '-999999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          return new Promise((resolve, reject) => {
+            try {
+              const successful = document.execCommand('copy');
+              textArea.remove();
+              if (successful) resolve();
+              else reject(new Error('execCommand copy failed'));
+            } catch (err) {
+              textArea.remove();
+              reject(err);
+            }
+          });
+        }
+      }
+
+      btnCopyCode.addEventListener('click', () => {
+        copyCode(snippet.textContent).then(() => {
+          const original = btnCopyCode.innerHTML;
+          btnCopyCode.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+          setTimeout(() => {
+            btnCopyCode.innerHTML = original;
+          }, 2000);
+        }).catch((err) => {
+          console.error('Failed to copy snippet:', err);
+        });
+      });
+
+      updateStage();
+    })();
+  </script>
+</body>
+
+</html>
