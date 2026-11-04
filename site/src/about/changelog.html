@@ -97,13 +97,29 @@ order: 7
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Additions</span></h4>
         <ul class="mb-3">
-          <li><span><strong>DOM React Components Suite</strong>: Exported pure DOM React components on <code>boodoo/react</code> sharing clean APIs with React Native without DOM-hijacking data attributes or foreign native dependencies.</span></li>
-          <li><span><strong>Scoped React Stylesheet</strong>: Published <code>dist/css/boodoo-react.min.css</code> namespaced under <code>@layer boodoo</code> and <code>.boodoo</code> without global reboot element resets.</span></li>
-          <li><span><strong>Host CSS Variable Bridging</strong>: Added automatic fallback bridging in <code>BoodooProvider</code> mapping host CSS variables (<code>--bo-brand</code>, <code>--bo-surface</code>, <code>--bo-text</code>, <code>--bo-radius</code>) directly into Boodoo tokens.</span></li>
-          <li><span><strong>Controlled Table Component</strong>: Implemented pure React state column sorting with ARIA sort semantics and companion detail rows directly inside the React render tree.</span></li>
-          <li><span><strong>Accent-Insensitive Combobox</strong>: Enhanced Combobox and <code>useCombobox</code> with diacritic-folding search (<code>foldAccents</code>) and secondary context metadata (<code>getOptionMeta</code>).</span></li>
+          <li><span><strong>Modular DOM React Components Suite</strong>: Exported pure DOM React components on <code>boodoo/react</code> across modular submodules (<code>buttons</code>, <code>data-display</code>, <code>feedback</code>, <code>inputs</code>, <code>layout</code>, <code>lists</code>, <code>navigation</code>, <code>overlays</code>, <code>surfaces</code>, <code>theme</code>, <code>typography</code>) sharing unified design tokens with zero DOM-hijacking scripts or mandatory native dependencies.</span></li>
+          <li><span><strong>Admin &amp; Enterprise Primitives</strong>: Introduced accessible <code>Field</code> (with description, error, and disclosure slots), type-to-confirm <code>ConfirmDialog</code> barrier, and compacting <code>StickyHeader</code>.</span></li>
+          <li><span><strong>Controlled &amp; Expandable Table</strong>: Implemented pure React state column sorting with WAI-ARIA <code>aria-sort</code> indicators and companion expandable detail rows (<code>expandedRowRender</code>).</span></li>
+          <li><span><strong>Accent-Insensitive Combobox &amp; Meta</strong>: Enhanced Combobox and <code>useCombobox</code> with diacritic-folding search (<code>foldAccents</code>) and secondary subtitle context lines (<code>getOptionMeta</code>).</span></li>
+          <li><span><strong>Scoped React Stylesheets</strong>: Published <code>dist/css/boodoo-react.min.css</code> (and <code>boodoo/css/react</code> subpath) namespaced under <code>@layer boodoo</code> and <code>.boodoo</code> without global reboot element resets.</span></li>
+          <li><span><strong>Host CSS Variable Bridging</strong>: Added automatic fallback bridging in <code>BoodooProvider</code> mapping host CSS variables (<code>--bo-brand</code>, <code>--bo-surface</code>, <code>--bo-text</code>, <code>--bo-radius</code>, <code>--bo-border</code>) directly into Boodoo tokens.</span></li>
           <li><span><strong>Compact Density Mode</strong>: Added compact density spacing (<code>density="compact"</code>) for high-density tables, form controls, and enterprise backoffice layouts.</span></li>
-          <li><span><strong>Generic Admin Primitives</strong>: Introduced <code>Field</code> (with Learn more disclosure slot), <code>ConfirmDialog</code> (with type-to-confirm barrier), and <code>StickyHeader</code>.</span></li>
+          <li><span><strong>CLI Template 11 (React Admin Dashboard)</strong>: Added interactive Vite + React Admin Dashboard starter scaffold supporting both TypeScript (<code>--ts</code>) and JavaScript in <code>create-boodoo</code>.</span></li>
+          <li><span><strong>Interactive Studio &amp; React Docs</strong>: Published interactive Component Studio preview at <code>/examples/studio/</code> and full React integration documentation at <code>/docs/getting-started/react.html</code>.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-warning mt-3 mb-2"><span>Changes &amp; Improvements</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>Subpath Exports</strong>: Exposed <code>./css/react</code> in <code>package.json</code> pointing directly to scoped React stylesheet distributions.</span></li>
+          <li><span><strong>Build Pipeline</strong>: Integrated automated <code>css:react</code> Sass and Less build compilation steps for scoped distributions.</span></li>
+          <li><span><strong>Sitewide Search &amp; Sitemap</strong>: Indexed new React documentation and example pages across documentation navigation, modal search, sitemap, and LLM text specs.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-danger mt-3 mb-2"><span>Bug Fixes</span></h4>
+        <ul class="mb-3">
+          <li><span><strong>Form Control Unique Identifiers</strong>: Enforced auto-generated IDs via <code>useId()</code> across all React input primitives when <code>id</code> is omitted, preventing orphaned labels and ensuring WCAG compliance.</span></li>
+          <li><span><strong>Accordion Toggle Protection</strong>: Guarded accordion toggles with <code>e.defaultPrevented</code> checks and purified active panel state resolution via <code>isExpanded(key)</code>.</span></li>
+          <li><span><strong>Combobox Controlled Sync</strong>: Corrected query display synchronization when <code>value</code> prop is controlled from external React state.</span></li>
         </ul>
       </div>
     </div>
