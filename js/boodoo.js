@@ -15,7 +15,7 @@ import { Carousel } from './src/carousel.js';
 import { ScrollSpy } from './src/scrollspy.js';
 import { initRipple } from './src/ripple.js';
 import { initDataApi } from './src/base-component.js';
-import { enableDismissTrigger, escapeHtml } from './src/util.js';
+import { enableDismissTrigger, escapeHtml, foldAccents } from './src/util.js';
 import { theme } from './src/theme.js';
 import { OTP } from './src/otp.js';
 import { Rating } from './src/rating.js';
@@ -295,4 +295,5 @@ export {
   TransferList,
   ColorPicker,
   BackToTop,
+  foldAccents,
 };

@@ -7,6 +7,21 @@
 import { ref, computed } from 'vue';
 
 /**
+ * Normalizes text for accent-insensitive search
+ * @param {string} str
+ * @returns {string}
+ */
+export function foldAccents(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[øØ]/g, 'o')
+    .replace(/[æÆ]/g, 'ae')
+    .toLowerCase();
+}
+
+/**
  * Headless disclosure composable (Modal, Drawer, Dialog, Offcanvas)
  * @param {Object} [options]
  * @param {boolean} [options.defaultOpen=false]
@@ -65,21 +80,28 @@ export function useDisclosure(options = {}) {
 /**
  * Headless combobox / autocomplete composable
  * @param {Object} [options]
- * @param {Array<{ id?: string, label: string, value: any }>} [options.items=[]]
+ * @param {Array<{ id?: string, label: string, value: any, meta?: string }>} [options.items=[]]
  * @param {string} [options.defaultValue='']
  * @param {(value: any) => void} [options.onChange]
+ * @param {(item: any) => string} [options.getOptionMeta]
  */
 export function useCombobox(options = {}) {
-  const { items = [], defaultValue = '', onChange } = options;
+  const { items = [], defaultValue = '', onChange, getOptionMeta } = options;
   const query = ref(defaultValue);
   const isOpen = ref(false);
   const activeIndex = ref(-1);
   const selectedValue = ref(null);
 
   const filteredItems = computed(() => {
-    const q = query.value.trim().toLowerCase();
+    const q = query.value.trim();
     if (!q) return items;
-    return items.filter((item) => item.label.toLowerCase().includes(q));
+    const foldedQuery = foldAccents(q);
+    return items.filter((item) => {
+      const foldedLabel = foldAccents(item.label);
+      const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
+      const foldedMeta = foldAccents(meta);
+      return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);
+    });
   });
 
   const selectItem = (item) => {

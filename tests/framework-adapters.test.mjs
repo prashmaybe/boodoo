@@ -142,6 +142,7 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(vueDts.includes('useDisclosure'), 'vue/index.d.ts must type useDisclosure');
   assert.ok(vueDts.includes('useCombobox'), 'vue/index.d.ts must type useCombobox');
   assert.ok(vueDts.includes('useAccordion'), 'vue/index.d.ts must type useAccordion');
+  assert.ok(vueDts.includes('foldAccents'), 'vue/index.d.ts must type foldAccents');
 
   // Test package.json export mapping for vue subpath
   const pkg = JSON.parse(readFileSync(resolve(rootDir, 'package.json'), 'utf8'));

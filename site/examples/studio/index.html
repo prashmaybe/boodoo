@@ -165,6 +165,7 @@
   </div>
 
   <script src="../../dist/js/boodoo.js"></script>
+  <script src="../../dist/js/boodoo.min.js"></script>
   <script>
     (function () {
       let currentCategory = 'buttons';
@@ -259,10 +260,49 @@
 
           const wrapper = document.createElement('div');
           wrapper.className = 'w-100 max-w-md';
-          wrapper.innerHTML = `<div class="combobox"><div class="combobox-input-wrapper"><input type="text" id="studioComboboxInput" name="studioComboboxInput" class="form-control combobox-input${inputSizeClass}" placeholder="Search developer (try 'Rene')..."${disabledAttr}></div></div>`;
+          wrapper.innerHTML = `
+            <div class="combobox" data-boodoo="combobox" id="studioCombobox">
+              <div class="combobox-input-wrapper">
+                <input type="text" id="studioComboboxInput" name="studioComboboxInput" class="form-control combobox-input${inputSizeClass}" placeholder="Search developer (try 'Rene')..." autocomplete="off"${disabledAttr}>
+                <button type="button" class="combobox-clear" data-boodoo-combobox-clear aria-label="Clear input"><span>&times;</span></button>
+              </div>
+              <ul class="combobox-menu" data-boodoo-combobox-menu>
+                <li class="combobox-item" data-value="descartes">
+                  <div>
+                    <span class="combobox-item-label">René Descartes</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">France</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="ada">
+                  <div>
+                    <span class="combobox-item-label">Ada Lovelace</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">United Kingdom</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="turing">
+                  <div>
+                    <span class="combobox-item-label">Alan Turing</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">United Kingdom</span>
+                  </div>
+                </li>
+                <li class="combobox-item" data-value="curie">
+                  <div>
+                    <span class="combobox-item-label">Marie Curie</span>
+                    <span class="combobox-item-meta text-muted fs-8 d-block">Poland / France</span>
+                  </div>
+                </li>
+                <li class="combobox-empty"><span>No developers found</span></li>
+              </ul>
+            </div>
+          `;
           stage.appendChild(wrapper);
 
-          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
+          if (window.boodoo && window.boodoo.Combobox && !isDisabled) {
+            const cbEl = wrapper.querySelector('[data-boodoo="combobox"]');
+            window.boodoo.Combobox.getOrCreateInstance(cbEl);
+          }
+
+          code = `import { Combobox } from 'boodoo/react';\n\nconst items = [\n  { label: 'René Descartes', value: 'descartes', meta: 'France' },\n  { label: 'Ada Lovelace', value: 'ada', meta: 'United Kingdom' },\n  { label: 'Alan Turing', value: 'turing', meta: 'United Kingdom' },\n  { label: 'Marie Curie', value: 'curie', meta: 'Poland / France' },\n];\n\nexport function SearchDemo() {\n  return (\n    <Combobox\n      items={items}\n      size="${currentSize}"\n      placeholder="Search developer (try 'Rene')..."\n      disabled={${isDisabled}}\n      onChange={(val) => console.log('Selected:', val)}\n    />\n  );\n}`;
         } else if (currentCategory === 'table') {
           sectionTitle.innerHTML = '<span>Table &amp; Data Display</span>';
           sectionDesc.innerHTML = '<span>Declarative data tables with controlled column sorting and expandable row records.</span>';

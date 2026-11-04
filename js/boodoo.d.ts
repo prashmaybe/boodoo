@@ -78,7 +78,14 @@ declare class Splitter extends BaseComponent {}
 declare class Stepper extends BaseComponent {}
 declare class TreeView extends BaseComponent {}
 declare class Banner extends BaseComponent {}
-declare class Combobox extends BaseComponent {}
+declare class Combobox extends BaseComponent {
+  selectItem(item: HTMLElement): void;
+  clear(): void;
+  show(): void;
+  hide(): void;
+  isShown(): boolean;
+  dispose(): void;
+}
 declare class FloatingBar extends BaseComponent {
   show(count?: number): void;
   hide(): void;
@@ -170,6 +177,7 @@ declare class BackToTop extends BaseComponent {
 declare function initDataApi(component?: any, selector?: string): void;
 declare function initRipple(target?: any): void;
 declare function registerCustomElements(): void;
+declare function foldAccents(str: string): string;
 
 declare const clipboard: {
   copy(text: string): Promise<boolean>;
@@ -233,6 +241,7 @@ export interface BoodooGlobal {
   TransferList: typeof TransferList;
   ColorPicker: typeof ColorPicker;
   BackToTop: typeof BackToTop;
+  foldAccents: (str: string) => string;
   clipboard: any;
   theme: any;
   a11y: {
@@ -294,4 +303,5 @@ export {
   TransferList,
   ColorPicker,
   BackToTop,
+  foldAccents,
 };
