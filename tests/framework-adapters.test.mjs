@@ -43,19 +43,35 @@ test('Headless React hooks (useDisclosure, useCombobox, useAccordion) declaratio
 });
 
 test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmDialog, Field, Table, Combobox, StickyHeader)', async () => {
+  const indexSrc = readFileSync(resolve(rootDir, 'react/index.js'), 'utf8');
   const componentsSrc = readFileSync(resolve(rootDir, 'react/components.js'), 'utf8');
   const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
-  assert.ok(componentsSrc.includes('export function BoodooProvider'), 'BoodooProvider must be exported');
-  assert.ok(componentsSrc.includes('export function Button'), 'Button must be exported');
-  assert.ok(componentsSrc.includes('export function Badge'), 'Badge must be exported');
-  assert.ok(componentsSrc.includes('export function Dialog'), 'Dialog must be exported');
-  assert.ok(componentsSrc.includes('export function ConfirmDialog'), 'ConfirmDialog must be exported');
-  assert.ok(componentsSrc.includes('export function Field'), 'Field must be exported');
-  assert.ok(componentsSrc.includes('export function Table'), 'Table must be exported');
-  assert.ok(componentsSrc.includes('export function Combobox'), 'Combobox must be exported');
-  assert.ok(componentsSrc.includes('export function Accordion'), 'Accordion must be exported');
-  assert.ok(componentsSrc.includes('export function Nav'), 'Nav must be exported');
-  assert.ok(componentsSrc.includes('export function StickyHeader'), 'StickyHeader must be exported');
+
+  // Verify modular re-exports from index.js and components.js
+  assert.ok(indexSrc.includes("export * from './theme.js'"), 'react/index.js must export theme submodule');
+  assert.ok(indexSrc.includes("export * from './buttons.js'"), 'react/index.js must export buttons submodule');
+  assert.ok(componentsSrc.includes("export * from './theme.js'"), 'react/components.js must export theme submodule');
+
+  // Verify component definitions across modular submodules
+  const themeSrc = readFileSync(resolve(rootDir, 'react/theme.js'), 'utf8');
+  const buttonsSrc = readFileSync(resolve(rootDir, 'react/buttons.js'), 'utf8');
+  const dataDisplaySrc = readFileSync(resolve(rootDir, 'react/data-display.js'), 'utf8');
+  const overlaysSrc = readFileSync(resolve(rootDir, 'react/overlays.js'), 'utf8');
+  const inputsSrc = readFileSync(resolve(rootDir, 'react/inputs.js'), 'utf8');
+  const listsSrc = readFileSync(resolve(rootDir, 'react/lists.js'), 'utf8');
+  const navigationSrc = readFileSync(resolve(rootDir, 'react/navigation.js'), 'utf8');
+
+  assert.ok(themeSrc.includes('export function BoodooProvider'), 'BoodooProvider must be exported in theme.js');
+  assert.ok(buttonsSrc.includes('export function Button'), 'Button must be exported in buttons.js');
+  assert.ok(dataDisplaySrc.includes('export function Badge'), 'Badge must be exported in data-display.js');
+  assert.ok(overlaysSrc.includes('export function Dialog'), 'Dialog must be exported in overlays.js');
+  assert.ok(overlaysSrc.includes('export function ConfirmDialog'), 'ConfirmDialog must be exported in overlays.js');
+  assert.ok(inputsSrc.includes('export function Field'), 'Field must be exported in inputs.js');
+  assert.ok(listsSrc.includes('export function Table'), 'Table must be exported in lists.js');
+  assert.ok(inputsSrc.includes('export function Combobox'), 'Combobox must be exported in inputs.js');
+  assert.ok(listsSrc.includes('export function Accordion'), 'Accordion must be exported in lists.js');
+  assert.ok(navigationSrc.includes('export function Nav'), 'Nav must be exported in navigation.js');
+  assert.ok(navigationSrc.includes('export function StickyHeader'), 'StickyHeader must be exported in navigation.js');
 
   // Verify foldAccents logic via static source inspection
   assert.ok(hooksSrc.includes('export function foldAccents'), 'foldAccents must be exported from hooks.js');
@@ -76,10 +92,10 @@ test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmD
   assert.equal(foldAccents('ÀÖØñ'), 'aoon');
 
   // Verify type-to-confirm barrier logic
-  assert.ok(componentsSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
+  assert.ok(overlaysSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
 
   // Verify field learn more disclosure slot
-  assert.ok(componentsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');
+  assert.ok(inputsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');
 
   // Verify scoped React CSS bundle existence and non-empty size
   const scopedCssPath = resolve(rootDir, 'dist/css/boodoo-react.min.css');

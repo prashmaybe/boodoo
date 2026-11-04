@@ -1,5 +1,5 @@
 // =====================================================================
-// BOODOO — Headless React Hooks & DOM Components Entry Point
+// BOODOO — Headless React Hooks & Modular DOM Components Entry Point
 // =====================================================================
 
 // Headless hooks
@@ -10,17 +10,15 @@ export {
   foldAccents,
 } from './hooks.js';
 
-// DOM Components suite
-export {
-  BoodooProvider,
-  Button,
-  Badge,
-  Dialog,
-  ConfirmDialog,
-  Field,
-  Table,
-  Combobox,
-  Accordion,
-  Nav,
-  StickyHeader,
-} from './components.js';
+// Modular Submodules
+export * from './theme.js';
+export * from './typography.js';
+export * from './layout.js';
+export * from './buttons.js';
+export * from './surfaces.js';
+export * from './inputs.js';
+export * from './data-display.js';
+export * from './feedback.js';
+export * from './lists.js';
+export * from './navigation.js';
+export * from './overlays.js';
