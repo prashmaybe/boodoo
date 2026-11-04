@@ -5,34 +5,41 @@ section: getting-started
 order: 17
 -->
 <h1><span>React DOM Component Kit</span></h1>
-<p class="lead"><span>Build performant, accessible web applications with <strong>@boodoo/react</strong> (<code>boodoo/react</code>). Pure React components designed specifically for web and Next.js, featuring zero DOM-hijacking scripts, native semantic HTML elements, accessible form fields, expandable tables, and scoped CSS layer integration.</span></p>
+<p class="lead"><span>Build performant, accessible web applications with <strong>@boodoo/react</strong>
+    (<code>boodoo/react</code>). Pure React components designed specifically for web and Next.js, featuring zero
+    DOM-hijacking scripts, native semantic HTML elements, accessible form fields, expandable tables, and scoped CSS
+    layer integration.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100 border">
+    <div class="card p-2 shadow-sm border">
       <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
         <i class="hi-code" aria-hidden="true"></i>
       </div>
       <h5 class="fw-bold mb-2"><span>Pure DOM Components</span></h5>
-      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Zero React Native primitives on web. Direct semantic rendering into <code>&lt;button&gt;</code>, <code>&lt;dialog&gt;</code>, <code>&lt;table&gt;</code>, and <code>&lt;input&gt;</code>.</span></p>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Zero React Native primitives on web. Direct semantic rendering
+          into <code>&lt;button&gt;</code>, <code>&lt;dialog&gt;</code>, <code>&lt;table&gt;</code>, and
+          <code>&lt;input&gt;</code>.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100 border">
+    <div class="card p-2 shadow-sm border">
       <div class="card-icon-avatar bg-soft-info text-info mb-3">
         <i class="hi-stack" aria-hidden="true"></i>
       </div>
       <h5 class="fw-bold mb-2"><span>Scoped CSS &amp; Host Theming</span></h5>
-      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Ships under <code>@layer boodoo</code> and <code>.boodoo</code> namespace without reboot resets, avoiding style leaks into host apps.</span></p>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Ships under <code>@layer boodoo</code> and <code>.boodoo</code>
+          namespace without reboot resets, avoiding style leaks into host apps.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100 border">
+    <div class="card p-2 shadow-sm border">
       <div class="card-icon-avatar bg-soft-success text-success mb-3">
         <i class="hi-refresh" aria-hidden="true"></i>
       </div>
       <h5 class="fw-bold mb-2"><span>Multi-Platform Parity</span></h5>
-      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Shares identical component names and prop mental models with <code>boodoo/react-native</code> for seamless cross-platform teams.</span></p>
+      <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Shares identical component names and prop mental models with
+          <code>boodoo/react-native</code> for seamless cross-platform teams.</span></p>
     </div>
   </div>
 </div>
@@ -46,7 +53,8 @@ order: 17
   <pre><code class="language-bash">npm install boodoo react react-dom</code></pre>
 </div>
 
-<p><span>Import the scoped React stylesheet in your application root (e.g. <code>app/layout.tsx</code>, <code>src/main.jsx</code>, or <code>_app.tsx</code>):</span></p>
+<p><span>Import the scoped React stylesheet in your application root (e.g. <code>app/layout.tsx</code>,
+    <code>src/main.jsx</code>, or <code>_app.tsx</code>):</span></p>
 
 <div class="highlight">
   <pre><code class="language-typescript">import 'boodoo/css/react';
@@ -76,7 +84,8 @@ export default function App() {
 <hr class="my-2">
 
 <h2 id="accessible-forms"><span>3. Accessible Form Controls (`Field`)</span></h2>
-<p><span>The <code>Field</code> wrapper automatically wires <code>id</code>, <code>htmlFor</code>, <code>aria-describedby</code>, and <code>aria-invalid</code> down to form inputs:</span></p>
+<p><span>The <code>Field</code> wrapper automatically wires <code>id</code>, <code>htmlFor</code>,
+    <code>aria-describedby</code>, and <code>aria-invalid</code> down to form inputs:</span></p>
 
 <div class="highlight">
   <pre><code class="language-tsx">import { Field, Input, Select } from 'boodoo/react';
@@ -221,4 +230,3 @@ export function ProjectSettings() {
   );
 }</code></pre>
 </div>
-
