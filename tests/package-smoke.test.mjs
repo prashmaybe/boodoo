@@ -267,4 +267,18 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.equal(pkg.exports['./paper'].types, './react-native/paper.d.ts');
     assert.equal(pkg.exports['./paper'].import, './react-native/paper.js');
   });
+
+  await t.test('14. Package release engineering: prepublishOnly and package-lock.json integrity', () => {
+    // Assert prepublishOnly is bound to npm test for mandatory pre-publish quality verification
+    assert.equal(pkg.scripts.prepublishOnly, 'npm test', 'package.json prepublishOnly must execute full npm test suite');
+
+    // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
+    const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
+    assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
+    assert.equal(lockfile.version, '1.2.8', 'package-lock.json version must be 1.2.8');
+
+    // Assert react-native minimum peer dependency is >=0.71.0 for Flexbox gap support
+    assert.equal(pkg.peerDependencies['react-native'], '>=0.71.0', 'react-native peerDependency must require >=0.71.0');
+    assert.equal(lockfile.packages[''].peerDependencies['react-native'], '>=0.71.0', 'package-lock.json peerDependencies must require react-native >=0.71.0');
+  });
 });

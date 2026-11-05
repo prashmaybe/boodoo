@@ -127,6 +127,10 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(composablesSrc.includes('getDialogProps'), 'useDisclosure must provide getDialogProps');
   assert.ok(composablesSrc.includes("'aria-expanded': isOpen.value"), 'useDisclosure must set aria-expanded');
 
+  // Verify transition-aware disclosure callbacks in Vue
+  assert.ok(composablesSrc.includes('if (!isOpen.value)'), 'Vue useDisclosure open must check transition before firing onOpen');
+  assert.ok(composablesSrc.includes('if (isOpen.value)'), 'Vue useDisclosure close must check transition before firing onClose');
+
   // Verify combobox logic and ARIA props
   assert.ok(composablesSrc.includes('getInputProps'), 'useCombobox must provide getInputProps');
   assert.ok(composablesSrc.includes('getListboxProps'), 'useCombobox must provide getListboxProps');
@@ -150,9 +154,12 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.equal(pkg.exports['./vue'].types, './vue/index.d.ts');
   assert.equal(pkg.exports['./vue'].import, './vue/index.js');
 
-  // Verify Vue useCombobox v-model support
+  // Verify Vue useCombobox v-model and asynchronous items synchronization
   assert.ok(composablesSrc.includes('modelValue'), 'useCombobox must support modelValue');
   assert.ok(composablesSrc.includes('onUpdateModelValue'), 'useCombobox must support onUpdate:modelValue');
+  assert.ok(composablesSrc.includes('watch('), 'useCombobox must use watch for reactivity');
+  assert.ok(composablesSrc.includes('getItems'), 'useCombobox must watch both getControlledVal and getItems');
+  assert.ok(composablesSrc.includes('immediate: true'), 'useCombobox item watcher must configure immediate and deep observation');
 });
 
 test('React useDisclosure transition-aware execution and combobox query sync', () => {
@@ -177,6 +184,24 @@ test('React Native Grid layout distributes items using equal flexible columns an
   assert.ok(layoutSrc.includes('styles.gridRow'), 'Grid must create row containers to distribute columns');
   assert.ok(layoutSrc.includes('styles.gridCol'), 'Grid must style child wrappers with gridCol');
   assert.ok(layoutSrc.includes('flex: 1'), 'Grid columns must use flexible equal width distribution');
+  assert.ok(layoutSrc.includes('emptySlots > 0'), 'Grid must balance incomplete rows with placeholder slots');
+
+  // Test functional row chunking algorithm directly across 1, 2, 3, 4, 5 columns
+  const chunkItems = (items, numCols) => {
+    const cols = Math.max(1, Number(numCols) || 2);
+    const rows = [];
+    for (let i = 0; i < items.length; i += cols) {
+      rows.push(items.slice(i, i + cols));
+    }
+    return rows;
+  };
+
+  const sampleItems = ['A', 'B', 'B2', 'C', 'D'];
+  assert.deepEqual(chunkItems(sampleItems, 1), [['A'], ['B'], ['B2'], ['C'], ['D']]);
+  assert.deepEqual(chunkItems(sampleItems, 2), [['A', 'B'], ['B2', 'C'], ['D']]);
+  assert.deepEqual(chunkItems(sampleItems, 3), [['A', 'B', 'B2'], ['C', 'D']]);
+  assert.deepEqual(chunkItems(sampleItems, 4), [['A', 'B', 'B2', 'C'], ['D']]);
+  assert.deepEqual(chunkItems(sampleItems, 5), [['A', 'B', 'B2', 'C', 'D']]);
 });
 
 
