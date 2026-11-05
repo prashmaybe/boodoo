@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.8] - 2026-11-05
+
+### Added
+- **React Public Barrel Runtime Export & Parity Testing (`tests/package-smoke.test.mjs`)**:
+  - Direct assertions on `react/index.js` verifying that public named barrel exports (`Button`, `Dialog`, `Input`, `Card`, `useDisclosure`, `useCombobox`) cleanly re-export all 12 modular submodules and correspond to TypeScript declarations.
+- **Full Release Verification Pipeline in `prepublishOnly` (`package.json`)**:
+  - Bound `prepublishOnly` to `npm test` so that the complete build, site generation, unit test suite, and package smoke verification must pass before publishing.
+
+### Fixed
+- **React Native Flexbox Gap Minimum Peer Dependency (`package.json`, `package-lock.json`)**:
+  - Raised React Native minimum peer dependency from `>=0.70.0` to `>=0.71.0` to ensure native support for Flexbox `gap` across `HStack`, `VStack`, and `Grid`.
+- **React Native `Grid` Layout & Gap Overflow Calculation (`react-native/layout.js`, `tests/framework-adapters.test.mjs`)**:
+  - Refactored `Grid` to compute shared row chunks with flexible equal column widths (`flex: 1`), properly absorbing inter-column gaps without overflow or percentage basis wrapping bugs on iOS and Android.
+- **Standard Lockfile Format Regeneration (`package-lock.json`)**:
+  - Standardized `package-lock.json` to npm standard format `lockfileVersion: 3`, supporting clean, reproducible `npm ci` installs across Node 20 and Node 22.
+- **Vue `useCombobox` Asynchronous Items Synchronization (`vue/composables.js`)**:
+  - Enhanced watcher in `useCombobox` to observe both controlled value and items collection changes, synchronizing the displayed text query immediately when asynchronous items arrive.
+- **React & Vue `useDisclosure` Transition-Aware Callback Execution (`react/hooks.js`, `vue/composables.js`)**:
+  - Updated `open()` and `close()` to check current state before firing callbacks, preventing redundant `onOpen` or `onClose` calls when the disclosure is already open or closed.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.2.8 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, and `site/llms.txt`.
+
+---
+
 ## [1.2.7] - 2026-11-05
 
 ### Added

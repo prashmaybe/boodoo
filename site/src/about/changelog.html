@@ -59,7 +59,7 @@ order: 7
     <div class="stat-item p-1">
       <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>28 Milestones</span></div>
+        <div class="stat-value"><span>29 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -68,17 +68,61 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.2.7 -->
+  <!-- Version 1.2.8 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
-          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-7">
-            <span>v1.2.7</span>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-8">
+            <span>v1.2.8</span>
             <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-muted small">
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 5, 2026</span>
+          <span class="footer-dot">&bull;</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.8"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Reliability &amp; Compatibility Release</span></span>
+          <span>Version 1.2.8 Release &mdash; React Native Grid &amp; Gap Alignment, Vue Async Sync &amp; Release Engineering</span>
+        </h3>
+        <p><span>boodoo <strong>v1.2.8</strong> brings key stability and compatibility improvements across React, React Native, and Vue: React Native minimum peer version alignment for Flexbox gap, gap-aware grid column calculation, transition-aware disclosure callbacks, Vue combobox asynchronous item observation, React public barrel export parity tests, and standardized package lockfile format.</span></p>
+
+        <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>Bug Fixes &amp; Stability</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>React Native Flexbox Gap Alignment</strong>: Raised minimum React Native peer dependency to <code>&gt;=0.71.0</code> for native Flexbox <code>gap</code> compatibility across <code>HStack</code>, <code>VStack</code>, and <code>Grid</code>.</span></li>
+          <li><span><strong>React Native Grid Gap Overflow Fix</strong>: Refactored mobile <code>Grid</code> to distribute children using equal flexible row containers (<code>flex: 1</code>), properly absorbing column gaps without wrapping or container bounds overflow.</span></li>
+          <li><span><strong>Vue Combobox Asynchronous Synchronization</strong>: Enhanced <code>useCombobox</code> to observe both the selected value and items collection, ensuring query text updates as soon as asynchronous option data arrives.</span></li>
+          <li><span><strong>Transition-Aware Disclosures</strong>: Updated React and Vue <code>useDisclosure</code> to prevent redundant callback firings when already open or closed.</span></li>
+          <li><span><strong>Standardized Lockfile</strong>: Regenerated <code>package-lock.json</code> to standard format <code>lockfileVersion: 3</code> for clean, deterministic CI installations.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Engineering &amp; Testing</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>React Barrel Export Parity</strong>: Directly asserted public barrel exports from <code>boodoo/react</code> against TypeScript definitions and consumer smoke imports.</span></li>
+          <li><span><strong>Mandatory Release Verification</strong>: Wired <code>prepublishOnly</code> to execute full test suite builds prior to publication.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.2.7 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-check" aria-hidden="true"></i></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-7">
+            <span>v1.2.7</span>
+            </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
           <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 5, 2026</span>

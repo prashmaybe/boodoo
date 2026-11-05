@@ -33,19 +33,27 @@ export function useDisclosure(options = {}) {
   const isOpen = ref(Boolean(defaultOpen));
 
   const open = () => {
-    isOpen.value = true;
-    onOpen?.();
+    if (!isOpen.value) {
+      isOpen.value = true;
+      onOpen?.();
+    }
   };
 
   const close = () => {
-    isOpen.value = false;
-    onClose?.();
+    if (isOpen.value) {
+      isOpen.value = false;
+      onClose?.();
+    }
   };
 
   const toggle = () => {
-    isOpen.value = !isOpen.value;
-    if (isOpen.value) onOpen?.();
-    else onClose?.();
+    if (isOpen.value) {
+      isOpen.value = false;
+      onClose?.();
+    } else {
+      isOpen.value = true;
+      onOpen?.();
+    }
   };
 
   const getTriggerProps = (props = {}) => ({
@@ -128,14 +136,21 @@ export function useCombobox(options = {}) {
     },
   });
 
-  // Keep query in sync when controlled modelValue / value changes
-  if (isControlled && (isRef(modelValue) || isRef(controlledVal))) {
+  // Keep query in sync when controlled modelValue / value changes or asynchronous items arrive
+  if (isControlled) {
+    const getItems = () => (isRef(items) ? items.value : items);
     watch(
-      () => getControlledVal(),
-      (newVal) => {
-        const match = items.find((it) => it.value === newVal);
-        query.value = match ? match.label : '';
-      }
+      [() => getControlledVal(), () => getItems()],
+      ([newVal, currentItems]) => {
+        const list = Array.isArray(currentItems) ? currentItems : [];
+        const match = list.find((it) => it && it.value === newVal);
+        if (match) {
+          query.value = match.label;
+        } else if (newVal === null || newVal === undefined || newVal === '') {
+          query.value = '';
+        }
+      },
+      { immediate: true, deep: true }
     );
   }
 

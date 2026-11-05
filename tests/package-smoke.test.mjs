@@ -147,7 +147,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.ok(tokenModule.colors, 'Tokens must define color palette');
 
     const wrapperChecks = [
-      { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox'] },
+      { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox', 'Button', 'Dialog', 'Input', 'Card'] },
       { sub: './vue', file: 'vue/index.js', expected: ['useDisclosure', 'useCombobox'] },
       { sub: './react-native', file: 'react-native/index.js', expected: ['BoodooProvider', 'Button'] },
     ];
@@ -239,6 +239,16 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.deepEqual(missingInJs, [], `React index.d.ts declares symbols not exported by react/ runtime: ${missingInJs.join(', ')}`);
     assert.deepEqual(missingInDts, [], `React runtime exports symbols missing in react/index.d.ts: ${missingInDts.join(', ')}`);
     assert.ok(declared.size >= 70, `Expected at least 70 React components & hooks, found ${declared.size}`);
+
+    // Directly validate public react/index.js barrel re-exports all submodules
+    const barrelContent = readFileSync(resolve(root, 'react/index.js'), 'utf8');
+    for (const file of jsFiles) {
+      if (file === 'hooks.js') {
+        assert.ok(barrelContent.includes('./hooks.js'), 'react/index.js barrel must re-export ./hooks.js');
+      } else {
+        assert.ok(barrelContent.includes(`./${file}`), `react/index.js barrel must re-export ./${file}`);
+      }
+    }
   });
 
   await t.test('13. React Native Paper theme presets and declaration export verification', async () => {

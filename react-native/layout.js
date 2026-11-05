@@ -99,19 +99,33 @@ export function Pressable({ children, onPress, style, disabled, ...props }) {
 
 /**
  * Responsive Grid container (Gluestack / Wix UI Lib)
- * Distributes child elements into numColumns columns.
+ * Distributes child elements into numColumns equal flexible columns with shared row layout,
+ * accounting for inter-column gap without overflowing container bounds.
  */
 export function Grid({ numColumns = 2, gap = 8, children, style, ...props }) {
   const cols = Math.max(1, Number(numColumns) || 2);
-  const itemBasis = `${(100 / cols).toFixed(4)}%`;
+  const childArray = React.Children.toArray(children).filter(Boolean);
+  const rows = [];
+
+  for (let i = 0; i < childArray.length; i += cols) {
+    rows.push(childArray.slice(i, i + cols));
+  }
 
   return (
     <View style={[styles.grid, { gap }, style]} {...props}>
-      {React.Children.map(children, (child) => {
-        if (!child) return null;
+      {rows.map((rowItems, rowIdx) => {
+        const emptySlots = cols - rowItems.length;
         return (
-          <View style={[styles.gridCol, { flexBasis: itemBasis, maxWidth: itemBasis }]}>
-            {child}
+          <View key={`row-${rowIdx}`} style={[styles.gridRow, { gap }]}>
+            {rowItems.map((child, colIdx) => (
+              <View key={`col-${colIdx}`} style={styles.gridCol}>
+                {child}
+              </View>
+            ))}
+            {emptySlots > 0 &&
+              Array.from({ length: emptySlots }).map((_, slotIdx) => (
+                <View key={`empty-${slotIdx}`} style={styles.gridCol} />
+              ))}
           </View>
         );
       })}
@@ -134,10 +148,15 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   grid: {
+    flexDirection: 'column',
+    width: '100%',
+  },
+  gridRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    width: '100%',
   },
   gridCol: {
+    flex: 1,
     boxSizing: 'border-box',
   },
 });

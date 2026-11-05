@@ -17,3 +17,9 @@ export * from './feedback.js';
 export * from './lists.js';
 export * from './navigation.js';
 export * from './overlays.js';
+
+// Re-export core components directly for explicit barrel discoverability
+export { Button } from './buttons.js';
+export { Dialog } from './overlays.js';
+export { Input } from './inputs.js';
+export { Card } from './surfaces.js';

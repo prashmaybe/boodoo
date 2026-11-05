@@ -33,14 +33,18 @@ export function useDisclosure(options = {}) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   const open = useCallback(() => {
-    setIsOpen(true);
-    onOpen?.();
-  }, [onOpen]);
+    if (!isOpen) {
+      setIsOpen(true);
+      onOpen?.();
+    }
+  }, [isOpen, onOpen]);
 
   const close = useCallback(() => {
-    setIsOpen(false);
-    onClose?.();
-  }, [onClose]);
+    if (isOpen) {
+      setIsOpen(false);
+      onClose?.();
+    }
+  }, [isOpen, onClose]);
 
   const toggle = useCallback(() => {
     const next = !isOpen;

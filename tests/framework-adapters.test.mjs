@@ -155,10 +155,12 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(composablesSrc.includes('onUpdateModelValue'), 'useCombobox must support onUpdate:modelValue');
 });
 
-test('React useDisclosure pure callback execution outside updater and combobox query sync', () => {
+test('React useDisclosure transition-aware execution and combobox query sync', () => {
   const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
 
-  // Verify toggle calculates next state outside setState updater function
+  // Verify transition-aware callback invocation and state updater purity
+  assert.ok(hooksSrc.includes('if (!isOpen)'), 'useDisclosure open must check transition before firing onOpen');
+  assert.ok(hooksSrc.includes('if (isOpen)'), 'useDisclosure close must check transition before firing onClose');
   assert.ok(hooksSrc.includes('const next = !isOpen;'), 'useDisclosure toggle must calculate next from current isOpen');
   assert.ok(hooksSrc.includes('setIsOpen(next);'), 'useDisclosure must set next boolean directly');
   assert.ok(!hooksSrc.includes('setIsOpen((prev)'), 'useDisclosure must not run side-effect callbacks inside functional updater');
@@ -169,11 +171,12 @@ test('React useDisclosure pure callback execution outside updater and combobox q
   assert.ok(hooksSrc.includes('props.onInputChange?.(e.target.value, e);'), 'useCombobox must support onInputChange callback');
 });
 
-test('React Native Grid layout distributes items using numColumns basis', () => {
+test('React Native Grid layout distributes items using equal flexible columns and row chunking', () => {
   const layoutSrc = readFileSync(resolve(rootDir, 'react-native/layout.js'), 'utf8');
   assert.ok(layoutSrc.includes('numColumns = 2'), 'Grid must accept numColumns with default of 2');
-  assert.ok(layoutSrc.includes('itemBasis = `${(100 / cols).toFixed(4)}%`'), 'Grid must calculate itemBasis based on numColumns');
+  assert.ok(layoutSrc.includes('styles.gridRow'), 'Grid must create row containers to distribute columns');
   assert.ok(layoutSrc.includes('styles.gridCol'), 'Grid must style child wrappers with gridCol');
+  assert.ok(layoutSrc.includes('flex: 1'), 'Grid columns must use flexible equal width distribution');
 });
 
 
