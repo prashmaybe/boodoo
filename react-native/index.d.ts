@@ -68,7 +68,18 @@ export declare const boodooPaperDarkTheme: BoodooPaperTheme;
 export interface ButtonProps {
   title?: string;
   mode?: 'contained' | 'outlined' | 'text' | 'elevated' | string;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'outline' | 'ghost' | string;
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | 'outline'
+    | 'ghost'
+    | string;
   type?: 'solid' | 'outline' | 'clear' | string;
   status?: string;
   size?: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large' | string;
