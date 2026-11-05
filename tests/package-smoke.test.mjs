@@ -147,7 +147,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.ok(tokenModule.colors, 'Tokens must define color palette');
 
     const wrapperChecks = [
-      { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox'] },
+      { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox', 'Button', 'Dialog', 'Input', 'Card'] },
       { sub: './vue', file: 'vue/index.js', expected: ['useDisclosure', 'useCombobox'] },
       { sub: './react-native', file: 'react-native/index.js', expected: ['BoodooProvider', 'Button'] },
     ];
@@ -239,6 +239,16 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.deepEqual(missingInJs, [], `React index.d.ts declares symbols not exported by react/ runtime: ${missingInJs.join(', ')}`);
     assert.deepEqual(missingInDts, [], `React runtime exports symbols missing in react/index.d.ts: ${missingInDts.join(', ')}`);
     assert.ok(declared.size >= 70, `Expected at least 70 React components & hooks, found ${declared.size}`);
+
+    // Directly validate public react/index.js barrel re-exports all submodules
+    const barrelContent = readFileSync(resolve(root, 'react/index.js'), 'utf8');
+    for (const file of jsFiles) {
+      if (file === 'hooks.js') {
+        assert.ok(barrelContent.includes('./hooks.js'), 'react/index.js barrel must re-export ./hooks.js');
+      } else {
+        assert.ok(barrelContent.includes(`./${file}`), `react/index.js barrel must re-export ./${file}`);
+      }
+    }
   });
 
   await t.test('13. React Native Paper theme presets and declaration export verification', async () => {
@@ -256,5 +266,19 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     assert.ok(pkg.exports['./paper'], 'package.json exports must define ./paper');
     assert.equal(pkg.exports['./paper'].types, './react-native/paper.d.ts');
     assert.equal(pkg.exports['./paper'].import, './react-native/paper.js');
+  });
+
+  await t.test('14. Package release engineering: prepublishOnly and package-lock.json integrity', () => {
+    // Assert prepublishOnly is bound to npm test for mandatory pre-publish quality verification
+    assert.equal(pkg.scripts.prepublishOnly, 'npm test', 'package.json prepublishOnly must execute full npm test suite');
+
+    // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
+    const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
+    assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
+    assert.equal(lockfile.version, '1.2.8', 'package-lock.json version must be 1.2.8');
+
+    // Assert react-native minimum peer dependency is >=0.71.0 for Flexbox gap support
+    assert.equal(pkg.peerDependencies['react-native'], '>=0.71.0', 'react-native peerDependency must require >=0.71.0');
+    assert.equal(lockfile.packages[''].peerDependencies['react-native'], '>=0.71.0', 'package-lock.json peerDependencies must require react-native >=0.71.0');
   });
 });
