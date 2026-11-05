@@ -100,7 +100,14 @@ export function useCombobox(options = {}) {
   const onUpdateModelValue = options['onUpdate:modelValue'] || options.onUpdateModelValue;
 
   const isControlled = modelValue !== undefined || controlledVal !== undefined;
-  const getControlledVal = () => (modelValue !== undefined ? (isRef(modelValue) ? modelValue.value : modelValue) : (isRef(controlledVal) ? controlledVal.value : controlledVal));
+  const getControlledVal = () =>
+    modelValue !== undefined
+      ? isRef(modelValue)
+        ? modelValue.value
+        : modelValue
+      : isRef(controlledVal)
+        ? controlledVal.value
+        : controlledVal;
 
   const internalValue = ref(isControlled ? getControlledVal() : null);
   const initialSelected = isControlled ? getControlledVal() : null;
