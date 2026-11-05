@@ -1,4 +1,11 @@
-import type { Ref, ComputedRef } from 'vue';
+// Fallback type interfaces when 'vue' is not installed in the current environment
+export interface Ref<T = any> {
+  value: T;
+}
+
+export type ComputedRef<T = any> = {
+  readonly value: T;
+};
 
 export interface DisclosureReturn {
   isOpen: Ref<boolean>;
