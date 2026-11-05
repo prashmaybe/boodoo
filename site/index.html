@@ -5,17 +5,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="boodoo — a modular, mobile-first CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design. Fast, responsive, accessible, and dependency-free.">
+    content="boodoo — A modern, zero-dependency universal design system and UI toolkit for Web and React Native Mobile. Fast, accessible, responsive, and production-ready.">
   <meta name="theme-color" content="#7c3aed">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="boodoo">
-  <meta property="og:title" content="boodoo · Build fast, responsive sites">
+  <meta property="og:title" content="boodoo · Universal Design System for Web & Mobile">
   <meta property="og:description"
-    content="A modular, mobile-first CSS design framework inspired by Bootstrap, Foundation, Tailwind CSS and Material Design.">
+    content="A unified, zero-dependency design system and UI toolkit for Web and React Native Mobile. Modular styling, universal design tokens, accessible components.">
   <meta property="og:url" content="https://boodooframework.com/">
   <meta property="og:image" content="https://boodooframework.com/assets/brand/boodoo-og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <title>boodoo · Build fast, responsive sites</title>
+  <title>boodoo · Universal Design System for Web & Mobile</title>
   <link rel="canonical" href="https://boodooframework.com/">
   <link rel="icon" type="image/svg+xml" href="assets/brand/boodoo-icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/boodoo-icon-32.png">
@@ -493,8 +493,8 @@
                   class="btn btn-primary rounded-pill px-2 shadow-sm">
                   <span>Explore Mobile Examples →</span>
                 </a>
-                <a href="docs/about/vs-react-native-paper.html" class="btn btn-outline-secondary rounded-pill px-4">
-                  <span>boodoo vs Paper</span>
+                <a href="docs/getting-started/platforms.html" class="btn btn-outline-secondary rounded-pill px-4">
+                  <span>Architecture Guide</span>
                 </a>
               </div>
             </div>
@@ -872,165 +872,66 @@
       </div>
     </section>
 
-    <!-- Four Pillars / Inspiration -->
+    <!-- Core Architectural Pillars -->
     <section id="inspiration" class="py-5 landing-section-alt">
       <div class="container text-center py-4">
-        <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Four Pillars</span>
-        <h2 class="fw-bold mb-2">Four great design systems, one cohesive toolkit</h2>
-        <p class="text-muted mb-5 mx-auto pillars-desc-sm">boodoo synthesizes the best ideas from top frameworks
-          into a single lightweight library.</p>
+        <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2">Core Pillars</span>
+        <h2 class="fw-bold mb-2">Engineered with four foundational design pillars</h2>
+        <p class="text-muted mb-5 mx-auto pillars-desc-sm">A cohesive, modern toolkit architected for unified performance across web and mobile platforms.</p>
 
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
-            <a href="docs/about/vs-bootstrap.html" class="text-decoration-none">
+            <a href="docs/tokens/index.html" class="text-decoration-none">
               <div class="card pillar-card bootstrap-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3"><i class="hi-bootstrap"
+                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3"><i class="hi-paintbox"
                       aria-hidden="true"></i></div>
-                  <h3 class="card-title h6 fw-bold text-primary">Bootstrap</h3>
-                  <p class="card-text small text-muted mb-0">Component structure, 12-col grid flex, modal overlays,
-                    data-*
-                    attributes JS API.</p>
+                  <h3 class="card-title h6 fw-bold text-primary">Universal Tokens</h3>
+                  <p class="card-text small text-muted mb-0">Shared design tokens in JSON, ESM, and CJS syncing palettes, spacing, and typography across Web &amp; Native.</p>
                 </div>
               </div>
             </a>
           </div>
           <div class="col-md-6 col-lg-3">
-            <a href="docs/about/vs-foundation.html" class="text-decoration-none">
+            <a href="docs/about/production-readiness.html" class="text-decoration-none">
               <div class="card pillar-card foundation-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-success text-success mx-auto mb-3"><i class="hi-home"
+                  <div class="card-icon-avatar bg-soft-success text-success mx-auto mb-3"><i class="hi-lightning"
                       aria-hidden="true"></i></div>
-                  <h3 class="card-title h6 fw-bold text-success">Foundation</h3>
-                  <p class="card-text small text-muted mb-0">Clean structural scaffolding, rich typography scales, and
-                    subtle gray scales.</p>
+                  <h3 class="card-title h6 fw-bold text-success">Zero Dependencies</h3>
+                  <p class="card-text small text-muted mb-0">Self-contained vanilla ES runtime and lightweight modular styling with zero external supply-chain risk.</p>
                 </div>
               </div>
             </a>
           </div>
           <div class="col-md-6 col-lg-3">
-            <a href="docs/about/vs-tailwind.html" class="text-decoration-none">
+            <a href="docs/getting-started/platforms.html" class="text-decoration-none">
               <div class="card pillar-card tailwind-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-info text-info mx-auto mb-3"><i class="hi-tailwind"
+                  <div class="card-icon-avatar bg-soft-info text-info mx-auto mb-3"><i class="hi-layers"
                       aria-hidden="true"></i></div>
-                  <h3 class="card-title h6 fw-bold text-info">Tailwind</h3>
-                  <p class="card-text small text-muted mb-0">Functional utility classes, responsive variants, precise
-                    spacing scales.</p>
+                  <h3 class="card-title h6 fw-bold text-info">Multi-Platform Parity</h3>
+                  <p class="card-text small text-muted mb-0">First-class support across Vanilla HTML, React DOM, Vue 3, and pure React Native mobile primitives.</p>
                 </div>
               </div>
             </a>
           </div>
           <div class="col-md-6 col-lg-3">
-            <a href="docs/about/vs-material.html" class="text-decoration-none">
+            <a href="docs/about/design-principles.html" class="text-decoration-none">
               <div class="card pillar-card material-pillar shadow-sm p-3">
                 <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-warning text-warning mx-auto mb-3"><i class="hi-diamonds"
+                  <div class="card-icon-avatar bg-soft-warning text-warning mx-auto mb-3"><i class="hi-shield-check"
                       aria-hidden="true"></i></div>
-                  <h3 class="card-title h6 fw-bold text-warning">Material</h3>
-                  <p class="card-text small text-muted mb-0">Elevation shadows, motion curves, touch ripple effects,
-                    floating form labels.</p>
+                  <h3 class="card-title h6 fw-bold text-warning">Accessible &amp; Strict</h3>
+                  <p class="card-text small text-muted mb-0">WCAG 2.2 AA target, automated focus management, roving tabindex, ARIA live announcer, and strict dark mode.</p>
                 </div>
               </div>
             </a>
           </div>
         </div>
 
-        <!-- Why Choose Boodoo Over Heavy Giants Comparison Section -->
-        <div class="mt-5 pt-3">
-          <div class="text-center mb-4">
-            <span class="badge badge-soft-primary badge-pill px-3 py-1 mb-2"><span>Architecture Comparison</span></span>
-            <h3 class="fw-bold h3"><span>Architectural Comparison &amp; Production Tradeoffs</span></h3>
-            <p class="text-muted mx-auto hero-desc-sm"><span>A fair, verifiable comparison of core architecture, runtime
-                dependencies, token sharing, and multi-platform workflows.</span></p>
-          </div>
-
-          <div class="table-responsive shadow-sm rounded-3 border bg-white">
-            <table class="table table-hover align-middle mb-0 comparison-table">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col" class="py-1 px-1"><span>Feature / Capability</span></th>
-                  <th scope="col" class="py-1 px-1 text-primary fw-bold"><span>boodoo</span></th>
-                  <th scope="col" class="py-1 px-1 text-muted"><span>Bootstrap 5</span></th>
-                  <th scope="col" class="py-1 px-1 text-muted"><span>Tailwind CSS</span></th>
-                  <th scope="col" class="py-1 px-1 text-muted"><span>Material UI / MUI</span></th>
-                  <th scope="col" class="py-1 px-1 text-muted"><span>Foundation</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Runtime Dependencies</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>0 (Pure Vanilla JS)</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Popper.js required</span></td>
-                  <td class="py-1 px-1 text-muted"><span>0 (CSS-only; JS optional)</span></td>
-                  <td class="py-1 px-1 text-muted"><span>React + Emotion runtime</span></td>
-                  <td class="py-1 px-1 text-muted"><span>jQuery / legacy plugins</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Component Scope</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>50+ Built-in Components + Utilities</span></td>
-                  <td class="py-1 px-1 text-muted"><span>~25 Core Web Components</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Utility classes (components via Tailwind UI / Headless
-                      UI)</span></td>
-                  <td class="py-1 px-1 text-muted"><span>50+ React Components (MUI Core / X)</span></td>
-                  <td class="py-1 px-1 text-muted"><span>~20 Legacy Scaffolds</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Dual Sass + LESS Parity</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ 100% Feature Parity</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Sass only</span></td>
-                  <td class="py-1 px-1 text-muted"><span>PostCSS engine only</span></td>
-                  <td class="py-1 px-1 text-muted"><span>CSS-in-JS / Emotion only</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Sass only</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Universal Design Tokens</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Single JSON / CJS / ESM source for Web &amp;
-                      Native</span></td>
-                  <td class="py-1 px-1 text-muted"><span>CSS custom properties on :root</span></td>
-                  <td class="py-1 px-1 text-muted"><span>tailwind.config.js theme values</span></td>
-                  <td class="py-1 px-1 text-muted"><span>createTheme JavaScript object</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Static Sass map values</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Cross-Platform React Native Support</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Pure native primitives (zero DOM access)</span>
-                  </td>
-                  <td class="py-1 px-1 text-muted"><span>Web DOM only</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Via NativeWind adapter</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Separate react-native-paper ecosystem</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Web DOM only</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Build-Free CDN Delivery</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Pre-compiled single CSS + JS bundle</span></td>
-                  <td class="py-1 px-1 text-success"><span>✔ Pre-compiled CDN bundle</span></td>
-                  <td class="py-1 px-1 text-muted"><span>CDN script available (not recommended for production)</span>
-                  </td>
-                  <td class="py-1 px-1 text-muted"><span>Requires bundler / npm build</span></td>
-                  <td class="py-1 px-1 text-success"><span>✔ Pre-compiled CDN bundle</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>WAI-ARIA &amp; a11y Announcer Suite</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ Live Announcer, Roving Tabindex &amp; Focus
-                      Trap</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Modal focus management</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Delegated to user / Headless UI</span></td>
-                  <td class="py-1 px-1 text-success"><span>✔ Fully integrated ARIA primitives</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Basic accessibility attributes</span></td>
-                </tr>
-                <tr>
-                  <td class="py-1 px-1 fw-semibold"><span>Developer CLI &amp; Codemods</span></td>
-                  <td class="py-1 px-1 text-success fw-bold"><span>✔ `npx boodoo add`, `create` &amp; `migrate`</span>
-                  </td>
-                  <td class="py-1 px-1 text-muted"><span>N/A</span></td>
-                  <td class="py-1 px-1 text-success"><span>✔ Tailwind CLI</span></td>
-                  <td class="py-1 px-1 text-muted"><span>MUI codemods for major versions</span></td>
-                  <td class="py-1 px-1 text-muted"><span>Deprecated Foundation CLI</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="mt-4 pt-2">
+          <p class="text-muted small mb-0"><span>Evaluating architecture tradeoffs or migrating an existing app? Explore our <a href="docs/about/production-readiness.html" class="text-primary fw-semibold text-decoration-none">Production Readiness &amp; Comparison Matrix</a> or view <a href="docs/about/migrate-from-bootstrap.html" class="text-primary fw-semibold text-decoration-none">Migration Guides</a>.</span></p>
         </div>
       </div>
     </section>
