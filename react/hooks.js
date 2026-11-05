@@ -4,7 +4,7 @@
 // Accordions, and Comboboxes in Next.js, Remix, Vite, and React apps.
 // =====================================================================
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 
 /**
  * Normalizes text for accent-insensitive search
@@ -43,13 +43,11 @@ export function useDisclosure(options = {}) {
   }, [onClose]);
 
   const toggle = useCallback(() => {
-    setIsOpen((prev) => {
-      const next = !prev;
-      if (next) onOpen?.();
-      else onClose?.();
-      return next;
-    });
-  }, [onOpen, onClose]);
+    const next = !isOpen;
+    setIsOpen(next);
+    if (next) onOpen?.();
+    else onClose?.();
+  }, [isOpen, onOpen, onClose]);
 
   return {
     isOpen,
@@ -104,6 +102,14 @@ export function useCombobox(options = {}) {
   );
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+
+  // Synchronize query when controlled value changes externally
+  useEffect(() => {
+    if (isControlled) {
+      const match = items.find((it) => it.value === controlledValue);
+      setQuery(match ? match.label : '');
+    }
+  }, [isControlled, controlledValue, items]);
 
   const filteredItems = useMemo(() => {
     if (!query) return items;
@@ -178,6 +184,7 @@ export function useCombobox(options = {}) {
         setIsOpen(true);
         setActiveIndex(-1);
         props.onChange?.(e);
+        props.onInputChange?.(e.target.value, e);
       },
       onFocus: (e) => {
         setIsOpen(true);

@@ -210,4 +210,51 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
 
     assert.equal(dtsNamedExports.length, entryNamedExports.length, 'TypeScript definitions must export exact same number of named symbols as js/boodoo.js');
   });
+
+  await t.test('12. React runtime exports and TypeScript declarations full parity assertion', () => {
+    const dtsPath = resolve(root, 'react/index.d.ts');
+    assert.ok(existsSync(dtsPath), 'react/index.d.ts must exist');
+    const dts = readFileSync(dtsPath, 'utf8');
+    const declared = new Set();
+    for (const m of dts.matchAll(/export\s+(?:declare\s+)?(?:const|function|class)\s+([A-Za-z0-9_]+)/g)) {
+      declared.add(m[1]);
+    }
+
+    const jsFiles = [
+      'hooks.js', 'theme.js', 'typography.js', 'layout.js', 'buttons.js',
+      'surfaces.js', 'inputs.js', 'data-display.js', 'feedback.js',
+      'lists.js', 'navigation.js', 'overlays.js'
+    ];
+    const exported = new Set();
+    for (const file of jsFiles) {
+      const c = readFileSync(resolve(root, 'react', file), 'utf8');
+      for (const m of c.matchAll(/export\s+(?:function|const|let|class)\s+([A-Za-z0-9_]+)/g)) {
+        exported.add(m[1]);
+      }
+    }
+
+    const missingInJs = [...declared].filter((x) => !exported.has(x));
+    const missingInDts = [...exported].filter((x) => !declared.has(x));
+
+    assert.deepEqual(missingInJs, [], `React index.d.ts declares symbols not exported by react/ runtime: ${missingInJs.join(', ')}`);
+    assert.deepEqual(missingInDts, [], `React runtime exports symbols missing in react/index.d.ts: ${missingInDts.join(', ')}`);
+    assert.ok(declared.size >= 70, `Expected at least 70 React components & hooks, found ${declared.size}`);
+  });
+
+  await t.test('13. React Native Paper theme presets and declaration export verification', async () => {
+    const paperJsPath = resolve(root, 'react-native/paper.js');
+    const paperDtsPath = resolve(root, 'react-native/paper.d.ts');
+    assert.ok(existsSync(paperJsPath), 'react-native/paper.js must exist');
+    assert.ok(existsSync(paperDtsPath), 'react-native/paper.d.ts must exist');
+
+    const paperModule = await import(pathToFileURL(paperJsPath).href);
+    assert.ok(paperModule.boodooPaperLightTheme, 'paper.js must export boodooPaperLightTheme');
+    assert.ok(paperModule.boodooPaperDarkTheme, 'paper.js must export boodooPaperDarkTheme');
+    assert.equal(paperModule.boodooPaperLightTheme.version, 3);
+    assert.equal(paperModule.boodooPaperDarkTheme.version, 3);
+
+    assert.ok(pkg.exports['./paper'], 'package.json exports must define ./paper');
+    assert.equal(pkg.exports['./paper'].types, './react-native/paper.d.ts');
+    assert.equal(pkg.exports['./paper'].import, './react-native/paper.js');
+  });
 });

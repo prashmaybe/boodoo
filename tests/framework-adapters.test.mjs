@@ -149,6 +149,31 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(pkg.exports['./vue'], 'package.json must export ./vue subpath');
   assert.equal(pkg.exports['./vue'].types, './vue/index.d.ts');
   assert.equal(pkg.exports['./vue'].import, './vue/index.js');
+
+  // Verify Vue useCombobox v-model support
+  assert.ok(composablesSrc.includes('modelValue'), 'useCombobox must support modelValue');
+  assert.ok(composablesSrc.includes('onUpdateModelValue'), 'useCombobox must support onUpdate:modelValue');
+});
+
+test('React useDisclosure pure callback execution outside updater and combobox query sync', () => {
+  const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+
+  // Verify toggle calculates next state outside setState updater function
+  assert.ok(hooksSrc.includes('const next = !isOpen;'), 'useDisclosure toggle must calculate next from current isOpen');
+  assert.ok(hooksSrc.includes('setIsOpen(next);'), 'useDisclosure must set next boolean directly');
+  assert.ok(!hooksSrc.includes('setIsOpen((prev)'), 'useDisclosure must not run side-effect callbacks inside functional updater');
+
+  // Verify combobox query synchronization when controlled value changes
+  assert.ok(hooksSrc.includes('useEffect('), 'useCombobox must use useEffect for synchronization');
+  assert.ok(hooksSrc.includes('items.find((it) => it.value === controlledValue)'), 'useCombobox must match controlled value on update');
+  assert.ok(hooksSrc.includes('props.onInputChange?.(e.target.value, e);'), 'useCombobox must support onInputChange callback');
+});
+
+test('React Native Grid layout distributes items using numColumns basis', () => {
+  const layoutSrc = readFileSync(resolve(rootDir, 'react-native/layout.js'), 'utf8');
+  assert.ok(layoutSrc.includes('numColumns = 2'), 'Grid must accept numColumns with default of 2');
+  assert.ok(layoutSrc.includes('itemBasis = `${(100 / cols).toFixed(4)}%`'), 'Grid must calculate itemBasis based on numColumns');
+  assert.ok(layoutSrc.includes('styles.gridCol'), 'Grid must style child wrappers with gridCol');
 });
 
 

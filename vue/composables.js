@@ -4,7 +4,7 @@
 // Accordions, and Comboboxes in Vue 3, Nuxt, and Vite apps.
 // =====================================================================
 
-import { ref, computed } from 'vue';
+import { ref, computed, watch, isRef } from 'vue';
 
 /**
  * Normalizes text for accent-insensitive search
@@ -78,19 +78,59 @@ export function useDisclosure(options = {}) {
 }
 
 /**
- * Headless combobox / autocomplete composable
+ * Headless combobox / autocomplete composable with v-model support
  * @param {Object} [options]
  * @param {Array<{ id?: string, label: string, value: any, meta?: string }>} [options.items=[]]
+ * @param {any} [options.modelValue]
+ * @param {any} [options.value]
  * @param {string} [options.defaultValue='']
  * @param {(value: any) => void} [options.onChange]
+ * @param {(value: any) => void} [options['onUpdate:modelValue']]
  * @param {(item: any) => string} [options.getOptionMeta]
  */
 export function useCombobox(options = {}) {
-  const { items = [], defaultValue = '', onChange, getOptionMeta } = options;
-  const query = ref(defaultValue);
+  const {
+    items = [],
+    modelValue,
+    value: controlledVal,
+    defaultValue = '',
+    onChange,
+    getOptionMeta,
+  } = options;
+  const onUpdateModelValue = options['onUpdate:modelValue'] || options.onUpdateModelValue;
+
+  const isControlled = modelValue !== undefined || controlledVal !== undefined;
+  const getControlledVal = () => (modelValue !== undefined ? (isRef(modelValue) ? modelValue.value : modelValue) : (isRef(controlledVal) ? controlledVal.value : controlledVal));
+
+  const internalValue = ref(isControlled ? getControlledVal() : null);
+  const initialSelected = isControlled ? getControlledVal() : null;
+  const initialItem = items.find((it) => it.value === initialSelected);
+
+  const query = ref(initialItem ? initialItem.label : defaultValue);
   const isOpen = ref(false);
   const activeIndex = ref(-1);
-  const selectedValue = ref(null);
+
+  const selectedValue = computed({
+    get: () => (isControlled ? getControlledVal() : internalValue.value),
+    set: (val) => {
+      if (!isControlled) {
+        internalValue.value = val;
+      }
+      onUpdateModelValue?.(val);
+      onChange?.(val);
+    },
+  });
+
+  // Keep query in sync when controlled modelValue / value changes
+  if (isControlled && (isRef(modelValue) || isRef(controlledVal))) {
+    watch(
+      () => getControlledVal(),
+      (newVal) => {
+        const match = items.find((it) => it.value === newVal);
+        query.value = match ? match.label : '';
+      }
+    );
+  }
 
   const filteredItems = computed(() => {
     const q = query.value.trim();
@@ -109,7 +149,6 @@ export function useCombobox(options = {}) {
     query.value = item.label;
     isOpen.value = false;
     activeIndex.value = -1;
-    onChange?.(item.value);
   };
 
   const handleKeyDown = (e) => {

@@ -89,19 +89,19 @@ import('node:fs').then(fs => {
 });"
 ```
 
-### 📉 How Clean Structural Grid Scaffolding Slashes Bundle Sizes
+### 📉 Fair Architectural Comparison: Modular CSS Grid vs. Utility Sprawl
 
-Standard modern front-end configurations (such as **vanilla React + Tailwind CSS**) often suffer from hidden payload compounding and runtime overhead:
+When teams choose how to structure layout across web projects, different approaches carry distinct trade-offs:
 
-1. **Elimination of Utility Class Sprawl in the DOM & AST**: In typical Tailwind and React setups, structural scaffolding requires sprawling class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). In React JSX, these string-heavy attributes bloat the compiled JavaScript bundle, virtual DOM memory tree, and server-rendered HTML payloads. boodoo replaces this repetition with standardized structural scaffolding (`.container`, `.row`, `.col-*`) and 2D CSS Grid primitives, drastically reducing token duplication.
-2. **Tiny Modular Footprint (`boodoo-grid.min.css` is only ~2.4 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a complete 12-column mobile-first flexbox system alongside CSS Grid layout helpers at just **~2.4 KB gzipped / 1.6 KB brotli**. Compared to hauling hundreds of kilobytes of utility CSS parsers or runtime CSS-in-JS abstractions, boodoo loads instantaneously.
-3. **Zero JavaScript Runtime Tax**: React-based UI libraries (Tailwind UI component wrappers, Headless UI, Radix, shadcn) require React runtime reconciliation (`react`, `react-dom` adding 45+ KB gzip before application logic starts) just to manage basic grid transitions, collapsible layouts, and drawer states. boodoo’s scaffolding operates purely on native browser layout engines and zero-overhead declarative HTML primitives (`<dialog>`, `popover`, `@container`), completely eliminating layout-driven JavaScript execution.
-4. **Superior Caching & Zero Build Lock-In**: Unlike bundler-purged Tailwind setups where every slight markup tweak triggers unique CSS build outputs that invalidate client caches, boodoo’s clean grid scaffolding is cache-stable across all pages and subdomains.
+1. **Elimination of Utility Class Sprawl**: In atomic utility setups, structural scaffolding often requires long class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). boodoo provides dedicated structural primitives (`.container`, `.row`, `.col-*`) and CSS Grid classes that keep markup clean and maintainable.
+2. **Tiny Modular Footprint (`boodoo-grid.min.css` is ~2.4 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a full 12-column mobile-first flexbox system alongside CSS Grid helpers at just **~2.4 KB gzipped / 1.6 KB brotli** without hauling unused utility rules.
+3. **Pure CSS Layout**: Layout and responsive alignment in Boodoo operate purely through standard CSS layout engines (Flexbox & CSS Grid), with zero JavaScript execution required for structural responsiveness.
+4. **Superior Caching & Zero Build Lock-In**: While build-time purged CSS setups invalidate client stylesheet caches whenever new atomic classes are added, Boodoo's modular grid stylesheet is cache-stable across all pages, applications, and subdomains.
 
-| Architectural Metric | Vanilla React + Tailwind Setup | boodoo Structural Grid Scaffolding |
+| Architectural Metric | Atomic Utility Frameworks | boodoo Modular Grid Stylesheet |
 | :--- | :--- | :--- |
 | **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~2.4 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
-| **Runtime Engine Overhead** | 45+ KB gzip (React + ReactDOM + state hooks) | **0 KB** (Native browser flexbox & CSS Grid engine) |
+| **Layout Engine Overhead** | Atomic utility parser / build dependency | **0 KB JS** (Pure native Flexbox & CSS Grid stylesheet) |
 | **DOM / Markup Footprint** | Bloated inline class strings on every layout node | Semantic structural containers (`.container`, `.row`, `.col`) |
 | **Build Pipeline Dependency** | Mandatory (Node.js, PostCSS / Tailwind CLI, bundler) | **Zero build required** (Direct CDN or modular Sass/Less) |
 | **Cache Reusability** | Purged atomic CSS cache invalidated on markup changes | Persistent browser-cached global asset |
@@ -114,20 +114,20 @@ Standard modern front-end configurations (such as **vanilla React + Tailwind CSS
 
 ```html
 <!-- jsDelivr (Primary CDN) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.6/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/boodoo@1.2.6/dist/js/boodoo.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.7/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/boodoo@1.2.7/dist/js/boodoo.min.js" defer></script>
 
 <!-- unpkg (Alternative CDN) -->
-<link href="https://unpkg.com/boodoo@1.2.6/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://unpkg.com/boodoo@1.2.6/dist/js/boodoo.min.js" defer></script>
+<link href="https://unpkg.com/boodoo@1.2.7/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://unpkg.com/boodoo@1.2.7/dist/js/boodoo.min.js" defer></script>
 ```
 
 #### Lean Modular CDN Builds
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.6/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.6/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.6/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.7/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.7/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.7/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
 ```
 
 ### npm

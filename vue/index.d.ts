@@ -30,8 +30,12 @@ export interface ComboboxItem {
 
 export interface ComboboxOptions {
   items?: ComboboxItem[];
+  modelValue?: any;
+  value?: any;
   defaultValue?: string;
   onChange?: (value: any) => void;
+  'onUpdate:modelValue'?: (value: any) => void;
+  onUpdateModelValue?: (value: any) => void;
   getOptionMeta?: (item: ComboboxItem) => string;
 }
 
@@ -39,7 +43,7 @@ export interface ComboboxReturn {
   query: Ref<string>;
   isOpen: Ref<boolean>;
   activeIndex: Ref<number>;
-  selectedValue: Ref<any>;
+  selectedValue: Ref<any> | ComputedRef<any>;
   filteredItems: ComputedRef<ComboboxItem[]>;
   selectItem: (item: ComboboxItem) => void;
   getInputProps: <T extends Record<string, any>>(props?: T) => T & Record<string, any>;
