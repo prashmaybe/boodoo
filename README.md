@@ -6,11 +6,11 @@
 
 # boodoo
 
-**The simplicity of Bootstrap. The flexibility of Tailwind. The structure of Foundation. The polish of Material.**
+**Next-Gen Native CSS Primitives · Universal Design Tokens · 50+ Accessible Components**
 
 *One design system. Multiple platforms. No unnecessary lock-in.*
 
-A modular, mobile-first CSS design framework built for developers who want pre-styled accessible UI components + utility-first power with zero build overhead and zero JS framework lock-in.
+A modern, high-performance UI framework engineered for scalable web, mobile, and desktop applications. Delivers 50+ pre-styled accessible UI components, 150+ responsive utilities, pure vanilla zero-runtime-dependency JavaScript, and cross-platform native mobile & desktop support with zero build overhead.
 
 <p align="center">
   <a href="https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml"><img src="https://github.com/prashmaybe/boodoo/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
@@ -26,12 +26,13 @@ A modular, mobile-first CSS design framework built for developers who want pre-s
 
 ---
 
-boodoo combines the best architectural ideas across modern design frameworks:
+### 🌟 What Makes boodoo Stand Out
 
-- **Bootstrap** — 12-column mobile-first flexbox grid, battle-tested components, zero-dependency `data-*` JS API
-- **Foundation** — Tidy scaffolds, typography scales, clean layout helpers
-- **Tailwind CSS** — Functional utility classes with responsive breakpoint variants
-- **Material Design** — Elevation tokens, motion curves, touch ripple effects, floating labels
+- **Next-Gen Modern CSS Native Primitives** — First-class support for CSS Anchor Positioning (`anchor()`), Scroll-Driven Animations (`animation-timeline: scroll() / view()`), Container Queries (`@container`), HTML5 `<dialog>` & `[popover]` with `@starting-style` transitions, and CSS `:has()` parent selectors.
+- **Zero External Runtime Dependencies** — 100% vanilla ES modules, ultra-lean footprint, and zero third-party dependencies (no jQuery, no Popper.js, zero runtime bloat).
+- **Universal Cross-Platform Architecture** — One unified token engine powering Web (CSS, Sass, Less), React (`boodoo/react`), Vue 3 (`boodoo/vue`), React Native mobile (`boodoo/react-native` with 100% pure native `StyleSheet` & zero inline styles), and Desktop (Electron & Tauri window drag regions).
+- **Complete UI Arsenal (50+ Components & 150+ Utilities)** — From zero-dependency responsive data charts, AI prompt bubbles, and command palettes to bottom sheets, docking pane splitters, and floating action docks.
+- **Built-in WAI-ARIA Accessibility Engine** — Screen reader live region announcements (`a11y.announce`), keyboard roving tabindex coordinator (`a11y.setRovingTabindex`), and accessible focus trapping (`a11y.createFocusTrap`).
 
 ---
 
@@ -62,7 +63,7 @@ All distribution assets are tested, minified, and verified on every release buil
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
 | `boodoo.min.css` | ~539 KB | ~75.1 KB | ~50.8 KB | Full framework (all 50+ components + utilities) |
-| `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | Tailwind-style utility classes only |
+| `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | 150+ responsive atomic utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
@@ -89,16 +90,16 @@ import('node:fs').then(fs => {
 });"
 ```
 
-### 📉 Fair Architectural Comparison: Modular CSS Grid vs. Utility Sprawl
+### 📉 Architectural Edge: Modular CSS Architecture vs. Utility Sprawl
 
 When teams choose how to structure layout across web projects, different approaches carry distinct trade-offs:
 
-1. **Elimination of Utility Class Sprawl**: In atomic utility setups, structural scaffolding often requires long class chains on every element (e.g. `flex flex-col md:flex-row items-center justify-between gap-4 p-6 w-full max-w-7xl mx-auto`). boodoo provides dedicated structural primitives (`.container`, `.row`, `.col-*`) and CSS Grid classes that keep markup clean and maintainable.
+1. **Elimination of Utility Class Sprawl**: Unlike bloated markup with endless utility chains on every single element, boodoo gives you elegant, dedicated structural primitives (`.container`, `.row`, `.col-*`) and 2D CSS Grid classes that keep templates clean, maintainable, and readable.
 2. **Tiny Modular Footprint (`boodoo-grid.min.css` is ~2.4 KB gzip)**: When your application only requires structural layout and responsive alignment, importing `boodoo-grid.min.css` delivers a full 12-column mobile-first flexbox system alongside CSS Grid helpers at just **~2.4 KB gzipped / 1.6 KB brotli** without hauling unused utility rules.
 3. **Pure CSS Layout**: Layout and responsive alignment in Boodoo operate purely through standard CSS layout engines (Flexbox & CSS Grid), with zero JavaScript execution required for structural responsiveness.
-4. **Superior Caching & Zero Build Lock-In**: While build-time purged CSS setups invalidate client stylesheet caches whenever new atomic classes are added, Boodoo's modular grid stylesheet is cache-stable across all pages, applications, and subdomains.
+4. **Superior Caching & Zero Build Lock-In**: Traditional build-time purged CSS setups constantly invalidate client stylesheet caches whenever new utility classes are added. Boodoo's modular stylesheets are cache-stable across all pages, applications, and subdomains with zero build lock-in.
 
-| Architectural Metric | Atomic Utility Frameworks | boodoo Modular Grid Stylesheet |
+| Architectural Metric | Complex Build-Step Utility Setup | boodoo Modular Architecture |
 | :--- | :--- | :--- |
 | **Grid & Layout Delivery** | Bundler-compiled atomic classes scattered across JSX | **~2.4 KB gzipped** standalone stylesheet (`boodoo-grid.min.css`) |
 | **Layout Engine Overhead** | Atomic utility parser / build dependency | **0 KB JS** (Pure native Flexbox & CSS Grid stylesheet) |
@@ -241,7 +242,7 @@ Every component is fully accessible (WCAG 2.2 AA target), responsive, and suppor
 | **Spinners** | Lightweight CSS loading animations for buttons and full pages | [View Docs](https://boodooframework.com/docs/components/spinners.html) |
 | **Skeleton** | Shimmer loading placeholders that reduce perceived latency | [View Docs](https://boodooframework.com/docs/components/skeleton.html) |
 | **Rating** | Interactive star rating component with half-star precision and hover feedback | [View Docs](https://boodooframework.com/docs/components/rating.html) |
-| **Ripple Effect** | Material-inspired ink ripple response on click and touch interactions | [View Docs](https://boodooframework.com/docs/components/ripple.html) |
+| **Ripple Effect** | Dynamic ink ripple response on click and touch interactions with token coloring | [View Docs](https://boodooframework.com/docs/components/ripple.html) |
 | **Scrollspy** | Automatically updates active navigation items based on viewport scroll position | [View Docs](https://boodooframework.com/docs/components/scrollspy.html) |
 
 ### 🚀 Productivity & Advanced Tools
@@ -370,7 +371,7 @@ boodoo/
 │   │   ├── boodoo.css / boodoo.min.css        # Full framework bundle
 │   │   ├── boodoo-grid.css / .min.css         # Grid + containers
 │   │   ├── boodoo-reboot.css / .min.css       # Normalize + base element reset
-│   │   ├── boodoo-utilities.css / .min.css    # Tailwind-style utilities (150+)
+│   │   ├── boodoo-utilities.css / .min.css    # Responsive utility suite (150+)
 │   │   ├── boodoo-animations.css / .min.css   # Motion keyframes
 │   │   └── boodoo.less.css                    # Compiled from Less source
 │   └── js/
@@ -427,7 +428,7 @@ The full documentation site is in `site/` and deployed at **https://boodooframew
 - **Layout** (containers, grid, columns, gutters, CSS grid, breakpoints)
 - **Content** (typography, images, tables, figures)
 - **Forms** · **Components** · **Helpers** · **Utilities** · **Motion**
-- **About** · Design principles · Brand assets · boodoo vs Bootstrap · boodoo vs Tailwind · [Changelog](https://boodooframework.com/docs/about/changelog.html) · [License](https://boodooframework.com/docs/about/license.html) · [Privacy](https://boodooframework.com/docs/about/privacy.html) · [Terms](https://boodooframework.com/docs/about/terms.html)
+- **About** · Design principles · Brand assets · Architecture & Benchmarks · [Changelog](https://boodooframework.com/docs/about/changelog.html) · [License](https://boodooframework.com/docs/about/license.html) · [Privacy](https://boodooframework.com/docs/about/privacy.html) · [Terms](https://boodooframework.com/docs/about/terms.html)
 
 Track version releases, migrations, and notable changes on the [boodoo Changelog](https://boodooframework.com/docs/about/changelog.html).
 
