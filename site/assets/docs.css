@@ -771,22 +771,22 @@ body {
 }
 
 .adoption-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.15);
-  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(124, 58, 237, 0.18);
+  border-color: rgba(124, 58, 237, 0.35);
 }
 
 .adoption-card .card-icon-avatar {
   margin-bottom: 0;
-  width: 44px;
-  min-width: 44px;
-  height: 44px;
-  font-size: 1.25rem;
-  border-radius: 0.625rem;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  font-size: 1.35rem;
+  border-radius: 0.75rem;
 }
 
 .adoption-path-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   font-weight: 700;
   line-height: 1.2;
@@ -795,14 +795,20 @@ body {
 .adoption-code-snippet {
   background: var(--boodoo-body-alt-bg);
   border: 1px solid var(--boodoo-border-subtle);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-family: 'JetBrains Mono', SFMono-Regular, Consolas, monospace;
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-size: 0.8125rem;
+  line-height: 1.6;
   color: var(--boodoo-text-main);
   overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
+}
+
+.adoption-code-snippet code {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  padding: 0;
+  color: inherit;
 }
 
 [data-boodoo-theme="dark"] .adoption-code-snippet {
