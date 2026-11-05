@@ -285,6 +285,99 @@ import('node:fs').then(fs => {
 });"</code></pre>
 </div>
 
+<h2 id="comparisons"><span>Architectural Comparisons &amp; Tradeoffs</span></h2>
+<p><span>A fair, verifiable comparison of core architecture, runtime dependencies, token sharing, and multi-platform workflows:</span></p>
+
+<div class="table-responsive shadow-sm rounded-3 border bg-white mb-4">
+  <table class="table table-hover align-middle mb-0 comparison-table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col" class="py-1 px-1"><span>Feature / Capability</span></th>
+        <th scope="col" class="py-1 px-1 text-primary fw-bold"><span>boodoo</span></th>
+        <th scope="col" class="py-1 px-1 text-muted"><span>Bootstrap 5</span></th>
+        <th scope="col" class="py-1 px-1 text-muted"><span>Tailwind CSS</span></th>
+        <th scope="col" class="py-1 px-1 text-muted"><span>Material UI / MUI</span></th>
+        <th scope="col" class="py-1 px-1 text-muted"><span>Foundation</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Runtime Dependencies</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>0 (Pure Vanilla JS)</span></td>
+        <td class="py-1 px-1 text-muted"><span>Popper.js required</span></td>
+        <td class="py-1 px-1 text-muted"><span>0 (CSS-only; JS optional)</span></td>
+        <td class="py-1 px-1 text-muted"><span>React + Emotion runtime</span></td>
+        <td class="py-1 px-1 text-muted"><span>jQuery / legacy plugins</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Component Scope</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>50+ Built-in Components + Utilities</span></td>
+        <td class="py-1 px-1 text-muted"><span>~25 Core Web Components</span></td>
+        <td class="py-1 px-1 text-muted"><span>Utility classes (components via Tailwind UI / Headless UI)</span></td>
+        <td class="py-1 px-1 text-muted"><span>50+ React Components (MUI Core / X)</span></td>
+        <td class="py-1 px-1 text-muted"><span>~20 Legacy Scaffolds</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Dual Sass + LESS Parity</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ 100% Feature Parity</span></td>
+        <td class="py-1 px-1 text-muted"><span>Sass only</span></td>
+        <td class="py-1 px-1 text-muted"><span>PostCSS engine only</span></td>
+        <td class="py-1 px-1 text-muted"><span>CSS-in-JS / Emotion only</span></td>
+        <td class="py-1 px-1 text-muted"><span>Sass only</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Universal Design Tokens</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ Single JSON / CJS / ESM source for Web &amp; Native</span></td>
+        <td class="py-1 px-1 text-muted"><span>CSS custom properties on :root</span></td>
+        <td class="py-1 px-1 text-muted"><span>tailwind.config.js theme values</span></td>
+        <td class="py-1 px-1 text-muted"><span>createTheme JavaScript object</span></td>
+        <td class="py-1 px-1 text-muted"><span>Static Sass map values</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Cross-Platform React Native Support</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ Pure native primitives (zero DOM access)</span></td>
+        <td class="py-1 px-1 text-muted"><span>Web DOM only</span></td>
+        <td class="py-1 px-1 text-muted"><span>Via NativeWind adapter</span></td>
+        <td class="py-1 px-1 text-muted"><span>Separate react-native-paper ecosystem</span></td>
+        <td class="py-1 px-1 text-muted"><span>Web DOM only</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Build-Free CDN Delivery</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ Pre-compiled single CSS + JS bundle</span></td>
+        <td class="py-1 px-1 text-success"><span>✔ Pre-compiled CDN bundle</span></td>
+        <td class="py-1 px-1 text-muted"><span>CDN script available (not recommended for production)</span></td>
+        <td class="py-1 px-1 text-muted"><span>Requires bundler / npm build</span></td>
+        <td class="py-1 px-1 text-success"><span>✔ Pre-compiled CDN bundle</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>WAI-ARIA &amp; a11y Announcer Suite</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ Live Announcer, Roving Tabindex &amp; Focus Trap</span></td>
+        <td class="py-1 px-1 text-muted"><span>Modal focus management</span></td>
+        <td class="py-1 px-1 text-muted"><span>Delegated to user / Headless UI</span></td>
+        <td class="py-1 px-1 text-success"><span>✔ Fully integrated ARIA primitives</span></td>
+        <td class="py-1 px-1 text-muted"><span>Basic accessibility attributes</span></td>
+      </tr>
+      <tr>
+        <td class="py-1 px-1 fw-semibold"><span>Developer CLI &amp; Codemods</span></td>
+        <td class="py-1 px-1 text-success fw-bold"><span>✔ `npx boodoo add`, `create` &amp; `migrate`</span></td>
+        <td class="py-1 px-1 text-muted"><span>N/A</span></td>
+        <td class="py-1 px-1 text-success"><span>✔ Tailwind CLI</span></td>
+        <td class="py-1 px-1 text-muted"><span>MUI codemods for major versions</span></td>
+        <td class="py-1 px-1 text-muted"><span>Deprecated Foundation CLI</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="mb-4"><span>For in-depth per-framework guides, see:</span></p>
+<div class="d-flex flex-wrap gap-2 mb-4">
+  <a href="vs-bootstrap.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>boodoo vs Bootstrap</span></a>
+  <a href="vs-tailwind.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>boodoo vs Tailwind</span></a>
+  <a href="vs-foundation.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>boodoo vs Foundation</span></a>
+  <a href="vs-material.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>boodoo vs Material</span></a>
+  <a href="vs-react-native-paper.html" class="btn btn-outline-primary btn-sm rounded-pill px-3"><span>boodoo vs React Native Paper</span></a>
+</div>
+
 <h2 id="enterprise"><span>Long-Term Maintenance &amp; Enterprise Support</span></h2>
 <p><span>Boodoo is open source software released under the permissive <a href="{{siteUrl}}/about/license.html">MIT
       License</a>. Teams have complete freedom to audit, fork, customize, or self-host without commercial license fees
