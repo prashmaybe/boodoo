@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.7] - 2026-11-05
+
+### Added
+- **React Runtime Parity Assertion Test (`tests/package-smoke.test.mjs`)**:
+  - Added automated test 12 verifying full export parity between `react/index.d.ts` declarations and `react/*.js` submodule runtime exports.
+- **React Native Paper TypeScript Definitions (`react-native/paper.d.ts`, `package.json`)**:
+  - Added dedicated TypeScript definitions for `boodoo/paper` (`./paper` subpath export) with MD3 theme types (`BoodooPaperTheme`, `BoodooPaperThemeColors`).
+
+### Fixed
+- **React `useDisclosure` Callback Purity (`react/hooks.js`)**:
+  - Removed state updater side-effect invocations; `onOpen` and `onClose` are now called safely outside `setIsOpen` to preserve React Strict Mode purity.
+- **React `useCombobox` Controlled Query Sync & Input Callback (`react/hooks.js`)**:
+  - Added `useEffect` hook to synchronize displayed query text when controlled `value` changes dynamically.
+  - Added `props.onInputChange?.(val, e)` callback hook in `getInputProps` to clearly separate text query changes from selected value callbacks.
+- **Vue `useCombobox` Controlled `v-model` Support (`vue/composables.js`, `vue/index.d.ts`)**:
+  - Supported `modelValue` and `onUpdate:modelValue` (`v-model`), maintaining two-way reactivity with reactive refs and preserving uncontrolled fallback.
+- **React Native `Grid` Column Distribution (`react-native/layout.js`)**:
+  - Fixed `Grid` to respect `numColumns`, calculating item basis and wrapping children in responsive column elements without violating the zero-inline-styles rule.
+- **React Native TypeScript Prop Interfaces (`react-native/index.d.ts`)**:
+  - Replaced overly permissive `ComponentType<any>` with typed prop interfaces for `Button`, `TextInput`, `Card`, `Dialog`, `Modal`, `Checkbox`, `Switch`, `Select`, `Grid`, `Text`, `Heading`, `Badge`, `Chip`, `Alert`, and `Progress`.
+
+### Changed
+- **Documentation Portal & UI Polish (`site/`, `site/examples/`)**:
+  - Refined layout paddings and container structure across Component Studio and Admin Dashboard examples.
+  - Enhanced semantic text wrapping and accessibility structure across documentation guides (`about/`, `getting-started/`, `components/`).
+  - Updated design principles, comparison guides (Bootstrap, Foundation, Material, Tailwind), and migration documentation.
+- **Scaffolder & CLI Templates (`bin/create-boodoo.mjs`)**:
+  - Tightened form layout spacing in starter scaffold templates.
+  - Bumped default framework dependency to v1.2.7 across all project generators.
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.2.7 release manifests across `package.json`, `package-lock.json`, `README.md`, `site/data/cdn-urls.json`, `site/archives/archives.json`, and `site/llms.txt`.
+
+---
+
 ## [1.2.6] - 2026-11-04
 
 ### Added

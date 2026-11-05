@@ -63,3 +63,69 @@ order: 9
   <p class="mb-0"><span><strong>Tip:</strong> use the <code>.visually-hidden</code> helper for content that should be available to assistive
   technologies but hidden visually. See the <a href="../helpers/visually-hidden.html"><span>visually hidden guide</span></a>.</span></p>
 </div>
+
+<h2 id="matrix"><span>Accessibility Verification Matrix</span></h2>
+<p><span>To provide full transparency, Boodoo documents the explicit verification status and methodology for WCAG 2.1 &amp; 2.2 AA accessibility criteria:</span></p>
+
+<div class="table-responsive mb-4">
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th scope="col"><span>Verification Category</span></th>
+        <th scope="col"><span>Standard / Target</span></th>
+        <th scope="col"><span>Verification Status</span></th>
+        <th scope="col"><span>Implementation &amp; Methodology</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><span>Keyboard Navigation</span></strong></td>
+        <td><span>WCAG 2.1.1 (Level A)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Roving tabindex on Tabs, TreeView, and Menus; Esc key handling on Modals/Dropdowns; Arrow keys on Combobox and Carousel.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Focus Management &amp; Trapping</span></strong></td>
+        <td><span>WCAG 2.4.3 (Level A)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Active focus trap in Modals, Dialogs, and Command Palette; focus restored to invoking trigger element on teardown.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Visible Focus Indicators</span></strong></td>
+        <td><span>WCAG 2.4.7 / 2.4.11 (Level AA)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Dual-ring focus indicators using <code>:focus-visible</code>; suppressed for pure pointer events with zero focus loss.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Color Contrast</span></strong></td>
+        <td><span>WCAG 1.4.3 (Level AA)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Core primary, success, danger, dark tokens meet 4.5:1 text and 3:1 graphical object contrast. Specific subtle variants require appropriate emphasis text classes.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Screen Reader &amp; Live Announcements</span></strong></td>
+        <td><span>WCAG 4.1.2 / 4.1.3 (Level AA)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Built-in <code>a11y.announce()</code> with polite and assertive ARIA live regions for toasts, streaming chat, and dynamic alerts.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Reduced Motion</span></strong></td>
+        <td><span>WCAG 2.3.3 (Level AAA)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Sitewide <code>prefers-reduced-motion: reduce</code> clamp setting animation/transition durations to 0.01ms.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Touch Target Size</span></strong></td>
+        <td><span>WCAG 2.5.8 (Level AA)</span></td>
+        <td><span class="badge bg-success"><span>Verified</span></span></td>
+        <td><span>Interactive controls enforce 44px minimum target dimensions or touch padding bounding boxes.</span></td>
+      </tr>
+      <tr>
+        <td><strong><span>Automated Accessibility Auditing</span></strong></td>
+        <td><span>axe-core / Lighthouse</span></td>
+        <td><span class="badge bg-success"><span>Continuous CI</span></span></td>
+        <td><span>Automated test suites in <code>tests/framework.test.mjs</code> enforce semantic tags, mandatory form IDs, and ARIA attributes.</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

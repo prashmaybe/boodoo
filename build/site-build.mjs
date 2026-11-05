@@ -358,7 +358,7 @@ function buildPage(sectionDef, { route, full }) {
     .replaceAll('{{mainColClass}}', mainColClass)
     .replaceAll('{{tocAside}}', tocAside)
     .replaceAll('{{toc}}', toc)
-    .replaceAll('{{content}}', bodyRendered)
+    .replaceAll('{{content}}', () => bodyRendered)
     .replaceAll('{{prevnext}}', pager)
     .replaceAll('{{year}}', String(YEAR))
     .replaceAll('{{version}}', VERSION)

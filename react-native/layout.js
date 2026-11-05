@@ -99,11 +99,22 @@ export function Pressable({ children, onPress, style, disabled, ...props }) {
 
 /**
  * Responsive Grid container (Gluestack / Wix UI Lib)
+ * Distributes child elements into numColumns columns.
  */
-export function Grid({ numColumns: _numColumns = 2, gap = 8, children, style, ...props }) {
+export function Grid({ numColumns = 2, gap = 8, children, style, ...props }) {
+  const cols = Math.max(1, Number(numColumns) || 2);
+  const itemBasis = `${(100 / cols).toFixed(4)}%`;
+
   return (
     <View style={[styles.grid, { gap }, style]} {...props}>
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!child) return null;
+        return (
+          <View style={[styles.gridCol, { flexBasis: itemBasis, maxWidth: itemBasis }]}>
+            {child}
+          </View>
+        );
+      })}
     </View>
   );
 }
@@ -125,5 +136,8 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  gridCol: {
+    boxSizing: 'border-box',
   },
 });
