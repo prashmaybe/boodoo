@@ -1,0 +1,49 @@
+name: Feature Request
+description: Suggest an idea or new component for Boodoo
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature or improvement for Boodoo!
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Is your feature request related to a problem?
+      description: A clear and concise description of what problem you are trying to solve.
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of the feature or component you want to see added.
+    validations:
+      required: true
+  - type: dropdown
+    id: target-platform
+    attributes:
+      label: Target Platform / Scope
+      description: Which part of Boodoo would this feature belong to?
+      options:
+        - Core CSS / SCSS / LESS
+        - Core Vanilla JS Components
+        - React (@boodoo/react)
+        - Vue (@boodoo/vue)
+        - React Native (@boodoo/react-native)
+        - Design Tokens
+        - Documentation / Site
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives-considered
+    attributes:
+      label: Alternatives considered
+      description: A clear and concise description of any alternative solutions or features you've considered.
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any mockups, wireframes, or other context about the feature request here.

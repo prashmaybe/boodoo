@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions & Questions
+    url: https://github.com/prashmaybe/boodoo/discussions
+    about: Ask questions, share ideas, and connect with other Boodoo users.
+  - name: Security Vulnerabilities
+    url: https://github.com/prashmaybe/boodoo/security/policy
+    about: Please report security vulnerabilities privately.
