@@ -1,7 +1,7 @@
 name: Feature Request
 description: Suggest an idea or new component for Boodoo
-title: "[Feature]: "
-labels: ["enhancement"]
+title: '[Feature]: '
+labels: ['enhancement']
 body:
   - type: markdown
     attributes:
@@ -47,4 +47,3 @@ body:
     attributes:
       label: Additional context
       description: Add any mockups, wireframes, or other context about the feature request here.
-
