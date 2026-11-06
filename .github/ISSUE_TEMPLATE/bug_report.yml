@@ -1,0 +1,74 @@
+name: Bug Report
+description: Create a report to help us improve Boodoo
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please ensure you have searched existing issues before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Boodoo Version
+      description: What version of Boodoo are you using? (e.g. 1.2.8)
+      placeholder: '1.2.8'
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Environment / Platform
+      description: Which environment did this issue occur in?
+      options:
+        - Web (SCSS / CSS)
+        - Web (LESS)
+        - Vanilla JS Components
+        - React (@boodoo/react)
+        - Vue (@boodoo/vue)
+        - React Native (@boodoo/react-native)
+        - Documentation / Site
+    validations:
+      required: true
+  - type: input
+    id: browsers
+    attributes:
+      label: Browser / OS / Runtime
+      description: What browser or runtime environment? (e.g. Chrome 124, iOS 17 Safari, Node 20)
+      placeholder: 'Chrome 124 on macOS / Windows'
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Behavior
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the issue.
+      placeholder: |
+        1. Import component '...'
+        2. Set property '...'
+        3. Trigger event '...'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-link
+    attributes:
+      label: Reproduction Code or Link
+      description: Link to a minimal reproduction (CodeSandbox, StackBlitz, or GitHub repository).
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or logs here.

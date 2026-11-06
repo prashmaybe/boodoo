@@ -6,9 +6,9 @@ The Boodoo project team actively maintains and releases security patches for the
 
 | Version | Supported          | Security Fixes Window |
 | ------- | ------------------ | --------------------- |
-| 1.1.x   | :white_check_mark: | Active support        |
-| 1.0.x   | :white_check_mark: | Critical patches only |
-| < 1.0.0 | :x:                | End of life           |
+| 1.2.x   | :white_check_mark: | Active support        |
+| 1.1.x   | :white_check_mark: | Critical patches only |
+| < 1.1.0 | :x:                | End of life           |
 
 ## Reporting a Vulnerability
 
