@@ -43,16 +43,16 @@ order: 17
       <div class="col-12 col-md-5">
         <label for="snack-category-select" class="form-label small fw-semibold text-muted text-uppercase mb-1"><span>Category</span></label>
         <select id="snack-category-select" name="snack-category-select" class="form-select form-select-sm" aria-label="Component Category">
-          <option value="buttons">Buttons &amp; Actions (7 components)</option>
-          <option value="surfaces">Surfaces &amp; Cards (7 components)</option>
-          <option value="inputs">Inputs &amp; Forms (10 components)</option>
-          <option value="data-display">Data Display (9 components)</option>
-          <option value="feedback">Feedback &amp; Status (6 components)</option>
-          <option value="lists">Lists &amp; Tables (4 components)</option>
-          <option value="navigation">Navigation &amp; Bars (5 components)</option>
-          <option value="overlays">Overlays &amp; Sheets (6 components)</option>
-          <option value="typography">Typography (2 components)</option>
-          <option value="layout">Layout Primitives (5 components)</option>
+          <option value="buttons">Buttons &amp; Actions</option>
+          <option value="surfaces">Surfaces &amp; Cards</option>
+          <option value="inputs">Inputs &amp; Forms</option>
+          <option value="data-display">Data Display &amp; Charts</option>
+          <option value="feedback">Feedback &amp; Status</option>
+          <option value="lists">Lists &amp; Tables</option>
+          <option value="navigation">Navigation &amp; Bars</option>
+          <option value="overlays">Overlays &amp; Sheets</option>
+          <option value="typography">Typography</option>
+          <option value="layout">Layout Primitives</option>
         </select>
       </div>
       <div class="col-12 col-md-5">
@@ -70,10 +70,6 @@ order: 17
   </div>
 
   <div class="card-body p-0 position-relative">
-    <div id="snack-loading-indicator" class="d-none text-center p-5">
-      <div class="spinner-border text-primary mb-2" role="status"></div>
-      <p class="text-muted small mb-0"><span>Loading Expo Snack Simulator...</span></p>
-    </div>
     <iframe
       id="boodoo-snack-frame"
       title="Boodoo React Native Component Playground"
@@ -88,11 +84,16 @@ order: 17
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
       <div>
         <span class="fw-semibold text-primary" id="snack-component-title"><span>Button</span></span>
-        <span class="text-muted small ms-2" id="snack-component-desc"><span>Tactile native button with variants, sizes, icons, and loading states.</span></span>
+        <span class="text-muted small ms-2" id="snack-component-desc"><span>Tactile native button with variants, sizes, and states.</span></span>
       </div>
-      <button type="button" id="snack-copy-code-btn" class="btn btn-sm btn-outline-secondary" aria-label="Copy React Native Code">
-        <i class="hi-clipboard me-1" aria-hidden="true"></i><span>Copy Snippet</span>
-      </button>
+      <div class="d-flex gap-2">
+        <button type="button" id="snack-copy-import-btn" class="btn btn-sm btn-outline-primary" aria-label="Copy boodoo package import">
+          <i class="hi-terminal me-1" aria-hidden="true"></i><span>Copy Package Import</span>
+        </button>
+        <button type="button" id="snack-copy-code-btn" class="btn btn-sm btn-outline-secondary" aria-label="Copy React Native Code">
+          <i class="hi-clipboard me-1" aria-hidden="true"></i><span>Copy Full Code</span>
+        </button>
+      </div>
     </div>
     <div class="mt-2">
       <pre class="bg-dark text-light p-3 rounded mb-0 small" style="max-height: 220px; overflow-y: auto;"><code id="snack-code-preview" class="language-jsx"></code></pre>
@@ -168,118 +169,146 @@ order: 17
     buttons: [
       {
         id: 'Button',
-        name: 'Button (Primary, Outline, Ghost)',
-        desc: 'Tactile pressable native button with multiple semantic variants, sizes, and loading state.',
+        name: 'Button (Primary, Outline, Danger)',
+        desc: 'Tactile pressable native button with multiple semantic variants, sizes, and states.',
+        importSnippet: "import { Button } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, Button, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
+
+// Boodoo Button Component Primitive
+function BoodooButton({ variant = 'primary', children, onPress }) {
+  const isPrimary = variant === 'primary';
+  const isDanger = variant === 'danger';
+  const isOutline = variant === 'outline';
+  
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.buttonBase,
+        isPrimary && styles.btnPrimary,
+        isDanger && styles.btnDanger,
+        isOutline && styles.btnOutline,
+        pressed && styles.pressed,
+      ]}
+    >
+      <Text style={[styles.btnText, isOutline ? styles.textOutline : styles.textLight]}>
+        {children}
+      </Text>
+    </Pressable>
+  );
+}
 
 export default function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text variant="headlineSmall" style={styles.title}>Boodoo Native Buttons</Text>
-        <View style={styles.stack}>
-          <Button variant="primary" onPress={() => setCount(c => c + 1)}>
-            Primary Action ({count})
-          </Button>
-          <Button variant="secondary" onPress={() => {}}>Secondary</Button>
-          <Button variant="outline" onPress={() => {}}>Outline Button</Button>
-          <Button variant="danger" onPress={() => setCount(0)}>Reset Counter</Button>
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Boodoo Native Buttons</Text>
+      <Text style={styles.sub}>Zero external dependencies & pure StyleSheet</Text>
+      <View style={styles.stack}>
+        <BoodooButton variant="primary" onPress={() => setCount(c => c + 1)}>
+          Primary Action ({count})
+        </BoodooButton>
+        <BoodooButton variant="outline" onPress={() => setCount(c => Math.max(0, c - 1))}>
+          Decrement
+        </BoodooButton>
+        <BoodooButton variant="danger" onPress={() => setCount(0)}>
+          Reset Counter
+        </BoodooButton>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 24 },
-  title: { color: '#ffffff', marginBottom: 24, fontWeight: '700' },
-  stack: { width: '100%', maxWidth: 320, gap: 12 },
+  title: { color: '#ffffff', fontSize: 22, fontWeight: '700', marginBottom: 6 },
+  sub: { color: '#94a3b8', fontSize: 13, marginBottom: 28 },
+  stack: { width: '100%', maxWidth: 320, gap: 14 },
+  buttonBase: { paddingVertical: 14, paddingHorizontal: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  btnPrimary: { backgroundColor: '#7c3aed' },
+  btnDanger: { backgroundColor: '#ef4444' },
+  btnOutline: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#475569' },
+  pressed: { opacity: 0.8 },
+  btnText: { fontSize: 15, fontWeight: '600' },
+  textLight: { color: '#ffffff' },
+  textOutline: { color: '#e2e8f0' },
 });`
       },
       {
         id: 'ButtonGroup',
         name: 'ButtonGroup',
         desc: 'Segmented horizontal cluster of connected pressable buttons.',
+        importSnippet: "import { ButtonGroup, Button } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, ButtonGroup, Button, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
   const [view, setView] = useState('daily');
+  const options = ['daily', 'weekly', 'monthly'];
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.label}>Selected View: {view.toUpperCase()}</Text>
-        <ButtonGroup>
-          <Button variant={view === 'daily' ? 'primary' : 'outline'} onPress={() => setView('daily')}>Day</Button>
-          <Button variant={view === 'weekly' ? 'primary' : 'outline'} onPress={() => setView('weekly')}>Week</Button>
-          <Button variant={view === 'monthly' ? 'primary' : 'outline'} onPress={() => setView('monthly')}>Month</Button>
-        </ButtonGroup>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.label}>Active View: {view.toUpperCase()}</Text>
+      <View style={styles.group}>
+        {options.map((opt, i) => {
+          const active = view === opt;
+          return (
+            <Pressable
+              key={opt}
+              onPress={() => setView(opt)}
+              style={[
+                styles.btn,
+                i > 0 && styles.borderLeft,
+                active ? styles.btnActive : styles.btnInactive,
+              ]}
+            >
+              <Text style={[styles.text, active ? styles.textActive : styles.textInactive]}>
+                {opt.charAt(0).toUpperCase() + opt.slice(1)}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  label: { color: '#94a3b8', marginBottom: 16, fontSize: 16 },
-});`
-      },
-      {
-        id: 'IconButton',
-        name: 'IconButton',
-        desc: 'Circular or rounded tactile touch target for icon actions.',
-        code: `import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, IconButton, Text } from 'boodoo/react-native';
-
-export default function App() {
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Native Icon Buttons</Text>
-        <View style={styles.row}>
-          <IconButton icon="search" variant="primary" onPress={() => alert('Search')} />
-          <IconButton icon="heart" variant="danger" onPress={() => alert('Favorite')} />
-          <IconButton icon="share" variant="secondary" onPress={() => alert('Share')} />
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16' },
-  title: { color: '#ffffff', marginBottom: 20, fontSize: 18, fontWeight: '600' },
-  row: { flexDirection: 'row', gap: 16 },
+  label: { color: '#ffffff', marginBottom: 20, fontSize: 18, fontWeight: '600' },
+  group: { flexDirection: 'row', borderRadius: 10, overflow: 'hidden', borderWidth: 1, borderColor: '#334155' },
+  btn: { paddingVertical: 12, paddingHorizontal: 22 },
+  borderLeft: { borderLeftWidth: 1, borderLeftColor: '#334155' },
+  btnActive: { backgroundColor: '#7c3aed' },
+  btnInactive: { backgroundColor: '#131b2e' },
+  text: { fontSize: 14, fontWeight: '600' },
+  textActive: { color: '#ffffff' },
+  textInactive: { color: '#94a3b8' },
 });`
       },
       {
         id: 'FAB',
         name: 'FAB (Floating Action Button)',
         desc: 'High-emphasis floating action button positioned over mobile screen content.',
+        importSnippet: "import { FAB } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, FAB, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
   const [items, setItems] = useState(3);
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.title}>Inbox ({items} items)</Text>
-          <Text style={styles.sub}>Tap the FAB below to create a new task.</Text>
-        </View>
-        <FAB label="+" variant="primary" onPress={() => setItems(i => i + 1)} style={styles.fab} />
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Inbox ({items} items)</Text>
+        <Text style={styles.sub}>Tap the FAB below to create a new task.</Text>
+      </View>
+      <Pressable onPress={() => setItems(i => i + 1)} style={styles.fab}>
+        <Text style={styles.fabText}>+</Text>
+      </Pressable>
+    </SafeAreaView>
   );
 }
 
@@ -288,73 +317,61 @@ const styles = StyleSheet.create({
   content: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   title: { color: '#ffffff', fontSize: 24, fontWeight: 'bold', marginBottom: 8 },
   sub: { color: '#94a3b8', fontSize: 14 },
-  fab: { position: 'absolute', bottom: 32, right: 32 },
-});`
-      },
-      {
-        id: 'SegmentedButtons',
-        name: 'SegmentedButtons',
-        desc: 'Single or multi-select tabbed control for mode toggles.',
-        code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, SegmentedButtons, Text } from 'boodoo/react-native';
-
-export default function App() {
-  const [theme, setTheme] = useState('dark');
-
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Appearance Mode</Text>
-        <SegmentedButtons
-          value={theme}
-          onValueChange={setTheme}
-          buttons={[
-            { value: 'light', label: 'Light' },
-            { value: 'dark', label: 'Dark' },
-            { value: 'auto', label: 'System' },
-          ]}
-        />
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 24 },
-  title: { color: '#ffffff', fontSize: 18, fontWeight: '600', marginBottom: 16 },
+  fab: {
+    position: 'absolute',
+    bottom: 32,
+    right: 32,
+    width: 58,
+    height: 58,
+    borderRadius: 29,
+    backgroundColor: '#7c3aed',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 6,
+    shadowColor: '#7c3aed',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+  },
+  fabText: { color: '#ffffff', fontSize: 28, fontWeight: '600', marginTop: -2 },
 });`
       },
       {
         id: 'SpeedDial',
-        name: 'SpeedDial & SpeedDialAction',
+        name: 'SpeedDial',
         desc: 'Expandable floating speed dial menu for quick primary actions.',
+        importSnippet: "import { SpeedDial, SpeedDialAction } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, SpeedDial, SpeedDialAction, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
   const [open, setOpen] = useState(false);
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.center}>
-          <Text style={styles.title}>Interactive SpeedDial</Text>
-          <Text style={styles.subtitle}>Open state: {open ? 'Active' : 'Closed'}</Text>
-        </View>
-        <SpeedDial
-          isOpen={open}
-          onToggle={() => setOpen(!open)}
-          icon="+"
-          style={styles.speedDial}
-        >
-          <SpeedDialAction label="Add Photo" icon="camera" onPress={() => alert('Camera')} />
-          <SpeedDialAction label="Upload File" icon="file" onPress={() => alert('File')} />
-          <SpeedDialAction label="New Note" icon="edit" onPress={() => alert('Note')} />
-        </SpeedDial>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.center}>
+        <Text style={styles.title}>Interactive SpeedDial</Text>
+        <Text style={styles.subtitle}>Open state: {open ? 'Active' : 'Closed'}</Text>
+      </View>
+      <View style={styles.dialContainer}>
+        {open && (
+          <View style={styles.actionStack}>
+            <Pressable style={styles.miniFab} onPress={() => alert('Photo')}>
+              <Text style={styles.miniText}>📷</Text>
+            </Pressable>
+            <Pressable style={styles.miniFab} onPress={() => alert('Document')}>
+              <Text style={styles.miniText}>📄</Text>
+            </Pressable>
+            <Pressable style={styles.miniFab} onPress={() => alert('Edit')}>
+              <Text style={styles.miniText}>✏️</Text>
+            </Pressable>
+          </View>
+        )}
+        <Pressable onPress={() => setOpen(!open)} style={[styles.mainFab, open && styles.mainFabActive]}>
+          <Text style={styles.fabText}>{open ? '×' : '+'}</Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -363,7 +380,13 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
   title: { color: '#ffffff', fontSize: 22, fontWeight: '700', marginBottom: 6 },
   subtitle: { color: '#94a3b8', fontSize: 14 },
-  speedDial: { position: 'absolute', bottom: 32, right: 32 },
+  dialContainer: { position: 'absolute', bottom: 32, right: 32, alignItems: 'center' },
+  actionStack: { gap: 12, marginBottom: 14 },
+  miniFab: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#1e293b', justifyContent: 'center', alignItems: 'center' },
+  miniText: { fontSize: 18 },
+  mainFab: { width: 56, height: 56, borderRadius: 28, backgroundColor: '#7c3aed', justifyContent: 'center', alignItems: 'center' },
+  mainFabActive: { backgroundColor: '#6d28d9' },
+  fabText: { color: '#ffffff', fontSize: 28, fontWeight: 'bold' },
 });`
       }
     ],
@@ -372,95 +395,80 @@ const styles = StyleSheet.create({
         id: 'Card',
         name: 'Card & Surface',
         desc: 'Tactile elevated container with customizable padding, border, and elevation.',
+        importSnippet: "import { Card } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, Card, Button, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Card style={styles.card}>
-          <Text style={styles.title}>Pro Membership</Text>
-          <Text style={styles.desc}>Unlock cross-platform sync, unlimited cloud storage, and priority support.</Text>
-          <Button variant="primary" onPress={() => alert('Upgraded!')}>Upgrade Now</Button>
-        </Card>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.badge}>PREMIUM</Text>
+        <Text style={styles.title}>Pro Membership</Text>
+        <Text style={styles.desc}>Unlock cross-platform sync, unlimited cloud storage, and priority support.</Text>
+        <Pressable style={styles.btn} onPress={() => alert('Upgraded!')}>
+          <Text style={styles.btnText}>Upgrade Now</Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, borderRadius: 12, backgroundColor: '#131b2e' },
-  title: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 8 },
-  desc: { color: '#94a3b8', fontSize: 14, lineHeight: 20, marginBottom: 16 },
+  card: { width: '100%', maxWidth: 340, padding: 24, borderRadius: 14, backgroundColor: '#131b2e', borderWidth: 1, borderColor: '#1e293b' },
+  badge: { color: '#a78bfa', fontSize: 11, fontWeight: '700', letterSpacing: 1, marginBottom: 8 },
+  title: { color: '#ffffff', fontSize: 22, fontWeight: '700', marginBottom: 8 },
+  desc: { color: '#94a3b8', fontSize: 14, lineHeight: 20, marginBottom: 20 },
+  btn: { backgroundColor: '#7c3aed', paddingVertical: 12, borderRadius: 8, alignItems: 'center' },
+  btnText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
       },
       {
         id: 'StatWidget',
         name: 'StatWidget',
         desc: 'Compact mobile KPI statistic card with change indicators and trend labels.',
+        importSnippet: "import { StatWidget } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, StatWidget } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+
+function StatWidget({ label, value, change, trend = 'up' }) {
+  const isUp = trend === 'up';
+  return (
+    <View style={styles.widget}>
+      <Text style={styles.label}>{label}</Text>
+      <View style={styles.row}>
+        <Text style={styles.value}>{value}</Text>
+        <Text style={[styles.change, isUp ? styles.up : styles.down]}>{change}</Text>
+      </View>
+    </View>
+  );
+}
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.grid}>
-          <StatWidget label="Total Revenue" value="$48,250" change="+14.2%" trend="up" />
-          <StatWidget label="Active Users" value="1,842" change="+8.1%" trend="up" />
-          <StatWidget label="Bounce Rate" value="24.3%" change="-3.2%" trend="down" />
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.header}>Analytics Overview</Text>
+      <View style={styles.stack}>
+        <StatWidget label="Total Revenue" value="$48,250" change="+14.2%" trend="up" />
+        <StatWidget label="Active Users" value="1,842" change="+8.1%" trend="up" />
+        <StatWidget label="Bounce Rate" value="24.3%" change="-3.2%" trend="down" />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  grid: { width: '100%', maxWidth: 340, gap: 14 },
-});`
-      },
-      {
-        id: 'BentoGrid',
-        name: 'BentoGrid & BentoItem',
-        desc: 'Modular asymmetric grid container for modern feature showcases.',
-        code: `import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, BentoGrid, BentoItem, Text } from 'boodoo/react-native';
-
-export default function App() {
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <BoodooProvider>
-          <BentoGrid style={styles.grid}>
-            <BentoItem colSpan={2} style={styles.item}>
-              <Text style={styles.heading}>Fast Native Runtime</Text>
-              <Text style={styles.body}>Zero virtual DOM overhead on iOS & Android.</Text>
-            </BentoItem>
-            <BentoItem style={styles.item}>
-              <Text style={styles.heading}>A11y Ready</Text>
-            </BentoItem>
-            <BentoItem style={styles.item}>
-              <Text style={styles.heading}>Dark Mode</Text>
-            </BentoItem>
-          </BentoGrid>
-        </BoodooProvider>
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 16 },
-  grid: { width: '100%', maxWidth: 360, gap: 12 },
-  item: { padding: 16, backgroundColor: '#131b2e', borderRadius: 12 },
-  heading: { color: '#ffffff', fontSize: 16, fontWeight: '700', marginBottom: 4 },
-  body: { color: '#94a3b8', fontSize: 13 },
+  header: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 20 },
+  stack: { width: '100%', maxWidth: 340, gap: 14 },
+  widget: { backgroundColor: '#131b2e', padding: 18, borderRadius: 12, borderWidth: 1, borderColor: '#1e293b' },
+  label: { color: '#94a3b8', fontSize: 13, marginBottom: 6 },
+  row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  value: { color: '#ffffff', fontSize: 22, fontWeight: '700' },
+  change: { fontSize: 14, fontWeight: '600' },
+  up: { color: '#10b981' },
+  down: { color: '#ef4444' },
 });`
       }
     ],
@@ -469,136 +477,140 @@ const styles = StyleSheet.create({
         id: 'TextInput',
         name: 'TextInput & Searchbar',
         desc: 'Accessible native input field with clear actions, helper text, and error states.',
+        importSnippet: "import { TextInput, Searchbar } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, TextInput, Searchbar, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, TextInput } from 'react-native';
 
 export default function App() {
   const [email, setEmail] = useState('');
-  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.title}>Mobile Input Suite</Text>
-          <Searchbar placeholder="Search components..." value={search} onChangeText={setSearch} style={styles.mb} />
-          <TextInput
-            label="Email Address"
-            placeholder="you@example.com"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Mobile Input Suite</Text>
+        <TextInput
+          placeholder="🔍 Search components..."
+          placeholderTextColor="#64748b"
+          value={query}
+          onChangeText={setQuery}
+          style={styles.search}
+        />
+        <Text style={styles.label}>Email Address</Text>
+        <TextInput
+          placeholder="you@example.com"
+          placeholderTextColor="#64748b"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          style={styles.input}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12 },
-  title: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 16 },
-  mb: { marginBottom: 16 },
+  card: { width: '100%', maxWidth: 340, padding: 22, backgroundColor: '#131b2e', borderRadius: 14, borderWidth: 1, borderColor: '#1e293b' },
+  title: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 18 },
+  search: { backgroundColor: '#0f172a', color: '#ffffff', padding: 12, borderRadius: 8, marginBottom: 16, borderWidth: 1, borderColor: '#334155' },
+  label: { color: '#94a3b8', fontSize: 13, marginBottom: 6 },
+  input: { backgroundColor: '#0f172a', color: '#ffffff', padding: 12, borderRadius: 8, borderWidth: 1, borderColor: '#334155' },
 });`
       },
       {
         id: 'OtpInput',
-        name: 'OtpInput / PinInput',
-        desc: 'Segmented PIN verification cells with auto-advance and numeric focus.',
+        name: 'OtpInput (Verification PIN)',
+        desc: 'Segmented PIN verification cells with numeric focus.',
+        importSnippet: "import { OtpInput } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, OtpInput, Text, Button } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 
 export default function App() {
-  const [otp, setOtp] = useState('');
+  const [code, setCode] = useState('');
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Verification Code</Text>
-        <Text style={styles.sub}>Enter the 4-digit code sent to your phone.</Text>
-        <OtpInput length={4} value={otp} onChange={setOtp} style={styles.otp} />
-        <Button variant="primary" disabled={otp.length < 4} onPress={() => alert('Code: ' + otp)} style={styles.btn}>
-          Verify
-        </Button>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Two-Factor Verification</Text>
+      <Text style={styles.sub}>Enter the 4-digit code sent to your mobile phone.</Text>
+      <View style={styles.cells}>
+        {[0, 1, 2, 3].map(i => (
+          <View key={i} style={[styles.cell, code[i] ? styles.cellFilled : null]}>
+            <Text style={styles.cellText}>{code[i] || '•'}</Text>
+          </View>
+        ))}
+      </View>
+      <TextInput
+        maxLength={4}
+        keyboardType="number-pad"
+        value={code}
+        onChangeText={setCode}
+        style={styles.hiddenInput}
+        placeholder="Type 4 digits"
+        placeholderTextColor="#64748b"
+      />
+      <Pressable
+        disabled={code.length < 4}
+        onPress={() => alert('Verified: ' + code)}
+        style={[styles.btn, code.length === 4 ? styles.btnActive : styles.btnDisabled]}
+      >
+        <Text style={styles.btnText}>Verify & Continue</Text>
+      </Pressable>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 24 },
-  title: { color: '#ffffff', fontSize: 22, fontWeight: '700', marginBottom: 6 },
-  sub: { color: '#94a3b8', fontSize: 14, marginBottom: 24, textAlign: 'center' },
-  otp: { marginBottom: 24 },
-  btn: { width: '100%', maxWidth: 280 },
+  title: { color: '#ffffff', fontSize: 22, fontWeight: '700', marginBottom: 8 },
+  sub: { color: '#94a3b8', fontSize: 14, marginBottom: 28, textAlign: 'center' },
+  cells: { flexDirection: 'row', gap: 12, marginBottom: 20 },
+  cell: { width: 56, height: 56, borderRadius: 10, borderWidth: 1, borderColor: '#334155', backgroundColor: '#131b2e', justifyContent: 'center', alignItems: 'center' },
+  cellFilled: { borderColor: '#7c3aed', backgroundColor: '#1e1b4b' },
+  cellText: { color: '#ffffff', fontSize: 24, fontWeight: '700' },
+  hiddenInput: { color: '#ffffff', textAlign: 'center', padding: 10, borderWidth: 1, borderColor: '#334155', borderRadius: 8, width: 260, marginBottom: 24 },
+  btn: { width: 260, paddingVertical: 14, borderRadius: 10, alignItems: 'center' },
+  btnActive: { backgroundColor: '#7c3aed' },
+  btnDisabled: { backgroundColor: '#334155' },
+  btnText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
       },
       {
         id: 'Rating',
         name: 'Rating & StarRating',
         desc: 'Interactive star rating input with tactile touch feedback.',
+        importSnippet: "import { Rating } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, Rating, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
   const [stars, setStars] = useState(4);
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Rate your experience</Text>
-        <Rating value={stars} onChange={setStars} max={5} size={32} />
-        <Text style={styles.score}>{stars} of 5 stars</Text>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Rate your experience</Text>
+      <View style={styles.row}>
+        {[1, 2, 3, 4, 5].map(val => (
+          <Pressable key={val} onPress={() => setStars(val)} style={styles.starBtn}>
+            <Text style={[styles.star, val <= stars ? styles.starActive : styles.starInactive]}>★</Text>
+          </Pressable>
+        ))}
+      </View>
+      <Text style={styles.score}>{stars} out of 5 stars</Text>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  title: { color: '#ffffff', fontSize: 20, fontWeight: '600', marginBottom: 16 },
-  score: { color: '#94a3b8', fontSize: 16, marginTop: 12 },
-});`
-      },
-      {
-        id: 'Switch',
-        name: 'Switch & Checkbox & RadioGroup',
-        desc: 'Standard mobile selection controls for settings and forms.',
-        code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, Switch, Checkbox, Text } from 'boodoo/react-native';
-
-export default function App() {
-  const [pushEnabled, setPushEnabled] = useState(true);
-  const [rememberMe, setRememberMe] = useState(true);
-
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <View style={styles.row}>
-            <Text style={styles.label}>Push Notifications</Text>
-            <Switch value={pushEnabled} onValueChange={setPushEnabled} />
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Stay Signed In</Text>
-            <Checkbox checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} />
-          </View>
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12, gap: 16 },
-  row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  label: { color: '#ffffff', fontSize: 16 },
+  title: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 20 },
+  row: { flexDirection: 'row', gap: 10, marginBottom: 16 },
+  starBtn: { padding: 4 },
+  star: { fontSize: 36 },
+  starActive: { color: '#f59e0b' },
+  starInactive: { color: '#334155' },
+  score: { color: '#94a3b8', fontSize: 16 },
 });`
       }
     ],
@@ -607,291 +619,279 @@ const styles = StyleSheet.create({
         id: 'ChatBubble',
         name: 'ChatBubble & AIStream',
         desc: 'Conversational chat bubbles for messaging and generative AI streaming with role alignments.',
+        importSnippet: "import { ChatBubble } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
-import { BoodooProvider, ChatBubble } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, ScrollView } from 'react-native';
+
+function ChatBubble({ role = 'assistant', message, time }) {
+  const isUser = role === 'user';
+  return (
+    <View style={[styles.bubbleWrap, isUser ? styles.wrapUser : styles.wrapAssistant]}>
+      <View style={[styles.bubble, isUser ? styles.bubbleUser : styles.bubbleAssistant]}>
+        <Text style={[styles.msg, isUser ? styles.msgUser : styles.msgAssistant]}>{message}</Text>
+        <Text style={styles.time}>{time}</Text>
+      </View>
+    </View>
+  );
+}
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scroll}>
-          <ChatBubble role="assistant" message="Hello! How can I help you build your mobile app today?" time="10:42 AM" />
-          <ChatBubble role="user" message="Can I use Boodoo React Native with zero external dependencies?" time="10:43 AM" />
-          <ChatBubble role="assistant" message="Yes! Boodoo has 0 runtime npm dependencies and relies strictly on pure React Native primitives." time="10:43 AM" />
-        </ScrollView>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scroll}>
+        <ChatBubble role="assistant" message="Hello! How can I help you build your mobile app today?" time="10:42 AM" />
+        <ChatBubble role="user" message="Can I use Boodoo React Native with zero external dependencies?" time="10:43 AM" />
+        <ChatBubble role="assistant" message="Yes! Boodoo has 0 runtime npm dependencies and relies strictly on pure React Native primitives." time="10:43 AM" />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#090d16' },
-  scroll: { padding: 16, gap: 12 },
+  scroll: { padding: 18, gap: 14 },
+  bubbleWrap: { width: '100%', flexDirection: 'row' },
+  wrapUser: { justifyContent: 'flex-end' },
+  wrapAssistant: { justifyContent: 'flex-start' },
+  bubble: { maxWidth: '80%', padding: 14, borderRadius: 14 },
+  bubbleUser: { backgroundColor: '#7c3aed', borderBottomRightRadius: 4 },
+  bubbleAssistant: { backgroundColor: '#1e293b', borderBottomLeftRadius: 4 },
+  msg: { fontSize: 14, lineHeight: 20 },
+  msgUser: { color: '#ffffff' },
+  msgAssistant: { color: '#e2e8f0' },
+  time: { fontSize: 10, color: '#94a3b8', marginTop: 4, alignSelf: 'flex-end' },
 });`
       },
       {
         id: 'BarChart',
-        name: 'BarChart & DonutChart',
-        desc: 'Pure React Native data charts with zero external native chart libraries.',
+        name: 'BarChart (Zero Native Deps)',
+        desc: 'Pure React Native flex bar chart with zero external native chart libraries.',
+        importSnippet: "import { BarChart } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, BarChart, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
   const data = [
-    { label: 'Mon', value: 34 },
-    { label: 'Tue', value: 58 },
-    { label: 'Wed', value: 85 },
-    { label: 'Thu', value: 62 },
-    { label: 'Fri', value: 92 },
+    { label: 'Mon', value: 45 },
+    { label: 'Tue', value: 72 },
+    { label: 'Wed', value: 95 },
+    { label: 'Thu', value: 60 },
+    { label: 'Fri', value: 85 },
   ];
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.title}>Weekly Performance</Text>
-          <BarChart data={data} height={180} barColor="#7c3aed" />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Weekly Performance</Text>
+        <View style={styles.chart}>
+          {data.map(item => (
+            <View key={item.label} style={styles.col}>
+              <View style={[styles.bar, { height: item.value * 1.5 }]} />
+              <Text style={styles.label}>{item.label}</Text>
+            </View>
+          ))}
         </View>
-      </SafeAreaView>
-    </BoodooProvider>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12 },
-  title: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 16 },
-});`
-      },
-      {
-        id: 'Timeline',
-        name: 'Timeline & TimelineItem',
-        desc: 'Vertical order status and delivery tracking timeline.',
-        code: `import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, Timeline, TimelineItem } from 'boodoo/react-native';
-
-export default function App() {
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Timeline style={styles.timeline}>
-          <TimelineItem title="Order Placed" description="Received at 9:00 AM" completed />
-          <TimelineItem title="Processing" description="Packed at fulfillment center" completed />
-          <TimelineItem title="Out for Delivery" description="Courier is on the way" active />
-          <TimelineItem title="Delivered" description="Expected by 2:00 PM" />
-        </Timeline>
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  timeline: { width: '100%', maxWidth: 320 },
-});`
-      },
-      {
-        id: 'EmptyState',
-        name: 'EmptyState',
-        desc: 'Illustrated placeholder for empty lists, search results, or disconnected screens.',
-        code: `import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, EmptyState, Button } from 'boodoo/react-native';
-
-export default function App() {
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <EmptyState
-          title="No Orders Yet"
-          description="When you place your first order, it will appear here with live tracking."
-          action={<Button variant="primary" onPress={() => alert('Start Shopping')}>Browse Catalog</Button>}
-        />
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 24 },
+  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 14, borderWidth: 1, borderColor: '#1e293b' },
+  title: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 20 },
+  chart: { height: 180, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', paddingHorizontal: 10 },
+  col: { alignItems: 'center', width: 40 },
+  bar: { width: 24, backgroundColor: '#7c3aed', borderRadius: 6 },
+  label: { color: '#94a3b8', fontSize: 12, marginTop: 8 },
 });`
       }
     ],
     feedback: [
       {
         id: 'Alert',
-        name: 'Alert & Banner',
+        name: 'Alert & Status Banner',
         desc: 'Semantic feedback messages with status icons and dismiss action.',
+        importSnippet: "import { Alert } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, Alert } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+
+function BAlert({ title, message, variant = 'success' }) {
+  const isSuccess = variant === 'success';
+  const isDanger = variant === 'danger';
+  return (
+    <View style={[styles.alert, isSuccess && styles.success, isDanger && styles.danger]}>
+      <Text style={styles.alertTitle}>{title}</Text>
+      <Text style={styles.alertMsg}>{message}</Text>
+    </View>
+  );
+}
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.stack}>
-          <Alert variant="success" title="Payment Succeeded" message="Your receipt was emailed." />
-          <Alert variant="warning" title="Storage Warning" message="You have used 85% of your quota." />
-          <Alert variant="danger" title="Connection Lost" message="Please check your Wi-Fi or cellular network." />
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.stack}>
+        <BAlert variant="success" title="Payment Succeeded" message="Your receipt was emailed." />
+        <BAlert variant="danger" title="Connection Lost" message="Please check your Wi-Fi or cellular network." />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  stack: { width: '100%', maxWidth: 340, gap: 12 },
-});`
-      },
-      {
-        id: 'ProgressBar',
-        name: 'ProgressBar & Skeleton',
-        desc: 'Animated progress meters and shimmer placeholder loaders.',
-        code: `import React, { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, ProgressBar, Skeleton, Text } from 'boodoo/react-native';
-
-export default function App() {
-  const [progress, setProgress] = useState(0.35);
-
-  return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.title}>System Status</Text>
-          <Text style={styles.sub}>Download Progress: {Math.round(progress * 100)}%</Text>
-          <ProgressBar progress={progress} color="#7c3aed" style={styles.mb} />
-          
-          <Text style={styles.sub}>Loading Profile Data:</Text>
-          <Skeleton height={20} width="60%" style={styles.skel} />
-          <Skeleton height={14} width="100%" style={styles.skel} />
-          <Skeleton height={14} width="80%" />
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12 },
-  title: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 12 },
-  sub: { color: '#94a3b8', fontSize: 13, marginBottom: 8 },
-  mb: { marginBottom: 20 },
-  skel: { marginBottom: 8 },
+  stack: { width: '100%', maxWidth: 340, gap: 14 },
+  alert: { padding: 16, borderRadius: 10, borderWidth: 1 },
+  success: { backgroundColor: '#064e3b', borderColor: '#059669' },
+  danger: { backgroundColor: '#450a0a', borderColor: '#dc2626' },
+  alertTitle: { color: '#ffffff', fontWeight: '700', fontSize: 15, marginBottom: 4 },
+  alertMsg: { color: '#e2e8f0', fontSize: 13 },
 });`
       }
     ],
     lists: [
       {
         id: 'List',
-        name: 'List & ListItem & Accordion',
+        name: 'List & ListItem',
         desc: 'Mobile list items with icons, subtitles, and chevron disclosure.',
-        code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, List, ListItem, Accordion } from 'boodoo/react-native';
+        importSnippet: "import { List, ListItem } from 'boodoo/react-native';",
+        code: `import React from 'react';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
+
+function Item({ title, desc, icon }) {
+  return (
+    <Pressable style={styles.item} onPress={() => alert(title)}>
+      <Text style={styles.icon}>{icon}</Text>
+      <View style={styles.itemText}>
+        <Text style={styles.itemTitle}>{title}</Text>
+        <Text style={styles.itemDesc}>{desc}</Text>
+      </View>
+      <Text style={styles.chevron}>›</Text>
+    </Pressable>
+  );
+}
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <List>
-            <ListItem title="Notifications" description="Email and push alerts" chevron onPress={() => {}} />
-            <ListItem title="Privacy & Security" description="2FA and password" chevron onPress={() => {}} />
-            <ListItem title="Data Usage" description="Manage offline cache" chevron onPress={() => {}} />
-          </List>
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Item icon="🔔" title="Notifications" desc="Email and push alerts" />
+        <Item icon="🔒" title="Privacy & Security" desc="2FA and password" />
+        <Item icon="☁️" title="Data Usage" desc="Manage offline cache" />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, backgroundColor: '#131b2e', borderRadius: 12, overflow: 'hidden' },
+  card: { width: '100%', maxWidth: 340, backgroundColor: '#131b2e', borderRadius: 14, overflow: 'hidden', borderWidth: 1, borderColor: '#1e293b' },
+  item: { flexDirection: 'row', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderBottomColor: '#1e293b' },
+  icon: { fontSize: 20, marginRight: 14 },
+  itemText: { flex: 1 },
+  itemTitle: { color: '#ffffff', fontSize: 15, fontWeight: '600' },
+  itemDesc: { color: '#94a3b8', fontSize: 12, marginTop: 2 },
+  chevron: { color: '#64748b', fontSize: 20 },
 });`
       }
     ],
     navigation: [
       {
         id: 'BottomNavigation',
-        name: 'BottomNavigation & Appbar',
+        name: 'BottomNavigation',
         desc: 'Standard mobile bottom tab navigation bar with badge notifications.',
+        importSnippet: "import { BottomNavigation } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, BottomNavigation, Appbar, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
-  const [tab, setTab] = useState('home');
+  const [tab, setTab] = useState('Home');
+  const tabs = [
+    { name: 'Home', icon: '🏠' },
+    { name: 'Search', icon: '🔍' },
+    { name: 'Alerts', icon: '🔔' },
+    { name: 'Profile', icon: '👤' },
+  ];
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Appbar title="Dashboard" />
-        <View style={styles.content}>
-          <Text style={styles.text}>Active Tab: {tab.toUpperCase()}</Text>
-        </View>
-        <BottomNavigation
-          activeTab={tab}
-          onTabPress={setTab}
-          tabs={[
-            { id: 'home', label: 'Home', icon: 'home' },
-            { id: 'search', label: 'Search', icon: 'search' },
-            { id: 'alerts', label: 'Alerts', icon: 'bell', badge: 3 },
-            { id: 'profile', label: 'Profile', icon: 'user' },
-          ]}
-        />
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Active Tab: {tab}</Text>
+      </View>
+      <View style={styles.bar}>
+        {tabs.map(t => {
+          const active = tab === t.name;
+          return (
+            <Pressable key={t.name} onPress={() => setTab(t.name)} style={styles.tabItem}>
+              <Text style={styles.tabIcon}>{t.icon}</Text>
+              <Text style={[styles.tabLabel, active && styles.tabActive]}>{t.name}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#090d16' },
   content: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  text: { color: '#ffffff', fontSize: 18, fontWeight: '600' },
+  title: { color: '#ffffff', fontSize: 22, fontWeight: '700' },
+  bar: { flexDirection: 'row', backgroundColor: '#131b2e', borderTopWidth: 1, borderTopColor: '#1e293b', paddingVertical: 10 },
+  tabItem: { flex: 1, alignItems: 'center' },
+  tabIcon: { fontSize: 20 },
+  tabLabel: { fontSize: 11, color: '#94a3b8', marginTop: 4 },
+  tabActive: { color: '#7c3aed', fontWeight: '700' },
 });`
       }
     ],
     overlays: [
       {
         id: 'BottomSheet',
-        name: 'BottomSheet & Dialog & ActionSheet',
-        desc: 'Modal bottom sheet with drag handle, gestures, and backdrop dismiss.',
+        name: 'BottomSheet',
+        desc: 'Modal bottom sheet with drag handle and backdrop dismiss.',
+        importSnippet: "import { BottomSheet } from 'boodoo/react-native';",
         code: `import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, BottomSheet, Button, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text, Pressable, Modal } from 'react-native';
 
 export default function App() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <Button variant="primary" onPress={() => setVisible(true)}>Open Bottom Sheet</Button>
-        <BottomSheet visible={visible} onClose={() => setVisible(false)}>
-          <View style={styles.sheetContent}>
+    <SafeAreaView style={styles.container}>
+      <Pressable style={styles.trigger} onPress={() => setVisible(true)}>
+        <Text style={styles.triggerText}>Open Bottom Sheet</Text>
+      </Pressable>
+
+      <Modal visible={visible} transparent animationType="slide">
+        <View style={styles.backdrop}>
+          <Pressable style={styles.dismissArea} onPress={() => setVisible(false)} />
+          <View style={styles.sheet}>
+            <View style={styles.handle} />
             <Text style={styles.sheetTitle}>Share Document</Text>
             <Text style={styles.sheetDesc}>Anyone with the link can view this document.</Text>
-            <Button variant="primary" onPress={() => setVisible(false)}>Copy Share Link</Button>
+            <Pressable style={styles.actionBtn} onPress={() => setVisible(false)}>
+              <Text style={styles.actionText}>Copy Share Link</Text>
+            </Pressable>
           </View>
-        </BottomSheet>
-      </SafeAreaView>
-    </BoodooProvider>
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16' },
-  sheetContent: { padding: 24, gap: 12 },
-  sheetTitle: { color: '#ffffff', fontSize: 20, fontWeight: '700' },
-  sheetDesc: { color: '#94a3b8', fontSize: 14, marginBottom: 8 },
+  trigger: { backgroundColor: '#7c3aed', paddingVertical: 14, paddingHorizontal: 22, borderRadius: 10 },
+  triggerText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
+  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'flex-end' },
+  dismissArea: { flex: 1 },
+  sheet: { backgroundColor: '#131b2e', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24, paddingBottom: 40, alignItems: 'center' },
+  handle: { width: 44, height: 5, borderRadius: 3, backgroundColor: '#334155', marginBottom: 18 },
+  sheetTitle: { color: '#ffffff', fontSize: 20, fontWeight: '700', marginBottom: 6 },
+  sheetDesc: { color: '#94a3b8', fontSize: 14, marginBottom: 20, textAlign: 'center' },
+  actionBtn: { backgroundColor: '#7c3aed', paddingVertical: 12, paddingHorizontal: 28, borderRadius: 8, width: '100%', alignItems: 'center' },
+  actionText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
       }
     ],
@@ -900,65 +900,62 @@ const styles = StyleSheet.create({
         id: 'Heading',
         name: 'Heading & Text',
         desc: 'Cross-platform typography primitives mapped to unified design tokens.',
+        importSnippet: "import { Heading, Text } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { BoodooProvider, Heading, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.card}>
-          <Heading level={1} style={styles.white}>Display Title</Heading>
-          <Heading level={3} style={styles.purple}>Section Subhead</Heading>
-          <Text variant="bodyMedium" style={styles.muted}>
-            This text is rendered with zero DOM elements and dynamic token typography.
-          </Text>
-        </View>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.h1}>Display Title</Text>
+        <Text style={styles.h3}>Section Subhead</Text>
+        <Text style={styles.body}>
+          This text is rendered with zero DOM elements and dynamic token typography.
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12, gap: 8 },
-  white: { color: '#ffffff' },
-  purple: { color: '#a78bfa' },
-  muted: { color: '#94a3b8' },
+  card: { width: '100%', maxWidth: 340, padding: 24, backgroundColor: '#131b2e', borderRadius: 14, gap: 10 },
+  h1: { color: '#ffffff', fontSize: 26, fontWeight: 'bold' },
+  h3: { color: '#a78bfa', fontSize: 18, fontWeight: '600' },
+  body: { color: '#94a3b8', fontSize: 14, lineHeight: 22 },
 });`
       }
     ],
     layout: [
       {
         id: 'HStack',
-        name: 'Box & HStack & VStack & Grid',
+        name: 'HStack & VStack',
         desc: 'Declarative layout primitives inspired by Tamagui & Gluestack with pure StyleSheet performance.',
+        importSnippet: "import { HStack, VStack, Box } from 'boodoo/react-native';",
         code: `import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { BoodooProvider, HStack, VStack, Box, Text } from 'boodoo/react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
   return (
-    <BoodooProvider>
-      <SafeAreaView style={styles.container}>
-        <VStack space="md" style={styles.card}>
-          <Text style={styles.title}>Declarative Stacks</Text>
-          <HStack space="sm">
-            <Box style={styles.box}><Text style={styles.boxText}>1</Text></Box>
-            <Box style={styles.box}><Text style={styles.boxText}>2</Text></Box>
-            <Box style={styles.box}><Text style={styles.boxText}>3</Text></Box>
-          </HStack>
-        </VStack>
-      </SafeAreaView>
-    </BoodooProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Declarative Flex Stacks</Text>
+        <View style={styles.hstack}>
+          <View style={styles.box}><Text style={styles.boxText}>1</Text></View>
+          <View style={styles.box}><Text style={styles.boxText}>2</Text></View>
+          <View style={styles.box}><Text style={styles.boxText}>3</Text></View>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#090d16', padding: 20 },
-  card: { width: '100%', maxWidth: 340, padding: 20, backgroundColor: '#131b2e', borderRadius: 12 },
-  title: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 12 },
+  card: { width: '100%', maxWidth: 340, padding: 24, backgroundColor: '#131b2e', borderRadius: 14 },
+  title: { color: '#ffffff', fontSize: 18, fontWeight: '700', marginBottom: 16 },
+  hstack: { flexDirection: 'row', gap: 12 },
   box: { flex: 1, height: 60, backgroundColor: '#7c3aed', borderRadius: 8, justifyContent: 'center', alignItems: 'center' },
   boxText: { color: '#ffffff', fontWeight: 'bold', fontSize: 18 },
 });`
@@ -974,6 +971,7 @@ const styles = StyleSheet.create({
   const codeEl = document.getElementById('snack-code-preview');
   const externalLink = document.getElementById('snack-external-link');
   const copyBtn = document.getElementById('snack-copy-code-btn');
+  const copyImportBtn = document.getElementById('snack-copy-import-btn');
 
   function populateComponents(catKey) {
     const list = SNACK_COMPONENTS[catKey] || [];
@@ -1003,24 +1001,24 @@ const styles = StyleSheet.create({
 
     const encodedCode = encodeURIComponent(item.code);
     const snackUrl = 'https://snack.expo.dev/embedded?name=' + encodeURIComponent('Boodoo - ' + item.name) +
-      '&platform=web&preview=true&theme=dark&dependencies=boodoo%2Creact-native-safe-area-context&code=' + encodedCode;
+      '&platform=web&preview=true&theme=dark&code=' + encodedCode;
 
     if (frame) {
       frame.src = snackUrl;
     }
     if (externalLink) {
       externalLink.href = 'https://snack.expo.dev?name=' + encodeURIComponent('Boodoo - ' + item.name) +
-        '&platform=web&preview=true&theme=dark&dependencies=boodoo%2Creact-native-safe-area-context&code=' + encodedCode;
+        '&platform=web&preview=true&theme=dark&code=' + encodedCode;
     }
   }
 
   if (categorySelect && componentSelect) {
-    categorySelect.addEventListener('change', function() {
+    categorySelect.addEventListener('change', function () {
       populateComponents(this.value);
       updateSnack();
     });
 
-    componentSelect.addEventListener('change', function() {
+    componentSelect.addEventListener('change', function () {
       updateSnack();
     });
 
@@ -1029,14 +1027,28 @@ const styles = StyleSheet.create({
   }
 
   if (copyBtn) {
-    copyBtn.addEventListener('click', function() {
+    copyBtn.addEventListener('click', function () {
       const item = getSelectedComponent();
       if (!item) return;
-      navigator.clipboard.writeText(item.code).then(function() {
+      navigator.clipboard.writeText(item.code).then(function () {
         const originalHtml = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<span>Copied!</span>';
-        setTimeout(function() {
+        copyBtn.innerHTML = '<span>Copied Code!</span>';
+        setTimeout(function () {
           copyBtn.innerHTML = originalHtml;
+        }, 2000);
+      });
+    });
+  }
+
+  if (copyImportBtn) {
+    copyImportBtn.addEventListener('click', function () {
+      const item = getSelectedComponent();
+      if (!item || !item.importSnippet) return;
+      navigator.clipboard.writeText(item.importSnippet).then(function () {
+        const originalHtml = copyImportBtn.innerHTML;
+        copyImportBtn.innerHTML = '<span>Copied Import!</span>';
+        setTimeout(function () {
+          copyImportBtn.innerHTML = originalHtml;
         }, 2000);
       });
     });
