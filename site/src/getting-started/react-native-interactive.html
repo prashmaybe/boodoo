@@ -5,34 +5,39 @@ section: getting-started
 order: 17
 -->
 <h1><span>React Native Mobile Snack Showcase</span></h1>
-<p class="lead"><span>Test and preview <strong>every Boodoo React Native component</strong> live in an interactive mobile simulator. Switch components below, edit code in real-time, or scan the QR code to run on your physical iOS or Android phone with Expo Go.</span></p>
+<p class="lead"><span>Test and preview <strong>every Boodoo React Native component</strong> live in an interactive
+    mobile simulator. Switch components below, edit code in real-time, or scan the QR code to run on your physical iOS
+    or Android phone with Expo Go.</span></p>
 
 <div class="row g-3 mb-4">
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-3 shadow-sm">
       <div class="d-flex align-items-center gap-2 mb-2">
         <i class="hi-device-mobile text-primary fs-4" aria-hidden="true"></i>
         <h6 class="mb-0"><span>Zero DOM Dependencies</span></h6>
       </div>
-      <p class="text-muted small mb-0"><span>Built 100% on native <code>View</code>, <code>Text</code>, <code>Pressable</code>, and <code>StyleSheet.create()</code>.</span></p>
+      <p class="text-muted small mb-0"><span>Built 100% on native <code>View</code>, <code>Text</code>,
+          <code>Pressable</code>, and <code>StyleSheet.create()</code>.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-3 shadow-sm">
       <div class="d-flex align-items-center gap-2 mb-2">
         <i class="hi-sparkles text-success fs-4" aria-hidden="true"></i>
         <h6 class="mb-0"><span>Zero Inline Styles</span></h6>
       </div>
-      <p class="text-muted small mb-0"><span>Optimized for 60/120fps Hermes bytecode and Metro bundler caching with zero runtime GC pressure.</span></p>
+      <p class="text-muted small mb-0"><span>Optimized for 60/120fps Hermes bytecode and Metro bundler caching with zero
+          runtime GC pressure.</span></p>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="card p-3 shadow-sm h-100">
+    <div class="card p-3 shadow-sm">
       <div class="d-flex align-items-center gap-2 mb-2">
         <i class="hi-qr-code text-info fs-4" aria-hidden="true"></i>
         <h6 class="mb-0"><span>Instant Expo Go Run</span></h6>
       </div>
-      <p class="text-muted small mb-0"><span>Switch to the "My Device" tab in Snack to scan the QR code and test native touch gesture performance.</span></p>
+      <p class="text-muted small mb-0"><span>Switch to the "My Device" tab in Snack to scan the QR code and test native
+          touch gesture performance.</span></p>
     </div>
   </div>
 </div>
@@ -41,8 +46,10 @@ order: 17
   <div class="card-header bg-body-tertiary p-3">
     <div class="row g-2 align-items-center">
       <div class="col-12 col-md-5">
-        <label for="snack-category-select" class="form-label small fw-semibold text-muted text-uppercase mb-1"><span>Category</span></label>
-        <select id="snack-category-select" name="snack-category-select" class="form-select form-select-sm" aria-label="Component Category">
+        <label for="snack-category-select"
+          class="form-label small fw-semibold text-muted text-uppercase mb-1"><span>Category</span></label>
+        <select id="snack-category-select" name="snack-category-select" class="form-select form-select-sm"
+          aria-label="Component Category">
           <option value="buttons">Buttons &amp; Actions</option>
           <option value="surfaces">Surfaces &amp; Cards</option>
           <option value="inputs">Inputs &amp; Forms</option>
@@ -56,13 +63,16 @@ order: 17
         </select>
       </div>
       <div class="col-12 col-md-5">
-        <label for="snack-component-select" class="form-label small fw-semibold text-muted text-uppercase mb-1"><span>Component</span></label>
-        <select id="snack-component-select" name="snack-component-select" class="form-select form-select-sm" aria-label="Component Variant">
+        <label for="snack-component-select"
+          class="form-label small fw-semibold text-muted text-uppercase mb-1"><span>Component</span></label>
+        <select id="snack-component-select" name="snack-component-select" class="form-select form-select-sm"
+          aria-label="Component Variant">
           <!-- Dynamically populated -->
         </select>
       </div>
       <div class="col-12 col-md-2 d-flex align-items-end">
-        <a id="snack-external-link" href="https://snack.expo.dev" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm w-100" title="Open full screen in Expo Snack">
+        <a id="snack-external-link" href="https://snack.expo.dev" target="_blank" rel="noopener noreferrer"
+          class="btn btn-outline-primary btn-sm w-100" title="Open full screen in Expo Snack">
           <span>Expo Snack <i class="hi-arrow-up-right ms-1" aria-hidden="true"></i></span>
         </a>
       </div>
@@ -70,39 +80,40 @@ order: 17
   </div>
 
   <div class="card-body p-0 position-relative">
-    <iframe
-      id="boodoo-snack-frame"
-      title="Boodoo React Native Component Playground"
-      style="width: 100%; height: 600px; border: 0; border-radius: 0 0 6px 6px; display: block;"
-      loading="lazy"
+    <iframe id="boodoo-snack-frame" title="Boodoo React Native Component Playground"
+      style="width: 100%; height: 600px; border: 0; border-radius: 0 0 6px 6px; display: block;" loading="lazy"
       allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-    ></iframe>
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
   </div>
 
   <div class="card-footer bg-body-tertiary p-3">
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
       <div>
         <span class="fw-semibold text-primary" id="snack-component-title"><span>Button</span></span>
-        <span class="text-muted small ms-2" id="snack-component-desc"><span>Tactile native button with variants, sizes, and states.</span></span>
+        <span class="text-muted small ms-2" id="snack-component-desc"><span>Tactile native button with variants, sizes,
+            and states.</span></span>
       </div>
       <div class="d-flex gap-2">
-        <button type="button" id="snack-copy-import-btn" class="btn btn-sm btn-outline-primary" aria-label="Copy boodoo package import">
+        <button type="button" id="snack-copy-import-btn" class="btn btn-sm btn-outline-primary"
+          aria-label="Copy boodoo package import">
           <i class="hi-terminal me-1" aria-hidden="true"></i><span>Copy Package Import</span>
         </button>
-        <button type="button" id="snack-copy-code-btn" class="btn btn-sm btn-outline-secondary" aria-label="Copy React Native Code">
+        <button type="button" id="snack-copy-code-btn" class="btn btn-sm btn-outline-secondary"
+          aria-label="Copy React Native Code">
           <i class="hi-clipboard me-1" aria-hidden="true"></i><span>Copy Full Code</span>
         </button>
       </div>
     </div>
     <div class="mt-2">
-      <pre class="bg-dark text-light p-3 rounded mb-0 small" style="max-height: 220px; overflow-y: auto;"><code id="snack-code-preview" class="language-jsx"></code></pre>
+      <pre class="bg-dark text-light p-3 rounded mb-0 small"
+        style="max-height: 220px; overflow-y: auto;"><code id="snack-code-preview" class="language-jsx"></code></pre>
     </div>
   </div>
 </div>
 
 <h2><span>Mobile Component Catalog Overview</span></h2>
-<p><span>Every component below is pure React Native, tree-shakeable, and exported directly from <code>boodoo/react-native</code>:</span></p>
+<p><span>Every component below is pure React Native, tree-shakeable, and exported directly from
+    <code>boodoo/react-native</code>:</span></p>
 
 <div class="table-responsive">
   <table class="table table-bordered table-hover align-middle">
@@ -116,63 +127,74 @@ order: 17
     <tbody>
       <tr>
         <td><strong><span>Buttons &amp; Actions</span></strong></td>
-        <td><code>Button</code>, <code>ButtonGroup</code>, <code>IconButton</code>, <code>FAB</code>, <code>SegmentedButtons</code>, <code>SpeedDial</code></td>
+        <td><code>Button</code>, <code>ButtonGroup</code>, <code>IconButton</code>, <code>FAB</code>,
+          <code>SegmentedButtons</code>, <code>SpeedDial</code></td>
         <td><span>Tactile press feedback, floating action buttons, multi-action speed dials.</span></td>
       </tr>
       <tr>
         <td><strong><span>Surfaces &amp; Cards</span></strong></td>
-        <td><code>Card</code>, <code>Surface</code>, <code>Divider</code>, <code>PricingCard</code>, <code>Tile</code>, <code>StatWidget</code>, <code>BentoGrid</code></td>
+        <td><code>Card</code>, <code>Surface</code>, <code>Divider</code>, <code>PricingCard</code>, <code>Tile</code>,
+          <code>StatWidget</code>, <code>BentoGrid</code></td>
         <td><span>Elevation shadows, rounded corners, responsive mobile dashboard tiles.</span></td>
       </tr>
       <tr>
         <td><strong><span>Inputs &amp; Forms</span></strong></td>
-        <td><code>TextInput</code>, <code>Searchbar</code>, <code>Checkbox</code>, <code>RadioGroup</code>, <code>Switch</code>, <code>Slider</code>, <code>Select</code>, <code>OtpInput</code>, <code>Rating</code>, <code>ChipInput</code></td>
+        <td><code>TextInput</code>, <code>Searchbar</code>, <code>Checkbox</code>, <code>RadioGroup</code>,
+          <code>Switch</code>, <code>Slider</code>, <code>Select</code>, <code>OtpInput</code>, <code>Rating</code>,
+          <code>ChipInput</code></td>
         <td><span>Touch-optimized inputs, SMS verification OTP cells, star ratings, multi-tag entry.</span></td>
       </tr>
       <tr>
         <td><strong><span>Data Display</span></strong></td>
-        <td><code>Chip</code>, <code>Badge</code>, <code>Avatar</code>, <code>ChatBubble</code>, <code>AIStream</code>, <code>BarChart</code>, <code>EmptyState</code>, <code>Timeline</code>, <code>StepperWizard</code></td>
+        <td><code>Chip</code>, <code>Badge</code>, <code>Avatar</code>, <code>ChatBubble</code>, <code>AIStream</code>,
+          <code>BarChart</code>, <code>EmptyState</code>, <code>Timeline</code>, <code>StepperWizard</code></td>
         <td><span>Zero-dependency mobile SVG/native bar &amp; donut charts, conversational chat bubbles.</span></td>
       </tr>
       <tr>
         <td><strong><span>Feedback</span></strong></td>
-        <td><code>ActivityIndicator</code>, <code>ProgressBar</code>, <code>Skeleton</code>, <code>Alert</code>, <code>Banner</code>, <code>Toast</code></td>
+        <td><code>ActivityIndicator</code>, <code>ProgressBar</code>, <code>Skeleton</code>, <code>Alert</code>,
+          <code>Banner</code>, <code>Toast</code></td>
         <td><span>Smooth mobile loading animations, non-blocking floating toasts, shimmer placeholders.</span></td>
       </tr>
       <tr>
         <td><strong><span>Lists &amp; Tables</span></strong></td>
-        <td><code>List</code>, <code>ListItem</code>, <code>DataTable</code>, <code>Accordion</code>, <code>SwipeableRow</code></td>
+        <td><code>List</code>, <code>ListItem</code>, <code>DataTable</code>, <code>Accordion</code>,
+          <code>SwipeableRow</code></td>
         <td><span>Swipe-to-delete gestures, collapsible accordion FAQ rows, mobile-friendly data tables.</span></td>
       </tr>
       <tr>
         <td><strong><span>Navigation</span></strong></td>
-        <td><code>Appbar</code>, <code>Header</code>, <code>Drawer</code>, <code>BottomNavigation</code>, <code>Tabs</code>, <code>PageControl</code></td>
+        <td><code>Appbar</code>, <code>Header</code>, <code>Drawer</code>, <code>BottomNavigation</code>,
+          <code>Tabs</code>, <code>PageControl</code></td>
         <td><span>Sticky mobile headers, bottom tab bars with badges, swipeable page dots.</span></td>
       </tr>
       <tr>
         <td><strong><span>Overlays</span></strong></td>
-        <td><code>Dialog</code>, <code>Modal</code>, <code>BottomSheet</code>, <code>ActionSheet</code>, <code>Menu</code>, <code>Tooltip</code></td>
+        <td><code>Dialog</code>, <code>Modal</code>, <code>BottomSheet</code>, <code>ActionSheet</code>,
+          <code>Menu</code>, <code>Tooltip</code></td>
         <td><span>Spring-animated bottom sheets, iOS-style action sheets, touch backdrop dismissals.</span></td>
       </tr>
       <tr>
         <td><strong><span>Layout &amp; Typography</span></strong></td>
-        <td><code>Heading</code>, <code>Text</code>, <code>Box</code>, <code>HStack</code>, <code>VStack</code>, <code>Center</code>, <code>Grid</code></td>
-        <td><span>Tamagui/Gluestack-inspired layout primitives for clean flexbox layouts without raw View clutter.</span></td>
+        <td><code>Heading</code>, <code>Text</code>, <code>Box</code>, <code>HStack</code>, <code>VStack</code>,
+          <code>Center</code>, <code>Grid</code></td>
+        <td><span>Tamagui/Gluestack-inspired layout primitives for clean flexbox layouts without raw View
+            clutter.</span></td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <script>
-(function() {
-  const SNACK_COMPONENTS = {
-    buttons: [
-      {
-        id: 'Button',
-        name: 'Button (Primary, Outline, Danger)',
-        desc: 'Tactile pressable native button with multiple semantic variants, sizes, and states.',
-        importSnippet: "import { Button } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+  (function () {
+    const SNACK_COMPONENTS = {
+      buttons: [
+        {
+          id: 'Button',
+          name: 'Button (Primary, Outline, Danger)',
+          desc: 'Tactile pressable native button with multiple semantic variants, sizes, and states.',
+          importSnippet: "import { Button } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 // Boodoo Button Component Primitive
@@ -235,13 +257,13 @@ const styles = StyleSheet.create({
   textLight: { color: '#ffffff' },
   textOutline: { color: '#e2e8f0' },
 });`
-      },
-      {
-        id: 'ButtonGroup',
-        name: 'ButtonGroup',
-        desc: 'Segmented horizontal cluster of connected pressable buttons.',
-        importSnippet: "import { ButtonGroup, Button } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        },
+        {
+          id: 'ButtonGroup',
+          name: 'ButtonGroup',
+          desc: 'Segmented horizontal cluster of connected pressable buttons.',
+          importSnippet: "import { ButtonGroup, Button } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -287,13 +309,13 @@ const styles = StyleSheet.create({
   textActive: { color: '#ffffff' },
   textInactive: { color: '#94a3b8' },
 });`
-      },
-      {
-        id: 'FAB',
-        name: 'FAB (Floating Action Button)',
-        desc: 'High-emphasis floating action button positioned over mobile screen content.',
-        importSnippet: "import { FAB } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        },
+        {
+          id: 'FAB',
+          name: 'FAB (Floating Action Button)',
+          desc: 'High-emphasis floating action button positioned over mobile screen content.',
+          importSnippet: "import { FAB } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -335,13 +357,13 @@ const styles = StyleSheet.create({
   },
   fabText: { color: '#ffffff', fontSize: 28, fontWeight: '600', marginTop: -2 },
 });`
-      },
-      {
-        id: 'SpeedDial',
-        name: 'SpeedDial',
-        desc: 'Expandable floating speed dial menu for quick primary actions.',
-        importSnippet: "import { SpeedDial, SpeedDialAction } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        },
+        {
+          id: 'SpeedDial',
+          name: 'SpeedDial',
+          desc: 'Expandable floating speed dial menu for quick primary actions.',
+          importSnippet: "import { SpeedDial, SpeedDialAction } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -388,15 +410,15 @@ const styles = StyleSheet.create({
   mainFabActive: { backgroundColor: '#6d28d9' },
   fabText: { color: '#ffffff', fontSize: 28, fontWeight: 'bold' },
 });`
-      }
-    ],
-    surfaces: [
-      {
-        id: 'Card',
-        name: 'Card & Surface',
-        desc: 'Tactile elevated container with customizable padding, border, and elevation.',
-        importSnippet: "import { Card } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      surfaces: [
+        {
+          id: 'Card',
+          name: 'Card & Surface',
+          desc: 'Tactile elevated container with customizable padding, border, and elevation.',
+          importSnippet: "import { Card } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -423,13 +445,13 @@ const styles = StyleSheet.create({
   btn: { backgroundColor: '#7c3aed', paddingVertical: 12, borderRadius: 8, alignItems: 'center' },
   btnText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
-      },
-      {
-        id: 'StatWidget',
-        name: 'StatWidget',
-        desc: 'Compact mobile KPI statistic card with change indicators and trend labels.',
-        importSnippet: "import { StatWidget } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        },
+        {
+          id: 'StatWidget',
+          name: 'StatWidget',
+          desc: 'Compact mobile KPI statistic card with change indicators and trend labels.',
+          importSnippet: "import { StatWidget } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 function StatWidget({ label, value, change, trend = 'up' }) {
@@ -470,15 +492,15 @@ const styles = StyleSheet.create({
   up: { color: '#10b981' },
   down: { color: '#ef4444' },
 });`
-      }
-    ],
-    inputs: [
-      {
-        id: 'TextInput',
-        name: 'TextInput & Searchbar',
-        desc: 'Accessible native input field with clear actions, helper text, and error states.',
-        importSnippet: "import { TextInput, Searchbar } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        }
+      ],
+      inputs: [
+        {
+          id: 'TextInput',
+          name: 'TextInput & Searchbar',
+          desc: 'Accessible native input field with clear actions, helper text, and error states.',
+          importSnippet: "import { TextInput, Searchbar } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput } from 'react-native';
 
 export default function App() {
@@ -518,13 +540,13 @@ const styles = StyleSheet.create({
   label: { color: '#94a3b8', fontSize: 13, marginBottom: 6 },
   input: { backgroundColor: '#0f172a', color: '#ffffff', padding: 12, borderRadius: 8, borderWidth: 1, borderColor: '#334155' },
 });`
-      },
-      {
-        id: 'OtpInput',
-        name: 'OtpInput (Verification PIN)',
-        desc: 'Segmented PIN verification cells with numeric focus.',
-        importSnippet: "import { OtpInput } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        },
+        {
+          id: 'OtpInput',
+          name: 'OtpInput (Verification PIN)',
+          desc: 'Segmented PIN verification cells with numeric focus.',
+          importSnippet: "import { OtpInput } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 
 export default function App() {
@@ -575,13 +597,13 @@ const styles = StyleSheet.create({
   btnDisabled: { backgroundColor: '#334155' },
   btnText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
-      },
-      {
-        id: 'Rating',
-        name: 'Rating & StarRating',
-        desc: 'Interactive star rating input with tactile touch feedback.',
-        importSnippet: "import { Rating } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        },
+        {
+          id: 'Rating',
+          name: 'Rating & StarRating',
+          desc: 'Interactive star rating input with tactile touch feedback.',
+          importSnippet: "import { Rating } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -612,15 +634,15 @@ const styles = StyleSheet.create({
   starInactive: { color: '#334155' },
   score: { color: '#94a3b8', fontSize: 16 },
 });`
-      }
-    ],
-    'data-display': [
-      {
-        id: 'ChatBubble',
-        name: 'ChatBubble & AIStream',
-        desc: 'Conversational chat bubbles for messaging and generative AI streaming with role alignments.',
-        importSnippet: "import { ChatBubble } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      'data-display': [
+        {
+          id: 'ChatBubble',
+          name: 'ChatBubble & AIStream',
+          desc: 'Conversational chat bubbles for messaging and generative AI streaming with role alignments.',
+          importSnippet: "import { ChatBubble } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text, ScrollView } from 'react-native';
 
 function ChatBubble({ role = 'assistant', message, time }) {
@@ -661,13 +683,13 @@ const styles = StyleSheet.create({
   msgAssistant: { color: '#e2e8f0' },
   time: { fontSize: 10, color: '#94a3b8', marginTop: 4, alignSelf: 'flex-end' },
 });`
-      },
-      {
-        id: 'BarChart',
-        name: 'BarChart (Zero Native Deps)',
-        desc: 'Pure React Native flex bar chart with zero external native chart libraries.',
-        importSnippet: "import { BarChart } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        },
+        {
+          id: 'BarChart',
+          name: 'BarChart (Zero Native Deps)',
+          desc: 'Pure React Native flex bar chart with zero external native chart libraries.',
+          importSnippet: "import { BarChart } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
@@ -705,15 +727,15 @@ const styles = StyleSheet.create({
   bar: { width: 24, backgroundColor: '#7c3aed', borderRadius: 6 },
   label: { color: '#94a3b8', fontSize: 12, marginTop: 8 },
 });`
-      }
-    ],
-    feedback: [
-      {
-        id: 'Alert',
-        name: 'Alert & Status Banner',
-        desc: 'Semantic feedback messages with status icons and dismiss action.',
-        importSnippet: "import { Alert } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      feedback: [
+        {
+          id: 'Alert',
+          name: 'Alert & Status Banner',
+          desc: 'Semantic feedback messages with status icons and dismiss action.',
+          importSnippet: "import { Alert } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 function BAlert({ title, message, variant = 'success' }) {
@@ -747,15 +769,15 @@ const styles = StyleSheet.create({
   alertTitle: { color: '#ffffff', fontWeight: '700', fontSize: 15, marginBottom: 4 },
   alertMsg: { color: '#e2e8f0', fontSize: 13 },
 });`
-      }
-    ],
-    lists: [
-      {
-        id: 'List',
-        name: 'List & ListItem',
-        desc: 'Mobile list items with icons, subtitles, and chevron disclosure.',
-        importSnippet: "import { List, ListItem } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      lists: [
+        {
+          id: 'List',
+          name: 'List & ListItem',
+          desc: 'Mobile list items with icons, subtitles, and chevron disclosure.',
+          importSnippet: "import { List, ListItem } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 function Item({ title, desc, icon }) {
@@ -793,15 +815,15 @@ const styles = StyleSheet.create({
   itemDesc: { color: '#94a3b8', fontSize: 12, marginTop: 2 },
   chevron: { color: '#64748b', fontSize: 20 },
 });`
-      }
-    ],
-    navigation: [
-      {
-        id: 'BottomNavigation',
-        name: 'BottomNavigation',
-        desc: 'Standard mobile bottom tab navigation bar with badge notifications.',
-        importSnippet: "import { BottomNavigation } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        }
+      ],
+      navigation: [
+        {
+          id: 'BottomNavigation',
+          name: 'BottomNavigation',
+          desc: 'Standard mobile bottom tab navigation bar with badge notifications.',
+          importSnippet: "import { BottomNavigation } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable } from 'react-native';
 
 export default function App() {
@@ -843,15 +865,15 @@ const styles = StyleSheet.create({
   tabLabel: { fontSize: 11, color: '#94a3b8', marginTop: 4 },
   tabActive: { color: '#7c3aed', fontWeight: '700' },
 });`
-      }
-    ],
-    overlays: [
-      {
-        id: 'BottomSheet',
-        name: 'BottomSheet',
-        desc: 'Modal bottom sheet with drag handle and backdrop dismiss.',
-        importSnippet: "import { BottomSheet } from 'boodoo/react-native';",
-        code: `import React, { useState } from 'react';
+        }
+      ],
+      overlays: [
+        {
+          id: 'BottomSheet',
+          name: 'BottomSheet',
+          desc: 'Modal bottom sheet with drag handle and backdrop dismiss.',
+          importSnippet: "import { BottomSheet } from 'boodoo/react-native';",
+          code: `import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Pressable, Modal } from 'react-native';
 
 export default function App() {
@@ -893,15 +915,15 @@ const styles = StyleSheet.create({
   actionBtn: { backgroundColor: '#7c3aed', paddingVertical: 12, paddingHorizontal: 28, borderRadius: 8, width: '100%', alignItems: 'center' },
   actionText: { color: '#ffffff', fontWeight: '600', fontSize: 15 },
 });`
-      }
-    ],
-    typography: [
-      {
-        id: 'Heading',
-        name: 'Heading & Text',
-        desc: 'Cross-platform typography primitives mapped to unified design tokens.',
-        importSnippet: "import { Heading, Text } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      typography: [
+        {
+          id: 'Heading',
+          name: 'Heading & Text',
+          desc: 'Cross-platform typography primitives mapped to unified design tokens.',
+          importSnippet: "import { Heading, Text } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
@@ -925,15 +947,15 @@ const styles = StyleSheet.create({
   h3: { color: '#a78bfa', fontSize: 18, fontWeight: '600' },
   body: { color: '#94a3b8', fontSize: 14, lineHeight: 22 },
 });`
-      }
-    ],
-    layout: [
-      {
-        id: 'HStack',
-        name: 'HStack & VStack',
-        desc: 'Declarative layout primitives inspired by Tamagui & Gluestack with pure StyleSheet performance.',
-        importSnippet: "import { HStack, VStack, Box } from 'boodoo/react-native';",
-        code: `import React from 'react';
+        }
+      ],
+      layout: [
+        {
+          id: 'HStack',
+          name: 'HStack & VStack',
+          desc: 'Declarative layout primitives inspired by Tamagui & Gluestack with pure StyleSheet performance.',
+          importSnippet: "import { HStack, VStack, Box } from 'boodoo/react-native';",
+          code: `import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
@@ -959,99 +981,99 @@ const styles = StyleSheet.create({
   box: { flex: 1, height: 60, backgroundColor: '#7c3aed', borderRadius: 8, justifyContent: 'center', alignItems: 'center' },
   boxText: { color: '#ffffff', fontWeight: 'bold', fontSize: 18 },
 });`
-      }
-    ]
-  };
+        }
+      ]
+    };
 
-  const categorySelect = document.getElementById('snack-category-select');
-  const componentSelect = document.getElementById('snack-component-select');
-  const frame = document.getElementById('boodoo-snack-frame');
-  const titleEl = document.getElementById('snack-component-title');
-  const descEl = document.getElementById('snack-component-desc');
-  const codeEl = document.getElementById('snack-code-preview');
-  const externalLink = document.getElementById('snack-external-link');
-  const copyBtn = document.getElementById('snack-copy-code-btn');
-  const copyImportBtn = document.getElementById('snack-copy-import-btn');
+    const categorySelect = document.getElementById('snack-category-select');
+    const componentSelect = document.getElementById('snack-component-select');
+    const frame = document.getElementById('boodoo-snack-frame');
+    const titleEl = document.getElementById('snack-component-title');
+    const descEl = document.getElementById('snack-component-desc');
+    const codeEl = document.getElementById('snack-code-preview');
+    const externalLink = document.getElementById('snack-external-link');
+    const copyBtn = document.getElementById('snack-copy-code-btn');
+    const copyImportBtn = document.getElementById('snack-copy-import-btn');
 
-  function populateComponents(catKey) {
-    const list = SNACK_COMPONENTS[catKey] || [];
-    componentSelect.innerHTML = '';
-    list.forEach(item => {
-      const opt = document.createElement('option');
-      opt.value = item.id;
-      opt.textContent = item.name;
-      componentSelect.appendChild(opt);
-    });
-  }
-
-  function getSelectedComponent() {
-    const cat = categorySelect.value;
-    const compId = componentSelect.value;
-    const list = SNACK_COMPONENTS[cat] || [];
-    return list.find(c => c.id === compId) || list[0];
-  }
-
-  function updateSnack() {
-    const item = getSelectedComponent();
-    if (!item) return;
-
-    if (titleEl) titleEl.textContent = item.name;
-    if (descEl) descEl.textContent = item.desc;
-    if (codeEl) codeEl.textContent = item.code;
-
-    const encodedCode = encodeURIComponent(item.code);
-    const snackUrl = 'https://snack.expo.dev/embedded?name=' + encodeURIComponent('Boodoo - ' + item.name) +
-      '&platform=web&preview=true&theme=dark&code=' + encodedCode;
-
-    if (frame) {
-      frame.src = snackUrl;
+    function populateComponents(catKey) {
+      const list = SNACK_COMPONENTS[catKey] || [];
+      componentSelect.innerHTML = '';
+      list.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.id;
+        opt.textContent = item.name;
+        componentSelect.appendChild(opt);
+      });
     }
-    if (externalLink) {
-      externalLink.href = 'https://snack.expo.dev?name=' + encodeURIComponent('Boodoo - ' + item.name) +
-        '&platform=web&preview=true&theme=dark&code=' + encodedCode;
+
+    function getSelectedComponent() {
+      const cat = categorySelect.value;
+      const compId = componentSelect.value;
+      const list = SNACK_COMPONENTS[cat] || [];
+      return list.find(c => c.id === compId) || list[0];
     }
-  }
 
-  if (categorySelect && componentSelect) {
-    categorySelect.addEventListener('change', function () {
-      populateComponents(this.value);
-      updateSnack();
-    });
-
-    componentSelect.addEventListener('change', function () {
-      updateSnack();
-    });
-
-    populateComponents(categorySelect.value);
-    updateSnack();
-  }
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', function () {
+    function updateSnack() {
       const item = getSelectedComponent();
       if (!item) return;
-      navigator.clipboard.writeText(item.code).then(function () {
-        const originalHtml = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<span>Copied Code!</span>';
-        setTimeout(function () {
-          copyBtn.innerHTML = originalHtml;
-        }, 2000);
-      });
-    });
-  }
 
-  if (copyImportBtn) {
-    copyImportBtn.addEventListener('click', function () {
-      const item = getSelectedComponent();
-      if (!item || !item.importSnippet) return;
-      navigator.clipboard.writeText(item.importSnippet).then(function () {
-        const originalHtml = copyImportBtn.innerHTML;
-        copyImportBtn.innerHTML = '<span>Copied Import!</span>';
-        setTimeout(function () {
-          copyImportBtn.innerHTML = originalHtml;
-        }, 2000);
+      if (titleEl) titleEl.textContent = item.name;
+      if (descEl) descEl.textContent = item.desc;
+      if (codeEl) codeEl.textContent = item.code;
+
+      const encodedCode = encodeURIComponent(item.code);
+      const snackUrl = 'https://snack.expo.dev/embedded?name=' + encodeURIComponent('Boodoo - ' + item.name) +
+        '&platform=web&preview=true&theme=dark&code=' + encodedCode;
+
+      if (frame) {
+        frame.src = snackUrl;
+      }
+      if (externalLink) {
+        externalLink.href = 'https://snack.expo.dev?name=' + encodeURIComponent('Boodoo - ' + item.name) +
+          '&platform=web&preview=true&theme=dark&code=' + encodedCode;
+      }
+    }
+
+    if (categorySelect && componentSelect) {
+      categorySelect.addEventListener('change', function () {
+        populateComponents(this.value);
+        updateSnack();
       });
-    });
-  }
-})();
+
+      componentSelect.addEventListener('change', function () {
+        updateSnack();
+      });
+
+      populateComponents(categorySelect.value);
+      updateSnack();
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        const item = getSelectedComponent();
+        if (!item) return;
+        navigator.clipboard.writeText(item.code).then(function () {
+          const originalHtml = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span>Copied Code!</span>';
+          setTimeout(function () {
+            copyBtn.innerHTML = originalHtml;
+          }, 2000);
+        });
+      });
+    }
+
+    if (copyImportBtn) {
+      copyImportBtn.addEventListener('click', function () {
+        const item = getSelectedComponent();
+        if (!item || !item.importSnippet) return;
+        navigator.clipboard.writeText(item.importSnippet).then(function () {
+          const originalHtml = copyImportBtn.innerHTML;
+          copyImportBtn.innerHTML = '<span>Copied Import!</span>';
+          setTimeout(function () {
+            copyImportBtn.innerHTML = originalHtml;
+          }, 2000);
+        });
+      });
+    }
+  })();
 </script>
