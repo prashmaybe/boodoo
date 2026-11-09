@@ -4,32 +4,8 @@
 // =====================================================================
 
 import React, { useState, useEffect, useRef, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from './buttons.js';
-
-let cachedCreatePortal = undefined;
-function getCreatePortal() {
-  if (cachedCreatePortal !== undefined) return cachedCreatePortal;
-  try {
-    const rd = typeof window !== 'undefined' && (window.ReactDOM || window.ReactDom);
-    if (rd && typeof rd.createPortal === 'function') {
-      cachedCreatePortal = rd.createPortal;
-      return cachedCreatePortal;
-    }
-  } catch {}
-
-  try {
-    if (typeof require === 'function') {
-      const rd = require('react-dom');
-      if (rd && typeof rd.createPortal === 'function') {
-        cachedCreatePortal = rd.createPortal;
-        return cachedCreatePortal;
-      }
-    }
-  } catch {}
-
-  cachedCreatePortal = null;
-  return null;
-}
 
 export function Portal({ children, container }) {
   const [mounted, setMounted] = useState(false);
@@ -43,8 +19,7 @@ export function Portal({ children, container }) {
   }
 
   const target = container || document.body;
-  const createPortal = getCreatePortal();
-  if (createPortal) {
+  if (typeof createPortal === 'function') {
     return createPortal(children, target);
   }
 
@@ -76,6 +51,8 @@ export function Dialog({
 }) {
   const dialogRef = useRef(null);
   const previousActiveElementRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!open) return;
@@ -100,7 +77,7 @@ export function Dialog({
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
-        onClose?.();
+        onCloseRef.current?.();
         return;
       }
 
@@ -153,7 +130,7 @@ export function Dialog({
         previousActiveElementRef.current.focus();
       }
     };
-  }, [open, onClose, initialFocusRef]);
+  }, [open, initialFocusRef]);
 
   if (!open) return null;
 
@@ -322,6 +299,8 @@ export function Offcanvas({
 }) {
   const offcanvasRef = useRef(null);
   const previousActiveElementRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!open) return;
@@ -344,7 +323,7 @@ export function Offcanvas({
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
-        onClose?.();
+        onCloseRef.current?.();
         return;
       }
 
@@ -399,7 +378,7 @@ export function Offcanvas({
         previousActiveElementRef.current.focus();
       }
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 

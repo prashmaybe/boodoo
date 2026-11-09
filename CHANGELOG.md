@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.10] - 2026-11-09
+
+### Fixed
+- **React Overlays Portal Resolution in Modern Bundlers (`react/overlays.js`, `package.json`)**:
+  - Replaced runtime dynamic global `window.ReactDOM` / `require('react-dom')` lookup with direct static `import { createPortal } from 'react-dom'`.
+  - Added `react-dom` (`>=18.0.0`) to `peerDependencies` and `peerDependenciesMeta` (optional) in `package.json` and `package-lock.json`, preventing clipping and layout trapping inside sticky headers or overflow parents across modern bundlers (e.g., Vite).
+- **ConfirmDialog and Dialog Focus Reset During Keystrokes (`react/overlays.js`)**:
+  - Stabilized `Dialog` and `Offcanvas` open effects by referencing `onClose` via a persistent ref (`onCloseRef.current = onClose`) and removing `onClose` from the effect dependency array `[open, initialFocusRef]`.
+  - Resolved the bug where typing into `ConfirmDialog` or components passing inline `onClose={() => ...}` re-triggered the open effect on every keystroke, resetting focus back to the close button or trigger.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.2.10 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+
+---
+
 ## [1.2.9] - 2026-11-09
 
 ### Added
