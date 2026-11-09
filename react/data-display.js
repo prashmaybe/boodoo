@@ -30,6 +30,7 @@ export function Chip({
   onClose,
   disabled = false,
   className = '',
+  closeLabel = 'Remove chip',
   children,
   ...props
 }) {
@@ -49,7 +50,7 @@ export function Chip({
         {
           type: 'button',
           className: 'chip-close',
-          'aria-label': 'Remove chip',
+          'aria-label': closeLabel,
           onClick: onClose,
         },
         '×'

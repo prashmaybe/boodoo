@@ -326,6 +326,8 @@ export function Combobox({
   className = '',
   id: customId,
   name,
+  clearLabel = 'Clear input',
+  emptyLabel = 'No matches found',
   ...props
 }) {
   const generatedId = useId();
@@ -365,7 +367,7 @@ export function Combobox({
           {
             type: 'button',
             className: 'combobox-clear',
-            'aria-label': 'Clear input',
+            'aria-label': clearLabel,
             onClick: () => {
               setQuery('');
               if (value !== undefined) onChange?.('');
@@ -383,7 +385,7 @@ export function Combobox({
           }),
         },
         filteredItems.length === 0
-          ? React.createElement('li', { className: 'combobox-empty d-block' }, 'No matches found')
+          ? React.createElement('li', { className: 'combobox-empty d-block' }, emptyLabel)
           : filteredItems.map((item, idx) => {
               const meta = getOptionMeta ? getOptionMeta(item) : item.meta;
               return React.createElement(
