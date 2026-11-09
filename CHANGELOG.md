@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ConfirmDialog and Dialog Focus Reset During Keystrokes (`react/overlays.js`)**:
   - Stabilized `Dialog` and `Offcanvas` open effects by referencing `onClose` via a persistent ref (`onCloseRef.current = onClose`) and removing `onClose` from the effect dependency array `[open, initialFocusRef]`.
   - Resolved the bug where typing into `ConfirmDialog` or components passing inline `onClose={() => ...}` re-triggered the open effect on every keystroke, resetting focus back to the close button or trigger.
+- **Body Scroll Locking & Nested Overlay Escape Stacking (`react/overlays.js`)**:
+  - Added automatic background body scroll lock (`modal-open` class toggled on `document.body` based on active overlay count) when `Dialog` or `Offcanvas` opens.
+  - Implemented top-of-stack Escape routing so that when multiple dialogs are open on top of each other, pressing Escape dismisses only the topmost active overlay rather than all stacked overlays at once.
 
 ### Changed
 - **Framework & CDN Distribution Synchronization**:

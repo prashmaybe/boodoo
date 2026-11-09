@@ -7,6 +7,28 @@ import React, { useState, useEffect, useRef, useId } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from './buttons.js';
 
+let activeOverlayCount = 0;
+const activeOverlayHandlers = [];
+
+function registerOverlay(handler) {
+  activeOverlayHandlers.push(handler);
+  activeOverlayCount++;
+  if (activeOverlayCount === 1 && typeof document !== 'undefined') {
+    document.body.classList.add('modal-open');
+  }
+}
+
+function unregisterOverlay(handler) {
+  const idx = activeOverlayHandlers.indexOf(handler);
+  if (idx !== -1) {
+    activeOverlayHandlers.splice(idx, 1);
+  }
+  activeOverlayCount = Math.max(0, activeOverlayCount - 1);
+  if (activeOverlayCount === 0 && typeof document !== 'undefined') {
+    document.body.classList.remove('modal-open');
+  }
+}
+
 export function Portal({ children, container }) {
   const [mounted, setMounted] = useState(false);
 
@@ -76,8 +98,11 @@ export function Dialog({
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        e.stopPropagation();
-        onCloseRef.current?.();
+        const topHandler = activeOverlayHandlers[activeOverlayHandlers.length - 1];
+        if (topHandler === handleKeyDown) {
+          e.stopPropagation();
+          onCloseRef.current?.();
+        }
         return;
       }
 
@@ -114,11 +139,14 @@ export function Dialog({
       }
     };
 
+    registerOverlay(handleKeyDown);
+
     if (typeof document !== 'undefined') {
       document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
+      unregisterOverlay(handleKeyDown);
       clearTimeout(timer);
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
@@ -322,8 +350,11 @@ export function Offcanvas({
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        e.stopPropagation();
-        onCloseRef.current?.();
+        const topHandler = activeOverlayHandlers[activeOverlayHandlers.length - 1];
+        if (topHandler === handleKeyDown) {
+          e.stopPropagation();
+          onCloseRef.current?.();
+        }
         return;
       }
 
@@ -362,11 +393,14 @@ export function Offcanvas({
       }
     };
 
+    registerOverlay(handleKeyDown);
+
     if (typeof document !== 'undefined') {
       document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
+      unregisterOverlay(handleKeyDown);
       clearTimeout(timer);
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
