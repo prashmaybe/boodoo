@@ -15,7 +15,7 @@ function getCreatePortal() {
       cachedCreatePortal = rd.createPortal;
       return cachedCreatePortal;
     }
-  } catch (e) {}
+  } catch {}
 
   try {
     if (typeof require === 'function') {
@@ -25,7 +25,7 @@ function getCreatePortal() {
         return cachedCreatePortal;
       }
     }
-  } catch (e) {}
+  } catch {}
 
   cachedCreatePortal = null;
   return null;
@@ -118,12 +118,18 @@ export function Dialog({
         const last = focusable[focusable.length - 1];
 
         if (e.shiftKey) {
-          if (document.activeElement === first || !dialogRef.current.contains(document.activeElement)) {
+          if (
+            document.activeElement === first ||
+            !dialogRef.current.contains(document.activeElement)
+          ) {
             e.preventDefault();
             last.focus();
           }
         } else {
-          if (document.activeElement === last || !dialogRef.current.contains(document.activeElement)) {
+          if (
+            document.activeElement === last ||
+            !dialogRef.current.contains(document.activeElement)
+          ) {
             e.preventDefault();
             first.focus();
           }
@@ -140,7 +146,10 @@ export function Dialog({
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
       }
-      if (previousActiveElementRef.current && typeof previousActiveElementRef.current.focus === 'function') {
+      if (
+        previousActiveElementRef.current &&
+        typeof previousActiveElementRef.current.focus === 'function'
+      ) {
         previousActiveElementRef.current.focus();
       }
     };
@@ -238,8 +247,14 @@ export function ConfirmDialog({
   if (!open) return null;
 
   const matchPrompt = confirmMatchPrompt
-    ? (typeof confirmMatchPrompt === 'function' ? confirmMatchPrompt(mustMatch) : confirmMatchPrompt)
-    : ['Please type ', React.createElement('strong', { key: 'mustMatch' }, mustMatch), ' to confirm:'];
+    ? typeof confirmMatchPrompt === 'function'
+      ? confirmMatchPrompt(mustMatch)
+      : confirmMatchPrompt
+    : [
+        'Please type ',
+        React.createElement('strong', { key: 'mustMatch' }, mustMatch),
+        ' to confirm:',
+      ];
 
   return React.createElement(
     Dialog,
@@ -334,7 +349,9 @@ export function Offcanvas({
       }
 
       if (e.key === 'Tab' && offcanvasRef.current) {
-        const focusable = Array.from(offcanvasRef.current.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
+        const focusable = Array.from(
+          offcanvasRef.current.querySelectorAll(FOCUSABLE_SELECTOR)
+        ).filter(
           (el) => el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0
         );
         if (!focusable.length) {
@@ -347,12 +364,18 @@ export function Offcanvas({
         const last = focusable[focusable.length - 1];
 
         if (e.shiftKey) {
-          if (document.activeElement === first || !offcanvasRef.current.contains(document.activeElement)) {
+          if (
+            document.activeElement === first ||
+            !offcanvasRef.current.contains(document.activeElement)
+          ) {
             e.preventDefault();
             last.focus();
           }
         } else {
-          if (document.activeElement === last || !offcanvasRef.current.contains(document.activeElement)) {
+          if (
+            document.activeElement === last ||
+            !offcanvasRef.current.contains(document.activeElement)
+          ) {
             e.preventDefault();
             first.focus();
           }
@@ -369,7 +392,10 @@ export function Offcanvas({
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
       }
-      if (previousActiveElementRef.current && typeof previousActiveElementRef.current.focus === 'function') {
+      if (
+        previousActiveElementRef.current &&
+        typeof previousActiveElementRef.current.focus === 'function'
+      ) {
         previousActiveElementRef.current.focus();
       }
     };
