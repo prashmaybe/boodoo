@@ -20,6 +20,6 @@ export * from './overlays.js';
 
 // Re-export core components directly for explicit barrel discoverability
 export { Button } from './buttons.js';
-export { Dialog } from './overlays.js';
+export { Dialog, ConfirmDialog, Portal } from './overlays.js';
 export { Input } from './inputs.js';
 export { Card } from './surfaces.js';

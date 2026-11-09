@@ -20,6 +20,7 @@ export function Table({
   hover = true,
   striped = false,
   bordered = false,
+  emptyText = 'No records found',
   ...props
 }) {
   const tableClasses = [
@@ -83,7 +84,7 @@ export function Table({
             React.createElement(
               'td',
               { colSpan: columns.length, className: 'text-center text-muted py-3' },
-              'No records found'
+              emptyText
             )
           )
         : data.map((row, index) => {

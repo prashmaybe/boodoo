@@ -9,12 +9,12 @@
 - Architecture: Sass/LESS modular architecture, BEM class syntax, Flexbox & CSS Grid systems, Vanilla JS components with zero external runtime dependencies.
 
 ## CDN Links
-- Combined CSS Bundle: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/css/boodoo.min.css`
-- JavaScript Component Library: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/js/boodoo.min.js`
-- Flexbox Grid Bundle: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/css/boodoo-grid.min.css`
-- Reboot/Reset Base CSS: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/css/boodoo-reboot.min.css`
-- Utility Classes CSS: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/css/boodoo-utilities.min.css`
-- CSS Micro-Animations: `https://cdn.jsdelivr.net/npm/boodoo@1.2.8/dist/css/boodoo-animations.min.css`
+- Combined CSS Bundle: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/css/boodoo.min.css`
+- JavaScript Component Library: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/js/boodoo.min.js`
+- Flexbox Grid Bundle: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/css/boodoo-grid.min.css`
+- Reboot/Reset Base CSS: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/css/boodoo-reboot.min.css`
+- Utility Classes CSS: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/css/boodoo-utilities.min.css`
+- CSS Micro-Animations: `https://cdn.jsdelivr.net/npm/boodoo@1.2.9/dist/css/boodoo-animations.min.css`
 
 ## Documentation Pages Index
 

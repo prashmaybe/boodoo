@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.9] - 2026-11-09
+
+### Added
+- **React Overlays Keyboard Accessibility, Focus Trapping & Portal Layer (`react/overlays.js`, `react/index.d.ts`)**:
+  - Implemented complete keyboard accessibility for `Dialog`, `ConfirmDialog`, and `Offcanvas`: auto-focuses first interactive element (or container) upon open, restores focus to the previously active element upon close, and traps focus using cyclic `Tab` / `Shift+Tab`.
+  - Added global `Escape` key listener on open overlays to trigger `onClose` cleanly.
+  - Added universal `Portal` component (rendering to `document.body` or custom `container` when `react-dom` is available) and integrated `portal: true` into `Dialog` and `ConfirmDialog` to prevent overflow clipping by sticky headers or container bounds.
+- **Translatable Text Strings & Internationalization Props (`react/overlays.js`, `react/feedback.js`, `react/inputs.js`, `react/lists.js`, `react/data-display.js`, `react/index.d.ts`)**:
+  - Added customizable dismiss/close props across all interactive components: `closeLabel` on `Dialog`, `ConfirmDialog`, `Offcanvas`, `Toast`, `Alert`, `Banner`, and `Chip`.
+  - Added `clearLabel` and `emptyLabel` props to `Combobox` (customizing clear button aria-label and empty state search feedback).
+  - Added `emptyText` prop to `Table` for customizable zero-state table messages.
+  - Added `confirmMatchPrompt` prop to `ConfirmDialog` accepting custom translation strings, formatted JSX nodes, or functions `(mustMatch) => ReactNode`.
+  - Added `label` prop to `Spinner` (defaulting to `'Loading...'`) to enable full i18n support for screen-reader announcements in French, Spanish, English, etc.
+- **Unique Form Element Identification in `ConfirmDialog` (`react/overlays.js`)**:
+  - Replaced hardcoded `boodoo-confirm-match-input` with React `useId()` and custom `id` prop support to prevent collision when multiple dialogs exist in DOM.
+- **React Native Interactive Snack Showcase (`site/src/getting-started/react-native-interactive.html`)**:
+  - Embedded full interactive Expo Snack workspace showcasing all React Native components and primitives live on web, iOS, and Android emulators.
+  - Made mobile starter snippets fully self-contained with embedded presets to ensure error-free compilation in Snackager.
+- **Sitewide Google Analytics Integration (`site/layout.html`, `site/404.html`, `site/index.html`, `site/examples/index.html`)**:
+  - Deployed official Google Analytics 4 (`gtag.js`) tag across all public documentation pages, landing templates, 404 handler, and example portals.
+- **GitHub Community Standards & Issue Templates (`.github/`, `CODE_OF_CONDUCT.md`, `SECURITY.md`)**:
+  - Added structured GitHub issue forms (`bug_report.yml`, `feature_request.yml`), custom configuration (`config.yml`), pull request template (`PULL_REQUEST_TEMPLATE.md`), and Contributor Covenant Code of Conduct.
+
+### Fixed
+- **Dependency Security Vulnerability (Dependabot Alert #60)**:
+  - Resolved Dependabot alert 60 by overriding `minimatch` dependency and updating development toolchain dependencies.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.2.9 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+
+---
+
 ## [1.2.8] - 2026-11-05
 
 ### Added

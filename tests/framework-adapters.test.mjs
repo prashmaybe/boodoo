@@ -93,6 +93,15 @@ test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmD
 
   // Verify type-to-confirm barrier logic
   assert.ok(overlaysSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
+  assert.ok(overlaysSrc.includes('export function Portal'), 'Portal must be exported in overlays.js');
+  assert.ok(overlaysSrc.includes("e.key === 'Escape'"), 'Dialog and Offcanvas must handle Escape key');
+  assert.ok(overlaysSrc.includes('FOCUSABLE_SELECTOR'), 'Dialog and Offcanvas must trap focus');
+    assert.ok(dataDisplaySrc.includes('closeLabel'), 'Chip must support customizable closeLabel');
+  assert.ok(inputsSrc.includes('emptyLabel'), 'Combobox must support customizable emptyLabel');
+  assert.ok(listsSrc.includes('emptyText'), 'Table must support customizable emptyText');
+  assert.ok(overlaysSrc.includes('closeLabel'), 'Dialog, ConfirmDialog, and Offcanvas must support customizable closeLabel');
+  assert.ok(overlaysSrc.includes('confirmMatchPrompt'), 'ConfirmDialog must support customizable confirmMatchPrompt');
+  assert.ok(overlaysSrc.includes('useId'), 'ConfirmDialog must generate unique input element id');
 
   // Verify field learn more disclosure slot and accessible wiring
   assert.ok(inputsSrc.includes('boodoo-field-learn-more-btn'), 'Field must render learnMore button');

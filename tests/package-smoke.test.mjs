@@ -275,7 +275,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
     const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
     assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
-    assert.equal(lockfile.version, '1.2.8', 'package-lock.json version must be 1.2.8');
+    assert.equal(lockfile.version, '1.2.9', 'package-lock.json version must be 1.2.9');
 
     // Assert react-native minimum peer dependency is >=0.71.0 for Flexbox gap support
     assert.equal(pkg.peerDependencies['react-native'], '>=0.71.0', 'react-native peerDependency must require >=0.71.0');

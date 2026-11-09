@@ -12,6 +12,7 @@ export function Alert({
   title,
   icon,
   className = '',
+  closeLabel = 'Close alert',
   children,
   ...props
 }) {
@@ -45,14 +46,21 @@ export function Alert({
         React.createElement('button', {
           type: 'button',
           className: 'btn-close',
-          'aria-label': 'Close alert',
+          'aria-label': closeLabel,
           onClick: onDismiss,
         })
     )
   );
 }
 
-export function Banner({ variant = 'primary', onClose, className = '', children, ...props }) {
+export function Banner({
+  variant = 'primary',
+  onClose,
+  className = '',
+  closeLabel = 'Close banner',
+  children,
+  ...props
+}) {
   return React.createElement(
     'div',
     {
@@ -70,14 +78,23 @@ export function Banner({ variant = 'primary', onClose, className = '', children,
         React.createElement('button', {
           type: 'button',
           className: 'btn-close btn-close-white',
-          'aria-label': 'Close banner',
+          'aria-label': closeLabel,
           onClick: onClose,
         })
     )
   );
 }
 
-export function Toast({ open = true, onClose, title, time, className = '', children, ...props }) {
+export function Toast({
+  open = true,
+  onClose,
+  title,
+  time,
+  className = '',
+  closeLabel = 'Close',
+  children,
+  ...props
+}) {
   if (!open) return null;
 
   return React.createElement(
@@ -99,7 +116,7 @@ export function Toast({ open = true, onClose, title, time, className = '', child
           React.createElement('button', {
             type: 'button',
             className: 'btn-close',
-            'aria-label': 'Close',
+            'aria-label': closeLabel,
             onClick: onClose,
           })
       ),
@@ -107,7 +124,14 @@ export function Toast({ open = true, onClose, title, time, className = '', child
   );
 }
 
-export function Spinner({ variant, size = 'md', grow = false, className = '', ...props }) {
+export function Spinner({
+  variant,
+  size = 'md',
+  grow = false,
+  label = 'Loading...',
+  className = '',
+  ...props
+}) {
   const prefix = grow ? 'spinner-grow' : 'spinner-border';
   const sizeClass = size === 'sm' ? `${prefix}-sm` : '';
   const variantClass = variant ? `text-${variant}` : '';
@@ -119,7 +143,7 @@ export function Spinner({ variant, size = 'md', grow = false, className = '', ..
       className: [prefix, sizeClass, variantClass, className].filter(Boolean).join(' '),
       ...props,
     },
-    React.createElement('span', { className: 'visually-hidden' }, 'Loading...')
+    React.createElement('span', { className: 'visually-hidden' }, label)
   );
 }
 

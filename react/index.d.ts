@@ -306,6 +306,8 @@ export interface ComboboxComponentProps {
   className?: string;
   id?: string;
   name?: string;
+  clearLabel?: string;
+  emptyLabel?: React.ReactNode;
 }
 export declare const Combobox: React.FC<ComboboxComponentProps>;
 
@@ -322,6 +324,7 @@ export interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: string;
   onClose?: () => void;
   disabled?: boolean;
+  closeLabel?: string;
 }
 export declare const Chip: React.FC<ChipProps>;
 
@@ -364,12 +367,14 @@ export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onDismiss?: () => void;
   title?: React.ReactNode;
   icon?: React.ReactNode;
+  closeLabel?: string;
 }
 export declare const Alert: React.FC<AlertProps>;
 
 export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: string;
   onClose?: () => void;
+  closeLabel?: string;
 }
 export declare const Banner: React.FC<BannerProps>;
 
@@ -378,6 +383,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onClose?: () => void;
   title?: React.ReactNode;
   time?: React.ReactNode;
+  closeLabel?: string;
 }
 export declare const Toast: React.FC<ToastProps>;
 
@@ -385,6 +391,7 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: string;
   size?: 'sm' | 'md';
   grow?: boolean;
+  label?: React.ReactNode;
 }
 export declare const Spinner: React.FC<SpinnerProps>;
 
@@ -421,6 +428,7 @@ export interface TableProps<T = any> extends React.TableHTMLAttributes<HTMLTable
   hover?: boolean;
   striped?: boolean;
   bordered?: boolean;
+  emptyText?: React.ReactNode;
 }
 export declare function Table<T = any>(props: TableProps<T>): React.ReactElement;
 
@@ -490,11 +498,21 @@ export interface StickyHeaderProps extends Omit<React.HTMLAttributes<HTMLElement
 export declare const StickyHeader: React.FC<StickyHeaderProps>;
 
 // --- Overlays ---
+export interface PortalProps {
+  children?: React.ReactNode;
+  container?: HTMLElement | null;
+}
+export declare const Portal: React.FC<PortalProps>;
+
 export interface DialogProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   open: boolean;
   onClose?: () => void;
   title?: React.ReactNode;
   footer?: React.ReactNode;
+  closeLabel?: string;
+  portal?: boolean;
+  portalContainer?: HTMLElement | null;
+  initialFocusRef?: React.RefObject<any>;
 }
 export declare const Dialog: React.FC<DialogProps>;
 export declare const Modal: React.FC<DialogProps>;
@@ -507,6 +525,11 @@ export interface ConfirmDialogProps extends Omit<DialogProps, 'title'> {
   cancelText?: string;
   description?: React.ReactNode;
   confirmVariant?: string;
+  confirmMatchPrompt?: React.ReactNode | ((mustMatch?: string) => React.ReactNode);
+  id?: string;
+  closeLabel?: string;
+  portal?: boolean;
+  portalContainer?: HTMLElement | null;
 }
 export declare const ConfirmDialog: React.FC<ConfirmDialogProps>;
 
@@ -515,6 +538,7 @@ export interface OffcanvasProps extends Omit<React.HTMLAttributes<HTMLDivElement
   onClose?: () => void;
   title?: React.ReactNode;
   placement?: 'start' | 'end' | 'top' | 'bottom';
+  closeLabel?: string;
 }
 export declare const Offcanvas: React.FC<OffcanvasProps>;
 export declare const Drawer: React.FC<OffcanvasProps>;
