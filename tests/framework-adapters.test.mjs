@@ -94,6 +94,12 @@ test('DOM React component suite (BoodooProvider, Button, Badge, Dialog, ConfirmD
   // Verify type-to-confirm barrier logic
   assert.ok(overlaysSrc.includes('mustMatch'), 'ConfirmDialog must support mustMatch barrier');
   assert.ok(overlaysSrc.includes('export function Portal'), 'Portal must be exported in overlays.js');
+  assert.ok(overlaysSrc.includes("import { createPortal } from 'react-dom'"), 'overlays.js must import createPortal from react-dom');
+  assert.ok(overlaysSrc.includes('onCloseRef.current = onClose'), 'Dialog must store onClose in ref');
+  assert.ok(overlaysSrc.includes('}, [open, initialFocusRef])'), 'Dialog effect must depend on [open, initialFocusRef] and not onClose');
+  assert.ok(overlaysSrc.includes('registerOverlay'), 'overlays.js must track active overlays for scroll lock and nested escape');
+  assert.ok(overlaysSrc.includes('activeOverlayHandlers'), 'overlays.js must prioritize innermost overlay on Escape');
+  assert.ok(overlaysSrc.includes("document.body.classList.add('modal-open')"), 'overlays.js must lock body scroll with modal-open');
   assert.ok(overlaysSrc.includes("e.key === 'Escape'"), 'Dialog and Offcanvas must handle Escape key');
   assert.ok(overlaysSrc.includes('FOCUSABLE_SELECTOR'), 'Dialog and Offcanvas must trap focus');
     assert.ok(dataDisplaySrc.includes('closeLabel'), 'Chip must support customizable closeLabel');
