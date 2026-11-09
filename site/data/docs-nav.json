@@ -67,6 +67,10 @@
         "title": "React Native & Mobile"
       },
       {
+        "route": "getting-started/react-native-interactive",
+        "title": "React Native Mobile Snacks"
+      },
+      {
         "route": "getting-started/react",
         "title": "React Component Kit"
       }
