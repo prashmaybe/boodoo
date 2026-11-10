@@ -4,31 +4,29 @@
 // =====================================================================
 
 import React, { useState, useEffect, useRef, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from './buttons.js';
 
-let cachedCreatePortal = undefined;
-function getCreatePortal() {
-  if (cachedCreatePortal !== undefined) return cachedCreatePortal;
-  try {
-    const rd = typeof window !== 'undefined' && (window.ReactDOM || window.ReactDom);
-    if (rd && typeof rd.createPortal === 'function') {
-      cachedCreatePortal = rd.createPortal;
-      return cachedCreatePortal;
-    }
-  } catch {}
+let activeOverlayCount = 0;
+const activeOverlayHandlers = [];
 
-  try {
-    if (typeof require === 'function') {
-      const rd = require('react-dom');
-      if (rd && typeof rd.createPortal === 'function') {
-        cachedCreatePortal = rd.createPortal;
-        return cachedCreatePortal;
-      }
-    }
-  } catch {}
+function registerOverlay(handler) {
+  activeOverlayHandlers.push(handler);
+  activeOverlayCount++;
+  if (activeOverlayCount === 1 && typeof document !== 'undefined') {
+    document.body.classList.add('modal-open');
+  }
+}
 
-  cachedCreatePortal = null;
-  return null;
+function unregisterOverlay(handler) {
+  const idx = activeOverlayHandlers.indexOf(handler);
+  if (idx !== -1) {
+    activeOverlayHandlers.splice(idx, 1);
+  }
+  activeOverlayCount = Math.max(0, activeOverlayCount - 1);
+  if (activeOverlayCount === 0 && typeof document !== 'undefined') {
+    document.body.classList.remove('modal-open');
+  }
 }
 
 export function Portal({ children, container }) {
@@ -43,8 +41,7 @@ export function Portal({ children, container }) {
   }
 
   const target = container || document.body;
-  const createPortal = getCreatePortal();
-  if (createPortal) {
+  if (typeof createPortal === 'function') {
     return createPortal(children, target);
   }
 
@@ -76,6 +73,8 @@ export function Dialog({
 }) {
   const dialogRef = useRef(null);
   const previousActiveElementRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!open) return;
@@ -99,8 +98,11 @@ export function Dialog({
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        e.stopPropagation();
-        onClose?.();
+        const topHandler = activeOverlayHandlers[activeOverlayHandlers.length - 1];
+        if (topHandler === handleKeyDown) {
+          e.stopPropagation();
+          onCloseRef.current?.();
+        }
         return;
       }
 
@@ -137,11 +139,14 @@ export function Dialog({
       }
     };
 
+    registerOverlay(handleKeyDown);
+
     if (typeof document !== 'undefined') {
       document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
+      unregisterOverlay(handleKeyDown);
       clearTimeout(timer);
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
@@ -153,7 +158,7 @@ export function Dialog({
         previousActiveElementRef.current.focus();
       }
     };
-  }, [open, onClose, initialFocusRef]);
+  }, [open, initialFocusRef]);
 
   if (!open) return null;
 
@@ -322,6 +327,8 @@ export function Offcanvas({
 }) {
   const offcanvasRef = useRef(null);
   const previousActiveElementRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!open) return;
@@ -343,8 +350,11 @@ export function Offcanvas({
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        e.stopPropagation();
-        onClose?.();
+        const topHandler = activeOverlayHandlers[activeOverlayHandlers.length - 1];
+        if (topHandler === handleKeyDown) {
+          e.stopPropagation();
+          onCloseRef.current?.();
+        }
         return;
       }
 
@@ -383,11 +393,14 @@ export function Offcanvas({
       }
     };
 
+    registerOverlay(handleKeyDown);
+
     if (typeof document !== 'undefined') {
       document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
+      unregisterOverlay(handleKeyDown);
       clearTimeout(timer);
       if (typeof document !== 'undefined') {
         document.removeEventListener('keydown', handleKeyDown);
@@ -399,7 +412,7 @@ export function Offcanvas({
         previousActiveElementRef.current.focus();
       }
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
