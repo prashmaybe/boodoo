@@ -7,22 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.2.10] - 2026-11-09
-
-### Fixed
-- **React Overlays Portal Resolution in Modern Bundlers (`react/overlays.js`, `package.json`)**:
-  - Replaced runtime dynamic global `window.ReactDOM` / `require('react-dom')` lookup with direct static `import { createPortal } from 'react-dom'`.
-  - Added `react-dom` (`>=18.0.0`) to `peerDependencies` and `peerDependenciesMeta` (optional) in `package.json` and `package-lock.json`, preventing clipping and layout trapping inside sticky headers or overflow parents across modern bundlers (e.g., Vite).
-- **ConfirmDialog and Dialog Focus Reset During Keystrokes (`react/overlays.js`)**:
-  - Stabilized `Dialog` and `Offcanvas` open effects by referencing `onClose` via a persistent ref (`onCloseRef.current = onClose`) and removing `onClose` from the effect dependency array `[open, initialFocusRef]`.
-  - Resolved the bug where typing into `ConfirmDialog` or components passing inline `onClose={() => ...}` re-triggered the open effect on every keystroke, resetting focus back to the close button or trigger.
-- **Body Scroll Locking & Nested Overlay Escape Stacking (`react/overlays.js`)**:
-  - Added automatic background body scroll lock (`modal-open` class toggled on `document.body` based on active overlay count) when `Dialog` or `Offcanvas` opens.
-  - Implemented top-of-stack Escape routing so that when multiple dialogs are open on top of each other, pressing Escape dismisses only the topmost active overlay rather than all stacked overlays at once.
+## [1.3.0] - 2026-11-10
 
 ### Changed
 - **Framework & CDN Distribution Synchronization**:
-  - Synchronized v1.2.10 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+  - Synchronized v1.3.0 release manifests across package.json, package-lock.json, README.md, in/create-boodoo.mjs, site/data/cdn-urls.json, site/archives/archives.json, site/examples/starters/react-native-mobile/README.md, .github/ISSUE_TEMPLATE/bug_report.yml, and site/llms.txt.
 
 ---
 
@@ -469,6 +458,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added automated CI assertions verifying all modular CSS subpath exports resolve on disk.
   - Added verification that `dist/css/test_out.css` does not exist and `tests/` is excluded from `package.json` `files`.
   - Added automated tests verifying alert variables consume dynamic CSS custom properties.
+
+### Fixed
+- **React Overlays Portal Resolution in Modern Bundlers (`react/overlays.js`, `package.json`)**:
+  - Replaced runtime dynamic global `window.ReactDOM` / `require('react-dom')` lookup with direct static `import { createPortal } from 'react-dom'`.
+  - Added `react-dom` (`>=18.0.0`) to `peerDependencies` and `peerDependenciesMeta` (optional) in `package.json` and `package-lock.json`, preventing clipping and layout trapping inside sticky headers or overflow parents across modern bundlers (e.g., Vite).
+- **ConfirmDialog and Dialog Focus Reset During Keystrokes (`react/overlays.js`)**:
+  - Stabilized `Dialog` and `Offcanvas` open effects by referencing `onClose` via a persistent ref (`onCloseRef.current = onClose`) and removing `onClose` from the effect dependency array `[open, initialFocusRef]`.
+  - Resolved the bug where typing into `ConfirmDialog` or components passing inline `onClose={() => ...}` re-triggered the open effect on every keystroke, resetting focus back to the close button or trigger.
+- **Body Scroll Locking & Nested Overlay Escape Stacking (`react/overlays.js`)**:
+  - Added automatic background body scroll lock (`modal-open` class toggled on `document.body` based on active overlay count) when `Dialog` or `Offcanvas` opens.
+  - Implemented top-of-stack Escape routing so that when multiple dialogs are open on top of each other, pressing Escape dismisses only the topmost active overlay rather than all stacked overlays at once.
 
 ### Changed
 - **Package Distribution Optimization**:

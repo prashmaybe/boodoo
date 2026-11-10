@@ -68,36 +68,34 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.2.10 -->
+  <!-- Version 1.3.0 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
-          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-2-10">
-            <span>v1.2.10</span>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-3-0">
+            <span>v1.3.0</span>
             <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-2 text-muted small">
-          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 9, 2026</span>
+          <i class="hi-calendar me-1" aria-hidden="true"></i><span>November 10, 2026</span>
           <span class="footer-dot">&bull;</span>
-          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10" target="_blank" rel="noopener"><span>Release Notes</span></a>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.0" target="_blank" rel="noopener"><span>Release Notes</span></a>
         </div>
       </div>
 
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
-          <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
-          <span>Version 1.2.10 Release &mdash; React Overlays Portal Bundler Fix &amp; Dialog Focus Stability</span>
+          <span class="badge bg-soft-success text-success"><span>Minor Release</span></span>
+          <span>Version 1.3.0 Release &mdash; Framework &amp; Distribution Synchronization</span>
         </h3>
-        <p><span>boodoo <strong>v1.2.10</strong> resolves modern JavaScript bundler portal resolution by statically importing <code>createPortal</code> from <code>react-dom</code> (with <code>react-dom</code> added to peerDependencies), and stabilizes focus in <code>Dialog</code> and <code>ConfirmDialog</code> during keystrokes by ref-wrapping <code>onClose</code>.</span></p>
+        <p><span>boodoo <strong>v1.3.0</strong> delivers framework distribution synchronization, lockfile integrity alignment, and updated release engineering manifests across all packages and starters.</span></p>
 
-        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Bug Fixes &amp; Stability</span></h4>
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Release Engineering &amp; Distribution</span></h4>
         <ul class="mb-2">
-          <li><span><strong>Bundler Portal Resolution</strong>: Replaced runtime dynamic lookup with static <code>createPortal</code> from <code>react-dom</code> so portals render cleanly into <code>document.body</code> in Vite and modern ESM build pipelines.</span></li>
-          <li><span><strong>Keystroke Focus Stability</strong>: Stored <code>onClose</code> inside a persistent ref in <code>Dialog</code>, preventing effect re-execution and unwanted focus resets while typing inside <code>ConfirmDialog</code>.</span></li>
-          <li><span><strong>Body Scroll Lock &amp; Nested Escape Stacking</strong>: Locked body background scrolling via <code>modal-open</code> class on <code>document.body</code>, and routed <code>Escape</code> key handling to the topmost active overlay when dialogs are stacked.</span></li>
+          <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.3.0 release manifests across <code>package.json</code>, <code>package-lock.json</code>, <code>README.md</code>, CLI scaffolders, CDN endpoints, and starter documentation.</span></li>
         </ul>
       </div>
     </div>
@@ -821,6 +819,9 @@ order: 7
           <li><span><strong>Architectural Governance</strong>: Codified and enforced permanent rules for Package Hygiene
               &amp; Tarball Purity, Modular Subpath CSS Exports, and Adaptive Spacing Scale Integrity in
               <code>.agents/AGENTS.md</code>.</span></li>
+          <li><span><strong>Bundler Portal Resolution</strong>: Replaced runtime dynamic lookup with static <code>createPortal</code> from <code>react-dom</code> so portals render cleanly into <code>document.body</code> in Vite and modern ESM build pipelines.</span></li>
+          <li><span><strong>Keystroke Focus Stability</strong>: Stored <code>onClose</code> inside a persistent ref in <code>Dialog</code>, preventing effect re-execution and unwanted focus resets while typing inside <code>ConfirmDialog</code>.</span></li>
+          <li><span><strong>Body Scroll Lock &amp; Nested Escape Stacking</strong>: Locked body background scrolling via <code>modal-open</code> class on <code>document.body</code>, and routed <code>Escape</code> key handling to the topmost active overlay when dialogs are stacked.</span></li>
         </ul>
       </div>
     </div>
