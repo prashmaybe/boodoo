@@ -64,7 +64,7 @@ jobs:
             console.log('Tokens export verified:', Boolean(tokens.colors && tokens.colors.primary));
           "
           # Verify optional peer integration wrappers when peer libraries are present
-          npm install react vue
+          npm install react react-dom vue
           node -e "
             import('boodoo/react').then(r => {
               console.log('React hooks export verified:', typeof r.useDisclosure === 'function');
