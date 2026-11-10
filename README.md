@@ -62,12 +62,12 @@ All distribution assets are tested, minified, and verified on every release buil
 
 | Asset | Minified | Gzip | Brotli | Description |
 | :--- | :---: | :---: | :---: | :--- |
-| `boodoo.min.css` | ~539 KB | ~75.1 KB | ~50.8 KB | Full framework (all 50+ components + utilities) |
+| `boodoo.min.css` | ~539 KB | ~75.1 KB | ~51.0 KB | Full framework (all 50+ components + utilities) |
 | `boodoo-utilities.min.css` | ~193 KB | ~22.2 KB | ~11.7 KB | 150+ responsive atomic utility classes only |
 | `boodoo-grid.min.css` | ~19 KB | ~2.4 KB | ~1.6 KB | Flexbox grid + CSS Grid containers only |
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
-| `boodoo.min.js` | ~122 KB | ~28.8 KB | ~24.8 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
+| `boodoo.min.js` | ~122 KB | ~28.8 KB | ~24.7 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
 | `boodoo.js` | ~204 KB | ~37.4 KB | ~30.9 KB | Pure vanilla JS unminified bundle with source maps |
 
 #### 🔬 Reproducible Benchmark Instructions

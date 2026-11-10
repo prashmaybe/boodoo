@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **Framework & CDN Distribution Synchronization**:
   - Synchronized v1.3.0 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+  - Re-measured and validated distribution asset footprint benchmarks and compression metrics (oodoo.min.css: ~539 KB min, ~75.1 KB gzip, ~51.0 KB brotli; oodoo.min.js: ~122 KB min, ~28.8 KB gzip, ~24.7 KB brotli) across README.md and documentation portals.
 
 ---
 
