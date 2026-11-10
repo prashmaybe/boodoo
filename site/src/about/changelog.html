@@ -89,9 +89,16 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Minor Release</span></span>
-          <span>Version 1.3.0 Release &mdash; Framework &amp; Distribution Synchronization</span>
+          <span>Version 1.3.0 Release &mdash; React Overlays Portal Bundler Fix, Dialog Focus Stability &amp; Distribution Synchronization</span>
         </h3>
-        <p><span>boodoo <strong>v1.3.0</strong> delivers framework distribution synchronization, lockfile integrity alignment, and updated release engineering manifests across all packages and starters.</span></p>
+        <p><span>boodoo <strong>v1.3.0</strong> resolves modern JavaScript bundler portal resolution by statically importing <code>createPortal</code> from <code>react-dom</code> (with <code>react-dom</code> added to peerDependencies), stabilizes focus in <code>Dialog</code> and <code>ConfirmDialog</code> during keystrokes by ref-wrapping <code>onClose</code>, and delivers framework distribution synchronization across all packages and starters.</span></p>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Bug Fixes &amp; Stability</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Bundler Portal Resolution</strong>: Replaced runtime dynamic lookup with static <code>createPortal</code> from <code>react-dom</code> so portals render cleanly into <code>document.body</code> in Vite and modern ESM build pipelines.</span></li>
+          <li><span><strong>Keystroke Focus Stability</strong>: Stored <code>onClose</code> inside a persistent ref in <code>Dialog</code>, preventing effect re-execution and unwanted focus resets while typing inside <code>ConfirmDialog</code>.</span></li>
+          <li><span><strong>Body Scroll Lock &amp; Nested Escape Stacking</strong>: Locked body background scrolling via <code>modal-open</code> class on <code>document.body</code>, and routed <code>Escape</code> key handling to the topmost active overlay when dialogs are stacked.</span></li>
+        </ul>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Release Engineering &amp; Distribution</span></h4>
         <ul class="mb-2">
@@ -819,9 +826,6 @@ order: 7
           <li><span><strong>Architectural Governance</strong>: Codified and enforced permanent rules for Package Hygiene
               &amp; Tarball Purity, Modular Subpath CSS Exports, and Adaptive Spacing Scale Integrity in
               <code>.agents/AGENTS.md</code>.</span></li>
-          <li><span><strong>Bundler Portal Resolution</strong>: Replaced runtime dynamic lookup with static <code>createPortal</code> from <code>react-dom</code> so portals render cleanly into <code>document.body</code> in Vite and modern ESM build pipelines.</span></li>
-          <li><span><strong>Keystroke Focus Stability</strong>: Stored <code>onClose</code> inside a persistent ref in <code>Dialog</code>, preventing effect re-execution and unwanted focus resets while typing inside <code>ConfirmDialog</code>.</span></li>
-          <li><span><strong>Body Scroll Lock &amp; Nested Escape Stacking</strong>: Locked body background scrolling via <code>modal-open</code> class on <code>document.body</code>, and routed <code>Escape</code> key handling to the topmost active overlay when dialogs are stacked.</span></li>
         </ul>
       </div>
     </div>
