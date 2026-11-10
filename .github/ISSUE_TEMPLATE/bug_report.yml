@@ -11,8 +11,8 @@ body:
     id: version
     attributes:
       label: Boodoo Version
-      description: What version of Boodoo are you using? (e.g. 1.3.0)
-      placeholder: '1.3.0'
+      description: What version of Boodoo are you using? (e.g. 1.2.10)
+      placeholder: '1.2.10'
     validations:
       required: true
   - type: dropdown
