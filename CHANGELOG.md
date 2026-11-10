@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-11-10
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.3.0 release manifests across package.json, package-lock.json, README.md, in/create-boodoo.mjs, site/data/cdn-urls.json, site/archives/archives.json, site/examples/starters/react-native-mobile/README.md, .github/ISSUE_TEMPLATE/bug_report.yml, and site/llms.txt.
+
+---
+
 ## [1.2.10] - 2026-11-09
 
 ### Fixed

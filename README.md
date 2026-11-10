@@ -115,20 +115,20 @@ When teams choose how to structure layout across web projects, different approac
 
 ```html
 <!-- jsDelivr (Primary CDN) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.10/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/boodoo@1.2.10/dist/js/boodoo.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js" defer></script>
 
 <!-- unpkg (Alternative CDN) -->
-<link href="https://unpkg.com/boodoo@1.2.10/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://unpkg.com/boodoo@1.2.10/dist/js/boodoo.min.js" defer></script>
+<link href="https://unpkg.com/boodoo@1.3.0/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://unpkg.com/boodoo@1.3.0/dist/js/boodoo.min.js" defer></script>
 ```
 
 #### Lean Modular CDN Builds
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.10/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.10/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.2.10/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
 ```
 
 ### npm
