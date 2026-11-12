@@ -307,3 +307,37 @@ export function useAccordion(options = {}) {
     getPanelProps,
   };
 }
+
+/**
+ * Headless direction and RTL composable for Vue 3
+ * @param {'ltr' | 'rtl' | 'auto'} [initial='ltr']
+ */
+export function useDirection(initial = 'ltr') {
+  const direction = ref(
+    typeof document !== 'undefined'
+      ? document.documentElement.getAttribute('dir') || initial
+      : initial
+  );
+
+  const isRtl = computed(() => direction.value === 'rtl');
+
+  const setDirection = (val) => {
+    direction.value = val;
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('dir', val);
+      if (document.body) document.body.setAttribute('dir', val);
+    }
+  };
+
+  const toggleDirection = () => {
+    setDirection(isRtl.value ? 'ltr' : 'rtl');
+  };
+
+  return {
+    direction,
+    isRtl,
+    setDirection,
+    toggleDirection,
+  };
+}
+

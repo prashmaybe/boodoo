@@ -17,6 +17,7 @@ import { initRipple } from './src/ripple.js';
 import { initDataApi } from './src/base-component.js';
 import { enableDismissTrigger, escapeHtml, foldAccents } from './src/util.js';
 import { theme } from './src/theme.js';
+import { rtl } from './src/rtl.js';
 import { OTP } from './src/otp.js';
 import { Rating } from './src/rating.js';
 import { TreeView } from './src/tree-view.js';
@@ -99,6 +100,7 @@ const boodoo = {
   initRipple,
   initDataApi,
   theme,
+  rtl,
   OTP,
   Rating,
   TreeView,
@@ -290,6 +292,7 @@ export {
   initRipple,
   registerCustomElements,
   theme,
+  rtl,
   a11y,
   FilterBar,
   TransferList,

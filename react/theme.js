@@ -7,6 +7,7 @@ import React, { createContext, useContext, useMemo } from 'react';
 
 export const ThemeContext = createContext({
   density: 'normal',
+  direction: 'ltr',
   theme: {},
 });
 
@@ -14,14 +15,22 @@ export function useBoodooTheme() {
   return useContext(ThemeContext);
 }
 
+export function useDirection() {
+  const { direction } = useContext(ThemeContext);
+  return direction || 'ltr';
+}
+
 export function BoodooProvider({
   children,
   density = 'normal',
+  direction = 'ltr',
+  dir,
   theme = {},
   className = '',
   style = {},
   ...props
 }) {
+  const activeDir = dir || direction;
   const dynamicStyles = useMemo(() => {
     const s = { ...style };
     if (theme.primary) s['--boodoo-primary'] = theme.primary;
@@ -32,9 +41,10 @@ export function BoodooProvider({
   }, [theme, style]);
 
   const densityClass = density === 'compact' ? 'boodoo-density-compact' : '';
-  const mergedClass = ['boodoo', densityClass, className].filter(Boolean).join(' ');
+  const dirClass = activeDir === 'rtl' ? 'dir-rtl' : 'dir-ltr';
+  const mergedClass = ['boodoo', densityClass, dirClass, className].filter(Boolean).join(' ');
 
-  const contextValue = useMemo(() => ({ density, theme }), [density, theme]);
+  const contextValue = useMemo(() => ({ density, direction: activeDir, theme }), [density, activeDir, theme]);
 
   return React.createElement(
     ThemeContext.Provider,
@@ -43,6 +53,7 @@ export function BoodooProvider({
       'div',
       {
         className: mergedClass,
+        dir: activeDir,
         'data-density': density,
         style: dynamicStyles,
         ...props,
