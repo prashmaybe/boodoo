@@ -83,3 +83,10 @@ export interface AccordionReturn {
 }
 
 export declare function useAccordion(options?: AccordionOptions): AccordionReturn;
+
+export declare function useDirection(initial?: 'ltr' | 'rtl' | 'auto'): {
+  direction: Ref<'ltr' | 'rtl' | 'auto'>;
+  isRtl: ComputedRef<boolean>;
+  setDirection: (val: 'ltr' | 'rtl' | 'auto') => void;
+  toggleDirection: () => void;
+};

@@ -7,7 +7,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://boodooframework.com/examples/index.html</loc>
+    <loc>https://boodooframework.com/examples/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -722,6 +722,12 @@
   </url>
   <url>
     <loc>https://boodooframework.com/docs/getting-started/react.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://boodooframework.com/docs/getting-started/rtl.html</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

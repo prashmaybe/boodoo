@@ -187,6 +187,13 @@ declare const theme: {
   set(theme: string): void;
   toggle(): string;
 };
+declare const rtl: {
+  get(): 'ltr' | 'rtl';
+  isRtl(): boolean;
+  set(direction: 'ltr' | 'rtl' | 'auto'): void;
+  toggle(): 'ltr' | 'rtl';
+  init(): void;
+};
 declare const a11y: {
   announce(message: string, politeness?: 'polite' | 'assertive'): void;
   setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
@@ -244,6 +251,7 @@ export interface BoodooGlobal {
   foldAccents: (str: string) => string;
   clipboard: any;
   theme: any;
+  rtl: any;
   a11y: {
     announce(message: string, politeness?: 'polite' | 'assertive'): void;
     setRovingTabindex(items: HTMLElement[] | NodeListOf<HTMLElement>, activeIndex?: number): void;
@@ -298,6 +306,7 @@ export {
   initRipple,
   registerCustomElements,
   theme,
+  rtl,
   a11y,
   FilterBar,
   TransferList,

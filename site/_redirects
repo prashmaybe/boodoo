@@ -15,3 +15,19 @@ http://boodooframework.com/*      https://boodooframework.com/:splat 301!
 /terms.html   /docs/about/terms.html 301
 /terms-and-conditions /docs/about/terms.html 301
 
+# Canonical clean directory redirects for examples
+/examples/index.html              /examples/ 301
+/examples/album/index.html        /examples/album/ 301
+/examples/blog/index.html         /examples/blog/ 301
+/examples/checkout/index.html     /examples/checkout/ 301
+/examples/cover/index.html        /examples/cover/ 301
+/examples/dashboard/index.html    /examples/dashboard/ 301
+/examples/features/index.html     /examples/features/ 301
+/examples/heroes/index.html       /examples/heroes/ 301
+/examples/navbar-fixed/index.html /examples/navbar-fixed/ 301
+/examples/pricing/index.html      /examples/pricing/ 301
+/examples/sign-in/index.html      /examples/sign-in/ 301
+/examples/starter/index.html      /examples/starter/ 301
+/examples/studio/index.html       /examples/studio/ 301
+
+
