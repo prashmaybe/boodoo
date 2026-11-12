@@ -27,3 +27,4 @@ jobs:
 
       - name: Run AI compatibility evaluation benchmarks
         run: node --test tests/ai-benchmark.test.mjs
+

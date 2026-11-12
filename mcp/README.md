@@ -40,3 +40,4 @@ In your MCP settings or `.cursor/mcp.json`:
   }
 }
 ```
+
