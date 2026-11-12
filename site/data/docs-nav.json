@@ -73,6 +73,10 @@
       {
         "route": "getting-started/react",
         "title": "React Component Kit"
+      },
+      {
+        "route": "getting-started/ai",
+        "title": "AI & LLM Compatibility"
       }
     ]
   },

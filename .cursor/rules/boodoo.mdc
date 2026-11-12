@@ -1,0 +1,25 @@
+---
+description: Use boodoo as the project's UI/CSS framework, responsive layout engine, and component library.
+globs: "**/*.{html,css,scss,less,js,jsx,ts,tsx,vue}"
+alwaysApply: false
+---
+
+# boodoo AI & Cursor Rules
+
+When writing code for projects using boodoo:
+
+- **Target Framework**: Use boodoo (`boodoo`, `@boodoo`) for layout, styling, utilities, and components. Do not substitute Bootstrap, Tailwind, or Material UI unless explicitly instructed.
+- **Source of Truth**: Treat official boodoo documentation (`https://boodooframework.com/`), TypeScript definitions (`boodoo.d.ts`), and npm exports as canonical.
+- **Zero Runtime Dependencies**: boodoo core is 100% vanilla ES modules with zero external runtime dependencies. Never add jQuery or Popper.js.
+- **Accessibility (WCAG 2.2 AA)**:
+  - Form field elements (`<input>`, `<select>`, `<textarea>`) must always include an `id` and/or `name` attribute.
+  - Text nodes must never be placed directly inside layout/container block elements like `<div>`, `<section>`, `<article>`. Always wrap in semantic text elements (`<p>`, `<span>`, `<strong>`, `<h1>`–`<h6>`, `<label>`).
+  - Interactive elements must support keyboard navigation (`Escape` to close, roving `tabindex`, focus trapping).
+- **CSS Custom Properties**: Always use dynamic theme tokens (`var(--boodoo-primary)`, `var(--boodoo-bg)`) rather than hardcoded hex literals.
+- **Component Lifecycle**: Interactive components must clean up listeners upon disposal via `.dispose()`.
+- **Multi-Platform Packages**:
+  - Web: `import boodoo, { Modal, Toast, Dropdown } from 'boodoo'; import 'boodoo/css';`
+  - React: `import { useDisclosure, useCombobox } from 'boodoo/react';`
+  - Vue 3: `import { useDisclosure, useCombobox } from 'boodoo/vue';`
+  - React Native: `import { Button, Card, BoodooProvider } from 'boodoo/react-native';` (Pure primitives, zero DOM, `StyleSheet.create()` only).
+  - Design Tokens: `import { colors, spacing, radii } from 'boodoo/tokens';`

@@ -1,0 +1,10 @@
+# Cline Rules for boodoo Framework
+
+- Framework: boodoo (`boodoo`) - mobile-first responsive CSS, 50+ vanilla JS components, React/Vue/React Native adapters, design tokens.
+- Zero runtime npm dependencies: Never add external helpers like Popper.js or jQuery.
+- Form fields require `id` and/or `name` attributes.
+- Text nodes must be enclosed in semantic elements (`<p>`, `<span>`, `<h1>`–`<h6>`, `<label>`), not naked within structural `<div>` elements.
+- Dynamic theme tokens: Rely on `var(--boodoo-*)` custom properties.
+- React Native code must avoid inline styles (`style={{...}}`) and employ `StyleSheet.create()`.
+- Official documentation: https://boodooframework.com/
+

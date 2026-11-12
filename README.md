@@ -56,6 +56,19 @@ A modern, high-performance UI framework engineered for scalable web, mobile, and
 
 ---
 
+## 🤖 AI & LLM Compatibility First-Class Support
+
+Boodoo is built from the ground up for seamless compatibility with AI coding assistants (ChatGPT, Claude, Gemini, Cursor, Copilot, Windsurf, Cline):
+
+- **Machine-Readable LLM Specifications** — Domain-root [/llms.txt](https://boodooframework.com/llms.txt) (summary & documentation index) and [/llms-full.txt](https://boodooframework.com/llms-full.txt) (comprehensive technical spec & guardrails).
+- **Machine-Readable Component Catalogue** — Structured [docs/ai/component-index.json](https://boodooframework.com/docs/ai/component-index.json) detailing all 50+ components, classes, and supported platforms.
+- **Official Model Context Protocol (MCP) Server** — Native stdio JSON-RPC MCP server (mcp/server.mjs) enabling AI agents to search components, inspect documentation, query tokens, and retrieve runnable code.
+- **Native IDE Agent Rules** — Pre-configured instruction rules across Cursor (.cursor/rules/boodoo.mdc), GitHub Copilot (.github/copilot-instructions.md), Claude (CLAUDE.md), Gemini (GEMINI.md), Windsurf (.windsurfrules), and Cline (.clinerules).
+- **Runnable AI Examples Library** — Fully runnable code samples in examples/ for Vanilla JS, React, Vue 3, React Native, and responsive dashboard layouts.
+- **Automated CI Drift Prevention** — Dedicated GitHub Actions workflow (.github/workflows/ai-docs-check.yml) enforcing documentation, export, and specification parity against code on every commit.
+
+---
+
 ## ⚡ Performance & Bundle Breakdown
 
 All distribution assets are tested, minified, and verified on every release build:

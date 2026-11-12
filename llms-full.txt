@@ -1,0 +1,255 @@
+# boodoo Framework — AI-Readable Technical Overview & Complete Reference
+
+> boodoo is an open-source, modular, mobile-first UI and CSS design framework for web, desktop, and native mobile interfaces. It combines responsive layout primitives, utility classes, accessible UI components, vanilla JavaScript (zero runtime dependencies), Sass/Less source, and universal design tokens.
+
+Canonical Documentation: https://boodooframework.com/
+Source Repository: https://github.com/prashmaybe/boodoo
+npm Package: https://www.npmjs.com/package/boodoo
+Latest Framework Version: 1.3.0
+
+---
+
+## 1. Core Architecture & Positioning
+
+- **Zero External Dependencies**: Core package (`boodoo`) has zero external runtime dependencies (`dependencies: {}`). No jQuery, no Popper.js, no lodash.
+- **Dual Stylesheet Preprocessor Parity**: Full feature parity across Sass (`scss/`) and Less (`less/boodoo.less`). Both compile cleanly to production CSS.
+- **Dynamic CSS Custom Properties**: All components bind to CSS variables (`var(--boodoo-primary)`, `var(--boodoo-gray-800)`) with automatic dark-mode inversion via `@media (prefers-color-scheme: dark)` or `[data-boodoo-theme="dark"]`.
+- **Accessibility by Standard**: Form field controls always require `id` and/or `name` attributes. Text nodes must always be wrapped in semantic text elements (`<p>`, `<span>`, `<strong>`, `<h1>`–`<h6>`, `<label>`), never raw in structural container `<div>` tags. Focus trapping, ARIA states, and reduced-motion support are built-in.
+- **Cross-Platform Primitives**:
+  - Web: Vanilla ES module JavaScript components + CSS.
+  - React: Pure DOM React wrappers & hooks (`boodoo/react`).
+  - Vue 3: Composables & components (`boodoo/vue`).
+  - React Native: Core primitives (`View`, `Text`, `Pressable`, `StyleSheet.create()`), zero DOM access, zero inline styles (`boodoo/react-native`).
+  - Design Tokens: Single source of truth in `tokens/tokens.json` exportable to ESM/CJS (`boodoo/tokens`).
+
+---
+
+## 2. Installation & Quick Starts
+
+### npm Installation
+```bash
+npm install boodoo
+```
+
+### Web / Modern Bundlers (Vite, Webpack, Rollup)
+```javascript
+import boodoo, { Modal, Toast, Collapse, Dropdown, a11y } from 'boodoo';
+import 'boodoo/css';
+
+// Initialize auto data-attribute listeners
+boodoo.init();
+
+// Programmatic Modal
+const myModal = Modal.getOrCreateInstance(document.getElementById('myModal'));
+myModal.show();
+```
+
+### Modular Subpath CSS Imports
+```javascript
+import 'boodoo/css/grid';       // Flexbox grid & containers only
+import 'boodoo/css/utilities';  // Utility classes only
+import 'boodoo/css/reboot';     // CSS reboot & normalize resets
+import 'boodoo/css/animations'; // Entrance/exit micro-animations
+```
+
+### CDN Direct Embed
+```html
+<!-- Combined CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css">
+
+<!-- Vanilla JS Components -->
+<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js" defer></script>
+```
+
+### React Integration (`boodoo/react`)
+```jsx
+import React from 'react';
+import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
+
+export function ExampleModal() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <div>
+      <button type="button" className="btn btn-primary" onClick={onOpen}>
+        <span>Open Dialog</span>
+      </button>
+      {isOpen && (
+        <div className="modal d-block" role="dialog" aria-modal="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title"><span>Dialog Title</span></h5>
+                <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
+              </div>
+              <div className="modal-body">
+                <p><span>Modal content goes here.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### Vue 3 Integration (`boodoo/vue`)
+```vue
+<script setup>
+import { useDisclosure } from 'boodoo/vue';
+const { isOpen, onOpen, onClose } = useDisclosure();
+</script>
+
+<template>
+  <div>
+    <button type="button" class="btn btn-primary" @click="onOpen">
+      <span>Open Modal</span>
+    </button>
+    <div v-if="isOpen" class="modal d-block" role="dialog" aria-modal="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p><span>Vue 3 composable content.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+### React Native Integration (`boodoo/react-native`)
+```jsx
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Button, Card, BoodooProvider } from 'boodoo/react-native';
+
+export function MobileCard() {
+  return (
+    <BoodooProvider>
+      <View style={styles.container}>
+        <Card variant="elevated">
+          <Button title="Press Me" variant="primary" onPress={() => console.log('Tapped')} />
+        </Card>
+      </View>
+    </BoodooProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+});
+```
+
+### Design Tokens (`boodoo/tokens`)
+```javascript
+import { colors, spacing, radii, shadows } from 'boodoo/tokens';
+
+console.log(colors.primary);    // Primary brand color
+console.log(spacing[2]);        // Proportional spacing step
+```
+
+---
+
+## 3. CLI Developer Tools
+
+Scaffold apps, inject components directly, or migrate legacy frameworks:
+
+```bash
+# Create starter app
+npx boodoo create my-app
+
+# Inject component source directly into project
+npx boodoo add modal
+npx boodoo add command-palette
+npx boodoo add data-table
+
+# Migrate legacy templates to boodoo syntax
+npx boodoo migrate --from=bootstrap ./src
+npx boodoo migrate --from=tailwind index.html
+
+# List available injectable components
+npx boodoo list
+```
+
+---
+
+## 4. UI Component Library Reference (50+ Components)
+
+| Component | Key Classes | Description |
+|---|---|---|
+| **Accordion** | `.accordion`, `.accordion-item`, `.accordion-header`, `.accordion-button`, `.accordion-collapse` | Collapsible multi-section content panels. |
+| **Alert** | `.alert`, `.alert-primary`, `.alert-success`, `.alert-danger`, `.alert-dismissible` | Contextual notification banners with optional close buttons. |
+| **Avatar** | `.avatar`, `.avatar-sm`, `.avatar-lg`, `.avatar-group` | User profile image container with status indicator dots. |
+| **Badge** | `.badge`, `.badge-primary`, `.badge-pill`, `.badge-dot` | Count pills, tags, and status labels. |
+| **Bottom Sheet** | `.bottom-sheet`, `.bottom-sheet-backdrop`, `.bottom-sheet-handle` | Mobile touch-draggable slide-up modal with physics. |
+| **Breadcrumb** | `.breadcrumb`, `.breadcrumb-item`, `.breadcrumb-item.active` | Hierarchical site navigation breadcrumbs. |
+| **Button** | `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-outline-*`, `.btn-sm`, `.btn-lg` | Standard buttons with hover, focus, disabled, and active states. |
+| **Button Group**| `.btn-group`, `.btn-group-vertical` | Grouped button toolbars and split dropdown triggers. |
+| **Card** | `.card`, `.card-body`, `.card-header`, `.card-footer`, `.card-img-top` | Structured content cards with elevation support. |
+| **Carousel** | `.carousel`, `.carousel-inner`, `.carousel-item`, `.carousel-control-*` | Touch-swipeable image and card slideshows. |
+| **Chip / Tag** | `.chip`, `.chip-removable`, `.tag-input` | Interactive compact pills and dynamic tagging inputs. |
+| **Collapse** | `.collapse`, `.collapsing`, `.show` | Programmatic and data-attribute driven element collapse. |
+| **Combobox** | `.combobox`, `.combobox-input`, `.combobox-dropdown`, `.combobox-item` | Autocomplete select with keyboard arrow navigation & filtering. |
+| **Command Palette** | `.command-palette`, `.command-palette-backdrop`, `.command-palette-input` | Spotlight-style modal search runner (`Ctrl+K` / `Cmd+K`). |
+| **Context Menu** | `.context-menu`, `.context-menu-item`, `.context-menu-divider` | Right-click floating menu with collision detection. |
+| **Data Table** | `.data-table`, `.table-sortable`, `.table-hover`, `.table-dense` | Sortable columns, select-all checkboxes, expandable row details. |
+| **Dropdown** | `.dropdown`, `.dropdown-menu`, `.dropdown-item`, `.dropdown-divider` | Contextual action menus triggered on click/focus. |
+| **Dropzone** | `.dropzone`, `.dropzone-preview`, `.dropzone-file-item` | Drag-and-drop file upload with progress bar & safe object URLs. |
+| **Empty State** | `.empty-state`, `.empty-state-icon`, `.empty-state-title`, `.empty-state-action`| Zero-data screens, empty search results, and 404 placeholders. |
+| **Floating Labels**| `.form-floating`, `.form-control` | Modern animated floating text labels on inputs and selects. |
+| **Form Control**| `.form-control`, `.form-select`, `.form-check`, `.form-switch` | Accessible form controls requiring `id` / `name` attributes. |
+| **Input Group** | `.input-group`, `.input-group-text` | Prepend and append addons, icons, or buttons to input fields. |
+| **Kbd** | `.kbd`, `.kbd-group` | 3D tactile keyboard shortcut keycaps. |
+| **Lightbox** | `.lightbox`, `.lightbox-media`, `.lightbox-nav` | Fullscreen media viewer with keyboard cycling and zoom. |
+| **Modal** | `.modal`, `.modal-dialog`, `.modal-content`, `.modal-header`, `.modal-body` | Accessible focus-trapping dialog overlay with backdrop. |
+| **Navbar** | `.navbar`, `.navbar-brand`, `.navbar-nav`, `.navbar-toggler` | Mobile-responsive top navigation header with collapse toggle. |
+| **Offcanvas** | `.offcanvas`, `.offcanvas-start`, `.offcanvas-end`, `.offcanvas-backdrop` | Off-screen sliding sidebars for navigation and filter drawers. |
+| **OTP Input** | `.otp-input`, `.otp-digit` | Multi-digit verification code inputs with auto-advance and paste. |
+| **Pagination** | `.pagination`, `.page-item`, `.page-link` | Accessible page links for tables and list navigation. |
+| **Progress** | `.progress`, `.progress-bar`, `.progress-bar-striped`, `.progress-bar-animated`| Progress completion indicators with ARIA role support. |
+| **Rating** | `.rating`, `.rating-star`, `.rating-star-active` | Accessible interactive and read-only star rating controls. |
+| **Segmented Control**| `.segmented-control`, `.segmented-item`, `.segmented-item-active` | Segmented pill tab toggles with smooth transition indicator. |
+| **Sidebar** | `.sidebar`, `.sidebar-nav`, `.sidebar-item`, `.sidebar-collapsed` | Multi-level collapsible desktop and dashboard navigation sidebar. |
+| **Skeleton** | `.skeleton`, `.skeleton-text`, `.skeleton-avatar`, `.skeleton-wave` | Content placeholder loading shimmers. |
+| **Speed Dial** | `.speed-dial`, `.speed-dial-trigger`, `.speed-dial-actions` | Floating action button (FAB) with staggered circular sub-actions. |
+| **Splitter** | `.splitter`, `.splitter-pane`, `.splitter-gutter` | Dual resizable split layout with draggable separator. |
+| **Stepper** | `.stepper`, `.step-item`, `.step-circle`, `.step-label` | Multi-step wizard and checkout progress milestones. |
+| **Timeline** | `.timeline`, `.timeline-item`, `.timeline-badge`, `.timeline-content` | Chronological event logs, activity feeds, and audit trails. |
+| **Toast** | `.toast`, `.toast-header`, `.toast-body`, `.toast-container` | Non-blocking push notification banners with auto-dismiss. |
+| **Tooltip / Popover**| `.tooltip`, `.popover`, `[data-boodoo-toggle="tooltip"]` | Lightweight hover and focus contextual helper bubbles. |
+| **Tree View** | `.tree-view`, `.tree-node`, `.tree-branch`, `.tree-leaf` | Hierarchical file directory and categorized entity trees. |
+
+---
+
+## 5. Layout & Responsive Utility System (150+ Utilities)
+
+- **Containers**: `.container` (responsive max-widths), `.container-fluid` (100% width).
+- **Flexbox Grid**: 12-column mobile-first grid via `.row` and `.col-*` (`.col-sm-*`, `.col-md-*`, `.col-lg-*`, `.col-xl-*`).
+- **CSS Grid Primitives**: `.grid`, `.g-col-1` to `.g-col-12`.
+- **Modern Spacing Scale**: Proportional scale built on `--boodoo-spacer: 1rem`:
+  - `0`: `0`
+  - `0.5`: `8px` (`0.5rem`)
+  - `1`: `20px` (`1.25rem`)
+  - `2`: `36px` (`2.25rem`)
+  - `3`: `52px` (`3.25rem`)
+  - `4`: `68px` (`4.25rem`)
+  - `5`: `84px` (`5.25rem`)
+- **Elevation Utilities**: `.elevation-1` through `.elevation-5` (Material-inspired layered drop shadows).
+- **Display & Flex**: `.d-none`, `.d-block`, `.d-flex`, `.d-inline-flex`, `.d-grid`, `.flex-column`, `.align-items-center`, `.justify-content-between`, `.gap-1` to `.gap-5`.
+- **Typography & Text**: `.fw-bold`, `.fw-medium`, `.fst-italic`, `.text-center`, `.text-truncate`, `.text-primary`, `.text-muted`.
+
+---
+
+## 6. AI Code Generation Instructions & Safeguards
+
+When generating HTML, CSS, JavaScript, React, or React Native code with boodoo:
+
+1. **Strictly Preserve Semantic Containers**: Never put text nodes directly into `<div>` or `<section>`. Always wrap text in `<p>`, `<span>`, `<h1>`–`<h6>`, `<strong>`, or `<label>`.
+2. **Accessible Form Controls**: Always provide an `id` and/or `name` attribute on any `<input>`, `<select>`, or `<textarea>`. Pair `<label>` with `for="id"`.
+3. **No Fabricated APIs**: Rely strictly on the components and utility classes documented above. Do not invent properties like `<Modal show={true}>` unless using verified React wrappers.
+4. **Clean Lifecycle Cleanup**: Always clean up event listeners or dynamic object URLs using `.dispose()`.
+5. **Dynamic Theming**: Use `var(--boodoo-<token>)` for theme custom properties. Do not hardcode hex values like `#7c3aed`.
+6. **Mobile React Native Rules**: Keep components modular, use `StyleSheet.create()`, and never use inline style objects (`style={{ ... }}`).

@@ -1,3 +1,65 @@
+# AI & LLM Crawlers & Search Engines
+
+# OpenAI (ChatGPT / SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google (Gemini / Vertex AI / Google Extended)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta (Llama)
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# Mistral AI
+User-agent: MistralBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Common Crawl (Foundation dataset for open-weights models like Llama, DeepSeek, Qwen)
+User-agent: CCBot
+Allow: /
+
+# Default for all other crawlers & search engines
 User-agent: *
 Allow: /
 
