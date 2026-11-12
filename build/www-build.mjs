@@ -162,6 +162,7 @@ copy(path.join(root, 'site', 'data'), 'assets/data'); // Navigation data
 copy(path.join(root, 'site', 'robots.txt'), 'robots.txt');
 copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');
 copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
+copy(path.join(root, 'site', 'llms-full.txt'), 'llms-full.txt');
 copy(path.join(root, 'site', '404.html'), '404.html');
 copy(path.join(root, 'site', '404.html'), 'error.html');
 copy(path.join(root, 'site', '.htaccess'), '.htaccess');
