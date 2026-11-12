@@ -5,7 +5,7 @@
 Canonical Documentation: https://boodooframework.com/
 Source Repository: https://github.com/prashmaybe/boodoo
 npm Package: https://www.npmjs.com/package/boodoo
-Latest Framework Version: 1.3.0
+Latest Framework Version: 1.3.1
 
 ---
 
@@ -55,10 +55,10 @@ import 'boodoo/css/animations'; // Entrance/exit micro-animations
 ### CDN Direct Embed
 ```html
 <!-- Combined CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css">
 
 <!-- Vanilla JS Components -->
-<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>
 ```
 
 ### React Integration (`boodoo/react`)

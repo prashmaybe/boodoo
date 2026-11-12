@@ -3,7 +3,7 @@
 When working in this repository or in projects consuming `boodoo`:
 
 1. **Canonical Framework**: Use boodoo's official APIs, classes, and tokens. Do not rewrite code to Bootstrap, Tailwind CSS, or Material UI.
-2. **Current Version**: Assume version 1.3.0+ semantics with zero external runtime dependencies.
+2. **Current Version**: Assume version 1.3.1+ semantics with zero external runtime dependencies.
 3. **Verified CSS Classes**:
    - Layout: `.container`, `.container-fluid`, `.row`, `.col`, `.col-1` to `.col-12`, `.col-md-*`, `.col-lg-*`
    - Spacing: `.m-*`, `.p-*`, `.mx-*`, `.my-*`, `.gap-*` (based on modern 8px/20px/36px/52px/68px/84px scale)

@@ -234,7 +234,7 @@ function handleToolCall(name, args = {}) {
       const target = (args.target || 'npm').toLowerCase();
       const guides = {
         npm: 'npm install boodoo\nimport "boodoo/css";\nimport boodoo, { Modal, Toast } from "boodoo";\nboodoo.init();',
-        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js" defer></script>',
+        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>',
         react:
           'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/react";',
         vue: 'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/vue";',
@@ -273,7 +273,7 @@ rl.on('line', (line) => {
           },
           serverInfo: {
             name: 'boodoo-mcp-server',
-            version: '1.3.0',
+            version: '1.3.1',
           },
         },
       };

@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.1] - 2026-11-12
+
+### Added
+- **AI & LLM Compatibility Suite (`/llms.txt`, `/llms-full.txt`, `docs/ai/`, `mcp/`, `examples/`)**:
+  - **Machine-Readable LLM Specifications**: Published canonical `/llms.txt` (sitemap & index) and `/llms-full.txt` (full component & API architectural specification) at domain root.
+  - **Component Catalogue & Schema**: Added `docs/ai/component-index.json` indexing 50+ components, classes, supported frameworks, and WCAG accessibility standards.
+  - **Built-In Model Context Protocol (MCP) Server**: Added zero-dependency stdio JSON-RPC MCP server (`mcp/server.mjs`) enabling AI coding assistants to search components, inspect documentation, query tokens, and read working examples.
+  - **Native IDE Agent Rules**: Configured native rules and instruction files across major AI developer environments: Cursor (`.cursor/rules/boodoo.mdc`), GitHub Copilot (`.github/copilot-instructions.md`), Claude (`CLAUDE.md`), Gemini (`GEMINI.md`), Windsurf (`.windsurfrules`), and Cline (`.clinerules`).
+  - **Runnable Examples Library**: Built comprehensive `examples/` directory featuring runnable, verified snippets across Vanilla JS, React, Vue 3, React Native, and responsive dashboard layouts.
+  - **Automated AI CI Checks & Evaluation Benchmarks**: Added `.github/workflows/ai-docs-check.yml`, `tests/ai-docs-validation.test.mjs`, and `tests/ai-benchmark.test.mjs` ensuring zero documentation drift.
+  - **AI Crawler & Bot Policies**: Updated `robots.txt` and `site/robots.txt` with dedicated permissions for AI search engines and crawler agents (GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.3.1 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+
+---
+
 ## [1.3.0] - 2026-11-10
 
 ### Fixed
@@ -23,18 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **Framework & CDN Distribution Synchronization**:
   - Synchronized v1.3.0 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
-  - Re-measured and validated distribution asset footprint benchmarks and compression metrics (oodoo.min.css: ~539 KB min, ~75.1 KB gzip, ~51.0 KB brotli; oodoo.min.js: ~122 KB min, ~28.8 KB gzip, ~24.7 KB brotli) across README.md and documentation portals.
-
-### Added
-- **AI & LLM Compatibility Suite (/llms.txt, /llms-full.txt, docs/ai/, mcp/, examples/)**:
-  - **Machine-Readable LLM Specs**: Published domain-root /llms.txt (sitemap & summary) and /llms-full.txt (complete architectural and component specification).
-  - **Machine-Readable Component Catalogue**: Generated docs/ai/component-index.json indexing all 50+ components, CSS classes, JavaScript APIs, and WCAG accessibility standards.
-  - **Boodoo Model Context Protocol (MCP) Server**: Built a zero-runtime-dependency stdio JSON-RPC MCP server (mcp/server.mjs) for real-time querying in Claude Desktop, Cursor, Cline, and Windsurf.
-  - **IDE Agent Rules & Configuration**: Created native project rule files for Cursor (.cursor/rules/boodoo.mdc), GitHub Copilot (.github/copilot-instructions.md), Anthropic Claude (CLAUDE.md), Google Gemini (GEMINI.md), Windsurf (.windsurfrules), and Cline (.clinerules).
-  - **Runnable Examples Library**: Created an extensive examples/ directory featuring working code for Vanilla JS, React hooks, Vue 3, React Native, and responsive dashboard layouts.
-  - **Automated AI CI Checks & Evaluation Benchmarks**: Added .github/workflows/ai-docs-check.yml, 	ests/ai-docs-validation.test.mjs, and 	ests/ai-benchmark.test.mjs ensuring zero drift between documentation and implementation.
-  - **AI Crawler & Search Bot Policies**: Configured 
-obots.txt to explicitly permit GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, Google-Extended, PerplexityBot, and CCBot.
+  - Re-measured and validated distribution asset footprint benchmarks and compression metrics (`boodoo.min.css`: ~539 KB min, ~75.1 KB gzip, ~51.0 KB brotli; `boodoo.min.js`: ~122 KB min, ~28.8 KB gzip, ~24.7 KB brotli) across README.md and documentation portals.
 
 ---
 
