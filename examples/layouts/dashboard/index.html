@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boodoo Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-light border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#"><span>Boodoo Admin</span></a>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-4">
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="text-muted"><span>Total Users</span></h6>
+            <h3><span>12,450</span></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="text-muted"><span>Monthly Revenue</span></h6>
+            <h3><span>$48,200</span></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="text-muted"><span>Active Sessions</span></h6>
+            <h3><span>1,890</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0"><span>Recent Orders</span></h5>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th><span>Order ID</span></th>
+                <th><span>Customer</span></th>
+                <th><span>Status</span></th>
+                <th><span>Amount</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span>#1001</span></td>
+                <td><span>Alex Johnson</span></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><span>$129.00</span></td>
+              </tr>
+              <tr>
+                <td><span>#1002</span></td>
+                <td><span>Sarah Connor</span></td>
+                <td><span class="badge bg-warning">Processing</span></td>
+                <td><span>$89.50</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js"></script>
+</body>
+</html>

@@ -99,6 +99,9 @@
     "react/",
     "vue/",
     "bin/",
+    "docs/ai/",
+    "llms.txt",
+    "llms-full.txt",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
