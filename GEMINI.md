@@ -23,3 +23,4 @@ Instructions for Google Gemini coding assistants and Vertex AI code generation m
 - Tokens: `import { colors, spacing, radii } from 'boodoo/tokens'`
 
 Docs: https://boodooframework.com/ | GitHub: https://github.com/prashmaybe/boodoo
+

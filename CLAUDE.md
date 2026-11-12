@@ -43,3 +43,4 @@ This document guides Anthropic Claude (Claude Code, Claude Projects, Web, Deskto
 
 Documentation: https://boodooframework.com/
 Source: https://github.com/prashmaybe/boodoo
+

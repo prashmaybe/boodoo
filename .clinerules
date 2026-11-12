@@ -7,3 +7,4 @@
 - Dynamic theme tokens: Rely on `var(--boodoo-*)` custom properties.
 - React Native code must avoid inline styles (`style={{...}}`) and employ `StyleSheet.create()`.
 - Official documentation: https://boodooframework.com/
+

@@ -9,3 +9,4 @@
 - React Native components must use `StyleSheet.create()` only; never use inline style objects (`style={{...}}`).
 - Always clean up interactive component listeners using `.dispose()`.
 - Use dynamic CSS variables (`var(--boodoo-primary)`) rather than static hex color values.
+
