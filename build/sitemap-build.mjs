@@ -36,7 +36,7 @@ const examplePages = walkHtml(examplesDir);
 
 const urls = [
   { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'weekly' },
-  { loc: `${BASE_URL}/examples/index.html`, priority: '0.9', changefreq: 'weekly' },
+  { loc: `${BASE_URL}/examples/`, priority: '0.9', changefreq: 'weekly' },
   { loc: `${BASE_URL}/llms.txt`, priority: '0.7', changefreq: 'weekly' },
   { loc: `${BASE_URL}/llms-full.txt`, priority: '0.7', changefreq: 'weekly' },
   { loc: `${BASE_URL}/docs/ai/component-index.json`, priority: '0.7', changefreq: 'weekly' },
