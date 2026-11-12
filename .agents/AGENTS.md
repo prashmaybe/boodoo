@@ -163,5 +163,11 @@ The framework spacing scale is designed around adaptive base spacer tokens and m
 1. **Token Hierarchy**: Base spacing scales derive from `--boodoo-spacer` (`$boodoo-spacer: 1rem` / 16px) with intentional proportional steps (`0.5: 8px`, `1: 20px`, `2: 36px`, etc.).
 2. **Adaptive Override Pattern**: Applications requiring custom density (such as compact backoffice screens or dense mockup scales) must achieve density adjustments by customizing `--boodoo-spacer` or specific `--boodoo-spacer-*` custom properties at runtime, or via preprocessor `$boodoo-spacer` / `@boodoo-spacer` variables, rather than mutating core framework step proportions.
 
+## AI & LLM Specification Parity Rule
+All AI entry points, machine-readable specifications, and agent rules must strictly match the codebase and pass automated validation:
 
-
+1. **Synchronized Versioning**: Canonical version strings across /llms.txt, /llms-full.txt, and docs/ai/component-index.json must exactly match package.json.
+2. **Zero Hallucination Guarantee**: All code examples, component names, CSS classes, and package exports documented in AI files must correspond to real, tested implementations in dist/, 
+eact/, ue/, or 
+eact-native/.
+3. **Automated CI Enforcement**: 	ests/ai-docs-validation.test.mjs and 	ests/ai-benchmark.test.mjs must run and pass in .github/workflows/ai-docs-check.yml to prevent documentation and specification drift.

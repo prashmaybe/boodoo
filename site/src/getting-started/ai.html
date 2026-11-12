@@ -1,0 +1,132 @@
+<!--
+title: AI & LLM Compatibility
+description: Official guide for using boodoo with AI coding assistants, LLMs, Model Context Protocol (MCP), Cursor, GitHub Copilot, Claude, and Gemini.
+section: getting-started
+order: 19
+-->
+<div class="bd-intro mb-4">
+  <h1 class="bd-title fw-bold" id="content"><span>AI &amp; LLM Compatibility</span></h1>
+  <p class="bd-lead lead text-muted"><span>Authoritative guides, machine-readable specifications, Model Context Protocol (MCP) tooling, and rules for AI coding assistants.</span></p>
+</div>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="ai-first-architecture"><span>AI-First Design Architecture</span></h2>
+  <p><span>boodoo is designed to be easily discovered, parsed, and generated with 100% accuracy by modern AI systems (ChatGPT, Claude, Gemini, Cursor, Copilot, Windsurf, Cline). Because boodoo adheres to strict semantic conventions and zero runtime npm dependencies, AI models produce high-quality, hallucination-free code.</span></p>
+
+  <div class="row g-3 my-3">
+    <div class="col-12 col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="fw-bold"><span>Machine-Readable Specs</span></h5>
+          <p class="text-muted mb-0"><span>Native <code>llms.txt</code>, <code>llms-full.txt</code>, and <code>component-index.json</code> served at the domain root for agent context ingestion.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="fw-bold"><span>MCP Server</span></h5>
+          <p class="text-muted mb-0"><span>Zero-dependency Model Context Protocol server exposing components, tokens, docs, and code examples directly to IDEs.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="fw-bold"><span>Runnable Examples</span></h5>
+          <p class="text-muted mb-0"><span>A library of validated examples for Vanilla JS, React hooks, Vue 3, and React Native that LLMs can accurately replicate.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="ai-entrypoints"><span>AI Knowledge Entry Points</span></h2>
+  <p><span>AI coding assistants and autonomous agents can ingest the following canonical resources:</span></p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><span>Resource</span></th>
+          <th><span>URL / Location</span></th>
+          <th><span>Purpose</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>llms.txt</code></td>
+          <td><a href="/llms.txt" target="_blank"><span>/llms.txt</span></a></td>
+          <td><span>Concise framework summary and complete documentation sitemap.</span></td>
+        </tr>
+        <tr>
+          <td><code>llms-full.txt</code></td>
+          <td><a href="/llms-full.txt" target="_blank"><span>/llms-full.txt</span></a></td>
+          <td><span>Full technical specification, component reference, modern spacing scale, and guardrails.</span></td>
+        </tr>
+        <tr>
+          <td><code>component-index.json</code></td>
+          <td><a href="/docs/ai/component-index.json" target="_blank"><span>/docs/ai/component-index.json</span></a></td>
+          <td><span>Machine-readable JSON catalog of 50+ components, classes, and supported platforms.</span></td>
+        </tr>
+        <tr>
+          <td><code>robots.txt</code></td>
+          <td><a href="/robots.txt" target="_blank"><span>/robots.txt</span></a></td>
+          <td><span>Verified access permissions for GPTBot, ClaudeBot, Google-Extended, PerplexityBot, and CCBot.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="mcp-server"><span>Boodoo Model Context Protocol (MCP) Server</span></h2>
+  <p><span>The Boodoo repository includes an integrated, zero-dependency MCP server that lets compatible AI agents (Claude Desktop, Cursor, Cline, Windsurf) query authoritative framework data during conversations.</span></p>
+
+  <h4 class="fw-bold mt-3"><span>Available Tools</span></h4>
+  <ul>
+    <li><span><code>search_components</code>: Find Boodoo components by name, feature, or UI category.</span></li>
+    <li><span><code>get_component_docs</code>: Retrieve component specifications, CSS classes, and WCAG accessibility standards.</span></li>
+    <li><span><code>get_component_example</code>: Return runnable code samples across Vanilla JS, React, Vue, or React Native.</span></li>
+    <li><span><code>search_utilities</code>: Search spacing, flexbox, CSS grid, and elevation utilities.</span></li>
+    <li><span><code>get_design_tokens</code>: Access universal color palettes, spacing scales, and border radii.</span></li>
+    <li><span><code>get_installation_guide</code>: Retrieve verified setup instructions for npm, CDN, React, Vue, or React Native.</span></li>
+  </ul>
+
+  <h4 class="fw-bold mt-3"><span>Connecting in Claude Desktop</span></h4>
+  <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="ide-instructions"><span>IDE Agent Rules &amp; Instructions</span></h2>
+  <p><span>Boodoo maintains native configuration files for all major developer assistants:</span></p>
+
+  <ul>
+    <li><span><strong>Cursor</strong>: <code>.cursor/rules/boodoo.mdc</code></span></li>
+    <li><span><strong>GitHub Copilot</strong>: <code>.github/copilot-instructions.md</code></span></li>
+    <li><span><strong>Anthropic Claude (Claude Code / Projects)</strong>: <code>CLAUDE.md</code></span></li>
+    <li><span><strong>Google Gemini &amp; Vertex AI</strong>: <code>GEMINI.md</code></span></li>
+    <li><span><strong>Windsurf (Cascade)</strong>: <code>.windsurfrules</code></span></li>
+    <li><span><strong>Cline (VS Code Agent)</strong>: <code>.clinerules</code></span></li>
+  </ul>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="rules-for-ai"><span>Rules for AI Code Generators</span></h2>
+  <p><span>When prompting an AI assistant or generating code with Boodoo:</span></p>
+  <ol>
+    <li><span><strong>Wrap Text Nodes</strong>: Text nodes must always be wrapped in semantic text elements (<code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>, <code>&lt;label&gt;</code>), never placed raw inside layout <code>&lt;div&gt;</code> containers.</span></li>
+    <li><span><strong>Form Control IDs</strong>: Every <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, or <code>&lt;textarea&gt;</code> must have an <code>id</code> and/or <code>name</code> attribute.</span></li>
+    <li><span><strong>Dynamic Custom Properties</strong>: Always use <code>var(--boodoo-primary)</code> and theme tokens rather than hardcoded hex color literals.</span></li>
+    <li><span><strong>React Native StyleSheet Only</strong>: Use <code>StyleSheet.create()</code> exclusively and strictly avoid inline style objects (<code>style={{...}}</code>).</span></li>
+    <li><span><strong>Lifecycle Disposal</strong>: Call <code>.dispose()</code> when programmatically destroying Modals, Toasts, or Dropzones.</span></li>
+  </ol>
+</section>
