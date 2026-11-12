@@ -8,7 +8,9 @@ import 'boodoo/css';
       <span>Options</span>
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#"><span>Action</span></a></li>
+      <li>
+        <a class="dropdown-item" href="#"><span>Action</span></a>
+      </li>
     </ul>
   </div>
 </template>

@@ -1,36 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boodoo Toast Example</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css">
-</head>
-<body>
-  <div class="container py-5">
-    <button type="button" class="btn btn-primary" id="triggerToastBtn">
-      <span>Trigger Toast</span>
-    </button>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boodoo Toast Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/css/boodoo.min.css"
+    />
+  </head>
+  <body>
+    <div class="container py-5">
+      <button type="button" class="btn btn-primary" id="triggerToastBtn">
+        <span>Trigger Toast</span>
+      </button>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="liveToast" class="toast" role="status" aria-live="polite" aria-atomic="true">
-        <div class="toast-header">
-          <strong class="me-auto"><span>Notification</span></strong>
-          <small><span>Just now</span></small>
-          <button type="button" class="btn-close" data-boodoo-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-          <p class="mb-0"><span>Hello! This is a real-time toast notification from Boodoo.</span></p>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto"><span>Notification</span></strong>
+            <small><span>Just now</span></small>
+            <button
+              type="button"
+              class="btn-close"
+              data-boodoo-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">
+            <p class="mb-0">
+              <span>Hello! This is a real-time toast notification from Boodoo.</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js"></script>
-  <script>
-    const toastEl = document.getElementById('liveToast');
-    const toast = boodoo.Toast.getOrCreateInstance(toastEl);
-    document.getElementById('triggerToastBtn').addEventListener('click', () => toast.show());
-  </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.0/dist/js/boodoo.min.js"></script>
+    <script>
+      const toastEl = document.getElementById('liveToast');
+      const toast = boodoo.Toast.getOrCreateInstance(toastEl);
+      document.getElementById('triggerToastBtn').addEventListener('click', () => toast.show());
+    </script>
+  </body>
 </html>
