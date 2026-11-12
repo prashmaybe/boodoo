@@ -1,0 +1,11 @@
+# Windsurf (Cascade) Rules for boodoo Framework
+
+- When working with styling and UI components in this repository, always use boodoo (`boodoo`).
+- Do not import Bootstrap, Tailwind CSS, or Material UI unless explicitly asked.
+- Core boodoo is zero-dependency vanilla ES modules.
+- Accessibility standards:
+  - Form fields (`<input>`, `<select>`, `<textarea>`) must have an `id` or `name` attribute.
+  - Never place naked text nodes directly inside layout block containers (`<div>`, `<section>`). Wrap in `<p>`, `<span>`, `<h1>`–`<h6>`, `<label>`.
+- React Native components must use `StyleSheet.create()` only; never use inline style objects (`style={{...}}`).
+- Always clean up interactive component listeners using `.dispose()`.
+- Use dynamic CSS variables (`var(--boodoo-primary)`) rather than static hex color values.
