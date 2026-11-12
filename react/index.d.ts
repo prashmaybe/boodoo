@@ -86,7 +86,11 @@ export declare const ThemeContext: React.Context<{
   theme: Record<string, string>;
 }>;
 export declare const BoodooProvider: React.FC<BoodooProviderProps>;
-export declare function useBoodooTheme(): { density: string; direction: 'ltr' | 'rtl'; theme: Record<string, string> };
+export declare function useBoodooTheme(): {
+  density: string;
+  direction: 'ltr' | 'rtl';
+  theme: Record<string, string>;
+};
 export declare function useDirection(): 'ltr' | 'rtl';
 
 // --- Typography ---

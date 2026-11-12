@@ -40,9 +40,9 @@ export const rtl = {
     if (typeof document === 'undefined') return;
     const resolved =
       val === 'auto'
-        ? (typeof navigator !== 'undefined' && /^(ar|he|fa|ur|ps|sd|ug|yi)/i.test(navigator.language)
-            ? 'rtl'
-            : 'ltr')
+        ? typeof navigator !== 'undefined' && /^(ar|he|fa|ur|ps|sd|ug|yi)/i.test(navigator.language)
+          ? 'rtl'
+          : 'ltr'
         : val;
 
     document.documentElement.setAttribute('dir', resolved);
@@ -102,4 +102,3 @@ if (typeof document !== 'undefined') {
     rtl.init();
   }
 }
-

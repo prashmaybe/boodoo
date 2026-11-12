@@ -44,7 +44,10 @@ export function BoodooProvider({
   const dirClass = activeDir === 'rtl' ? 'dir-rtl' : 'dir-ltr';
   const mergedClass = ['boodoo', densityClass, dirClass, className].filter(Boolean).join(' ');
 
-  const contextValue = useMemo(() => ({ density, direction: activeDir, theme }), [density, activeDir, theme]);
+  const contextValue = useMemo(
+    () => ({ density, direction: activeDir, theme }),
+    [density, activeDir, theme]
+  );
 
   return React.createElement(
     ThemeContext.Provider,
