@@ -89,9 +89,9 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
-          <span>Version 1.3.1 Release &mdash; AI &amp; LLM Developer Compatibility Suite and Ecosystem Synchronization</span>
+          <span>Version 1.3.1 Release &mdash; AI &amp; LLM Developer Compatibility Suite, RTL Support &amp; Dialog Background Scroll Lock</span>
         </h3>
-        <p><span>boodoo <strong>v1.3.1</strong> introduces native AI discoverability and developer tooling across the framework: domain-root <code>/llms.txt</code> and <code>/llms-full.txt</code> specifications, a machine-readable component catalogue, a built-in Model Context Protocol (MCP) server, verified multi-framework runnable examples, native IDE rules (Cursor, Copilot, Claude, Gemini, Windsurf, Cline), and automated CI benchmarks.</span></p>
+        <p><span>boodoo <strong>v1.3.1</strong> introduces native AI discoverability and developer tooling across the framework: domain-root <code>/llms.txt</code> and <code>/llms-full.txt</code> specifications, a machine-readable component catalogue, a built-in Model Context Protocol (MCP) server, verified multi-framework runnable examples, native IDE rules (Cursor, Copilot, Claude, Gemini, Windsurf, Cline), complete RTL (Right-to-Left) bidirectional support, and zero-JS background page scroll locking behind native HTML5 dialogs.</span></p>
 
         <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>AI &amp; LLM Compatibility Suite</span></h4>
         <ul class="mb-2">
@@ -101,6 +101,12 @@ order: 7
           <li><span><strong>Native IDE Agent Rules</strong>: Created configuration rules for Cursor (<code>.cursor/rules/boodoo.mdc</code>), GitHub Copilot (<code>.github/copilot-instructions.md</code>), Anthropic Claude (<code>CLAUDE.md</code>), Google Gemini (<code>GEMINI.md</code>), Windsurf (<code>.windsurfrules</code>), and Cline (<code>.clinerules</code>).</span></li>
           <li><span><strong>Validated Runnable Examples Library</strong>: Added <code>examples/</code> directory with working code for Vanilla JS, React hooks, Vue 3, React Native, and responsive dashboard layouts.</span></li>
           <li><span><strong>Automated CI Verification &amp; Benchmarks</strong>: Added <code>.github/workflows/ai-docs-check.yml</code>, <code>tests/ai-docs-validation.test.mjs</code>, and <code>tests/ai-benchmark.test.mjs</code> to guarantee docs and specs never desync from source code.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-info mt-3 mb-2"><span>RTL &amp; Accessibility Enhancements</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Right-to-Left (RTL) Bidirectional Support</strong>: Added full RTL support across SCSS, LESS, Vanilla JS, React (<code>useDirection</code>, <code>BoodooProvider</code>), Vue 3 (<code>useDirection</code>), and React Native with automated logical spacing mirroring.</span></li>
+          <li><span><strong>Native Dialog Background Scroll Lock</strong>: Added zero-JS background body scroll lock (<code>body:has(dialog.modal[open])</code>) and scroll-chain containment (<code>overscroll-behavior: contain</code>) across SCSS and LESS stylesheets, stopping background pages from scrolling when native dialogs are open.</span></li>
         </ul>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Release Engineering &amp; Distribution</span></h4>

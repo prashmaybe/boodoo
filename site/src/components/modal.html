@@ -165,7 +165,7 @@ other.toggle();</code></pre>
 </div>
 
 <h2 id="native-dialog">Native HTML5 &lt;dialog&gt; API (Zero-JS)</h2>
-<p>boodoo natively styles standard HTML5 <code>&lt;dialog class="modal"&gt;</code> elements. The browser natively manages focus trapping, <kbd>Esc</kbd> dismissal, and backdrop rendering with zero JavaScript dependency overhead:</p>
+<p>boodoo natively styles standard HTML5 <code>&lt;dialog class="modal"&gt;</code> elements. The browser natively manages focus trapping, <kbd>Esc</kbd> dismissal, and backdrop rendering with zero JavaScript dependency overhead. Furthermore, background body scrolling is automatically locked when the dialog is open via modern CSS <code>body:has(dialog.modal[open])</code> and overscroll chaining is prevented:</p>
 <div class="bd-example">
   <button type="button" class="btn btn-primary" onclick="document.getElementById('nativeDemoDialog').showModal()">
     <span>Open Native &lt;dialog&gt;</span>
