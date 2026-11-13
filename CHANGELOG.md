@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.2] - 2026-11-13
 
+### Added
+- **MCP Server Token Query & Linting Tools (`mcp/server.mjs`)**:
+  - Added `get_design_token` tool allowing AI assistants to query token values by name or path (e.g. `colors.primary`, `spacing.1`).
+  - Added `validate_component_usage` tool providing an automated architectural & a11y linter for code snippets.
+- **Search Highlighting Utility (`react/hooks.js`, `vue/composables.js`)**:
+  - Exported pure `highlightMatches(text, query)` helper across React and Vue adapters to split matched and unmatched segments for search dropdowns.
+- **CLI AI Flag & JSON Listing (`bin/boodoo.mjs`, `bin/create-boodoo.mjs`)**:
+  - Added `npx boodoo list --json` flag for machine-readable tooling integration.
+  - Added `--ai` flag to `create-boodoo` project scaffolder to automatically provision `.cursor/rules/boodoo.mdc` and `CLAUDE.md`.
+
 ### Fixed
 - **MCP Server Path Traversal Protection (`mcp/server.mjs`)**:
   - Secured `get_component_example` tool by strictly validating framework targets against an allowlist (`vanilla-js`, `react`, `vue`, `react-native`) and rejecting directory traversal characters (`..`, `/`, `\`) in component names.
@@ -24,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Framework & CDN Distribution Synchronization**:
   - Synchronized v1.3.2 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, `docs/ai/component-index.json`, `mcp/server.mjs`, and `site/llms.txt`.
   - Rebuilt zip distribution archives (`boodoo-v1.3.2.zip`, `boodoo-examples-v1.3.2.zip`) and updated npm export documentation in `site/src/getting-started/npm.html`.
+  - Updated real-time compression metrics for compiled production bundles (`boodoo.min.css`: ~543 KB min, ~75.9 KB gzip, ~51.4 KB brotli; `boodoo.min.js`: ~123 KB min, ~29.0 KB gzip, ~24.9 KB brotli; `boodoo.js`: ~207 KB raw, ~37.9 KB gzip, ~31.3 KB brotli) across `README.md` and documentation benchmarks.
 
 ---
 

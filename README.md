@@ -81,7 +81,7 @@ All distribution assets are tested, minified, and verified on every release buil
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
 | `boodoo.min.js` | ~123 KB | ~29.0 KB | ~24.9 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
-| `boodoo.js` | ~207 KB | ~37.4 KB | ~30.9 KB | Pure vanilla JS unminified bundle with source maps |
+| `boodoo.js` | ~207 KB | ~37.9 KB | ~31.3 KB | Pure vanilla JS unminified bundle with source maps |
 
 #### 🔬 Reproducible Benchmark Instructions
 

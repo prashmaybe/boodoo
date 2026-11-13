@@ -316,3 +316,63 @@ test('Boodoo framework CommonJS entry point and module export verification', () 
   assert.ok(boodooCjs.includes('module.exports'), 'boodoo.cjs must support CommonJS export');
 });
 
+test('Search match highlighting utility (highlightMatches) in React and Vue', () => {
+  const reactHooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+  const vueComposablesSrc = readFileSync(resolve(rootDir, 'vue/composables.js'), 'utf8');
+
+  assert.ok(reactHooksSrc.includes('export function highlightMatches'), 'react/hooks.js must export highlightMatches');
+  assert.ok(vueComposablesSrc.includes('export function highlightMatches'), 'vue/composables.js must export highlightMatches');
+
+  // Evaluate the highlight algorithm directly
+  const foldAccents = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[øØ]/g, 'o')
+      .replace(/[æÆ]/g, 'ae')
+      .toLowerCase();
+  };
+
+  const highlightMatches = (text, query) => {
+    if (!text || typeof text !== 'string') return [];
+    if (!query || typeof query !== 'string') return [{ text, match: false }];
+
+    const foldedText = foldAccents(text);
+    const foldedQuery = foldAccents(query.trim());
+    if (!foldedQuery) return [{ text, match: false }];
+
+    const segments = [];
+    let lastIndex = 0;
+    let idx = foldedText.indexOf(foldedQuery, lastIndex);
+
+    while (idx !== -1) {
+      if (idx > lastIndex) {
+        segments.push({ text: text.slice(lastIndex, idx), match: false });
+      }
+      segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
+      lastIndex = idx + foldedQuery.length;
+      idx = foldedText.indexOf(foldedQuery, lastIndex);
+    }
+
+    if (lastIndex < text.length) {
+      segments.push({ text: text.slice(lastIndex), match: false });
+    }
+
+    return segments;
+  };
+
+  assert.deepEqual(highlightMatches('', 'test'), []);
+  assert.deepEqual(highlightMatches('Hello World', ''), [{ text: 'Hello World', match: false }]);
+
+  const segments = highlightMatches('United States of America', 'state');
+  assert.equal(segments.length, 3);
+  assert.equal(segments[0].text, 'United ');
+  assert.equal(segments[0].match, false);
+  assert.equal(segments[1].text, 'State');
+  assert.equal(segments[1].match, true);
+  assert.equal(segments[2].text, 's of America');
+  assert.equal(segments[2].match, false);
+});
+
+

@@ -29,6 +29,7 @@ export function parseArgs(rawArgs = []) {
   let projectName = '';
   let template = '';
   let lang = ''; // 'js' | 'ts'
+  let withAi = false;
 
   for (let i = 0; i < rawArgs.length; i++) {
     const arg = rawArgs[i];
@@ -36,6 +37,8 @@ export function parseArgs(rawArgs = []) {
       lang = 'ts';
     } else if (arg === '--js' || arg === '--javascript') {
       lang = 'js';
+    } else if (arg === '--ai' || arg === '--with-ai') {
+      withAi = true;
     } else if (arg.startsWith('--template=')) {
       template = arg.split('=')[1];
     } else if (arg === '-t' || arg === '--template') {
@@ -93,12 +96,31 @@ export function parseArgs(rawArgs = []) {
     projectName,
     template: normalizedTemplate,
     lang,
+    withAi,
     isTs: lang === 'ts' ? true : lang === 'js' ? false : null,
   };
 }
 
-export function scaffoldProject({ targetDir, projectName, choice = '1', isTs = false }) {
+export function scaffoldProject({ targetDir, projectName, choice = '1', isTs = false, withAi = false }) {
   fs.mkdirSync(targetDir, { recursive: true });
+
+  if (withAi) {
+    const aiMdc = `# Boodoo AI Developer Rules
+
+Framework: boodoo (mobile-first, responsive CSS, vanilla JS, React/Vue/React Native adapters, design tokens)
+Version: ${BOODOO_VERSION}
+
+## Core Rules:
+1. Wrap text strings in semantic elements (<p>, <span>, <h1>-<h6>, <label>), never naked inside layout <div> containers.
+2. Every form input, select, or textarea must include an id or name attribute.
+3. Use dynamic tokens via var(--boodoo-*) rather than hardcoded hex colors.
+4. Programmatically managed components (Modals, Toasts, Dropzones) must call .dispose() when destroyed.
+5. In React Native, use StyleSheet.create() exclusively and never pass inline style objects (style={{...}}).
+`;
+    fs.mkdirSync(path.join(targetDir, '.cursor', 'rules'), { recursive: true });
+    fs.writeFileSync(path.join(targetDir, '.cursor', 'rules', 'boodoo.mdc'), aiMdc);
+    fs.writeFileSync(path.join(targetDir, 'CLAUDE.md'), aiMdc);
+  }
 
   let templateName = 'HTML5 + Sass Starter';
   let startCmd = 'npm start';
@@ -2947,7 +2969,13 @@ export async function main() {
       langChoice.toLowerCase() === 'typescript';
   }
 
-  const result = scaffoldProject({ targetDir, projectName, choice, isTs });
+  let withAi = parsed.withAi;
+  if (!withAi && process.stdin.isTTY) {
+    const aiChoice = await prompt('Include native AI developer rules (.cursor, CLAUDE.md)? [y/N]', 'n');
+    withAi = aiChoice.toLowerCase() === 'y' || aiChoice.toLowerCase() === 'yes';
+  }
+
+  const result = scaffoldProject({ targetDir, projectName, choice, isTs, withAi });
 
   console.log(`\n\x1b[32m✔ Project successfully created at ${targetDir}\x1b[0m`);
   console.log(`Template: ${result.templateName} (${isTs ? 'TypeScript' : 'JavaScript'})`);

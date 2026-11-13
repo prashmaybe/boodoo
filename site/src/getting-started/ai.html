@@ -92,11 +92,16 @@ order: 19
     <li><span><code>get_component_example</code>: Return runnable code samples across Vanilla JS, React, Vue, or React Native.</span></li>
     <li><span><code>search_utilities</code>: Search spacing, flexbox, CSS grid, and elevation utilities.</span></li>
     <li><span><code>get_design_tokens</code>: Access universal color palettes, spacing scales, and border radii.</span></li>
+    <li><span><code>get_design_token</code>: Query a specific design token by name or path (e.g., <code>colors.primary</code>, <code>spacing.1</code>).</span></li>
+    <li><span><code>validate_component_usage</code>: Syntax &amp; a11y linter validating form field IDs, text node wrapping, and React Native style purity.</span></li>
     <li><span><code>get_installation_guide</code>: Retrieve verified setup instructions for npm, CDN, React, Vue, or React Native.</span></li>
   </ul>
 
-  <h4 class="fw-bold mt-3"><span>Connecting in Claude Desktop</span></h4>
-  <pre><code class="language-json">{
+  <h4 class="fw-bold mt-4"><span>Client Configuration Snippets</span></h4>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>1. Claude Desktop (<code>claude_desktop_config.json</code>)</span></h5>
+    <pre><code class="language-json">{
   "mcpServers": {
     "boodoo": {
       "command": "node",
@@ -104,6 +109,31 @@ order: 19
     }
   }
 }</code></pre>
+  </div>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>2. Cursor (<code>.cursor/mcp.json</code>)</span></h5>
+    <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+  </div>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>3. VS Code / Cline (<code>settings.json</code>)</span></h5>
+    <pre><code class="language-json">{
+  "cline.mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+  </div>
 </section>
 
 <section class="mb-5">

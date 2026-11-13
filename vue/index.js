@@ -8,4 +8,5 @@ export {
   useAccordion,
   useDirection,
   foldAccents,
+  highlightMatches,
 } from './composables.js';

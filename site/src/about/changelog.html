@@ -59,7 +59,7 @@ order: 7
     <div class="stat-item p-1">
       <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>30 Milestones</span></div>
+        <div class="stat-value"><span>33 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -91,15 +91,29 @@ order: 7
       <div class="timeline-body">
         <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
           <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
-          <span>Version 1.3.2 Release &mdash; Framework &amp; CDN Distribution Synchronization</span>
+          <span>Version 1.3.2 Release &mdash; MCP Path Traversal Security, Vue Combobox Ref Fix &amp; Release Pipeline</span>
         </h3>
-        <p><span>boodoo <strong>v1.3.2</strong> synchronizes distribution manifests, package locks, CDN endpoints, and documentation references across the ecosystem.</span></p>
+        <p><span>boodoo <strong>v1.3.2</strong> delivers security and reliability improvements alongside release engineering updates: strict MCP server path containment preventing directory traversal, reactive ref support for Vue headless combobox option collections, automated packed tarball validation in CI, and synchronized distribution manifests.</span></p>
+
+        <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>Security &amp; Bug Fixes</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>MCP Server Path Traversal Protection</strong>: Secured <code>get_component_example</code> tool in <code>mcp/server.mjs</code> with target allowlist validation (<code>vanilla-js</code>, <code>react</code>, <code>vue</code>, <code>react-native</code>), directory traversal character rejection, and path containment validation via <code>path.resolve</code>.</span></li>
+          <li><span><strong>Vue Headless Combobox Ref-based Filtering</strong>: Enhanced <code>useCombobox</code> in <code>vue/composables.js</code> to properly evaluate and unwrap both reactive <code>ref</code> arrays (<code>ref([...])</code>) and raw arrays for filtered items and initial selection.</span></li>
+          <li><span><strong>Search Match Highlighting Utility</strong>: Added pure <code>highlightMatches(text, query)</code> helper in React (<code>boodoo/react</code>) and Vue (<code>boodoo/vue</code>) for search dropdowns.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Tooling, MCP &amp; CLI Addons</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>MCP Server Design Token &amp; Linter Tools</strong>: Added <code>get_design_token</code> (query tokens by name or path) and <code>validate_component_usage</code> (semantic and a11y linter) to <code>mcp/server.mjs</code> alongside IDE configuration blocks in docs.</span></li>
+          <li><span><strong>CLI Scaffolder &amp; List Flags</strong>: Added <code>--json</code> flag to <code>npx boodoo list</code> for tooling integration and <code>--ai</code> flag to <code>create-boodoo</code> for instant IDE rules setup.</span></li>
+        </ul>
 
         <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Release Engineering &amp; Distribution</span></h4>
         <ul class="mb-0">
+          <li><span><strong>Automated Tarball &amp; Package Verification</strong>: Added dry-run tarball smoke tests verifying packaged asset inclusion and excluding internal directories (<code>tests/</code>, <code>build/</code>, <code>site/</code>, <code>.github/</code>, <code>mcp/</code>) with mandatory CI gates.</span></li>
           <li><span><strong>Framework &amp; Package Version Alignment</strong>: Synchronized v1.3.2 release manifests
               across <code>package.json</code>, <code>package-lock.json</code>, <code>README.md</code>, CLI scaffolders,
-              CDN endpoints, and starter documentation.</span></li>
+              CDN endpoints, starter documentation, and verified bundle compression benchmarks.</span></li>
         </ul>
       </div>
     </div>
