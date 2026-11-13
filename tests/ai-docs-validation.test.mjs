@@ -98,6 +98,78 @@ test('AI Documentation and Specification Validation', async (t) => {
     assert.ok(toolNames.includes('get_component_docs'));
     assert.ok(toolNames.includes('get_component_example'));
     assert.ok(toolNames.includes('get_design_tokens'));
+    assert.ok(toolNames.includes('get_design_token'));
+    assert.ok(toolNames.includes('validate_component_usage'));
+  });
+
+  await t.test('7. MCP Server prevents path traversal attacks in get_component_example', async () => {
+    const { execSync } = await import('node:child_process');
+
+    const runCall = (args) => {
+      const input = JSON.stringify({
+        jsonrpc: '2.0',
+        id: 101,
+        method: 'tools/call',
+        params: {
+          name: 'get_component_example',
+          arguments: args,
+        },
+      }) + '\n';
+      const output = execSync('node mcp/server.mjs', { cwd: root, input, encoding: 'utf8' });
+      const parsed = JSON.parse(output);
+      const textContent = parsed.result.content[0].text;
+      return JSON.parse(textContent);
+    };
+
+    // Test dot-dot traversal
+    const resTraversal = runCall({ component: '../../package.json', framework: 'vanilla-js' });
+    assert.ok(resTraversal.error, 'Path traversal in component name must be blocked');
+
+    // Test invalid framework traversal
+    const resFw = runCall({ component: 'modal', framework: '../..' });
+    assert.ok(resFw.error, 'Path traversal in framework must be blocked');
+
+    // Test valid component example retrieval
+    const resValid = runCall({ component: 'modal', framework: 'vanilla-js' });
+    assert.ok(resValid.files, 'Valid component example should return files object');
+    assert.ok(resValid.files['index.html'], 'Modal example should contain index.html');
+  });
+
+  await t.test('8. MCP Server get_design_token and validate_component_usage tools work correctly', async () => {
+    const { execSync } = await import('node:child_process');
+
+    const callMcp = (name, args) => {
+      const input = JSON.stringify({
+        jsonrpc: '2.0',
+        id: 102,
+        method: 'tools/call',
+        params: { name, arguments: args },
+      }) + '\n';
+      const output = execSync('node mcp/server.mjs', { cwd: root, input, encoding: 'utf8' });
+      const parsed = JSON.parse(output);
+      return JSON.parse(parsed.result.content[0].text);
+    };
+
+    // get_design_token
+    const tokenPrimary = callMcp('get_design_token', { name: 'colors.primary' });
+    assert.equal(tokenPrimary.value, '#7c3aed');
+    const tokenSpacing = callMcp('get_design_token', { name: '1' });
+    assert.equal(tokenSpacing.value, 20);
+
+    // validate_component_usage catches missing input id/name
+    const invalidInput = callMcp('validate_component_usage', {
+      code: '<form><input type="text" class="form-control"></form>',
+      framework: 'html',
+    });
+    assert.equal(invalidInput.valid, false);
+    assert.ok(invalidInput.issues.some((i) => i.rule.includes('Form Field')));
+
+    // validate_component_usage passes compliant snippet
+    const validInput = callMcp('validate_component_usage', {
+      code: '<form><label for="user"><span>Name</span></label><input id="user" name="user" type="text" class="form-control"></form>',
+      framework: 'html',
+    });
+    assert.equal(validInput.valid, true);
   });
 
 });

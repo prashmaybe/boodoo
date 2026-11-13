@@ -22,6 +22,40 @@ export function foldAccents(str) {
 }
 
 /**
+ * Splits text into matched and unmatched segments for search highlighting
+ * @param {string} text
+ * @param {string} query
+ * @returns {Array<{ text: string, match: boolean }>}
+ */
+export function highlightMatches(text, query) {
+  if (!text || typeof text !== 'string') return [];
+  if (!query || typeof query !== 'string') return [{ text, match: false }];
+
+  const foldedText = foldAccents(text);
+  const foldedQuery = foldAccents(query.trim());
+  if (!foldedQuery) return [{ text, match: false }];
+
+  const segments = [];
+  let lastIndex = 0;
+  let idx = foldedText.indexOf(foldedQuery, lastIndex);
+
+  while (idx !== -1) {
+    if (idx > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, idx), match: false });
+    }
+    segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
+    lastIndex = idx + foldedQuery.length;
+    idx = foldedText.indexOf(foldedQuery, lastIndex);
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({ text: text.slice(lastIndex), match: false });
+  }
+
+  return segments;
+}
+
+/**
  * Headless disclosure composable (Modal, Drawer, Dialog, Offcanvas)
  * @param {Object} [options]
  * @param {boolean} [options.defaultOpen=false]
@@ -117,9 +151,14 @@ export function useCombobox(options = {}) {
         ? controlledVal.value
         : controlledVal;
 
+  const getItemsList = () => {
+    const raw = isRef(items) ? items.value : items;
+    return Array.isArray(raw) ? raw : [];
+  };
+
   const internalValue = ref(isControlled ? getControlledVal() : null);
   const initialSelected = isControlled ? getControlledVal() : null;
-  const initialItem = items.find((it) => it.value === initialSelected);
+  const initialItem = getItemsList().find((it) => it && it.value === initialSelected);
 
   const query = ref(initialItem ? initialItem.label : defaultValue);
   const isOpen = ref(false);
@@ -155,11 +194,13 @@ export function useCombobox(options = {}) {
   }
 
   const filteredItems = computed(() => {
+    const list = getItemsList();
     const q = query.value.trim();
-    if (!q) return items;
+    if (!q) return list;
     const foldedQuery = foldAccents(q);
-    return items.filter((item) => {
-      const foldedLabel = foldAccents(item.label);
+    return list.filter((item) => {
+      if (!item) return false;
+      const foldedLabel = foldAccents(item.label || '');
       const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
       const foldedMeta = foldAccents(meta);
       return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);

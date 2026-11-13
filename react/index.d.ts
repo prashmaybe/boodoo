@@ -52,6 +52,10 @@ export interface ComboboxReturn {
 }
 export declare function useCombobox(options?: ComboboxOptions): ComboboxReturn;
 export declare function foldAccents(str: string): string;
+export declare function highlightMatches(
+  text: string,
+  query: string
+): Array<{ text: string; match: boolean }>;
 
 export interface AccordionOptions {
   allowMultiple?: boolean;

@@ -275,7 +275,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
     const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
     assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
-    assert.equal(lockfile.version, '1.3.1', 'package-lock.json version must be 1.3.1');
+    assert.equal(lockfile.version, '1.3.2', 'package-lock.json version must be 1.3.2');
 
     // Assert react-dom peer dependency
     assert.equal(pkg.peerDependencies['react-dom'], '>=18.0.0', 'react-dom peerDependency must require >=18.0.0');
@@ -284,5 +284,58 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert react-native minimum peer dependency is >=0.71.0 for Flexbox gap support
     assert.equal(pkg.peerDependencies['react-native'], '>=0.71.0', 'react-native peerDependency must require >=0.71.0');
     assert.equal(lockfile.packages[''].peerDependencies['react-native'], '>=0.71.0', 'package-lock.json peerDependencies must require react-native >=0.71.0');
+  });
+
+  await t.test('15. Packed-tarball verification and package manifest integrity', async () => {
+    const { execSync } = await import('node:child_process');
+    const packJsonOutput = execSync('npm pack --dry-run --json', { cwd: root, encoding: 'utf8' });
+    const tarballInfo = JSON.parse(packJsonOutput)[0];
+
+    assert.equal(tarballInfo.name, 'boodoo', 'Packed tarball name must be boodoo');
+    assert.equal(tarballInfo.version, '1.3.2', 'Packed tarball version must be 1.3.2');
+
+    const packedPaths = tarballInfo.files.map((f) => f.path);
+
+    // Essential files must be included in published tarball
+    const requiredInTarball = [
+      'package.json',
+      'README.md',
+      'LICENSE',
+      'CHANGELOG.md',
+      'dist/css/boodoo.min.css',
+      'dist/js/boodoo.min.js',
+      'dist/js/boodoo.esm.js',
+      'dist/js/boodoo.cjs',
+      'dist/js/boodoo.d.ts',
+      'tokens/tokens.json',
+      'tokens/index.js',
+      'tokens/index.cjs',
+      'react/index.js',
+      'react/index.d.ts',
+      'vue/index.js',
+      'vue/index.d.ts',
+      'react-native/index.js',
+      'react-native/index.d.ts',
+      'react-native/paper.js',
+      'react-native/paper.d.ts',
+      'docs/ai/component-index.json',
+      'llms.txt',
+      'llms-full.txt',
+    ];
+
+    for (const req of requiredInTarball) {
+      assert.ok(packedPaths.includes(req), `Tarball must include essential file: ${req}`);
+    }
+
+    // Excluded items: tests, build scripts, site source, and local temporary artifacts
+    const prohibitedPrefixes = ['tests/', 'build/', 'site/', '.github/', 'mcp/'];
+    for (const prefix of prohibitedPrefixes) {
+      const leaked = packedPaths.filter((p) => p.startsWith(prefix));
+      assert.equal(
+        leaked.length,
+        0,
+        `Tarball must strictly exclude ${prefix} files. Found: ${leaked.join(', ')}`
+      );
+    }
   });
 });

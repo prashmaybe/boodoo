@@ -11,6 +11,16 @@ The official, zero-dependency MCP server for the **Boodoo Framework**. It enable
 - `get_design_tokens`: Access universal color palettes, spacing scales, border radii, and shadows.
 - `get_installation_guide`: Retrieve verified setup and package instructions for npm, CDN, React, Vue, or React Native.
 
+## Usage & Deployment Scope
+
+The MCP server is a **repository-level developer tool** designed for development workspaces and cloned repositories (e.g., git clones or monorepos). Because it requires direct access to source component catalogues (`docs/ai/component-index.json`), design tokens (`tokens/tokens.json`), and framework examples (`examples/`), it is hosted directly in the repository under `mcp/server.mjs` and intentionally omitted from the published npm runtime tarball to preserve package lightness and zero-runtime-dependency hygiene.
+
+To launch the MCP server in your local repository or cloned workspace:
+
+```bash
+node mcp/server.mjs
+```
+
 ## Adding to Claude Desktop
 
 Add the following to your `claude_desktop_config.json`:
@@ -20,7 +30,7 @@ Add the following to your `claude_desktop_config.json`:
   "mcpServers": {
     "boodoo": {
       "command": "node",
-      "args": ["<PATH_TO_BOODOO>/mcp/server.mjs"]
+      "args": ["<PATH_TO_BOODOO_REPO>/mcp/server.mjs"]
     }
   }
 }
@@ -28,7 +38,7 @@ Add the following to your `claude_desktop_config.json`:
 
 ## Adding to Cursor or Cline
 
-In your MCP settings or `.cursor/mcp.json`:
+In your project workspace MCP settings or `.cursor/mcp.json`:
 
 ```json
 {

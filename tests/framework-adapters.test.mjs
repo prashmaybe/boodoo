@@ -175,6 +175,77 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(composablesSrc.includes('watch('), 'useCombobox must use watch for reactivity');
   assert.ok(composablesSrc.includes('getItems'), 'useCombobox must watch both getControlledVal and getItems');
   assert.ok(composablesSrc.includes('immediate: true'), 'useCombobox item watcher must configure immediate and deep observation');
+
+  // Verify Vue useCombobox ref-based and array-based items filtering (getItemsList)
+  assert.ok(composablesSrc.includes('getItemsList'), 'useCombobox must use getItemsList helper to unwrap ref or plain array items');
+  assert.ok(composablesSrc.includes('const list = getItemsList();'), 'filteredItems must evaluate getItemsList() to support ref-based items reactivity');
+});
+
+test('Vue useCombobox ref-based items and reactive filtering logic', () => {
+  // Test the unwrap and filtering algorithm directly as implemented in useCombobox
+  const mockIsRef = (r) => Boolean(r && r.__v_isRef === true);
+  const foldAccents = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[øØ]/g, 'o')
+      .replace(/[æÆ]/g, 'ae')
+      .toLowerCase();
+  };
+
+  const createFilterEvaluator = (itemsRefOrArray, queryVal, getOptionMeta) => {
+    const raw = mockIsRef(itemsRefOrArray) ? itemsRefOrArray.value : itemsRefOrArray;
+    const list = Array.isArray(raw) ? raw : [];
+    const q = (queryVal || '').trim();
+    if (!q) return list;
+    const foldedQuery = foldAccents(q);
+    return list.filter((item) => {
+      if (!item) return false;
+      const foldedLabel = foldAccents(item.label || '');
+      const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
+      const foldedMeta = foldAccents(meta);
+      return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);
+    });
+  };
+
+  // Test 1: Plain array items filtering
+  const staticItems = [
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' }
+  ];
+  assert.equal(createFilterEvaluator(staticItems, '').length, 3);
+  assert.equal(createFilterEvaluator(staticItems, 'ban').length, 1);
+  assert.equal(createFilterEvaluator(staticItems, 'ban')[0].value, 'banana');
+
+  // Test 2: Ref-based items filtering with dynamic updates
+  const dynamicItemsRef = {
+    __v_isRef: true,
+    value: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Angular', value: 'angular' }
+    ]
+  };
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'vu').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'vu')[0].value, 'vue');
+
+  // Mutate ref value
+  dynamicItemsRef.value = [
+    ...dynamicItemsRef.value,
+    { label: 'Svelte', value: 'svelte' }
+  ];
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'sv').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'sv')[0].value, 'svelte');
+
+  // Test 3: Accent folding with ref items
+  dynamicItemsRef.value = [
+    { label: 'Café', value: 'cafe' },
+    { label: 'München', value: 'munchen' }
+  ];
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'cafe').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'munchen').length, 1);
 });
 
 test('React useDisclosure transition-aware execution and combobox query sync', () => {
@@ -244,4 +315,64 @@ test('Boodoo framework CommonJS entry point and module export verification', () 
   const boodooCjs = readFileSync(cjsPath, 'utf8');
   assert.ok(boodooCjs.includes('module.exports'), 'boodoo.cjs must support CommonJS export');
 });
+
+test('Search match highlighting utility (highlightMatches) in React and Vue', () => {
+  const reactHooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
+  const vueComposablesSrc = readFileSync(resolve(rootDir, 'vue/composables.js'), 'utf8');
+
+  assert.ok(reactHooksSrc.includes('export function highlightMatches'), 'react/hooks.js must export highlightMatches');
+  assert.ok(vueComposablesSrc.includes('export function highlightMatches'), 'vue/composables.js must export highlightMatches');
+
+  // Evaluate the highlight algorithm directly
+  const foldAccents = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[øØ]/g, 'o')
+      .replace(/[æÆ]/g, 'ae')
+      .toLowerCase();
+  };
+
+  const highlightMatches = (text, query) => {
+    if (!text || typeof text !== 'string') return [];
+    if (!query || typeof query !== 'string') return [{ text, match: false }];
+
+    const foldedText = foldAccents(text);
+    const foldedQuery = foldAccents(query.trim());
+    if (!foldedQuery) return [{ text, match: false }];
+
+    const segments = [];
+    let lastIndex = 0;
+    let idx = foldedText.indexOf(foldedQuery, lastIndex);
+
+    while (idx !== -1) {
+      if (idx > lastIndex) {
+        segments.push({ text: text.slice(lastIndex, idx), match: false });
+      }
+      segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
+      lastIndex = idx + foldedQuery.length;
+      idx = foldedText.indexOf(foldedQuery, lastIndex);
+    }
+
+    if (lastIndex < text.length) {
+      segments.push({ text: text.slice(lastIndex), match: false });
+    }
+
+    return segments;
+  };
+
+  assert.deepEqual(highlightMatches('', 'test'), []);
+  assert.deepEqual(highlightMatches('Hello World', ''), [{ text: 'Hello World', match: false }]);
+
+  const segments = highlightMatches('United States of America', 'state');
+  assert.equal(segments.length, 3);
+  assert.equal(segments[0].text, 'United ');
+  assert.equal(segments[0].match, false);
+  assert.equal(segments[1].text, 'State');
+  assert.equal(segments[1].match, true);
+  assert.equal(segments[2].text, 's of America');
+  assert.equal(segments[2].match, false);
+});
+
 

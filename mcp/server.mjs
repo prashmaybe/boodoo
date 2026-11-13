@@ -119,6 +119,42 @@ const TOOLS = [
     },
   },
   {
+    name: 'get_design_token',
+    description:
+      'Retrieve a specific design token value by name or token path (e.g. "colors.primary", "primary", "spacing.1", "radii.md").',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string',
+          description:
+            'Token name or category.key (e.g. "primary", "colors.primary", "spacing.1", "1")',
+        },
+      },
+      required: ['name'],
+    },
+  },
+  {
+    name: 'validate_component_usage',
+    description:
+      'Validate a code snippet against Boodoo architectural guidelines (checks form control id/name, raw text node containment, CSS token usage, and React Native style purity).',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        code: {
+          type: 'string',
+          description: 'HTML, JSX, or Vue code snippet to validate',
+        },
+        framework: {
+          type: 'string',
+          description: 'Framework: "html", "react", "vue", or "react-native"',
+          enum: ['html', 'react', 'vue', 'react-native'],
+        },
+      },
+      required: ['code'],
+    },
+  },
+  {
     name: 'get_installation_guide',
     description:
       'Return framework-specific installation and setup instructions for Boodoo (npm, CDN, React, Vue, React Native, Vite).',
@@ -167,20 +203,48 @@ function handleToolCall(name, args = {}) {
     }
 
     case 'get_component_example': {
-      const compName = (args.component || '').toLowerCase();
-      const fw = (args.framework || 'vanilla-js').toLowerCase();
-      const exampleDir = path.join(root, 'examples', fw, compName);
+      const compName = (args.component || '').toLowerCase().trim();
+      const fw = (args.framework || 'vanilla-js').toLowerCase().trim();
 
-      if (fs.existsSync(exampleDir)) {
+      // Allowed framework directories
+      const allowedFw = ['vanilla-js', 'react', 'vue', 'react-native'];
+      if (!allowedFw.includes(fw)) {
+        return { error: `Invalid framework "${args.framework}". Allowed: ${allowedFw.join(', ')}` };
+      }
+
+      // Prevent path traversal
+      const sanitizedComp = path.basename(compName);
+      if (
+        !sanitizedComp ||
+        sanitizedComp !== compName ||
+        compName.includes('..') ||
+        compName.includes('/') ||
+        compName.includes('\\')
+      ) {
+        return { error: 'Invalid component name.' };
+      }
+
+      const examplesBase = path.resolve(root, 'examples');
+      const exampleDir = path.resolve(examplesBase, fw, sanitizedComp);
+
+      // Verify resolved path stays strictly within examplesBase
+      if (!exampleDir.startsWith(examplesBase + path.sep)) {
+        return { error: 'Invalid component path.' };
+      }
+
+      if (fs.existsSync(exampleDir) && fs.statSync(exampleDir).isDirectory()) {
         const files = {};
         for (const file of fs.readdirSync(exampleDir)) {
-          files[file] = fs.readFileSync(path.join(exampleDir, file), 'utf8');
+          const filePath = path.join(exampleDir, file);
+          if (fs.statSync(filePath).isFile()) {
+            files[file] = fs.readFileSync(filePath, 'utf8');
+          }
         }
-        return { framework: fw, component: compName, files };
+        return { framework: fw, component: sanitizedComp, files };
       }
 
       return {
-        message: `Direct runnable example not found for ${fw}/${compName}. See docs at https://boodooframework.com/docs/components/${compName}.html`,
+        message: `Direct runnable example not found for ${fw}/${sanitizedComp}. See docs at https://boodooframework.com/docs/components/${sanitizedComp}.html`,
       };
     }
 
@@ -230,11 +294,109 @@ function handleToolCall(name, args = {}) {
       return { [cat]: designTokens[cat] };
     }
 
+    case 'get_design_token': {
+      const query = (args.name || '').trim();
+      if (!query) {
+        return { error: 'Token name is required.' };
+      }
+
+      // Check category.key format (e.g. "colors.primary", "spacing.1")
+      if (query.includes('.')) {
+        const [cat, key] = query.split('.');
+        if (designTokens[cat] && designTokens[cat][key] !== undefined) {
+          return { category: cat, token: key, value: designTokens[cat][key] };
+        }
+      }
+
+      // Search across all token categories
+      for (const [cat, tokens] of Object.entries(designTokens)) {
+        if (tokens && typeof tokens === 'object' && tokens[query] !== undefined) {
+          return { category: cat, token: query, value: tokens[query] };
+        }
+      }
+
+      return {
+        error: `Token "${query}" not found in design tokens. Available categories: ${Object.keys(designTokens).join(', ')}`,
+      };
+    }
+
+    case 'validate_component_usage': {
+      const code = args.code || '';
+      const fw = (args.framework || 'html').toLowerCase();
+      const issues = [];
+      const suggestions = [];
+
+      // Check for form inputs missing id or name
+      const inputTagRegex = /<(?:input|select|textarea)\b([^>]*)>/gi;
+      let match;
+      while ((match = inputTagRegex.exec(code)) !== null) {
+        const attrs = match[1];
+        const hasId = /\bid\s*=\s*["'][^"']+["']/i.test(attrs);
+        const hasName = /\bname\s*=\s*["'][^"']+["']/i.test(attrs);
+        if (!hasId && !hasName) {
+          issues.push({
+            rule: 'Form Field Element Identification',
+            element: match[0],
+            message:
+              'Form controls must include an id or name attribute for accessibility and browser autofill.',
+          });
+        }
+      }
+
+      // Check for raw text inside div / section layout blocks (HTML/JSX)
+      if (fw === 'html' || fw === 'react' || fw === 'vue') {
+        const rawDivText = /<(?:div|section|article|nav|header|footer)[^>]*>([a-zA-Z0-9\s]{3,})</g;
+        let divMatch;
+        while ((divMatch = rawDivText.exec(code)) !== null) {
+          const inner = divMatch[1].trim();
+          if (inner && !inner.startsWith('<')) {
+            issues.push({
+              rule: 'Text Wrapping Rule',
+              sample: divMatch[0],
+              message:
+                'Raw text nodes must be wrapped in semantic elements (<p>, <span>, <strong>, <label>), never placed naked inside layout containers.',
+            });
+            break;
+          }
+        }
+      }
+
+      // Check for inline style literals in React Native
+      if (fw === 'react-native') {
+        if (/style\s*=\s*\{\s*\{/g.test(code)) {
+          issues.push({
+            rule: 'React Native StyleSheet-Only Rule',
+            message:
+              'Avoid inline style object literals (style={{...}}) in React Native; declare styling via StyleSheet.create().',
+          });
+        }
+      }
+
+      // Check for hardcoded hex colors when custom properties should be used
+      if (
+        /#(?:[0-9a-fA-F]{3}){1,2}\b/.test(code) &&
+        (fw === 'html' || fw === 'react' || fw === 'vue')
+      ) {
+        suggestions.push({
+          rule: 'Dynamic CSS Custom Property Theming',
+          message:
+            'Found hardcoded hex color literals. Prefer dynamic theme tokens such as var(--boodoo-primary).',
+        });
+      }
+
+      return {
+        valid: issues.length === 0,
+        issuesCount: issues.length,
+        issues,
+        suggestions,
+      };
+    }
+
     case 'get_installation_guide': {
       const target = (args.target || 'npm').toLowerCase();
       const guides = {
         npm: 'npm install boodoo\nimport "boodoo/css";\nimport boodoo, { Modal, Toast } from "boodoo";\nboodoo.init();',
-        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>',
+        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/js/boodoo.min.js" defer></script>',
         react:
           'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/react";',
         vue: 'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/vue";',
@@ -273,7 +435,7 @@ rl.on('line', (line) => {
           },
           serverInfo: {
             name: 'boodoo-mcp-server',
-            version: '1.3.1',
+            version: '1.3.2',
           },
         },
       };

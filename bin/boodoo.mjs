@@ -433,7 +433,7 @@ export function printHelp() {
   \x1b[33mcreate [project-name]\x1b[0m                  Scaffold a full starter app (Next.js, Vite, HTML5, React Native, Electron)
   \x1b[33madd <component>\x1b[0m                        Directly inject component source into your project (shadcn-style)
   \x1b[33mmigrate --from=bootstrap|tailwind [dir]\x1b[0m Codemod existing HTML/JSX templates to Boodoo classes and data attributes
-  \x1b[33mlist\x1b[0m                                   List all copy-pasteable components available in Boodoo
+  \x1b[33mlist [--json]\x1b[0m                          List all copy-pasteable components available in Boodoo
   \x1b[33mhelp\x1b[0m                                   Show this help message
 
 \x1b[36mExamples:\x1b[0m
@@ -450,15 +450,18 @@ export async function runCli(cmd = command, cmdArgs = args) {
       return await handleAdd(cmdArgs);
     case 'migrate':
       return await handleMigrate(cmdArgs);
-    case 'list':
-      console.log('\n\x1b[36mAvailable Boodoo Components:\x1b[0m\n');
-      console.log(
-        listAvailableComponents()
-          .map((c) => `  - ${c}`)
-          .join('\n')
-      );
-      console.log('');
-      return listAvailableComponents();
+    case 'list': {
+      const isJson = cmdArgs.includes('--json');
+      const list = listAvailableComponents();
+      if (isJson) {
+        console.log(JSON.stringify(list, null, 2));
+      } else {
+        console.log('\n\x1b[36mAvailable Boodoo Components:\x1b[0m\n');
+        console.log(list.map((c) => `  - ${c}`).join('\n'));
+        console.log('');
+      }
+      return list;
+    }
     case 'create':
     case 'init': {
       const createScript = path.join(root, 'bin', 'create-boodoo.mjs');

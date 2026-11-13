@@ -3,7 +3,13 @@
 // =====================================================================
 
 // Headless hooks
-export { useDisclosure, useCombobox, useAccordion, foldAccents } from './hooks.js';
+export {
+  useDisclosure,
+  useCombobox,
+  useAccordion,
+  foldAccents,
+  highlightMatches,
+} from './hooks.js';
 
 // Modular Submodules
 export * from './theme.js';

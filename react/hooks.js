@@ -22,6 +22,40 @@ export function foldAccents(str) {
 }
 
 /**
+ * Splits text into matched and unmatched segments for search highlighting
+ * @param {string} text
+ * @param {string} query
+ * @returns {Array<{ text: string, match: boolean }>}
+ */
+export function highlightMatches(text, query) {
+  if (!text || typeof text !== 'string') return [];
+  if (!query || typeof query !== 'string') return [{ text, match: false }];
+
+  const foldedText = foldAccents(text);
+  const foldedQuery = foldAccents(query.trim());
+  if (!foldedQuery) return [{ text, match: false }];
+
+  const segments = [];
+  let lastIndex = 0;
+  let idx = foldedText.indexOf(foldedQuery, lastIndex);
+
+  while (idx !== -1) {
+    if (idx > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, idx), match: false });
+    }
+    segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
+    lastIndex = idx + foldedQuery.length;
+    idx = foldedText.indexOf(foldedQuery, lastIndex);
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({ text: text.slice(lastIndex), match: false });
+  }
+
+  return segments;
+}
+
+/**
  * Headless disclosure hook (Modal, Drawer, Dialog, Offcanvas)
  * @param {Object} [options]
  * @param {boolean} [options.defaultOpen=false]

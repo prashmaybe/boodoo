@@ -81,7 +81,7 @@ All distribution assets are tested, minified, and verified on every release buil
 | `boodoo-reboot.min.css` | ~12 KB | ~3.2 KB | ~2.8 KB | Modern CSS reset & base typography |
 | `boodoo-animations.min.css` | ~4 KB | ~1.1 KB | ~0.9 KB | Motion utilities & keyframes |
 | `boodoo.min.js` | ~123 KB | ~29.0 KB | ~24.9 KB | Pure vanilla JS minified with charts & full a11y suite (zero dependencies) |
-| `boodoo.js` | ~207 KB | ~37.4 KB | ~30.9 KB | Pure vanilla JS unminified bundle with source maps |
+| `boodoo.js` | ~207 KB | ~37.9 KB | ~31.3 KB | Pure vanilla JS unminified bundle with source maps |
 
 #### 🔬 Reproducible Benchmark Instructions
 
@@ -128,20 +128,20 @@ When teams choose how to structure layout across web projects, different approac
 
 ```html
 <!-- jsDelivr (Primary CDN) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/js/boodoo.min.js" defer></script>
 
 <!-- unpkg (Alternative CDN) -->
-<link href="https://unpkg.com/boodoo@1.3.1/dist/css/boodoo.min.css" rel="stylesheet">
-<script src="https://unpkg.com/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>
+<link href="https://unpkg.com/boodoo@1.3.2/dist/css/boodoo.min.css" rel="stylesheet">
+<script src="https://unpkg.com/boodoo@1.3.2/dist/js/boodoo.min.js" defer></script>
 ```
 
 #### Lean Modular CDN Builds
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
-<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo-grid.min.css" rel="stylesheet"> <!-- grid only (~2.4 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo-utilities.min.css" rel="stylesheet"> <!-- utilities only (~22 KB gzip) -->
+<link href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo-reboot.min.css" rel="stylesheet"> <!-- reset only (~3.2 KB gzip) -->
 ```
 
 ### npm
@@ -156,10 +156,10 @@ import boodoo, { Modal, Toast, Collapse, a11y } from 'boodoo';
 import 'boodoo/css';
 
 // Headless Declarative React Hooks (Next.js, Remix, Vite)
-import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
+import { useDisclosure, useCombobox, useAccordion, highlightMatches } from 'boodoo/react';
 
 // Headless Declarative Vue 3 Composables (Nuxt, Vite)
-import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion } from 'boodoo/vue';
+import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion, highlightMatches as highlightVueMatches } from 'boodoo/vue';
 
 // React Native Mobile (iOS & Android)
 import { Button, Card, BoodooProvider } from 'boodoo/react-native';
@@ -179,7 +179,8 @@ Scaffold projects, add copy-paste components, or codemod existing codebases:
 
 ```bash
 # Scaffold a full starter app (Next.js, Vite, React Native, Electron, HTML5)
-npx boodoo create my-app
+# Use --ai to automatically drop .cursor/rules and CLAUDE.md developer instructions
+npx boodoo create my-app --ai
 
 # Inject a component directly into your source (shadcn-style)
 npx boodoo add modal
@@ -189,8 +190,9 @@ npx boodoo add command-palette
 npx boodoo migrate --from=bootstrap ./src
 npx boodoo migrate --from=tailwind index.html
 
-# List all copy-pasteable components
+# List all copy-pasteable components (or --json for tooling)
 npx boodoo list
+npx boodoo list --json
 ```
 
 ---

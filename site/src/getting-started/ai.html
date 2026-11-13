@@ -15,27 +15,30 @@ order: 19
 
   <div class="row g-3 my-3">
     <div class="col-12 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="fw-bold"><span>Machine-Readable Specs</span></h5>
-          <p class="text-muted mb-0"><span>Native <code>llms.txt</code>, <code>llms-full.txt</code>, and <code>component-index.json</code> served at the domain root for agent context ingestion.</span></p>
+      <div class="card card-hover h-100 p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
+          <i class="hi-document-text" aria-hidden="true"></i>
         </div>
+        <h5 class="fw-bold mb-2"><span>Machine-Readable Specs</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Native <code>llms.txt</code>, <code>llms-full.txt</code>, and <code>component-index.json</code> served at the domain root for agent context ingestion.</span></p>
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="fw-bold"><span>MCP Server</span></h5>
-          <p class="text-muted mb-0"><span>Zero-dependency Model Context Protocol server exposing components, tokens, docs, and code examples directly to IDEs.</span></p>
+      <div class="card card-hover h-100 p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-success text-success mb-3">
+          <i class="hi-terminal" aria-hidden="true"></i>
         </div>
+        <h5 class="fw-bold mb-2"><span>MCP Server</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Zero-dependency Model Context Protocol server exposing components, tokens, docs, and code examples directly to IDEs.</span></p>
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="fw-bold"><span>Runnable Examples</span></h5>
-          <p class="text-muted mb-0"><span>A library of validated examples for Vanilla JS, React hooks, Vue 3, and React Native that LLMs can accurately replicate.</span></p>
+      <div class="card card-hover h-100 p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-info text-info mb-3">
+          <i class="hi-code" aria-hidden="true"></i>
         </div>
+        <h5 class="fw-bold mb-2"><span>Runnable Examples</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>A library of validated examples for Vanilla JS, React hooks, Vue 3, and React Native that LLMs can accurately replicate.</span></p>
       </div>
     </div>
   </div>
@@ -83,6 +86,7 @@ order: 19
 <section class="mb-5">
   <h2 class="fw-bold" id="mcp-server"><span>Boodoo Model Context Protocol (MCP) Server</span></h2>
   <p><span>The Boodoo repository includes an integrated, zero-dependency MCP server that lets compatible AI agents (Claude Desktop, Cursor, Cline, Windsurf) query authoritative framework data during conversations.</span></p>
+  <p><span><em>Note:</em> The MCP server is a development-mode tool intended for repository clones and workspaces (omitted from the published npm runtime tarball to maintain zero-runtime overhead).</span></p>
 
   <h4 class="fw-bold mt-3"><span>Available Tools</span></h4>
   <ul>
@@ -91,18 +95,54 @@ order: 19
     <li><span><code>get_component_example</code>: Return runnable code samples across Vanilla JS, React, Vue, or React Native.</span></li>
     <li><span><code>search_utilities</code>: Search spacing, flexbox, CSS grid, and elevation utilities.</span></li>
     <li><span><code>get_design_tokens</code>: Access universal color palettes, spacing scales, and border radii.</span></li>
+    <li><span><code>get_design_token</code>: Query a specific design token by name or path (e.g., <code>colors.primary</code>, <code>spacing.1</code>).</span></li>
+    <li><span><code>validate_component_usage</code>: Syntax &amp; a11y linter validating form field IDs, text node wrapping, and React Native style purity.</span></li>
     <li><span><code>get_installation_guide</code>: Retrieve verified setup instructions for npm, CDN, React, Vue, or React Native.</span></li>
   </ul>
 
-  <h4 class="fw-bold mt-3"><span>Connecting in Claude Desktop</span></h4>
-  <pre><code class="language-json">{
+  <h4 class="fw-bold mt-4"><span>Client Configuration Snippets</span></h4>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>1. Claude Desktop (<code>claude_desktop_config.json</code>)</span></h5>
+    <div class="highlight">
+      <pre><code class="language-json">{
   "mcpServers": {
     "boodoo": {
       "command": "node",
-      "args": ["&lt;PATH_TO_BOODOO&gt;/mcp/server.mjs"]
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
     }
   }
 }</code></pre>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>2. Cursor (<code>.cursor/mcp.json</code>)</span></h5>
+    <div class="highlight">
+      <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <h5 class="h6 fw-bold"><span>3. VS Code / Cline (<code>settings.json</code>)</span></h5>
+    <div class="highlight">
+      <pre><code class="language-json">{
+  "cline.mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
 </section>
 
 <section class="mb-5">
