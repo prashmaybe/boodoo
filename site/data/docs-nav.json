@@ -51,6 +51,10 @@
         "title": "Dark Mode & Themes"
       },
       {
+        "route": "getting-started/rtl",
+        "title": "RTL Language Support"
+      },
+      {
         "route": "getting-started/custom-elements",
         "title": "Custom Elements"
       },

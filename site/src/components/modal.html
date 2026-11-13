@@ -165,7 +165,7 @@ other.toggle();</code></pre>
 </div>
 
 <h2 id="native-dialog">Native HTML5 &lt;dialog&gt; API (Zero-JS)</h2>
-<p>boodoo natively styles standard HTML5 <code>&lt;dialog class="modal"&gt;</code> elements. The browser natively manages focus trapping, <kbd>Esc</kbd> dismissal, and backdrop rendering with zero JavaScript dependency overhead:</p>
+<p>boodoo natively styles standard HTML5 <code>&lt;dialog class="modal"&gt;</code> elements. The browser natively manages focus trapping, <kbd>Esc</kbd> dismissal, and backdrop rendering with zero JavaScript dependency overhead. Furthermore, background body scrolling is automatically locked when the dialog is open via modern CSS <code>body:has(dialog.modal[open])</code> and overscroll chaining is prevented:</p>
 <div class="bd-example">
   <button type="button" class="btn btn-primary" onclick="document.getElementById('nativeDemoDialog').showModal()">
     <span>Open Native &lt;dialog&gt;</span>
@@ -198,3 +198,7 @@ other.toggle();</code></pre>
   &lt;/div&gt;
 &lt;/dialog&gt;</code></pre>
 </div>
+
+
+<h2><span>Related Mobile Overlays</span></h2>
+<p><span>For mobile thumb navigation with swipe-down dismiss gestures, also check out the touch-enabled <a href="/docs/components/bottom-sheet.html"><strong>Bottom Sheet</strong></a> and sliding <a href="/docs/components/offcanvas.html"><strong>Offcanvas</strong></a> components.</span></p>

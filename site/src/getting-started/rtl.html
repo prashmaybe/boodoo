@@ -1,0 +1,372 @@
+<!--
+title: Right-to-Left (RTL) Support
+description: Comprehensive RTL language support in boodoo for Arabic, Hebrew, Persian, Urdu, and bidirectional apps across Web, React, Vue, Angular, Electron, and React Native.
+section: getting-started
+order: 6
+-->
+<h1><span>Right-to-Left (RTL) Support</span></h1>
+<p class="lead"><span>Build native bidirectional and Right-to-Left (RTL) applications for Arabic, Hebrew, Persian, Urdu, Sindhi, and Pashto. Boodoo provides first-class logical property primitives, bidirectional helper classes, an automated RTL JavaScript API, and seamless integration across Web, React, Vue, Angular, Electron, and React Native.</span></p>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <i class="hi-globe text-primary fs-4" aria-hidden="true"></i>
+      </div>
+      <h5><span>Bidirectional Primitives</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>CSS logical spacing (<code>ms-*</code>, <code>me-*</code>, <code>ps-*</code>, <code>pe-*</code>) and automated component alignment for carets, dropdowns, popovers, and dialogs.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <i class="hi-switch text-success fs-4" aria-hidden="true"></i>
+      </div>
+      <h5><span>Dynamic Direction API</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Runtime direction switching and localStorage persistence with <code>boodoo.rtl</code>, <code>[data-boodoo-toggle="direction"]</code>, and React/Vue hooks.</span></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-2 shadow-sm h-100">
+      <div class="d-flex align-items-center gap-1 mb-2">
+        <i class="hi-devices text-warning fs-4" aria-hidden="true"></i>
+      </div>
+      <h5><span>Universal Multi-Platform</span></h5>
+      <p class="text-muted fs-7 mb-0"><span>Native support across vanilla web, React DOM, Vue 3 / Nuxt composables, Angular directives, Electron desktop windows, and React Native mobile.</span></p>
+    </div>
+  </div>
+</div>
+
+<hr class="my-3">
+
+<h2 id="html-setup"><span>1. HTML Markup &amp; Quick Start</span></h2>
+<p><span>Enable Right-to-Left layout globally on your page by setting the standard <code>dir="rtl"</code> attribute and language code on the root <code>&lt;html&gt;</code> element:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;تطبيق بودو&lt;/title&gt;
+    &lt;!-- Boodoo Combined CSS --&gt;
+    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container py-4"&gt;
+      &lt;h1&gt;&lt;span&gt;مرحباً بك في بودو&lt;/span&gt;&lt;/h1&gt;
+      &lt;p class="lead"&gt;&lt;span&gt;إطار عمل تصميم حديث ومتوافق تماماً مع الاتجاه من اليمين إلى اليسار.&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<p><span>For scoped bidirectional sections inside an otherwise LTR document, you can apply <code>dir="rtl"</code> or the <code>.dir-rtl</code> helper class to any container or widget:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;!-- Scoped Arabic/Hebrew Widget --&gt;
+&lt;section class="card p-3 dir-rtl" dir="rtl"&gt;
+  &lt;h4&gt;&lt;span&gt;لوحة التحكم&lt;/span&gt;&lt;/h4&gt;
+  &lt;p&gt;&lt;span&gt;هذا القسم يعمل بنظام RTL بشكل مستقل عن باقي الصفحة.&lt;/span&gt;&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="js-api"><span>2. JavaScript Direction API (<code>boodoo.rtl</code>)</span></h2>
+<p><span>Boodoo includes a built-in direction manager accessible via <code>boodoo.rtl</code>. It handles instant direction updates, localStorage persistence, and custom change notifications without page reloads:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-javascript">import boodoo, { rtl } from 'boodoo';
+
+// Get active direction ('ltr' or 'rtl')
+const currentDir = boodoo.rtl.get();
+
+// Check if document is currently in RTL mode
+if (boodoo.rtl.isRtl()) {
+  console.log('Document is currently RTL');
+}
+
+// Set explicit direction
+boodoo.rtl.set('rtl');  // Switch to Right-to-Left
+boodoo.rtl.set('ltr');  // Switch to Left-to-Right
+boodoo.rtl.set('auto'); // Auto-detect from browser navigator.language
+
+// Toggle direction dynamically
+boodoo.rtl.toggle();
+
+// Listen to direction change events
+document.addEventListener('boodoo.direction.change', (e) => {
+  console.log('Direction changed to:', e.detail.resolved);
+});</code></pre>
+</div>
+
+<h3><span>Declarative HTML Direction Toggler</span></h3>
+<p><span>You can trigger direction toggling directly from buttons without writing custom JavaScript by using the <code>data-boodoo-toggle="direction"</code> data attribute:</span></p>
+
+<div class="bd-example mb-3">
+  <div class="d-flex align-items-center gap-2">
+    <button type="button" class="btn btn-outline-primary btn-sm" data-boodoo-toggle="direction">
+      <i class="hi-switch me-1" aria-hidden="true"></i><span>Toggle RTL / LTR</span>
+    </button>
+    <button type="button" class="btn btn-secondary btn-sm" data-boodoo-toggle="direction" data-boodoo-direction-value="rtl">
+      <span>Force RTL</span>
+    </button>
+    <button type="button" class="btn btn-light btn-sm" data-boodoo-toggle="direction" data-boodoo-direction-value="ltr">
+      <span>Force LTR</span>
+    </button>
+  </div>
+</div>
+
+<div class="highlight">
+  <pre><code class="language-html">&lt;button type="button" class="btn btn-outline-primary" data-boodoo-toggle="direction"&gt;
+  &lt;span&gt;Toggle RTL / LTR&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-secondary" data-boodoo-toggle="direction" data-boodoo-direction-value="rtl"&gt;
+  &lt;span&gt;Force RTL&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="components-elements"><span>3. Component &amp; Element Behavior in RTL</span></h2>
+<p><span>When <code>dir="rtl"</code> or <code>.dir-rtl</code> is active, Boodoo automatically mirrors directional components:</span></p>
+
+<div class="table-responsive mb-4">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 25%;"><span>Component</span></th>
+        <th style="width: 35%;"><span>LTR Default</span></th>
+        <th style="width: 40%;"><span>RTL Behavior (Automatic)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.dropdown-toggle</code></td>
+        <td>Caret on right (<code>margin-left: 0.5em</code>)</td>
+        <td>Caret mirrors to left (<code>margin-right: 0.5em; margin-left: 0</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.accordion-button</code></td>
+        <td>Chevron on right (<code>margin-left: auto</code>)</td>
+        <td>Chevron aligns to left (<code>margin-right: auto; margin-left: 0</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.offcanvas-start</code></td>
+        <td>Slides in from left edge</td>
+        <td>Slides in from right edge (<code>right: 0; left: auto</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.offcanvas-end</code></td>
+        <td>Slides in from right edge</td>
+        <td>Slides in from left edge (<code>left: 0; right: auto</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.alert-dismissible</code></td>
+        <td>Close button on top-right</td>
+        <td>Close button mirrors to top-left (<code>left: 0; right: auto</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.modal-header .btn-close</code></td>
+        <td>Close button aligned far right</td>
+        <td>Close button aligned far left (<code>margin-right: auto</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.input-group</code></td>
+        <td>First addon rounded on left, right flat</td>
+        <td>Addon rounded on right, inner borders seamlessly inverted</td>
+      </tr>
+      <tr>
+        <td><code>.pagination</code></td>
+        <td>Previous page item on left</td>
+        <td>First item rounded on right; subsequent items overlap on right</td>
+      </tr>
+      <tr>
+        <td><code>.form-check-input</code></td>
+        <td>Checkbox floated left</td>
+        <td>Checkbox floated right (<code>float: right; margin-right: -1.5em</code>)</td>
+      </tr>
+      <tr>
+        <td><code>.form-floating label</code></td>
+        <td>Label transform origin at (0, 0)</td>
+        <td>Label transform origin pinned at top-right (<code>100% 0</code>)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="my-3">
+
+<h2 id="react"><span>4. React Integration (<code>boodoo/react</code>)</span></h2>
+<p><span>In React applications, wrap your tree in <code>BoodooProvider</code> and pass the <code>direction</code> or <code>dir</code> prop. Use the <code>useDirection()</code> hook to consume the active layout direction anywhere in your component tree:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-jsx">import React, { useState } from 'react';
+import { BoodooProvider, useDirection, Button, Dialog } from 'boodoo/react';
+
+function Header() {
+  const direction = useDirection();
+  return (
+    &lt;header className="d-flex justify-content-between align-items-center mb-4"&gt;
+      &lt;h3 className="mb-0"&gt;&lt;span&gt;{direction === 'rtl' ? 'لوحة التحكم' : 'Dashboard'}&lt;/span&gt;&lt;/h3&gt;
+      &lt;span className="badge bg-primary"&gt;&lt;span&gt;Direction: {direction}&lt;/span&gt;&lt;/span&gt;
+    &lt;/header&gt;
+  );
+}
+
+export default function App() {
+  const [direction, setDirection] = useState('rtl');
+
+  return (
+    &lt;BoodooProvider direction={direction}&gt;
+      &lt;div className="container py-4"&gt;
+        &lt;Header /&gt;
+        &lt;Button variant="secondary" onClick={() =&gt; setDirection(d =&gt; d === 'rtl' ? 'ltr' : 'rtl')}&gt;
+          &lt;span&gt;تبديل الاتجاه (Switch Direction)&lt;/span&gt;
+        &lt;/Button&gt;
+      &lt;/div&gt;
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="vue"><span>5. Vue 3 &amp; Nuxt Integration (<code>boodoo/vue</code>)</span></h2>
+<p><span>Vue 3 applications can leverage the reactive <code>useDirection()</code> composable from <code>boodoo/vue</code> to manage bidirectional state, synchronize with <code>&lt;html dir="..."&gt;</code>, and bind direction-aware classes:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-vue">&lt;script setup&gt;
+import { useDirection, useDisclosure } from 'boodoo/vue';
+
+const { direction, isRtl, setDirection, toggleDirection } = useDirection('rtl');
+const modal = useDisclosure();
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div :dir="direction" class="container py-4"&gt;
+    &lt;div class="d-flex justify-content-between align-items-center mb-3"&gt;
+      &lt;h2&gt;&lt;span&gt;{{ isRtl ? 'المستخدمين' : 'Users' }}&lt;/span&gt;&lt;/h2&gt;
+      &lt;button type="button" class="btn btn-outline-secondary" @click="toggleDirection"&gt;
+        &lt;span&gt;{{ isRtl ? 'English (LTR)' : 'عربي (RTL)' }}&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="angular"><span>6. Angular Integration</span></h2>
+<p><span>In Angular applications, configure directionality using Angular CDK's <code>BidiModule</code> or an inline Boodoo direction directive that observes <code>document.documentElement.dir</code>:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-typescript">import { Component, Inject, Renderer2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    &lt;div class="container py-4" [attr.dir]="direction"&gt;
+      &lt;div class="d-flex justify-content-between align-items-center mb-3"&gt;
+        &lt;h2&gt;&lt;span&gt;{{ direction === 'rtl' ? 'لوحة القيادة' : 'Control Panel' }}&lt;/span&gt;&lt;/h2&gt;
+        &lt;button type="button" class="btn btn-primary" (click)="toggleDirection()"&gt;
+          &lt;span&gt;Switch to {{ direction === 'rtl' ? 'LTR' : 'RTL' }}&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class AppComponent {
+  direction: 'ltr' | 'rtl' = 'rtl';
+
+  constructor(
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document
+  ) {
+    this.updateDocumentDir();
+  }
+
+  toggleDirection(): void {
+    this.direction = this.direction === 'rtl' ? 'ltr' : 'rtl';
+    this.updateDocumentDir();
+  }
+
+  private updateDocumentDir(): void {
+    this.renderer.setAttribute(this.document.documentElement, 'dir', this.direction);
+  }
+}</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="electron"><span>7. Electron Desktop Applications</span></h2>
+<p><span>When building cross-platform desktop applications with Electron and Boodoo, synchronize window layout direction with OS system locale or user settings in your preload and renderer scripts:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-javascript">// renderer.js (Electron Renderer Process)
+import boodoo from 'boodoo';
+
+// Check system locale passed from main process via IPC
+window.electronAPI.getSystemLocale().then((locale) =&gt; {
+  const isRtlLocale = /^(ar|he|fa|ur|ps|sd|ug|yi)/i.test(locale);
+  boodoo.rtl.set(isRtlLocale ? 'rtl' : 'ltr');
+});
+
+// Allow user to toggle direction at runtime with persistence
+document.getElementById('toggleDirBtn')?.addEventListener('click', () => {
+  const newDir = boodoo.rtl.toggle();
+  window.electronAPI.saveSetting('app-direction', newDir);
+});</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="react-native"><span>8. React Native Mobile Applications</span></h2>
+<p><span>For React Native mobile apps (iOS &amp; Android), use React Native's native <code>I18nManager</code> together with Boodoo's layout primitives. Boodoo stacks (<code>HStack</code>, <code>XStack</code>) and grid systems respect writing flow and allow explicit reversal:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-jsx">import React from 'react';
+import { I18nManager } from 'react-native';
+import { Box, HStack, VStack, Text, Button, BoodooProvider } from 'boodoo/react-native';
+
+export default function MobileRtlScreen() {
+  const isRTL = I18nManager.isRTL;
+
+  return (
+    &lt;BoodooProvider&gt;
+      &lt;Box style={{ padding: 16 }}&gt;
+        &lt;Text variant="h2"&gt;
+          &lt;Text&gt;{isRTL ? 'إعدادات الحساب' : 'Account Settings'}&lt;/Text&gt;
+        &lt;/Text&gt;
+
+        {/* HStack naturally arranges items according to I18nManager.isRTL */}
+        &lt;HStack space={12} style={{ marginTop: 16, alignItems: 'center' }}&gt;
+          &lt;Button variant="primary"&gt;
+            &lt;Text&gt;{isRTL ? 'حفظ' : 'Save'}&lt;/Text&gt;
+          &lt;/Button&gt;
+          &lt;Button variant="secondary"&gt;
+            &lt;Text&gt;{isRTL ? 'إلغاء' : 'Cancel'}&lt;/Text&gt;
+          &lt;/Button&gt;
+        &lt;/HStack&gt;
+      &lt;/Box&gt;
+    &lt;/BoodooProvider&gt;
+  );
+}</code></pre>
+</div>
+
+<hr class="my-3">
+
+<h2 id="best-practices"><span>9. Bidirectional Best Practices Checklist</span></h2>
+<ul>
+  <li><span><strong>Prefer Logical Spacing Classes</strong>: Always use <code>ms-*</code> and <code>me-*</code> (start/end) instead of physical <code>ml-*</code> or <code>mr-*</code> so margins automatically flip in RTL.</span></li>
+  <li><span><strong>Prefer Logical Padding Classes</strong>: Always use <code>ps-*</code> and <code>pe-*</code> instead of physical <code>pl-*</code> or <code>pr-*</code> for text indentations and button spacing.</span></li>
+  <li><span><strong>Icon Flipping</strong>: Directional icons (such as forward/backward arrows <code>&rarr;</code>, next buttons, search magnifiers) must be mirrored in RTL using <code>.rtl-flip</code> (e.g. <code>transform: scaleX(-1)</code>), while non-directional media icons (play, pause, camera) remain un-mirrored.</span></li>
+  <li><span><strong>Input Field Telephones &amp; URLs</strong>: Phone numbers, code snippets, email addresses, and URLs should always remain Left-to-Right even in RTL documents by setting <code>dir="ltr"</code> on those specific elements.</span></li>
+</ul>
+

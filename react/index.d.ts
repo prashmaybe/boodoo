@@ -72,6 +72,8 @@ export declare function useAccordion(options?: AccordionOptions): AccordionRetur
 // --- Theme ---
 export interface BoodooProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   density?: 'normal' | 'compact';
+  direction?: 'ltr' | 'rtl';
+  dir?: 'ltr' | 'rtl';
   theme?: {
     primary?: string;
     surface?: string;
@@ -84,7 +86,12 @@ export declare const ThemeContext: React.Context<{
   theme: Record<string, string>;
 }>;
 export declare const BoodooProvider: React.FC<BoodooProviderProps>;
-export declare function useBoodooTheme(): { density: string; theme: Record<string, string> };
+export declare function useBoodooTheme(): {
+  density: string;
+  direction: 'ltr' | 'rtl';
+  theme: Record<string, string>;
+};
+export declare function useDirection(): 'ltr' | 'rtl';
 
 // --- Typography ---
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
