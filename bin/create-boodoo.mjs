@@ -101,7 +101,13 @@ export function parseArgs(rawArgs = []) {
   };
 }
 
-export function scaffoldProject({ targetDir, projectName, choice = '1', isTs = false, withAi = false }) {
+export function scaffoldProject({
+  targetDir,
+  projectName,
+  choice = '1',
+  isTs = false,
+  withAi = false,
+}) {
   fs.mkdirSync(targetDir, { recursive: true });
 
   if (withAi) {
@@ -2971,7 +2977,10 @@ export async function main() {
 
   let withAi = parsed.withAi;
   if (!withAi && process.stdin.isTTY) {
-    const aiChoice = await prompt('Include native AI developer rules (.cursor, CLAUDE.md)? [y/N]', 'n');
+    const aiChoice = await prompt(
+      'Include native AI developer rules (.cursor, CLAUDE.md)? [y/N]',
+      'n'
+    );
     withAi = aiChoice.toLowerCase() === 'y' || aiChoice.toLowerCase() === 'yes';
   }
 

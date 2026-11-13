@@ -127,7 +127,8 @@ const TOOLS = [
       properties: {
         name: {
           type: 'string',
-          description: 'Token name or category.key (e.g. "primary", "colors.primary", "spacing.1", "1")',
+          description:
+            'Token name or category.key (e.g. "primary", "colors.primary", "spacing.1", "1")',
         },
       },
       required: ['name'],
@@ -213,7 +214,13 @@ function handleToolCall(name, args = {}) {
 
       // Prevent path traversal
       const sanitizedComp = path.basename(compName);
-      if (!sanitizedComp || sanitizedComp !== compName || compName.includes('..') || compName.includes('/') || compName.includes('\\')) {
+      if (
+        !sanitizedComp ||
+        sanitizedComp !== compName ||
+        compName.includes('..') ||
+        compName.includes('/') ||
+        compName.includes('\\')
+      ) {
         return { error: 'Invalid component name.' };
       }
 
@@ -330,7 +337,8 @@ function handleToolCall(name, args = {}) {
           issues.push({
             rule: 'Form Field Element Identification',
             element: match[0],
-            message: 'Form controls must include an id or name attribute for accessibility and browser autofill.',
+            message:
+              'Form controls must include an id or name attribute for accessibility and browser autofill.',
           });
         }
       }
@@ -345,7 +353,8 @@ function handleToolCall(name, args = {}) {
             issues.push({
               rule: 'Text Wrapping Rule',
               sample: divMatch[0],
-              message: 'Raw text nodes must be wrapped in semantic elements (<p>, <span>, <strong>, <label>), never placed naked inside layout containers.',
+              message:
+                'Raw text nodes must be wrapped in semantic elements (<p>, <span>, <strong>, <label>), never placed naked inside layout containers.',
             });
             break;
           }
@@ -357,16 +366,21 @@ function handleToolCall(name, args = {}) {
         if (/style\s*=\s*\{\s*\{/g.test(code)) {
           issues.push({
             rule: 'React Native StyleSheet-Only Rule',
-            message: 'Avoid inline style object literals (style={{...}}) in React Native; declare styling via StyleSheet.create().',
+            message:
+              'Avoid inline style object literals (style={{...}}) in React Native; declare styling via StyleSheet.create().',
           });
         }
       }
 
       // Check for hardcoded hex colors when custom properties should be used
-      if (/#(?:[0-9a-fA-F]{3}){1,2}\b/.test(code) && (fw === 'html' || fw === 'react' || fw === 'vue')) {
+      if (
+        /#(?:[0-9a-fA-F]{3}){1,2}\b/.test(code) &&
+        (fw === 'html' || fw === 'react' || fw === 'vue')
+      ) {
         suggestions.push({
           rule: 'Dynamic CSS Custom Property Theming',
-          message: 'Found hardcoded hex color literals. Prefer dynamic theme tokens such as var(--boodoo-primary).',
+          message:
+            'Found hardcoded hex color literals. Prefer dynamic theme tokens such as var(--boodoo-primary).',
         });
       }
 

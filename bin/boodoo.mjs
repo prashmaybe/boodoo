@@ -457,11 +457,7 @@ export async function runCli(cmd = command, cmdArgs = args) {
         console.log(JSON.stringify(list, null, 2));
       } else {
         console.log('\n\x1b[36mAvailable Boodoo Components:\x1b[0m\n');
-        console.log(
-          list
-            .map((c) => `  - ${c}`)
-            .join('\n')
-        );
+        console.log(list.map((c) => `  - ${c}`).join('\n'));
         console.log('');
       }
       return list;
