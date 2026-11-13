@@ -270,11 +270,15 @@
   transform: scale(1.02);
 }
 
-.modal-open {
+.modal-open,
+body:has(dialog.modal[open]),
+body:has(dialog.modal-dialog[open]) {
   overflow: hidden;
 }
 
-.modal-open .modal {
+.modal-open .modal,
+body:has(dialog.modal[open]) .modal,
+body:has(dialog.modal-dialog[open]) .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -292,6 +296,7 @@ dialog.modal-dialog {
   margin: auto;
   outline: 0;
   opacity: 0;
+  overscroll-behavior: contain;
   transform: translateY(1.5rem) scale(0.95);
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), overlay 0.25s allow-discrete, display 0.25s allow-discrete;
 }
@@ -302,6 +307,7 @@ dialog.modal-dialog::backdrop {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
+  overscroll-behavior: contain;
   transition: opacity 0.25s ease, overlay 0.25s allow-discrete, display 0.25s allow-discrete;
 }
 

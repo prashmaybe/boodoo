@@ -438,3 +438,29 @@ test('Advanced v1.1.9 CSS class compilation and SCSS/LESS token integration', ()
   assert.ok(lessCss.includes('.back-to-top'), 'LESS CSS must contain .back-to-top');
 });
 
+test('dialog open background scroll lock and overscroll-behavior parity across SCSS and LESS', () => {
+  const scssCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.css'), 'utf8');
+  const lessCss = readFileSync(resolve(rootDir, 'dist/css/boodoo.less.css'), 'utf8');
+
+  // Both should contain body:has(dialog.modal[open])
+  assert.ok(
+    scssCss.includes('body:has(dialog.modal[open])'),
+    'SCSS dist CSS must contain body:has(dialog.modal[open]) selector'
+  );
+  assert.ok(
+    lessCss.includes('body:has(dialog.modal[open])'),
+    'LESS dist CSS must contain body:has(dialog.modal[open]) selector'
+  );
+
+  // Both should contain overscroll-behavior: contain on dialog.modal and backdrop
+  assert.ok(
+    scssCss.includes('overscroll-behavior: contain'),
+    'SCSS dist CSS must contain overscroll-behavior: contain for dialog/backdrop'
+  );
+  assert.ok(
+    lessCss.includes('overscroll-behavior: contain'),
+    'LESS dist CSS must contain overscroll-behavior: contain for dialog/backdrop'
+  );
+});
+
+

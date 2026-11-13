@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.1] - 2026-11-12
 
 ### Added
+- **RTL (Right-to-Left) Language Support (`scss/_rtl.scss`, `less/_rtl.less`, `js/src/rtl.js`, `react/theme.js`, `vue/composables.js`)**:
+  - Full bidirectional text and layout support across Web, React (`useDirection`, `BoodooProvider`), Vue (`useDirection`), Angular, Electron, and React Native.
+  - CSS logical properties and automated utility mirroring for directional spacing, margins, padding, floats, and text alignment.
 - **AI & LLM Compatibility Suite (`/llms.txt`, `/llms-full.txt`, `docs/ai/`, `mcp/`, `examples/`)**:
   - **Machine-Readable LLM Specifications**: Published canonical `/llms.txt` (sitemap & index) and `/llms-full.txt` (full component & API architectural specification) at domain root.
   - **Component Catalogue & Schema**: Added `docs/ai/component-index.json` indexing 50+ components, classes, supported frameworks, and WCAG accessibility standards.
@@ -19,9 +22,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Automated AI CI Checks & Evaluation Benchmarks**: Added `.github/workflows/ai-docs-check.yml`, `tests/ai-docs-validation.test.mjs`, and `tests/ai-benchmark.test.mjs` ensuring zero documentation drift.
   - **AI Crawler & Bot Policies**: Updated `robots.txt` and `site/robots.txt` with dedicated permissions for AI search engines and crawler agents (GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
 
+### Fixed
+- **Background Page Scroll Lock Behind Native HTML5 Dialogs (`scss/components/_modal.scss`, `less/components/_modal.less`)**:
+  - Integrated `body:has(dialog.modal[open])` and `body:has(dialog.modal-dialog[open])` alongside `.modal-open` in SCSS and LESS stylesheets, preventing background body scrolling when HTML5 native `<dialog>` elements are opened via `.showModal()`.
+  - Added `overscroll-behavior: contain` to `dialog.modal`, `dialog.modal-dialog`, and their `::backdrop` pseudo-elements to block scroll-chaining from bubbling touch gestures or scrollwheels to the underlying page.
+
 ### Changed
 - **Framework & CDN Distribution Synchronization**:
   - Synchronized v1.3.1 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, and `site/llms.txt`.
+  - Re-measured and validated distribution asset footprint benchmarks and compression metrics (`boodoo.min.css`: ~543 KB min, ~75.9 KB gzip, ~51.4 KB brotli; `boodoo.min.js`: ~123 KB min, ~29.0 KB gzip, ~24.9 KB brotli) across `README.md` and documentation portals.
 
 ---
 
