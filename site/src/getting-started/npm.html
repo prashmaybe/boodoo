@@ -64,23 +64,53 @@ $boodoo-border-radius: 0.375rem;
 </div>
 
 <h2 id="package-json"><span>Package exports</span></h2>
-<p><span>The package exposes standard entry points and subpath exports via <code>package.json</code>:</span></p>
+<p><span>The package exposes modern conditional exports and modular subpaths via <code>package.json</code>:</span></p>
 <div class="highlight">
   <pre><code class="language-json">{
   "style": "dist/css/boodoo.css",
   "sass": "scss/boodoo.scss",
   "main": "dist/js/boodoo.cjs",
   "module": "dist/js/boodoo.esm.js",
+  "types": "dist/js/boodoo.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/js/boodoo.d.ts",
       "import": "./dist/js/boodoo.esm.js",
       "require": "./dist/js/boodoo.cjs"
     },
     "./css": "./dist/css/boodoo.min.css",
-    "./tokens": "./tokens/index.js",
+    "./css/react": "./dist/css/boodoo-react.min.css",
+    "./css/grid": "./dist/css/boodoo-grid.min.css",
+    "./css/utilities": "./dist/css/boodoo-utilities.min.css",
+    "./css/reboot": "./dist/css/boodoo-reboot.min.css",
+    "./css/animations": "./dist/css/boodoo-animations.min.css",
+    "./scss": "./scss/boodoo.scss",
+    "./scss/*": "./scss/*",
+    "./less": "./less/boodoo.less",
+    "./less/*": "./less/*",
+    "./tokens": {
+      "types": "./tokens/index.d.ts",
+      "import": "./tokens/index.js",
+      "require": "./tokens/index.cjs"
+    },
     "./tokens.json": "./tokens/tokens.json",
-    "./paper": "./react-native/paper.js",
-    "./react-native": "./react-native/index.js"
+    "./paper": {
+      "types": "./react-native/paper.d.ts",
+      "import": "./react-native/paper.js"
+    },
+    "./react-native": {
+      "types": "./react-native/index.d.ts",
+      "import": "./react-native/index.js"
+    },
+    "./react": {
+      "types": "./react/index.d.ts",
+      "import": "./react/index.js"
+    },
+    "./vue": {
+      "types": "./vue/index.d.ts",
+      "import": "./vue/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }</code></pre>
 </div>

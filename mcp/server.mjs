@@ -167,20 +167,42 @@ function handleToolCall(name, args = {}) {
     }
 
     case 'get_component_example': {
-      const compName = (args.component || '').toLowerCase();
-      const fw = (args.framework || 'vanilla-js').toLowerCase();
-      const exampleDir = path.join(root, 'examples', fw, compName);
+      const compName = (args.component || '').toLowerCase().trim();
+      const fw = (args.framework || 'vanilla-js').toLowerCase().trim();
 
-      if (fs.existsSync(exampleDir)) {
+      // Allowed framework directories
+      const allowedFw = ['vanilla-js', 'react', 'vue', 'react-native'];
+      if (!allowedFw.includes(fw)) {
+        return { error: `Invalid framework "${args.framework}". Allowed: ${allowedFw.join(', ')}` };
+      }
+
+      // Prevent path traversal
+      const sanitizedComp = path.basename(compName);
+      if (!sanitizedComp || sanitizedComp !== compName || compName.includes('..') || compName.includes('/') || compName.includes('\\')) {
+        return { error: 'Invalid component name.' };
+      }
+
+      const examplesBase = path.resolve(root, 'examples');
+      const exampleDir = path.resolve(examplesBase, fw, sanitizedComp);
+
+      // Verify resolved path stays strictly within examplesBase
+      if (!exampleDir.startsWith(examplesBase + path.sep)) {
+        return { error: 'Invalid component path.' };
+      }
+
+      if (fs.existsSync(exampleDir) && fs.statSync(exampleDir).isDirectory()) {
         const files = {};
         for (const file of fs.readdirSync(exampleDir)) {
-          files[file] = fs.readFileSync(path.join(exampleDir, file), 'utf8');
+          const filePath = path.join(exampleDir, file);
+          if (fs.statSync(filePath).isFile()) {
+            files[file] = fs.readFileSync(filePath, 'utf8');
+          }
         }
-        return { framework: fw, component: compName, files };
+        return { framework: fw, component: sanitizedComp, files };
       }
 
       return {
-        message: `Direct runnable example not found for ${fw}/${compName}. See docs at https://boodooframework.com/docs/components/${compName}.html`,
+        message: `Direct runnable example not found for ${fw}/${sanitizedComp}. See docs at https://boodooframework.com/docs/components/${sanitizedComp}.html`,
       };
     }
 
@@ -234,7 +256,7 @@ function handleToolCall(name, args = {}) {
       const target = (args.target || 'npm').toLowerCase();
       const guides = {
         npm: 'npm install boodoo\nimport "boodoo/css";\nimport boodoo, { Modal, Toast } from "boodoo";\nboodoo.init();',
-        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.1/dist/js/boodoo.min.js" defer></script>',
+        cdn: '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/css/boodoo.min.css">\n<script src="https://cdn.jsdelivr.net/npm/boodoo@1.3.2/dist/js/boodoo.min.js" defer></script>',
         react:
           'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/react";',
         vue: 'npm install boodoo\nimport "boodoo/css";\nimport { useDisclosure, useCombobox } from "boodoo/vue";',
@@ -273,7 +295,7 @@ rl.on('line', (line) => {
           },
           serverInfo: {
             name: 'boodoo-mcp-server',
-            version: '1.3.1',
+            version: '1.3.2',
           },
         },
       };

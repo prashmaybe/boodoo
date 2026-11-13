@@ -117,9 +117,14 @@ export function useCombobox(options = {}) {
         ? controlledVal.value
         : controlledVal;
 
+  const getItemsList = () => {
+    const raw = isRef(items) ? items.value : items;
+    return Array.isArray(raw) ? raw : [];
+  };
+
   const internalValue = ref(isControlled ? getControlledVal() : null);
   const initialSelected = isControlled ? getControlledVal() : null;
-  const initialItem = items.find((it) => it.value === initialSelected);
+  const initialItem = getItemsList().find((it) => it && it.value === initialSelected);
 
   const query = ref(initialItem ? initialItem.label : defaultValue);
   const isOpen = ref(false);
@@ -155,11 +160,13 @@ export function useCombobox(options = {}) {
   }
 
   const filteredItems = computed(() => {
+    const list = getItemsList();
     const q = query.value.trim();
-    if (!q) return items;
+    if (!q) return list;
     const foldedQuery = foldAccents(q);
-    return items.filter((item) => {
-      const foldedLabel = foldAccents(item.label);
+    return list.filter((item) => {
+      if (!item) return false;
+      const foldedLabel = foldAccents(item.label || '');
       const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
       const foldedMeta = foldAccents(meta);
       return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);

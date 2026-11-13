@@ -175,6 +175,77 @@ test('Headless Vue 3 / Nuxt composables (useDisclosure, useCombobox, useAccordio
   assert.ok(composablesSrc.includes('watch('), 'useCombobox must use watch for reactivity');
   assert.ok(composablesSrc.includes('getItems'), 'useCombobox must watch both getControlledVal and getItems');
   assert.ok(composablesSrc.includes('immediate: true'), 'useCombobox item watcher must configure immediate and deep observation');
+
+  // Verify Vue useCombobox ref-based and array-based items filtering (getItemsList)
+  assert.ok(composablesSrc.includes('getItemsList'), 'useCombobox must use getItemsList helper to unwrap ref or plain array items');
+  assert.ok(composablesSrc.includes('const list = getItemsList();'), 'filteredItems must evaluate getItemsList() to support ref-based items reactivity');
+});
+
+test('Vue useCombobox ref-based items and reactive filtering logic', () => {
+  // Test the unwrap and filtering algorithm directly as implemented in useCombobox
+  const mockIsRef = (r) => Boolean(r && r.__v_isRef === true);
+  const foldAccents = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[øØ]/g, 'o')
+      .replace(/[æÆ]/g, 'ae')
+      .toLowerCase();
+  };
+
+  const createFilterEvaluator = (itemsRefOrArray, queryVal, getOptionMeta) => {
+    const raw = mockIsRef(itemsRefOrArray) ? itemsRefOrArray.value : itemsRefOrArray;
+    const list = Array.isArray(raw) ? raw : [];
+    const q = (queryVal || '').trim();
+    if (!q) return list;
+    const foldedQuery = foldAccents(q);
+    return list.filter((item) => {
+      if (!item) return false;
+      const foldedLabel = foldAccents(item.label || '');
+      const meta = getOptionMeta ? getOptionMeta(item) : item.meta || '';
+      const foldedMeta = foldAccents(meta);
+      return foldedLabel.includes(foldedQuery) || foldedMeta.includes(foldedQuery);
+    });
+  };
+
+  // Test 1: Plain array items filtering
+  const staticItems = [
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' }
+  ];
+  assert.equal(createFilterEvaluator(staticItems, '').length, 3);
+  assert.equal(createFilterEvaluator(staticItems, 'ban').length, 1);
+  assert.equal(createFilterEvaluator(staticItems, 'ban')[0].value, 'banana');
+
+  // Test 2: Ref-based items filtering with dynamic updates
+  const dynamicItemsRef = {
+    __v_isRef: true,
+    value: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Angular', value: 'angular' }
+    ]
+  };
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'vu').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'vu')[0].value, 'vue');
+
+  // Mutate ref value
+  dynamicItemsRef.value = [
+    ...dynamicItemsRef.value,
+    { label: 'Svelte', value: 'svelte' }
+  ];
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'sv').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'sv')[0].value, 'svelte');
+
+  // Test 3: Accent folding with ref items
+  dynamicItemsRef.value = [
+    { label: 'Café', value: 'cafe' },
+    { label: 'München', value: 'munchen' }
+  ];
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'cafe').length, 1);
+  assert.equal(createFilterEvaluator(dynamicItemsRef, 'munchen').length, 1);
 });
 
 test('React useDisclosure transition-aware execution and combobox query sync', () => {

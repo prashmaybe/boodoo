@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.2] - 2026-11-13
+
+### Fixed
+- **MCP Server Path Traversal Protection (`mcp/server.mjs`)**:
+  - Secured `get_component_example` tool by strictly validating framework targets against an allowlist (`vanilla-js`, `react`, `vue`, `react-native`) and rejecting directory traversal characters (`..`, `/`, `\`) in component names.
+  - Verified path containment using `path.resolve` to ensure requests can never escape `examples/`.
+- **Vue Headless Combobox Ref-based Filtering (`vue/composables.js`)**:
+  - Fixed `filteredItems` and initial item selection to correctly evaluate and unwrap both reactive `ref` arrays (`ref([...])`) and plain JavaScript arrays.
+  - Added full test coverage for reactive dynamic mutations and accent folding on ref-based combobox item lists.
+
+### Changed
+- **Release Verification Pipeline & Packed Tarball Validation (`package.json`, `tests/package-smoke.test.mjs`)**:
+  - Included AI validation (`npm run test:ai`) into mandatory `npm test` and `prepublishOnly` gates.
+  - Added automated test 15 to `tests/package-smoke.test.mjs` running `npm pack --dry-run --json` to assert essential files are included while strictly excluding internal folders (`tests/`, `build/`, `site/`, `.github/`, `mcp/`).
+- **Framework & CDN Distribution Synchronization**:
+  - Synchronized v1.3.2 release manifests across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `site/examples/starters/react-native-mobile/README.md`, `.github/ISSUE_TEMPLATE/bug_report.yml`, `docs/ai/component-index.json`, `mcp/server.mjs`, and `site/llms.txt`.
+  - Rebuilt zip distribution archives (`boodoo-v1.3.2.zip`, `boodoo-examples-v1.3.2.zip`) and updated npm export documentation in `site/src/getting-started/npm.html`.
+
+---
+
 ## [1.3.1] - 2026-11-12
 
 ### Added

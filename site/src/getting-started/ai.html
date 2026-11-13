@@ -83,6 +83,7 @@ order: 19
 <section class="mb-5">
   <h2 class="fw-bold" id="mcp-server"><span>Boodoo Model Context Protocol (MCP) Server</span></h2>
   <p><span>The Boodoo repository includes an integrated, zero-dependency MCP server that lets compatible AI agents (Claude Desktop, Cursor, Cline, Windsurf) query authoritative framework data during conversations.</span></p>
+  <p><span><em>Note:</em> The MCP server is a development-mode tool intended for repository clones and workspaces (omitted from the published npm runtime tarball to maintain zero-runtime overhead).</span></p>
 
   <h4 class="fw-bold mt-3"><span>Available Tools</span></h4>
   <ul>
@@ -99,7 +100,7 @@ order: 19
   "mcpServers": {
     "boodoo": {
       "command": "node",
-      "args": ["&lt;PATH_TO_BOODOO&gt;/mcp/server.mjs"]
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
     }
   }
 }</code></pre>

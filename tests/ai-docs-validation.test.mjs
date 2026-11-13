@@ -100,5 +100,38 @@ test('AI Documentation and Specification Validation', async (t) => {
     assert.ok(toolNames.includes('get_design_tokens'));
   });
 
+  await t.test('7. MCP Server prevents path traversal attacks in get_component_example', async () => {
+    const { execSync } = await import('node:child_process');
+
+    const runCall = (args) => {
+      const input = JSON.stringify({
+        jsonrpc: '2.0',
+        id: 101,
+        method: 'tools/call',
+        params: {
+          name: 'get_component_example',
+          arguments: args,
+        },
+      }) + '\n';
+      const output = execSync('node mcp/server.mjs', { cwd: root, input, encoding: 'utf8' });
+      const parsed = JSON.parse(output);
+      const textContent = parsed.result.content[0].text;
+      return JSON.parse(textContent);
+    };
+
+    // Test dot-dot traversal
+    const resTraversal = runCall({ component: '../../package.json', framework: 'vanilla-js' });
+    assert.ok(resTraversal.error, 'Path traversal in component name must be blocked');
+
+    // Test invalid framework traversal
+    const resFw = runCall({ component: 'modal', framework: '../..' });
+    assert.ok(resFw.error, 'Path traversal in framework must be blocked');
+
+    // Test valid component example retrieval
+    const resValid = runCall({ component: 'modal', framework: 'vanilla-js' });
+    assert.ok(resValid.files, 'Valid component example should return files object');
+    assert.ok(resValid.files['index.html'], 'Modal example should contain index.html');
+  });
+
 });
 
