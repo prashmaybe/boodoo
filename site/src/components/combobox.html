@@ -56,3 +56,18 @@ element.addEventListener('select.boodoo.combobox', (e) => {
 // Clear programmatically
 combobox.clear();</code></pre>
 </div>
+
+<h2 id="search-highlighting"><span>Search Match Highlighting Utility</span></h2>
+<p><span>When building autocomplete options, use <code>highlightMatches(text, query)</code> to split strings into matched and unmatched segments for visual accenting:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-javascript">import { highlightMatches } from 'boodoo/react'; // or 'boodoo/vue'
+
+const segments = highlightMatches('United States of America', 'state');
+// Returns:
+// [
+//   { text: 'United ', match: false },
+//   { text: 'State', match: true },
+//   { text: 's of America', match: false }
+// ]</code></pre>
+</div>

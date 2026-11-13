@@ -156,10 +156,10 @@ import boodoo, { Modal, Toast, Collapse, a11y } from 'boodoo';
 import 'boodoo/css';
 
 // Headless Declarative React Hooks (Next.js, Remix, Vite)
-import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
+import { useDisclosure, useCombobox, useAccordion, highlightMatches } from 'boodoo/react';
 
 // Headless Declarative Vue 3 Composables (Nuxt, Vite)
-import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion } from 'boodoo/vue';
+import { useDisclosure as useVueDisclosure, useCombobox as useVueCombobox, useAccordion as useVueAccordion, highlightMatches as highlightVueMatches } from 'boodoo/vue';
 
 // React Native Mobile (iOS & Android)
 import { Button, Card, BoodooProvider } from 'boodoo/react-native';
@@ -179,7 +179,8 @@ Scaffold projects, add copy-paste components, or codemod existing codebases:
 
 ```bash
 # Scaffold a full starter app (Next.js, Vite, React Native, Electron, HTML5)
-npx boodoo create my-app
+# Use --ai to automatically drop .cursor/rules and CLAUDE.md developer instructions
+npx boodoo create my-app --ai
 
 # Inject a component directly into your source (shadcn-style)
 npx boodoo add modal
@@ -189,8 +190,9 @@ npx boodoo add command-palette
 npx boodoo migrate --from=bootstrap ./src
 npx boodoo migrate --from=tailwind index.html
 
-# List all copy-pasteable components
+# List all copy-pasteable components (or --json for tooling)
 npx boodoo list
+npx boodoo list --json
 ```
 
 ---

@@ -230,3 +230,28 @@ export function ProjectSettings() {
   );
 }</code></pre>
 </div>
+
+<hr class="my-2">
+
+<h2 id="search-highlighting"><span>7. Autocomplete Search Match Highlighting</span></h2>
+<p><span>Render highlighted text spans inside custom combobox dropdown options using <code>highlightMatches</code>:</span></p>
+
+<div class="highlight">
+  <pre><code class="language-tsx">import { highlightMatches } from 'boodoo/react';
+
+export function OptionLabel({ label, query }: { label: string; query: string }) {
+  const segments = highlightMatches(label, query);
+
+  return (
+    &lt;span&gt;
+      {segments.map((seg, idx) =&gt; (
+        seg.match ? (
+          &lt;strong key={idx} className="text-primary fw-bold"&gt;{seg.text}&lt;/strong&gt;
+        ) : (
+          &lt;span key={idx}&gt;{seg.text}&lt;/span&gt;
+        )
+      ))}
+    &lt;/span&gt;
+  );
+}</code></pre>
+</div>
