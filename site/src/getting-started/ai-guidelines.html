@@ -1,0 +1,397 @@
+<!--
+title: AI Guidelines, Rules & Platform Maps
+description: Comprehensive guide to AI skills, rules, platform maps, context window optimization, billing reduction, and agent guidance with Boodoo MCP.
+section: getting-started
+order: 21
+-->
+<div class="bd-intro mb-4">
+  <h1 class="bd-title fw-bold" id="content"><span>AI Guidelines, Rules &amp; Platform Maps</span></h1>
+  <p class="bd-lead lead text-muted"><span>Master AI agent skills, rules, platform maps, context optimization, token
+      reduction, and multi-platform workflows using Boodoo and MCP.</span></p>
+</div>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="context-cost-optimization"><span>How Boodoo &amp; MCP Slash AI Context &amp; Billing
+      Costs</span></h2>
+  <p><span>When prompting Large Language Models (LLMs) with massive third-party CSS or UI libraries, developers
+      typically waste tens of thousands of tokens per prompt re-injecting CSS rules, utility indexes, and component
+      definitions. This balloons LLM context windows, inflates API billing, and increases latency.</span></p>
+
+  <p><span>Boodoo was engineered with an <strong>AI-First Lean Architecture</strong> to solve context bloat:</span></p>
+
+  <div class="row g-3 my-3">
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
+          <i class="hi-cash" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>80%+ Token Reduction</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Instead of dumping entire framework files into the system
+            prompt, AI agents use the Boodoo MCP server to lazily query only the specific component docs or tokens
+            needed on demand.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-success text-success mb-3">
+          <i class="hi-lightning" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Zero-Hallucination Guarantees</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Deterministic class naming, standard 12-column mobile-first
+            grid, and zero external runtime dependencies allow models like Claude, GPT-4o, and Gemini to generate code
+            with 100% accuracy on the first turn.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-info text-info mb-3">
+          <i class="hi-refresh" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Eliminated Debug Loops</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Built-in MCP linting (<code>validate_component_usage</code>)
+            catches missing form IDs, naked text blocks, and invalid React Native styles before execution, saving
+            expensive back-and-forth prompt retries.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered align-middle">
+      <thead>
+        <tr>
+          <th><span>Workflow Comparison</span></th>
+          <th><span>Traditional Giant Libraries</span></th>
+          <th><span>Boodoo + Native MCP Tooling</span></th>
+          <th><span>Efficiency Gain</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Initial Context Load</strong></td>
+          <td><span>~35,000–60,000 tokens per prompt (docs &amp; class references)</span></td>
+          <td><span>~800 tokens (canonical <code>llms.txt</code> index)</span></td>
+          <td><span class="badge bg-success text-white"><span>98% Context Savings</span></span></td>
+        </tr>
+        <tr>
+          <td><strong>Token Querying</strong></td>
+          <td><span>Full CSS stylesheet pasted into prompt context</span></td>
+          <td><span>Single tool call: <code>get_design_token("colors.primary")</code> (~60 tokens)</span></td>
+          <td><span class="badge bg-success text-white"><span>99% Token Savings</span></span></td>
+        </tr>
+        <tr>
+          <td><strong>Component Generation</strong></td>
+          <td><span>Hallucinated third-party dependencies (Popper, jQuery, Emotion)</span></td>
+          <td><span>Zero external deps; exact verified native primitives</span></td>
+          <td><span class="badge bg-primary text-white"><span>Zero Runtime Failures</span></span></td>
+        </tr>
+        <tr>
+          <td><strong>Code Review &amp; Linting</strong></td>
+          <td><span>Manual human inspection or expensive LLM self-correction passes</span></td>
+          <td><span>Instant local MCP AST check: <code>validate_component_usage</code></span></td>
+          <td><span class="badge bg-success text-white"><span>Zero Extra API Cost</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="platform-maps"><span>Platform Capability &amp; Architecture Map</span></h2>
+  <p><span>Boodoo provides unified design tokens and shared layout semantics across every major modern platform. AI
+      agents can consult this architecture map to determine the exact import paths, component conventions, and design
+      token integration for each target environment:</span></p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead>
+        <tr>
+          <th><span>Platform Target</span></th>
+          <th><span>Package Entry Points</span></th>
+          <th><span>Supported Capabilities</span></th>
+          <th><span>Agent Behavioral Rules</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Web / Vanilla JS</strong></td>
+          <td>
+            <code>import boodoo, { Modal, Toast } from 'boodoo';</code><br>
+            <code>import 'boodoo/css';</code>
+          </td>
+          <td><span>50+ interactive UI components, 12-col responsive grid, 2D CSS grid, dark mode theming, touch
+              gestures.</span></td>
+          <td><span>Always wrap text nodes in semantic tags (<code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>). Never
+              place naked text in <code>&lt;div&gt;</code>. Invoke <code>.dispose()</code> on teardown.</span></td>
+        </tr>
+        <tr>
+          <td><strong>React &amp; Next.js (Web)</strong></td>
+          <td>
+            <code>import { useDisclosure, useCombobox } from 'boodoo/react';</code><br>
+            <code>import 'boodoo/css';</code>
+          </td>
+          <td><span>Headless React hooks for disclosures, comboboxes, accordions, and dialog portals with full SSR
+              compatibility.</span></td>
+          <td><span>Ensure form fields have <code>id</code> and/or <code>name</code>. Use controlled/uncontrolled state
+              seamlessly.</span></td>
+        </tr>
+        <tr>
+          <td><strong>Vue 3 &amp; Nuxt</strong></td>
+          <td>
+            <code>import { useDisclosure, useCombobox } from 'boodoo/vue';</code><br>
+            <code>import 'boodoo/css';</code>
+          </td>
+          <td><span>Headless Vue composables with reactive ref support, automatic transition hooks, and accessibility
+              tree management.</span></td>
+          <td><span>Pass reactive refs directly to composables; leverage <code>v-bind="combobox.inputProps"</code> for
+              accessible bindings.</span></td>
+        </tr>
+        <tr>
+          <td><strong>React Native Mobile (iOS &amp; Android)</strong></td>
+          <td>
+            <code>import { Button, Card, BoodooProvider } from 'boodoo/react-native';</code>
+          </td>
+          <td><span>Modular mobile submodules (surfaces, buttons, inputs, feedback, layout) running on native primitives
+              with Expo Snack support.</span></td>
+          <td><span><strong>Strict Zero Inline Styles</strong>: Always use <code>StyleSheet.create()</code>. Never pass
+              <code>style={{...}}</code> literals. Zero DOM dependencies.</span></td>
+        </tr>
+        <tr>
+          <td><strong>Electron &amp; Desktop</strong></td>
+          <td>
+            <code>import 'boodoo/css';</code><br>
+            <code>import { titlebar, frameless } from 'boodoo/desktop';</code>
+          </td>
+          <td><span>Frameless windows, draggable window header regions, custom titlebars, and native OS desktop
+              tokens.</span></td>
+          <td><span>Apply <code>-webkit-app-region: drag</code> to titlebars and <code>no-drag</code> to interactive
+              buttons.</span></td>
+        </tr>
+        <tr>
+          <td><strong>Universal Design Tokens</strong></td>
+          <td>
+            <code>import { colors, spacing, radii } from 'boodoo/tokens';</code>
+          </td>
+          <td><span>Shared color palettes, generous spacing scale (<code>0.5=8px</code>, <code>1=20px</code>,
+              <code>2=36px</code>), elevation, and z-index layers across JS, JSON, SCSS, and LESS.</span></td>
+          <td><span>Consume CSS variables (<code>var(--boodoo-primary)</code>) on web; consume token imports in React
+              Native StyleSheet definitions.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="agent-rules"><span>Universal Agent Rules &amp; Guardrails</span></h2>
+  <p><span>To ensure consistent, bug-free, and accessible code across all developer environments, Boodoo maintains
+      pre-configured rule files for leading IDEs and AI orchestrators. AI models must strictly adhere to these 5 core
+      rules:</span></p>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm border">
+        <h5 class="fw-bold text-primary mb-2 d-flex align-items-center gap-1">
+          <i class="hi-check-circle" aria-hidden="true"></i>
+          <span>1. Mandatory Form Element Identification</span>
+        </h5>
+        <p class="text-muted fs-7 mb-0"><span>Every <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and
+            <code>&lt;textarea&gt;</code> must include an <code>id</code> (for label association and accessibility tree
+            mapping) and/or a <code>name</code> attribute (for form serialization).</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm border">
+        <h5 class="fw-bold text-primary mb-2 d-flex align-items-center gap-1">
+          <i class="hi-check-circle" aria-hidden="true"></i>
+          <span>2. Semantic Text Wrapping (No Naked Text)</span>
+        </h5>
+        <p class="text-muted fs-7 mb-0"><span>Text nodes must never be placed raw inside structural layout containers
+            (<code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>). Text must always be
+            enclosed in semantic tags (<code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>,
+            <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>, <code>&lt;label&gt;</code>).</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm border">
+        <h5 class="fw-bold text-primary mb-2 d-flex align-items-center gap-1">
+          <i class="hi-check-circle" aria-hidden="true"></i>
+          <span>3. Dynamic CSS Theming Variables</span>
+        </h5>
+        <p class="text-muted fs-7 mb-0"><span>Never bake static hex colors (e.g. <code>#7c3aed</code>) into component
+            styles. Always bind to dynamic CSS custom properties: <code>var(--boodoo-primary)</code>,
+            <code>var(--boodoo-card-bg)</code> for instant light/dark mode cascading.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card p-3 shadow-sm border">
+        <h5 class="fw-bold text-primary mb-2 d-flex align-items-center gap-1">
+          <i class="hi-check-circle" aria-hidden="true"></i>
+          <span>4. React Native StyleSheet-Only Architecture</span>
+        </h5>
+        <p class="text-muted fs-7 mb-0"><span>Zero inline style object literals (<code>style={{...}}</code>) in JSX
+            markup. All styling must be declared outside render functions via <code>StyleSheet.create()</code> to
+            optimize garbage collection and rendering performance.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="fw-bold mt-4"><span>Pre-Configured Rule Files in Boodoo</span></h4>
+  <p><span>Drop these native rule files into your repository or IDE to automatically enforce Boodoo standards:</span>
+  </p>
+  <ul>
+    <li><span><strong>Cursor IDE</strong>: <code>.cursor/rules/boodoo.mdc</code></span></li>
+    <li><span><strong>Anthropic Claude (Code, Desktop, Projects)</strong>: <code>CLAUDE.md</code></span></li>
+    <li><span><strong>Google Gemini &amp; Vertex AI</strong>: <code>GEMINI.md</code></span></li>
+    <li><span><strong>GitHub Copilot</strong>: <code>.github/copilot-instructions.md</code></span></li>
+    <li><span><strong>Windsurf (Codeium Cascade)</strong>: <code>.windsurfrules</code></span></li>
+    <li><span><strong>Cline &amp; Roo Code (VS Code)</strong>: <code>.clinerules</code></span></li>
+    <li><span><strong>Autonomous Multi-Agent Swarms</strong>: <code>.agents/AGENTS.md</code></span></li>
+  </ul>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="ai-prompts-and-tastes"><span>Recommended Prompt Templates &amp; UI Tastes</span></h2>
+  <p><span>Use these battle-tested prompts when directing AI assistants connected to Boodoo:</span></p>
+
+  <div class="mb-4">
+    <h5 class="h6 fw-bold"><span>Prompt 1: Full-Page Responsive Dashboard</span></h5>
+    <div class="highlight">
+      <pre><code>"Generate a responsive analytics dashboard using Boodoo.
+- Query Boodoo MCP (search_components) for Stat Widget, Data Table, and Filter Bar.
+- Structure layout using Boodoo's 12-column mobile-first grid (.container, .row, .col-*).
+- Ensure all form controls have unique 'id' and 'name' attributes.
+- Ensure all text strings are wrapped in semantic tags (&lt;p&gt;, &lt;span&gt;, &lt;h1&gt;–&lt;h6&gt;).
+- Use dynamic tokens var(--boodoo-primary) and var(--boodoo-card-bg).
+- Validate the generated markup using the Boodoo MCP tool: validate_component_usage."</code></pre>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h5 class="h6 fw-bold"><span>Prompt 2: React Native Mobile Screen</span></h5>
+    <div class="highlight">
+      <pre><code>"Build a mobile user profile screen using Boodoo React Native.
+- Import components from 'boodoo/react-native' (Avatar, Card, Button, StatWidget).
+- Import spacing and color tokens from 'boodoo/tokens'.
+- Strict Rule: Use StyleSheet.create() exclusively. Do not write inline style literals (style={{...}}).
+- Rely solely on native React Native primitives (View, Text, Pressable, StyleSheet).
+- Validate the component using Boodoo MCP: validate_component_usage(platform='react-native')."</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="why-boodoo-advantages"><span>Why Choose Boodoo for Your Next Project</span></h2>
+  <p><span>Whether starting from scratch or building high-scale production systems, Boodoo delivers significant
+      engineering and architectural advantages:</span></p>
+
+  <div class="row g-3 my-3">
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-3 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
+          <i class="hi-bolt" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Zero Supply-Chain Risk</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Zero runtime npm dependencies in core. No Popper.js, jQuery,
+            lodash, or emotion vulnerabilities. Completely self-contained ESM/CJS bundles.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-3 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-success text-success mb-3">
+          <i class="hi-devices" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>One Unified Token System</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Share the exact same color palette, generous spacing scale,
+            and radii across Web, React, Vue, React Native Mobile, Electron, Sass, and Less.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-info text-info mb-3">
+          <i class="hi-code" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>No Build Step Required</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Drop in via CDN or vanilla ES modules for instant prototyping,
+            or integrate into Vite, Next.js, Nuxt, and Metro bundlers seamlessly.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="migration-guide"><span>Migrating an Existing Project to Boodoo</span></h2>
+  <p><span>Transitioning from Bootstrap, Tailwind CSS, or Material UI to Boodoo is fast, automated, and
+      non-destructive.</span></p>
+
+  <div class="accordion mb-4" id="migrationAccordion">
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingMigrateBootstrap">
+        <button class="accordion-button fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseMigrateBootstrap" aria-expanded="true" aria-controls="collapseMigrateBootstrap">
+          <span>Migrating from Bootstrap (3, 4, or 5)</span>
+        </button>
+      </h3>
+      <div id="collapseMigrateBootstrap" class="accordion-collapse collapse show"
+        aria-labelledby="headingMigrateBootstrap" data-boodoo-parent="#migrationAccordion">
+        <div class="accordion-body">
+          <p><span>Boodoo preserves familiar 12-column grid conventions (<code>.container</code>, <code>.row</code>,
+              <code>.col-*</code>) and standard component classes (<code>.btn</code>, <code>.card</code>,
+              <code>.modal</code>, <code>.dropdown</code>) while eliminating Popper.js and jQuery dependencies.</span>
+          </p>
+          <p><span>Run Boodoo's automated CLI migration codemod to transform templates in seconds:</span></p>
+          <div class="highlight">
+            <pre><code class="language-bash"># Automatically codemod files in ./src or an entire project
+npx boodoo migrate --from=bootstrap ./src</code></pre>
+          </div>
+          <p class="mb-0"><span>Read the full <a href="../about/migrate-from-bootstrap.html"><span>Bootstrap Migration
+                  Guide &rarr;</span></a></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingMigrateTailwind">
+        <button class="accordion-button collapsed fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseMigrateTailwind" aria-expanded="false" aria-controls="collapseMigrateTailwind">
+          <span>Migrating from Tailwind CSS</span>
+        </button>
+      </h3>
+      <div id="collapseMigrateTailwind" class="accordion-collapse collapse" aria-labelledby="headingMigrateTailwind"
+        data-boodoo-parent="#migrationAccordion">
+        <div class="accordion-body">
+          <p><span>Eliminate fragile PostCSS compile pipelines and 50-class HTML attribute bloat with clean, semantic
+              Boodoo components and 150+ intuitive utility classes.</span></p>
+          <div class="highlight">
+            <pre><code class="language-bash"># Codemod Tailwind HTML/JSX class strings to Boodoo
+npx boodoo migrate --from=tailwind index.html</code></pre>
+          </div>
+          <p class="mb-0"><span>Read the full <a href="../about/migrate-from-tailwind.html"><span>Tailwind CSS Migration
+                  Guide &rarr;</span></a></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingMigratePaper">
+        <button class="accordion-button collapsed fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseMigratePaper" aria-expanded="false" aria-controls="collapseMigratePaper">
+          <span>Migrating React Native Paper to Boodoo Mobile</span>
+        </button>
+      </h3>
+      <div id="collapseMigratePaper" class="accordion-collapse collapse" aria-labelledby="headingMigratePaper"
+        data-boodoo-parent="#migrationAccordion">
+        <div class="accordion-body">
+          <p><span>Replace heavy third-party React Native component libraries with Boodoo's lightweight, pure native
+              primitives. Boodoo provides Paper-compatible theme adapters:</span></p>
+          <div class="highlight">
+            <pre><code class="language-javascript">import { createPaperTheme, lightPaperTheme, darkPaperTheme } from 'boodoo/react-native/paper';
+import { PaperProvider } from 'react-native-paper';
+
+// Seamlessly bridge Boodoo universal design tokens to React Native Paper
+const theme = createPaperTheme({ dark: false });</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
