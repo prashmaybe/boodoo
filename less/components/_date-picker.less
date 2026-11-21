@@ -1,0 +1,270 @@
+// =====================================================================
+// BOODOO LESS — Date Picker & Date Range Picker Component
+// Full functional and styling parity with SCSS implementation.
+// =====================================================================
+
+.date-picker {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+
+  .date-picker-input-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+
+    .form-control {
+      padding-right: 2.5rem;
+    }
+
+    .date-picker-toggle-btn {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      color: var(--boodoo-body-secondary-color, var(--boodoo-gray-600, #5c6280));
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+      transition: color var(--boodoo-transition-duration, 0.15s) ease, background-color var(--boodoo-transition-duration, 0.15s) ease;
+
+      &:hover {
+        color: var(--boodoo-primary, #7c3aed);
+        background-color: var(--boodoo-gray-100, #f7f8fb);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--boodoo-primary, #7c3aed);
+      }
+    }
+  }
+
+  .date-picker-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.375rem);
+    left: 0;
+    z-index: 1050;
+    min-width: 18rem;
+    padding: 1rem;
+    background-color: var(--boodoo-card-bg, #ffffff);
+    border: 1px solid var(--boodoo-border-color, #dedfec);
+    border-radius: var(--boodoo-border-radius-lg, 0.75rem);
+    box-shadow: var(--boodoo-box-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.1));
+    user-select: none;
+
+    &.show {
+      display: block;
+      animation: boodoo-fade-in 0.15s ease-out;
+    }
+  }
+
+  .date-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+
+    .date-picker-nav-btn {
+      background: none;
+      border: 1px solid var(--boodoo-border-color, #dedfec);
+      border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      color: var(--boodoo-body-color, #11143d);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background-color: var(--boodoo-primary, #7c3aed);
+        color: #ffffff;
+        border-color: var(--boodoo-primary, #7c3aed);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--boodoo-primary, #7c3aed);
+      }
+    }
+
+    .date-picker-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--boodoo-body-color, #11143d);
+      margin: 0;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+
+      &:hover {
+        background-color: var(--boodoo-gray-100, #f7f8fb);
+      }
+    }
+  }
+
+  .date-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    text-align: center;
+
+    .date-picker-weekday {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--boodoo-body-secondary-color, var(--boodoo-gray-600, #5c6280));
+      padding: 0.375rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .date-picker-cell {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.25rem;
+      font-size: 0.875rem;
+      border: none;
+      background: none;
+      border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+      color: var(--boodoo-body-color, #11143d);
+      cursor: pointer;
+      transition: background-color 0.12s ease, color 0.12s ease;
+
+      &:hover:not(:disabled):not(.disabled) {
+        background-color: var(--boodoo-primary-bg-subtle, rgba(124, 58, 237, 0.12));
+        color: var(--boodoo-primary, #7c3aed);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--boodoo-primary, #7c3aed);
+        z-index: 1;
+      }
+
+      &.other-month {
+        color: var(--boodoo-gray-400, #c2c4d8);
+      }
+
+      &.today {
+        font-weight: 700;
+        border: 1px dashed var(--boodoo-primary, #7c3aed);
+      }
+
+      &.selected {
+        background-color: var(--boodoo-primary, #7c3aed) !important;
+        color: #ffffff !important;
+        font-weight: 600;
+      }
+
+      &.range-start {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: var(--boodoo-primary, #7c3aed);
+        color: #ffffff;
+      }
+
+      &.range-in {
+        border-radius: 0;
+        background-color: var(--boodoo-primary-bg-subtle, rgba(124, 58, 237, 0.12));
+        color: var(--boodoo-primary, #7c3aed);
+      }
+
+      &.range-end {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: var(--boodoo-primary, #7c3aed);
+        color: #ffffff;
+      }
+
+      &:disabled,
+      &.disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .date-picker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--boodoo-border-color, #dedfec);
+
+    .date-picker-today-btn,
+    .date-picker-clear-btn {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.25rem 0.5rem;
+      background: none;
+      border: none;
+      border-radius: var(--boodoo-border-radius-sm, 0.25rem);
+      cursor: pointer;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .date-picker-today-btn {
+      color: var(--boodoo-primary, #7c3aed);
+
+      &:hover {
+        background-color: var(--boodoo-primary-bg-subtle, rgba(124, 58, 237, 0.12));
+      }
+    }
+
+    .date-picker-clear-btn {
+      color: var(--boodoo-body-secondary-color, var(--boodoo-gray-600, #5c6280));
+
+      &:hover {
+        background-color: var(--boodoo-gray-100, #f7f8fb);
+        color: var(--boodoo-danger, #e11d48);
+      }
+    }
+  }
+}
+
+// Dark theme overrides
+[data-boodoo-theme="dark"] .date-picker {
+  .date-picker-popup {
+    background-color: var(--boodoo-card-bg, #1e2242);
+    border-color: var(--boodoo-border-color, #2d335e);
+  }
+
+  .date-picker-header .date-picker-nav-btn {
+    border-color: var(--boodoo-border-color, #2d335e);
+    color: var(--boodoo-body-color, #f7f8fb);
+  }
+
+  .date-picker-footer {
+    border-color: var(--boodoo-border-color, #2d335e);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-boodoo-theme="light"]) .date-picker {
+    .date-picker-popup {
+      background-color: var(--boodoo-card-bg, #1e2242);
+      border-color: var(--boodoo-border-color, #2d335e);
+    }
+
+    .date-picker-header .date-picker-nav-btn {
+      border-color: var(--boodoo-border-color, #2d335e);
+      color: var(--boodoo-body-color, #f7f8fb);
+    }
+
+    .date-picker-footer {
+      border-color: var(--boodoo-border-color, #2d335e);
+    }
+  }
+}

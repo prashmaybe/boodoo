@@ -95,3 +95,13 @@ export declare function useDirection(initial?: 'ltr' | 'rtl' | 'auto'): {
   setDirection: (val: 'ltr' | 'rtl' | 'auto') => void;
   toggleDirection: () => void;
 };
+
+// --- Vue 3 SFC Components ---
+export declare const BoodooButton: any;
+export declare const BoodooAlert: any;
+export declare const BoodooCard: any;
+export declare const BoodooBadge: any;
+export declare const BoodooModal: any;
+export declare const BoodooInput: any;
+export declare const BoodooCombobox: any;
+export declare function createBoodooVue(): { install: (app: any) => void };

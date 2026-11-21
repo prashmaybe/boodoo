@@ -26,6 +26,7 @@ import { CommandPalette } from './src/command-palette.js';
 import { BottomSheet } from './src/bottom-sheet.js';
 import { registerCustomElements } from './src/custom-elements.js';
 import { DataTable } from './src/data-table.js';
+import { DatePicker } from './src/date-picker.js';
 import { Sidebar } from './src/sidebar.js';
 import { ContextMenu } from './src/context-menu.js';
 import { ChipInput } from './src/chip-input.js';
@@ -107,6 +108,7 @@ const boodoo = {
   clipboard,
   CommandPalette,
   DataTable,
+  DatePicker,
   Sidebar,
   ContextMenu,
   ChipInput,
@@ -262,6 +264,7 @@ export {
   CommandPalette,
   ContextMenu,
   DataTable,
+  DatePicker,
   DialogFullscreen,
   Dropdown,
   Dropzone,

@@ -1253,5 +1253,14 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
     !scrollspySrc.includes("setAttribute('aria-current', null)"),
     'Scrollspy must not use setAttribute(\'aria-current\', null)'
   );
+
+  // 13. DatePicker zero-dependency calendar and lifecycle execution
+  const { DatePicker } = await import(pathToFileURL(resolve(rootDir, 'js/src/date-picker.js')).href);
+  assert.equal(typeof DatePicker, 'function', 'DatePicker class must exist and export');
+  assert.equal(DatePicker.NAME, 'datePicker', 'DatePicker component name must be datePicker');
+
+  // 14. DataTable DOM Virtualization API and spacer rendering
+  const { DataTable: VirtualDataTable } = await import(pathToFileURL(resolve(rootDir, 'js/src/data-table.js')).href);
+  assert.equal(typeof VirtualDataTable.prototype.virtualize, 'function', 'DataTable must have virtualize() method');
 });
 

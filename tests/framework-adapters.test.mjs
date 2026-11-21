@@ -375,4 +375,23 @@ test('Search match highlighting utility (highlightMatches) in React and Vue', ()
   assert.equal(segments[2].match, false);
 });
 
+test('Vue 3 SFC components suite (BoodooButton, BoodooAlert, BoodooCard, BoodooBadge, BoodooModal, BoodooInput, BoodooCombobox)', async () => {
+  const vueIndexSrc = readFileSync(resolve(rootDir, 'vue/index.js'), 'utf8');
+  const vueCompSrc = readFileSync(resolve(rootDir, 'vue/components.js'), 'utf8');
+  const vueDts = readFileSync(resolve(rootDir, 'vue/index.d.ts'), 'utf8');
+
+  assert.ok(vueIndexSrc.includes('BoodooButton'), 'vue/index.js must export BoodooButton');
+  assert.ok(vueIndexSrc.includes('BoodooAlert'), 'vue/index.js must export BoodooAlert');
+  assert.ok(vueIndexSrc.includes('BoodooModal'), 'vue/index.js must export BoodooModal');
+  assert.ok(vueIndexSrc.includes('BoodooInput'), 'vue/index.js must export BoodooInput');
+
+  assert.ok(vueCompSrc.includes('createBoodooVue'), 'vue/components.js must export createBoodooVue plugin');
+  assert.ok(vueCompSrc.includes('name: \'BoodooButton\''), 'BoodooButton must be named');
+  assert.ok(vueCompSrc.includes('name: \'BoodooAlert\''), 'BoodooAlert must be named');
+  assert.ok(vueCompSrc.includes('name: \'BoodooInput\''), 'BoodooInput must be named');
+
+  assert.ok(vueDts.includes('declare const BoodooButton: any;'), 'vue/index.d.ts must type BoodooButton');
+  assert.ok(vueDts.includes('declare const BoodooModal: any;'), 'vue/index.d.ts must type BoodooModal');
+});
+
 
