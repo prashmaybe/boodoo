@@ -81,6 +81,14 @@
       {
         "route": "getting-started/ai",
         "title": "AI & LLM Compatibility"
+      },
+      {
+        "route": "getting-started/mcp",
+        "title": "Model Context Protocol (MCP)"
+      },
+      {
+        "route": "getting-started/ai-guidelines",
+        "title": "AI Rules, Context & Platform Maps"
       }
     ]
   },
