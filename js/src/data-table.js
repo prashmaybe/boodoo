@@ -117,7 +117,11 @@ export class DataTable extends BaseComponent {
       this._onSelectAllChange = null;
     }
     if (this._table) {
-      if (this._onScroll && this._scrollContainer && typeof this._scrollContainer.removeEventListener === 'function') {
+      if (
+        this._onScroll &&
+        this._scrollContainer &&
+        typeof this._scrollContainer.removeEventListener === 'function'
+      ) {
         this._scrollContainer.removeEventListener('scroll', this._onScroll);
         this._onScroll = null;
         this._scrollContainer = null;
@@ -206,7 +210,9 @@ export class DataTable extends BaseComponent {
       rowHeight = 40,
       buffer = 5,
       renderRow = null,
-      container = this._element.matches('.data-table-wrapper') ? this._element : this._table.parentElement,
+      container = this._element.matches('.data-table-wrapper')
+        ? this._element
+        : this._table.parentElement,
     } = options;
 
     if (!container || typeof renderRow !== 'function' || totalRows <= 0) return;
@@ -224,7 +230,10 @@ export class DataTable extends BaseComponent {
       const viewportHeight = container.clientHeight || 400;
 
       const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - buffer);
-      const endIndex = Math.min(totalRows, Math.ceil((scrollTop + viewportHeight) / rowHeight) + buffer);
+      const endIndex = Math.min(
+        totalRows,
+        Math.ceil((scrollTop + viewportHeight) / rowHeight) + buffer
+      );
 
       const topPadding = startIndex * rowHeight;
       const bottomPadding = Math.max(0, (totalRows - endIndex) * rowHeight);

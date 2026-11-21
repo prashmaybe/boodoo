@@ -66,7 +66,11 @@ declare class CommandPalette extends BaseComponent {
 declare class ContextMenu extends BaseComponent {}
 declare class DataTable extends BaseComponent {
   sortBy(headerEl: HTMLElement): void;
-  virtualize(options?: { totalRows?: number; rowHeight?: number; renderRow?: (index: number) => HTMLElement }): void;
+  virtualize(options?: {
+    totalRows?: number;
+    rowHeight?: number;
+    renderRow?: (index: number) => HTMLElement;
+  }): void;
   dispose(): void;
 }
 declare class DatePicker extends BaseComponent {

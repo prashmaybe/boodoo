@@ -4,8 +4,8 @@
 // Follows strict A11y & Semantics (wrapped text, id/name form inputs).
 // =====================================================================
 
-import { h, ref, computed, watch, useId } from 'vue';
-import { useDisclosure, useCombobox } from './composables.js';
+import { h, ref, computed } from 'vue';
+import { useCombobox } from './composables.js';
 
 export function createBoodooVue() {
   return {
@@ -48,13 +48,19 @@ export const BoodooButton = {
         {
           type: props.type,
           disabled: props.disabled || props.loading,
-          class: ['btn', variantClass, sizeClass, loadingClass, attrs.class].filter(Boolean).join(' '),
+          class: ['btn', variantClass, sizeClass, loadingClass, attrs.class]
+            .filter(Boolean)
+            .join(' '),
           onClick: (e) => emit('click', e),
           ...attrs,
         },
         [
           props.loading
-            ? h('span', { class: 'spinner-border spinner-border-sm me-2', role: 'status', 'aria-hidden': 'true' })
+            ? h('span', {
+                class: 'spinner-border spinner-border-sm me-2',
+                role: 'status',
+                'aria-hidden': 'true',
+              })
             : null,
           slots.default ? slots.default() : null,
         ]
@@ -101,29 +107,21 @@ export const BoodooAlert = {
           ...attrs,
         },
         [
-          h(
-            'div',
-            { class: 'd-flex align-items-start gap-2' },
-            [
-              props.icon ? h('span', { class: 'alert-icon' }, props.icon) : null,
-              h(
-                'div',
-                { class: 'alert-content flex-grow-1' },
-                [
-                  props.title ? h('h6', { class: 'alert-heading mb-1 fw-bold' }, props.title) : null,
-                  slots.default ? slots.default() : null,
-                ]
-              ),
-              props.dismissible
-                ? h('button', {
-                    type: 'button',
-                    class: 'btn-close',
-                    'aria-label': props.closeLabel,
-                    onClick: dismiss,
-                  })
-                : null,
-            ]
-          ),
+          h('div', { class: 'd-flex align-items-start gap-2' }, [
+            props.icon ? h('span', { class: 'alert-icon' }, props.icon) : null,
+            h('div', { class: 'alert-content flex-grow-1' }, [
+              props.title ? h('h6', { class: 'alert-heading mb-1 fw-bold' }, props.title) : null,
+              slots.default ? slots.default() : null,
+            ]),
+            props.dismissible
+              ? h('button', {
+                  type: 'button',
+                  class: 'btn-close',
+                  'aria-label': props.closeLabel,
+                  onClick: dismiss,
+                })
+              : null,
+          ]),
         ]
       );
     };
@@ -138,23 +136,17 @@ export const BoodooCard = {
   },
   setup(props, { slots, attrs }) {
     return () => {
-      return h(
-        'div',
-        { class: ['card', attrs.class].filter(Boolean).join(' '), ...attrs },
-        [
-          slots.header ? h('div', { class: 'card-header' }, slots.header()) : null,
-          h(
-            'div',
-            { class: 'card-body' },
-            [
-              props.title ? h('h5', { class: 'card-title' }, props.title) : null,
-              props.subtitle ? h('h6', { class: 'card-subtitle mb-2 text-muted' }, props.subtitle) : null,
-              slots.default ? slots.default() : null,
-            ]
-          ),
-          slots.footer ? h('div', { class: 'card-footer' }, slots.footer()) : null,
-        ]
-      );
+      return h('div', { class: ['card', attrs.class].filter(Boolean).join(' '), ...attrs }, [
+        slots.header ? h('div', { class: 'card-header' }, slots.header()) : null,
+        h('div', { class: 'card-body' }, [
+          props.title ? h('h5', { class: 'card-title' }, props.title) : null,
+          props.subtitle
+            ? h('h6', { class: 'card-subtitle mb-2 text-muted' }, props.subtitle)
+            : null,
+          slots.default ? slots.default() : null,
+        ]),
+        slots.footer ? h('div', { class: 'card-footer' }, slots.footer()) : null,
+      ]);
     };
   },
 };
@@ -175,7 +167,10 @@ export const BoodooBadge = {
 
       return h(
         'span',
-        { class: ['badge', variantClass, pillClass, attrs.class].filter(Boolean).join(' '), ...attrs },
+        {
+          class: ['badge', variantClass, pillClass, attrs.class].filter(Boolean).join(' '),
+          ...attrs,
+        },
         slots.default ? slots.default() : null
       );
     };
@@ -245,33 +240,21 @@ export const BoodooModal = {
           },
         },
         [
-          h(
-            'div',
-            { class: ['modal-dialog', attrs.class].filter(Boolean).join(' '), ...attrs },
-            [
-              h(
-                'div',
-                { class: 'modal-content' },
-                [
-                  h(
-                    'div',
-                    { class: 'modal-header' },
-                    [
-                      props.title ? h('h5', { class: 'modal-title' }, props.title) : null,
-                      h('button', {
-                        type: 'button',
-                        class: 'btn-close',
-                        'aria-label': props.closeLabel,
-                        onClick: close,
-                      }),
-                    ]
-                  ),
-                  h('div', { class: 'modal-body' }, slots.default ? slots.default() : null),
-                  slots.footer ? h('div', { class: 'modal-footer' }, slots.footer()) : null,
-                ]
-              ),
-            ]
-          ),
+          h('div', { class: ['modal-dialog', attrs.class].filter(Boolean).join(' '), ...attrs }, [
+            h('div', { class: 'modal-content' }, [
+              h('div', { class: 'modal-header' }, [
+                props.title ? h('h5', { class: 'modal-title' }, props.title) : null,
+                h('button', {
+                  type: 'button',
+                  class: 'btn-close',
+                  'aria-label': props.closeLabel,
+                  onClick: close,
+                }),
+              ]),
+              h('div', { class: 'modal-body' }, slots.default ? slots.default() : null),
+              slots.footer ? h('div', { class: 'modal-footer' }, slots.footer()) : null,
+            ]),
+          ]),
           h('div', { class: 'modal-backdrop fade show' }),
         ]
       );
@@ -322,10 +305,9 @@ export const BoodooCombobox = {
                     'li',
                     {
                       ...cb.getOptionProps(item, idx, {
-                        class: [
-                          'dropdown-item',
-                          cb.activeIndex.value === idx ? 'active' : '',
-                        ].filter(Boolean).join(' '),
+                        class: ['dropdown-item', cb.activeIndex.value === idx ? 'active' : '']
+                          .filter(Boolean)
+                          .join(' '),
                       }),
                     },
                     h('span', null, item.label || item)

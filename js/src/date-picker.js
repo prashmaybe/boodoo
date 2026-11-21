@@ -22,7 +22,9 @@ export class DatePicker extends BaseComponent {
     if (!this._input) return;
 
     // Config defaults
-    this._isRange = Boolean(this._config.range || this._element.getAttribute('data-boodoo-range') === 'true');
+    this._isRange = Boolean(
+      this._config.range || this._element.getAttribute('data-boodoo-range') === 'true'
+    );
     this._minDate = this._config.min ? new Date(this._config.min) : null;
     this._maxDate = this._config.max ? new Date(this._config.max) : null;
 
@@ -210,8 +212,18 @@ export class DatePicker extends BaseComponent {
     const year = this._viewDate.getFullYear();
     const month = this._viewDate.getMonth();
     const monthNames = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ];
     const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -259,7 +271,12 @@ export class DatePicker extends BaseComponent {
 
         if (curStr === startStr) classes.push('range-start');
         if (curStr === endStr) classes.push('range-end');
-        if (this._rangeStart && this._rangeEnd && current > this._rangeStart && current < this._rangeEnd) {
+        if (
+          this._rangeStart &&
+          this._rangeEnd &&
+          current > this._rangeStart &&
+          current < this._rangeEnd
+        ) {
           classes.push('range-in');
         }
       }
