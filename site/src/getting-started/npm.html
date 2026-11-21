@@ -40,7 +40,8 @@ import { Modal, Toast, Collapse } from 'boodoo';
 
 // Framework Adapters & Utilities
 import { useCombobox, highlightMatches } from 'boodoo/react';
-import { useCombobox as useVueCombobox, highlightMatches as highlightVueMatches } from 'boodoo/vue';
+import { useCombobox as useVueCombobox, highlightMatches as highlightVueMatches, BoodooButton, BoodooModal } from 'boodoo/vue';
+import figmaTokens from 'boodoo/tokens/figma';
 
 // Or direct bundle path
 import boodoo from 'boodoo/dist/js/boodoo.esm.js';</code></pre>
@@ -98,6 +99,7 @@ $boodoo-border-radius: 0.375rem;
       "require": "./tokens/index.cjs"
     },
     "./tokens.json": "./tokens/tokens.json",
+    "./tokens/figma": "./tokens/figma-tokens.json",
     "./paper": {
       "types": "./react-native/paper.d.ts",
       "import": "./react-native/paper.js"

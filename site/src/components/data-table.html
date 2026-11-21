@@ -190,3 +190,27 @@ order: 15
   <p>Add <code>.data-table-compact</code> or <code>.data-table-dense</code> to maximize information density for
     administrative dashboards.</p>
 </section>
+
+<section class="docs-section">
+  <h2><span>High-Performance DOM Virtualization (10,000+ Rows)</span></h2>
+  <p class="lead"><span>New in v1.3.3, DataTable provides built-in windowed DOM virtualization via <code>table.virtualize()</code>, capable of rendering large datasets with buttery-smooth scrolling and minimal memory footprint.</span></p>
+
+  <div class="highlight">
+    <pre><code class="language-javascript">import { DataTable } from 'boodoo';
+
+const tableWrapper = document.getElementById('myVirtualizedTable');
+const dt = DataTable.getOrCreateInstance(tableWrapper);
+
+// Activate virtual scrolling for 10,000 rows
+dt.virtualize({
+  totalRows: 10000,
+  rowHeight: 44, // row height in pixels
+  buffer: 6,     // number of buffer rows above & below viewport
+  renderRow: (index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `&lt;td&gt;&lt;span&gt;#${index + 1}&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;Item ${index + 1}&lt;/span&gt;&lt;/td&gt;`;
+    return tr;
+  }
+});</code></pre>
+  </div>
+</section>
