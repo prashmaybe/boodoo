@@ -64,7 +64,27 @@ declare class CommandPalette extends BaseComponent {
   }): void;
 }
 declare class ContextMenu extends BaseComponent {}
-declare class DataTable extends BaseComponent {}
+declare class DataTable extends BaseComponent {
+  sortBy(headerEl: HTMLElement): void;
+  virtualize(options?: {
+    totalRows?: number;
+    rowHeight?: number;
+    renderRow?: (index: number) => HTMLElement;
+  }): void;
+  dispose(): void;
+}
+declare class DatePicker extends BaseComponent {
+  open(): void;
+  close(): void;
+  toggle(): void;
+  prevMonth(): void;
+  nextMonth(): void;
+  today(): void;
+  clear(): void;
+  selectDate(date: Date): void;
+  render(): void;
+  dispose(): void;
+}
 declare class Dropzone extends BaseComponent {
   removeFile(file: File, elementNode?: Element): void;
   clear(): void;
@@ -227,6 +247,7 @@ export interface BoodooGlobal {
   CommandPalette: typeof CommandPalette;
   ContextMenu: typeof ContextMenu;
   DataTable: typeof DataTable;
+  DatePicker: typeof DatePicker;
   Dropzone: typeof Dropzone;
   Lightbox: typeof Lightbox;
   OTP: typeof OTP;
@@ -276,6 +297,7 @@ export {
   CommandPalette,
   ContextMenu,
   DataTable,
+  DatePicker,
   DialogFullscreen,
   Dropdown,
   Dropzone,

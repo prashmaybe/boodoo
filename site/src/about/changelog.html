@@ -59,7 +59,7 @@ order: 7
     <div class="stat-item p-1">
       <div class="stat-icon"><i class="hi-stack" aria-hidden="true"></i></div>
       <div>
-        <div class="stat-value"><span>33 Milestones</span></div>
+        <div class="stat-value"><span>34 Milestones</span></div>
         <div class="stat-label"><span>Published Releases</span></div>
       </div>
     </div>
@@ -67,6 +67,49 @@ order: 7
 </div>
 
 <ul class="timeline changelog-timeline mt-4">
+
+  <!-- Version 1.3.3 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-3-3">
+            <span>v1.3.3</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-1 text-muted small">
+          <i class="hi-calendar" aria-hidden="true"></i><span>November 21, 2026</span>
+          <span class="footer-dot">&bull;</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Feature Release</span></span>
+          <span>Version 1.3.3 Release &mdash; DatePicker Component, DataTable Virtualization, Vue 3 Component Suite &amp; Figma Tokens Sync</span>
+        </h3>
+        <p><span>boodoo <strong>v1.3.3</strong> introduces major interactive components, enterprise performance enhancements, first-class Vue 3 component wrappers, and cross-platform design token synchronization: an accessible zero-dependency DatePicker &amp; DateRangePicker, 10,000+ row virtualized DataTables, Vue 3 SFC component wrappers, and automated Figma Tokens export tooling.</span></p>
+
+        <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>New Components &amp; Architecture</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Accessible DatePicker &amp; DateRangePicker (<code>scss/components/_date-picker.scss</code>, <code>less/components/_date-picker.less</code>, <code>js/src/date-picker.js</code>)</strong>: Pure zero-dependency calendar dropdown supporting single date and date range selection (<code>start - end</code>), month/year navigation, quick presets (Today, Clear), dark-mode styling token parity, and WAI-ARIA keyboard navigation.</span></li>
+          <li><span><strong>DataTable DOM Virtualization (<code>js/src/data-table.js</code>)</strong>: High-performance windowed virtual scrolling via <code>table.virtualize({ totalRows, rowHeight, buffer, renderRow })</code> capable of rendering 10,000+ rows smoothly with dynamic spacer rows and minimal DOM memory footprint.</span></li>
+          <li><span><strong>Vue 3 SFC Core Component Suite (<code>vue/components.js</code>, <code>vue/index.js</code>, <code>vue/index.d.ts</code>)</strong>: Added first-party Vue 3 components (<code>BoodooButton</code>, <code>BoodooAlert</code>, <code>BoodooCard</code>, <code>BoodooBadge</code>, <code>BoodooModal</code>, <code>BoodooInput</code>, <code>BoodooCombobox</code>) alongside the <code>createBoodooVue()</code> installer plugin, fully compliant with form field <code>id</code>/<code>name</code> accessibility rules and semantic text wrapping.</span></li>
+          <li><span><strong>Figma Tokens Sync Tooling (<code>tools/figma-tokens-sync.mjs</code>, <code>tokens/figma-tokens.json</code>)</strong>: Automated exporter translating canonical tokens to Figma Tokens Studio schema, exposed via modern package subpath export <code>boodoo/tokens/figma</code>.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Framework &amp; Distribution Synchronization</span></h4>
+        <ul class="mb-0">
+          <li><span><strong>Sitewide Release Manifest Alignment</strong>: Synchronized v1.3.3 release manifests, real-time compression benchmarks (~550 KB CSS / ~131 KB JS), CDN endpoints, AI specifications (<code>llms.txt</code>, <code>llms-full.txt</code>, <code>component-index.json</code>), starter documentation, and MCP server configuration.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
 
   <!-- Version 1.3.2 -->
   <li class="timeline-item">
@@ -77,7 +120,6 @@ order: 7
         <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-3-2">
             <span>v1.3.2</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-1 text-muted small">

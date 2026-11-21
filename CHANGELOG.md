@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.3] - 2026-11-21
+
+### Added
+- **Accessible DatePicker & DateRangePicker Component (`scss/components/_date-picker.scss`, `less/components/_date-picker.less`, `js/src/date-picker.js`)**:
+  - Zero-dependency calendar popover supporting single date and date range selections (`start - end`).
+  - Full keyboard accessibility, month navigation, today preset, and clear actions.
+  - Complete SCSS and LESS preprocessor styling parity with dark-mode theme token bindings.
+- **DataTable DOM Virtualization (`js/src/data-table.js`)**:
+  - High-performance windowed virtual scrolling via `table.virtualize({ totalRows, rowHeight, buffer, renderRow })`.
+  - Capable of rendering 10,000+ rows smoothly with minimal DOM nodes and adaptive spacer rows.
+- **Vue 3 SFC Core Component Suite (`vue/components.js`, `vue/index.js`, `vue/index.d.ts`)**:
+  - Added first-class Vue 3 component wrappers: `BoodooButton`, `BoodooAlert`, `BoodooCard`, `BoodooBadge`, `BoodooModal`, `BoodooInput`, `BoodooCombobox`, and `createBoodooVue()` plugin installer.
+  - Strict compliance with form field `id`/`name` rules and semantic text wrapping.
+- **Figma Tokens Sync Tooling (`tools/figma-tokens-sync.mjs`, `tokens/figma-tokens.json`)**:
+  - Added automated token exporter translating `tokens/tokens.json` to Figma Tokens / Tokens Studio format.
+  - Exposed `./tokens/figma` package export in `package.json`.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Bumped version to 1.3.3 across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `bin/boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `docs/ai/component-index.json`, `llms.txt`, and `llms-full.txt`.
+
+---
+
 ## [1.3.2] - 2026-11-13
 
 ### Added

@@ -133,3 +133,57 @@ order: 10
 &lt;/div&gt;</code></pre>
   </div>
 </section>
+
+<section class="docs-section">
+  <h2><span>Interactive DatePicker &amp; DateRangePicker</span></h2>
+  <p class="lead"><span>New in v1.3.3, Boodoo includes a pure vanilla JavaScript DatePicker and DateRangePicker component with custom calendar popover, month/year navigation, quick presets, and keyboard accessibility.</span></p>
+
+  <div class="bd-example p-2 border rounded bg-white">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label" for="customDatePickerInput"><span>Single Date Selector</span></label>
+        <div class="date-picker w-100" data-boodoo="datePicker">
+          <div class="date-picker-input-wrap">
+            <input type="text" class="form-control" id="customDatePickerInput" name="selectedDate" placeholder="YYYY-MM-DD">
+            <button type="button" class="date-picker-toggle-btn" aria-label="Toggle calendar">
+              <i class="hi-calendar" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="customRangePickerInput"><span>Range Selector</span></label>
+        <div class="date-picker w-100" data-boodoo="datePicker" data-boodoo-range="true">
+          <div class="date-picker-input-wrap">
+            <input type="text" class="form-control" id="customRangePickerInput" name="dateRange" placeholder="YYYY-MM-DD - YYYY-MM-DD">
+            <button type="button" class="date-picker-toggle-btn" aria-label="Toggle calendar range">
+              <i class="hi-calendar" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Single Date Picker --&gt;
+&lt;div class="date-picker" data-boodoo="datePicker"&gt;
+  &lt;div class="date-picker-input-wrap"&gt;
+    &lt;input type="text" class="form-control" id="customDateInput" name="selectedDate" placeholder="YYYY-MM-DD"&gt;
+    &lt;button type="button" class="date-picker-toggle-btn" aria-label="Toggle calendar"&gt;
+      &lt;i class="hi-calendar" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Date Range Picker --&gt;
+&lt;div class="date-picker" data-boodoo="datePicker" data-boodoo-range="true"&gt;
+  &lt;div class="date-picker-input-wrap"&gt;
+    &lt;input type="text" class="form-control" id="customRangeInput" name="dateRange" placeholder="YYYY-MM-DD - YYYY-MM-DD"&gt;
+    &lt;button type="button" class="date-picker-toggle-btn" aria-label="Toggle calendar range"&gt;
+      &lt;i class="hi-calendar" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</section>

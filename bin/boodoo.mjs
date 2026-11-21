@@ -83,6 +83,10 @@ const COMPONENT_MAP = {
     scss: 'scss/components/_data-table.scss',
     js: 'js/src/data-table.js',
   },
+  'date-picker': {
+    scss: 'scss/components/_date-picker.scss',
+    js: 'js/src/date-picker.js',
+  },
   sidebar: {
     scss: 'scss/components/_sidebar.scss',
     js: 'js/src/sidebar.js',

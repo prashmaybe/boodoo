@@ -42,7 +42,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const expectedSymbols = [
       'Modal', 'Toast', 'Offcanvas', 'Tab', 'Collapse',
       'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop',
-      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable', 'Chart',
+      'Alert', 'Button', 'Dropdown', 'CommandPalette', 'DataTable', 'DatePicker', 'Chart',
       'a11y', 'FloatingBar', 'ImageCompare', 'PasswordMeter'
     ];
 
@@ -109,7 +109,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const dtsContent = readFileSync(dtsPath, 'utf8');
 
     const newComponents = [
-      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop', 'Chart',
+      'FilterBar', 'TransferList', 'ColorPicker', 'BackToTop', 'Chart', 'DatePicker',
       'a11y', 'FloatingBar', 'ImageCompare', 'PasswordMeter'
     ];
 
@@ -275,7 +275,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
     const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
     assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
-    assert.equal(lockfile.version, '1.3.2', 'package-lock.json version must be 1.3.2');
+    assert.equal(lockfile.version, '1.3.3', 'package-lock.json version must be 1.3.3');
 
     // Assert react-dom peer dependency
     assert.equal(pkg.peerDependencies['react-dom'], '>=18.0.0', 'react-dom peerDependency must require >=18.0.0');
@@ -292,7 +292,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const tarballInfo = JSON.parse(packJsonOutput)[0];
 
     assert.equal(tarballInfo.name, 'boodoo', 'Packed tarball name must be boodoo');
-    assert.equal(tarballInfo.version, '1.3.2', 'Packed tarball version must be 1.3.2');
+    assert.equal(tarballInfo.version, '1.3.3', 'Packed tarball version must be 1.3.3');
 
     const packedPaths = tarballInfo.files.map((f) => f.path);
 

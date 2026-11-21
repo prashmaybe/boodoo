@@ -117,6 +117,15 @@ export class DataTable extends BaseComponent {
       this._onSelectAllChange = null;
     }
     if (this._table) {
+      if (
+        this._onScroll &&
+        this._scrollContainer &&
+        typeof this._scrollContainer.removeEventListener === 'function'
+      ) {
+        this._scrollContainer.removeEventListener('scroll', this._onScroll);
+        this._onScroll = null;
+        this._scrollContainer = null;
+      }
       if (this._onTableChange && typeof this._table.removeEventListener === 'function') {
         this._table.removeEventListener('change', this._onTableChange);
         this._onTableChange = null;
@@ -193,6 +202,84 @@ export class DataTable extends BaseComponent {
       colIndex,
       direction: this._sortAsc ? 'asc' : 'desc',
     });
+  }
+
+  virtualize(options = {}) {
+    const {
+      totalRows = 0,
+      rowHeight = 40,
+      buffer = 5,
+      renderRow = null,
+      container = this._element.matches('.data-table-wrapper')
+        ? this._element
+        : this._table.parentElement,
+    } = options;
+
+    if (!container || typeof renderRow !== 'function' || totalRows <= 0) return;
+
+    this._scrollContainer = container;
+    const tbody = this._table.querySelector('tbody');
+    if (!tbody) return;
+
+    // Ensure container styling for virtualization
+    container.style.overflowY = 'auto';
+    container.style.position = 'relative';
+
+    const render = () => {
+      const scrollTop = container.scrollTop;
+      const viewportHeight = container.clientHeight || 400;
+
+      const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - buffer);
+      const endIndex = Math.min(
+        totalRows,
+        Math.ceil((scrollTop + viewportHeight) / rowHeight) + buffer
+      );
+
+      const topPadding = startIndex * rowHeight;
+      const bottomPadding = Math.max(0, (totalRows - endIndex) * rowHeight);
+
+      tbody.replaceChildren();
+
+      // Top spacer row
+      if (topPadding > 0) {
+        const topTr = document.createElement('tr');
+        topTr.className = 'data-table-virtual-spacer';
+        topTr.style.height = `${topPadding}px`;
+        topTr.style.border = 'none';
+        tbody.appendChild(topTr);
+      }
+
+      // Render visible slice
+      for (let i = startIndex; i < endIndex; i++) {
+        const tr = renderRow(i);
+        if (tr) {
+          tr.setAttribute('data-row-index', String(i));
+          tbody.appendChild(tr);
+        }
+      }
+
+      // Bottom spacer row
+      if (bottomPadding > 0) {
+        const bottomTr = document.createElement('tr');
+        bottomTr.className = 'data-table-virtual-spacer';
+        bottomTr.style.height = `${bottomPadding}px`;
+        bottomTr.style.border = 'none';
+        tbody.appendChild(bottomTr);
+      }
+
+      triggerEvent(this._element, 'boodoo.datatable.virtualScroll', {
+        startIndex,
+        endIndex,
+        totalRows,
+      });
+    };
+
+    this._onScroll = () => {
+      requestAnimationFrame(render);
+    };
+
+    container.addEventListener('scroll', this._onScroll, { passive: true });
+    render();
   }
 }
 
