@@ -1,0 +1,311 @@
+<!--
+title: Model Context Protocol (MCP) Server
+description: Official setup guide and reference for the Boodoo Model Context Protocol (MCP) server with Claude Desktop, Cursor, VS Code, Cline, and Windsurf.
+section: getting-started
+order: 20
+-->
+<div class="bd-intro mb-4">
+  <h1 class="bd-title fw-bold" id="content"><span>Model Context Protocol (MCP) Server</span></h1>
+  <p class="bd-lead lead text-muted"><span>Step-by-step setup instructions, client configurations, tool references, and
+      verification guides for the native Boodoo MCP server.</span></p>
+</div>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="overview"><span>Overview</span></h2>
+  <p><span>The Boodoo framework includes an official, zero-dependency Model Context Protocol (MCP) server implemented in
+      standard ECMAScript modules (<code>mcp/server.mjs</code>). By connecting your AI coding environment directly to
+      Boodoo's live design tokens, component catalog, accessibility specifications, and syntax linter, your AI
+      assistants (Claude, Cursor, Copilot, Windsurf, Cline) generate 100% compliant, production-grade code without
+      hallucinations.</span></p>
+
+  <div class="row g-3 my-3">
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-primary text-primary mb-3">
+          <i class="hi-bolt" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Zero External Dependencies</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Communicates over native JSON-RPC 2.0 stdio using built-in
+            Node.js modules. No heavy runtime SDKs or external network dependencies required.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-success text-success mb-3">
+          <i class="hi-shield-check" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Secure Path Traversal Protection</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>All code retrieval tools enforce platform target allowlisting
+            and strict path containment checks to ensure safe workspace sandboxing.</span></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-hover p-2 shadow-sm border">
+        <div class="card-icon-avatar bg-soft-info text-info mb-3">
+          <i class="hi-terminal" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2"><span>Built-in Quality Linter</span></h5>
+        <p class="text-muted fs-7 mb-0 flex-grow-1"><span>Directly invokes Boodoo's 14-point production quality rules to
+            validate form IDs, semantic text wrapping, and React Native style cleanliness.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="tools-reference"><span>MCP Tools Reference</span></h2>
+  <p><span>The Boodoo MCP server exposes 8 dedicated tools to your AI assistant:</span></p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead>
+        <tr>
+          <th><span>Tool Name</span></th>
+          <th><span>Parameters</span></th>
+          <th><span>Description &amp; Purpose</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>search_components</code></td>
+          <td><code>query</code> (string, optional)</td>
+          <td><span>Searches 50+ built-in components by keyword, UI category, or features (e.g., <code>"modal"</code>,
+              <code>"table"</code>, <code>"disclosure"</code>).</span></td>
+        </tr>
+        <tr>
+          <td><code>get_component_docs</code></td>
+          <td><code>name</code> (string, required)</td>
+          <td><span>Returns full documentation, CSS classes, HTML markup conventions, and WCAG 2.2 AA accessibility
+              requirements for a specified component.</span></td>
+        </tr>
+        <tr>
+          <td><code>get_component_example</code></td>
+          <td><code>name</code> (string, required), <code>target</code> (enum: <code>vanilla-js</code>,
+            <code>react</code>, <code>vue</code>, <code>react-native</code>)</td>
+          <td><span>Retrieves verified, runnable code samples across Web (vanilla JS), React, Vue 3, or React Native
+              Mobile with strict sandbox security.</span></td>
+        </tr>
+        <tr>
+          <td><code>search_utilities</code></td>
+          <td><code>query</code> (string, optional)</td>
+          <td><span>Searches 150+ CSS utility classes covering responsive spacing, flexbox, 2D CSS grid, typography,
+              borders, and elevation.</span></td>
+        </tr>
+        <tr>
+          <td><code>get_design_tokens</code></td>
+          <td><em>None</em></td>
+          <td><span>Returns the universal design token system: color palettes, generous spacing scale, border radii,
+              shadows, and z-index layers.</span></td>
+        </tr>
+        <tr>
+          <td><code>get_design_token</code></td>
+          <td><code>name</code> (string, required)</td>
+          <td><span>Queries a specific token by dot-notation path or token name (e.g., <code>"colors.primary"</code>,
+              <code>"spacing.2"</code>, <code>"radii.lg"</code>).</span></td>
+        </tr>
+        <tr>
+          <td><code>validate_component_usage</code></td>
+          <td><code>code</code> (string, required), <code>platform</code> (enum: <code>web</code>, <code>react</code>,
+            <code>vue</code>, <code>react-native</code>)</td>
+          <td><span>Performs automated linting on generated code: ensures mandatory form field IDs, semantic text node
+              wrapping, and zero React Native inline styles.</span></td>
+        </tr>
+        <tr>
+          <td><code>get_installation_guide</code></td>
+          <td><code>target</code> (string, optional)</td>
+          <td><span>Provides exact, tested setup instructions for npm, yarn, pnpm, high-speed CDN, React, Vue, or React
+              Native projects.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="client-setup"><span>IDE &amp; Client Setup Instructions</span></h2>
+  <p><span>Configure your favorite coding assistant or editor to communicate with the Boodoo MCP server. Replace
+      <code>&lt;PATH_TO_BOODOO_REPO&gt;</code> with the absolute path to your local Boodoo workspace (for example:
+      <code>/Users/name/projects/boodoo</code> on macOS/Linux or <code>C:/Users/name/apps/budu</code> on
+      Windows).</span></p>
+
+  <div class="accordion mb-4" id="mcpSetupAccordion">
+    <!-- Claude Desktop -->
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingClaude">
+        <button class="accordion-button fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseClaude" aria-expanded="true" aria-controls="collapseClaude">
+          <span>1. Claude Desktop (Anthropic)</span>
+        </button>
+      </h3>
+      <div id="collapseClaude" class="accordion-collapse collapse show" aria-labelledby="headingClaude"
+        data-boodoo-parent="#mcpSetupAccordion">
+        <div class="accordion-body">
+          <p><span>Open your Claude Desktop configuration file:</span></p>
+          <ul>
+            <li><span><strong>macOS</strong>:
+                <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></span></li>
+            <li><span><strong>Windows</strong>: <code>%APPDATA%\Claude\claude_desktop_config.json</code></span></li>
+          </ul>
+          <p><span>Add the Boodoo MCP server entry under <code>mcpServers</code>:</span></p>
+          <div class="highlight">
+            <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+          </div>
+          <p class="mb-0"><span>Restart Claude Desktop. The hammer icon in the prompt input will display Boodoo's 8
+              registered tools.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingCursor">
+        <button class="accordion-button collapsed fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseCursor" aria-expanded="false" aria-controls="collapseCursor">
+          <span>2. Cursor IDE</span>
+        </button>
+      </h3>
+      <div id="collapseCursor" class="accordion-collapse collapse" aria-labelledby="headingCursor"
+        data-boodoo-parent="#mcpSetupAccordion">
+        <div class="accordion-body">
+          <p><span>In Cursor, open your project workspace settings or create a <code>.cursor/mcp.json</code> file in the
+              root of your project:</span></p>
+          <div class="highlight">
+            <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+          </div>
+          <p><span>Alternatively, navigate to <strong>Cursor Settings &gt; Features &gt; MCP</strong>, click <strong>+
+                Add New MCP Server</strong>, name it <code>boodoo</code>, select <code>command</code>, and enter
+              <code>node &lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs</code>.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VS Code / Cline -->
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingCline">
+        <button class="accordion-button collapsed fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseCline" aria-expanded="false" aria-controls="collapseCline">
+          <span>3. VS Code / Cline &amp; Roo Code</span>
+        </button>
+      </h3>
+      <div id="collapseCline" class="accordion-collapse collapse" aria-labelledby="headingCline"
+        data-boodoo-parent="#mcpSetupAccordion">
+        <div class="accordion-body">
+          <p><span>In VS Code with the Cline extension installed, open the Cline tab, click the <strong>MCP
+                Servers</strong> icon, or edit <code>cline_mcp_settings.json</code>:</span></p>
+          <div class="highlight">
+            <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"],
+      "disabled": false,
+      "autoApprove": [
+        "search_components",
+        "get_component_docs",
+        "get_component_example",
+        "search_utilities",
+        "get_design_tokens",
+        "get_design_token",
+        "validate_component_usage"
+      ]
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windsurf -->
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingWindsurf">
+        <button class="accordion-button collapsed fw-bold" type="button" data-boodoo-toggle="collapse"
+          data-boodoo-target="#collapseWindsurf" aria-expanded="false" aria-controls="collapseWindsurf">
+          <span>4. Windsurf (Codeium Cascade)</span>
+        </button>
+      </h3>
+      <div id="collapseWindsurf" class="accordion-collapse collapse" aria-labelledby="headingWindsurf"
+        data-boodoo-parent="#mcpSetupAccordion">
+        <div class="accordion-body">
+          <p><span>In Windsurf, open <strong>Cascade &gt; Plugins &gt; MCP Configuration</strong> or edit
+              <code>~/.codeium/windsurf/mcp_config.json</code>:</span></p>
+          <div class="highlight">
+            <pre><code class="language-json">{
+  "mcpServers": {
+    "boodoo": {
+      "command": "node",
+      "args": ["&lt;PATH_TO_BOODOO_REPO&gt;/mcp/server.mjs"]
+    }
+  }
+}</code></pre>
+          </div>
+          <p class="mb-0"><span>Cascade will now automatically call Boodoo tools when you ask questions about styling,
+              components, or layout.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="testing-verification"><span>Testing &amp; Manual Verification</span></h2>
+  <p><span>You can test the MCP server directly from your terminal using standard input/output JSON-RPC payloads:</span>
+  </p>
+
+  <div class="highlight">
+    <pre><code class="language-bash"># Run server test query in Node
+node -e "
+const proc = require('child_process').spawn('node', ['mcp/server.mjs']);
+proc.stdout.on('data', d => console.log('MCP Response:', d.toString()));
+proc.stdin.write(JSON.stringify({
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'tools/call',
+  params: { name: 'get_design_token', arguments: { name: 'colors.primary' } }
+}) + '\n');
+"</code></pre>
+  </div>
+
+  <p><span>Expected output returns the canonical Boodoo primary brand token:</span></p>
+  <div class="highlight">
+    <pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"value\": \"#7c3aed\",\n  \"token\": \"colors.primary\"\n}"
+      }
+    ]
+  }
+}</code></pre>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="fw-bold" id="workflow-integration"><span>AI Prompting Best Practices</span></h2>
+  <p><span>When prompting an AI assistant connected via MCP, follow these best practices for optimal results:</span></p>
+  <ul>
+    <li><span><strong>Search First</strong>: Instruct the model: <em>"Search Boodoo components before creating custom UI
+          elements."</em></span></li>
+    <li><span><strong>Token Verification</strong>: Tell the model: <em>"Query Boodoo design tokens using
+          get_design_token to ensure proper color and spacing variables are used."</em></span></li>
+    <li><span><strong>Automated Linting</strong>: Prompt: <em>"Run validate_component_usage on the final code to ensure
+          form IDs and semantic text tags adhere to WCAG standards."</em></span></li>
+  </ul>
+</section>
