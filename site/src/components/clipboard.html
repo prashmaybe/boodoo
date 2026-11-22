@@ -1,0 +1,60 @@
+---
+title: Clipboard
+description: Accessible, zero-dependency async clipboard copy helper with tooltip feedback.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Clipboard</span></h1>
+    <p class="lead"><span>Lightweight asynchronous clipboard copy utility with automatic focus restoration, accessible screen reader live feedback, and tooltip state updates.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Interactive Demo</span></h5>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <input type="text" id="clipSource" name="clipSource" class="form-control" value="npm install boodoo" readonly>
+        <button class="btn btn-primary" type="button" id="copyBtn">
+          <span>Copy Command</span>
+        </button>
+      </div>
+      <p id="copyStatus" class="text-success small d-none" role="status"><span>Copied to clipboard successfully!</span></p>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>JavaScript Usage</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { clipboard } from 'boodoo';
+
+// Direct string copy
+await clipboard.writeText('npm install boodoo');
+
+// Or bind directly to button triggers
+clipboard.bind('#copyBtn', {
+  target: '#clipSource',
+  successText: 'Copied!',
+  timeout: 2000
+});</code></pre>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('copyBtn');
+    const input = document.getElementById('clipSource');
+    const status = document.getElementById('copyStatus');
+    if (btn && input) {
+      btn.addEventListener('click', async () => {
+        if (window.boodoo && window.boodoo.clipboard) {
+          await window.boodoo.clipboard.writeText(input.value);
+        } else {
+          navigator.clipboard.writeText(input.value);
+        }
+        status.classList.remove('d-none');
+        setTimeout(() => status.classList.add('d-none'), 2500);
+      });
+    }
+  });
+</script>

@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.4] - 2026-11-22
+
+### Added
+- **Core Performance & Content Primitives (`js/src/virtual-list.js`, `js/src/markdown.js`, `js/src/gestures.js`, `js/src/icon.js`)**:
+  - `VirtualList`: Zero-dependency windowing container capable of rendering 10,000+ items with smooth scrolling and dynamic spacers.
+  - `Markdown`: Safe, zero-runtime Markdown renderer with XSS sanitization, heading mapping, code block formatting, and link protocol validation.
+  - `Gestures`: Lightweight touch and pointer gesture handlers including `attachSwipe` (swipe-to-dismiss) and `attachPullToRefresh`.
+  - `Icon`: Framework-agnostic SVG icon renderer for Haticons with accessibility attributes.
+- **Vue 3 Component Suite Parity Expansion (`vue/components.js`, `vue/index.js`, `vue/index.d.ts`)**:
+  - Expanded Vue 3 suite with `BoodooAccordion`, `BoodooAccordionItem`, `BoodooOffcanvas`, `BoodooDropdown`, `BoodooTabs`, `BoodooToast`, `BoodooSpinner`, `BoodooProgress`, `BoodooBreadcrumb`, `BoodooAvatar`, `BoodooKbd`, `BoodooVirtualList`, and `BoodooMarkdown`.
+- **Dedicated Component Documentation & Search Catalog**:
+  - Added dedicated documentation pages for `ChipInput`, `Clipboard`, `ImageCompare`, `PasswordMeter`, `Tour`, `FloatingBar`, `DialogFullscreen`, `VirtualList`, and `Markdown`.
+  - Added interactive **Theme Studio** (`getting-started/theme-studio.html`) and live in-browser **REPL / Playground** (`getting-started/playground.html`).
+  - Added **Modern Framework Guides** (`getting-started/modern-frameworks.html`) for Svelte 5, SolidJS, Astro, Remix, and Angular.
+  - Synchronized sitewide search catalog to all 150 documentation pages.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Bumped version to 1.3.4 across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `docs/ai/component-index.json`, `tokens/figma-tokens.json`, `llms.txt`, and `llms-full.txt`.
+
+---
+
 ## [1.3.3] - 2026-11-21
 
 ### Added

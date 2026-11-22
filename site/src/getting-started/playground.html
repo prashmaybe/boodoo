@@ -1,0 +1,71 @@
+---
+title: Interactive Playground &amp; REPL
+description: In-browser live HTML, CSS, and component experimentation sandbox.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Interactive Playground &amp; REPL</span></h1>
+    <p class="lead"><span>Experiment with Boodoo components, grid rows, responsive utilities, and tokens in real time directly inside your browser.</span></p>
+  </div>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-body-tertiary d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0"><span>Live Code Editor</span></h5>
+      <button type="button" class="btn btn-sm btn-outline-primary" id="resetReplBtn"><span>Reset Example</span></button>
+    </div>
+    <div class="card-body p-0">
+      <div class="row g-0">
+        <div class="col-12 col-lg-6 border-end">
+          <div class="p-3 bg-dark text-white font-monospace small" style="border-top-left-radius: inherit;">
+            <span>HTML &amp; Utilities Markup</span>
+          </div>
+          <textarea id="replEditor" name="replEditor" class="form-control font-monospace border-0 p-3" rows="12" style="resize: vertical; outline: none; border-radius: 0;">
+<div class="p-4 bg-light rounded shadow-sm">
+  <h3 class="fw-bold text-primary"><span>Welcome to Boodoo REPL</span></h3>
+  <p class="lead"><span>Build mobile-first, responsive layouts with zero runtime bloat.</span></p>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary" type="button"><span>Explore Docs</span></button>
+    <button class="btn btn-outline-secondary" type="button"><span>View GitHub</span></button>
+  </div>
+</div>
+</textarea>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="p-3 bg-secondary-subtle font-monospace small">
+            <span>Live Output Preview</span>
+          </div>
+          <div id="replPreview" class="p-4 h-100 bg-body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const editor = document.getElementById('replEditor');
+    const preview = document.getElementById('replPreview');
+    const resetBtn = document.getElementById('resetReplBtn');
+
+    const defaultCode = `<div class="p-4 bg-light rounded shadow-sm">\n  <h3 class="fw-bold text-primary"><span>Welcome to Boodoo REPL</span></h3>\n  <p class="lead"><span>Build mobile-first, responsive layouts with zero runtime bloat.</span></p>\n  <div class="d-flex gap-2">\n    <button class="btn btn-primary" type="button"><span>Explore Docs</span></button>\n    <button class="btn btn-outline-secondary" type="button"><span>View GitHub</span></button>\n  </div>\n</div>`;
+
+    function render() {
+      if (preview && editor) {
+        preview.innerHTML = editor.value;
+      }
+    }
+
+    if (editor) {
+      editor.addEventListener('input', render);
+      render();
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        editor.value = defaultCode;
+        render();
+      });
+    }
+  });
+</script>

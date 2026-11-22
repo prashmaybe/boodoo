@@ -46,6 +46,10 @@ import { DialogFullscreen } from './src/dialog-fullscreen.js';
 import { Tour } from './src/tour.js';
 import { Chart } from './src/chart.js';
 import { FilterBar, TransferList, ColorPicker, BackToTop } from './src/advanced-components.js';
+import { VirtualList } from './src/virtual-list.js';
+import { Markdown } from './src/markdown.js';
+import { Gestures } from './src/gestures.js';
+import { Icon } from './src/icon.js';
 
 // Wire up generic data-boodoo-dismiss triggers
 enableDismissTrigger(Alert, (instance, event, toggler) => {
@@ -132,6 +136,10 @@ const boodoo = {
   TransferList,
   ColorPicker,
   BackToTop,
+  VirtualList,
+  Markdown,
+  Gestures,
+  Icon,
 };
 
 // Programmatic Toast API: boodoo.toast(message, options) / boodoo.toast.show() / .success() / etc.
@@ -302,4 +310,8 @@ export {
   ColorPicker,
   BackToTop,
   foldAccents,
+  VirtualList,
+  Markdown,
+  Gestures,
+  Icon,
 };

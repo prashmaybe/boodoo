@@ -1,0 +1,58 @@
+---
+title: Virtual List
+description: High-performance DOM list and windowing container capable of rendering 10,000+ items smoothly.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Virtual List</span></h1>
+    <p class="lead"><span>High-performance windowed rendering primitive for large DOM datasets, infinite scroll lists, and virtualized feeds with zero dependencies.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Live Windowing Demo (5,000 Items)</span></h5>
+    </div>
+    <div class="card-body">
+      <div id="demoVirtualList" class="border rounded bg-body" style="height: 320px; overflow-y: auto;"></div>
+      <p class="small text-muted mt-2 mb-0"><span>Only the visible DOM nodes are created and attached to the render tree at any time.</span></p>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Usage</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { VirtualList } from 'boodoo';
+
+const items = Array.from({ length: 10000 }, (_, i) => `Transaction Item #${i + 1}`);
+
+const vList = new VirtualList('#demoVirtualList', {
+  items,
+  itemHeight: 48,
+  buffer: 5,
+  renderItem: (item, index) => {
+    const el = document.createElement('div');
+    el.className = 'p-3 border-bottom d-flex align-items-center justify-content-between';
+    el.innerHTML = `<span><strong>${item}</strong></span><span class="badge bg-soft-success">Verified</span>`;
+    return el;
+  }
+});</code></pre>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.boodoo && window.boodoo.VirtualList) {
+      const items = Array.from({ length: 5000 }, (_, i) => `Server Log Event #${i + 1}`);
+      new window.boodoo.VirtualList('#demoVirtualList', {
+        items,
+        itemHeight: 44,
+        renderItem: (item) => {
+          const div = document.createElement('div');
+          div.className = 'p-2 border-bottom font-monospace small';
+          div.innerHTML = `<span>[INFO] 2026-11-22: ${item}</span>`;
+          return div;
+        }
+      });
+    }
+  });
+</script>

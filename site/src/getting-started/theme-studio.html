@@ -1,0 +1,131 @@
+---
+title: Interactive Theme Studio
+description: Real-time design token customizer and live CSS/JSON generator for Boodoo.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Interactive Theme Studio</span></h1>
+    <p class="lead"><span>Customize color palettes, spacing densities, border-radii, and surface contrasts in real-time with zero stylesheet recompilation.</span></p>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-12 col-lg-5">
+      <div class="card h-100">
+        <div class="card-header bg-body-tertiary">
+          <h5 class="card-title mb-0"><span>Theme Controls</span></h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="themePrimary" class="form-label"><span>Primary Brand Color</span></label>
+            <div class="input-group">
+              <input type="color" class="form-control form-control-color" id="themePrimary" name="themePrimary" value="#7c3aed">
+              <input type="text" class="form-control" id="themePrimaryHex" name="themePrimaryHex" value="#7c3aed">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="themeRadius" class="form-label"><span>Border Radius</span></label>
+            <select class="form-select" id="themeRadius" name="themeRadius">
+              <option value="0.25rem">Sharp (0.25rem)</option>
+              <option value="0.5rem" selected>Default Rounded (0.5rem)</option>
+              <option value="0.75rem">Generous (0.75rem)</option>
+              <option value="1.25rem">Pill / Soft (1.25rem)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="themeDensity" class="form-label"><span>Spacing Density</span></label>
+            <select class="form-select" id="themeDensity" name="themeDensity">
+              <option value="14px">Compact / Backoffice (14px)</option>
+              <option value="16px" selected>Standard Generous (16px)</option>
+              <option value="20px">Airy / Marketing (20px)</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-outline-secondary w-100 mb-2" id="resetThemeBtn">
+            <span>Reset to Defaults</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <div class="card h-100">
+        <div class="card-header bg-body-tertiary">
+          <h5 class="card-title mb-0"><span>Live Component Preview</span></h5>
+        </div>
+        <div class="card-body" id="themePreviewArea">
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button type="button" class="btn btn-primary"><span>Primary Action</span></button>
+            <button type="button" class="btn btn-outline-primary"><span>Outline</span></button>
+            <span class="badge bg-primary"><span>New Feature</span></span>
+          </div>
+          <div class="alert alert-primary mb-3">
+            <p class="mb-0"><span>Theme tokens cascade live down the DOM tree instantly via dynamic CSS custom properties!</span></p>
+          </div>
+          <div class="card p-3 border">
+            <h6 class="fw-bold mb-1"><span>Card Container</span></h6>
+            <p class="text-muted small mb-0"><span>Dynamically responding to selected border radius and primary color.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Generated CSS Custom Properties</span></h3>
+    <pre class="boodoo-code-block"><code class="language-css" id="generatedCss">:root {
+  --boodoo-primary: #7c3aed;
+  --boodoo-border-radius: 0.5rem;
+  --boodoo-spacer: 1rem;
+}</code></pre>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const primaryInput = document.getElementById('themePrimary');
+    const primaryHex = document.getElementById('themePrimaryHex');
+    const radiusSelect = document.getElementById('themeRadius');
+    const densitySelect = document.getElementById('themeDensity');
+    const preview = document.getElementById('themePreviewArea');
+    const codeBlock = document.getElementById('generatedCss');
+    const resetBtn = document.getElementById('resetThemeBtn');
+
+    function update() {
+      const color = primaryInput.value;
+      primaryHex.value = color;
+      const radius = radiusSelect.value;
+      const density = densitySelect.value;
+
+      if (preview) {
+        preview.style.setProperty('--boodoo-primary', color);
+        preview.style.setProperty('--boodoo-border-radius', radius);
+      }
+
+      if (codeBlock) {
+        codeBlock.textContent = `:root {\n  --boodoo-primary: ${color};\n  --boodoo-border-radius: ${radius};\n  --boodoo-spacer: ${density};\n}`;
+      }
+    }
+
+    if (primaryInput) {
+      primaryInput.addEventListener('input', update);
+      primaryHex.addEventListener('input', (e) => {
+        primaryInput.value = e.target.value;
+        update();
+      });
+      radiusSelect.addEventListener('change', update);
+      densitySelect.addEventListener('change', update);
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        primaryInput.value = '#7c3aed';
+        radiusSelect.value = '0.5rem';
+        densitySelect.value = '16px';
+        update();
+      });
+    }
+  });
+</script>

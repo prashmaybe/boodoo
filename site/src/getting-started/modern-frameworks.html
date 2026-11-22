@@ -1,0 +1,64 @@
+---
+title: Modern Framework Guides
+description: Step-by-step integration guides for Svelte 5, SolidJS, Astro, Remix, and Angular.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Modern Framework Guides</span></h1>
+    <p class="lead"><span>Use Boodoo with modern web frameworks: Svelte 5, SolidJS, Astro, Remix/React Router 7, and Angular.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Astro Integration</span></h5>
+    </div>
+    <div class="card-body">
+      <p><span>Install Boodoo via npm or import CSS directly in your layout:</span></p>
+      <pre class="boodoo-code-block"><code class="language-astro">---
+// src/layouts/Layout.astro
+import 'boodoo/css';
+---
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Astro + Boodoo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;slot /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Svelte 5 Integration</span></h5>
+    </div>
+    <div class="card-body">
+      <pre class="boodoo-code-block"><code class="language-svelte">&lt;script&gt;
+  import 'boodoo/css';
+  let { count = 0 } = $props();
+&lt;/script&gt;
+
+&lt;div class="card p-3 shadow-sm"&gt;
+  &lt;h4 class="card-title text-primary"&gt;&lt;span&gt;Svelte 5 Component&lt;/span&gt;&lt;/h4&gt;
+  &lt;button class="btn btn-primary" onclick={() => count++}&gt;
+    &lt;span&gt;Clicks: {count}&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>SolidJS &amp; Remix / React Router 7</span></h5>
+    </div>
+    <div class="card-body">
+      <pre class="boodoo-code-block"><code class="language-javascript">// In root layout or App entry
+import 'boodoo/css';
+import { useDisclosure } from 'boodoo/react'; // React / Remix / React Router 7</code></pre>
+    </div>
+  </div>
+</div>
