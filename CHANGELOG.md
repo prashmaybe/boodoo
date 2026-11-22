@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.4] - 2026-11-22
 
 ### Added
+- **React, Solid, and Svelte Component Suites & Package Exports (`react/`, `solid/`, `svelte/`)**:
+  - Added native first-party component adapters: `BoodooVirtualList` and `BoodooMarkdown` for React (`boodoo/react`).
+  - Added official SolidJS adapters (`boodoo/solid`) and Svelte 5 component wrappers (`boodoo/svelte`) with TypeScript declarations.
+  - Added interactive in-browser **Contrast Checker** (`getting-started/contrast-checker.html`) for WCAG 2.2 AA/AAA compliance checking.
+  - Added PWA capabilities with `site.webmanifest` and service worker (`sw.js`).
 - **Core Performance & Content Primitives (`js/src/virtual-list.js`, `js/src/markdown.js`, `js/src/gestures.js`, `js/src/icon.js`)**:
   - `VirtualList`: Zero-dependency windowing container capable of rendering 10,000+ items with smooth scrolling and dynamic spacers.
   - `Markdown`: Safe, zero-runtime Markdown renderer with XSS sanitization, heading mapping, code block formatting, and link protocol validation.
@@ -21,11 +26,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added dedicated documentation pages for `ChipInput`, `Clipboard`, `ImageCompare`, `PasswordMeter`, `Tour`, `FloatingBar`, `DialogFullscreen`, `VirtualList`, and `Markdown`.
   - Added interactive **Theme Studio** (`getting-started/theme-studio.html`) and live in-browser **REPL / Playground** (`getting-started/playground.html`).
   - Added **Modern Framework Guides** (`getting-started/modern-frameworks.html`) for Svelte 5, SolidJS, Astro, Remix, and Angular.
-  - Synchronized sitewide search catalog to all 150 documentation pages.
+  - Synchronized sitewide search catalog across 151 documentation pages.
 
 ### Changed
 - **Framework & CDN Distribution Synchronization**:
-  - Bumped version to 1.3.4 across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `site/data/cdn-urls.json`, `docs/ai/component-index.json`, `tokens/figma-tokens.json`, `llms.txt`, and `llms-full.txt`.
+  - Bumped version to 1.3.4 across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `bin/boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `docs/ai/component-index.json`, `tokens/figma-tokens.json`, `mcp/server.mjs`, `llms.txt`, and `llms-full.txt`.
+  - Updated real-time production asset sizes (~550 KB min CSS / ~139 KB min JS, ~76.6 KB gzip CSS / ~33.2 KB gzip JS).
 
 ---
 
