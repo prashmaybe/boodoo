@@ -237,7 +237,10 @@ declare class Markdown {
 
 declare class Gestures {
   static attachSwipe(element: HTMLElement | string, options?: any): { dispose(): void } | null;
-  static attachPullToRefresh(element: HTMLElement | string, onRefresh: () => Promise<void> | void): { dispose(): void } | null;
+  static attachPullToRefresh(
+    element: HTMLElement | string,
+    onRefresh: () => Promise<void> | void
+  ): { dispose(): void } | null;
 }
 
 declare class Icon {

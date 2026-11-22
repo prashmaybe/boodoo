@@ -181,7 +181,9 @@ export function VirtualList({
   return React.createElement(
     'div',
     {
-      className: ['boodoo-virtual-list position-relative overflow-auto', className].filter(Boolean).join(' '),
+      className: ['boodoo-virtual-list position-relative overflow-auto', className]
+        .filter(Boolean)
+        .join(' '),
       style: { height },
       onScroll: (e) => setScrollTop(e.currentTarget.scrollTop),
       ...props,
@@ -201,7 +203,11 @@ export function VirtualList({
         visibleItems.map((item, idx) =>
           typeof children === 'function'
             ? children(item, startIndex + idx)
-            : React.createElement('div', { key: startIndex + idx, className: 'p-2 border-bottom' }, React.createElement('span', null, String(item)))
+            : React.createElement(
+                'div',
+                { key: startIndex + idx, className: 'p-2 border-bottom' },
+                React.createElement('span', null, String(item))
+              )
         )
       )
     )
@@ -233,10 +239,15 @@ export function Icon({ name = '', size = 20, className = '', label = '', ...prop
       'aria-hidden': !label ? 'true' : undefined,
       'aria-label': label || undefined,
       role: label ? 'img' : undefined,
-      style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: `${size}px`, height: `${size}px` },
+      style: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: `${size}px`,
+        height: `${size}px`,
+      },
       ...props,
     },
     React.createElement('i', { className: `hi hi-${name}` })
   );
 }
-

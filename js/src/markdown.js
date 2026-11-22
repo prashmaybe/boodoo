@@ -83,7 +83,11 @@ export class Markdown {
     if (!this._element) return;
 
     this._options = {
-      content: options.content || this._element.getAttribute('data-content') || this._element.textContent || '',
+      content:
+        options.content ||
+        this._element.getAttribute('data-content') ||
+        this._element.textContent ||
+        '',
       editable: options.editable || false,
       ...options,
     };

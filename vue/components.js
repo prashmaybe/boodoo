@@ -372,25 +372,31 @@ export const BoodooAccordionItem = {
     };
 
     return () => {
-      return h('div', { class: ['accordion-item', attrs.class].filter(Boolean).join(' '), ...attrs }, [
-        h('h2', { class: 'accordion-header' }, [
-          h(
-            'button',
-            {
-              type: 'button',
-              class: ['accordion-button', !isOpen.value ? 'collapsed' : ''].filter(Boolean).join(' '),
-              'aria-expanded': isOpen.value ? 'true' : 'false',
-              onClick: toggle,
-            },
-            h('span', null, props.title)
-          ),
-        ]),
-        isOpen.value
-          ? h('div', { class: 'accordion-collapse collapse show' }, [
-              h('div', { class: 'accordion-body' }, slots.default ? slots.default() : null),
-            ])
-          : null,
-      ]);
+      return h(
+        'div',
+        { class: ['accordion-item', attrs.class].filter(Boolean).join(' '), ...attrs },
+        [
+          h('h2', { class: 'accordion-header' }, [
+            h(
+              'button',
+              {
+                type: 'button',
+                class: ['accordion-button', !isOpen.value ? 'collapsed' : '']
+                  .filter(Boolean)
+                  .join(' '),
+                'aria-expanded': isOpen.value ? 'true' : 'false',
+                onClick: toggle,
+              },
+              h('span', null, props.title)
+            ),
+          ]),
+          isOpen.value
+            ? h('div', { class: 'accordion-collapse collapse show' }, [
+                h('div', { class: 'accordion-body' }, slots.default ? slots.default() : null),
+              ])
+            : null,
+        ]
+      );
     };
   },
 };
@@ -545,12 +551,15 @@ export const BoodooToast = {
     return () => {
       if (!props.modelValue) return null;
 
-      const variantClass = props.variant && props.variant !== 'default' ? `text-bg-${props.variant}` : '';
+      const variantClass =
+        props.variant && props.variant !== 'default' ? `text-bg-${props.variant}` : '';
 
       return h(
         'div',
         {
-          class: ['toast show align-items-center', variantClass, attrs.class].filter(Boolean).join(' '),
+          class: ['toast show align-items-center', variantClass, attrs.class]
+            .filter(Boolean)
+            .join(' '),
           role: 'alert',
           'aria-live': 'assertive',
           'aria-atomic': 'true',
@@ -698,7 +707,11 @@ export const BoodooKbd = {
   name: 'BoodooKbd',
   setup(_, { slots, attrs }) {
     return () => {
-      return h('kbd', { class: ['kbd', attrs.class].filter(Boolean).join(' '), ...attrs }, slots.default ? slots.default() : null);
+      return h(
+        'kbd',
+        { class: ['kbd', attrs.class].filter(Boolean).join(' '), ...attrs },
+        slots.default ? slots.default() : null
+      );
     };
   },
 };

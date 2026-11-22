@@ -10,7 +10,9 @@ export class Icon {
     if (!name) return '';
     const size = options.size || 20;
     const className = options.className || '';
-    const ariaLabel = options.label ? ` aria-label="${escapeHtml(options.label)}"` : ' aria-hidden="true"';
+    const ariaLabel = options.label
+      ? ` aria-label="${escapeHtml(options.label)}"`
+      : ' aria-hidden="true"';
     const role = options.label ? 'role="img"' : '';
 
     return `<span class="boodoo-icon-wrapper ${escapeHtml(className)}"${ariaLabel} ${role} style="display:inline-flex;align-items:center;justify-content:center;width:${size}px;height:${size}px;"><i class="hi hi-${escapeHtml(name)}"></i></span>`;

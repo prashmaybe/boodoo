@@ -594,4 +594,3 @@ export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   label?: string;
 }
 export declare const Icon: React.FC<IconProps>;
-

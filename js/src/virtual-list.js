@@ -15,14 +15,16 @@ export class VirtualList {
       items: options.items || [],
       itemHeight: options.itemHeight || 48,
       buffer: options.buffer !== undefined ? options.buffer : 5,
-      renderItem: options.renderItem || ((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'virtual-list-item';
-        const span = document.createElement('span');
-        span.textContent = typeof item === 'string' ? item : JSON.stringify(item);
-        div.appendChild(span);
-        return div;
-      }),
+      renderItem:
+        options.renderItem ||
+        ((item, _index) => {
+          const div = document.createElement('div');
+          div.className = 'virtual-list-item';
+          const span = document.createElement('span');
+          span.textContent = typeof item === 'string' ? item : JSON.stringify(item);
+          div.appendChild(span);
+          return div;
+        }),
       ...options,
     };
 
@@ -97,7 +99,10 @@ export class VirtualList {
     const totalHeight = totalItems * this._options.itemHeight;
     this._spacer.style.height = `${totalHeight}px`;
 
-    const startIndex = Math.max(0, Math.floor(this._scrollTop / this._options.itemHeight) - this._options.buffer);
+    const startIndex = Math.max(
+      0,
+      Math.floor(this._scrollTop / this._options.itemHeight) - this._options.buffer
+    );
     const visibleCount = Math.ceil(this._viewportHeight / this._options.itemHeight);
     const endIndex = Math.min(totalItems, startIndex + visibleCount + this._options.buffer * 2);
 
