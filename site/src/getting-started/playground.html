@@ -35,7 +35,7 @@ description: In-browser live HTML, CSS, and component experimentation sandbox.
           <div class="p-3 bg-secondary-subtle font-monospace small">
             <span>Live Output Preview</span>
           </div>
-          <div id="replPreview" class="p-4 h-100 bg-body"></div>
+          <iframe id="replPreview" title="Live Preview Output" class="w-100 h-100 border-0 bg-body" sandbox="allow-same-origin" style="min-height: 320px;"></iframe>
         </div>
       </div>
     </div>
@@ -52,12 +52,20 @@ description: In-browser live HTML, CSS, and component experimentation sandbox.
 
     function render() {
       if (preview && editor) {
-        preview.innerHTML = editor.value;
+        const previewDoc = preview.contentDocument || preview.contentWindow?.document;
+        if (previewDoc) {
+          previewDoc.open();
+          previewDoc.write('<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/css/boodoo.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@latest/css/haticons.min.css"></head><body class="p-3">' + editor.value + '</body></html>');
+          previewDoc.close();
+        }
       }
     }
 
     if (editor) {
       editor.addEventListener('input', render);
+      if (preview) {
+        preview.addEventListener('load', render);
+      }
       render();
     }
 
