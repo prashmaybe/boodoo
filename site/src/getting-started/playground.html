@@ -42,6 +42,7 @@ description: In-browser live HTML, CSS, and component experimentation sandbox.
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.18/dist/purify.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const editor = document.getElementById('replEditor');
@@ -54,18 +55,10 @@ description: In-browser live HTML, CSS, and component experimentation sandbox.
       if (preview && editor) {
         const previewDoc = preview.contentDocument || preview.contentWindow?.document;
         if (previewDoc) {
-          const doc = new DOMParser().parseFromString(
-            '<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/css/boodoo.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@latest/css/haticons.min.css"></head><body class="p-3"></body></html>',
-            'text/html'
-          );
-          const parsed = new DOMParser().parseFromString(editor.value, 'text/html');
-          const bodyNodes = Array.from(parsed.body.childNodes);
-          const frag = doc.createDocumentFragment();
-          for (const node of bodyNodes) {
-            frag.appendChild(doc.importNode(node, true));
-          }
-          doc.body.appendChild(frag);
-          previewDoc.replaceChild(previewDoc.importNode(doc.documentElement, true), previewDoc.documentElement);
+          const cleanHtml = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(editor.value) : editor.value;
+          previewDoc.open();
+          previewDoc.write('<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/css/boodoo.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@latest/css/haticons.min.css"></head><body class="p-3">' + cleanHtml + '</body></html>');
+          previewDoc.close();
         }
       }
     }
