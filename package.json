@@ -68,6 +68,30 @@
       "types": "./vue/index.d.ts",
       "import": "./vue/index.js"
     },
+    "./virtual-list": {
+      "types": "./dist/js/boodoo.d.ts",
+      "import": "./js/src/virtual-list.js"
+    },
+    "./markdown": {
+      "types": "./dist/js/boodoo.d.ts",
+      "import": "./js/src/markdown.js"
+    },
+    "./gestures": {
+      "types": "./dist/js/boodoo.d.ts",
+      "import": "./js/src/gestures.js"
+    },
+    "./icons": {
+      "types": "./dist/js/boodoo.d.ts",
+      "import": "./js/src/icon.js"
+    },
+    "./svelte": {
+      "types": "./svelte/index.d.ts",
+      "import": "./svelte/index.js"
+    },
+    "./solid": {
+      "types": "./solid/index.d.ts",
+      "import": "./solid/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {

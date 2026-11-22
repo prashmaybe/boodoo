@@ -140,6 +140,22 @@
             <li class="nav-item"><a class="nav-link" href="{{rootPrefix}}examples/"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <!-- Version Switcher Dropdown -->
+            <div class="dropdown d-inline-block">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium" type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
+                <span>v{{version}}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li><span class="dropdown-header">Active Release</span></li>
+                <li><a class="dropdown-item active d-flex justify-content-between align-items-center" href="{{rootPrefix}}docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span class="badge bg-primary">Current</span></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><span class="dropdown-header">Release Archives</span></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3" target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2" target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10" target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener"><span>All Releases &rarr;</span></a></li>
+              </ul>
+            </div>
             <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
               href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
@@ -414,7 +430,15 @@
         }, 1000);
       });
 
-      // 2. Copy button
+      // 2. Open in Boodoo Playground Button
+      var replBtn = document.createElement('a');
+      replBtn.className = 'btn btn-sm btn-soft-secondary highlight-repl';
+      replBtn.innerHTML = '<i class="hi-play me-1" aria-hidden="true"></i><span>Playground</span>';
+      replBtn.title = 'Open snippet in Boodoo Live Playground';
+      replBtn.setAttribute('aria-label', 'Open snippet in Boodoo Live Playground');
+      replBtn.href = '{{rootPrefix}}docs/getting-started/playground.html';
+
+      // 3. Copy button
       var copyBtn = document.createElement('button');
       copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
       copyBtn.innerHTML = '<i class="hi-copy" aria-hidden="true"></i><span>Copy</span>';
@@ -433,9 +457,17 @@
       });
 
       actionsBar.appendChild(penBtn);
+      actionsBar.appendChild(replBtn);
       actionsBar.appendChild(copyBtn);
       container.appendChild(actionsBar);
     });
+
+    // Register Service Worker for offline PWA browsing
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('{{rootPrefix}}sw.js').catch(function () {});
+      });
+    }
   </script>
 </body>
 

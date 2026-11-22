@@ -123,6 +123,7 @@
     { title: 'Modern Framework Guides', category: 'Getting Started', route: 'getting-started/modern-frameworks', desc: 'Integration guides for Svelte 5, SolidJS, Astro, Remix/React Router 7, and Angular.', keywords: 'svelte solid astro remix angular modern frameworks integration', icon: '⚡' },
     { title: 'Interactive Playground & REPL', category: 'Getting Started', route: 'getting-started/playground', desc: 'In-browser live HTML, CSS, and component experimentation sandbox.', keywords: 'playground repl sandbox live interactive code editor preview', icon: '🎮' },
     { title: 'Interactive Theme Studio', category: 'Getting Started', route: 'getting-started/theme-studio', desc: 'Real-time design token customizer and live CSS/JSON generator for Boodoo.', keywords: 'theme studio tokens customizer primary color radius density palette', icon: '🎨' },
+    { title: 'Color Contrast & WCAG Checker', category: 'Getting Started', route: 'getting-started/contrast-checker', desc: 'Real-time WCAG 2.2 AA and AAA color contrast evaluator and accessibility validator.', keywords: 'contrast checker wcag aaa accessibility color ratio luminance compliance', icon: '👁️' },
 
     // Helpers
     { title: 'Clearfix', category: 'Helpers', route: 'helpers/clearfix', desc: 'Easily clear floats by adding .clearfix to the parent element.', keywords: 'clearfix clear float floats parent overflow hack fix helper', icon: '🧹' },

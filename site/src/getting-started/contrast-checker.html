@@ -1,0 +1,175 @@
+---
+title: Color Contrast &amp; WCAG Checker
+description: Real-time WCAG 2.2 AA and AAA color contrast evaluator and accessibility validator.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Color Contrast &amp; WCAG Checker</span></h1>
+    <p class="lead"><span>Evaluate foreground and background color combinations in real time according to WCAG 2.2 AA (4.5:1 / 3:1) and AAA (7:1 / 4.5:1) accessibility criteria.</span></p>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-12 col-lg-5">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body-tertiary">
+          <h5 class="card-title mb-0"><span>Contrast Controls</span></h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="textColorInput" class="form-label"><span>Foreground (Text) Color</span></label>
+            <div class="input-group">
+              <input type="color" class="form-control form-control-color" id="textColorPicker" name="textColorPicker" value="#111827">
+              <input type="text" class="form-control" id="textColorInput" name="textColorInput" value="#111827">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="bgColorInput" class="form-label"><span>Background Surface Color</span></label>
+            <div class="input-group">
+              <input type="color" class="form-control form-control-color" id="bgColorPicker" name="bgColorPicker" value="#ffffff">
+              <input type="text" class="form-control" id="bgColorInput" name="bgColorInput" value="#ffffff">
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 mb-3">
+            <button type="button" class="btn btn-sm btn-outline-secondary flex-fill" id="swapColorsBtn">
+              <span>Swap Colors</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-primary flex-fill" id="presetBrandBtn">
+              <span>Use Brand Tokens</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body-tertiary d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0"><span>Live Evaluation</span></h5>
+          <span class="fs-4 fw-bold" id="ratioBadge"><span>21.00 : 1</span></span>
+        </div>
+        <div class="card-body">
+          <div id="contrastPreviewBox" class="p-4 rounded border mb-4 text-center" style="background-color: #ffffff; color: #111827;">
+            <h3 class="fw-bold mb-2"><span>Large Text Heading (24px+)</span></h3>
+            <p class="mb-0"><span>Standard body paragraph text rendering with the selected foreground and background colors.</span></p>
+          </div>
+
+          <div class="row g-2 text-center">
+            <div class="col-6 col-md-3">
+              <div class="p-2 border rounded" id="cardAaNormal">
+                <div class="small fw-bold"><span>AA Normal</span></div>
+                <div class="badge bg-success mt-1" id="badgeAaNormal"><span>PASS (4.5:1)</span></div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-2 border rounded" id="cardAaLarge">
+                <div class="small fw-bold"><span>AA Large</span></div>
+                <div class="badge bg-success mt-1" id="badgeAaLarge"><span>PASS (3.0:1)</span></div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-2 border rounded" id="cardAaaNormal">
+                <div class="small fw-bold"><span>AAA Normal</span></div>
+                <div class="badge bg-success mt-1" id="badgeAaaNormal"><span>PASS (7.0:1)</span></div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="p-2 border rounded" id="cardAaaLarge">
+                <div class="small fw-bold"><span>AAA Large</span></div>
+                <div class="badge bg-success mt-1" id="badgeAaaLarge"><span>PASS (4.5:1)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const textPicker = document.getElementById('textColorPicker');
+    const textInput = document.getElementById('textColorInput');
+    const bgPicker = document.getElementById('bgColorPicker');
+    const bgInput = document.getElementById('bgColorInput');
+    const previewBox = document.getElementById('contrastPreviewBox');
+    const ratioBadge = document.getElementById('ratioBadge');
+    const swapBtn = document.getElementById('swapColorsBtn');
+    const presetBtn = document.getElementById('presetBrandBtn');
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      const num = parseInt(hex, 16);
+      return [num >> 16, (num >> 8) & 255, num & 255];
+    }
+
+    function getLuminance([r, g, b]) {
+      const a = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+
+    function computeRatio(hex1, hex2) {
+      try {
+        const l1 = getLuminance(hexToRgb(hex1));
+        const l2 = getLuminance(hexToRgb(hex2));
+        const lighter = Math.max(l1, l2);
+        const darker = Math.min(l1, l2);
+        return (lighter + 0.05) / (darker + 0.05);
+      } catch (e) {
+        return 1;
+      }
+    }
+
+    function update() {
+      const text = textInput.value;
+      const bg = bgInput.value;
+      textPicker.value = text;
+      bgPicker.value = bg;
+
+      previewBox.style.color = text;
+      previewBox.style.backgroundColor = bg;
+
+      const ratio = computeRatio(text, bg);
+      ratioBadge.textContent = ratio.toFixed(2) + ' : 1';
+
+      function setBadge(id, pass) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.className = pass ? 'badge bg-success mt-1' : 'badge bg-danger mt-1';
+          el.textContent = pass ? 'PASS' : 'FAIL';
+        }
+      }
+
+      setBadge('badgeAaNormal', ratio >= 4.5);
+      setBadge('badgeAaLarge', ratio >= 3.0);
+      setBadge('badgeAaaNormal', ratio >= 7.0);
+      setBadge('badgeAaaLarge', ratio >= 4.5);
+    }
+
+    textPicker.addEventListener('input', e => { textInput.value = e.target.value; update(); });
+    bgPicker.addEventListener('input', e => { bgInput.value = e.target.value; update(); });
+    textInput.addEventListener('input', e => update());
+    bgInput.addEventListener('input', e => update());
+
+    swapBtn.addEventListener('click', () => {
+      const tmp = textInput.value;
+      textInput.value = bgInput.value;
+      bgInput.value = tmp;
+      update();
+    });
+
+    presetBtn.addEventListener('click', () => {
+      textInput.value = '#7c3aed';
+      bgInput.value = '#f7f8fb';
+      update();
+    });
+
+    update();
+  });
+</script>

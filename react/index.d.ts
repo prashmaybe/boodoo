@@ -574,3 +574,24 @@ export interface TooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   placement?: 'top' | 'bottom' | 'start' | 'end';
 }
 export declare const Tooltip: React.FC<TooltipProps>;
+
+export interface VirtualListProps extends React.HTMLAttributes<HTMLDivElement> {
+  items?: any[];
+  itemHeight?: number;
+  height?: string;
+  children?: (item: any, index: number) => React.ReactNode;
+}
+export declare const VirtualList: React.FC<VirtualListProps>;
+
+export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {
+  content?: string;
+}
+export declare const Markdown: React.FC<MarkdownProps>;
+
+export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
+  name: string;
+  size?: number;
+  label?: string;
+}
+export declare const Icon: React.FC<IconProps>;
+
