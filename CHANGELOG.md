@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.4] - 2026-11-22
+
+### Added
+- **React, Solid, and Svelte Component Suites & Package Exports (`react/`, `solid/`, `svelte/`)**:
+  - Added native first-party component adapters: `BoodooVirtualList` and `BoodooMarkdown` for React (`boodoo/react`).
+  - Added official SolidJS adapters (`boodoo/solid`) and Svelte 5 component wrappers (`boodoo/svelte`) with TypeScript declarations.
+  - Added interactive in-browser **Contrast Checker** (`getting-started/contrast-checker.html`) for WCAG 2.2 AA/AAA compliance checking.
+  - Added PWA capabilities with `site.webmanifest` and service worker (`sw.js`).
+- **Core Performance & Content Primitives (`js/src/virtual-list.js`, `js/src/markdown.js`, `js/src/gestures.js`, `js/src/icon.js`)**:
+  - `VirtualList`: Zero-dependency windowing container capable of rendering 10,000+ items with smooth scrolling and dynamic spacers.
+  - `Markdown`: Safe, zero-runtime Markdown renderer with XSS sanitization, heading mapping, code block formatting, and link protocol validation.
+  - `Gestures`: Lightweight touch and pointer gesture handlers including `attachSwipe` (swipe-to-dismiss) and `attachPullToRefresh`.
+  - `Icon`: Framework-agnostic SVG icon renderer for Haticons with accessibility attributes.
+- **Vue 3 Component Suite Parity Expansion (`vue/components.js`, `vue/index.js`, `vue/index.d.ts`)**:
+  - Expanded Vue 3 suite with `BoodooAccordion`, `BoodooAccordionItem`, `BoodooOffcanvas`, `BoodooDropdown`, `BoodooTabs`, `BoodooToast`, `BoodooSpinner`, `BoodooProgress`, `BoodooBreadcrumb`, `BoodooAvatar`, `BoodooKbd`, `BoodooVirtualList`, and `BoodooMarkdown`.
+- **Dedicated Component Documentation & Search Catalog**:
+  - Added dedicated documentation pages for `ChipInput`, `Clipboard`, `ImageCompare`, `PasswordMeter`, `Tour`, `FloatingBar`, `DialogFullscreen`, `VirtualList`, and `Markdown`.
+  - Added interactive **Theme Studio** (`getting-started/theme-studio.html`) and live in-browser **REPL / Playground** (`getting-started/playground.html`).
+  - Added **Modern Framework Guides** (`getting-started/modern-frameworks.html`) for Svelte 5, SolidJS, Astro, Remix, and Angular.
+  - Synchronized sitewide search catalog across 151 documentation pages.
+
+### Changed
+- **Framework & CDN Distribution Synchronization**:
+  - Bumped version to 1.3.4 across `package.json`, `package-lock.json`, `README.md`, `bin/create-boodoo.mjs`, `bin/boodoo.mjs`, `site/data/cdn-urls.json`, `site/archives/archives.json`, `docs/ai/component-index.json`, `tokens/figma-tokens.json`, `mcp/server.mjs`, `llms.txt`, and `llms-full.txt`.
+  - Updated real-time production asset sizes (~550 KB min CSS / ~139 KB min JS, ~76.6 KB gzip CSS / ~33.2 KB gzip JS).
+
+---
+
 ## [1.3.3] - 2026-11-21
 
 ### Added
@@ -572,7 +600,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Color Picker Popover (`.color-picker`, `.color-swatch-grid`, `.color-swatch`, `ColorPicker`)**: Compact swatch palette and hex color picker with dynamic color updates.
   - **Scroll-to-Top Floating Button (`.back-to-top`, `BackToTop`)**: Viewport-aware scroll button with smooth deceleration back to top.
 - **Production Readiness & Enterprise Governance (Review Implementation)**:
-  - **Security Policy (`SECURITY.md`)**: Documented supported release windows, private reporting process (`security@boodooframework.com`), SLAs, and security design principles (DOM XSS prevention, protocol allowlist, zero runtime dependencies).
+  - **Security Policy (`SECURITY.md`)**: Documented supported release windows, private reporting process (`boodoo@pebblebenders.com`), SLAs, and security design principles (DOM XSS prevention, protocol allowlist, zero runtime dependencies).
   - **Contribution Standards & 14-Point Quality Checklist (`CONTRIBUTING.md`)**: Published the 14-point production component quality checklist across API & behavior, accessibility (WCAG 2.2 AA target), engineering safety, and multi-platform release criteria.
   - **Automated Package Artifact Smoke Test (`tests/package-smoke.test.mjs`)**: Verified all package exports, CommonJS and ESM bundles, TypeScript definitions, and tokens mapping as a consumer smoke test in CI.
   - **Production Readiness Dashboard (`site/src/about/production-readiness.html`)**: Interactive dashboard with multi-platform compatibility matrix, 14-point quality standards, exact verified bundle measurements, and Pebble Benders enterprise advisory support.

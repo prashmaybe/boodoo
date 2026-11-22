@@ -275,7 +275,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
     const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
     assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
-    assert.equal(lockfile.version, '1.3.3', 'package-lock.json version must be 1.3.3');
+    assert.equal(lockfile.version, '1.3.4', 'package-lock.json version must be 1.3.4');
 
     // Assert react-dom peer dependency
     assert.equal(pkg.peerDependencies['react-dom'], '>=18.0.0', 'react-dom peerDependency must require >=18.0.0');
@@ -292,7 +292,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const tarballInfo = JSON.parse(packJsonOutput)[0];
 
     assert.equal(tarballInfo.name, 'boodoo', 'Packed tarball name must be boodoo');
-    assert.equal(tarballInfo.version, '1.3.3', 'Packed tarball version must be 1.3.3');
+    assert.equal(tarballInfo.version, '1.3.4', 'Packed tarball version must be 1.3.4');
 
     const packedPaths = tarballInfo.files.map((f) => f.path);
 

@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 
-const BOODOO_VERSION = '1.3.3';
+const BOODOO_VERSION = '1.3.4';
 
 export function prompt(question, defaultVal = '') {
   const rl = readline.createInterface({
@@ -954,7 +954,7 @@ bootstrapApplication(AppComponent).catch((err) => console.error(err));
 <widget id="com.boodoo.${projectName.replace(/[^a-zA-Z0-9]/g, '')}" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>${projectName}</name>
     <description>boodoo Cordova / PhoneGap Hybrid Mobile App (${isTs ? 'TypeScript' : 'JavaScript'})</description>
-    <author email="info@boodooframework.com" href="https://boodooframework.com">boodoo Team</author>
+    <author email="boodoo@pebblebenders.com" href="https://boodooframework.com">boodoo Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

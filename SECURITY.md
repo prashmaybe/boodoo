@@ -17,7 +17,7 @@ We take the security of Boodoo and all downstream applications built with it ver
 ### How to Report Privately
 
 1. **Do not** open a public GitHub issue or discussion for an unpatched vulnerability.
-2. Email your findings directly to the maintainers at **security@boodooframework.com** or submit an advisory via GitHub Security Advisories at [github.com/prashmaybe/boodoo/security/advisories](https://github.com/prashmaybe/boodoo/security/advisories).
+2. Email your findings directly to the maintainers at **boodoo@pebblebenders.com** or submit an advisory via GitHub Security Advisories at [github.com/prashmaybe/boodoo/security/advisories](https://github.com/prashmaybe/boodoo/security/advisories).
 3. Include the following details to assist rapid triage:
    - Type of vulnerability (e.g. XSS, unsafe DOM interpolation, prototype pollution, CSS injection).
    - Component, file path, or entry point affected (e.g. `js/src/components/`, `tokens/index.cjs`).

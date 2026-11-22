@@ -1,0 +1,88 @@
+---
+title: Image Compare
+description: Interactive before-and-after image slider comparison component with keyboard and touch support.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Image Compare</span></h1>
+    <p class="lead"><span>Interactive before-and-after comparison slider with smooth drag handling, arrow key precision
+        control, and responsive touch gestures.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Before &amp; After Comparison</span></h5>
+    </div>
+    <div class="card-body">
+      <div id="demoImageCompare" class="boodoo-image-compare position-relative overflow-hidden rounded"
+        style="height: 280px; max-width: 600px; background: var(--boodoo-gray-200);">
+        <div
+          class="image-compare-before position-absolute top-0 start-0 w-100 d-flex align-items-center justify-content-center bg-primary text-white">
+          <h3 class="fw-bold"><span>Original Theme (Light)</span></h3>
+        </div>
+        <div
+          class="image-compare-after position-absolute top-0 start-0 d-flex align-items-center justify-content-center bg-dark text-white"
+          style="width: 50%; overflow: hidden;">
+          <h3 class="fw-bold" style="min-width: 500px; text-align: center;"><span>Transformed Dark Surface</span></h3>
+        </div>
+        <div class="image-compare-handle position-absolute top-0 bottom-0 bg-white shadow"
+          style="left: 50%; width: 4px; cursor: ew-resize;">
+          <div class="position-absolute top-50 start-50 translate-middle badge bg-primary rounded-pill p-2 shadow-sm">
+            <span>&harr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>JavaScript Initialization</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { ImageCompare } from 'boodoo';
+
+const compare = new ImageCompare('#demoImageCompare', {
+  initialPosition: 50, // 50% split
+  orientation: 'horizontal'
+});</code></pre>
+    <div class="docs-section mb-4">
+      <h3 class="fw-bold"><span>Options &amp; Events Reference</span></h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col"><span>Option / Event</span></th>
+              <th scope="col"><span>Type</span></th>
+              <th scope="col"><span>Default</span></th>
+              <th scope="col"><span>Description</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>initialPosition</code></td>
+              <td><code>number</code></td>
+              <td><code>50</code></td>
+              <td><span>Initial percentage split divider position across the comparison container.</span></td>
+            </tr>
+            <tr>
+              <td><code>orientation</code></td>
+              <td><code>'horizontal' | 'vertical'</code></td>
+              <td><code>'horizontal'</code></td>
+              <td><span>Divider drag direction and orientation mode.</span></td>
+            </tr>
+            <tr>
+              <td><code>setPosition(percent)</code></td>
+              <td><code>(percent: number) =&gt; void</code></td>
+              <td>&mdash;</td>
+              <td><span>Programmatically repositions divider handle between 0 and 100.</span></td>
+            </tr>
+            <tr>
+              <td><code>boodoo:compare:change</code></td>
+              <td><code>CustomEvent</code></td>
+              <td>&mdash;</td>
+              <td><span>Fired on drag movement with current split position.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

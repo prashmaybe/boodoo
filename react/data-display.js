@@ -161,3 +161,93 @@ export function StepIndicator({
     })
   );
 }
+
+export function VirtualList({
+  items = [],
+  itemHeight = 48,
+  height = '320px',
+  className = '',
+  children,
+  ...props
+}) {
+  const [scrollTop, setScrollTop] = React.useState(0);
+
+  const totalHeight = items.length * itemHeight;
+  const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - 2);
+  const endIndex = Math.min(items.length, startIndex + 15);
+  const visibleItems = items.slice(startIndex, endIndex);
+  const offsetY = startIndex * itemHeight;
+
+  return React.createElement(
+    'div',
+    {
+      className: ['boodoo-virtual-list position-relative overflow-auto', className]
+        .filter(Boolean)
+        .join(' '),
+      style: { height },
+      onScroll: (e) => setScrollTop(e.currentTarget.scrollTop),
+      ...props,
+    },
+    React.createElement(
+      'div',
+      {
+        className: 'virtual-list-spacer position-relative w-100',
+        style: { height: `${totalHeight}px` },
+      },
+      React.createElement(
+        'div',
+        {
+          className: 'virtual-list-content position-absolute top-0 start-0 end-0',
+          style: { transform: `translateY(${offsetY}px)` },
+        },
+        visibleItems.map((item, idx) =>
+          typeof children === 'function'
+            ? children(item, startIndex + idx)
+            : React.createElement(
+                'div',
+                { key: startIndex + idx, className: 'p-2 border-bottom' },
+                React.createElement('span', null, String(item))
+              )
+        )
+      )
+    )
+  );
+}
+
+export function Markdown({ content = '', className = '', ...props }) {
+  // Safe dynamic client/SSR Markdown rendering
+  return React.createElement('div', {
+    className: ['boodoo-markdown', className].filter(Boolean).join(' '),
+    dangerouslySetInnerHTML: {
+      __html: content
+        .replace(/^### (.*$)/gim, '<h3><span>$1</span></h3>')
+        .replace(/^## (.*$)/gim, '<h2><span>$1</span></h2>')
+        .replace(/^# (.*$)/gim, '<h1><span>$1</span></h1>')
+        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*)\*/gim, '<em>$1</em>')
+        .replace(/\n$/gim, '<br />'),
+    },
+    ...props,
+  });
+}
+
+export function Icon({ name = '', size = 20, className = '', label = '', ...props }) {
+  return React.createElement(
+    'span',
+    {
+      className: ['boodoo-icon-wrapper', className].filter(Boolean).join(' '),
+      'aria-hidden': !label ? 'true' : undefined,
+      'aria-label': label || undefined,
+      role: label ? 'img' : undefined,
+      style: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: `${size}px`,
+        height: `${size}px`,
+      },
+      ...props,
+    },
+    React.createElement('i', { className: `hi hi-${name}` })
+  );
+}

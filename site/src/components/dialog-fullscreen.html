@@ -1,0 +1,32 @@
+---
+title: Fullscreen Dialog
+description: Immersive fullscreen modal dialog for rich workflows, editors, and checkout sheets.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Fullscreen Dialog</span></h1>
+    <p class="lead"><span>Immersive edge-to-edge modal experience optimized for dense workflows, complex configuration builders, mobile viewports, and multi-step forms.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Example Trigger</span></h5>
+    </div>
+    <div class="card-body">
+      <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="dialog-fullscreen" data-boodoo-target="#demoFullscreenDialog">
+        <span>Launch Fullscreen Editor</span>
+      </button>
+
+      <div id="demoFullscreenDialog" class="dialog-fullscreen fade" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+        <div class="dialog-fullscreen-header d-flex justify-content-between align-items-center p-3 border-bottom bg-body">
+          <h4 class="mb-0"><span>Fullscreen Workflow Editor</span></h4>
+          <button type="button" class="btn-close" data-boodoo-dismiss="dialog-fullscreen" aria-label="Close"></button>
+        </div>
+        <div class="dialog-fullscreen-body p-4 overflow-auto">
+          <p class="lead"><span>Edge-to-edge content container with independent scroll lock and responsive breakpoints.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

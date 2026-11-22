@@ -1,0 +1,89 @@
+---
+title: Chip Input
+description: Accessible, keyboard-navigable multi-chip tag editor and badge selector for forms.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Chip Input</span></h1>
+    <p class="lead"><span>Accessible multi-chip tag editor, autocomplete badge selector, and token input control with keyboard navigation, custom separators, and duplicate rejection.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Interactive Chip Editor</span></h5>
+    </div>
+    <div class="card-body">
+      <div id="demoChipInput" class="boodoo-chip-input-container p-2 border rounded" data-placeholder="Type tag and press Enter..."></div>
+      <p class="text-muted small mt-2 mb-0"><span>Type text and press <kbd>Enter</kbd> or <kbd>,</kbd> to create tags. Press <kbd>Backspace</kbd> to delete.</span></p>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>HTML &amp; JavaScript Usage</span></h3>
+    <pre class="boodoo-code-block"><code class="language-html">&lt;div id="myTags" class="boodoo-chip-input-container" data-placeholder="Add skills..."&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  import { ChipInput } from 'boodoo';
+
+  const chips = new ChipInput('#myTags', {
+    initialChips: ['JavaScript', 'TypeScript', 'CSS'],
+    maxChips: 10,
+    allowDuplicates: false,
+    onChange: (chips) => console.log('Current tags:', chips)
+  });
+&lt;/script&gt;</code></pre>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>API Reference &amp; Options</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><span>Option</span></th>
+            <th><span>Type</span></th>
+            <th><span>Default</span></th>
+            <th><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>initialChips</code></td>
+            <td><code>string[]</code></td>
+            <td><code>[]</code></td>
+            <td><span>Array of initial string chip tags to populate into the input.</span></td>
+          </tr>
+          <tr>
+            <td><code>maxChips</code></td>
+            <td><code>number</code></td>
+            <td><code>Infinity</code></td>
+            <td><span>Maximum number of chips allowable in the container.</span></td>
+          </tr>
+          <tr>
+            <td><code>allowDuplicates</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td><span>Whether identical tag strings can be added multiple times.</span></td>
+          </tr>
+          <tr>
+            <td><code>separators</code></td>
+            <td><code>string[]</code></td>
+            <td><code>[',', 'Enter']</code></td>
+            <td><span>Key triggers that confirm and convert text into a chip token.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.boodoo && window.boodoo.ChipInput) {
+      new window.boodoo.ChipInput('#demoChipInput', {
+        initialChips: ['Design Systems', 'CSS3', 'Accessibility'],
+      });
+    }
+  });
+</script>

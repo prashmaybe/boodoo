@@ -104,4 +104,18 @@ export declare const BoodooBadge: any;
 export declare const BoodooModal: any;
 export declare const BoodooInput: any;
 export declare const BoodooCombobox: any;
+export declare const BoodooAccordion: any;
+export declare const BoodooAccordionItem: any;
+export declare const BoodooOffcanvas: any;
+export declare const BoodooDropdown: any;
+export declare const BoodooTabs: any;
+export declare const BoodooToast: any;
+export declare const BoodooSpinner: any;
+export declare const BoodooProgress: any;
+export declare const BoodooBreadcrumb: any;
+export declare const BoodooAvatar: any;
+export declare const BoodooKbd: any;
+export declare const BoodooVirtualList: any;
+export declare const BoodooMarkdown: any;
+
 export declare function createBoodooVue(): { install: (app: any) => void };

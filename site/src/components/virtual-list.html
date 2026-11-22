@@ -1,0 +1,110 @@
+---
+title: Virtual List
+description: High-performance DOM list and windowing container capable of rendering 10,000+ items smoothly.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Virtual List</span></h1>
+    <p class="lead"><span>High-performance windowed rendering primitive for large DOM datasets, infinite scroll lists, and virtualized feeds with zero dependencies.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Live Windowing Demo (5,000 Items)</span></h5>
+    </div>
+    <div class="card-body">
+      <div id="demoVirtualList" class="border rounded bg-body" style="height: 320px; overflow-y: auto;"></div>
+      <p class="small text-muted mt-2 mb-0"><span>Only the visible DOM nodes are created and attached to the render tree at any time.</span></p>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Usage</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { VirtualList } from 'boodoo';
+
+const items = Array.from({ length: 10000 }, (_, i) => `Transaction Item #${i + 1}`);
+
+const vList = new VirtualList('#demoVirtualList', {
+  items,
+  itemHeight: 48,
+  buffer: 5,
+  renderItem: (item, index) => {
+    const el = document.createElement('div');
+    el.className = 'p-3 border-bottom d-flex align-items-center justify-content-between';
+    el.innerHTML = `<span><strong>${item}</strong></span><span class="badge bg-soft-success">Verified</span>`;
+    return el;
+  }
+});</code></pre>
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Options &amp; Methods Reference</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><span>Option / Method</span></th>
+            <th scope="col"><span>Type</span></th>
+            <th scope="col"><span>Default</span></th>
+            <th scope="col"><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>items</code></td>
+            <td><code>Array&lt;any&gt;</code></td>
+            <td><code>[]</code></td>
+            <td><span>Array of raw dataset items to render inside the virtual feed.</span></td>
+          </tr>
+          <tr>
+            <td><code>itemHeight</code></td>
+            <td><code>number</code></td>
+            <td><code>48</code></td>
+            <td><span>Fixed height in pixels of each row item container.</span></td>
+          </tr>
+          <tr>
+            <td><code>buffer</code></td>
+            <td><code>number</code></td>
+            <td><code>5</code></td>
+            <td><span>Number of pre-rendered buffer items above and below the visible viewport.</span></td>
+          </tr>
+          <tr>
+            <td><code>setItems(items)</code></td>
+            <td><code>(items: any[]) =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Replaces dataset items dynamically and updates the window scroll position.</span></td>
+          </tr>
+          <tr>
+            <td><code>scrollToIndex(idx)</code></td>
+            <td><code>(index: number) =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Instantly scrolls container to bring item at index into view.</span></td>
+          </tr>
+          <tr>
+            <td><code>dispose()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Detaches scroll/resize listeners and cleans up DOM classes.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.boodoo && window.boodoo.VirtualList) {
+      const items = Array.from({ length: 5000 }, (_, i) => `Server Log Event #${i + 1}`);
+      new window.boodoo.VirtualList('#demoVirtualList', {
+        items,
+        itemHeight: 44,
+        renderItem: (item) => {
+          const div = document.createElement('div');
+          div.className = 'p-2 border-bottom font-monospace small';
+          div.innerHTML = `<span>[INFO] 2026-11-22: ${item}</span>`;
+          return div;
+        }
+      });
+    }
+  });
+</script>

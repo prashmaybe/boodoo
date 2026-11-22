@@ -220,6 +220,36 @@ declare const a11y: {
   createFocusTrap(container: HTMLElement, options?: { initialFocus?: HTMLElement }): () => void;
 };
 
+declare class VirtualList {
+  constructor(element: HTMLElement | string, options?: any);
+  setItems(items: any[]): void;
+  scrollToIndex(index: number): void;
+  render(): void;
+  dispose(): void;
+}
+
+declare class Markdown {
+  static render(markdownText?: string): string;
+  constructor(element: HTMLElement | string, options?: any);
+  setContent(text: string): void;
+  dispose(): void;
+}
+
+declare class Gestures {
+  static attachSwipe(element: HTMLElement | string, options?: any): { dispose(): void } | null;
+  static attachPullToRefresh(
+    element: HTMLElement | string,
+    onRefresh: () => Promise<void> | void
+  ): { dispose(): void } | null;
+}
+
+declare class Icon {
+  static render(name: string, options?: any): string;
+  constructor(element: HTMLElement | string, options?: any);
+  setName(name: string): void;
+  dispose(): void;
+}
+
 export interface BoodooGlobal {
   toast: {
     (message: string, options?: ToastOptions): Toast;
@@ -269,6 +299,10 @@ export interface BoodooGlobal {
   TransferList: typeof TransferList;
   ColorPicker: typeof ColorPicker;
   BackToTop: typeof BackToTop;
+  VirtualList: typeof VirtualList;
+  Markdown: typeof Markdown;
+  Gestures: typeof Gestures;
+  Icon: typeof Icon;
   foldAccents: (str: string) => string;
   clipboard: any;
   theme: any;
@@ -335,4 +369,8 @@ export {
   ColorPicker,
   BackToTop,
   foldAccents,
+  VirtualList,
+  Markdown,
+  Gestures,
+  Icon,
 };

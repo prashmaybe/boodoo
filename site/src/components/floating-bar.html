@@ -1,0 +1,41 @@
+---
+title: Floating Bar
+description: Contextual floating action toolbar for mass actions, bulk selections, and sticky triggers.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Floating Bar</span></h1>
+    <p class="lead"><span>Contextual bottom-anchored or top-anchored action toolbar designed for bulk selection workflows, contextual actions, and persistent user prompts.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Floating Action Bar</span></h5>
+    </div>
+    <div class="card-body">
+      <div class="boodoo-floating-bar d-flex align-items-center justify-content-between p-3 bg-dark text-white rounded shadow-lg">
+        <div>
+          <span class="badge bg-primary me-2"><span>3 items selected</span></span>
+          <span class="small text-muted"><span>Ready for batch processing</span></span>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-sm btn-outline-light"><span>Archive</span></button>
+          <button type="button" class="btn btn-sm btn-danger"><span>Delete</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>JavaScript Control</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { FloatingBar } from 'boodoo';
+
+const bar = new FloatingBar('#myFloatingBar', {
+  position: 'bottom',
+  autoHideOnScroll: true
+});
+
+bar.show();</code></pre>
+  </div>
+</div>

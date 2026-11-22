@@ -1,0 +1,94 @@
+---
+title: Tour
+description: Step-by-step product walkthrough and interactive onboarding tour guide component.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Tour</span></h1>
+    <p class="lead"><span>Step-by-step product walkthroughs, contextual feature callouts, backdrop highlights, and keyboard-driven onboarding tours.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Product Tour Demo</span></h5>
+    </div>
+    <div class="card-body">
+      <button type="button" class="btn btn-primary" id="startTourBtn">
+        <span>Start Onboarding Tour</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Tour Configuration</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { Tour } from 'boodoo';
+
+const tour = new Tour({
+  steps: [
+    {
+      target: '#nav-home',
+      title: 'Navigation Header',
+      content: 'Access all documentation and starters here.',
+      placement: 'bottom'
+    },
+    {
+      target: '#searchDocs',
+      title: 'Global Search',
+      content: 'Instantly find any utility, class, or component.',
+      placement: 'bottom'
+    }
+  ]
+});
+
+document.getElementById('startTourBtn').addEventListener('click', () => {
+  tour.start();
+});</code></pre>
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Options &amp; Events Reference</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><span>Option / Event</span></th>
+            <th scope="col"><span>Type</span></th>
+            <th scope="col"><span>Default</span></th>
+            <th scope="col"><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>steps</code></td>
+            <td><code>Array&lt;TourStep&gt;</code></td>
+            <td><code>[]</code></td>
+            <td><span>Array of tour step descriptors containing <code>target</code>, <code>title</code>, <code>content</code>, and <code>placement</code>.</span></td>
+          </tr>
+          <tr>
+            <td><code>backdrop</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td><span>Whether to dim the page background and spotlight the active target element.</span></td>
+          </tr>
+          <tr>
+            <td><code>start()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Launches the walkthrough sequence starting at step 0.</span></td>
+          </tr>
+          <tr>
+            <td><code>next() / prev()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Advances or steps back through tour checkpoints with keyboard navigation.</span></td>
+          </tr>
+          <tr>
+            <td><code>boodoo:tour:step</code></td>
+            <td><code>CustomEvent</code></td>
+            <td>&mdash;</td>
+            <td><span>Dispatched on window whenever the active walkthrough step changes.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

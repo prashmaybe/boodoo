@@ -1,0 +1,43 @@
+---
+title: Markdown &amp; Rich Text
+description: Safe, zero-dependency Markdown parser and rich text rendering component.
+---
+
+<div class="docs-section">
+  <div class="docs-header mb-4">
+    <h1 class="display-5 fw-bold"><span>Markdown &amp; Rich Text</span></h1>
+    <p class="lead"><span>Lightweight, XSS-sanitized Markdown parser and rich text renderer adhering to semantic text wrapping and secure link allowlists.</span></p>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-body-tertiary">
+      <h5 class="card-title mb-0"><span>Live Markdown Preview</span></h5>
+    </div>
+    <div class="card-body">
+      <div id="demoMarkdown" class="p-3 border rounded bg-body"></div>
+    </div>
+  </div>
+
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Usage</span></h3>
+    <pre class="boodoo-code-block"><code class="language-javascript">import { Markdown } from 'boodoo';
+
+// Static string rendering with XSS sanitation
+const safeHtml = Markdown.render('# Hello Boodoo\n\n- Zero dependencies\n- Mobile-first CSS');
+
+// Or bind directly to a container
+const md = new Markdown('#demoMarkdown', {
+  content: '### Real-Time Markdown\n\nRender **bold**, *italic*, [safe links](https://boodooframework.com), and `code` with zero runtime dependencies.'
+});</code></pre>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.boodoo && window.boodoo.Markdown) {
+      new window.boodoo.Markdown('#demoMarkdown', {
+        content: '### Boodoo Markdown\n\nExperience lightweight, **safe**, zero-runtime Markdown rendering directly inside your applications.\n\n- Supports Headings (H1-H6)\n- Blockquotes & Lists\n- Pre-formatted code blocks'
+      });
+    }
+  });
+</script>
