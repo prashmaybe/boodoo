@@ -36,6 +36,58 @@ const vList = new VirtualList('#demoVirtualList', {
     return el;
   }
 });</code></pre>
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Options &amp; Methods Reference</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><span>Option / Method</span></th>
+            <th scope="col"><span>Type</span></th>
+            <th scope="col"><span>Default</span></th>
+            <th scope="col"><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>items</code></td>
+            <td><code>Array&lt;any&gt;</code></td>
+            <td><code>[]</code></td>
+            <td><span>Array of raw dataset items to render inside the virtual feed.</span></td>
+          </tr>
+          <tr>
+            <td><code>itemHeight</code></td>
+            <td><code>number</code></td>
+            <td><code>48</code></td>
+            <td><span>Fixed height in pixels of each row item container.</span></td>
+          </tr>
+          <tr>
+            <td><code>buffer</code></td>
+            <td><code>number</code></td>
+            <td><code>5</code></td>
+            <td><span>Number of pre-rendered buffer items above and below the visible viewport.</span></td>
+          </tr>
+          <tr>
+            <td><code>setItems(items)</code></td>
+            <td><code>(items: any[]) =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Replaces dataset items dynamically and updates the window scroll position.</span></td>
+          </tr>
+          <tr>
+            <td><code>scrollToIndex(idx)</code></td>
+            <td><code>(index: number) =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Instantly scrolls container to bring item at index into view.</span></td>
+          </tr>
+          <tr>
+            <td><code>dispose()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Detaches scroll/resize listeners and cleans up DOM classes.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

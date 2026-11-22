@@ -44,5 +44,51 @@ const tour = new Tour({
 document.getElementById('startTourBtn').addEventListener('click', () => {
   tour.start();
 });</code></pre>
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Options &amp; Events Reference</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><span>Option / Event</span></th>
+            <th scope="col"><span>Type</span></th>
+            <th scope="col"><span>Default</span></th>
+            <th scope="col"><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>steps</code></td>
+            <td><code>Array&lt;TourStep&gt;</code></td>
+            <td><code>[]</code></td>
+            <td><span>Array of tour step descriptors containing <code>target</code>, <code>title</code>, <code>content</code>, and <code>placement</code>.</span></td>
+          </tr>
+          <tr>
+            <td><code>backdrop</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td><span>Whether to dim the page background and spotlight the active target element.</span></td>
+          </tr>
+          <tr>
+            <td><code>start()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Launches the walkthrough sequence starting at step 0.</span></td>
+          </tr>
+          <tr>
+            <td><code>next() / prev()</code></td>
+            <td><code>() =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Advances or steps back through tour checkpoints with keyboard navigation.</span></td>
+          </tr>
+          <tr>
+            <td><code>boodoo:tour:step</code></td>
+            <td><code>CustomEvent</code></td>
+            <td>&mdash;</td>
+            <td><span>Dispatched on window whenever the active walkthrough step changes.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

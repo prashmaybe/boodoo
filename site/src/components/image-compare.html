@@ -38,5 +38,45 @@ const compare = new ImageCompare('#demoImageCompare', {
   initialPosition: 50, // 50% split
   orientation: 'horizontal'
 });</code></pre>
+  <div class="docs-section mb-4">
+    <h3 class="fw-bold"><span>Options &amp; Events Reference</span></h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><span>Option / Event</span></th>
+            <th scope="col"><span>Type</span></th>
+            <th scope="col"><span>Default</span></th>
+            <th scope="col"><span>Description</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>initialPosition</code></td>
+            <td><code>number</code></td>
+            <td><code>50</code></td>
+            <td><span>Initial percentage split divider position across the comparison container.</span></td>
+          </tr>
+          <tr>
+            <td><code>orientation</code></td>
+            <td><code>'horizontal' | 'vertical'</code></td>
+            <td><code>'horizontal'</code></td>
+            <td><span>Divider drag direction and orientation mode.</span></td>
+          </tr>
+          <tr>
+            <td><code>setPosition(percent)</code></td>
+            <td><code>(percent: number) =&gt; void</code></td>
+            <td>&mdash;</td>
+            <td><span>Programmatically repositions divider handle between 0 and 100.</span></td>
+          </tr>
+          <tr>
+            <td><code>boodoo:compare:change</code></td>
+            <td><code>CustomEvent</code></td>
+            <td>&mdash;</td>
+            <td><span>Fired on drag movement with current split position.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
