@@ -275,7 +275,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     // Assert package-lock.json uses standard lockfileVersion 3 and aligned peerDependencies
     const lockfile = JSON.parse(readFileSync(resolve(root, 'package-lock.json'), 'utf8'));
     assert.equal(lockfile.lockfileVersion, 3, 'package-lock.json must use standard lockfileVersion 3');
-    assert.equal(lockfile.version, '1.3.4', 'package-lock.json version must be 1.3.4');
+    assert.equal(lockfile.version, pkg.version, `package-lock.json version must match package.json (${pkg.version})`);
 
     // Assert react-dom peer dependency
     assert.equal(pkg.peerDependencies['react-dom'], '>=18.0.0', 'react-dom peerDependency must require >=18.0.0');
@@ -292,7 +292,7 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const tarballInfo = JSON.parse(packJsonOutput)[0];
 
     assert.equal(tarballInfo.name, 'boodoo', 'Packed tarball name must be boodoo');
-    assert.equal(tarballInfo.version, '1.3.4', 'Packed tarball version must be 1.3.4');
+    assert.equal(tarballInfo.version, pkg.version, `Packed tarball version must match package.json (${pkg.version})`);
 
     const packedPaths = tarballInfo.files.map((f) => f.path);
 
@@ -314,6 +314,10 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
       'react/index.d.ts',
       'vue/index.js',
       'vue/index.d.ts',
+      'svelte/index.js',
+      'svelte/index.d.ts',
+      'solid/index.js',
+      'solid/index.d.ts',
       'react-native/index.js',
       'react-native/index.d.ts',
       'react-native/paper.js',

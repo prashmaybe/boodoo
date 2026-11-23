@@ -215,17 +215,41 @@ export function VirtualList({
 }
 
 export function Markdown({ content = '', className = '', ...props }) {
-  // Safe dynamic client/SSR Markdown rendering
+  // Safe dynamic client/SSR Markdown rendering with XSS sanitization
+  function escapeText(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  const raw = String(content || '').replace(/\r\n/g, '\n');
+  const safeLines = raw.split('\n').map((line) => {
+    const trimmed = line.trim();
+    if (/^### (.*$)/i.test(trimmed)) {
+      const heading = trimmed.replace(/^###\s+/, '');
+      return `<h3><span>${escapeText(heading)}</span></h3>`;
+    }
+    if (/^## (.*$)/i.test(trimmed)) {
+      const heading = trimmed.replace(/^##\s+/, '');
+      return `<h2><span>${escapeText(heading)}</span></h2>`;
+    }
+    if (/^# (.*$)/i.test(trimmed)) {
+      const heading = trimmed.replace(/^#\s+/, '');
+      return `<h1><span>${escapeText(heading)}</span></h1>`;
+    }
+    let escaped = escapeText(line);
+    escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    escaped = escaped.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    return `<p><span>${escaped}</span></p>`;
+  });
+
   return React.createElement('div', {
     className: ['boodoo-markdown', className].filter(Boolean).join(' '),
     dangerouslySetInnerHTML: {
-      __html: content
-        .replace(/^### (.*$)/gim, '<h3><span>$1</span></h3>')
-        .replace(/^## (.*$)/gim, '<h2><span>$1</span></h2>')
-        .replace(/^# (.*$)/gim, '<h1><span>$1</span></h1>')
-        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-        .replace(/\*(.*)\*/gim, '<em>$1</em>')
-        .replace(/\n$/gim, '<br />'),
+      __html: safeLines.join('\n'),
     },
     ...props,
   });

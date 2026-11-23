@@ -7,6 +7,30 @@
 import { BaseComponent, initDataApi } from './base-component.js';
 import { triggerEvent } from './util.js';
 
+/**
+ * Safely parse a date-only string (YYYY-MM-DD) or Date object in local calendar space,
+ * avoiding negative UTC timezone shifts.
+ */
+function parseLocalDate(val) {
+  if (!val) return null;
+  if (val instanceof Date) {
+    return isNaN(val.getTime()) ? null : new Date(val.getFullYear(), val.getMonth(), val.getDate());
+  }
+  if (typeof val === 'string') {
+    const parts = val.trim().split('-');
+    if (parts.length === 3) {
+      const y = parseInt(parts[0], 10);
+      const m = parseInt(parts[1], 10) - 1;
+      const d = parseInt(parts[2], 10);
+      if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+        return new Date(y, m, d);
+      }
+    }
+  }
+  const d = new Date(val);
+  return isNaN(d.getTime()) ? null : new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
 export class DatePicker extends BaseComponent {
   static get NAME() {
     return 'datePicker';
@@ -25,8 +49,8 @@ export class DatePicker extends BaseComponent {
     this._isRange = Boolean(
       this._config.range || this._element.getAttribute('data-boodoo-range') === 'true'
     );
-    this._minDate = this._config.min ? new Date(this._config.min) : null;
-    this._maxDate = this._config.max ? new Date(this._config.max) : null;
+    this._minDate = this._config.min ? parseLocalDate(this._config.min) : null;
+    this._maxDate = this._config.max ? parseLocalDate(this._config.max) : null;
 
     // Internal state
     this._isOpen = false;
@@ -39,14 +63,14 @@ export class DatePicker extends BaseComponent {
     if (this._input.value) {
       if (this._isRange && this._input.value.includes(' - ')) {
         const [s, e] = this._input.value.split(' - ');
-        const ds = new Date(s.trim());
-        const de = new Date(e.trim());
-        if (!isNaN(ds.getTime())) this._rangeStart = ds;
-        if (!isNaN(de.getTime())) this._rangeEnd = de;
+        const ds = parseLocalDate(s);
+        const de = parseLocalDate(e);
+        if (ds) this._rangeStart = ds;
+        if (de) this._rangeEnd = de;
         if (this._rangeStart) this._viewDate = new Date(this._rangeStart);
       } else {
-        const d = new Date(this._input.value.trim());
-        if (!isNaN(d.getTime())) {
+        const d = parseLocalDate(this._input.value);
+        if (d) {
           this._selectedDate = d;
           this._viewDate = new Date(d);
         }
@@ -172,8 +196,11 @@ export class DatePicker extends BaseComponent {
   }
 
   selectDate(date) {
+    const targetDate = parseLocalDate(date);
+    if (!targetDate) return;
+
     if (!this._isRange) {
-      this._selectedDate = new Date(date);
+      this._selectedDate = targetDate;
       this._input.value = this._formatDate(this._selectedDate);
       this.close();
       triggerEvent(this._element, 'boodoo.datepicker.change', {
@@ -185,16 +212,16 @@ export class DatePicker extends BaseComponent {
 
     // Range selection flow
     if (!this._rangeStart || (this._rangeStart && this._rangeEnd)) {
-      this._rangeStart = new Date(date);
+      this._rangeStart = targetDate;
       this._rangeEnd = null;
       this._input.value = this._formatDate(this._rangeStart);
       this.render();
     } else if (this._rangeStart && !this._rangeEnd) {
-      if (date < this._rangeStart) {
+      if (targetDate < this._rangeStart) {
         this._rangeEnd = new Date(this._rangeStart);
-        this._rangeStart = new Date(date);
+        this._rangeStart = targetDate;
       } else {
-        this._rangeEnd = new Date(date);
+        this._rangeEnd = targetDate;
       }
       this._input.value = `${this._formatDate(this._rangeStart)} - ${this._formatDate(this._rangeEnd)}`;
       this.close();
@@ -318,8 +345,38 @@ export class DatePicker extends BaseComponent {
     cells.forEach((cell) => {
       cell.addEventListener('click', () => {
         const dStr = cell.getAttribute('data-date');
-        if (dStr) this.selectDate(new Date(dStr));
+        if (dStr) this.selectDate(dStr);
       });
+    });
+
+    // Arrow key navigation inside calendar grid
+    this._popup.addEventListener('keydown', (e) => {
+      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+      const focusedCell = this._popup.querySelector('.date-picker-cell:focus');
+      if (!focusedCell || !focusedCell.hasAttribute('data-date')) return;
+
+      const activeDate = parseLocalDate(focusedCell.getAttribute('data-date'));
+      if (!activeDate) return;
+
+      e.preventDefault();
+      let nextDate = new Date(activeDate);
+      if (e.key === 'ArrowLeft') nextDate.setDate(nextDate.getDate() - 1);
+      else if (e.key === 'ArrowRight') nextDate.setDate(nextDate.getDate() + 1);
+      else if (e.key === 'ArrowUp') nextDate.setDate(nextDate.getDate() - 7);
+      else if (e.key === 'ArrowDown') nextDate.setDate(nextDate.getDate() + 7);
+      else if (e.key === 'Home') nextDate.setDate(1);
+      else if (e.key === 'End') {
+        nextDate.setMonth(nextDate.getMonth() + 1, 0);
+      }
+
+      if (nextDate.getMonth() !== this._viewDate.getMonth() || nextDate.getFullYear() !== this._viewDate.getFullYear()) {
+        this._viewDate = new Date(nextDate);
+        this.render();
+      }
+
+      const targetStr = this._formatDate(nextDate);
+      const targetBtn = this._popup.querySelector(`.date-picker-cell[data-date="${targetStr}"]`);
+      if (targetBtn) targetBtn.focus();
     });
   }
 

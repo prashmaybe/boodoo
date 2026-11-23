@@ -59,6 +59,7 @@ export class VirtualList {
     this._content.style.right = '0';
 
     this._spacer.appendChild(this._content);
+    this._originalContent = this._element.innerHTML;
     this._element.innerHTML = '';
     this._element.appendChild(this._spacer);
 
@@ -114,7 +115,7 @@ export class VirtualList {
     for (let i = startIndex; i < endIndex; i++) {
       const item = this._options.items[i];
       const node = this._options.renderItem(item, i);
-      if (node instanceof Node) {
+      if (node && (typeof Node === 'undefined' || node instanceof Node || typeof node === 'object')) {
         fragment.appendChild(node);
       }
     }
@@ -126,6 +127,11 @@ export class VirtualList {
       this._element.removeEventListener('scroll', this._onScroll);
       window.removeEventListener('resize', this._onResize);
       this._element.classList.remove('boodoo-virtual-list');
+      if (this._originalContent !== undefined) {
+        this._element.innerHTML = this._originalContent;
+      } else {
+        this._element.innerHTML = '';
+      }
     }
   }
 }

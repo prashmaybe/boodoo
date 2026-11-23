@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.5] - 2026-11-23
+
+### Fixed & Security Hardening
+- **Markdown XSS Protection (`js/src/markdown.js`, `react/data-display.js`, `vue/components.js`)**:
+  - Sanitized and escaped raw HTML tags and attribute event handlers across vanilla, React, and Vue Markdown components.
+  - Protected code blocks, inline code, and validated hyperlinks (`http`, `https`, `mailto`, relative, anchor) using safe placeholder interpolation.
+- **Package Manifest & Adapter Distribution (`package.json`, `vue/index.js`, `vue/index.d.ts`)**:
+  - Added `svelte/` and `solid/` directories to npm `files` allowlist so published packages include the advertised adapters.
+  - Verified and ensured full export parity for the Vue 3 component suite and `createBoodooVue()` in `vue/index.js` and `vue/index.d.ts`.
+- **DatePicker Calendar Navigation & Timezone Safety (`js/src/date-picker.js`)**:
+  - Replaced UTC-midnight ISO string date parsing with local calendar date-only parsing (`parseLocalDate`) to prevent negative UTC timezone date shifts.
+  - Added ARIA grid keyboard arrow navigation (`ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `Home`, `End`) across calendar cells.
+- **DataTable Virtualization Data-Driven State (`js/src/data-table.js`)**:
+  - Connected Select All and row selection to stable row ID sets (`_selectedRowIds`) across virtualized windows so offscreen rows are preserved.
+  - Added full-dataset sorting hook (`options.onSort`) support for virtualized table collections.
+- **VirtualList Container Teardown (`js/src/virtual-list.js`)**:
+  - Stored original inner DOM markup and restored container content cleanly upon invoking `dispose()`.
+- **Vue 3 SFC Wrappers Reactive Synchronization (`vue/components.js`)**:
+  - Fixed `BoodooCombobox` controlled-prop synchronization using reactive `toRef` bindings for `items` and `modelValue`.
+  - Added reactive `watch` synchronizer to `BoodooTabs` for external parent `modelValue` updates.
+  - Separated and merged `attrs.class` properly to prevent custom CSS classes from stripping framework base styles.
+  - Replaced random math IDs with deterministic incrementing IDs for SSR hydration safety.
+- **React Hooks & Mobile Primitives (`react/hooks.js`, `vue/composables.js`, `react-native/layout.js`)**:
+  - Fixed `highlightMatches` Unicode offset mapping for length-changing folded characters (e.g. `Æ` -> `ae`).
+  - Guarded `useDisclosure` callbacks against race conditions during batched synchronous calls via ref tracking.
+  - Removed redundant `boxSizing: 'border-box'` property from `react-native/layout.js` Grid styles to ensure compatibility with React Native `>=0.71.0`.
+
+---
+
 ## [1.3.4] - 2026-11-22
 
 ### Added

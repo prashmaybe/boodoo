@@ -6,9 +6,11 @@
 // Follows strict A11y & Semantics (wrapped text, id/name form inputs).
 // =====================================================================
 
-import { h, ref, computed } from 'vue';
+import { h, ref, computed, watch, toRef } from 'vue';
 import { useCombobox } from './composables.js';
 import { Markdown as VanillaMarkdown } from '../js/src/markdown.js';
+
+let inputCounter = 0;
 
 export function createBoodooVue() {
   return {
@@ -204,24 +206,26 @@ export const BoodooInput = {
   },
   emits: ['update:modelValue', 'input'],
   setup(props, { emit, attrs }) {
-    const defaultId = `bo-input-${Math.random().toString(36).slice(2, 9)}`;
+    inputCounter++;
+    const defaultId = `bo-input-${inputCounter}`;
     const effectiveId = computed(() => props.id || props.name || defaultId);
     const effectiveName = computed(() => props.name || effectiveId.value);
 
     return () => {
       const sizeClass = props.size ? `form-control-${props.size}` : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h('input', {
         id: effectiveId.value,
         name: effectiveName.value,
         type: props.type,
         value: props.modelValue,
-        class: ['form-control', sizeClass, attrs.class].filter(Boolean).join(' '),
+        class: ['form-control', sizeClass, customClass].filter(Boolean).join(' '),
         onInput: (e) => {
           emit('update:modelValue', e.target.value);
           emit('input', e);
         },
-        ...attrs,
+        ...restAttrs,
       });
     };
   },
@@ -287,9 +291,12 @@ export const BoodooCombobox = {
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit, attrs }) {
+    const itemsRef = toRef(props, 'items');
+    const modelValueRef = toRef(props, 'modelValue');
+
     const cb = useCombobox({
-      items: props.items,
-      modelValue: props.modelValue,
+      items: itemsRef,
+      modelValue: modelValueRef,
       onChange: (val) => {
         emit('update:modelValue', val);
         emit('change', val);
@@ -297,9 +304,13 @@ export const BoodooCombobox = {
     });
 
     return () => {
+      const { class: customClass, ...restAttrs } = attrs;
       return h(
         'div',
-        { class: ['combobox-wrapper position-relative', attrs.class].filter(Boolean).join(' ') },
+        {
+          class: ['combobox-wrapper position-relative', customClass].filter(Boolean).join(' '),
+          ...restAttrs,
+        },
         [
           h('input', {
             ...cb.getInputProps({
@@ -495,6 +506,15 @@ export const BoodooTabs = {
   setup(props, { slots, emit, attrs }) {
     const activeIndex = ref(props.modelValue);
 
+    watch(
+      () => props.modelValue,
+      (newVal) => {
+        if (newVal !== undefined && newVal !== activeIndex.value) {
+          activeIndex.value = newVal;
+        }
+      }
+    );
+
     const selectTab = (idx) => {
       activeIndex.value = idx;
       emit('update:modelValue', idx);
@@ -502,7 +522,14 @@ export const BoodooTabs = {
     };
 
     return () => {
-      return h('div', { class: ['boodoo-tabs', attrs.class].filter(Boolean).join(' '), ...attrs }, [
+      const { class: customClass, ...restAttrs } = attrs;
+      return h(
+        'div',
+        {
+          class: ['boodoo-tabs', customClass].filter(Boolean).join(' '),
+          ...restAttrs,
+        },
+        [
         h(
           'ul',
           { class: 'nav nav-tabs', role: 'tablist' },

@@ -4,7 +4,7 @@
 // Accordions, and Comboboxes in Next.js, Remix, Vite, and React apps.
 // =====================================================================
 
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 
 /**
  * Normalizes text for accent-insensitive search
@@ -27,29 +27,51 @@ export function foldAccents(str) {
  * @param {string} query
  * @returns {Array<{ text: string, match: boolean }>}
  */
+/**
+ * Splits text into matched and unmatched segments for search highlighting
+ * Maps folded-text indices back to original-text code point offsets to support
+ * length-changing characters (e.g. 'æ' -> 'ae') and decomposed accents.
+ * @param {string} text
+ * @param {string} query
+ * @returns {Array<{ text: string, match: boolean }>}
+ */
 export function highlightMatches(text, query) {
   if (!text || typeof text !== 'string') return [];
   if (!query || typeof query !== 'string') return [{ text, match: false }];
 
-  const foldedText = foldAccents(text);
   const foldedQuery = foldAccents(query.trim());
   if (!foldedQuery) return [{ text, match: false }];
 
-  const segments = [];
-  let lastIndex = 0;
-  let idx = foldedText.indexOf(foldedQuery, lastIndex);
-
-  while (idx !== -1) {
-    if (idx > lastIndex) {
-      segments.push({ text: text.slice(lastIndex, idx), match: false });
+  // Build character-by-character mapping from folded index to original text slice
+  const mapFoldedToOrig = [];
+  let foldedText = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const foldedCh = foldAccents(ch);
+    for (let j = 0; j < foldedCh.length; j++) {
+      mapFoldedToOrig.push({ origStart: i, origEnd: i + 1 });
     }
-    segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
-    lastIndex = idx + foldedQuery.length;
-    idx = foldedText.indexOf(foldedQuery, lastIndex);
+    foldedText += foldedCh;
   }
 
-  if (lastIndex < text.length) {
-    segments.push({ text: text.slice(lastIndex), match: false });
+  const segments = [];
+  let lastOrigEnd = 0;
+  let idx = foldedText.indexOf(foldedQuery, 0);
+
+  while (idx !== -1) {
+    const origStart = mapFoldedToOrig[idx].origStart;
+    const origEnd = mapFoldedToOrig[idx + foldedQuery.length - 1].origEnd;
+
+    if (origStart > lastOrigEnd) {
+      segments.push({ text: text.slice(lastOrigEnd, origStart), match: false });
+    }
+    segments.push({ text: text.slice(origStart, origEnd), match: true });
+    lastOrigEnd = origEnd;
+    idx = foldedText.indexOf(foldedQuery, idx + foldedQuery.length);
+  }
+
+  if (lastOrigEnd < text.length) {
+    segments.push({ text: text.slice(lastOrigEnd), match: false });
   }
 
   return segments;
@@ -57,6 +79,8 @@ export function highlightMatches(text, query) {
 
 /**
  * Headless disclosure hook (Modal, Drawer, Dialog, Offcanvas)
+ * Uses state updater callback and ref tracking to prevent duplicate callback
+ * invocations or stale state during batched synchronous calls.
  * @param {Object} [options]
  * @param {boolean} [options.defaultOpen=false]
  * @param {() => void} [options.onOpen]
@@ -65,27 +89,38 @@ export function highlightMatches(text, query) {
 export function useDisclosure(options = {}) {
   const { defaultOpen = false, onOpen, onClose } = options;
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const openRef = useRef(Boolean(defaultOpen));
+  useEffect(() => {
+    openRef.current = isOpen;
+  }, [isOpen]);
 
   const open = useCallback(() => {
-    if (!isOpen) {
+    if (!openRef.current) {
+      openRef.current = true;
       setIsOpen(true);
       onOpen?.();
     }
-  }, [isOpen, onOpen]);
+  }, [onOpen]);
 
   const close = useCallback(() => {
-    if (isOpen) {
+    if (openRef.current) {
+      openRef.current = false;
       setIsOpen(false);
       onClose?.();
     }
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
   const toggle = useCallback(() => {
-    const next = !isOpen;
-    setIsOpen(next);
-    if (next) onOpen?.();
-    else onClose?.();
-  }, [isOpen, onOpen, onClose]);
+    if (openRef.current) {
+      openRef.current = false;
+      setIsOpen(false);
+      onClose?.();
+    } else {
+      openRef.current = true;
+      setIsOpen(true);
+      onOpen?.();
+    }
+  }, [onOpen, onClose]);
 
   return {
     isOpen,
