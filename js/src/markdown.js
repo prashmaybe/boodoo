@@ -11,46 +11,60 @@ export class Markdown {
     if (typeof markdownText !== 'string') return '';
     let md = markdownText.replace(/\r\n/g, '\n');
 
-    // Code blocks
+    // Placeholders map for code blocks, inline code, and links to protect them from text escaping
+    const placeholders = [];
+    const createPlaceholder = (replacementHtml) => {
+      const id = `@@BOODOOMDPH${placeholders.length}@@`;
+      placeholders.push({ id, html: replacementHtml });
+      return id;
+    };
+
+    // 1. Code blocks (extract & escape code contents safely)
     md = md.replace(/```([a-z0-9_-]*)\n([\s\S]*?)```/gi, (_, lang, code) => {
-      return `<pre class="boodoo-code-block"><code class="language-${escapeHtml(lang)}">${escapeHtml(code.trim())}</code></pre>`;
+      const codeHtml = `<pre class="boodoo-code-block"><code class="language-${escapeHtml(lang)}">${escapeHtml(code.trim())}</code></pre>`;
+      return createPlaceholder(codeHtml);
     });
 
-    // Inline code
+    // 2. Inline code (extract & escape code contents safely)
     md = md.replace(/`([^`]+)`/g, (_, code) => {
-      return `<code class="boodoo-inline-code">${escapeHtml(code)}</code>`;
+      const inlineCodeHtml = `<code class="boodoo-inline-code">${escapeHtml(code)}</code>`;
+      return createPlaceholder(inlineCodeHtml);
     });
 
-    // Blockquotes
-    md = md.replace(/^>\s+(.+)$/gm, (_, quote) => {
+    // 3. Safe Links (only http, https, mailto, relative, and anchor protocols)
+    md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+      const trimmed = href.trim();
+      const isSafe = /^(https?:|\/|#|mailto:)/i.test(trimmed);
+      const safeHref = isSafe ? escapeHtml(trimmed) : '#';
+      const linkHtml = `<a href="${safeHref}" class="boodoo-link" rel="noopener noreferrer"><span>${escapeHtml(label)}</span></a>`;
+      return createPlaceholder(linkHtml);
+    });
+
+    // 4. Escape all remaining raw HTML characters in the user Markdown text to prevent XSS
+    md = escapeHtml(md);
+
+    // 5. Blockquotes
+    md = md.replace(/^&gt;\s+(.+)$/gm, (_, quote) => {
       return `<blockquote class="boodoo-blockquote"><p><span>${quote}</span></p></blockquote>`;
     });
 
-    // Headings (H1 to H6)
+    // 6. Headings (H1 to H6)
     md = md.replace(/^(#{1,6})\s+(.+)$/gm, (_, hashes, text) => {
       const level = hashes.length;
       return `<h${level}><span>${text}</span></h${level}>`;
     });
 
-    // Unordered lists
+    // 7. Unordered lists
     md = md.replace(/^[-*+]\s+(.+)$/gm, '<li><span>$1</span></li>');
     md = md.replace(/(<li><span>.*<\/span><\/li>\n?)+/g, '<ul class="boodoo-list">$&</ul>');
 
-    // Bold & Italic
+    // 8. Bold & Italic (escaped text preserves markup delimiters)
     md = md.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     md = md.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     md = md.replace(/__([^_]+)__/g, '<strong>$1</strong>');
     md = md.replace(/_([^_]+)_/g, '<em>$1</em>');
 
-    // Safe Links (only http, https, mailto, relative, and anchor)
-    md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
-      const trimmed = href.trim();
-      const isSafe = /^(https?:|\/|#|mailto:)/i.test(trimmed);
-      const safeHref = isSafe ? escapeHtml(trimmed) : '#';
-      return `<a href="${safeHref}" class="boodoo-link" rel="noopener noreferrer"><span>${escapeHtml(label)}</span></a>`;
-    });
-
-    // Paragraphs: Wrap lines that aren't already wrapped in block elements
+    // 9. Paragraphs: Wrap lines that aren't already wrapped in block elements
     const lines = md.split('\n');
     const result = [];
     let pBuffer = [];
@@ -75,7 +89,14 @@ export class Markdown {
     }
     flushP();
 
-    return result.join('\n');
+    let output = result.join('\n');
+
+    // 10. Restore protected placeholders
+    for (const ph of placeholders) {
+      output = output.replaceAll(ph.id, ph.html);
+    }
+
+    return output;
   }
 
   constructor(element, options = {}) {

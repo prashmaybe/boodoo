@@ -157,6 +157,5 @@ const styles = StyleSheet.create({
   },
   gridCol: {
     flex: 1,
-    boxSizing: 'border-box',
   },
 });

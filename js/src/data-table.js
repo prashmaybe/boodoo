@@ -39,9 +39,27 @@ export class DataTable extends BaseComponent {
     this._selectAll = this._table.querySelector(
       'thead th.data-table-select-col input[type="checkbox"]'
     );
+    this._selectedRowIds = new Set();
     if (this._selectAll) {
       this._onSelectAllChange = (e) => {
         const checked = e.target.checked;
+        if (this._isVirtualized && this._virtualOptions) {
+          if (checked) {
+            for (let i = 0; i < this._virtualOptions.totalRows; i++) {
+              this._selectedRowIds.add(i);
+            }
+          } else {
+            this._selectedRowIds.clear();
+          }
+          if (typeof this._renderVirtual === 'function') {
+            this._renderVirtual();
+          }
+          triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
+            selectedCount: this._selectedRowIds.size,
+          });
+          return;
+        }
+
         const rowChecks = this._table.querySelectorAll(
           'tbody td.data-table-select-col input[type="checkbox"]'
         );
@@ -62,6 +80,26 @@ export class DataTable extends BaseComponent {
       if (e.target.matches('tbody td.data-table-select-col input[type="checkbox"]')) {
         const tr = e.target.closest('tr');
         if (tr) tr.classList.toggle('selected', e.target.checked);
+
+        if (this._isVirtualized && tr && tr.hasAttribute('data-row-index')) {
+          const rowIdx = parseInt(tr.getAttribute('data-row-index'), 10);
+          if (e.target.checked) this._selectedRowIds.add(rowIdx);
+          else this._selectedRowIds.delete(rowIdx);
+
+          if (this._selectAll && this._virtualOptions) {
+            const total = this._virtualOptions.totalRows;
+            this._selectAll.checked = this._selectedRowIds.size === total && total > 0;
+            this._selectAll.indeterminate =
+              this._selectedRowIds.size > 0 && this._selectedRowIds.size < total;
+          }
+
+          triggerEvent(this._element, 'boodoo.datatable.selectionChange', {
+            row: tr,
+            checked: e.target.checked,
+            selectedCount: this._selectedRowIds.size,
+          });
+          return;
+        }
 
         // Update selectAll indeterminate / checked
         if (this._selectAll) {
@@ -157,6 +195,18 @@ export class DataTable extends BaseComponent {
     });
     headerEl.classList.add(this._sortAsc ? 'sort-asc' : 'sort-desc');
 
+    if (this._isVirtualized && typeof this._virtualOptions?.onSort === 'function') {
+      this._virtualOptions.onSort(colIndex, this._sortAsc ? 'asc' : 'desc');
+      if (typeof this._renderVirtual === 'function') {
+        this._renderVirtual();
+      }
+      triggerEvent(this._element, 'boodoo.datatable.sorted', {
+        colIndex,
+        direction: this._sortAsc ? 'asc' : 'desc',
+      });
+      return;
+    }
+
     const rows = Array.from(tbody.querySelectorAll('tr:not(.data-table-row-detail)'));
 
     // Capture companion detail rows before any DOM reordering
@@ -217,6 +267,8 @@ export class DataTable extends BaseComponent {
 
     if (!container || typeof renderRow !== 'function' || totalRows <= 0) return;
 
+    this._isVirtualized = true;
+    this._virtualOptions = options;
     this._scrollContainer = container;
     const tbody = this._table.querySelector('tbody');
     if (!tbody) return;
@@ -254,6 +306,12 @@ export class DataTable extends BaseComponent {
         const tr = renderRow(i);
         if (tr) {
           tr.setAttribute('data-row-index', String(i));
+          const cb = tr.querySelector('td.data-table-select-col input[type="checkbox"]');
+          if (cb) {
+            const isChecked = this._selectedRowIds.has(i);
+            cb.checked = isChecked;
+            tr.classList.toggle('selected', isChecked);
+          }
           tbody.appendChild(tr);
         }
       }
@@ -273,6 +331,8 @@ export class DataTable extends BaseComponent {
         totalRows,
       });
     };
+
+    this._renderVirtual = render;
 
     this._onScroll = () => {
       requestAnimationFrame(render);

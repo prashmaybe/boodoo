@@ -58,7 +58,7 @@
       "name": "Pebble Benders",
       "url": "https://pebblebenders.com/"
     },
-    "softwareVersion": "1.3.4",
+    "softwareVersion": "1.3.5",
     "license": "https://github.com/prashmaybe/boodoo/blob/main/LICENSE"
   }
   </script>
@@ -116,18 +116,44 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="homeNav">
           <ul class="navbar-nav me-auto mb-0 fw-medium">
+            <li class="nav-item"><a class="nav-link active" href="index.html"><span>Home</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#features"><span>Features</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#components"><span>Components</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#icons"><span>Icons</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#mobile"><span>React Native</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#installation"><span>Installation</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="docs/getting-started/ai.html"><span>AI Support</span></a>
-            </li>
             <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html"><span>Docs</span></a>
             </li>
             <li class="nav-item"><a class="nav-link" href="examples/"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <!-- Version Switcher Dropdown -->
+            <div class="dropdown d-inline-block">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium"
+                type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
+                <span>v{{version}}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li><span class="dropdown-header">Active Release</span></li>
+                <li><a class="dropdown-item active d-flex justify-content-between align-items-center"
+                    href="docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span
+                      class="badge bg-primary">Current</span></a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><span class="dropdown-header">Release Archives</span></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.4"
+                    target="_blank" rel="noopener"><span>v1.3.4</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3"
+                    target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2"
+                    target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10"
+                    target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank"
+                    rel="noopener"><span>All Releases &rarr;</span></a></li>
+              </ul>
+            </div>
             <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
               href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
@@ -266,7 +292,7 @@
               <div class="card-body p-0 d-flex flex-column">
                 <div class="card-icon-avatar bg-soft-primary text-primary mb-2"><i class="hi-phone"
                     aria-hidden="true"></i></div>
-                <h3 class="card-title fw-bold mb-2">Mobile first</h3>
+                <h3 class="card-title fw-bold mb-1">Mobile first</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">12-column flexbox grid from 320px to 1400px+,
                   plus a complete 2D CSS Grid utility suite.</p>
               </div>
@@ -275,9 +301,9 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-2 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-success text-success mb-3"><i class="hi-bolt"
+                <div class="card-icon-avatar bg-soft-success text-success mb-2"><i class="hi-bolt"
                     aria-hidden="true"></i></div>
-                <h3 class="card-title fw-bold mb-2">Fast &amp; zero-deps</h3>
+                <h3 class="card-title fw-bold mb-1">Fast &amp; zero-deps</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">Vanilla JS (~{{jsMinKb}}&nbsp;KB minified,
                   ~{{jsGzKb}}&nbsp;KB gzip), zero runtime
                   dependencies. Ships modular utility &amp; grid builds.</p>
@@ -287,9 +313,9 @@
           <div class="col-md-6 col-lg-3">
             <div class="card card-hover p-2 shadow-sm border-0 feature-card">
               <div class="card-body p-0 d-flex flex-column">
-                <div class="card-icon-avatar bg-soft-danger text-danger mb-3"><i class="hi-shield-check"
+                <div class="card-icon-avatar bg-soft-danger text-danger mb-2"><i class="hi-shield-check"
                     aria-hidden="true"></i></div>
-                <h3 class="card-title fw-bold mb-2">Accessible &amp; touch</h3>
+                <h3 class="card-title fw-bold mb-1">Accessible &amp; touch</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">44px touch targets, focus-visible outlines, ARIA
                   wiring, and swipe gesture support out of the box.</p>
               </div>
@@ -300,7 +326,7 @@
               <div class="card-body p-0 d-flex flex-column">
                 <div class="card-icon-avatar bg-soft-warning text-warning mb-2"><i class="hi-paintbox"
                     aria-hidden="true"></i></div>
-                <h3 class="card-title fw-bold mb-2">Source-first tokens</h3>
+                <h3 class="card-title fw-bold mb-1">Source-first tokens</h3>
                 <p class="card-text text-muted small mb-0 flex-grow-1">Every color, radius, and shadow is a token.
                   Compile custom themes with Sass or Less in seconds.</p>
               </div>
@@ -323,7 +349,7 @@
                 <code>component-index.json</code>), zero external runtime dependencies, and tailored instruction files
                 for Claude, Cursor, Copilot, Gemini, Windsurf, and Cline, AI models generate production-ready code with
                 100% accuracy.</span></p>
-            <div class="d-flex flex-wrap gap-2">
+            <div class="d-flex flex-wrap gap-1">
               <a class="btn btn-primary rounded-pill px-3" href="docs/getting-started/mcp.html"><span>MCP Server
                   Guide</span></a>
               <a class="btn btn-outline-primary rounded-pill px-3"
@@ -343,7 +369,7 @@
               <p class="text-muted small mb-2"><span>Query real-time component docs, design tokens, and runnable
                   examples directly within Claude Desktop, Cursor, Cline, or Windsurf:</span></p>
               <pre
-                class="bg-dark text-light p-2 rounded fs-7 mb-2"><code>node &lt;boodoo-path&gt;/mcp/server.mjs</code></pre>
+                class="bg-dark text-light py-0.5 px-1 rounded fs-7 mb-2"><code>node &lt;boodoo-path&gt;/mcp/server.mjs</code></pre>
               <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                 <span class="text-muted fs-8"><span>8 Tools · Token Inspector · A11y Linter</span></span>
                 <a href="docs/getting-started/mcp.html" class="text-primary fw-medium fs-8 text-decoration-none">
@@ -369,7 +395,7 @@
                 your existing CSS or React app. Completely modular, build-free, and reversible.</span></p>
           </div>
           <div class="col-lg-5 col-xl-4 text-lg-end">
-            <div class="d-flex flex-wrap gap-2 justify-content-start justify-content-lg-end align-items-center">
+            <div class="d-flex flex-wrap gap-1 justify-content-start justify-content-lg-end align-items-center">
               <a href="docs/layout/grid.html"
                 class="btn btn-outline-primary btn-sm rounded-pill px-3 text-nowrap"><span>Explore
                   Grid (~{{gridGzKb}} KB)</span></a>
@@ -394,11 +420,11 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-primary rounded-circle">1</span> Cards &amp; Surfaces
                 </h4>
                 <div class="card border-0 landing-subcard p-2 mb-2 flex-grow-1">
-                  <h5 class="card-title h6 mb-2">Modular Card</h5>
+                  <h5 class="card-title mb-1">Modular Card</h5>
                   <p class="card-text small text-muted mb-0">Cards adapt gracefully to any container with customizable
                     headers, overlays, and body styling.</p>
                 </div>
@@ -413,7 +439,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-success rounded-circle">2</span> Buttons &amp; Badges
                 </h4>
                 <div class="d-flex flex-wrap gap-1 mb-1">
@@ -438,7 +464,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-warning rounded-circle">3</span> Form Controls
                 </h4>
                 <div class="mb-2">
@@ -465,7 +491,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-danger rounded-circle">4</span> Modals &amp; Dialogs
                 </h4>
                 <p class="card-text small text-muted mb-3 flex-grow-1">Accessible modals with backdrop blur, focus
@@ -481,7 +507,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-info rounded-circle">5</span> Interactive Toasts
                 </h4>
                 <p class="card-text small text-muted mb-3 flex-grow-1">Stackable, auto-dismissing toast notifications.
@@ -496,7 +522,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 showcase-card">
               <div class="card-body p-2 d-flex flex-column">
-                <h4 class="card-title fw-bold mb-2 d-flex align-items-center gap-1">
+                <h4 class="card-title fw-bold mb-1 d-flex align-items-center gap-1">
                   <span class="badge badge-soft-primary rounded-circle">6</span> Utility-First Classes
                 </h4>
                 <div class="mb-2">
@@ -1032,8 +1058,8 @@
           <div class="col-md-6 col-lg-3">
             <a href="docs/tokens/index.html" class="text-decoration-none">
               <div class="card pillar-card bootstrap-pillar shadow-sm p-2">
-                <div class="card-body">
-                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-3"><i class="hi-paintbox"
+                <div class="card-body p-0">
+                  <div class="card-icon-avatar bg-soft-primary text-primary mx-auto mb-2"><i class="hi-paintbox"
                       aria-hidden="true"></i></div>
                   <h3 class="card-title h6 fw-bold text-primary">Universal Tokens</h3>
                   <p class="card-text small text-muted mb-0">Shared design tokens in JSON, ESM, and CJS syncing
@@ -1132,18 +1158,17 @@
       class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
       <div class="d-inline-flex align-items-center gap-2">
         <img src="assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
-        <span>© 2026 <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
-            class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a> · MIT License</span>
+        <span>© {{year}} Pebble Benders · MIT License</span>
       </div>
       <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
         <a class="text-muted text-decoration-none" href="docs/getting-started/introduction.html">Documentation</a>
         <span class="footer-dot">·</span>
-        <a class="text-muted text-decoration-none" href="docs/getting-started/react-native-examples.html">React Native
-          Mobile</a>
-        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="examples/">Examples</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i
+            class="hi-haticons" aria-hidden="true"></i>Haticons</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>

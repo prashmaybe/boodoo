@@ -44,11 +44,25 @@
   z-index: 2;
   box-shadow: 0 0 0 4px var(--boodoo-card-bg, var(--boodoo-body-bg));
 
-  &.timeline-badge-secondary { background-color: var(--boodoo-secondary); }
-  &.timeline-badge-success { background-color: var(--boodoo-success); }
-  &.timeline-badge-danger { background-color: var(--boodoo-danger); }
-  &.timeline-badge-warning { background-color: var(--boodoo-warning); }
-  &.timeline-badge-info { background-color: var(--boodoo-info); }
+  &.timeline-badge-secondary {
+    background-color: var(--boodoo-secondary);
+  }
+
+  &.timeline-badge-success {
+    background-color: var(--boodoo-success);
+  }
+
+  &.timeline-badge-danger {
+    background-color: var(--boodoo-danger);
+  }
+
+  &.timeline-badge-warning {
+    background-color: var(--boodoo-warning);
+  }
+
+  &.timeline-badge-info {
+    background-color: var(--boodoo-info);
+  }
 }
 
 .timeline-content {
@@ -56,7 +70,7 @@
   background-color: var(--boodoo-card-bg, var(--boodoo-body-bg));
   border: 1px solid var(--boodoo-border-color);
   border-radius: var(--boodoo-border-radius);
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 1.5rem;
   box-shadow: var(--boodoo-shadow-sm);
 }
 

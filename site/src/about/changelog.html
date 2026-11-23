@@ -68,16 +68,61 @@ order: 7
 
 <ul class="timeline changelog-timeline mt-4">
 
-  <!-- Version 1.3.4 -->
+  <!-- Version 1.3.5 -->
   <li class="timeline-item">
     <div class="timeline-badge timeline-badge-primary"><i class="hi-star" aria-hidden="true"></i></div>
     <div class="timeline-content">
       <div
         class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
         <div>
+          <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-3-5">
+            <span>v1.3.5</span>
+            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
+          </h4>
+        </div>
+        <div class="d-flex align-items-center gap-1 text-muted small">
+          <i class="hi-calendar" aria-hidden="true"></i><span>November 23, 2026</span>
+          <span class="footer-dot">&bull;</span>
+          <a class="text-decoration-none fw-medium" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.5"
+            target="_blank" rel="noopener"><span>Release Notes</span></a>
+        </div>
+      </div>
+
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
+          <span>Version 1.3.5 Release &mdash; Markdown XSS Hardening, Svelte &amp; Solid Package Distribution, DatePicker Timezone &amp; DataTable Virtual Selection</span>
+        </h3>
+        <p><span>boodoo <strong>v1.3.5</strong> delivers critical security hardening and package distribution fixes: Markdown rendering XSS sanitization across Vanilla, React, and Vue, official Svelte and Solid adapter inclusion in the published npm tarball allowlist, DatePicker local timezone parsing and WAI-ARIA grid navigation, and DataTable virtual selection with VirtualList disposal cleanup.</span></p>
+
+        <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>Security &amp; Sanitization</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Markdown XSS Hardening (<code>js/src/markdown.js</code>, <code>react/index.js</code>, <code>vue/components.js</code>)</strong>: Enforced strict link protocol validation against unsafe protocols (blocking <code>javascript:</code>, <code>vbscript:</code>, and <code>data:</code> URIs; only permitting <code>http:</code>, <code>https:</code>, <code>mailto:</code>, relative paths, and fragment anchors <code>#</code>) alongside comprehensive HTML tag sanitization across all renderer adapters.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Package Distribution &amp; Packaging</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Package Allowlist Parity (<code>package.json</code>)</strong>: Added <code>svelte/</code> and <code>solid/</code> directories to the published npm package <code>files</code> allowlist, ensuring full multi-framework adapter availability upon installation.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Component Bug Fixes &amp; A11y</span></h4>
+        <ul class="mb-0">
+          <li><span><strong>DatePicker Timezone &amp; Keyboard A11y (<code>js/src/date-picker.js</code>)</strong>: Resolved date parsing offsets by adhering strictly to local timezone date boundaries, and added full WAI-ARIA grid arrow-key navigation (Left/Right for days, Up/Down for weeks).</span></li>
+          <li><span><strong>DataTable Virtual Selection &amp; VirtualList Cleanup (<code>js/src/data-table.js</code>, <code>js/src/virtual-list.js</code>)</strong>: Enabled data-driven persistent item selection across virtualized rows in DataTable, and restored original container children upon <code>VirtualList.dispose()</code> invocation.</span></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+
+  <!-- Version 1.3.4 -->
+  <li class="timeline-item">
+    <div class="timeline-badge timeline-badge-secondary"><i class="hi-tag" aria-hidden="true"></i></div>
+    <div class="timeline-content">
+      <div
+        class="timeline-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1 pb-1 border-bottom">
+        <div>
           <h4 class="border-0 mb-0 fw-bold mt-0 d-inline-flex align-items-center gap-2" id="v1-3-4">
             <span>v1.3.4</span>
-            <span class="badge bg-soft-primary text-primary fs-6"><span>Latest</span></span>
           </h4>
         </div>
         <div class="d-flex align-items-center gap-1 text-muted small">

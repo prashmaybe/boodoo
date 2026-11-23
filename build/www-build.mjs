@@ -75,6 +75,7 @@ const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsF
 const archiveUrls = getArchiveCdnUrls(pkg.version);
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
 indexContent = indexContent
+  .replaceAll('{{year}}', String(new Date().getFullYear()))
   .replaceAll('{{version}}', pkg.version)
   .replaceAll('{{cssRawKb}}', sizes.cssRaw)
   .replaceAll('{{cssMinKb}}', sizes.cssMin)
@@ -164,6 +165,7 @@ copy(path.join(root, 'site', 'sitemap.xml'), 'sitemap.xml');
 copy(path.join(root, 'site', 'llms.txt'), 'llms.txt');
 copy(path.join(root, 'site', 'llms-full.txt'), 'llms-full.txt');
 copy(path.join(root, 'docs', 'ai'), 'docs/ai');
+copy(path.join(root, 'site', 'sw.js'), 'sw.js');
 copy(path.join(root, 'site', '404.html'), '404.html');
 copy(path.join(root, 'site', '404.html'), 'error.html');
 copy(path.join(root, 'site', '.htaccess'), '.htaccess');

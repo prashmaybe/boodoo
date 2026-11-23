@@ -252,11 +252,9 @@ test('React useDisclosure transition-aware execution and combobox query sync', (
   const hooksSrc = readFileSync(resolve(rootDir, 'react/hooks.js'), 'utf8');
 
   // Verify transition-aware callback invocation and state updater purity
-  assert.ok(hooksSrc.includes('if (!isOpen)'), 'useDisclosure open must check transition before firing onOpen');
-  assert.ok(hooksSrc.includes('if (isOpen)'), 'useDisclosure close must check transition before firing onClose');
-  assert.ok(hooksSrc.includes('const next = !isOpen;'), 'useDisclosure toggle must calculate next from current isOpen');
-  assert.ok(hooksSrc.includes('setIsOpen(next);'), 'useDisclosure must set next boolean directly');
-  assert.ok(!hooksSrc.includes('setIsOpen((prev)'), 'useDisclosure must not run side-effect callbacks inside functional updater');
+  assert.ok(hooksSrc.includes('openRef.current'), 'useDisclosure must use openRef to prevent race conditions during batched updates');
+  assert.ok(hooksSrc.includes('setIsOpen(true);'), 'useDisclosure must set open state directly');
+  assert.ok(hooksSrc.includes('setIsOpen(false);'), 'useDisclosure must set close state directly');
 
   // Verify combobox query synchronization when controlled value changes
   assert.ok(hooksSrc.includes('useEffect('), 'useCombobox must use useEffect for synchronization');
@@ -323,7 +321,7 @@ test('Search match highlighting utility (highlightMatches) in React and Vue', ()
   assert.ok(reactHooksSrc.includes('export function highlightMatches'), 'react/hooks.js must export highlightMatches');
   assert.ok(vueComposablesSrc.includes('export function highlightMatches'), 'vue/composables.js must export highlightMatches');
 
-  // Evaluate the highlight algorithm directly
+  // Verify the updated Unicode mapping algorithm
   const foldAccents = (str) => {
     if (typeof str !== 'string') return '';
     return str
@@ -338,25 +336,38 @@ test('Search match highlighting utility (highlightMatches) in React and Vue', ()
     if (!text || typeof text !== 'string') return [];
     if (!query || typeof query !== 'string') return [{ text, match: false }];
 
-    const foldedText = foldAccents(text);
     const foldedQuery = foldAccents(query.trim());
     if (!foldedQuery) return [{ text, match: false }];
 
-    const segments = [];
-    let lastIndex = 0;
-    let idx = foldedText.indexOf(foldedQuery, lastIndex);
-
-    while (idx !== -1) {
-      if (idx > lastIndex) {
-        segments.push({ text: text.slice(lastIndex, idx), match: false });
+    const mapFoldedToOrig = [];
+    let foldedText = '';
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      const foldedCh = foldAccents(ch);
+      for (let j = 0; j < foldedCh.length; j++) {
+        mapFoldedToOrig.push({ origStart: i, origEnd: i + 1 });
       }
-      segments.push({ text: text.slice(idx, idx + foldedQuery.length), match: true });
-      lastIndex = idx + foldedQuery.length;
-      idx = foldedText.indexOf(foldedQuery, lastIndex);
+      foldedText += foldedCh;
     }
 
-    if (lastIndex < text.length) {
-      segments.push({ text: text.slice(lastIndex), match: false });
+    const segments = [];
+    let lastOrigEnd = 0;
+    let idx = foldedText.indexOf(foldedQuery, 0);
+
+    while (idx !== -1) {
+      const origStart = mapFoldedToOrig[idx].origStart;
+      const origEnd = mapFoldedToOrig[idx + foldedQuery.length - 1].origEnd;
+
+      if (origStart > lastOrigEnd) {
+        segments.push({ text: text.slice(lastOrigEnd, origStart), match: false });
+      }
+      segments.push({ text: text.slice(origStart, origEnd), match: true });
+      lastOrigEnd = origEnd;
+      idx = foldedText.indexOf(foldedQuery, idx + foldedQuery.length);
+    }
+
+    if (lastOrigEnd < text.length) {
+      segments.push({ text: text.slice(lastOrigEnd), match: false });
     }
 
     return segments;
@@ -373,6 +384,14 @@ test('Search match highlighting utility (highlightMatches) in React and Vue', ()
   assert.equal(segments[1].match, true);
   assert.equal(segments[2].text, 's of America');
   assert.equal(segments[2].match, false);
+
+  // Unicode expansion test: 'Æ' maps to 'ae'
+  const aegirSegments = highlightMatches('Ægir', 'ae');
+  assert.equal(aegirSegments.length, 2);
+  assert.equal(aegirSegments[0].text, 'Æ');
+  assert.equal(aegirSegments[0].match, true);
+  assert.equal(aegirSegments[1].text, 'gir');
+  assert.equal(aegirSegments[1].match, false);
 });
 
 test('Vue 3 SFC components suite (BoodooButton, BoodooAlert, BoodooCard, BoodooBadge, BoodooModal, BoodooInput, BoodooCombobox)', async () => {

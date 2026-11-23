@@ -1262,5 +1262,54 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
   // 14. DataTable DOM Virtualization API and spacer rendering
   const { DataTable: VirtualDataTable } = await import(pathToFileURL(resolve(rootDir, 'js/src/data-table.js')).href);
   assert.equal(typeof VirtualDataTable.prototype.virtualize, 'function', 'DataTable must have virtualize() method');
+
+  // 15. Markdown XSS Sanitization verification
+  const { Markdown } = await import(pathToFileURL(resolve(rootDir, 'js/src/markdown.js')).href);
+  assert.equal(typeof Markdown.render, 'function', 'Markdown.render must exist');
+  const renderedAttack = Markdown.render('<img src=x onerror=alert(1)>');
+  assert.ok(!renderedAttack.includes('<img'), 'Markdown.render must sanitize raw HTML tags');
+  assert.ok(renderedAttack.includes('&lt;img'), 'Markdown.render must escape raw HTML tags');
+  assert.ok(renderedAttack.includes('&gt;'), 'Markdown.render must escape closing tag');
+
+  // Check safe links
+  const safeLink = Markdown.render('[Safe Link](https://boodooframework.com)');
+  assert.ok(safeLink.includes('href="https://boodooframework.com"'));
+  const xssLink = Markdown.render('[Malicious Link](javascript:alert(1))');
+  assert.ok(!xssLink.includes('javascript:'));
+  assert.ok(xssLink.includes('href="#"'));
+
+  // 16. VirtualList DOM lifecycle and disposal restoration
+  const { VirtualList } = await import(pathToFileURL(resolve(rootDir, 'js/src/virtual-list.js')).href);
+  assert.equal(typeof VirtualList, 'function', 'VirtualList must be exported');
+  if (!globalThis.document.createDocumentFragment) {
+    globalThis.document.createDocumentFragment = () => {
+      const children = [];
+      return {
+        appendChild(node) { children.push(node); },
+        get children() { return children; },
+      };
+    };
+  }
+  const vlContainer = {
+    classList: {
+      _classes: new Set(),
+      add(c) { this._classes.add(c); },
+      remove(c) { this._classes.delete(c); },
+      contains(c) { return this._classes.has(c); },
+    },
+    style: {},
+    innerHTML: '<span>Original text</span>',
+    clientHeight: 400,
+    scrollTop: 0,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    appendChild: () => {},
+    setAttribute: () => {},
+  };
+  const vl = new VirtualList(vlContainer, { items: ['Item 1', 'Item 2'], itemHeight: 40 });
+  assert.ok(vlContainer.classList.contains('boodoo-virtual-list'));
+  vl.dispose();
+  assert.ok(!vlContainer.classList.contains('boodoo-virtual-list'));
+  assert.equal(vlContainer.innerHTML, '<span>Original text</span>');
 });
 

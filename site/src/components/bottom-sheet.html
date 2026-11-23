@@ -7,18 +7,23 @@ order: 4
 
 <section class="docs-section">
   <h2><span>Overview</span></h2>
-  <p>The Bottom Sheet component slides up from the bottom of the viewport, presenting contextual actions, modal forms, sharing trays, or filter menus optimized for mobile thumb navigation. It includes native touch swipe gestures, mouse drag support, backdrop dismissal, keyboard accessibility (Escape to dismiss), and smooth spring-like animations.</p>
-  <p>Unlike standard desktop modals, bottom sheets preserve user flow on mobile devices by staying anchored to the bottom edge and offering intuitive swipe-down dismiss gestures.</p>
+  <p>The Bottom Sheet component slides up from the bottom of the viewport, presenting contextual actions, modal forms,
+    sharing trays, or filter menus optimized for mobile thumb navigation. It includes native touch swipe gestures, mouse
+    drag support, backdrop dismissal, keyboard accessibility (Escape to dismiss), and smooth spring-like animations.</p>
+  <p>Unlike standard desktop modals, bottom sheets preserve user flow on mobile devices by staying anchored to the
+    bottom edge and offering intuitive swipe-down dismiss gestures.</p>
 
   <div class="bd-example">
-    <div class="d-flex flex-wrap gap-2">
+    <div class="d-flex flex-wrap gap-1">
       <button type="button" class="btn btn-primary" data-boodoo-toggle="bottom-sheet" data-boodoo-target="#demoSheet">
         <span>Open Bottom Sheet</span>
       </button>
-      <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="bottom-sheet" data-boodoo-target="#demoSheetHalf">
+      <button type="button" class="btn btn-outline-primary" data-boodoo-toggle="bottom-sheet"
+        data-boodoo-target="#demoSheetHalf">
         <span>Half-Height Sheet</span>
       </button>
-      <button type="button" class="btn btn-outline-secondary" data-boodoo-toggle="bottom-sheet" data-boodoo-target="#demoSheetFull">
+      <button type="button" class="btn btn-outline-secondary" data-boodoo-toggle="bottom-sheet"
+        data-boodoo-target="#demoSheetFull">
         <span>Full-Height Sheet</span>
       </button>
     </div>
@@ -92,10 +97,14 @@ order: 4
   <h2><span>Touch &amp; Drag Gestures</span></h2>
   <p>Boodoo's Bottom Sheet includes built-in touch and mouse gesture recognition with zero external dependencies:</p>
   <ul>
-    <li><span><strong>Handle Dragging:</strong> The <code>.bottom-sheet-handle-wrap</code> bar provides an accessible grab target. Dragging down smoothly translates the sheet in real time.</span></li>
-    <li><span><strong>Swipe-to-Dismiss Threshold:</strong> Dragging beyond 120 pixels downwards automatically triggers dismissal with a fluid slide-down exit animation.</span></li>
-    <li><span><strong>Snap-Back Elasticity:</strong> Releasing the drag before the threshold smoothly snaps the sheet back to its fully expanded position.</span></li>
-    <li><span><strong>Backdrop Click:</strong> Tapping or clicking outside the sheet dismisses the sheet and frees body scroll lock.</span></li>
+    <li><span><strong>Handle Dragging:</strong> The <code>.bottom-sheet-handle-wrap</code> bar provides an accessible
+        grab target. Dragging down smoothly translates the sheet in real time.</span></li>
+    <li><span><strong>Swipe-to-Dismiss Threshold:</strong> Dragging beyond 120 pixels downwards automatically triggers
+        dismissal with a fluid slide-down exit animation.</span></li>
+    <li><span><strong>Snap-Back Elasticity:</strong> Releasing the drag before the threshold smoothly snaps the sheet
+        back to its fully expanded position.</span></li>
+    <li><span><strong>Backdrop Click:</strong> Tapping or clicking outside the sheet dismisses the sheet and frees body
+        scroll lock.</span></li>
   </ul>
 </section>
 
@@ -103,10 +112,15 @@ order: 4
   <h2><span>Accessibility &amp; Keyboard Interactions</span></h2>
   <p>Boodoo ensures mobile overlay components meet WCAG 2.2 AA accessibility guidelines:</p>
   <ul>
-    <li><span><strong>Keyboard Dismissal:</strong> Pressing the <kbd>Escape</kbd> key immediately closes the active bottom sheet and cleans up document event listeners.</span></li>
-    <li><span><strong>ARIA Dialog Semantics:</strong> Apply <code>role="dialog"</code> and <code>aria-modal="true"</code> to the root <code>.bottom-sheet</code> element. Label the dialog using <code>aria-labelledby="[id-of-title]"</code>.</span></li>
-    <li><span><strong>Body Scroll Lock:</strong> While the bottom sheet is open, <code>overflow: hidden</code> is applied to <code>document.body</code> to prevent background scrolling underneath the sheet.</span></li>
-    <li><span><strong>Handle Wrap ARIA:</strong> The drag handle is marked <code>aria-hidden="true"</code> so screen readers focus directly on meaningful titles and actionable controls.</span></li>
+    <li><span><strong>Keyboard Dismissal:</strong> Pressing the <kbd>Escape</kbd> key immediately closes the active
+        bottom sheet and cleans up document event listeners.</span></li>
+    <li><span><strong>ARIA Dialog Semantics:</strong> Apply <code>role="dialog"</code> and
+        <code>aria-modal="true"</code> to the root <code>.bottom-sheet</code> element. Label the dialog using
+        <code>aria-labelledby="[id-of-title]"</code>.</span></li>
+    <li><span><strong>Body Scroll Lock:</strong> While the bottom sheet is open, <code>overflow: hidden</code> is
+        applied to <code>document.body</code> to prevent background scrolling underneath the sheet.</span></li>
+    <li><span><strong>Handle Wrap ARIA:</strong> The drag handle is marked <code>aria-hidden="true"</code> so screen
+        readers focus directly on meaningful titles and actionable controls.</span></li>
   </ul>
 </section>
 
@@ -142,7 +156,8 @@ sheet.dispose();</code></pre>
       <tbody>
         <tr>
           <td><code>boodoo.show.bottomSheet</code></td>
-          <td><span>Fires immediately when <code>show()</code> is called. Cancellable via <code>event.preventDefault()</code>.</span></td>
+          <td><span>Fires immediately when <code>show()</code> is called. Cancellable via
+              <code>event.preventDefault()</code>.</span></td>
         </tr>
         <tr>
           <td><code>boodoo.shown.bottomSheet</code></td>
@@ -150,7 +165,8 @@ sheet.dispose();</code></pre>
         </tr>
         <tr>
           <td><code>boodoo.hide.bottomSheet</code></td>
-          <td><span>Fires immediately when <code>hide()</code> is called. Cancellable via <code>event.preventDefault()</code>.</span></td>
+          <td><span>Fires immediately when <code>hide()</code> is called. Cancellable via
+              <code>event.preventDefault()</code>.</span></td>
         </tr>
         <tr>
           <td><code>boodoo.hidden.bottomSheet</code></td>
@@ -265,9 +281,12 @@ const styles = StyleSheet.create({
   <h2><span>Related Components</span></h2>
   <p>Explore other contextual overlays and dialog systems in Boodoo:</p>
   <ul>
-    <li><span><a href="/docs/components/modal.html"><strong>Modal:</strong></a> Centered dialogs and lightboxes for desktop and tablet screens.</span></li>
-    <li><span><a href="/docs/components/offcanvas.html"><strong>Offcanvas:</strong></a> Full-height sliding sidebars from left, right, top, or bottom edges.</span></li>
-    <li><span><a href="/docs/components/speed-dial.html"><strong>Speed Dial:</strong></a> Floating mobile action buttons with expanding quick-action menus.</span></li>
+    <li><span><a href="/docs/components/modal.html"><strong>Modal:</strong></a> Centered dialogs and lightboxes for
+        desktop and tablet screens.</span></li>
+    <li><span><a href="/docs/components/offcanvas.html"><strong>Offcanvas:</strong></a> Full-height sliding sidebars
+        from left, right, top, or bottom edges.</span></li>
+    <li><span><a href="/docs/components/speed-dial.html"><strong>Speed Dial:</strong></a> Floating mobile action buttons
+        with expanding quick-action menus.</span></li>
   </ul>
 </section>
 
@@ -334,7 +353,8 @@ const styles = StyleSheet.create({
     <button type="button" class="btn-close" data-boodoo-dismiss="bottom-sheet" aria-label="Close"></button>
   </div>
   <div class="bottom-sheet-body">
-    <p>This is a full-height sheet variant using <code>.bottom-sheet-full</code>, covering the full viewport on mobile for immersive task flows.</p>
+    <p>This is a full-height sheet variant using <code>.bottom-sheet-full</code>, covering the full viewport on mobile
+      for immersive task flows.</p>
   </div>
   <div class="bottom-sheet-footer">
     <button type="button" class="btn btn-secondary" data-boodoo-dismiss="bottom-sheet">
