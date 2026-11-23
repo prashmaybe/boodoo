@@ -6,11 +6,12 @@ order: 3
 -->
 <h1><span>Usage &amp; CDN</span></h1>
 <p class="lead"><span>Include boodoo in your project using easy-to-use CDN links for quick prototyping, or reference the
-  compiled bundles locally.</span></p>
+    compiled bundles locally.</span></p>
 
 <h2 id="cdn"><span>CSS only</span></h2>
-<p><span>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you the
-  global styles, grid, all components, and utilities.</span></p>
+<p><span>The quickest way to get started is to drop the compiled and minified CSS into your page. Just one file gets you
+    the
+    global styles, grid, all components, and utilities.</span></p>
 
 <div class="highlight">
   <pre><code class="language-html">&lt;link href="{{cdnCssMin}}" rel="stylesheet"&gt;</code></pre>
@@ -26,7 +27,8 @@ order: 3
 </div>
 
 <h2 id="quick-demo"><span>Quick CDN Demo</span></h2>
-<p><span>Once included, all Boodoo components, typography, buttons, and responsive grid work immediately out of the box with no build step required:</span></p>
+<p><span>Once included, all Boodoo components, typography, buttons, and responsive grid work immediately out of the box
+    with no build step required:</span></p>
 
 <div class="bd-example">
   <div class="alert alert-primary d-flex align-items-center gap-2 mb-3" role="alert">
@@ -36,7 +38,7 @@ order: 3
       <span>Boodoo loaded instantly via CDN link with zero bundler setup.</span>
     </div>
   </div>
-  <div class="d-flex flex-wrap gap-2">
+  <div class="d-flex flex-wrap gap-1">
     <button type="button" class="btn btn-primary"><span>Primary Action</span></button>
     <button type="button" class="btn btn-outline-secondary"><span>Secondary</span></button>
     <button type="button" class="btn btn-success"><span>Live Demo</span></button>
@@ -50,7 +52,7 @@ order: 3
     &lt;span&gt;Boodoo loaded instantly via CDN link with zero bundler setup.&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="d-flex flex-wrap gap-2"&gt;
+&lt;div class="d-flex flex-wrap gap-1"&gt;
   &lt;button type="button" class="btn btn-primary"&gt;&lt;span&gt;Primary Action&lt;/span&gt;&lt;/button&gt;
   &lt;button type="button" class="btn btn-outline-secondary"&gt;&lt;span&gt;Secondary&lt;/span&gt;&lt;/button&gt;
   &lt;button type="button" class="btn btn-success"&gt;&lt;span&gt;Live Demo&lt;/span&gt;&lt;/button&gt;
@@ -59,7 +61,7 @@ order: 3
 
 <h2 id="js"><span>JavaScript</span></h2>
 <p><span>Many boodoo components require the JavaScript bundle to function. Add it right before the closing
-  <code>&lt;/body&gt;</code> tag:</span></p>
+    <code>&lt;/body&gt;</code> tag:</span></p>
 <div class="highlight">
   <pre><code class="language-html">&lt;script src="{{cdnJsRaw}}"&gt;&lt;/script&gt;</code></pre>
 </div>
@@ -73,16 +75,18 @@ order: 3
 </div>
 
 <h2 id="bundled"><span>Local bundle</span></h2>
-<p><span>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a href="./download.html"><span>download</span></a> into
-  a folder and reference them relatively:</span></p>
+<p><span>Prefer hosting yourself? Copy the contents of <code>dist/</code> from the <a
+      href="./download.html"><span>download</span></a> into
+    a folder and reference them relatively:</span></p>
 <div class="highlight">
   <pre><code class="language-html">&lt;link rel="stylesheet" href="css/boodoo.min.css"&gt;
 &lt;script src="js/boodoo.js"&gt;&lt;/script&gt;</code></pre>
 </div>
 
 <h2 id="modules"><span>JavaScript modules</span></h2>
-<p><span>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>boodoo</code> object with every
-  component, so you can call them programmatically:</span></p>
+<p><span>Our JavaScript is split into modules. The UMD-format bundle assigns a global <code>boodoo</code> object with
+    every
+    component, so you can call them programmatically:</span></p>
 <div class="highlight">
   <pre><code class="language-html">&lt;script&gt;
   boodoo.toast('Hello from boodoo!', { title: 'Welcome' });

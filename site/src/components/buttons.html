@@ -10,7 +10,7 @@ order: 5
   states, and more.</p>
 
 <h2 id="examples">Examples</h2>
-<div class="bd-example d-flex flex-wrap gap-2">
+<div class="bd-example d-flex flex-wrap gap-1">
   <button type="button" class="btn btn-primary">Primary</button>
   <button type="button" class="btn btn-secondary">Secondary</button>
   <button type="button" class="btn btn-success">Success</button>
@@ -35,7 +35,7 @@ order: 5
 </div>
 
 <h2 id="outline">Outline buttons</h2>
-<div class="bd-example d-flex flex-wrap gap-2">
+<div class="bd-example d-flex flex-wrap gap-1">
   <button type="button" class="btn btn-outline-primary">Primary</button>
   <button type="button" class="btn btn-outline-secondary">Secondary</button>
   <button type="button" class="btn btn-outline-success">Success</button>
@@ -57,7 +57,7 @@ order: 5
 
 <h2 id="soft">Soft buttons</h2>
 <p>Material-toned subtle fills:</p>
-<div class="bd-example d-flex flex-wrap gap-2">
+<div class="bd-example d-flex flex-wrap gap-1">
   <button type="button" class="btn btn-soft-primary">Primary</button>
   <button type="button" class="btn btn-soft-success">Success</button>
   <button type="button" class="btn btn-soft-danger">Danger</button>
@@ -87,7 +87,7 @@ order: 5
 </div>
 
 <h2 id="states">States</h2>
-<div class="bd-example d-flex flex-wrap gap-2">
+<div class="bd-example d-flex flex-wrap gap-1">
   <button type="button" class="btn btn-primary active">Active button</button>
   <button type="button" class="btn btn-primary" disabled>Disabled button</button>
   <button type="button" class="btn btn-primary btn-loading">Processing</button>
@@ -134,7 +134,8 @@ order: 5
 
 <h2 id="split-buttons">Split buttons</h2>
 <p>Create split action buttons by combining a primary action button with a dropdown caret toggle inside
-  <code>.btn-split</code>.</p>
+  <code>.btn-split</code>.
+</p>
 <div class="bd-example d-flex flex-wrap gap-3">
   <div class="btn-split">
     <button type="button" class="btn btn-primary"><span>Publish Action</span></button>
@@ -211,19 +212,21 @@ order: 5
   &lt;span&gt;✨&lt;/span&gt;
   &lt;span&gt;Compose&lt;/span&gt;
 &lt;/button&gt;</code></pre>
-<h2 id="copy-clipboard">Copy-to-Clipboard Buttons</h2>
-<p>Easily wire one-click copy functionality using <code>.btn-copy</code> and the <code>data-boodoo-copy</code> attribute:</p>
-<div class="bd-example d-flex align-items-center gap-3">
-  <button type="button" class="btn-copy" data-boodoo-copy="npm install boodoo">
-    <span class="copy-icon"><span>📋</span></span>
-    <span>Copy command</span>
-  </button>
-  <button type="button" class="btn-copy btn-copy-icon-only" data-boodoo-copy="https://boodooframework.com" aria-label="Copy URL">
-    <span class="copy-icon"><span>📋</span></span>
-  </button>
-</div>
-<div class="highlight">
-  <pre><code class="language-html">&lt;!-- Copy button with text feedback --&gt;
+  <h2 id="copy-clipboard">Copy-to-Clipboard Buttons</h2>
+  <p>Easily wire one-click copy functionality using <code>.btn-copy</code> and the <code>data-boodoo-copy</code>
+    attribute:</p>
+  <div class="bd-example d-flex align-items-center gap-3">
+    <button type="button" class="btn-copy" data-boodoo-copy="npm install boodoo">
+      <span class="copy-icon"><span>📋</span></span>
+      <span>Copy command</span>
+    </button>
+    <button type="button" class="btn-copy btn-copy-icon-only" data-boodoo-copy="https://boodooframework.com"
+      aria-label="Copy URL">
+      <span class="copy-icon"><span>📋</span></span>
+    </button>
+  </div>
+  <div class="highlight">
+    <pre><code class="language-html">&lt;!-- Copy button with text feedback --&gt;
 &lt;button type="button" class="btn-copy" data-boodoo-copy="npm install boodoo"&gt;
   &lt;span class="copy-icon"&gt;&lt;span&gt;📋&lt;/span&gt;&lt;/span&gt;
   &lt;span&gt;Copy command&lt;/span&gt;
@@ -233,17 +236,17 @@ order: 5
 &lt;button type="button" class="btn-copy btn-copy-icon-only" data-boodoo-copy="https://boodooframework.com" aria-label="Copy URL"&gt;
   &lt;span class="copy-icon"&gt;&lt;span&gt;📋&lt;/span&gt;&lt;/span&gt;
 &lt;/button&gt;</code></pre>
-</div>
+  </div>
 
-<h2 id="dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</h2>
-<p>In boodoo, you can write semantic HTML buttons with zero class spam using attributes:</p>
-<div class="bd-example d-flex flex-wrap gap-2">
-  <button role="button" data-boodoo-variant="primary" data-size="lg"><span>Semantic Primary Large</span></button>
-  <button role="button" data-boodoo-variant="outline-secondary"><span>Semantic Outline</span></button>
-  <button role="button" data-boodoo-variant="soft-danger" data-size="sm"><span>Semantic Soft Danger</span></button>
-</div>
-<div class="highlight">
-  <pre><code>&lt;!-- Pure semantic HTML styled without class spam --&gt;
+  <h2 id="dual-engine-styling">Dual-Engine "Class-First + Data-Attribute" Styling</h2>
+  <p>In boodoo, you can write semantic HTML buttons with zero class spam using attributes:</p>
+  <div class="bd-example d-flex flex-wrap gap-1">
+    <button role="button" data-boodoo-variant="primary" data-size="lg"><span>Semantic Primary Large</span></button>
+    <button role="button" data-boodoo-variant="outline-secondary"><span>Semantic Outline</span></button>
+    <button role="button" data-boodoo-variant="soft-danger" data-size="sm"><span>Semantic Soft Danger</span></button>
+  </div>
+  <div class="highlight">
+    <pre><code>&lt;!-- Pure semantic HTML styled without class spam --&gt;
 &lt;button role="button" data-boodoo-variant="primary" data-size="lg"&gt;
   &lt;span&gt;Semantic Primary Large&lt;/span&gt;
 &lt;/button&gt;
@@ -251,4 +254,4 @@ order: 5
 &lt;button role="button" data-boodoo-variant="outline-secondary"&gt;
   &lt;span&gt;Semantic Outline&lt;/span&gt;
 &lt;/button&gt;</code></pre>
-</div>
+  </div>
