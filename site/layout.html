@@ -142,19 +142,29 @@
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
             <!-- Version Switcher Dropdown -->
             <div class="dropdown d-inline-block">
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium" type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium"
+                type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
                 <span>v{{version}}</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                 <li><span class="dropdown-header">Active Release</span></li>
-                <li><a class="dropdown-item active d-flex justify-content-between align-items-center" href="{{rootPrefix}}docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span class="badge bg-primary">Current</span></a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item active d-flex justify-content-between align-items-center"
+                    href="{{rootPrefix}}docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span
+                      class="badge bg-primary">Current</span></a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><span class="dropdown-header">Release Archives</span></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.4" target="_blank" rel="noopener"><span>v1.3.4</span></a></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3" target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2" target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10" target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank" rel="noopener"><span>All Releases &rarr;</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.4"
+                    target="_blank" rel="noopener"><span>v1.3.4</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3"
+                    target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2"
+                    target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10"
+                    target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank"
+                    rel="noopener"><span>All Releases &rarr;</span></a></li>
               </ul>
             </div>
             <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
@@ -224,7 +234,7 @@
         <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/getting-started/download.html">Download</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i
-            class="hi-haticons me-1" aria-hidden="true"></i>Haticons</a>
+            class="hi-haticons" aria-hidden="true"></i>Haticons</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="{{rootPrefix}}docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
@@ -466,7 +476,7 @@
     // Register Service Worker for offline PWA browsing
     if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('{{rootPrefix}}sw.js').catch(function () {});
+        navigator.serviceWorker.register('{{rootPrefix}}sw.js').catch(function () { });
       });
     }
   </script>
