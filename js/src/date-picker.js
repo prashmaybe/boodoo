@@ -351,7 +351,8 @@ export class DatePicker extends BaseComponent {
 
     // Arrow key navigation inside calendar grid
     this._popup.addEventListener('keydown', (e) => {
-      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key))
+        return;
       const focusedCell = this._popup.querySelector('.date-picker-cell:focus');
       if (!focusedCell || !focusedCell.hasAttribute('data-date')) return;
 
@@ -369,7 +370,10 @@ export class DatePicker extends BaseComponent {
         nextDate.setMonth(nextDate.getMonth() + 1, 0);
       }
 
-      if (nextDate.getMonth() !== this._viewDate.getMonth() || nextDate.getFullYear() !== this._viewDate.getFullYear()) {
+      if (
+        nextDate.getMonth() !== this._viewDate.getMonth() ||
+        nextDate.getFullYear() !== this._viewDate.getFullYear()
+      ) {
         this._viewDate = new Date(nextDate);
         this.render();
       }

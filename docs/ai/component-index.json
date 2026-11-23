@@ -7,11 +7,7 @@
     {
       "name": "Modal",
       "category": "overlay",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue"],
       "cssClasses": [
         ".modal",
         ".modal-dialog",
@@ -30,46 +26,22 @@
         "scroll lock",
         "WCAG 2.2 AA compliant"
       ],
-      "examples": [
-        "examples/vanilla-js/modal",
-        "examples/react/modal",
-        "examples/vue/modal"
-      ]
+      "examples": ["examples/vanilla-js/modal", "examples/react/modal", "examples/vue/modal"]
     },
     {
       "name": "Toast",
       "category": "feedback",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue"
-      ],
-      "cssClasses": [
-        ".toast",
-        ".toast-header",
-        ".toast-body",
-        ".toast-container"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue"],
+      "cssClasses": [".toast", ".toast-header", ".toast-body", ".toast-container"],
       "jsExport": "Toast",
       "documentation": "https://boodooframework.com/docs/components/toasts.html",
-      "features": [
-        "auto dismiss",
-        "stacking",
-        "aria-live polite",
-        "custom durations"
-      ],
-      "examples": [
-        "examples/vanilla-js/toast"
-      ]
+      "features": ["auto dismiss", "stacking", "aria-live polite", "custom durations"],
+      "examples": ["examples/vanilla-js/toast"]
     },
     {
       "name": "Dropdown",
       "category": "navigation",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue"],
       "cssClasses": [
         ".dropdown",
         ".dropdown-toggle",
@@ -79,25 +51,13 @@
       ],
       "jsExport": "Dropdown",
       "documentation": "https://boodooframework.com/docs/components/dropdowns.html",
-      "features": [
-        "keyboard arrow navigation",
-        "click outside dismiss",
-        "esc key handling"
-      ],
-      "examples": [
-        "examples/vanilla-js/dropdown",
-        "examples/vue/dropdown"
-      ]
+      "features": ["keyboard arrow navigation", "click outside dismiss", "esc key handling"],
+      "examples": ["examples/vanilla-js/dropdown", "examples/vue/dropdown"]
     },
     {
       "name": "Accordion",
       "category": "disclosure",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue",
-        "react-native"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue", "react-native"],
       "cssClasses": [
         ".accordion",
         ".accordion-item",
@@ -112,19 +72,12 @@
         "aria-expanded binding",
         "single or multiple open"
       ],
-      "examples": [
-        "examples/react/accordion"
-      ]
+      "examples": ["examples/react/accordion"]
     },
     {
       "name": "Button",
       "category": "action",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue",
-        "react-native"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue", "react-native"],
       "cssClasses": [
         ".btn",
         ".btn-primary",
@@ -143,70 +96,32 @@
         "loading state",
         "native mobile support"
       ],
-      "examples": [
-        "examples/react-native/button"
-      ]
+      "examples": ["examples/react-native/button"]
     },
     {
       "name": "Card",
       "category": "surfaces",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue",
-        "react-native"
-      ],
-      "cssClasses": [
-        ".card",
-        ".card-body",
-        ".card-header",
-        ".card-footer",
-        ".card-img-top"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue", "react-native"],
+      "cssClasses": [".card", ".card-body", ".card-header", ".card-footer", ".card-img-top"],
       "jsExport": null,
       "documentation": "https://boodooframework.com/docs/components/card.html",
-      "features": [
-        "elevation variants",
-        "responsive padding",
-        "universal design tokens"
-      ],
-      "examples": [
-        "examples/react-native/card"
-      ]
+      "features": ["elevation variants", "responsive padding", "universal design tokens"],
+      "examples": ["examples/react-native/card"]
     },
     {
       "name": "Navbar",
       "category": "navigation",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue"
-      ],
-      "cssClasses": [
-        ".navbar",
-        ".navbar-brand",
-        ".navbar-nav",
-        ".nav-link",
-        ".navbar-toggler"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue"],
+      "cssClasses": [".navbar", ".navbar-brand", ".navbar-nav", ".nav-link", ".navbar-toggler"],
       "jsExport": "Collapse",
       "documentation": "https://boodooframework.com/docs/components/navbar.html",
-      "features": [
-        "mobile responsive toggle",
-        "flex layout",
-        "dark mode support"
-      ],
-      "examples": [
-        "examples/vanilla-js/navbar"
-      ]
+      "features": ["mobile responsive toggle", "flex layout", "dark mode support"],
+      "examples": ["examples/vanilla-js/navbar"]
     },
     {
       "name": "Command Palette",
       "category": "overlay",
-      "frameworks": [
-        "vanilla-js",
-        "react"
-      ],
+      "frameworks": ["vanilla-js", "react"],
       "cssClasses": [
         ".command-palette",
         ".command-palette-backdrop",
@@ -215,99 +130,44 @@
       ],
       "jsExport": "CommandPalette",
       "documentation": "https://boodooframework.com/docs/components/command-palette.html",
-      "features": [
-        "Ctrl+K / Cmd+K trigger",
-        "safe protocol validation",
-        "fuzzy search"
-      ],
-      "examples": [
-        "examples/vanilla-js/command-palette"
-      ]
+      "features": ["Ctrl+K / Cmd+K trigger", "safe protocol validation", "fuzzy search"],
+      "examples": ["examples/vanilla-js/command-palette"]
     },
     {
       "name": "Dropzone",
       "category": "forms",
-      "frameworks": [
-        "vanilla-js",
-        "react"
-      ],
-      "cssClasses": [
-        ".dropzone",
-        ".dropzone-preview",
-        ".dropzone-file-item"
-      ],
+      "frameworks": ["vanilla-js", "react"],
+      "cssClasses": [".dropzone", ".dropzone-preview", ".dropzone-file-item"],
       "jsExport": "Dropzone",
       "documentation": "https://boodooframework.com/docs/components/dropzone.html",
-      "features": [
-        "drag and drop",
-        "safe DOM creation",
-        "URL.revokeObjectURL cleanup"
-      ],
-      "examples": [
-        "examples/vanilla-js/dropzone"
-      ]
+      "features": ["drag and drop", "safe DOM creation", "URL.revokeObjectURL cleanup"],
+      "examples": ["examples/vanilla-js/dropzone"]
     },
     {
       "name": "Combobox",
       "category": "forms",
-      "frameworks": [
-        "vanilla-js",
-        "react",
-        "vue"
-      ],
-      "cssClasses": [
-        ".combobox",
-        ".combobox-input",
-        ".combobox-dropdown",
-        ".combobox-item"
-      ],
+      "frameworks": ["vanilla-js", "react", "vue"],
+      "cssClasses": [".combobox", ".combobox-input", ".combobox-dropdown", ".combobox-item"],
       "jsExport": "Combobox",
       "documentation": "https://boodooframework.com/docs/components/combobox.html",
-      "features": [
-        "searchable autocomplete",
-        "keyboard arrow navigation",
-        "ARIA activedescendant"
-      ],
-      "examples": [
-        "examples/vanilla-js/combobox"
-      ]
+      "features": ["searchable autocomplete", "keyboard arrow navigation", "ARIA activedescendant"],
+      "examples": ["examples/vanilla-js/combobox"]
     },
     {
       "name": "Bottom Sheet",
       "category": "overlay",
-      "frameworks": [
-        "vanilla-js",
-        "react-native"
-      ],
-      "cssClasses": [
-        ".bottom-sheet",
-        ".bottom-sheet-backdrop",
-        ".bottom-sheet-handle"
-      ],
+      "frameworks": ["vanilla-js", "react-native"],
+      "cssClasses": [".bottom-sheet", ".bottom-sheet-backdrop", ".bottom-sheet-handle"],
       "jsExport": "BottomSheet",
       "documentation": "https://boodooframework.com/docs/components/bottom-sheet.html",
-      "features": [
-        "touch dragging physics",
-        "backdrop dismissal",
-        "mobile-first"
-      ],
-      "examples": [
-        "examples/vanilla-js/bottom-sheet"
-      ]
+      "features": ["touch dragging physics", "backdrop dismissal", "mobile-first"],
+      "examples": ["examples/vanilla-js/bottom-sheet"]
     },
     {
       "name": "Data Table",
       "category": "data-display",
-      "frameworks": [
-        "vanilla-js",
-        "react"
-      ],
-      "cssClasses": [
-        ".data-table",
-        ".table-sortable",
-        ".table-dense",
-        ".table-hover"
-      ],
+      "frameworks": ["vanilla-js", "react"],
+      "cssClasses": [".data-table", ".table-sortable", ".table-dense", ".table-hover"],
       "jsExport": "DataTable",
       "documentation": "https://boodooframework.com/docs/components/data-table.html",
       "features": [
@@ -316,9 +176,7 @@
         "expandable rows",
         "responsive wrapper"
       ],
-      "examples": [
-        "examples/vanilla-js/data-table"
-      ]
+      "examples": ["examples/vanilla-js/data-table"]
     }
   ]
 }

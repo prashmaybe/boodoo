@@ -530,33 +530,34 @@ export const BoodooTabs = {
           ...restAttrs,
         },
         [
-        h(
-          'ul',
-          { class: 'nav nav-tabs', role: 'tablist' },
-          props.tabs.map((tab, idx) =>
-            h('li', { class: 'nav-item', role: 'presentation' }, [
-              h(
-                'button',
-                {
-                  type: 'button',
-                  class: ['nav-link', activeIndex.value === idx ? 'active' : '']
-                    .filter(Boolean)
-                    .join(' '),
-                  role: 'tab',
-                  'aria-selected': activeIndex.value === idx ? 'true' : 'false',
-                  onClick: () => selectTab(idx),
-                },
-                h('span', null, typeof tab === 'string' ? tab : tab.label)
-              ),
-            ])
-          )
-        ),
-        h(
-          'div',
-          { class: 'tab-content p-3' },
-          slots.default ? slots.default({ activeIndex: activeIndex.value }) : null
-        ),
-      ]);
+          h(
+            'ul',
+            { class: 'nav nav-tabs', role: 'tablist' },
+            props.tabs.map((tab, idx) =>
+              h('li', { class: 'nav-item', role: 'presentation' }, [
+                h(
+                  'button',
+                  {
+                    type: 'button',
+                    class: ['nav-link', activeIndex.value === idx ? 'active' : '']
+                      .filter(Boolean)
+                      .join(' '),
+                    role: 'tab',
+                    'aria-selected': activeIndex.value === idx ? 'true' : 'false',
+                    onClick: () => selectTab(idx),
+                  },
+                  h('span', null, typeof tab === 'string' ? tab : tab.label)
+                ),
+              ])
+            )
+          ),
+          h(
+            'div',
+            { class: 'tab-content p-3' },
+            slots.default ? slots.default({ activeIndex: activeIndex.value }) : null
+          ),
+        ]
+      );
     };
   },
 };

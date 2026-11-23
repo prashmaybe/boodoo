@@ -115,7 +115,10 @@ export class VirtualList {
     for (let i = startIndex; i < endIndex; i++) {
       const item = this._options.items[i];
       const node = this._options.renderItem(item, i);
-      if (node && (typeof Node === 'undefined' || node instanceof Node || typeof node === 'object')) {
+      if (
+        node &&
+        (typeof Node === 'undefined' || node instanceof Node || typeof node === 'object')
+      ) {
         fragment.appendChild(node);
       }
     }
