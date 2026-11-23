@@ -1,5 +1,5 @@
 // Boodoo Offline Service Worker (Cache-first for assets, Network-first for docs)
-const CACHE_NAME = 'boodoo-cache-v1.3.4';
+const CACHE_NAME = 'boodoo-cache-v1.3.5';
 const PRECACHE_URLS = [
   '/',
   '/index.html',

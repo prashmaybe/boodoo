@@ -105,20 +105,19 @@
 
         <div class="d-flex align-items-center gap-1 nav-actions-wrap">
           <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
-            aria-label="Search documentation" title="Search (Ctrl+K or /)">
-            <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+            aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
             <span class="search-btn-text">Search</span>
             <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
-          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
+            title="Toggle theme">
             <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
           </button>
-          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="../docs/getting-started/usage.html"><span>CDN</span></a>
-          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="{{archiveFrameworkZip}}" download><span>Download Zip</span></a>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+            href="../docs/getting-started/usage.html"><span>CDN</span></a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+            href="../docs/getting-started/download.html"><span>Download</span></a>
           <button class="navbar-toggler border-0 d-lg-none" type="button" data-boodoo-toggle="collapse"
             data-boodoo-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -138,17 +137,45 @@
             <li class="nav-item"><a class="nav-link" href="../index.html#components"><span>Components</span></a></li>
             <li class="nav-item"><a class="nav-link" href="../index.html#icons"><span>Icons</span></a></li>
             <li class="nav-item"><a class="nav-link" href="../index.html#mobile"><span>React Native</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#installation"><span>Installation</span></a></li>
             <li class="nav-item"><a class="nav-link" href="../docs/getting-started/introduction.html"><span>Docs</span></a></li>
             <li class="nav-item"><a class="nav-link active" href="index.html"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <!-- Version Switcher Dropdown -->
+            <div class="dropdown d-inline-block">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium"
+                type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
+                <span>v{{version}}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li><span class="dropdown-header">Active Release</span></li>
+                <li><a class="dropdown-item active d-flex justify-content-between align-items-center"
+                    href="../docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span
+                      class="badge bg-primary">Current</span></a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><span class="dropdown-header">Release Archives</span></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.4"
+                    target="_blank" rel="noopener"><span>v1.3.4</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3"
+                    target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2"
+                    target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10"
+                    target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank"
+                    rel="noopener"><span>All Releases &rarr;</span></a></li>
+              </ul>
+            </div>
             <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
               <span>GitHub</span>
             </a>
             <div class="d-flex d-sm-none align-items-center gap-2 pt-2 border-top w-100 mt-2">
               <a class="btn btn-outline-primary btn-sm rounded-pill px-3 flex-fill text-center" href="../docs/getting-started/usage.html"><span>CDN</span></a>
-              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="{{archiveFrameworkZip}}" download><span>Download Zip</span></a>
+              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="../docs/getting-started/download.html"><span>Download</span></a>
             </div>
           </div>
         </div>
@@ -627,17 +654,36 @@
   <!-- Sitewide Footer -->
   <footer class="py-1 border-top">
     <div
-      class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 text-muted small text-center text-md-start">
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
       <div class="d-inline-flex align-items-center gap-2">
         <img src="../assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
-        <span>© 2026 <a href="https://pebblebenders.com" target="_blank" rel="noopener"
-            class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a> · MIT License</span>
+        <span>© {{year}} Pebble Benders · MIT License</span>
       </div>
-      <div class="d-flex flex-wrap justify-content-center gap-3">
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
         <a class="text-muted text-decoration-none" href="../docs/getting-started/introduction.html">Documentation</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="index.html">Examples</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i
+            class="hi-haticons" aria-hidden="true"></i>Haticons</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../docs/about/changelog.html">Changelog</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="../docs/about/license.html">License</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../docs/about/privacy.html">Privacy</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="../docs/about/terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="sub-footer border-top mt-1 pt-1 text-center small text-muted">
+      <div class="container">
+        <p class="mb-0"><span>Engineered and maintained by <a href="https://pebblebenders.com/" target="_blank"
+              rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>—Need a custom
+            web application built? <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
+              class="text-decoration-underline text-primary fw-semibold">Work with us</a>.</span></p>
       </div>
     </div>
   </footer>

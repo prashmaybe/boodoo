@@ -88,34 +88,28 @@ order: 7
         </div>
       </div>
 
-      <p class="text-muted mt-2">
-        <span>Security hardening and package distribution audit release. Fixes Markdown XSS rendering vulnerabilities, adds Svelte/Solid adapters to the npm package distribution allowlist, resolves DatePicker timezone offsets and ARIA keyboard navigation, enables data-driven DataTable virtual selection, and restores VirtualList container DOM upon disposal.</span>
-      </p>
+      <div class="timeline-body">
+        <h3 class="h6 text-uppercase fw-bold text-success d-flex align-items-center gap-1 mb-2">
+          <span class="badge bg-soft-success text-success"><span>Patch Release</span></span>
+          <span>Version 1.3.5 Release &mdash; Markdown XSS Hardening, Svelte &amp; Solid Package Distribution, DatePicker Timezone &amp; DataTable Virtual Selection</span>
+        </h3>
+        <p><span>boodoo <strong>v1.3.5</strong> delivers critical security hardening and package distribution fixes: Markdown rendering XSS sanitization across Vanilla, React, and Vue, official Svelte and Solid adapter inclusion in the published npm tarball allowlist, DatePicker local timezone parsing and WAI-ARIA grid navigation, and DataTable virtual selection with VirtualList disposal cleanup.</span></p>
 
-      <div class="row g-2 mt-2">
-        <div class="col-md-6">
-          <div class="p-2 border rounded-2 bg-light">
-            <span class="fw-semibold text-danger d-block mb-1">
-              <i class="hi-shield me-1" aria-hidden="true"></i><span>Security & Sanitization</span>
-            </span>
-            <ul class="mb-0 ps-3 small text-muted">
-              <li><span>Markdown XSS protection across Vanilla, React, and Vue</span></li>
-              <li><span>Link protocol validation (only http, https, mailto, relative, #)</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="p-2 border rounded-2 bg-light">
-            <span class="fw-semibold text-primary d-block mb-1">
-              <i class="hi-check-circle me-1" aria-hidden="true"></i><span>Packaging & A11y</span>
-            </span>
-            <ul class="mb-0 ps-3 small text-muted">
-              <li><span>npm package allowlist includes svelte/ and solid/</span></li>
-              <li><span>DatePicker local timezone parsing & grid arrow keys</span></li>
-              <li><span>DataTable virtual selection & VirtualList disposal</span></li>
-            </ul>
-          </div>
-        </div>
+        <h4 class="h6 fw-bold text-success mt-3 mb-2"><span>Security &amp; Sanitization</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Markdown XSS Hardening (<code>js/src/markdown.js</code>, <code>react/index.js</code>, <code>vue/components.js</code>)</strong>: Enforced strict link protocol validation against unsafe protocols (blocking <code>javascript:</code>, <code>vbscript:</code>, and <code>data:</code> URIs; only permitting <code>http:</code>, <code>https:</code>, <code>mailto:</code>, relative paths, and fragment anchors <code>#</code>) alongside comprehensive HTML tag sanitization across all renderer adapters.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Package Distribution &amp; Packaging</span></h4>
+        <ul class="mb-2">
+          <li><span><strong>Package Allowlist Parity (<code>package.json</code>)</strong>: Added <code>svelte/</code> and <code>solid/</code> directories to the published npm package <code>files</code> allowlist, ensuring full multi-framework adapter availability upon installation.</span></li>
+        </ul>
+
+        <h4 class="h6 fw-bold text-primary mt-3 mb-2"><span>Component Bug Fixes &amp; A11y</span></h4>
+        <ul class="mb-0">
+          <li><span><strong>DatePicker Timezone &amp; Keyboard A11y (<code>js/src/date-picker.js</code>)</strong>: Resolved date parsing offsets by adhering strictly to local timezone date boundaries, and added full WAI-ARIA grid arrow-key navigation (Left/Right for days, Up/Down for weeks).</span></li>
+          <li><span><strong>DataTable Virtual Selection &amp; VirtualList Cleanup (<code>js/src/data-table.js</code>, <code>js/src/virtual-list.js</code>)</strong>: Enabled data-driven persistent item selection across virtualized rows in DataTable, and restored original container children upon <code>VirtualList.dispose()</code> invocation.</span></li>
+        </ul>
       </div>
     </div>
   </li>

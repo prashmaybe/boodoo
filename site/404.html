@@ -35,6 +35,7 @@
       rel="stylesheet">
   </noscript>
   <link rel="stylesheet" href="/dist/css/boodoo.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@1.0.1/dist/css/haticons.min.css">
   <link rel="stylesheet" href="/assets/docs.css">
   <style>
     .error-hero {
@@ -70,6 +71,7 @@
       letter-spacing: -0.05em;
       background: linear-gradient(135deg, #7c3aed 0%, #c084fc 50%, #3b82f6 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
     }
@@ -125,7 +127,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PTKD1079C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-9PTKD1079C');
@@ -137,8 +139,7 @@
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
   <!-- Sticky Glass 2-Row Navbar -->
-  <header
-    class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
+  <header class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
     <!-- Row 1: Brand & Actions -->
     <div class="navbar-row-primary">
       <div class="container d-flex align-items-center justify-content-between">
@@ -147,14 +148,24 @@
           <span class="fw-bold fs-5 text-gradient">boodoo</span>
         </a>
 
-        <div class="d-flex align-items-center gap-2">
-          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle theme mode"
-            title="Toggle theme">
-            <span class="theme-icon">🌙</span>
+        <div class="d-flex align-items-center gap-1 nav-actions-wrap">
+          <button class="navbar-search-btn" type="button" data-boodoo-search-trigger="true"
+            aria-label="Search components and documentation" title="Search (Ctrl+K or /)">
+            <i class="hi-search search-btn-icon" aria-hidden="true"></i>
+            <span class="search-btn-text">Search</span>
+            <span class="search-btn-shortcut"><kbd>Ctrl K</kbd></span>
           </button>
-          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex" href="/docs/getting-started/download.html"><span>Download</span></a>
-          <button class="navbar-toggler border-0 d-lg-none" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#errorNav"
-            aria-controls="errorNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode"
+            title="Toggle theme">
+            <span class="theme-icon"><i class="hi-moon" aria-hidden="true"></i></span>
+          </button>
+          <a class="btn btn-outline-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+            href="/docs/getting-started/usage.html"><span>CDN</span></a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3 d-none d-sm-inline-flex"
+            href="/docs/getting-started/download.html"><span>Download</span></a>
+          <button class="navbar-toggler border-0 d-lg-none" type="button" data-boodoo-toggle="collapse"
+            data-boodoo-target="#errorNav" aria-controls="errorNav" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
@@ -167,17 +178,26 @@
         <div class="collapse navbar-collapse" id="errorNav">
           <ul class="navbar-nav me-auto mb-0 fw-medium">
             <li class="nav-item"><a class="nav-link" href="/index.html"><span>Home</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="/docs/getting-started/introduction.html"><span>Docs</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="/docs/components/buttons.html"><span>Components</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="/docs/getting-started/usage.html"><span>CDN</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#features"><span>Features</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#components"><span>Components</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#icons"><span>Icons</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#mobile"><span>React Native</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#installation"><span>Installation</span></a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="/docs/getting-started/introduction.html"><span>Docs</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/examples/"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
-            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
+            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
+              href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
               <span>GitHub</span>
             </a>
             <div class="d-flex d-sm-none align-items-center gap-2 pt-2 border-top w-100 mt-2">
-              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="/docs/getting-started/download.html"><span>Download</span></a>
+              <a class="btn btn-outline-primary btn-sm rounded-pill px-3 flex-fill text-center"
+                href="/docs/getting-started/usage.html"><span>CDN</span></a>
+              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center"
+                href="/docs/getting-started/download.html"><span>Download</span></a>
             </div>
           </div>
         </div>
@@ -242,28 +262,44 @@
   </main>
 
   <!-- Footer -->
-  <footer class="py-3 border-top">
+  <footer class="py-1 border-top">
     <div
-      class="container d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center text-muted small">
-      <div class="d-inline-flex gap-2 align-items-center">
-        <img src="/assets/brand/boodoo-icon.svg" alt="boodoo" height="20" width="20" loading="lazy">
+      class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
+      <div class="d-inline-flex align-items-center gap-2">
+        <img src="/assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
         <span>© <span id="year">2026</span> Pebble Benders · MIT License</span>
       </div>
-      <div class="d-flex gap-3">
+      <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
         <a class="text-muted text-decoration-none" href="/docs/getting-started/introduction.html">Documentation</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="/examples/">Examples</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="/docs/getting-started/download.html">Download</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i
+            class="hi-haticons" aria-hidden="true"></i>Haticons</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="/docs/about/changelog.html">Changelog</a>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="/docs/about/license.html">License</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="/docs/about/privacy.html">Privacy</a>
-        <span>·</span>
+        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="/docs/about/terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="sub-footer border-top mt-1 pt-1 text-center small text-muted">
+      <div class="container">
+        <p class="mb-0"><span>Engineered and maintained by <a href="https://pebblebenders.com/" target="_blank"
+              rel="noopener" class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a>—Need a custom
+            web application built? <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
+              class="text-decoration-underline text-primary fw-semibold">Work with us</a>.</span></p>
       </div>
     </div>
   </footer>
 
   <script src="/dist/js/boodoo.js" defer></script>
+  <script src="/assets/search.js" defer></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     (function () {
@@ -272,7 +308,8 @@
       var toggleBtn = document.getElementById('themeToggle');
       function updateIcon(theme) {
         if (toggleBtn) {
-          toggleBtn.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+          var themeIconEl = toggleBtn.querySelector('.theme-icon');
+          if (themeIconEl) themeIconEl.innerHTML = theme === 'dark' ? '<i class="hi-sun" aria-hidden="true"></i>' : '<i class="hi-moon" aria-hidden="true"></i>';
         }
       }
       updateIcon(storedTheme);

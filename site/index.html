@@ -116,18 +116,44 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="homeNav">
           <ul class="navbar-nav me-auto mb-0 fw-medium">
+            <li class="nav-item"><a class="nav-link active" href="index.html"><span>Home</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#features"><span>Features</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#components"><span>Components</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#icons"><span>Icons</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#mobile"><span>React Native</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#installation"><span>Installation</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="docs/getting-started/ai.html"><span>AI Support</span></a>
-            </li>
             <li class="nav-item"><a class="nav-link" href="docs/getting-started/introduction.html"><span>Docs</span></a>
             </li>
             <li class="nav-item"><a class="nav-link" href="examples/"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
+            <!-- Version Switcher Dropdown -->
+            <div class="dropdown d-inline-block">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill py-0 px-2 fw-medium"
+                type="button" data-boodoo-toggle="dropdown" aria-expanded="false" title="Version Switcher">
+                <span>v{{version}}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li><span class="dropdown-header">Active Release</span></li>
+                <li><a class="dropdown-item active d-flex justify-content-between align-items-center"
+                    href="docs/about/changelog.html"><span>v{{version}} (Latest)</span> <span
+                      class="badge bg-primary">Current</span></a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><span class="dropdown-header">Release Archives</span></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.4"
+                    target="_blank" rel="noopener"><span>v1.3.4</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.3"
+                    target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2"
+                    target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10"
+                    target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank"
+                    rel="noopener"><span>All Releases &rarr;</span></a></li>
+              </ul>
+            </div>
             <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
               href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
@@ -1132,18 +1158,17 @@
       class="container d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center text-muted small text-center text-md-start">
       <div class="d-inline-flex align-items-center gap-2">
         <img src="assets/brand/boodoo-icon.svg" alt="boodoo" height="24" width="24" loading="lazy">
-        <span>© 2026 <a href="https://pebblebenders.com/" target="_blank" rel="noopener"
-            class="text-decoration-underline text-muted fw-semibold">Pebble Benders</a> · MIT License</span>
+        <span>© {{year}} Pebble Benders · MIT License</span>
       </div>
       <div class="footer-links-wrap d-flex flex-wrap justify-content-center gap-2 gap-sm-1">
         <a class="text-muted text-decoration-none" href="docs/getting-started/introduction.html">Documentation</a>
         <span class="footer-dot">·</span>
-        <a class="text-muted text-decoration-none" href="docs/getting-started/react-native-examples.html">React Native
-          Mobile</a>
-        <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="examples/">Examples</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/getting-started/download.html">Download</a>
+        <span class="footer-dot">·</span>
+        <a class="text-muted text-decoration-none" href="https://haticons.com" target="_blank" rel="noopener"><i
+            class="hi-haticons" aria-hidden="true"></i>Haticons</a>
         <span class="footer-dot">·</span>
         <a class="text-muted text-decoration-none" href="docs/about/changelog.html">Changelog</a>
         <span class="footer-dot">·</span>
