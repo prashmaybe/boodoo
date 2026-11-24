@@ -285,4 +285,40 @@ test('Sitewide documentation search catalog completeness and route integrity', (
   }
 });
 
+test('Docs code snippet Playground action copies snippet to playground', () => {
+  const layoutPath = resolve(rootDir, 'site/layout.html');
+  const playgroundPath = resolve(rootDir, 'site/src/getting-started/playground.html');
+
+  assert.ok(existsSync(layoutPath), 'site/layout.html must exist');
+  assert.ok(existsSync(playgroundPath), 'site/src/getting-started/playground.html must exist');
+
+  const layoutContent = readFileSync(layoutPath, 'utf8');
+  const playgroundContent = readFileSync(playgroundPath, 'utf8');
+
+  // Verify layout.html saves snippet to sessionStorage on Playground button click
+  assert.ok(
+    layoutContent.includes("sessionStorage.setItem('boodoo_playground_snippet', snippet)"),
+    'layout.html must store snippet in sessionStorage when Playground button is clicked'
+  );
+  assert.ok(
+    layoutContent.includes("replBtn.target = '_blank'"),
+    'layout.html Playground button must open in new tab'
+  );
+
+  // Verify playground.html retrieves snippet from URL parameter or sessionStorage
+  assert.ok(
+    playgroundContent.includes("sessionStorage.getItem('boodoo_playground_snippet')"),
+    'playground.html must check sessionStorage for transferred snippet'
+  );
+  assert.ok(
+    playgroundContent.includes("urlParams.get('code')"),
+    'playground.html must check URL code query parameter'
+  );
+  assert.ok(
+    playgroundContent.includes('editor.value = initialCode'),
+    'playground.html must populate editor with transferred snippet'
+  );
+});
+
+
 

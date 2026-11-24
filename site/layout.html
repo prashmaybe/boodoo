@@ -449,7 +449,15 @@
       replBtn.innerHTML = '<i class="hi-play" aria-hidden="true"></i><span>Playground</span>';
       replBtn.title = 'Open snippet in Boodoo Live Playground';
       replBtn.setAttribute('aria-label', 'Open snippet in Boodoo Live Playground');
+      replBtn.target = '_blank';
       replBtn.href = '{{rootPrefix}}docs/getting-started/playground.html';
+
+      replBtn.addEventListener('click', function (e) {
+        var snippet = pre.innerText || '';
+        try {
+          sessionStorage.setItem('boodoo_playground_snippet', snippet);
+        } catch (err) {}
+      });
 
       // 3. Copy button
       var copyBtn = document.createElement('button');
