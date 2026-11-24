@@ -265,21 +265,23 @@ export class DatePicker extends BaseComponent {
     let html = `
       <div class="date-picker-header">
         <button type="button" class="date-picker-nav-btn date-picker-prev" aria-label="Previous month">‹</button>
-        <span class="date-picker-title">${monthNames[month]} ${year}</span>
+        <span class="date-picker-title" id="dp-title-${this._uid || 'calendar'}">${monthNames[month]} ${year}</span>
         <button type="button" class="date-picker-nav-btn date-picker-next" aria-label="Next month">›</button>
       </div>
-      <div class="date-picker-grid">
+      <div class="date-picker-grid" role="grid" aria-labelledby="dp-title-${this._uid || 'calendar'}">
+        <div role="row" class="date-picker-row date-picker-weekdays-row" style="display: contents;">
     `;
 
     // Weekday headers
     weekdays.forEach((wd) => {
-      html += `<span class="date-picker-weekday">${wd}</span>`;
+      html += `<span class="date-picker-weekday" role="columnheader">${wd}</span>`;
     });
+    html += `</div>`;
 
     // Previous month filler days
     for (let i = firstDayIndex - 1; i >= 0; i--) {
       const day = prevMonthLastDay - i;
-      html += `<button type="button" class="date-picker-cell other-month" disabled tabindex="-1">${day}</button>`;
+      html += `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`;
     }
 
     // Current month days
@@ -288,16 +290,24 @@ export class DatePicker extends BaseComponent {
       const curStr = this._formatDate(current);
 
       let classes = ['date-picker-cell'];
+      let isSelected = false;
       if (curStr === todayStr) classes.push('today');
 
       if (!this._isRange && this._selectedDate && this._formatDate(this._selectedDate) === curStr) {
         classes.push('selected');
+        isSelected = true;
       } else if (this._isRange) {
         const startStr = this._rangeStart ? this._formatDate(this._rangeStart) : '';
         const endStr = this._rangeEnd ? this._formatDate(this._rangeEnd) : '';
 
-        if (curStr === startStr) classes.push('range-start');
-        if (curStr === endStr) classes.push('range-end');
+        if (curStr === startStr) {
+          classes.push('range-start');
+          isSelected = true;
+        }
+        if (curStr === endStr) {
+          classes.push('range-end');
+          isSelected = true;
+        }
         if (
           this._rangeStart &&
           this._rangeEnd &&
@@ -308,14 +318,15 @@ export class DatePicker extends BaseComponent {
         }
       }
 
-      html += `<button type="button" class="${classes.join(' ')}" data-date="${curStr}">${day}</button>`;
+      const ariaSelected = isSelected ? ' aria-selected="true"' : ' aria-selected="false"';
+      html += `<button type="button" class="${classes.join(' ')}" role="gridcell"${ariaSelected} data-date="${curStr}">${day}</button>`;
     }
 
     // Trailing days to fill 7 columns
     const totalRendered = firstDayIndex + lastDayOfMonth;
     const remaining = (7 - (totalRendered % 7)) % 7;
     for (let day = 1; day <= remaining; day++) {
-      html += `<button type="button" class="date-picker-cell other-month" disabled tabindex="-1">${day}</button>`;
+      html += `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`;
     }
 
     html += `

@@ -59,8 +59,10 @@ export class VirtualList {
     this._content.style.right = '0';
 
     this._spacer.appendChild(this._content);
-    this._originalContent = this._element.innerHTML;
-    this._element.innerHTML = '';
+    this._originalFragment = document.createDocumentFragment();
+    while (this._element.firstChild) {
+      this._originalFragment.appendChild(this._element.firstChild);
+    }
     this._element.appendChild(this._spacer);
 
     this._element.addEventListener('scroll', this._onScroll, { passive: true });
@@ -130,10 +132,12 @@ export class VirtualList {
       this._element.removeEventListener('scroll', this._onScroll);
       window.removeEventListener('resize', this._onResize);
       this._element.classList.remove('boodoo-virtual-list');
-      if (this._originalContent !== undefined) {
-        this._element.innerHTML = this._originalContent;
-      } else {
-        this._element.innerHTML = '';
+      if (this._spacer && this._spacer.parentNode === this._element) {
+        this._element.removeChild(this._spacer);
+      }
+      if (this._originalFragment) {
+        this._element.appendChild(this._originalFragment);
+        this._originalFragment = null;
       }
     }
   }
