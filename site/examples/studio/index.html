@@ -507,7 +507,7 @@
       btnCopyCode.addEventListener('click', () => {
         copyCode(snippet.textContent).then(() => {
           const original = btnCopyCode.innerHTML;
-          btnCopyCode.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+          btnCopyCode.innerHTML = '<i class="hi-check" aria-hidden="true"></i><span>Copied!</span>';
           setTimeout(() => {
             btnCopyCode.innerHTML = original;
           }, 2000);

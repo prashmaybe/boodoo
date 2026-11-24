@@ -13,21 +13,29 @@ order: 9
   <li><code>.collapse</code> hides content.</li>
   <li><code>.collapsing</code> is applied during transitions.</li>
   <li><code>.collapse.show</code> shows content.</li>
-  <li><code>data-boodoo-toggle="collapse"</code> on the trigger, with <code>data-boodoo-target</code> (or an <code>href</code>) pointing to the collapsible element.</li>
+  <li><code>data-boodoo-toggle="collapse"</code> on the trigger, with <code>data-boodoo-target</code> (or an
+    <code>href</code>) pointing to the collapsible element.</li>
 </ul>
 
 <h2 id="example">Example</h2>
 <p>Click the button to toggle the collapse.</p>
 <div class="bd-example">
   <p>
-    <a class="btn btn-primary me-1" data-boodoo-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Link with href</a>
-    <button class="btn btn-outline-primary" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Button with data-target</button>
+    <a class="btn btn-primary" data-boodoo-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+      aria-controls="collapseExample">Link with href</a>
+    <button class="btn btn-outline-primary" type="button" data-boodoo-toggle="collapse"
+      data-boodoo-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Button with
+      data-target</button>
   </p>
   <div class="collapse" id="collapseExample">
-    <div class="card card-body"><p class="mb-0">Some placeholder content for the collapse component. This panel is hidden by default but revealed when the trigger is activated.</p></div>
+    <div class="card card-body">
+      <p class="mb-0">Some placeholder content for the collapse component. This panel is hidden by default but revealed
+        when the trigger is activated.</p>
+    </div>
   </div>
 </div>
-<div class="highlight"><pre><code>&lt;button class="btn btn-primary" type="button"
+<div class="highlight">
+  <pre><code>&lt;button class="btn btn-primary" type="button"
         data-boodoo-toggle="collapse" data-boodoo-target="#collapseExample"
         aria-expanded="false" aria-controls="collapseExample"&gt;
   Button with target
@@ -35,17 +43,22 @@ order: 9
 
 &lt;div class="collapse" id="collapseExample"&gt;
   &lt;div class="card card-body"&gt;...&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+</div>
 
 <h2 id="horizontal">Horizontal</h2>
 <p>Add <code>.collapse-horizontal</code> to the collapsible element to animate width instead of height.</p>
 <div class="bd-example">
   <p>
-    <button class="btn btn-primary" type="button" data-boodoo-toggle="collapse" data-boodoo-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">Toggle width</button>
+    <button class="btn btn-primary" type="button" data-boodoo-toggle="collapse"
+      data-boodoo-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">Toggle
+      width</button>
   </p>
   <div>
     <div class="collapse collapse-horizontal" id="collapseWidthExample">
-      <div class="card card-body demo-collapse-w"><p class="mb-0">This is some placeholder width content.</p></div>
+      <div class="card card-body demo-collapse-w">
+        <p class="mb-0">This is some placeholder width content.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -61,7 +74,10 @@ order: 9
 </div>
 
 <h2 id="multiple">Multiple toggles &amp; targets</h2>
-<p>A single trigger can control multiple targets by passing a space-separated selector to <code>data-boodoo-target</code>, or multiple triggers can control the same target.</p>
-<div class="highlight"><pre><code>&lt;!-- single button, two targets -->
+<p>A single trigger can control multiple targets by passing a space-separated selector to
+  <code>data-boodoo-target</code>, or multiple triggers can control the same target.</p>
+<div class="highlight">
+  <pre><code>&lt;!-- single button, two targets -->
 &lt;button data-boodoo-toggle="collapse"
-        data-boodoo-target="#targetOne #targetTwo"&gt;Toggle both&lt;/button&gt;</code></pre></div>
+        data-boodoo-target="#targetOne #targetTwo"&gt;Toggle both&lt;/button&gt;</code></pre>
+</div>
