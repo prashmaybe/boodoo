@@ -104,7 +104,8 @@ export interface DefineComponent<Props = {}, RawBindings = {}, D = {}, C = {}, M
 }
 
 export interface BoodooButtonProps {
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
   size?: 'sm' | 'lg' | string;
   outline?: boolean;
   soft?: boolean;
@@ -115,7 +116,8 @@ export interface BoodooButtonProps {
 }
 
 export interface BoodooAlertProps {
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
   dismissible?: boolean;
   title?: string;
   icon?: string;
@@ -129,7 +131,8 @@ export interface BoodooCardProps {
 }
 
 export interface BoodooBadgeProps {
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
   pill?: boolean;
   soft?: boolean;
 }
@@ -179,7 +182,8 @@ export interface BoodooOffcanvasProps {
 
 export interface BoodooDropdownProps {
   label?: string;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
 }
 
 export interface BoodooTabsProps {
@@ -192,13 +196,24 @@ export interface BoodooTabsProps {
 export interface BoodooToastProps {
   modelValue?: boolean;
   title?: string;
-  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | string;
   'onUpdate:modelValue'?: (value: boolean) => void;
   onClose?: () => void;
 }
 
 export interface BoodooSpinnerProps {
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
   size?: 'sm' | 'lg' | string;
   grow?: boolean;
 }
@@ -206,7 +221,8 @@ export interface BoodooSpinnerProps {
 export interface BoodooProgressProps {
   value?: number;
   max?: number;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
   striped?: boolean;
   animated?: boolean;
 }
