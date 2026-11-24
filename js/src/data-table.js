@@ -195,8 +195,37 @@ export class DataTable extends BaseComponent {
     });
     headerEl.classList.add(this._sortAsc ? 'sort-asc' : 'sort-desc');
 
-    if (this._isVirtualized && typeof this._virtualOptions?.onSort === 'function') {
-      this._virtualOptions.onSort(colIndex, this._sortAsc ? 'asc' : 'desc');
+    if (this._isVirtualized) {
+      if (typeof this._virtualOptions?.onSort === 'function') {
+        this._virtualOptions.onSort(colIndex, this._sortAsc ? 'asc' : 'desc');
+      } else if (Array.isArray(this._virtualOptions?.items)) {
+        // Internal sorting over the complete dataset when items array is provided
+        const items = this._virtualOptions.items;
+        items.sort((a, b) => {
+          let aVal = a;
+          let bVal = b;
+          if (Array.isArray(a)) aVal = a[colIndex];
+          else if (a && typeof a === 'object') {
+            const keys = Object.keys(a);
+            aVal = a[keys[colIndex]] !== undefined ? a[keys[colIndex]] : a;
+          }
+          if (Array.isArray(b)) bVal = b[colIndex];
+          else if (b && typeof b === 'object') {
+            const keys = Object.keys(b);
+            bVal = b[keys[colIndex]] !== undefined ? b[keys[colIndex]] : b;
+          }
+          const aStr = String(aVal ?? '').trim();
+          const bStr = String(bVal ?? '').trim();
+          const aNum = Number(aStr.replace(/[^0-9.-]+/g, ''));
+          const bNum = Number(bStr.replace(/[^0-9.-]+/g, ''));
+          if (!isNaN(aNum) && !isNaN(bNum) && aStr !== '' && bStr !== '') {
+            return this._sortAsc ? aNum - bNum : bNum - aNum;
+          }
+          return this._sortAsc
+            ? aStr.localeCompare(bStr, undefined, { numeric: true })
+            : bStr.localeCompare(aStr, undefined, { numeric: true });
+        });
+      }
       if (typeof this._renderVirtual === 'function') {
         this._renderVirtual();
       }

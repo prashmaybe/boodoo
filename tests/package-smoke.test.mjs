@@ -342,4 +342,52 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
       );
     }
   });
+
+  await t.test('16. Markdown security & sanitization regression suite', async () => {
+    const { Markdown } = await import(pathToFileURL(resolve(root, 'js/src/markdown.js')).href);
+    assert.equal(typeof Markdown.render, 'function', 'Markdown.render must be exported');
+
+    // 1. Raw HTML tags and script injection
+    const scriptAttack = Markdown.render('<script>alert("xss")</script>');
+    assert.ok(!scriptAttack.includes('<script>'), 'Must not render unescaped <script> tag');
+    assert.ok(scriptAttack.includes('&lt;script&gt;'), 'Must HTML-escape <script> tag');
+
+    // 2. Image onerror / onload event handler execution
+    const imgAttack = Markdown.render('<img src="x" onerror="alert(1)">');
+    assert.ok(!imgAttack.includes('<img'), 'Must not render unescaped <img> tag');
+    assert.ok(imgAttack.includes('&lt;img'), 'Must escape <img> tag');
+
+    // 3. Unsafe link protocols: javascript:, vbscript:, data:
+    const jsLink = Markdown.render('[Click](javascript:alert(1))');
+    assert.ok(!jsLink.includes('href="javascript:'), 'Must reject javascript: href protocol');
+    assert.ok(jsLink.includes('href="#"'), 'Must sanitize javascript: link to safe anchor #');
+
+    const vbLink = Markdown.render('[Click](vbscript:msgbox(1))');
+    assert.ok(!vbLink.includes('href="vbscript:'), 'Must reject vbscript: href protocol');
+    assert.ok(vbLink.includes('href="#"'), 'Must sanitize vbscript: link to safe anchor #');
+
+    const dataLink = Markdown.render('[Click](data:text/html,<script>alert(1)</script>)');
+    assert.ok(!dataLink.includes('href="data:'), 'Must reject data: URI protocol');
+    assert.ok(dataLink.includes('href="#"'), 'Must sanitize data: link to safe anchor #');
+
+    // 4. Safe links: http, https, mailto, relative, anchor
+    const safeHttps = Markdown.render('[Site](https://boodooframework.com)');
+    assert.ok(safeHttps.includes('href="https://boodooframework.com"'), 'Must allow valid https: link');
+    assert.ok(safeHttps.includes('rel="noopener noreferrer"'), 'Must set secure rel attributes');
+
+    const safeMailto = Markdown.render('[Contact](mailto:hello@example.com)');
+    assert.ok(safeMailto.includes('href="mailto:hello@example.com"'), 'Must allow valid mailto: link');
+
+    const safeRel = Markdown.render('[Doc](/docs/guide.html)');
+    assert.ok(safeRel.includes('href="/docs/guide.html"'), 'Must allow relative path links');
+
+    // 5. Legitimate code blocks and inline code preservation
+    const codeBlock = Markdown.render('```javascript\nconst x = "<script>";\n```');
+    assert.ok(codeBlock.includes('boodoo-code-block') && codeBlock.includes('language-javascript'), 'Must render preformatted code block');
+    assert.ok(!codeBlock.includes('alert('), 'Preserves text without evaluating code');
+
+    const inlineCode = Markdown.render('Use `<div>hello</div>` safely');
+    assert.ok(inlineCode.includes('<code'), 'Must render inline code wrapper');
+    assert.ok(inlineCode.includes('&lt;div&gt;hello&lt;/div&gt;'), 'Must safely escape tags inside code');
+  });
 });

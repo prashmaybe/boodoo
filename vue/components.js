@@ -60,17 +60,18 @@ export const BoodooButton = {
       const variantClass = props.variant ? `${prefix}${props.variant}` : '';
       const sizeClass = props.size ? `btn-${props.size}` : '';
       const loadingClass = props.loading ? 'btn-loading' : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'button',
         {
           type: props.type,
           disabled: props.disabled || props.loading,
-          class: ['btn', variantClass, sizeClass, loadingClass, attrs.class]
+          onClick: (e) => emit('click', e),
+          ...restAttrs,
+          class: ['btn', variantClass, sizeClass, loadingClass, customClass]
             .filter(Boolean)
             .join(' '),
-          onClick: (e) => emit('click', e),
-          ...attrs,
         },
         [
           props.loading
@@ -107,22 +108,23 @@ export const BoodooAlert = {
 
     return () => {
       if (!isVisible.value) return null;
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
         {
           role: 'alert',
+          ...restAttrs,
           class: [
             'alert',
             `alert-${props.variant}`,
             props.dismissible ? 'alert-dismissible' : '',
             'fade',
             'show',
-            attrs.class,
+            customClass,
           ]
             .filter(Boolean)
             .join(' '),
-          ...attrs,
         },
         [
           h('div', { class: 'd-flex align-items-start gap-2' }, [
@@ -154,17 +156,25 @@ export const BoodooCard = {
   },
   setup(props, { slots, attrs }) {
     return () => {
-      return h('div', { class: ['card', attrs.class].filter(Boolean).join(' '), ...attrs }, [
-        slots.header ? h('div', { class: 'card-header' }, slots.header()) : null,
-        h('div', { class: 'card-body' }, [
-          props.title ? h('h5', { class: 'card-title' }, props.title) : null,
-          props.subtitle
-            ? h('h6', { class: 'card-subtitle mb-2 text-muted' }, props.subtitle)
-            : null,
-          slots.default ? slots.default() : null,
-        ]),
-        slots.footer ? h('div', { class: 'card-footer' }, slots.footer()) : null,
-      ]);
+      const { class: customClass, ...restAttrs } = attrs;
+      return h(
+        'div',
+        {
+          ...restAttrs,
+          class: ['card', customClass].filter(Boolean).join(' '),
+        },
+        [
+          slots.header ? h('div', { class: 'card-header' }, slots.header()) : null,
+          h('div', { class: 'card-body' }, [
+            props.title ? h('h5', { class: 'card-title' }, props.title) : null,
+            props.subtitle
+              ? h('h6', { class: 'card-subtitle mb-2 text-muted' }, props.subtitle)
+              : null,
+            slots.default ? slots.default() : null,
+          ]),
+          slots.footer ? h('div', { class: 'card-footer' }, slots.footer()) : null,
+        ]
+      );
     };
   },
 };
@@ -182,12 +192,13 @@ export const BoodooBadge = {
       if (props.soft) prefix = 'badge-soft-';
       const variantClass = props.variant ? `${prefix}${props.variant}` : '';
       const pillClass = props.pill ? 'badge-pill' : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'span',
         {
-          class: ['badge', variantClass, pillClass, attrs.class].filter(Boolean).join(' '),
-          ...attrs,
+          ...restAttrs,
+          class: ['badge', variantClass, pillClass, customClass].filter(Boolean).join(' '),
         },
         slots.default ? slots.default() : null
       );
@@ -247,6 +258,7 @@ export const BoodooModal = {
 
     return () => {
       if (!props.modelValue) return null;
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
@@ -260,21 +272,28 @@ export const BoodooModal = {
           },
         },
         [
-          h('div', { class: ['modal-dialog', attrs.class].filter(Boolean).join(' '), ...attrs }, [
-            h('div', { class: 'modal-content' }, [
-              h('div', { class: 'modal-header' }, [
-                props.title ? h('h5', { class: 'modal-title' }, props.title) : null,
-                h('button', {
-                  type: 'button',
-                  class: 'btn-close',
-                  'aria-label': props.closeLabel,
-                  onClick: close,
-                }),
+          h(
+            'div',
+            {
+              ...restAttrs,
+              class: ['modal-dialog', customClass].filter(Boolean).join(' '),
+            },
+            [
+              h('div', { class: 'modal-content' }, [
+                h('div', { class: 'modal-header' }, [
+                  props.title ? h('h5', { class: 'modal-title' }, props.title) : null,
+                  h('button', {
+                    type: 'button',
+                    class: 'btn-close',
+                    'aria-label': props.closeLabel,
+                    onClick: close,
+                  }),
+                ]),
+                h('div', { class: 'modal-body' }, slots.default ? slots.default() : null),
+                slots.footer ? h('div', { class: 'modal-footer' }, slots.footer()) : null,
               ]),
-              h('div', { class: 'modal-body' }, slots.default ? slots.default() : null),
-              slots.footer ? h('div', { class: 'modal-footer' }, slots.footer()) : null,
-            ]),
-          ]),
+            ]
+          ),
           h('div', { class: 'modal-backdrop fade show' }),
         ]
       );
@@ -355,13 +374,14 @@ export const BoodooAccordion = {
   },
   setup(props, { slots, attrs }) {
     return () => {
+      const { class: customClass, ...restAttrs } = attrs;
       return h(
         'div',
         {
-          class: ['accordion', props.flush ? 'accordion-flush' : '', attrs.class]
+          ...restAttrs,
+          class: ['accordion', props.flush ? 'accordion-flush' : '', customClass]
             .filter(Boolean)
             .join(' '),
-          ...attrs,
         },
         slots.default ? slots.default() : null
       );
@@ -383,9 +403,13 @@ export const BoodooAccordionItem = {
     };
 
     return () => {
+      const { class: customClass, ...restAttrs } = attrs;
       return h(
         'div',
-        { class: ['accordion-item', attrs.class].filter(Boolean).join(' '), ...attrs },
+        {
+          ...restAttrs,
+          class: ['accordion-item', customClass].filter(Boolean).join(' '),
+        },
         [
           h('h2', { class: 'accordion-header' }, [
             h(
@@ -428,16 +452,17 @@ export const BoodooOffcanvas = {
 
     return () => {
       if (!props.modelValue) return null;
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
         {
-          class: ['offcanvas', `offcanvas-${props.placement}`, 'show', attrs.class]
-            .filter(Boolean)
-            .join(' '),
           tabindex: '-1',
           role: 'dialog',
-          ...attrs,
+          ...restAttrs,
+          class: ['offcanvas', `offcanvas-${props.placement}`, 'show', customClass]
+            .filter(Boolean)
+            .join(' '),
         },
         [
           h('div', { class: 'offcanvas-header' }, [
@@ -469,9 +494,13 @@ export const BoodooDropdown = {
     };
 
     return () => {
+      const { class: customClass, ...restAttrs } = attrs;
       return h(
         'div',
-        { class: ['dropdown d-inline-block', attrs.class].filter(Boolean).join(' '), ...attrs },
+        {
+          ...restAttrs,
+          class: ['dropdown d-inline-block', customClass].filter(Boolean).join(' '),
+        },
         [
           h(
             'button',
@@ -581,17 +610,18 @@ export const BoodooToast = {
 
       const variantClass =
         props.variant && props.variant !== 'default' ? `text-bg-${props.variant}` : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
         {
-          class: ['toast show align-items-center', variantClass, attrs.class]
-            .filter(Boolean)
-            .join(' '),
           role: 'alert',
           'aria-live': 'assertive',
           'aria-atomic': 'true',
-          ...attrs,
+          ...restAttrs,
+          class: ['toast show align-items-center', variantClass, customClass]
+            .filter(Boolean)
+            .join(' '),
         },
         [
           props.title
@@ -634,13 +664,14 @@ export const BoodooSpinner = {
       const type = props.grow ? 'spinner-grow' : 'spinner-border';
       const sizeClass = props.size ? `${type}-${props.size}` : '';
       const colorClass = props.variant ? `text-${props.variant}` : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
         {
-          class: [type, sizeClass, colorClass, attrs.class].filter(Boolean).join(' '),
           role: 'status',
-          ...attrs,
+          ...restAttrs,
+          class: [type, sizeClass, colorClass, customClass].filter(Boolean).join(' '),
         },
         h('span', { class: 'visually-hidden' }, 'Loading...')
       );
@@ -663,17 +694,25 @@ export const BoodooProgress = {
       const bgClass = props.variant ? `bg-${props.variant}` : '';
       const stripedClass = props.striped ? 'progress-bar-striped' : '';
       const animClass = props.animated ? 'progress-bar-animated' : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
-      return h('div', { class: ['progress', attrs.class].filter(Boolean).join(' '), ...attrs }, [
-        h('div', {
-          class: ['progress-bar', bgClass, stripedClass, animClass].filter(Boolean).join(' '),
-          role: 'progressbar',
-          style: { width: `${percent}%` },
-          'aria-valuenow': props.value,
-          'aria-valuemin': 0,
-          'aria-valuemax': props.max,
-        }),
-      ]);
+      return h(
+        'div',
+        {
+          ...restAttrs,
+          class: ['progress', customClass].filter(Boolean).join(' '),
+        },
+        [
+          h('div', {
+            class: ['progress-bar', bgClass, stripedClass, animClass].filter(Boolean).join(' '),
+            role: 'progressbar',
+            style: { width: `${percent}%` },
+            'aria-valuenow': props.value,
+            'aria-valuemin': 0,
+            'aria-valuemax': props.max,
+          }),
+        ]
+      );
     };
   },
 };
@@ -685,25 +724,34 @@ export const BoodooBreadcrumb = {
   },
   setup(props, { attrs }) {
     return () => {
-      return h('nav', { 'aria-label': 'breadcrumb', class: attrs.class }, [
-        h(
-          'ol',
-          { class: 'breadcrumb' },
-          props.items.map((item, idx) => {
-            const isLast = idx === props.items.length - 1;
-            return h(
-              'li',
-              {
-                class: ['breadcrumb-item', isLast ? 'active' : ''].filter(Boolean).join(' '),
-                'aria-current': isLast ? 'page' : undefined,
-              },
-              isLast || !item.href
-                ? h('span', null, item.label || item)
-                : h('a', { href: item.href }, h('span', null, item.label || item))
-            );
-          })
-        ),
-      ]);
+      const { class: customClass, ...restAttrs } = attrs;
+      return h(
+        'nav',
+        {
+          'aria-label': 'breadcrumb',
+          ...restAttrs,
+          class: customClass,
+        },
+        [
+          h(
+            'ol',
+            { class: 'breadcrumb' },
+            props.items.map((item, idx) => {
+              const isLast = idx === props.items.length - 1;
+              return h(
+                'li',
+                {
+                  class: ['breadcrumb-item', isLast ? 'active' : ''].filter(Boolean).join(' '),
+                  'aria-current': isLast ? 'page' : undefined,
+                },
+                isLast || !item.href
+                  ? h('span', null, item.label || item)
+                  : h('a', { href: item.href }, h('span', null, item.label || item))
+              );
+            })
+          ),
+        ]
+      );
     };
   },
 };
@@ -719,10 +767,14 @@ export const BoodooAvatar = {
   setup(props, { attrs }) {
     return () => {
       const sizeClass = props.size ? `avatar-${props.size}` : '';
+      const { class: customClass, ...restAttrs } = attrs;
 
       return h(
         'div',
-        { class: ['avatar', sizeClass, attrs.class].filter(Boolean).join(' '), ...attrs },
+        {
+          ...restAttrs,
+          class: ['avatar', sizeClass, customClass].filter(Boolean).join(' '),
+        },
         props.src
           ? h('img', { src: props.src, alt: props.alt, class: 'avatar-img' })
           : h('span', { class: 'avatar-initials' }, props.initials)
@@ -735,9 +787,13 @@ export const BoodooKbd = {
   name: 'BoodooKbd',
   setup(_, { slots, attrs }) {
     return () => {
+      const { class: customClass, ...restAttrs } = attrs;
       return h(
         'kbd',
-        { class: ['kbd', attrs.class].filter(Boolean).join(' '), ...attrs },
+        {
+          ...restAttrs,
+          class: ['kbd', customClass].filter(Boolean).join(' '),
+        },
         slots.default ? slots.default() : null
       );
     };
@@ -764,16 +820,17 @@ export const BoodooVirtualList = {
       const endIndex = Math.min(props.items.length, startIndex + 15);
       const visibleItems = props.items.slice(startIndex, endIndex);
       const offsetY = startIndex * props.itemHeight;
+      const { class: customClass, style: customStyle, ...restAttrs } = attrs;
 
       return h(
         'div',
         {
-          class: ['boodoo-virtual-list position-relative overflow-auto', attrs.class]
+          style: [{ height: props.height }, customStyle],
+          onScroll,
+          ...restAttrs,
+          class: ['boodoo-virtual-list position-relative overflow-auto', customClass]
             .filter(Boolean)
             .join(' '),
-          style: { height: props.height },
-          onScroll,
-          ...attrs,
         },
         [
           h(
@@ -811,10 +868,11 @@ export const BoodooMarkdown = {
   setup(props, { attrs }) {
     return () => {
       const html = VanillaMarkdown.render(props.content);
+      const { class: customClass, ...restAttrs } = attrs;
       return h('div', {
-        class: ['boodoo-markdown', attrs.class].filter(Boolean).join(' '),
         innerHTML: html,
-        ...attrs,
+        ...restAttrs,
+        class: ['boodoo-markdown', customClass].filter(Boolean).join(' '),
       });
     };
   },

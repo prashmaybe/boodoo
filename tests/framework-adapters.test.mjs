@@ -409,8 +409,8 @@ test('Vue 3 SFC components suite (BoodooButton, BoodooAlert, BoodooCard, BoodooB
   assert.ok(vueCompSrc.includes('name: \'BoodooAlert\''), 'BoodooAlert must be named');
   assert.ok(vueCompSrc.includes('name: \'BoodooInput\''), 'BoodooInput must be named');
 
-  assert.ok(vueDts.includes('declare const BoodooButton: any;'), 'vue/index.d.ts must type BoodooButton');
-  assert.ok(vueDts.includes('declare const BoodooModal: any;'), 'vue/index.d.ts must type BoodooModal');
+  assert.ok(vueDts.includes('declare const BoodooButton: DefineComponent<BoodooButtonProps>;') || vueDts.includes('declare const BoodooButton: any;'), 'vue/index.d.ts must type BoodooButton');
+  assert.ok(vueDts.includes('declare const BoodooModal: DefineComponent<BoodooModalProps>;') || vueDts.includes('declare const BoodooModal: any;'), 'vue/index.d.ts must type BoodooModal');
 });
 
 

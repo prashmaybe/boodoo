@@ -96,26 +96,186 @@ export declare function useDirection(initial?: 'ltr' | 'rtl' | 'auto'): {
   toggleDirection: () => void;
 };
 
+// --- Vue 3 SFC Component Props Interfaces ---
+export interface DefineComponent<Props = {}, RawBindings = {}, D = {}, C = {}, M = {}> {
+  new (): {
+    $props: Props;
+  };
+}
+
+export interface BoodooButtonProps {
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  size?: 'sm' | 'lg' | string;
+  outline?: boolean;
+  soft?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (e: MouseEvent) => void;
+}
+
+export interface BoodooAlertProps {
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  dismissible?: boolean;
+  title?: string;
+  icon?: string;
+  closeLabel?: string;
+  onDismiss?: () => void;
+}
+
+export interface BoodooCardProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export interface BoodooBadgeProps {
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  pill?: boolean;
+  soft?: boolean;
+}
+
+export interface BoodooInputProps {
+  modelValue?: string | number;
+  type?: string;
+  id?: string;
+  name?: string;
+  size?: 'sm' | 'lg' | string;
+  'onUpdate:modelValue'?: (value: string | number) => void;
+  onInput?: (e: Event) => void;
+}
+
+export interface BoodooModalProps {
+  modelValue?: boolean;
+  title?: string;
+  closeLabel?: string;
+  'onUpdate:modelValue'?: (value: boolean) => void;
+  onClose?: () => void;
+}
+
+export interface BoodooComboboxProps {
+  items?: any[];
+  modelValue?: any;
+  placeholder?: string;
+  'onUpdate:modelValue'?: (value: any) => void;
+  onChange?: (value: any) => void;
+}
+
+export interface BoodooAccordionProps {
+  flush?: boolean;
+}
+
+export interface BoodooAccordionItemProps {
+  title?: string;
+  defaultOpen?: boolean;
+}
+
+export interface BoodooOffcanvasProps {
+  modelValue?: boolean;
+  placement?: 'start' | 'end' | 'top' | 'bottom';
+  title?: string;
+  'onUpdate:modelValue'?: (value: boolean) => void;
+  onClose?: () => void;
+}
+
+export interface BoodooDropdownProps {
+  label?: string;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+}
+
+export interface BoodooTabsProps {
+  tabs?: Array<string | { label: string; [key: string]: any }>;
+  modelValue?: string | number;
+  'onUpdate:modelValue'?: (index: string | number) => void;
+  onChange?: (index: string | number) => void;
+}
+
+export interface BoodooToastProps {
+  modelValue?: boolean;
+  title?: string;
+  variant?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | string;
+  'onUpdate:modelValue'?: (value: boolean) => void;
+  onClose?: () => void;
+}
+
+export interface BoodooSpinnerProps {
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  size?: 'sm' | 'lg' | string;
+  grow?: boolean;
+}
+
+export interface BoodooProgressProps {
+  value?: number;
+  max?: number;
+  variant?:
+    'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | string;
+  striped?: boolean;
+  animated?: boolean;
+}
+
+export interface BoodooBreadcrumbItem {
+  label?: string;
+  href?: string;
+  [key: string]: any;
+}
+
+export interface BoodooBreadcrumbProps {
+  items?: Array<string | BoodooBreadcrumbItem>;
+}
+
+export interface BoodooAvatarProps {
+  src?: string;
+  alt?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+  initials?: string;
+}
+
+export interface BoodooKbdProps {}
+
+export interface BoodooVirtualListProps {
+  items?: any[];
+  itemHeight?: number;
+  height?: string;
+}
+
+export interface BoodooMarkdownProps {
+  content?: string;
+}
+
 // --- Vue 3 SFC Components ---
-export declare const BoodooButton: any;
-export declare const BoodooAlert: any;
-export declare const BoodooCard: any;
-export declare const BoodooBadge: any;
-export declare const BoodooModal: any;
-export declare const BoodooInput: any;
-export declare const BoodooCombobox: any;
-export declare const BoodooAccordion: any;
-export declare const BoodooAccordionItem: any;
-export declare const BoodooOffcanvas: any;
-export declare const BoodooDropdown: any;
-export declare const BoodooTabs: any;
-export declare const BoodooToast: any;
-export declare const BoodooSpinner: any;
-export declare const BoodooProgress: any;
-export declare const BoodooBreadcrumb: any;
-export declare const BoodooAvatar: any;
-export declare const BoodooKbd: any;
-export declare const BoodooVirtualList: any;
-export declare const BoodooMarkdown: any;
+export declare const BoodooButton: DefineComponent<BoodooButtonProps>;
+export declare const BoodooAlert: DefineComponent<BoodooAlertProps>;
+export declare const BoodooCard: DefineComponent<BoodooCardProps>;
+export declare const BoodooBadge: DefineComponent<BoodooBadgeProps>;
+export declare const BoodooModal: DefineComponent<BoodooModalProps>;
+export declare const BoodooInput: DefineComponent<BoodooInputProps>;
+export declare const BoodooCombobox: DefineComponent<BoodooComboboxProps>;
+export declare const BoodooAccordion: DefineComponent<BoodooAccordionProps>;
+export declare const BoodooAccordionItem: DefineComponent<BoodooAccordionItemProps>;
+export declare const BoodooOffcanvas: DefineComponent<BoodooOffcanvasProps>;
+export declare const BoodooDropdown: DefineComponent<BoodooDropdownProps>;
+export declare const BoodooTabs: DefineComponent<BoodooTabsProps>;
+export declare const BoodooToast: DefineComponent<BoodooToastProps>;
+export declare const BoodooSpinner: DefineComponent<BoodooSpinnerProps>;
+export declare const BoodooProgress: DefineComponent<BoodooProgressProps>;
+export declare const BoodooBreadcrumb: DefineComponent<BoodooBreadcrumbProps>;
+export declare const BoodooAvatar: DefineComponent<BoodooAvatarProps>;
+export declare const BoodooKbd: DefineComponent<BoodooKbdProps>;
+export declare const BoodooVirtualList: DefineComponent<BoodooVirtualListProps>;
+export declare const BoodooMarkdown: DefineComponent<BoodooMarkdownProps>;
 
 export declare function createBoodooVue(): { install: (app: any) => void };
