@@ -67,57 +67,14 @@ const copy = (src, rel) => {
 };
 
 // 4. Copy static site contents to www/ & inject current package version and bundle sizes
-import { getDistSizes, getArchiveCdnUrls } from './site-build.mjs';
+import { getDistSizes, getArchiveCdnUrls, injectTemplateTokens } from './site-build.mjs';
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const sizes = getDistSizes();
 const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
 const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
 const archiveUrls = getArchiveCdnUrls(pkg.version);
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
-indexContent = indexContent
-  .replaceAll('{{year}}', String(new Date().getFullYear()))
-  .replaceAll('{{version}}', pkg.version)
-  .replaceAll('{{cssRawKb}}', sizes.cssRaw)
-  .replaceAll('{{cssMinKb}}', sizes.cssMin)
-  .replaceAll('{{cssGzKb}}', sizes.cssGz)
-  .replaceAll('{{cssBrKb}}', sizes.cssBr)
-  .replaceAll('{{jsRawKb}}', sizes.jsRaw)
-  .replaceAll('{{jsMinKb}}', sizes.jsMin)
-  .replaceAll('{{jsGzKb}}', sizes.jsGz)
-  .replaceAll('{{jsBrKb}}', sizes.jsBr)
-  .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
-  .replaceAll('{{gridRawKb}}', sizes.gridRaw)
-  .replaceAll('{{gridMinKb}}', sizes.gridMin)
-  .replaceAll('{{gridGzKb}}', sizes.gridGz)
-  .replaceAll('{{gridBrKb}}', sizes.gridBr)
-  .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
-  .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
-  .replaceAll('{{rebootGzKb}}', sizes.rebootGz)
-  .replaceAll('{{rebootBrKb}}', sizes.rebootBr)
-  .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
-  .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
-  .replaceAll('{{utilsGzKb}}', sizes.utilsGz)
-  .replaceAll('{{utilsBrKb}}', sizes.utilsBr)
-  .replaceAll('{{animRawKb}}', sizes.animRaw)
-  .replaceAll('{{animMinKb}}', sizes.animMin)
-  .replaceAll('{{animGzKb}}', sizes.animGz)
-  .replaceAll('{{animBrKb}}', sizes.animBr)
-  .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
-  .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
-  .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
-  .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
-  .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
-  .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
-  .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
-  .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
-  .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
-  .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
-  .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
-  .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
-  .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
-  .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-  .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
-  .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
+indexContent = injectTemplateTokens(indexContent, { version: pkg.version, sizes, cdnUrls, archiveUrls });
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs'); // Docs pages
@@ -142,18 +99,7 @@ function injectArchiveUrlsInDir(dirPath) {
       injectArchiveUrlsInDir(full);
     } else if (entry.name.endsWith('.html')) {
       let content = fs.readFileSync(full, 'utf8');
-      content = content
-        .replaceAll('{{version}}', pkg.version)
-        .replaceAll('{{cssMinKb}}', sizes.cssMin)
-        .replaceAll('{{jsMinKb}}', sizes.jsMin)
-        .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
-        .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
-        .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
-        .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
-        .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
-        .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-        .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
-        .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
+      content = injectTemplateTokens(content, { version: pkg.version, sizes, cdnUrls, archiveUrls });
       fs.writeFileSync(full, content, 'utf8');
     }
   }

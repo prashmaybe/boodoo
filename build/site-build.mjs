@@ -92,6 +92,59 @@ export function getArchiveCdnUrls(version) {
   };
 }
 
+// DRY helper to inject dynamic version, bundle sizes, CDN assets, and archive download URLs
+export function injectTemplateTokens(content, { version = VERSION, sizes = null, cdnUrls = null, archiveUrls = null } = {}) {
+  if (typeof content !== 'string') return '';
+  const currentSizes = sizes || getDistSizes();
+  const currentCdn = cdnUrls || (fs.existsSync(path.join(root, 'site', 'data', 'cdn-urls.json')) ? JSON.parse(fs.readFileSync(path.join(root, 'site', 'data', 'cdn-urls.json'), 'utf8')) : {});
+  const currentArchives = archiveUrls || getArchiveCdnUrls(version);
+
+  return content
+    .replaceAll('{{version}}', version)
+    .replaceAll('{{year}}', String(new Date().getFullYear()))
+    .replaceAll('{{cssRawKb}}', currentSizes.cssRaw)
+    .replaceAll('{{cssMinKb}}', currentSizes.cssMin)
+    .replaceAll('{{cssGzKb}}', currentSizes.cssGz)
+    .replaceAll('{{cssBrKb}}', currentSizes.cssBr)
+    .replaceAll('{{jsRawKb}}', currentSizes.jsRaw)
+    .replaceAll('{{jsMinKb}}', currentSizes.jsMin)
+    .replaceAll('{{jsGzKb}}', currentSizes.jsGz)
+    .replaceAll('{{jsBrKb}}', currentSizes.jsBr)
+    .replaceAll('{{jsEsmKb}}', currentSizes.jsEsm)
+    .replaceAll('{{gridRawKb}}', currentSizes.gridRaw)
+    .replaceAll('{{gridMinKb}}', currentSizes.gridMin)
+    .replaceAll('{{gridGzKb}}', currentSizes.gridGz)
+    .replaceAll('{{gridBrKb}}', currentSizes.gridBr)
+    .replaceAll('{{rebootRawKb}}', currentSizes.rebootRaw)
+    .replaceAll('{{rebootMinKb}}', currentSizes.rebootMin)
+    .replaceAll('{{rebootGzKb}}', currentSizes.rebootGz)
+    .replaceAll('{{rebootBrKb}}', currentSizes.rebootBr)
+    .replaceAll('{{utilsRawKb}}', currentSizes.utilsRaw)
+    .replaceAll('{{utilsMinKb}}', currentSizes.utilsMin)
+    .replaceAll('{{utilsGzKb}}', currentSizes.utilsGz)
+    .replaceAll('{{utilsBrKb}}', currentSizes.utilsBr)
+    .replaceAll('{{animRawKb}}', currentSizes.animRaw)
+    .replaceAll('{{animMinKb}}', currentSizes.animMin)
+    .replaceAll('{{animGzKb}}', currentSizes.animGz)
+    .replaceAll('{{animBrKb}}', currentSizes.animBr)
+    .replaceAll('{{cdnCssMin}}', currentCdn.cssMin || '')
+    .replaceAll('{{cdnJsRaw}}', currentCdn.jsRaw || '')
+    .replaceAll('{{cdnJsMin}}', currentCdn.jsMin || '')
+    .replaceAll('{{cdnJsEsm}}', currentCdn.jsEsm || '')
+    .replaceAll('{{cdnGridMin}}', currentCdn.gridMin || '')
+    .replaceAll('{{cdnRebootMin}}', currentCdn.rebootMin || '')
+    .replaceAll('{{cdnUtilsMin}}', currentCdn.utilsMin || '')
+    .replaceAll('{{cdnAnimMin}}', currentCdn.animMin || '')
+    .replaceAll('{{archiveLatestZip}}', currentArchives.latestZip)
+    .replaceAll('{{archiveFrameworkZip}}', currentArchives.frameworkZip)
+    .replaceAll('{{archiveExamplesZip}}', currentArchives.examplesZip)
+    .replaceAll('{{archiveStarterReact}}', currentArchives.starterReact)
+    .replaceAll('{{archiveStarterVue}}', currentArchives.starterVue)
+    .replaceAll('{{archiveStarterNext}}', currentArchives.starterNext)
+    .replaceAll('{{archiveStarterHtml}}', currentArchives.starterHtml)
+    .replaceAll('{{archiveStarterReactNative}}', currentArchives.starterReactNative);
+}
+
 if (!fs.existsSync(layoutFile)) {
   console.error('Missing layout:', layoutFile);
   process.exit(1);
@@ -305,49 +358,7 @@ function buildPage(sectionDef, { route, full }) {
   const activeDepth = route.split('/').length;
   const rootPrefix = '../'.repeat(activeDepth);
 
-  let bodyRendered = bodyWithIds
-    .replaceAll('{{version}}', VERSION)
-    .replaceAll('{{cssRawKb}}', sizes.cssRaw)
-    .replaceAll('{{cssMinKb}}', sizes.cssMin)
-    .replaceAll('{{cssGzKb}}', sizes.cssGz)
-    .replaceAll('{{cssBrKb}}', sizes.cssBr)
-    .replaceAll('{{jsRawKb}}', sizes.jsRaw)
-    .replaceAll('{{jsMinKb}}', sizes.jsMin)
-    .replaceAll('{{jsGzKb}}', sizes.jsGz)
-    .replaceAll('{{jsBrKb}}', sizes.jsBr)
-    .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
-    .replaceAll('{{gridRawKb}}', sizes.gridRaw)
-    .replaceAll('{{gridMinKb}}', sizes.gridMin)
-    .replaceAll('{{gridGzKb}}', sizes.gridGz)
-    .replaceAll('{{gridBrKb}}', sizes.gridBr)
-    .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
-    .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
-    .replaceAll('{{rebootGzKb}}', sizes.rebootGz)
-    .replaceAll('{{rebootBrKb}}', sizes.rebootBr)
-    .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
-    .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
-    .replaceAll('{{utilsGzKb}}', sizes.utilsGz)
-    .replaceAll('{{utilsBrKb}}', sizes.utilsBr)
-    .replaceAll('{{animRawKb}}', sizes.animRaw)
-    .replaceAll('{{animMinKb}}', sizes.animMin)
-    .replaceAll('{{animGzKb}}', sizes.animGz)
-    .replaceAll('{{animBrKb}}', sizes.animBr)
-    .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
-    .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
-    .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
-    .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
-    .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
-    .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
-    .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
-    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
-    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
-    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
-    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
-    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
-    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
-    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
-    .replaceAll('{{archiveStarterReactNative}}', archiveUrls.starterReactNative);
+  let bodyRendered = injectTemplateTokens(bodyWithIds, { version: VERSION, sizes, cdnUrls, archiveUrls });
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)
@@ -360,52 +371,10 @@ function buildPage(sectionDef, { route, full }) {
     .replaceAll('{{toc}}', toc)
     .replaceAll('{{content}}', () => bodyRendered)
     .replaceAll('{{prevnext}}', pager)
-    .replaceAll('{{year}}', String(YEAR))
-    .replaceAll('{{version}}', VERSION)
-    .replaceAll('{{cssRawKb}}', sizes.cssRaw)
-    .replaceAll('{{cssMinKb}}', sizes.cssMin)
-    .replaceAll('{{cssGzKb}}', sizes.cssGz)
-    .replaceAll('{{cssBrKb}}', sizes.cssBr)
-    .replaceAll('{{jsRawKb}}', sizes.jsRaw)
-    .replaceAll('{{jsMinKb}}', sizes.jsMin)
-    .replaceAll('{{jsGzKb}}', sizes.jsGz)
-    .replaceAll('{{jsBrKb}}', sizes.jsBr)
-    .replaceAll('{{jsEsmKb}}', sizes.jsEsm)
-    .replaceAll('{{gridRawKb}}', sizes.gridRaw)
-    .replaceAll('{{gridMinKb}}', sizes.gridMin)
-    .replaceAll('{{gridGzKb}}', sizes.gridGz)
-    .replaceAll('{{gridBrKb}}', sizes.gridBr)
-    .replaceAll('{{rebootRawKb}}', sizes.rebootRaw)
-    .replaceAll('{{rebootMinKb}}', sizes.rebootMin)
-    .replaceAll('{{rebootGzKb}}', sizes.rebootGz)
-    .replaceAll('{{rebootBrKb}}', sizes.rebootBr)
-    .replaceAll('{{utilsRawKb}}', sizes.utilsRaw)
-    .replaceAll('{{utilsMinKb}}', sizes.utilsMin)
-    .replaceAll('{{utilsGzKb}}', sizes.utilsGz)
-    .replaceAll('{{utilsBrKb}}', sizes.utilsBr)
-    .replaceAll('{{animRawKb}}', sizes.animRaw)
-    .replaceAll('{{animMinKb}}', sizes.animMin)
-    .replaceAll('{{animGzKb}}', sizes.animGz)
-    .replaceAll('{{animBrKb}}', sizes.animBr)
-    .replaceAll('{{cdnCssMin}}', cdnUrls.cssMin || '')
-    .replaceAll('{{cdnJsRaw}}', cdnUrls.jsRaw || '')
-    .replaceAll('{{cdnJsMin}}', cdnUrls.jsMin || '')
-    .replaceAll('{{cdnJsEsm}}', cdnUrls.jsEsm || '')
-    .replaceAll('{{cdnGridMin}}', cdnUrls.gridMin || '')
-    .replaceAll('{{cdnRebootMin}}', cdnUrls.rebootMin || '')
-    .replaceAll('{{cdnUtilsMin}}', cdnUrls.utilsMin || '')
-    .replaceAll('{{cdnAnimMin}}', cdnUrls.animMin || '')
-    .replaceAll('{{archiveLatestZip}}', archiveUrls.latestZip)
-    .replaceAll('{{archiveFrameworkZip}}', archiveUrls.frameworkZip)
-    .replaceAll('{{archiveExamplesZip}}', archiveUrls.examplesZip)
-    .replaceAll('{{archiveStarterReact}}', archiveUrls.starterReact)
-    .replaceAll('{{archiveStarterVue}}', archiveUrls.starterVue)
-    .replaceAll('{{archiveStarterNext}}', archiveUrls.starterNext)
-    .replaceAll('{{archiveStarterHtml}}', archiveUrls.starterHtml)
     .replaceAll('{{docstitle}}', title)
     .replaceAll('{{canonicalUrl}}', `https://boodooframework.com/docs/${route}.html`);
 
-  return html;
+  return injectTemplateTokens(html, { version: VERSION, sizes, cdnUrls, archiveUrls });
 }
 
 // Build all pages

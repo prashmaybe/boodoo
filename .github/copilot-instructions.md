@@ -22,6 +22,7 @@ When working in this repository or in projects consuming `boodoo`:
    - Always wrap text nodes in semantic elements (`<p>`, `<span>`, `<h1>`–`<h6>`, `<label>`), never raw text directly in `<div>`.
    - Use dynamic CSS custom properties `var(--boodoo-*)` rather than hardcoded hex colors.
    - Respect `prefers-reduced-motion` and keyboard accessibility standards (WCAG 2.2 AA).
+   - Follow DRY principles: avoid duplicating build template mappings, utility calculations, and component rendering logic.
 
 Official Resources:
 - Website: https://boodooframework.com/

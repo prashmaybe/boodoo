@@ -17,6 +17,7 @@ When writing code for projects using boodoo:
   - Interactive elements must support keyboard navigation (`Escape` to close, roving `tabindex`, focus trapping).
 - **CSS Custom Properties**: Always use dynamic theme tokens (`var(--boodoo-primary)`, `var(--boodoo-bg)`) rather than hardcoded hex literals.
 - **Component Lifecycle**: Interactive components must clean up listeners upon disposal via `.dispose()`.
+- **DRY Principles**: Follow DRY conventions across framework code, website templates, and build tooling by leveraging centralized helper utilities.
 - **Multi-Platform Packages**:
   - Web: `import boodoo, { Modal, Toast, Dropdown } from 'boodoo'; import 'boodoo/css';`
   - React: `import { useDisclosure, useCombobox } from 'boodoo/react';`

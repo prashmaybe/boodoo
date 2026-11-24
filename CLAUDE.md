@@ -10,6 +10,9 @@ This document guides Anthropic Claude (Claude Code, Claude Projects, Web, Deskto
   - Form controls (`<input>`, `<select>`, `<textarea>`) must always have an `id` and/or `name` attribute.
   - Text nodes must never sit naked in layout containers (`<div>`, `<section>`). Wrap them in semantic text elements (`<p>`, `<span>`, `<strong>`, `<h1>`–`<h6>`, `<label>`).
   - Keyboard navigation, focus trapping in dialogs, and reduced-motion preferences must be respected.
+- **DRY Principles**:
+  - Avoid duplicate code and copy-paste boilerplate across framework adapters, website docs, and build scripts.
+  - Use centralized utilities and single sources of truth for template replacements, asset sizing, and markdown rendering.
 
 ## Multi-Platform Exports
 - **Web**:
