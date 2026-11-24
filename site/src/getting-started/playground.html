@@ -54,11 +54,24 @@ description: In-browser live HTML, CSS, and component experimentation sandbox.
 
     const defaultCode = `<div class="p-4 bg-light rounded shadow-sm">\n  <h3 class="fw-bold text-primary"><span>Welcome to Boodoo REPL</span></h3>\n  <p class="lead"><span>Build mobile-first, responsive layouts with zero runtime bloat.</span></p>\n  <div class="d-flex gap-2">\n    <button class="btn btn-primary" type="button"><span>Explore Docs</span></button>\n    <button class="btn btn-outline-secondary" type="button"><span>View GitHub</span></button>\n  </div>\n</div>`;
 
+    let initialCode = defaultCode;
+    try {
+      const storedSnippet = sessionStorage.getItem('boodoo_playground_snippet');
+      if (storedSnippet) {
+        initialCode = storedSnippet;
+        sessionStorage.removeItem('boodoo_playground_snippet');
+      }
+    } catch (e) {}
+
+    if (editor && initialCode !== defaultCode) {
+      editor.value = initialCode;
+    }
+
     function render() {
       if (preview && editor) {
         const previewDoc = preview.contentDocument || preview.contentWindow?.document;
         if (previewDoc) {
-          const cleanHtml = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(editor.value) : editor.value;
+          const cleanHtml = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(editor.value) : '';
           previewDoc.open();
           previewDoc.write('<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../dist/css/boodoo.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/haticons@latest/css/haticons.min.css"></head><body class="p-3">' + cleanHtml + '</body></html>');
           previewDoc.close();

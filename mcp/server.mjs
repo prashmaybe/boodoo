@@ -326,7 +326,7 @@ function handleToolCall(name, args = {}) {
       const issues = [];
       const suggestions = [];
 
-      // Check for form inputs missing id or name
+      // Check for form inputs missing id or name (Form Field Element Identification Rule)
       const inputTagRegex = /<(?:input|select|textarea)\b([^>]*)>/gi;
       let match;
       while ((match = inputTagRegex.exec(code)) !== null) {
@@ -335,17 +335,18 @@ function handleToolCall(name, args = {}) {
         const hasName = /\bname\s*=\s*["'][^"']+["']/i.test(attrs);
         if (!hasId && !hasName) {
           issues.push({
-            rule: 'Form Field Element Identification',
+            rule: 'Form Field Element Identification Rule',
             element: match[0],
             message:
-              'Form controls must include an id or name attribute for accessibility and browser autofill.',
+              'Form controls (<input>, <select>, <textarea>) must always include an id or name attribute for accessibility and browser autofill.',
           });
         }
       }
 
-      // Check for raw text inside div / section layout blocks (HTML/JSX)
+      // Check for raw text inside div / section layout blocks (Text Wrapping Rule)
       if (fw === 'html' || fw === 'react' || fw === 'vue') {
-        const rawDivText = /<(?:div|section|article|nav|header|footer)[^>]*>([a-zA-Z0-9\s]{3,})</g;
+        const rawDivText =
+          /<(?:div|section|article|nav|header|footer|aside)[^>]*>([a-zA-Z0-9\s]{3,})</g;
         let divMatch;
         while ((divMatch = rawDivText.exec(code)) !== null) {
           const inner = divMatch[1].trim();
@@ -354,33 +355,65 @@ function handleToolCall(name, args = {}) {
               rule: 'Text Wrapping Rule',
               sample: divMatch[0],
               message:
-                'Raw text nodes must be wrapped in semantic elements (<p>, <span>, <strong>, <label>), never placed naked inside layout containers.',
+                'Text nodes must never be placed directly inside layout/container block elements (<div>, <section>, <article>, etc.). Always wrap in semantic text elements (<p>, <span>, <strong>, <label>, <h1>–<h6>).',
             });
             break;
           }
         }
       }
 
-      // Check for inline style literals in React Native
+      // Check for inline style literals in React Native (React Native StyleSheet-Only Rule)
       if (fw === 'react-native') {
         if (/style\s*=\s*\{\s*\{/g.test(code)) {
           issues.push({
-            rule: 'React Native StyleSheet-Only Rule',
+            rule: 'React Native StyleSheet-Only & Zero Inline Styles Rule',
             message:
-              'Avoid inline style object literals (style={{...}}) in React Native; declare styling via StyleSheet.create().',
+              'Never pass inline style object literals (style={{ ... }}) in React Native. Declare all styling outside render via StyleSheet.create().',
+          });
+        }
+        if (
+          /import\s*\{[^}]*\b(?:div|span|p|a)\b[^}]*\}\s*from/i.test(code) ||
+          /<\s*(?:div|span|p|a)\b/i.test(code)
+        ) {
+          issues.push({
+            rule: 'Modular React Native Pure Primitives Rule',
+            message:
+              'React Native components must rely strictly on core native primitives (View, Text, Pressable, StyleSheet) with zero DOM elements.',
           });
         }
       }
 
-      // Check for hardcoded hex colors when custom properties should be used
+      // Check for hardcoded hex colors (Dynamic CSS Custom Property Theming Rule)
       if (
         /#(?:[0-9a-fA-F]{3}){1,2}\b/.test(code) &&
         (fw === 'html' || fw === 'react' || fw === 'vue')
       ) {
         suggestions.push({
-          rule: 'Dynamic CSS Custom Property Theming',
+          rule: 'Dynamic CSS Custom Property Theming Rule',
           message:
-            'Found hardcoded hex color literals. Prefer dynamic theme tokens such as var(--boodoo-primary).',
+            'Found hardcoded hex color literals. Use dynamic theme CSS custom properties such as var(--boodoo-primary) or var(--boodoo-card-bg).',
+        });
+      }
+
+      // Check for unsafe innerHTML or unescaped HTML interpolation (DOM XSS Prevention Rule)
+      if (/innerHTML\s*=|dangerouslySetInnerHTML/i.test(code)) {
+        suggestions.push({
+          rule: 'DOM XSS Prevention & Safe Insertion Rule',
+          message:
+            'Avoid direct innerHTML or dangerouslySetInnerHTML interpolation. Use safe DOM methods (textContent, document.createElement) or an approved sanitizer.',
+        });
+      }
+
+      // Check for component lifecycle teardown (Lifecycle Teardown Rule)
+      if (
+        /\b(?:Modal|Toast|Dropzone|CommandPalette|Offcanvas|SpeedDial)\b/i.test(code) &&
+        !/\.dispose\(\)/i.test(code) &&
+        (fw === 'vanilla-js' || fw === 'html')
+      ) {
+        suggestions.push({
+          rule: 'Lifecycle Teardown & Resource Revocation Rule',
+          message:
+            'Interactive components with listeners or ephemeral resources must implement teardown and call .dispose() when unmounting or removing.',
         });
       }
 

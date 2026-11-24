@@ -13,6 +13,9 @@ Instructions for Google Gemini coding assistants and Vertex AI code generation m
   - Every form input/select/textarea must include an `id` or `name`.
   - Wrap text strings in `<p>`, `<span>`, `<h1>`–`<h6>`, or `<label>`, never naked inside layout `<div>` containers.
 - **Teardown**: Programmatically managed components (Modals, Toasts, Dropzones, Command Palettes) must invoke `.dispose()` when destroyed.
+- **DRY Principles**:
+  - Encapsulate repeated layout macros, template variables, and helper logic in single reusable modules.
+  - Multi-platform adapters (React, Vue) must reuse core vanilla algorithms and tokens rather than replicating diverging implementations.
 
 ## Quick Imports
 - CSS: `import 'boodoo/css'` (or subpaths: `boodoo/css/grid`, `boodoo/css/utilities`, `boodoo/css/reboot`, `boodoo/css/animations`)

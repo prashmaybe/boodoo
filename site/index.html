@@ -1290,7 +1290,7 @@
       navigator.clipboard.writeText(text).then(function () {
         if (btnEl) {
           const originalText = btnEl.innerHTML;
-          btnEl.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+          btnEl.innerHTML = '<i class="hi-check" aria-hidden="true"></i><span>Copied!</span>';
           setTimeout(function () { btnEl.innerHTML = originalText; }, 2000);
         }
       });

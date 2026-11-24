@@ -171,3 +171,10 @@ All AI entry points, machine-readable specifications, and agent rules must stric
 eact/, ue/, or 
 eact-native/.
 3. **Automated CI Enforcement**: 	ests/ai-docs-validation.test.mjs and 	ests/ai-benchmark.test.mjs must run and pass in .github/workflows/ai-docs-check.yml to prevent documentation and specification drift.
+
+## DRY (Don't Repeat Yourself) Principles Rule
+Website, framework, build tooling, and adapters must uphold DRY architecture and eliminate duplicate logic, redundant mappings, and copy-paste boilerplate:
+
+1. **Single Source of Truth for Replacements & Helpers**: Shared logic (such as template variable injections, file size calculations, archive CDN resolution, DOM escaping, and sanitization) must be encapsulated in reusable utility functions rather than copied across multiple build scripts, modules, or templates.
+2. **Shared Component Primitives**: Framework wrapper adapters (React, Vue, Web Components) must consume core vanilla algorithms, parser logic (e.g. Markdown rendering, accent folding, search match highlighting), and design tokens directly rather than re-implementing diverging copies.
+3. **Template & Style Reusability**: Website documentation fragments, layout blocks, and action buttons must reuse common utility classes and shared layout macros rather than duplicating bespoke markup or styling logic across pages.

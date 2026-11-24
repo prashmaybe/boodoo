@@ -1307,9 +1307,9 @@ app.on('window-all-closed', () => {
         <div class="pane pane-sidebar">
           <nav class="nav-group">
             <h6 class="nav-group-title">Navigation</h6>
-            <a href="#" class="nav-group-item active"><i class="hi-home me-1" aria-hidden="true"></i><span>Dashboard</span></a>
-            <a href="#" class="nav-group-item"><i class="hi-folder me-1" aria-hidden="true"></i><span>Projects</span></a>
-            <a href="#" class="nav-group-item"><i class="hi-settings me-1" aria-hidden="true"></i><span>Preferences</span></a>
+            <a href="#" class="nav-group-item active"><i class="hi-home" aria-hidden="true"></i><span>Dashboard</span></a>
+            <a href="#" class="nav-group-item"><i class="hi-folder" aria-hidden="true"></i><span>Projects</span></a>
+            <a href="#" class="nav-group-item"><i class="hi-settings" aria-hidden="true"></i><span>Preferences</span></a>
           </nav>
         </div>
         <div class="pane p-3">

@@ -16,7 +16,9 @@ When writing code for projects using boodoo:
   - Text nodes must never be placed directly inside layout/container block elements like `<div>`, `<section>`, `<article>`. Always wrap in semantic text elements (`<p>`, `<span>`, `<strong>`, `<h1>`–`<h6>`, `<label>`).
   - Interactive elements must support keyboard navigation (`Escape` to close, roving `tabindex`, focus trapping).
 - **CSS Custom Properties**: Always use dynamic theme tokens (`var(--boodoo-primary)`, `var(--boodoo-bg)`) rather than hardcoded hex literals.
-- **Component Lifecycle**: Interactive components must clean up listeners upon disposal via `.dispose()`.
+- **Component Lifecycle**: Interactive components must clean up listeners upon disposal via `.dispose()` and revoke created object URLs.
+- **React Native Architecture**: Mobile components must use `StyleSheet.create()` with zero inline styles (`style={{ ... }}`) and use pure native primitives without DOM elements.
+- **DRY Principles**: Follow DRY conventions across framework code, website templates, and build tooling by leveraging centralized helper utilities.
 - **Multi-Platform Packages**:
   - Web: `import boodoo, { Modal, Toast, Dropdown } from 'boodoo'; import 'boodoo/css';`
   - React: `import { useDisclosure, useCombobox } from 'boodoo/react';`

@@ -17,11 +17,14 @@ When working in this repository or in projects consuming `boodoo`:
    - Vue: `import { useDisclosure, useCombobox } from 'boodoo/vue'`
    - React Native: `import { Button, Card, BoodooProvider } from 'boodoo/react-native'` (Pure native primitives, `StyleSheet.create()`, no DOM dependencies, no inline styles)
    - Tokens: `import { colors, spacing, radii } from 'boodoo/tokens'`
-6. **Code Quality & Accessibility**:
+6. **Code Quality, Rules & Accessibility**:
    - Always include `id` and/or `name` attributes on `<input>`, `<select>`, `<textarea>`.
-   - Always wrap text nodes in semantic elements (`<p>`, `<span>`, `<h1>`–`<h6>`, `<label>`), never raw text directly in `<div>`.
+   - Always wrap text nodes in semantic elements (`<p>`, `<span>`, `<h1>`–`<h6>`, `<label>`), never raw text directly in `<div>` or structural containers.
    - Use dynamic CSS custom properties `var(--boodoo-*)` rather than hardcoded hex colors.
+   - React Native mobile components must use `StyleSheet.create()` exclusively (zero inline styles `style={{ ... }}`) and use pure native primitives (zero DOM elements).
+   - Component lifecycle: call `.dispose()` on teardown to detach listeners and revoke object URLs.
    - Respect `prefers-reduced-motion` and keyboard accessibility standards (WCAG 2.2 AA).
+   - Follow DRY principles: avoid duplicating build template mappings, utility calculations, and component rendering logic.
 
 Official Resources:
 - Website: https://boodooframework.com/

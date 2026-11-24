@@ -445,15 +445,23 @@
 
       // 2. Open in Boodoo Playground Button
       var replBtn = document.createElement('a');
-      replBtn.className = 'btn btn-sm btn-soft-secondary highlight-repl';
-      replBtn.innerHTML = '<i class="hi-play me-1" aria-hidden="true"></i><span>Playground</span>';
+      replBtn.className = 'btn btn-sm highlight-codepen';
+      replBtn.innerHTML = '<i class="hi-play" aria-hidden="true"></i><span>Playground</span>';
       replBtn.title = 'Open snippet in Boodoo Live Playground';
       replBtn.setAttribute('aria-label', 'Open snippet in Boodoo Live Playground');
+      replBtn.target = '_blank';
       replBtn.href = '{{rootPrefix}}docs/getting-started/playground.html';
+
+      replBtn.addEventListener('click', function (e) {
+        var snippet = pre.innerText || '';
+        try {
+          sessionStorage.setItem('boodoo_playground_snippet', snippet);
+        } catch (err) {}
+      });
 
       // 3. Copy button
       var copyBtn = document.createElement('button');
-      copyBtn.className = 'btn btn-sm btn-soft-primary highlight-copy';
+      copyBtn.className = 'btn btn-sm highlight-codepen highlight-copy';
       copyBtn.innerHTML = '<i class="hi-copy" aria-hidden="true"></i><span>Copy</span>';
       copyBtn.type = 'button';
       copyBtn.title = 'Copy code snippet';
@@ -463,7 +471,7 @@
         var text = pre.innerText;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(text).then(function () {
-            copyBtn.innerHTML = '<i class="hi-check me-1" aria-hidden="true"></i><span>Copied!</span>';
+            copyBtn.innerHTML = '<i class="hi-check" aria-hidden="true"></i><span>Copied!</span>';
             setTimeout(function () { copyBtn.innerHTML = '<i class="hi-copy" aria-hidden="true"></i><span>Copy</span>'; }, 1500);
           });
         }

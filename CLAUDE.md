@@ -10,6 +10,12 @@ This document guides Anthropic Claude (Claude Code, Claude Projects, Web, Deskto
   - Form controls (`<input>`, `<select>`, `<textarea>`) must always have an `id` and/or `name` attribute.
   - Text nodes must never sit naked in layout containers (`<div>`, `<section>`). Wrap them in semantic text elements (`<p>`, `<span>`, `<strong>`, `<h1>`–`<h6>`, `<label>`).
   - Keyboard navigation, focus trapping in dialogs, and reduced-motion preferences must be respected.
+- **Component Lifecycle Teardown**: Interactive components (Modal, Toast, Dropzone, CommandPalette) must clean up listeners and revoke object URLs via `.dispose()`.
+- **React Native Purity**: Mobile components must rely strictly on core React Native primitives (`View`, `Text`, `StyleSheet.create()`), zero DOM elements, and zero inline styles (`style={{ ... }}`).
+- **Cross-Preprocessor Parity**: Maintain SCSS and LESS parity for all components and utility classes.
+- **DRY Principles**:
+  - Avoid duplicate code and copy-paste boilerplate across framework adapters, website docs, and build scripts.
+  - Use centralized utilities and single sources of truth for template replacements, asset sizing, and markdown rendering.
 
 ## Multi-Platform Exports
 - **Web**:
