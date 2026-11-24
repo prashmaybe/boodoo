@@ -93,10 +93,17 @@ export function getArchiveCdnUrls(version) {
 }
 
 // DRY helper to inject dynamic version, bundle sizes, CDN assets, and archive download URLs
-export function injectTemplateTokens(content, { version = VERSION, sizes = null, cdnUrls = null, archiveUrls = null } = {}) {
+export function injectTemplateTokens(
+  content,
+  { version = VERSION, sizes = null, cdnUrls = null, archiveUrls = null } = {}
+) {
   if (typeof content !== 'string') return '';
   const currentSizes = sizes || getDistSizes();
-  const currentCdn = cdnUrls || (fs.existsSync(path.join(root, 'site', 'data', 'cdn-urls.json')) ? JSON.parse(fs.readFileSync(path.join(root, 'site', 'data', 'cdn-urls.json'), 'utf8')) : {});
+  const currentCdn =
+    cdnUrls ||
+    (fs.existsSync(path.join(root, 'site', 'data', 'cdn-urls.json'))
+      ? JSON.parse(fs.readFileSync(path.join(root, 'site', 'data', 'cdn-urls.json'), 'utf8'))
+      : {});
   const currentArchives = archiveUrls || getArchiveCdnUrls(version);
 
   return content
@@ -152,9 +159,6 @@ if (!fs.existsSync(layoutFile)) {
 
 const layout = fs.readFileSync(layoutFile, 'utf8');
 const nav = JSON.parse(fs.readFileSync(navFile, 'utf8'));
-
-// Current year for footer
-const YEAR = new Date().getFullYear();
 
 // Collect all content fragments
 function walk(dir, base = '') {
@@ -358,7 +362,12 @@ function buildPage(sectionDef, { route, full }) {
   const activeDepth = route.split('/').length;
   const rootPrefix = '../'.repeat(activeDepth);
 
-  let bodyRendered = injectTemplateTokens(bodyWithIds, { version: VERSION, sizes, cdnUrls, archiveUrls });
+  let bodyRendered = injectTemplateTokens(bodyWithIds, {
+    version: VERSION,
+    sizes,
+    cdnUrls,
+    archiveUrls,
+  });
 
   let html = layout
     .replaceAll('{{rootPrefix}}', rootPrefix)

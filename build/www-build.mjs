@@ -74,7 +74,12 @@ const cdnUrlsFile = path.join(root, 'site', 'data', 'cdn-urls.json');
 const cdnUrls = fs.existsSync(cdnUrlsFile) ? JSON.parse(fs.readFileSync(cdnUrlsFile, 'utf8')) : {};
 const archiveUrls = getArchiveCdnUrls(pkg.version);
 let indexContent = fs.readFileSync(path.join(root, 'site', 'index.html'), 'utf8');
-indexContent = injectTemplateTokens(indexContent, { version: pkg.version, sizes, cdnUrls, archiveUrls });
+indexContent = injectTemplateTokens(indexContent, {
+  version: pkg.version,
+  sizes,
+  cdnUrls,
+  archiveUrls,
+});
 fs.writeFileSync(path.join(www, 'index.html'), indexContent, 'utf8');
 
 copy(path.join(root, 'site', 'docs'), 'docs'); // Docs pages
@@ -99,7 +104,12 @@ function injectArchiveUrlsInDir(dirPath) {
       injectArchiveUrlsInDir(full);
     } else if (entry.name.endsWith('.html')) {
       let content = fs.readFileSync(full, 'utf8');
-      content = injectTemplateTokens(content, { version: pkg.version, sizes, cdnUrls, archiveUrls });
+      content = injectTemplateTokens(content, {
+        version: pkg.version,
+        sizes,
+        cdnUrls,
+        archiveUrls,
+      });
       fs.writeFileSync(full, content, 'utf8');
     }
   }

@@ -345,7 +345,8 @@ function handleToolCall(name, args = {}) {
 
       // Check for raw text inside div / section layout blocks (Text Wrapping Rule)
       if (fw === 'html' || fw === 'react' || fw === 'vue') {
-        const rawDivText = /<(?:div|section|article|nav|header|footer|aside)[^>]*>([a-zA-Z0-9\s]{3,})</g;
+        const rawDivText =
+          /<(?:div|section|article|nav|header|footer|aside)[^>]*>([a-zA-Z0-9\s]{3,})</g;
         let divMatch;
         while ((divMatch = rawDivText.exec(code)) !== null) {
           const inner = divMatch[1].trim();
@@ -370,7 +371,10 @@ function handleToolCall(name, args = {}) {
               'Never pass inline style object literals (style={{ ... }}) in React Native. Declare all styling outside render via StyleSheet.create().',
           });
         }
-        if (/import\s*\{[^}]*\b(?:div|span|p|a)\b[^}]*\}\s*from/i.test(code) || /<\s*(?:div|span|p|a)\b/i.test(code)) {
+        if (
+          /import\s*\{[^}]*\b(?:div|span|p|a)\b[^}]*\}\s*from/i.test(code) ||
+          /<\s*(?:div|span|p|a)\b/i.test(code)
+        ) {
           issues.push({
             rule: 'Modular React Native Pure Primitives Rule',
             message:
