@@ -3,11 +3,11 @@ import { useDisclosure } from 'boodoo/react';
 import 'boodoo/css';
 
 export function ModalExample() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, open, close } = useDisclosure();
 
   return (
     <div className="container py-5">
-      <button type="button" className="btn btn-primary" onClick={onOpen}>
+      <button type="button" className="btn btn-primary" onClick={open}>
         <span>Open React Modal</span>
       </button>
 
@@ -28,7 +28,7 @@ export function ModalExample() {
                   type="button"
                   className="btn-close"
                   aria-label="Close"
-                  onClick={onClose}
+                  onClick={close}
                 ></button>
               </div>
               <div className="modal-body">
@@ -37,7 +37,7 @@ export function ModalExample() {
                 </p>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={onClose}>
+                <button type="button" className="btn btn-secondary" onClick={close}>
                   <span>Close</span>
                 </button>
               </div>

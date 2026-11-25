@@ -2,12 +2,12 @@
 import { useDisclosure } from 'boodoo/vue';
 import 'boodoo/css';
 
-const { isOpen, onOpen, onClose } = useDisclosure();
+const { isOpen, open, close } = useDisclosure();
 </script>
 
 <template>
   <div class="container py-5">
-    <button type="button" class="btn btn-primary" @click="onOpen">
+    <button type="button" class="btn btn-primary" @click="open">
       <span>Open Vue Modal</span>
     </button>
 
@@ -16,7 +16,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title"><span>Vue 3 Modal</span></h5>
-            <button type="button" class="btn-close" aria-label="Close" @click="onClose"></button>
+            <button type="button" class="btn-close" aria-label="Close" @click="close"></button>
           </div>
           <div class="modal-body">
             <p><span>Reactive modal dialog powered by Boodoo Vue composables.</span></p>

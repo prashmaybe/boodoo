@@ -6,7 +6,7 @@
 // Follows strict A11y & Semantics (wrapped text, id/name form inputs).
 // =====================================================================
 
-import { h, ref, computed, watch, toRef } from 'vue';
+import { h, ref, computed, watch, toRef, getCurrentInstance, useId } from 'vue';
 import { useCombobox } from './composables.js';
 import { Markdown as VanillaMarkdown } from '../js/src/markdown.js';
 
@@ -217,8 +217,22 @@ export const BoodooInput = {
   },
   emits: ['update:modelValue', 'input'],
   setup(props, { emit, attrs }) {
-    inputCounter++;
-    const defaultId = `bo-input-${inputCounter}`;
+    let generatedId = null;
+    if (typeof useId === 'function') {
+      try {
+        generatedId = useId();
+      } catch {}
+    }
+    if (!generatedId) {
+      const instance = typeof getCurrentInstance === 'function' ? getCurrentInstance() : null;
+      if (instance && instance.uid !== undefined) {
+        generatedId = `bo-input-${instance.uid}`;
+      } else {
+        inputCounter++;
+        generatedId = `bo-input-${inputCounter}`;
+      }
+    }
+    const defaultId = generatedId;
     const effectiveId = computed(() => props.id || props.name || defaultId);
     const effectiveName = computed(() => props.name || effectiveId.value);
 

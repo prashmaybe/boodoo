@@ -37,6 +37,18 @@ export class VirtualList {
   }
 
   _init() {
+    this._originalOverflowY = this._element.style.overflowY || '';
+    this._originalPosition = this._element.style.position || '';
+    this._originalTabIndex = this._element.hasAttribute('tabindex')
+      ? this._element.getAttribute('tabindex')
+      : null;
+    this._originalRole = this._element.hasAttribute('role')
+      ? this._element.getAttribute('role')
+      : null;
+    this._originalAriaBusy = this._element.hasAttribute('aria-busy')
+      ? this._element.getAttribute('aria-busy')
+      : null;
+
     this._element.classList.add('boodoo-virtual-list');
     this._element.style.overflowY = 'auto';
     this._element.style.position = 'relative';
@@ -132,6 +144,30 @@ export class VirtualList {
       this._element.removeEventListener('scroll', this._onScroll);
       window.removeEventListener('resize', this._onResize);
       this._element.classList.remove('boodoo-virtual-list');
+
+      // Restore inline styles
+      this._element.style.overflowY = this._originalOverflowY || '';
+      this._element.style.position = this._originalPosition || '';
+
+      // Restore attributes
+      if (this._originalTabIndex !== null) {
+        this._element.setAttribute('tabindex', this._originalTabIndex);
+      } else {
+        this._element.removeAttribute('tabindex');
+      }
+
+      if (this._originalRole !== null) {
+        this._element.setAttribute('role', this._originalRole);
+      } else {
+        this._element.removeAttribute('role');
+      }
+
+      if (this._originalAriaBusy !== null) {
+        this._element.setAttribute('aria-busy', this._originalAriaBusy);
+      } else {
+        this._element.removeAttribute('aria-busy');
+      }
+
       if (this._spacer && this._spacer.parentNode === this._element) {
         this._element.removeChild(this._spacer);
       }

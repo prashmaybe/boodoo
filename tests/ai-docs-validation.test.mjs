@@ -172,5 +172,17 @@ test('AI Documentation and Specification Validation', async (t) => {
     assert.equal(validInput.valid, true);
   });
 
+  await t.test('9. AI documentation disclosure examples match exported public API declarations', () => {
+    const llmsFull = fs.readFileSync(path.join(root, 'llms-full.txt'), 'utf8');
+    assert.ok(
+      !llmsFull.includes('const { isOpen, onOpen, onClose } = useDisclosure()'),
+      'llms-full.txt must not destructure non-existent onOpen/onClose from useDisclosure()'
+    );
+    assert.ok(
+      llmsFull.includes('const { isOpen, open, close } = useDisclosure()'),
+      'llms-full.txt must destructure valid open/close handlers from useDisclosure()'
+    );
+  });
+
 });
 

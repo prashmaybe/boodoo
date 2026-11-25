@@ -1259,9 +1259,99 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
   assert.equal(typeof DatePicker, 'function', 'DatePicker class must exist and export');
   assert.equal(DatePicker.NAME, 'datePicker', 'DatePicker component name must be datePicker');
 
+  // Verify DatePicker grid rows, role="row", and roving tabindex strategy
+  const mockDpInput = {
+    matches: () => true,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    value: '',
+    parentElement: { appendChild: () => {} },
+  };
+  const mockDpEl = {
+    matches: () => true,
+    contains: () => true,
+    getAttribute: () => null,
+    querySelector: (sel) => (sel === 'input' ? mockDpInput : null),
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    appendChild: () => {},
+  };
+  const dpInstance = new DatePicker(mockDpEl);
+  dpInstance.render();
+  const dpHtml = dpInstance._popup ? dpInstance._popup.innerHTML : '';
+  assert.ok(dpHtml.includes('role="row"'), 'DatePicker must render role="row" for grid rows');
+  assert.ok(dpHtml.includes('tabindex="0"'), 'DatePicker must have an active cell with tabindex="0"');
+  assert.ok(dpHtml.includes('tabindex="-1"'), 'DatePicker must have remaining cells with tabindex="-1"');
+  dpInstance.dispose();
+
   // 14. DataTable DOM Virtualization API and spacer rendering
   const { DataTable: VirtualDataTable } = await import(pathToFileURL(resolve(rootDir, 'js/src/data-table.js')).href);
   assert.equal(typeof VirtualDataTable.prototype.virtualize, 'function', 'DataTable must have virtualize() method');
+
+  // DataTable selection retains stable record ID after sorting
+  const dtTableEl = {
+    matches: (sel) => sel === 'table',
+    querySelectorAll: () => [],
+    querySelector: () => null,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  const dtWrap = {
+    matches: (sel) => sel !== 'table',
+    querySelector: (sel) => (sel === 'table' ? dtTableEl : null),
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  const dtObj = new VirtualDataTable(dtWrap);
+  const sampleItems = [
+    { id: 'rec-1', name: 'Zebra' },
+    { id: 'rec-2', name: 'Apple' },
+  ];
+  dtObj.virtualize({
+    items: sampleItems,
+    totalRows: 2,
+    rowHeight: 40,
+    getRowId: (item) => item.id,
+    renderRow: (idx) => {
+      const tr = {
+        hasAttribute: () => false,
+        getAttribute: () => null,
+        setAttribute: () => {},
+        classList: { toggle: () => {} },
+        querySelector: () => ({ checked: false }),
+      };
+      return tr;
+    },
+  });
+  dtObj._selectedRowIds.add('rec-2');
+  // Sort items
+  const mockHeader = {
+    classList: {
+      remove: () => {},
+      add: () => {},
+    },
+    parentElement: { children: [] },
+  };
+  mockHeader.parentElement.children = [mockHeader];
+  dtObj._table = {
+    querySelector: () => ({
+      querySelectorAll: () => [],
+      appendChild: () => {},
+      replaceChildren: () => {},
+    }),
+    querySelectorAll: () => [],
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  dtObj.sortBy(mockHeader);
+  // After sort, rec-2 is still selected in _selectedRowIds
+  assert.ok(dtObj._selectedRowIds.has('rec-2'), 'Selected record ID must remain in selection set after sorting');
+  dtObj.dispose();
 
   // 15. Markdown XSS Sanitization verification
   const { Markdown } = await import(pathToFileURL(resolve(rootDir, 'js/src/markdown.js')).href);
@@ -1297,19 +1387,32 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
       remove(c) { this._classes.delete(c); },
       contains(c) { return this._classes.has(c); },
     },
-    style: {},
+    style: { overflowY: 'visible', position: 'static' },
+    hasAttribute: (attr) => attr === 'tabindex' || attr === 'role',
+    getAttribute: (attr) => {
+      if (attr === 'tabindex') return '-1';
+      if (attr === 'role') return 'region';
+      return null;
+    },
+    setAttribute: function(attr, val) { this[attr] = val; },
+    removeAttribute: function(attr) { delete this[attr]; },
+    tabIndex: -1,
     innerHTML: '<span>Original text</span>',
     clientHeight: 400,
     scrollTop: 0,
     addEventListener: () => {},
     removeEventListener: () => {},
     appendChild: () => {},
-    setAttribute: () => {},
   };
   const vl = new VirtualList(vlContainer, { items: ['Item 1', 'Item 2'], itemHeight: 40 });
   assert.ok(vlContainer.classList.contains('boodoo-virtual-list'));
+  assert.equal(vlContainer.style.overflowY, 'auto');
   vl.dispose();
   assert.ok(!vlContainer.classList.contains('boodoo-virtual-list'));
+  assert.equal(vlContainer.style.overflowY, 'visible', 'VirtualList must restore original overflowY');
+  assert.equal(vlContainer.style.position, 'static', 'VirtualList must restore original position');
+  assert.equal(vlContainer.tabindex, '-1', 'VirtualList must restore original tabindex');
+  assert.equal(vlContainer.role, 'region', 'VirtualList must restore original role');
   assert.equal(vlContainer.innerHTML, '<span>Original text</span>');
 });
 
