@@ -1353,6 +1353,65 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
   assert.ok(dtObj._selectedRowIds.has('rec-2'), 'Selected record ID must remain in selection set after sorting');
   dtObj.dispose();
 
+  // Non-virtualized DataTable stable row selection with getRowId
+  const makeRow = (id, text, checked = false) => {
+    const cb = { checked, closest: () => null };
+    const rowEl = {
+      id,
+      hasAttribute: (attr) => attr === 'data-row-id',
+      getAttribute: (attr) => (attr === 'data-row-id' ? id : null),
+      children: [{ innerText: text }],
+      classList: { toggle: () => {} },
+      querySelector: (sel) => (sel.includes('input[type="checkbox"]') ? cb : null),
+    };
+    cb.closest = (sel) => (sel === 'tr' ? rowEl : null);
+    return { rowEl, cb };
+  };
+  const r1 = makeRow('row-z', 'Zebra');
+  const r2 = makeRow('row-a', 'Apple', true);
+  const rowsList = [r1.rowEl, r2.rowEl];
+  const tableBody = {
+    querySelectorAll: (sel) => {
+      if (sel.includes('tr:not(.data-table-row-detail)')) return rowsList;
+      return [];
+    },
+    appendChild: (el) => {},
+  };
+  const tableEl = {
+    matches: (sel) => sel === 'table',
+    querySelectorAll: (sel) => {
+      if (sel.includes('thead th.sortable')) return [];
+      if (sel.includes('tbody td.data-table-select-col input[type="checkbox"]')) return [r1.cb, r2.cb];
+      return [];
+    },
+    querySelector: (sel) => {
+      if (sel === 'tbody') return tableBody;
+      return null;
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  const stdDt = new DataTable(tableEl, {
+    getRowId: (tr) => tr.id || tr.getAttribute('data-row-id'),
+  });
+  // Initially row-a is checked
+  stdDt._selectedRowIds.add('row-a');
+  assert.ok(stdDt._selectedRowIds.has('row-a'), 'DataTable should record row-a as selected');
+
+  // Trigger sort on standard table
+  const sortHeader = {
+    parentElement: {
+      children: [
+        { classList: { remove: () => {}, add: () => {} } }
+      ]
+    },
+    classList: { add: () => {}, remove: () => {} },
+  };
+  stdDt.sortBy(sortHeader);
+  assert.ok(stdDt._selectedRowIds.has('row-a'), 'DataTable selection should remain stable with row-a after sort');
+  stdDt.dispose();
+
   // 15. Markdown XSS Sanitization verification
   const { Markdown } = await import(pathToFileURL(resolve(rootDir, 'js/src/markdown.js')).href);
   assert.equal(typeof Markdown.render, 'function', 'Markdown.render must exist');
