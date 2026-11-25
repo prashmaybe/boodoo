@@ -187,11 +187,11 @@ sheet.dispose();</code></pre>
 import { useDisclosure } from 'boodoo/react';
 
 export function QuickShareSheet() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, open, close } = useDisclosure();
 
   return (
     &lt;&gt;
-      &lt;button type="button" className="btn btn-primary" onClick={onOpen}&gt;
+      &lt;button type="button" className="btn btn-primary" onClick={open}&gt;
         &lt;span&gt;Share Document&lt;/span&gt;
       &lt;/button&gt;
 
@@ -202,7 +202,7 @@ export function QuickShareSheet() {
           &lt;/div&gt;
           &lt;div className="bottom-sheet-header"&gt;
             &lt;h5 className="bottom-sheet-title"&gt;&lt;span&gt;Share Options&lt;/span&gt;&lt;/h5&gt;
-            &lt;button type="button" className="btn-close" onClick={onClose} aria-label="Close"&gt;&lt;/button&gt;
+            &lt;button type="button" className="btn-close" onClick={close} aria-label="Close"&gt;&lt;/button&gt;
           &lt;/div&gt;
           &lt;div className="bottom-sheet-body"&gt;
             &lt;p&gt;Copy shareable link or export as PDF.&lt;/p&gt;

@@ -67,10 +67,10 @@ import React from 'react';
 import { useDisclosure, useCombobox, useAccordion } from 'boodoo/react';
 
 export function ExampleModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, open, close } = useDisclosure();
   return (
     <div>
-      <button type="button" className="btn btn-primary" onClick={onOpen}>
+      <button type="button" className="btn btn-primary" onClick={open}>
         <span>Open Dialog</span>
       </button>
       {isOpen && (
@@ -79,7 +79,7 @@ export function ExampleModal() {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title"><span>Dialog Title</span></h5>
-                <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
+                <button type="button" className="btn-close" aria-label="Close" onClick={close}></button>
               </div>
               <div className="modal-body">
                 <p><span>Modal content goes here.</span></p>
@@ -97,12 +97,12 @@ export function ExampleModal() {
 ```vue
 <script setup>
 import { useDisclosure } from 'boodoo/vue';
-const { isOpen, onOpen, onClose } = useDisclosure();
+const { isOpen, open, close } = useDisclosure();
 </script>
 
 <template>
   <div>
-    <button type="button" class="btn btn-primary" @click="onOpen">
+    <button type="button" class="btn btn-primary" @click="open">
       <span>Open Modal</span>
     </button>
     <div v-if="isOpen" class="modal d-block" role="dialog" aria-modal="true">

@@ -68,10 +68,10 @@ test('AI Compatibility Benchmark & Evaluation Suite', async (t) => {
     import 'boodoo/css';
 
     export function MyModal() {
-      const { isOpen, onOpen, onClose } = useDisclosure();
+      const { isOpen, open, close } = useDisclosure();
       return (
         <div>
-          <button type="button" className="btn btn-primary" onClick={onOpen}>
+          <button type="button" className="btn btn-primary" onClick={open}>
             <span>Open</span>
           </button>
         </div>

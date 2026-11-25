@@ -256,8 +256,152 @@ export interface AlertProps {
 
 export interface ProgressProps {
   progress?: number;
+  value?: number;
   color?: string;
   height?: number;
+  indeterminate?: boolean;
+  visible?: boolean;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface ActivityIndicatorProps {
+  animating?: boolean;
+  color?: string;
+  size?: 'small' | 'large' | number;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface SurfaceProps {
+  elevation?: number;
+  mode?: 'elevated' | 'flat' | string;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface DividerProps {
+  inset?: boolean;
+  bold?: boolean;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface AvatarProps {
+  size?: number;
+  source?: any;
+  label?: string;
+  icon?: any;
+  color?: string;
+  backgroundColor?: string;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface TooltipProps {
+  title?: string;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface PopoverProps {
+  visible?: boolean;
+  onDismiss?: () => void;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface BottomSheetProps {
+  visible?: boolean;
+  onDismiss?: () => void;
+  snapPoints?: (string | number)[];
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface MenuProps {
+  visible?: boolean;
+  onDismiss?: () => void;
+  anchor?: ReactNode;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface AppbarProps {
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface HeaderProps {
+  leftComponent?: ReactNode;
+  centerComponent?: ReactNode;
+  rightComponent?: ReactNode;
+  backgroundColor?: string;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface ListItemProps {
+  title?: string;
+  description?: string;
+  subtitle?: string;
+  left?: ReactNode | (() => ReactNode);
+  right?: ReactNode | (() => ReactNode);
+  chevron?: boolean;
+  onPress?: () => void;
+  disabled?: boolean;
+  paddingVertical?: number;
+  paddingHorizontal?: number;
+  style?: any;
+  titleStyle?: any;
+  descriptionStyle?: any;
+  children?: ReactNode;
+  [key: string]: any;
+}
+
+export interface ListSectionProps {
+  title?: string;
+  children?: ReactNode;
+  style?: any;
+  titleStyle?: any;
+  marginVertical?: number;
+  [key: string]: any;
+}
+
+export interface SnackbarProps {
+  visible?: boolean;
+  action?: {
+    label: string;
+    onPress: () => void;
+  };
+  duration?: number;
+  onDismiss?: () => void;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface EmptyStateProps {
+  icon?: any;
+  title?: string;
+  description?: string;
+  actionTitle?: string;
+  onAction?: () => void;
+  children?: ReactNode;
+  style?: any;
+  [key: string]: any;
+}
+
+export interface SkeletonProps {
+  width?: number | string;
+  height?: number | string;
+  borderRadius?: number;
   style?: any;
   [key: string]: any;
 }
@@ -285,9 +429,9 @@ export declare const Card: ComponentType<CardProps> & {
   Actions: ComponentType<any>;
   Title: ComponentType<any>;
 };
-export declare const Surface: ComponentType<any>;
-export declare const Divider: ComponentType<any>;
-export declare const Separator: ComponentType<any>;
+export declare const Surface: ComponentType<SurfaceProps>;
+export declare const Divider: ComponentType<DividerProps>;
+export declare const Separator: ComponentType<DividerProps>;
 export declare const PricingCard: ComponentType<any>;
 export declare const Tile: ComponentType<any>;
 export declare const StatWidget: ComponentType<any>;
@@ -313,26 +457,26 @@ export declare const Picker: ComponentType<SelectProps>;
 export declare const ToggleButton: ComponentType<any>;
 export declare const Chip: ComponentType<ChipProps>;
 export declare const Badge: ComponentType<BadgeProps>;
-export declare const Avatar: ComponentType<any> & {
+export declare const Avatar: ComponentType<AvatarProps> & {
   Image: ComponentType<any>;
   Text: ComponentType<any>;
   Icon: ComponentType<any>;
 };
-export declare const ActivityIndicator: ComponentType<any>;
-export declare const Spinner: ComponentType<any>;
+export declare const ActivityIndicator: ComponentType<ActivityIndicatorProps>;
+export declare const Spinner: ComponentType<ActivityIndicatorProps>;
 export declare const ProgressBar: ComponentType<ProgressProps>;
 export declare const Progress: ComponentType<ProgressProps>;
-export declare const Skeleton: ComponentType<any>;
+export declare const Skeleton: ComponentType<SkeletonProps>;
 export declare const Alert: ComponentType<AlertProps>;
 export declare const Banner: ComponentType<any>;
-export declare const Toast: ComponentType<any>;
-export declare const Snackbar: ComponentType<any>;
+export declare const Toast: ComponentType<SnackbarProps>;
+export declare const Snackbar: ComponentType<SnackbarProps>;
 export declare const List: ComponentType<any> & {
-  Section: ComponentType<any>;
+  Section: ComponentType<ListSectionProps>;
   Subheader: ComponentType<any>;
   Accordion: ComponentType<any>;
 };
-export declare const ListItem: ComponentType<any>;
+export declare const ListItem: ComponentType<ListItemProps>;
 export declare const DataTable: ComponentType<any> & {
   Header: ComponentType<any>;
   Row: ComponentType<any>;
@@ -340,11 +484,11 @@ export declare const DataTable: ComponentType<any> & {
   Pagination: ComponentType<any>;
 };
 export declare const Table: ComponentType<any>;
-export declare const Appbar: ComponentType<any> & {
+export declare const Appbar: ComponentType<AppbarProps> & {
   BackAction: ComponentType<any>;
   Action: ComponentType<any>;
 };
-export declare const Header: ComponentType<any>;
+export declare const Header: ComponentType<HeaderProps>;
 export declare const TopNavigation: ComponentType<any>;
 export declare const Drawer: ComponentType<any>;
 export declare const BottomNavigation: ComponentType<any>;
@@ -353,14 +497,14 @@ export declare const PageControl: ComponentType<any>;
 export declare const Dialog: ComponentType<DialogProps>;
 export declare const AlertDialog: ComponentType<DialogProps>;
 export declare const Modal: ComponentType<ModalProps>;
-export declare const Overlay: ComponentType<any>;
-export declare const BottomSheet: ComponentType<any>;
-export declare const Actionsheet: ComponentType<any>;
-export declare const ActionSheet: ComponentType<any>;
-export declare const Sheet: ComponentType<any>;
-export declare const Menu: ComponentType<any>;
-export declare const Popover: ComponentType<any>;
-export declare const Tooltip: ComponentType<any>;
+export declare const Overlay: ComponentType<ModalProps>;
+export declare const BottomSheet: ComponentType<BottomSheetProps>;
+export declare const Actionsheet: ComponentType<BottomSheetProps>;
+export declare const ActionSheet: ComponentType<BottomSheetProps>;
+export declare const Sheet: ComponentType<BottomSheetProps>;
+export declare const Menu: ComponentType<MenuProps>;
+export declare const Popover: ComponentType<PopoverProps>;
+export declare const Tooltip: ComponentType<TooltipProps>;
 export declare const Portal: ComponentType<any>;
 export declare const TouchableRipple: ComponentType<any>;
 
@@ -385,7 +529,7 @@ export declare const Rating: ComponentType<any>;
 export declare const StarRating: ComponentType<any>;
 export declare const ChipInput: ComponentType<any>;
 export declare const TagInput: ComponentType<any>;
-export declare const EmptyState: ComponentType<any>;
+export declare const EmptyState: ComponentType<EmptyStateProps>;
 export declare const Timeline: ComponentType<any>;
 export declare const TimelineItem: ComponentType<any>;
 export declare const StepIndicator: ComponentType<any>;

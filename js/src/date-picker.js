@@ -47,7 +47,9 @@ export class DatePicker extends BaseComponent {
 
     // Config defaults
     this._isRange = Boolean(
-      this._config.range || this._element.getAttribute('data-boodoo-range') === 'true'
+      this._config.range ||
+      (typeof this._element.getAttribute === 'function' &&
+        this._element.getAttribute('data-boodoo-range') === 'true')
     );
     this._minDate = this._config.min ? parseLocalDate(this._config.min) : null;
     this._maxDate = this._config.max ? parseLocalDate(this._config.max) : null;
@@ -278,10 +280,28 @@ export class DatePicker extends BaseComponent {
     });
     html += `</div>`;
 
+    // Build all cells (previous month, current month, next month)
+    const cellsData = [];
+
     // Previous month filler days
     for (let i = firstDayIndex - 1; i >= 0; i--) {
       const day = prevMonthLastDay - i;
-      html += `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`;
+      cellsData.push({
+        html: `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`,
+      });
+    }
+
+    // Determine which date cell should have tabindex="0" (roving focus: selected date if in current view, else today if in current view, else day 1)
+    let rovingDay = 1;
+    if (
+      !this._isRange &&
+      this._selectedDate &&
+      this._selectedDate.getFullYear() === year &&
+      this._selectedDate.getMonth() === month
+    ) {
+      rovingDay = this._selectedDate.getDate();
+    } else if (todayDate.getFullYear() === year && todayDate.getMonth() === month) {
+      rovingDay = todayDate.getDate();
     }
 
     // Current month days
@@ -319,14 +339,28 @@ export class DatePicker extends BaseComponent {
       }
 
       const ariaSelected = isSelected ? ' aria-selected="true"' : ' aria-selected="false"';
-      html += `<button type="button" class="${classes.join(' ')}" role="gridcell"${ariaSelected} data-date="${curStr}">${day}</button>`;
+      const cellTabindex = day === rovingDay ? ' tabindex="0"' : ' tabindex="-1"';
+      cellsData.push({
+        html: `<button type="button" class="${classes.join(' ')}" role="gridcell"${ariaSelected}${cellTabindex} data-date="${curStr}">${day}</button>`,
+      });
     }
 
     // Trailing days to fill 7 columns
     const totalRendered = firstDayIndex + lastDayOfMonth;
     const remaining = (7 - (totalRendered % 7)) % 7;
     for (let day = 1; day <= remaining; day++) {
-      html += `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`;
+      cellsData.push({
+        html: `<button type="button" class="date-picker-cell other-month" role="gridcell" disabled tabindex="-1">${day}</button>`,
+      });
+    }
+
+    // Chunk cells into rows of 7 with role="row" and style="display: contents;"
+    for (let i = 0; i < cellsData.length; i += 7) {
+      html += `<div role="row" class="date-picker-row" style="display: contents;">`;
+      for (let j = 0; j < 7 && i + j < cellsData.length; j++) {
+        html += cellsData[i + j].html;
+      }
+      html += `</div>`;
     }
 
     html += `
