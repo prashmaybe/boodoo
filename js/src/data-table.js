@@ -53,7 +53,12 @@ export class DataTable extends BaseComponent {
               if (typeof getRowId === 'function') {
                 const item = Array.isArray(items) ? items[i] : undefined;
                 id = getRowId(item, i);
-              } else if (Array.isArray(items) && items[i] && typeof items[i] === 'object' && items[i].id !== undefined) {
+              } else if (
+                Array.isArray(items) &&
+                items[i] &&
+                typeof items[i] === 'object' &&
+                items[i].id !== undefined
+              ) {
                 id = items[i].id;
               }
               this._selectedRowIds.add(id);
@@ -78,7 +83,8 @@ export class DataTable extends BaseComponent {
           const tr = cb.closest('tr');
           if (tr) {
             tr.classList.toggle('selected', checked);
-            const rowId = tr.getAttribute('data-row-id') || tr.getAttribute('data-row-index') || tr.id;
+            const rowId =
+              tr.getAttribute('data-row-id') || tr.getAttribute('data-row-index') || tr.id;
             if (rowId !== null && rowId !== undefined) {
               if (checked) this._selectedRowIds.add(rowId);
               else this._selectedRowIds.delete(rowId);
@@ -102,8 +108,8 @@ export class DataTable extends BaseComponent {
           const rowId = tr.hasAttribute('data-row-id')
             ? tr.getAttribute('data-row-id')
             : tr.hasAttribute('data-row-index')
-            ? parseInt(tr.getAttribute('data-row-index'), 10)
-            : null;
+              ? parseInt(tr.getAttribute('data-row-index'), 10)
+              : null;
 
           if (rowId !== null && rowId !== undefined) {
             if (e.target.checked) this._selectedRowIds.add(rowId);
@@ -125,7 +131,8 @@ export class DataTable extends BaseComponent {
           return;
         }
 
-        const nonVirtId = tr?.getAttribute('data-row-id') || tr?.getAttribute('data-row-index') || tr?.id;
+        const nonVirtId =
+          tr?.getAttribute('data-row-id') || tr?.getAttribute('data-row-index') || tr?.id;
         if (nonVirtId !== null && nonVirtId !== undefined) {
           if (e.target.checked) this._selectedRowIds.add(nonVirtId);
           else this._selectedRowIds.delete(nonVirtId);
@@ -374,13 +381,21 @@ export class DataTable extends BaseComponent {
             const item = Array.isArray(items) ? items[i] : undefined;
             rowId = getRowId(item, i);
             tr.setAttribute('data-row-id', String(rowId));
-          } else if (Array.isArray(items) && items[i] && typeof items[i] === 'object' && items[i].id !== undefined) {
+          } else if (
+            Array.isArray(items) &&
+            items[i] &&
+            typeof items[i] === 'object' &&
+            items[i].id !== undefined
+          ) {
             rowId = items[i].id;
             tr.setAttribute('data-row-id', String(rowId));
           }
           const cb = tr.querySelector('td.data-table-select-col input[type="checkbox"]');
           if (cb) {
-            const isChecked = this._selectedRowIds.has(rowId) || this._selectedRowIds.has(String(rowId)) || (typeof rowId === 'number' && this._selectedRowIds.has(Number(rowId)));
+            const isChecked =
+              this._selectedRowIds.has(rowId) ||
+              this._selectedRowIds.has(String(rowId)) ||
+              (typeof rowId === 'number' && this._selectedRowIds.has(Number(rowId)));
             cb.checked = isChecked;
             tr.classList.toggle('selected', isChecked);
           }

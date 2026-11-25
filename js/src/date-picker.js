@@ -48,8 +48,8 @@ export class DatePicker extends BaseComponent {
     // Config defaults
     this._isRange = Boolean(
       this._config.range ||
-        (typeof this._element.getAttribute === 'function' &&
-          this._element.getAttribute('data-boodoo-range') === 'true')
+      (typeof this._element.getAttribute === 'function' &&
+        this._element.getAttribute('data-boodoo-range') === 'true')
     );
     this._minDate = this._config.min ? parseLocalDate(this._config.min) : null;
     this._maxDate = this._config.max ? parseLocalDate(this._config.max) : null;
@@ -293,7 +293,12 @@ export class DatePicker extends BaseComponent {
 
     // Determine which date cell should have tabindex="0" (roving focus: selected date if in current view, else today if in current view, else day 1)
     let rovingDay = 1;
-    if (!this._isRange && this._selectedDate && this._selectedDate.getFullYear() === year && this._selectedDate.getMonth() === month) {
+    if (
+      !this._isRange &&
+      this._selectedDate &&
+      this._selectedDate.getFullYear() === year &&
+      this._selectedDate.getMonth() === month
+    ) {
       rovingDay = this._selectedDate.getDate();
     } else if (todayDate.getFullYear() === year && todayDate.getMonth() === month) {
       rovingDay = todayDate.getDate();
