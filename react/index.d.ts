@@ -575,7 +575,7 @@ export interface TooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 }
 export declare const Tooltip: React.FC<TooltipProps>;
 
-export interface VirtualListProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface VirtualListProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
   items?: any[];
   itemHeight?: number;
   height?: string;

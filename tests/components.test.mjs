@@ -1412,6 +1412,36 @@ test('Core JS Component Runtime fixes: teardown, listener hygiene, interaction c
   assert.ok(stdDt._selectedRowIds.has('row-a'), 'DataTable selection should remain stable with row-a after sort');
   stdDt.dispose();
 
+  // Test numeric ID vs string ID normalization in DataTable
+  const numRow1 = makeRow('42', 'Item 42', false);
+  numRow1.rowEl.id = ''; // remove id to test data-row-id or custom numeric getRowId
+  const numTable = {
+    matches: () => true,
+    querySelectorAll: (sel) => {
+      if (sel.includes('thead th.sortable')) return [];
+      if (sel.includes('tbody td.data-table-select-col input[type="checkbox"]')) return [numRow1.cb];
+      return [];
+    },
+    querySelector: (sel) => (sel === 'tbody' ? { querySelectorAll: () => [numRow1.rowEl], appendChild: () => {} } : null),
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+  };
+  const numDt = new DataTable(numTable, {
+    getRowId: () => 42, // returns numeric ID 42
+  });
+  numDt._setRowSelected(42, true);
+  assert.ok(numDt._isRowSelected(42), 'Numeric ID 42 should be selected');
+  assert.ok(numDt._isRowSelected('42'), 'String "42" should match numeric ID in _isRowSelected');
+  assert.ok(numDt._selectedRowIds.has('42'), 'Normalized ID string "42" should be in _selectedRowIds');
+
+  // Verify sort re-application retains selection for numeric getRowId
+  numDt.sortBy(sortHeader);
+  assert.ok(numRow1.cb.checked, 'Checkbox should be marked checked after sort when row has numeric ID');
+  numDt._setRowSelected('42', false);
+  assert.ok(!numDt._isRowSelected(42), 'Deselecting with string ID should deselect numeric ID');
+  numDt.dispose();
+
   // 15. Markdown XSS Sanitization verification
   const { Markdown } = await import(pathToFileURL(resolve(rootDir, 'js/src/markdown.js')).href);
   assert.equal(typeof Markdown.render, 'function', 'Markdown.render must exist');
