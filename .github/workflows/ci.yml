@@ -83,7 +83,7 @@ jobs:
             });
           "
           # Verify consumer TypeScript compilation with installed definitions
-          npx tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext << 'EOF'
+          cat << 'EOF' > test-consumer.ts
           import { Modal, Toast } from 'boodoo';
           import { colors, spacing } from 'boodoo/tokens';
           import { useDisclosure as useReactDisclosure } from 'boodoo/react';
@@ -95,4 +95,5 @@ jobs:
           const primaryColor: string = colors.primary;
           const openState: boolean = false;
           EOF
+          npx tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext test-consumer.ts
           echo "Consumer TypeScript compilation check passed!"
