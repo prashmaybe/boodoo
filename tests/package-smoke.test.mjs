@@ -92,7 +92,10 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
     const subpaths = [
       { name: 'react', js: 'react/index.js', dts: 'react/index.d.ts' },
       { name: 'vue', js: 'vue/index.js', dts: 'vue/index.d.ts' },
-      { name: 'react-native', js: 'react-native/index.js', dts: 'react-native/index.d.ts' }
+      { name: 'react-native', js: 'react-native/index.js', dts: 'react-native/index.d.ts' },
+      { name: 'paper', js: 'react-native/paper.js', dts: 'react-native/paper.d.ts' },
+      { name: 'svelte', js: 'svelte/index.js', dts: 'svelte/index.d.ts' },
+      { name: 'solid', js: 'solid/index.js', dts: 'solid/index.d.ts' }
     ];
 
     for (const sub of subpaths) {
@@ -150,6 +153,9 @@ test('Package Artifact Smoke: package.json exports mapping and built assets', as
       { sub: './react', file: 'react/index.js', expected: ['useDisclosure', 'useCombobox', 'Button', 'Dialog', 'Input', 'Card'] },
       { sub: './vue', file: 'vue/index.js', expected: ['useDisclosure', 'useCombobox'] },
       { sub: './react-native', file: 'react-native/index.js', expected: ['BoodooProvider', 'Button'] },
+      { sub: './paper', file: 'react-native/paper.js', expected: ['boodooPaperLightTheme', 'boodooPaperDarkTheme'] },
+      { sub: './svelte', file: 'svelte/index.js', expected: ['disclosure', 'tooltip'] },
+      { sub: './solid', file: 'solid/index.js', expected: ['createDisclosure'] },
     ];
 
     for (const { sub, file, expected } of wrapperChecks) {

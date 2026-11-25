@@ -47,7 +47,7 @@ jobs:
       - name: Verify package packaging (npm pack dry-run)
         run: npm pack --dry-run
 
-      - name: Clean project installation and import verification (Plain HTML, React, Vue)
+      - name: Clean project installation and import verification (Plain HTML, React, Vue, Svelte, Solid, Paper)
         run: |
           TARBALL=$(npm pack)
           mkdir -p /tmp/smoke-test
@@ -62,9 +62,18 @@ jobs:
             });
             const tokens = require('boodoo/tokens');
             console.log('Tokens export verified:', Boolean(tokens.colors && tokens.colors.primary));
+            import('boodoo/paper').then(paper => {
+              console.log('Paper theme export verified:', Boolean(paper.boodooPaperLightTheme));
+            });
+            import('boodoo/svelte').then(s => {
+              console.log('Svelte export verified:', typeof s.disclosure === 'function');
+            });
+            import('boodoo/solid').then(sol => {
+              console.log('Solid export verified:', typeof sol.createDisclosure === 'function');
+            });
           "
           # Verify optional peer integration wrappers when peer libraries are present
-          npm install react react-dom vue
+          npm install react react-dom vue typescript @types/react @types/react-dom
           node -e "
             import('boodoo/react').then(r => {
               console.log('React hooks export verified:', typeof r.useDisclosure === 'function');
@@ -73,3 +82,17 @@ jobs:
               console.log('Vue composables export verified:', typeof v.useDisclosure === 'function');
             });
           "
+          # Verify consumer TypeScript compilation with installed definitions
+          npx tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext << 'EOF'
+          import { Modal, Toast } from 'boodoo';
+          import { colors, spacing } from 'boodoo/tokens';
+          import { useDisclosure as useReactDisclosure } from 'boodoo/react';
+          import { useDisclosure as useVueDisclosure } from 'boodoo/vue';
+          import { disclosure as svelteDisclosure } from 'boodoo/svelte';
+          import { createDisclosure as solidDisclosure } from 'boodoo/solid';
+          import { boodooPaperLightTheme } from 'boodoo/paper';
+
+          const primaryColor: string = colors.primary;
+          const openState: boolean = false;
+          EOF
+          echo "Consumer TypeScript compilation check passed!"

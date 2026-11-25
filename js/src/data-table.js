@@ -24,28 +24,50 @@ export class DataTable extends BaseComponent {
     this._bindEvents();
   }
 
+  _normalizeId(rawId) {
+    if (rawId === null || rawId === undefined) return null;
+    return String(rawId);
+  }
+
   _resolveRowId(tr, fallbackIndex) {
-    if (!tr) return fallbackIndex !== undefined ? fallbackIndex : null;
+    if (!tr) return fallbackIndex !== undefined ? this._normalizeId(fallbackIndex) : null;
     if (typeof this._getRowId === 'function') {
       const customId = this._getRowId(tr, fallbackIndex);
-      if (customId !== null && customId !== undefined) return customId;
+      if (customId !== null && customId !== undefined) return this._normalizeId(customId);
     }
     if (tr.hasAttribute && tr.hasAttribute('data-row-id')) {
-      return tr.getAttribute('data-row-id');
+      return this._normalizeId(tr.getAttribute('data-row-id'));
     }
     if (tr.id) {
-      return tr.id;
+      return this._normalizeId(tr.id);
     }
     if (tr.hasAttribute && tr.hasAttribute('data-row-key')) {
-      return tr.getAttribute('data-row-key');
+      return this._normalizeId(tr.getAttribute('data-row-key'));
     }
     if (tr.hasAttribute && tr.hasAttribute('data-id')) {
-      return tr.getAttribute('data-id');
+      return this._normalizeId(tr.getAttribute('data-id'));
     }
     if (tr.hasAttribute && tr.hasAttribute('data-row-index')) {
-      return tr.getAttribute('data-row-index');
+      return this._normalizeId(tr.getAttribute('data-row-index'));
     }
-    return fallbackIndex !== undefined ? fallbackIndex : null;
+    return fallbackIndex !== undefined ? this._normalizeId(fallbackIndex) : null;
+  }
+
+  _isRowSelected(rawId) {
+    if (rawId === null || rawId === undefined) return false;
+    const norm = this._normalizeId(rawId);
+    return this._selectedRowIds.has(norm) || this._selectedRowIds.has(rawId);
+  }
+
+  _setRowSelected(rawId, selected) {
+    if (rawId === null || rawId === undefined) return;
+    const norm = this._normalizeId(rawId);
+    if (selected) {
+      this._selectedRowIds.add(norm);
+    } else {
+      this._selectedRowIds.delete(norm);
+      this._selectedRowIds.delete(rawId);
+    }
   }
 
   _bindEvents() {
@@ -86,7 +108,7 @@ export class DataTable extends BaseComponent {
               ) {
                 id = items[i].id;
               }
-              this._selectedRowIds.add(id);
+              this._setRowSelected(id, true);
             }
           } else {
             this._selectedRowIds.clear();
@@ -110,8 +132,7 @@ export class DataTable extends BaseComponent {
             tr.classList.toggle('selected', checked);
             const rowId = this._resolveRowId(tr, idx);
             if (rowId !== null && rowId !== undefined) {
-              if (checked) this._selectedRowIds.add(rowId);
-              else this._selectedRowIds.delete(rowId);
+              this._setRowSelected(rowId, checked);
             }
           }
         });
@@ -129,19 +150,13 @@ export class DataTable extends BaseComponent {
         if (tr) tr.classList.toggle('selected', e.target.checked);
 
         if (this._isVirtualized && tr) {
-          let rowId = null;
-          if (tr.hasAttribute('data-row-id')) {
-            rowId = tr.getAttribute('data-row-id');
-          } else {
-            const rawIdx = tr.hasAttribute('data-row-index')
-              ? parseInt(tr.getAttribute('data-row-index'), 10)
-              : undefined;
-            rowId = this._resolveRowId(tr, rawIdx);
-          }
+          const rawIdx = tr.hasAttribute('data-row-index')
+            ? parseInt(tr.getAttribute('data-row-index'), 10)
+            : undefined;
+          const rowId = this._resolveRowId(tr, rawIdx);
 
           if (rowId !== null && rowId !== undefined) {
-            if (e.target.checked) this._selectedRowIds.add(rowId);
-            else this._selectedRowIds.delete(rowId);
+            this._setRowSelected(rowId, e.target.checked);
           }
 
           if (this._selectAll && this._virtualOptions) {
@@ -161,8 +176,7 @@ export class DataTable extends BaseComponent {
 
         const nonVirtId = this._resolveRowId(tr);
         if (nonVirtId !== null && nonVirtId !== undefined) {
-          if (e.target.checked) this._selectedRowIds.add(nonVirtId);
-          else this._selectedRowIds.delete(nonVirtId);
+          this._setRowSelected(nonVirtId, e.target.checked);
         }
 
         // Update selectAll indeterminate / checked
@@ -346,10 +360,7 @@ export class DataTable extends BaseComponent {
       if (cb) {
         const rowId = this._resolveRowId(row, idx);
         if (rowId !== null && rowId !== undefined) {
-          const isChecked =
-            this._selectedRowIds.has(rowId) ||
-            this._selectedRowIds.has(String(rowId)) ||
-            (typeof rowId === 'number' && this._selectedRowIds.has(Number(rowId)));
+          const isChecked = this._isRowSelected(rowId);
           cb.checked = isChecked;
           if (row.classList && typeof row.classList.toggle === 'function') {
             row.classList.toggle('selected', isChecked);
@@ -439,10 +450,7 @@ export class DataTable extends BaseComponent {
           }
           const cb = tr.querySelector('td.data-table-select-col input[type="checkbox"]');
           if (cb) {
-            const isChecked =
-              this._selectedRowIds.has(rowId) ||
-              this._selectedRowIds.has(String(rowId)) ||
-              (typeof rowId === 'number' && this._selectedRowIds.has(Number(rowId)));
+            const isChecked = this._isRowSelected(rowId);
             cb.checked = isChecked;
             tr.classList.toggle('selected', isChecked);
           }
