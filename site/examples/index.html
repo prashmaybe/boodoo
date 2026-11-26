@@ -81,7 +81,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PTKD1079C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-9PTKD1079C');
@@ -93,8 +93,7 @@
   <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
 
   <!-- Global Sticky 2-Row Navbar -->
-  <header
-    class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
+  <header class="navbar-docs position-sticky sticky-top top-0 z-30" role="banner">
     <!-- Row 1: Brand & Actions -->
     <div class="navbar-row-primary">
       <div class="container d-flex align-items-center justify-content-between">
@@ -137,8 +136,10 @@
             <li class="nav-item"><a class="nav-link" href="../index.html#components"><span>Components</span></a></li>
             <li class="nav-item"><a class="nav-link" href="../index.html#icons"><span>Icons</span></a></li>
             <li class="nav-item"><a class="nav-link" href="../index.html#mobile"><span>React Native</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="../index.html#installation"><span>Installation</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="../docs/getting-started/introduction.html"><span>Docs</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#installation"><span>Installation</span></a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                href="../docs/getting-started/introduction.html"><span>Docs</span></a></li>
             <li class="nav-item"><a class="nav-link active" href="index.html"><span>Examples</span></a></li>
           </ul>
           <div class="d-flex align-items-center gap-2 nav-row-secondary-actions">
@@ -165,19 +166,22 @@
                     target="_blank" rel="noopener"><span>v1.3.3</span></a></li>
                 <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.2"
                     target="_blank" rel="noopener"><span>v1.3.2</span></a></li>
-                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.2.10"
-                    target="_blank" rel="noopener"><span>v1.2.10</span></a></li>
+                <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases/tag/v1.3.1"
+                    target="_blank" rel="noopener"><span>v1.3.1</span></a></li>
                 <li><a class="dropdown-item" href="https://github.com/prashmaybe/boodoo/releases" target="_blank"
                     rel="noopener"><span>All Releases &rarr;</span></a></li>
               </ul>
             </div>
-            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted" href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
+            <a class="nav-link nav-github-link d-inline-flex align-items-center gap-1 text-muted"
+              href="https://github.com/prashmaybe/boodoo" target="_blank" rel="noopener">
               <i class="hi-github fs-6" aria-hidden="true"></i>
               <span>GitHub</span>
             </a>
             <div class="d-flex d-sm-none align-items-center gap-2 pt-2 border-top w-100 mt-2">
-              <a class="btn btn-outline-primary btn-sm rounded-pill px-3 flex-fill text-center" href="../docs/getting-started/usage.html"><span>CDN</span></a>
-              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center" href="../docs/getting-started/download.html"><span>Download</span></a>
+              <a class="btn btn-outline-primary btn-sm rounded-pill px-3 flex-fill text-center"
+                href="../docs/getting-started/usage.html"><span>CDN</span></a>
+              <a class="btn btn-primary btn-sm rounded-pill px-3 flex-fill text-center"
+                href="../docs/getting-started/download.html"><span>Download</span></a>
             </div>
           </div>
         </div>
@@ -252,7 +256,8 @@
             <div class="card-body p-2 d-flex flex-column justify-content-between">
               <div>
                 <h4 class="card-title fw-bold fs-5 mb-1">Component Studio</h4>
-                <p class="card-text text-muted small mb-1">Interactive playground and storybook environment to live-preview Boodoo React components, toggle normal/compact density, and copy JSX snippets.</p>
+                <p class="card-text text-muted small mb-1">Interactive playground and storybook environment to
+                  live-preview Boodoo React components, toggle normal/compact density, and copy JSX snippets.</p>
               </div>
               <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                 <a href="studio/index.html" class="btn btn-sm btn-primary rounded-pill px-1 py-05">Open Studio</a>
